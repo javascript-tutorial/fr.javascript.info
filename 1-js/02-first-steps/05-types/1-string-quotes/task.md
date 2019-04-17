@@ -4,7 +4,7 @@ importance: 5
 
 # String quotes
 
-What is the output of the script?
+Quelle est la sortie du script ?
 
 ```js
 let name = "Ilya";
