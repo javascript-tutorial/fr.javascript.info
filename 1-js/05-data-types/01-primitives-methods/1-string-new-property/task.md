@@ -2,10 +2,10 @@ importance: 5
 
 ---
 
-# Can I add a string property?
+# Puis-je ajouter une propiété à une primitive ?
 
 
-Consider the following code:
+Considérons le code suivant:
 
 ```js
 let str = "Hello";
@@ -15,4 +15,4 @@ str.test = 5;
 alert(str.test);
 ```
 
-How do you think, will it work? What will be shown?
+Qu'en penses-tu, ça va marcher? Qu'est-ce qui sera montré?
