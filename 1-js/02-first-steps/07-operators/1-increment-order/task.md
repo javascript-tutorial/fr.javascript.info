@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# The postfix and prefix forms
+# Les formes postfixes et préfixes
 
-What are the final values of all variables `a`, `b`, `c` and `d` after the code below?
+Quelles sont les valeurs finales de toutes les variables `a`, `b`, `c` et `d` après le code ci-dessous ?
 
 ```js
 let a = 1, b = 1;
