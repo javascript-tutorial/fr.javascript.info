@@ -1,33 +1,33 @@
-Internally the decimal fraction `6.35` is an endless binary. As always in such cases, it is stored with a precision loss.
+En interne, la fraction décimale `6.35` est un fichier binaire sans fin. Comme toujours dans de tels cas, il est stocké avec une perte de précision.
 
-Let's see:
+Voyons cela:
 
 ```js run
 alert( 6.35.toFixed(20) ); // 6.34999999999999964473
 ```
 
-The precision loss can cause both increase and decrease of a number. In this particular case the number becomes a tiny bit less, that's why it rounded down.
+La perte de précision peut causer à la fois une augmentation et une diminution d'un nombre. Dans ce cas particulier, le nombre diminue un peu, c'est pourquoi il a été arrondi à 3.
 
-And what's for `1.35`?
+Et quand est-il de `1.35`?
 
 ```js run
 alert( 1.35.toFixed(20) ); // 1.35000000000000008882
 ```
 
-Here the precision loss made the number a little bit greater, so it rounded up.
+Ici, la perte de précision rend le nombre un peu plus grand, c'est pourquoi il a été arrondi à 4.
 
-**How can we fix the problem with `6.35` if we want it to be rounded the right way?**
+**Comment pouvons-nous résoudre le problème avec `6.35` si nous voulons qu'il soit arrondi correctement ?**
 
-We should bring it closer to an integer prior to rounding:
+Nous devons le rapprocher d'un nombre entier avant d'arrondir:
 
 ```js run
 alert( (6.35 * 10).toFixed(20) ); // 63.50000000000000000000
 ```
 
-Note that `63.5` has no precision loss at all. That's because the decimal part `0.5` is actually `1/2`. Fractions divided by powers of `2` are exactly represented in the binary system, now we can round it:
+Notez que `63.5` n'a aucune perte de précision. C'est parce que la partie décimale `0.5` est en réalité `1/2`. Les fractions divisées par les puissances de `2` sont représentées sans perte de précision dans le système binaire, on peut maintenant les arrondir:
 
 
 ```js run
-alert( Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64(rounded) -> 6.4
+alert( Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64(arrondi) -> 6.4
 ```
 

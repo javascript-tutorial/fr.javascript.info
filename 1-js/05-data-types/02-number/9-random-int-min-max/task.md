@@ -2,14 +2,14 @@ importance: 2
 
 ---
 
-# A random integer from min to max
+# Un entier aléatoire de min à max
 
-Create a function `randomInteger(min, max)` that generates a random *integer* number from `min` to `max` including both `min` and `max` as possible values.
+Créez une fonction `randomInteger(min, max)` qui génère un nombre entier aléatoire compris entre `min` et `max` (`min` et `max` inclut). 
 
-Any number from the interval `min..max` must appear with the same probability.
+Tout nombre compris dans l'intervalle `min..max` doit apparaître avec la même probabilité.
 
 
-Examples of its work:
+Quelques exemples:
 
 ```js
 alert( random(1, 5) ); // 1
@@ -17,4 +17,4 @@ alert( random(1, 5) ); // 3
 alert( random(1, 5) ); // 5
 ```
 
-You can use the solution of the [previous task](info:task/random-min-max) as the base.
+Vous pouvez utiliser la solution de la [tâche précédente](info:task/random-min-max) comme base.

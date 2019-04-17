@@ -2,9 +2,9 @@ importance: 4
 
 ---
 
-# An occasional infinite loop
+# Une boucle infinie
 
-This loop is infinite. It never ends. Why?
+Cette boucle est infinie. Ça ne finit jamais. Pourquoi?
 
 ```js
 let i = 0;
@@ -12,4 +12,3 @@ while (i != 10) {
   i += 0.2;
 }
 ```
-
