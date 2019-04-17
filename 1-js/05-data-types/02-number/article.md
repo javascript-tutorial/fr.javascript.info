@@ -1,87 +1,87 @@
-# Numbers
+# Nombres
 
-All numbers in JavaScript are stored in 64-bit format [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), also known as "double precision".
+Tous les nombres en JavaScript sont stockés au format 64-bits [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), aussi appelé "double précision".
 
-Let's recap and expand upon what we currently know about them.
+Récapitulons et développons ce que nous savons actuellement à leurs sujet.
 
-## More ways to write a number
+## Plus de façons d'écrire un nombre
 
-Imagine we need to write 1 billion. The obvious way is:
+Imaginez que nous ayons besoin d'écrire 1 milliard. Le moyen évident est:
 
 ```js
-let billion = 1000000000;
+let milliard = 1000000000;
 ```
 
-But in real life we usually avoid writing a long string of zeroes as it's easy to mistype. Also, we are lazy. We will usually write something like `"1bn"` for a billion or `"7.3bn"` for 7 billion 300 million. The same is true for most large numbers.
+Mais dans la vie réelle, nous évitons généralement d'écrire une longue chaîne de zéros car une erreur est si vite arrivée. De plus, nous sommes paresseux. Nous écrirons donc généralement quelque chose comme `"1md"` pour un milliard ou `"7.3md"` pour 7 milliards 300 millions. De même pour la plupart des grands nombres.
 
-In JavaScript, we shorten a number by appending the letter `"e"` to the number and specifying the zeroes count:
+En JavaScript, nous raccourcissons un nombre en ajoutant la lettre `"e"` au nombre et en précisant le nombre de zéros:
 
 ```js run
-let billion = 1e9;  // 1 billion, literally: 1 and 9 zeroes
+let milliards = 1e9;  // 1 milliard, littéralement: 1 et 9 zéros
 
-alert( 7.3e9 );  // 7.3 billions (7,300,000,000)
+alert( 7.3e9 );  // 7.3 milliards (7,300,000,000)
 ```
 
-In other words, `"e"` multiplies the number by `1` with the given zeroes count.
+En d'autres termes, `"e"` multiplie le nombre de `1` avec le nombre de zéros donné.
 
 ```js
 1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000
+1.23e6 = 1.23 * 1000000 
 ```
 
 
-Now let's write something very small. Say, 1 microsecond (one millionth of a second):
+Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde):
 
 ```js
 let ms = 0.000001;
 ```
 
-Just like before, using `"e"` can help. If we'd like to avoid writing the zeroes explicitly, we could say:
+Comme avant, on va utiliser `"e"`. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire:
 
 ```js
-let ms = 1e-6; // six zeroes to the left from 1
+let ms = 1e-6; // six zéros à gauche de 1
 ```
 
-If we count the zeroes in `0.000001`, there are 6 of them. So naturally it's `1e-6`.  
+Si nous comptons les zéros dans `0.000001`, il y en a 6. Alors, logiquement, c'est `1e-6`.
 
-In other words, a negative number after `"e"` means a division by 1 with the given number of zeroes:
+En d'autres termes, un nombre négatif après `"e"` signifie une division par 1 avec le nombre donné de zéros:
 
 ```js
-// -3 divides by 1 with 3 zeroes
+// -3 divise par 1 avec 3 zéros
 1e-3 = 1 / 1000 (=0.001)
 
-// -6 divides by 1 with 6 zeroes
+// -6 divise par 1 avec 6 zéros
 1.23e-6 = 1.23 / 1000000 (=0.00000123)
 ```
 
-### Hex, binary and octal numbers
+### Nombres hexadécimaux, binaires et octaux
 
-[Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) numbers are widely used in JavaScript to represent colors, encode characters, and for many other things. So naturally, there exists a shorter way to write them: `0x` and then the number.
+Les nombres [Hexadécimaux](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal) sont souvent utilisés en JavaScript pour représenter des couleurs, encoder des caractères et pour beaucoup d'autres choses. Alors, naturellement, il existe un moyen plus court de les écrire: `0x` puis le nombre.
 
-For instance:
+Par exemple:
 
 ```js run
 alert( 0xff ); // 255
-alert( 0xFF ); // 255 (the same, case doesn't matter)
+alert( 0xFF ); // 255 (même résultat car la casse n'a pas d'importance)
 ```
 
-Binary and octal numeral systems are rarely used, but also supported using the `0b` and `0o` prefixes:
+Les systèmes numériques binaires et octaux sont rarement utilisés, mais sont également supportés avec les préfixes `0b` et `0o`:
 
 
 ```js run
-let a = 0b11111111; // binary form of 255
-let b = 0o377; // octal form of 255
+let a = 0b11111111; // forme binaire de 255
+let b = 0o377; // forme octale de 255
 
-alert( a == b ); // true, the same number 255 at both sides
+alert( a == b ); // true, car a et b valent le même nombre 255
 ```
 
-There are only 3 numeral systems with such support. For other numeral systems, we should use the function `parseInt` (which we will see later in this chapter).
+Cependant ça ne fonctionne qu'avec ces 3 systèmes de numération. Pour les autres systèmes numérique, nous devrions utiliser la fonction `parseInt` (que nous verrons plus loin dans ce chapitre)
 
-## toString(base)
+## La méthode toString(base)
 
-The method `num.toString(base)` returns a string representation of `num` in the numeral system with the given `base`.
+La méthode `num.toString(base)` retourne une chaîne de caractères représentant `num` dans le système numérique de la `base` donnée.
 
-For example:
+Par exemple:
 ```js run
 let num = 255;
 
@@ -89,45 +89,45 @@ alert( num.toString(16) );  // ff
 alert( num.toString(2) );   // 11111111
 ```
 
-The `base` can vary from `2` to `36`. By default it's `10`.
+La `base` peut varier de `2` à `36`. Par défaut, il s'agit de `10`.
 
-Common use cases for this are:
+Les cas d'utilisation courants sont:
 
-- **base=16** is used for hex colors, character encodings etc, digits can be `0..9` or `A..F`.
-- **base=2** is mostly for debugging bitwise operations, digits can be `0` or `1`.
-- **base=36** is the maximum, digits can be `0..9` or `A..Z`. The whole latin alphabet is used to represent a number. A funny, but useful case for `36` is when we need to turn a long numeric identifier into something shorter, for example to make a short url. Can simply represent it in the numeral system with base `36`:
+- **base=16** est utilisé pour les couleurs hexadécimales, les encodages de caractères, etc. les chiffres peuvent être `0..9` ou `A..F`.
+- **base=2** est principalement utilisé pour le débogage d'opérations binaires, les chiffres pouvant être `0` ou `1`.
+- **base=36** est le maximum, les chiffres peuvent être `0..9` ou `A..Z`. L'alphabet latin entier est utilisé pour représenter un nombre. Un cas amusant mais utile pour la base `36` consiste à transformer un identifiant numérique long en quelque chose de plus court, par exemple pour créer une URL courte. On peut simplement le représenter dans le système numérique avec base `36`:
 
     ```js run
     alert( 123456..toString(36) ); // 2n9c
     ```
 
-```warn header="Two dots to call a method"
-Please note that two dots in `123456..toString(36)` is not a typo. If we want to call a method directly on a number, like `toString` in the example above, then we need to place two dots `..` after it.
+```warn header="Deux points pour appeler une méthode"
+Veuillez noter que deux points sur `123456..toString(36)` n'est pas une faute de frappe. Si nous voulons appeler une méthode directement sur un nombre, comme `toString` dans l'exemple ci-dessus, nous devons placer deux points `..` avant la méthode.
 
-If we placed a single dot: `123456.toString(36)`, then there would be an error, because JavaScript syntax implies the decimal part after the first dot. And if we place one more dot, then JavaScript knows that the decimal part is empty and now goes the method.
+Si nous plaçions un seul point: `123456.toString(36)`, il y aurait une erreur, car la syntaxe JavaScript applique la partie décimale après le premier point et il lirait toString(36) comme étant la partie décimale de 123456 ce qui n'est pas le cas. Si nous plaçons un point de plus, alors JavaScript sait que la partie décimale est vide et peut maintenant appliquer la méthode.
 
-Also could write `(123456).toString(36)`.
+Il est aussi possible d'écrire `(123456).toString(36)`.
 ```
 
-## Rounding
+## Arrondir
 
-One of the most used operations when working with numbers is rounding.
+Arrondir est l'une des opérations les plus utilisées pour travailler avec des nombres.
 
-There are several built-in functions for rounding:
+Il existe plusieurs fonctions intégrées pour arrondir:
 
 `Math.floor`
-: Rounds down: `3.1` becomes `3`, and `-1.1` becomes `-2`.
+: Arrondis: `3.1` devient `3`, et `-1.1` devient `-2`.
 
 `Math.ceil`
-: Rounds up: `3.1` becomes `4`, and `-1.1` becomes `-1`.
+: Arrondis: `3.1` devient `4`, et `-1.1` devient `-1`.
 
 `Math.round`
-: Rounds to the nearest integer: `3.1` becomes `3`, `3.6` becomes `4` and `-1.1` becomes `-1`.
+: Arrondit à l'entier le plus proche: `3.1` devient `3`, `3.6` devient `4` et `-1.1` devient `-1`.
 
-`Math.trunc` (not supported by Internet Explorer)
-: Removes anything after the decimal point without rounding: `3.1` becomes `3`, `-1.1` becomes `-1`.
+`Math.trunc` (non pris en charge par Internet Explorer)
+: Supprime tout ce qui suit le point décimal sans avoir arrondi: `3.1` devient `3`, `-1.1` devient `-1`.
 
-Here's the table to summarize the differences between them:
+Voici le tableau pour résumer les différences entre eux:
 
 |   | `Math.floor` | `Math.ceil` | `Math.round` | `Math.trunc` |
 |---|---------|--------|---------|---------|
@@ -137,298 +137,301 @@ Here's the table to summarize the differences between them:
 |`-1.6`|  `-2`    |   `-1`  |    `-2`  |   `-1`   |
 
 
-These functions cover all of the possible ways to deal with the decimal part of a number. But what if we'd like to round the number to `n-th` digit after the decimal?
+Ces fonctions couvrent toutes les manières possibles de traiter la partie décimale d'un nombre. Mais que se passe-t-il si nous voulons arrondir le nombre à un certain chiffre après la virgule ?
 
-For instance, we have `1.2345` and want to round it to 2 digits, getting only `1.23`.
+Par exemple, nous avons `1.2345` et voulons l'arrondir à 2 chiffres, pour obtenir seulement `1.23`.
 
-There are two ways to do so:
+Il y a deux façons de le faire:
 
-1. Multiply-and-divide.
+1. Multiplier et diviser.
 
-    For example, to round the number to the 2nd digit after the decimal, we can multiply the number by `100`, call the rounding function and then divide it back.
+    Par exemple, pour arrondir le nombre au deuxième chiffre après la décimale, multipliez le nombre par 100, appelez la fonction d'arrondi puis divisez-la.
     ```js run
     let num = 1.23456;
 
     alert( Math.floor(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
     ```
 
-2. The method [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) rounds the number to `n` digits after the point and returns a string representation of the result.
-
+2. La méthode [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed) arrondit le nombre à `n` chiffres après le point et renvoie unechaîne de caractères du résultat.
+        
     ```js run
     let num = 12.34;
     alert( num.toFixed(1) ); // "12.3"
     ```
 
-    This rounds up or down to the nearest value, similar to `Math.round`:
+    Ceci arrondit à la valeur la plus proche, similaire à `Math.round`:
 
     ```js run
     let num = 12.36;
     alert( num.toFixed(1) ); // "12.4"
     ```
 
-    Please note that result of `toFixed` is a string. If the decimal part is shorter than required, zeroes are appended to the end:
+    Veuillez noter que le résultat de `toFixed` est une chaîne de caractères. Si la partie décimale est plus courte qu'indiquée, des zéros sont ajoutés à la fin:
 
     ```js run
     let num = 12.34;
-    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits
+    alert( num.toFixed(5) ); // "12.34000", ajout de zéros pour faire exactement 5 chiffres
     ```
 
-    We can convert it to a number using the unary plus or a `Number()` call: `+num.toFixed(5)`.
+    Nous pouvons le convertir en un nombre en utilisant le plus unaire `+` ou un appel `Number()`: `+num.toFixed(5)`.
 
-## Imprecise calculations
+## Calculs imprécis
 
-Internally, a number is represented in 64-bit format [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point (they are zero for integer numbers), and 1 bit is for the sign.
+En interne, un nombre est représenté au format 64 bits [IEEE-754](https://fr.wikipedia.org/wiki/IEEE_754), il y a donc exactement 64 bits pour stocker un nombre: 52 d'entre eux sont utilisés pour stocker les chiffres, 11 d'entre eux stockent la position du point décimal(ils sont zéro pour les nombres entiers), et 1 bit est pour le signe.
 
-If a number is too big, it would overflow the 64-bit storage, potentially giving an infinity:
-
-```js run
-alert( 1e500 ); // Infinity
-```
-
-What may be a little less obvious, but happens quite often, is the loss of precision.
-
-Consider this (falsy!) test:
+Si un nombre est trop grand, le stockage 64 bits serait saturé, donnant potentiellement une infinité:
 
 ```js run
-alert( 0.1 + 0.2 == 0.3 ); // *!*false*/!*
+alert( 1e500 ); // infini 
 ```
 
-That's right, if we check whether the sum of `0.1` and `0.2` is `0.3`, we get `false`.
+Ce qui est peut-être un peu moins évident, mais qui arrive souvent, est la perte de précision.
 
-Strange! What is it then if not `0.3`?
+Voyons ce test (faux!)
+
+```js run
+alert( 0.1 + 0.2 == 0.3 ); // *!*faux*/!*
+```
+
+Si on vérifie si la somme de `0.1` et `0.2` est égale à `0.3` on obtient `faux`.
+
+Étrange! Qu'est-ce que c'est alors si ce n'est pas `0.3`?
 
 ```js run
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
-Ouch! There are more consequences than an incorrect comparison here. Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their chart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'e-shopping et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
 
-But why does this happen?
+Mais pourquoi cela se produit-il ?
 
-A number is stored in memory in its binary form, a sequence of ones and zeroes. But fractions like `0.1`, `0.2` that look simple in the decimal numeric system are actually unending fractions in their binary form.
+Un nombre est stocké en mémoire sous sa forme binaire, une séquence de uns et de zéros. Mais les fractions telles que `0.1`, `0.2`, qui semblent simples dans le système numérique décimal, sont en réalité des fractions sans fin dans leur forme binaire.
 
-In other words, what is `0.1`? It is one divided by ten `1/10`, one-tenth. In decimal numeral system such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+En d'autres termes, qu'est-ce que `0.1`? C'est un divisé par dix `1/10`, un dixième. Dans le système numérique décimal, ces nombres sont facilement représentables. Comparez-le à un tiers: `1/3`. Cela devient une fraction sans fin `0.33333(3)`.
 
-So, division by powers `10` is guaranteed to work well in the decimal system, but division by `3` is not. For the same reason, in the binary numeral system, the division by powers of `2` is guaranteed to work, but `1/10` becomes an endless binary fraction.
+Ainsi, la division par puissances `10` est garantie de bien fonctionner dans le système décimal, mais la division par `3` ne l'est pas. Pour la même raison, dans le système de numération binaire, la division par des puissances de `2` est garantie, mais `1/10` devient une fraction binaire sans fin.
 
-There's just no way to store *exactly 0.1* or *exactly 0.2* using the binary system, just like there is no way to store one-third as a decimal fraction.
+Il n'existe aucun moyen de stocker **exactement 0.1** ou **exactement 0.2** à l'aide du système binaire, tout comme il n'existe aucun moyen de stocker un tiers sous forme de fraction décimale.
 
-The numeric format IEEE-754 solves this by rounding to the nearest possible number. These rounding rules normally don't allow us to see that "tiny precision loss", so the number shows up as `0.3`. But beware, the loss still exists.
+Le format numérique IEEE-754 résout ce problème en arrondissant au nombre le plus proche possible. Ces règles d'arrondissement ne nous permettent normalement pas de voir cette "petite perte de précision", donc le nombre indiqué est `0.3`. Mais attention, la perte existe toujours.
 
-We can see this in action:
+Nous pouvons voir cela en action:
 ```js run
 alert( 0.1.toFixed(20) ); // 0.10000000000000000555
 ```
 
-And when we sum two numbers, their "precision losses" add up.
+Et quand on additionne deux nombres, leurs "pertes de précision" s'additionnent.
 
-That's why `0.1 + 0.2` is not exactly `0.3`.
+C'est pourquoi `0.1` + `0.2` n'est pas exactement `0.3`.
 
-```smart header="Not only JavaScript"
-The same issue exists in many other programming languages.
+```smart header="Pas seulement JavaScript"
+Le même problème existe dans de nombreux autres langages de programmation.
 
-PHP, Java, C, Perl, Ruby give exactly the same result, because they are based on the same numeric format.
+PHP, Java, C, Perl, Ruby donnent exactement le même résultat, car ils sont basés sur le même format numérique.
 ```
 
-Can we work around the problem? Sure, the most reliable method is to round the result with the help of a method [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+Pouvons-nous contourner le problème? Bien sûr, il y a plusieurs façons:
+
+1. Nous pouvons arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+
+    ```js run
+    let sum = 0.1 + 0.2;
+    alert( sum.toFixed(2) ); // 0.30
+    ```
+
+    Veuillez noter que `toFixed` renvoie toujours une chaîne de caractères. Il s'assure qu'il a 2 chiffres après le point décimal. C'est pratique si nous avons un magasin en ligne et devons montrer `0.30$`. Pour les autres cas, nous pouvons utiliser le plus unaire `+` pour le contraindre en un nombre:
+
+    ```js run
+    let sum = 0.1 + 0.2;
+    alert( +sum.toFixed(2) ); // 0.3
+    ```
+
+2. Nous pouvons temporairement transformer des nombres en nombres entiers en les multipliant pour effectuer des calculs, puis les diviser pour avoir les valeurs voulues. Cela fonctionne comme ceci:
+
+    ```js run
+    alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
+    ```
+
+    Cela fonctionne parce que lorsque nous faisons `0.1 * 10 = 1` et `0.2 * 10 = 2`, les deux nombres deviennent des nombres entiers et il n'y a pas de perte de précision.
+
+3. Si nous avions affaire à un magasin, la solution la plus radicale consisterait à stocker tous les prix en centimes et à ne pas utiliser de fractions du tout. Mais que se passe-t-il si nous appliquons une réduction de 30%? En pratique, il est rarement réalisable d'éviter totalement les fractions. Les solutions ci-dessous permettent d'éviter ce piège.
+
+````smart header="La chose amusante"
+Essayez de lancer ceci:
 
 ```js run
-let sum = 0.1 + 0.2;
-alert( sum.toFixed(2) ); // 0.30
+// Bonjour! Je suis un nombre auto-croissant! 
+alert( 9999999999999999 ); // affiche 10000000000000000
 ```
 
-Please note that `toFixed` always returns a string. It ensures that it has 2 digits after the decimal point. That's actually convenient if we have an e-shopping and need to show `$0.30`. For other cases, we can use the unary plus to coerce it into a number:
+La cause est encore une fois le manque de précision. Le nombre comporte 64 bits, dont 52 peuvent être utilisés pour stocker des chiffres, mais cela ne suffit pas. Alors, les cihffres les moins significatifs disparaissent.
 
-```js run
-let sum = 0.1 + 0.2;
-alert( +sum.toFixed(2) ); // 0.3
-```
-
-We also can temporarily multiply the numbers by 100 (or a bigger number) to turn them into integers, do the maths, and then divide back. Then, as we're doing maths with integers, the error somewhat decreases, but we still get it on division:
-
-```js run
-alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
-alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
-```
-
-So, multiply/divide approach reduces the error, but doesn't remove it totally.
-
-Sometimes we could try to evade fractions at all. Like if we're dealing with a shop, then we can store prices in cents instead of dollars. But what if we apply a discount of 30%? In practice, totally evading fractions is rarely possible. Just round them to cut "tails" when needed.
-
-````smart header="The funny thing"
-Try running this:
-
-```js run
-// Hello! I'm a self-increasing number!
-alert( 9999999999999999 ); // shows 10000000000000000
-```
-
-This suffers from the same issue: a loss of precision. There are 64 bits for the number, 52 of them can be used to store digits, but that's not enough. So the least significant digits disappear.
-
-JavaScript doesn't trigger an error in such events. It does its best to fit the number into the desired format, but unfortunately, this format is not big enough.
+JavaScript ne déclenche pas d'erreur dans de tels événements. il fait de son mieux pour adapter le nombre au format souhaité, mais malheureusement, ce format n'est pas assez grand.
 ````
 
-```smart header="Two zeroes"
-Another funny consequence of the internal representation of numbers is the existence of two zeroes: `0` and `-0`.
+```smart header="Deux zéros"
+Une autre conséquence amusante de la représentation interne des nombres est l'existence de deux zéros: 0 et -0.
 
-That's because a sign is represented by a single bit, so every number can be positive or negative, including a zero.
+C'est parce qu'un signe est représenté par un seul bit, ainsi chaque nombre peut être positif ou négatif, y compris un zéro.
 
-In most cases the distinction is unnoticeable, because operators are suited to treat them as the same.
+Dans le plupart des cas, la distinction est imperceptible, car les opérateurs peuvent les traiter de la même manière.
 ```
 
 
 
-## Tests: isFinite and isNaN
+## Tests: isFinite et isNaN
 
-Remember these two special numeric values?
+Vous rappelez-vous de ces deux valeurs numériques spéciales?
 
-- `Infinity` (and `-Infinity`) is a special numeric value that is greater (less) than anything.
-- `NaN` represents an error.
+- `Infinite` (et `-Infinite`) sont des valeurs numériques spéciales qui sont supérieures (inférieure) à tout.
+- `NaN` représente une erreur.
 
-They belong to the type `number`, but are not "normal" numbers, so there are special functions to check for them:
+Ils appartiennent au type `number`, mais ne sont pas des numéros "normaux". Il existe donc des fonctions spéciales pour les vérifier:
 
 
-- `isNaN(value)` converts its argument to a number and then tests it for being `NaN`:
+- `isNaN(valeur)` convertit son argument en un nombre puis le teste pour qu'il soit `NaN`:
 
     ```js run
     alert( isNaN(NaN) ); // true
     alert( isNaN("str") ); // true
     ```
 
-    But do we need this function? Can't we just use the comparison `=== NaN`? Sorry, but the answer is no. The value `NaN` is unique in that it does not equal anything, including itself:
+    Mais avons-nous besoin de cette fonction? Ne pouvons-nous pas simplement utiliser la comparaison `=== NaN`? Désolé, mais la réponse est non. La valeur `NaN` est unique en ce sens qu'elle ne vaut rien, y compris elle-même:
 
     ```js run
     alert( NaN === NaN ); // false
     ```
 
-- `isFinite(value)` converts its argument to a number and returns `true` if it's a regular number, not `NaN/Infinity/-Infinity`:
+- `isFinite(valeur)` convertit son argument en un nombre et renvoie true s'il s'agit d'un nombre régulier, pas de `NaN / Infinity / -Infinity`:
 
     ```js run
     alert( isFinite("15") ); // true
-    alert( isFinite("str") ); // false, because a special value: NaN
-    alert( isFinite(Infinity) ); // false, because a special value: Infinity
+    alert( isFinite("str") ); // false, car c'est une valeur non régulière: NaN
+    alert( isFinite(Infinity) ); // false, car c'est aussi une valeur non régulière: Infinity
     ```
 
-Sometimes `isFinite` is used to validate whether a string value is a regular number:
+Parfois, `isFinite` est utilisé pour valider si une valeur de chaîne de caractères est un nombre régulier:
 
 
 ```js run
-let num = +prompt("Enter a number", '');
+let num = +prompt("Entrez un nombre", '');
 
-// will be true unless you enter Infinity, -Infinity or not a number
+// sera vrai, sauf si vous entrez Infinity, -Infinity ou NaN
 alert( isFinite(num) );
 ```
 
-Please note that an empty or a space-only string is treated as `0` in all numeric functions including `isFinite`.  
+Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
-```smart header="Compare with `Object.is`"
+```smart header="Comparer avec Object.is"
 
-There is a special built-in method [Object.is](mdn:js/Object/is) that compares values like `===`, but is more reliable for two edge cases:
+Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes:
 
-1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
-2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, it rarely matters, but these values technically are different.
+1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
+2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, Cela importe rarement, mais techniquement ces valeurs sont différentes.
 
-In all other cases, `Object.is(a, b)` is the same as `a === b`.
+Dans tous les autres cas, `Object.is(a, b)` est identique à `a === b`. 
 
-This way of comparison is often used in JavaScript specification. When an internal algorithm needs to compare two values for being exactly the same, it uses `Object.is` (internally called [SameValue](https://tc39.github.io/ecma262/#sec-samevalue)).
+Ce mode de comparaison est souvent utilisé dans la spécification JavaScript. Lorsqu'un algorithme interne doit comparer deux valeurs pour être exactement identiques, il utilise `Object.is`(appelé en interne [SameValue](https://tc39.github.io/ecma262/#sec-samevalue)).
 ```
 
 
-## parseInt and parseFloat
+## parseInt et parseFloat
 
-Numeric conversion using a plus `+` or `Number()` is strict. If a value is not exactly a number, it fails:
+La conversion numérique à l'aide d'un plus `+` ou `Number()` est strict. Si une valeur n'est pas exactement un nombre, elle échoue:
 
 ```js run
 alert( +"100px" ); // NaN
 ```
 
-The sole exception is spaces at the beginning or at the end of the string, as they are ignored.
+La seule exception concerne les espaces au début ou à la fin de la chaîne de caractères, car ils sont ignorés.
 
-But in real life we often have values in units, like `"100px"` or `"12pt"` in CSS. Also in many countries the currency symbol goes after the amount, so we have `"19€"` and would like to extract a numeric value out of that.
+Mais dans la vraie vie, nous avons souvent des valeurs en unités, comme `"100px"` ou `"12pt"` en CSS. En outre, dans de nombreux pays, le symbole monétaire se situe après le montant. Nous avons donc `"19€"` et souhaitons en extraire une valeur numérique.
 
-That's what `parseInt` and `parseFloat` are for.
+C'est à quoi servent `parseInt` et `parseFloat`.
 
-They "read" a number from a string until they can't. In case of an error, the gathered number is returned. The function `parseInt` returns an integer, whilst `parseFloat` will return a floating-point number:
+Ils "lisent" un nombre d'une chaîne jusqu'à ce qu'ils ne puissent plus. En cas d'erreur, le numéro rassemblé est renvoyé. La fonction `parseInt` renvoie un entier, tandis que `parseFloat` renvoie un nombre à virgule:
 
 ```js run
 alert( parseInt('100px') ); // 100
 alert( parseFloat('12.5em') ); // 12.5
 
-alert( parseInt('12.3') ); // 12, only the integer part is returned
-alert( parseFloat('12.3.4') ); // 12.3, the second point stops the reading
+alert( parseInt('12.3') ); // 12, seule la partie entière est renvoyée
+alert( parseFloat('12.3.4') ); // 12.3, le deuxième point arrête la lecture
 ```
 
-There are situations when `parseInt/parseFloat` will return `NaN`. It happens when no digits could be read:
+Il y a des situations où `parseInt / parseFloat` retournera `NaN`. Cela arrive quand on ne peut lire aucun chiffre:
 
 ```js run
-alert( parseInt('a123') ); // NaN, the first symbol stops the process
+alert( parseInt('a123') ); // NaN, le premier symbole arrête le processus
 ```
 
-````smart header="The second argument of `parseInt(str, radix)`"
-The `parseInt()` function has an optional second parameter. It specifies the base of the numeral system, so `parseInt` can also parse strings of hex numbers, binary numbers and so on:
+````smart header="Le second argument de `parseInt(str, radix)`"
+La fonction `parseInt()` a un second paramètre optionnel. Il spécifie la base du système numérique, ce qui permet à `parseInt` d'analyser également les chaînes de nombres hexadécimaux, binaires, etc.:
 
 ```js run
 alert( parseInt('0xff', 16) ); // 255
-alert( parseInt('ff', 16) ); // 255, without 0x also works
+alert( parseInt('ff', 16) ); // 255, sans 0x cela fonctionne également
 
 alert( parseInt('2n9c', 36) ); // 123456
 ```
 ````
 
-## Other math functions
+## Autres fonctions mathématiques
 
-JavaScript has a built-in [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object which contains a small library of mathematical functions and constants.
+JavaScript a un objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math) intégré qui contient une petite bibliothèque de fonctions et de constantes mathématiques.
 
-A few examples:
+Quelques exemples:
 
 `Math.random()`
-: Returns a random number from 0 to 1 (not including 1)
+: Retourne un nombre aléatoire de 0 à 1 (1 non compris)
 
     ```js run
     alert( Math.random() ); // 0.1234567894322
     alert( Math.random() ); // 0.5435252343232
-    alert( Math.random() ); // ... (any random numbers)
+    alert( Math.random() ); // ... (tout nombre aléatoire)
     ```
 
 `Math.max(a, b, c...)` / `Math.min(a, b, c...)`
-: Returns the greatest/smallest from the arbitrary number of arguments.
+: Retourne le plus grand / le plus petit des nombres indiqués en argument.
 
     ```js run
     alert( Math.max(3, 5, -10, 0, 1) ); // 5
     alert( Math.min(1, 2) ); // 1
     ```
 
-`Math.pow(n, power)`
-: Returns `n` raised the given power
+`Math.pow(n, puissance)`
+: Retourne `n` par la puissance donnée
 
     ```js run
-    alert( Math.pow(2, 10) ); // 2 in power 10 = 1024
+    alert( Math.pow(2, 10) ); // 2 puissance 10 = 1024
     ```
 
-There are more functions and constants in `Math` object, including trigonometry, which you can find in the [docs for the Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object.
+Il y a plus de fonctions et de constantes dans l'objet Math, y compris la trigonométrie, que vous pouvez trouver dans la [documentation de l'objet Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math).
 
-## Summary
+## Résumé
 
-To write big numbers:
+Pour écrire de grands nombres:
 
-- Append `"e"` with the zeroes count to the number. Like: `123e6` is `123` with 6 zeroes.
-- A negative number after `"e"` causes the number to be divided by 1 with given zeroes. That's for one-millionth or such.
+- Ajoutez `"e"` avec le nombre de zéros au nombre. Comme: `123e6` est `123` avec 6 zéros soit `123 000 000`.
+- Un nombre négatif après le `"e"` entraîne la division du nombre par 1 avec des zéros donnés. Comme: `123-e6` est `123` avec 6 zéros après la virgule soit `0.000123`.
 
-For different numeral systems:
+Pour différents systèmes de numération:
 
-- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems
-- `parseInt(str, base)` parses an integer from any numeral system with base: `2 ≤ base ≤ 36`.
-- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+- Il est possible d'écrire des nombres directement dans les systèmes hex (`0x`), octal(`0o`) et binaire (`0b`).
+- `parseInt(str, base)` analyse un entier de tout système numérique de base: `2 ≤ base ≤ 36`.
+- `num.toString(base)` convertit un nombre en chaîne de caractères dans le système numérique de la base donnée.
 
-For converting values like `12pt` and `100px` to a number:
+Pour convertit des valeurs telles que `12pt` et `100px` en un nombre:
 
-- Use `parseInt/parseFloat` for the "soft" conversion, which reads a number from a string and then returns the value they could read before the error.
+- utilisez `parseInt / parseFloat` pour une conversion "souple", qui lit les nombres dans une chaîne de caractères jusqu'à trouver un caractères puis renvoie les nombres trouvés.
 
-For fractions:
+Pour les fractions:
 
-- Round using `Math.floor`, `Math.ceil`, `Math.trunc`, `Math.round` or `num.toFixed(precision)`.
-- Make sure to remember there's a loss of precision when working with fractions.
+- Arrondissez en utilisant `Math.floor`, `Math.ceil`, `Math.trunc`, `Math.round` ou `num.toFixed(précision)`.
+- Assurez-vous de ne pas perdre de précision lorsque vous travaillez avec des fractions.
 
-More mathematical functions:
+Plus de fonctions mathématiques:
 
-- See the [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object when you need them. The library is very small, but can cover basic needs.
+- Voir l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math) quand vous en avez besoin. La bibliothèque est très petite, mais peut couvrir les besoins de base.
+
+
