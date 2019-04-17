@@ -1,8 +1,8 @@
-**Yes, it will.**
+**Oui, il sera affiché.**
 
-Any string except an empty one (and `"0"` is not empty) becomes `true` in the logical context.
+Toute chaîne de caractères à l'exception d'une chaîne vide (et `"0"` n'est pas vide) devient vraie dans le contexte logique.
 
-We can run and check:
+Nous pouvons exécuter et vérifier:
 
 ```js run
 if ("0") {
