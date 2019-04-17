@@ -1,3 +1,3 @@
-# JavaScript Fundamentals
+# Fondamentaux JavaScript
 
-Let's learn the fundamentals of script building.
+Apprenons les bases de la construction de scripts.
