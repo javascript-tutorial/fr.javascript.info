@@ -1,6 +1,6 @@
-**Error**!
+**Erreur**!
 
-Try it:
+Essayez le :
 
 ```js run
 let user = {
@@ -11,19 +11,19 @@ let user = {
 (user.go)() // error!
 ```
 
-The error message in most browsers does not give understanding what went wrong.
+Le message d'erreur dans la plupart des navigateurs ne permet pas de comprendre ce qui s'est mal passé.
 
-**The error appears because a semicolon is missing after `user = {...}`.**
+**L'erreur apparaît parce qu'un point-virgule est manquant après `user = {...}`.**
 
-JavaScript does not assume a semicolon before a bracket `(user.go)()`, so it reads the code like:
+JavaScript ne suppose pas un point-virgule avant un crochet `(user.go)()`, il lit donc le code comme ceci :
 
 ```js no-beautify
 let user = { go:... }(user.go)()
 ```
 
-Then we can also see that such a joint expression is syntactically a call of the object `{ go: ... }` as a function with the argument `(user.go)`. And that also happens on the same line with `let user`, so the `user` object has not yet even been defined, hence the error. 
+Ensuite, nous pouvons également voir qu'une telle expression conjointe est syntaxiquement un appel de l'objet `{ go: ... }` en tant que fonction avec l'argument `(user.go)`. Et cela se produit également sur la même ligne avec `let user`, de sorte que l'objet `user` n'a même pas encore été défini, d'où l'erreur.
 
-If we insert the semicolon, all is fine:
+Si nous insérons le point-virgule, tout va bien :
 
 ```js run
 let user = {
@@ -34,7 +34,7 @@ let user = {
 (user.go)() // John
 ```
 
-Please note that brackets around `(user.go)` do nothing here. Usually they setup the order of operations, but here the dot `.` works first anyway, so there's no effect. Only the semicolon thing matters.
+Veuillez noter que les crochets autour de `(user.go)` ne font rien ici. Habituellement, ils configurent l'ordre des opérations, mais ici le point `.` fonctionne toujours de toute façon, donc aucun effet. Seul le point-virgule compte.
 
 
 

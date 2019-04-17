@@ -4,7 +4,7 @@ importance: 2
 
 # Chaining
 
-There's a `ladder` object that allows to go up and down:
+Il y a un objet `ladder` qui permet de monter et descendre :
 
 ```js
 let ladder = {
@@ -15,13 +15,13 @@ let ladder = {
   down() { 
     this.step--;
   },
-  showStep: function() { // shows the current step
+  showStep: function() { // affiche l'étape en cours
     alert( this.step );
   }
 };
 ```
 
-Now, if we need to make several calls in sequence, can do it like this:
+Maintenant, si nous devons faire plusieurs appels en séquence, nous pouvons le faire comme ceci :
 
 ```js
 ladder.up();
@@ -30,10 +30,10 @@ ladder.down();
 ladder.showStep(); // 1
 ```
 
-Modify the code of `up`, `down` and `showStep` to make the calls chainable, like this:
+Modifiez le code de `up` et `down` pour rendre les appels chaînables, comme ceci :
 
 ```js
 ladder.up().up().down().showStep(); // 1
 ```
 
-Such approach is widely used across JavaScript libraries.
+Cette approche est largement utilisée dans les bibliothèques JavaScript.
