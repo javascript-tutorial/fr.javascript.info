@@ -1,21 +1,21 @@
-First, the variable for the name of our planet.
+Tout d'abord, la variable pour le nom de notre planète.
 
-That's simple:
+C’est simple :
 
 ```js
-let ourPlanetName = "Earth";
+let notrePlanete = "Terre";
 ```
 
-Note, we could use a shorter name `planet`, but it might be not obvious what planet it refers to. It's nice to be more verbose. At least until the variable isNotTooLong.
+Notez que nous pourrions utiliser un nom `planète` plus court, mais la planète à laquelle il fait référence pourrait ne pas être évidente. C’est bien d’être plus verbeux. Au moins jusqu'à ce que la variable n'estPasTropLongue.
 
-Second, the name of the current visitor:
+Deuxièmement, le nom du visiteur actuel :
 
 ```js
 let currentUserName = "John";
 ```
 
-Again, we could shorten that to `userName` if we know for sure that the user is current.
+Encore une fois, nous pourrions réduire cela à `userName` si nous savons avec certitude que c'est bien l'utilisateur actuel.
 
-Modern editors and autocomplete make long variable names easy to write. Don't save on them. A name with 3 words in it is fine.
+Les éditeurs modernes et la saisie semi-automatique facilitent l'écriture de noms de variables longs. Ne vous en privez pas. Un nom avec 3 mots est bien.
 
-And if your editor does not have proper autocompletion, get [a new one](/code-editors).
+Et si votre éditeur ne dispose pas de l'autocomplétion correcte, [obtenez-en un](/editors).
