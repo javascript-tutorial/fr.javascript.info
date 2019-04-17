@@ -27,7 +27,7 @@ La mini-fenêtre avec le message s'appelle une `fenêtre modale`. Le mot "modal"
 La fonction `prompt` accepte deux arguments :
 
 ```js no-beautify
-result = prompt(title[, default]);
+result = prompt(title, [default]);
 ```
 
 Il montre une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
