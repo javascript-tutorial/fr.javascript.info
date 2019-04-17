@@ -1,19 +1,19 @@
-The answer: the first and the third will execute.
+La réponse: le premier et le troisième vont s'exécuter.
 
 Details:
 
 ```js run
-// Runs.
-// The result of -1 || 0 = -1, truthy
+// S'éxécute
+// le résultat de -1 || 0 = -1, vrai
 if (-1 || 0) alert( 'first' );
 
-// Doesn't run
-// -1 && 0 = 0, falsy
+// Ne s'éxécute pas
+// -1 && 0 = 0, faux
 if (-1 && 0) alert( 'second' );
 
-// Executes
-// Operator && has a higher precedence than ||
-// so -1 && 1 executes first, giving us the chain:
+// S'éxécute
+// L'opérateur && a une précédence plus élevée que ||
+// donc -1 && 1 s'exécute en premier, nous donnant la chaîne :
 // null || -1 && 1  ->  null || 1  ->  1
 if (null || -1 && 1) alert( 'third' );
 ```

@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# What's the result of OR?
+# Quel est le résultat de OR ?
 
-What is the code below going to output?
+Qu'est-ce que le code ci-dessous va sortir ?
 
 ```js
 alert( null || 2 || undefined );

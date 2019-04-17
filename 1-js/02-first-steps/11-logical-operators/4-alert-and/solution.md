@@ -1,10 +1,10 @@
-The answer: `1`, and then `undefined`.
+La réponse : `1`, et ensuite `undefined`.
 
 ```js run
 alert( alert(1) && alert(2) );
 ```
 
-The call to `alert` returns `undefined` (it just shows a message, so there's no meaningful return).
+L’appel de l'`alert` renvoie undefined (il affiche juste un message, donc il n’ya pas de retour significatif dans le code).
 
-Because of that, `&&` evaluates the left operand (outputs `1`), and immediately stops, because `undefined` is a falsy value. And `&&` looks for a falsy value and returns it, so it's done.
+À cause de cela, `&&` évalue l'opérande gauche (sortie 1), et s'arrête immédiatement, car `undefined` est une valeur `false`. Et comme `&&` recherche la première valeur fausse et la retourne, donc il s'arrête là.
 

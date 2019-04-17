@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# A question about "if"
+# Une question à propos de "if"
 
-Which of these `alert`s are going to execute?
+Lesquelles de ces `alert`es vont s'exécuter ?
 
-What will the results of the expressions be inside `if(...)`?
+Quels seront les résultats des expressions à l'intérieur de `if (...)` ?  
 
 ```js
 if (-1 || 0) alert( 'first' );
