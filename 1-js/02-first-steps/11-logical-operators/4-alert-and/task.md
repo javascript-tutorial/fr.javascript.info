@@ -2,9 +2,9 @@ importance: 3
 
 ---
 
-# What is the result of AND'ed alerts?
+# Quel est le résultat des alertes AND ?
 
-What will this code show?
+Qu’est-ce que ce code va afficher ?
 
 ```js
 alert( alert(1) && alert(2) );

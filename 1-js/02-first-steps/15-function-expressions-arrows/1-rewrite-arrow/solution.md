@@ -14,4 +14,4 @@ ask(
 );
 ```
 
-Looks short and clean, right?
+Ça a l'air court et propre, non ?

@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Output even numbers in the loop
+# Extraire les nombres pairs dans la boucle
 
-Use the `for` loop to output even numbers from `2` to `10`.
+Utilisez la boucle `for` pour afficher les nombres pairs de `2` à `10`.
 
 [demo]
