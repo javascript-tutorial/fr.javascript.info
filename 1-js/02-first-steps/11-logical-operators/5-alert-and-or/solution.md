@@ -1,16 +1,16 @@
-The answer: `3`.
+La réponse : `3`.
 
 ```js run
 alert( null || 2 && 3 || 4 );
 ```
 
-The precedence of AND `&&` is higher than `||`, so it executes first.
+La priorité de AND `&&` est supérieure à OR `||`, elle s'exécute donc en premier.
 
-The result of `2 && 3 = 3`, so the expression becomes:
+Le résultat de `2 && 3 = 3`, donc l'expression devient :
 
 ```
 null || 3 || 4
 ```
 
-Now the result is the first truthy value: `3`.
+Maintenant, le résultat est la première valeur vraie : `3`.
 
