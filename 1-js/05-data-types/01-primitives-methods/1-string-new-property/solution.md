@@ -1,5 +1,5 @@
 
-Try running it:
+Essayez de lancer:
 
 ```js run
 let str = "Hello";
@@ -9,23 +9,23 @@ str.test = 5; // (*)
 alert(str.test); 
 ```
 
-There may be two kinds of result:
+Il peut y avoir deux types de résultats:
 1. `undefined`
-2. An error.
+2. une erreur.
 
-Why? Let's replay what's happening at line `(*)`:
+Pourquoi? Répétons ce qui se pase à la ligne`(*)`:
 
-1. When a property of `str` is accessed, a "wrapper object" is created.
-2. The operation with the property is carried out on it. So, the object gets the `test` property.
-3. The operation finishes and the "wrapper object" disappears.
+1. Lorsqu'on accède à une propiété de `str`, un "wrapper d'objet" (conteneur) est créé.
+2. L'opération avec la propriété est effectuée dessus. Ainsi, l'objet obtient la propriété test.
+3. L'opération se termine et "le wrapper d'objet" (conteneur) disparait.
 
-So, on the last line, `str` has no trace of the property. A new wrapper object for every object operation on a string.
+Ainsi, sur la dernière ligne, `str` n'a aucune trace de la propriété. Un nouveau "wrapper d’objet" (conteneur) est créé pour chaque opération sur le `string`.
 
-Some browsers though may decide to further limit the programmer and disallow to assign properties to primitives at all. That's why in practice we can also see errors at line `(*)`. It's a little bit farther from the specification though.
+Certains navigateurs peuvent toutefois décider de limiter davantage le programmeur et d'empêcher l'attribution de propriétés aux primitives. C'est pourquoi, dans la pratique, nous pouvons également voir les erreurs sur la ligne `(*)`. C'est cependant un peu plus éloigné de la spécification. 
 
-**This example clearly shows that primitives are not objects.**
+**Cet exemple montre clairement que les primitives ne sont pas des objets.**
 
-They just can not store data. 
+Ils ne peuvent tout simplement pas stocker de données.
 
-All property/method operations are performed with the help of temporary objects.
+Toutes les opérations de propriété / méthode sont effectuées à l'aide d'objets temporaires.
 
