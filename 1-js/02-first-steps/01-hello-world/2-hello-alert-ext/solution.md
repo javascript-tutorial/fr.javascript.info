@@ -2,7 +2,7 @@ The HTML code:
 
 [html src="index.html"]
 
-For the file `alert.js` in the same folder:
+pour le fichier `alert.js` dans le même dossier :
 
 [js src="alert.js"]
 
