@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Rewrite the "switch" into an "if"
+# Réécrire le "switch" dans un "if"
 
-Write the code using `if..else` which would correspond to the following `switch`:
+Écrivez le code en utilisant `if..else` qui correspondrait au `switch` suivant :
 
 ```js
 switch (browser) {
