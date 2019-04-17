@@ -2,24 +2,24 @@ importance: 5
 
 ---
 
-# Create new Accumulator
+# Créer un nouvel accumulateur
 
-Create a constructor function `Accumulator(startingValue)`.
+Créer une fonction constructeur `Accumulator(startingValue)`.
 
-Object that it creates should:
+L'objet qu'il crée devrait :
 
-- Store the "current value" in the property `value`. The starting value is set to the argument of the constructor `startingValue`.
-- The `read()` method should use `prompt` to read a new number and add it to `value`.
+- Stocker la "valeur actuelle" dans la propriété `value`. La valeur de départ est définie sur l'argument du constructeur `startingValue`.
+- La méthode `read()` devrait utiliser `prompt` pour lire un nouveau numéro et l'ajouter à `value`.
 
-In other words, the `value` property is the sum of all user-entered values with the initial value  `startingValue`.
+En d'autres termes, la propriété `value` est la somme de toutes les valeurs entrées par l'utilisateur avec la valeur initiale `startingValue`.
 
-Here's the demo of the code:
+Voici la démo du code :
 
 ```js
-let accumulator = new Accumulator(1); // initial value 1
-accumulator.read(); // adds the user-entered value
-accumulator.read(); // adds the user-entered value
-alert(accumulator.value); // shows the sum of these values
+let accumulator = new Accumulator(1); // valeur initiale 1
+accumulator.read(); // ajoute la valeur entrée par l'utilisateur
+accumulator.read(); // ajoute la valeur entrée par l'utilisateur
+alert(accumulator.value); // montre la somme de ces valeurs
 ```
 
 [demo]
