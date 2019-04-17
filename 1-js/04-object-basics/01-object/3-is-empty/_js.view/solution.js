@@ -1,6 +1,6 @@
 function isEmpty(obj) {
   for (let key in obj) {
-    // if the loop has started, there is a property
+    // si la boucle a commencé, il y a une propriété
     return false;
   }
   return true;

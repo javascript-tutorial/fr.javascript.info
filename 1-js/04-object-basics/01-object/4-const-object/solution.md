@@ -1,8 +1,8 @@
-Sure, it works, no problem.
+Bien sûr, ça fonctionne, pas de problème.
 
-The `const` only protects the variable itself from changing. 
+Le `const` ne protège que la variable elle-même du changement.
 
-In other words, `user` stores a reference to the object. And it can't be changed. But the content of the object can.
+En d'autres termes, `user` stocke une référence à l'objet. Et cela ne peut pas être changé. Mais le contenu de l'objet peut.
 
 ```js run
 const user = {
@@ -10,10 +10,10 @@ const user = {
 };
 
 *!*
-// works
+// fonctionne
 user.name = "Pete";
 */!*
 
-// error
+// erreur
 user = 123;
 ```

@@ -1,1 +1,1 @@
-Just loop over the object and `return false` immediately if there's at least one property.
+Passez simplement une boucle sur l’objet et `return false` immédiatement s’il existe au moins une propriété.
