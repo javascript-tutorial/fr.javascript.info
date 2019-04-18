@@ -2,7 +2,7 @@ Let's walk the array items:
 - For each item we'll check if the resulting array already has that item.
 - If it is so, then ignore, otherwise add to results.
 
-```js run demo
+```js run
 function unique(arr) {
   let result = [];
 

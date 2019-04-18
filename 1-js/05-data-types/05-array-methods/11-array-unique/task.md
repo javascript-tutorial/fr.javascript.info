@@ -2,17 +2,17 @@ importance: 4
 
 ---
 
-# Filter unique array members
+# Filtrer les membres uniques du tableau
 
-Let `arr` be an array.
+`arr` est un tableau.
 
-Create a function `unique(arr)` that should return an array with unique items of `arr`.
+Créez une fonction `unique(arr)` qui devrait renvoyer un tableau avec des éléments uniques de `arr`.
 
-For instance:
+Par exemple:
 
 ```js
 function unique(arr) {
-  /* your code */
+  /* votre code */
 }
 
 let strings = ["Hare", "Krishna", "Hare", "Krishna",

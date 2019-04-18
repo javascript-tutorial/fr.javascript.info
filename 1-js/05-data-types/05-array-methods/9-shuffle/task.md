@@ -2,11 +2,11 @@ importance: 3
 
 ---
 
-# Shuffle an array
+# Mélanger un tableau
 
-Write the function `shuffle(array)` that shuffles (randomly reorders) elements of the array.
+Ecrivez la fonction `shuffle(array)` qui mélange les éléments (de manière aléatoire) du tableau.
 
-Multiple runs of `shuffle` may lead to different orders of elements. For instance:
+Les exécutions multiples de `shuffle` peuvent conduire à différents ordres d'éléments. Par exemple:
 
 ```js
 let arr = [1, 2, 3];
@@ -22,4 +22,4 @@ shuffle(arr);
 // ...
 ```
 
-All element orders should have an equal probability. For instance, `[1,2,3]` can be reordered as `[1,2,3]` or `[1,3,2]` or `[3,1,2]` etc, with equal probability of each case.
+Tous les ordres d'éléments doivent avoir une probabilité égale. Par exemple, `[1,2,3]` peut être réorganisé comme `[1,2,3]` ou `[1,3,2]` ou `[3,1,2]` etc., avec une probabilité égale de chaque cas.
