@@ -4,19 +4,19 @@ importance: 4
 
 # Filter range
 
-Write a function `filterRange(arr, a, b)` that gets an array `arr`, looks for elements between `a` and `b` in it and returns an array of them. 
+Ecrivez une fonction `filterRange(arr, a, b)` qui obtient un tableau `arr`, recherche les éléments compris entre `a` et `b` et retourne un tableau. 
 
-The function should not modify the array. It should return the new array.
+La fonction ne doit pas modifier le tableau. Elle doit juste retourner le nouveau tableau.
 
-For instance:
+Par exemple:
 
 ```js
 let arr = [5, 3, 8, 1];
 
 let filtered = filterRange(arr, 1, 4); 
 
-alert( filtered ); // 3,1 (matching values)
+alert( filtered ); // 3,1 (valeurs correspondantes)
 
-alert( arr ); // 5,3,8,1 (not modified)
+alert( arr ); // 5,3,8,1 (non modifié)
 ```
 

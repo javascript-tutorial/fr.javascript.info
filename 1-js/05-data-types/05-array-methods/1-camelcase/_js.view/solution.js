@@ -1,10 +1,10 @@
 function camelize(str) {
   return str
-    .split('-') // splits 'my-long-word' into array ['my', 'long', 'word']
-    .map(
-      // capitalizes first letters of all array items except the first one
-      // converts ['my', 'long', 'word'] into ['my', 'Long', 'Word']
+    .split('-') // divise 'my-long-word' en tableau ['my', 'long', 'word']
+    .map( 
+	// capitalise les premières lettres de tous les éléments du tableau sauf le premier
+     	// convertit ['my', 'long', 'word'] en ['my', 'Long', 'Word']
       (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
     )
-    .join(''); // joins ['my', 'Long', 'Word'] into 'myLongWord'
+    .join(''); // rejoint ['my', 'Long', 'Word'] en -> myLongWord
 }
