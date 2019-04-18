@@ -1,6 +1,6 @@
-Let's walk the array items:
-- For each item we'll check if the resulting array already has that item.
-- If it is so, then ignore, otherwise add to results.
+Parcourons les éléments du tableau:
+- Pour chaque élément, nous vérifierons si le tableau résultant contient déjà cet élément.
+- S'il en est ainsi, alors ignorez-le, sinon ajoutez aux résultats.
 
 ```js run
 function unique(arr) {
@@ -22,18 +22,18 @@ let strings = ["Hare", "Krishna", "Hare", "Krishna",
 alert( unique(strings) ); // Hare, Krishna, :-O
 ```
 
-The code works, but there's a potential performance problem in it.
+Le code fonctionne, mais il comporte un problème de performances potentiel.
 
-The method `result.includes(str)` internally walks the array `result` and compares each element against `str` to find the match.
+La méthode `result.includes(str)` parcourt en interne le tableau `result` et compare chaque élément à `str` pour trouver la correspondance.
 
-So if there are `100` elements in `result` and no one matches `str`, then it will walk the whole `result` and do exactly `100` comparisons. And if `result` is large, like `10000`, then there would be `10000` comparisons.
+Donc, s'il y a `100` éléments dans` result` et que personne ne correspond à `str`, alors il parcourra tout le `result` et fera exactement les `100` comparaisons. Et si `result` est grand, exemple `10000`, alors il y aura des `10000` comparaisons .
 
-That's not a problem by itself, because JavaScript engines are very fast, so walk `10000` array is a matter of microseconds.
+Ce n'est pas un problème en soi, parce que les moteurs JavaScript sont très rapides, alors parcourir un tableau de `10000` éléments  est une question de microsecondes.
 
-But we do such test for each element of `arr`, in the `for` loop.
+Mais nous faisons ce test pour chaque élément de `arr`, dans la boucle` for`.
 
-So if `arr.length` is `10000` we'll have something like `10000*10000` = 100 millions of comparisons. That's a lot.
+Donc, si `arr.length` vaut `10000`, nous aurons quelque chose comme `10000*10000` = 100 millions de comparaisons. C'est beaucoup.
 
-So the solution is only good for small arrays.
+La solution n’est donc valable que pour les petits tableaux.
 
-Further in the chapter <info:map-set-weakmap-weakset> we'll see how to optimize it.
+Plus loin dans le chapitre <info:map-set-weakmap-weakset>, nous verrons comment l'optimiser.

@@ -201,6 +201,35 @@ let arrayLike = {
 alert( arr.concat(arrayLike) ); // 1,2,something,else
 ```
 
+## Itérer: forEach (pourChaque)
+
+La méthode [arr.forEach] (mdn:js/Array/forEach) permet d’exécuter une fonction pour chaque élément du tableau.
+
+La syntaxe:
+```js
+arr.forEach(function(item, index, array) {
+  // ... fait quelques chose avec l'élément
+});
+```
+
+Par exemple, cela montre chaque élément du tableau:
+
+```js run
+// pour chaque élément appel l'alerte
+["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
+```
+
+Et ce code est plus élaboré sur leurs positions dans le tableau cible:
+
+```js run
+["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+  alert(`${item} est à l'index ${index} dans ${array}`);
+});
+```
+
+Le résultat de la fonction (s'il en renvoie) est jeté et ignoré.
+
+
 ## Recherche dans le tableau
 
 Ce sont des méthodes pour rechercher quelque chose dans un tableau.
@@ -247,6 +276,7 @@ La syntaxe est la suivante:
 ```js
 let result = arr.find(function(item, index, array) {
  // devrait retourner true si l'élément correspond à ce que nous recherchons
+ // pour le scénario de falsy(fausseté), renvoie undefined
 });
 ```
 
@@ -289,6 +319,7 @@ La syntaxe est à peu près identique à celle de `find`, mais elle renvoie un t
 ```js
 let results = arr.filter(function(item, index, array) {
   // devrait retourner true si l'élément passe le filtre
+  // retourne un tableau vide pour un scénario complet de falsy(fausseté)
 });
 ```
 
@@ -359,7 +390,6 @@ Littéralement, tous les éléments sont convertis en chaînes, puis comparés. 
 Pour utiliser notre propre ordre de tri, nous devons fournir une fonction de deux arguments en tant qu'argument de `arr.sort()`.
 
 La fonction devrait fonctionner comme ceci:
-
 ```js
 function compare(a, b) {
   if (a > b) return 1;
@@ -445,7 +475,6 @@ Il retourne également le tableau `arr` après l'inversion.
 ### split et join
 
 Voici une situation réele. Nous écrivons une application de messagerie et la personne entre dans la liste des destinataires délimités par des virgules: John, Pete, Mary. Mais pour nous, un tableau de noms serait beaucoup plus confortable qu'une simple chaîne. Alors, comment l'obtenir?
-
 
 La méthode [str.split(delim)](mdn:js/String/split) fait exactement cela. Il divise la chaîne en un tableau par le `délimiteur` donné.
 
@@ -586,35 +615,6 @@ Il est donc conseillé de toujours spécifier la valeur initiale.
 
 La méthode [arr.reduceRight](mdn:js/Array/reduceRight) fait la même chose, mais va de droite à gauche.
 
-
-## Répéter: forEach
-
-La méthode [arr.forEach](mdn:js/Array/forEach) permet d'exécuter une fonction pour chaque élément du tableau.
-
-La syntaxe:
-```js
-arr.forEach(function(item, index, array) {
-  // ... fait quelque chose avec l'item
-});
-```
-
-Par exemple, on montre chaque élément du tableau:
-
-```js run
-// for each element call alert
-// pour chaque élément l'alerte est appelée
-["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
-```
-
-Et ce code est plus élaboré sur leurs positions dans le tableau cible:
-
-```js run
-["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
-  alert(`${item} est à l'index ${index} dans ${array}`);
-});
-```
-
-Le résultat de la fonction (s'il en renvoie) est jeté et ignoré.
 
 ## Array.isArray
 
