@@ -1,3 +1,4 @@
+
 # Iterables
 
 Les objets *Iterable* sont une généralisation des tableaux. C'est un concept qui permet de rendre n'importe quel objet utilisable dans une boucle `for..of`.
