@@ -1,10 +1,18 @@
 # Hello, world!
 
+<<<<<<< HEAD
 Le tutoriel que vous êtes en train de lire est à propos du coeur de JavaScript, qui est indépendant des plateformes de développement. Plus loins, vous allez apprendre Node.JS qui est une plateforme qui l'utilise.
 
 Mais nous avons besoin d'un environnement de travail pour exécuter nos scripts et, étant donné que ce guide est en ligne, le navigateur est un bon choix. Nous allons nous efforcer d'utiliser les commandes spécifiques au navigateur (comme `alert`) au minimum afin de ne pas y consacrer du temps si vous prévoyez de vous concentrer sur un autre environnement tel que Node.JS. Par ailleurs, les détails du navigateur sont expliqués dans [la partie suivante](/ui) du didacticiel.
 
 Alors, voyons d'abord comment intégrer un script à une page Web. Pour les environnements côté serveur, vous pouvez simplement l'exécuter avec une commande comme `"node mon.js"` pour Node.JS.
+=======
+The tutorial that you're reading is about core JavaScript, which is platform-independent. Later on, you'll learn about Node.js and other platforms that use it.
+
+But we need a working environment to run our scripts and, since this book is online, the browser is a good choice. We'll keep the amount of browser-specific commands (like `alert`) to a minimum so that you don't spend time on them if you plan to concentrate on another environment (like Node.js). We'll focus on JavaScript in the browser in the [next part](/ui) of the tutorial.
+
+So first, let's see how we attach a script to a webpage. For server-side environments (like Node.js), you can execute the script with a command like `"node my.js"`.
+>>>>>>> 8735adcb6f08d7b3f38992d8dd3dab301ca9e272
 
 
 ## La balise "script" 
