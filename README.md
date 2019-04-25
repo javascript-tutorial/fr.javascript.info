@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # Le tutoriel JavaScript moderne
 
 Ce repository héberge la traduction de <https://javascript.info> en français.
+=======
+# The Modern JavaScript Tutorial
+
+This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Aidez-nous à améliorer la traduction.
 
@@ -9,6 +15,7 @@ Aidez-nous à améliorer la traduction.
 - Créez une issue pour informer le mainteneur que vous le traduisez.
 - Forkez le repository, traduisez et envoyez un PR lorsque vous avez terminé.
 
+<<<<<<< HEAD
 🎉 Merci !
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
@@ -20,6 +27,19 @@ P.S. La liste complète des langues est disponible sur <https://github.com/javas
 Chaque chapitre, article ou exercice réside dans son propre dossier.
 
 Le dossier est nommé `N-url`, où `N` – est le numéro de tri (les articles sont ordonnés), et `url` est l'URL raccourcie (slug) de la partie en question.
+=======
+See <https://github.com/javascript-tutorial/translate> for the details.
+
+## Contributions
+
+We'd also like to collaborate on the tutorial with other people.
+
+Something's wrong? A topic is missing? Explain it to people, add as PR 👏
+
+**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.  
+
+The list of contributors is available at <https://javascript.info/about#contributors>.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Le dossier contient l'un des fichiers suivants :
 
@@ -94,4 +114,14 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 
 Vous pouvez exécuter le tutoriel localement pour voir immédiatement les modifications sur site.
 
+<<<<<<< HEAD
 Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
+=======
+Each of these files starts from the `# Main header`.
+
+It's very easy to add something new.
+
+---
+💓  
+Ilya Kantor @iliakan
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb

@@ -46,7 +46,11 @@ Le moteur applique des optimisations à chaque étape du processus. Il surveille
 
 Le JavaScript moderne est un langage de programmation "sûr". Il ne fournit pas d'accès de bas niveau à la mémoire ou au processeur, parce qu'il a été initialement conçu pour les navigateurs qui n'en ont pas besoin.
 
+<<<<<<< HEAD
 Les fonctionnalités dépendent grandement de l'environnement qui exécute JavaScript. Par exemple, [Node.JS](https://fr.wikipedia.org/wiki/Node.js) prend en charge les fonctions qui permettent à JavaScript de lire / écrire des fichiers arbitrairement, d'exécuter des requêtes réseau, etc.
+=======
+JavaScript's capabilities greatly depend on the environment it's running in. For instance, [Node.js](https://wikipedia.org/wiki/Node.js) supports functions that allow JavaScript to read/write arbitrary files, perform network requests, etc.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 JavaScript intégré au navigateur peut faire tout ce qui concerne la manipulation des pages Web, l'interaction avec l'utilisateur et le serveur Web.
 
@@ -91,6 +95,10 @@ Il y a au moins trois bonnes choses à propos de JavaScript:
 + Les choses simples sont faites simplement.
 + Pris en charge par tous les principaux navigateurs et activé par défaut.
 ```
+<<<<<<< HEAD
+=======
+JavaScript is the only browser technology that combines these three things.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Combinés, ces trois éléments n'existent que dans JavaScript et dans aucune autre technologie de navigateur.
 

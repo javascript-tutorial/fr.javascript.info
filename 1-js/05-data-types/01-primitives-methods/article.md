@@ -44,9 +44,15 @@ Voici le paradoxe auquel est confronté le créateur de JavaScript:
 
 La solution semble peu commode, mais la voici:
 
+<<<<<<< HEAD
 1. Les primitives sont toujours primitives. Une seule valeur, au choix.
 2. Le langage permet d'accéder aux méthodes et aux propriétés des chaînes de caractères, des nombres, des booléens et des symboles.
 3. Lorsque cela se produit, un "wrapper d'objet" (conteneur)  spécial est crée pour fournir la fonctionnalité supplémentaire, puis est détruit.
+=======
+1. Primitives are still primitive. A single value, as desired.
+2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
+3. When this happens, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Les "wrapper d'objets" (conteneurs) sont différents pour chaque type de primitive et sont appelés: `String`, `Number`, `Boolean` et `Symbol`. Ainsi, ils fournissent différents ensembles de méthodes.
 
