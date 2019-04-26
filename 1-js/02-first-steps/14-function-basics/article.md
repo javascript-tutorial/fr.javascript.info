@@ -380,7 +380,11 @@ Ces exemples supposent des significations communes de préfixes. Ce qu’ils veu
 ```smart header="Noms de fonction ultra-courts"
 Les fonctions utilisées *très souvent* portent parfois des noms ultra-courts.
 
+<<<<<<< HEAD
 Par exemple le framework [jQuery](http://jquery.com) définit une fonction `$`. La librairie [LoDash](http://lodash.com/) a nommer sa fonction principale `_`.
+=======
+For example, the [jQuery](http://jquery.com) framework defines a function with `$`. The [Lodash](http://lodash.com/) library has its core function named `_`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Ce sont des exceptions. En règle générale, les noms de fonctions doivent être concis, mais descriptifs.
 ```
