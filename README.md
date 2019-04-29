@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 # Le tutoriel JavaScript moderne
 
 Ce repository héberge la traduction de <https://javascript.info> en français.
-=======
-# The Modern JavaScript Tutorial
-
-This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Aidez-nous à améliorer la traduction.
 
@@ -15,7 +9,6 @@ Aidez-nous à améliorer la traduction.
 - Créez une issue pour informer le mainteneur que vous le traduisez.
 - Forkez le repository, traduisez et envoyez un PR lorsque vous avez terminé.
 
-<<<<<<< HEAD
 🎉 Merci !
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
@@ -27,19 +20,18 @@ P.S. La liste complète des langues est disponible sur <https://github.com/javas
 Chaque chapitre, article ou exercice réside dans son propre dossier.
 
 Le dossier est nommé `N-url`, où `N` – est le numéro de tri (les articles sont ordonnés), et `url` est l'URL raccourcie (slug) de la partie en question.
-=======
-See <https://github.com/javascript-tutorial/translate> for the details.
+
+N'hésitez pas à consulter <https://github.com/javascript-tutorial/translate> pour plus de détails.
 
 ## Contributions
 
-We'd also like to collaborate on the tutorial with other people.
+Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
-Something's wrong? A topic is missing? Explain it to people, add as PR 👏
+Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
-**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.  
+**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.  
 
-The list of contributors is available at <https://javascript.info/about#contributors>.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
+La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
 
 Le dossier contient l'un des fichiers suivants :
 
@@ -114,14 +106,11 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 
 Vous pouvez exécuter le tutoriel localement pour voir immédiatement les modifications sur site.
 
-<<<<<<< HEAD
 Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
-=======
-Each of these files starts from the `# Main header`.
+Chacun de ces fichiers commence à partir du `# titre principal`.
 
-It's very easy to add something new.
+Il est très facile d'ajouter quelque chose de nouveau.
 
 ---
 💓  
 Ilya Kantor @iliakan
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
