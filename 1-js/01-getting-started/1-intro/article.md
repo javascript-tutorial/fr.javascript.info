@@ -46,11 +46,7 @@ Le moteur applique des optimisations à chaque étape du processus. Il surveille
 
 Le JavaScript moderne est un langage de programmation "sûr". Il ne fournit pas d'accès de bas niveau à la mémoire ou au processeur, parce qu'il a été initialement conçu pour les navigateurs qui n'en ont pas besoin.
 
-<<<<<<< HEAD
-Les fonctionnalités dépendent grandement de l'environnement qui exécute JavaScript. Par exemple, [Node.JS](https://fr.wikipedia.org/wiki/Node.js) prend en charge les fonctions qui permettent à JavaScript de lire / écrire des fichiers arbitrairement, d'exécuter des requêtes réseau, etc.
-=======
-JavaScript's capabilities greatly depend on the environment it's running in. For instance, [Node.js](https://wikipedia.org/wiki/Node.js) supports functions that allow JavaScript to read/write arbitrary files, perform network requests, etc.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
+Les fonctionnalités dépendent grandement de l'environnement qui exécute JavaScript. Par exemple, [Node.js](https://fr.wikipedia.org/wiki/Node.js) prend en charge les fonctions qui permettent à JavaScript de lire / écrire des fichiers arbitrairement, d'exécuter des requêtes réseau, etc.
 
 JavaScript intégré au navigateur peut faire tout ce qui concerne la manipulation des pages Web, l'interaction avec l'utilisateur et le serveur Web.
 
@@ -95,12 +91,8 @@ Il y a au moins trois bonnes choses à propos de JavaScript:
 + Les choses simples sont faites simplement.
 + Pris en charge par tous les principaux navigateurs et activé par défaut.
 ```
-<<<<<<< HEAD
-=======
-JavaScript is the only browser technology that combines these three things.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
-Combinés, ces trois éléments n'existent que dans JavaScript et dans aucune autre technologie de navigateur.
+JavaScript est la seule technologie de navigateur qui combine ces trois éléments.
 
 C’est ce qui rend JavaScript unique. C’est pourquoi c’est l’outil le plus répandu pour créer des interfaces de navigateur.
 
