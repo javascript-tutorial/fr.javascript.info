@@ -21,6 +21,18 @@ Chaque chapitre, article ou exercice réside dans son propre dossier.
 
 Le dossier est nommé `N-url`, où `N` – est le numéro de tri (les articles sont ordonnés), et `url` est l'URL raccourcie (slug) de la partie en question.
 
+N'hésitez pas à consulter <https://github.com/javascript-tutorial/translate> pour plus de détails.
+
+## Contributions
+
+Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
+
+Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
+
+**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.  
+
+La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
+
 Le dossier contient l'un des fichiers suivants :
 
 - `index.md` pour une section,
@@ -95,3 +107,10 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 Vous pouvez exécuter le tutoriel localement pour voir immédiatement les modifications sur site.
 
 Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
+Chacun de ces fichiers commence à partir du `# titre principal`.
+
+Il est très facile d'ajouter quelque chose de nouveau.
+
+---
+💓  
+Ilya Kantor @iliakan

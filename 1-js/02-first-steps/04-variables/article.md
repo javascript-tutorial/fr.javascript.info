@@ -158,7 +158,11 @@ let userName;
 let test123;
 ```
 
+<<<<<<< HEAD
 Lorsque le nom contient plusieurs mots, le [camelCase](https://fr.wikipedia.org/wiki/Camel_case) est couramment utilisé. C'est-à-dire que les mots se succèdent, chaque mot commence par une majuscule : `monTresLongNom`.
+=======
+When the name contains multiple words, [camelCase](https://en.wikipedia.org/wiki/CamelCase) is commonly used. That is: words go one after another, each word except first starting with a capital letter: `myVeryLongName`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Ce qui est intéressant -- le signe dollar `'$'` et l'underscore `'_'` peuvent également être utilisé dans les noms. Ce sont des symboles réguliers, tout comme les lettres, sans aucune signification particulière.
 
