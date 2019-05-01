@@ -2,29 +2,29 @@ importance: 2
 
 ---
 
-# A maximal subarray
+# Un sous-tableau maximal
 
-The input is an array of numbers, e.g. `arr = [1, -2, 3, 4, -9, 6]`.
+L'entrée est un tableau de nombres, par ex. `arr = [1, -2, 3, 4, -9, 6]`.
 
-The task is: find the contiguous subarray of `arr` with the maximal sum of items.
+La tâche est la suivante: trouver le sous-tableau contigu de `arr` avec la somme maximale des items.
 
-Write the function `getMaxSubSum(arr)` that will return that sum.
+Écrire la fonction `getMaxSubSum(arr)` qui retournera cette somme.
 
 For instance: 
 
 ```js
-getMaxSubSum([-1, *!*2, 3*/!*, -9]) = 5 (the sum of highlighted items)
+getMaxSubSum([-1, *!*2, 3*/!*, -9]) = 5 (la somme des éléments en surbrillance)
 getMaxSubSum([*!*2, -1, 2, 3*/!*, -9]) = 6
 getMaxSubSum([-1, 2, 3, -9, *!*11*/!*]) = 11
 getMaxSubSum([-2, -1, *!*1, 2*/!*]) = 3
 getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) = 100
-getMaxSubSum([*!*1, 2, 3*/!*]) = 6 (take all)
+getMaxSubSum([*!*1, 2, 3*/!*]) = 6 (prend tout)
 ```
 
-If all items are negative, it means that we take none (the subarray is empty), so the sum is zero:
+Si tous les éléments sont négatifs, cela signifie que nous n'en prenons aucun (le sous-tableau est vide), la somme est donc zéro:
 
 ```js
 getMaxSubSum([-1, -2, -3]) = 0
 ```
 
-Please try to think of a fast solution: [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation) or even O(n) if you can.
+S'il vous plaît essayez de penser à une solution rapide: [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation) ou même à O(n) si vous le pouvez.

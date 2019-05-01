@@ -2,17 +2,17 @@ importance: 5
 
 ---
 
-# Array operations.
+# Opérations de tableaux.
 
-Let's try 5 array operations.
+Essayons 5 opérations de tableau.
 
-1. Create an array `styles` with items "Jazz" and "Blues".
-2. Append "Rock-n-Roll" to the end.
-3. Replace the value in the middle by "Classics". Your code for finding the middle value should work for any arrays with odd length.
-4. Strip off the first value of the array and show it.
-5. Prepend `Rap` and `Reggae` to the array.
+1. Créez un tableau `styles` avec les éléments "Jazz" et "Blues".
+2. Ajoutez "Rock-n-Roll" à la fin.
+3. Remplacez la valeur au milieu par "Classiques". Votre code pour trouver la valeur moyenne devrait fonctionner pour tous les tableaux de longueur impaire.
+4. Extrayez la première valeur du tableau et affichez-la.
+5. Ajoutez `Rap` et `Reggae` au tableau.
 
-The array in the process:
+Le processus du tableau:
 
 ```js no-beautify
 Jazz, Blues
