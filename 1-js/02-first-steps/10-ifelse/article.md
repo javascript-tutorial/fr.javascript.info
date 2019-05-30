@@ -2,7 +2,11 @@
 
 Parfois, nous devons effectuer différentes actions en fonction d'une condition.
 
+<<<<<<< HEAD
 Il y a la déclaration `if` pour cela et aussi l'opérateur conditionnel (ternaire) pour l'évaluation conditionnelle que nous appellerons l'opérateur "point d'interrogation" `?` pour la simplicité.
+=======
+To do that, we can use the `if` statement and the conditional operator `?`, that's also called a "question mark" operator.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ## L'instruction "if"
 
@@ -103,7 +107,11 @@ Dans le code ci-dessus, JavaScript vérifie `year < 2015`. S'il est falsy, il pa
 
 Il peut y avoir plus de blocks `else if`. Le dernier `else` est optionnel.
 
+<<<<<<< HEAD
 ## Opérateur ternaire '?'
+=======
+## Conditional operator '?'
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Parfois, nous devons attribuer une variable en fonction d'une condition.
 
@@ -124,9 +132,15 @@ if (age > 18) {
 alert(accessAllowed);
 ```
 
+<<<<<<< HEAD
 L'opérateur dit "ternaire" ou "point d'interrogation" nous permet de le faire plus rapidement et plus simplement.
 
 L'opérateur est représenté par un point d'interrogation `?`. Le terme formel "ternaire" signifie que l'opérateur a trois opérandes. C'est en fait le seul et unique opérateur en JavaScript qui en a autant.
+=======
+The so-called "conditional" or "question mark" operator lets us do that in a shorter and simpler way.
+
+The operator is represented by a question mark `?`. Sometimes it's called "ternary", because the operator has three operands. It is actually the one and only operator in JavaScript which has that many.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 La syntaxe est :
 ```js
@@ -141,7 +155,13 @@ Par exemple :
 let accessAllowed = (age > 18) ? true : false;
 ```
 
+<<<<<<< HEAD
 Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`. L'opérateur point d'interrogation a une faible précédence. Il s'exécute après la comparaison `>`, ça aura donc le même effet :
+=======
+Technically, we can omit the parentheses around `age > 18`. The question mark operator has a low precedence, so it executes after the comparison `>`.
+
+This example will do the same thing as the previous one:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js
 // l'opérateur de comparaison "age > 18" s'exécute en premier quoiqu'il en soit

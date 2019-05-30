@@ -1,6 +1,10 @@
 # Interaction : alert, prompt, confirm
 
+<<<<<<< HEAD
 Cette partie du didacticiel vise à couvrir le JavaScript "tel quel", sans modifications spécifiques à l’environnement.
+=======
+In this part of the tutorial we cover JavaScript language "as is", without environment-specific tweaks.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Mais nous utilisons toujours un navigateur comme environnement de démonstration. Nous devrions donc connaître au moins quelques fonctions d’interface utilisateur. Dans ce chapitre, nous allons nous familiariser avec les fonctions du navigateur `alert`,  `prompt` et `confirm`.
 

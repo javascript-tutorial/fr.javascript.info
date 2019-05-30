@@ -105,7 +105,11 @@ for (let num of range) {
 
 Maintenant, `range[Symbol.iterator]()` renvoie l'objet `range` lui-même: il dispose de la méthode `next()` et se souvient de la progression de l'itération en cours dans `this.current`. C'est plus court? Oui. Et parfois c'est aussi bien.
 
+<<<<<<< HEAD
 L'inconvénient est qu'il est maintenant impossible d'avoir deux boucles `for..of` s'exécutant simultanément sur l'objet: elles partageront l'état d'itération, car il n'y a qu'un seul itérateur -- l'objet lui-même. Cependant, il est rare de disposer de deux for-of parallèles, faisables avec certains scénarios asynchrones.
+=======
+The downside is that now it's impossible to have two `for..of` loops running over the object simultaneously: they'll share the iteration state, because there's only one iterator -- the object itself. But two parallel for-ofs is a rare thing, even in async scenarios.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```smart header="Itérateurs infinis"
 Des itérateurs infinis sont également possibles. Par exemple, `range` devient infini pour `range.to = Infinity`. Ou nous pouvons créer un objet itérable qui génère une suite infinie de nombres pseudo-aléatoires. Il peut être aussi utile.
@@ -144,7 +148,11 @@ Normalement, les internes des iterables sont cachés du code externe. Il y a une
 
 Mais pour comprendre les choses un peu plus en profondeur, voyons comment créer un itérateur de manière explicite.
 
+<<<<<<< HEAD
 Nous allons parcourir une chaîne de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne et l'appelle "manuellement":
+=======
+We'll iterate over a string in exactlly the same way as `for..of`, but with direct calls. This code creates a string iterator and gets values from it "manually":
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let str = "Hello";
@@ -170,7 +178,13 @@ Il existe deux termes officiels qui se ressemblent mais qui sont très différen
 - *Iterables* sont des objets qui implémentent la méthode `Symbol.iterator`, comme décrit ci-dessus.
 - *Array-likes* sont des objets qui ont des index et des `length`, ils ressemblent donc à des tableaux.
 
+<<<<<<< HEAD
 Naturellement, ces propriétés peuvent se combiner. Par exemple, les chaînes sont à la fois éditables (`for..of` fonctionne dessus) et de type tableau (elles ont des index numériques et des `length`).
+=======
+When we use JavaScript for practical tasks in browser or other environments, we may meet objects that are iterables or array-likes, or both.
+
+For instance, strings are both iterable (`for..of` works on them) and array-like (they have numeric indexes and `length`).
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Mais un itérable peut ne pas ressembler à un tableau. Et inversement, un tableau peut ne pas être itérable.
 
@@ -191,11 +205,19 @@ for (let item of arrayLike) {}
 */!*
 ```
 
+<<<<<<< HEAD
 Qu'est-ce qu'ils ont en commun? Les deux sont iterables et sont array-likes (comme-des-tableaux) sont généralement *pas des tableaux*, ils n'ont pas `push`, `pop`, etc. C'est plutôt gênant si nous avons un tel objet et voulons le travailler comme avec un tableau.
 
 ## Array.from
 
 Il existe une méthode universelle [Array.from](mdn:js/Array/from) qui les réunit. Il prend une valeur itérable ou un array-like (semblable-à-un-tableau) et en fait un "vrai" `tableau`. Ensuite, nous pouvons appeler des méthodes de tableau sur elle.
+=======
+Both iterables and array-likes are usually *not arrays*, they don't have `push`, `pop` etc. That's rather inconvenient if we have such an object and want to work with it as with an array. E.g. we would like to work with `range` using array methods. How to achieve that?
+
+## Array.from
+
+There's a universal method [Array.from](mdn:js/Array/from) that takes an iterable or array-like value and makes a "real" `Array` from it. Then we can call array methods on it.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Par exemple:
 
@@ -227,7 +249,11 @@ La syntaxe complète de `Array.from` permet de fournir une fonction optionnelle 
 Array.from(obj[, mapFn, thisArg])
 ```
 
+<<<<<<< HEAD
 Le second argument `mapFn` devrait être la fonction à appliquer à chaque élément avant de l'ajouter au tableau, et `thisArg` permet de définir `this` pour cela.
+=======
+The optional second argument `mapFn` can be a function that will be applied to each element before adding to the array, and `thisArg` allows to set `this` for it.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Par exemple:
 

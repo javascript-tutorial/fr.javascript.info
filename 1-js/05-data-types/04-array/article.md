@@ -1,12 +1,20 @@
-# Arrays 
+# Arrays
 
 Les objets vous permettent de stocker des collections de valeurs à clé. C'est très bien.
 
+<<<<<<< HEAD
 Mais assez souvent, nous trouvons qu'il nous faut une *collection ordonnée*, où nous avons un 1er, un 2ème, un 3ème élément, etc. Par exemple, nous avons besoin de cela pour stocker une liste de quelque chose: utilisateurs, trucs, éléments HTML, etc.
+=======
+But quite often we find that we need an *ordered collection*, where we have a 1st, a 2nd, a 3rd element and so on. For example, we need that to store a list of something: users, goods, HTML elements etc.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Il n'est pas pratique d'utiliser un objet ici, car il ne fournit aucune méthode pour gérer l'ordre des éléments. Nous ne pouvons pas insérer une nouvelle propriété "entre" celles existantes. Les objets ne sont tout simplement pas destinés à un tel usage.
 
+<<<<<<< HEAD
 Il existe une structure de données spéciale appelée `Array` (Tableau), pour stocker les collections ordonnées.
+=======
+There exists a special data structure named `Array`, to store ordered collections.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ## Déclaration
 
@@ -79,12 +87,18 @@ arr[3](); // hello
 ```
 
 
+<<<<<<< HEAD
 ````smart header="Trailing comma (Virgule de fin)"
 Un tableau, comme pour un objet, peut se terminer par une virgule:
 ```js 
+=======
+````smart header="Trailing comma"
+An array, just like an object, may end with a comma:
+```js
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 let fruits = [
-  "Apple", 
-  "Orange", 
+  "Apple",
+  "Orange",
   "Plum"*!*,*/!*
 ];
 ```
@@ -95,7 +109,11 @@ Le style "virgule de fin" facilite l'insertion/la suppression d'éléments, car 
 
 ## Les méthodes pop/push, shift/unshift
 
+<<<<<<< HEAD
 Une [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (file d'attente) est l'une des utilisations les plus courantes pour les tableaux. En informatique, cela signifie une collection ordonnée d’éléments qui supporte deux opérations:
+=======
+A [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) is one of the most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 - `push` ajoute un élément à la fin.
 - `shift` enleve un élément depuis le début, en faisant avancer la file d'attente, de sorte que le deuxième élément devienne le premier.
@@ -106,7 +124,11 @@ Les tableaux prennent en charge les deux opérations.
 
 En pratique, nous en avons besoin très souvent. Par exemple, une file d'attente de messages devant être affichés à l'écran.
 
+<<<<<<< HEAD
 Il y a un autre cas d'utilisation pour les tableaux -- la structure de données nommée [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
+=======
+There's another use case for arrays -- the data structure named [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Il supporte deux opérations:
 
@@ -121,7 +143,11 @@ Un stack(pile) est généralement illustrée par un jeu de cartes: de nouvelles 
 
 Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out)(dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out)(premier entré, premier sorti).
 
+<<<<<<< HEAD
 Les tableaux en JavaScript peuvent fonctionner à la fois en file d'attente et en pile. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
+=======
+Arrays in JavaScript can work both as a queue and as a stack. They allow you to add/remove elements both to/from the beginning or the end.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 En informatique, la structure de données qui le permet s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue) (Double file d'attente).
 
@@ -189,11 +215,19 @@ alert( fruits );
 
 ## Les internes
 
+<<<<<<< HEAD
 Un tableau est un type d'objet spécial. Les crochets utilisés pour accéder à la propriété `arr[0]` proviennent en fait de la syntaxe de l'objet. Les chiffres sont utilisés comme clés.
+=======
+An array is a special kind of object. The square brackets used to access a property `arr[0]` actually come from the object syntax. That's essentially the same as `obj[key]`, where `arr` is the object, while numbers are used as keys.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ils étendent les objets en fournissant des méthodes spéciales pour travailler avec des collections ordonnées de données ainsi que la propriété `length`. Mais au fond c'est toujours un objet.
 
+<<<<<<< HEAD
 N'oubliez pas qu'il n'y a que 7 types de base en JavaScript. Array est un objet et se comporte donc comme un objet.
+=======
+Remember, there are only 7 basic types in JavaScript. Array is an object and thus behaves like an object.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Par exemple, il est copié par référence:
 
@@ -203,8 +237,13 @@ let fruits = ["Banana"]
 let arr = fruits; // copier par référence (deux variables font référence au même tableau)
 
 alert( arr === fruits ); // true
+<<<<<<< HEAD
  
 arr.push("Pear"); // modifie le tableau par référence
+=======
+
+arr.push("Pear"); // modify the array by reference
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 alert( fruits ); // Banana, Pear - 2 items maintenant
 ```
@@ -229,9 +268,15 @@ Mais le moteur verra que nous travaillons avec le tableau comme avec un objet no
 
 Les moyens de casser d'un tableau:
 
+<<<<<<< HEAD
 - Ajouter une propriété non numérique comme `arr.test = 5`. 
 - Faire des trous, comme: ajouter `arr[0]` et ensuite `arr[1000]` (et rien entre eux).
 - Remplire le tableau dans l'ordre inverse, comme `arr[1000]`, `arr[999]` etc.
+=======
+- Add a non-numeric property like `arr.test = 5`.
+- Make holes, like: add `arr[0]` and then `arr[1000]` (and nothing between them).
+- Fill the array in the reverse order, like `arr[1000]`, `arr[999]` and so on.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Veuillez considérer les tableaux comme des structures spéciales pour travailler avec les *données ordonées*. Ils fournissent des méthodes spéciales pour cela. Les tableaux sont soigneusement réglés dans les moteurs JavaScript pour fonctionner avec des données ordonnées contiguës, veuillez les utiliser de cette manière. Et si vous avez besoin de clés arbitraires, il y a de fortes chances pour que vous ayez réellement besoin d'un objet régulier `{}`.
 
@@ -296,7 +341,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // itère sur des éléments de tableau
 for (let fruit of fruits) {
-  alert( fruit ); 
+  alert( fruit );
 }
 ```
 
@@ -320,7 +365,11 @@ Mais c'est en fait une mauvaise idée. Il y a des problèmes potentiels avec cel
 
     Il existe des objets dits "array-like" dans le navigateur et dans d'autres environnements, qui *ressemblent à des tableaux*. C'est-à-dire qu'ils ont les propriétés `length` et index, mais ils peuvent également avoir d'autres propriétés et méthodes non numériques, dont nous n'avons généralement pas besoin. La boucle `for..in` les listera cependant. Donc, si nous devons travailler avec des objets de type tableau, ces propriétés "supplémentaires" peuvent devenir un problème.
 
+<<<<<<< HEAD
 2. La boucle `for..in` est optimisée pour les objets génériques, pas les tableaux, et est donc 10-100 fois plus lente. Bien sûr, c'est encore très rapide. L'accélération peut n'importer que par des goulots d'étranglement ou sembler hors de propos. Mais il faut quand même être conscient de la différence.
+=======
+2. The `for..in` loop is optimized for generic objects, not arrays, and thus is 10-100 times slower. Of course, it's still very fast. The speedup may only matter in bottlenecks. But still we should be aware of the difference.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 En règle générale, nous ne devrions pas utiliser `for..in` pour les tableaux.
 
@@ -338,7 +387,11 @@ fruits[123] = "Apple";
 alert( fruits.length ); // 124
 ```
 
+<<<<<<< HEAD
 Notez que nous n'utilisons généralement pas de tableaux de ce type.
+=======
+Note that we usually don't use arrays like that.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Une autre chose intéressante à propos de la propriété `length` est qu'elle est accessible en écriture.
 
@@ -385,7 +438,11 @@ Pour éviter de telles surprises, nous utilisons généralement des crochets, sa
 
 ## Tableaux multidimensionnels
 
+<<<<<<< HEAD
 Les tableaux peuvent avoir des éléments qui sont aussi des tableaux. On peut l'utiliser pour des tableaux multidimensionnels, pour stocker des matrices:
+=======
+Arrays can have items that are also arrays. We can use it for multidimensional arrays, for example to store matrices:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let matrix = [
@@ -445,8 +502,13 @@ Array est un type d’objet spécial, adapté au stockage et à la gestion des �
 
     L'appel de `new Array(number)` crée un tableau de longueur donnée, mais sans éléments.
 
+<<<<<<< HEAD
 - La propriété `length` est la longueur du tableau ou, plus précisément, son dernier index numérique plus un. Il est auto-ajusté par les méthodes de tableau.
 - Si nous raccourcissons `length` manuellement, le tableau est tronqué.
+=======
+- The `length` property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods.
+- If we shorten `length` manually, the array is truncated.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
 
@@ -455,9 +517,18 @@ Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
 - `shift()` supprime l'élément du début et le renvoie.
 - `unshift(... items)` ajoute des éléments au début.
 
+<<<<<<< HEAD
 Pour boucler sur les éléments du tableau:
    - `for (let i = 0; i <arr.length; i ++)` -- fonctionne le plus rapidement, compatible avec les anciens navigateurs.
    - `for (let item of arr)` -- la syntaxe moderne pour les éléments uniquement,
    - `pour (let i in arr)` -- ne jamais utiliser.
 
 Nous reviendrons sur les tableaux et étudierons plus de méthodes pour ajouter, supprimer, extraire des éléments et trier des tableaux dans le chapitre <info:array-methods>.
+=======
+To loop over the elements of the array:
+  - `for (let i=0; i<arr.length; i++)` -- works fastest, old-browser-compatible.
+  - `for (let item of arr)` -- the modern syntax for items only,
+  - `for (let i in arr)` -- never use.
+
+We will return to arrays and study more methods to add, remove, extract elements and sort arrays in the chapter <info:array-methods>.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
