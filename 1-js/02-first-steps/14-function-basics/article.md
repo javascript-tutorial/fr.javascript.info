@@ -101,11 +101,7 @@ showMessage();
 alert( userName ); // *!*Bob*/!*, la valeur a été modifiée par la fonction
 ```
 
-<<<<<<< HEAD
-La variable externe n’est utilisée que s’il n’y a pas de variable locale. Donc, une modification occasionnelle peut se produire si nous oublions `let`.
-=======
-The outer variable is only used if there's no local one.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+La variable externe n’est utilisée que s’il n’y a pas de variable locale. 
 
 
 Si une variable du même nom est déclarée à l'intérieur de la fonction, elle *eclipsera* la variable externe. Par exemple, dans le code ci-dessous, la fonction utilise le nom `userName` local. L'externe est ignoré :
@@ -133,11 +129,7 @@ Les variables déclarées en dehors de toute fonction, telle que `userName` exte
 
 Les variables globales sont visibles depuis n'importe quelle fonction (sauf si elles sont masquées par les variables locales).
 
-<<<<<<< HEAD
-Généralement, une fonction déclare toutes les variables spécifiques à sa tâche. Les variables globales ne stockent que les données au niveau du projet. Il est donc important que ces variables soient accessibles de n’importe où. Le code moderne a peu ou pas de variables globales. La plupart des variables résident dans leurs fonctions.
-=======
-It's a good practice to minimize the use of global variables. Modern code has few or no globals. Most variables reside in their functions. Sometimes though, they can be useful to store project-level data.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+C'est une bonne pratique de minimiser l'utilisation de variables globales. Le code moderne a peu ou pas de variable globales. La plupart des variables résident dans leurs fonctions. Parfois, cependant, ils peuvent être utiles pour stocker des données au niveau du projet.
 ```
 
 ## Arguments
@@ -382,21 +374,13 @@ Quelques exemples de violation de cette règle :
 - `createForm` -- serait mauvais s’il modifiait le document en y ajoutant un formulaire (il ne devrait que le créer et le renvoyer).
 - `checkPermission` -- serait mauvais si affiche le message d'accès accordé/refusé (doit uniquement effectuer la vérification et renvoyer le résultat).
 
-<<<<<<< HEAD
-Ces exemples supposent des significations communes de préfixes. Ce qu’ils veulent dire pour vous est déterminé par vous et votre équipe. C’est peut-être normal que votre code se comporte différemment. Cependant, vous devez bien comprendre ce que signifie un préfixe, ce qu'une fonction préfixée peut et ne peut pas faire. Toutes les fonctions ayant le même préfixe doivent obéir aux mêmes règles. Et l'équipe devrait partager ces connaissances.
-=======
-These examples assume common meanings of prefixes. You and your team are free to agree on other meanings, but usually they're not much different. In any case, you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Ces exemples supposent des significations communes de préfixes. Vous et votre équipe êtes libres de vous entendre sur d'autres sens, mais ils ne sont généralement pas très différents. Dans tous les cas, vous devez bien comprendre ce que signifie un préfixe, ce qu'une fonction préfixée peut et ne peut pas faire. Toutes les fonctions ayant le même préfixe doivent obéir aux règles. Et l'équipe devrait partager ces connaissances.
 ```
 
 ```smart header="Noms de fonction ultra-courts"
 Les fonctions utilisées *très souvent* portent parfois des noms ultra-courts.
 
-<<<<<<< HEAD
-Par exemple le framework [jQuery](http://jquery.com) définit une fonction `$`. La librairie [LoDash](http://lodash.com/) a nommer sa fonction principale `_`.
-=======
-For example, the [jQuery](http://jquery.com) framework defines a function with `$`. The [Lodash](http://lodash.com/) library has its core function named `_`.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
+Par exemple le framework [jQuery](http://jquery.com) définit une fonction avec `$`. La librairie [LoDash](http://lodash.com/) a nommé sa fonction principale `_`.
 
 Ce sont des exceptions. En règle générale, les noms de fonctions doivent être concis, mais descriptifs.
 ```
