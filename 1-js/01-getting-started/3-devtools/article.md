@@ -50,20 +50,18 @@ Ouvrez les préférences et accédez au volet "Avancé". Il y a une case à coch
 
 Maintenant `key:Cmd+Opt+C` peut activer la console. Notez également que le nouvel élément de menu supérieur nommé "Développement" est apparu. Il a beaucoup de commandes et d'options.
 
+## Entrée multiligne
+
+Habituellement, lorsque nous insérons une ligne de code dans la console, puis que nous appuyons sur Entrée, la procédure s’exécute.
+
+Pour insérer plusieurs lignes, appuyez sur `key:Shift+Enter`.
+
+
+
 ## Résumé
 
 - Les outils de développement nous permettent de voir les erreurs, d'exécuter des commandes, d'examiner des variables et bien plus encore.
 - Ils peuvent être ouverts avec `key:F12` pour la plupart des navigateurs sous Windows. Chrome pour Mac necessite la combinaison `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (doit être activé avant).
 
-<<<<<<< HEAD
+
 Nous avons maintenant notre environnement prêt. Dans la section suivante, nous passerons à JavaScript.
-=======
-To insert multiple lines, press `key:Shift+Enter`.
-
-## Summary
-
-- Developer tools allow us to see errors, run commands, examine variables, and much more.
-- They can be opened with `key:F12` for most browsers on Windows. Chrome for Mac needs `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (need to enable first).
-
-Now we have the environment ready. In the next section, we'll get down to JavaScript.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
