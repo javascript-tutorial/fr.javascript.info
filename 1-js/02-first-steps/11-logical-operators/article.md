@@ -84,11 +84,7 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
-<<<<<<< HEAD
-En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur de ce type n'est trouvée.
-=======
-In other words, a chain of OR `"||"` returns the first truthy value or the last one if no truthy value is found.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
 
 Par exemple :
 
@@ -105,11 +101,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
 1. **Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
 
-<<<<<<< HEAD
-   Imaginons que nous ayons plusieurs variables pouvant contenir les données ou être `null/undefined`. Et nous devons choisir le premier avec des données. 
-=======
-    Imagine we have a list of variables which can either contain data or be `null/undefined`. How can we find the first one with data?
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+   Imaginons que nous ayons plusieurs variables pouvant contenir une donnée ou être `null/undefined`. Comment pouvons-nous trouver la première valeur vraie ?
 
     Nous pouvons utiliser `||` pour ça :
 
@@ -150,11 +142,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     alert(x); // 1
     ```
 
-<<<<<<< HEAD
-    Une assignation est un cas simple, d'autres effets secondaires peuvent être impliqués.
-=======
-    An assignment is a simple case. There may be side effects, that won't show up if the evaluation doesn't reach them.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+    Une assignation est un cas simple. Il peut y avoir des effets secondaires qui ne se manifesteront pas si l'évaluation ne les atteint pas.
 
     Comme nous pouvons le voir, ce genre d'utilisation est un "moyen plus court de faire `if`". Le premier opérande est converti en booléen et s’il est faux, le second est évalué.
 
