@@ -192,8 +192,13 @@ Pourquoi est-ce qu'il n'aime pas le zéro ? Toujours faux!
 
 Nous avons ces résultats parce que :
 
+<<<<<<< HEAD
 - Les comparaisons `(1)` et `(2)` renvoient `false` car `undefined` est converti en `NaN`. Et `NaN` est une valeur numérique spéciale qui renvoie `false` pour toutes les comparaisons.
 - Le contrôle d'égalité `(3)` renvoie `false`, car `undefined` est égal à `null` et à aucune autre valeur.
+=======
+- Comparisons `(1)` and `(2)` return `false` because `undefined` gets converted to `NaN` and `NaN` is a special numeric value which returns `false` for all comparisons.
+- The equality check `(3)` returns `false` because `undefined` only equals `null`, `undefined`, and no other value.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ### Éviter les problèmes
 

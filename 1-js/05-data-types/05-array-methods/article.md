@@ -36,7 +36,11 @@ C'est normal, car `delete obj.key` supprime une valeur par la` clé`. C'est tout
 
 Des méthodes spéciales doivent donc être utilisées.
 
+<<<<<<< HEAD
 La méthode [arr.splice(str)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Il peut tout faire: ajouter, supprimer et insérer des éléments.
+=======
+The [arr.splice(str)](mdn:js/Array/splice) method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 La syntaxe est la suivante:
 
@@ -238,9 +242,15 @@ Ce sont des méthodes pour rechercher quelque chose dans un tableau.
 
 Les méthodes [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) et [arr.includes](mdn:js/Array/includes) ont la même syntaxe et utilisent essentiellement la même chose que leurs équivalents de chaîne, mais fonctionnent sur des éléments au lieu de caractères:
 
+<<<<<<< HEAD
 - `arr.indexOf(item, from)` recherche l'élément `item` à partir de l'index `from`, et retourne l'index où il a été trouvé, sinon il retourne `-1`.
 - `arr.lastIndexOf(item, from)` -- pareil, mais regarde de droite à gauche.
 - `arr.includes(item, from)` -- recherche l'élément `item` commençant par l'index `from`, retourne `true` si il est trouvé.
+=======
+- `arr.indexOf(item, from)` looks for `item` starting from index `from`, and returns the index where it was found, otherwise `-1`.
+- `arr.lastIndexOf(item, from)` -- same, but looks for from right to left.
+- `arr.includes(item, from)` -- looks for `item` starting from index `from`, returns `true` if found.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Par exemple:
 

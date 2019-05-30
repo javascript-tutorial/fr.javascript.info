@@ -136,8 +136,13 @@ alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
 
+<<<<<<< HEAD
 ```smart header="Langages fonctionnels"
 Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle) qui interdisent de modifier une valeur de variable. Par exemple, [Scala](http://www.scala-lang.org/) ou [Erlang](http://www.erlang.org/).
+=======
+```smart header="Functional languages"
+It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réutiliser l’ancienne.
 
@@ -187,8 +192,13 @@ let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
 Des variables nommées `pomme` and `PomMe` -- sont deux variables différentes.
 ```
 
+<<<<<<< HEAD
 ````smart header="Les lettres non anglaises sont autorisées mais non recommandées"
 Il est possible d'utiliser n'importe quel langage, y compris les lettres cyrilliques ou même les hiéroglyphes, comme ceci :
+=======
+````smart header="Non-Latin letters are allowed, but not recommended"
+It is possible to use any language, including cyrillic letters or even hieroglyphs, like this:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js
 let имя = '...';
@@ -261,7 +271,11 @@ Il existe une pratique répandue d’utiliser des constantes comme alias pour de
 
 Ces constantes sont nommées en utilisant des majuscules et des underscores.
 
+<<<<<<< HEAD
 Comme ceci :
+=======
+For instance, let's make constants for colors in so-called "web" (hexadecimal) format:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 const COLOR_RED = "#F00";
@@ -297,7 +311,11 @@ En d'autres termes, les constantes nommées en majuscules ne sont utilisées que
 
 En parlant de variables, il y a une autre chose extrêmement importante.
 
+<<<<<<< HEAD
 Veuillez nommer les variables de manière judicieuse. Prenez le temps de réfléchir si nécessaire.
+=======
+A variable name should have a clean, obvious meaning, describe the data that it stores.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Le nommage de variables est l’une des compétences les plus importantes et les plus complexes de la programmation. Un rapide coup d’œil sur les noms de variables peut révéler quel code est écrit par un débutant et par un développeur expérimenté.
 
