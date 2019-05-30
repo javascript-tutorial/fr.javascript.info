@@ -20,11 +20,7 @@ Voici ce que vous devriez voir si vous le faites pour la première fois :
 
 Le bouton <span class="devtools" style="background-position:-168px -76px"></span> ouvre l'onglet avec les fichiers.
 
-<<<<<<< HEAD
-Cliquez dessus et sélectionnez `index.html`, puis `hello.js` dans l’arborescence. Voici ce qui devrait apparaître :
-=======
-Let's click it and select `hello.js` in the tree view. Here's what should show up:
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Cliquez dessus et sélectionnez `hello.js` dans l’arborescence. Voici ce qui devrait apparaître :
 
 ![](chrome-tabs.png)
 
@@ -38,11 +34,7 @@ Maintenant, vous pouvez cliquer sur le même bouton <span class="devtools" style
 
 ## Console
 
-<<<<<<< HEAD
-Si nous appuyons sur `Esc`, une console s'ouvre ci-dessous. Nous pouvons taper des commandes ici et appuyer sur `key:Entrée` pour les exécuter.
-=======
-If we press `key:Esc`, then a console opens below. We can type commands there and press `key:Enter` to execute.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Si nous appuyons sur `key:Esc`, une console s'ouvre ci-dessous. Nous pouvons taper des commandes ici et appuyer sur `key:Entrée` pour les exécuter.
 
 Une fois une instruction exécutée, son résultat est présenté ci-dessous.
 
