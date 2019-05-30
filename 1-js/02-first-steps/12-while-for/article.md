@@ -47,13 +47,8 @@ while (i) { // quand i devient 0, la condition devient fausse et la boucle s'arr
 }
 ```
 
-<<<<<<< HEAD
 ````smart header="Les accolades ne sont pas requis pour un corps à une seule ligne"
 Si le corps de la boucle a une seule déclaration, nous pouvons omettre les accolades `{…}` :
-=======
-````smart header="Curly braces are not required for a single-line body"
-If the loop body has a single statement, we can omit the curly braces `{…}`:
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let i = 3;
