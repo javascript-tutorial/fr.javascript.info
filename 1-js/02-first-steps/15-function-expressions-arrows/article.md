@@ -176,11 +176,7 @@ Nous pouvons tout aussi bien la passer en tant que variable ou l'exécuter si no
 
 Formulons les principales différences entre les déclarations de fonction et les expressions de fonctions.
 
-<<<<<<< HEAD
-Tout d'abord, la syntaxe: comment voir ce qui est dans le code.
-=======
-First, the syntax: how to differentiate between them in the code.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Tout d'abord, la syntaxe : comment les différencier dans le code.
 
 - *Déclaration de fonction:* une fonction déclarée séparément dans le flux de code principal.
 
@@ -190,13 +186,8 @@ First, the syntax: how to differentiate between them in the code.
       return a + b;
     }
     ```
-<<<<<<< HEAD
-- *Expression de fonction:* une fonction créée dans une expression ou dans une autre construction de syntaxe. Ici, la fonction est créée à droite de "l'affectation de l'expression" `=` :
+- *Fonction Expression :* une fonction créée dans une expression ou dans une autre construction de syntaxe. Ici, la fonction est créée à droite de "l'affectation de l'expression" `=` :
     
-=======
-- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created at the right side of the "assignment expression" `=`:
-
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
     ```js
     // Function Expression
     let sum = function(a, b) {
@@ -206,17 +197,13 @@ First, the syntax: how to differentiate between them in the code.
 
 La différence la plus subtile est *quand* une fonction est créée par le moteur JavaScript.
 
-**Une expression de fonction est créée lorsque l’exécution l’atteint et est utilisable à partir de cet endroit.**
+**Une Fonction Expression est créée lorsque l’exécution l’atteint et est utilisable à partir de cet endroit.**
 
 Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` -- voilà, la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.) à partir de maintenant.
 
 Les déclarations de fonction sont différentes.
 
-<<<<<<< HEAD
-**Une déclaration de fonction est utilisable dans tout le bloc script/code.**
-=======
-**A Function Declaration is usable in the whole script (or a code block, if it's inside a block).**
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+**Une Fonction Déclaration est utilisable dans tout le script (ou un bloc de code, si c'est à l'intérieur d'un bloc).**
 
 En d'autres termes, lorsque JavaScript se prépare à exécuter le script ou un bloc de code, il commence par rechercher les déclarations de fonction et crée les fonctions. Nous pouvons considérer cela comme une “étape d'initialisation”.
 
