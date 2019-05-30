@@ -136,17 +136,12 @@ alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
 
-<<<<<<< HEAD
 ```smart header="Langages fonctionnels"
-Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle) qui interdisent de modifier une valeur de variable. Par exemple, [Scala](http://www.scala-lang.org/) ou [Erlang](http://www.erlang.org/).
-=======
-```smart header="Functional languages"
-It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle), comme [Scala](http://www.scala-lang.org/) ou [Erlang](http://www.erlang.org/) qui interdisent de modifier une valeur de variable.
 
 Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réutiliser l’ancienne.
 
-Bien que cela puisse paraître un peu étrange à première vue, ces langages sont tout à fait capables de se développer sérieusement. Plus que cela, il existe des domaines tels que les calculs parallèles où cette limitation confère certains avantages. Étudier un tel langage (même si on ne prévoit pas de l'utiliser rapidement) est recommandé pour élargir son esprit.
+Bien que cela puisse paraître un peu étrange à première vue, ces langages sont tout à fait capables de se développer sérieusement. Plus que cela, il existe des domaines tels que les calculs parallèles où cette limitation confère certains avantages. Étudier un tel langage (même si on ne prévoit pas de l'utiliser rapidement) est recommandé pour élargir son horizon.
 ```
 
 ## Nom de variable [#variable-naming]
@@ -163,11 +158,7 @@ let userName;
 let test123;
 ```
 
-<<<<<<< HEAD
-Lorsque le nom contient plusieurs mots, le [camelCase](https://fr.wikipedia.org/wiki/Camel_case) est couramment utilisé. C'est-à-dire que les mots se succèdent, chaque mot commence par une majuscule : `monTresLongNom`.
-=======
-When the name contains multiple words, [camelCase](https://en.wikipedia.org/wiki/CamelCase) is commonly used. That is: words go one after another, each word except first starting with a capital letter: `myVeryLongName`.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
+Lorsque le nom contient plusieurs mots, le [camelCase](https://fr.wikipedia.org/wiki/Camel_case) est couramment utilisé. C'est-à-dire que les mots se succèdent, chaque mot à l'exception du premier commence par une majuscule : `monTresLongNom`.
 
 Ce qui est intéressant -- le signe dollar `'$'` et l'underscore `'_'` peuvent également être utilisé dans les noms. Ce sont des symboles réguliers, tout comme les lettres, sans aucune signification particulière.
 
@@ -192,13 +183,8 @@ let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
 Des variables nommées `pomme` and `PomMe` -- sont deux variables différentes.
 ```
 
-<<<<<<< HEAD
-````smart header="Les lettres non anglaises sont autorisées mais non recommandées"
+````smart header="Les lettres non latines sont autorisées mais non recommandées"
 Il est possible d'utiliser n'importe quel langage, y compris les lettres cyrilliques ou même les hiéroglyphes, comme ceci :
-=======
-````smart header="Non-Latin letters are allowed, but not recommended"
-It is possible to use any language, including cyrillic letters or even hieroglyphs, like this:
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js
 let имя = '...';
@@ -271,11 +257,7 @@ Il existe une pratique répandue d’utiliser des constantes comme alias pour de
 
 Ces constantes sont nommées en utilisant des majuscules et des underscores.
 
-<<<<<<< HEAD
-Comme ceci :
-=======
-For instance, let's make constants for colors in so-called "web" (hexadecimal) format:
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Par exemple, créons des constantes pour les couleurs au format dit "web" (hexadécimal) :
 
 ```js run
 const COLOR_RED = "#F00";
@@ -311,11 +293,7 @@ En d'autres termes, les constantes nommées en majuscules ne sont utilisées que
 
 En parlant de variables, il y a une autre chose extrêmement importante.
 
-<<<<<<< HEAD
-Veuillez nommer les variables de manière judicieuse. Prenez le temps de réfléchir si nécessaire.
-=======
-A variable name should have a clean, obvious meaning, describe the data that it stores.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Un nom de variable doit avoir une signification propre et évidente, décrire les données qu’elle stocke.
 
 Le nommage de variables est l’une des compétences les plus importantes et les plus complexes de la programmation. Un rapide coup d’œil sur les noms de variables peut révéler quel code est écrit par un débutant et par un développeur expérimenté.
 
