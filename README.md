@@ -9,7 +9,6 @@ Aidez-nous à améliorer la traduction.
 - Créez une issue pour informer le mainteneur que vous le traduisez.
 - Forkez le repository, traduisez et envoyez un PR lorsque vous avez terminé.
 
-<<<<<<< HEAD
 🎉 Merci !
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
@@ -22,10 +21,7 @@ Chaque chapitre, article ou exercice réside dans son propre dossier.
 
 Le dossier est nommé `N-url`, où `N` – est le numéro de tri (les articles sont ordonnés), et `url` est l'URL raccourcie (slug) de la partie en question.
 
-N'hésitez pas à consulter <https://github.com/javascript-tutorial/translate> pour plus de détails.
-=======
-See <https://javascript.info/translate> for the details.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+N'hésitez pas à consulter <https://javascript.info/translate> pour plus de détails.
 
 ## Contributions
 
