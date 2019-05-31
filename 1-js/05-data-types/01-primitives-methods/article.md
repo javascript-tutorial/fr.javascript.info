@@ -12,18 +12,10 @@ Une primitive
 
 Un objet
 - Est capable de stocker plusieurs valeurs en tant que propriétés.
-- Peut être crée avec `{}`, par exemple:`{name:"John", age: 30}`. Il existe d'autres types d'objets en JavaScript; les fonctions, par exemple, sont des objets.
+- Peut être crée avec `{}`, par exemple:`{name:"John", age: 30}`. Il existe d'autres types d'objets en JavaScript : les fonctions, par exemple, sont des objets.
 
-<<<<<<< HEAD
 L'une des meilleurs choses à propos des objets est que nous pouvons stocker une fonction en tant que l'une de ses propriétés.
-=======
-An object
 
-- Is capable of storing multiple values as properties.
-- Can be created with `{}`, for instance: `{name: "John", age: 30}`. There are other kinds of objects in JavaScript: functions, for example, are objects.
-
-One of the best things about objects is that we can store a function as one of its properties.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let john = {
@@ -53,19 +45,9 @@ Voici le paradoxe auquel est confronté le créateur de JavaScript:
 
 La solution semble peu commode, mais la voici:
 
-<<<<<<< HEAD
 1. Les primitives sont toujours primitives. Une seule valeur, au choix.
 2. Le langage permet d'accéder aux méthodes et aux propriétés des chaînes de caractères, des nombres, des booléens et des symboles.
-3. Lorsque cela se produit, un "wrapper d'objet" (conteneur)  spécial est crée pour fournir la fonctionnalité supplémentaire, puis est détruit.
-=======
-1. Primitives are still primitive. A single value, as desired.
-2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
-<<<<<<< HEAD
-3. When this happens, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
-=======
-3. In order for that to work, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+3. Pour que cela fonctionne, un "wrapper d'objet" (conteneur)  spécial est crée pour fournir la fonctionnalité supplémentaire, puis il est détruit.
 
 Les "wrapper d'objets" (conteneurs) sont différents pour chaque type de primitive et sont appelés: `String`, `Number`, `Boolean` et `Symbol`. Ainsi, ils fournissent différents ensembles de méthodes.
 
@@ -113,22 +95,13 @@ alert( typeof 0 ); // "number"
 alert( typeof new Number(0) ); // "object"!
 ```
 
-<<<<<<< HEAD
-Ici `zéro` est un objet, alors l'alerte s'affichera:
-```js run
-let zero = new Number(0);
-
-if (zero) { // zero est true, parce que c'est un objet
-  alert( "zero est vrai?!?" );
-=======
-Objects are always truthy in `if`, so here the alert will show up:
+Les objets sont toujours vrais dans les `if`, alors l'alerte apparaîtra ici :
 
 ```js run
 let zero = new Number(0);
 
-if (zero) { // zero is true, because it's an object
+if (zero) { // zéro est vrai, parce que c'est un objet
   alert( "zero is truthy!?!" );
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 }
 ```
 
@@ -138,7 +111,7 @@ Par exemple, ceci est entièrement valide:
 ```js
 let num = Number("123"); // convertir une chaîne de caractères en nombre
 ```
-
+````
 
 ````warn header="null/undefined n'ont pas de méthode"
 Les primitives spéciales null et undefined sont des exceptions. Elles n'ont pas de "wrapper d'objet" (conteneur) correspondants et ne fournissent aucune méthode. En un sens, elles sont "les plus primitives".
@@ -147,6 +120,8 @@ Une tentative d'accès à une propriété d'une telle valeur donnerait l'erreur 
 
 ```js run
 alert(null.test); // error
+```
+````
 
 ## Sommaire
 
