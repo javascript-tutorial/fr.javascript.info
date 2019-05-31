@@ -1,10 +1,6 @@
 # Nombres
 
-<<<<<<< HEAD
-Tous les nombres en JavaScript sont stockés au format 64-bits [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), aussi appelé "double précision".
-=======
-All numbers in JavaScript are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), also known as "double precision floating point numbers".
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Tous les nombres en JavaScript sont stockés au format 64-bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), aussi appelé "double precision floating point numbers".
 
 Récapitulons et développons ce que nous savons actuellement à leurs sujet.
 
@@ -181,11 +177,7 @@ Il y a deux façons de le faire:
 
 ## Calculs imprécis
 
-<<<<<<< HEAD
-En interne, un nombre est représenté au format 64 bits [IEEE-754](https://fr.wikipedia.org/wiki/IEEE_754), il y a donc exactement 64 bits pour stocker un nombre: 52 d'entre eux sont utilisés pour stocker les chiffres, 11 d'entre eux stockent la position du point décimal(ils sont zéro pour les nombres entiers), et 1 bit est pour le signe.
-=======
-Internally, a number is represented in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point (they are zero for integer numbers), and 1 bit is for the sign.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+En interne, un nombre est représenté au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), il y a donc exactement 64 bits pour stocker un nombre : 52 d'entre eux sont utilisés pour stocker les chiffres, 11 d'entre eux stockent la position du point décimal(ils sont zéro pour les nombres entiers), et 1 bit est pour le signe.
 
 Si un nombre est trop grand, le stockage 64 bits serait saturé, donnant potentiellement une infinité:
 
@@ -213,13 +205,9 @@ Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez qu
 
 Mais pourquoi cela se produit-il ?
 
-<<<<<<< HEAD
 Un nombre est stocké en mémoire sous sa forme binaire, une séquence de uns et de zéros. Mais les fractions telles que `0.1`, `0.2`, qui semblent simples dans le système numérique décimal, sont en réalité des fractions sans fin dans leur forme binaire.
-=======
-A number is stored in memory in its binary form, a sequence of bits - ones and zeroes. But fractions like `0.1`, `0.2` that look simple in the decimal numeric system are actually unending fractions in their binary form.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
-En d'autres termes, qu'est-ce que `0.1`? C'est un divisé par dix `1/10`, un dixième. Dans le système numérique décimal, ces nombres sont facilement représentables. Comparez-le à un tiers: `1/3`. Cela devient une fraction sans fin `0.33333(3)`.
+En d'autres termes, qu'est-ce que `0.1` ? C'est un divisé par dix `1/10`, un dixième. Dans le système numérique décimal, ces nombres sont facilement représentables. Comparez-le à un tiers: `1/3`. Cela devient une fraction sans fin `0.33333(3)`.
 
 Ainsi, la division par puissances `10` est garantie de bien fonctionner dans le système décimal, mais la division par `3` ne l'est pas. Pour la même raison, dans le système de numération binaire, la division par des puissances de `2` est garantie, mais `1/10` devient une fraction binaire sans fin.
 
@@ -338,13 +326,8 @@ Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères 
 
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes:
 
-<<<<<<< HEAD
 1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
-2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, Cela importe rarement, mais techniquement ces valeurs sont différentes.
-=======
-1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
-2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, technically that's true, because internally the number has a sign bit that may be different even if all other bits are zeroes.
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
 
 Dans tous les autres cas, `Object.is(a, b)` est identique à `a === b`. 
 
