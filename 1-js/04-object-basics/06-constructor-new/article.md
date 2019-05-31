@@ -83,11 +83,7 @@ let user = new function() {
 Le constructeur ne peut plus être appelé car il n’est sauvegardé nulle part, il est simplement créé et appelé. Donc, cette astuce vise à encapsuler le code qui construit l'objet unique, sans réutilisation ultérieure.
 ````
 
-<<<<<<< HEAD
-## Constructeurs à double syntaxe : new.target
-=======
-## Constructor mode test: new.target
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+## Constructeur mode test : new.target
 
 ```smart header="Trucs avancés"
 La syntaxe de cette section est rarement utilisée, sautez-la à moins de vouloir tout savoir.
@@ -113,13 +109,9 @@ new User(); // function User { ... }
 */!*
 ```
 
-<<<<<<< HEAD
-Cela peut être utilisé pour permettre aux appels `new` et réguliers de fonctionner de la même manière. C'est-à-dire, créer le même objet :
-=======
-That can be used inside the function to know whether it was called with `new`, "in constructor mode", or without it, "in regular mode".
+Cela peut être utilisé dans la fonction pour savoir si elle a été appelée avec `new`, "en mode constructeur", ou sans "en mode normal".
 
-We can also make both `new` and regular calls to do the same, like this:
->>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
+Nous pouvons également faire des appels `new` et réguliers pour faire la même chose, comme ceci :
 
 ```js run
 function User(name) {
