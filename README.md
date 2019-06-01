@@ -13,7 +13,7 @@ Aidez-nous à améliorer la traduction.
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
 
-P.S. La liste complète des langues est disponible sur <https://github.com/javascript-tutorial/translate>.
+P.S. La liste complète des langues est disponible sur <https://javascript.info/translate>.
 
 ## Structure
 
