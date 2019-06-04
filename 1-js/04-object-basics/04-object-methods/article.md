@@ -63,11 +63,7 @@ user.sayHi(); // Hello!
 ```smart header="Programmation orientée objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
-<<<<<<< HEAD
-La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités? Comment organiser l'interaction entre eux? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus. 
-=======
-OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch, and more.
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
+La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
 ```
 ### Méthode abrégée
 
@@ -82,13 +78,8 @@ user = {
   }
 };
 
-<<<<<<< HEAD
 // la méthode abrégée semble mieux, non ?
-let user = {
-=======
-// method shorthand looks better, right?
 user = {
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 *!*
   sayHi() { // identique à "sayHi: function()"
 */!*
@@ -175,11 +166,7 @@ Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fo
 
 ## "this" n'est pas lié
 
-<<<<<<< HEAD
-En JavaScript, le mot clé "this" se comporte différemment de la plupart des autres langages de programmation. Tout d'abord, il peut être utilisé dans n'importe quelle fonction.
-=======
-In JavaScript, "this" keyword behaves unlike most other programming languages. It can be used in any function.
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
+En JavaScript, le mot clé "this" se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
 
 Il n’ya pas d’erreur de syntaxe dans le code comme celui-ci :
 
@@ -189,15 +176,9 @@ function sayHi() {
 }
 ```
 
-<<<<<<< HEAD
-La valeur de `this` est évaluée pendant l'exécution. Et ça peut être n'importe quoi.
+La valeur de `this` est évaluée pendant l'exécution en fonction du contexte. Et ça peut être n'importe quoi.
 
-Par exemple, une même fonction peut avoir un "this" différent lorsqu'elle est appelée à partir d'objets différents :
-=======
-The value of `this` is evaluated during the run-time, depending on the context. And it can be anything.
-
-For instance, here the same function is assigned to two different objects and has different "this" in the calls:
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
+Par exemple, ici la même fonction est assignée à deux objets différents et a un "this" différent dans les appels :
 
 ```js run
 let user = { name: "John" };
@@ -208,11 +189,7 @@ function sayHi() {
 }
 
 *!*
-<<<<<<< HEAD
-// utiliser les mêmes fonctions dans deux objets
-=======
-// use the same function in two objects
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
+// utiliser la même fonction dans deux objets
 user.f = sayHi;
 admin.f = sayHi;
 */!*
@@ -225,14 +202,10 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (le point ou les crochets accèdent à la méthode - peu importe)
 ```
 
-<<<<<<< HEAD
-En fait, nous pouvons appeler la fonction sans objet :
-=======
-The rule is simple: if `obj.f()` is called, then `this` is `obj` during the call of `f`. So it's either `user` or `admin` in the example above.
+La règle est simple: si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`. C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
 
-````smart header="Calling without an object: `this == undefined`"
-We can even call the function without an object at all:
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
+````smart header="Appel sans objet : `this` == undefined"
+Nous pouvons même appeler la fonction sans objet du tout :
 
 ```js run
 function sayHi() {
@@ -246,12 +219,8 @@ Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder 
 
 En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique qui corrige `"use strict"`.
 
-<<<<<<< HEAD
-Veuillez noter qu'habituellement, l'appel d'une fonction qui utilise `this` sans objet n'est pas normal, mais constitue une erreur de programmation. Si une fonction a `this`, alors elle est généralement censée être appelée dans le contexte d'un objet.
-=======
-Usually such call is an programming error. If there's `this` inside a function, it expects to be called in an object context.
+Un tel appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
 ````
->>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```smart header="Les conséquences d'un `this` non lié"
 Si vous venez d'un autre langage de programmation, vous êtes probablement habitué à l'idée d'un "`this` lié", où les méthodes définies dans un objet ont toujours `this` en référence à cet objet.
