@@ -1,7 +1,7 @@
 
-That's because `map.keys()` returns an iterable, but not an array.
+C’est parce que `map.keys()` retourne un itérable, mais pas un tableau.
 
-We can convert it into an array using `Array.from`:
+Nous pouvons le convertir en tableau en utilisant `Array.from` :
 
 
 ```js run
