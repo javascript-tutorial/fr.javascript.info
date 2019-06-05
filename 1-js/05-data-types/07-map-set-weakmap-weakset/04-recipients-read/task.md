@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Store "unread" flags
+# Stocker les messages non-lus
 
-There's an array of messages:
+Il y a un tableau de messages :
 
 ```js
 let messages = [
@@ -14,10 +14,10 @@ let messages = [
 ];
 ```
 
-Your code can access it, but the messages are managed by someone else's code. New messages are added, old ones are removed regularly by that code, and you don't know the exact moments when it happens.
+Votre code peut y accéder, mais les messages sont gérés par le code d’une autre personne. De nouveaux messages sont ajoutés, les anciens sont régulièrement supprimés par ce code et vous ne connaissez pas le moment exact où cela se produit.
 
-Now, which data structure you could use to store information whether the message "have been read"? The structure must be well-suited to give the answer "was it read?" for the given message object.
+Maintenant, quelle structure de données pouvez-vous utiliser pour stocker des informations si le message "a été lu"? La structure doit être bien adaptée pour donner la réponse "a-t-il été lu ?" Pour l'objet de message donné.
 
-P.S. When a message is removed from `messages`, it should disappear from your structure as well.
+P.S. Lorsqu'un message est supprimé des `messages`, il doit également disparaître de votre structure.
 
-P.P.S. We shouldn't modify message objects directly. If they are managed by someone else's code, then adding extra properties to them may have bad consequences.
+P.P.S. Nous ne devrions pas modifier les objets de message directement. Si elles sont gérées par le code d’une autre personne, l’ajout de propriétés supplémentaires peut avoir de graves conséquences.
