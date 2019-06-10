@@ -136,7 +136,11 @@ Au lieu de cela, réutilisez les noms existants. Il suffit d'écrire de nouvelle
 
 Dans une fonction, n'utilisez que des variables passées en paramètres.
 
+<<<<<<< HEAD
 Cela rendrait vraiment difficile d’identifier ce qui est exactement dans la variable maintenant. Et aussi d'où ça vient. Une personne ayant une faible intuition devrait analyser le code ligne par ligne et suivre les modifications dans chaque branche de code.
+=======
+That would make it really hard to identify what's exactly in the variable *now*. And also where it comes from. The purpose is to develop the intuition and memory of a person reading the code. A person with weak intuition would have to analyze the code line-by-line and track the changes through every code branch.
+>>>>>>> 9cb33f4039e5751bfd0e2bca565a37aa463fb477
 
 **Une variante avancée de l'approche consiste à remplacer secrètement (!) La valeur par quelque chose de similaire au milieu d'une boucle ou d'une fonction.**
 
@@ -154,7 +158,11 @@ function ninjaFunction(elem) {
 
 Un collègue programmeur qui veut travailler avec `elem` dans la seconde moitié de la fonction sera surpris… Seulement lors du débogage, après avoir examiné le code, ils découvrira qu’il travaille avec un clone !
 
+<<<<<<< HEAD
 Mortellement efficace même contre un ninja expérimenté. Vu dans du code régulièrement.
+=======
+Seen in code regularly. Deadly effective even against an experienced ninja.
+>>>>>>> 9cb33f4039e5751bfd0e2bca565a37aa463fb477
 
 ## Underscores for fun
 
@@ -168,16 +176,27 @@ Un ninja intelligent place les traits de soulignement à un endroit du code et l
 
 Laissez tout le monde voir à quel point vos entités sont magnifiques! Des noms comme `superElement`, `megaFrame` et `niceItem` illumineront définitivement le lecteur.
 
+<<<<<<< HEAD
 En effet, d’une part, quelque chose s’écrit: `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux.
 
 ## Chevaucher des variables externes
+=======
+Indeed, from one hand, something is written: `super..`, `mega..`, `nice..` But from the other hand -- that brings no details. A reader may decide to look for a hidden meaning and meditate for an hour or two of their paid working time.
+
+
+## Overlap outer variables
+>>>>>>> 9cb33f4039e5751bfd0e2bca565a37aa463fb477
 
 ```quote author="Guan Yin Zi"
 Lorsqu'on est dans la lumière, on ne peut rien voir dans l’obscurité.<br>
 Lorsqu'on est dans l'obscurité, on peut tout voir dans la lumière.
 ```
 
+<<<<<<< HEAD
 Utilisez les mêmes noms pour les variables à l'intérieur et à l'extérieur d'une fonction. Aussi simple. Aucun effort requis.
+=======
+Use same names for variables inside and outside a function. As simple. No efforts to invent new names.
+>>>>>>> 9cb33f4039e5751bfd0e2bca565a37aa463fb477
 
 ```js
 let *!*user*/!* = authenticateUser();
