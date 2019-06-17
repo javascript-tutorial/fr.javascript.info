@@ -112,5 +112,5 @@ Chacun de ces fichiers commence à partir du `# titre principal`.
 Il est très facile d'ajouter quelque chose de nouveau.
 
 ---
-💓  
+♥  
 Ilya Kantor @iliakan
