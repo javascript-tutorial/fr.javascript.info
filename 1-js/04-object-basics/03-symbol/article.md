@@ -16,11 +16,7 @@ Une valeur de ce type peut être créée en utilisant `Symbol()` :
 let id = Symbol();
 ```
 
-<<<<<<< HEAD
-Nous pouvons également donner une description au symbole (également appelé un nom de symbole), principalement utile pour le débogage :
-=======
-Upon creation, we can give symbol a description (also called a symbol name), mostly useful for debugging purposes:
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Lors de la création, nous pouvons donner à symbole une description (également appelée nom de symbole), particulièrement utile pour le débogage :
 
 ```js
 // id est un symbole avec la description "id"
@@ -76,11 +72,7 @@ alert(id.description); // id
 
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
 
-<<<<<<< HEAD
-Par exemple, si nous voulons stocker un "identifiant" pour l'objet user, nous pouvons utiliser un symbole comme clé pour cela :
-=======
-For instance, if we'd like to add an "identifier" to the object `user`, we can use a symbol as a key for it:
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Par exemple, si nous voulons stocker un "identifiant" pour l'objet `user`, nous pouvons utiliser un symbole comme clé pour cela :
 
 ```js run
 let user = { name: "John" };
@@ -94,11 +86,7 @@ Quel est l’avantage de l’utilisation de `Symbol("id")` sur une chaîne de ca
 
 Poussons un peu plus loin l’exemple pour voir cela.
 
-<<<<<<< HEAD
-Imaginez qu'un autre script veuille avoir sa propre propriété "id" à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
-=======
-Imagine that another script wants to have its own identifier inside `user`, for its own purposes. That may be another JavaScript library, so thes scripts are completely unaware of each other.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
 
 Ensuite, ce script peut créer son propre `symbol("id")`, comme ceci :
 
@@ -109,15 +97,10 @@ let id = Symbol("id");
 user[id] = "Their id value";
 ```
 
-<<<<<<< HEAD
-Il n'y aura pas de conflit, car les symboles sont toujours différents, même s'ils portent le même nom.
+Il n'y aura pas de conflit entre nos identificateurs et les leurs, car les symboles sont toujours différents, même s'ils portent le même nom.
 
-Notez que si nous utilisions une chaîne de caractère `"id"` au lieu d'un symbole dans le même but, il y aurait un conflit :
-=======
-There will be no conflict between our and their identifiers, because symbols are always different, even if they have the same name.
+Notez que si nous utilisions une chaîne de caractère `"id"` au lieu d'un symbole dans le même but, il y *aurait* un conflit :
 
-...But if we used a string `"id"` instead of a symbol for the same purpose, then there *would* be a conflict:
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 ```js run
 let user = { name: "John" };
@@ -133,11 +116,7 @@ user.id = "Their id value"
 
 ### Symboles dans un littéral
 
-<<<<<<< HEAD
-Si nous voulons utiliser un symbole dans un objet littéral, nous avons besoin de crochets.
-=======
-If we want to use a symbol in an object literal `{...}`, we need square brackets around it.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Si nous voulons utiliser un symbole dans un objet littéral `{...}`, nous avons besoin de crochets.
 
 Comme ceci :
 
@@ -175,11 +154,7 @@ for (let key in user) alert(key); // name, age (pas de symboles)
 alert( "Direct: " + user[id] );
 ```
 
-<<<<<<< HEAD
-Cela fait partie du concept général de "dissimulation". Si un autre script ou une librairie parcourt notre objet, il n’accédera pas de manière inattendue à une propriété symbolique.
-=======
-`Object.keys(user)` also ignores them. That's a part of the general "hiding symbolic properties" principle. If another script or a library loops over our object, it won't unexpectedly access a symbolic property.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+`Object.keys(user)` les ignore également. Cela fait partie du principe général du "dissimulation des propriétés symboliques". Si un autre script ou une bibliothèque parcourt notre objet, il n’accédera pas de manière inattendue à une propriété symbolique.
 
 En revanche, [Object.assign](mdn:js/Object/assign) copie les propriétés de chaîne de caractères et de symbole :
 
@@ -214,21 +189,13 @@ alert( obj[0] ); // test (même propriété)
 
 ## Symboles globaux
 
-<<<<<<< HEAD
-Comme nous l’avons vu, tous les symboles sont généralement différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités.
-=======
-As we've seen, usually all symbols are different, even if they have the same name. But sometimes we want same-named symbols to be same entities.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Comme nous l’avons vu, tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités.
 
 Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
 
 Pour cela, il existe un *registre de symboles global*. Nous pouvons créer des symboles et y accéder ultérieurement, ce qui garantit que les accès répétés portant le même nom renvoient exactement le même symbole.
 
-<<<<<<< HEAD
-Pour créer ou lire un symbole dans le registre, utilisez `Symbol.for(key)`.
-=======
-In order to read (create if absent) a symbol from the registry, use `Symbol.for(key)`.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Pour lire (créer en cas d'absence) un symbole du registre, utilisez `Symbol.for(key)`.
 
 Cet appel vérifie le registre global et, s’il existe un symbole décrit comme `key`, le renvoie, sinon il crée un nouveau symbole `Symbol(key)` et le stocke dans le registre avec la `key` donnée.
 
@@ -238,11 +205,7 @@ Par exemple :
 // lit le registre global
 let id = Symbol.for("id"); // si le symbole n'existait pas, il est créé
 
-<<<<<<< HEAD
-// relit le registre
-=======
-// read it again (maybe from another part of the code)
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+// relit le registre (peut-être à partir d'une autre partie du code)
 let idAgain = Symbol.for("id");
 
 // le même symbole
@@ -302,25 +265,15 @@ Nous nous familiariserons également avec d’autres symboles lorsque nous étud
 
 `Symbol` est un type primitif pour les identificateurs uniques.
 
-<<<<<<< HEAD
 Les symboles sont créés avec l'appel `Symbol()` ainsi qu'une description facultative.
 
-Les symboles sont toujours de valeurs différentes, même s'ils portent le même nom. Si nous voulons que les symboles portant le même nom soient égaux, nous devons utiliser le registre global : `Symbol.for(key)` renvoie (crée si nécessaire) un symbole global avec `key` comme nom. Les multiples appels de `Symbol.for` retournent exactement le même symbole.
-=======
-Symbols are created with `Symbol()` call with an optional description (name).
-
-Symbols are always different values, even if they have the same name. If we want same-named symbols to be equal, then we should use the global registry: `Symbol.for(key)` returns (creates if needed) a global symbol with `key` as the name. Multiple calls of `Symbol.for` with the same `key` return exactly the same symbol.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Les symboles sont toujours de valeurs différentes, même s'ils portent le même nom. Si nous voulons que les symboles portant le même nom soient égaux, nous devons utiliser le registre global : `Symbol.for(key)` renvoie (crée si nécessaire) un symbole global avec `key` comme nom. 
+Les multiples appels de `Symbol.for` avec la même `key` renvoient exactement le même symbole.
 
 Les symboles ont deux principaux cas d'utilisation :
 
-<<<<<<< HEAD
 1. Propriétés d'objet "masquées".
-    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans for..in, elle ne sera donc pas répertoriée à l’occasion. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole, il n’interviendra donc pas occasionnellement dans ses actions.
-=======
-1. "Hidden" object properties.
-    If we want to add a property into an object that "belongs" to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in `for..in`, so it won't be occasionally processed together with other properties. Also it won't be accessed directly, because another script does not have our symbol. So the property will be protected from occasional use or overwrite.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée occasionnellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation occasionnelle ou un écrasement.
 
     Ainsi, nous pouvons "dissimuler" quelque chose dans des objets dont nous avons besoin, mais que les autres ne devraient pas voir, en utilisant des propriétés symboliques.
 

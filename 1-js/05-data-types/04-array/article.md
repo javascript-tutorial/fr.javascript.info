@@ -450,17 +450,10 @@ Array est un type d’objet spécial, adapté au stockage et à la gestion des �
 
 Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
 
-<<<<<<< HEAD
 - `push (...items)` ajoute `items` à la fin.
 - `pop()` supprime l'élément de la fin et le renvoie.
 - `shift()` supprime l'élément du début et le renvoie.
-- `unshift(... items)` ajoute des éléments au début.
-=======
-- `push(...items)` adds `items` to the end.
-- `pop()` removes the element from the end and returns it.
-- `shift()` removes the element from the beginning and returns it.
-- `unshift(...items)` adds `items` to the beginning.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+- `unshift(... items)` ajoute des `items` au début.
 
 Pour boucler sur les éléments du tableau:
    - `for (let i = 0; i <arr.length; i ++)` -- fonctionne le plus rapidement, compatible avec les anciens navigateurs.

@@ -58,28 +58,24 @@ alert( visitsCountMap.get(john) ); // 123
 
 L’utilisation d’objets en tant que clés est l’une des fonctionnalités les plus remarquables et les plus importantes de `Map`. Pour les clés de chaîne de caractères, un `Object` peut parfaitement convenir, mais il serait difficile de remplacer `Map` par un `Object` standard dans l'exemple ci-dessus.
 
-<<<<<<< HEAD
-Auparavant, avant l'existence de `Map`, les développeurs ajoutaient des identificateurs uniques aux objets :
-=======
-Let's try:
+Essayons :
 
 ```js run
 let john = { name: "John" };
 
-let visitsCountObj = {}; // try to use an object
+let visitsCountObj = {}; // essayons d'utiliser un objet
 
-visitsCountObj[john] = 123; // try to use john object as the key
+visitsCountObj[john] = 123; // essayons d'utiliser l'objet john comme clé
 
 *!*
-// That's what got written!
+// C'est ce qui a été écrit !
 alert( visitsCountObj["[object Object]"] ); // 123
 */!*
 ```
 
-As `john` is an object, it got converted to the key string `"[object Object]"`. All objects without a special conversion handling are converted to such string, so they'll all mess up.
+Comme john est un objet, il a été converti en clé chaîne de caractères `"[object Object]"`. Tous les objets sans traitement de conversion spécial sont convertis en ce genre chaîne de caractères, ils vont donc tout gâcher.
 
-In the old times, before `Map` existed, people used to add unique identifiers to objects for that:
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Auparavant, avant l'existence de `Map`, les développeurs ajoutaient des identificateurs uniques aux objets :
 
 ```js run
 // nous ajoutons le champ id
@@ -180,11 +176,7 @@ L'itération va dans le même ordre dans lequel les valeurs y ont été inséré
 En plus de cela, `Map` a une méthode `forEach` intégrée, similaire à `Array` :
 
 ```js
-<<<<<<< HEAD
 // exécute la fonction pour chaque paire (clé, valeur)
-=======
-// runs the function for each (key, value) pair
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
 recipeMap.forEach( (value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc
 });
@@ -197,21 +189,12 @@ Un `Set` est une collection de valeurs, où chaque valeur ne peut apparaître qu
 
 Ses principales méthodes sont :
 
-<<<<<<< HEAD
-- `new Set(iterable)` -- créer le set, éventuellement à partir d'un tableau de valeurs (tout itérable fera l'affaire).
+- `new Set(iterable)` -- crée le set et, si un objet `iterable` est fourni (généralement un tableau), en copie les valeurs dans le set
 - `set.add(value)` -- ajoute une valeur, retourne le set lui-même.
 - `set.delete(value)` -- supprime la valeur, renvoie `true` si la `value` existait au moment de l'appel, sinon `false`.
-- `set.has(value)` -- renvoie `true` si la valeur existe dans l'ensemble, sinon `false`.
+- `set.has(value)` -- renvoie `true` si la valeur existe dans le set sinon `false`.
 - `set.clear()` -- supprime tout du set.
 - `set.size` -- est le nombre d'éléments.
-=======
-- `new Set(iterable)` -- creates the set, and if an `iterable` object is provided (usually an array), copies values from it into the set.
-- `set.add(value)` -- adds a value, returns the set itself.
-- `set.delete(value)` -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
-- `set.has(value)` -- returns `true` if the value exists in the set, otherwise `false`.
-- `set.clear()` -- removes everything from the set.
-- `set.size` -- is the elements count.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 Par exemple, nous avons des visiteurs qui viennent et nous aimerions nous souvenir de tout le monde. Mais les visites répétées ne doivent pas conduire à des doublons. Un visiteur doit être "compté" une seule fois.
 
@@ -256,15 +239,9 @@ set.forEach((value, valueAgain, set) => {
 });
 ```
 
-<<<<<<< HEAD
-Notez la chose amusante. La fonction `forEach` dans le `Set` a 3 arguments : une valeur, puis **à nouveau une valeur**, puis l'objet cible. En effet, la même valeur apparaît deux fois dans les arguments.
+Notez la chose amusante. La fonction callback passée à `forEach` a 3 arguments: une valeur, puis *à nouveau une valeur*, puis l'objet cible. En effet, la même valeur apparaît deux fois dans les arguments.
 
-C’est pour la compatibilité avec `Map` où `forEach` a trois arguments. Cela semble un peu étrange, à coup sûr. Mais ça peut aider à remplacer `Map` avec `Set` dans certains cas plus simplement, et vice versa.
-=======
-Note the funny thing. The callback function passed in `forEach` has 3 arguments: a value, then *again a value*, and then the target object. Indeed, the same value appears in the arguments twice.
-
-That's for compatibility with `Map` where the callback passed `forEach` has three arguments. Looks a bit strange, for sure. But may help to replace `Map` with `Set` in certain cases with ease, and vice versa.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+C’est pour la compatibilité avec `Map` où le callback passé à `forEach` a trois arguments. Cela semble un peu étrange, à coup sûr. Mais peut aider à remplacer facilement `Map` avec `Set` dans certains cas, et vice versa.
 
 Les mêmes méthodes que `Map` a utilisées pour les itérateurs sont également supportées :
 
