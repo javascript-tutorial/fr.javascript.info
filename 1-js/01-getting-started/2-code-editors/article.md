@@ -8,28 +8,18 @@ Il existe deux archétypes: IDE et les éditeurs légers. Beaucoup de personnes 
 
 Le terme [IDE](https://fr.wikipedia.org/wiki/Environnement_de_développement) (Integrated Development Environment) signifie un éditeur puissant avec de nombreuses fonctionnalités qui fonctionne généralement sur un "projet entier". Comme son nom l’indique, ce n’est pas seulement un éditeur, mais un environnement de développement complet.
 
-Un IDE charge le projet (peut contenir de nombreux fichiers), permet la navigation entre les fichiers, fournit une auto-complétion basée sur l'ensemble du projet (pas seulement le fichier ouvert), s'intègre à un système de gestion de version (comme git), un environnement de test et d’autres éléments au niveau du projet.
+Un IDE charge le projet (peut contenir de nombreux fichiers), permet la navigation entre les fichiers, fournit une auto-complétion basée sur l'ensemble du projet (pas seulement le fichier ouvert), s'intègre à un système de gestion de version (comme [git](https://git-scm.com/)), un environnement de test et d’autres éléments au niveau du projet.
 
 Si vous n'avez pas encore pensé à sélectionner un IDE, examinez les variantes suivantes :
 
-<<<<<<< HEAD
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
 - [WebStorm](http://www.jetbrains.com/webstorm/) pour le développement frontend et autres éditeurs de la même société si vous avez besoin de langues supplémentaires.
-- Visual Studio convient parfaitement si vous êtes un développeur .NET, une version gratuite est disponible ([Visual Studio Community](https://www.visualstudio.com/vs/community/))
-- [Netbeans](http://netbeans.org/).
 
-Tous les IDE, à l'exception de Visual Studio, sont disponibles sous Windows, MacOs et Linux. Visual Studio ne fonctionne pas sous Linux.
+Pour Windows, il existe également "Visual Studio", à ne pas confondre avec "Visual Studio Code ". "Visual Studio" est un éditeur payant et puissant, uniquement conçu pour Windows, bien adapté à la plate-forme .NET. C’est aussi bon en JavaScript. Il y a aussi une version gratuite [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
 La plupart des IDE sont payants, mais ont une période d'essai. Leur coût est généralement négligeable par rapport au salaire d’un développeur qualifié, alors choisissez le meilleur pour vous.
 
 ## Les éditeurs légers
-=======
-- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
-- [WebStorm](http://www.jetbrains.com/webstorm/) (cross-platform, paid).
-
-For Windows, there's also "Visual Studio", not to be confused with "Visual Studio Code". "Visual Studio" is a paid and mighty Windows-only editor, well-suited for the .NET platform. It's also good at JavaScript. There's also a free version [Visual Studio Community](https://www.visualstudio.com/vs/community/).
-
-Many IDEs are paid, but have a trial period. Their cost is usually negligible compared to a qualified developer's salary, so just choose the best one for you.
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 "Les éditeurs légers" ne sont pas aussi puissants que les IDE, mais ils sont rapides, élégants et simples.
 
@@ -41,33 +31,16 @@ En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris
 
 Les options suivantes méritent votre attention :
 
-- [Visual Studio Code](https://code.visualstudio.com/) (multiplateforme, gratuit).
 - [Atom](https://atom.io/) (multiplateforme, gratuit).
 - [Sublime Text](http://www.sublimetext.com) (multiplateforme, payant).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuit).
 - [Vim](http://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.
 
-<<<<<<< HEAD
-## Mes favoris
 
-La préférence personnelle de l'auteur est d'avoir à la fois un IDE pour les projets et un éditeur léger pour l'édition rapide et facile des fichiers.
-
-J'utilise :
-
-- [WebStorm](http://www.jetbrains.com/webstorm/) pour JS, et s'il y a une autre langue dans le projet, je passe alors à l'une des autres offres Jetbrains répertoriées ci-dessus.
-- En tant qu'éditeur léger -- [Sublime Text](http://www.sublimetext.com) et [Atom](https://atom.io/).
 
 ## Ne discutons pas
 
-Les éditeurs des listes ci-dessus sont ceux que mes amis ou moi-même, que je considère comme de bons développeurs, utilisent depuis longtemps et en sont satisfaits.
-=======
-- [Atom](https://atom.io/) (cross-platform, free).
-- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
-- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
-- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
-
-## Let's not argue
->>>>>>> 027933531e121650120f7e8385f691de99af12d2
+Les éditeurs des listes ci-dessus sont ceux que moi-même ou mes amis, que je considère comme de bons développeurs, utilisent depuis longtemps et en sont satisfaits.
 
 Il y a d'autres grands éditeurs dans notre vaste monde. Veuillez choisir celui que vous aimez le plus.
 
