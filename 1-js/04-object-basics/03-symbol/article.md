@@ -72,13 +72,9 @@ alert(id.description); // id
 
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
 
-<<<<<<< HEAD
-Par exemple, si nous voulons stocker un "identifiant" pour l'objet `user`, nous pouvons utiliser un symbole comme clé pour cela :
-=======
-For instance, if we're working with `user` objects, that belong to a third-party code and don't have any `id` field. We'd like to add identifiers to them.
+Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers et ne possèdent pas de champ` id`. Nous aimerions leur ajouter des identificateurs.
 
-Let's use a symbol key for it:
->>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
+Utilisons une clé symbole pour cela :
 
 ```js run
 let user = { name: "John" };
@@ -90,15 +86,11 @@ alert( user[id] ); // nous pouvons accéder aux données en utilisant le symbole
 
 Quel est l’avantage de l’utilisation de `Symbol("id")` sur une chaîne de caractères `"id"` ?
 
-<<<<<<< HEAD
 Poussons un peu plus loin l’exemple pour voir cela.
 
-Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
-=======
-As `user` objects belongs to another code, and that code also works with them, we shouldn't just add any fields to it. That's unsafe. But a symbol cannot be accessed occasionally, the third-party code probably won't even see it, so it's probably all right to do.
+Comme les objets `user` appartiennent à un autre code et que ce code fonctionne également avec eux, nous ne devrions pas simplement y ajouter de champs. C’est dangereux. Cependant, il est parfois impossible d’accéder à un symbole. Le code tiers ne le verra probablement même pas. C’est donc probablement tout à fait acceptable.
 
-Also, imagine that another script wants to have its own identifier inside `user`, for its own purposes. That may be another JavaScript library, so that the scripts are completely unaware of each other.
->>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
+Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
 
 Ensuite, ce script peut créer son propre `symbol("id")`, comme ceci :
 
