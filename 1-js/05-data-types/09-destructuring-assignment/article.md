@@ -2,9 +2,17 @@
 
 Les deux structures de données les plus utilisées en JavaScript sont `Object` et `Array`.
 
+<<<<<<< HEAD
 Les objets nous permettent de regrouper de nombreuses informations dans une seule entité et les tableaux nous permettent de stocker des collections ordonnées. Nous pouvons donc créer un objet ou un tableau et le traiter comme une seule entité, ou peut-être le transmettre à un appel de fonction.
 
 *L'affectation par décomposition* est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un groupe de variables, car elles sont parfois plus pratiques. La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres et des valeurs par défaut. Nous verrons bientôt comment elles seront gérées.
+=======
+Objects allow us to create a single entity that stores data items by key, and arrays allow us to gather data items into an ordered collection.
+
+But when we pass those to a function, it may need not an object/array as a whole, but rather individual pieces.
+
+*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient. Destructuring also works great with complex functions that have a lot of parameters, default values, and so on.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ## Décomposition d'un tableau
 
@@ -15,7 +23,13 @@ Un exemple de la façon dont un tableau est décomposé en variables :
 let arr = ["Ilya", "Kantor"]
 
 *!*
+<<<<<<< HEAD
 // l'affectation par décomposition
+=======
+// destructuring assignment
+// sets firstName = arr[0]
+// and surname = arr[1]
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 let [firstName, surname] = arr;
 */!*
 
@@ -54,7 +68,11 @@ let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic
 alert( title ); // Consul
 ```
 
+<<<<<<< HEAD
 Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisième est attribué à `title` et le reste du tableau est également ignoré.
+=======
+In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array items is also skipped (as there are no variables for them).
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 ````
 
 ````smart header="Fonctionne avec n'importe quel itérable à droite"
@@ -111,7 +129,7 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
-for (let [key, value] of user.entries()) {
+for (let [key, value] of user) {
 */!*
   alert(`${key}:${value}`); // name:John, ensuite age:30
 }
@@ -209,7 +227,11 @@ alert(height); // 200
 Les propriétés `options.title`, `options.width` et `options.height` sont affectés aux variables correspondantes. L'ordre n'a pas d'importance. Cela fonctionne aussi :
 
 ```js
+<<<<<<< HEAD
 // changé l'ordre des propriétés dans let {...}
+=======
+// changed the order in let {...}
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 ```
 
@@ -289,11 +311,19 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
+<<<<<<< HEAD
 ### L'opérateur rest
+=======
+### The rest pattern "..."
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Et si l'objet a plus de propriétés que de variables ? Peut-on en prendre puis assigner le "rest" quelque part ?
 
+<<<<<<< HEAD
 La spécification d'utilisation de l'opérateur rest (trois points) ici est presque conforme à la norme, mais la plupart des navigateurs ne la prennent pas encore en charge.
+=======
+We can use the rest pattern, just like we did with arrays. It's not supported by some older browsers (IE, use Babel to polyfill it), but works in modern ones.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Cela ressemble à ceci :
 
@@ -305,6 +335,8 @@ let options = {
 };
 
 *!*
+// title = property named title
+// rest = object with the rest of properties
 let {title, ...rest} = options;
 */!*
 
@@ -315,8 +347,13 @@ alert(rest.width);   // 100
 
 
 
+<<<<<<< HEAD
 ````smart header="Gotcha without `let`"
 Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
+=======
+````smart header="Gotcha if there's no `let`"
+In the examples above variables were declared right in the assignment: `let {…} = {…}`. Of course, we could use existing variables too, without `let`. But there's a catch.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Cela ne fonctionnera pas :
 ```js run
@@ -337,13 +374,17 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
+<<<<<<< HEAD
 Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper toute la tâche entre parenthèses `(...)` :
+=======
+To show JavaScript that it's not a code block, we can make it a part of an expression by wrapping in parentheses `(...)`:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ```js run
 let title, width, height;
 
 // okay now
-*!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
+*!*(*/!*{title, width, height}*!*)*/!* = {title: "Menu", width: 200, height: 100};
 
 alert( title ); // Menu
 ```
@@ -366,7 +407,11 @@ let options = {
   extra: true    // quelque chose de plus que nous ne pourrons pas détruire
 };
 
+<<<<<<< HEAD
 // affectation par décomposition sur plusieurs lignes pour la clarté
+=======
+// destructuring assignment split in multiple lines for clarity
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 let {
   size: { // mettre la taille ici
     width,
@@ -391,9 +436,14 @@ Notez que la `size` et les `items` eux-mêmes ne sont pas décomposés.
 
 Finalement nous avons `width`, `height`, `item1`, `item2` et `title` à partir de la valeur par défaut.
 
+<<<<<<< HEAD
 Cela arrive souvent avec des affections par décomposition. Nous avons un objet complexe avec de nombreuses propriétés et voulons extraire uniquement ce dont nous avons besoin.
 
 Même ici ça arrive :
+=======
+If we have a complex object with many properties, we can extract only what we need:
+
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 ```js
 // prendre la taille dans sa totalité dans une variable, ignorer le reste
 let { size } = options;
@@ -401,7 +451,11 @@ let { size } = options;
 
 ## Paramètres de fonction intelligente
 
+<<<<<<< HEAD
 Il peut arriver qu'une fonction ait plusieurs paramètres, dont la plupart sont facultatifs. C’est particulièrement vrai pour les interfaces utilisateur. Imaginez une fonction qui crée un menu. Il peut avoir une largeur, une hauteur, un titre, une liste d’articles, etc.
+=======
+There are times when a function has many parameters, most of which are optional. That's especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, items list and so on.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Voici une mauvaise façon d’écrire ce genre de fonction :
 
@@ -503,12 +557,18 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 - L'affectation par décomposition permet de mapper instantanément un objet ou un tableau sur de nombreuses variables.
 - La syntaxe de l'objet :
     ```js
-    let {prop : varName = default, ...} = object
+    let {prop : varName = default, ...rest} = object
     ```
 
     Cela signifie que la propriété `prop` doit aller dans la variable `varName` et que, si aucune propriété de ce type n'existe, la valeur `default` doit être utilisée.
 
+<<<<<<< HEAD
 - La syntaxe du tableau :
+=======
+    Object properties that have no mapping are copied to the `rest` object.
+
+- The array syntax:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
     ```js
     let [item1 = default, item2, ...rest] = array

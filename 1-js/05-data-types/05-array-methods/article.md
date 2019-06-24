@@ -11,7 +11,11 @@ Nous connaissons déjà des méthodes qui ajoutent et suppriment des éléments 
 - `arr.shift()` -- supprime un élément au début,
 - `arr.unshift(...items)` -- ajouter des éléments au début.
 
+<<<<<<< HEAD
 En voici quelques autres.
+=======
+Here are a few others.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ### splice ()
 
@@ -238,9 +242,15 @@ Ce sont des méthodes pour rechercher quelque chose dans un tableau.
 
 Les méthodes [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) et [arr.includes](mdn:js/Array/includes) ont la même syntaxe et utilisent essentiellement la même chose que leurs équivalents de chaîne, mais fonctionnent sur des éléments au lieu de caractères:
 
+<<<<<<< HEAD
 - `arr.indexOf(item, from)` recherche l'élément `item` à partir de l'index `from`, et retourne l'index où il a été trouvé, sinon il retourne `-1`.
 - `arr.lastIndexOf(item, from)` -- pareil, mais regarde de droite à gauche.
 - `arr.includes(item, from)` -- recherche l'élément `item` commençant par l'index `from`, retourne `true` si il est trouvé.
+=======
+- `arr.indexOf(item, from)` -- looks for `item` starting from index `from`, and returns the index where it was found, otherwise `-1`.
+- `arr.lastIndexOf(item, from)` -- same, but looks for from right to left.
+- `arr.includes(item, from)` -- looks for `item` starting from index `from`, returns `true` if found.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Par exemple:
 
@@ -418,7 +428,11 @@ alert(arr);  // *!*1, 2, 15*/!*
 
 Maintenant, ça fonctionne comme nous l'avons prévu.
 
+<<<<<<< HEAD
 Laissons de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non? Il peut contenir des nombres, des chaînes, des éléments HTML ou autre. Nous avons donc un ensemble de quelque chose. Pour le trier, nous avons besoin d’une fonction de classement qui sache comparer ses éléments. La valeur par défaut est un ordre de chaîne.
+=======
+Let's step aside and think what's happening. The `arr` can be array of anything, right? It may contain numbers or strings or HTML elements or whatever. We have a set of *something*. To sort it, we need an *ordering function* that knows how to compare its elements. The default is a string order.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 La méthode `arr.sort(fn)` intégre une implémentation de l'algorithme de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement exact (c'est un [tri rapide optimisé](https://en.wikipedia.org/wiki/Quicksort) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
 
@@ -474,7 +488,11 @@ Il retourne également le tableau `arr` après l'inversion.
 
 ### split et join
 
+<<<<<<< HEAD
 Voici une situation réele. Nous écrivons une application de messagerie et la personne entre dans la liste des destinataires délimités par des virgules: John, Pete, Mary. Mais pour nous, un tableau de noms serait beaucoup plus confortable qu'une simple chaîne. Alors, comment l'obtenir?
+=======
+Here's the situation from real life. We are writing a messaging app, and the person enters the comma-delimited list of receivers: `John, Pete, Mary`. But for us an array of names would be much more comfortable than a single string. How to get it?
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 La méthode [str.split(delim)](mdn:js/String/split) fait exactement cela. Il divise la chaîne en un tableau par le `délimiteur` donné.
 
@@ -548,7 +566,11 @@ Jusqu'ici, c'est pareil que `forEach/map`. Mais il y a un autre argument:
 
 Le moyen le plus simple pour comprendre c'est avec un exemple.
 
+<<<<<<< HEAD
 Ici nous obtenons une somme de tableau sur une ligne:
+=======
+Here we get a sum of an array in one line:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -681,7 +703,11 @@ Dans l'appel ci-dessus, nous utilisons `user.younger` en tant que filtre et nous
 
 ## Résumé
 
+<<<<<<< HEAD
 Un cheatsheet des méthodes de tableau:
+=======
+A cheat sheet of array methods:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 - Pour ajouter/supprimer des éléments:
   - `push(...items)` -- ajoute des éléments à la fin,
@@ -725,8 +751,14 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
 Pour la liste complète, voir le manuel [manuel](mdn:js/Array).
 
+<<<<<<< HEAD
 En premier lieu, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
 
 Parcourez le cheatsheet et essayer de vous en souvenir. Ensuite, faites les exercices de ce chapitre afin de vous familiariser avec les méthodes de tableau.
 
 Ensuite, chaque fois que vous avez besoin de faire quelque chose avec un tableau, et que vous ne savez plus comment - revenez ici, regardez le cheatsheet et trouvez la bonne méthode. Des exemples vous aideront à l'écrire correctement. Bientôt, à force de pratiquer, vous vous souviendrez automatiquement des méthodes, sans efforts particuliers.
+=======
+Look through the cheat sheet just to be aware of them. Then solve the tasks of this chapter to practice, so that you have experience with array methods.
+
+Afterwards whenever you need to do something with an array, and you don't know how -- come here, look at the cheat sheet and find the right method. Examples will help you to write it correctly. Soon you'll automatically remember the methods, without specific efforts from your side.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
