@@ -1,65 +1,65 @@
 
-# The old "var"
+# L'ancien "var"
 
-In the very first chapter about [variables](info:variables), we mentioned three ways of variable declaration:
+Dans le tout premier chapitre à propos de [variables](info:variables), nous avons mentionné trois façons pour la déclaration de variables:
 
 1. `let`
 2. `const`
 3. `var`
 
-`let` and `const` behave exactly the same way in terms of Lexical Environments.
+`let` et `const` agissent exactement de la même façon en ce qui concerne les environnements lexicaux (Lexical Environments).
 
-But `var` is a very different beast, that originates from very old times. It's generally not used in modern scripts, but still lurks in the old ones.
+Cependant, `var` est une bête d'une autre nature qui provient des temps très anciens. Ce n'est pas généralement utilisé dans les scripts modernes, mais elle peut se retrouver encore dans les anciens scripts.
 
-If you don't plan on meeting such scripts you may even skip this chapter or postpone it, but then there's a chance that it bites you later.
+Si vous ne planifiez pas rencontrer ces types de scripts, vous pouvez même sauter ce chapitre ou le remettre à plus tard, mais il y a une chance que cela peut vous causer des ennuis dans le futur.
 
-From the first sight, `var` behaves similar to `let`. That is, declares a variable:
+Au premier regard, `var` agit de manière similaire à `let`. C'est à dire, elle déclare une variable:
 
 ```js run
 function sayHi() {
-  var phrase = "Hello"; // local variable, "var" instead of "let"
+  var phrase = "Hello"; // variable locale, "var" au lieu de "let"
 
   alert(phrase); // Hello
 }
 
 sayHi();
 
-alert(phrase); // Error, phrase is not defined
+alert(phrase); // Erreur, phrase n'est pas définie
 ```
 
-...But here are the differences.
+...mais voici les différences.
 
-## "var" has no block scope
+## "var" n'a pas de portée limitée aux blocs
 
-`var` variables are either function-wide or global, they are visible through blocks.
+Les variables `var` sont globales ou à l'échelle de la fonction. En autres mots, elles sont visibles à travers les blocs.
 
-For instance:
+Par exemple:
 
 ```js run
 if (true) {
-  var test = true; // use "var" instead of "let"
+  var test = true; // utilise "var" au lieu "let"
 }
 
 *!*
-alert(test); // true, the variable lives after if
+alert(test); // vrai, la variable existe après if
 */!*
 ```
 
-`var` ignores code blocks, so we've got a global variable `test`.
+`var` ignore les blocs de code, alors nous avons une variable globale `test`.
 
-If we used `let test` instead of `var test`, then the variable would only be visible inside `if`:
+Si nous aurions utilisé `let test` au lieu de `var test`, la variable aurait seulement été visible à l'intérieur de `if`:
 
 ```js run
 if (true) {
-  let test = true; // use "let"
+  let test = true; // utilise "let"
 }
 
 *!*
-alert(test); // Error: test is not defined
+alert(test); // Erreur: test n'est pas défini
 */!*
 ```
 
-The same thing for loops: `var` cannot be block- or loop-local:
+Même principe pour les boucles: `var` ne peut pas être locale pour les blocs ni les boucles :
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -67,11 +67,11 @@ for (var i = 0; i < 10; i++) {
 }
 
 *!*
-alert(i); // 10, "i" is visible after loop, it's a global variable
+alert(i); // 10, "i" est visible après boucle, c'est une variable globale
 */!*
 ```
 
-If a code block is inside a function, then `var` becomes a function-level variable:
+Si un bloc de code est à l'intérieur d'une fonction, `var` devient une variable à l'échelle de la fonction :
 
 ```js run
 function sayHi() {
@@ -79,22 +79,22 @@ function sayHi() {
     var phrase = "Hello";
   }
 
-  alert(phrase); // works
+  alert(phrase); // fonctionne
 }
 
 sayHi();
-alert(phrase); // Error: phrase is not defined (Check the Developer Console)
+alert(phrase); // Erreur : phrase n'est pas définie (vérifiez le Developer Console)
 ```
 
-As we can see, `var` pierces through `if`, `for` or other code blocks. That's because a long time ago in JavaScript blocks had no Lexical Environments. And `var` is a remnant of that.
+Comme nous pouvons constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
 
-## "var" declarations are processed at the function start
+## Les déclarations "var" sont traitées au début de la fonction
 
-`var` declarations are processed when the function starts (or script starts for globals).
+Les déclarations `var` sont traitées quand la fonction commence (ou quand le script commence pour le cas global).
 
-In other words, `var` variables are defined from the beginning of the function, no matter where the definition is (assuming that the definition is not in the nested function).
+En autres mots, les variables `var` sont définies au début de la fonction, peu importe où la définition se retrouve (présumant que la définition n'est pas dans une fonction imbriquée).
 
-So this code:
+Alors ce code:
 
 ```js run
 function sayHi() {
@@ -109,7 +109,7 @@ function sayHi() {
 sayHi();
 ```
 
-...Is technically the same as this (moved `var phrase` above):
+...est techniquement identique à ceci (nous avons simplement bougé `var phrase` du code susmentionné):
 
 ```js run
 function sayHi() {
@@ -124,7 +124,7 @@ function sayHi() {
 sayHi();
 ```
 
-...Or even as this (remember, code blocks are ignored):
+...ou même ceci (souvenez-vous, les blocs de code sont ignorés):
 
 ```js run
 function sayHi() {
@@ -141,13 +141,13 @@ function sayHi() {
 sayHi();
 ```
 
-People also call such behavior "hoisting" (raising), because all `var` are "hoisted" (raised) to the top of the function.
+Certains nomment ce comportement "hoisting" (hisser) parce que toutes les `var` sont "hoisted" (hissées) jusqu'en haut de la fonction.
 
-So in the example above, `if (false)` branch never executes, but that doesn't matter. The `var` inside it is processed in the beginning of the function, so at the moment of `(*)` the variable exists.
+Alors dans l'exemple susmentionné, la branche `if (false)` n'est jamais effectuée, mais ce n'est pas grave. La `var` à l'intérieur de cette branche est traitée au début de la fonction, alors au moment `(*)`, la variable existe.
 
-**Declarations are hoisted, but assignments are not.**
+**Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
-That's better to demonstrate with an example, like this:
+Il convient mieux de démontrer cet énoncé avec un exemple, comme ceci :
 
 ```js run
 function sayHi() {
@@ -161,40 +161,40 @@ function sayHi() {
 sayHi();
 ```
 
-The line `var phrase = "Hello"` has two actions in it:
+La ligne `var phrase = "Hello"` contient deux actions :
 
-1. Variable declaration `var`
-2. Variable assignment `=`.
+1. Déclaration de la variable `var`
+2. Affectation de la variable `=`.
 
-The declaration is processed at the start of function execution ("hoisted"), but the assignment always works at the place where it appears. So the code works essentially like this:
+La déclaration est traitée au début de l'exécution de la fonction ("hoisted"), mais l'affectation fonctionne toujours à l'endroit où elle apparaît. Essentiellement, le code fonctionne comme ceci :
 
 ```js run
 function sayHi() {
 *!*
-  var phrase; // declaration works at the start...
+  var phrase; // déclaration fonctionne au début...
 */!*
 
   alert(phrase); // undefined
 
 *!*
-  phrase = "Hello"; // ...assignment - when the execution reaches it.
+  phrase = "Hello"; // ...affectation - quand l'exécution y parvient.
 */!*
 }
 
 sayHi();
 ```
 
-Because all `var` declarations are processed at the function start, we can reference them at any place. But variables are undefined until the assignments.
+Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où. Mais les variables sont indéfinies jusqu'aux affectations.
 
-In both examples above `alert` runs without an error, because the variable `phrase` exists. But its value is not yet assigned, so it shows `undefined`.
+Dans les deux exemples susmentionnés, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
 
-## Summary
+## Sommaire
 
-There are two main differences of `var` compared to `let/const`:
+Il y a deux différences majeures entre `var` et `let/const`:
 
-1. `var` variables have no block scope, they are visible minimum at the function level.
-2. `var` declarations are processed at function start (script start for globals).
+1. Les variables `var` n'ont pas de portée limitée aux blocs. Elles sont, au minimum, visibles au niveau de la fonction.
+2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
 
-There's one more minor difference related to the global object, we'll cover that in the next chapter.
+Il y a une autre différence mineure associée à l'objet global, mais nous traiterons ce point dans le prochain chapitre.
 
-These differences make `var` worse than `let` most of the time. Block-level variables is such a great thing. That's why `let` was introduced in the standard long ago, and is now a major way (along with `const`) to declare a variable.
+Ces différences rendent `var` pire que `let` dans la plupart des cas. Les variables au niveau des blocs sont extraordinaires. C'est pourquoi `let` a été introduit au standard il y a longtemps et c'est maintenant un moyen majeur (avec `const`) pour déclarer une variable.
