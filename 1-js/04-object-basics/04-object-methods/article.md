@@ -15,7 +15,11 @@ Les actions sont représentées en JavaScript par des fonctions dans les propri�
 
 ## Exemples de méthodes
 
+<<<<<<< HEAD
 Pour commencer, apprenons à `user` à dire bonjour :
+=======
+For a start, let's teach the `user` to say hello:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ```js run
 let user = {
@@ -257,11 +261,19 @@ user.hi(); // John (le simple appel fonctionne)
 */!*
 ```
 
+<<<<<<< HEAD
 Sur la dernière ligne, un opérateur ternaire choisit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
 
 La méthode est immédiatement appelée avec des parenthèses `()`. Mais ça ne fonctionne pas correctement !
 
 Vous pouvez voir que l'appel entraîne une erreur, la valeur de `"this"` à l'intérieur de l'appel devient `undefined`.
+=======
+On the last line there is a conditinal operator that chooses either `user.hi` or `user.bye`. In this case the result is `user.hi`.
+
+Then the method is immediately called with parentheses `()`. But it doesn't work right!
+
+As you can see, the call results in an error, because the value of `"this"` inside the call becomes `undefined`.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Cela fonctionne (méthode de point d'objet) :
 ```js
@@ -305,9 +317,15 @@ Le type de référence est un "type de spécification". Nous ne pouvons pas l’
 
 La valeur de type de référence est une combinaison de trois valeurs `(base, name, strict)`, où :
 
+<<<<<<< HEAD
 - `base` est l'objet.
 - `name` est la propriété.
 - `strict` est vrai si `use strict` est en vigueur.
+=======
+- `base` is the object.
+- `name` is the property name.
+- `strict` is true if `use strict` is in effect.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, mais une valeur de type de référence. Pour `user.hi` en mode strict c'est :
 
@@ -318,7 +336,13 @@ Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, ma
 
 Lorsque des parenthèses `()` sont appelées sur le type de référence, elles reçoivent les informations complètes sur l'objet et sa méthode, et peuvent définir le bon `this` (`=user` dans ce cas).
 
+<<<<<<< HEAD
 Toute autre opération, telle que l'affectation `hi = user.hi`, supprime le type de référence dans son ensemble, prend la valeur de `user.hi` (une fonction) et la transmet. Donc, toute opération ultérieure "perd" `this`.
+=======
+Reference type is a special "intermediary" internal type, with the purpose to pass information from dot `.` to calling parentheses `()`.
+
+Any other operation like assignment `hi = user.hi` discards the reference type as a whole, takes the value of `user.hi` (a function) and passes it on. So any further operation "loses" `this`.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 En conséquence, la valeur de this n’est transmise correctement que si la fonction est appelée directement à l’aide d’une syntaxe point `obj.method()` ou de crochets `obj[méthode]()` (ils font la même chose ici). Plus loin dans ce tutoriel, nous allons apprendre différentes manières de résoudre ce problème, telles que [func.bind()](/bind#solution-2-bind).
 
