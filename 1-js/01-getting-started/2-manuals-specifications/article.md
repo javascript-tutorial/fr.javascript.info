@@ -1,43 +1,43 @@
 
-# Manuals and specifications
+# Manuels et spécifications
 
-This book is a *tutorial*. It aims to help you gradually learn the language. But once you're familiar with the basics, you'll need other sources.
-
-
-## Specification
-
-**The ECMA-262 specification** contains the most in-depth, detailed and formalized information about JavaScript. It defines the language.
-
-But being that formalized, it's difficult to understand at first. So if you need the most trustworthy source of information about the language details, it's the right place. But it's not for everyday use.
-
-The latest draft is at <https://tc39.es/ecma262/>.
-
-To read about bleeding-edge features, that are not yet widely supported, see proposals at <https://github.com/tc39/proposals>.
-
-Also, if you're in developing for the browser, then there are other specs covered in the [second part](info:browser-environment) of the tutorial.
-
-## Manuals
-
-- **MDN (Mozilla) JavaScript Reference** is a manual with examples and other information. It's great to get in-depth information about individual language functions, methods etc.
-
-    One can find it at <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
-
-    Although, it's often best to use an internet search instead. Just use "MDN [term]" in the query, e.g. <https://google.com/search?q=MDN+parseInt> to search for `parseInt` function.
+Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement le langage. Mais une fois que vous maîtriserez les bases, vous aurez besoin d’autres ressources.
 
 
-- **MSDN** – Microsoft manual with a lot of information, including JavaScript (often referrerd to as JScript). If one needs something specific to Internet Explorer, better go there: <http://msdn.microsoft.com/>.
+## Spécification
 
-    Also, we can use an internet search with phrases such as "RegExp MSDN" or "RegExp MSDN jscript".
+**La spécification ECMA-262** contient les informations les plus détaillées et formalisées sur JavaScript. C'est elle qui définit le langage.
 
-## Feature support
+Mais cela étant formalisé, elle est difficile à comprendre au début. Si vous avez besoin de la source d’informations la plus fiable sur les détails du langage, c’est le bon endroit. Mais ce n’est pas très pratique pour un usage quotidien.
 
-JavaScript is a developing language, new features get added regularly.
+La dernière version de la spécification est disponible à cette adresse : <https://tc39.es/ecma262/>.
 
-To see their support among browser-based and other engines, see:
+Pour en savoir plus sur les fonctionnalités à venir, vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
 
-- <http://caniuse.com> - per-feature tables of support, e.g. to see which engines support modern cryptography functions: <http://caniuse.com/#feat=cryptography>.
-- <https://kangax.github.io/compat-table> - a table with language features and engines that support those or don't support.
+Si vous développez spécifiquement pour le navigateur, il existe d’autres spécifications couvertes dans la [seconde partie](info:browser-environment) du tutoriel.
 
-All these resources are useful in real-life development, as they contain valuable information about language details, their support etc.
+## Manuels
 
-Please remember them (or this page) for the cases when you need in-depth information about a particular feature.
+- **La référence MDN (Mozilla) JavaScript** est un manuel avec des exemples et d’autres informations. C’est une excellente source pour obtenir des informations détaillées sur les fonctions linguistiques, les méthodes, etc.
+
+    On peut la trouver à cette adresse : <https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference>.
+
+  Cependant, il est souvent préférable d’utiliser une recherche sur Internet. Utilisez simplement "MDN [terme]" dans la requête, par exemple <https://google.com/search?q=MDN+parseInt> pour rechercher la fonction `parseInt`.
+
+
+- **MSDN** – Manuel Microsoft contenant de nombreuses informations, y compris sur JavaScript (souvent appelé JScript). Si vous avez besoin de quelque chose de spécifique à Internet Explorer, c'est l'endroit qu'il vous faut : <http://msdn.microsoft.com/>.
+
+    Nous pouvons également utiliser une recherche sur Internet avec des expressions telles que "RegExp MSDN" ou encore "RegExp MSDN jscript".
+
+## Support des fonctionnalités
+
+JavaScript est un langage en développement, de nouvelles fonctionnalités sont ajoutées régulièrement.
+
+Pour voir si elles sont supportées dans les moteurs, au sein des navigateurs et autres, voir :
+
+- <http://caniuse.com> - tables de prise en charge par fonctionnalité, par exemple pour voir quels moteurs supportent les fonctions de cryptographie modernes : <http://caniuse.com/#feat=cryptography>.
+- <https://kangax.github.io/compat-table> - un tableau avec les fonctionnalités linguistiques et les moteurs qui les prennent en charge ou non.
+
+Toutes ces ressources sont utiles dans le quotidien des développeurs, parce qu'elles contiennent des informations précieuses sur les fonctionnalités du langage, leur support, etc.
+
+Veuillez vous en souvenir (ou de cette page) pour les cas où vous avez besoin d'informations détaillées sur une fonctionnalité particulière.
