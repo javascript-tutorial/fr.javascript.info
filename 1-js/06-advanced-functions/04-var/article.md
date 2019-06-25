@@ -1,7 +1,7 @@
 
 # L'ancien "var"
 
-Dans le tout premier chapitre à propos de [variables](info:variables), nous avons mentionné trois façons pour la déclaration de variables:
+Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable:
 
 1. `let`
 2. `const`
@@ -31,7 +31,7 @@ alert(phrase); // Erreur, phrase n'est pas définie
 
 ## "var" n'a pas de portée limitée aux blocs
 
-Les variables `var` sont globales ou à l'échelle de la fonction. En autres mots, elles sont visibles à travers les blocs.
+Les variables `var` sont globales ou à l'échelle de la fonction. En d'autres mots, elles sont visibles à travers les blocs.
 
 Par exemple:
 
@@ -67,7 +67,7 @@ for (var i = 0; i < 10; i++) {
 }
 
 *!*
-alert(i); // 10, "i" est visible après boucle, c'est une variable globale
+alert(i); // 10, "i" est visible après la boucle, c'est une variable globale
 */!*
 ```
 
@@ -83,16 +83,16 @@ function sayHi() {
 }
 
 sayHi();
-alert(phrase); // Erreur : phrase n'est pas définie (vérifiez le Developer Console)
+alert(phrase); // Erreur : phrase n'est pas définie (vérifiez la console développeur)
 ```
 
-Comme nous pouvons constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
+Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
 
 ## Les déclarations "var" sont traitées au début de la fonction
 
 Les déclarations `var` sont traitées quand la fonction commence (ou quand le script commence pour le cas global).
 
-En autres mots, les variables `var` sont définies au début de la fonction, peu importe où la définition se retrouve (présumant que la définition n'est pas dans une fonction imbriquée).
+En d'autres mots, les variables `var` sont définies au début de la fonction, peu importe où la définition se retrouve (présumant que la définition n'est pas dans une fonction imbriquée).
 
 Alors ce code:
 
@@ -109,7 +109,7 @@ function sayHi() {
 sayHi();
 ```
 
-...est techniquement identique à ceci (nous avons simplement bougé `var phrase` du code susmentionné):
+...est techniquement identique à ceci (nous avons simplement bougé `var phrase` du code juste avant):
 
 ```js run
 function sayHi() {
@@ -143,11 +143,11 @@ sayHi();
 
 Certains nomment ce comportement "hoisting" (hisser) parce que toutes les `var` sont "hoisted" (hissées) jusqu'en haut de la fonction.
 
-Alors dans l'exemple susmentionné, la branche `if (false)` n'est jamais effectuée, mais ce n'est pas grave. La `var` à l'intérieur de cette branche est traitée au début de la fonction, alors au moment `(*)`, la variable existe.
+Alors dans l'exemple au dessus, la branche `if (false)` n'est jamais exécutée, mais ce n'est pas grave. La `var` à l'intérieur de cette branche est traitée au début de la fonction, alors au moment `(*)`, la variable existe.
 
 **Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
-Il convient mieux de démontrer cet énoncé avec un exemple, comme ceci :
+Il convient mieux de démontrer cet énoncé avec un exemple, comme celui ci :
 
 ```js run
 function sayHi() {
@@ -186,9 +186,9 @@ sayHi();
 
 Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où. Mais les variables sont indéfinies jusqu'aux affectations.
 
-Dans les deux exemples susmentionnés, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
+Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
 
-## Sommaire
+## Résumé
 
 Il y a deux différences majeures entre `var` et `let/const`:
 
