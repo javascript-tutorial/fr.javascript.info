@@ -84,7 +84,7 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
-En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur de ce type n'est trouvée.
+En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
 
 Par exemple :
 
@@ -101,7 +101,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
 1. **Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
 
-   Imaginons que nous ayons plusieurs variables pouvant contenir les données ou être `null/undefined`. Et nous devons choisir le premier avec des données. 
+   Imaginons que nous ayons plusieurs variables pouvant contenir une donnée ou être `null/undefined`. Comment pouvons-nous trouver la première valeur vraie ?
 
     Nous pouvons utiliser `||` pour ça :
 
@@ -142,7 +142,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     alert(x); // 1
     ```
 
-    Une assignation est un cas simple, d'autres effets secondaires peuvent être impliqués.
+    Une assignation est un cas simple. Il peut y avoir des effets secondaires qui ne se manifesteront pas si l'évaluation ne les atteint pas.
 
     Comme nous pouvons le voir, ce genre d'utilisation est un "moyen plus court de faire `if`". Le premier opérande est converti en booléen et s’il est faux, le second est évalué.
 

@@ -226,7 +226,7 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 
 ## Résumé
 
-Il existe 7 types de base en JavaScript.
+Il existe 7 types de données de base en JavaScript.
 
 - `number` pour les nombres de toute nature : entier ou virgule flottante.
 - `string` pour les strings. Une chaîne de caractères peut avoir un ou plusieurs caractères, il n’existe pas de type à caractère unique distinct.

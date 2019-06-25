@@ -1,4 +1,4 @@
-The sane choice here is a `WeakSet`:
+Le bon choix ici est un `WeakSet`:
 
 ```js
 let messages = [
@@ -9,33 +9,33 @@ let messages = [
 
 let readMessages = new WeakSet();
 
-// two messages have been read
+// deux messages ont été lus
 readMessages.add(messages[0]);
 readMessages.add(messages[1]);
-// readMessages has 2 elements
+// readMessages a 2 éléments
 
-// ...let's read the first message again!
+// ...Relisons le premier message !
 readMessages.add(messages[0]);
-// readMessages still has 2 unique elements
+// readMessages a encore 2 éléments uniques
 
-// answer: was the message[0] read?
+// réponse : le message[0] a-t-il été lu ?
 alert("Read message 0: " + readMessages.has(messages[0])); // true
 
 messages.shift();
-// now readMessages has 1 element (technically memory may be cleaned later)
+// maintenant readMessages a 1 élément (techniquement, la mémoire peut être nettoyée plus tard)
 ```
 
-The `WeakSet` allows to store a set of messages and easily check for the existance of a message in it.
+Le `WeakSet` permet de stocker un ensemble de messages et de vérifier facilement l’existence d’un message.
 
-It cleans up itself automatically. The tradeoff is that we can't iterate over it. We can't get "all read messages" directly. But we can do it by iterating over all messages and filtering those that are in the set.
+Il se nettoie automatiquement. Le compromis est que nous ne pouvons pas le parcourir. Nous ne pouvons pas obtenir "tous les messages lus" directement. Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
 
-P.S. Adding a property of our own to each message may be dangerous if messages are managed by someone else's code, but we can make it a symbol to evade conflicts.
+P.S. Ajouter une propriété propre à chaque message peut être dangereux si les messages sont gérés par le code d’une autre personne, mais nous pouvons en faire un symbole pour éviter les conflits.
 
-Like this:
+Comme ceci :
 ```js
-// the symbolic property is only known to our code
+// la propriété symbolique n'est connue que de notre code
 let isRead = Symbol("isRead");
 messages[0][isRead] = true;
 ```
 
-Now even if someone else's code uses `for..in` loop for message properties, our secret flag won't appear.
+Maintenant, même si le code de quelqu'un d'autre utilise `for..in` pour les propriétés du message, notre indicateur secret n'apparaîtra pas.

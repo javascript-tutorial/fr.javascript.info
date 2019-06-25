@@ -52,15 +52,23 @@ Pour l’avenir, lorsque vous utilisez une console de navigation pour tester des
 
 Parfois, lorsque `use strict` fait une différence, vous obtenez des résultats incorrects.
 
-Même si nous appuyons sur la touche `key:Shift+Entrée` pour saisir plusieurs lignes et que `use strict` est placé en haut, cela ne fonctionne pas. Cela est dû à la manière dont la console exécute le code en interne.
+Vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme cela :
 
-Le moyen fiable pour vous assurer d'utiliser `use strict` serait de saisir le code dans la console de la manière suivante :
+```js
+'use strict'; <Shift+Enter for a newline>
+//  ...votre code
+<Enter to run>
+```
+
+Cela fonctionne dans la plupart des navigateurs, à savoir Firefox et Chrome.
+
+Si ce n’est pas le cas, le moyen le plus fiable d’assurer `use strict` serait d'entrer le code dans la console comme ceci :
 
 ```js
 (function() {
   'use strict';
 
-  // ...your code...
+  // ...votre code...
 })()
 ```
 

@@ -1,21 +1,25 @@
-# Destructuring assignment
+# L'affectation par décomposition
 
-The two most used data structures in JavaScript are `Object` and `Array`.
+Les deux structures de données les plus utilisées en JavaScript sont `Object` et `Array`.
 
-Objects allow us to pack many pieces of information into a single entity and arrays allow us to store ordered collections. So we can make an object or an array and handle it as a single entity, or maybe pass it to a function call.
+Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé, et les tableaux nous permettent de rassembler des éléments de données dans une collection ordonnée.
 
-*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes they are more convenient. Destructuring also works great with complex functions that have a lot of parameters, default values, and soon we'll see how these are handled too.
+Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
 
-## Array destructuring
+*L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
 
-An example of how the array is destructured into variables:
+## Décomposition d'un tableau
+
+Un exemple de la façon dont un tableau est décomposé en variables :
 
 ```js
-// we have an array with the name and surname
+// nous avons un tableau avec le nom et le prénom
 let arr = ["Ilya", "Kantor"]
 
 *!*
-// destructuring assignment
+// l'affectation par décomposition
+// sets firstName = arr[0]
+// and surname = arr[1]
 let [firstName, surname] = arr;
 */!*
 
@@ -23,18 +27,18 @@ alert(firstName); // Ilya
 alert(surname);  // Kantor
 ```
 
-Now we can work with variables instead of array members.
+Maintenant, nous pouvons travailler avec des variables plutôt que des parties du tableau.
 
-It looks great when combined with `split` or other array-returning methods:
+Cela a l'air pas mal quand c'est combiné avec `split` ou tout autre méthode de renvoi de tableau :
 
 ```js
 let [firstName, surname] = "Ilya Kantor".split(' ');
 ```
 
-````smart header="\"Destructuring\" does not mean \"destructive\"."
-It's called "destructuring assignment," because it "destructurizes" by copying items into variables. But the array itself is not modified.
+````smart header="\"Décomposition\" ne veut pas dire \"destruction\"."
+Cette manipulation est appelée "affectation par décomposition"", car elle "se décompose"" en copiant ses éléments dans des variables. Mais le tableau lui-même n'est pas modifié.
 
-It's just a shorter way to write:
+C’est juste une façon plus courte d’écrire :
 ```js
 // let [firstName, surname] = arr;
 let firstName = arr[0];
@@ -42,8 +46,8 @@ let surname = arr[1];
 ```
 ````
 
-````smart header="Ignore elements using commas"
-Unwanted elements of the array can also be thrown away via an extra comma:
+````smart header="Ignorer les éléments en utilisant des virgules"
+Les éléments indésirables du tableau peuvent également être supprimés via une virgule supplémentaire :
 
 ```js run
 *!*
@@ -54,12 +58,12 @@ let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic
 alert( title ); // Consul
 ```
 
-In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array is also skipped.
+Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisième est attribué à `title` et le reste du tableau est également ignoré (car il n'y a pas de variables pour eux).
 ````
 
-````smart header="Works with any iterable on the right-side"
+````smart header="Fonctionne avec n'importe quel itérable à droite"
 
-...Actually, we can use it with any iterable, not only arrays:
+...En fait, nous pouvons l’utiliser avec n’importe quel itérable, pas seulement les tableaux :
 
 ```js
 let [a, b, c] = "abc"; // ["a", "b", "c"]
@@ -69,11 +73,11 @@ let [one, two, three] = new Set([1, 2, 3]);
 ````
 
 
-````smart header="Assign to anything at the left-side"
+````smart header="Attribuer à n'importe quoi à gauche"
 
-We can use any "assignables" at the left side.
+Nous pouvons utiliser n'importe quel "assignable" à gauche.
 
-For instance, an object property:
+Par exemple, une propriété d'objet :
 ```js run
 let user = {};
 [user.name, user.surname] = "Ilya Kantor".split(' ');
@@ -83,11 +87,11 @@ alert(user.name); // Ilya
 
 ````
 
-````smart header="Looping with .entries()"
+````smart header="Boucler avec .entries()"
 
-In the previous chapter we saw the [Object.entries(obj)](mdn:js/Object/entries) method.
+Dans le chapitre précédent, nous avons vu les méthodes [Object.entries(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/entries).
 
-We can use it with destructuring to loop over keys-and-values of an object:
+Nous pouvons l'utiliser avec la décomposition pour boucler sur les clés et valeurs d'un objet :
 
 ```js run
 let user = {
@@ -95,15 +99,15 @@ let user = {
   age: 30
 };
 
-// loop over keys-and-values
+// boucler sur les clés et les valeurs
 *!*
 for (let [key, value] of Object.entries(user)) {
 */!*
-  alert(`${key}:${value}`); // name:John, then age:30
+  alert(`${key}:${value}`); // name:John, ensuite age:30
 }
 ```
 
-...And the same for a map:
+...Et la même chose pour un map :
 
 ```js run
 let user = new Map();
@@ -111,15 +115,15 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
-for (let [key, value] of user.entries()) {
+for (let [key, value] of user) {
 */!*
-  alert(`${key}:${value}`); // name:John, then age:30
+  alert(`${key}:${value}`); // name:John, ensuite age:30
 }
 ```
 ````
-### The rest '...'
+### Le rest '...'
 
-If we want not just to get first values, but also to gather all that follows -- we can add one more parameter that gets "the rest" using three dots `"..."`:
+Si nous voulons non seulement obtenir les premières valeurs, mais aussi rassembler tout ce qui suit, nous pouvons ajouter un paramètre supplémentaire qui obtient "le reste" à l'aide de trois points `"..."`:
 
 ```js run
 let [name1, name2, *!*...rest*/!*] = ["Julius", "Caesar", *!*"Consul", "of the Roman Republic"*/!*];
@@ -135,11 +139,11 @@ alert(rest.length); // 2
 */!*
 ```
 
-The value of `rest` is the array of the remaining array elements. We can use any other variable name in place of `rest`, just make sure it has three dots before it and goes last in the destructuring assignment.
+La valeur de `rest` est le tableau des éléments du tableau restants. Nous pouvons utiliser n’importe quel autre nom de variable à la place de `rest`, assurez-vous simplement qu’il a trois points devant lui et soit placé en dernier dans l’affectation par décomposition.
 
-### Default values
+### Les valeurs par défaut
 
-If there are fewer values in the array than variables in the assignment, there will be no error. Absent values are considered undefined:
+S'il y a moins de valeurs dans le tableau que de variables dans l'affectation, il n'y aura pas d'erreur. Les valeurs absentes sont considérées comme non définies :
 
 ```js run
 *!*
@@ -150,11 +154,11 @@ alert(firstName); // undefined
 alert(surname); // undefined
 ```
 
-If we want a "default" value to replace the missing one, we can provide it using `=`:
+Si nous voulons qu'une valeur "par défaut" remplace la valeur manquante, nous pouvons la fournir en utilisant `=` :
 
 ```js run
 *!*
-// default values
+// les valeurs par défaut
 let [name = "Guest", surname = "Anonymous"] = ["Julius"];
 */!*
 
@@ -162,9 +166,9 @@ alert(name);    // Julius (from array)
 alert(surname); // Anonymous (default used)
 ```
 
-Default values can be more complex expressions or even function calls. They are evaluated only if the value is not provided.
+Les valeurs par défaut peuvent être des expressions plus complexes ou même des appels de fonction. Ils ne sont évalués que si la valeur n'est pas fournie.
 
-For instance, here we use the `prompt` function for two defaults. But it will run only for the missing one:
+Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut. Mais cela ne fonctionnera que pour celle qui manque :
 
 ```js run
 // runs only prompt for surname
@@ -176,19 +180,19 @@ alert(surname); // whatever prompt gets
 
 
 
-## Object destructuring
+## Décomposition d'object 
 
-The destructuring assignment also works with objects.
+L'affectation par décomposition fonctionne également avec les objets.
 
-The basic syntax is:
+La syntaxe de base est la suivante :
 
 ```js
 let {var1, var2} = {var1:…, var2…}
 ```
 
-We have an existing object at the right side, that we want to split into variables. The left side contains a "pattern" for corresponding properties. In the simple case, that's a list of variable names in `{...}`.
+Nous avons un objet existant à droite que nous souhaitons scinder en variables. Le côté gauche contient un "pattern" pour les propriétés correspondantes. Dans ce cas simple, c’est une liste de noms de variables dans `{...}`.
 
-For instance:
+Par exemple :
 
 ```js run
 let options = {
@@ -206,16 +210,16 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-Properties `options.title`, `options.width` and `options.height` are assigned to the corresponding variables. The order does not matter. This works too:
+Les propriétés `options.title`, `options.width` et `options.height` sont affectés aux variables correspondantes. L'ordre n'a pas d'importance. Cela fonctionne aussi :
 
 ```js
-// changed the order of properties in let {...}
+// changé l'ordre dans let {...}
 let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 ```
 
-The pattern on the left side may be more complex and specify the mapping between properties and variables.
+Le pattern à gauche peut être plus complexe et spécifier le mapping entre propriétés et variables.
 
-If we want to assign a property to a variable with another name, for instance, `options.width` to go into the variable named `w`, then we can set it using a colon:
+Si nous voulons affecter une propriété à une variable portant un autre nom, par exemple, `options.width` pour aller dans la variable nommée `w`, alors nous pouvons la définir en utilisant deux points :
 
 ```js run
 let options = {
@@ -238,9 +242,9 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
-The colon shows "what : goes where". In the example above the property `width` goes to `w`, property `height` goes to `h`, and `title` is assigned to the same name.
+Les deux points montrent "quoi: va où". Dans l'exemple ci-dessus, la propriété `width` est définie sur `w`, la propriété `height` est définie sur `h` et le `title` est attribué au même nom.
 
-For potentially missing properties we can set default values using `"="`, like this:
+Pour les propriétés potentiellement manquantes, nous pouvons définir les valeurs par défaut à l'aide de `"="`, comme ceci :
 
 ```js run
 let options = {
@@ -256,9 +260,9 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-Just like with arrays or function parameters, default values can be any expressions or even function calls. They will be evaluated if the value is not provided.
+Comme pour les tableaux ou les paramètres de fonction, les valeurs par défaut peuvent être des expressions ou même des appels de fonction. Elles seront évaluées si la valeur n'est pas fournie.
 
-The code below asks for width, but not the title.
+Le code ci-dessous demande la largeur, mais pas le titre.
 
 ```js run
 let options = {
@@ -273,7 +277,7 @@ alert(title);  // Menu
 alert(width);  // (whatever you the result of prompt is)
 ```
 
-We also can combine both the colon and equality:
+Nous pouvons également combiner les deux points et l'égalité :
 
 ```js run
 let options = {
@@ -289,13 +293,13 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
-### The rest operator
+### L'opérateur rest "..."
 
-What if the object has more properties than we have variables? Can we take some and then assign the "rest" somewhere?
+Et si l'objet a plus de propriétés que de variables ? Peut-on en prendre puis assigner le "rest" quelque part ?
 
-The specification for using the rest operator (three dots) here is almost in the standard, but most browsers do not support it yet.
+Nous pouvons utiliser le modèle rest, comme nous l'avons fait avec les tableaux. Il n'est pas pris en charge par certains navigateurs plus anciens (IE, utilisez Babel pour le polyfiller), mais fonctionne avec les modernes.
 
-It looks like this:
+Cela ressemble à ceci :
 
 ```js run
 let options = {
@@ -305,6 +309,8 @@ let options = {
 };
 
 *!*
+// title = property named title
+// rest = object with the rest of properties
 let {title, ...rest} = options;
 */!*
 
@@ -315,46 +321,46 @@ alert(rest.width);   // 100
 
 
 
-````smart header="Gotcha without `let`"
-In the examples above variables were declared right before the assignment: `let {…} = {…}`. Of course, we could use existing variables too. But there's a catch.
+````smart header="Gotcha if there's no `let`"
+Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
 
-This won't work:
+Cela ne fonctionnera pas :
 ```js run
 let title, width, height;
 
-// error in this line
+// erreur dans cette ligne
 {title, width, height} = {title: "Menu", width: 200, height: 100};
 ```
 
-The problem is that JavaScript treats `{...}` in the main code flow (not inside another expression) as a code block. Such code blocks can be used to group statements, like this:
+Le problème est que JavaScript traite `{...}` dans le flux de code principal (pas dans une autre expression) en tant que bloc de code. De tels blocs de code peuvent être utilisés pour regrouper des instructions, comme ceci :
 
 ```js run
 {
-  // a code block
+  // un bloc de code
   let message = "Hello";
   // ...
   alert( message );
 }
 ```
 
-To show JavaScript that it's not a code block, we can wrap the whole assignment in parentheses `(...)`:
+Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper toute la tâche entre parenthèses `(...)` :
 
 ```js run
 let title, width, height;
 
 // okay now
-*!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
+*!*(*/!*{title, width, height}*!*)*/!* = {title: "Menu", width: 200, height: 100};
 
 alert( title ); // Menu
 ```
 
 ````
 
-## Nested destructuring
+## Décomposition imbriquée
 
-If an object or an array contain other objects and arrays, we can use more complex left-side patterns to extract deeper portions.
+Si un objet ou un tableau contient d'autres objets et tableaux, nous pouvons utiliser des modèles plus complexes à gauche pour extraire des parties plus profondes.
 
-In the code below `options` has another object in the property `size` and an array in the property `items`. The pattern at the left side of the assignment has the same structure:
+Dans le code ci-dessous `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure :
 
 ```js run
 let options = {
@@ -363,17 +369,17 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
-  extra: true    // something extra that we will not destruct
+  extra: true    // quelque chose de plus que nous ne pourrons pas détruire
 };
 
-// destructuring assignment on multiple lines for clarity
+// affectation par décomposition divisée sur plusieurs lignes pour la clarté
 let {
-  size: { // put size here
+  size: { // mettre la taille ici
     width,
     height
   },
-  items: [item1, item2], // assign items here
-  title = "Menu" // not present in the object (default value is used)
+  items: [item1, item2], // attribuer des éléments ici
+  title = "Menu" // non présent dans l'objet (la valeur par défaut est utilisée)
 } = options;
 
 alert(title);  // Menu
@@ -383,27 +389,25 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
-The whole `options` object except `extra` that was not mentioned, is assigned to corresponding variables.
+L'ensemble de l'objet `options`, à l'exception d'`extra` qui n'a pas été mentionné, est affecté aux variables correspondantes.
 
-Note that `size` and `items` itself is not destructured.
+Notez que la `size` et les `items` eux-mêmes ne sont pas décomposés.
 
 ![](destructuring-complex.png)
 
-Finally, we have `width`, `height`, `item1`, `item2` and `title` from the default value.
+Finalement nous avons `width`, `height`, `item1`, `item2` et `title` à partir de la valeur par défaut.
 
-That often happens with destructuring assignments. We have a complex object with many properties and want to extract only what we need.
-
-Even here it happens:
+Si nous avons un objet complexe avec de nombreuses propriétés, nous pouvons extraire que ce dont nous avons besoin :
 ```js
-// take size as a whole into a variable, ignore the rest
+// prendre la taille dans sa totalité dans une variable, ignorer le reste
 let { size } = options;
 ```
 
-## Smart function parameters
+## Paramètres de fonction intelligente
 
-There are times when a function may have many parameters, most of which are optional. That's especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, items list and so on.
+Il peut arriver qu'une fonction ait plusieurs paramètres, dont la plupart sont facultatifs. C’est particulièrement vrai pour les interfaces utilisateur. Imaginez une fonction qui crée un menu. Il peut avoir une largeur, une hauteur, un titre, une liste d’articles, etc.
 
-Here's a bad way to write such function:
+Voici une mauvaise façon d’écrire ce genre de fonction :
 
 ```js
 function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
@@ -411,31 +415,31 @@ function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
 }
 ```
 
-In real-life, the problem is how to remember the order of arguments. Usually IDEs try to help us, especially if the code is well-documented, but still... Another problem is how to call a function when most parameters are ok by default.
+Dans la vraie vie, le problème est de savoir comment retenir l'ordre des arguments. Habituellement, les IDE essaient de nous aider, surtout si le code est bien documenté, mais quand même… Un autre problème est de savoir comment appeler une fonction lorsque la plupart des paramètres sont corrects par défaut.
 
-Like this?
+Comme ceci ?
 
 ```js
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 
-That's ugly. And becomes unreadable when we deal with more parameters.
+C’est moche. Et devient illisible lorsque nous traitons plus de paramètres.
 
-Destructuring comes to the rescue!
+La décomposition vient à la rescousse !
 
-We can pass parameters as an object, and the function immediately destructurizes them into variables:
+Nous pouvons passer des paramètres sous forme d'objet, et la fonction les décomposent immédiatement en variables :
 
 ```js run
-// we pass object to function
+// on passe un objet à fonction
 let options = {
   title: "My menu",
   items: ["Item1", "Item2"]
 };
 
-// ...and it immediately expands it to variables
+// ...et il est immédiatement étendu aux variables
 function showMenu(*!*{title = "Untitled", width = 200, height = 100, items = []}*/!*) {
-  // title, items – taken from options,
-  // width, height – defaults used
+  // title, items – pris des options,
+  // width, height – défauts utilisés
   alert( `${title} ${width} ${height}` ); // My Menu 200 100
   alert( items ); // Item1, Item2
 }
@@ -443,7 +447,7 @@ function showMenu(*!*{title = "Untitled", width = 200, height = 100, items = []}
 showMenu(options);
 ```
 
-We can also use more complex destructuring with nested objects and colon mappings:
+Nous pouvons également utiliser une décomposition plus complexe avec des objets imbriqués et des mappings de deux points :
 
 ```js run
 let options = {
@@ -454,9 +458,9 @@ let options = {
 *!*
 function showMenu({
   title = "Untitled",
-  width: w = 100,  // width goes to w
-  height: h = 200, // height goes to h
-  items: [item1, item2] // items first element goes to item1, second to item2
+  width: w = 100,  // width va à w
+  height: h = 200, // height va à h
+  items: [item1, item2] // items premier élément va à item1, deuxième à item2
 }) {
 */!*
   alert( `${title} ${w} ${h}` ); // My Menu 100 200
@@ -467,7 +471,7 @@ function showMenu({
 showMenu(options);
 ```
 
-The syntax is the same as for a destructuring assignment:
+La syntaxe est la même que pour une affectation par décomposition :
 ```js
 function({
   incomingProperty: parameterName = defaultValue
@@ -475,20 +479,20 @@ function({
 })
 ```
 
-Please note that such destructuring assumes that `showMenu()` does have an argument. If we want all values by default, then we should specify an empty object:
+Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
 
 ```js
 showMenu({});
 
 
-showMenu(); // this would give an error
+showMenu(); // cela donnerait une erreur
 ```
 
-We can fix this by making `{}` the default value for the whole destructuring thing:
+Nous pouvons résoudre ce problème en faisant de `{}` la valeur par défaut pour tout le processus de décomposition :
 
 
 ```js run
-// simplified parameters a bit for clarity
+// paramètres simplifiés un peu pour plus de clarté
 function showMenu(*!*{ title = "Menu", width = 100, height = 200 } = {}*/!*) {
   alert( `${title} ${width} ${height}` );
 }
@@ -496,24 +500,26 @@ function showMenu(*!*{ title = "Menu", width = 100, height = 200 } = {}*/!*) {
 showMenu(); // Menu 100 200
 ```
 
-In the code above, the whole arguments object is `{}` by default, so there's always something to destructurize.
+Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, il y a donc toujours quelque chose à décomposer.
 
-## Summary
+## Résumé
 
-- Destructuring assignment allows for instantly mapping an object or array onto many variables.
-- The object syntax:
+- L'affectation par décomposition permet de mapper instantanément un objet ou un tableau sur de nombreuses variables.
+- La syntaxe de l'objet :
     ```js
-    let {prop : varName = default, ...} = object
+    let {prop : varName = default, ...rest} = object
     ```
 
-    This means that property `prop` should go into the variable `varName` and, if no such property exists, then the `default` value should be used.
+    Cela signifie que la propriété `prop` doit aller dans la variable `varName` et que, si aucune propriété de ce type n'existe, la valeur `default` doit être utilisée.
 
-- The array syntax:
+    Les propriétés d'objet sans mappage sont copiées dans l'objet `rest`.
+
+- La syntaxe du tableau :
 
     ```js
     let [item1 = default, item2, ...rest] = array
     ```
 
-    The first item goes to `item1`; the second goes into `item2`, all the rest makes the array `rest`.
+    Le premier item va à `item1`; le second passe à `item2`, tout le reste du tableau correspond au `rest`.
 
-- For more complex cases, the left side must have the same structure as the right one.
+- Pour les cas plus complexes, le côté gauche doit avoir la même structure que le côté droit.

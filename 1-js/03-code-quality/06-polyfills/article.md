@@ -19,21 +19,21 @@ C'est là que Babel vient à la rescousse.
 
 Actuellement, Babel comporte deux parties :
 
-1. Tout d’abord, le programme transpileur, qui réécrit le code. Le développeur l'exécute sur son propre ordinateur. Il réécrit le code dans l'ancienne norme. Et ensuite, le code est transmis au site Web pour les utilisateurs. Des systèmes de construction de projet moderne comme [webpack](http://webpack.github.io/) ou [brunch](http://brunch.io/) permettent de fournir des moyens d’exécuter automatiquement un transpileur à chaque changement de code, de sorte que cela n’entraîne aucune perte de temps de notre part.
+1. Tout d’abord, le programme transpileur, qui réécrit le code. Le développeur l'exécute sur son propre ordinateur. Il réécrit le code dans l'ancien standard. Et ensuite, le code est transmis au site Web pour les utilisateurs. Des systèmes de construction de projet moderne comme [webpack](http://webpack.github.io/) ou [brunch](http://brunch.io/) permettent de fournir des moyens d’exécuter automatiquement un transpileur à chaque changement de code, de sorte que cela devient très facile à intégrer dans le processus de développement.
 
 2. Ensuite, le polyfill.
 
-    Le transpileur réécrit le code afin que les fonctionnalités de syntaxe soient couvertes. Mais pour les nouvelles fonctions, nous devons écrire un script spécial qui les implémente. JavaScript est un langage très dynamique, les scripts peuvent non seulement ajouter de nouvelles fonctions, mais également modifier celles qui sont intégrées, de sorte qu’ils se comportent conformément au standard moderne.
+Les nouvelles fonctionnalités du langage peuvent inclure de nouvelles fonctions intégrées et de nouvelles constructions de syntaxe. Le transpiler réécrit le code en transformant les nouvelles constructions de syntaxe en anciennes. Mais en ce qui concerne les nouvelles fonctions intégrées, nous devons les implémenter. JavaScript est un langage très dynamique, les scripts peuvent ajouter / modifier n’importe quelle fonction, afin qu’ils se comportent conformément au standard moderne.
 
-    Il existe un terme "polyfill" pour les scripts qui "fill in" (comblent le vide) et ajoutent les implémentations manquantes.
+  Un script qui met à jour / ajoute de nouvelles fonctions s'appelle "polyfill". Il "comble" le vide et ajoute les implémentations manquantes.
 
-    Deux polyfill intéressants sont :
-    - [babel polyfill](https://babeljs.io/docs/usage/polyfill/) qui supporte beaucoup, mais c'est gros.
-    - [polyfill.io](http://polyfill.io) est un service qui permet de charger / construire des polyfills à la demande, en fonction des fonctionnalités dont nous avons besoin.
+Deux polyfill intéressants sont :
+- [babel polyfill](https://babeljs.io/docs/usage/polyfill/) qui supporte beaucoup, mais c'est gros.
+- [polyfill.io](http://polyfill.io) est un service qui permet de charger / construire des polyfills à la demande, en fonction des fonctionnalités dont nous avons besoin.
 
 Nous devons donc configurer le transpileur et ajouter le polyfill pour les anciens moteurs afin de prendre en charge les fonctionnalités modernes.
 
-Si nous nous orientons vers les moteurs modernes et n’utilisons pas de fonctionnalités autres que celles prises en charge partout, nous n’avons pas besoin de Babel.
+Donc, si nous allons utiliser les fonctionnalités du langage moderne, un transpiler et un polyfill sont nécessaires.
 
 ## Exemples dans le tutoriel
 
@@ -49,9 +49,9 @@ Les exemples qui utilisent le JS moderne ne fonctionneront que si votre navigate
 ````
 
 ```offline
-Pendant que vous lisez la version hors connexion, les exemples ne sont pas exécutables. Mais ils fonctionnent habituellement :)
+Pendant que vous lisez la version hors connexion, les exemples ne sont pas exécutables. Dans EPUB, certains peuvent fonctionner.
 ```
 
-[Chrome Canary](https://www.google.com/chrome/browser/canary.html) est bon pour tous les exemples, mais d’autres navigateurs modernes sont également très bien.
+Google Chrome est généralement la version la plus récente des fonctionnalités du langage, il accepte de lancer des démos ultra-sophistiquées sans transpilers, mais les autres navigateurs modernes fonctionnent également très bien.
 
-Notez que lors de la production, nous pouvons utiliser Babel pour traduire le code pour l'adapter aux navigateurs moins récents. Il n'y aura donc pas de limitation, le code s'exécutera partout.
+

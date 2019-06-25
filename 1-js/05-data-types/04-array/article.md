@@ -1,4 +1,4 @@
-# Arrays 
+# Arrays
 
 Les objets vous permettent de stocker des collections de valeurs à clé. C'est très bien.
 
@@ -80,11 +80,11 @@ arr[3](); // hello
 
 
 ````smart header="Trailing comma (Virgule de fin)"
-Un tableau, comme pour un objet, peut se terminer par une virgule:
+Un tableau, comme pour un objet, peut se terminer par une virgule :
 ```js 
 let fruits = [
-  "Apple", 
-  "Orange", 
+  "Apple",
+  "Orange",
   "Plum"*!*,*/!*
 ];
 ```
@@ -95,7 +95,7 @@ Le style "virgule de fin" facilite l'insertion/la suppression d'éléments, car 
 
 ## Les méthodes pop/push, shift/unshift
 
-Une [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (file d'attente) est l'une des utilisations les plus courantes pour les tableaux. En informatique, cela signifie une collection ordonnée d’éléments qui supporte deux opérations:
+Une [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (file d'attente) est l'une des utilisations les plus courantes pour les tableaux. En informatique, cela signifie une collection ordonnée d’éléments qui supporte deux opérations :
 
 - `push` ajoute un élément à la fin.
 - `shift` enleve un élément depuis le début, en faisant avancer la file d'attente, de sorte que le deuxième élément devienne le premier.
@@ -121,7 +121,7 @@ Un stack(pile) est généralement illustrée par un jeu de cartes: de nouvelles 
 
 Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out)(dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out)(premier entré, premier sorti).
 
-Les tableaux en JavaScript peuvent fonctionner à la fois en file d'attente et en pile. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
+Les tableaux en JavaScript peuvent fonctionner à la fois en queue et en stack. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
 
 En informatique, la structure de données qui le permet s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue) (Double file d'attente).
 
@@ -189,11 +189,11 @@ alert( fruits );
 
 ## Les internes
 
-Un tableau est un type d'objet spécial. Les crochets utilisés pour accéder à la propriété `arr[0]` proviennent en fait de la syntaxe de l'objet. Les chiffres sont utilisés comme clés.
+Un tableau est un type d'objet spécial. Les crochets utilisés pour accéder à la propriété `arr[0]` proviennent en fait de la syntaxe de l'objet. C'est essentiellement la même chose que `obj[key]`, où `arr` est l'objet, tandis que les nombres sont utilisés comme clés.
 
 Ils étendent les objets en fournissant des méthodes spéciales pour travailler avec des collections ordonnées de données ainsi que la propriété `length`. Mais au fond c'est toujours un objet.
 
-N'oubliez pas qu'il n'y a que 7 types de base en JavaScript. Array est un objet et se comporte donc comme un objet.
+N'oubliez pas qu'il n'y a que 7 types de base en JavaScript. `Array` est un objet et se comporte donc comme un objet.
 
 Par exemple, il est copié par référence:
 
@@ -296,7 +296,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // itère sur des éléments de tableau
 for (let fruit of fruits) {
-  alert( fruit ); 
+  alert( fruit );
 }
 ```
 
@@ -320,7 +320,7 @@ Mais c'est en fait une mauvaise idée. Il y a des problèmes potentiels avec cel
 
     Il existe des objets dits "array-like" dans le navigateur et dans d'autres environnements, qui *ressemblent à des tableaux*. C'est-à-dire qu'ils ont les propriétés `length` et index, mais ils peuvent également avoir d'autres propriétés et méthodes non numériques, dont nous n'avons généralement pas besoin. La boucle `for..in` les listera cependant. Donc, si nous devons travailler avec des objets de type tableau, ces propriétés "supplémentaires" peuvent devenir un problème.
 
-2. La boucle `for..in` est optimisée pour les objets génériques, pas les tableaux, et est donc 10-100 fois plus lente. Bien sûr, c'est encore très rapide. L'accélération peut n'importer que par des goulots d'étranglement ou sembler hors de propos. Mais il faut quand même être conscient de la différence.
+2. La boucle `for..in` est optimisée pour les objets génériques, pas pour les tableaux, elle est 10-100 fois plus lente. Bien sûr, c'est encore très rapide. L'accélération peut n'importer que dans les goulots d'étranglement ou sembler hors de propos. Mais il faut quand même être conscient de la différence.
 
 En règle générale, nous ne devrions pas utiliser `for..in` pour les tableaux.
 
@@ -385,7 +385,7 @@ Pour éviter de telles surprises, nous utilisons généralement des crochets, sa
 
 ## Tableaux multidimensionnels
 
-Les tableaux peuvent avoir des éléments qui sont aussi des tableaux. On peut l'utiliser pour des tableaux multidimensionnels, pour stocker des matrices:
+Les tableaux peuvent avoir des éléments qui sont aussi des tableaux. On peut l'utiliser pour des tableaux multidimensionnels, pour stocker des matrices :
 
 ```js run
 let matrix = [
@@ -453,7 +453,7 @@ Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
 - `push (...items)` ajoute `items` à la fin.
 - `pop()` supprime l'élément de la fin et le renvoie.
 - `shift()` supprime l'élément du début et le renvoie.
-- `unshift(... items)` ajoute des éléments au début.
+- `unshift(... items)` ajoute des `items` au début.
 
 Pour boucler sur les éléments du tableau:
    - `for (let i = 0; i <arr.length; i ++)` -- fonctionne le plus rapidement, compatible avec les anciens navigateurs.

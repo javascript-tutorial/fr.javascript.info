@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Filter unique array members
+# Filtrer les membres uniques du tableau
 
-Let `arr` be an array.
+Disons que `arr` est un tableau.
 
-Create a function `unique(arr)` that should return an array with unique items of `arr`.
+Créez une fonction `unique(arr)` qui devrait renvoyer un tableau avec les éléments uniques d'arr.
 
-For instance:
+Par exemple :
 
 ```js
 function unique(arr) {
@@ -22,6 +22,6 @@ let values = ["Hare", "Krishna", "Hare", "Krishna",
 alert( unique(values) ); // Hare, Krishna, :-O
 ```
 
-P.S. Here strings are used, but can be values of any type.
+P.S. Ici, les chaînes de caractères sont utilisées, mais elles peuvent être des valeurs de n'importe quel type.
 
-P.P.S. Use `Set` to store unique values.
+P.P.S. Utilisez `Set` pour stocker des valeurs uniques.

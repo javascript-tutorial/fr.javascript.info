@@ -136,7 +136,7 @@ Au lieu de cela, réutilisez les noms existants. Il suffit d'écrire de nouvelle
 
 Dans une fonction, n'utilisez que des variables passées en paramètres.
 
-Cela rendrait vraiment difficile d’identifier ce qui est exactement dans la variable maintenant. Et aussi d'où ça vient. Une personne ayant une faible intuition devrait analyser le code ligne par ligne et suivre les modifications dans chaque branche de code.
+Cela va rendre vraiment difficile d’identifier ce qui est exactement dans la variable maintenant. Et aussi d'où ça vient. Le but est de développer l’intuition et la mémoire de la personne qui lit le code. Une personne ayant une faible intuition devrait analyser le code ligne par ligne et suivre les modifications dans chaque branche de code.
 
 **Une variante avancée de l'approche consiste à remplacer secrètement (!) La valeur par quelque chose de similaire au milieu d'une boucle ou d'une fonction.**
 
@@ -154,7 +154,7 @@ function ninjaFunction(elem) {
 
 Un collègue programmeur qui veut travailler avec `elem` dans la seconde moitié de la fonction sera surpris… Seulement lors du débogage, après avoir examiné le code, ils découvrira qu’il travaille avec un clone !
 
-Mortellement efficace même contre un ninja expérimenté. Vu dans du code régulièrement.
+MVu dans du code régulièrement. Mortellement efficace même contre un ninja expérimenté. 
 
 ## Underscores for fun
 
@@ -168,16 +168,18 @@ Un ninja intelligent place les traits de soulignement à un endroit du code et l
 
 Laissez tout le monde voir à quel point vos entités sont magnifiques! Des noms comme `superElement`, `megaFrame` et `niceItem` illumineront définitivement le lecteur.
 
-En effet, d’une part, quelque chose s’écrit: `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux.
+En effet, d’une part, quelque chose s’écrit: `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux de leur temps de travail rémunéré.
 
 ## Chevaucher des variables externes
+
+
 
 ```quote author="Guan Yin Zi"
 Lorsqu'on est dans la lumière, on ne peut rien voir dans l’obscurité.<br>
 Lorsqu'on est dans l'obscurité, on peut tout voir dans la lumière.
 ```
 
-Utilisez les mêmes noms pour les variables à l'intérieur et à l'extérieur d'une fonction. Aussi simple. Aucun effort requis.
+Utilisez les mêmes noms pour les variables à l'intérieur et à l'extérieur d'une fonction. Aussi simple que cela. Pas besoin de faire des efforts pour inventer de nouveaux noms.
 
 ```js
 let *!*user*/!* = authenticateUser();

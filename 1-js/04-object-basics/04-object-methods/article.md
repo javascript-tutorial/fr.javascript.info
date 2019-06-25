@@ -63,7 +63,7 @@ user.sayHi(); // Hello!
 ```smart header="Programmation orientée objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
-La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités? Comment organiser l'interaction entre eux? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus. 
+La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
 ```
 ### Méthode abrégée
 
@@ -72,14 +72,14 @@ Il existe une syntaxe plus courte pour les méthodes dans un littéral d'objet :
 ```js
 // ces objets font la même chose
 
-let user = {
+user = {
   sayHi: function() {
     alert("Hello");
   }
 };
 
 // la méthode abrégée semble mieux, non ?
-let user = {
+user = {
 *!*
   sayHi() { // identique à "sayHi: function()"
 */!*
@@ -166,7 +166,7 @@ Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fo
 
 ## "this" n'est pas lié
 
-En JavaScript, le mot clé "this" se comporte différemment de la plupart des autres langages de programmation. Tout d'abord, il peut être utilisé dans n'importe quelle fonction.
+En JavaScript, le mot clé "this" se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
 
 Il n’ya pas d’erreur de syntaxe dans le code comme celui-ci :
 
@@ -176,9 +176,9 @@ function sayHi() {
 }
 ```
 
-La valeur de `this` est évaluée pendant l'exécution. Et ça peut être n'importe quoi.
+La valeur de `this` est évaluée pendant l'exécution en fonction du contexte. Et ça peut être n'importe quoi.
 
-Par exemple, une même fonction peut avoir un "this" différent lorsqu'elle est appelée à partir d'objets différents :
+Par exemple, ici la même fonction est assignée à deux objets différents et a un "this" différent dans les appels :
 
 ```js run
 let user = { name: "John" };
@@ -189,7 +189,7 @@ function sayHi() {
 }
 
 *!*
-// utiliser les mêmes fonctions dans deux objets
+// utiliser la même fonction dans deux objets
 user.f = sayHi;
 admin.f = sayHi;
 */!*
@@ -202,7 +202,10 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (le point ou les crochets accèdent à la méthode - peu importe)
 ```
 
-En fait, nous pouvons appeler la fonction sans objet :
+La règle est simple: si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`. C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
+
+````smart header="Appel sans objet : `this` == undefined"
+Nous pouvons même appeler la fonction sans objet du tout :
 
 ```js run
 function sayHi() {
@@ -216,7 +219,8 @@ Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder 
 
 En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique qui corrige `"use strict"`.
 
-Veuillez noter qu'habituellement, l'appel d'une fonction qui utilise `this` sans objet n'est pas normal, mais constitue une erreur de programmation. Si une fonction a `this`, alors elle est généralement censée être appelée dans le contexte d'un objet.
+Un tel appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
+````
 
 ```smart header="Les conséquences d'un `this` non lié"
 Si vous venez d'un autre langage de programmation, vous êtes probablement habitué à l'idée d'un "`this` lié", où les méthodes définies dans un objet ont toujours `this` en référence à cet objet.
@@ -253,7 +257,7 @@ user.hi(); // John (le simple appel fonctionne)
 */!*
 ```
 
-Sur la dernière ligne, un opérateur ternaire choisit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
+Sur la dernière ligne, un opérateur conditionnel choisit soit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
 
 La méthode est immédiatement appelée avec des parenthèses `()`. Mais ça ne fonctionne pas correctement !
 
@@ -303,7 +307,7 @@ La valeur de type de référence est une combinaison de trois valeurs `(base, na
 
 - `base` est l'objet.
 - `name` est la propriété.
-- `strict` est vrai si `use strict` est en vigueur.
+- `strict` est vrai si `use strict` est effectif.
 
 Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, mais une valeur de type de référence. Pour `user.hi` en mode strict c'est :
 
@@ -314,7 +318,9 @@ Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, ma
 
 Lorsque des parenthèses `()` sont appelées sur le type de référence, elles reçoivent les informations complètes sur l'objet et sa méthode, et peuvent définir le bon `this` (`=user` dans ce cas).
 
-Toute autre opération, telle que l'affectation `hi = user.hi`, supprime le type de référence dans son ensemble, prend la valeur de `user.hi` (une fonction) et la transmet. Donc, toute opération ultérieure "perd" `this`.
+Toute autre opération, telle que l'affectation `hi = user.hi` supprime le type de référence dans son ensemble, prend la valeur de `user.hi` (une fonction) et la transmet. Donc, toute opération ultérieure "perd" `this`.
+
+Le type de référence est un type interne "intermédiaire" spécial, dans le but de transmettre des informations de point `.` à l'appel des parenthèses `()`.
 
 En conséquence, la valeur de this n’est transmise correctement que si la fonction est appelée directement à l’aide d’une syntaxe point `obj.method()` ou de crochets `obj[méthode]()` (ils font la même chose ici). Plus loin dans ce tutoriel, nous allons apprendre différentes manières de résoudre ce problème, telles que [func.bind()](/bind#solution-2-bind).
 

@@ -1,4 +1,4 @@
-importance: 5
+importance: 5 
 
 ---
 
@@ -16,7 +16,7 @@ Le processus du tableau:
 
 ```js no-beautify
 Jazz, Blues
-Jazz, Bues, Rock-n-Roll
+Jazz, Blues, Rock-n-Roll
 Jazz, Classics, Rock-n-Roll
 Classics, Rock-n-Roll
 Rap, Reggae, Classics, Rock-n-Roll

@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Destructuring assignment
+# L'affectation par décomposition
 
-We have an object:
+Nous avons un objet :
 
 ```js
 let user = {
@@ -13,18 +13,18 @@ let user = {
 };
 ```
 
-Write the destructuring assignment that reads:
+Écrivez l'affectation par décomposition qui se lit comme suit :
 
-- `name` property into the variable `name`.
-- `years` property into the variable `age`.
-- `isAdmin` property into the variable `isAdmin` (false if absent)
+- La propriété `name` dans la variable `name`.
+- La propriété `years` dans la variable `age`.
+- La propriété `isAdmin` dans la variable `isAdmin` (false si absent)
 
-The values after the assignment should be:
+Voici un exemple des valeurs après votre affectation :
 
 ```js
 let user = { name: "John", years: 30 };
 
-// your code to the left side:
+// votre code à gauche ::
 // ... = user
 
 alert( name ); // John

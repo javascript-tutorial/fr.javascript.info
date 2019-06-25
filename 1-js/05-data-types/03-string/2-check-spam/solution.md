@@ -1,6 +1,6 @@
 Pour rendre la recherche insensible à la casse, transformons la chaîne de caractères en minuscule, puis recherchons :
 
-```js run
+```js run demo
 function checkSpam(str) {
   let lowerStr = str.toLowerCase();
 

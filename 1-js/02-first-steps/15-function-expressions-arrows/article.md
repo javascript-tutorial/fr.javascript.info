@@ -176,7 +176,7 @@ Nous pouvons tout aussi bien la passer en tant que variable ou l'exécuter si no
 
 Formulons les principales différences entre les déclarations de fonction et les expressions de fonctions.
 
-Tout d'abord, la syntaxe: comment voir ce qui est dans le code.
+Tout d'abord, la syntaxe : comment les différencier dans le code.
 
 - *Déclaration de fonction:* une fonction déclarée séparément dans le flux de code principal.
 
@@ -186,7 +186,7 @@ Tout d'abord, la syntaxe: comment voir ce qui est dans le code.
       return a + b;
     }
     ```
-- *Expression de fonction:* une fonction créée dans une expression ou dans une autre construction de syntaxe. Ici, la fonction est créée à droite de "l'affectation de l'expression" `=` :
+- *Fonction Expression :* une fonction créée dans une expression ou dans une autre construction de syntaxe. Ici, la fonction est créée à droite de "l'affectation de l'expression" `=` :
     
     ```js
     // Function Expression
@@ -197,13 +197,13 @@ Tout d'abord, la syntaxe: comment voir ce qui est dans le code.
 
 La différence la plus subtile est *quand* une fonction est créée par le moteur JavaScript.
 
-**Une expression de fonction est créée lorsque l’exécution l’atteint et est utilisable à partir de cet endroit.**
+**Une Fonction Expression est créée lorsque l’exécution l’atteint et est utilisable à partir de cet endroit.**
 
 Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` -- voilà, la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.) à partir de maintenant.
 
 Les déclarations de fonction sont différentes.
 
-**Une déclaration de fonction est utilisable dans tout le bloc script/code.**
+**Une Fonction Déclaration est utilisable dans tout le script (ou un bloc de code, si c'est à l'intérieur d'un bloc).**
 
 En d'autres termes, lorsque JavaScript se prépare à exécuter le script ou un bloc de code, il commence par rechercher les déclarations de fonction et crée les fonctions. Nous pouvons considérer cela comme une “étape d'initialisation”.
 

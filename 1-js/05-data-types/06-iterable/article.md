@@ -144,7 +144,7 @@ Normalement, les internes des iterables sont cachés du code externe. Il y a une
 
 Mais pour comprendre les choses un peu plus en profondeur, voyons comment créer un itérateur de manière explicite.
 
-Nous allons parcourir une chaîne de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne et l'appelle "manuellement":
+Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
 
 ```js run
 let str = "Hello";
@@ -163,14 +163,16 @@ while (true) {
 
 Cela est rarement nécessaire, mais nous donne plus de contrôle sur le processus que `for..of`. Par exemple, nous pouvons scinder le processus d'itération: itérer un peu, puis arrêter, faire autre chose, puis reprendre plus tard.
 
-## Iterables et array-likes [#array-like] (array-like = comme-un-tableau)
+## Iterables et array-likes [#array-like] 
 
 Il existe deux termes officiels qui se ressemblent mais qui sont très différents. Assurez-vous de bien les comprendre pour éviter la confusion.
 
 - *Iterables* sont des objets qui implémentent la méthode `Symbol.iterator`, comme décrit ci-dessus.
 - *Array-likes* sont des objets qui ont des index et des `length`, ils ressemblent donc à des tableaux.
 
-Naturellement, ces propriétés peuvent se combiner. Par exemple, les chaînes sont à la fois éditables (`for..of` fonctionne dessus) et de type tableau (elles ont des index numériques et des `length`).
+Lorsque nous utilisons JavaScript pour des tâches pratiques dans un navigateur ou d'autres environnements, il est possible que nous rencontrions des objets qui sont iterables ou des array-like, ou les deux.
+
+Par exemple, les chaînes de caractères sont à la fois iterables (`for..of` fonctionne dessus) et des array-likes (elles ont des index numériques et une longueur).
 
 Mais un itérable peut ne pas ressembler à un tableau. Et inversement, un tableau peut ne pas être itérable.
 
@@ -191,11 +193,11 @@ for (let item of arrayLike) {}
 */!*
 ```
 
-Qu'est-ce qu'ils ont en commun? Les deux sont iterables et sont array-likes (comme-des-tableaux) sont généralement *pas des tableaux*, ils n'ont pas `push`, `pop`, etc. C'est plutôt gênant si nous avons un tel objet et voulons le travailler comme avec un tableau.
+Qu'est-ce qu'ils ont en commun? Les deux iterables et array-likes sont généralement *pas des tableaux*, ils n'ont pas `push`, `pop`, etc. C'est plutôt gênant si nous avons un tel objet et voulons le travailler comme un tableau.
 
 ## Array.from
 
-Il existe une méthode universelle [Array.from](mdn:js/Array/from) qui les réunit. Il prend une valeur itérable ou un array-like (semblable-à-un-tableau) et en fait un "vrai" `tableau`. Ensuite, nous pouvons appeler des méthodes de tableau sur elle.
+Il existe une méthode universelle [Array.from](mdn:js/Array/from) qui prend une valeur itérable ou array-like et en fait un "vrai" `Array`. Ensuite, nous pouvons appeler des méthodes de tableau dessus.
 
 Par exemple:
 
@@ -227,7 +229,7 @@ La syntaxe complète de `Array.from` permet de fournir une fonction optionnelle 
 Array.from(obj[, mapFn, thisArg])
 ```
 
-Le second argument `mapFn` devrait être la fonction à appliquer à chaque élément avant de l'ajouter au tableau, et `thisArg` permet de définir `this` pour cela.
+Le second argument `mapFn` peut être une fonction à appliquer à chaque élément avant de l'ajouter au tableau, et `thisArg` permet de définir le `this`.
 
 Par exemple:
 

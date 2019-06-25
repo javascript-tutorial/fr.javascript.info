@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Iterable keys
+# Clés Iterables
 
-We want to get an array of `map.keys()` and go on working with it (apart from the map itself).
+Nous voulons obtenir un tableau de `map.keys()` et continuer à l'utiliser (en dehors du map lui même).
 
-But there's a problem:
+Mais il y a un problème :
 
 ```js run
 let map = new Map();
@@ -21,4 +21,4 @@ keys.push("more");
 */!*
 ```
 
-Why? How can we fix the code to make `keys.push` work?
+Pourquoi ? Comment pouvons-nous corriger le code pour que `keys.push` fonctionne ?

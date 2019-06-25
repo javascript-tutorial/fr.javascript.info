@@ -13,7 +13,7 @@ Aidez-nous à améliorer la traduction.
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
 
-P.S. La liste complète des langues est disponible sur <https://github.com/javascript-tutorial/translate>.
+P.S. La liste complète des langues est disponible sur <https://javascript.info/translate>.
 
 ## Structure
 
@@ -21,7 +21,7 @@ Chaque chapitre, article ou exercice réside dans son propre dossier.
 
 Le dossier est nommé `N-url`, où `N` – est le numéro de tri (les articles sont ordonnés), et `url` est l'URL raccourcie (slug) de la partie en question.
 
-N'hésitez pas à consulter <https://github.com/javascript-tutorial/translate> pour plus de détails.
+N'hésitez pas à consulter <https://javascript.info/translate> pour plus de détails.
 
 ## Contributions
 
@@ -112,5 +112,5 @@ Chacun de ces fichiers commence à partir du `# titre principal`.
 Il est très facile d'ajouter quelque chose de nouveau.
 
 ---
-💓  
+♥  
 Ilya Kantor @iliakan

@@ -4,7 +4,7 @@ importance: 4
 
 # Obtenir l'âge moyen
 
-Ecrivez la fonction `getAverageAge(users)` qui obtient un tableau d'objets avec la propriété `age` et qui ensuite obtient la moyenne.
+Ecrivez la fonction `getAverageAge(users)` qui obtient un tableau d'objets avec la propriété `age` et qui ensuite retourne l'age moyen.
 
 La formule pour la moyenne est `(age1 + age2 + ... + ageN) / N`.
 
@@ -19,4 +19,3 @@ let arr = [ john, pete, mary ];
 
 alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
 ```
-

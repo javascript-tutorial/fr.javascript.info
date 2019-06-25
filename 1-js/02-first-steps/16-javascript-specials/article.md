@@ -103,7 +103,7 @@ Plus d’informations dans : <info:variables> et <info:types>.
 Nous utilisons un navigateur comme environnement de travail. Les fonctions de base de l'interface utilisateur sont les suivantes :
 
 [`prompt(question[, default])`](mdn:api/Window/prompt)
-: Posez une `question` et retournez soit ce que le visiteur a entré, soit `null` s'il a appuyé sur "annuler".
+: Posez une question et retournez soit ce que le visiteur a entré, soit `null` s'il clique sur "cancel".
 
 [`confirm(question)`](mdn:api/Window/confirm)
 : Posez une `question` et suggérez de choisir entre Ok et Annuler. Le choix est retourné comme `true/false`.
@@ -161,7 +161,7 @@ Comparaisons
 
     D'autres comparaisons sont également converties en nombre.
 
-    L’opérateur d’égalité stricte `===` ne fait pas la conversion : différents types ont toujours une valeur différente, donc :
+    L’opérateur d’égalité stricte `===` ne fait pas la conversion : différents types signifient toujours différentes valeurs pour lui.
 
     Les valeurs `null` et `undefined` sont spéciales: elles sont égales `==` les unes aux autres et n’égalent rien d’autre.
 

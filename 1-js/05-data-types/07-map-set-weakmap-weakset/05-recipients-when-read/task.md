@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Store read dates
+# Stocker les dates de lectures
 
-There's an array of messages as in the [previous task](info:task/recipients-read). The situation is similar.
+Il existe un tableau de messages comme dans la [previous task](info:task/recipients-read). La situation est similaire.
 
 ```js
 let messages = [
@@ -14,6 +14,6 @@ let messages = [
 ];
 ```
 
-The question now is: which data structure you'd suggest to store the information: "when the message was read?".
+La question qui se pose maintenant est la suivante : quelle structure de données suggérez-vous pour stocker les informations : "quand le message a-t-il été lu ?".
 
-In the previous task we only needed to store the "yes/no" fact. Now we need to store the date and it, once again, should disappear if the message is gone.
+Dans la tâche précédente, nous n'avions besoin que de stocker le fait "oui/non". Nous devons maintenant stocker la date et cette fois encore, elle devrait disparaître si le message a disparu.

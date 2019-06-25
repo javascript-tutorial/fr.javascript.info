@@ -4,7 +4,7 @@
 
 Dans le chapitre précédent, nous avons vu les méthodes `map.keys()`, `map.values()`, `map.entries()`.
 
-Ces méthodes sont génériques, il existe un accord commun pour les utiliser dans les structures de données. Si jamais nous créons notre propre structure de données, nous devrions aussi les implémenter.
+Ces méthodes sont génériques, il existe une convention de les utiliser pour les structures de données. Si nous devions créer notre propre structure de données, nous devrions aussi les implémenter.
 
 Ils sont pris en charge par:
 
@@ -62,8 +62,94 @@ for (let value of Object.values(user)) {
 }
 ```
 
-## Object.keys/values/entries ignorer les propriétés symboliques
+```warn header="Object.keys/values/entries ignorer les propriétés symboliques"
 
 Tout comme une boucle `for..in`, ces méthodes ignorent les propriétés qui utilisent `Symbol(...)` comme clés.
 
 D'habitude c'est pratique. Mais si nous voulons aussi des clés symboliques, il existe une méthode distincte [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols) qui retourne un tableau composé uniquement de clés symboliques. De plus, la méthde [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) renvoie *toutes* les clés.
+```
+
+## Object.fromEntries pour transformer des objets
+
+Nous avons parfois besoin de transformer un objet en `Map` et de revenir en arrière.
+
+Nous avons déjà `new Map(Object.entries(obj))` pour faire un `Map` à partir de `obj`.
+
+La syntaxe de `Object.fromEntries` fait l'inverse. Étant donné un tableau de paire `[key, value]`, cela crée un objet :
+
+```js run
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// now prices = { banana: 1, orange: 2, meat: 4 }
+
+alert(prices.orange); // 2
+```
+
+Voyons les applications pratiques.
+
+Par exemple, nous aimerions créer un nouvel objet avec un double prix par rapport à celui existant.
+
+Pour les tableaux, nous avons la méthode `.map` qui permet de transformer un tableau, mais rien de tel pour les objets.
+
+Nous pouvons donc utiliser une boucle :
+
+```js run
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+let doublePrices = {};
+for(let [product, price] of Object.entries(prices)) {
+  doublePrices[product] = price * 2;
+}
+
+alert(doublePrices.meat); // 8
+```
+
+… Ou nous pouvons représenter l'objet sous forme de `Array` à l'aide de `Object.entries`, puis effectuer les opérations avec `map` (et éventuellement d'autres méthodes de tableau), puis revenir en arrière à l'aide de `Object.fromEntries`.
+
+Faisons-le pour notre objet :
+
+```js run
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+*!*
+let doublePrices = Object.fromEntries(
+  // convertir en tableau, mapper, puis fromEntries restitue l'objet
+  Object.entries(prices).map(([key, value]) => [key, value * 2])
+);
+*/!*
+
+alert(doublePrices.meat); // 8
+```   
+
+Cela peut sembler difficile au premier abord, mais cela devient facile à comprendre après l’avoir utilisé une ou deux fois.
+
+Nous pouvons également utiliser `fromEntries` pour obtenir un objet depuis `Map`.
+
+Par exemple. nous avons un `Map` des prix, mais nous devons le transmettre à un code tiers qui attend un objet.
+
+Allons-y :
+
+```js run
+let map = new Map();
+map.set('banana', 1);
+map.set('orange', 2);
+map.set('meat', 4);
+
+let obj = Object.fromEntries(map);
+
+// now obj = { banana: 1, orange: 2, meat: 4 }
+
+alert(obj.orange); // 2
+```

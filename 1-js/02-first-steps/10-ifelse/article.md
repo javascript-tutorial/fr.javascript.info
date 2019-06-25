@@ -2,7 +2,7 @@
 
 Parfois, nous devons effectuer différentes actions en fonction d'une condition.
 
-Il y a la déclaration `if` pour cela et aussi l'opérateur conditionnel (ternaire) pour l'évaluation conditionnelle que nous appellerons l'opérateur "point d'interrogation" `?` pour la simplicité.
+Pour ce faire, nous pouvons utiliser l'instruction `if` et l'opérateur conditionnel `? `, également appelé opérateur "point d'interrogation".
 
 ## L'instruction "if"
 
@@ -126,7 +126,7 @@ alert(accessAllowed);
 
 L'opérateur dit "ternaire" ou "point d'interrogation" nous permet de le faire plus rapidement et plus simplement.
 
-L'opérateur est représenté par un point d'interrogation `?`. Le terme formel "ternaire" signifie que l'opérateur a trois opérandes. C'est en fait le seul et unique opérateur en JavaScript qui en a autant.
+L'opérateur est représenté par un point d'interrogation `?`. Appelé aussi "ternaire" parce que l'opérateur a trois opérandes. C'est en fait le seul et unique opérateur en JavaScript qui en a autant.
 
 La syntaxe est :
 ```js
@@ -141,7 +141,9 @@ Par exemple :
 let accessAllowed = (age > 18) ? true : false;
 ```
 
-Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`. L'opérateur point d'interrogation a une faible précédence. Il s'exécute après la comparaison `>`, ça aura donc le même effet :
+Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`. L'opérateur point d'interrogation a une faible précédence, il s'exécute donc après la comparaison `>`.
+
+Cet exemple fera la même chose que le précédent :
 
 ```js
 // l'opérateur de comparaison "age > 18" s'exécute en premier quoiqu'il en soit

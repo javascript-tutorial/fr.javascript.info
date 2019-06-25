@@ -83,7 +83,7 @@ let user = new function() {
 Le constructeur ne peut plus être appelé car il n’est sauvegardé nulle part, il est simplement créé et appelé. Donc, cette astuce vise à encapsuler le code qui construit l'objet unique, sans réutilisation ultérieure.
 ````
 
-## Constructeurs à double syntaxe : new.target
+## Constructeur mode test : new.target
 
 ```smart header="Trucs avancés"
 La syntaxe de cette section est rarement utilisée, sautez-la à moins de vouloir tout savoir.
@@ -109,7 +109,9 @@ new User(); // function User { ... }
 */!*
 ```
 
-Cela peut être utilisé pour permettre aux appels `new` et réguliers de fonctionner de la même manière. C'est-à-dire, créer le même objet :
+Cela peut être utilisé dans la fonction pour savoir si elle a été appelée avec `new`, "en mode constructeur", ou sans "en mode normal".
+
+Nous pouvons également faire des appels `new` et réguliers pour faire la même chose, comme ceci :
 
 ```js run
 function User(name) {

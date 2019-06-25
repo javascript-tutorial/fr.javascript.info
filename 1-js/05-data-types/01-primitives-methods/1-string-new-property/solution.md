@@ -6,26 +6,22 @@ let str = "Hello";
 
 str.test = 5; // (*)
 
-alert(str.test); 
+alert(str.test);
 ```
 
-Il peut y avoir deux types de résultats:
-1. `undefined`
-2. une erreur.
+Selon que vous utilisiez `use strict` ou non, le résultat peut être :
+1. `undefined` (pas de mode strict)
+2. une erreur (mode strict)
 
-Pourquoi? Répétons ce qui se pase à la ligne`(*)`:
+Pourquoi ? Répétons ce qui se pase à la ligne`(*)`:
 
 1. Lorsqu'on accède à une propiété de `str`, un "wrapper d'objet" (conteneur) est créé.
-2. L'opération avec la propriété est effectuée dessus. Ainsi, l'objet obtient la propriété test.
-3. L'opération se termine et "le wrapper d'objet" (conteneur) disparait.
+2. En mode strict, l'écriture à l'intérieur est une erreur.
+3. Sinon, l'opération avec la propriété est poursuivie, l'objet obtient la propriété test, mais après cela, "l'objet wrapper" disparaît.
 
-Ainsi, sur la dernière ligne, `str` n'a aucune trace de la propriété. Un nouveau "wrapper d’objet" (conteneur) est créé pour chaque opération sur le `string`.
+Donc, sans mode strict, dans la dernière ligne, `str` n'a aucune trace de la propriété.
 
-Certains navigateurs peuvent toutefois décider de limiter davantage le programmeur et d'empêcher l'attribution de propriétés aux primitives. C'est pourquoi, dans la pratique, nous pouvons également voir les erreurs sur la ligne `(*)`. C'est cependant un peu plus éloigné de la spécification. 
 
 **Cet exemple montre clairement que les primitives ne sont pas des objets.**
 
-Ils ne peuvent tout simplement pas stocker de données.
-
-Toutes les opérations de propriété / méthode sont effectuées à l'aide d'objets temporaires.
-
+Ils ne peuvent pas stocker de données supplémentaires.

@@ -1,10 +1,6 @@
 # Les conversions de types
 
-<<<<<<< HEAD
-La plupart du temps, les opérateurs et les fonctions convertissent automatiquement une valeur au bon type. C'est ce qu'on appelle la "conversion de type".
-=======
-Most of the time, operators and functions automatically convert the values given to them to the right type. 
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
+La plupart du temps, les opérateurs et les fonctions convertissent automatiquement les valeurs qui leur sont attribuées dans le bon type.
 
 Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour l'afficher. Les opérations mathématiques convertissent les valeurs en nombres.
 
