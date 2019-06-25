@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Exclude backreferences
+# Exclure les backreferences
 
-In simple cases of circular references, we can exclude an offending property from serialization by its name.
+Dans les cas simples de références circulaires, nous pouvons exclure une propriété incriminée de la sérialisation par son nom.
 
-But sometimes there are many backreferences. And names may be used both in circular references and normal properties.
+Mais parfois, il y a beaucoup de backreferences. Et les noms peuvent être utilisés à la fois dans les références circulaires et dans les propriétés normales.
 
-Write `replacer` function to stringify everything, but remove properties that reference `meetup`:
+Écrivez la fonction de `remplacement` pour tout stringify, mais supprimez les propriétés qui font référence à `meetup`:
 
 ```js run
 let room = {
