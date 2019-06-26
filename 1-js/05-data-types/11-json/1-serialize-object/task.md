@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Turn the object into JSON and back
+# Transforme l'objet en JSON et revenez en arrière
 
-Turn the `user` into JSON and then read it back into another variable.
+Transformez `l’utilisateur` en JSON puis relisez-le dans une autre variable.
 
 ```js
 let user = {
