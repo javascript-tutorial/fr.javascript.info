@@ -1,16 +1,16 @@
-# Patterns and flags
+# Modèles et marqueurs
 
-A regular expression (also "regexp", or just "reg") consists of a *pattern* and optional *flags*.
+Une expression rationnelle ("regular expressionÉ en anglais, abrévié en "regexp", ou juste "reg") consiste en un *modèle* et des *marqueurs* optionnels.
 
-There are two syntaxes to create a regular expression object.
+Il existe deux syntaxes pour créer un objet expression rationnelle.
 
-The long syntax:
+La syntaxe longue:
 
 ```js
 regexp = new RegExp("pattern", "flags");
 ```
 
-...And the short one, using slashes `"/"`:
+...Et la syntaxe courte, en utilisant des slash `"/"`:
 
 ```js
 regexp = /pattern/; // no flags
