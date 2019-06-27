@@ -13,107 +13,107 @@ regexp = new RegExp("pattern", "flags");
 ...Et la syntaxe courte, en utilisant des slash `"/"`:
 
 ```js
-regexp = /pattern/; // no flags
-regexp = /pattern/gmi; // with flags g,m and i (to be covered soon)
+regexp = /pattern/; // aucun marqueur
+regexp = /pattern/gmi; // avec marqueurs g, m, et i (bientôt abordés)
 ```
 
-Slashes `"/"` tell JavaScript that we are creating a regular expression. They play the same role as quotes for strings.
+Les slash `"/"` indique à JavaScript que l'on crée une expression rationnelle. Il joue le même rôle que les guillemets pour les chaînes de caractères (les "string").
 
 ## Usage
 
-To search inside a string, we can use method [search](mdn:js/String/search).
+Pour rechercher dans une chaîne de caractères, on oeut utiliser la méthode [search](mdn:js/String/search).
 
-Here's an example:
+Un exemple :
 
 ```js run
-let str = "I love JavaScript!"; // will search here
+let str = "I love JavaScript!"; // on va rechercher ici
 
 let regexp = /love/;
 alert( str.search(regexp) ); // 2
 ```
 
-The `str.search` method looks for the pattern `pattern:/love/` and returns the position inside the string. As we might guess, `pattern:/love/` is the simplest possible pattern. What it does is a simple substring search.
+La méthode `str.search` cherche le modèle `pattern:/love/` et renvoie la position à l'intérieur de la chaîne de caractères. Comme on peut l'imaginer, `pattern:/love/` est le modèle le plus simple qui soit. Il ne fait que de la simple recherche de sous-chaîne.
 
-The code above is the same as:
+Le code au-dessus fait la m^me chose que celui-ci:
 
 ```js run
-let str = "I love JavaScript!"; // will search here
+let str = "I love JavaScript!"; // on va rechercher ici
 
 let substr = 'love';
 alert( str.search(substr) ); // 2
 ```
 
-So searching for `pattern:/love/` is the same as searching for `"love"`.
+Ainsi, chercher le modèle `pattern:/love/` revient à chercher la chaîne `"love"`.
 
-But that's only for now. Soon we'll create more complex regular expressions with much more searching power.
+Mais ce n'est que le début. Bientôt nous créerons des expressions rationnelles plus complexes avec de bien plus grandes possibilités de recherche.
 
-```smart header="Colors"
-From here on the color scheme is:
+```smart header="Couleurs"
+À partir de maintenant le code couleur sera :
 
 - regexp -- `pattern:red`
-- string (where we search) -- `subject:blue`
-- result -- `match:green`
+- chaîne de caractère (là où l'on recherchera) -- `subject:blue`
+- résultat -- `match:green`
 ```
 
 
-````smart header="When to use `new RegExp`?"
-Normally we use the short syntax `/.../`. But it does not support variable insertions `${...}`.
+````smart header="Quand utiliser `new RegExp`?"
+Normalement on utilise la syntaxe courte `/.../`. Mais l'insertion de variables`${...}` n'est pas supportée.
 
-On the other hand, `new RegExp` allows to construct a pattern dynamically from a string, so it's more flexible.
+D'un autre côté, `new RegExp` nous permet de construire un modèle dynamiquement à partir d'une chaîne, et il est donc plus flexible.
 
-Here's an example of a dynamically generated regexp:
+Voici un exemple d'une expression rationnelle dynamiquement générée:
 
 ```js run
 let tag = prompt("Which tag you want to search?", "h2");
 let regexp = new RegExp(`<${tag}>`);
 
-// finds <h2> by default
+// trouve <h2> par défaut
 alert( "<h1> <h2> <h3>".search(regexp));
 ```
 ````
 
 
-## Flags
+## Les marqueurs
 
-Regular expressions may have flags that affect the search.
+Les expressions rationnelles peuvent avoir des marqueurs qui modifieront la recherche.
 
-There are only 6 of them in JavaScript:
+Il y en seulement 6 dans JavaScript:
 
 `i`
-: With this flag the search is case-insensitive: no difference between `A` and `a` (see the example below).
+: Avec ce marqueur la recherche est insensible à la casse: aucune différence entre `A` et `a` (voir exemple ci-dessousw).
 
 `g`
-: With this flag the search looks for all matches, without it -- only the first one (we'll see uses in the next chapter).
+: Avec ce marqueur, la recherche trouve toutes les occurrences du modèle, sans -- uniquement la première occurence (on en verra les usages dans le prochain chapitre).
 
 `m`
-: Multiline mode (covered in the chapter <info:regexp-multiline-mode>).
+: Mode multiligne (couvert dans le chapitre <info:regexp-multiline-mode>).
 
 `s`
-: "Dotall" mode, allows `.` to match newlines (covered in the chapter <info:regexp-character-classes>).
+: Mode "Dotall", permet l'utilisation de `.` pour correspondre aux nouvelles lignes (couvert dans le chapitre <info:regexp-character-classes>).
 
 `u`
-: Enables full unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
+: Active le support complet d'Unicode. Le marqueur permet une procédure correcte des paires de substitution. PLus d'informations dans le chapitre <info:regexp-unicode>.
 
 `y`
-: Sticky mode (covered in the chapter <info:regexp-sticky>)
+: Mode "collant" (couvert dans le chapitre <info:regexp-sticky>)
 
-We'll cover all these flags further in the tutorial.
+Tout cela sera couvert plus loin dans le tuoriel.
 
-For now, the simplest flag is `i`, here's an example:
+POur l'instant, le marqueur le plus simple est le `i`, comme dans l'exemple:
 
 ```js run
 let str = "I love JavaScript!";
 
-alert( str.search(/LOVE/i) ); // 2 (found lowercased)
+alert( str.search(/LOVE/i) ); // 2 (il a trouvé le modèle en minusules)
 
-alert( str.search(/LOVE/) ); // -1 (nothing found without 'i' flag)
+alert( str.search(/LOVE/) ); // -1 (aucune correspondence sans le marqueur `i`)
 ```
 
-So the `i` flag already makes regular expressions more powerful than a simple substring search. But there's so much more. We'll cover other flags and features in the next chapters.
+Ainsi donc, le marqueur `i` rends déjà les expressions rationnelles plus puissantes qu'une simple recherche de sous-chaîne. Mais il reste beaucoup à découvrir. Nous couvrirons les autres marqueurs et les autres fonctionnalités dans les prohains chapitres.
 
 
-## Summary
+## Résumé
 
-- A regular expression consists of a pattern and optional flags: `g`, `i`, `m`, `u`, `s`, `y`.
-- Without flags and special symbols that we'll study later, the search by a regexp is the same as a  substring search.
-- The method `str.search(regexp)` returns the index where the match is found or `-1` if there's no match. In the next chapter we'll see other methods.
+- UNe expression rationnelle consite en un modèle, et des marqueurs optionnels: `g`, `i`, `m`, `u`, `s`, `y`.
+- Sans marqueurs ni caractères spéciaux, que nous verrons plus tard, la rechechre regexp revient à une simple recherche de sous-chîne de caractères.
+- La méthode `str.search(regexp)` renvoie la position à laquelle une correspondence est trouvée ou `-1` s'il n'y en a aucune. Dans le prochain chapitre nous verrons d'autres méthodes.
