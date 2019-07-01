@@ -109,11 +109,7 @@ Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont *tra
 
 Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans une autre langue et de la convertir automatiquement "sous le capot".
 
-<<<<<<< HEAD
-Les exemples les plus courants de ce genre de langages :
-=======
-Examples of such languages:
->>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
+Les exemples de ce genre de langages :
 
 - [CoffeeScript](http://coffeescript.org/) est un "sucre syntaxique" pour JavaScript, il introduit une syntaxe plus courte, permettant d’écrire du code plus précis et plus clair. Habituellement, les développeurs Ruby l'aiment bien.
 - [TypeScript](http://www.typescriptlang.org/) se concentre sur l'ajout de "typage strict des données" pour simplifier le développement et la prise en charge de systèmes complexes. Il est développé par Microsoft.

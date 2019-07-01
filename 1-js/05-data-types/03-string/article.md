@@ -102,11 +102,7 @@ alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 
 Comme vous pouvez le constater, nous devons précéder le simple quote intérieure du backslash `\'`, sinon, cela indiquerait la fin de la chaîne de caractères.
 
-<<<<<<< HEAD
-Bien sûr, cela ne concerne que les quotes identiques à ceux qui les entourent. Donc, comme solution plus élégante, nous pourrions utiliser des guillemets ou des backticks :
-=======
-Of course, that refers only to the quotes that are the same as the enclosing ones. So, as a more elegant solution, we could switch to double quotes or backticks instead:
->>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
+Bien sûr, cela ne concerne que les quotes identiques à ceux qui les entourent. Donc, comme solution plus élégante, nous pourrions passer aux guillemets doubles ou aux backticks :
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!

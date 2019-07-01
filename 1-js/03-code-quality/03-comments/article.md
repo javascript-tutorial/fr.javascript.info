@@ -4,11 +4,7 @@ Comme nous le savons du chapitre <info:structure>, les commentaires peuvent êtr
 
 Nous les utilisons normalement pour décrire comment et pourquoi le code fonctionne.
 
-<<<<<<< HEAD
 De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation se trompent généralement.
-=======
-At first sight, commenting might be obvious, but novices in programming usually get it wrong.
->>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Mauvais commentaires
 
@@ -22,11 +18,7 @@ complex;
 code;
 ```
 
-<<<<<<< HEAD
 Mais en bon code, le nombre de ces commentaires "explicatifs" devrait être minime. Sérieusement, le code devrait être facile à comprendre sans eux.
-=======
-But in good code, the amount of such "explanatory" comments should be minimal. Seriously, the code should be easy to understand without them.
->>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Il existe une excellente règle à ce sujet: "Si le code est si peu clair qu’il nécessite un commentaire, il devrait peut-être être réécrit".
 
