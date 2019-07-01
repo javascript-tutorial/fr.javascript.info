@@ -351,16 +351,9 @@ C’est une particularité des fonctions fléchées. C’est utile lorsque nous 
 - Les méthodes permettent aux objets d’agir comme `object.doSomething()`.
 - Les méthodes peuvent référencer l'objet comme `this`.
 
-<<<<<<< HEAD
 La valeur de `this` est définie au moment de l'exécution.
 - Lorsqu'une fonction est déclarée, elle peut utiliser `this`, mais ce `this` n'a aucune valeur jusqu'à ce que la fonction soit appelée.
-- Cette fonction peut être copiée entre des objets.
+- Une fonction peut être copiée entre des objets.
 - Lorsqu'une fonction est appelée dans la syntaxe "méthode" : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
-=======
-The value of `this` is defined at run-time.
-- When a function is declared, it may use `this`, but that `this` has no value until the function is called.
-- A function can be copied between objects.
-- When a function is called in the "method" syntax: `object.method()`, the value of `this` during the call is `object`.
->>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`. Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.
