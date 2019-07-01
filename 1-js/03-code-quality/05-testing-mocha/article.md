@@ -1,8 +1,12 @@
 # Test automatisé avec mocha
 
+<<<<<<< HEAD
 Les tests automatisés seront utilisés dans d'autres tâches.
 
 Cela fait partie du "minimum éducatif" d’un développeur.
+=======
+Automated testing will be used in further tasks, and it's also widely used in real projects.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Pourquoi avons-nous besoin de tests ?
 
@@ -20,7 +24,11 @@ Par exemple, nous créons une fonction `f`. On écrit du code, on teste : `f(1)`
 
 C’est très typique. Lorsque nous développons quelque chose, nous gardons à l’esprit beaucoup de cas d’utilisation possibles. Mais il est difficile de s’attendre à ce qu’un programmeur les vérifie manuellement après chaque modification. Il devient donc facile de réparer une chose et d'en casser une autre.
 
+<<<<<<< HEAD
 **Le test automatisé signifie que les tests sont écrits séparément, en plus du code. Ils peuvent être exécutés facilement et vérifier tous les principaux cas d'utilisation.**
+=======
+**Automated testing means that tests are written separately, in addition to the code. They can be executed automatically and check all the main use cases.**
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Behavior Driven Development (BDD)
 
@@ -28,7 +36,11 @@ Utilisons une technique nommée [Behavior Driven Development](https://fr.wikiped
 
 **BDD, c'est trois choses en une : les tests ET la documentation ET les exemples.**
 
+<<<<<<< HEAD
 Assez de mots. Voyons un exemple.
+=======
+Let's see the example.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Développement de "pow": la spec
 
@@ -55,8 +67,13 @@ Une spécification a trois blocs de construction principaux que vous pouvez voir
 `describe("title", function() { ... })`
 : Quelle fonctionnalité nous décrivons. Utilisations pour grouper les "workers" - le bloc `it`. Dans notre cas, nous décrivons la fonction `pow`.
 
+<<<<<<< HEAD
 `it("title", function() { ... })`
 : Dans le titre de `it`, nous décrivons d'une *manière lisible par l'homme* le cas particulier d'utilisation, et le deuxième argument est une fonction qui le teste.
+=======
+`it("use case description", function() { ... })`
+: In the title of `it` we *in a human-readable way* describe the particular use case, and the second argument is a function that tests it.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 `assert.equal(value1, value2)`
 : Le code à l'intérieur du bloc `it`, si l'implémentation est correcte, doit s'exécuter sans erreur.
@@ -69,6 +86,7 @@ Une spécification a trois blocs de construction principaux que vous pouvez voir
 
 Le flux de développement ressemble généralement à ceci :
 
+<<<<<<< HEAD
 1. Une spécification initiale est écrite, avec des tests pour les fonctionnalités les plus élémentaires.
 2. Une implémentation initiale est créée.
 3. Pour vérifier si cela fonctionne, nous exécutons le framework de test [Mocha](http://mochajs.org/) (plus de détails bientôt) qui exécute la spécification. Les erreurs sont affichées. Nous apportons des corrections jusqu'à ce que tout fonctionne.
@@ -76,10 +94,25 @@ Le flux de développement ressemble généralement à ceci :
 5. Nous ajoutons d'autres cas d'utilisation à la spécification, probablement pas encore pris en charge par les implémentations. Les tests commencent à échouer.
 6. Passez à l'étape 3, mettez à jour l'implémentation jusqu'à ce que les tests ne génèrent aucune erreur.
 7. Répétez les étapes 3 à 6 jusqu'à ce que la fonctionnalité soit prête.
+=======
+1. An initial spec is written, with tests for the most basic functionality.
+2. An initial implementation is created.
+3. To check whether it works, we run the testing framework [Mocha](http://mochajs.org/) (more details soon) that runs the spec. While the functionality is not complete, errors are displayed. We make corrections until everything works.
+4. Now we have a working initial implementation with tests.
+5. We add more use cases to the spec, probably not yet supported by the implementations. Tests start to fail.
+6. Go to 3, update the implementation till tests give no errors.
+7. Repeat steps 3-6 till the functionality is ready.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Donc, le développement est itératif. Nous écrivons la spécification, la mettons en œuvre, nous nous assurons que les tests réussissent, puis rédigeons d'autres tests, nous nous assurons qu'ils fonctionnent, etc. À la fin, nous avons une implémentation qui fonctionne et des tests.
 
+<<<<<<< HEAD
 Dans notre cas, la première étape est terminée : nous avons une spécification initiale pour `pow`. Faisons donc une implémentation. Mais avant cela, faisons une analyse "zéro" de la spécification, juste pour voir que les tests fonctionnent (ils échoueront tous).
+=======
+Let's see this development flow in our practical case.
+
+The first step is complete: we have an initial spec for `pow`. Now, before making the implementaton, let's use few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## La spec en action
 
@@ -110,7 +143,11 @@ Le résultat :
 
 À partir de là, le test échoue, il y a une erreur. C’est logique: nous avons un code de fonction vide dans `pow`, donc `pow(2,3)` renvoie `undefined` au lieu de `8`.
 
+<<<<<<< HEAD
 Pour l’avenir, notons qu’il existe des testeurs avancés, tels que [karma](https://karma-runner.github.io/) et d'autres. Par conséquent, la configuration de nombreux tests n’est généralement pas un problème.
+=======
+For the future, let's note that there are more high-level test-runners, like [karma](https://karma-runner.github.io/) and others, that make it easy to autorun many different tests.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Implementation initiale
 
@@ -132,7 +169,11 @@ Ce que nous avons fait est définitivement une triche. La fonction ne fonctionne
 
 … Mais la situation est assez typique, cela se produit dans la pratique. Les tests réussissent, mais la fonction ne fonctionne pas correctement. Notre spec est imparfaite. Nous devons ajouter d'autres cas d'utilisation.
 
+<<<<<<< HEAD
 Ajoutons encore un test pour voir si `pow(3, 4) = 81`.
+=======
+Let's add one more test to check that `pow(3, 4) = 81`.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Nous pouvons sélectionner l'une des deux manières d'organiser le test ici :
 
@@ -296,7 +337,11 @@ Test terminé - après tous les tests (after)
 
 [edit src="beforeafter" title="Ouvrez l'exemple dans la sandbox."]
 
+<<<<<<< HEAD
 Habituellement, `beforeEach/afterEach` (`before/each`) sont utilisés pour effectuer l'initialisation, remettre les compteurs à zéro ou faire autre chose entre les tests (ou groupes de tests).
+=======
+Usually, `beforeEach/afterEach` and `before/after` are used to perform initialization, zero out counters or do something else between the tests (or test groups).
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 ````
 
 ## Étendre les spécifications
@@ -390,23 +435,40 @@ C’est particulièrement important dans les grands projets quand une fonction e
 
 Sans tests, les gens ont deux moyens :
 
+<<<<<<< HEAD
 1. Effectuer le changement, peu importe quoi. Ensuite nos utilisateurs rencontrent des bugs et les signalent. Si nous pouvons nous le permettre.
 2. Ou bien les gens ont peur de modifier de telles fonctions si la punition des erreurs est sévère. Ensuite, le code devient vieux, envahi par les toiles d’araignées, personne ne veut y entrer, et ce n’est pas bon.
 
 **Le code automatiquement testé est à l'opposé de cela !**
 
 Si le projet est conduit par des essais, le problème ne se pose pas. Nous pouvons exécuter des tests et voir de nombreuses vérifications effectuées en quelques secondes.
+=======
+1. To perform the change, no matter what. And then our users meet bugs, as we probably fail to check something manually.
+2. Or, if the punishment for errors is harsh, as there are no tests, people become afraid to modify such functions, and then the code becomes outdated, no one wants to get into it. Not good for development.
+
+**Automatic testing helps to avoid these problems!**
+
+If the project is covered with tests, there's just no such problem. After any changes, we can run tests and see a lot of checks made in a matter of seconds.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 **En outre, un code bien testé a une meilleure architecture.**
 
+<<<<<<< HEAD
 Naturellement, c’est parce qu’il est plus facile à modifier et améliorer. Mais pas que ça.
+=======
+Naturally, that's because auto-tested code is easier to modify and improve. But there's also another reason.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Pour écrire des tests, le code doit être organisé de manière à ce que chaque fonction ait une tâche clairement décrite, des entrées et des sorties bien définies. Cela signifie une bonne architecture dès le début.
 
 Dans la vraie vie, ce n’est parfois pas si facile. Parfois, il est difficile d’écrire une spécification avant le code réel, parce que son comportement n’est pas encore clair. Mais en général, les tests d’écriture rendent le développement plus rapide et plus stable.
 
+<<<<<<< HEAD
 ## Et maintenant ?
 
 Plus tard dans le tutoriel, vous rencontrerez de nombreuses tâches avec des tests. Vous verrez donc des exemples plus pratiques.
+=======
+Later in the tutorial you will meet many tasks with tests baked-in. So you'll see more practical examples.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 La rédaction de tests nécessite une bonne connaissance de JavaScript. Mais nous commençons tout juste à l’apprendre. Donc, pour l'instant vous n’êtes pas obligé d’écrire des tests, mais vous devriez déjà pouvoir les lire, même s’ils sont un peu plus complexes que dans ce chapitre.
