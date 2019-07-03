@@ -6,7 +6,11 @@ Mais nous pouvons créer une nouvelle chaîne de caractères basée sur celle ex
 let newStr = str[0].toUpperCase() + str.slice(1);
 ```
 
+<<<<<<< HEAD
 Il y a un petit problème cependant. Si `str` est vide, alors `str[0]` est indéfini, nous allons donc avoir une erreur.
+=======
+There's a small problem though. If `str` is empty, then `str[0]` is `undefined`, and as `undefined` doesn't have the `toUpperCase()` method, we'll get an error.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Il y a deux variantes ici ;;
 
