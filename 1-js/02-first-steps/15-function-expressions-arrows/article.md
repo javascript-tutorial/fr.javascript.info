@@ -197,12 +197,17 @@ Tout d'abord, la syntaxe : comment les différencier dans le code.
 
 La différence la plus subtile est *quand* une fonction est créée par le moteur JavaScript.
 
+<<<<<<< HEAD
 **Une Fonction Expression est créée lorsque l’exécution l’atteint et est utilisable à partir de cet endroit.**
+=======
+**A Function Expression is created when the execution reaches it and is usable only from that moment.**
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` -- voilà, la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.) à partir de maintenant.
 
 Les déclarations de fonction sont différentes.
 
+<<<<<<< HEAD
 **Une Fonction Déclaration est utilisable dans tout le script (ou un bloc de code, si c'est à l'intérieur d'un bloc).**
 
 En d'autres termes, lorsque JavaScript se prépare à exécuter le script ou un bloc de code, il commence par rechercher les déclarations de fonction et crée les fonctions. Nous pouvons considérer cela comme une “étape d'initialisation”.
@@ -210,6 +215,16 @@ En d'autres termes, lorsque JavaScript se prépare à exécuter le script ou un 
 Et après le traitement de toutes les déclarations de fonction, l'exécution continue.
 
 Par conséquent, une fonction déclarée en tant que déclaration de fonction peut être appelée plus tôt que sa définition.
+=======
+**A Function Declaration can be called earlier than it is defined.**
+
+For example, a global Function Declaration is visible in the whole script, no matter where it is.
+
+That's due to internal algorithms. When JavaScript prepares to run the script, it first looks for global Function Declarations in it and creates the functions. We can think of it as an "initialization stage".
+
+And after all Function Declarations are processed, the code is executed. So it has access to these functions.
+
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Par exemple, cela fonctionne :
 
@@ -225,7 +240,11 @@ function sayHi(name) {
 
 La déclaration de fonction `sayHi` est créée lorsque JavaScript est sur le point de démarrer le script et est visible partout dans celui-ci.
 
+<<<<<<< HEAD
 … S’il s’agissait d’une expression de fonction, cela ne fonctionnerait pas :
+=======
+...If it were a Function Expression, then it wouldn't work:
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ```js run refresh untrusted
 *!*
@@ -239,13 +258,21 @@ let sayHi = function(name) {  // (*) plus de magie
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
 
+<<<<<<< HEAD
 **Lorsqu'une déclaration de fonction est faite dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
 Parfois, il est pratique de déclarer une fonction locale nécessaire uniquement dans ce bloc. Mais cette fonctionnalité peut aussi causer des problèmes.
+=======
+**In strict mode, when a Function Declaration is within a code block, it's visible everywhere inside that block. But not outside of it.**
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Par exemple, imaginons que nous ayons besoin de déclarer une fonction `welcome()` en fonction de la variable d’`age` obtenue lors de l’exécution. Et ensuite, nous prévoyons de l'utiliser quelque temps plus tard.
 
+<<<<<<< HEAD
 Le code ci-dessous ne fonctionne pas :
+=======
+If we use Function Declaration, it won't work as intended:
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ```js run
 let age = prompt("Quel est votre age ?", 18);
@@ -351,12 +378,21 @@ welcome(); // ok maintenant
 ```
 
 
+<<<<<<< HEAD
 ```smart header="Quand choisir la déclaration de fonction par rapport à l'expression de fonction ?"
 En règle générale, lorsque nous devons déclarer une fonction, la première chose à prendre en compte est la syntaxe de la déclaration de fonction, celle que nous utilisions auparavant. Cela donne plus de liberté dans l'organisation de notre code, car nous pouvons appeler de telles fonctions avant qu'elles ne soient déclarées.
 
 Il est également un peu plus facile de rechercher `fonction f(…) {…}` dans le code que `let f = function(…) {…}`. Les déclarations de fonction sont plus "accrocheuses".
 
 … Mais si une déclaration de fonction ne nous convient pas pour une raison quelconque (nous en avons vu un exemple ci-dessus), il convient d'utiliser une Expression de Fonction.
+=======
+```smart header="When to choose Function Declaration versus Function Expression?"
+As a rule of thumb, when we need to declare a function, the first to consider is Function Declaration syntax. It gives more freedom in how to organize our code, because we can call such functions before they are declared.
+
+That's also better for readability, as it's easier to look up `function f(…) {…}` in the code than `let f = function(…) {…}`. Function Declarations are more "eye-catching".
+
+...But if a Function Declaration does not suit us for some reason, or we need a conditional declaration (we've just seen an example), then Function Expression should be used.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 ```
 
 

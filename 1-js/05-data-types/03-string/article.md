@@ -86,13 +86,22 @@ Exemples avec unicode :
 
 ```js run
 alert( "\u00A9" ); // ©
+<<<<<<< HEAD
 alert( "\u{20331}" ); // 佫, un rare hiéroglyphe chinois (long unicode)
 alert( "\u{1F60D}" ); // 😍, un symbole de visage souriant (un autre long unicode)
+=======
+alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long unicode)
+alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long unicode)
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 ```
 
 Tous les caractères spéciaux commencent par un backslash (barre oblique inversée) `\`. On l'appelle aussi "caractère d'échappement".
 
+<<<<<<< HEAD
 Nous l'utilisons également si nous voulons insérer un quote dans la chaîne de caractères.
+=======
+We might also use it if we wanted to insert a quote into the string.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Par exemple :
 
@@ -305,8 +314,14 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
+<<<<<<< HEAD
 ````smart header="L'astuce du NON binaire"
 L’un des vieux trucs utilisés ici est l'opérateur [NON binaire](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires#(NON_binaire)) `~`. Il convertit le nombre en un entier de 32 bits (supprime la partie décimale, s'elle existe), puis inverse tous les bits de sa représentation binaire.
+=======
+#### The bitwise NOT trick
+
+One of the old tricks used here is the [bitwise NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~` operator. It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Pour les entiers 32 bits, l'appel `~n` signifie exactement la même chose que `-(n+1)` (en raison du format IEEE-754).
 
@@ -321,9 +336,15 @@ alert( ~-1 ); // 0, le même que -(-1+1)
 */!*
 ```
 
+<<<<<<< HEAD
 Comme on peut le voir, `~n` est zéro uniquement si `n == -1`.
 
 Donc le test `if ( ~str.indexOf("...") )` est vrai tant que le résultat de `indexOf` n'est pas `-1`. En d'autres termes, quand il y a une correspondance.
+=======
+As we can see, `~n` is zero only if `n == -1` (that's for any 32-bit signed integer `n`).
+
+So, the test `if ( ~str.indexOf("...") )` is truthy only if the result of `indexOf` is not `-1`. In other words, when there is a match.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Les gens l'utilisent pour raccourcir les vérifications `indexOf` :
 
@@ -339,7 +360,15 @@ Il n'est généralement pas recommandé d'utiliser les fonctionnalités du langa
 
 Rappelez-vous juste que : `if (~str.indexOf(...))` se lit "si trouvé".
 
+<<<<<<< HEAD
 ````
+=======
+Just remember: `if (~str.indexOf(...))` reads as "if found".
+
+Technically speaking, numbers are truncated to 32 bits by `~` operator, so there exist other big numbers that give `0`, the smallest is `~4294967295=0`. That makes such check is correct only if a string is not that long.
+
+Right now we can see this trick only in the old code, as modern JavaScript provides `.includes` method (see below).
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ### includes, startsWith, endsWith
 
@@ -559,7 +588,11 @@ Vous pouvez ignorer cette section si vous ne prévoyez pas de les utiliser.
 
 ### Paires de substitution
 
+<<<<<<< HEAD
 La plupart des symboles ont un code de 2 octets. Les lettres dans la plupart des langues européennes, les chiffres et même la plupart des hiéroglyphes ont une représentation de 2 octets.
+=======
+All frequently used characters have 2-byte codes. Letters in most european languages, numbers, and even most hieroglyphs, have a 2-byte representation.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Mais 2 octets ne permettent que 65 536 combinaisons et cela ne suffit pas pour tous les symboles possibles. Les symboles les plus rares sont donc codés avec une paire de caractères de 2 octets appelée "paire de substitution".
 
@@ -568,7 +601,7 @@ La longueur de ces symboles est `2`:
 ```js run
 alert( '𝒳'.length ); // 2, MATHEMATICAL SCRIPT CAPITAL X
 alert( '😂'.length ); // 2, FACE WITH TEARS OF JOY
-alert( '𩷶'.length ); // 2, a rare chinese hieroglyph
+alert( '𩷶'.length ); // 2, a rare Chinese hieroglyph
 ```
 
 Notez que les paires de substitution n'existaient pas au moment de la création de JavaScript et ne sont donc pas correctement traitées par le langage!
@@ -628,8 +661,13 @@ Cela offre une grande flexibilité, mais aussi un problème intéressant: deux c
 Par exemple :
 
 ```js run
+<<<<<<< HEAD
 alert( 'S\u0307\u0323' ); // Ṩ, S + point dessus + point dessous
 alert( 'S\u0323\u0307' ); // Ṩ, S + point dessous + point dessus
+=======
+alert( 'S\u0307\u0323' ); // Ṩ, S + dot above + dot below
+alert( 'S\u0323\u0307' ); // Ṩ, S + dot below + dot above
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false
 ```
@@ -650,7 +688,11 @@ alert( "S\u0307\u0323".normalize().length ); // 1
 alert( "S\u0307\u0323".normalize() == "\u1e68" ); // true
 ```
 
+<<<<<<< HEAD
 En réalité, ce n'est pas toujours le cas. La raison étant que le symbole `Ṩ` est “assez commun”, donc les créateurs UTF-16 l’ont inclus dans la table principale et lui ont donné un code.
+=======
+In reality, this is not always the case. The reason being that the symbol `Ṩ` is "common enough", so UTF-16 creators included it in the main table and gave it the code.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Si vous souhaitez en savoir plus sur les règles de normalisation et leurs variantes, reportez-vous à l’annexe du standard Unicode : [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), mais dans la plupart des cas, les informations de cette section sont suffisantes.
 
