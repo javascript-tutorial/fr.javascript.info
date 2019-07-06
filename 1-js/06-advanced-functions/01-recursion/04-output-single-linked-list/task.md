@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Output a single-linked list
+# Produire une liste de simple lien
 
-Let's say we have a single-linked list (as described in the chapter <info:recursion>):
+Disons que nous avons une liste de simple lien (comme décrit dans le chapitre <info:recursion>):
 
 ```js
 let list = {
@@ -22,8 +22,8 @@ let list = {
 };
 ```
 
-Write a function `printList(list)` that outputs list items one-by-one.
+Écrire une fonction `printList(list)` qui sort les éléments de la liste un par un.
 
-Make two variants of the solution: using a loop and using recursion.
+Faites deux variantes de la solution: en utilisant une boucle et en utilisant la récursion.
 
-What's better: with recursion or without it?
+Qu'est-ce qui est le mieux: Avec ou sans récursion ?
