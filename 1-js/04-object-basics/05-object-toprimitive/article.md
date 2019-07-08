@@ -3,11 +3,7 @@
 
 Que se passe-t-il lorsque des objets sont ajoutés `obj1 + obj2`, soustraits `obj1 - obj2` ou imprimés à l'aide de `alert (obj)` ?
 
-<<<<<<< HEAD
 Dans ce cas, les objets sont automatiquement convertis en primitives, puis l'opération est effectuée.
-=======
-In that case, objects are auto-converted to primitives, and then the operation is carried out.
->>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Dans le chapitre <info:type-conversions> nous avons vu les règles pour les conversions numériques, chaînes et booléennes de primitives. Mais nous avions mis de côté les objets. Maintenant que nous connaissons les méthodes et les symboles, il devient possible de l'aborder.
 
@@ -148,11 +144,7 @@ alert(+user); // valueOf -> 1000
 alert(user + 500); // valueOf -> 1500
 ```
 
-<<<<<<< HEAD
-Souvent, nous voulons un seul endroit "catch-all" pour gérer toutes les conversions primitives. Dans ce cas, nous pouvons implémenter `toString` uniquement, comme ceci :
-=======
-Often we want a single "catch-all" place to handle all primitive conversions. In this case, we can implement `toString` only, like this:
->>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
+Souvent, nous voulons un seul endroit "fourre-tout" pour gérer toutes les conversions primitives. Dans ce cas, nous pouvons implémenter `toString` uniquement, comme ceci :
 
 ```js run
 let user = {
