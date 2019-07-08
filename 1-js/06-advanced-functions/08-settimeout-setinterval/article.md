@@ -6,8 +6,11 @@ Il existe deux méthodes pour cela :
 - `setTimeout` permet d'exécuter une fonction une unique fois après un certain laps de temps.
 - `setInterval` permet d'exécuter une fonction périodiquement avec un intervalle spécifié entre chaque appel.
 
+<<<<<<< HEAD
 Ces méthodes ne font pas partie de la spécification JavaScript. Mais la plupart des environnements ont un ordonnanceur interne et proposent ces méthodes. Elles sont notamment compatibles avec tous les navigateurs internet ainsi que Node.js.
 
+=======
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 ## setTimeout
 
 La syntaxe:
@@ -284,6 +287,7 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 
 ## Résumé
 
+<<<<<<< HEAD
 - Les méthodes `setInterval(func, delay, ...args)` et `setTimeout(func, delay, ...args)` permettent d'exécuter `func` respectivement périodiquement et une seule fois après `delay` millisecondes.
 - Les fonctions `clearInterval` et `clearTimeout` permettent d'annuler l'exécution d'une fonction planifiée en leur passant la valeur en sortie de `setInterval` et `setTimeout` (l'identifiant de timer).
 - Les appels imbriqués à `setTimeout` sont une alternative plus flexible à `setInterval`. Ils permettent aussi de *garantir le délai minimum entre deux exécutions*.
@@ -291,6 +295,15 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 - Le navigateur s'assure qu'après 5 appels imbriqués de `setTimeout`, ou de `setInterval` à délai nul, le délai réel entre les appels soit d'au moins 4ms, et ce pour des raisons historiques.
 
 Il faut garder à l'esprit que toutes ces méthodes d'ordonnancement ne *garantissent pas* le délai exact. Il vaut mieux éviter de se baser sur ce délai dans le code.
+=======
+- Methods `setInterval(func, delay, ...args)` and `setTimeout(func, delay, ...args)` allow to run the `func` regularly/once after `delay` milliseconds.
+- To cancel the execution, we should call `clearInterval/clearTimeout` with the value returned by `setInterval/setTimeout`.
+- Nested `setTimeout` calls is a more flexible alternative to `setInterval`. Also they can guarantee the minimal time *between* the executions.
+- Zero delay scheduling with `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current code is complete".
+- The browser limits the minimal delay for five or more nested call of `setTimeout` or for `setInterval` (after 5th call) to 4ms. That's for historical reasons.
+
+Please note that all scheduling methods do not *guarantee* the exact delay. 
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
 - Le CPU est surchargé.
