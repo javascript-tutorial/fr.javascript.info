@@ -31,11 +31,7 @@ alert(phrase); // Erreur, phrase n'est pas définie
 
 ## "var" n'a pas de portée limitée aux blocs
 
-<<<<<<< HEAD
-Les variables `var` sont globales ou à l'échelle de la fonction. En d'autres mots, elles sont visibles à travers les blocs.
-=======
-Variables, declared with `var`, are either function-wide or global. They are visible through blocks.
->>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
+Les variables, déclarées avec `var`, sont globales ou à l'échelle de la fonction. Elles sont visibles à travers les blocs.
 
 Par exemple:
 
@@ -49,11 +45,7 @@ alert(test); // vrai, la variable existe après if
 */!*
 ```
 
-<<<<<<< HEAD
-`var` ignore les blocs de code, alors nous avons une variable globale `test`.
-=======
-As `var` ignores code blocks, we've got a global variable `test`.
->>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
+Comme `var` ignore les blocs de code, nous avons une variable globale `test`.
 
 Si nous aurions utilisé `let test` au lieu de `var test`, la variable aurait seulement été visible à l'intérieur de `if`:
 
