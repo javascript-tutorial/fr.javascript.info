@@ -257,9 +257,15 @@ user.hi(); // John (le simple appel fonctionne)
 */!*
 ```
 
+<<<<<<< HEAD
 Sur la dernière ligne, un opérateur conditionnel choisit soit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
 
 La méthode est immédiatement appelée avec des parenthèses `()`. Mais ça ne fonctionne pas correctement !
+=======
+On the last line there is a conditional operator that chooses either `user.hi` or `user.bye`. In this case the result is `user.hi`.
+
+Then the method is immediately called with parentheses `()`. But it doesn't work correctly!
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Vous pouvez voir que l'appel entraîne une erreur, la valeur de `"this"` à l'intérieur de l'appel devient `undefined`.
 
