@@ -1,8 +1,8 @@
 # L'environnement du navigateur, spécifications
 
-Le langage JavaScript a été initialement créé pour les navigateurs web. Depuis lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
+Le langage JavaScript a été initialement créé pour les navigateurs web. Dès lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
 
-Une plateforme peut être un navigateur, un serveur web, ou une machine à laver, ou un autre *hôte*. Chacuns d'entre eux proposent des fonctionnalités spécifiques à la plateforme. La spécification JavaScript appelle cela un *environnement hôte*.
+Une plateforme peut être un navigateur, un serveur web, ou une machine à laver, ou un autre *hôte*. Chacuns d'entre eux proposent des fonctionnalités spécifiques à leur plateforme. La spécification JavaScript appelle cela un *environnement hôte*.
 
 Un environnement hôte propose des objets et fonctions spécifiques à la plateforme en plus du noyau du langage. Les navigateurs web donnent la possibilité de contrôler les pages web. Node.js fournit des fonctionnalités côté serveur, etc.
 
@@ -10,10 +10,10 @@ Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un
 
 ![](windowObjects.png)
 
-Il y a un objet "racine" appelé `window`. Il a 2 rôles :
+Il existe un objet "racine" appelé `window`. Il a 2 rôles :
 
 1. Premièrement, c'est un objet global pour le code JavaScript, comme décrit dans le chapitre <info:global-object>.
-2. Deuxièmement, cela représente la "fenêtre du navigateur" et fournit des méthodes pour la contrôler.
+2. Deuxièmement, il représente la "fenêtre du navigateur" et fournit des méthodes pour la contrôler.
 
 Par exemple, nous l'utilisons ici comme un objet global :
 
@@ -29,7 +29,7 @@ window.sayHi();
 Et nous l'utilisons ici comme une fenêtre du navigateur pour voir la hauteur de la fenêtre :
 
 ```js run
-alert(window.innerHeight); // inner window height
+alert(window.innerHeight); // hauteur de la fenêtre intérieure
 ```
 
 Il y a d'autres méthodes et propriétés spécifiques à la fenêtre, nous les étudierons plus tard.
