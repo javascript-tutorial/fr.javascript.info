@@ -1,60 +1,60 @@
-# Browser environment, specs
+# L'environnement du navigateur, spécifications
 
-The JavaScript language was initially created for web browsers. Since then, it has evolved and become a language with many uses and platforms.
+Le langage JavaScript a été initialement créé pour les navigateurs web. Depuis lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
 
-A platform may be a browser, or a web-server, or a washing machine, or another *host*. Each of them provides platform-specific functionality. The JavaScript specification calls that a *host environment*.
+Une plateforme peut être un navigateur, un serveur web, ou une machine à laver, ou un autre *hôte*. Chacuns d'entre eux proposent des fonctionnalités spécifiques à la plateforme. La spécification JavaScript appelle cela un *environnement hôte*.
 
-A host environment provides platform-specific objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
+Un environnement hôte propose des objets et fonctions spécifiques à la plateforme en plus du noyau du langage. Les navigateurs web donnent la possibilité de contrôler les pages web. Node.js fournit des fonctionnalités côté serveur, etc.
 
-Here's a bird's-eye view of what we have when JavaScript runs in a web-browser:
+Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un navigateur Web :
 
 ![](windowObjects.png)
 
-There's a "root" object called `window`. It has two roles:
+Il y a un objet "racine" appelé `window`. Il a 2 rôles :
 
-1. First, it is a global object for JavaScript code, as described in the chapter <info:global-object>.
-2. Second, it represents the "browser window" and provides methods to control it.
+1. Premièrement, c'est un objet global pour le code JavaScript, comme décrit dans le chapitre <info:global-object>.
+2. Deuxièmement, cela représente la "fenêtre du navigateur" et fournit des méthodes pour la contrôler.
 
-For instance, here we use it as a global object:
+Par exemple, nous l'utilisons ici comme un objet global :
 
 ```js run
 function sayHi() {
   alert("Hello");
 }
 
-// global functions are accessible as properties of window
+// les fonctions globales sont accessibles comment étant des propriétés de la fenêtre
 window.sayHi();
 ```
 
-And here we use it as a browser window, to see the window height:
+Et nous l'utilisons ici comme une fenêtre du navigateur pour voir la hauteur de la fenêtre :
 
 ```js run
 alert(window.innerHeight); // inner window height
 ```
 
-There are more window-specific methods and properties, we'll cover them later.
+Il y a d'autres méthodes et propriétés spécifiques à la fenêtre, nous les étudierons plus tard.
 
 ## DOM (Document Object Model)
 
-The `document` object gives access to the page content. We can change or create anything on the page using it.
+l'objet `document` donne accès au contenu de la page. On peut changer ou créer n'importe quoi sur la page en l'utilisant.
 
-For instance:
+Par exemple :
 ```js run
-// change the background color to red
+// change la couleur de fond en rouge
 document.body.style.background = "red";
 
-// change it back after 1 second
+// réinitialisation après 1 seconde
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
-Here we used `document.body.style`, but there's much, much more. Properties and methods are described in the specification:
+Ici on a utilisé `document.body.style`, mais il y a bien plus encore. Les propriétés et les méthodes sont décrites dans la spécification :
 
-- **DOM Living Standard** at <https://dom.spec.whatwg.org>
+- **DOM Living Standard** à <https://dom.spec.whatwg.org>
 
-```smart header="DOM is not only for browsers"
-The DOM specification explains the structure of a document and provides objects to manipulate it. There are non-browser instruments that use it too.
+```smart header="le DOM n'est pas seulement pour les navigateurs"
+La spécification DOM décrit la structure d'un document et fournit des objets pour la manipuler. Il y a des instruments autres que des navigateurs qui l'utilisent aussi.
 
-For instance, server-side tools that download HTML pages and process them use the DOM. They may support only a part of the specification though.
+Par exemple, Les outils côté serveur qui télécharge des pages HTML et les traitent utilisent le DOM. Bien qu'ils peuvent ne supporter qu'une partie de la spécification.
 ```
 
 ```smart header="CSSOM for styling"
