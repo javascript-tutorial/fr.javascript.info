@@ -30,11 +30,7 @@ La fonction `prompt` accepte deux arguments :
 result = prompt(title, [default]);
 ```
 
-<<<<<<< HEAD
-Il montre une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
-=======
-It shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel.
->>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
+Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
 
 `title`
 : Le texte à afficher au visiteur.
@@ -42,11 +38,7 @@ It shows a modal window with a text message, an input field for the visitor, and
 `default`
 : Un deuxième paramètre facultatif, la valeur initiale du champ de saisie.
 
-<<<<<<< HEAD
-Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur `OK`. Ou ils peuvent annuler l'entrée en appuyant sur le bouton `ANNULER` ou en appuyant sur la touche `Échap`.
-=======
-The visitor may type something in the prompt input field and press OK. Or they can cancel the input by pressing Cancel or hitting the `key:Esc` key.
->>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
+Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur `OK`. Ou ils peuvent annuler l'entrée en appuyant sur le bouton `ANNULER` ou en appuyant sur la touche `key:Esc`.
 
 L'appel du `prompt` renvoie le texte du champ de saisie ou `null` si l'entrée a été annulée.
 
@@ -82,11 +74,7 @@ La syntaxe :
 result = confirm(question);
 ```
 
-<<<<<<< HEAD
 La fonction `confirm` affiche une fenêtre modale avec une `question` et deux boutons: OK et Annuler.
-=======
-The function `confirm` shows a modal window with a `question` and two buttons: OK and Cancel.
->>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 
 Le résultat est `true` si OK est pressé et `false` dans les autres cas.
 
@@ -106,17 +94,10 @@ Nous avons couvert 3 fonctions spécifiques au navigateur pour interagir avec le
 : affiche un message.
 
 `prompt`
-<<<<<<< HEAD
-: affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou, si on clique sur `Annuler` ou `Esc`, tous les navigateurs renvoient `null`.
+: affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou, si on clique sur `Annuler` ou `key:Esc`, `null`.
 
 `confirm`
-: affiche un message et attend que l'utilisateur appuie sur “OK” ou “Annuler”. Il renvoie `true` pour OK et `false` pour Annuler/Esc.
-=======
-: shows a message asking the user to input text. It returns the text or, if Cancel button or `key:Esc` is clicked, `null`.
-
-`confirm`
-: shows a message and waits for the user to press "OK" or "Cancel". It returns `true` for OK and `false` for Cancel/`key:Esc`.
->>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
+: affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler". Il renvoie `true` pour OK et `false` pour Annuler/`key:Esc`.
 
 Toutes ces méthodes sont modales: elles interrompent l'exécution du script et n'autorisent pas le visiteur à interagir avec le reste de la page tant que le message n'a pas disparu.
 
