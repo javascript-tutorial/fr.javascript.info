@@ -1,6 +1,6 @@
-The `new Date` constructor uses the local time zone by default. So the only important thing to remember is that months start from zero.
+Le constructeur `new Date` utilise le fuseau horaire local. Donc, la seule chose importante à retenir est que les mois commencent à zéro.
 
-So February has number 1.
+Donc février a le numéro 1.
 
 ```js run
 let d = new Date(2012, 1, 20, 3, 12);

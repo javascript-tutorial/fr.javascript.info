@@ -2,14 +2,14 @@ importance: 5
 
 ---
 
-# How many seconds has passed today?
+# Combien de secondes s'est écoulé aujourd'hui ?
 
-Write a function `getSecondsToday()` that returns the number of seconds from the beginning of today.
+Ecrivez une fonction `getSecondsToday()` qui renvoie le nombre de secondes depuis le début de la journée.
 
-For instance, if now `10:00 am`, and there was no daylight savings shift, then:
+Par exemple, s'il est maintenant `10:00 am`, et qu'il n'y a pas de décalage de l'heure d'été, alors:
 
 ```js
 getSecondsToday() == 36000 // (3600 * 10)
 ```
 
-The function should work in any day. That is, it should not have a hard-coded value of "today".
+La fonction devrait fonctionner dans n'importe quel jour. Autrement dit, il ne devrait pas avoir de valeur "aujourd'hui" codée en dur.
