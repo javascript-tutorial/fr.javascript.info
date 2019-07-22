@@ -22,7 +22,11 @@ function sayHi() {
   alert("Hello");
 }
 
+<<<<<<< HEAD
 // les fonctions globales sont accessibles comment étant des propriétés de la fenêtre
+=======
+// global functions are methods of the global object:
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 window.sayHi();
 ```
 
