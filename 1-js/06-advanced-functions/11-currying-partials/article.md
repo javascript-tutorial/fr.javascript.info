@@ -1,23 +1,23 @@
-libs:
+bibliothèques:
   - lodash
 
 ---
 
-# Currying and partials
+# Curryfication et fonctions partielles
 
-Until now we have only been talking about binding `this`. Let's take it a step further.
+Jusqu'à présent, nous ne parlions que de lier `this`. Allons un peu plus loin.
 
-We can bind not only `this`, but also arguments. That's rarely done, but sometimes can be handy.
+Nous pouvons lier non seulement `this`, mais aussi des arguments. C'est rarement fait, mais cela peut parfois être utile.
 
-The full syntax of `bind`:
+La syntaxe complète de `bind`:
 
 ```js
 let bound = func.bind(context, arg1, arg2, ...);
 ```
 
-It allows to bind context as `this` and starting arguments of the function.
+Cela permet de lier le contexte comme `this` et les arguments de départ de la fonction.
 
-For instance, we have a multiplication function `mul(a, b)`:
+Par exemple, nous avons une fonction de multiplication `mul(a, b)`:
 
 ```js
 function mul(a, b) {
@@ -25,7 +25,7 @@ function mul(a, b) {
 }
 ```
 
-Let's use `bind` to create a function `double` on its base:
+Utilisons `bind` pour créer une fonction `double` sur sa base:
 
 ```js run
 function mul(a, b) {
@@ -41,13 +41,13 @@ alert( double(4) ); // = mul(2, 4) = 8
 alert( double(5) ); // = mul(2, 5) = 10
 ```
 
-The call to `mul.bind(null, 2)` creates a new function `double` that passes calls to `mul`, fixing `null` as the context and `2` as the first argument. Further arguments are passed "as is".
+L'appel à `mul.bind(null, 2)` crée une nouvelle fonction `double` qui transmet les appels à `mul`, fixant `null` comme contexte et `2` comme premier argument. Les autres arguments sont transmis "tels quels".
 
-That's called [partial function application](https://en.wikipedia.org/wiki/Partial_application) -- we create a new function by fixing some parameters of the existing one.
+Cela s'appelle des [Fonctions partiellement appliquées](https://en.wikipedia.org/wiki/Partial_application) -- nous créons une nouvelle fonction en fixant certains paramètres de l'existant.
 
-Please note that here we actually don't use `this` here. But `bind` requires it, so we must put in something like `null`.
+Veuillez noter que nous n'utilisons pas `this` ici. Mais `bind` en a besoin, nous devons donc inclure quelque chose comme `null`.
 
-The function `triple` in the code below triples the value:
+La fonction `triple` dans le code ci-dessous triple la valeur:
 
 ```js run
 function mul(a, b) {
@@ -63,23 +63,23 @@ alert( triple(4) ); // = mul(3, 4) = 12
 alert( triple(5) ); // = mul(3, 5) = 15
 ```
 
-Why do we usually make a partial function?
+Pourquoi faisons-nous habituellement une fonction partielle?
 
-The benefit is that we can create an independent function with a readable name (`double`, `triple`). We can use it and not provide first argument of every time as it's fixed with `bind`.
+L'avantage est que nous pouvons créer une fonction indépendante avec un nom lisible (`double`, `triple`). Nous pouvons l'utiliser et ne pas fournir le premier argument de chaque fois qu'il est fixé par `bind`.
 
-In other cases, partial application is useful when we have a very generic function and want a less universal variant of it for convenience.
+Dans d’autres cas, une application partielle est utile lorsque nous avons une fonction très générique et que nous voulons une variante moins universelle de celle-ci par commodité.
 
-For instance, we have a function `send(from, to, text)`. Then, inside a `user` object we may want to use a partial variant of it: `sendTo(to, text)` that sends from the current user.
+Par exemple, nous avons une fonction `send(from, to, text)`. Ensuite, dans un objet `user`, nous pourrons utiliser une variante partielle de celle-ci: `sendTo(to, text)` envoyé par l'utilisateur actuel.
 
-## Going partial without context
+## Fonctions partielles sans contexte
 
-What if we'd like to fix some arguments, but not bind `this`?
+Que se passe-t-il si nous souhaitons résoudre certains arguments, sans lier `this`?
 
-The native `bind` does not allow that. We can't just omit the context and jump to arguments.
+Le `bind` natif ne le permet pas. Nous ne pouvons pas simplement omettre le contexte et passer aux arguments.
 
-Fortunately, a `partial` function for binding only arguments can be easily implemented.
+Heureusement, une fonction `partielle` pour ne lier que des arguments peut être facilement implémentée.
 
-Like this:
+Comme ceci:
 
 ```js run
 *!*
@@ -98,36 +98,36 @@ let user = {
   }
 };
 
-// add a partial method that says something now by fixing the first argument
+// ajouter une méthode partielle qui dit quelque chose maintenant en corrigeant le premier argument
 user.sayNow = partial(user.say, new Date().getHours() + ':' + new Date().getMinutes());
 
 user.sayNow("Hello");
-// Something like:
+// Quelque chose comme:
 // [10:00] John: Hello!
 ```
 
-The result of `partial(func[, arg1, arg2...])` call is a wrapper `(*)` that calls `func` with:
-- Same `this` as it gets (for `user.sayNow` call it's `user`)
-- Then gives it `...argsBound` -- arguments from the `partial` call (`"10:00"`)
-- Then gives it `...args` -- arguments given to the wrapper (`"Hello"`)
+Le résultat de l'appel `partial (func[, arg1, arg2...])` est un wrapper `(*)` qui appelle `func` avec:
+- Le même `this` qu'il obtient (pour `user.sayNow` appeler son `user`)
+- Puis lui donne `...argsBound` - arguments de l'appel `partial` (`"10:00"`)
+- Puis donne `...args` - arguments donnés au wrapper (`"Hello"`)
 
-So easy to do it with the spread operator, right?
+Si facile à faire avec l'opérateur de decomposition, non?
 
-Also there's a ready [_.partial](https://lodash.com/docs#partial) implementation from lodash library.
+Il existe également une implémentation [_.partial](https://lodash.com/docs#partial) prête de la bibliothèque lodash.
 
-## Currying
+## Curryfication
 
-Sometimes people mix up partial function application mentioned above with another thing named "currying". That's another interesting technique of working with functions that we just have to mention here.
+Parfois, les gens mélangent une application partielle des fonctions mentionnée ci-dessus avec une autre chose appelée "curryfication", "currying" en anglais. C'est une autre technique intéressante de travailler avec des fonctions que nous venons de mentionner ici.
 
-[Currying](https://en.wikipedia.org/wiki/Currying) is a transformation of functions that translates a function from callable as `f(a, b, c)` into callable as `f(a)(b)(c)`. In JavaScript, we usually make a wrapper to keep the original function.
+[Currying](https://en.wikipedia.org/wiki/Currying) est une transformation de fonctions qui traduit une fonction appelable comme `f(a, b, c)` en fonction appelable comme `f(a)(b)(c)`. En JavaScript, nous fabriquons généralement un wrapper pour conserver la fonction d'origine.
 
-Currying doesn't call a function. It just transforms it.
+Currying n'appelle pas une fonction. Cela ne fait que le transformer.
 
-Let's create a helper `curry(f)` function that performs currying for a two-argument `f`. In other words, `curry(f)` for two-argument `f(a, b)` translates it into `f(a)(b)`
+Créons une fonction `curry(f)` d’aide qui effectue le curry pour un `f` à deux arguments. En d'autres termes, `curry(f)` pour `f(a, b)` à deux arguments le traduit en `f(a)(b)`
 
 ```js run
 *!*
-function curry(f) { // curry(f) does the currying transform
+function curry(f) { // curry(f) fait la transformation curryfication
   return function(a) {
     return function(b) {
       return f(a, b);
@@ -146,31 +146,31 @@ let carriedSum = curry(sum);
 alert( carriedSum(1)(2) ); // 3
 ```
 
-As you can see, the implementation is a series of wrappers.
+Comme vous pouvez le constater, l'implémentation consiste en une série de wrappers.
 
-- The result of `curry(func)` is a wrapper `function(a)`.
-- When it is called like `sum(1)`, the argument is saved in the Lexical Environment, and a new wrapper is returned `function(b)`.
-- Then `sum(1)(2)` finally calls `function(b)` providing `2`, and it passes the call to the original multi-argument `sum`.
+- Le résultat de `curry(func)` est un wrapper `function(a)`.
+- Lorsqu'il est appelé comme `sum(1)`, l'argument est enregistré dans l'environnement lexical et un nouvel encapsuleur est renvoyé `function(b)`.
+- Ensuite, `sum(1)(2)` appelle finalement la `fonction(b)` fournissant `2`, et transmet l'appel à la fonction `sum` à multiples-arguments d'origine.
 
-More advanced implementations of currying like [_.curry](https://lodash.com/docs#curry) from lodash library do something more sophisticated. They return a wrapper that allows a function to be called normally when all arguments are supplied *or* returns a partial otherwise.
+Des implémentations plus avancées de curryfication comme [_.curry](https://lodash.com/docs#curry) de la bibliothèque lodash font quelque chose de plus sophistiqué. Elles renvoient un wrapper permettant à une fonction d'être appelée normalement lorsque tous les arguments sont fournis *ou* renvoie un partiel sinon.
 
 ```js
 function curry(f) {
   return function(...args) {
-    // if args.length == f.length (as many arguments as f has),
-    //   then pass the call to f
-    // otherwise return a partial function that fixes args as first arguments
+    // if args.length == f.length (autant d'arguments que f a),
+    //   puis passez l'appel à f
+    // sinon retourner une fonction partielle qui fixe args comme premiers arguments
   };
 }
 ```
 
-## Currying? What for?
+## Curryfication? Pourquoi?
 
-To understand the benefits we definitely need a worthy real-life example.
+Pour comprendre les avantages, nous avons absolument besoin d'un exemple digne de ce nom dans la vie réelle.
 
-Advanced currying allows the function to be both callable normally and partially.
+La curryfication avancée permet à la fonction d'être à la fois appelable normalement et partiellement.
 
-For instance, we have the logging function `log(date, importance, message)` that formats and outputs the information. In real projects such functions also have many other useful features like sending logs over the network, here we just use `alert`:
+Par exemple, nous avons la fonction de journalisation `log(date, importance, message)` qui formate et affiche les informations. Dans les projets réels, ces fonctions ont également de nombreuses autres fonctionnalités utiles, telles que l'envoi de journaux sur le réseau. Ici, nous utilisons simplement `alert`:
 
 ```js
 function log(date, importance, message) {
@@ -178,46 +178,46 @@ function log(date, importance, message) {
 }
 ```
 
-Let's curry it!
+Curryfions le!
 
 ```js
 log = _.curry(log);
 ```
 
-After that `log` work both the normal way and in the curried form:
+Après cela `log` fonctionne à la fois de manière normale et sous la forme curryfié:
 
 ```js
 log(new Date(), "DEBUG", "some debug"); // log(a,b,c)
 log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
 ```
 
-Now we can easily make a convenience function for current logs:
+Maintenant, nous pouvons facilement créer une fonction pratique pour les journaux actuels:
 
 ```js
-// currentLog will be the partial of log with fixed first argument
+// logNow sera une fonction partielle de log avec le premier argument fixe
 let logNow = log(new Date());
 
-// use it
-logNow("INFO", "message"); // [HH:mm] INFO message
+// utilise le
+logNow("INFO", "message"); // [HH:mm] message INFO
 ```
 
-And here's a convenience function for current debug messages:
+Et voici une fonction pratique pour les messages de débogage actuels:
 
 ```js
 let debugNow = logNow("DEBUG");
 
-debugNow("message"); // [HH:mm] DEBUG message
+debugNow("message"); // [HH:mm] message DEBUG
 ```
 
-So:
-1. We didn't lose anything after currying: `log` is still callable normally.
-2. We were able to generate partial functions such as for today's logs.
+Alors:
+1. Nous n'avons rien perdu après la curryfication: `log` est toujours appelable normalement.
+2. Nous avons pu générer des fonctions partielles telles que celles des journaux actuels.
 
-## Advanced curry implementation
+## Mise en œuvre avancée de la curryfication
 
-In case you'd like to get in details (not obligatory!), here's the "advanced" curry implementation that we could use above.
+Si vous souhaitez entrer dans les détails (non obligatoires!), Voici l'implémentation "avancée" de la curryfication que nous pourrions utiliser ci-dessus.
 
-It's pretty short:
+C'est assez court:
 
 ```js
 function curry(func) {
@@ -235,7 +235,7 @@ function curry(func) {
 }
 ```
 
-Usage examples:
+Exemples d'usages:
 
 ```js
 function sum(a, b, c) {
@@ -244,17 +244,17 @@ function sum(a, b, c) {
 
 let curriedSum = curry(sum);
 
-alert( curriedSum(1, 2, 3) ); // 6, still callable normally
-alert( curriedSum(1)(2,3) ); // 6, currying of 1st arg
-alert( curriedSum(1)(2)(3) ); // 6, full currying
+alert( curriedSum(1, 2, 3) ); // 6, toujours appelable normalement.
+alert( curriedSum(1)(2,3) ); // 6, curryfication du premier arg
+alert( curriedSum(1)(2)(3) ); // 6, curryfication totale
 ```
 
-The new `curry` may look complicated, but it's actually easy to understand.
+Le nouveau `curry` peut paraître compliqué, mais il est en fait facile à comprendre.
 
-The result of `curry(func)` is the wrapper `curried` that looks like this:
+Le résultat de `curry(func)` est le wrapper `curried` qui ressemble à ceci:
 
 ```js
-// func is the function to transform
+// func est la fonction à transformer
 function curried(...args) {
   if (args.length >= func.length) { // (1)
     return func.apply(this, args);
@@ -266,39 +266,39 @@ function curried(...args) {
 };
 ```
 
-When we run it, there are two branches:
+Quand on l`execute, il y a deux branches:
 
-1. Call now: if passed `args` count is the same as the original function has in its definition (`func.length`) or longer, then just pass the call to it.
-2. Get a partial: otherwise, `func` is not called yet. Instead, another wrapper `pass` is returned, that will re-apply `curried` providing previous arguments together with the new ones. Then on a new call, again, we'll get either a new partial (if not enough arguments) or, finally, the result.
+1. Appelez maintenant: si `args` passé est identique à celui de la fonction d'origine dans sa définition (`func.length`) ou plus long, transmettez simplement l'appel.
+2. Obtenez un partiel: sinon, `func` n'est pas encore appelé. Au lieu de cela, un autre wrapper `pass` est renvoyé, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux. Ensuite, lors d'un nouvel appel, nous obtiendrons à nouveau un nouveau partiel (si pas assez d'arguments) ou, finalement, le résultat.
 
-For instance, let's see what happens in the case of `sum(a, b, c)`. Three arguments, so `sum.length = 3`.
+Par exemple, voyons ce qui se passe dans le cas de `sum(a,b,c)`. Trois arguments, donc `sum.length = 3`.
 
-For the call `curried(1)(2)(3)`:
+Pour l'appel `curried(1)(2)(3)`:
 
-1. The first call `curried(1)` remembers `1` in its Lexical Environment, and returns a wrapper `pass`.
-2. The wrapper `pass` is called with `(2)`: it takes previous args (`1`), concatenates them with what it got `(2)` and calls `curried(1, 2)` with them together.
+1. Le premier appel `curried(1)` se souvient de `1` dans son environnement lexical et renvoie un wrapper` pass`.
+2. Le wrapper `pass` est appelé avec `(2)`: il prend les arguments précédents (`1`), les concatène avec ce qu'il a obtenu `(2)` et les appelle `curried(1,2)` ensemble.
 
-    As the argument count is still less than 3, `curry` returns `pass`.
-3. The wrapper `pass` is called again with `(3)`,  for the next call `pass(3)` takes previous args (`1`, `2`) and adds `3` to them, making the call `curried(1, 2, 3)` -- there are `3` arguments at last, they are given to the original function.
+  Comme le nombre d'arguments est toujours inférieur à 3, `curry` renvoie `pass`.
+3. Le wrapper `pass` est appelé à nouveau avec `(3)`, pour le prochain appel `pass(3)` prend les arguments précédents (` 1`, `2`) et y ajoute `3`, en faisant l'appel `curried(1,2,3)` - il y a enfin 3 arguments, ils sont attribués à la fonction d'origine.
 
-If that's still not obvious, just trace the calls sequence in your mind or on the paper.
+Si ce n'est toujours pas évident, tracez simplement la séquence des appels sur papier.
 
-```smart header="Fixed-length functions only"
-The currying requires the function to have a known fixed number of arguments.
+```smart header="Fonctions de longueur fixe uniquement"
+La curryfication nécessite que la fonction ait un nombre fixe d'arguments connu.
 ```
 
-```smart header="A little more than currying"
-By definition, currying should convert `sum(a, b, c)` into `sum(a)(b)(c)`.
+```smart header="Un peu plus que simple curryfication"
+Par définition, la curryfication devrait convertir `sum(a,b,c)` en `sum(a)(b)(c)`.
 
-But most implementations of currying in JavaScript are advanced, as described: they also keep the function callable in the multi-argument variant.
+Mais la plupart des mises en oeuvre de curryfications en JavaScript sont avancées, comme décrit: elles permettent également de garder la fonction appelable dans la variante multi-arguments.
 ```
 
-## Summary
+## Résumé
 
-- When we fix some arguments of an existing function, the resulting (less universal) function is called *a partial*. We can use `bind` to get a partial, but there are other ways also.
+- Lorsque nous fixons des arguments d'une fonction existante, la fonction résultante (moins universelle) est appelée *une fonction partielle*. Nous pouvons utiliser `bind` pour obtenir une fonction partielle, mais il y a aussi d'autres moyens.
 
-    Partials are convenient when we don't want to repeat the same argument over and over again. Like if we have a `send(from, to)` function, and `from` should always be the same for our task, we can get a partial and go on with it.
+    Les fonctions partielles sont pratiques quand on ne veut pas répéter le même argument encore et encore. Comme si nous avons une fonction `send(from, to)`, et que `from` devrait toujours être la même pour notre tâche, nous pouvons obtenir une fonction partielle et continuer avec elle.
 
-- *Currying* is a transform that makes `f(a,b,c)` callable as `f(a)(b)(c)`. JavaScript implementations usually both keep the function callable normally and return the partial if arguments count is not enough.
+- La *curryfication* est une transformation qui rend `f(a, b, c)` appelable comme `f(a)(b)(c)`. Les mises en oeuvre JavaScript gardent généralement la fonction appelable normalement et renvoient une fonction partielle si le nombre d'arguments n'est pas suffisant.
 
-    Currying is great when we want easy partials. As we've seen in the logging example: the universal function `log(date, importance, message)` after currying gives us partials when called with one argument like `log(date)` or two arguments `log(date, importance)`.  
+    La curryfication est génial lorsque nous voulons des fonctions partielles faciles. Comme nous l'avons vu dans l'exemple de journalisation: la fonction universelle `log(date, importance, message)` après la curryfication nous donne des fonctions partielles lorsqu'elle est appelée avec un argument tel que `log(date)` ou deux arguments `log(date, importance)`.
