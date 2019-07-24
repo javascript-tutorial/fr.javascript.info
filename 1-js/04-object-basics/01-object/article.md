@@ -49,11 +49,7 @@ Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
 Les valeurs de propriété sont accessibles à l'aide de la notation par points :
 
 ```js
-<<<<<<< HEAD
-// récupère les champs de l'objet :
-=======
-// get property values of the object:
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
+// récupère les valeurs de propriété de l'objet :
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -133,11 +129,7 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-<<<<<<< HEAD
-Ici, la clé variable peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. La notation par points ne peut pas être utilisée de la même manière.
-=======
-Here, the variable `key` may be calculated at run-time or depend on the user input. And then we use it to access the property. That gives us a great deal of flexibility.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
+Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. 
 
 Par exemple :
 
@@ -240,18 +232,11 @@ Comme on le voit d'après le code, l'affectation à une primitive `5` est ignor�
 
 Cela peut devenir une source de bugs et même de vulnérabilités si nous avons l’intention de stocker des paires clé-valeur arbitraires dans un objet et d’autoriser un visiteur à spécifier les clés.
 
-<<<<<<< HEAD
-Dans ce cas, le visiteur peut choisir "_proto_" comme clé et la logique d’attribution sera ruinée (comme indiqué ci-dessus).
+Dans ce cas, le visiteur peut choisir `__proto__` comme clé et la logique d’attribution sera ruinée (comme affiché ci-dessus).
 
 Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
+
 Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set-weakmap-weakset>, qui supporte des clés arbitraires.
-=======
-In that case the visitor may choose `__proto__` as the key, and the assignment logic will be ruined (as shown above).
-
-There is a way to make objects treat `__proto__` as a regular property, which we'll cover later, but first we need to know more about objects.
-
-There's also another data structure [Map](info:map-set-weakmap-weakset), that we'll learn in the chapter <info:map-set-weakmap-weakset>, which supports arbitrary keys.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 ````
 
 
