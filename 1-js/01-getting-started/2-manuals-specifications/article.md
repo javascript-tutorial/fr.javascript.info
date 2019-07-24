@@ -10,13 +10,9 @@ Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement l
 
 Mais cela étant formalisé, elle est difficile à comprendre au début. Si vous avez besoin de la source d’informations la plus fiable sur les détails du langage, la spécification est le bon endroit. Mais ce n’est pas très pratique pour un usage quotidien.
 
-<<<<<<< HEAD
 La dernière version de la spécification est disponible à cette adresse : <https://tc39.es/ecma262/>.
-=======
-To read about new bleeding-edge features, including those that are "almost standard" (so-called "stage 3"), see proposals at <https://github.com/tc39/proposals>.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
-Pour en savoir plus sur les fonctionnalités à venir, qui sont "presque standards", vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
+Pour en savoir plus sur les fonctionnalités à venir, y compris celles qui sont "presque standards" (appelées aussi "stage 3"), vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
 
 Si vous développez spécifiquement pour le navigateur, il existe d’autres spécifications couvertes dans la [seconde partie](info:browser-environment) du tutoriel.
 
@@ -31,13 +27,9 @@ Si vous développez spécifiquement pour le navigateur, il existe d’autres sp�
 
 - **MSDN** – Manuel Microsoft contenant de nombreuses informations, y compris sur JavaScript (souvent appelé JScript). Si vous avez besoin de quelque chose de spécifique à Internet Explorer, c'est l'endroit qu'il vous faut : <http://msdn.microsoft.com/>.
 
-<<<<<<< HEAD
     Nous pouvons également utiliser une recherche sur Internet avec des expressions telles que "RegExp MSDN" ou encore "RegExp MSDN jscript".
-=======
-## Compatibility tables
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
-## Support des fonctionnalités
+## Tableaux de compatibilité
 
 JavaScript est un langage en développement, de nouvelles fonctionnalités sont ajoutées régulièrement.
 
