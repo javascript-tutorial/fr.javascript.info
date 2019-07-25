@@ -20,8 +20,4 @@ Maintenant, quelle structure de données pouvez-vous utiliser pour stocker des i
 
 P.S. Lorsqu'un message est supprimé des `messages`, il doit également disparaître de votre structure.
 
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/04-recipients-read/task.md
-P.P.S. Nous ne devrions pas modifier les objets de message directement. Si elles sont gérées par le code d’une autre personne, l’ajout de propriétés supplémentaires peut avoir de graves conséquences.
-=======
-P.P.S. We shouldn't modify message objects, add our properties to them. As they are managed by someone else's code, that may lead to bad consequences.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/task.md
+P.P.S. Nous ne devrions pas modifier les objets de message, leur ajouter nos propriétés. Comme ils sont gérés par le code de quelqu'un d'autre, cela peut avoir de mauvaises conséquences.
