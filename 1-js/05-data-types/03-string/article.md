@@ -318,13 +318,9 @@ L’un des vieux trucs utilisés ici est l'opérateur [NON binaire](https://deve
 
 Pour les entiers 32 bits, l'appel `~n` signifie exactement la même chose que `-(n+1)` (en raison du format IEEE-754).
 
-<<<<<<< HEAD
-Par exemple :
-=======
-In practice, that means a simple thing: for 32-bit integers `~n` equals `-(n+1)`.
+En pratique, cela signifie une chose simple: pour les entiers 32 bits, `~n` est égal à `-(n + 1)`.
 
-For instance:
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
+Par exemple :
 
 ```js run
 alert( ~2 ); // -3, le même que -(2+1)
@@ -353,11 +349,7 @@ Il n'est généralement pas recommandé d'utiliser les fonctionnalités du langa
 
 Rappelez-vous juste que : `if (~str.indexOf(...))` se lit "si trouvé".
 
-<<<<<<< HEAD
-Techniquement parlant, les nombres sont tronqués à 32 bits par l'opérateur `~`. Il existe donc d'autres gros nombres qui donnent `0`, le plus petit correspondant à `~4294967295 = 0`. Cela rend cette vérification est correcte que si une chaîne n'est pas si longue.
-=======
-To be precise though, as big numbers are truncated to 32 bits by `~` operator, there exist other numbers that give `0`, the smallest is `~4294967295=0`. That makes such check is correct only if a string is not that long.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
+Pour être précis cependant, les grands nombres sont tronqués à 32 bits par l'opérateur `~`. Il existe donc d'autres gros nombres qui donnent `0`, le plus petit correspondant à `~4294967295 = 0`. Cela rend cette vérification est correcte que si une chaîne n'est pas si longue.
 
 Pour le moment, nous ne voyons cette astuce que dans l'ancien code, car JavaScript fournit une méthode `.includes` (voir ci-dessous).
 
@@ -533,13 +525,9 @@ alert( str );
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 ```
 
-<<<<<<< HEAD
-Vous voyez ? Les caractères majuscules sont les premiers, puis quelques spéciaux, puis les minuscules.
+Vous voyez ? Les caractères majuscules sont les premiers, puis quelques spéciaux, puis les minuscules, et `Ö` vers la fin de la sortie.
 
 Maintenant, cela devient évident pourquoi `a > Z`.
-=======
-See? Capital characters go first, then a few special ones, then lowercase characters, and `Ö` near the end of the output.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Les caractères sont comparés par leur code numérique. Le plus grand code signifie que le caractère est plus grand. Le code pour `a` (97) est supérieur au code pour `Z` (90).
 
@@ -651,17 +639,12 @@ Cela offre une grande flexibilité, mais aussi un problème intéressant: deux c
 Par exemple :
 
 ```js run
-<<<<<<< HEAD
-alert( 'S\u0307\u0323' ); // Ṩ, S + point dessus + point dessous
-alert( 'S\u0323\u0307' ); // Ṩ, S + point dessous + point dessus
-=======
-let s1 = 'S\u0307\u0323'; // Ṩ, S + dot above + dot below
-let s2 = 'S\u0323\u0307'; // Ṩ, S + dot below + dot above
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
+let s1 = 'S\u0307\u0323'; // Ṩ, S + point dessus + point dessous
+let s2 = 'S\u0323\u0307'; // Ṩ, S + point dessous + point dessus
 
 alert( `s1: ${s1}, s2: ${s2}` );
 
-alert( s1 == s2 ); // false though the characters look identical (?!)
+alert( s1 == s2 ); // false bien que les caractères soient identiques (?!)
 ```
 
 Pour résoudre ce problème, il existe un algorithme de "normalisation unicode" qui amène chaque chaîne de caractères à une seule forme "normale".

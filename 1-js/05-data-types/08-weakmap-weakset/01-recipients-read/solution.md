@@ -1,8 +1,4 @@
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/04-recipients-read/solution.md
-Le bon choix ici est un `WeakSet`:
-=======
-Let's store read messages in `WeakSet`:
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/solution.md
+Stockons les messages lus dans `WeakSet`:
 
 ```js
 let messages = [
@@ -31,15 +27,9 @@ messages.shift();
 
 Le `WeakSet` permet de stocker un ensemble de messages et de vérifier facilement l’existence d’un message.
 
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/04-recipients-read/solution.md
-Il se nettoie automatiquement. Le compromis est que nous ne pouvons pas le parcourir. Nous ne pouvons pas obtenir "tous les messages lus" directement. Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
+Il se nettoie automatiquement. Le compromis est que nous ne pouvons pas le parcourir, nous ne pouvons pas obtenir "tous les messages lus" directement. Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
 
-P.S. Ajouter une propriété propre à chaque message peut être dangereux si les messages sont gérés par le code d’une autre personne, mais nous pouvons en faire un symbole pour éviter les conflits.
-=======
-It cleans up itself automatically. The tradeoff is that we can't iterate over it,  can't get "all read messages" from it directly. But we can do it by iterating over all messages and filtering those that are in the set.
-
-Another, different solution could be to add a property like `message.isRead=true` to a message after it's read. As messages objects are managed by another code, that's generally discouraged, but we can use a symbolic property to avoid conflicts.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/solution.md
+Une autre solution pourrait consister à ajouter une propriété telle que `message.isRead = true` à un message après sa lecture. Comme les objets de messages sont gérés par un autre code, cela est généralement déconseillé, mais nous pouvons utiliser une propriété symbolique pour éviter les conflits.
 
 Comme ceci :
 ```js
@@ -48,10 +38,6 @@ let isRead = Symbol("isRead");
 messages[0][isRead] = true;
 ```
 
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/04-recipients-read/solution.md
-Maintenant, même si le code de quelqu'un d'autre utilise `for..in` pour les propriétés du message, notre indicateur secret n'apparaîtra pas.
-=======
-Now third-party code probably won't see our extra property.
+Maintenant, le code tiers ne verra probablement pas notre propriété supplémentaire.
 
-Although symbols allow to lower the probability of problems, using `WeakSet` is better from the architectural point of view.
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/solution.md
+Bien que les symboles permettent de réduire la probabilité de problèmes, l’utilisation de `WeakSet` est préférable du point de vue de l’architecture.

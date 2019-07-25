@@ -4,15 +4,9 @@ importance: 5
 
 # Clés Iterables
 
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/03-iterable-keys/task.md
-Nous voulons obtenir un tableau de `map.keys()` et continuer à l'utiliser (en dehors du map lui même).
+Nous voulons obtenir un tableau de `map.keys()` dans une variable puis lui appliquer des méthodes spécifiques aux tableaux, par ex: `push`.
 
-Mais il y a un problème :
-=======
-We'd like to get an array of `map.keys()` in a variable and then do apply array-specific methods to it, e.g. `.push`.
-
-But that doesn't work:
->>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3:1-js/05-data-types/07-map-set/03-iterable-keys/task.md
+Mais cela ne fonctionne pas :
 
 ```js run
 let map = new Map();
