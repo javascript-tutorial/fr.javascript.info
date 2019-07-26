@@ -1,38 +1,38 @@
-// <td> under the mouse right now (if any)
+// <td> sous la souris actuellement(le cas échéant)
 let currentElem = null;
 
 table.onmouseover = function(event) {
   if (currentElem) {
-    // before entering a new element, the mouse always leaves the previous one
-    // if we didn't leave <td> yet, then we're still inside it, so can ignore the event
-    return;
+    // Avant d'entrer en contact avec un nouvel élément, la souris doit toujours quitte celui précèdent
+    // Si nous ne quittons pas la balise  <td>  pour le moment, alors nous sommes toujours là-dessus, alors nous pouvons ignorer l'évènement
+      return;
   }
 
   let target = event.target.closest('td');
   if (!target || !table.contains(target)) return;
 
-  // yeah we're inside <td> now
+  //  Oui nous somme la dessus <td> maintenant
   currentElem = target;
   target.style.background = 'pink';
 };
 
 
 table.onmouseout = function(event) {
-  // if we're outside of any <td> now, then ignore the event
+  // Si nous somme en dehors de toute balise de <td> maintenant, alors nous pouvons ignorer l'évènement
   if (!currentElem) return;
 
-  // we're leaving the element -- where to? Maybe to a child element?
+  // Nous quittons l'élément --  pour aller où? Peut-être sur un élément enfant?
   let relatedTarget = event.relatedTarget;
   if (relatedTarget) { // possible: relatedTarget = null
     while (relatedTarget) {
-      // go up the parent chain and check -- if we're still inside currentElem
-      // then that's an internal transition -- ignore it
+      // Remontez la chaine jusqu'au parent et contrôler-- si nous sommes toujours à l'intérieur de  currentElem
+      // ainsi donc il s'agit bien d'une transition interne --ignorez le
       if (relatedTarget == currentElem) return;
       relatedTarget = relatedTarget.parentNode;
     }
   }
 
-  // we left the element. really.
+  // Nous avons quitté l'élément. Vraiment.
   currentElem.style.background = '';
   currentElem = null;
 };
