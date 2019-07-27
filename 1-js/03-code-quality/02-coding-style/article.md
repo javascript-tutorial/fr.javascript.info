@@ -2,13 +2,13 @@
 
 Notre code doit être aussi propre et lisible que possible.
 
-C’est en fait un art de la programmation -- prendre une tâche complexe et la coder de manière correcte et lisible par l’homme.
+C’est en fait un art de la programmation -- prendre une tâche complexe et la coder de manière correcte et lisible par l’homme. Un bon style de code aide grandement à cela.
 
 Une chose à aider est le bon style de code.
 
 ## Syntaxe
 
-Un cheatsheet avec les règles (plus de détails ci-dessous) :
+Voici un aide-mémoire avec quelques règles suggérées (plus de détails ci-dessous) :
 
 ![](code-style.png)
 <!--
@@ -38,7 +38,9 @@ if (n < 0) {
 
 Discutons maintenant des règles et de leurs raisons en détail.
 
-Rien n'est "gravé dans le marbre" ici. Tout est optionnel et peut être modifié: ce sont des règles de codage, pas des dogmes religieux.
+```warn header="Il n'y a pas de règles \"vous devez\""
+Rien n'est figé ici. Ce sont des préférences de style, pas des dogmes religieux.
+```
 
 ### Accolades
 
@@ -54,7 +56,7 @@ if (condition) {
 }
 ```
 
-Une construction sur une seule ligne est un cas important. Devrions-nous utiliser des crochets ? Si oui, alors où ?
+Une construction sur une seule ligne, comme `if (condition) doSomething()`, est un cas important. Devrions-nous utiliser des accolades ? 
 
 Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
 
@@ -74,13 +76,32 @@ if (n < 0) {
 -->
 ![](figure-bracket-style.png)
 
-En résumé :
-- Pour un code vraiment court, une ligne est acceptable: comme `if (cond) return null`.
-- Mais une ligne distincte pour chaque affirmation entre parenthèses est généralement préférable.
 
 ### Longueur de la ligne
 
-La longueur maximale de la ligne doit être limitée. Personne n'aime suivre les yeux sur une longue ligne horizontale. C’est mieux de la scinder.
+Personne n'aime lire une longue ligne horizontale de code. La meilleure pratique est de les scinder.
+
+Par exemple :
+```js
+// les guillemets backtick ` permettent de scinder la chaîne de caractères en plusieurs lignes
+let str = `
+  Ecma International's TC39 is a group of JavaScript developers,
+  implementers, academics, and more, collaborating with the community
+  to maintain and evolve the definition of JavaScript.
+`;
+```
+
+Et pour les déclarations `if` :
+
+```js
+if (
+  id === 123 &&
+  moonPhase === 'Waning Gibbous' &&
+  zodiacSign === 'Libra'
+) {
+  letTheSorceryBegin();
+}
+```
 
 La longueur de ligne maximale est convenue au niveau de l'équipe. C’est généralement 80 ou 120 caractères.
 
@@ -129,17 +150,17 @@ Il existe deux types d'indentations :
 
 Un point-virgule doit être présent après chaque déclaration. Même si cela pourrait éventuellement être ignoré.
 
-Il y a des langages où le point-virgule est vraiment optionnel. Il est donc rarement utilisé. Mais dans JavaScript, il y a peu de cas où un saut de ligne n'est parfois pas interprété comme un point-virgule. Cela laisse place à des erreurs de programmation.
+Il y a des langages où le point-virgule est vraiment optionnel. Il est donc rarement utilisé. Mais dans JavaScript, il y a peu de cas où un saut de ligne n'est parfois pas interprété comme un point-virgule. Cela laisse place à des erreurs de programmation. Plus d'informations à ce sujet dans le chapitre <info:structure#semicolon>.
 
-À mesure que vous devenez plus mature en tant que programmeur, vous pouvez choisir un style sans point-virgule, comme [StandardJS](https://standardjs.com/), mais c’est seulement lorsque vous connaissez bien JavaScript et que vous comprenez les pièges possibles.
+Si vous êtes un programmeur JavaScript expérimenté, vous pouvez choisir un style de code sans point-virgule comme [StandardJS](https://standardjs.com/). Autrement, il est préférable d’utiliser des points-virgules pour éviter les pièges possibles. La majorité des développeurs mettent des points-virgules.
 
 ### Niveaux d'imbrications
 
 Il ne devrait pas y avoir trop de niveaux d'imbrication.
 
-C’est parfois une bonne idée d’utiliser la directive ["continue"](info:while-for#continue) dans la boucle pour éviter l'imbrication supplémentaire `if(..) { ... }` :
+Par exemple, dans une boucle, c’est parfois une bonne idée d’utiliser la directive ["continue"](info:while-for#continue) pour éviter une imbrication supplémentaire. 
 
-Au lieu de :
+Par exemple, au lieu d’ajouter un `if` imbriqué conditionnel comme ceci :
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -199,13 +220,13 @@ function pow(x, n) {
 }
 ```
 
-… Mais le second est plus lisible, car le "cas marginal" de `n < 0` est traité tôt, et nous avons ensuite le flux de code "principal", sans imbrication supplémentaire.
+Le second est plus lisible, parce que le "cas marginal" de `n < 0` est traité tôt. Une fois la vérification effectuée, nous pouvons passer au flux de code "principal" sans avoir besoin d'imbrication supplémentaire.
 
 ## Placement de Fonction
 
 Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les utiliser, il existe trois façons de les placer.
 
-1. Fonctions au dessus du code qui les utilise :
+1. Déclarez les fonctions *au-dessus* du code qui les utilise :
 
     ```js
     // *!*fonctions declarations*/!*
@@ -252,7 +273,7 @@ Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les 
 
 La plupart du temps, la deuxième variante est préférée.
 
-C’est parce qu’en lisant un code, nous voulons d’abord savoir "ce qu’il fait". Si le code commence en premier, alors il fournit cette information. Et puis peut-être n’aurons-nous pas besoin de lire les fonctions du tout, surtout si leur nom correspond à ce qu’elles font.
+C’est parce qu’en lisant du code, nous voulons d’abord savoir ce qu’il fait. Si le code commence en premier, il devient clair dès le début. Ensuite, nous n’aurons peut-être pas besoin de lire les fonctions du tout, surtout si leur nom décrit ce qu’elles font réellement.
 
 ## Guides de style
 
@@ -260,7 +281,7 @@ Un guide de style contient des règles générales sur "comment écrire": les qu
 
 Au total, lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
 
-Certes, une équipe peut réfléchir à un guide de style. Mais dorénavant, il n’est plus nécessaire de le faire. Il existe de nombreux guides de style éprouvés et faciles à adopter.
+Bien sûr, une équipe peut toujours écrire son propre guide de style, mais cela n’est généralement pas nécessaire. Il existe de nombreux guides existants à choisir.
 
 Par exemple :
 
@@ -270,17 +291,15 @@ Par exemple :
 - [StandardJS](https://standardjs.com/)
 - (il y en a plus)
 
-Si vous êtes un développeur novice, vous pouvez commencer par le cheatsheet ci-dessus dans le chapitre, puis consulter les guides de style pour découvrir les principes communs et éventuellement en choisir un.
+Si vous êtes un développeur novice, commencez par le cheatsheet au début de ce chapitre. Ensuite, vous pouvez parcourir d'autres guides de style pour trouver plus d'idées et décider lequel vous préférez.
 
 ## Linters automatisés
 
-Il existe des outils permettant de vérifier le style de code automatiquement. Ils s'appellent des "linters".
+Les linters sont des outils permettant de vérifier automatiquement le style de votre code et de formuler des suggestions d'amélioration.
 
-Ce qui est génial avec eux, c'est que la vérification du style trouve également des bugs, comme une faute de frappe dans une variable ou un nom de fonction.
+Ce qui est génial avec eux, c'est que la vérification du style trouve également des bugs, comme une faute de frappe dans une variable ou un nom de fonction. En raison de cette fonctionnalité, l'utilisation d'un linter est recommandée même si vous ne souhaitez pas vous en tenir à un "style de code" particulier.
 
-Il est donc recommandé d’en installer un, même si vous ne voulez pas vous en tenir à un «style de code». Ils aident à trouver des fautes de frappe - et cela suffit déjà.
-
-Les outils les plus connus sont :
+Voici quelques linters bien connus :
 
 - [JSLint](http://www.jslint.com/) -- l'un des premiers linters.
 - [JSHint](http://www.jshint.com/) -- plus de paramètres que JSLint.
@@ -290,17 +309,10 @@ Tous peuvent faire le travail. L'auteur utilise [ESLint](http://eslint.org/).
 
 La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plug-in dans l'éditeur et de configurer le style.
 
-<<<<<<< HEAD
 Par exemple, pour ESLint, vous devez procéder comme suit :
-=======
-1. Install [Node.js](https://nodejs.org/).
-2. Install ESLint with the command `npm install -g eslint` (npm is a JavaScript package installer).
-3. Create a config file named `.eslintrc` in the root of your JavaScript project (in the folder that contains all your files).
-4. Install/enable the plugin for your editor that integrates with ESLint. The majority of editors have one.
->>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
-1. Installer [Node.JS](https://nodejs.org/).
-2. Installer ESLint avec la commande `npm install -g eslint` (npm est un installateur de paquet JavaScript).
+1. Installer [Node.js](https://nodejs.org/).
+2. Installer ESLint avec la commande `npm install -g eslint` (npm est un gestionnaire de paquets JavaScript).
 3. Créez un fichier de configuration nommé `.eslintrc` dans la racine de votre projet JavaScript (dans le dossier contenant tous vos fichiers).
 4. Installez / activez le plug-in pour votre éditeur qui s'intègre à ESLint. La majorité des éditeurs en ont un.
 
@@ -316,8 +328,8 @@ Voici un exemple de `.eslintrc`:
   },
   "rules": {
     "no-console": 0,
-  },
-  "indent": 2
+    "indent": ["warning", 2]
+  }
 }
 ```
 
@@ -335,6 +347,6 @@ De plus, certains IDE prennent en charge le linting nativement, ce qui peut éga
 
 Toutes les règles de syntaxe de ce chapitre et les guides de style visent à améliorer la lisibilité, elles sont donc toutes discutables.
 
-Lorsque nous réfléchissons à "comment écrire mieux ?", Le seul critère est "qu'est-ce qui rend le code plus lisible et plus facile à comprendre ? qu'est-ce qui aide à éviter les erreurs ?". C’est l’essentiel à garder à l’esprit lors du choix du style ou de la question de savoir lequel est le meilleur.
+Lorsque nous pensons à écrire du "meilleur" code, les questions que nous devrions nous poser sont les suivantes : "Qu'est-ce qui rend le code plus lisible et plus facile à comprendre ?" Et "Qu'est-ce qui peut nous aider à éviter les erreurs ?" Telles sont les principales choses à garder à l'esprit lors du choix et du débat sur les styles de code.
 
 Lisez les guides de style pour connaître les dernières idées à ce sujet et suivez celles que vous trouvez les meilleures.

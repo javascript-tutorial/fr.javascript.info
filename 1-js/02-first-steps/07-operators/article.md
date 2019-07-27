@@ -127,11 +127,11 @@ Pourquoi les plus unaires sont-ils appliqués aux valeurs avant les binaires ? C
 
 ## Précédence des opérateurs
 
-Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur priorité ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
+Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
 
 De l'école, nous savons tous que la multiplication dans l'expression `1 + 2 * 2` devrait être calculée avant l'addition. C’est exactement cela la précédence. La multiplication est dite avoir une *précédence supérieure* à l'addition.
 
-Les parenthèses outrepassent toute précédence, donc si nous ne sommes pas satisfaits de l'ordre de traitement, nous pouvons les utiliser, comme: `(1 + 2) * 2`.
+Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisfaits de l'ordre par défaut, nous pouvons les utiliser, comme: `(1 + 2) * 2`.
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
@@ -199,7 +199,7 @@ alert( a ); // 3
 alert( c ); // 0
 ```
 
-Dans l'exemple ci-dessus, le résultat de `(a = b + 1)` est la valeur attribuée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour soustraire de `3`.
+Dans l'exemple ci-dessus, le résultat de `(a = b + 1)` est la valeur attribuée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour d'autres évaluations.
 
 Code drôle, n'est-ce pas ? Nous devrions comprendre comment cela fonctionne, car parfois nous pouvons le voir dans des bibliothèques tierces, mais nous ne devrions pas écrire quoi que ce soit de similaire nous-mêmes. De telles astuces ne permettent pas de rendre le code plus clair et lisible.
 ````
@@ -427,7 +427,7 @@ Ici, la première expression `1 + 2` est évaluée mais son résultat n'est pas 
 ```smart header="La virgule a une très faible précédence"
 Veuillez noter que l'opérateur virgule a une précédence très basse, inférieure à `=`, donc les parenthèses sont importantes dans l'exemple ci-dessus.
 
-Sans eux : `a = 1 + 2, 3 + 4` évalue d'abord `+`, additionnant les nombres dans `a = 3, 7`, ensuite l'opérateur d'affectation `=` assigne `a = 3`, puis le nombre après la virgule `7` n'est pas traité c'est ignoré.
+Sans eux : `a = 1 + 2, 3 + 4` évalue d'abord `+`, additionnant les nombres dans `a = 3, 7`, ensuite l'opérateur d'affectation `=` assigne `a = 3`, et le reste est ignoré. C'est comme `(a = 1 + 2), 3 + 4`.
 ```
 
 Pourquoi avons-nous besoin d'un tel opérateur qui jette tout sauf la dernière partie ?
@@ -443,4 +443,4 @@ for (*!*a = 1, b = 3, c = a * b*/!*; a < 10; a++) {
 }
 ```
 
-Ces astuces sont utilisées dans de nombreux frameworks JavaScript, c’est pourquoi nous les mentionnons. Mais généralement, ils n'améliorent pas la lisibilité du code, nous devrions donc bien réfléchir avant d'écrire comme ça.
+Ces astuces sont utilisées dans de nombreux frameworks JavaScript, c’est pourquoi nous les mentionnons. Mais généralement, ils n'améliorent pas la lisibilité du code, nous devrions bien réfléchir avant de les utiliser.

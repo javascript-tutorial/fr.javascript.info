@@ -4,7 +4,7 @@ Ce que nous avons ici est en fait 3 tests, mais présentés comme une seule fonc
 
 Parfois, il est plus facile d’écrire de cette façon, mais si une erreur se produit, ce qui a mal tourné est beaucoup moins évident.
 
-Si une erreur survient dans un flux d’exécution complexe, nous devrons bien comprendre les données à ce stade. Nous devrons en fait *déboguer le test*.
+Si une erreur survient au beau milieu d'un flux d'exécution complexe, alors nous devrons bien comprendre les données à ce stade. Nous devrons en fait *déboguer le test*.
 
 Il serait bien préférable de diviser le test en plusieurs blocs `it` avec des entrées et des sorties clairement écrites.
 

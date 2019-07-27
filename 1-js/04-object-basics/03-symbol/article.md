@@ -72,7 +72,9 @@ alert(id.description); // id
 
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
 
-Par exemple, si nous voulons stocker un "identifiant" pour l'objet `user`, nous pouvons utiliser un symbole comme clé pour cela :
+Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers et ne possèdent pas de champ` id`. Nous aimerions leur ajouter des identificateurs.
+
+Utilisons une clé symbole pour cela :
 
 ```js run
 let user = { name: "John" };
@@ -85,6 +87,8 @@ alert( user[id] ); // nous pouvons accéder aux données en utilisant le symbole
 Quel est l’avantage de l’utilisation de `Symbol("id")` sur une chaîne de caractères `"id"` ?
 
 Poussons un peu plus loin l’exemple pour voir cela.
+
+Comme les objets `user` appartiennent à un autre code et que ce code fonctionne également avec eux, nous ne devrions pas simplement y ajouter de champs. C’est dangereux. Cependant, il est parfois impossible d’accéder à un symbole. Le code tiers ne le verra probablement même pas. C’est donc probablement tout à fait acceptable.
 
 Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
 

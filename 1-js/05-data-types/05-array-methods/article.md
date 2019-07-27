@@ -240,7 +240,7 @@ Les méthodes [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Arra
 
 - `arr.indexOf(item, from)` recherche l'élément `item` à partir de l'index `from`, et retourne l'index où il a été trouvé, sinon il retourne `-1`.
 - `arr.lastIndexOf(item, from)` -- pareil, mais regarde de droite à gauche.
-- `arr.includes(item, from)` -- recherche l'élément `item` commençant par l'index `from`, retourne `true` si il est trouvé.
+- `arr.includes(item, from)` -- recherche l'élément `item` en commençant par l'index `from`, retourne `true` si il est trouvé.
 
 Par exemple:
 
@@ -418,7 +418,7 @@ alert(arr);  // *!*1, 2, 15*/!*
 
 Maintenant, ça fonctionne comme nous l'avons prévu.
 
-Laissons de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non? Il peut contenir des nombres, des chaînes, des éléments HTML ou autre. Nous avons donc un ensemble de quelque chose. Pour le trier, nous avons besoin d’une fonction de classement qui sache comparer ses éléments. La valeur par défaut est un ordre de chaîne.
+Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non? Il peut contenir des nombres, des chaînes, des éléments HTML ou autre. Nous avons donc un ensemble de *quelque chose*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comparer ses éléments. La valeur par défaut est un ordre de chaîne.
 
 La méthode `arr.sort(fn)` intégre une implémentation de l'algorithme de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement exact (c'est un [tri rapide optimisé](https://en.wikipedia.org/wiki/Quicksort) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
 
@@ -474,7 +474,7 @@ Il retourne également le tableau `arr` après l'inversion.
 
 ### split et join
 
-Voici une situation réele. Nous écrivons une application de messagerie et la personne entre dans la liste des destinataires délimités par des virgules: John, Pete, Mary. Mais pour nous, un tableau de noms serait beaucoup plus confortable qu'une simple chaîne. Alors, comment l'obtenir?
+Voici une situation réele. Nous écrivons une application de messagerie et la personne entre dans la liste des destinataires délimités par des virgules : `John, Pete, Mary`. Mais pour nous, un tableau de noms serait beaucoup plus confortable qu'une simple chaîne de caractères. Alors, comment l'obtenir?
 
 La méthode [str.split(delim)](mdn:js/String/split) fait exactement cela. Il divise la chaîne en un tableau par le `délimiteur` donné.
 
@@ -548,7 +548,7 @@ Jusqu'ici, c'est pareil que `forEach/map`. Mais il y a un autre argument:
 
 Le moyen le plus simple pour comprendre c'est avec un exemple.
 
-Ici nous obtenons une somme de tableau sur une ligne:
+Ici nous obtenons la somme d'un tableau sur une ligne:
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -681,7 +681,7 @@ Dans l'appel ci-dessus, nous utilisons `user.younger` en tant que filtre et nous
 
 ## Résumé
 
-Un cheatsheet des méthodes de tableau:
+Un cheat sheet des méthodes de tableau :
 
 - Pour ajouter/supprimer des éléments:
   - `push(...items)` -- ajoute des éléments à la fin,
@@ -725,8 +725,8 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
 Pour la liste complète, voir le manuel [manuel](mdn:js/Array).
 
-En premier lieu, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
+À première vue, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
 
-Parcourez le cheatsheet et essayer de vous en souvenir. Ensuite, faites les exercices de ce chapitre afin de vous familiariser avec les méthodes de tableau.
+Parcourez le cheat sheet et essayer de vous en souvenir. Ensuite, faites les exercices de ce chapitre afin de vous familiariser avec les méthodes de tableau.
 
 Ensuite, chaque fois que vous avez besoin de faire quelque chose avec un tableau, et que vous ne savez plus comment - revenez ici, regardez le cheatsheet et trouvez la bonne méthode. Des exemples vous aideront à l'écrire correctement. Bientôt, à force de pratiquer, vous vous souviendrez automatiquement des méthodes, sans efforts particuliers.

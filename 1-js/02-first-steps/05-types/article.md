@@ -220,8 +220,8 @@ typeof alert // "function"  (3)
 Les trois dernières lignes peuvent nécessiter des explications supplémentaires :
 
 1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
-2. Le résultat de `typeof null` est "object". C'est faux. C'est une erreur officiellement reconnue dans `typeof`, conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Donc, encore une fois, c’est une erreur dans le langage.
-3. Le résultat de `typeof alert` est "function", car `alert` est une fonction du langage. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’ya pas de type "fonction" dans le langage. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment. Formellement, c'est incorrect, mais très pratique.
+2. Le résultat de `typeof null` est `"object"`. C'est faux. C'est une erreur officiellement reconnue dans `typeof`, conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Donc, encore une fois, c’est une erreur dans le langage.
+3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction du langage. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction". Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Ce n’est pas tout à fait correct, mais très pratique à l'usage.
 
 
 ## Résumé

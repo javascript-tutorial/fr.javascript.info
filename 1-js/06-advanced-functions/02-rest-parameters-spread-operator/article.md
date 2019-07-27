@@ -1,20 +1,20 @@
-# Rest parameters and spread operator
+# Les paramètres Rest et l'opérateur spread
 
-Many JavaScript built-in functions support an arbitrary number of arguments.
+De nombreuses fonctions intégrées à JavaScript prennent en charge un nombre arbitraire d'arguments.
 
-For instance:
+Par exemple :
 
-- `Math.max(arg1, arg2, ..., argN)` -- returns the greatest of the arguments.
-- `Object.assign(dest, src1, ..., srcN)` -- copies properties from `src1..N` into `dest`.
-- ...and so on.
+- `Math.max(arg1, arg2, ..., argN)` -- renvoie le plus grand des arguments.
+- `Object.assign(dest, src1, ..., srcN)` -- copie les propriétés de `src1..N` dans `dest`.
+- ... etc.
 
-In this chapter we'll learn how to do the same. And, more importantly, how to feel comfortable working with such functions and arrays.
+Dans ce chapitre, nous allons apprendre à faire de même. Et, plus important encore, comment être à l'aise avec ces fonctions et ces tableaux.
 
-## Rest parameters `...`
+## Les paramètres Rest `...`
 
-A function can be called with any number of arguments, no matter how it is defined.
+Une fonction peut être appelée avec un nombre quelconque d'arguments, peu importe comment elle a été définie.
 
-Like here:
+Comme ici :
 ```js run
 function sum(a, b) {
   return a + b;
@@ -23,14 +23,14 @@ function sum(a, b) {
 alert( sum(1, 2, 3, 4, 5) );
 ```
 
-There will be no error because of "excessive" arguments. But of course in the result only the first two will be counted.
+Il n'y aura pas d'erreur en raison d'arguments "excessifs". Mais bien sûr, dans le résultat, seuls les deux premiers seront comptés.
 
-The rest parameters can be mentioned in a function definition with three dots `...`. They literally mean "gather the remaining parameters into an array".
+Les paramètres restants peuvent être mentionnés dans une fonction définition à trois points `...`. Ils signifient littéralement "rassemblez les paramètres restants dans un tableau".
 
-For instance, to gather all arguments into array `args`:
+Par exemple, pour rassembler tous les arguments dans un tableau `args` :
 
 ```js run
-function sumAll(...args) { // args is the name for the array
+function sumAll(...args) { // args est le nom du tableau
   let sum = 0;
 
   for (let arg of args) sum += arg;
@@ -43,15 +43,15 @@ alert( sumAll(1, 2) ); // 3
 alert( sumAll(1, 2, 3) ); // 6
 ```
 
-We can choose to get the first parameters as variables, and gather only the rest.
+Nous pouvons choisir d’obtenir les premiers paramètres sous forme de variables et de ne rassembler que le reste.
 
-Here the first two arguments go into variables and the rest go into `titles` array:
+Ici, les deux premiers arguments vont dans les variables et le reste dans le tableau `titles` :
 
 ```js run
 function showName(firstName, lastName, ...titles) {
   alert( firstName + ' ' + lastName ); // Julius Caesar
 
-  // the rest go into titles array
+  // le reste va dans le tableau titles
   // i.e. titles = ["Consul", "Imperator"]
   alert( titles[0] ); // Consul
   alert( titles[1] ); // Imperator
@@ -61,23 +61,23 @@ function showName(firstName, lastName, ...titles) {
 showName("Julius", "Caesar", "Consul", "Imperator");
 ```
 
-````warn header="The rest parameters must be at the end"
-The rest parameters gather all remaining arguments, so the following does not make sense and causes an error:
+````warn header="Les paramètres rest doivent être à la fin"
+Les paramètres rest regroupent tous les arguments restants. Par conséquent, ce qui suit n'a pas de sens et génère une erreur :
 
 ```js
-function f(arg1, ...rest, arg2) { // arg2 after ...rest ?!
+function f(arg1, ...rest, arg2) { // arg2 après ...rest ?!
   // error
 }
 ```
 
-The `...rest` must always be last.
+Le `...rest` doit toujours être le dernier.
 ````
 
-## The "arguments" variable
+## La variable "arguments"
 
-There is also a special array-like object named `arguments` that contains all arguments by their index.
+Il existe également un objet spécial array-like nommé `arguments` qui contient tous les arguments en fonction de leur index.
 
-For instance:
+Par exemple :
 
 ```js run
 function showName() {
@@ -85,31 +85,31 @@ function showName() {
   alert( arguments[0] );
   alert( arguments[1] );
 
-  // it's iterable
+  // c'est iterable
   // for(let arg of arguments) alert(arg);
 }
 
-// shows: 2, Julius, Caesar
+// affiche : 2, Julius, Caesar
 showName("Julius", "Caesar");
 
-// shows: 1, Ilya, undefined (no second argument)
+// affiche : 1, Ilya, undefined (pas de second argument)
 showName("Ilya");
 ```
 
-In old times, rest parameters did not exist in the language, and using `arguments` was the only way to get all arguments of the function, no matter their total number.
+Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction, quel que soit leur nombre total.
 
-And it still works, we can use it today.
+Et cela fonctionne toujours, nous pouvons l'utiliser aujourd'hui.
 
-But the downside is that although `arguments` is both array-like and iterable, it's not an array. It does not support array methods, so we can't call `arguments.map(...)` for example.
+Mais l’inconvénient est que, bien que les `arguments` ressemblent à un tableau et qu’ils soient itératifs, ce n’est pas un tableau. Il ne supporte pas les méthodes de tableau, nous ne pouvons donc pas appeler `arguments.map(...)` par exemple.
 
-Also, it always contains all arguments. We can't capture them partially, like we did with rest parameters.
+De plus, il contient toujours tous les arguments. Nous ne pouvons pas les capturer partiellement, comme nous l’avons fait avec les paramètres rest.
 
-So when we need these features, then rest parameters are preferred.
+Ainsi, lorsque nous avons besoin de ces fonctionnalités, les paramètres rest sont préférés.
 
-````smart header="Arrow functions do not have `\"arguments\"`"
-If we access the `arguments` object from an arrow function, it takes them from the outer "normal" function.
+````smart header="Les fonctions fléchées n'ont pas d'`\"arguments\"`"
+Si nous accédons à l'objet `arguments` à partir d'une fonction fléchée, il le prend à la fonction externe "normale".
 
-Here's an example:
+Voici un exemple :
 
 ```js run
 function f() {
@@ -121,23 +121,23 @@ f(1); // 1
 ```
 ````
 
-As we remember, arrow functions don't have their own `this`. Now we know they don't have the special `arguments` object either.
+Comme nous nous en souvenons, les fonctions fléchées n’ont pas leur propre `this`. Nous savons maintenant qu’ils n’ont pas non plus l’objet spécial `arguments`.
 
-## Spread operator [#spread-operator]
+## L'opérateur Spread [#spread-operator]
 
-We've just seen how to get an array from the list of parameters.
+Nous venons de voir comment obtenir un tableau à partir de la liste de paramètres.
 
-But sometimes we need to do exactly the reverse.
+Mais parfois, nous devons faire exactement l'inverse.
 
-For instance, there's a built-in function [Math.max](mdn:js/Math/max) that returns the greatest number from a list:
+Par exemple, il existe une fonction intégrée [Math.max](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math/max) qui renvoie le plus grand nombre d'une liste :
 
 ```js run
 alert( Math.max(3, 5, 1) ); // 5
 ```
 
-Now let's say we have an array `[3, 5, 1]`. How do we call `Math.max` with it?
+Maintenant, disons que nous avons un tableau `[3, 5, 1]`. Comment appelons-nous `Math.max` avec ?
 
-Passing it "as is" won't work, because `Math.max` expects a list of numeric arguments, not a single array:
+Le passer "tel quel" ne fonctionnera pas, car `Math.max` attend une liste d’arguments numériques et non un tableau :
 
 ```js run
 let arr = [3, 5, 1];
@@ -147,21 +147,21 @@ alert( Math.max(arr) ); // NaN
 */!*
 ```
 
-And surely we can't manually list items in the code `Math.max(arr[0], arr[1], arr[2])`, because we may be unsure how many there are. As our script executes, there could be a lot, or there could be none. And that would get ugly.
+Et nous ne pouvons sûrement pas lister manuellement les éléments dans le code `Math.max(arr[0], arr[1], arr[2])`, parce que nous pouvons ne pas savoir combien il y en a. Au fur et à mesure que notre script s'exécute, il peut y en avoir beaucoup ou pas du tout. Et ça deviendrait moche.
 
-*Spread operator* to the rescue! It looks similar to rest parameters, also using `...`, but does quite the opposite.
+*Spread operator* à la rescousse! Il ressemble aux paramètres rest, en utilisant également `...`, mais fait tout le contraire.
 
-When `...arr` is used in the function call, it "expands" an iterable object `arr` into the list of arguments.
+Quand `...arr` est utilisé dans l'appel de fonction, il "développe" un objet itérable `arr` dans la liste des arguments.
 
-For `Math.max`:
+Pour `Math.max` :
 
 ```js run
 let arr = [3, 5, 1];
 
-alert( Math.max(...arr) ); // 5 (spread turns array into a list of arguments)
+alert( Math.max(...arr) ); // 5 (spread transforme un tableau en une liste d'arguments)
 ```
 
-We also can pass multiple iterables this way:
+Nous pouvons aussi passer plusieurs iterables de cette façon :
 
 ```js run
 let arr1 = [1, -2, 3, 4];
@@ -170,7 +170,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(...arr1, ...arr2) ); // 8
 ```
 
-We can even combine the spread operator with normal values:
+On peut même combiner l'opérateur spread avec des valeurs normales :
 
 
 ```js run
@@ -180,7 +180,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
 ```
 
-Also, the spread operator can be used to merge arrays:
+De plus, l'opérateur spread peut être utilisé pour fusionner des tableaux :
 
 ```js run
 let arr = [3, 5, 1];
@@ -190,12 +190,12 @@ let arr2 = [8, 9, 15];
 let merged = [0, ...arr, 2, ...arr2];
 */!*
 
-alert(merged); // 0,3,5,1,2,8,9,15 (0, then arr, then 2, then arr2)
+alert(merged); // 0,3,5,1,2,8,9,15 (0, ensuite arr, ensuite 2, ensuite arr2)
 ```
 
-In the examples above we used an array to demonstrate the spread operator, but any iterable will do.
+Dans les exemples ci-dessus, nous avons utilisé un tableau pour illustrer l'opérateur spread, mais toutes les fonctions itérables feront l'affaire.
 
-For instance, here we use the spread operator to turn the string into array of characters:
+Par exemple, nous utilisons ici l'opérateur spread pour transformer le string en tableau de caractères :
 
 ```js run
 let str = "Hello";
@@ -203,43 +203,43 @@ let str = "Hello";
 alert( [...str] ); // H,e,l,l,o
 ```
 
-The spread operator internally uses iterators to gather elements, the same way as `for..of` does.
+L’opérateur spread utilise en interne des itérateurs pour rassembler les éléments, de la même manière que `for..of`.
 
-So, for a string, `for..of` returns characters and `...str` becomes `"H","e","l","l","o"`. The list of characters is passed to array initializer `[...str]`.
+Donc, pour une chaine de caractères, `for..of` retourn des caractères et `...str` devient `"H","e","l","l","o"`. La liste de caractères est transmise à l'initialiseur de tableau `[...str]`.
 
-For this particular task we could also use `Array.from`, because it converts an iterable (like a string) into an array:
+Pour cette tâche particulière, nous pourrions également utiliser `Array.from`, car il convertit un itérable (comme une chaîne de caractères) en un tableau : 
 
 ```js run
 let str = "Hello";
 
-// Array.from converts an iterable into an array
+// Array.from convertit un itérable en tableau
 alert( Array.from(str) ); // H,e,l,l,o
 ```
 
-The result is the same as `[...str]`.
+Le résultat est le même que `[...str]`.
 
-But there's a subtle difference between `Array.from(obj)` and `[...obj]`:
+Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 
-- `Array.from` operates on both array-likes and iterables.
-- The spread operator operates only on iterables.
+- `Array.from` fonctionne à la fois sur les tableaux et les iterables.
+- L'opérateur spread ne fonctionne que sur des iterables.
 
-So, for the task of turning something into an array, `Array.from` tends to be more universal.
+Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
 
-## Summary
+## Résumé
 
-When we see `"..."` in the code, it is either rest parameters or the spread operator.
+Quand on voit `"..."` dans le code, il s’agit soit des paramètres rest ou de l’opérateur spread.
 
-There's an easy way to distinguish between them:
+Il existe un moyen facile de les distinguer :
 
-- When `...` is at the end of function parameters, it's "rest parameters" and gathers the rest of the list of arguments into an array.
-- When `...` occurs in a function call or alike, it's called a "spread operator" and expands an array into a list.
+- Lorsque `...` se trouve à la fin des paramètres de fonction, il s'agit des "paramètres rest" et rassemble le reste de la liste des arguments dans un tableau.
+- Lorsque `...` est présent dans un appel de fonction ou similaire, on l'appelle "opérateur spread" (opérateur de propagation) et étend un tableau en une liste.
 
-Use patterns:
+Modèles d'utilisation :
 
-- Rest parameters are used to create functions that accept any number of arguments.
-- The spread operator is used to pass an array to functions that normally require a list of many arguments.
+- Les paramètres rest permettent de créer des fonctions acceptant un nombre quelconque d'arguments.
+- L'opérateur spread est utilisé pour passer un tableau à des fonctions nécessitant normalement une liste d'arguments.
 
-Together they help to travel between a list and an array of parameters with ease.
+Ensemble, ils permettent de voyager facilement entre une liste et un tableau de paramètres.
 
-All arguments of a function call are also available in "old-style" `arguments`: array-like iterable object.
+Tous les arguments d'un appel de fonction sont également disponibles dans les `arguments` "à l'ancienne" : objet itérable array-like.

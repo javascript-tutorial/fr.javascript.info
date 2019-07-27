@@ -1,4 +1,4 @@
-The solution using a loop:
+La solution utilisant une boucle:
 
 ```js run
 function sumTo(n) {
@@ -12,7 +12,7 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-The solution using recursion:
+La solution utilisant la récursion:
 
 ```js run
 function sumTo(n) {
@@ -23,7 +23,7 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-The solution using the formula: `sumTo(n) = n*(n+1)/2`:
+La solution utilisant la formule: `sumTo(n) = n*(n+1)/2`:
 
 ```js run
 function sumTo(n) {
@@ -33,8 +33,8 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-P.S. Naturally, the formula is the fastest solution. It uses only 3 operations for any number `n`. The math helps!
+P.S. Naturellement, la formule est la solution la plus rapide. Elle n’utilise que 3 opérations pour n’importe quel nombre `n`. Le calcul aide!
 
-The loop variant is the second in terms of speed. In both the recursive and the loop variant we sum the same numbers. But the recursion involves nested calls and execution stack management. That also takes resources, so it's slower.
+La variante de boucle est la seconde en termes de vitesse. Dans la variante récursive et la variante de boucle, nous additionnons les mêmes nombres. Mais la récursion implique des appels imbriqués et la gestion de la pile d'exécution. Donc, cela prend des ressources, donc c'est plus lent.
 
-P.P.S. Some engines support the "tail call" optimization: if a recursive call is the very last one in the function (like in `sumTo` above), then the outer function will not need to resume the execution, so the engine doesn't need to remember its execution context. That removes the burden on memory, so counting `sumTo(100000)` becomes possible. But if the JavaScript engine does not support tail call optimization (most of them don't), there will be an error: maximum stack size exceeded, because there's usually a limitation on the total stack size.
+P.P.S. Certains moteurs prennent en charge l'optimisation du "tail call (dernier appel)": si un appel récursif est le dernier de la fonction (comme dans la somme ci-dessus), le moteur n'a pas besoin de reprendre son contexte d'exécution. Cela supprime la charge en mémoire, donc compter `sumTo (100000)` devient possible. Toutefois, si le moteur JavaScript ne prend pas en charge l'optimisation des appels en bout de ligne, il y aura une erreur: maximum stack size exceeded (la taille maximale de la pile est dépassée), car la taille totale de la pile est généralement limitée.

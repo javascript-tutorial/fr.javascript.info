@@ -257,7 +257,7 @@ user.hi(); // John (le simple appel fonctionne)
 */!*
 ```
 
-Sur la dernière ligne, un opérateur ternaire choisit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
+Sur la dernière ligne il y a un opérateur conditionnel qui choisit soit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
 
 La méthode est immédiatement appelée avec des parenthèses `()`. Mais ça ne fonctionne pas correctement !
 
@@ -307,7 +307,7 @@ La valeur de type de référence est une combinaison de trois valeurs `(base, na
 
 - `base` est l'objet.
 - `name` est la propriété.
-- `strict` est vrai si `use strict` est en vigueur.
+- `strict` est vrai si `use strict` est effectif.
 
 Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, mais une valeur de type de référence. Pour `user.hi` en mode strict c'est :
 
@@ -318,7 +318,9 @@ Le résultat de l'accès à une propriété `user.hi` n'est pas une fonction, ma
 
 Lorsque des parenthèses `()` sont appelées sur le type de référence, elles reçoivent les informations complètes sur l'objet et sa méthode, et peuvent définir le bon `this` (`=user` dans ce cas).
 
-Toute autre opération, telle que l'affectation `hi = user.hi`, supprime le type de référence dans son ensemble, prend la valeur de `user.hi` (une fonction) et la transmet. Donc, toute opération ultérieure "perd" `this`.
+Toute autre opération, telle que l'affectation `hi = user.hi` supprime le type de référence dans son ensemble, prend la valeur de `user.hi` (une fonction) et la transmet. Donc, toute opération ultérieure "perd" `this`.
+
+Le type de référence est un type interne "intermédiaire" spécial, dans le but de transmettre des informations de point `.` à l'appel des parenthèses `()`.
 
 En conséquence, la valeur de this n’est transmise correctement que si la fonction est appelée directement à l’aide d’une syntaxe point `obj.method()` ou de crochets `obj[méthode]()` (ils font la même chose ici). Plus loin dans ce tutoriel, nous allons apprendre différentes manières de résoudre ce problème, telles que [func.bind()](/bind#solution-2-bind).
 
@@ -351,7 +353,7 @@ C’est une particularité des fonctions fléchées. C’est utile lorsque nous 
 
 La valeur de `this` est définie au moment de l'exécution.
 - Lorsqu'une fonction est déclarée, elle peut utiliser `this`, mais ce `this` n'a aucune valeur jusqu'à ce que la fonction soit appelée.
-- Cette fonction peut être copiée entre des objets.
+- Une fonction peut être copiée entre des objets.
 - Lorsqu'une fonction est appelée dans la syntaxe "méthode" : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
 
 Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`. Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.

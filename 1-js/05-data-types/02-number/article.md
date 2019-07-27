@@ -12,7 +12,7 @@ Imaginez que nous ayons besoin d'écrire 1 milliard. Le moyen évident est:
 let milliard = 1000000000;
 ```
 
-Mais dans la vie réelle, nous évitons généralement d'écrire une longue chaîne de zéros car une erreur est si vite arrivée. De plus, nous sommes paresseux. Nous écrirons donc généralement quelque chose comme `"1md"` pour un milliard ou `"7.3md"` pour 7 milliards 300 millions. De même pour la plupart des grands nombres.
+Mais dans la vie réelle, nous évitons généralement d'écrire une longue chaîne de caractères remplie de zéros car une erreur est si vite arrivée. De plus, nous sommes paresseux. Nous écrirons donc généralement quelque chose comme `"1bn"` pour un milliard ou `"7.3bn"` pour 7 milliards 300 millions. De même pour la plupart des grands nombres.
 
 En JavaScript, nous raccourcissons un nombre en ajoutant la lettre `"e"` au nombre et en précisant le nombre de zéros:
 

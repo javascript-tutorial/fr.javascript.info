@@ -1,7 +1,7 @@
 function makeCounter() {
   let count = 0;
 
-  // ... your code ...
+  // ... votre code ...
 }
 
 let counter = makeCounter();
@@ -9,10 +9,10 @@ let counter = makeCounter();
 alert( counter() ); // 0
 alert( counter() ); // 1
 
-counter.set(10); // set the new count
+counter.set(10); // définir le nouveau "count"
 
 alert( counter() ); // 10
 
-counter.decrease(); // decrease the count by 1
+counter.decrease(); // diminuer de 1 le "count"
 
-alert( counter() ); // 10 (instead of 11)
+alert( counter() ); // 10 (au lieu de 11)
