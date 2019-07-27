@@ -8,11 +8,7 @@ Créez une fonction `getDateAgo(date, days)` pour renvoyer le `days` précédent
 
 Par exemple, si aujourd'hui on est le 20, alors `getDateAgo(new Date(), 1)` doit être le 19 et `getDateAgo(new Date(), 2)` doit être le 18.
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/4-get-date-ago/task.md
 elle doit fonctionner de manière fiable sur plus de 365 jours.
-=======
-Should work reliably for `days=365` or more:
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/4-get-date-ago/task.md
 
 ```js
 let date = new Date(2015, 0, 2);

@@ -40,7 +40,6 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
     ```js run
     let date = new Date("2017-01-26");
     alert(date);
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
     // La partie heure de la date est supposée être minuit GMT et
     // est ajusté en fonction du fuseau horaire dans lequel le code est exécuté
     // Donc, le résultat pourrait être
@@ -53,18 +52,6 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
 : Crée la date avec les composants donnés dans le fuseau horaire local. Seul le premier argument est obligatoire.
 
     Note:
-=======
-    // The time is not set, so it's assumed to be midnight GMT and
-    // is adjusted according to the timezone the code is run in
-    // So the result could be
-    // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
-    // or
-    // Wed Jan 25 2017 16:00:00 GMT-0800 (Pacific Standard Time)
-    ```
-
-`new Date(year, month, date, hours, minutes, seconds, ms)`
-: Create the date with the given components in the local time zone. Only the first two arguments are obligatory.
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
     - l'`année` doit comporter 4 chiffres: `2013` c'est bon, `98` ne l'est pas.
     - le `mois` commence par `0` (Jan), jusqu'à `11` (Dec).
@@ -87,11 +74,7 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
 
 ## Composants de date d'accès
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 Il existe de nombreuses méthodes pour accéder à l'année, au mois, etc. à partir de l'objet Date.
-=======
-There are methods to access the year, month and so on from the `Date` object:
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 [getFullYear()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getFullYear)
 : Obtenir l'année (4 chiffres)
@@ -235,33 +218,21 @@ L'effet secondaire important: les dates peuvent être soustraites, le résultat 
 Cela peut être utilisé pour les mesures de temps:
 
 ```js run
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 let start = new Date(); // démarre le compteur
-=======
-let start = new Date(); // start measuring time
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 // fait le travail
 for (let i = 0; i < 100000; i++) {
   let doSomething = i * i * i;
 }
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 let end = new Date(); // fin
-=======
-let end = new Date(); // end measuring time
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 alert( `The loop took ${end - start} ms` );
 ```
 
 ## Date.now()
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 Si nous voulons seulement mesurer la différence, nous n’avons pas besoin de l’objet Date.
-=======
-If we only want to measure time, we don't need the `Date` object.
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 Il existe une méthode spéciale `Date.now()` qui renvoie l’horodatage actuel.
 
@@ -315,11 +286,7 @@ Ces deux font exactement la même chose, mais l’un d’eux utilise un `date.ge
 
 Alors, lequel est le plus rapide?
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 La première idée peut être de les exécuter plusieurs fois de suite et de mesurer le décalage horaire. Pour notre cas, les fonctions sont très simples, nous devons donc le faire environ 100 000 fois.
-=======
-The first idea may be to run them many times in a row and measure the time difference. For our case, functions are very simple, so we have to do it at least 100000 times.
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 Mesurons:
 
@@ -349,11 +316,7 @@ Wow! Utiliser `getTime()` est beaucoup plus rapide! C’est parce qu’il n’y 
 
 Ok, nous avons quelque chose. Mais ce n’est pas encore une bonne référence.
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 Imaginons qu’au moment de l’exécution du processeur `bench(diffSubtract)`, on faisait quelque chose en parallèle et que cela prenait des ressources. Et au moment de l'exécution du `bench(diffGetTime)`, le travail est terminé.
-=======
-Imagine that at the time of running `bench(diffSubtract)` CPU was doing something in parallel, and it was taking resources. And by the time of running `bench(diffGetTime)` that work has finished.
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 
 Un scénario assez réel pour un système d'exploitation moderne multi-processus.
@@ -411,13 +374,8 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 ```warn header="Faites attention au micro-benchmarking"
 Les moteurs JavaScript modernes effectuent de nombreuses optimisations. Ils peuvent modifier les résultats des «tests artificiels» par rapport à «l'utilisation normale», en particulier lorsque nous comparons quelque chose de très petit. Donc, si vous voulez sérieusement comprendre les performances, alors étudiez le fonctionnement du moteur JavaScript. Et puis vous n’aurez probablement pas besoin de micro-points de repère.
-=======
-```warn header="Be careful doing microbenchmarking"
-Modern JavaScript engines perform many optimizations. They may tweak results of "artificial tests" compared to "normal usage", especially when we benchmark something very small, such as how an operator works, or a built-in function. So if you seriously want to understand performance, then please study how the JavaScript engine works. And then you probably won't need microbenchmarks at all.
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 Un bon paquet d'article a propos de V8 se trouve ici <http://mrale.ph>.
 ```
@@ -465,11 +423,7 @@ alert(date);
 
 Notez que contrairement à de nombreux autres systèmes, les horodatages JavaScript sont exprimés en millisecondes et non en secondes.
 
-<<<<<<< HEAD:1-js/05-data-types/10-date/article.md
 De plus, nous avons parfois besoin de mesures de temps plus précises. JavaScript lui-même ne permet pas de mesurer le temps en microsecondes (un millionième de seconde), mais la plupart des environnements le fournissent. Par exemple, le navigateur a [performance.now()](https://developer.mozilla.org/fr/docs/Web/API/Performance/now) qui donne le nombre de millisecondes à partir du début du chargement de la page avec une précision de l'ordre de la microseconde (3 chiffres après le point):
-=======
-Sometimes we need more precise time measurements. JavaScript itself does not have a way to measure time in microseconds (1 millionth of a second), but most environments provide it. For instance, browser has [performance.now()](mdn:api/Performance/now) that gives the number of milliseconds from the start of page loading with microsecond precision (3 digits after the point):
->>>>>>> 9b5e5b5ebd8e29cf8d27a71f3666121b87939079:1-js/05-data-types/11-date/article.md
 
 ```js run
 alert(`Loading started ${performance.now()}ms ago`);
