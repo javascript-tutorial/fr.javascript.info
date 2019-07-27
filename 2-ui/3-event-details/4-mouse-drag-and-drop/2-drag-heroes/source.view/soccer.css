@@ -10,7 +10,7 @@ html, body {
   float: left;
 }
 
-/* heroes and the ball (dragables) */
+/* heros et la balle (deplacable) */
 
 .hero {
   background: url(https://js.cx/drag-heroes/heroes.png);
