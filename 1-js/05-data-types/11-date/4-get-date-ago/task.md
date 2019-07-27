@@ -2,13 +2,13 @@ importance: 4
 
 ---
 
-# Which day of month was many days ago?
+# Quel jour du mois était il y a plusieurs jours ?
 
-Create a function `getDateAgo(date, days)` to return the day of month `days` ago from the `date`.
+Créez une fonction `getDateAgo(date, days)` pour renvoyer le `days` précédent la date `date`.
 
-For instance, if today is 20th, then `getDateAgo(new Date(), 1)` should be 19th and `getDateAgo(new Date(), 2)` should be 18th.
+Par exemple, si aujourd'hui on est le 20, alors `getDateAgo(new Date(), 1)` doit être le 19 et `getDateAgo(new Date(), 2)` doit être le 18.
 
-Should work reliably for `days=365` or more:
+elle doit fonctionner de manière fiable sur plus de 365 jours.
 
 ```js
 let date = new Date(2015, 0, 2);
@@ -18,4 +18,4 @@ alert( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
 alert( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
 ```
 
-P.S. The function should not modify the given `date`.
+P.S. La fonction ne doit pas modifier la `date` donnée.

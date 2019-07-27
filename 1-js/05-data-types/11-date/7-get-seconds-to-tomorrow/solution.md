@@ -1,12 +1,12 @@
-To get the number of milliseconds till tomorrow, we can from "tomorrow 00:00:00" substract the current date.
+Pour obtenir le nombre de millisecondes jusqu'à demain, nous pouvons, à partir de "demain 00:00:00", soustraire la date actuelle.
 
-First, we generate that "tomorrow", and then do it:
+Tout d'abord, nous générons ce "demain", puis nous le faisons:
 
 ```js run
 function getSecondsToTomorrow() {
   let now = new Date();
 
-  // tomorrow date
+  // date de demain
   let tomorrow = new Date(now.getFullYear(), now.getMonth(), *!*now.getDate()+1*/!*);
 
   let diff = tomorrow - now; // difference in ms
@@ -14,7 +14,7 @@ function getSecondsToTomorrow() {
 }
 ```
 
-Alternative solution:
+solution alternative:
 
 ```js run
 function getSecondsToTomorrow() {
@@ -29,4 +29,4 @@ function getSecondsToTomorrow() {
 }
 ```
 
-Please note that many countries have Daylight Savings Time (DST), so there may be days with 23 or 25 hours. We may want to treat such days separately.
+Veuillez noter que de nombreux pays ont l'heure d'été (DST), il peut donc y avoir des jours avec 23 ou 25 heures. Nous voudrons peut-être traiter ces jours séparément.
