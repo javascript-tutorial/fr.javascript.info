@@ -1,4 +1,4 @@
 
-We have a horizontal Drag'n'Drop here.
+Nous avons un glisser-déposer horizontal ici.
 
-To position the element we use `position:relative` and slider-relative coordinates for the thumb. Here it's more convenient here than `position:absolute`.
+Pour positionner l’élément nous utilisons  `position:relative` et les coordonnées relativement à la barre pour le pouce. Ici c'est plus convenable que la propriété `position:absolute`.
