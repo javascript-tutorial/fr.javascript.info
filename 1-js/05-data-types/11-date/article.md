@@ -1,6 +1,6 @@
-# La date et l'heure
+# Date et Temps
 
-Rencontrons un nouvel objet intégré: [Date](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date). il stocke la date, l'heure et fournit des méthodes pour la gestion de la date / heure.
+Faisons connaissance avec un nouvel objet intégré: [Date](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date). il stocke la date, l'heure et fournit des méthodes pour la gestion de la date / heure.
 
 Par exemple, nous pouvons l'utiliser pour enregistrer les heures de création / modification, pour mesurer l'heure ou simplement pour imprimer la date du jour.
 
