@@ -2,7 +2,11 @@
 
 Revisitons les fonctions fléchées.
 
+<<<<<<< HEAD
 Les fonctions fléchées ne sont pas simplement un "raccourci" pour écrire moins de choses.
+=======
+Arrow functions are not just a "shorthand" for writing small stuff. They have some very specific and useful features.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 JavaScript est plein de situations où nous avons besoin d'écrire une petite fonction, exécutée ailleurs.
 
@@ -14,7 +18,11 @@ Par exemple:
 
 C'est dans l'esprit même de JavaScript de créer une fonction et de la transmettre quelque part.
 
+<<<<<<< HEAD
 Et dans de telles fonctions, nous ne voulons généralement pas quitter le contexte actuel.
+=======
+And in such functions we usually don't want to leave the current context. That's where arrow functions come in handy.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ## Les fonctions fléchées n'ont pas de "this"
 

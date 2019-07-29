@@ -2,7 +2,11 @@
 
 Tous les nombres en JavaScript sont stockés au format 64-bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), aussi appelé "double precision floating point numbers".
 
+<<<<<<< HEAD
 Récapitulons et développons ce que nous savons actuellement à leurs sujet.
+=======
+Let's expand upon what we currently know about them.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ## Plus de façons d'écrire un nombre
 
@@ -213,7 +217,11 @@ Ainsi, la division par puissances `10` est garantie de bien fonctionner dans le 
 
 Il n'existe aucun moyen de stocker **exactement 0.1** ou **exactement 0.2** à l'aide du système binaire, tout comme il n'existe aucun moyen de stocker un tiers sous forme de fraction décimale.
 
+<<<<<<< HEAD
 Le format numérique IEEE-754 résout ce problème en arrondissant au nombre le plus proche possible. Ces règles d'arrondissement ne nous permettent normalement pas de voir cette "petite perte de précision", donc le nombre indiqué est `0.3`. Mais attention, la perte existe toujours.
+=======
+The numeric format IEEE-754 solves this by rounding to the nearest possible number. These rounding rules normally don't allow us to see that "tiny precision loss", but it exists.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Nous pouvons voir cela en action:
 ```js run

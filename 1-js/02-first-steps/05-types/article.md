@@ -178,7 +178,11 @@ Le type `object` est spécial.
 
 Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). En revanche, les objets servent à stocker des collections de données et des entités plus complexes. Nous les traiterons plus tard dans le chapitre <info:object> après en avoir suffisamment appris sur les primitives.
 
+<<<<<<< HEAD
 Le type `symbol` est utilisé pour créer des identificateurs uniques pour les objets. Nous devons le mentionner ici pour être complet, mais il est préférable de les étudier après les objets.
+=======
+The `symbol` type is used to create unique identifiers for objects. We mention it here for completeness, but we'll study it after objects.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ## L'opérateur typeof [#type-typeof]
 

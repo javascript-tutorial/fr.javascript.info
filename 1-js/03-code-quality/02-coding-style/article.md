@@ -10,7 +10,7 @@ Une chose à aider est le bon style de code.
 
 Voici un aide-mémoire avec quelques règles suggérées (plus de détails ci-dessous) :
 
-![](code-style.png)
+![](code-style.svg)
 <!--
 ```js
 function pow(x, n) {
@@ -60,21 +60,27 @@ Une construction sur une seule ligne, comme `if (condition) doSomething()`, est 
 
 Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
 
-<!--
-```js no-beautify
-if (n < 0) {alert(`Power ${n} is not supported`);}
+1. 😠 Beginners sometimes do that. Bad! Curly braces are not needed:
+    ```js
+    if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
+    ```
+2. 😠 Split to a separate line without braces. Never do that, easy to make an error when adding new lines:
+    ```js
+    if (n < 0)
+      alert(`Power ${n} is not supported`);
+    ```
+3. 😏 One line without braces - acceptable, if it's short:
+    ```js
+    if (n < 0) alert(`Power ${n} is not supported`);
+    ```
+4. 😃 The best variant:
+    ```js
+    if (n < 0) {
+      alert(`Power ${n} is not supported`);
+    }
+    ```
 
-if (n < 0) alert(`Power ${n} is not supported`);
-
-if (n < 0)
-  alert(`Power ${n} is not supported`);
-
-if (n < 0) {
-  alert(`Power ${n} is not supported`);
-}
-```
--->
-![](figure-bracket-style.png)
+For a very brief code, one line is allowed, e.g. `if (cond) return null`. But a code block (the last variant) is usually more readable.
 
 
 ### Longueur de la ligne
@@ -111,9 +117,15 @@ Il existe deux types d'indentations :
 
 - **Un retrait horizontal : 2(4) espaces.**
 
+<<<<<<< HEAD
     Une indentation horizontale est faite en utilisant 2 ou 4 espaces ou le symbole "Tab". Lequel choisir est une vieille guerre sainte. Les espaces sont plus communs de nos jours.
 
     Un des avantages des espaces sur les tabulations est qu’elles permettent des configurations de retrait plus flexibles que le symbole "Tabulation".
+=======
+    A horizontal indentation is made using either 2 or 4 spaces or the horizontal tab symbol (key `key:Tab`). Which one to choose is an old holy war. Spaces are more common nowadays.
+
+    One advantage of spaces over tabs is that spaces allow more flexible configurations of indents than the tab symbol.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
     Par exemple, nous pouvons aligner les arguments avec le crochet d’ouverture, comme ceci :
 
@@ -158,7 +170,11 @@ Si vous êtes un programmeur JavaScript expérimenté, vous pouvez choisir un st
 
 Il ne devrait pas y avoir trop de niveaux d'imbrication.
 
+<<<<<<< HEAD
 Par exemple, dans une boucle, c’est parfois une bonne idée d’utiliser la directive ["continue"](info:while-for#continue) pour éviter une imbrication supplémentaire. 
+=======
+For example, in the loop, it's sometimes a good idea to use the [`continue`](info:while-for#continue) directive to avoid extra nesting.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Par exemple, au lieu d’ajouter un `if` imbriqué conditionnel comme ceci :
 
@@ -277,7 +293,11 @@ C’est parce qu’en lisant du code, nous voulons d’abord savoir ce qu’il f
 
 ## Guides de style
 
+<<<<<<< HEAD
 Un guide de style contient des règles générales sur "comment écrire": les quotes à utiliser, le nombre d'espaces à mettre en retrait, l'emplacement des sauts de ligne, etc. Beaucoup de petites choses.
+=======
+A style guide contains general rules about "how to write" code, e.g. which quotes to use, how many spaces to indent, the maximal line length, etc. A lot of minor things.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Au total, lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
 

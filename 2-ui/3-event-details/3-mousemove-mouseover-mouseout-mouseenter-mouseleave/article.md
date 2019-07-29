@@ -6,7 +6,7 @@ Nous allons entrer plus en détails dans les évènements qui se passent lorsque
 
 L'évènement  `mouseover`  est exécuté lorsqu'un pointeur de la souris survole un élément, et `mouseout` -- lorsqu’il le quitte.
 
-![](mouseover-mouseout.png)
+![](mouseover-mouseout.svg)
 
 Ces évènements sont spéciaux parce qu’ils disposent d'une propriété  `relatedTarget`.
 
@@ -45,7 +45,7 @@ L'évènement  `mousemove`   se déclenche lorsque la souris se déplace. Mais c
 Le navigateur  contrôle la position de la souris de temps en temps. S'il détecte des changements alors il déclenche les évènements.
 Cela signifie que si un visiteur déplace la souris très rapidement  les éléments du DOM peuvent être sautes:
 
-![](mouseover-mouseout-over-elems.png)
+![](mouseover-mouseout-over-elems.svg)
 
 Si la souris se déplace très rapidement de  `#FROM` aux  `#TO` éléments telle que décrite en haut, alors le `<div>`  intermédiaire (ou certains d'entre eux) peuvent être sautés. L'évènement  `mouseout` peut être déclenche  sur  `#FROM` et ensuite immédiatement le `mouseover` sur  `#TO`.
 
@@ -55,7 +55,7 @@ D'autre part, nous devons garder à l'esprit que nous ne pouvons supposer que la
 
 Il est possible en particulier que le curseur saute en plein milieu de la page en provenant du dehors de la fenêtre. Et `relatedTarget=null`, parce qu’il est venu de  "nul part":
 
-![](mouseover-mouseout-from-outside.png)
+![](mouseover-mouseout-from-outside.svg)
 
 <div style="display:none">
 Au cas d'un mouvement rapide, les éléments intermédiaires ne peuvent déclencher aucun évènement. Mais si la souris entre en collision avec l'élément (`mouseover`), quand nous sont sur d'avoir un  `mouseout` lorsqu'il le quitte.
@@ -75,7 +75,7 @@ Essayez aussi de déplacer le pointeur sur le `div` rouge, et ensuite déplacez 
 
 Imaginez -- un curseur de souris qui entre en collision avec un élément. L'évènement  `mouseover` est déclenche. Ensuite le curseur va sur un élément enfant. Le fait intéressant c'est que cet évènement `mouseout` se déclenche dans ce cas. Le curseur est toujours dans l'élément, mais nous obtenons  un `mouseout` à partir de ce dernier!
 
-![](mouseover-to-child.png)
+![](mouseover-to-child.svg)
 
 C'est étrange mais cela s'explique facilement.
 

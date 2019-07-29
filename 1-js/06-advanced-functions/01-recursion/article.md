@@ -70,7 +70,11 @@ pow(x, n) =
 
 On peut aussi dire que `pow` *s'appelle récursivement* jusqu'à ce que `n == 1`.
 
+<<<<<<< HEAD
 ![diagramme récursif de puissance](recursion-pow.png)
+=======
+![recursive diagram of pow](recursion-pow.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 
 Par exemple, pour calculer `pow(2, 4)` la variante récursive effectue ces étapes:
@@ -373,7 +377,11 @@ Le code est court et facile à comprendre (tout va bien?). C'est le pouvoir de l
 
 Voici le schéma des appels:
 
+<<<<<<< HEAD
 ![salaires récursifs](recursive-salaries.png)
+=======
+![recursive salaries](recursive-salaries.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 On peut facilement voir le principe: pour un objet `{...}` les sous-appels sont faits, alors que les tableaux `[...]` sont les "feuilles" de l'arbre de récurrence, elles donnent un résultat immédiat.
 
@@ -444,7 +452,11 @@ let list = {
 
 Représentation graphique de la liste:
 
+<<<<<<< HEAD
 ![Liste chaînée](linked-list.png)
+=======
+![linked list](linked-list.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 An alternative code for creation:
 
@@ -464,7 +476,11 @@ let secondList = list.next.next;
 list.next.next = null;
 ```
 
+<<<<<<< HEAD
 ![séparation de la liste chaînée](linked-list-split.png)
+=======
+![linked list split](linked-list-split.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Pour joindre:
 
@@ -488,7 +504,11 @@ list = { value: "new item", next: list };
 */!*
 ```
 
+<<<<<<< HEAD
 ![Liste chaînée](linked-list-0.png)
+=======
+![linked list](linked-list-0.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 
@@ -496,7 +516,11 @@ Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 list.next = list.next.next;
 ```
 
+<<<<<<< HEAD
 ![Liste chaînée](linked-list-remove-1.png)
+=======
+![linked list](linked-list-remove-1.svg)
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 `List.next` a sauté `1` à la valeur `2`. La valeur `1` est maintenant exclue de la chaîne. Si elle n'est pas stocké ailleurs, elle sera automatiquement supprimé de la mémoire.
 

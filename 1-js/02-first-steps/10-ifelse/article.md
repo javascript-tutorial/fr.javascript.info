@@ -6,7 +6,11 @@ Pour ce faire, nous pouvons utiliser l'instruction `if` et l'opérateur conditio
 
 ## L'instruction "if"
 
+<<<<<<< HEAD
 L'instruction `if` obtient une condition, l'évalue et, si le résultat est `true`, exécute le code.
+=======
+The `if(...)` statement evaluates a condition in parentheses and, if the result is `true`, executes a block of code.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Par exemple :
 
@@ -216,7 +220,11 @@ Selon si la condition  `company == 'Netscape'` est vraie ou non, la première ou
 
 Nous n’attribuons pas de résultat à une variable ici. L'idée est d'exécuter un code différent en fonction de la condition.
 
+<<<<<<< HEAD
 **Il n'est pas recommandé d'utiliser l'opérateur ternaire de cette manière.**
+=======
+**It's not recommended to use the question mark operator in this way.**
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 La notation semble être plus courte qu'un `if`, ce qui plaît à certains programmeurs. Mais c'est moins lisible.
 

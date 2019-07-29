@@ -4,7 +4,11 @@ JavaScript a longtemps évolué sans problèmes de compatibilité. De nouvelles 
 
 Cela a l'avantage de ne jamais casser le code existant. Mais l'inconvénient était que toute erreur ou décision imparfaite prise par les créateurs de JavaScript restait bloquée dans lea langage pour toujours.
 
+<<<<<<< HEAD
 Il en avait été ainsi jusqu'en 2009 lorsque ECMAScript 5 (ES5) est apparu. Il a ajouté de nouvelles fonctionnalités au langage et modifié certaines des fonctionnalités existantes. Pour conserver l'ancien code, la plupart des modifications sont désactivées par défaut. Il leur faut une permission explicite avec une directive spéciale `"use strict"`.
+=======
+This was the case until 2009 when ECMAScript 5 (ES5) appeared. It added new features to the language and modified some of the existing ones. To keep the old code working, most such modifications are off by default. You need to explicitly enable them with a special directive: `"use strict"`.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ## "use strict"
 
@@ -19,9 +23,13 @@ Par exemple
 ...
 ```
 
+<<<<<<< HEAD
 Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt.
 
 Notons également que `"use strict"` peut être placé au début d'une fonction (pour la plupart des types de fonctions) au lieu du script entier. Le mode strict est alors activé uniquement dans cette fonction. Mais généralement, les gens l'utilisent pour tout le script.
+=======
+We will learn functions (a way to group commands) soon. Looking ahead, let's note that `"use strict"` can be put at the start of most kinds of functions instead of the whole script. Doing that enables strict mode in that function only. But usually, people use it for the whole script.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"

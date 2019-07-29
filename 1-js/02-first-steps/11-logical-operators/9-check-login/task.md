@@ -6,17 +6,27 @@ importance: 3
 
 Écrivez le code qui demande une connexion avec `prompt`.
 
+<<<<<<< HEAD
 Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée est une ligne vide ou `key:Esc` -- affichez "Canceled", s'il s'agit d'une autre chaîne de caractères, affichez "I don't know you".
+=======
+If the visitor enters `"Admin"`, then `prompt` for a password, if the input is an empty line or `key:Esc` -- show "Canceled", if it's another string -- then show "I don't know you".
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Le mot de passe est vérifié comme suit :
 
+<<<<<<< HEAD
 - S'il est égal à "TheMaster", affichez "Welcome!",
 - Une autre chaînede caractères - affiche "Wrong password",
 - Pour une chaîne de caractères vide ou une entrée annulée, affichez "Canceled".
+=======
+- If it equals "TheMaster", then show "Welcome!",
+- Another string -- show "Wrong password",
+- For an empty string or cancelled input, show "Canceled"
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Le schéma :
 
-![](ifelse_task.png)
+![](ifelse_task.svg)
 
 Veuillez utiliser des blocs `if` imbriqués. Attention à la lisibilité globale du code.
 

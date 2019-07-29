@@ -53,7 +53,7 @@ Regardons de plus près les détails de son fonctionnement.
 
 Le résultat de `cachingDecorator(func)` est un "wrapper": `function(x)` qui "encapsule" l'appel de `func(x)` dans la logique de mise en cache:
 
-![](decorator-makecaching-wrapper.png)
+![](decorator-makecaching-wrapper.svg)
 
 Comme nous pouvons le constater, le wrapper renvoie le résultat de `func(x)` "tel quel". Depuis un code extérieur, la fonction `slow` encapsulée fait toujours la même chose. Un comportement de mise en cache vient d’être ajouté à son comportement.
 

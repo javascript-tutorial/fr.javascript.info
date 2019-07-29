@@ -20,6 +20,10 @@ alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30 sec. ago"
 
 alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 min. ago"
 
+<<<<<<< HEAD
 // date d'hier comme ceci 31.12.2016, 20:00
+=======
+// yesterday's date like 31.12.16, 20:00
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 alert( formatDate(new Date(new Date - 86400 * 1000)) );
 ```
