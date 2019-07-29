@@ -1,8 +1,12 @@
 # Méthodes des primitives
 
+<<<<<<< HEAD
 JavaScript nous permet de travailler avec des primitives (chaînes de caractères, nombres, etc.) comme s'il s'agissait d'objets.
 
 ils prévoient également des méthodes pour les appeler en tant que tel. Nous étudierons cela très bientôt, mais nous verrons d'abord comment cela fonctionne car, bien entendu, les primitives ne sont pas des objets ( et nous allons rendre cela plus clair).
+=======
+JavaScript allows us to work with primitives (strings, numbers, etc.) as if they were objects. They also provide methods to call as such. We will study those soon, but first we'll see how it works because, of course, primitives are not objects (and here we will make it even clearer).
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Examinons les principales différences entre primitives et objets.
 
@@ -34,7 +38,11 @@ De nombreux objets intégrés existent déjà, tels que ceux qui fonctionnent av
 
 Mais, ces fonctionnalités ont un coût!
 
+<<<<<<< HEAD
 Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources supplémentaires pour soutenir le mécanisme interne. Mais comme les propriétés et les méthodes sont très utiles en programmation, les moteurs JavaScript tentent de les optimiser pour réduire la charge supplémentaire.
+=======
+Objects are "heavier" than primitives. They require additional resources to support the internal machinery.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ## Une primitive en tant qu'objet
 
@@ -82,8 +90,13 @@ alert( n.toFixed(2) ); // 1.23
 Nous verrons des méthodes plus spécifiques dans les chapitres [Nombres](https://javascript.info/number) et [Chaînes de caractères](https://javascript.info/string).
 
 
+<<<<<<< HEAD
 ````warn header="Les constructeurs `String/Number/Boolean` sont réservés à un usage interne."
 Certains langages comme Java nous permettent de créer des "wrapper d'objet" (conteneur) pour les primitives en utilisant explicitement une syntaxe telle que `new Number(1)` ou `new Boolean (false)`.
+=======
+````warn header="Constructors `String/Number/Boolean` are for internal use only"
+Some languages like Java allow us to explicitly create "wrapper objects" for primitives using a syntax like `new Number(1)` or `new Boolean(false)`.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 En JavaScript, cela est également possible pour des raisons historique, mais fortement **déconseillé**. Cela peut très vite se compliquer à plusieurs endroits.
 

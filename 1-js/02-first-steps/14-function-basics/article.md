@@ -20,9 +20,17 @@ function showMessage() {
 }
 ```
 
+<<<<<<< HEAD
 Le mot-clé `function` commence, puis le *nom de la fonction*, puis une liste de *paramètres* entre les parenthèses (vides dans l'exemple ci-dessus) et enfin le code de la fonction, également appelé "le corps de la fonction", entre des accolades.
+=======
+The `function` keyword goes first, then goes the *name of the function*, then a list of *parameters* between the parentheses (comma-separated, empty in the example above) and finally the code of the function, also named "the function body", between curly braces.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
-![](function_basics.png)
+```js
+function name(parameters) {
+  ...body...
+}
+```
 
 Notre nouvelle fonction peut être appelée par son nom : `showMessage()`.
 
@@ -206,6 +214,7 @@ function showMessage(from, text = anotherFunction()) {
 ```
 ```smart header="Évaluation des paramètres par défaut"
 
+<<<<<<< HEAD
 En JavaScript, un paramètre par défaut est évalué chaque fois que la fonction est appelée sans le paramètre correspondant. Dans l'exemple ci-dessus, `anotherFunction ()` est appelé à chaque fois que `showMessage ()` est appelé sans le paramètre `text`. Cela contraste avec d'autres langages tels que Python, où les paramètres par défaut ne sont évalués qu'une seule fois lors de l'interprétation initiale.
 
 ```
@@ -214,6 +223,18 @@ En JavaScript, un paramètre par défaut est évalué chaque fois que la fonctio
 Les anciennes éditions de JavaScript ne prenaient pas en charge les paramètres par défaut. Il existe donc d'autres moyens de les prendre en charge, que vous pouvez trouver principalement dans les anciens scripts.
 
 Par exemple, une vérification explicite pour savoir si la valeur est non définie :
+=======
+```smart header="Evaluation of default parameters"
+In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter. In the example above, `anotherFunction()` is called every time `showMessage()` is called without the `text` parameter.
+
+This is in contrast to some other languages like Python, where any default parameters are evaluated only once during the initial interpretation.
+```
+
+````smart header="Default parameters old-style"
+Old editions of JavaScript did not support default parameters. So there are alternative ways to support them, that you can find mostly in the old scripts.
+
+For instance, an explicit check for being `undefined`:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ```js
 function showMessage(from, text) {

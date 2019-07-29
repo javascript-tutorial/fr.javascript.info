@@ -15,11 +15,17 @@ Selon que vous utilisiez `use strict` ou non, le résultat peut être :
 
 Pourquoi ? Répétons ce qui se pase à la ligne`(*)`:
 
+<<<<<<< HEAD
 1. Lorsqu'on accède à une propiété de `str`, un "wrapper d'objet" (conteneur) est créé.
 2. En mode strict, l'écriture à l'intérieur est une erreur.
 3. Sinon, l'opération avec la propriété est poursuivie, l'objet obtient la propriété test, mais après cela, "l'objet wrapper" disparaît.
 
 Donc, sans mode strict, dans la dernière ligne, `str` n'a aucune trace de la propriété.
+=======
+1. When a property of `str` is accessed, a "wrapper object" is created.
+2. In strict mode, writing into it is an error.
+3. Otherwise, the operation with the property is carried on, the object gets the `test` property, but after that the "wrapper object" disappears, so in the last line `str` has no trace of the property.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 
 **Cet exemple montre clairement que les primitives ne sont pas des objets.**
