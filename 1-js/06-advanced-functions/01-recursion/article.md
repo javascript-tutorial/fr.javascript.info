@@ -70,7 +70,7 @@ pow(x, n) =
 
 On peut aussi dire que `pow` *s'appelle récursivement* jusqu'à ce que `n == 1`.
 
-![diagramme récursif de puissance](recursion-pow.png)
+![diagramme récursif de puissance](recursion-pow.svg)
 
 
 Par exemple, pour calculer `pow(2, 4)` la variante récursive effectue ces étapes:
@@ -373,7 +373,7 @@ Le code est court et facile à comprendre (tout va bien?). C'est le pouvoir de l
 
 Voici le schéma des appels:
 
-![salaires récursifs](recursive-salaries.png)
+![salaires récursifs](recursive-salaries.svg)
 
 On peut facilement voir le principe: pour un objet `{...}` les sous-appels sont faits, alors que les tableaux `[...]` sont les "feuilles" de l'arbre de récurrence, elles donnent un résultat immédiat.
 
@@ -444,7 +444,7 @@ let list = {
 
 Représentation graphique de la liste:
 
-![Liste chaînée](linked-list.png)
+![Liste chaînée](linked-list.svg)
 
 An alternative code for creation:
 
@@ -464,7 +464,7 @@ let secondList = list.next.next;
 list.next.next = null;
 ```
 
-![séparation de la liste chaînée](linked-list-split.png)
+![séparation de la liste chaînée](linked-list-split.svg)
 
 Pour joindre:
 
@@ -488,7 +488,7 @@ list = { value: "new item", next: list };
 */!*
 ```
 
-![Liste chaînée](linked-list-0.png)
+![Liste chaînée](linked-list-0.svg)
 
 Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 
@@ -496,7 +496,7 @@ Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 list.next = list.next.next;
 ```
 
-![Liste chaînée](linked-list-remove-1.png)
+![Liste chaînée](linked-list-remove-1.svg)
 
 `List.next` a sauté `1` à la valeur `2`. La valeur `1` est maintenant exclue de la chaîne. Si elle n'est pas stocké ailleurs, elle sera automatiquement supprimé de la mémoire.
 

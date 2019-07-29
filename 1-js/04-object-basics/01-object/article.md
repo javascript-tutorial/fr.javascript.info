@@ -9,7 +9,7 @@ Un objet peut être créé avec des accolades `{…}`, avec une liste optionnell
 
 Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
-![](object.png)
+![](object.svg)
 
 Un objet vide ("armoire vide") peut être créé en utilisant l'une des deux syntaxes suivantes :
 
@@ -18,7 +18,7 @@ let user = new Object(); // syntaxe "constructeur d'objet"
 let user = {};  // syntaxe "littéral objet"
 ```
 
-![](object-user-empty.png)
+![](object-user-empty.svg)
 
 Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
 
@@ -42,7 +42,7 @@ Dans l'objet `user`, il y a deux propriétés :
 
 L'objet `user` résultant peut être imaginé comme une armoire avec deux fichiers signés intitulés "nom" et "âge".
 
-![user object](object-user.png)
+![user object](object-user.svg)
 
 Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
 
@@ -60,7 +60,7 @@ La valeur peut être de tout type. Ajoutons un booléen :
 user.isAdmin = true;
 ```
 
-![user object 2](object-user-isadmin.png)
+![user object 2](object-user-isadmin.svg)
 
 Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 
@@ -68,7 +68,7 @@ Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 delete user.age;
 ```
 
-![user object 3](object-user-delete.png)
+![user object 3](object-user-delete.svg)
 
 Nous pouvons également utiliser des noms de propriété multi-mots, mais ils doivent ensuite être entourés de quotes :
 
@@ -80,7 +80,7 @@ let user = {
 };
 ```
 
-![](object-user-props.png)
+![](object-user-props.svg)
 
 
 La dernière propriété de la liste peut se terminer par une virgule :
@@ -475,7 +475,7 @@ let phrase = message;
 
 Par conséquent, nous avons deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
 
-![](variable-copy-value.png)
+![](variable-copy-value.svg)
 
 Les objets ne sont pas comme ça.
 
@@ -489,7 +489,7 @@ let user = {
 };
 ```
 
-![](variable-contains-reference.png)
+![](variable-contains-reference.svg)
 
 Ici, l'objet est stocké quelque part en mémoire. Et la variable `user` a une "référence" à cet objet.
 
@@ -507,7 +507,7 @@ let admin = user; // copier la référence
 
 Maintenant nous avons deux variables, chacune avec la référence au même objet :
 
-![](variable-copy-reference.png)
+![](variable-copy-reference.svg)
 
 Nous pouvons utiliser n’importe quelle variable pour accéder à l'armoire et modifier son contenu :
 
