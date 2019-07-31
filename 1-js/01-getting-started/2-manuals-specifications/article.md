@@ -8,11 +8,11 @@ Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement l
 
 **La spécification ECMA-262** contient les informations les plus détaillées et formalisées sur JavaScript. C'est elle qui définit le langage.
 
-Mais cela étant formalisé, elle est difficile à comprendre au début. Si vous avez besoin de la source d’informations la plus fiable sur les détails du langage, c’est le bon endroit. Mais ce n’est pas très pratique pour un usage quotidien.
+Mais cela étant formalisé, elle est difficile à comprendre au début. Si vous avez besoin de la source d’informations la plus fiable sur les détails du langage, la spécification est le bon endroit. Mais ce n’est pas très pratique pour un usage quotidien.
 
 La dernière version de la spécification est disponible à cette adresse : <https://tc39.es/ecma262/>.
 
-Pour en savoir plus sur les fonctionnalités à venir, vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
+Pour en savoir plus sur les fonctionnalités à venir, y compris celles qui sont "presque standards" (appelées aussi "stage 3"), vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
 
 Si vous développez spécifiquement pour le navigateur, il existe d’autres spécifications couvertes dans la [seconde partie](info:browser-environment) du tutoriel.
 
@@ -29,7 +29,7 @@ Si vous développez spécifiquement pour le navigateur, il existe d’autres sp�
 
     Nous pouvons également utiliser une recherche sur Internet avec des expressions telles que "RegExp MSDN" ou encore "RegExp MSDN jscript".
 
-## Support des fonctionnalités
+## Tableaux de compatibilité
 
 JavaScript est un langage en développement, de nouvelles fonctionnalités sont ajoutées régulièrement.
 

@@ -16,7 +16,7 @@ Le mot de passe est vérifié comme suit :
 
 Le schéma :
 
-![](ifelse_task.png)
+![](ifelse_task.svg)
 
 Veuillez utiliser des blocs `if` imbriqués. Attention à la lisibilité globale du code.
 

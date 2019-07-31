@@ -107,7 +107,7 @@ Ce serait mieux si nous gardions le  changement initial de l’élément relativ
 
 Par exemple, si nous commençons le glissement par le rebord de la balle, alors le curseur doit rester sur le rebord pendant le déplacement.
 
-![](ball_shift.png)
+![](ball_shift.svg)
 
 1. Lorsqu’un visiteur appuye sur le bouton (`mousedown`) – nous pouvons garder en mémoire la distance du curseur au coin gauche en haut de la balle dans des variables `shiftX/shiftY`. Nous devons garder cette distance en faisant le glissement.
 
@@ -291,4 +291,5 @@ Nous pouvons faire beaucoup de choses sur cette base.
 - Nous pouvons utiliser la délégation d’évènements avec  `mousedown/up`.  Un gestionnaire d’évènement sur une grande surface qui contrôle la propriété `event.target` peut gérer  le Glisser-déposer pour des centaines d’éléments.
 - Ainsi de suite.
 
-Il existe des cadres de programmation qui fondent leur architecture sur cela: `DragZone`, `Droppable`, `Draggable` et autres classes. La plus part d’entre eux  font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Oubien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et cela pourrait être plus flexible que d’adapter quelque chose d’autre.
+
+Il existe des cadres de programmation qui fondent leur architecture sur cela: `DragZone`, `Droppable`, `Draggable` et autres classes. La plus part d’entre elles font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Ou bien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et cela pourrait être plus flexible que d’adapter quelque chose d’autre.

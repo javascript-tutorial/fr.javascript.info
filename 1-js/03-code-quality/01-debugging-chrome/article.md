@@ -16,13 +16,13 @@ Votre version de Chrome peut sembler un peu différente, mais vous devez tout de
 
 Voici ce que vous devriez voir si vous le faites pour la première fois :
 
-![](chrome-open-sources.png)
+![](chrome-open-sources.svg)
 
 Le bouton <span class="devtools" style="background-position:-168px -76px"></span> ouvre l'onglet avec les fichiers.
 
 Cliquez dessus et sélectionnez `hello.js` dans l’arborescence. Voici ce qui devrait apparaître :
 
-![](chrome-tabs.png)
+![](chrome-tabs.svg)
 
 Ici nous pouvons voir trois zones : 
 
@@ -40,7 +40,7 @@ Une fois une instruction exécutée, son résultat est présenté ci-dessous.
 
 Par exemple, ici `1+2` donne `3`, et `hello("débogueur")` ne renvoie rien, le résultat est donc `undefined` :
 
-![](chrome-sources-console.png)
+![](chrome-sources-console.svg)
 
 ## Breakpoints
 
@@ -50,7 +50,7 @@ Félicitations ! Vous avez défini un point d'arrêt. Veuillez également clique
 
 Cela devrait ressembler à ceci (le bleu est l'endroit où vous devez cliquer) :
 
-![](chrome-sources-breakpoint.png)
+![](chrome-sources-breakpoint.svg)
 
 Un *breakpoint* est un point dans le code où le débogueur mettra automatiquement en pause l'exécution de JavaScript.
 
@@ -93,7 +93,7 @@ Dans notre exemple, `hello()` est appelé lors du chargement de la page. Le moye
 
 Lorsque le point d'arrêt est défini, l'exécution s'interrompt à la 4ème ligne :
 
-![](chrome-sources-debugger-pause.png)
+![](chrome-sources-debugger-pause.svg)
 
 Veuillez ouvrir les menus déroulants d’information à droite (indiqués par des flèches). Ils vous permettent d'examiner l'état du code actuel :
 
@@ -123,7 +123,7 @@ Il y a des boutons pour cela en haut du volet de droite. Voyons cela.
 <span class="devtools" style="background-position:-7px -76px"></span> -- continuer l'exécution, raccourci clavier `key:F8`.
 : Reprend l'exécution. S'il n'y a pas de points d'arrêt supplémentaires, l'exécution continue et le débogueur perd le contrôle.
 
-    Voici ce que nous pouvons voir après un clic dessus : ![](chrome-sources-debugger-trace-1.png)
+    Voici ce que nous pouvons voir après un clic dessus : ![](chrome-sources-debugger-trace-1.svg)
 
     L'exécution a repris, atteint un autre point d'arrêt à l'intérieur de `say()` et s'y est arrêtée. Jetez un coup d’œil à "Call stack" à droite. Il a augmenté d'un appel supplémentaire. Nous sommes à l'intérieur `say()` maintenant.
 
