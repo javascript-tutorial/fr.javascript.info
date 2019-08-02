@@ -1,12 +1,13 @@
 
 # Map and Set
 
-Now we've learned about the following complex data structures:
+Nous avons découvert les structures de données complexes suivantes :
 
-- Objects for storing keyed collections.
-- Arrays for storing ordered collections.
+- Objects (les objets) pour stocker des valeurs par clés.
+- Arrays (les tableaux) pour stocker des valeurs en conservant l'ordre d'insertion.
 
-But that's not enough for real life. That's why `Map` and `Set` also exist.
+Il existe aussi `Map` (les dictionnaires de données) et `Set` (les ensembles) qui sont très utiles dans notre quotidien de développeur.
+
 
 ## Map
 
