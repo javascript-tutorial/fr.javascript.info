@@ -142,19 +142,11 @@ Arithmétique
 Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
-<<<<<<< HEAD
-Opération bit à bit (Bitwise)
+Bitwise
 : Les opérateurs au niveau des bits fonctionnent avec des entiers de niveau binaire : voir la [doc](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) quand ils sont nécessaires.
 
-Ternaire
+Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
-=======
-Bitwise
-: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
-
-Conditional
-: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Opérateurs logiques
 : ET logique `&&` et OU `||` effectuent une évaluation en circuit court puis renvoyent la valeur là où ils se sont arrêtés.
@@ -283,17 +275,10 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 - Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est renvoyée, le résultat est `undefined`.
 
 
-<<<<<<< HEAD
-| Fonction Déclaration            | Fonction Expression                                |
-|-----------------------------------|--------------------------------------------------------|
-| visible dans tout le bloc de code | créé lorsque l'exécution lui parvient                  |
-| -                                 | peut avoir un nom, visible uniquement dans la fonction |
-=======
-| Function Declaration | Function Expression |
-|----------------------|---------------------|
-| visible in the whole code block/script | created when the execution reaches it |
-|    | can have a name, visible only inside the function |
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+| Fonction Déclaration                     | Fonction Expression                                    |
+|------------------------------------------|--------------------------------------------------------|
+| visible dans tout le bloc de code/script | créé lorsque l'exécution l'atteint                     |
+|                                          | peut avoir un nom, visible uniquement dans la fonction |
 
 Plus : voir <info:function-basics>, <info:function-expressions-arrows>.
 
