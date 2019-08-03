@@ -193,13 +193,7 @@ alert( obj[0] ); // test (même propriété)
 
 ## Symboles globaux
 
-<<<<<<< HEAD
-Comme nous l’avons vu, tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités.
-
-Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
-=======
-As we've seen, usually all symbols are different, even if they have the same name. But sometimes we want same-named symbols to be same entities. For instance, different parts of our application want to access symbol `"id"` meaning exactly the same property.
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+Comme nous l’avons vu, habituellement tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités. Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
 
 Pour cela, il existe un *registre de symboles global*. Nous pouvons créer des symboles et y accéder ultérieurement, ce qui garantit que les accès répétés portant le même nom renvoient exactement le même symbole.
 
@@ -239,28 +233,16 @@ Par exemple :
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
-<<<<<<< HEAD
-// obtenir le nom du symbole
-=======
-// get name by symbol
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+// obtenir le nom par symbole
 alert( Symbol.keyFor(sym) ); // name
 alert( Symbol.keyFor(sym2) ); // id
 ```
 
 `Symbol.keyFor` utilise en interne le registre de symboles global pour rechercher la clé du symbole. Donc, cela ne fonctionne pas pour les symboles non globaux. Si le symbole n’est pas global, il ne pourra pas le trouver et retournera `undefined`.
 
-<<<<<<< HEAD
+Cela dit, tous les symboles ont la propriété `description`.
+
 Par exemple :
-
-```js run
-alert( Symbol.keyFor(Symbol.for("name")) ); // name, symbole global
-
-alert( Symbol.keyFor(Symbol("name2")) ); // undefined, l'argument n'est pas un symbole global
-=======
-That said, any symbols have `description` property.
-
-For instance:
 
 ```js run
 let globalSymbol = Symbol.for("name");
@@ -270,7 +252,6 @@ alert( Symbol.keyFor(globalSymbol) ); // name, global symbol
 alert( Symbol.keyFor(localSymbol) ); // undefined, not global
 
 alert( localSymbol.description ); // name
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 ```
 
 ## System symbols
@@ -307,8 +288,4 @@ Les symboles ont deux principaux cas d'utilisation :
 
 2. De nombreux symboles système utilisés par JavaScript sont accessibles en tant que `Symbol.*`. Nous pouvons les utiliser pour modifier certains comportements internes. Par exemple, plus tard dans le tutoriel, nous utiliserons `Symbol.iterator` pour [iterables](info:iterable), `Symbol.toPrimitive` etc.
 
-<<<<<<< HEAD
-Techniquement, les symboles ne sont pas cachés à 100%. Il y a une méthode intégrée [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui nous permet d’obtenir tous les symboles. Il y a aussi une méthode nommée [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) qui renvoie toutes les clés d'un objet, y compris celles symboliques. Donc, ils ne sont pas vraiment cachés. Mais la plupart des librairies, des méthodes intégrées et des constructions de syntaxe adhèrent à un accord commun qu'elles le sont. Et celui qui appelle explicitement les méthodes susmentionnées comprend probablement bien ce qu’il fait.
-=======
-Technically, symbols are not 100% hidden. There is a built-in method [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) that allows us to get all symbols. Also there is a method named [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) that returns *all* keys of an object including symbolic ones. So they are not really hidden. But most libraries, built-in functions and syntax constructs don't use these methods.
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+Techniquement, les symboles ne sont pas cachés à 100%. Il y a une méthode intégrée [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui nous permet d’obtenir tous les symboles. Il y a aussi une méthode nommée [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) qui renvoie *toutes* les clés d'un objet, y compris celles symboliques. Donc, ils ne sont pas vraiment cachés. Donc, ils ne sont pas vraiment cachés. Mais la plupart des bibliothèques, fonctions intégrées et structures de syntaxe n'utilisent pas ces méthodes.
