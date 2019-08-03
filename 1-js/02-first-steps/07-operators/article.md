@@ -93,13 +93,8 @@ alert( +"" );   // 0
 
 En fait, il fait la même chose que `Number(...)`, mais il est plus court.
 
-<<<<<<< HEAD
-Un besoin de convertir des chaînes de caractères en nombres apparaît très souvent. Par exemple, si nous obtenons des valeurs à partir de champs de formulaire HTML, ce sont généralement des chaînes de caractères.
+La nécessité de convertir des chaînes de caractères en nombres est très fréquente. Par exemple, si nous obtenons des valeurs à partir de champs de formulaire HTML, il s’agit généralement de chaînes de caractères. Et si on veut les additionner ?
 
-Que se passe-t-il si on veut les additionner ?
-=======
-The need to convert strings to numbers arises very often. For example, if we are getting values from HTML form fields, they are usually strings. What if we want to sum them?
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Le binaire plus les ajouterait comme des chaînes de caractères : 
 
@@ -257,22 +252,14 @@ Il y a donc des opérateurs spéciaux pour cela :
 
     ```js run no-beautify
     let counter = 2;
-<<<<<<< HEAD
-    counter++;      // fonctionne de la même manière que "counter = counter + 1", mais il est plus court
-=======
-    counter++;        // works the same as counter = counter + 1, but is shorter
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+    counter++;      // fonctionne de la même manière que counter = counter + 1, mais c'est plus court
     alert( counter ); // 3
     ```
 - **Décrémentation** `--` diminue une variable de 1 : 
 
     ```js run no-beautify
     let counter = 2;
-<<<<<<< HEAD
-    counter--;      // fonctionne de la même manière que "counter = counter - 1", mais il est plus court
-=======
-    counter--;        // works the same as counter = counter - 1, but is shorter
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+    counter--;      // fonctionne de la même manière que counter = counter - 1, mais c'est plus court
     alert( counter ); // 1
     ```
 
