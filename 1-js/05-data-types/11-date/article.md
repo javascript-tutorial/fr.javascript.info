@@ -1,175 +1,178 @@
-# Date and time
+# Date et Temps
 
-Let's meet a new built-in object: [Date](mdn:js/Date). It stores the date, time and provides methods for date/time management.
+Faisons connaissance avec un nouvel objet intégré: [Date](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date). il stocke la date, l'heure et fournit des méthodes pour la gestion de la date / heure.
 
-For instance, we can use it to store creation/modification times, to measure time, or just to print out the current date.
+Par exemple, nous pouvons l'utiliser pour enregistrer les heures de création / modification, pour mesurer l'heure ou simplement pour imprimer la date du jour.
 
 ## Creation
 
-To create a new `Date` object call `new Date()` with one of the following arguments:
+Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des arguments suivants:
 
 `new Date()`
-: Without arguments -- create a `Date` object for the current date and time:
+: Sans arguments - crée un objet `Date` pour la date et l'heure actuelles.
 
     ```js run
     let now = new Date();
-    alert( now ); // shows current date/time
+    alert( now ); // affiche la date/heure actuelle
     ```
 
-`new Date(milliseconds)`
-: Create a `Date` object with the time equal to number of milliseconds (1/1000 of a second) passed after the Jan 1st of 1970 UTC+0.
+`new Date(millisecondes)`
+: Crée un objet `Date` avec l'heure correspondant au nombre de millisecondes (1/1000 de seconde) écoulée après le 1er janvier 1970 UTC.
 
     ```js run
-    // 0 means 01.01.1970 UTC+0
+    // 0 signifie 01.01.1970 UTC+0
     let Jan01_1970 = new Date(0);
     alert( Jan01_1970 );
 
-    // now add 24 hours, get 02.01.1970 UTC+0
+    // maintenant, ajoutez 24 heures, cela devient 02.01.1970 UTC+0
     let Jan02_1970 = new Date(24 * 3600 * 1000);
     alert( Jan02_1970 );
     ```
 
-    The number of milliseconds that has passed since the beginning of 1970 is called a *timestamp*.
+    Le nombre de millisecondes écoulées depuis le début de 1970 s'appelle un *horodatage*.
 
-    It's a lightweight numeric representation of a date. We can always create a date from a timestamp using `new Date(timestamp)` and convert the existing `Date` object to a timestamp using the `date.getTime()` method (see below).
+    C’est une représentation numérique d’une date. Nous pouvons toujours créer une date à partir d'un *horodatage* à l'aide de `new Date (*horodatage*)` et convertir l'objet `Date` existant en un *horodatage* à l'aide de la méthode `date.getTime ()` (voir ci-dessous).
 
-`new Date(datestring)`
-: If there is a single argument, and it's a string, then it is parsed with the `Date.parse` algorithm (see below).
+`new Date(date)`
+: s'il existe un seul argument, et qu'il s'agit d'une chaîne de caractères, il est analysé avec l'algorithme `Date.parse` (voir ci-dessous).
 
 
     ```js run
     let date = new Date("2017-01-26");
     alert(date);
-    // The time is not set, so it's assumed to be midnight GMT and
-    // is adjusted according to the timezone the code is run in
-    // So the result could be
-    // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
-    // or
-    // Wed Jan 25 2017 16:00:00 GMT-0800 (Pacific Standard Time)
+    // La partie heure de la date est supposée être minuit GMT et
+    // est ajusté en fonction du fuseau horaire dans lequel le code est exécuté
+    // Donc, le résultat pourrait être
+    // jeu. 26 janv. 2017 11:00:00 GMT + 1100 (heure avancée de l'Est)
+    // ou
+    // mer. 25 janv. 2017 16:00:00 GMT-0800 (Heure standard du Pacifique)
     ```
 
-`new Date(year, month, date, hours, minutes, seconds, ms)`
-: Create the date with the given components in the local time zone. Only the first two arguments are obligatory.
+`new Date(année, mois, date, heures, minutes, secondes, ms)`
+: Crée la date avec les composants donnés dans le fuseau horaire local. Seul le premier argument est obligatoire.
 
-    - The `year` must have 4 digits: `2013` is okay, `98` is not.
-    - The `month` count starts with `0` (Jan), up to `11` (Dec).
-    - The `date` parameter is actually the day of month, if absent then `1` is assumed.
-    - If `hours/minutes/seconds/ms` is absent, they are assumed to be equal `0`.
+    Note:
 
-    For instance:
+    - l'`année` doit comporter 4 chiffres: `2013` c'est bon, `98` ne l'est pas.
+    - le `mois` commence par `0` (Jan), jusqu'à `11` (Dec).
+    - la `date` est en fait le jour du mois, s'il est absent cela deviendra `1` par défaut.
+    - si `heures/minutes/secondes/ms` sont absentes, elles sont par défaut égales à `0`.
+
+    Par exemple:
 
     ```js
     new Date(2011, 0, 1, 0, 0, 0, 0); // // 1 Jan 2011, 00:00:00
-    new Date(2011, 0, 1); // the same, hours etc are 0 by default
+    new Date(2011, 0, 1); // la même chose car les heures, etc. sont égales à 0 par défaut
     ```
 
-    The minimal precision is 1 ms (1/1000 sec):
+    La précision minimale est de 1 ms (1/1000 sec):
 
     ```js run
     let date = new Date(2011, 0, 1, 2, 3, 4, 567);
     alert( date ); // 1.01.2011, 02:03:04.567
     ```
 
-## Access date components
+## Composants de date d'accès
 
-There are methods to access the year, month and so on from the `Date` object:
+Il existe de nombreuses méthodes pour accéder à l'année, au mois, etc. à partir de l'objet Date.
 
-[getFullYear()](mdn:js/Date/getFullYear)
-: Get the year (4 digits)
+[getFullYear()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getFullYear)
+: Obtenir l'année (4 chiffres)
 
-[getMonth()](mdn:js/Date/getMonth)
-: Get the month, **from 0 to 11**.
+[getMonth()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getMonth)
+: Obtenir le mois, **de 0 à 11**.
 
-[getDate()](mdn:js/Date/getDate)
-: Get the day of month, from 1 to 31, the name of the method does look a little bit strange.
+[getDate()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getDate)
+: Obtenir le jour du mois, de 1 à 31.
 
-[getHours()](mdn:js/Date/getHours), [getMinutes()](mdn:js/Date/getMinutes), [getSeconds()](mdn:js/Date/getSeconds), [getMilliseconds()](mdn:js/Date/getMilliseconds)
-: Get the corresponding time components.
+[getHours()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getHours), [getMinutes()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getMinutes), [getSeconds()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getSeconds), [getMilliseconds()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getMilliseconds)
+: Obtenir l'heures / les minutes / les secondes / les millisecondes.
 
 ```warn header="Not `getYear()`, but `getFullYear()`"
-Many JavaScript engines implement a non-standard method `getYear()`. This method is deprecated. It returns 2-digit year sometimes. Please never use it. There is `getFullYear()` for the year.
+De nombreux moteurs JavaScript implémentent une méthode non standard `getYear()`. Cette méthode est obsolète. Il retourne parfois l'année à 2 chiffres. S'il vous plaît ne l'utilisez jamais. Il y a `getFullYear()` pour l'année.
 ```
 
-Additionally, we can get a day of week:
+De plus, nous pouvons obtenir un jour de la semaine:
 
 [getDay()](mdn:js/Date/getDay)
-: Get the day of week, from `0` (Sunday) to `6` (Saturday). The first day is always Sunday, in some countries that's not so, but can't be changed.
+: Obtenir le jour de la semaine, de `0` (dimanche) à `6` (samedi). Le premier jour est toujours le dimanche, dans certains pays ce n’est pas le cas, mais ça ne peut pas être changé.
 
-**All the methods above return the components relative to the local time zone.**
+**Toutes les méthodes ci-dessus renvoient les composants par rapport au fuseau horaire local.**
 
-There are also their UTC-counterparts, that return day, month, year and so on for the time zone UTC+0: [getUTCFullYear()](mdn:js/Date/getUTCFullYear), [getUTCMonth()](mdn:js/Date/getUTCMonth), [getUTCDay()](mdn:js/Date/getUTCDay). Just insert the `"UTC"` right after `"get"`.
+Il existe également leurs homologues UTC, qui renvoient jour, mois, année, etc. pour le fuseau horaire UTC + 0: [getUTCFullYear()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getUTCFullYear), [getUTCMonth()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getUTCMonth), [getUTCDay()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getUTCDay). Il suffit d'insérer le `UTC` juste après `get`.
 
-If your local time zone is shifted relative to UTC, then the code below shows different hours:
+Si votre fuseau horaire local est décalé par rapport à UTC, le code ci-dessous indique différentes heures:
 
 ```js run
-// current date
+// date actuel
 let date = new Date();
 
-// the hour in your current time zone
+// l'heure dans votre fuseau horaire actuel
 alert( date.getHours() );
 
-// the hour in UTC+0 time zone (London time without daylight savings)
+// l'heure dans le fuseau horaire UTC + 0 (heure de Londres sans heure avancée)
 alert( date.getUTCHours() );
 ```
 
-Besides the given methods, there are two special ones that do not have a UTC-variant:
+Outre les méthodes indiquées, il existe deux méthodes spéciales qui ne possèdent pas de variante UTC:
 
-[getTime()](mdn:js/Date/getTime)
-: Returns the timestamp for the date -- a number of milliseconds passed from the January 1st of 1970 UTC+0.
+[getTime()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getTime)
+: Renvoie l'horodatage de la date - nombre de millisecondes écoulées à partir du 1er janvier 1970 UTC + 0.
 
-[getTimezoneOffset()](mdn:js/Date/getTimezoneOffset)
-: Returns the difference between the local time zone and UTC, in minutes:
+[getTimezoneOffset()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getTimezoneOffset)
+: Renvoie la différence entre le fuseau horaire local et l'heure UTC, en minutes:
 
     ```js run
-    // if you are in timezone UTC-1, outputs 60
-    // if you are in timezone UTC+3, outputs -180
+    // si vous êtes dans le fuseau horaire UTC-1, génère 60
+    // si vous êtes dans le fuseau horaire UTC + 3, les sorties -180
     alert( new Date().getTimezoneOffset() );
 
     ```
 
-## Setting date components
+## Réglage des composants de date
 
-The following methods allow to set date/time components:
+Les méthodes suivantes permettent de définir des composants date / heure:
 
-- [`setFullYear(year [, month, date])`](mdn:js/Date/setFullYear)
-- [`setMonth(month [, date])`](mdn:js/Date/setMonth)
-- [`setDate(date)`](mdn:js/Date/setDate)
-- [`setHours(hour [, min, sec, ms])`](mdn:js/Date/setHours)
-- [`setMinutes(min [, sec, ms])`](mdn:js/Date/setMinutes)
-- [`setSeconds(sec [, ms])`](mdn:js/Date/setSeconds)
-- [`setMilliseconds(ms)`](mdn:js/Date/setMilliseconds)
-- [`setTime(milliseconds)`](mdn:js/Date/setTime) (sets the whole date by milliseconds since 01.01.1970 UTC)
+- [`setFullYear(year [, month, date])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setFullYear)
+- [`setMonth(month [, date])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMonth)
+- [`setDate(date)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setDate)
+- [`setHours(hour [, min, sec, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setHours)
+- [`setMinutes(min [, sec, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMinutes)
+- [`setSeconds(sec [, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMinutes)
+- [`setMilliseconds(ms)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMilliseconds)
+- [`setTime(milliseconds)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setTime) (définit la date entière en millisecondes depuis le 01.01.1970 UTC)
 
-Every one of them except `setTime()` has a UTC-variant, for instance: `setUTCHours()`.
+Chacun d'entre eux sauf `setTime()` a une variante UTC, par exemple: `setUTCHours()`.
 
-As we can see, some methods can set multiple components at once, for example `setHours`. The components that are not mentioned are not modified.
+Comme nous pouvons le constater, certaines méthodes peuvent définir plusieurs composants à la fois, par exemple `setHours`. Les composants non mentionnés ne sont pas modifiés.
 
-For instance:
+
+Par exemple:
 
 ```js run
 let today = new Date();
 
 today.setHours(0);
-alert(today); // still today, but the hour is changed to 0
+alert(today); // encore aujourd'hui, mais l'heure est changée à 0
 
 today.setHours(0, 0, 0, 0);
-alert(today); // still today, now 00:00:00 sharp.
+alert(today); // toujours aujourd'hui, maintenant 00:00:00 pile.
 ```
 
-## Autocorrection
+## Auto-correction
 
-The *autocorrection* is a very handy feature of `Date` objects. We can set out-of-range values, and it will auto-adjust itself.
+l' *auto-correction* est une fonctionnalité très pratique des objets Date. Nous pouvons définir des valeurs hors limites et le système s'ajustera automatiquement.
 
-For instance:
+Par exemple:
 
 ```js run
 let date = new Date(2013, 0, *!*32*/!*); // 32 Jan 2013 ?!?
-alert(date); // ...is 1st Feb 2013!
+alert(date); // ...c'est le 1st Feb 2013!
 ```
 
-Out-of-range date components are distributed automatically.
+Les composants de date hors limites sont traités automatiquement.
 
-Let's say we need to increase the date "28 Feb 2016" by 2 days. It may be "2 Mar" or "1 Mar" in case of a leap-year. We don't need to think about it. Just add 2 days. The `Date` object will do the rest:
+Supposons que nous devions augmenter la date «28 février 2016» de 2 jours. Ce peut être «2 mars» ou «1 mars» dans le cas d'une année bissextile. Nous n’avons pas besoin d’y penser. Il suffit d'ajouter 2 jours. L'objet `Date` fera le reste:
 
 ```js run
 let date = new Date(2016, 1, 28);
@@ -180,109 +183,112 @@ date.setDate(date.getDate() + 2);
 alert( date ); // 1 Mar 2016
 ```
 
-That feature is often used to get the date after the given period of time. For instance, let's get the date for "70 seconds after now":
+Cette fonctionnalité est souvent utilisée pour obtenir la date après la période donnée. Par exemple, obtenons la date «70 secondes après maintenant»:
 
 ```js run
 let date = new Date();
 date.setSeconds(date.getSeconds() + 70);
 
-alert( date ); // shows the correct date
+alert( date ); // montre la date correcte
 ```
 
-We can also set zero or even negative values. For example:
+Nous pouvons également définir zéro ou même des valeurs négatives. Par exemple:
 
 ```js run
 let date = new Date(2016, 0, 2); // 2 Jan 2016
 
-date.setDate(1); // set day 1 of month
+date.setDate(1); // met le jour 1 du mois
 alert( date );
 
-date.setDate(0); // min day is 1, so the last day of the previous month is assumed
+date.setDate(0); // la date minimum est le 1, le dernier jour du mois précédent devient alors la date
 alert( date ); // 31 Dec 2015
 ```
 
-## Date to number, date diff
+## de Date à numéro, différence de date
 
-When a `Date` object is converted to number, it becomes the timestamp same as `date.getTime()`:
+Lorsqu'un objet Date est converti en nombre, il devient l'horodatage identique à `date.getTime()`:
 
 ```js run
 let date = new Date();
-alert(+date); // the number of milliseconds, same as date.getTime()
+alert(+date); // le nombre de millisecondes, identique à date.getTime ()
 ```
 
-The important side effect: dates can be subtracted, the result is their difference in ms.
+L'effet secondaire important: les dates peuvent être soustraites, le résultat est leur différence en ms.
 
-That can be used for time measurements:
+Cela peut être utilisé pour les mesures de temps:
 
 ```js run
-let start = new Date(); // start measuring time
+let start = new Date(); // démarre le compteur
 
-// do the job
+// fait le travail
 for (let i = 0; i < 100000; i++) {
   let doSomething = i * i * i;
 }
 
-let end = new Date(); // end measuring time
+let end = new Date(); // fin
 
 alert( `The loop took ${end - start} ms` );
 ```
 
 ## Date.now()
 
-If we only want to measure time, we don't need the `Date` object.
+Si nous voulons seulement mesurer la différence, nous n’avons pas besoin de l’objet Date.
 
-There's a special method `Date.now()` that returns the current timestamp.
+Il existe une méthode spéciale `Date.now()` qui renvoie l’horodatage actuel.
 
-It is semantically equivalent to `new Date().getTime()`, but it doesn't create an intermediate `Date` object. So it's faster and doesn't put pressure on garbage collection.
+Il est sémantiquement équivalent à `new Date()`. `GetTime()`, mais il ne crée pas d’objet Date intermédiaire. Donc, c’est plus rapide et cela n’exerce aucune pression sur le ramasse-miettes.
 
-It is used mostly for convenience or when performance matters, like in games in JavaScript or other specialized applications.
+Il est principalement utilisé pour des raisons de commodité ou lorsque les performances sont importantes, comme dans les jeux en JavaScript ou dans d'autres applications spécialisées.
 
-So this is probably better:
+Donc c'est probablement mieux:
 
 ```js run
 *!*
-let start = Date.now(); // milliseconds count from 1 Jan 1970
+let start = Date.now(); // compteur en millisecondes depuis le 1 Jan 1970
 */!*
 
-// do the job
+// fait le travail
 for (let i = 0; i < 100000; i++) {
   let doSomething = i * i * i;
 }
 
 *!*
-let end = Date.now(); // done
+let end = Date.now(); // fin
 */!*
 
-alert( `The loop took ${end - start} ms` ); // subtract numbers, not dates
+alert( `The loop took ${end - start} ms` ); // soustrait des nombres, pas des dates
 ```
 
 ## Benchmarking
 
-If we want a reliable benchmark of CPU-hungry function, we should be careful.
+Si nous voulons une référence fiable en matière de fonction gourmande en ressources processeur, nous devons être prudents.
 
-For instance, let's measure two functions that calculate the difference between two dates: which one is faster?
+
+Par exemple, mesurons deux fonctions qui calculent la différence entre deux dates: laquelle est la plus rapide?
+
 
 Such performance measurements are often called "benchmarks".
 
 ```js
-// we have date1 and date2, which function faster returns their difference in ms?
+// nous avons date1 et date2, quelle fonction retourne plus rapidement leur différence en ms?
 function diffSubtract(date1, date2) {
   return date2 - date1;
 }
 
-// or
+// où
 function diffGetTime(date1, date2) {
   return date2.getTime() - date1.getTime();
 }
 ```
 
-These two do exactly the same thing, but one of them uses an explicit `date.getTime()` to get the date in ms, and the other one relies on a date-to-number transform. Their result is always the same.
+Ces deux font exactement la même chose, mais l’un d’eux utilise un `date.getTime()` explicite pour obtenir la date en ms, et l’autre repose sur une transformation date à nombre. Leur résultat est toujours le même.
 
-So, which one is faster?
 
-The first idea may be to run them many times in a row and measure the time difference. For our case, functions are very simple, so we have to do it at least 100000 times.
+Alors, lequel est le plus rapide?
 
-Let's measure:
+La première idée peut être de les exécuter plusieurs fois de suite et de mesurer le décalage horaire. Pour notre cas, les fonctions sont très simples, nous devons donc le faire environ 100 000 fois.
+
+Mesurons:
 
 ```js run
 function diffSubtract(date1, date2) {
@@ -306,19 +312,20 @@ alert( 'Time of diffSubtract: ' + bench(diffSubtract) + 'ms' );
 alert( 'Time of diffGetTime: ' + bench(diffGetTime) + 'ms' );
 ```
 
-Wow! Using `getTime()` is so much faster! That's because there's no type conversion, it is much easier for engines to optimize.
+Wow! Utiliser `getTime()` est beaucoup plus rapide! C’est parce qu’il n’y a pas de conversion de type, il est beaucoup plus facile pour JavaScript de faire le calcul.
 
-Okay, we have something. But that's not a good benchmark yet.
+Ok, nous avons quelque chose. Mais ce n’est pas encore une bonne référence.
 
-Imagine that at the time of running `bench(diffSubtract)` CPU was doing something in parallel, and it was taking resources. And by the time of running `bench(diffGetTime)` that work has finished.
+Imaginons qu’au moment de l’exécution du processeur `bench(diffSubtract)`, on faisait quelque chose en parallèle et que cela prenait des ressources. Et au moment de l'exécution du `bench(diffGetTime)`, le travail est terminé.
 
-A pretty real scenario for a modern multi-process OS.
 
-As a result, the first benchmark will have less CPU resources than the second. That may lead to wrong results.
+Un scénario assez réel pour un système d'exploitation moderne multi-processus.
 
-**For more reliable benchmarking, the whole pack of benchmarks should be rerun multiple times.**
+En conséquence, le premier test aura moins de ressources de processeur que le second. Cela peut conduire à des résultats erronés.
 
-Here's the code example:
+**Pour un benchmarking plus fiable, l'ensemble des tests doit être réexécuté plusieurs fois.**
+
+Voici l'exemple:
 
 ```js run
 function diffSubtract(date1, date2) {
@@ -342,7 +349,7 @@ let time1 = 0;
 let time2 = 0;
 
 *!*
-// run bench(upperSlice) and bench(upperLoop) each 10 times alternating
+// lance le test(upperSlice) et le test(upperLoop) toutes les 10 fois en alternance
 for (let i = 0; i < 10; i++) {
   time1 += bench(diffSubtract);
   time2 += bench(diffGetTime);
@@ -353,50 +360,51 @@ alert( 'Total time for diffSubtract: ' + time1 );
 alert( 'Total time for diffGetTime: ' + time2 );
 ```
 
-Modern JavaScript engines start applying advanced optimizations only to "hot code" that executes many times (no need to optimize rarely executed things). So, in the example above, first executions are not well-optimized. We may want to add a heat-up run:
+Les moteurs JavaScript modernes commencent à appliquer des optimisations avancées uniquement au «code dynamique» qui s'exécute plusieurs fois (inutile d'optimiser les tâches rarement exécutées). Ainsi, dans l'exemple ci-dessus, les premières exécutions ne sont pas bien optimisées. Nous voudrons peut-être ajouter un test pour s'échauffer:
 
 ```js
-// added for "heating up" prior to the main loop
+// ajouté pour "s'échauffer" avant la boucle principale
 bench(diffSubtract);
 bench(diffGetTime);
 
-// now benchmark
+// maintenant comparons
 for (let i = 0; i < 10; i++) {
   time1 += bench(diffSubtract);
   time2 += bench(diffGetTime);
 }
 ```
 
-```warn header="Be careful doing microbenchmarking"
-Modern JavaScript engines perform many optimizations. They may tweak results of "artificial tests" compared to "normal usage", especially when we benchmark something very small, such as how an operator works, or a built-in function. So if you seriously want to understand performance, then please study how the JavaScript engine works. And then you probably won't need microbenchmarks at all.
+```warn header="Faites attention au micro-benchmarking"
+Les moteurs JavaScript modernes effectuent de nombreuses optimisations. Ils peuvent modifier les résultats des «tests artificiels» par rapport à «l'utilisation normale», en particulier lorsque nous comparons quelque chose de très petit. Donc, si vous voulez sérieusement comprendre les performances, alors étudiez le fonctionnement du moteur JavaScript. Et puis vous n’aurez probablement pas besoin de micro-points de repère.
 
-The great pack of articles about V8 can be found at <http://mrale.ph>.
+Un bon paquet d'article a propos de V8 se trouve ici <http://mrale.ph>.
 ```
 
-## Date.parse from a string
+## Date.parse d'une chaîne de caractère
 
-The method [Date.parse(str)](mdn:js/Date/parse) can read a date from a string.
+La methode [Date.parse(str)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse) peut lire une date provenant d'une chaîne de caractères
 
-The string format should be: `YYYY-MM-DDTHH:mm:ss.sssZ`, where:
+Le format de la chaîne de caractères doit être: `YYYY-MM-DDTHH:mm:ss.sssZ`, où:
 
-- `YYYY-MM-DD` -- is the date: year-month-day.
-- The character `"T"` is used as the delimiter.
-- `HH:mm:ss.sss` -- is the time: hours, minutes, seconds and milliseconds.
-- The optional `'Z'` part denotes the time zone in the format `+-hh:mm`. A single letter `Z` that would mean UTC+0.
+- `YYYY-MM-DD` -- est la date: année-mois-jour.
+- Le caractère `T` est utilisé comme délimiteur.
+- `HH:mm:ss.sss` - correspond à l'heure: heures, minutes, secondes et millisecondes.
+- La partie optionnelle `Z` indique le fuseau horaire au format `+-hh:mm`. Une seule lettre `Z` qui signifierait UTC + 0.
 
-Shorter variants are also possible, like `YYYY-MM-DD` or `YYYY-MM` or even `YYYY`.
+Des variantes plus courtes sont également possibles, telles que `AAAA-MM-JJ` ou `AAAA-MM` ou même `AAAA`.
 
-The call to `Date.parse(str)` parses the string in the given format and returns the timestamp (number of milliseconds from 1 Jan 1970 UTC+0). If the format is invalid, returns `NaN`.
+L'appel à `Date.parse(str)` analyse la chaîne au format indiqué et renvoie l'horodatage (nombre de millisecondes à compter du 1er janvier 1970 UTC + 0). Si le format n'est pas valide, renvoie `NaN`.
 
-For instance:
+Par exemple:
 
 ```js run
 let ms = Date.parse('2012-01-26T13:51:50.417-07:00');
 
-alert(ms); // 1327611110417  (timestamp)
+alert(ms); // 1327611110417  (horodatage)
 ```
 
-We can instantly create a `new Date` object from the timestamp:
+Nous pouvons créer instantanément un nouvel objet `Date` à partir de l'horodatage:
+
 
 ```js run
 let date = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
@@ -404,24 +412,25 @@ let date = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
 alert(date);  
 ```
 
-## Summary
+## Sommaire
 
-- Date and time in JavaScript are represented with the [Date](mdn:js/Date) object. We can't create "only date" or "only time": `Date` objects always carry both.
-- Months are counted from zero (yes, January is a zero month).
-- Days of week in `getDay()` are also counted from zero (that's Sunday).
+- La date et l'heure en JavaScript sont représentées avec l'objet `Date`. Nous ne pouvons pas créer «seule date» ou «seule heure»: les objets de `date` portent toujours les deux.
+- Les mois sont comptés à partir de zéro (oui, janvier est un mois zéro).
+- Les jours de la semaine dans `getDay()` sont également comptés à partir de zéro (c’est le dimanche).
 - `Date` auto-corrects itself when out-of-range components are set. Good for adding/subtracting days/months/hours.
-- Dates can be subtracted, giving their difference in milliseconds. That's because a `Date` becomes the timestamp when converted to a number.
-- Use `Date.now()` to get the current timestamp fast.
+- La `date` se corrige automatiquement lorsque des composants hors plage sont définis. utilisé pour ajouter / soustraire des jours / mois / heures.
+- Utilisez `Date.now()` pour obtenir l’horodatage actuel rapidement.
 
-Note that unlike many other systems, timestamps in JavaScript are in milliseconds, not in seconds.
+Notez que contrairement à de nombreux autres systèmes, les horodatages JavaScript sont exprimés en millisecondes et non en secondes.
 
-Sometimes we need more precise time measurements. JavaScript itself does not have a way to measure time in microseconds (1 millionth of a second), but most environments provide it. For instance, browser has [performance.now()](mdn:api/Performance/now) that gives the number of milliseconds from the start of page loading with microsecond precision (3 digits after the point):
+De plus, nous avons parfois besoin de mesures de temps plus précises. JavaScript lui-même ne permet pas de mesurer le temps en microsecondes (un millionième de seconde), mais la plupart des environnements le fournissent. Par exemple, le navigateur a [performance.now()](https://developer.mozilla.org/fr/docs/Web/API/Performance/now) qui donne le nombre de millisecondes à partir du début du chargement de la page avec une précision de l'ordre de la microseconde (3 chiffres après le point):
 
 ```js run
 alert(`Loading started ${performance.now()}ms ago`);
-// Something like: "Loading started 34731.26000000001ms ago"
-// .26 is microseconds (260 microseconds)
-// more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
+// Quelque chose comme: "Le chargement a commencé il y a 34731.26000000001ms"
+// .26 est en microsecondes (260 microsecondes)
+// plus de 3 chiffres après le point décimal sont des erreurs de précision, seuls les 3 premiers sont corrects
+
 ```
 
-Node.js has `microtime` module and other ways. Technically, any device and environment allows to get more precision, it's just not in `Date`.
+Node.js a un module microtime. Techniquement, tout appareil ou environnement permet d’obtenir plus de précision, il n’est tout simplement pas dans Date.

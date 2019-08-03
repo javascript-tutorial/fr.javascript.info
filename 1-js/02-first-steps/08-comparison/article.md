@@ -76,7 +76,13 @@ alert( '2' > 1 ); // true, la chaîne '2' devient un numéro 2
 alert( '01' == 1 ); // true, chaîne '01' devient un numéro 1
 ```
 
+<<<<<<< HEAD
 Pour les valeurs booléennes, `true` devient `1` et `false` devient `0`, c'est pourquoi :
+=======
+For boolean values, `true` becomes `1` and `false` becomes `0`.
+
+For example:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ```js run
 alert( true == 1 ); // true
@@ -138,6 +144,7 @@ L’opérateur de vérification de l’égalité stricte est un peu plus long à
 
 ## Comparaison avec null et undefined
 
+<<<<<<< HEAD
 Voyons des cas plus extrêmes.
 
 Il existe un comportement non intuitif lorsque `null` ou `undefined` sont comparés à d’autres valeurs.
@@ -145,6 +152,12 @@ Il existe un comportement non intuitif lorsque `null` ou `undefined` sont compar
 
 Pour un contrôle de strict égalité `===`
 : Ces valeurs sont différentes car chacune d’entre elles appartient à un type distinct.
+=======
+There's a non-intuitive behavior when `null` or `undefined` are compared to other values.
+
+For a strict equality check `===`
+: These values are different, because each of them is a different type.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
     ```js run
     alert( null === undefined ); // false

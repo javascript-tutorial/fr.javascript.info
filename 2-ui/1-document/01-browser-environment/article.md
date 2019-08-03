@@ -8,7 +8,7 @@ Un environnement hôte propose des objets et fonctions spécifiques à la platef
 
 Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un navigateur Web :
 
-![](windowObjects.png)
+![](windowObjects.svg)
 
 Il existe un objet "racine" appelé `window`. Il a 2 rôles :
 

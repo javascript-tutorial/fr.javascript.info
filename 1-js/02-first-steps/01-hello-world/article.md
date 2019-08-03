@@ -1,6 +1,10 @@
 # Hello, world!
 
+<<<<<<< HEAD
 Le tutoriel que vous êtes en train de lire est à propos du coeur de JavaScript, le langage lui même. Plus loins, vous allez apprendre Node.JS qui est une plateforme qui l'utilise.
+=======
+This part of the tutorial is about core JavaScript, the language itself.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Mais nous avons besoin d'un environnement de travail pour exécuter nos scripts et, étant donné que ce guide est en ligne, le navigateur est un bon choix. Nous allons nous efforcer d'utiliser les commandes spécifiques au navigateur (comme `alert`) au minimum afin de ne pas y consacrer du temps si vous prévoyez de vous concentrer sur un autre environnement tel que Node.JS. Par ailleurs, les détails du navigateur sont expliqués dans [la partie suivante](/ui) du didacticiel.
 
@@ -45,7 +49,12 @@ La balise `<script>` contient du code JavaScript qui est automatiquement exécut
 
 La balise `<script>` a quelques attributs qui sont rarement utilisés de nos jours, mais nous pouvons les trouver dans l'ancien code :
 
+<<<<<<< HEAD
  L'attribut `type` : <code>&lt;script <u>type</u>=...&gt;</code>
+=======
+The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+: The old HTML standard, HTML4, required a script to have a `type`. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern HTML standard totally changed the meaning of this attribute. Now, it can be used for JavaScript modules. But that's an advanced topic; we'll talk about modules in another part of the tutorial.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
  : L'ancien standard HTML4 nécessitait pour un script d'avoir un `type`. En général, il s'agissait de `type = "text / javascript"`. Dorénavant il n’est plus nécessaire. En outre, le standard moderne HTML5 a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules Javascript. Mais c’est un sujet avancé, nous parlerons des modules plus tard dans une autre partie du tutoriel.
 
@@ -74,9 +83,13 @@ Le fichier de script est attaché à HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
+<<<<<<< HEAD
 Ici `/chemin/vers/script.js` est un chemin absolu vers le fichier contenant le script (à partir de la racine du site).
 
 Il est également possible de fournir un chemin relatif à la page en cours. Par exemple, `src="script.js"` signifierait un fichier `"script.js"` dans le dossier actuel.
+=======
+Here, `/path/to/script.js` is an absolute path to the script from the site root. One can also provide a relative path from the current page. For instance, `src="script.js"` would mean a file `"script.js"` in the current folder.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Nous pouvons également donner une URL complète, par exemple :
 

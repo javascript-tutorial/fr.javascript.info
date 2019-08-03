@@ -9,7 +9,7 @@ Un objet peut être créé avec des accolades `{…}`, avec une liste optionnell
 
 Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
-![](object.png)
+![](object.svg)
 
 Un objet vide ("armoire vide") peut être créé en utilisant l'une des deux syntaxes suivantes :
 
@@ -18,7 +18,7 @@ let user = new Object(); // syntaxe "constructeur d'objet"
 let user = {};  // syntaxe "littéral objet"
 ```
 
-![](object-user-empty.png)
+![](object-user-empty.svg)
 
 Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
 
@@ -42,7 +42,7 @@ Dans l'objet `user`, il y a deux propriétés :
 
 L'objet `user` résultant peut être imaginé comme une armoire avec deux fichiers signés intitulés "nom" et "âge".
 
-![user object](object-user.png)
+![user object](object-user.svg)
 
 Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
 
@@ -60,7 +60,7 @@ La valeur peut être de tout type. Ajoutons un booléen :
 user.isAdmin = true;
 ```
 
-![user object 2](object-user-isadmin.png)
+![user object 2](object-user-isadmin.svg)
 
 Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 
@@ -68,7 +68,7 @@ Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 delete user.age;
 ```
 
-![user object 3](object-user-delete.png)
+![user object 3](object-user-delete.svg)
 
 Nous pouvons également utiliser des noms de propriété multi-mots, mais ils doivent ensuite être entourés de quotes :
 
@@ -80,7 +80,7 @@ let user = {
 };
 ```
 
-![](object-user-props.png)
+![](object-user-props.svg)
 
 
 La dernière propriété de la liste peut se terminer par une virgule :
@@ -321,8 +321,13 @@ let key = "age";
 alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette propriété
 ```
 
+<<<<<<< HEAD
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
 Habituellement, la comparaison stricte `"=== undefined"` fonctionne correctement. Mais il y a un cas particulier où elle échoue, mais "in" fonctionne correctement.
+=======
+````smart header="Using \"in\" for properties that store `undefined`"
+Usually, the strict comparison `"=== undefined"` check the property existance just fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -342,8 +347,12 @@ Dans le code ci-dessus, la propriété `obj.test` existe techniquement. Donc, l'
 Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué. Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides". Ainsi, l'opérateur `in` est un invité exotique dans le code.
 ````
 
+<<<<<<< HEAD
 
 ## La boucle "for … in"
+=======
+## The "for..in" loop
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`. C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
 
@@ -475,7 +484,7 @@ let phrase = message;
 
 Par conséquent, nous avons deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
 
-![](variable-copy-value.png)
+![](variable-copy-value.svg)
 
 Les objets ne sont pas comme ça.
 
@@ -489,7 +498,7 @@ let user = {
 };
 ```
 
-![](variable-contains-reference.png)
+![](variable-contains-reference.svg)
 
 Ici, l'objet est stocké quelque part en mémoire. Et la variable `user` a une "référence" à cet objet.
 
@@ -507,7 +516,7 @@ let admin = user; // copier la référence
 
 Maintenant nous avons deux variables, chacune avec la référence au même objet :
 
-![](variable-copy-reference.png)
+![](variable-copy-reference.svg)
 
 Nous pouvons utiliser n’importe quelle variable pour accéder à l'armoire et modifier son contenu :
 
@@ -531,7 +540,11 @@ Les opérateurs d'égalité `==` et d'égalité stricte `===` pour les objets fo
 
 **Deux objets ne sont égaux que s’ils sont le même objet.**
 
+<<<<<<< HEAD
 Par exemple, deux variables référencent le même objet, elles sont égales :
+=======
+For instance, if two variables reference the same object, they are equal:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ```js run
 let a = {};
@@ -570,7 +583,11 @@ user.age = 25; // (*)
 alert(user.age); // 25
 ```
 
+<<<<<<< HEAD
 Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à l’intérieur de l’objet, elle ne réaffecte pas `user`.
+=======
+It might seem that the line `(*)` would cause an error, but no, there's totally no problem. That's because `const` fixes only value of `user` itself. And here `user` stores the reference to the same object all the time. The line `(*)` goes *inside* the object, it doesn't reassign `user`.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Le `const` donnerait une erreur si nous essayons de définir `user` sur autre chose, par exemple :
 

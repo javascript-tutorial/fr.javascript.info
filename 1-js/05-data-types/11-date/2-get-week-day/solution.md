@@ -1,6 +1,6 @@
-The method `date.getDay()` returns the number of the weekday, starting from sunday.
+La méthode `date.getDay()` renvoie le numéro du jour de la semaine à partir du dimanche.
 
-Let's make an array of weekdays, so that we can get the proper day name by its number:
+Faisons un tableau des jours de la semaine afin d’obtenir le nom du jour par son numéro:
 
 ```js run demo
 function getWeekDay(date) {

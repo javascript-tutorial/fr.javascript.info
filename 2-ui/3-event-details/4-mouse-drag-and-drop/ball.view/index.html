@@ -7,22 +7,22 @@
 
 <body style="height: 200px">
 
-  <p>Drag the ball.</p>
+  <p>Fait glisser la balle.</p>
 
   <img src="https://js.cx/clipart/ball.svg" style="cursor:pointer" width="40" height="40" id="ball">
 
 
   <script>
-    ball.onmousedown = function(event) { // (1) start the process
+    ball.onmousedown = function(event) { // (1) commence le processus
 
-      // (2) prepare to moving: make absolute and top by z-index
+      // (2) prépare le glissement: utiliser les propriétés absolute et top par  z-index
       ball.style.position = 'absolute';
       ball.style.zIndex = 1000;
       document.body.appendChild(ball);
-      // ...and put that absolutely positioned ball under the cursor
+      // ... et mettre cette balle en positionne absolue sous le  curseur
       moveAt(event.pageX, event.pageY);
 
-      // centers the ball at (pageX, pageY) coordinates
+      // Centrer la balle avec les coordonnées  (pageX, pageY)
       function moveAt(pageX, pageY) {
         ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
         ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
@@ -32,10 +32,10 @@
         moveAt(event.pageX, event.pageY);
       }
 
-      // (3) move the ball on mousemove
+      // (3) déplacer la balle avec l'évènement mousemove
       document.addEventListener('mousemove', onMouseMove);
 
-      // (4) drop the ball, remove unneeded handlers
+      // (4) relâche la balle, enlève les gestionnaires dont on n’a pas besoin
       ball.onmouseup = function() {
         document.removeEventListener('mousemove', onMouseMove);
         ball.onmouseup = null;

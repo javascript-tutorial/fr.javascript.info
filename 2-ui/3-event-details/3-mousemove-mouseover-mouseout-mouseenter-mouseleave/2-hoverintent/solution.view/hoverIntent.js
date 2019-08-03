@@ -3,8 +3,8 @@
 class HoverIntent {
 
   constructor({
-    sensitivity = 0.1, // speed less than 0.1px/ms means "hovering over an element"
-    interval = 100,    // measure mouse speed once per 100ms
+    sensitivity = 0.1, //  la vitesse est moins de  0.1px/ms signifie "survoler un element"
+    interval = 100,    // mesure la vitesse de la souris une fois par 100ms
     elem,
     over,
     out
@@ -15,12 +15,12 @@ class HoverIntent {
     this.over = over;
     this.out = out;
 
-    // make sure "this" is the object in event handlers.
+    // assurez vous que "this" est l'objet dans les gestionaires des evenements.
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
 
-    // and in time-measuring function (called from setInterval)
+    // et dans la function mesurant le temps  (appele dans  setInterval)
     this.trackSpeed = this.trackSpeed.bind(this);
 
     elem.addEventListener("mouseover", this.onMouseOver);
@@ -32,17 +32,16 @@ class HoverIntent {
   onMouseOver(event) {
 
     if (this.isOverElement) {
-      // if we're over the element, then ignore the event
-      // we are already measuring the speed
+      // si nous sommes sur un élément, alors ignore l'évènement
+      // Nous sommes déjà entrain de mesurer la vitesse
       return;
     }
 
     this.isOverElement = true;
 
-    // after every mousemove we'll be check the distance
-    // between the previous and the current mouse coordinates
-    // if it's less than sensivity, then the speed is slow
-
+    // Apres chaque évènement mousemove nous allons contrôler encore la distance
+    // entre les coordonnées actuelles de la souris et celles précédents
+    // si c’est moins de la sensibilité, alors la vitesse est lente
     this.prevX = event.pageX;
     this.prevY = event.pageY;
     this.prevTime = Date.now();
@@ -58,7 +57,7 @@ class HoverIntent {
       this.elem.removeEventListener('mousemove', this.onMouseMove);
       clearInterval(this.checkSpeedInterval);
       if (this.isHover) {
-        // if there was a stop over the element
+        // S'il y  avait un arrêt sur l'élément
         this.out.call(this.elem, event);
         this.isHover = false;
       }
@@ -90,7 +89,7 @@ class HoverIntent {
       this.isHover = true;
       this.over.call(this.elem, event);
     } else {
-      // speed fast, remember new coordinates as the previous ones
+      // vitesse rapide, se rappeler des coordonnées comme celles précédentes
       this.prevX = this.lastX;
       this.prevY = this.lastY;
       this.prevTime = this.lastTime;

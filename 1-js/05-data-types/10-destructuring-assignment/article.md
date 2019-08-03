@@ -393,7 +393,7 @@ L'ensemble de l'objet `options`, à l'exception d'`extra` qui n'a pas été ment
 
 Notez que la `size` et les `items` eux-mêmes ne sont pas décomposés.
 
-![](destructuring-complex.png)
+![](destructuring-complex.svg)
 
 Finalement nous avons `width`, `height`, `item1`, `item2` et `title` à partir de la valeur par défaut.
 

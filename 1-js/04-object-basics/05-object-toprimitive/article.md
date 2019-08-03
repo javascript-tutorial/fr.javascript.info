@@ -18,9 +18,13 @@ Pour les objets, il n’y a pas de conversion to-boolean, car tous les objets so
 
 Nous pouvons affiner la conversion de chaînes de caractères et de chiffres en utilisant des méthodes d’objet spéciales.
 
+<<<<<<< HEAD
 L'algorithme de conversion s'appelle `ToPrimitive` dans la [specification](https://tc39.github.io/ecma262/#sec-toprimitive). Il est appelé avec un "indice" qui spécifie le type de conversion.
 
 Il existe trois variantes :
+=======
+There are three variants of type conversion, so-called "hints", described in the [specification](https://tc39.github.io/ecma262/#sec-toprimitive):
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 **`"string"`**
 
@@ -72,11 +76,19 @@ Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a
 
 **Pour effectuer la conversion, JavaScript essaie de trouver et d'appeler trois méthodes d'objet :**
 
+<<<<<<< HEAD
 1. Appeler `obj[Symbol.toPrimitive](hint)` si la méthode existe,
 2. Sinon, si l'indice est `"string"`
     - essaie `obj.toString()` et `obj.valueOf()`, tout ce qui existe.
 3. Sinon, si l'indice est `"number"` ou `"default"`
     - essaie `obj.valueOf()` et `obj.toString()`, tout ce qui existe.
+=======
+1. Call `obj[Symbol.toPrimitive](hint)` - the method with the symbolic key `Symbol.toPrimitive` (system symbol), if such method exists,
+2. Otherwise if hint is `"string"`
+    - try `obj.toString()` and `obj.valueOf()`, whatever exists.
+3. Otherwise if hint is `"number"` or `"default"`
+    - try `obj.valueOf()` and `obj.toString()`, whatever exists.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ## Symbol.toPrimitive
 
@@ -84,9 +96,15 @@ Commençons par la première méthode. Il existe un symbole intégré appelé `S
 
 ```js
 obj[Symbol.toPrimitive] = function(hint) {
+<<<<<<< HEAD
   // retourne une valeur primitive
   // hint = un parmi "string", "number", "default"
 }
+=======
+  // must return a primitive value
+  // hint = one of "string", "number", "default"
+};
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 ```
 
 Par exemple, ici l'objet `user` l'implémente :
@@ -144,7 +162,13 @@ alert(+user); // valueOf -> 1000
 alert(user + 500); // valueOf -> 1500
 ```
 
+<<<<<<< HEAD
 Souvent, nous voulons un seul endroit "fourre-tout" pour gérer toutes les conversions primitives. Dans ce cas, nous pouvons implémenter `toString` uniquement, comme ceci :
+=======
+As we can see, the behavior is the same as the previous example with `Symbol.toPrimitive`.
+
+Often we want a single "catch-all" place to handle all primitive conversions. In this case, we can implement `toString` only, like this:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ```js run
 let user = {
@@ -177,10 +201,15 @@ En revanche, `Symbol.toPrimitive` doit renvoyer une primitive, sinon une erreur 
 
 ## Autres opérations
 
+<<<<<<< HEAD
 Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler avec elle, en appliquant d'autres conversions si nécessaire.
+=======
+An operation that initiated the conversion gets the primitive, and then continues to work with it, applying further conversions if necessary.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Par exemple :
 
+<<<<<<< HEAD
 - Les opérations mathématiques (sauf binaire plus) effectuent la conversion `ToNumber` :
 
 ```js run
@@ -196,6 +225,22 @@ alert(obj * 2); // 4, ToPrimitive donne "2", ensuite cela devient 2
 - Le binaire plus vérifie la primitive -- s’il s’agit d’une chaîne de caractères, il effectue une concaténation, sinon il exécute `ToNumber` et fonctionne avec les nombres.
 
     Exemple de chaîne de caractères :
+=======
+- Mathematical operations, except binary plus, convert the primitive to a number:
+
+    ```js run
+    let obj = {
+      // toString handles all conversions in the absence of other methods
+      toString() {
+        return "2";
+      }
+    };
+
+    alert(obj * 2); // 4, object converted to primitive "2", then multiplication made it a number
+    ```
+
+- Binary plus will concatenate strings in the same situation:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
     ```js run
     let obj = {
       toString() {
@@ -206,6 +251,7 @@ alert(obj * 2); // 4, ToPrimitive donne "2", ensuite cela devient 2
     alert(obj + 2); // 22 (ToPrimitive returned string => concatenation)
     ```
 
+<<<<<<< HEAD
     Exemple de nombre :
     ```js run
     let obj = {
@@ -224,13 +270,23 @@ En revanche, `Symbol.toPrimitive` *doit* renvoyer une primitive, sinon il y aura
 ```
 
 ## Résumé
+=======
+## Summary
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 La conversion objet à primitive est appelée automatiquement par de nombreuses fonctions intégrées et opérateurs qui attendent une primitive en tant que valeur.
 
+<<<<<<< HEAD
 Il en existe 3 types (hints) :
 - `"string"` (pour `alert` et autres conversions de chaînes de caractères)
 - `"number"` (pour des maths)
 - `"default"` (peu d'opérateurs)
+=======
+There are 3 types (hints) of it:
+- `"string"` (for `alert` and other operations that need a string)
+- `"number"` (for maths)
+- `"default"` (few operators)
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 La spécification décrit explicitement quel opérateur utilise quel indice (hint). Très peu d’opérateurs "ne savent pas à quoi s’attendre" et utilisent l'indice `"default"`. Habituellement, pour les objets intégrés, l'indice `"default"` est traité de la même façon que `"number"`, de sorte qu'en pratique, les deux derniers sont souvent fusionnés.
 
