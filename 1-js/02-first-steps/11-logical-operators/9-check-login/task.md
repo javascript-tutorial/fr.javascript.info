@@ -6,23 +6,13 @@ importance: 3
 
 Écrivez le code qui demande une connexion avec `prompt`.
 
-<<<<<<< HEAD
-Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée est une ligne vide ou `key:Esc` -- affichez "Canceled", s'il s'agit d'une autre chaîne de caractères, affichez "I don't know you".
-=======
-If the visitor enters `"Admin"`, then `prompt` for a password, if the input is an empty line or `key:Esc` -- show "Canceled", if it's another string -- then show "I don't know you".
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée est une ligne vide ou `key:Esc` -- affichez "Canceled", s'il s'agit d'une autre chaîne de caractères -- alors affichez "I don't know you".
 
 Le mot de passe est vérifié comme suit :
 
-<<<<<<< HEAD
-- S'il est égal à "TheMaster", affichez "Welcome!",
-- Une autre chaînede caractères - affiche "Wrong password",
+- S'il est égal à "TheMaster", alors affichez "Welcome!",
+- Une autre chaînede caractères -- affichez "Wrong password",
 - Pour une chaîne de caractères vide ou une entrée annulée, affichez "Canceled".
-=======
-- If it equals "TheMaster", then show "Welcome!",
-- Another string -- show "Wrong password",
-- For an empty string or cancelled input, show "Canceled"
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Le schéma :
 
