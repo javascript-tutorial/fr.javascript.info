@@ -17,7 +17,11 @@ while (condition) {
 }
 ```
 
+<<<<<<< HEAD
 Tant que la `condition` est `true`, le `code` du corps de la boucle est exécuté.
+=======
+While the `condition` is truthy, the `code` from the loop body is executed.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Par exemple, la boucle ci-dessous affiche `i` tant que `i < 3` :
 
@@ -84,7 +88,11 @@ Cette forme de syntaxe est rarement utilisée, sauf lorsque vous souhaitez que l
 
 ## La boucle "for"
 
+<<<<<<< HEAD
 La boucle `for` est la plus utilisée.
+=======
+The `for` loop is more complex, but it's also the most commonly used loop.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Cela ressemble à ceci :
 
@@ -111,8 +119,13 @@ Examinons la déclaration `for` partie par partie :
 | étape     | `i++`      | Exécute après le corps à chaque itération, mais avant la vérification de la condition. |
 | corps     | `alert(i)` | Exécute encore et encore tant que la condition est vraie                               |
 
+<<<<<<< HEAD
 
 L'algorithme de boucle général fonctionne comme ceci :
+=======
+The general loop algorithm works like this:
+
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 ```
 Exécuter le début
 → (si condition → exécuter le corps et exécuter l'étape)
@@ -121,7 +134,13 @@ Exécuter le début
 → ...
 ```
 
+<<<<<<< HEAD
 Si vous ne connaissez pas les boucles, alors il serait peut-être utile de revenir à l'exemple et de reproduire le déroulement pas à pas sur une feuille de papier.
+=======
+That is, `begin` executes once, and then it iterates: after each `condition` test, `body` and `step` are executed.
+
+If you are new to loops, it could help to go back to the example and reproduce how it runs step-by-step on a piece of paper.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Voici ce qui se passe exactement dans notre cas :
 
@@ -289,8 +308,12 @@ if (i > 5) {
 (i > 5) ? alert(i) : *!*continue*/!*; // continue n'est pas autorisé ici
 ```
 
+<<<<<<< HEAD
 … Ensuite cesse de fonctionner. Le code comme celui-ci donnera une erreur de syntaxe :
 
+=======
+...it stops working: there's a syntax error.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 C’est une autre raison pour ne pas utiliser l'opérateur point d’interrogation `?` au lieu de `if`.
 ````
@@ -360,12 +383,21 @@ for (let i = 0; i < 3; i++) { ... }
 
 La directive `continue` peut également être utilisée avec un label. Dans ce cas, l'exécution passe à l'itération suivante de la boucle labelisée.
 
+<<<<<<< HEAD
 ````warn header="Les labels ne sont pas des \"goto\""
 Les labels ne nous permettent pas de sauter de manière arbitraire dans le code.
+=======
+````warn header="Labels do not allow to \"jump\" anywhere"
+Labels do not allow us to jump into an arbitrary place in the code.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Par exemple, il est impossible de faire ceci :
 ```js
+<<<<<<< HEAD
 break label;  // Sauter au label ? Non.
+=======
+break label; // doesn't jumps to the label below
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 label: for (...)
 ```

@@ -2,9 +2,15 @@
 
 Avant d’écrire un code plus complexe, parlons de débogage.
 
+<<<<<<< HEAD
 Tous les navigateurs modernes et la plupart des environnements prennent en charge le "débogage" - une interface utilisateur spéciale dans les outils de développement qui facilite la recherche et la correction des erreurs.
 
 Nous allons utiliser Chrome ici, car c’est probablement le plus riche en fonctionnalités dans cet aspect.
+=======
+All modern browsers and most other environments support "debugging" -- a special UI in developer tools that makes finding and fixing errors much easier. It also allows to trace the code step by step to see what exactly is going on.
+
+We'll be using Chrome here, because it has enough features, most other browsers have a similar process`.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ## Le volet "sources"
 
@@ -70,7 +76,11 @@ C’est pratique lorsque nous devons nous arrêter uniquement pour une certaine 
 
 ## Commande du débogueur
 
+<<<<<<< HEAD
 Nous pouvons également suspendre le code en utilisant la commande `debugger`, comme ceci :
+=======
+We can also pause the code by using the `debugger` command in it, like this:
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 ```js
 function hello(name) {
@@ -89,7 +99,11 @@ C’est très pratique lorsque vous utilisez un éditeur de code et que vous ne 
 
 ## Pause et regarder autour
 
+<<<<<<< HEAD
 Dans notre exemple, `hello()` est appelé lors du chargement de la page. Le moyen le plus simple d'activer le débogueur consiste donc à recharger la page. Appuyez donc sur `key:F5` (Windows, Linux) ou sur `key:Cmd+R` (Mac).
+=======
+In our example, `hello()` is called during the page load, so the easiest way to activate the debugger (after we've set the breakpoints) is to reload the page. So let's press `key:F5` (Windows, Linux) or `key:Cmd+R` (Mac).
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Lorsque le point d'arrêt est défini, l'exécution s'interrompt à la 4ème ligne :
 
@@ -105,8 +119,13 @@ Veuillez ouvrir les menus déroulants d’information à droite (indiqués par d
 
     À ce moment précis, le débogueur se trouve dans l’appel `hello()`, appelé par un script dans `index.html` (aucune fonction n’est appelée, elle est donc appelée "anonyme").
 
+<<<<<<< HEAD
     Si vous cliquez sur un élément de la pile, le débogueur passe au code correspondant et toutes ses variables peuvent également être examinées.
 3. **`Scope` -- variables actuelles.**
+=======
+    If you click on a stack item (e.g. "anonymous"), the debugger jumps to the corresponding code, and all its variables can be examined as well.
+3. **`Scope` -- current variables.**
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
     `Local` affiche les variables de fonction locales. Vous pouvez également voir leurs valeurs surlignées directement sur la source.
 
@@ -125,7 +144,11 @@ Il y a des boutons pour cela en haut du volet de droite. Voyons cela.
 
     Voici ce que nous pouvons voir après un clic dessus : ![](chrome-sources-debugger-trace-1.svg)
 
+<<<<<<< HEAD
     L'exécution a repris, atteint un autre point d'arrêt à l'intérieur de `say()` et s'y est arrêtée. Jetez un coup d’œil à "Call stack" à droite. Il a augmenté d'un appel supplémentaire. Nous sommes à l'intérieur `say()` maintenant.
+=======
+    ![](chrome-sources-debugger-trace-1.svg)
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 <span class="devtools" style="background-position:-137px -76px"></span> -- fait une étape (exécute la commande next), mais n'entre pas dans la fonction, touche de raccourci `key:F10`.
 : Si nous cliquons dessus maintenant, une `alert` sera affichée. L'important est que l'`alert` puisse être n'importe quelle fonction, l'exécution "saute par dessus", en sautant les éléments internes de la fonction.
@@ -145,19 +168,27 @@ Il y a des boutons pour cela en haut du volet de droite. Voyons cela.
 ```smart header="Continue to here"
 Un clic droit sur une ligne de code ouvre le menu contextuel avec une excellente option appelée "Continue to here".
 
+<<<<<<< HEAD
 C’est pratique lorsque nous voulons faire plusieurs pas en avant, mais nous sommes trop paresseux pour définir un point d’arrêt.
+=======
+That's handy when we want to move multiple steps forward to the line, but we're too lazy to set a breakpoint.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 ```
 
 ## Logging
 
+<<<<<<< HEAD
 Pour afficher quelque chose sur la console, utilisez la fonction `console.log`.
+=======
+To output something to console from our code, there's `console.log` function.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Par exemple, cela affiche les valeurs de `0` à `4` sur la console : 
 
 ```js run
 // open console to see
 for (let i = 0; i < 5; i++) {
-  console.log("value", i);
+  console.log("значение", i);
 }
 ```
 
@@ -172,10 +203,18 @@ Comme nous pouvons le constater, il existe trois méthodes principales pour susp
 2. Les instructions du `debugger`.
 3. Une erreur (si les outils de développement sont ouverts et le bouton <span class="devtools" style="background-position:-264px -4px"></span> est "on")
 
+<<<<<<< HEAD
 Ensuite, nous pouvons examiner les variables et aller de l'avant pour voir où l'exécution se passe mal.
+=======
+When paused, we can debug - examine variables and trace the code to see where the execution goes wrong.
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 Il y a beaucoup plus d'options dans les outils de développement que celles couvertes ici. Le manuel complet est ici <https://developers.google.com/web/tools/chrome-devtools>.
 
 Les informations de ce chapitre sont suffisantes pour commencer le débogage, mais plus tard, en particulier si vous utilisez beaucoup de fonctions de navigateur, allez-y et examinez les fonctionnalités plus avancées des outils de développement.
 
+<<<<<<< HEAD
 Oh, et vous pouvez aussi cliquer sur différents endroits des outils de développement et voir ce qui s’affiche. C’est probablement la voie la plus rapide pour apprendre les outils de développement. Ne pas oublier le clic droit aussi !
+=======
+Oh, and also you can click at various places of dev tools and just see what's showing up. That's probably the fastest route to learn dev tools. Don't forget about the right click and context menus!
+>>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
