@@ -47,11 +47,7 @@ Cela signifie que si un visiteur déplace la souris très rapidement  les élém
 
 ![](mouseover-mouseout-over-elems.svg)
 
-<<<<<<< HEAD
 Si la souris se déplace très rapidement de  `#FROM` aux  `#TO` éléments telle que décrite en haut, alors le `<div>`  intermédiaire (ou certains d'entre eux) peuvent être sautés. L'évènement  `mouseout` peut être déclenche  sur  `#FROM` et ensuite immédiatement le `mouseover` sur  `#TO`.
-=======
-![](mouseover-mouseout-over-elems.svg)
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 En pratique c'est utile, parce que s'il peut exister plusieurs éléments intermédiaires. Nous ne voulons pas les évaluer un  à  un à tour de rôle.
 
@@ -59,11 +55,6 @@ D'autre part, nous devons garder à l'esprit que nous ne pouvons supposer que la
 
 Il est possible en particulier que le curseur saute en plein milieu de la page en provenant du dehors de la fenêtre. Et `relatedTarget=null`, parce qu’il est venu de  "nul part":
 
-<<<<<<< HEAD
-=======
-In particular it's possible that the cursor jumps right inside the middle of the page from out of the window. And `relatedTarget=null`, because it came from "nowhere":
-
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 ![](mouseover-mouseout-from-outside.svg)
 
 <div style="display:none">
