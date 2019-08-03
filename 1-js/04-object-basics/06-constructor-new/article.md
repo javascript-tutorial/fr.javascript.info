@@ -215,13 +215,9 @@ john = {
 */
 ```
 
-<<<<<<< HEAD
-## Résumé
-=======
-To create complex objects, there's a more advanced syntax, [classes](info:classes), that we'll cover later.
+Pour créer des objets complexes, il existe une syntaxe plus avancée, [classes](info:classes), que nous allons couvrir plus tard.
 
-## Summary
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+## Résumé
 
 - Les fonctions constructeur ou, plus brièvement, les constructeurs, sont des fonctions normales, mais il est généralement convenu de les nommer avec une première lettre en majuscule.
 - Les fonctions constructeur ne doivent être appelées qu'avec `new`. Un tel appel implique la création d'un `this` vide au début et de le retourner complété à la fin.
