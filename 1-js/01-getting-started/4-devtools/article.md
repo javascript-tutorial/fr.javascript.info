@@ -50,19 +50,11 @@ Ouvrez les préférences et accédez au volet "Avancé". Il y a une case à coch
 
 Maintenant `key:Cmd+Opt+C` peut activer la console. Notez également que le nouvel élément de menu supérieur nommé "Développement" est apparu. Il a beaucoup de commandes et d'options.
 
-<<<<<<< HEAD
-## Entrée multiligne
+```smart header="Entrée multiligne"
+Habituellement, lorsque nous insérons une ligne de code dans la console, puis que nous appuyons sur `key:Enter`, la procédure s’exécute.
 
-Habituellement, lorsque nous insérons une ligne de code dans la console, puis que nous appuyons sur Entrée, la procédure s’exécute.
-
-Pour insérer plusieurs lignes, appuyez sur `key:Shift+Enter`.
-=======
-```smart header="Multi-line input"
-Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
-
-To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+Pour insérer plusieurs lignes, appuyez sur `key:Shift+Enter`. De cette façon, vous pouvez entrer de longs fragments de code JavaScript.
 ```
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
 
 
 
