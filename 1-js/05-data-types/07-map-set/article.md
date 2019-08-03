@@ -13,27 +13,42 @@ Il existe aussi `Map` (les dictionnaires de données) et `Set` (les ensembles) q
 
 [Map](mdn:js/Map) is a collection of keyed data items, just like an `Object`. But the main difference is that `Map` allows keys of any type.
 
+[Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) peut être vu comme un `Object` car elle permet de stocker plusieurs éléments sous la forme de clés valeurs. A la différence que les clés peuvent être de n'importe qu'elle type.
+
 Methods and properties are:
 
+Les méthodes et les propriétés sont:
+
 - `new Map()` -- creates the map.
+- `new Map()` -- instancie la map.
 - `map.set(key, value)` -- stores the value by the key.
+- `map.set(key, value)` -- définie la valeur pour une clé.
 - `map.get(key)` -- returns the value by the key, `undefined` if `key` doesn't exist in map.
+- `map.get(key)` -- retourne la valeur associée à la clé, `undefined` si `key` n'existe pas dans la map.
 - `map.has(key)` -- returns `true` if the `key` exists, `false` otherwise.
+- `map.has(key)` -- retourne `true` si `key` existe, sinon `false`.
 - `map.delete(key)` -- removes the value by the key.
+- `map.delete(key)` -- supprime la valeur associer à `key`
 - `map.clear()` -- removes everything from the map.
+- `map.clear()` -- supprime tout le contenu de la map.
 - `map.size` -- returns the current element count.
+- `map.size` -- retourne le nombre d'éléments.
 
 For instance:
+
+Par exemple :
 
 ```js run
 let map = new Map();
 
-map.set('1', 'str1');   // a string key
-map.set(1, 'num1');     // a numeric key
-map.set(true, 'bool1'); // a boolean key
+map.set('1', 'str1');   // une clé de type chaîne de caractère
+map.set(1, 'num1');     // une clé de type numérique
+map.set(true, 'bool1'); // une clé de type booléenne
 
 // remember the regular Object? it would convert keys to string
+// souvenez-vous, dans un `Object`, les clés sont converties en chaîne de caractères
 // Map keeps the type, so these two are different:
+// alors que `Map` conserve le type d'origine de la clé, c'est pourquoi les deux appels suivants retournent des valeurs différentes:
 alert( map.get(1)   ); // 'num1'
 alert( map.get('1') ); // 'str1'
 
@@ -42,17 +57,26 @@ alert( map.size ); // 3
 
 As we can see, unlike objects, keys are not converted to strings. Any type of key is possible.
 
+Au travers de cet exemple nous pouvons voir, qu'à la différence des `Objects`, les clés ne sont pas converties en chaîne de caractère.
+Il est donc possible d'utiliser n'importe quel type.
+
 **Map can also use objects as keys.**
 
+**On peut aussi utiliser les `Objects` comme clé dans une `Map`.**
+
 For instance:
+
+Par exemple:
 
 ```js run
 let john = { name: "John" };
 
 // for every user, let's store their visits count
+// pour chaque utilisateur, nous stockons le nombre de visites
 let visitsCountMap = new Map();
 
 // john is the key for the map
+// john est utilisé comme clé dans la map
 visitsCountMap.set(john, 123);
 
 alert( visitsCountMap.get(john) ); // 123
@@ -60,31 +84,45 @@ alert( visitsCountMap.get(john) ); // 123
 
 Using objects as keys is one of most notable and important `Map` features. For string keys, `Object` can be fine, but not for object keys.
 
-Let's try:
+Pourvoir utilisé un `Object` comme une clé est l'une des raisons principales d'utiliser une `Map`.
+`Map` est à privilégier à `Object` lorsque que l'on utilise autre chose que des chaînes de caractères comme clé.
+
+Essayons de faire comme l'exemple précédent directement avec un `Object`:
 
 ```js run
 let john = { name: "John" };
 
-let visitsCountObj = {}; // try to use an object
+let visitsCountObj = {}; // on créé notre object
 
-visitsCountObj[john] = 123; // try to use john object as the key
+visitsCountObj[john] = 123; // on souhaite utiliser john comme clé
 
 *!*
-// That's what got written!
+// Et voilà ce que l'on obtient !
 alert( visitsCountObj["[object Object]"] ); // 123
 */!*
 ```
 
 As `visitsCountObj` is an object, it converts all keys, such as `john` to strings, so we've got the string key `"[object Object]"`. Definitely not what we want.
 
+`visitsCountObj` est un objet, de ce fait, toutes les clés, comme `john`, sont transformées en chaîne de caractères. C'est pourquoi nous obtenons comme valeur de clé 
+`"[object Object]"`. Ce n'est clairement pas ce que l'on souhaite.
+
 ```smart header="How `Map` compares keys"
+```smart header="Comment `Map` compare les clés"
 To test keys for equivalence, `Map` uses the algorithm [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). It is roughly the same as strict equality `===`, but the difference is that `NaN` is considered equal to `NaN`. So `NaN` can be used as the key as well.
 
+Pour tester l'égalité entre les clés, `Map` se base sur l'algorithme [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). C'est grosso modo la même chose
+que l'opérateur de stricte égalité `===`, à la différence que `NaN` est considéré comme étant égal à `NaN`. `NaN` peut donc être utilisé comme clé.
+
 This algorithm can't be changed or customized.
+
+Cet algorithme ne peut pas peut être modifié.
 ```
 
 ````smart header="Chaining"
 Every `map.set` call returns the map itself, so we can "chain" the calls:
+
+Chaque appel à `map.set` retourne la map elle-même, ce qui nous permet d'enchaîner les appels:
 
 ```js
 map.set('1', 'str1')
@@ -94,11 +132,15 @@ map.set('1', 'str1')
 ````
 
 ## Map from Object
+## Map depuis Object
 
 When a `Map` is created, we can pass an array (or another iterable) with key-value pairs for initialization, like this:
 
+Lorsqu'une `Map` est créée, nous pouvons utiliser un tableau (ou n'importe quel `iterable`) qui possède un couple clé-valeur. 
+
+Par exemple :
 ```js
-// array of [key, value] pairs
+// un tableau avec couple [clé, valeur]
 let map = new Map([
   ['1',  'str1'],
   [1,    'num1'],
@@ -108,7 +150,11 @@ let map = new Map([
 
 If we have a plain object, and we'd like to create a `Map` from it, then we can use built-in method [Object.entries(obj)](mdn:js/Object/entries) that returns an array of key/value pairs for an object exactly in that format.
 
+Si nous voulons créer une `Map` à partir d'un `Object`, nous pouvons utiliser la méthode [Object.entries(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/entries) qui retourne un tableau de couple clé/valeur pour un objet qui respectent ce format.
+
 So we can initialize a map from an object like this:
+
+Nous pouvons donc initialiser une `Map` à partir d'un objet de la manière suivante :
 
 ```js
 let obj = {
@@ -123,15 +169,26 @@ let map = new Map(Object.entries(obj));
 
 Here, `Object.entries` returns the array of key/value pairs: `[ ["name","John"], ["age", 30] ]`. That's what `Map` needs.
 
+`Object.entries` retourne le tableau de couple clé/valeur `[ ["name","John"], ["age", 30] ]` que nous pouvons utiliser pour créer notre `Map`.
+
 ## Iteration over Map
+
+## Parcourir les éléments d'une `Map`
 
 For looping over a `map`, there are 3 methods:
 
+Il existe 3 façons de parcourir les éléments d'une `map` :
+
 - `map.keys()` -- returns an iterable for keys,
+- `map.keys()` -- retourne toutes les clés sous forme  d'`iterable`,
 - `map.values()` -- returns an iterable for values,
+- `map.values()` -- retourne les valeurs sous forme d'`iterable`,
 - `map.entries()` -- returns an iterable for entries `[key, value]`, it's used by default in `for..of`.
+- `map.entries()` -- retourne les `entries` (couple sous forme de `[clé, valeur]`), c'est la méthode utilisée par défaut par `for..of`.
 
 For instance:
+
+Par exemple :
 
 ```js run
 let recipeMap = new Map([
@@ -141,29 +198,36 @@ let recipeMap = new Map([
 ]);
 
 // iterate over keys (vegetables)
+// on parcourt les clés (les légumes)
 for (let vegetable of recipeMap.keys()) {
   alert(vegetable); // cucumber, tomatoes, onion
 }
 
 // iterate over values (amounts)
+// on parcourt les valeurs (les montants)
 for (let amount of recipeMap.values()) {
   alert(amount); // 500, 350, 50
 }
 
 // iterate over [key, value] entries
-for (let entry of recipeMap) { // the same as of recipeMap.entries()
-  alert(entry); // cucumber,500 (and so on)
+// on parcourt les entries (couple [clé, valeur])
+for (let entry of recipeMap) { // équivalent à : recipeMap.entries()
+  alert(entry); // cucumber,500 (etc...)
 }
 ```
 
-```smart header="The insertion order is used"
+```smart header="L'ordre d'insertion est conservé"
 The iteration goes in the same order as the values were inserted. `Map` preserves this order, unlike a regular `Object`.
+Contraitement aux `Object`, `Map` conserve l'ordre d'insertion des valeurs.
 ```
 
 Besides that, `Map` has a built-in `forEach` method, similar to `Array`:
 
+Il est aussi possible d'utiliser `forEach` avec `Map` comme on pourrait le faire avec un tableau :
+
 ```js
 // runs the function for each (key, value) pair
+// exécute la fonction pour chaque couple (key, value)
 recipeMap.forEach( (value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc
 });
