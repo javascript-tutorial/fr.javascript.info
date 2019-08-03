@@ -1,21 +1,21 @@
 
 # Closure
 
-JavaScript is a very function-oriented language. It gives us a lot of freedom. A function can be created dynamically,  copied to another variable or passed as an argument to another function and called from a totally different place later.
+JavaScript est un langage très fonctionnel. Cela nous donne beaucoup de liberté. Une fonction peut être créée dynamiquement, copiée dans une autre variable ou transmise en tant qu'argument à une autre fonction et appelée ultérieurement à partir d'un endroit totalement différent.
 
-We know that a function can access variables outside of it, this feature is used quite often.
+Nous savons qu'une fonction peut accéder aux variables en dehors de celle-ci, cette fonctionnalité est utilisée assez souvent.
 
-But what happens when an outer variable changes? Does a function get the most recent value or the one that existed when the function was created?
+Mais que se passe-t-il quand une variable externe change ? Une fonction obtient-elle la valeur la plus récente ou celle qui existait lors de la création de la fonction ?
 
-Also, what happens when a function travels to another place in the code and is called from there -- does it get access to the outer variables of the new place?
+De plus, que se passe-t-il lorsqu'une fonction se déplace à un autre endroit du code et est appelée à partir de là - a-t-elle accès aux variables externes du nouvel endroit ?
 
-Different languages behave differently here, and in this chapter we cover the behaviour of JavaScript.
+Les différents langages se comportent différemment ici, dans ce chapitre, nous traitons du comportement de JavaScript en particulier.
 
-## A couple of questions
+## Quelques questions
 
-Let's consider two situations to begin with, and then study the internal mechanics piece-by-piece, so that you'll be able to answer the following questions and more complex ones in the future.
+Examinons d’abord deux situations, puis étudions la mécanique interne pièce par pièce pour pouvoir répondre aux questions suivantes et à des questions plus complexes à venir.
 
-1. The function `sayHi` uses an external variable `name`. When the function runs, which value is it going to use?
+1. La fonction `sayHi` utilise une variable externe `name`. Lorsque la fonction est exécutée, quelle valeur va-t-elle utiliser ?
 
     ```js
     let name = "John";
@@ -27,16 +27,16 @@ Let's consider two situations to begin with, and then study the internal mechani
     name = "Pete";
 
     *!*
-    sayHi(); // what will it show: "John" or "Pete"?
+    sayHi(); // qu'est-ce que ça va afficher : "John" ou "Pete" ?
     */!*
     ```
 
-    Such situations are common both in browser and server-side development. A function may be scheduled to execute later than it is created, for instance after a user action or a network request.
+    De telles situations sont courantes dans les développements côté navigateur et côté serveur. Une fonction peut être planifiée pour s'exécuter plus tard que sa création, par exemple après une action de l'utilisateur ou une requête du réseau.
 
-    So, the question is: does it pick up the latest changes?
+    Donc, la question est : est-ce que cela prend en compte les dernières modifications ?
 
 
-2. The function `makeWorker` makes another function and returns it. That new function can be called from somewhere else. Will it have access to the outer variables from its creation place, or the invocation place, or both?
+2. La fonction `makeWorker` crée une autre fonction et la renvoie. Cette nouvelle fonction peut être appelée ailleurs. Aura-t-elle accès aux variables externes à partir de son lieu de création, ou du lieu d'invocation, ou des deux ?
 
     ```js
     function makeWorker() {
@@ -52,59 +52,59 @@ Let's consider two situations to begin with, and then study the internal mechani
     // create a function
     let work = makeWorker();
 
-    // call it
+    // appel
     *!*
-    work(); // what will it show? "Pete" (name where created) or "John" (name where called)?
+    work(); // qu'est-ce que ça va afficher ? "Pete" (nom où elle a été créé) ou "John" (nom où elle a été appelée) ?
     */!*
     ```
 
 
-## Lexical Environment
+## Environnement Lexical
 
-To understand what's going on, let's first discuss what a "variable" actually is.
+Pour comprendre ce qui se passe, voyons d’abord ce qu’est une "variable".
 
-In JavaScript, every running function, code block `{...}`, and the script as a whole have an internal (hidden) associated object known as the *Lexical Environment*.
+En JavaScript, chaque fonction en cours d'exécution, le bloc de code `{...}` et le script dans son ensemble ont un objet associé interne (masqué) appelé *Environnement Lexical*.
 
-The Lexical Environment object consists of two parts:
+L'objet Environnement Lexical comprend deux parties :
 
-1. *Environment Record* -- an object that stores all local variables as its properties (and some other information like the value of `this`).
-2. A reference to the *outer lexical environment*, the one associated with the outer code.
+1. *Environnement Record (Enregistrement d'Environnement)* -- un objet qui stocke toutes les variables locales en tant que propriétés (et d'autres informations telles que la valeur de `this`).
+2. Une référence à *l'environnement lexical externe*, celui associé au code externe.
 
-**So, a "variable" is just a property of the special internal object, `Environment Record`. "To get or change a variable" means "to get or change a property of that object".**
+**Ainsi, une "variable" est simplement une propriété de l'objet interne spécial `Environment Record`. "Obtenir ou modifier une variable" signifie "obtenir ou modifier une propriété de cet objet".**
 
-For instance, in this simple code, there is only one Lexical Environment:
+Par exemple, dans ce code simple, il n’existe qu’un seul Environnement Lexical :
 
 ![lexical environment](lexical-environment-global.svg)
 
-This is a so-called global Lexical Environment, associated with the whole script.
+Appelé aussi Environnement Lexical global, il est associé à l'ensemble du script.
 
-On the picture above, the rectangle means Environment Record (variable store) and the arrow means the outer reference. The global Lexical Environment has no outer reference, so it points to `null`.
+Sur l'image ci-dessus, le rectangle correspond à l'enregistrement de l'environnement (magasin de variables) et la flèche à la référence externe. L'environnement lexical global n'a pas de référence externe, il pointe donc sur `null`.
 
-Here's the bigger picture of what happens when a `let` changes:
+Voici une image d'ensemble de ce qui se passe quand un `let` change :
 
 ![lexical environment](lexical-environment-global-2.svg)
 
-Rectangles on the right-hand side demonstrate how the global Lexical Environment changes during the execution:
+Les rectangles de droite nous montrent comment l'environnement lexical global change au cours de l'exécution :
 
-1. When the script starts, the Lexical Environment is empty.
-2. The `let phrase` definition appears. It has been assigned no value, so `undefined` is stored.
-3. `phrase` is assigned a value.
-4. `phrase` changes value.
+1. Lorsque le script démarre, l'environnement lexical est vide.
+2. La déclaration de `let phrase` apparaît. Aucune valeur n’a été affectée, donc `undefined` est stocké.
+3. Une valeur est assignée à `phrase`.
+4. `phrase` change de valeur.
 
-Everything looks simple for now, right?
+Tout a l'air simple pour l'instant, non ?
 
-To summarize:
+Pour résumer :
 
-- A variable is a property of a special internal object, associated with the currently executing block/function/script.
-- Working with variables is actually working with the properties of that object.
+- Une variable est une propriété d'un objet interne spécial, associée au bloc / fonction / script en cours d'exécution.
+- Travailler avec des variables, c'est travailler avec les propriétés de cet objet.
 
-### Function Declaration
+### Fonction Declaration
 
-Till now, we only observed variables. Now enter Function Declarations.
+Jusqu'à présent, nous n'avons observé que des variables. Maintenant, entrons dans les Fonctions Declaration.
 
-**Unlike `let` variables, they are fully initialized not when the execution reaches them, but earlier, when a Lexical Environment is created.**
+**Contrairement aux variables `let`, elles sont entièrement initialisées non pas lorsque l'exécution les atteint, mais plus tôt, lorsqu'un environnement lexical est créé.**
 
-For top-level functions, it means the moment when the script is started.
+Pour les fonctions de niveau supérieur, cela signifie le moment où le script est lancé.
 
 That is why we can call a function declaration before it is defined.
 

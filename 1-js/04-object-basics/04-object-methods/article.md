@@ -177,11 +177,7 @@ function sayHi() {
 }
 ```
 
-<<<<<<< HEAD
-La valeur de `this` est évaluée pendant l'exécution en fonction du contexte. Et ça peut être n'importe quoi.
-=======
-The value of `this` is evaluated during the run-time, depending on the context.
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+La valeur de `this` est évaluée pendant l'exécution, en fonction du contexte.
 
 Par exemple, ici la même fonction est assignée à deux objets différents et a un "this" différent dans les appels :
 

@@ -394,11 +394,7 @@ let matrix = [
   [7, 8, 9]
 ];
 
-<<<<<<< HEAD
-alert( matrix[1][1] ); // l'élément central
-=======
-alert( matrix[1][1] ); // 5, the central element
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+alert( matrix[1][1] ); // 5, l'élément central
 ```
 
 ## toString

@@ -175,13 +175,9 @@ let timerId = setTimeout(function request() {
 
 Ou par exemple, si les fonction qu'on souhaite planifier demandent beaucoup de ressources CPU, on peut alors mesurer leur temps d'exécution et planifier le prochain appel en fonction.
 
-<<<<<<< HEAD
-**Un `setTimeout` récursif garantit un délai entre deux exécutions alors que `setInterval` non.**
-=======
-And if the functions that we're scheduling are CPU-hungry, then we can measure the time taken by the execution and plan the next call sooner or later.
+Et si les fonctions que nous planifions sont gourmandes en ressources processeur, nous pouvons mesurer le temps pris par l'exécution et planifier le prochain appel tôt ou tard.
 
-**Recursive `setTimeout` guarantees a delay between the executions, `setInterval` -- does not.**
->>>>>>> f72405a263e1d1adbc8d17179ee46af70842bb55
+**Un `setTimeout` récursif garantit un délai entre deux exécutions alors que `setInterval` non.**
 
 Comparons deux blocs de codes, le premier utilise `setInterval` :
 
