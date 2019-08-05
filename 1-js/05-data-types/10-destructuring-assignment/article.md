@@ -262,7 +262,11 @@ alert(height); // 200
 
 Comme pour les tableaux ou les paramètres de fonction, les valeurs par défaut peuvent être des expressions ou même des appels de fonction. Elles seront évaluées si la valeur n'est pas fournie.
 
+<<<<<<< HEAD
 Le code ci-dessous demande la largeur, mais pas le titre.
+=======
+In the code below `prompt` asks for `width`, but not for `title`:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 let options = {
@@ -293,7 +297,26 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
+<<<<<<< HEAD
 ### L'opérateur rest "..."
+=======
+If we have a complex object with many properties, we can extract only what we need:
+
+```js run
+let options = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+
+// only extract title as a variable
+let { title } = options;
+
+alert(title); // Menu
+```
+
+### The rest pattern "..."
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Et si l'objet a plus de propriétés que de variables ? Peut-on en prendre puis assigner le "rest" quelque part ?
 
@@ -319,8 +342,6 @@ alert(rest.height);  // 200
 alert(rest.width);   // 100
 ```
 
-
-
 ````smart header="Gotcha if there's no `let`"
 Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
 
@@ -343,7 +364,13 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
+<<<<<<< HEAD
 Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper toute la tâche entre parenthèses `(...)` :
+=======
+So here JavaScript assumes that we have a code block, but why there's an error. We have destructuring instead.
+
+To show JavaScript that it's not a code block, we can wrap the expression in parentheses `(...)`:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 let title, width, height;
@@ -353,14 +380,19 @@ let title, width, height;
 
 alert( title ); // Menu
 ```
-
 ````
 
 ## Décomposition imbriquée
 
+<<<<<<< HEAD
 Si un objet ou un tableau contient d'autres objets et tableaux, nous pouvons utiliser des modèles plus complexes à gauche pour extraire des parties plus profondes.
 
 Dans le code ci-dessous `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure :
+=======
+If an object or an array contain other nested objects and arrays, we can use more complex left-side patterns to extract deeper portions.
+
+In the code below `options` has another object in the property `size` and an array in the property `items`. The pattern at the left side of the assignment has the same structure to extract values from them:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 let options = {
@@ -369,7 +401,11 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
+<<<<<<< HEAD
   extra: true    // quelque chose de plus que nous ne pourrons pas détruire
+=======
+  extra: true   
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 };
 
 // affectation par décomposition divisée sur plusieurs lignes pour la clarté
@@ -389,6 +425,7 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
+<<<<<<< HEAD
 L'ensemble de l'objet `options`, à l'exception d'`extra` qui n'a pas été mentionné, est affecté aux variables correspondantes.
 
 Notez que la `size` et les `items` eux-mêmes ne sont pas décomposés.
@@ -402,6 +439,15 @@ Si nous avons un objet complexe avec de nombreuses propriétés, nous pouvons ex
 // prendre la taille dans sa totalité dans une variable, ignorer le reste
 let { size } = options;
 ```
+=======
+The whole `options` object except `extra` that was not mentioned, is assigned to corresponding variables:
+
+![](destructuring-complex.svg)
+
+Finally, we have `width`, `height`, `item1`, `item2` and `title` from the default value.
+
+Note that there are no variables for `size` and `items`, as we take their content instead.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## Paramètres de fonction intelligente
 
@@ -420,6 +466,7 @@ Dans la vraie vie, le problème est de savoir comment retenir l'ordre des argume
 Comme ceci ?
 
 ```js
+// undefined where detauls values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 
@@ -471,29 +518,45 @@ function showMenu({
 showMenu(options);
 ```
 
+<<<<<<< HEAD
 La syntaxe est la même que pour une affectation par décomposition :
+=======
+The full syntax is the same as for a destructuring assignment:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```js
 function({
-  incomingProperty: parameterName = defaultValue
+  incomingProperty: varName = defaultValue
   ...
 })
 ```
 
+<<<<<<< HEAD
 Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
+=======
+Then, for an object of parameters, there will be a variable `varName` for property `incomingProperty`, with `defaultValue` by default.
+
+Please note that such destructuring assumes that `showMenu()` does have an argument. If we want all values by default, then we should specify an empty object:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js
-showMenu({});
-
+showMenu({}); // ok, all values are default
 
 showMenu(); // cela donnerait une erreur
 ```
 
+<<<<<<< HEAD
 Nous pouvons résoudre ce problème en faisant de `{}` la valeur par défaut pour tout le processus de décomposition :
 
 
 ```js run
 // paramètres simplifiés un peu pour plus de clarté
 function showMenu(*!*{ title = "Menu", width = 100, height = 200 } = {}*/!*) {
+=======
+We can fix this by making `{}` the default value for the whole object of parameters:
+
+```js run
+function showMenu({ title = "Menu", width = 100, height = 200 }*!* = {}*/!*) {
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
   alert( `${title} ${width} ${height}` );
 }
 
@@ -504,8 +567,13 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 
 ## Résumé
 
+<<<<<<< HEAD
 - L'affectation par décomposition permet de mapper instantanément un objet ou un tableau sur de nombreuses variables.
 - La syntaxe de l'objet :
+=======
+- Destructuring assignment allows for instantly mapping an object or array onto many variables.
+- The full object syntax:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
     ```js
     let {prop : varName = default, ...rest} = object
     ```
@@ -514,7 +582,11 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 
     Les propriétés d'objet sans mappage sont copiées dans l'objet `rest`.
 
+<<<<<<< HEAD
 - La syntaxe du tableau :
+=======
+- The full array syntax:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
     ```js
     let [item1 = default, item2, ...rest] = array
@@ -522,4 +594,8 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 
     Le premier item va à `item1`; le second passe à `item2`, tout le reste du tableau correspond au `rest`.
 
+<<<<<<< HEAD
 - Pour les cas plus complexes, le côté gauche doit avoir la même structure que le côté droit.
+=======
+- It's possible to extract data from nested arrays/objects, for that the left side must have the same structure as the right one.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a

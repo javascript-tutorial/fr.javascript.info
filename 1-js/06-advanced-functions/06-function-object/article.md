@@ -1,7 +1,11 @@
 
 # L'objet Function, EFN
 
+<<<<<<< HEAD
 Comme nous le savons déjà, les fonctions en JavaScript sont des valeurs.
+=======
+As we already know, a function in JavaScript is a value.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Chaque valeur en JavaScript a un type. Quel type est une fonction?
 
@@ -13,7 +17,13 @@ Un bon moyen d’imaginer des fonctions est en tant que des "objets d’action" 
 
 Les objets Function contiennent quelques propriétés utilisables.
 
+<<<<<<< HEAD
 Par exemple, le nom d'une fonction est accessible en tant que propriété "name":
+=======
+Function objects contain some useable properties.
+
+For instance, a function's name is accessible as the "name" property:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 function sayHi() {
@@ -22,14 +32,23 @@ function sayHi() {
 
 alert(sayHi.name); // sayHi
 ```
+<<<<<<< HEAD
 De plus, la logique d'attribution de nom est intelligente. Elle attribue également le nom correct aux fonctions utilisées dans les affectations:
+=======
+
+What's kind of funny, the name-assigning logic is smart. It also assigns the correct name to a function even if it's created without one, and then immediately assigned:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 let sayHi = function() {
   alert("Hi");
-}
+};
 
+<<<<<<< HEAD
 alert(sayHi.name); // sayHi (ça marche!)
+=======
+alert(sayHi.name); // sayHi (there's a name!)
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```
 
 Cela fonctionne aussi si l’affectation est faite avec une valeur par défaut:
@@ -91,7 +110,11 @@ alert(many.length); // 2
 
 Nous pouvons voir que les paramètres du reste ne sont pas comptés.
 
+<<<<<<< HEAD
 La propriété `length` est parfois utilisée pour l'introspection dans des fonctions qui opèrent sur d'autres fonctions.
+=======
+The `length` property is sometimes used for [introspection](https://en.wikipedia.org/wiki/Type_introspection) in functions that operate on other functions.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Par exemple, dans le code ci-dessous, la fonction `ask` accepte une `question` à poser et un nombre arbitraire de fonctions `handler` (gestionnaires) à appeler.
 
@@ -100,9 +123,15 @@ Une fois qu'un utilisateur a fourni sa réponse, la fonction appelle les gestion
 - Une fonction sans argument, qui n'est appelée que lorsque l'utilisateur donne une réponse positive.
 - Une fonction avec des arguments, appelée dans les deux cas et renvoyant une réponse.
 
+<<<<<<< HEAD
 L'idée est que nous avons une syntaxe de gestionnaire simple, sans argument, pour les cas positifs (variante la plus fréquente), mais que nous pouvons également fournir des gestionnaires universels.
 
 Pour appeler `handlers` correctement, nous examinons la propriété `length`:
+=======
+To call `handler` the right way, we examine the `handler.length` property.
+
+The idea is that we have a simple, no-arguments handler syntax for positive cases (most frequent variant), but are able to support universal handlers as well:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 function ask(question, ...handlers) {
@@ -238,7 +267,11 @@ let sayHi = function *!*func*/!*(who) {
 sayHi("John"); // Hello, John
 ```
 
+<<<<<<< HEAD
 Le nom `func` a deux particularités:
+=======
+There are two special things about the name `func`, that are the reasons for it:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 1. Il permet à la fonction de se référencer en interne.
 2. Il n'est pas visible en dehors de la fonction.
@@ -344,6 +377,10 @@ Si la fonction est déclarée en tant qu'expression de fonction (et non dans le 
 
 De plus, les fonctions peuvent avoir des propriétés supplémentaires. De nombreuses bibliothèques JavaScript bien connues font bon usage de cette fonctionnalité.
 
+<<<<<<< HEAD
 Ils créent une fonction "principale" et y attachent de nombreuses autres fonctions "d'assistance". Par exemple, la bibliothèque [jquery] (https://jquery.com) crée une fonction nommée `$`. La bibliothèque [lodash] (https://lodash.com) crée une fonction `_`. Et ajoute ensuite `_.clone`,` _.keyBy` et d'autres propriétés (voir [docs] (https://lodash.com/docs) lorsque vous souhaitez en savoir plus à leur sujet). En fait, ils le font pour réduire leur pollution de l'espace global, de sorte qu'une seule bibliothèque ne donne qu'une seule variable globale. Cela réduit la possibilité de conflits de noms.
+=======
+They create a "main" function and attach many other "helper" functions to it. For instance, the [jQuery](https://jquery.com) library creates a function named `$`. The [lodash](https://lodash.com) library creates a function `_`. And then adds `_.clone`, `_.keyBy` and other properties to (see the [docs](https://lodash.com/docs) when you want learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Ainsi, une fonction peut faire un travail utile par elle-même et aussi porter un tas d’autres fonctionnalités dans les propriétés.
