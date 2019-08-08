@@ -36,4 +36,8 @@ Donc, si `arr.length` vaut `10000`, nous aurons quelque chose comme `10000*10000
 
 La solution n’est donc valable que pour les petits tableaux.
 
+<<<<<<< HEAD
 Plus loin dans le chapitre <info:map-set-weakmap-weakset>, nous verrons comment l'optimiser.
+=======
+Further in the chapter <info:map-set> we'll see how to optimize it.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a

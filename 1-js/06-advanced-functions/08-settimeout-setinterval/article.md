@@ -128,7 +128,11 @@ setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
 ```smart header="Le temps continue de s'écouler pendant que `alert` est affiché"
 Dans la majorité des navigateurs, dont Chrome et Firefox, le timer interne continue à s'incrémenter pendant qu'un message est affiché (via `alert`, `confirm` ou `prompt`).
 
+<<<<<<< HEAD
 De ce fait, si vous décidez de tester le code précedent et que vous laissez la fenêtre `alert` affichée plus de 2 secondes, la prochaine fenêtre sera affichée immédiatement après avoir fermé la première. L'interval réel entre les alertes sera alors plus court que 2 secondes.
+=======
+So if you run the code above and don't dismiss the `alert` window for some time, then in the next `alert` will be shown immediately as you do it. The actual interval between alerts will be shorter than 2 seconds.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```
 
 ## setTimeout récursif
@@ -177,7 +181,11 @@ Ou par exemple, si les fonction qu'on souhaite planifier demandent beaucoup de r
 
 Et si les fonctions que nous planifions sont gourmandes en ressources processeur, nous pouvons mesurer le temps pris par l'exécution et planifier le prochain appel tôt ou tard.
 
+<<<<<<< HEAD
 **Un `setTimeout` récursif garantit un délai entre deux exécutions alors que `setInterval` non.**
+=======
+**Recursive `setTimeout` allows to set the delay between the executions more precisely than `setInterval`.**
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Comparons deux blocs de codes, le premier utilise `setInterval` :
 
@@ -222,8 +230,13 @@ Ci-dessous la représentation de l'exécution dans le cas du `setTimeout` récur
 
 Dans ce cas, c'est parce que le nouvel appel est planifié à la fin du précédent.
 
+<<<<<<< HEAD
 ````smart header="Le ramasse-miettes"
 Quand une fonction est passée à `setInterval`/`setTimeout`, une référence interne à cette fonction est créée et conservée dans l'ordonnanceur. Cela empêche que la fonction soit détruite par le ramasse-miettes, même si il n'y a pas d'autres références à cette dernière.
+=======
+````smart header="Garbage collection and setInterval/setTimeout callback"
+When a function is passed in `setInterval/setTimeout`, an internal reference is created to it and saved in the scheduler. It prevents the function from being garbage collected, even if there are no other references to it.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js
 // La fonction reste en mémoire jusqu'à ce que l'ordonnanceur l'exécute
@@ -241,7 +254,11 @@ Il y a un cas d'usage particulier : `setTimeout(func, 0)` ou plus simplement `se
 
 Cette syntaxe planifie l'exécution de `func` aussi vite que possible, mais l'ordonnanceur ne l'appellera qu'une fois le bloc de code courant exécuté.
 
+<<<<<<< HEAD
 Ainsi, l'exécution de la fonction est planifiée "juste après" celle du bloc de code courant. En d'autres termes, de façon *asynchrone*.
+=======
+So the function is scheduled to run "right after" the current code.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Par exemple, le code ci dessous affiche "Hello", et immédiatement après, "World" :
 
@@ -286,6 +303,7 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 
 ## Résumé
 
+<<<<<<< HEAD
 - Les méthodes `setInterval(func, delay, ...args)` et `setTimeout(func, delay, ...args)` permettent d'exécuter `func` respectivement périodiquement et une seule fois après `delay` millisecondes.
 - Pour annuler l'exécution, nous devons appeler `clearInterval/clearTimeout` avec la valeur renvoyée par `setInterval/setTimeout`.
 - Les appels imbriqués à `setTimeout` sont une alternative plus flexible à `setInterval`. Ils permettent aussi de *garantir le délai minimum entre deux exécutions*.
@@ -293,6 +311,15 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 - Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour` setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
 
 Il faut garder à l'esprit que toutes ces méthodes d'ordonnancement ne *garantissent pas* le délai exact. 
+=======
+- Methods `setInterval(func, delay, ...args)` and `setTimeout(func, delay, ...args)` allow to run the `func` regularly/once after `delay` milliseconds.
+- To cancel the execution, we should call `clearInterval/clearTimeout` with the value returned by `setInterval/setTimeout`.
+- Nested `setTimeout` calls is a more flexible alternative to `setInterval`, allowing to set the time *between* executions more precisely.
+- Zero delay scheduling with `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current code is complete".
+- The browser limits the minimal delay for five or more nested call of `setTimeout` or for `setInterval` (after 5th call) to 4ms. That's for historical reasons.
+
+Please note that all scheduling methods do not *guarantee* the exact delay.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
 - Le CPU est surchargé.

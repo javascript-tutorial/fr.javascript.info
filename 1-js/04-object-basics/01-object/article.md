@@ -236,7 +236,11 @@ Dans ce cas, le visiteur peut choisir `__proto__` comme clé et la logique d’a
 
 Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
 
+<<<<<<< HEAD
 Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set-weakmap-weakset>, qui supporte des clés arbitraires.
+=======
+There's also another data structure [Map](info:map-set), that we'll learn in the chapter <info:map-set>, which supports arbitrary keys.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ````
 
 
