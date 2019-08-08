@@ -4,11 +4,7 @@ importance: 5
 
 # Réécrire 'if' en '?'
 
-<<<<<<< HEAD
-Réécrivez ce `if` en utilisant l'opérateur ternaire `'?'` :
-=======
-Rewrite this `if` using the conditional operator `'?'`:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Réécrivez ce `if` en utilisant l'opérateur conditionnel `'?'` :
 
 ```js
 let result;
