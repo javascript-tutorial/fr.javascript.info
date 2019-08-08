@@ -70,11 +70,7 @@ L'objet Environnement Lexical comprend deux parties :
 1. *Environnement Record (Enregistrement d'Environnement)* -- un objet qui stocke toutes les variables locales en tant que propriétés (et d'autres informations telles que la valeur de `this`).
 2. Une référence à *l'environnement lexical externe*, celui associé au code externe.
 
-<<<<<<< HEAD
-**Ainsi, une "variable" est simplement une propriété de l'objet interne spécial `Environment Record`. "Obtenir ou modifier une variable" signifie "obtenir ou modifier une propriété de cet objet".**
-=======
-**A "variable" is just a property of the special internal object, `Environment Record`. "To get or change a variable" means "to get or change a property of that object".**
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+**Une "variable" est simplement une propriété de l'objet interne spécial `Environment Record`. "obtenir ou modifier une variable" signifie "obtenir ou modifier une propriété de cet objet".**
 
 Par exemple, dans ce code simple, il n’existe qu’un seul Environnement Lexical :
 
@@ -84,11 +80,7 @@ Appelé aussi Environnement Lexical global, il est associé à l'ensemble du scr
 
 Sur l'image ci-dessus, le rectangle correspond à l'enregistrement de l'environnement (magasin de variables) et la flèche à la référence externe. L'environnement lexical global n'a pas de référence externe, il pointe donc sur `null`.
 
-<<<<<<< HEAD
-Voici une image d'ensemble de ce qui se passe quand un `let` change :
-=======
-And that's how it changes when a variable is defined and assigned:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Et c'est comme ça que ça change quand une variable est définie et assignée :
 
 ![lexical environment](lexical-environment-global-2.svg)
 

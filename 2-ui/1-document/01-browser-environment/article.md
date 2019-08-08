@@ -2,15 +2,9 @@
 
 Le langage JavaScript a été initialement créé pour les navigateurs web. Dès lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
 
-<<<<<<< HEAD
-Une plateforme peut être un navigateur, un serveur web, ou une machine à laver, ou un autre *hôte*. Chacuns d'entre eux proposent des fonctionnalités spécifiques à leur plateforme. La spécification JavaScript appelle cela un *environnement hôte*.
+Une plate-forme peut être un navigateur, un serveur Web ou un autre *hôte*, voire une machine à café. Chacun d'eux fournit des fonctionnalités spécifiques à la plate-forme. La spécification JavaScript appelle cela un *environnement hôte*.
 
-Un environnement hôte propose des objets et fonctions spécifiques à la plateforme en plus du noyau du langage. Les navigateurs web donnent la possibilité de contrôler les pages web. Node.js fournit des fonctionnalités côté serveur, etc.
-=======
-A platform may be a browser, or a web-server or another *host*, even a coffee machine. Each of them provides platform-specific functionality. The JavaScript specification calls that a *host environment*.
-
-A host environment provides own objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Un environnement hôte fournit ses propres objets et fonctions en plus du noyau du langage. Les navigateurs Web permettent de contrôler les pages Web. Node.js fournit des fonctionnalités côté serveur, etc.
 
 Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un navigateur Web :
 
@@ -42,13 +36,9 @@ Il y a d'autres méthodes et propriétés spécifiques à la fenêtre, nous les 
 
 ## DOM (Document Object Model)
 
-<<<<<<< HEAD
-l'objet `document` donne accès au contenu de la page. On peut changer ou créer n'importe quoi sur la page en l'utilisant.
-=======
-Document Object Model, or DOM for short, represents all page content as objects that can be modified.
+Document Object Model, ou DOM en abrégé, représente tout le contenu de la page sous forme d'objets pouvant être modifiés.
 
-The `document` object is the main "entry point" to the page. We can change or create anything on the page using it.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+L'objet `document` est le "point d'entrée" principal de la page. Nous pouvons changer ou créer n'importe quoi sur la page en l'utilisant.
 
 Par exemple :
 ```js run
@@ -63,29 +53,16 @@ Ici on a utilisé `document.body.style`, mais il y a bien plus encore. Les propr
 
 - **DOM Living Standard** à <https://dom.spec.whatwg.org>
 
-<<<<<<< HEAD
-```smart header="le DOM n'est pas seulement pour les navigateurs"
-La spécification DOM décrit la structure d'un document et fournit des objets pour la manipuler. Il y a des instruments autres que des navigateurs qui l'utilisent aussi.
+```smart header="DOM n'est pas seulement pour les navigateurs"
+La spécification DOM explique la structure d'un document et fournit des objets pour le manipuler. Il existe également des instruments autres que les navigateurs qui utilisent DOM.
 
-Par exemple, Les outils côté serveur qui télécharge des pages HTML et les traitent utilisent le DOM. Bien qu'ils peuvent ne supporter qu'une partie de la spécification.
+Par exemple, les scripts côté serveur qui téléchargent des pages HTML et les traitent peuvent également utiliser le DOM. Ils peuvent cependant ne supporter qu'une partie de la spécification.
 ```
 
-```smart header="le CSSOM pour gérer le style"
-Les règles CSS et les feuilles de style ne sont pas structurées comme le HTML. Il y a une spécification séparée [CSSOM](https://www.w3.org/TR/cssom-1/) qui explique comment ils sont représentés comme étant des objets, et comment lire et écrire dessus.
+```smart header="CSSOM pour le style"
+Les règles et les feuilles de style CSS sont structurées différemment du HTML. Il y a une spécification séparée [CSSOM](https://www.w3.org/TR/cssom-1/) cela explique comment ils sont représentés en tant qu'objets, et comment les lire et les écrire.
 
-Le CSSOM est utilisé en parallèle avec le DOM lorsque l'on modifie des règles de style pour le document. Cependant, il est rarement requis en pratique car les règles CSS sont généralement statiques. Nous avons rarement besoin d'ajouter/supprimer des règles depuis JavaScript, nous n'allons donc pas nous concentrer là-dessus pour l'instant.
-=======
-```smart header="DOM is not only for browsers"
-The DOM specification explains the structure of a document and provides objects to manipulate it. There are non-browser instruments that use DOM too.
-
-For instance, server-side scripts that download HTML pages and process them can also use DOM. They may support only a part of the specification though.
-```
-
-```smart header="CSSOM for styling"
-CSS rules and stylesheets are structured in a different way than HTML. There's a separate specification [CSSOM](https://www.w3.org/TR/cssom-1/) that explains how they are represented as objects, and how to read and write them.
-
-CSSOM is used together with DOM when we modify style rules for the document. In practice though, CSSOM is rarely required, because usually CSS rules are static. We rarely need to add/remove CSS rules from JavaScript, but that's also possible.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+CSSOM est utilisé avec DOM lorsque nous modifions les règles de style pour le document. En pratique cependant, CSSOM est rarement requis, car les règles CSS sont généralement statiques. Nous avons rarement besoin d'ajouter / de supprimer des règles CSS à partir de JavaScript, mais c'est également possible.
 ```
 
 ## BOM (Browser object model)
@@ -100,15 +77,9 @@ Par exemple :
 Voici comment l'on peut utiliser l'objet `location` :
 
 ```js run
-<<<<<<< HEAD
-alert(location.href); // affiche l'URL courante
-if (confirm("Go to wikipedia?")) {
-  location.href = "https://wikipedia.org"; // redirige le navigateur vers une autre adresse
-=======
-alert(location.href); // shows current URL
+alert(location.href); // affiche l'URL actuelle
 if (confirm("Go to Wikipedia?")) {
-  location.href = "https://wikipedia.org"; // redirect the browser to another URL
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+  location.href = "https://wikipedia.org"; // rediriger le navigateur vers une autre URL
 }
 ```
 

@@ -339,13 +339,10 @@ Cela ne fonctionne pas, car JavaScript suppose un point-virgule après le `retur
 return*!*;*/!*
  (some + long + expression + or + whatever * f(a) + f(b))
 ```
-<<<<<<< HEAD
-Ainsi, cela devient un `return` vide. Nous devrions mettre la valeur sur la même ligne à la place.
-=======
 
-So, it effectively becomes an empty return.
+Donc, cela devient effectivement un retour vide.
 
-If we want the returned expression to wrap across multiple lines, we should start it at the same line as `return`. Or at least put the opening parentheses there as follows:
+Si nous voulons que l'expression renvoyée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`. Ou du moins mettre les parenthèses d'ouverture comme suit :
 
 ```js
 return (
@@ -354,8 +351,7 @@ return (
   whatever * f(a) + f(b)
   )
 ```
-And it will work just as we expect it to.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Et cela fonctionnera comme prévu.
 ````
 
 ## Nommer une fonction [#function-naming]

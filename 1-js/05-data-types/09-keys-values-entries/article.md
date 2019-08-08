@@ -22,11 +22,7 @@ Pour les objets simples, les méthodes suivantes sont disponibles:
 - [Object.values(obj)](mdn:js/Object/values) -- retourne un tableau de valeurs.
 - [Object.entries(obj)](mdn:js/Object/entries) -- retourne un tableau de paires `[clé, valeur]`.
 
-<<<<<<< HEAD
-...Mais s'il vous plaît noter les différences (par rapport à map par exemple):
-=======
-Please note the distinctions (compared to map for example):
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Veuillez noter les différences (par rapport à map par exemple):
 
 |             | Map              | Object       |
 |-------------|------------------|--------------|
@@ -35,11 +31,7 @@ Please note the distinctions (compared to map for example):
 
 La première différence est que nous devons appeler `Object.keys(obj)` et non `obj.keys()`.
 
-<<<<<<< HEAD
-Pourquoi ça? La principale raison est la flexibilité. N'oubliez pas que les objets sont une base de toutes les structures complexes en JavaScript. Ainsi, nous pouvons avoir un objet de notre propre `order` qui implémente sa propre méthode `order.values()`. Et nous pouvons toujours appeler `Object.values(order)` dessus.
-=======
-Why so? The main reason is flexibility. Remember, objects are a base of all complex structures in JavaScript. So we may have an object of our own like `data` that implements its own `data.values()` method. And we still can call `Object.values(data)` on it.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Pourquoi cela ? La principale raison est la flexibilité. N'oubliez pas que les objets sont une base de toutes les structures complexes en JavaScript. Ainsi, nous pouvons avoir un objet à nous comme `data` qui implémente sa propre méthode `data.values()`. Et nous pouvons toujours appeler `Object.values(data)`.
 
 La seconde différence réside dans le fait que les méthodes `Object.*` retourne de "réels" objets de tableau, et pas seulement des objets itératifs. C'est principalement pour des raisons historiques.
 
@@ -77,57 +69,17 @@ Tout comme une boucle `for..in`, ces méthodes ignorent les propriétés qui uti
 D'habitude c'est pratique. Mais si nous voulons aussi des clés symboliques, il existe une méthode distincte [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols) qui retourne un tableau composé uniquement de clés symboliques. De plus, la méthde [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) renvoie *toutes* les clés.
 ```
 
-<<<<<<< HEAD
-## Object.fromEntries pour transformer des objets
+## Transformer des objets
 
-Nous avons parfois besoin de transformer un objet en `Map` et de revenir en arrière.
+Les objets manquent de nombreuses méthodes existantes pour les tableaux, par exemple `map`, `filter` et autres.
 
-Nous avons déjà `new Map(Object.entries(obj))` pour faire un `Map` à partir de `obj`.
+Si nous souhaitons leur appliquer ces méthodes, nous pouvons utiliser `Object.entries` suivis par `Object.fromEntries` :
 
-La syntaxe de `Object.fromEntries` fait l'inverse. Étant donné un tableau de paire `[key, value]`, cela crée un objet :
-=======
+1. Utilisons `Object.entries(obj)` pour obtenir un tableau de paires clé / valeur de `obj`.
+2. Utilisons des méthodes de tableau sur ce tableau, par exemple `map`.
+3. Utilisons `Object.fromEntries(array)` sur le tableau résultant pour le reconvertir en objet.
 
-## Transforming objects
-
-Objects lack many methods that exist for arrays, e.g. `map`, `filter` and others.
-
-If we'd like to apply them, then we can use `Object.entries` followed `Object.fromEntries`:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
-
-1. Use `Object.entries(obj)` to get an array of key/value pairs from `obj`.
-2. Use array methods on that array, e.g. `map`.
-3. Use `Object.fromEntries(array)` on the resulting array to turn it back into an object.
-
-<<<<<<< HEAD
-Voyons les applications pratiques.
-
-Par exemple, nous aimerions créer un nouvel objet avec un double prix par rapport à celui existant.
-
-Pour les tableaux, nous avons la méthode `.map` qui permet de transformer un tableau, mais rien de tel pour les objets.
-
-Nous pouvons donc utiliser une boucle :
-
-```js run
-let prices = {
-  banana: 1,
-  orange: 2,
-  meat: 4,
-};
-
-let doublePrices = {};
-for(let [product, price] of Object.entries(prices)) {
-  doublePrices[product] = price * 2;
-}
-
-alert(doublePrices.meat); // 8
-```
-
-… Ou nous pouvons représenter l'objet sous forme de `Array` à l'aide de `Object.entries`, puis effectuer les opérations avec `map` (et éventuellement d'autres méthodes de tableau), puis revenir en arrière à l'aide de `Object.fromEntries`.
-
-Faisons-le pour notre objet :
-=======
-For example, we have an object with prices, and would like to double them:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Par exemple, nous avons un objet avec des prix et aimerions les doubler :
 
 ```js run
 let prices = {
@@ -148,25 +100,4 @@ alert(doublePrices.meat); // 8
 
 Cela peut sembler difficile au premier abord, mais cela devient facile à comprendre après l’avoir utilisé une ou deux fois.
 
-<<<<<<< HEAD
-Nous pouvons également utiliser `fromEntries` pour obtenir un objet depuis `Map`.
-
-Par exemple. nous avons un `Map` des prix, mais nous devons le transmettre à un code tiers qui attend un objet.
-
-Allons-y :
-
-```js run
-let map = new Map();
-map.set('banana', 1);
-map.set('orange', 2);
-map.set('meat', 4);
-
-let obj = Object.fromEntries(map);
-
-// now obj = { banana: 1, orange: 2, meat: 4 }
-
-alert(obj.orange); // 2
-```
-=======
-We can make powerful one-liners for more complex transforms this way. It's only important to keep balance, so that the code is still simple enough to understand it.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+De cette façon, nous pouvons créer de puissants one-liners pour des transformations plus complexes. Il est important de préserver l’équilibre pour que le code reste assez simple à comprendre.

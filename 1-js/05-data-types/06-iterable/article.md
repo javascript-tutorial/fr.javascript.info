@@ -3,15 +3,9 @@
 
 Les objets *Iterable* sont une généralisation des tableaux. C'est un concept qui permet de rendre n'importe quel objet utilisable dans une boucle `for..of`.
 
-<<<<<<< HEAD
-Bien sûr, les tableaux sont itérables. Mais il existe de nombreux autres objets intégrés, qui sont également itérables. Par exemple, les chaînes sont également itérables. Comme nous le verrons, de nombreux opérateurs et méthodes intégrés s’appuient sur eux.
+Bien sûr, les tableaux sont itérables. Mais il existe de nombreux autres objets intégrés, qui sont également itérables. Par exemple, les chaînes de caractères sont également itérables.
 
-Si un objet représente une collection (liste, ensemble) de quelque chose, alors `for..of` est une excellente syntaxe pour boucler dessus, voyons comment le faire fonctionner.
-=======
-Of course, Arrays are iterable. But there are many other built-in objects, that are iterable as well. For instance, strings are also iterable.
-
-If an object isn't technically an array, but represents a collection (list, set) of something, then `for..of` is a great syntax to loop over it, so let's see how to make it work.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Si un objet n'est pas techniquement un tableau, mais représente une collection (liste, set) de quelque chose, alors `for..of` est une excellente syntaxe pour boucler dessus, voyons comment le faire fonctionner.
 
 
 ## Symbol.iterator
@@ -34,21 +28,12 @@ let range = {
 
 Pour rendre la `range` itérable (et donc laisser `for..of` faire sont travail), nous devons ajouter une méthode à l'objet nommé `Symbol.iterator` (un symbole intégré spécial que pour cela).
 
-<<<<<<< HEAD
 1. Lorsque `for..of` démarre, il appelle cette méthode une fois (ou des erreurs si il n'est pas trouvé). La méthode doit retourner un *iterator* -- un objet avec la méthode `next`.
 2. À partir de là, `for..of` ne fonctionne *qu'avec cet objet retourné*.
 3. Quand `for..of` veut la valeur suivante, il appelle `next()` sur cet objet.
-4. Le résultat de `next()` doit avoir la forme `{done: Boolean, valeur: any}`, où `done = true` signifie que l'itération est terminée, sinon `valeur` doit être la nouvelle valeur.
+4. Le résultat de `next()` doit avoir la forme `{done: Boolean, valeur: any}`, où `done = true` signifie que l'itération est terminée, sinon `value` doit être la nouvelle valeur.
 
-Voici l'implémentation complète de `range`:
-=======
-1. When `for..of` starts, it calls that method once (or errors if not found). The method must return an *iterator* -- an object with the method `next`.
-2. Onward, `for..of` works *only with that returned object*.
-3. When `for..of` wants the next value, it calls `next()` on that object.
-4. The result of `next()` must have the form `{done: Boolean, value: any}`, where `done=true`  means that the iteration is finished, otherwise `value` is the next value.
-
-Here's the full implementation for `range` with remarks:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Voici l'implémentation complète de `range` avec les remarques :
 
 ```js run
 let range = {
@@ -83,17 +68,10 @@ for (let num of range) {
 }
 ```
 
-<<<<<<< HEAD
-Veuillez noter la caractéristique principale des iterables: une séparation importante des intérêts:
+Veuillez noter la fonctionnalité principale des iterables: separation of concerns (séparation des préoccupations).
 
 - Le `range` lui-même n'a pas la méthode `next()`.
-- Au lieu de cela, un autre objet, appelé "itérateur", est créé par l'appel à `range Symbol.iterator]()`, et gère l'ensemble de l'itération.
-=======
-Please note the core feature of iterables: separation of concerns.
-
-- The `range` itself does not have the `next()` method.
-- Instead, another object, a so-called "iterator" is created by the call to `range[Symbol.iterator]()`, and its `next()` generates values for the iteration.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+- Au lieu de cela, un autre objet, appelé "iterator", est créé par l'appel à `range Symbol.iterator]()`, et sa méthode `next()` génère des valeurs pour l'itération.
 
 Ainsi, l'objet itérateur est séparé de l'objet sur lequel il est itéré.
 
@@ -162,13 +140,7 @@ for (let char of str) {
 
 ## Appeler explicitement un itérateur
 
-<<<<<<< HEAD
-Normalement, les internes des iterables sont cachés du code externe. Il y a une boucle `for..of`, qui fonctionne, c'est tout ce que nous avons besoin de savoir.
-
-Mais pour comprendre les choses un peu plus en profondeur, voyons comment créer un itérateur de manière explicite.
-=======
-For deeper understanding let's see how to use an iterator explicitly.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Pour mieux comprendre, voyons comment utiliser explicitement un itérateur.
 
 Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
 
@@ -309,13 +281,8 @@ let str = '𝒳😂𩷶';
 
 alert( slice(str, 1, 3) ); // 😂𩷶
 
-<<<<<<< HEAD
 // les méthodes native ne supporte pas les paires de substitution
 alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution différentes)
-=======
-// the native method does not support surrogate pairs
-alert( str.slice(1, 3) ); // garbage (two pieces from different surrogate pairs)
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```
 
 
