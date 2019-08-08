@@ -8,11 +8,7 @@ Par exemple :
 - `Object.assign(dest, src1, ..., srcN)` -- copie les propriétés de `src1..N` dans `dest`.
 - ... etc.
 
-<<<<<<< HEAD
-Dans ce chapitre, nous allons apprendre à faire de même. Et, plus important encore, comment être à l'aise avec ces fonctions et ces tableaux.
-=======
-In this chapter we'll learn how to do the same. And also, how to pass arrays to such functions as parameters.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Dans ce chapitre, nous allons apprendre à faire de même. Et aussi, comment passer des tableaux à des fonctions telles que des paramètres.
 
 ## Les paramètres Rest `...`
 
@@ -100,13 +96,7 @@ showName("Julius", "Caesar");
 showName("Ilya");
 ```
 
-<<<<<<< HEAD
-Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction, quel que soit leur nombre total.
-
-Et cela fonctionne toujours, nous pouvons l'utiliser aujourd'hui.
-=======
-In old times, rest parameters did not exist in the language, and using `arguments` was the only way to get all arguments of the function. And it still works, we can find it in the old code.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction. Et cela fonctionne toujours, on peut le trouver dans l'ancien code.
 
 Mais l’inconvénient est que, bien que les `arguments` ressemblent à un tableau et qu’ils soient itératifs, ce n’est pas un tableau. Il ne supporte pas les méthodes de tableau, nous ne pouvons donc pas appeler `arguments.map(...)` par exemple.
 
@@ -128,13 +118,8 @@ function f() {
 f(1); // 1
 ```
 
-<<<<<<< HEAD
 Comme nous nous en souvenons, les fonctions fléchées n’ont pas leur propre `this`. Nous savons maintenant qu’ils n’ont pas non plus l’objet spécial `arguments`.
-=======
-As we remember, arrow functions don't have their own `this`. Now we know they don't have the special `arguments` object either.
 ````
-
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## L'opérateur Spread [#spread-operator]
 
