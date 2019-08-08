@@ -90,9 +90,15 @@ let sayHi = function() {
 }*!*;*/!*
 ```
 
+<<<<<<< HEAD
 La réponse est simple :
 - Il n’ya pas besoin de `;` à la fin des blocs de code et des structures de syntaxe qui les utilisent comme `if { ... }`, `for {  }`, `function f {  }` etc.
 - Une Fonction Expression est utilisée dans la déclaration : `let sayHi = …;`, en tant que valeur. Ce n’est pas un bloc de code, mais plutôt une affectation. Le point-virgule `;` est recommandé à la fin des déclarations, quelle que soit la valeur. Donc, le point-virgule ici n'est en aucun cas lié à la Fonction Expression elle même, il termine simplement l'instruction.
+=======
+The answer is simple:
+- There's no need for `;` at the end of code blocks and syntax structures that use them like `if { ... }`, `for {  }`, `function f { }` etc.
+- A Function Expression is used inside the statement: `let sayHi = ...;`, as a value. It's not a code block, but rather an assignment. The semicolon `;` is recommended at the end of statements, no matter what the value is. So the semicolon here is not related to the Function Expression itself, it just terminates the statement.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ````
 
 ## Fonctions callback (de rappel)
@@ -134,7 +140,11 @@ ask("Do you agree?", showOk, showCancel);
 
 Avant d’explorer comment nous pouvons l’écrire de manière beaucoup plus courte, notons que dans le navigateur (et du côté serveur dans certains cas), ces fonctions sont très populaires. La principale différence entre une implémentation réelle et l'exemple ci-dessus est que les fonctions réelles utilisent des moyens plus complexes d'interagir avec l'utilisateur qu'un simple `confirm`. Dans le navigateur, une telle fonction dessine généralement une belle fenêtre de questions. Mais c’est une autre histoire.
 
+<<<<<<< HEAD
 **Les arguments de `ask` s'appellent des *fonctions de rappel* (callback functions) ou simplement des *rappels* (callbacks).**
+=======
+**The arguments `showOk` and `showCancel` of `ask` are called *callback functions* or just *callbacks*.**
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la réponse "non".
 

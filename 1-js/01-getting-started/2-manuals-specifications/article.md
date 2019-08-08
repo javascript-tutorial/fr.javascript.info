@@ -24,6 +24,10 @@ Si vous développez spécifiquement pour le navigateur, il existe d’autres sp�
 
   Cependant, il est souvent préférable d’utiliser une recherche sur Internet. Utilisez simplement "MDN [terme]" dans la requête, par exemple <https://google.com/search?q=MDN+parseInt> pour rechercher la fonction `parseInt`.
 
+<<<<<<< HEAD
+=======
+- **MSDN** – Microsoft manual with a lot of information, including JavaScript (often referred to as JScript). If one needs something specific to Internet Explorer, better go there: <http://msdn.microsoft.com/>.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 - **MSDN** – Manuel Microsoft contenant de nombreuses informations, y compris sur JavaScript (souvent appelé JScript). Si vous avez besoin de quelque chose de spécifique à Internet Explorer, c'est l'endroit qu'il vous faut : <http://msdn.microsoft.com/>.
 
