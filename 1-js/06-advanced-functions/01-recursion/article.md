@@ -326,31 +326,18 @@ En d'autres termes, une entreprise a des départements.
 
 Maintenant, disons que nous voulons une fonction pour obtenir la somme de tous les salaires. Comment peut-on faire ça?
 
-<<<<<<< HEAD
-Une approche itérative n’est pas facile, car la structure n’est pas simple. La première idée peut être de créer une boucle `for` sur company avec une sous-boucle imbriqué sur les départements de premier niveau. Mais ensuite, nous avons besoin de plus de sous-cadres imbriqués pour parcourir le personnel des départements de second niveau, tels que les `sites`. ... Et puis une autre sous-boucle dans ceux des départements de 3ème niveau qui pourraient apparaître dans le futur? Faut-il s'arrêter au niveau 3 ou faire 4 niveaux de boucles? Si nous mettons 3-4 sous-boucles imbriqués dans le code pour traverser un seul objet, cela devient plutôt moche.
-=======
-An iterative approach is not easy, because the structure is not simple. The first idea may be to make a `for` loop over `company` with nested subloop over 1st level departments. But then we need more nested subloops to iterate over the staff in 2nd level departments like `sites`... And then another subloop inside those for 3rd level departments that might appear in the future? If we put 3-4 nested subloops in the code to traverse a single object, it becomes rather ugly.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Une approche itérative n’est pas facile, car la structure n’est pas simple. La première idée peut être de créer une boucle `for` sur `company` avec une sous-boucle imbriqué sur les départements de premier niveau. Mais ensuite, nous avons besoin de plus de sous-boucles imbriquées pour parcourir le personnel des départements de second niveau, tels que les `sites`... Et puis une autre sous-boucle dans ceux des départements de 3ème niveau qui pourraient apparaître dans le futur ? Si nous mettons 3-4 sous-boucles imbriquées dans le code pour traverser un seul objet, cela devient plutôt moche.
 
 Essayons la récursion.
 
 Comme nous pouvons le constater, lorsque notre fonction demande à un département de faire la somme, il existe deux cas possibles:
 
-<<<<<<< HEAD
-1. S’il s’agit d’un "simple" département avec un *éventail de personnes*, nous pouvons alors additionner les salaires en une simple boucle.
-2. Ou bien *c'est un objet avec `N` sous-départements * -- alors nous pouvons faire des appels` N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
+1. S’il s’agit d’un "simple" département avec un *tableau* de personnes, nous pouvons alors additionner les salaires en une simple boucle.
+2. Ou bien *c'est un objet* avec `N` sous-départements -- alors nous pouvons faire des appels` N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
 
-Le (1) est la base de la récursion, le cas trivial.
+Le premier cas est la base de la récursivité, le cas trivial, lorsque nous obtenons un tableau.
 
-Le (2) est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la séparation se terminera en (1).
-=======
-1. Either it's a "simple" department with an *array* of people -- then we can sum the salaries in a simple loop.
-2. Or it's *an object* with `N` subdepartments -- then we can make `N` recursive calls to get the sum for each of the subdeps and combine the results.
-
-The 1st case is the base of recursion, the trivial case, when we get an array.
-
-The 2nd case when we gen an object is the recursive step. A complex task is split into subtasks for smaller departments. They may in turn split again, but sooner or later the split will finish at (1).
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Le 2ème cas où nous générons un objet est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la scission se terminera en (1).
 
 L'algorithme est probablement encore plus facile à lire à partir du code:
 
