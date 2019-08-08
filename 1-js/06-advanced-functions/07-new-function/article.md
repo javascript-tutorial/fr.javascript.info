@@ -46,15 +46,9 @@ C'est utilisé dans des cas très spécifiques, comme lorsque nous recevons du c
 
 ## Fermeture
 
-<<<<<<< HEAD
-Normalement, une fonction se souvient du lieu de sa naissance dans la propriété spéciale `[[Environment]]`. Cette propriété fait référence à l'environnement lexical à partir duquel la fonction a été créée.
+Normalement, une fonction se souvient du lieu de sa naissance dans la propriété spéciale `[[Environment]]`. Elle fait référence à l'environnement lexical à partir duquel la fonction a été créée (nous avons couvert cela dans le chapitre <info:closure>).
 
-Mais quand une fonction est créée en utilisant `new Function`, son `[[Environment]]` fait référence non pas à l'environnement lexical actuel, mais à l'environnement global.
-=======
-Usually, a function remembers where it was born in the special property `[[Environment]]`. It references the Lexical Environment from where it's created  (we covered that in the chapter <info:closure>).
-
-But when a function is created using `new Function`, its `[[Environment]]` is set to reference not the current Lexical Environment, but the global one.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Mais quand une fonction est créée en utilisant `new Function`, son `[[Environment]]` est configuré pour faire référence non pas à l'environnement lexical actuel, mais à l'environnement global.
 
 Donc, une telle fonction n'a pas accès aux variables externes, mais uniquement aux variables globales.
 
@@ -104,13 +98,9 @@ Donc, si `new Function` avait accès aux variables externes, il serait impossibl
 
 **Si `new Function` avait accès aux variables externes, elle aurait des problèmes avec les minifiers.**
 
-<<<<<<< HEAD
-Pour passer quelque chose à une fonction créée par `new Function`, nous devons utiliser ses arguments.
-=======
-Besides, such code would be architecturally bad and prone to errors.
+En outre, ce code serait mauvais sur le plan architectural et sujet aux erreurs.
 
-To pass something to a function, created as `new Function`, we should use its arguments.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Pour passer quelque chose à une fonction créée par `new Function`, nous devons utiliser ses arguments.
 
 ## Résumé
 
@@ -122,11 +112,7 @@ let func = new Function ([arg1, arg2, ...argN], functionBody);
 
 Pour des raisons historiques, les arguments peuvent également être fournis sous forme de liste séparée par des virgules.
 
-<<<<<<< HEAD
-Ces trois lignes ont la même signification:
-=======
-These three declarations mean the same:
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+Ces trois déclarations signifient la même chose :
 
 ```js
 new Function('a', 'b', 'return a + b'); // syntax de base
@@ -134,8 +120,4 @@ new Function('a,b', 'return a + b'); // séparés par des virgules
 new Function('a , b', 'return a + b'); // séparés par des virgules et espacés
 ```
 
-<<<<<<< HEAD
-Pour les fonctions créées avec `new Function`, leur `[[Environment]]` fait référence à l'environnement lexical global, pas à l'environnement extérieur.  Ainsi, ils ne peuvent pas utiliser de variables externes. Mais cela est une bonne chose, parce que cela nous évite des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.
-=======
-Functions created with `new Function`, have `[[Environment]]` referencing the global Lexical Environment, not the outer one. Hence, they cannot use outer variables. But that's actually good, because it insures us from errors. Passing parameters explicitly is a much better method architecturally and causes no problems with minifiers.
->>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
+fonctions créées avec `new Function` ont leur `[[Environment]]` qui fait référence à l’environnement lexical global, et non l’environnement externe. Par conséquent, elles ne peuvent pas utiliser de variables externes. Mais c’est bien, parce que cela nous protège des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.
