@@ -13,11 +13,11 @@ Il existe aussi `Map` (les dictionnaires de données) et `Set` (les ensembles) q
 
 [Map](mdn:js/Map) is a collection of keyed data items, just like an `Object`. But the main difference is that `Map` allows keys of any type.
 
-[Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) peut être vu comme un `Object` car elle permet de stocker plusieurs éléments sous la forme de clés valeurs. A la différence que les clés peuvent être de n'importe qu'elle type.
+Une [Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) permet, comme pour un `Object`, de stocker plusieurs éléments sous la forme de clés valeurs. Sauf que cette fois, les clés peuvent être de n'importe qu'elle type.
 
 Methods and properties are:
 
-Les méthodes et les propriétés sont:
+Voici les méthodes et les propriétés d'une `Map` :
 
 - `new Map()` -- creates the map.
 - `new Map()` -- instancie la map.
@@ -28,7 +28,7 @@ Les méthodes et les propriétés sont:
 - `map.has(key)` -- returns `true` if the `key` exists, `false` otherwise.
 - `map.has(key)` -- retourne `true` si `key` existe, sinon `false`.
 - `map.delete(key)` -- removes the value by the key.
-- `map.delete(key)` -- supprime la valeur associer à `key`
+- `map.delete(key)` -- supprime la valeur associée à `key`
 - `map.clear()` -- removes everything from the map.
 - `map.clear()` -- supprime tout le contenu de la map.
 - `map.size` -- returns the current element count.
@@ -48,7 +48,10 @@ map.set(true, 'bool1'); // une clé de type booléenne
 // remember the regular Object? it would convert keys to string
 // souvenez-vous, dans un `Object`, les clés sont converties en chaîne de caractères
 // Map keeps the type, so these two are different:
-// alors que `Map` conserve le type d'origine de la clé, c'est pourquoi les deux appels suivants retournent des valeurs différentes:
+/* 
+  alors que `Map` conserve le type d'origine de la clé, 
+  c'est pourquoi les deux appels suivants retournent des valeurs différentes:
+*/
 alert( map.get(1)   ); // 'num1'
 alert( map.get('1') ); // 'str1'
 
@@ -237,20 +240,37 @@ recipeMap.forEach( (value, key, map) => {
 
 A `Set` is a special type collection - "set of values" (without keys), where each value may occur only once.
 
+`Set` est une liste sans doublons.
+
 Its main methods are:
 
+Ses principales méthodes sont :
+
 - `new Set(iterable)` -- creates the set, and if an `iterable` object is provided (usually an array), copies values from it into the set.
+- `new Set(iterable)` -- créé un `set`, si un `iterable` (la plupart du temps, un tableau) est passé en paramètre, ses valeurs sont copiées dans le `set`
 - `set.add(value)` -- adds a value, returns the set itself.
+- `set.add(value)` -- ajoute l'élément `value` et retourne le `set`.
 - `set.delete(value)` -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
+- `set.delete(value)` -- supprime l'élément `value` et retourne `true` si la valeur existait au moment de l'appel sinon `false`.
 - `set.has(value)` -- returns `true` if the value exists in the set, otherwise `false`.
+- `set.has(value)` -- retourne `true` si la valeur existe dans le `set`, sinon faux.
 - `set.clear()` -- removes everything from the set.
+- `set.clear()` -- supprime tout le contenu du `set`.
 - `set.size` -- is the elements count.
+- `set.size` -- le nombre d'éléments dans le tableau.
 
 The main feature is that repeated calls of `set.add(value)` with the same value don't do anything. That's the reason why each value appears in a `Set` only once.
 
+Ce qu'il faut surtout savoir c'est que lorsque l'on appelle plusieurs fois `set.add(value)` avec la même valeur, la méthode ne fait rien. 
+C'est pourquoi chaque valeur est unique dans un `Set`.
+
 For example, we have visitors coming, and we'd like to remember everyone. But repeated visits should not lead to duplicates. A visitor must be "counted" only once.
 
+Par exemple, nous souhaitons nous souvenir de tous nos visiteurs. Mais chaque visiteurs doit être unique.
+
 `Set` is just the right thing for that:
+
+`Set` est exactement ce qu'il nous faut :
 
 ```js run
 let set = new Set();
@@ -260,6 +280,8 @@ let pete = { name: "Pete" };
 let mary = { name: "Mary" };
 
 // visits, some users come multiple times
+
+// visites, certains utilisateurs viennent plusieurs fois
 set.add(john);
 set.add(pete);
 set.add(mary);
@@ -267,14 +289,20 @@ set.add(john);
 set.add(mary);
 
 // set keeps only unique values
+
+// set conserve une fois chaque visiteurs
 alert( set.size ); // 3
 
 for (let user of set) {
-  alert(user.name); // John (then Pete and Mary)
+  alert(user.name); // John (puis Pete et Mary)
 }
 ```
 
 The alternative to `Set` could be an array of users, and the code to check for duplicates on every insertion using [arr.find](mdn:js/Array/find). But the performance would be much worse, because this method walks through the whole array checking every element. `Set` is much better optimized internally for uniqueness checks.
+
+Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque insertion que l'élément n'existe pas en utilisant 
+[arr.find](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find). Cependant les performances auraient été 
+moins bonnes car cette méthode parcours chaque élément du tableau. `Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
 
 ## Iteration over Set
 
