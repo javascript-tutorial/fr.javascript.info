@@ -545,19 +545,11 @@ Heureusement, tous les navigateurs modernes (IE10- nécessite la bibliothèque s
 
 Elle fournit une méthode spéciale pour comparer des chaînes de caractères dans différentes langues, en respectant leurs règles.
 
-<<<<<<< HEAD
-L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier indiquant si `str` vient avant, après ou est équivalent à `str2` selon les règles du language :
+L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier indiquant si `str` est inférieur, égal ou supérieur à `str2` selon les règles du langage :
 
-- Renvoie un nombre négatif si `str` est inférieur à `str2`, c'est-à-dire que `str` apparaît avant `str2`.
-- Renvoie un nombre positif si `str` est supérieur à `str2`, c'est-à-dire que `str` apparaît après `str2`.
+- Renvoie un nombre négatif si `str` est inférieur à `str2`
+- Renvoie un nombre positif si `str` est supérieur à `str2`
 - Renvoie `0` s'ils sont équivalents.
-=======
-The call [str.localeCompare(str2)](mdn:js/String/localeCompare) returns an integer indicating whether `str` is less, equal or greater than `str2` according to the language rules:
-
-- Returns a negative number if `str` is less than `str2`.
-- Returns a positive number if `str` is greater than `str2`.
-- Returns `0` if they are equivalent.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 
 Par exemple :

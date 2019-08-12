@@ -19,11 +19,7 @@ Par exemple
 ...
 ```
 
-<<<<<<< HEAD
-Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt. À l'avenir, notons que `"use strict"` peut être placé au début d'une fonction (pour la plupart des types de fonctions) au lieu du script entier. Le mode strict est alors activé uniquement dans cette fonction. Mais généralement, les gens l'utilisent pour tout le script.
-=======
-We will learn functions (a way to group commands) soon. Looking ahead, let's note that `"use strict"` can be put at the beginning of the function body instead of the whole script. Doing that enables strict mode in that function only. But usually, people use it for the whole script.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt. A l'avenir, notons que "use strict" peut être placé au début du corps de la fonction au lieu de l'intégralité du script. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
 
 
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"

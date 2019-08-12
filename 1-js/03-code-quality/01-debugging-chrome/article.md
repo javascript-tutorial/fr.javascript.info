@@ -2,31 +2,17 @@
 
 Avant d’écrire un code plus complexe, parlons de débogage.
 
-<<<<<<< HEAD
-Tous les navigateurs modernes et la plupart des environnements prennent en charge le "débogage" -- une interface utilisateur spéciale dans les outils de développement qui facilite la recherche et la correction des erreurs. Elle permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
-=======
-[Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that enable debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+Le [Debugging](https://en.wikipedia.org/wiki/Debugging) est le processus de recherche et de correction des erreurs dans un script. Tous les navigateurs modernes et la plupart des autres environnements prennent en charge les outils de débogage - une interface utilisateur spéciale dans les outils de développement facilitant grandement le débogage. Cela permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
 
 Nous allons utiliser Chrome ici, car il possède suffisamment de fonctionnalités, la plupart des autres navigateurs utilisent un processus similaire.
 
-<<<<<<< HEAD
-## Le volet "sources"
-=======
-## The "Sources" panel
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+## Le volet "Sources"
 
 Votre version de Chrome peut sembler un peu différente, mais vous devez tout de même savoir ce qui est là.
 
-<<<<<<< HEAD
 - Ouvrez la [page d'exemple](debugging/index.html) dans Chrome.
 - Activer les outils de développement avec `key:F12` (Mac: `key:Cmd+Opt+I`).
-- Séléctionner le volet `sources`.
-=======
-- Open the [example page](debugging/index.html) in Chrome.
-- Turn on developer tools with `key:F12` (Mac: `key:Cmd+Opt+I`).
-- Select the `Sources` panel.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+- Séléctionner le volet `Sources`.
 
 Voici ce que vous devriez voir si vous le faites pour la première fois :
 
@@ -70,19 +56,11 @@ Un *breakpoint* est un point dans le code où le débogueur mettra automatiqueme
 
 Pendant que le code est en pause, nous pouvons examiner les variables actuelles, exécuter des commandes dans la console, etc. En d'autres termes, nous pouvons le déboguer.
 
-<<<<<<< HEAD
-Nous pouvons toujours trouver une liste de points d'arrêt dans le volet de droite. C’est utile lorsque nous avons plusieurs points d’arrêt dans divers fichiers. Ça permet de :
-- Passez rapidement au point d'arrêt du code (en cliquant dessus dans le volet de droite).
-- Désactivez temporairement le point d'arrêt en le décochant.
-- Supprimez le point d'arrêt en cliquant avec le bouton droit de la souris et en sélectionnant Supprimer.
+Nous pouvons toujours trouver une liste de points d'arrêt dans le volet de droite. C’est utile lorsque nous avons plusieurs points d’arrêt dans divers fichiers. Ça nous permet de :
+- Sauter rapidement au point d'arrêt dans le code (en cliquant dessus dans le volet de droite).
+- Désactiver temporairement le point d'arrêt en le décochant.
+- Supprimer le point d'arrêt en cliquant avec le bouton droit de la souris et en sélectionnant Supprimer.
 - … Et ainsi de suite
-=======
-We can always find a list of breakpoints in the right panel. That's useful when we have many breakpoints in various files. It allows us to:
-- Quickly jump to the breakpoint in the code (by clicking on it in the right panel).
-- Temporarily disable the breakpoint by unchecking it.
-- Remove the breakpoint by right-clicking and selecting Remove.
-- ...And so on.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```smart header="Points d'arrêt conditionnels"
 Un *clic droit* sur le numéro de ligne permet de créer un point d'arrêt conditionnel. Cela ne se déclenche que lorsque l'expression donnée est vraie.
@@ -140,11 +118,7 @@ Veuillez ouvrir les menus déroulants d’information à droite (indiqués par d
 
 Il est maintenant temps de *tracer* le script.
 
-<<<<<<< HEAD
-Il y a des boutons pour cela en haut du volet de droite. Voyons cela.
-=======
-There are buttons for it at the top of the right panel. Let's engage them.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+Il y a des boutons pour cela en haut du volet de droite. Actionnons-les.
 
 <span class="devtools" style="background-position:-7px -76px"></span> -- continuer l'exécution, raccourci clavier `key:F8`.
 : Reprend l'exécution. S'il n'y a pas de points d'arrêt supplémentaires, l'exécution continue et le débogueur perd le contrôle.
@@ -153,11 +127,7 @@ There are buttons for it at the top of the right panel. Let's engage them.
 
     ![](chrome-sources-debugger-trace-1.svg)
 
-<<<<<<< HEAD
     L'exécution a repris, atteint un autre point d'arrêt à l'intérieur de `say()` et s'y est arrêtée. Jetez un coup d’œil à "Call stack" à droite. Il a augmenté d'un appel supplémentaire. Nous sommes à l'intérieur `say()` maintenant.
-=======
-    The execution has resumed, reached another breakpoint inside `say()` and paused there. Take a look at the "Call Stack" at the right. It has increased by one more call. We're inside `say()` now.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 <span class="devtools" style="background-position:-137px -76px"></span> -- fait une étape (exécute la commande next), mais n'entre pas dans la fonction, touche de raccourci `key:F10`.
 : Si nous cliquons dessus maintenant, une `alert` sera affichée. L'important est que l'`alert` puisse être n'importe quelle fonction, l'exécution "saute par dessus", en sautant les éléments internes de la fonction.
@@ -193,11 +163,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-<<<<<<< HEAD
-Les utilisateurs normaux ne voient pas cette sortie, elle se trouve dans la console. Pour la voir, ouvrez l'onglet Console des outils de développement ou appuyez sur `key:Esc` lorsque vous vous trouvez dans un autre onglet : la console en bas s'ouvre.
-=======
-Regular users don't see that output, it is in the console. To see it, either open the Console panel of developer tools or press `key:Esc` while in another panel: that opens the console at the bottom.
->>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
+Les internautes ne voient pas cette sortie, elle se trouve dans la console. Pour la voir, ouvrez l'onglet Console des outils de développement ou appuyez sur `key:Esc` lorsque vous vous trouvez dans un autre onglet : la console en bas s'ouvre.
 
 Si nous avons assez de logging dans notre code, nous pouvons voir ce qui se passe dans les enregistrements, sans le débogueur.
 
