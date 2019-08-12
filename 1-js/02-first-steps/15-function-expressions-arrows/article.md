@@ -22,8 +22,12 @@ let sayHi = function() {
 
 Ici, la fonction est créée et attribuée explicitement à la variable, comme toute autre valeur. Quelle que soit la définition de la fonction, il ne s’agit que d’une valeur stockée dans la variable `sayHi`.
 
+<<<<<<< HEAD
 
 La signification de ces exemples de code est la même : "créer une fonction et la placer dans la variable `sayHi`".
+=======
+The meaning of these code samples is the same: "create a function and put it into the variable `sayHi`".
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Nous pouvons même afficher cette valeur en utilisant `alert` :
 
@@ -67,13 +71,19 @@ Voici ce qui se passe ci-dessus en détail :
 Notez que nous aurions aussi pu utiliser une Expression de Fonction pour déclarer `sayHi`, à la première ligne :
 
 ```js
-let sayHi = function() { ... };
+let sayHi = function() {
+  alert( "Hello" );
+};
 
 let func = sayHi;
 // ...
 ```
 
+<<<<<<< HEAD
 Tout fonctionnerait de la même manière. Ce qui se passe est encore plus évident, non ?
+=======
+Everything would work the same.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 
 ````smart header="Pourquoi y a-t-il un point-virgule à la fin ?"
@@ -132,11 +142,19 @@ function showCancel() {
 ask("Do you agree?", showOk, showCancel);
 ```
 
+<<<<<<< HEAD
 Avant d’explorer comment nous pouvons l’écrire de manière beaucoup plus courte, notons que dans le navigateur (et du côté serveur dans certains cas), ces fonctions sont très populaires. La principale différence entre une implémentation réelle et l'exemple ci-dessus est que les fonctions réelles utilisent des moyens plus complexes d'interagir avec l'utilisateur qu'un simple `confirm`. Dans le navigateur, une telle fonction dessine généralement une belle fenêtre de questions. Mais c’est une autre histoire.
+=======
+In practice, such functions are quite useful. The major difference between a real-life `ask` and the example above is that real-life functions use more complex ways to interact with the user than a simple `confirm`. In the browser, such function usually draws a nice-looking question window. But that's another story.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 **Les arguments `showOk` et `showCancel` de `ask` s'appellent des *fonctions callback* (fonctions de rappel) ou simplement des *callbacks* (rappels).**
 
+<<<<<<< HEAD
 L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la réponse "non".
+=======
+The idea is that we pass a function and expect it to be "called back" later if necessary. In our case, `showOk` becomes the callback for "yes" answer, and `showCancel` for "no" answer.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Nous pouvons utiliser les Expressions de Fonction pour écrire la même fonction mais plus courte :
 
@@ -155,14 +173,23 @@ ask(
 */!*
 ```
 
+<<<<<<< HEAD
 
 Ici, les fonctions sont déclarées directement dans l'appel `ask(...)`. Ils n'ont pas de nom et sont donc appelés *anonymes*. De telles fonctions ne sont pas accessibles en dehors de `ask` (car elles ne sont pas affectées à des variables), mais c’est exactement ce que nous voulons ici.
+=======
+Here, functions are declared right inside the `ask(...)` call. They have no name, and so are called *anonymous*. Such functions are not accessible outside of `ask` (because they are not assigned to variables), but that's just what we want here.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Ce genre de code apparaît dans nos scripts très naturellement, c’est dans l’esprit de JavaScript.
 
+<<<<<<< HEAD
 
 ```smart header="Une fonction est une valeur représentant une \"action\""
 Des valeurs régulières telles que des chaînes de caractères ou des nombres représentent des *données*.
+=======
+```smart header="A function is a value representing an \"action\""
+Regular values like strings or numbers represent the *data*.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Une fonction peut être perçue comme une *action*.
 
@@ -456,7 +483,11 @@ alert( sum(1, 2) ); // 3
 
 Ici, nous avons félicité les fonctions fléchées pour leur brièveté. Mais ce n'est pas tout! Les fonctions fléchées ont d'autres caractéristiques intéressantes. Nous y reviendrons plus tard dans le chapitre <info:arrow-functions>.
 
+<<<<<<< HEAD
 Pour l'instant, nous pouvons déjà les utiliser pour des actions d'une seule ligne et des rappels.
+=======
+For now, we can already use arrow functions for one-line actions and callbacks.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 ```
 
 ## Résumé
@@ -467,8 +498,12 @@ Pour l'instant, nous pouvons déjà les utiliser pour des actions d'une seule li
 - Les déclarations de fonctions sont traitées avant l'exécution du bloc de code. Elles sont visibles partout dans le bloc.
 - Les expressions de fonction sont créées lorsque le flux d’exécution les atteint.
 
+<<<<<<< HEAD
 
 Dans la plupart des cas, lorsque nous devons déclarer une fonction, une déclaration de fonction est préférable car elle est visible avant la déclaration elle-même. Cela nous donne plus de flexibilité dans l'organisation du code et il est généralement plus lisible.
+=======
+In most cases when we need to declare a function, a Function Declaration is preferable, because it is visible prior to the declaration itself. That gives us more flexibility in code organization, and is usually more readable.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Nous devrions donc utiliser une expression de fonction uniquement lorsqu'une déclaration de fonction n'est pas adaptée à la tâche. Nous en avons vu quelques exemples dans ce chapitre et nous en verrons davantage à l’avenir.
 
