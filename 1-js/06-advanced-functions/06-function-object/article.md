@@ -282,7 +282,11 @@ let sayHi = function(who) {
 };
 ```
 
+<<<<<<< HEAD
 Le problème avec ce code est que la valeur de `sayHi` peut changer. La fonction peut aller à une autre variable et le code va commencer à donner des erreurs:
+=======
+The problem with that code is that `sayHi` may change in the outer code. If the function gets assigned to another variable instead, the code will start to give errors:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```js run
 let sayHi = function(who) {

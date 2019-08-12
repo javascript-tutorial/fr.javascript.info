@@ -53,7 +53,11 @@ Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous 
 ...
 ```
 
+<<<<<<< HEAD
 La directive doit être au sommet d'un script ou au début d'une fonction.
+=======
+The directive must be at the top of a script or at the beginning of a function body.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible". Nous préférons généralement le comportement moderne.
 
@@ -248,9 +252,13 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
     };
     ```
 
+<<<<<<< HEAD
     Les expressions de fonction peuvent avoir un nom, comme `sum = function name(a, b)`, mais ce `name` n'est visible qu'à l'intérieur de cette fonction.
 
 3. Fonctions fléchées :
+=======
+3. Arrow functions:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
     ```js
     // expression à droite
@@ -274,6 +282,7 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 - Les paramètres peuvent avoir des valeurs par défaut : `function sum(a = 1, b = 2) {...}`.
 - Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est renvoyée, le résultat est `undefined`.
 
+<<<<<<< HEAD
 
 | Fonction Déclaration                     | Fonction Expression                                    |
 |------------------------------------------|--------------------------------------------------------|
@@ -281,6 +290,9 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 |                                          | peut avoir un nom, visible uniquement dans la fonction |
 
 Plus : voir <info:function-basics>, <info:function-expressions-arrows>.
+=======
+Details: see <info:function-basics>, <info:function-expressions-arrows>.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ## Plus à venir
 

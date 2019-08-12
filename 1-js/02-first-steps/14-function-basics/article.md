@@ -212,8 +212,15 @@ function showMessage(from, text = anotherFunction()) {
 
 En JavaScript, un paramètre par défaut est évalué chaque fois que la fonction est appelée sans le paramètre correspondant. Dans l'exemple ci-dessus, `anotherFunction ()` est appelé à chaque fois que `showMessage ()` est appelé sans le paramètre `text`. 
 
+<<<<<<< HEAD
 Cela contraste avec d'autres langages tels que Python, où les paramètres par défaut ne sont évalués qu'une seule fois lors de l'interprétation initiale.
 
+=======
+```smart header="Evaluation of default parameters"
+In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter.
+
+In the example above, `anotherFunction()` is called every time `showMessage()` is called without the `text` parameter.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 ```
 
 ````smart header="Paramètres par défaut à l'ancienne"
