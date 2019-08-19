@@ -3,19 +3,11 @@
 
 Par spécification, les clés de propriété d'objet peuvent être de type chaîne de caractères ou de type symbole. Pas des nombres, pas des booléens, uniquement des chaînes de caractères ou des symboles.
 
-<<<<<<< HEAD
 Jusqu'à présent, nous n'avons vu que des chaînes de caractères. Voyons maintenant les avantages que les symboles peuvent nous apporter.
-=======
-Till now we've been using only strings. Now let's see the benefits that symbols can give us.
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ## Symboles
 
-<<<<<<< HEAD
-La valeur “Symbol” représente un identifiant unique.
-=======
-A "symbol" represents a unique identifier.
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+Un “Symbol” représente un identifiant unique.
 
 Une valeur de ce type peut être créée en utilisant `Symbol()` :
 
@@ -57,27 +49,16 @@ let id = Symbol("id");
 alert(id); // TypeError: Impossible de convertir une valeur de symbole en chaîne de caractères
 */!*
 ```
-C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent pas être convertis les uns en les autres, même occasionnellement.
+C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent pas être convertis les uns en les autres. 
 
-<<<<<<< HEAD
 Si nous voulons vraiment afficher un symbole, nous devons appeler `.toString()` dessus, comme ici :
-=======
-That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not occasionally convert one into another.
-
-If we really want to show a symbol, we need to explicitly call `.toString()` on it, like here:
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 ```js run
 let id = Symbol("id");
 *!*
 alert(id.toString()); // Symbol(id), maintenant ça marche
 */!*
 ```
-<<<<<<< HEAD
-Ou récupérez la propriété  `symbol.description` pour obtenir la description uniquement :
-=======
-
-Or get `symbol.description` property to show the description only:
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+Ou récupérer la propriété  `symbol.description` pour afficher la description uniquement :
 ```js run
 let id = Symbol("id");
 *!*
@@ -91,11 +72,7 @@ alert(id.description); // id
 
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
 
-<<<<<<< HEAD
-Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers et ne possèdent pas de champ` id`. Nous aimerions leur ajouter des identificateurs.
-=======
-For instance, if we're working with `user` objects, that belong to a third-party code. We'd like to add identifiers to them.
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers, nous aimerions leur ajouter des identificateurs.
 
 Utilisons une clé symbole pour cela :
 
@@ -106,14 +83,9 @@ let user = { // belongs to another code
 
 let id = Symbol("id");
 
-<<<<<<< HEAD
-user[id] = "ID Value";
-alert( user[id] ); // nous pouvons accéder aux données en utilisant le symbole comme clé
-=======
 user[id] = 1;
 
-alert( user[id] ); // we can access the data using the symbol as the key
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+alert( user[id] ); // nous pouvons accéder aux données en utilisant le symbole comme clé
 ```
 
 Quel est l’avantage de l’utilisation de `Symbol("id")` sur une chaîne de caractères `"id"` ?
@@ -141,23 +113,13 @@ Notez que si nous utilisions une chaîne de caractère `"id"` au lieu d'un symbo
 ```js run
 let user = { name: "John" };
 
-<<<<<<< HEAD
-// notre script utilise la propriété "id"
-user.id = "ID Value";
-
-// ... si plus tard, un autre script utilise "id" pour ses besoins …
-
-user.id = "Their id value"
-// boom! écrasé! on ne voulait pas nuire au collègue, mais on l'a fait !
-=======
-// Our script uses "id" property
+// Notre script utilise la propriété "id"
 user.id = "Our id value";
 
-// ...Another script also wants "id" for its purposes...
+// ...Un autre script veut aussi "id" pour ses besoins …
 
 user.id = "Their id value"
-// Boom! overwritten by another script!
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+// Boom! écrasé par un autre script!
 ```
 
 ### Symboles dans un littéral
@@ -172,11 +134,7 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
-<<<<<<< HEAD
-  [id]: 123 // pas seulement "id: 123"
-=======
-  [id]: 123 // not "id: 123"
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+  [id]: 123 // pas "id: 123"
 */!*
 };
 ```
