@@ -310,8 +310,12 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
+<<<<<<< HEAD
     // Et si je veux sortir d'ici à Done (ci-dessous) ?
 
+=======
+    // what if we want to exit from here to Done (below)?
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
   }
 }
 

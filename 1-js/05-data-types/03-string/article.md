@@ -368,8 +368,13 @@ alert( "Hello".includes("Bye") ); // false
 Le deuxième argument optionnel de `str.includes` est la position de départ de la recherche :
 
 ```js run
+<<<<<<< HEAD
 alert( "Midget".includes("id") ); // true
 alert( "Midget".includes("id", 3) ); // false, à partir de la position 3 il n'y a pas "id"
+=======
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 ```
 
 Les méthodes [str.startsWith](mdn:js/String/startsWith) et [str.endsWith](mdn:js/String/endsWith) font exactement ce qu'elle disent :
