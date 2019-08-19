@@ -1,11 +1,5 @@
-As we can see from HTML/CSS, the slider is a `<div>` with a colored background, that contains a runner -- another `<div>` with `position:relative`.
+Comme nous pouvons le voir avec HTML / CSS, le curseur est un `<div>` avec un fond coloré, qui contient un executeur - une autre `<div>` avec `position: relative`.
 
-<<<<<<< HEAD
-Nous avons un glisser-déposer horizontal ici.
+Pour positionner l'executeur , nous utilisons `position: relative`, afin de fournir les coordonnées relatives à son parent, ici c'est plus pratique que` position: absolute`.
 
-Pour positionner l’élément nous utilisons  `position:relative` et les coordonnées relativement à la barre pour le pouce. Ici c'est plus convenable que la propriété `position:absolute`.
-=======
-To position the runner we use `position:relative`, to provide the coordinates relative to its parent, here it's more convenient here than `position:absolute`.
-
-Then we implement horizontal-only Drag'n'Drop with limitation by width.
->>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
+Ensuite, nous implémentons un glisser-déposer horizontal uniquement avec une limitation par la largeur.
