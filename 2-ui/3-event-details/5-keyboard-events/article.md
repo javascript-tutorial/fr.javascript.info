@@ -93,9 +93,9 @@ D'autre part, il existe un problème avec `event.code`. Selon la présentation d
 
 Par exemple, voici la présentation du clavier Américain ("QWERTY") et Allemand ("QWERTZ")  (avec la permission de Wikipedia):
 
-![](us-layout.png)
+![](us-layout.svg)
 
-![](german-layout.png)
+![](german-layout.svg)
 
 Pour la même touche, le clavier Américain a un "Z", tandis que celui Allemand a un "Y" (les lettres sont échanges).
 

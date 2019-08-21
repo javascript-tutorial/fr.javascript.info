@@ -10,7 +10,7 @@ Une chose à aider est le bon style de code.
 
 Voici un aide-mémoire avec quelques règles suggérées (plus de détails ci-dessous) :
 
-![](code-style.png)
+![](code-style.svg)
 <!--
 ```js
 function pow(x, n) {

@@ -99,7 +99,7 @@ Nous pouvons facilement saisir le concept d'une "variable" si nous l'imaginons c
 
 Par exemple, la variable message peut être imaginé comme une boîte étiquetée "message" avec la valeur "Hello!" à l'intérieur :
 
-![](variable.png)
+![](variable.svg)
 
 Nous pouvons mettre n'importe quelle valeur dans la boîte.
 
@@ -117,7 +117,7 @@ alert(message);
 
 Lorsque la valeur est modifiée, les anciennes données sont supprimées de la variable :
 
-![](variable-change.png)
+![](variable-change.svg)
 
 Nous pouvons également déclarer deux variables et copier des données de l'une à l'autre.
 

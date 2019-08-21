@@ -109,9 +109,12 @@ Donc si nous voulons que les usagers de tous les systèmes d’Exploitations soi
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```
 
+
 ```warn header="Il y a aussi les appareils mobiles"
 
-Les combinaisons du clavier sont tout aussi bonnes comme ajout au processus de travail. De sorte que si un visiteur a un clavier—cela fonctionne. Et si votre appareil n'en possède pas—qu’il possède un autre moyen d’effectuer la même chose.
+Les combinaisons de clavier sont un bon ajout au flux de travail. Tant que le visiteur a un
+  clavier - ça fonctionne. Mais si leur appareil n’en a pas - alors il devrait y avoir un autre moyen de faire de même.
+
 ```
 
 ## Cordonnées: clientX/Y, pageX/Y
@@ -121,7 +124,9 @@ Tous les évènements de souris ont des cordonnées en deux types :
 1. Window-relative: `clientX` et `clientY`.
 2. Document-relative: `pageX` et `pageY`.
 
-Par exemple, si nous avons une fenêtre de taille 500x500, et la souris est au coin gauche en haut, alors `clientX` et  `clientY` ont une valeur de `0`. Et si la souris est au centre, alors `clientX` et  `clientY` ont une valeur de  `250`, quel que soit la position dans le document il se trouve. Et ils ont une position similaire à`position:fixed`.
+
+Par exemple, si nous avons une fenêtre de taille 500x500, et que la souris est dans le coin supérieur gauche, alors `clientX` et  `clientY` ont une valeur de `0`. Et si la souris est au centre, alors `clientX` et  `clientY` ont une valeur de  `250`, peu importe sa position dans le document. Et ils ont une position similaire à`position:fixed`.
+
 
 ````online
 Glisse la souris à l’intérieur des champs de saisie texte pour voir les `clientX/clientY` (C’est dans l `iframe`, ainsi les cordonnées sont relatives à cet `iframe`):
@@ -134,12 +139,13 @@ Les cordonnées relatives au document sont comptés à partir du coin gauche en 
 Les coordonnées `pageX`, `pageY` sont similaires à `position:absolute` au niveau document.
 Vous pouvez lire plus à propos des cordonnées dans le chapitre <info:coordinates>.
 
-## Aucune sélection au clic mousedown
+## Désactiver la sélection au clic
 
-Les clics de souris ont un effet secondaire qui peut être perturbant. Le double clic  sélectionne le texte.
+Les clics de souris ont un effet secondaire qui peut être perturbant dans certaine interface : le double clic  sélectionne le texte.
 
-Si nous voulons gérer les évènements clic, alors la sélection en   "extra" ne rend pas bien.
+Si nous voulons gérer nous-même les évènements au clic, alors la sélection en "extra" n'est pas terrible.
 Par exemple, un double-clic sur le texte en bas le sélectionne en ajout à notre gestionnaire d’évènement : 
+
 
 ```html autorun height=50
 <b ondblclick="alert('dblclick')">Double-click me</b>
@@ -184,8 +190,11 @@ Avant...
 ...Apres
 ```
 
+
 Maintenant l’élément en gras n’est pas sélectionné aux doubles clics.
-Le texte à l’intérieur est encore sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après celui-ci. Souvent, c’est suffisant cependant.
+
+Le texte à l’intérieur est encore sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après celui-ci. Souvent, c’est suffisant pour les utilisateurs.
+
 
 ````smart header="Canceling the selection"
 Au lieu d’*empêcher* la sélection, nous pouvons l’annuler a posteriori dans le gestionnaire de l’évènement
@@ -228,8 +237,11 @@ Les évènements de souris ont les propriétés suivantes :
 - Window-relative coordinates: `clientX/clientY`.
 - Document-relative coordinates: `pageX/pageY`.
 
-Il est important de traiter la sélection de texte comme étant un effet secondaire non volontaire des clics
+
+Il est important de traiter la sélection de texte, cela peut être un effet secondaire non volontaire des clics.
+
 Il y a plusieurs moyens de faire cela, par exemple : 
 1. La propriété css  `user-select:none` (avec les prefixes navigateur) désactive complètement la sélection de texte.
 2. Annule la sélection post-factum en utilisant `getSelection().removeAllRanges()`.
 3. Gere l’évènement `mousedown` et empêche l’action par default (souvent la meilleur option).
+

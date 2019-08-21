@@ -198,7 +198,7 @@ setTimeout(function run() {
 
 Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :
 
-![](setinterval-interval.png)
+![](setinterval-interval.svg)
 
 Rien d'étrange ?
 
@@ -214,7 +214,7 @@ Dans ce cas extrême, si la fonction qui s'exécute met toujours plus de temps q
 
 Ci-dessous la représentation de l'exécution dans le cas du `setTimeout` récursif :
 
-![](settimeout-interval.png)
+![](settimeout-interval.svg)
 
 **Le `setTimeout` récursif garantit le délai spécifié (ici, 100ms).**
 

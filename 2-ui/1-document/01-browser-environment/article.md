@@ -8,7 +8,7 @@ Un environnement hôte propose des objets et fonctions spécifiques à la platef
 
 Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un navigateur Web :
 
-![](windowObjects.png)
+![](windowObjects.svg)
 
 Il existe un objet "racine" appelé `window`. Il a 2 rôles :
 
@@ -22,7 +22,7 @@ function sayHi() {
   alert("Hello");
 }
 
-// les fonctions globales sont accessibles comment étant des propriétés de la fenêtre
+// les fonctions globales sont des méthodes de l'objet global :
 window.sayHi();
 ```
 
