@@ -2,4 +2,7 @@ Nous devons utiliser deux gestionnaires: `document.onkeydown` et `document.onkey
 
 L'ensemble `pressed` doit garder les touches en cours appuyées.
 
-Le premier gestionnaire en rajoute, tandis que le second en enlève un. A chaque fois l'évènement `keydown` est exécuté nous cherchons à savoir si nous avons assez de touches appuyées, et exécuter la fonction si c'est le cas.
+Créons un set `pressed = new Set()` pour garder les touches actuellement enfoncées.
+
+Le premier gestionnaire en ajoute, tandis que le second en supprime. Chaque fois sur `keydown` nous vérifions si nous avons suffisamment de touches enfoncées et exécutons la fonction si c'est le cas.
+

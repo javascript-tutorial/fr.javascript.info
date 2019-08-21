@@ -6,7 +6,7 @@ importance: 5
 
 Dans les cas simples de références circulaires, nous pouvons exclure une propriété incriminée de la sérialisation par son nom.
 
-Mais parfois, il y a beaucoup de backreferences. Et les noms peuvent être utilisés à la fois dans les références circulaires et dans les propriétés normales.
+Mais parfois, nous ne pouvons pas simplement utiliser le nom, car il peut être utilisé à la fois dans les références circulaires et dans les propriétés normales. Ainsi, nous pouvons vérifier la propriété par sa valeur.
 
 Écrivez la fonction de `remplacement` pour tout stringify, mais supprimez les propriétés qui font référence à `meetup`:
 
@@ -22,7 +22,7 @@ let meetup = {
 };
 
 *!*
-// circular references 
+// circular references
 room.occupiedBy = meetup;
 meetup.self = meetup;
 */!*
@@ -39,4 +39,3 @@ alert( JSON.stringify(meetup, function replacer(key, value) {
 }
 */
 ```
-

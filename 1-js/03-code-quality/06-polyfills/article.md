@@ -28,8 +28,8 @@ Les nouvelles fonctionnalités du langage peuvent inclure de nouvelles fonctions
   Un script qui met à jour / ajoute de nouvelles fonctions s'appelle "polyfill". Il "comble" le vide et ajoute les implémentations manquantes.
 
 Deux polyfill intéressants sont :
-- [babel polyfill](https://babeljs.io/docs/usage/polyfill/) qui supporte beaucoup, mais c'est gros.
-- [polyfill.io](http://polyfill.io) est un service qui permet de charger / construire des polyfills à la demande, en fonction des fonctionnalités dont nous avons besoin.
+    - [core js](https://github.com/zloirock/core-js) qui prend beaucoup en charge, permet d’inclure uniquement les fonctionnalités nécessaires.
+    - [polyfill.io](http://polyfill.io) service qui fournit un script avec des polyfill, en fonction des fonctionnalités et du navigateur de l'utilisateur.
 
 Nous devons donc configurer le transpileur et ajouter le polyfill pour les anciens moteurs afin de prendre en charge les fonctionnalités modernes.
 

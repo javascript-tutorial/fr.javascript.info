@@ -7,7 +7,7 @@ Jusqu'à présent, nous n'avons vu que des chaînes de caractères. Voyons maint
 
 ## Symboles
 
-La valeur “Symbol” représente un identifiant unique.
+Un “Symbol” représente un identifiant unique.
 
 Une valeur de ce type peut être créée en utilisant `Symbol()` :
 
@@ -49,7 +49,7 @@ let id = Symbol("id");
 alert(id); // TypeError: Impossible de convertir une valeur de symbole en chaîne de caractères
 */!*
 ```
-C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent pas être convertis les uns en les autres, même occasionnellement.
+C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent pas être convertis les uns en les autres. 
 
 Si nous voulons vraiment afficher un symbole, nous devons appeler `.toString()` dessus, comme ici :
 ```js run
@@ -58,7 +58,7 @@ let id = Symbol("id");
 alert(id.toString()); // Symbol(id), maintenant ça marche
 */!*
 ```
-Ou récupérez la propriété  `symbol.description` pour obtenir la description uniquement :
+Ou récupérer la propriété  `symbol.description` pour afficher la description uniquement :
 ```js run
 let id = Symbol("id");
 *!*
@@ -72,15 +72,19 @@ alert(id.description); // id
 
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
 
-Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers et ne possèdent pas de champ` id`. Nous aimerions leur ajouter des identificateurs.
+Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers, nous aimerions leur ajouter des identificateurs.
 
 Utilisons une clé symbole pour cela :
 
 ```js run
-let user = { name: "John" };
+let user = { // belongs to another code
+  name: "John"
+};
+
 let id = Symbol("id");
 
-user[id] = "ID Value";
+user[id] = 1;
+
 alert( user[id] ); // nous pouvons accéder aux données en utilisant le symbole comme clé
 ```
 
@@ -109,13 +113,13 @@ Notez que si nous utilisions une chaîne de caractère `"id"` au lieu d'un symbo
 ```js run
 let user = { name: "John" };
 
-// notre script utilise la propriété "id"
-user.id = "ID Value";
+// Notre script utilise la propriété "id"
+user.id = "Our id value";
 
-// ... si plus tard, un autre script utilise "id" pour ses besoins …
+// ...Un autre script veut aussi "id" pour ses besoins …
 
 user.id = "Their id value"
-// boom! écrasé! on ne voulait pas nuire au collègue, mais on l'a fait !
+// Boom! écrasé par un autre script!
 ```
 
 ### Symboles dans un littéral
@@ -130,7 +134,7 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
-  [id]: 123 // pas seulement "id: 123"
+  [id]: 123 // pas "id: 123"
 */!*
 };
 ```
@@ -193,9 +197,7 @@ alert( obj[0] ); // test (même propriété)
 
 ## Symboles globaux
 
-Comme nous l’avons vu, tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités.
-
-Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
+Comme nous l’avons vu, habituellement tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités. Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
 
 Pour cela, il existe un *registre de symboles global*. Nous pouvons créer des symboles et y accéder ultérieurement, ce qui garantit que les accès répétés portant le même nom renvoient exactement le même symbole.
 
@@ -231,22 +233,29 @@ Pour les symboles globaux, pas seulement `Symbol.for(key)` renvoie un symbole pa
 Par exemple :
 
 ```js run
+// get symbol by name
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
-// obtenir le nom du symbole
+// obtenir le nom par symbole
 alert( Symbol.keyFor(sym) ); // name
 alert( Symbol.keyFor(sym2) ); // id
 ```
 
 `Symbol.keyFor` utilise en interne le registre de symboles global pour rechercher la clé du symbole. Donc, cela ne fonctionne pas pour les symboles non globaux. Si le symbole n’est pas global, il ne pourra pas le trouver et retournera `undefined`.
 
+Cela dit, tous les symboles ont la propriété `description`.
+
 Par exemple :
 
 ```js run
-alert( Symbol.keyFor(Symbol.for("name")) ); // name, symbole global
+let globalSymbol = Symbol.for("name");
+let localSymbol = Symbol("name");
 
-alert( Symbol.keyFor(Symbol("name2")) ); // undefined, l'argument n'est pas un symbole global
+alert( Symbol.keyFor(globalSymbol) ); // name, global symbol
+alert( Symbol.keyFor(localSymbol) ); // undefined, not global
+
+alert( localSymbol.description ); // name
 ```
 
 ## System symbols
@@ -283,4 +292,4 @@ Les symboles ont deux principaux cas d'utilisation :
 
 2. De nombreux symboles système utilisés par JavaScript sont accessibles en tant que `Symbol.*`. Nous pouvons les utiliser pour modifier certains comportements internes. Par exemple, plus tard dans le tutoriel, nous utiliserons `Symbol.iterator` pour [iterables](info:iterable), `Symbol.toPrimitive` etc.
 
-Techniquement, les symboles ne sont pas cachés à 100%. Il y a une méthode intégrée [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui nous permet d’obtenir tous les symboles. Il y a aussi une méthode nommée [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) qui renvoie toutes les clés d'un objet, y compris celles symboliques. Donc, ils ne sont pas vraiment cachés. Mais la plupart des librairies, des méthodes intégrées et des constructions de syntaxe adhèrent à un accord commun qu'elles le sont. Et celui qui appelle explicitement les méthodes susmentionnées comprend probablement bien ce qu’il fait.
+Techniquement, les symboles ne sont pas cachés à 100%. Il y a une méthode intégrée [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui nous permet d’obtenir tous les symboles. Il y a aussi une méthode nommée [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) qui renvoie *toutes* les clés d'un objet, y compris celles symboliques. Donc, ils ne sont pas vraiment cachés. Donc, ils ne sont pas vraiment cachés. Mais la plupart des bibliothèques, fonctions intégrées et structures de syntaxe n'utilisent pas ces méthodes.

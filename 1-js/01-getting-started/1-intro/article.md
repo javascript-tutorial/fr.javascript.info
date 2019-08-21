@@ -96,8 +96,7 @@ JavaScript est la seule technologie de navigateur qui combine ces trois élémen
 
 C’est ce qui rend JavaScript unique. C’est pourquoi c’est l’outil le plus répandu pour créer des interfaces de navigateur.
 
-Lorsqu'on prévoit d’apprendre une nouvelle technologie, il est utile de vérifier ses perspectives. Passons donc aux tendances modernes qui incluent de nouveaux langages et capacités de navigation.
-
+Cela dit, JavaScript permet également de créer des serveurs, des applications mobiles, etc.
 
 ## Les langages "par dessus" JavaScript
 

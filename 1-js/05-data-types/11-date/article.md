@@ -29,13 +29,12 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
     alert( Jan02_1970 );
     ```
 
-    Le nombre de millisecondes écoulées depuis le début de 1970 s'appelle un *horodatage*.
+    Un nombre entier représentant le nombre de millisecondes écoulées depuis le début de 1970 est appelé un *timestamp* (horodatage).
 
     C’est une représentation numérique d’une date. Nous pouvons toujours créer une date à partir d'un *horodatage* à l'aide de `new Date (*horodatage*)` et convertir l'objet `Date` existant en un *horodatage* à l'aide de la méthode `date.getTime ()` (voir ci-dessous).
 
 `new Date(date)`
-: s'il existe un seul argument, et qu'il s'agit d'une chaîne de caractères, il est analysé avec l'algorithme `Date.parse` (voir ci-dessous).
-
+: S'il existe un seul argument, et qu'il s'agit d'une chaîne de caractères, il est automatiquement analysé. L'algorithme est le même que `Date.parse` utilise, nous le couvrirons plus tard.
 
     ```js run
     let date = new Date("2017-01-26");
@@ -133,16 +132,14 @@ Outre les méthodes indiquées, il existe deux méthodes spéciales qui ne poss�
 
 Les méthodes suivantes permettent de définir des composants date / heure:
 
-- [`setFullYear(year [, month, date])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setFullYear)
-- [`setMonth(month [, date])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMonth)
-- [`setDate(date)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setDate)
-- [`setHours(hour [, min, sec, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setHours)
-- [`setMinutes(min [, sec, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMinutes)
-- [`setSeconds(sec [, ms])`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMinutes)
-- [`setMilliseconds(ms)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setMilliseconds)
-- [`setTime(milliseconds)`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/setTime) (définit la date entière en millisecondes depuis le 01.01.1970 UTC)
-
-Chacun d'entre eux sauf `setTime()` a une variante UTC, par exemple: `setUTCHours()`.
+- [`setFullYear(year, [month], [date])`](mdn:js/Date/setFullYear)
+- [`setMonth(month, [date])`](mdn:js/Date/setMonth)
+- [`setDate(date)`](mdn:js/Date/setDate)
+- [`setHours(hour, [min], [sec], [ms])`](mdn:js/Date/setHours)
+- [`setMinutes(min, [sec], [ms])`](mdn:js/Date/setMinutes)
+- [`setSeconds(sec, [ms])`](mdn:js/Date/setSeconds)
+- [`setMilliseconds(ms)`](mdn:js/Date/setMilliseconds)
+- [`setTime(milliseconds)`](mdn:js/Date/setTime) (définit la date entière en millisecondes depuis 01.01.1970 UTC)
 
 Comme nous pouvons le constater, certaines méthodes peuvent définir plusieurs composants à la fois, par exemple `setHours`. Les composants non mentionnés ne sont pas modifiés.
 
@@ -325,7 +322,7 @@ En conséquence, le premier test aura moins de ressources de processeur que le s
 
 **Pour un benchmarking plus fiable, l'ensemble des tests doit être réexécuté plusieurs fois.**
 
-Voici l'exemple:
+Par exemple, comme ceci :
 
 ```js run
 function diffSubtract(date1, date2) {
@@ -434,3 +431,4 @@ alert(`Loading started ${performance.now()}ms ago`);
 ```
 
 Node.js a un module microtime. Techniquement, tout appareil ou environnement permet d’obtenir plus de précision, il n’est tout simplement pas dans Date.
+Node.js a un module `microtime` et d'autres moyens. Techniquement, presque tous les appareils et environnements permettent d'obtenir plus de précision, ce n'est pas seulement dans `Date`.

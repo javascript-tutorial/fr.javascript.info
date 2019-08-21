@@ -6,9 +6,9 @@ JavaScript offre une flexibilité exceptionnelle dans le traitement des fonction
 
 Disons que nous avons une fonction `slow(x)` qui nécessite beaucoup de ressources processeur, mais ses résultats sont stables. En d'autres termes, pour le même `x`, le résultat est toujours le même.
 
-Si la fonction est appelée souvent, on peut vouloir mettre en cache (mémoriser) les résultats pour les différents `x` pour éviter des dépenses supplémentaires en temps sur recalcul.
+Si la fonction est appelée souvent, nous voudrons peut-être mettre en mémoire cache (mémoriser) les résultats pour éviter de passer plus de temps sur les re-calculs.
 
-Mais au lieu d’ajouter cette fonctionnalité à `slow()`, nous allons créer un wrapper. Comme nous le verrons, cela présente de nombreux avantages.
+Mais au lieu d’ajouter cette fonctionnalité à `slow()`, nous allons créer une fonction wrapper qui ajoute la mise en cache. Comme nous le verrons, cela présente de nombreux avantages.
 
 Voici le code, et les explications suivent:
 
@@ -23,13 +23,13 @@ function cachingDecorator(func) {
   let cache = new Map();
 
   return function(x) {
-    if (cache.has(x)) { // si le résultat est dans le map
-      return cache.get(x); // renvoie le
+    if (cache.has(x)) {    // s'il y a une telle clé dans le cache
+      return cache.get(x); // lire le résultat
     }
 
-    let result = func(x); // autrement, appel func
+    let result = func(x);  // sinon appeler func
 
-    cache.set(x, result); // et cache (mémorise) le résultat
+    cache.set(x, result);  // et cache (se souvenir) le résultat
     return result;
   };
 }
@@ -49,13 +49,11 @@ L'idée est que nous pouvons appeler `cachingDecorator` pour n'importe quelle fo
 
 En séparant la mise en cache du code de la fonction principale, nous simplifions également le code principal.
 
-Regardons de plus près les détails de son fonctionnement.
-
 Le résultat de `cachingDecorator(func)` est un "wrapper": `function(x)` qui "encapsule" l'appel de `func(x)` dans la logique de mise en cache:
 
 ![](decorator-makecaching-wrapper.svg)
 
-Comme nous pouvons le constater, le wrapper renvoie le résultat de `func(x)` "tel quel". Depuis un code extérieur, la fonction `slow` encapsulée fait toujours la même chose. Un comportement de mise en cache vient d’être ajouté à son comportement.
+Depuis un code extérieur, la fonction encapsulée `slow` fait toujours la même chose. Un comportement de mise en cache vient d’être ajouté à son comportement.
 
 Pour résumer, il y a plusieurs avantages à utiliser un `cachingDecorator` distinct au lieu de modifier le code de `slow` lui-même:
 
@@ -231,9 +229,7 @@ let worker = {
 worker.slow = cachingDecorator(worker.slow);
 ```
 
-Nous avons deux tâches à résoudre ici.
-
-Premièrement, comment utiliser les deux arguments `min` et` max` pour la clé dans le `Map` `cache`. Auparavant, pour un seul argument, `x`, nous pouvions simplement `cache.set(x, result)` pour enregistrer le résultat et `cache.get(x)` pour le récupérer. Mais maintenant, nous devons nous rappeler le résultat pour une *combinaison d'arguments* `(min, max)`. Le `Map` natif prend une valeur unique en tant que clé.
+Auparavant, pour un seul argument, `x`, nous pouvions simplement `cache.set(x, result)` pour enregistrer le résultat et `cache.get(x)` pour le récupérer. Mais maintenant, nous devons nous rappeler le résultat pour une *combinaison d'arguments* `(min, max)`. Le `Map` natif prend une valeur unique en tant que clé.
 
 Il y a beaucoup de solutions possibles:
 
@@ -241,85 +237,11 @@ Il y a beaucoup de solutions possibles:
 2. Utilisez des maps imbriquées: `cache.set(min)` sera un `Map` qui stocke la paire `(max, result)`. Donc, nous pouvons obtenir `result` avec `cache.get (min).get(max)`.
 3. Joignez deux valeurs en une. Dans notre cas particulier, nous pouvons simplement utiliser la chaîne `"min, max"` comme clé pour `Map`. Pour plus de flexibilité, nous pouvons permettre de fournir une *fonction de hachage* au décorateur, qui sait créer une valeur parmi plusieurs.
 
-
 Pour de nombreuses applications pratiques, la 3ème variante est suffisante, nous allons donc nous y tenir.
 
-La deuxième tâche à résoudre consiste à passer de nombreux arguments à `func`. Actuellement, le wrapper `function(x)` suppose un seul argument et `func.call(this, x)` le passe.
+Nous devons aussi remplacer `func.call(this, x)` avec `func.call(this, ...arguments)`, pour passer tous les arguments à l'appel de fonction encapsulé, pas seulement le premier.
 
-Ici, nous pouvons utiliser une autre méthode intégrée [func.apply](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Function/apply).
-
-La syntaxe est la suivante:
-
-```js
-func.apply(context, args)
-```
-
-Ça exécute le paramètre `func` avec `this = context` et utilise un objet de type tableau `args` comme liste d'arguments.
-
-
-Par exemple, ces deux appels sont presque les mêmes:
-
-```js
-func(1, 2, 3);
-func.apply(context, [1, 2, 3])
-```
-
-Les deux exécutent `func` en lui donnant les arguments `1,2,3`. Mais `apply` définit également `this = context`.
-
-Par exemple, ici, `say` est appelé avec `this = user` et `messageData` en tant que liste d'arguments:
-
-```js run
-function say(time, phrase) {
-  alert(`[${time}] ${this.name}: ${phrase}`);
-}
-
-let user = { name: "John" };
-
-let messageData = ['10:00', 'Hello']; // devient time et phrase
-
-*!*
-// user devient this, messageData est passé sous forme de liste d'arguments (time, phrase)
-say.apply(user, messageData); // [10:00] John: Hello (this=user)
-*/!*
-```
-
-La seule différence de syntaxe entre `call` et `apply` est que `call` attend une liste d'arguments, tandis que `apply` prend un objet de type tableau avec les arguments.
-
-Nous connaissons déjà l'opérateur de decomposition `...` du chapitre <info:rest-parameters-spread-operator> qui permet d'etendre un tableau (ou tout élément itérable) sous forme de liste d'arguments. Donc, si nous l'utilisons avec `call`, nous pouvons presque obtenir le même résultat que `apply`.
-
-Ces deux appels sont presque équivalents:
-
-```js
-let args = [1, 2, 3];
-
-*!*
-func.call(context, ...args); // passer un tableau sous forme de liste avec l'opérateur de décomposition
-func.apply(context, args);   // est la même que l'utilisation de apply
-*/!*
-```
-
-Si nous regardons de plus près, il y a une différence mineure entre de telles utilisations de `call` et de `apply`.
-
-- L'opérateur de decomposition `...` permet de passer des `args` *itérables*  comme liste à `call`.
-- La commande `apply` accepte uniquement les *objets semblables à des tableaux* comme `args`.
-
-Donc, ces appels se complémente mutuellement. Là où nous nous attendons à un itérable, `call` fonctionne, alors que là ou nous nous attendons à un tableau, `apply` fonctionne.
-
-Et si `args` est à la fois itérable et semblable à un tableau, à la manière d'un vrai tableau, nous pourrions techniquement utiliser n'importe lequel d'entre eux, mais `apply` sera probablement plus rapide, car il s'agit d'une opération unique. La plupart des moteurs JavaScript l'optimisent en interne mieux qu'un couple `appel + decomposition`.
-
-Une des utilisations les plus importantes de `apply` est de passer l'appel à une autre fonction, comme ceci:
-
-```js
-let wrapper = function() {
-  return anotherFunction.apply(this, arguments);
-};
-```
-
-Cela s'appelle *call forwarding* (renvoi d'appel). Le `wrapper` passe tout ce qu'il a: le contexte `this` et les arguments de `anotherFunction` et renvoie le résultat.
-
-Lorsqu'un code externe appelle un tel `wrapper`, il est impossible de le distinguer de l'appel de la fonction d'origine.
-
-Intégrons maintenant le tout dans le plus puissant `cachingDecorator`:
+Voici un plus puissant `cachingDecorator` :
 
 ```js run
 let worker = {
@@ -340,7 +262,7 @@ function cachingDecorator(func, hash) {
     }
 
 *!*
-    let result = func.apply(this, arguments); // (**)
+    let result = func.call(this, ...arguments); // (**)
 */!*
 
     cache.set(key, result);
@@ -358,13 +280,52 @@ alert( worker.slow(3, 5) ); // ça marche
 alert( "Again " + worker.slow(3, 5) ); // pareil (mis en cache)
 ```
 
-Maintenant, le wrapper fonctionne avec un nombre quelconque d'arguments.
+Maintenant, cela fonctionne avec un nombre quelconque d'arguments.
 
 Il y a deux changements:
 
 - Dans la ligne `(*)`, il appelle `hash` pour créer une clé unique à partir de `arguments`. Ici, nous utilisons une simple fonction "d'assemblage" qui transforme les arguments `(3, 5)` en la clé `"3,5"`. Les cas plus complexes peuvent nécessiter d'autres fonctions de hachage.
-- Ensuite `(**)` utilise `func.apply` pour transmettre le contexte et tous les arguments obtenus par le wrapper (peu importe le nombre) à la fonction d'origine.
+- Ensuite `(**)` utilise `func.call(this, ...arguments)` pour transmettre le contexte et tous les arguments obtenus par le wrapper (pas seulement le premier) à la fonction d'origine.
 
+Instead of `func.call(this, ...arguments)` we could use `func.apply(this, arguments)`.
+
+The syntax of built-in method [func.apply](mdn:js/Function/apply) is:
+
+```js
+func.apply(context, args)
+```
+
+It runs the `func` setting `this=context` and using an array-like object `args` as the list of arguments.
+
+The only syntax difference between `call` and `apply` is that `call` expects a list of arguments, while `apply` takes an array-like object with them.
+
+So these two calls are almost equivalent:
+
+```js
+func.call(context, ...args); // pass an array as list with spread operator
+func.apply(context, args);   // is same as using apply
+```
+
+There's only a minor difference:
+
+- The spread operator `...` allows to pass *iterable* `args` as the list to `call`.
+- The `apply` accepts only *array-like* `args`.
+
+So, these calls complement each other. Where we expect an iterable, `call` works, where we expect an array-like, `apply` works.
+
+And for objects that are both iterable and array-like, like a real array, we technically could use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
+
+Passing all arguments along with the context to another function is called *call forwarding*.
+
+That's the simplest form of it:
+
+```js
+let wrapper = function() {
+  return func.apply(this, arguments);
+};
+```
+
+When an external code calls such `wrapper`, it is indistinguishable from the call of the original function `func`.
 
 ## Emprunter une méthode [#method-borrowing]
 
@@ -450,9 +411,9 @@ Le renvoi d'appel, *call forwarding*, est généralement effectué avec `apply`:
 ```js
 let wrapper = function() {
   return original.apply(this, arguments);
-}
+};
 ```
 
 Nous avons également vu un exemple d'empruntage de méthode, *method borrowing*, lorsque nous prenons une méthode à partir d'un objet et que nous l'appelons dans le contexte d'un autre objet. Il est assez courant de prendre des méthodes de tableau et de les appliquer à `arguments`. L'alternative consiste à utiliser l'objet de paramètres du reste qui est un vrai tableau.
 
-Il y a beaucoup de décorateurs dans la nature. Vérifiez si vous les avez bien compris en résolvant les tâches de ce chapitre.
+Il y a beaucoup de décorateurs dans la nature. Vérifiez si vous les avez bien obtenus en résolvant les tâches de ce chapitre.

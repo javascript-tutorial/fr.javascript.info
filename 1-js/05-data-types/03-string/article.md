@@ -89,7 +89,7 @@ Voici la liste complète :
 | `\b`, `\f`, `\v`                                   | Backspace, Form Feed, Vertical Tab -- conservés pour compatibilité, non utilisés de nos jours.                                                                                                   |
 | `\xXX`                                             | Caractère Unicode avec l'unicode hexadécimal donné `XX`, par exemple `'\x7A'` est le même que `'z'`.                                                                                             |
 | `\uXXXX`                                           | Un symbole Unicode avec le code hexadécimal `XXXX` en encodage UTF-16, par exemple `\u00A9` -- est un unicode pour le symbole de copyright `©`. Ce doit être exactement 4 chiffres hexadécimaux. |
-| `\u{X…XXXXXX}` (de 1 à 6 caractères hexadécimaux ) | Un symbole Unicode avec l'encodage UTF-32. Certains caractères rares sont encodés avec deux symboles Unicode, prenant 4 octets. De cette façon, nous pouvons insérer des codes longs..           |
+| `\u{X…XXXXXX}` (de 1 à 6 caractères hexadécimaux ) | Un symbole Unicode avec l'encodage UTF-32. Certains caractères rares sont encodés avec deux symboles Unicode, prenant 4 octets. De cette façon, nous pouvons insérer des codes longs.           |
 
 Exemples avec unicode :
 
@@ -368,8 +368,8 @@ alert( "Hello".includes("Bye") ); // false
 Le deuxième argument optionnel de `str.includes` est la position de départ de la recherche :
 
 ```js run
-alert( "Midget".includes("id") ); // true
-alert( "Midget".includes("id", 3) ); // false, à partir de la position 3 il n'y a pas "id"
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, à partir de la position 3, il n'y a pas de "id"
 ```
 
 Les méthodes [str.startsWith](mdn:js/String/startsWith) et [str.endsWith](mdn:js/String/endsWith) font exactement ce qu'elle disent :
@@ -545,10 +545,10 @@ Heureusement, tous les navigateurs modernes (IE10- nécessite la bibliothèque s
 
 Elle fournit une méthode spéciale pour comparer des chaînes de caractères dans différentes langues, en respectant leurs règles.
 
-L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier indiquant si `str` vient avant, après ou est équivalent à `str2` selon les règles du language :
+L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier indiquant si `str` est inférieur, égal ou supérieur à `str2` selon les règles du langage :
 
-- Renvoie un nombre négatif si `str` est inférieur à `str2`, c'est-à-dire que `str` apparaît avant `str2`.
-- Renvoie un nombre positif si `str` est supérieur à `str2`, c'est-à-dire que `str` apparaît après `str2`.
+- Renvoie un nombre négatif si `str` est inférieur à `str2`
+- Renvoie un nombre positif si `str` est supérieur à `str2`
 - Renvoie `0` s'ils sont équivalents.
 
 

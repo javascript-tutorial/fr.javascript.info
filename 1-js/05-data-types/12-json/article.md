@@ -21,7 +21,7 @@ let user = {
 alert(user); // {name: "John", age: 30}
 ```
 
-... Mais au cours du développement, de nouvelles propriétés sont ajoutées, les anciennes propriétés sont renommées et supprimées. Mettre à jour un tel `toString` à chaque fois peut devenir une plaie. Nous pourrions essayer de passer en boucle sur les propriétés qu'il contient, mais que se passe-t-il si l'objet est complexe et qu'il contient des objets imbriqués? Nous aurions également besoin de mettre en œuvre leur conversion. Et, si nous envoyons l'objet via un réseau, nous devons également fournir le code permettant de "lire" notre objet du côté de la réception.
+... Mais au cours du développement, de nouvelles propriétés sont ajoutées, les anciennes propriétés sont renommées et supprimées. Mettre à jour un tel `toString` à chaque fois peut devenir pénible. Nous pourrions essayer de passer en boucle sur les propriétés qu'il contient, mais que se passe-t-il si l'objet est complexe et qu'il contient des objets imbriqués? Nous aurions également besoin de mettre en œuvre leur conversion.
 
 Heureusement, il n'est pas nécessaire d'écrire le code pour gérer tout cela. La tâche a déjà été résolue.
 
@@ -76,7 +76,7 @@ S'il vous plaît noter qu'un objet JSON-encoded a plusieurs différences importa
 
 `JSON.stringify` peut aussi être appliqué aux primitives.
 
-Voici les types JSON pris en charge de manière native:
+JSON prend en charge les types de données suivants :
 
 - Objets `{ ... }`
 - Tableaux `[ ... ]`
@@ -100,7 +100,7 @@ alert( JSON.stringify(true) ); // true
 alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]
 ```
 
-JSON étant une spécification multilingue de données uniquement, certaines propriétés d'objet spécifiques à JavaScript sont ignorées par `JSON.stringify`.
+JSON est une spécification indépendante du langage et ne contenant que des données. Par conséquent, certaines propriétés d'objet spécifiques à JavaScript sont ignorées par `JSON.stringifier`.
 
 À savoir:
 
@@ -213,9 +213,9 @@ alert( JSON.stringify(meetup, *!*['title', 'participants']*/!*) );
 // {"title":"Conference","participants":[{},{}]}
 ```
 
-Ici, nous sommes probablement trop strictes. La liste de propriétés est appliquée à la structure entière de l'objet. Donc, les participants sont vides, parce que `name` n'est pas dans la liste.
+Ici, nous sommes probablement trop strictes. La liste de propriétés est appliquée à la structure entière de l'objet. Donc, les objets dans `participants` sont vides, parce que `name` n'est pas dans la liste.
 
-Incluons toutes les propriétés sauf `room.occupiedBy` qui provoquerait une référence circulaire:
+Incluons dans la liste toutes les propriétés sauf `room.occupiedBy` qui provoquerait la référence circulaire :
 
 ```js run
 let room = {
@@ -244,7 +244,7 @@ Maintenant tout sauf `occupiedBy` est serialized. Mais la liste des propriétés
 
 Heureusement, nous pouvons utiliser une fonction au lieu d'un tableau comme `replacer`.
 
-La fonction sera appelée pour chaque paire de `(key, value)` et devrait renvoyer la valeur "replaced", qui sera utilisée à la place de celle d'origine.
+La fonction sera appelée pour chaque paire de `(key, value)` et devrait renvoyer la valeur "remplacée", qui sera utilisée à la place de celle d'origine. Ou `undefined` si la valeur doit être ignorée.
 
 Dans notre cas, nous pouvons retourner une `value` "en l'état" pour tout sauf `occupiedBy`. Pour ignorer `occupiedBy`, le code ci-dessous retourne `undefined`:
 
@@ -262,7 +262,7 @@ let meetup = {
 room.occupiedBy = meetup; // room references meetup
 
 alert( JSON.stringify(meetup, function replacer(key, value) {
-  alert(`${key}: ${value}`); // pour voir quel replacer il obtient
+  alert(`${key}: ${value}`);
   return (key == 'occupiedBy') ? undefined : value;
 }));
 
@@ -283,7 +283,7 @@ Veuillez noter que la fonction `replacer` récupère chaque paire clé/valeur, y
 
 Le premier appel est spécial. Il est fabriqué en utilisant un "objet wrapper" spécial: `{"": meetup}`. En d'autres termes, la première paire `(key, value)` a une clé vide, et la valeur est l'objet cible dans son ensemble. C'est pourquoi la première ligne est `":[object Object]"` dans l'exemple ci-dessus.
 
-L’idée est de fournir autant de puissance pour `replacer` qui possible: il a une chance d'analyser et de remplacer/ignorer l'objet entier si nécessaire.
+L’idée est de fournir autant de puissance pour `replacer` que possible : il a une chance d'analyser et de remplacer/ignorer même l'objet entier si nécessaire.
 
 
 ## Formatage: spacer
@@ -393,7 +393,7 @@ alert( JSON.stringify(meetup) );
 */
 ```
 
-Comme on peut le voir, `toJSON` est utilisé à la fois pour l'appel direct `JSON.stringify(room)` et pour l'objet imbriqué.
+Comme on peut le voir, `toJSON` est utilisé à la fois pour l'appel direct `JSON.stringify(room)` et quand `room` est imbriqué dans un autre objet encodé.
 
 
 ## JSON.parse
@@ -402,7 +402,7 @@ Pour décoder une chaîne JSON, nous avons besoin d'une autre méthode nommée [
 
 La syntaxe:
 ```js
-let value = JSON.parse(str[, reviver]);
+let value = JSON.parse(str, [reviver]);
 ```
 
 str
@@ -432,7 +432,7 @@ user = JSON.parse(user);
 alert( user.friends[1] ); // 1
 ```
 
-Le JSON peut être aussi complexe que nécessaire, les objets et les tableaux peuvent inclure d'autres objets et tableaux. Mais ils doivent obéir au format.
+Le JSON peut être aussi complexe que nécessaire, les objets et les tableaux peuvent inclure d'autres objets et tableaux. Mais ils doivent obéir au même format JSON.
 
 Voici des erreurs typiques dans JSON écrit à la main (nous devons parfois l'écrire à des fins de débogage):
 
@@ -481,7 +481,7 @@ Whoops! Une erreur!
 
 La valeur de `meetup.date` est une chaîne, pour un objet `Date`.Comment `JSON.parse` pourrait-il savoir qu'il devrait transformer cette chaîne en` Date`?
 
-Passons à `JSON.parse` la fonction de réactivation qui renvoie toutes les valeurs "en l'état", mais` date` deviendra une `date`:
+Passons à `JSON.parse` la fonction de réactivation en tant que second argument, qui renvoie toutes les valeurs "en l'état", mais `date` deviendra une `Date` :
 
 ```js run
 let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';

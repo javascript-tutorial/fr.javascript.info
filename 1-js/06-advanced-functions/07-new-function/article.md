@@ -46,14 +46,13 @@ C'est utilisé dans des cas très spécifiques, comme lorsque nous recevons du c
 
 ## Fermeture
 
-Normalement, une fonction se souvient du lieu de sa naissance dans la propriété spéciale `[[Environment]]`. Cette propriété fait référence à l'environnement lexical à partir duquel la fonction a été créée.
+Normalement, une fonction se souvient du lieu de sa naissance dans la propriété spéciale `[[Environment]]`. Elle fait référence à l'environnement lexical à partir duquel la fonction a été créée (nous avons couvert cela dans le chapitre <info:closure>).
 
-Mais quand une fonction est créée en utilisant `new Function`, son `[[Environment]]` fait référence non pas à l'environnement lexical actuel, mais à l'environnement global.
+Mais quand une fonction est créée en utilisant `new Function`, son `[[Environment]]` est configuré pour faire référence non pas à l'environnement lexical actuel, mais à l'environnement global.
 
 Donc, une telle fonction n'a pas accès aux variables externes, mais uniquement aux variables globales.
 
 ```js run
-
 function getFunc() {
   let value = "test";
 
@@ -99,6 +98,8 @@ Donc, si `new Function` avait accès aux variables externes, il serait impossibl
 
 **Si `new Function` avait accès aux variables externes, elle aurait des problèmes avec les minifiers.**
 
+En outre, ce code serait mauvais sur le plan architectural et sujet aux erreurs.
+
 Pour passer quelque chose à une fonction créée par `new Function`, nous devons utiliser ses arguments.
 
 ## Résumé
@@ -111,7 +112,7 @@ let func = new Function ([arg1, arg2, ...argN], functionBody);
 
 Pour des raisons historiques, les arguments peuvent également être fournis sous forme de liste séparée par des virgules.
 
-Ces trois lignes ont la même signification:
+Ces trois déclarations signifient la même chose :
 
 ```js
 new Function('a', 'b', 'return a + b'); // syntax de base
@@ -119,4 +120,4 @@ new Function('a,b', 'return a + b'); // séparés par des virgules
 new Function('a , b', 'return a + b'); // séparés par des virgules et espacés
 ```
 
-Pour les fonctions créées avec `new Function`, leur `[[Environment]]` fait référence à l'environnement lexical global, pas à l'environnement extérieur.  Ainsi, ils ne peuvent pas utiliser de variables externes. Mais cela est une bonne chose, parce que cela nous évite des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.
+fonctions créées avec `new Function` ont leur `[[Environment]]` qui fait référence à l’environnement lexical global, et non l’environnement externe. Par conséquent, elles ne peuvent pas utiliser de variables externes. Mais c’est bien, parce que cela nous protège des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.
