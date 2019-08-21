@@ -1,6 +1,5 @@
+Nous devons utiliser deux gestionnaires: `document.onkeydown` et `document.onkeyup`.
 
-We should use two handlers: `document.onkeydown` and `document.onkeyup`.
+L'ensemble `pressed` doit garder les touches en cours appuyées.
 
-The set `pressed` should keep currently pressed keys.
-
-The first handler adds to it, while the second one removes from it. Every time on `keydown` we check if we have enough keys pressed, and run the function if it is so.
+Le premier gestionnaire en rajoute, tandis que le second en enlève un. A chaque fois l'évènement `keydown` est exécuté nous cherchons à savoir si nous avons assez de touches appuyées, et exécuter la fonction si c'est le cas.
