@@ -58,7 +58,7 @@ Les évènements relatifs à l’événement clic ont toujours la propriété `w
 
 Elle  n’est pas utilisée pour  les évènements  `click` et  `contextmenu`, parce que le premier se passe uniquement sur le clic gauche et le dernier – uniquement sur le clic droit.
 
-Mais si nous voulons controler les évènements `mousedown` et `mouseup`, alors nous en avons besoin, parce que ces évènements se déclenchent sur n’importe quel bouton, alors `which`permet de distinguer entre "right-mousedown" et  "left-mousedown".
+Mais si nous voulons controler les évènements `mousedown` et `mouseup`, nous en avons besoin, parce que ces évènements se déclenchent sur n’importe quel bouton, `which` nous permet de distinguer entre "right-mousedown" et  "left-mousedown".
 
 Voici les trois valeurs possibles:
 
