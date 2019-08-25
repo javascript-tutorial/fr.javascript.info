@@ -1,6 +1,6 @@
 # Evenements de base de la souris
 
-Dans ce chapitre, verrons plus en détails les événements de la souris et leurs propriétés.
+Dans ce chapitre, nous verrons plus en détails les événements de la souris et leurs propriétés.
 
 Remarque: Ces événements peuvent provenir non seulement de "périphériques de souris", mais également de périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
 
