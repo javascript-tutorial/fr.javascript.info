@@ -1,22 +1,22 @@
 # Evenements de base de la souris
 
-Dans ce chapitre, nous entrerons dans plus de détails sur les événements de souris et leurs propriétés.
+Dans ce chapitre, nous verrons plus en détails les événements de la souris et leurs propriétés.
 
-Remarque: de tels événements peuvent provenir non seulement de "périphériques de souris", mais également d'autres périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
+Remarque: Ces événements peuvent provenir non seulement de "périphériques de souris", mais également de périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
 
 ## Les types d'évènements de Souris 
 
-Nous  regroupons les évènements de types souris en deux catégories: "Simples" et "Complexes" .
+Nous  regroupons les évènements de la souris en deux catégories: "Simples" et "Complexes" .
 
 ###  Les évènements simples
 
 Les évènements simples les plus utilisés sont: 
 
 `mousedown/mouseup`
-: Le bouton de la souris est appuyé et relâché sur un élément.
+: Le bouton de la souris est appuyé puis relâché sur un élément.
 
 `mouseover/mouseout`
-: Le pointeur de la souris traverse à l'intérieur ou hors d'un élément.
+: Le pointeur de la souris entre  ou sort d'un élément.
 
 `mousemove`
 : Chaque déplacement de la souris sur un élément déclenche cet évènement.
@@ -26,7 +26,7 @@ Les évènements simples les plus utilisés sont:
 ### Les évènements complexes
 
 `click`
-: est déclenché après un évènement `mousedown` et suite à un  `mouseup` un  sur le même élément si le bouton gauche de la souris a été utilisé
+: est déclenché après un évènement `mousedown` et suite à un  `mouseup`  sur le même élément, si le bouton gauche de la souris a été utilisé
 
 `contextmenu`
 : est déclenché après un  évènement `mousedown` si le bouton gauche de la souris a été utilisé.
@@ -58,7 +58,7 @@ Les évènements relatifs à l’événement clic ont toujours la propriété `w
 
 Elle  n’est pas utilisée pour  les évènements  `click` et  `contextmenu`, parce que le premier se passe uniquement sur le clic gauche et le dernier – uniquement sur le clic droit.
 
-Mais si nous voulons suivre les évènements `mousedown` and `mouseup`, alors nous en avons besoin, parce que ces évènements se déclenchent sur n’importe quel bouton, donc `which`permet de distinguer entre "right-mousedown" et  "left-mousedown".
+Mais si nous voulons controler les évènements `mousedown` et `mouseup`, nous en avons besoin, parce que ces évènements se déclenchent sur n’importe quel bouton, `which` nous permet de distinguer entre "right-mousedown" et  "left-mousedown".
 
 Voici les trois valeurs possibles:
 
@@ -79,7 +79,7 @@ Propriétés d'événement :
 - `ctrlKey`: `key:Ctrl`
 - `metaKey`: `key:Cmd` for Mac
 
-They are `true` if the corresponding key was pressed during the event.
+Ils sont `true` si la touche correspondante fut appuyée durant l'évènement.
 
 Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
 
@@ -197,4 +197,4 @@ Les évènements de souris ont les propriétés suivantes :
 
 L'action par défaut du navigateur de `mousedown` est la sélection de texte. Si ce n'est pas bon pour l'interface, alors il faut l'empêcher.
 
-Dans le chapitre suivant, nous verrons plus de détails sur les événements qui suivent un mouvement de pointeur et sur la manière de suivre les changements d’élément en dessous.
+Dans le chapitre suivant, nous verrons plus en détails les événements qui suivent le mouvement du pointeur et  comment suivre les changements d’élément sous ce dernier.
