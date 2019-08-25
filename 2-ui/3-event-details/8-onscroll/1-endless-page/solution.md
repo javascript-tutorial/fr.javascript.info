@@ -1,4 +1,4 @@
-L'essence de la solution est une fonction qui ajoute plus de date à la page  (ou charge plus de chose en réalité) alors que nous sommes en fin de page.
+L'essence de la solution est une fonction qui ajoute plus de dates à la page  (ou charge plus de chose en réalité) alors que nous sommes en fin de page.
 
 Nous pouvons l'appeler immédiatement et y ajouter un contrôleur d’évènement avec  `window.onscroll`.
 
