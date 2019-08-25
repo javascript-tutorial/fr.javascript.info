@@ -53,7 +53,7 @@ Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous 
 ...
 ```
 
-La directive doit être au sommet d'un script ou au début d'une fonction.
+La directive doit être au sommet d'un script ou au début d'un corps de fonction.
 
 Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible". Nous préférons généralement le comportement moderne.
 
@@ -142,10 +142,10 @@ Arithmétique
 Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
-Opération bit à bit (Bitwise)
+Bitwise
 : Les opérateurs au niveau des bits fonctionnent avec des entiers de niveau binaire : voir la [doc](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) quand ils sont nécessaires.
 
-Ternaire
+Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
 
 Opérateurs logiques
@@ -245,10 +245,8 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
       let result = a + b;
 
       return result;
-    }
+    };
     ```
-
-    Les expressions de fonction peuvent avoir un nom, comme `sum = function name(a, b)`, mais ce `name` n'est visible qu'à l'intérieur de cette fonction.
 
 3. Fonctions fléchées :
 
@@ -274,13 +272,7 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 - Les paramètres peuvent avoir des valeurs par défaut : `function sum(a = 1, b = 2) {...}`.
 - Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est renvoyée, le résultat est `undefined`.
 
-
-| Fonction Déclaration            | Fonction Expression                                |
-|-----------------------------------|--------------------------------------------------------|
-| visible dans tout le bloc de code | créé lorsque l'exécution lui parvient                  |
-| -                                 | peut avoir un nom, visible uniquement dans la fonction |
-
-Plus : voir <info:function-basics>, <info:function-expressions-arrows>.
+Details: voir <info:function-basics>, <info:function-expressions-arrows>.
 
 ## Plus à venir
 

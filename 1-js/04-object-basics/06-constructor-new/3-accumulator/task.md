@@ -17,9 +17,11 @@ Voici la démo du code :
 
 ```js
 let accumulator = new Accumulator(1); // valeur initiale 1
+
 accumulator.read(); // ajoute la valeur entrée par l'utilisateur
 accumulator.read(); // ajoute la valeur entrée par l'utilisateur
-alert(accumulator.value); // montre la somme de ces valeurs
+
+alert(accumulator.value); // affiche la somme de ces valeurs
 ```
 
 [demo]

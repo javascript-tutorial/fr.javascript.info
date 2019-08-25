@@ -17,7 +17,7 @@ while (condition) {
 }
 ```
 
-Tant que la `condition` est `true`, le `code` du corps de la boucle est exécuté.
+Tant que la `condition` est vraie, le `code` du corps de la boucle est exécuté.
 
 Par exemple, la boucle ci-dessous affiche `i` tant que `i < 3` :
 
@@ -84,7 +84,7 @@ Cette forme de syntaxe est rarement utilisée, sauf lorsque vous souhaitez que l
 
 ## La boucle "for"
 
-La boucle `for` est la plus utilisée.
+La boucle `for` est plus complexe, mais c’est aussi la boucle la plus utilisée.
 
 Cela ressemble à ceci :
 
@@ -121,7 +121,9 @@ Exécuter le début
 → ...
 ```
 
-Si vous ne connaissez pas les boucles, alors il serait peut-être utile de revenir à l'exemple et de reproduire le déroulement pas à pas sur une feuille de papier.
+C'est-à-dire que `begin` est exécuté une fois, puis itéré : après chaque test de `condition`, `body` et `step` sont exécutés.
+
+Si vous débutez dans les boucles, il pourrait être utile de revenir à l'exemple et de reproduire comment elle s'exécute pas à pas sur une feuille de papier.
 
 Voici ce qui se passe exactement dans notre cas :
 
@@ -289,7 +291,7 @@ if (i > 5) {
 (i > 5) ? alert(i) : *!*continue*/!*; // continue n'est pas autorisé ici
 ```
 
-… Ensuite cesse de fonctionner. Le code comme celui-ci donnera une erreur de syntaxe :
+… Ensuite cesse de fonctionner : il y a une erreur de syntaxe.
 
 
 C’est une autre raison pour ne pas utiliser l'opérateur point d’interrogation `?` au lieu de `if`.
@@ -308,8 +310,7 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
-    // Et si je veux sortir d'ici à Done (ci-dessous) ?
-
+    // Et si nous voulons sortir d'ici à Done (ci-dessous) ?
   }
 }
 
@@ -360,12 +361,12 @@ for (let i = 0; i < 3; i++) { ... }
 
 La directive `continue` peut également être utilisée avec un label. Dans ce cas, l'exécution passe à l'itération suivante de la boucle labelisée.
 
-````warn header="Les labels ne sont pas des \"goto\""
-Les labels ne nous permettent pas de sauter de manière arbitraire dans le code.
+````warn header="Les labels ne permettent pas de \"sauter\" n'importe où"
+Les labels ne nous permettent pas de sauter dans un endroit arbitraire du code.
 
 Par exemple, il est impossible de faire ceci :
 ```js
-break label;  // Sauter au label ? Non.
+break label;  // ne saute pas au label ci-dessous
 
 label: for (...)
 ```

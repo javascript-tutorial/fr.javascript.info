@@ -9,7 +9,7 @@ Un objet peut être créé avec des accolades `{…}`, avec une liste optionnell
 
 Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
-![](object.png)
+![](object.svg)
 
 Un objet vide ("armoire vide") peut être créé en utilisant l'une des deux syntaxes suivantes :
 
@@ -18,7 +18,7 @@ let user = new Object(); // syntaxe "constructeur d'objet"
 let user = {};  // syntaxe "littéral objet"
 ```
 
-![](object-user-empty.png)
+![](object-user-empty.svg)
 
 Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
 
@@ -42,14 +42,14 @@ Dans l'objet `user`, il y a deux propriétés :
 
 L'objet `user` résultant peut être imaginé comme une armoire avec deux fichiers signés intitulés "nom" et "âge".
 
-![user object](object-user.png)
+![user object](object-user.svg)
 
 Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
 
 Les valeurs de propriété sont accessibles à l'aide de la notation par points :
 
 ```js
-// récupère les champs de l'objet :
+// récupère les valeurs de propriété de l'objet :
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -60,7 +60,7 @@ La valeur peut être de tout type. Ajoutons un booléen :
 user.isAdmin = true;
 ```
 
-![user object 2](object-user-isadmin.png)
+![user object 2](object-user-isadmin.svg)
 
 Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 
@@ -68,7 +68,7 @@ Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 delete user.age;
 ```
 
-![user object 3](object-user-delete.png)
+![user object 3](object-user-delete.svg)
 
 Nous pouvons également utiliser des noms de propriété multi-mots, mais ils doivent ensuite être entourés de quotes :
 
@@ -80,7 +80,7 @@ let user = {
 };
 ```
 
-![](object-user-props.png)
+![](object-user-props.svg)
 
 
 La dernière propriété de la liste peut se terminer par une virgule :
@@ -104,7 +104,6 @@ user.likes birds = true
 C’est parce que le point exige que la clé soit un identificateur de variable valide. C'est-à-dire : pas d'espaces et autres limitations.
 
 Il existe une autre “notation entre crochets” qui fonctionne avec n’importe quelle chaîne :
-
 
 ```js run
 let user = {};
@@ -130,7 +129,7 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-Ici, la clé variable peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. La notation par points ne peut pas être utilisée de la même manière.
+Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. 
 
 Par exemple :
 
@@ -146,6 +145,17 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (si entré "name")
 ```
 
+The dot notation cannot be used in a similar way:
+
+```js run
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+alert( user.key ) // undefined
+```
 
 ### Propriétés calculées
 
@@ -222,10 +232,11 @@ Comme on le voit d'après le code, l'affectation à une primitive `5` est ignor�
 
 Cela peut devenir une source de bugs et même de vulnérabilités si nous avons l’intention de stocker des paires clé-valeur arbitraires dans un objet et d’autoriser un visiteur à spécifier les clés.
 
-Dans ce cas, le visiteur peut choisir "_proto_" comme clé et la logique d’attribution sera ruinée (comme indiqué ci-dessus).
+Dans ce cas, le visiteur peut choisir `__proto__` comme clé et la logique d’attribution sera ruinée (comme affiché ci-dessus).
 
 Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
-Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set-weakmap-weakset>, qui supporte des clés arbitraires.
+
+Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set>, qui supporte des clés arbitraires.
 ````
 
 
@@ -311,7 +322,7 @@ alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette 
 ```
 
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
-Habituellement, la comparaison stricte `"=== undefined"` fonctionne correctement. Mais il y a un cas particulier où elle échoue, mais "in" fonctionne correctement.
+Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -332,7 +343,7 @@ Des situations comme celle-ci se produisent très rarement, parce que `undefined
 ````
 
 
-## La boucle "for … in"
+## La boucle "for..in"
 
 Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`. C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
 
@@ -464,7 +475,7 @@ let phrase = message;
 
 Par conséquent, nous avons deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
 
-![](variable-copy-value.png)
+![](variable-copy-value.svg)
 
 Les objets ne sont pas comme ça.
 
@@ -478,7 +489,7 @@ let user = {
 };
 ```
 
-![](variable-contains-reference.png)
+![](variable-contains-reference.svg)
 
 Ici, l'objet est stocké quelque part en mémoire. Et la variable `user` a une "référence" à cet objet.
 
@@ -496,7 +507,7 @@ let admin = user; // copier la référence
 
 Maintenant nous avons deux variables, chacune avec la référence au même objet :
 
-![](variable-copy-reference.png)
+![](variable-copy-reference.svg)
 
 Nous pouvons utiliser n’importe quelle variable pour accéder à l'armoire et modifier son contenu :
 
@@ -520,7 +531,7 @@ Les opérateurs d'égalité `==` et d'égalité stricte `===` pour les objets fo
 
 **Deux objets ne sont égaux que s’ils sont le même objet.**
 
-Par exemple, deux variables référencent le même objet, elles sont égales :
+Par exemple, si deux variables référencent le même objet, elles sont égales :
 
 ```js run
 let a = {};
@@ -559,7 +570,7 @@ user.age = 25; // (*)
 alert(user.age); // 25
 ```
 
-Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à l’intérieur de l’objet, elle ne réaffecte pas `user`.
+Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe uniquement la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à *l’intérieur* de l’objet, elle ne réaffecte pas `user`.
 
 Le `const` donnerait une erreur si nous essayons de définir `user` sur autre chose, par exemple :
 

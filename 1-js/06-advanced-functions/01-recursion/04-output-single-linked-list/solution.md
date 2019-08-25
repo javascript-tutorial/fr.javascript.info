@@ -43,7 +43,7 @@ function printList(list) {
 }
 ```
 
-...Mais ce ne serait pas sage. Dans le futur, nous allons peut-être devoir étendre une fonction, faire autre chose avec la liste. Si nous changeons `list`, nous perdons cette capacité.
+...Mais ce ne serait pas sage. Dans le futur, nous allons peut-être devoir étendre une fonction, faire autre chose avec la liste. Si nous changeons `list`, alors nous perdons cette capacité.
 
 Parlant des bons noms de variables, `list` est la liste elle-même. Le premier élément de celui-ci. Et ça devrait rester comme ça. C'est clair et fiable.
 

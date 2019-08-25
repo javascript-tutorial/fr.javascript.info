@@ -1,4 +1,4 @@
-The solution:
+La solution:
 
 ```js run demo
 function delay(f, ms) {
@@ -11,22 +11,22 @@ function delay(f, ms) {
 
 let f1000 = delay(alert, 1000);
 
-f1000("test"); // shows "test" after 1000ms
+f1000("test"); // montre "test" après 1000ms
 ```
 
-Please note how an arrow function is used here. As we know, arrow functions do not have own `this` and `arguments`, so `f.apply(this, arguments)` takes `this` and `arguments` from the wrapper.
+Veuillez noter comment une fonction fléchée est utilisée ici. Comme nous le savons, les fonctions fléchées ne possèdent pas leurs propres `this` et `arguments`, aussi `f.apply(this, arguments)` prend `this` et `arguments` du wrapper.
 
-If we pass a regular function, `setTimeout` would call it without arguments and `this=window` (assuming we're in the browser).
+Si nous passons une fonction régulière, `setTimeout` l'appellera sans arguments et `this = window` (en supposant que nous sommes dans le navigateur).
 
-We still can pass the right `this` by using an intermediate variable, but that's a little bit more cumbersome:
+Nous pouvons toujours passer le bon `this` en utilisant une variable intermédiaire, mais c'est un peu plus lourd:
 
 ```js
 function delay(f, ms) {
 
   return function(...args) {
-    let savedThis = this; // store this into an intermediate variable
+    let savedThis = this; // stocker "this" dans une variable intermédiaire
     setTimeout(function() {
-      f.apply(savedThis, args); // use it here
+      f.apply(savedThis, args); // utilisez-le ici
     }, ms);
   };
 

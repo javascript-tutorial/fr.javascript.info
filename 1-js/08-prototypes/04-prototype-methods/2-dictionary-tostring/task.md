@@ -2,30 +2,30 @@ importance: 5
 
 ---
 
-# Add toString to the dictionary
+# Ajouter toString au dictionnaire
 
-There's an object `dictionary`, created as `Object.create(null)`, to store any `key/value` pairs.
+Il existe un objet `dictionary`, créé en tant que `Object.create(null)`, pour stocker toutes les paires `clé/valeur`.
 
-Add method `dictionary.toString()` into it, that should return a comma-delimited list of keys. Your `toString` should not show up in `for..in` over the object.
+Ajoutez la méthode `dictionary.toString()`, qui devrait renvoyer une liste de clés délimitée par des virgules. Votre `toString` ne devrait pas apparaître dans la boucle `for..in` sur l'objet.
 
-Here's how it should work:
+Voici comment cela devrait fonctionner:
 
 ```js
 let dictionary = Object.create(null);
 
 *!*
-// your code to add dictionary.toString method
+// votre code pour ajouter la méthode dictionary.toString
 */!*
 
 // add some data
 dictionary.apple = "Apple";
-dictionary.__proto__ = "test"; // __proto__ is a regular property key here
+dictionary.__proto__ = "test"; // __proto__ est une clé de propriété régulière ici
 
-// only apple and __proto__ are in the loop
+// seulement apple et __proto__ sont dans la boucle
 for(let key in dictionary) {
-  alert(key); // "apple", then "__proto__"
+  alert(key); // "apple", puis "__proto__"
 }  
 
-// your toString in action
+// votre toString en action
 alert(dictionary); // "apple,__proto__"
 ```
