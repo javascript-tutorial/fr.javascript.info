@@ -1,65 +1,66 @@
-The core of the solution is a function that adds more dates to the page (or loads more stuff in real-life) while we're at the page end.
+L'essence de la solution est une fonction qui ajoute plus de date à la page  (ou charge plus de chose en réalité) alors que nous sommes en fin de page.
 
-We can call it immediately and add as a `window.onscroll` handler.
+Nous pouvons l'appeler immédiatement et y ajouter un contrôleur d’évènement avec  `window.onscroll`.
 
-The most important question is: "How do we detect that the page is scrolled to bottom?"
+La question cruciale est: " Comment détectons nous que la page est défilée vers le bas?"
 
-Let's use window-relative coordinates.
+Utilisons les coordonnées relatives de window: window-relative.
 
-The document is represented (and contained) within `<html>` tag, that is `document.documentElement`.
+Le document est représenté (et contenu) dans la balise  `<html>`, qui est `document.documentElement`.
 
-We can get window-relative coordinates of the whole document as `document.documentElement.getBoundingClientRect()`. And the `bottom` property will be window-relative coordinate of the document end.
+Nous pouvons obtenir les coordonnées relatives de Windows du document en entier avec  `document.documentElement.getBoundingClientRect()`. 
+et la propriété `bottom` sera la coordonnée relative de window de la fin du document.
 
-For instance, if the height of the whole HTML document is 2000px, then:
+Par exemple, si la hauteur totale du document HTML est de 2000px, alors:
 
 ```js
-// When we're on the top of the page
+// Lorsqu'on est en haut de la page 
 // window-relative top = 0
 document.documentElement.getBoundingClientRect().top = 0
 
-// window-relative bottom = 2000
-// the document is long, so that is probably far beyond the window bottom
+// window-relative en bas de page = 2000
+// le document est long, alors c'est probablement bien au-delà des limites inferieures de la fenêtre
 document.documentElement.getBoundingClientRect().bottom = 2000
 ```
 
-If we scroll `500px` below, then:
+Si nous défilonsla page de `500px` vers le bas, alors:
 
 ```js
 // document top is above the window 500px
 document.documentElement.getBoundingClientRect().top = -500
-// document bottom is 500px closer
+// le bas du document est  500px plus proche
 document.documentElement.getBoundingClientRect().bottom = 1500
 ```
 
-When we scroll till the end, assuming that the window height is `600px`:
+Lorsque nous défilons jusque vers la fin, en assumant que la hauteur de la fenêtre  est de `600px`:
 
 
 ```js
-// document top is above the window 1400px
+// La limite supérieure du document est au-dessus de la fenêtre à 1400px
 document.documentElement.getBoundingClientRect().top = -1400
-// document bottom is below the window 600px
+// Le bas du document est au bas de la fenêtre à 600px
 document.documentElement.getBoundingClientRect().bottom = 600
 ```
 
-Please note that the bottom can't be 0, because it never reaches the window top. The lowest limit of the bottom coordinate is the window height, we can't scroll it any more up.
+S'il vous plait veuillez noter que la limite inferieure ne peut être égale à 0, parce qu’elle n'atteint jamais le haut de la fenêtre. La limite la plus basse de la coordonnée inferieure est la hauteur de la fenêtre, nous ne pouvons plus la défiler vers le haut.
 
-And the window height is `document.documentElement.clientHeight`.
+et la hauteur de la fenêtre est `document.documentElement.clientHeight`.
 
-We want the document bottom be no more than `100px` away from it.
+Nous voulons que le bas de la fenêtre ne soit pas à plus de `100px` de celle-ci.
 
-So here's the function:
+Donc voici la fonction:
 
 ```js
 function populate() {
   while(true) {
-    // document bottom
+    // la fin du document
     let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
 
-    // if it's greater than window height + 100px, then we're not at the page back
-    // (see examples above, big bottom means we need to scroll more)
+    // Si c'est supérieure à la hauteur de la fenêtre + 100px, alors nous ne sommes pas derrière la page.
+    // (Voir les exemples en haut, la fin est trop grande veut dire que nous avons besoin de faire défiler la page)
     if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
 
-    // otherwise let's add more data
+    // Sinon ajoutons plus de données
     document.body.insertAdjacentHTML("beforeend", `<p>Date: ${new Date()}</p>`);
   }
 }

@@ -1,11 +1,12 @@
-The `onscroll` handler should check which images are visible and show them.
 
-We also may want to run it when the page loads, to detect immediately visible images prior to any scrolling and load them.
+Le gestionnaire d'évènement `onscroll` doit vérifier quelles images sont visibles et les afficher.
 
-If we put it at the `<body>` bottom, then it runs when the page content is loaded.
+Nous pouvons aussi vouloir l'exécuter quand la page est chargée, pour détecter immédiatement les images visibles avant tout défilement et les afficher.
+
+Si nous le mettons à la fin de la balise `<body>`, alors il est exécuté lorsque le contenu de la page est chargée.
 
 ```js
-// ...the page content is above...
+// ...Le contenu de la page est en haut...
 
 function isVisible(elem) {
 
@@ -13,7 +14,7 @@ function isVisible(elem) {
 
   let windowHeight = document.documentElement.clientHeight;
 
-  // top elem edge is visible OR bottom elem edge is visible
+  // le rebord supérieur de l'elem est visible ou le rebord inferieur de l' elem est visible
   let topVisible = coords.top > 0 && coords.top < windowHeight;
   let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
@@ -26,6 +27,6 @@ window.onscroll = showVisible;
 */!*
 ```
 
-For visible images we can take `img.dataset.src` and assign it to `img.src` (if not did it yet).
+Pour les images visibles nous pouvons prendre `img.dataset.src` et l'assigner à `img.src` (si cela n’a pas été fait déjà).
 
-P.S. The solution also has a variant of `isVisible` that "pre-loads" images that are within 1 page  above/below (the page height is `document.documentElement.clientHeight`).
+P.S. La solution a aussi une variante `isVisible` qui "pré-charge" les images qui sont dans 1 page  en haut/bas (la hauteur de la page est `document.documentElement.clientHeight`).
