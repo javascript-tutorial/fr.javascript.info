@@ -203,11 +203,7 @@ Par exemple :
       }
     };
 
-<<<<<<< HEAD
-    alert(obj + 2); // 22 (ToPrimitive renvoyé une chaîne de caractère => concatenation)
-=======
-    alert(obj + 2); // 22 (conversion to primitive returned a string => concatenation)
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+    alert(obj + 2); // 22 (la conversion en primitive a renvoyé une chaîne de caractères => concaténation)
     ```
 
 ## Résumé

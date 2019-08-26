@@ -49,15 +49,9 @@ let id = Symbol("id");
 alert(id); // TypeError: Impossible de convertir une valeur de symbole en chaîne de caractères
 */!*
 ```
-C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent pas être convertis les uns en les autres. 
+C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent accidentellement pas être convertis les uns en les autres. 
 
-<<<<<<< HEAD
 Si nous voulons vraiment afficher un symbole, nous devons appeler `.toString()` dessus, comme ici :
-=======
-That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not accidentally convert one into another.
-
-If we really want to show a symbol, we need to explicitly call `.toString()` on it, like here:
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 ```js run
 let id = Symbol("id");
 *!*
@@ -76,11 +70,7 @@ alert(id.description); // id
 
 ## Propriétés "cachées"
 
-<<<<<<< HEAD
-Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder ou écraser.
-=======
-Symbols allow us to create "hidden" properties of an object, that no other part of code can accidentally access or overwrite.
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder accidentellement ou écraser.
 
 Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers, nous aimerions leur ajouter des identificateurs.
 
@@ -102,11 +92,7 @@ Quel est l’avantage de l’utilisation de `Symbol("id")` sur une chaîne de ca
 
 Poussons un peu plus loin l’exemple pour voir cela.
 
-<<<<<<< HEAD
-Comme les objets `user` appartiennent à un autre code et que ce code fonctionne également avec eux, nous ne devrions pas simplement y ajouter de champs. C’est dangereux. Cependant, il est parfois impossible d’accéder à un symbole. Le code tiers ne le verra probablement même pas. C’est donc probablement tout à fait acceptable.
-=======
-As `user` objects belongs to another code, and that code also works with them, we shouldn't just add any fields to it. That's unsafe. But a symbol cannot be accessed accidentally, the third-party code probably won't even see it, so it's probably all right to do.
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+Comme les objets `user` appartiennent à un autre code et que ce code fonctionne également avec eux, nous ne devrions pas simplement y ajouter de champs. C’est dangereux. Cependant, il est parfois impossible d’accéder à un symbole. Mais un symbole ne peut pas être accédé accidentellement, le code tiers ne le verra probablement même pas, il est donc probablement correct de le faire.
 
 Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. Cela peut être une autre bibliothèque JavaScript, donc les scripts ne sont absolument pas conscients les uns des autres.
 
@@ -299,13 +285,8 @@ Les multiples appels de `Symbol.for` avec la même `key` renvoient exactement le
 
 Les symboles ont deux principaux cas d'utilisation :
 
-<<<<<<< HEAD
 1. Propriétés d'objet "masquées".
-    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée occasionnellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation occasionnelle ou un écrasement.
-=======
-1. "Hidden" object properties.
-    If we want to add a property into an object that "belongs" to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in `for..in`, so it won't be accidentally processed together with other properties. Also it won't be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée accidentellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation accidntelle ou un écrasement.
 
     Ainsi, nous pouvons "dissimuler" quelque chose dans des objets dont nous avons besoin, mais que les autres ne devraient pas voir, en utilisant des propriétés symboliques.
 

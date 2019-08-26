@@ -337,11 +337,7 @@ Comme nous pouvons le constater, lorsque notre fonction demande à un départeme
 
 Le premier cas est la base de la récursivité, le cas trivial, lorsque nous obtenons un tableau.
 
-<<<<<<< HEAD
-Le 2ème cas où nous générons un objet est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la scission se terminera en (1).
-=======
-The 2nd case when we get an object is the recursive step. A complex task is split into subtasks for smaller departments. They may in turn split again, but sooner or later the split will finish at (1).
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+Le 2ème cas où nous obtenons un objet est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la scission se terminera à (1).
 
 L'algorithme est probablement encore plus facile à lire à partir du code:
 
