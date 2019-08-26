@@ -428,7 +428,7 @@ Dans la vraie vie, le problème est de savoir comment retenir l'ordre des argume
 Comme ceci ?
 
 ```js
-// undefined where detauls values are fine
+// undefined where default values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 

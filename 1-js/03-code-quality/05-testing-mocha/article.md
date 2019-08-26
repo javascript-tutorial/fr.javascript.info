@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Test automatisé avec mocha
+=======
+# Automated testing with Mocha
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 Les tests automatisés seront utilisés dans d'autres tâches. Ils sont également largement utilisés dans des projets réels.
 
