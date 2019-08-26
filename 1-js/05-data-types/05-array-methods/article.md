@@ -124,11 +124,7 @@ arr.slice(start, end)
 
 Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `start` à `end` (sans compter `end`). Les deux `start` et `end` peuvent être négatifs, dans ce cas, la position depuis la fin du tableau est supposée.
 
-<<<<<<< HEAD
-En fait, ça fonctionne comme str.slice, mais crée des sous-tableaux au lieu de sous-chaînes.
-=======
-It's similar to a string method `str.slice`, but instead of substrings it makes subarrays.
->>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
+Cela ressemble à une méthode string `str.slice`, mais au lieu de sous-chaînes de caractères, cela crée des sous-tableaux.
 
 Cela ressemble à une méthode de chaînes de caractères `str.slice`, mais au lieu de sous-chaînes de caractères, il crée des sous-tableaux.
 
