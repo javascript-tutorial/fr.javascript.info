@@ -286,6 +286,7 @@ Le premier appel est spécial. Il est fabriqué en utilisant un "objet wrapper" 
 L’idée est de fournir autant de puissance pour `replacer` que possible : il a une chance d'analyser et de remplacer/ignorer même l'objet entier si nécessaire.
 
 
+<<<<<<< HEAD
 ## Formatage: spacer
 
 Le troisième argument de `JSON.stringify(value, replacer, spaces)` est le nombre d'espaces à utiliser pour un joli formatage.
@@ -293,6 +294,15 @@ Le troisième argument de `JSON.stringify(value, replacer, spaces)` est le nombr
 Auparavant, tous les objets stringifiés n’avaient pas d'indentation ni d’espace supplémentaire. C'est bien si nous voulons envoyer un objet sur un réseau. The L'arguement `spacer` est utilisé exclusivement pour une belle sortie.
 
 Ici `spacer = 2` indique à JavaScript d'afficher des objets imbriqués sur plusieurs lignes, avec l'indentation de 2 espaces à l'intérieur d'un objet:
+=======
+## Formatting: space
+
+The third argument of `JSON.stringify(value, replacer, space)` is the number of spaces to use for pretty formatting.
+
+Previously, all stringified objects had no indents and extra spaces. That's fine if we want to send an object over a network. The `space` argument is used exclusively for a nice output.
+
+Here `space = 2` tells JavaScript to show nested objects on multiple lines, with indentation of 2 spaces inside an object:
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 ```js run
 let user = {
@@ -328,7 +338,11 @@ alert(JSON.stringify(user, null, 2));
 */
 ```
 
+<<<<<<< HEAD
 Le paramètre `spaces` est utilisé uniquement à des fins de journalisation et de nice-output purposes.
+=======
+The `space` parameter is used solely for logging and nice-output purposes.
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 ## "toJSON" Personnalisé
 

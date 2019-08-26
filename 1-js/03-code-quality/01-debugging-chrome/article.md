@@ -2,7 +2,11 @@
 
 Avant d’écrire un code plus complexe, parlons de débogage.
 
+<<<<<<< HEAD
 Le [Debugging](https://en.wikipedia.org/wiki/Debugging) est le processus de recherche et de correction des erreurs dans un script. Tous les navigateurs modernes et la plupart des autres environnements prennent en charge les outils de débogage - une interface utilisateur spéciale dans les outils de développement facilitant grandement le débogage. Cela permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
+=======
+[Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that makes debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 Nous allons utiliser Chrome ici, car il possède suffisamment de fonctionnalités, la plupart des autres navigateurs utilisent un processus similaire.
 
