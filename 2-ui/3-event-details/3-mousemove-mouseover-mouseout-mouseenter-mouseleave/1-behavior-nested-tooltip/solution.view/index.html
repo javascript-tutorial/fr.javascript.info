@@ -49,16 +49,16 @@
 <body>
 
 
-  <div data-tooltip="Here is the house interior" id="house">
-    <div data-tooltip="Here is the roof" id="roof"></div>
+ <div data-tooltip=" Voici l'interieure de la maison" id="house">
+    <div data-tooltip="Voici le toit" id="roof"></div>
 
-    <p>Once upon a time there was a mother pig who had three little pigs.</p>
+    <p> Il était une fois, une maman cochon qui avait trois petits cochons.</p>
 
-    <p>The three little pigs grew so big that their mother said to them, "You are too big to live here any longer. You must go and build houses for yourselves. But take care that the wolf does not catch you."
+    <p>Les trois petits cochons devinrent tellement grands que leur maman leur dit, "Vous êtes trop grands pour habiter ici d'avantage. Vous devez partir et construire vos maisons par vous-mêmes. Mais prenez gardes à ce que le loup ne vous attrape pas"
 
-    <p>The three little pigs set off. "We will take care that the wolf does not catch us," they said.</p>
+    <p>Les trois petits cochons partirent. "Nous allons faire attention à ce que le loup ne nous attrape point," dirent ils.</p>
 
-    <p>Soon they met a man. <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Hover over me</a></p>
+    <p>Bientôt ils rencontrèrent un homme. <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Survolez moi</a></p>
 
   </div>
 
@@ -79,7 +79,7 @@
 
     document.onmouseout = function() {
       // Il est possible que l'évènement  mouseout se déclenche, mais nous sommes toujours dans l'élément
-      // (sa cible était a l'intérieur et l'évènement a remonté)
+      // (sa cible était à l'intérieur et l'évènement a remonté)
       // Mais dans ce cas nous aurons un évènement  mouseover immédiatement,
       // donc l'info-bulle sera détruit et remontre
       //
