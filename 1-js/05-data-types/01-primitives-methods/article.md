@@ -1,8 +1,6 @@
 # Méthodes des primitives
 
-JavaScript nous permet de travailler avec des primitives (chaînes de caractères, nombres, etc.) comme s'il s'agissait d'objets.
-
-ils prévoient également des méthodes pour les appeler en tant que tel. Nous étudierons cela très bientôt, mais nous verrons d'abord comment cela fonctionne car, bien entendu, les primitives ne sont pas des objets ( et nous allons rendre cela plus clair).
+JavaScript nous permet de travailler avec des primitives (chaînes de caractères, nombres, etc.) comme s'il s'agissait d'objets. Ils prévoient également des méthodes pour les appeler en tant que tel. Nous étudierons cela très bientôt, mais nous verrons d'abord comment cela fonctionne car, bien entendu, les primitives ne sont pas des objets ( et nous allons rendre cela plus clair).
 
 Examinons les principales différences entre primitives et objets.
 
@@ -34,7 +32,7 @@ De nombreux objets intégrés existent déjà, tels que ceux qui fonctionnent av
 
 Mais, ces fonctionnalités ont un coût!
 
-Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources supplémentaires pour soutenir le mécanisme interne. Mais comme les propriétés et les méthodes sont très utiles en programmation, les moteurs JavaScript tentent de les optimiser pour réduire la charge supplémentaire.
+Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources supplémentaires pour soutenir le mécanisme interne. 
 
 ## Une primitive en tant qu'objet
 
@@ -83,7 +81,7 @@ Nous verrons des méthodes plus spécifiques dans les chapitres [Nombres](https:
 
 
 ````warn header="Les constructeurs `String/Number/Boolean` sont réservés à un usage interne."
-Certains langages comme Java nous permettent de créer des "wrapper d'objet" (conteneur) pour les primitives en utilisant explicitement une syntaxe telle que `new Number(1)` ou `new Boolean (false)`.
+Certains langages comme Java nous permettent de créer des "wrapper d'objet" (conteneur) pour les primitives en utilisant une syntaxe telle que `new Number(1)` ou `new Boolean (false)`.
 
 En JavaScript, cela est également possible pour des raisons historique, mais fortement **déconseillé**. Cela peut très vite se compliquer à plusieurs endroits.
 

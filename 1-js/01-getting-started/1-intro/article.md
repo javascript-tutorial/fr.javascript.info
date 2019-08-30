@@ -78,7 +78,7 @@ Les exemples de telles restrictions sont:
 
 - JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page en cours. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
 
-![](limitations.png)
+![](limitations.svg)
 
 De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
 
@@ -96,8 +96,7 @@ JavaScript est la seule technologie de navigateur qui combine ces trois élémen
 
 C’est ce qui rend JavaScript unique. C’est pourquoi c’est l’outil le plus répandu pour créer des interfaces de navigateur.
 
-Lorsqu'on prévoit d’apprendre une nouvelle technologie, il est utile de vérifier ses perspectives. Passons donc aux tendances modernes qui incluent de nouveaux langages et capacités de navigation.
-
+Cela dit, JavaScript permet également de créer des serveurs, des applications mobiles, etc.
 
 ## Les langages "par dessus" JavaScript
 

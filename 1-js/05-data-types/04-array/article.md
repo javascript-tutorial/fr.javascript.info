@@ -100,7 +100,7 @@ Une [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (file d'at
 - `push` ajoute un élément à la fin.
 - `shift` enleve un élément depuis le début, en faisant avancer la file d'attente, de sorte que le deuxième élément devienne le premier.
 
-![](queue.png)
+![](queue.svg)
 
 Les tableaux prennent en charge les deux opérations.
 
@@ -117,7 +117,7 @@ Ainsi, de nouveaux éléments sont ajoutés ou enlevés toujours à partir de la
 
 Un stack(pile) est généralement illustrée par un jeu de cartes: de nouvelles cartes sont ajoutées ou enlevées par le haut:
 
-![](stack.png)
+![](stack.svg)
 
 Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out)(dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out)(premier entré, premier sorti).
 
@@ -239,7 +239,7 @@ Veuillez considérer les tableaux comme des structures spéciales pour travaille
 
 Les méthodes `push/pop` vont vite, alors que `shift/unshift` sont lentes.
 
-![](array-speed.png)
+![](array-speed.svg)
 
 Pourquoi est-il plus rapide de travailler avec la fin d'un tableau qu'avec son début? Voyons ce qui se passe pendant l'exécution:
 
@@ -255,7 +255,7 @@ L'opération `shift` doit faire 3 choses:
 2. Déplace tous les éléments à gauche, renumérote-les de l'index `1` à `0`, de`2` à `1` etc.
 3. Met à jour la propriété `length`.
 
-![](array-shift.png)
+![](array-shift.svg)
 
 **Plus il y a d'éléments dans le tableau, plus il y faut de temps pour les déplacer, plus il y a d'opérations en mémoire.**
 
@@ -269,7 +269,7 @@ Les actions pour l'opération `pop`:
 fruits.pop(); // enleve 1 élément de la fin
 ```
 
-![](array-pop.png)
+![](array-pop.svg)
 
 **La méthode `pop` n'a pas besoin de déplacer quoi que ce soit, car les autres éléments conservent leurs index. C'est pourquoi c'est extrêmement rapide.**
 
@@ -394,7 +394,7 @@ let matrix = [
   [7, 8, 9]
 ];
 
-alert( matrix[1][1] ); // l'élément central
+alert( matrix[1][1] ); // 5, l'élément central
 ```
 
 ## toString

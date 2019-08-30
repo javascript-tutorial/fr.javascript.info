@@ -2,7 +2,7 @@
 <html>
 <body>
 
-  <p>Press "Q" and "W" together (can be in any language).</p>
+  <p>Appuyez sur "Q" et "W" ensemble (cela peut être dans n'importe quelle langue).</p>
 
   <script>
     function runOnKeys(func, ...codes) {
@@ -11,19 +11,19 @@
       document.addEventListener('keydown', function(event) {
         pressed.add(event.code);
 
-        for (let code of codes) { // are all keys in the set?
+        for (let code of codes) { // est ce que toutes les touches sont un ensemble ?
           if (!pressed.has(code)) {
             return;
           }
         }
 
-        // yes, they are
+        // oui, elles le sont
 
-        // during the alert, if the visitor releases the keys,
-        // JavaScript does not get the "keyup" event
-        // and pressed set will keep assuming that the key is pressed
-        // so, to evade "sticky" keys, we reset the status
-        // if the user wants to run the hotkey again - let them press all keys again
+        // durant le message d'alerte, si le visiteur relâche les touches,
+        // JavaScript n'obtient pas l'évènement "keyup" 
+        // et les ensembles appuyées continuent d'assumer que la touche est appuyée 
+        // alors, pour échapper aux touches "sticky" , nous réinitialisons le status
+        // Si un usager veut exécuter le raccourcis encore - laisser le appuyer toutes les touches encore
         pressed.clear();
 
         func();

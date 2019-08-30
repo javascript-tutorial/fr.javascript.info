@@ -41,7 +41,7 @@ Veuillez noter que la dernière ligne n'exécute pas la fonction, car il n'y a p
 
 En JavaScript, une fonction est une valeur, nous pouvons donc la traiter comme une valeur. Le code ci-dessus montre sa représentation sous forme de chaîne de caractères, qui est le code source.
 
-C'est une valeur spéciale bien sûr, en ce sens que nous pouvons l'appeler comme cela `sayHi()`.
+Certes, une fonction est une valeur spéciale, en ce sens que nous pouvons l'appeler comme cela `sayHi()`.
 
 Mais c’est toujours une valeur. Nous pouvons donc travailler avec comme avec d’autres types de valeurs.
 
@@ -61,21 +61,21 @@ sayHi(); // Hello    //     cela fonctionne toujours aussi (pourquoi pas)
 Voici ce qui se passe ci-dessus en détail :
 
 1. La Déclaration de Fonction `(1)` crée la fonction et la place dans la variable nommée `sayHi`.
-2. La ligne `(2)` le copie dans la variable `func`.
-
-    Veuillez noter à nouveau: il n'y a pas de parenthèses après `sayHi`. S'il en existait, alors `func = sayHi()` écrirait le résultat de l'appel `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
+2. La ligne `(2)` le copie dans la variable `func`. Veuillez noter à nouveau : il n'y a pas de parenthèses après `sayHi`. S'il y en avait, alors `func = sayHi()` écrirait *le résultat de l'appel* `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
 3. Maintenant, la fonction peut être appelée à la fois en tant que `sayHi()` et `func()`.
 
 Notez que nous aurions aussi pu utiliser une Expression de Fonction pour déclarer `sayHi`, à la première ligne :
 
 ```js
-let sayHi = function() { ... };
+let sayHi = function() {
+  alert( "Hello" );
+};
 
 let func = sayHi;
 // ...
 ```
 
-Tout fonctionnerait de la même manière. Ce qui se passe est encore plus évident, non ?
+Tout fonctionnerait de la même manière.
 
 
 ````smart header="Pourquoi y a-t-il un point-virgule à la fin ?"
@@ -93,8 +93,8 @@ let sayHi = function() {
 ```
 
 La réponse est simple :
-- Il n’ya pas besoin de `;` à la fin des blocs de code et des structures de syntaxe qui les utilisent comme `if {...}`, `for {}`, `function f {}` etc.
-- Une expression de fonction est utilisée dans la déclaration : `let sayHi = …`;, en tant que valeur. Ce n’est pas un bloc de code. Le point-virgule `;` est recommandé à la fin des déclarations, quelle que soit la valeur. Donc, le point-virgule ici n'est en aucun cas lié à l'expression de fonction, il termine simplement l'instruction.
+- Il n’ya pas besoin de `;` à la fin des blocs de code et des structures de syntaxe qui les utilisent comme `if { ... }`, `for {  }`, `function f {  }` etc.
+- Une Fonction Expression est utilisée dans la déclaration : `let sayHi = …;`, en tant que valeur. Ce n’est pas un bloc de code, mais plutôt une affectation. Le point-virgule `;` est recommandé à la fin des déclarations, quelle que soit la valeur. Donc, le point-virgule ici n'est en aucun cas lié à la Fonction Expression elle même, il termine simplement l'instruction.
 ````
 
 ## Fonctions callback (de rappel)
@@ -134,11 +134,11 @@ function showCancel() {
 ask("Do you agree?", showOk, showCancel);
 ```
 
-Avant d’explorer comment nous pouvons l’écrire de manière beaucoup plus courte, notons que dans le navigateur (et du côté serveur dans certains cas), ces fonctions sont très populaires. La principale différence entre une implémentation réelle et l'exemple ci-dessus est que les fonctions réelles utilisent des moyens plus complexes d'interagir avec l'utilisateur qu'un simple `confirm`. Dans le navigateur, une telle fonction dessine généralement une belle fenêtre de questions. Mais c’est une autre histoire.
+En pratique, ces fonctions sont très utiles. La principale différence entre une demande réelle (`ask`) et l'exemple ci-dessus est que les fonctions réelles utilisent des moyens d'interagir avec l'utilisateur plus complexes que la simple confirmation (`confirm`). Dans le navigateur, une telle fonction dessine généralement une belle fenêtre de questions. Mais c'est une autre histoire.
 
-**Les arguments de `ask` s'appellent des *fonctions de rappel* (callback functions) ou simplement des *rappels* (callbacks).**
+**Les arguments `showOk` et `showCancel` de `ask` s'appellent des *fonctions callback* (fonctions de rappel) ou simplement des *callbacks* (rappels).**
 
-L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la réponse "non".
+L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la "non" réponse.
 
 Nous pouvons utiliser les Expressions de Fonction pour écrire la même fonction mais plus courte :
 
@@ -157,14 +157,12 @@ ask(
 */!*
 ```
 
-
-Ici, les fonctions sont déclarées directement dans l'appel `ask(...)`. Ils n'ont pas de nom et sont donc appelés *anonymes*. De telles fonctions ne sont pas accessibles en dehors de `ask` (car elles ne sont pas affectées à des variables), mais c’est exactement ce que nous voulons ici.
+Ici, les fonctions sont déclarées directement dans l'appel `ask(...)`. Elles n'ont pas de nom et sont donc appelées *anonymes*. De telles fonctions ne sont pas accessibles en dehors de `ask` (car elles ne sont pas affectées à des variables), mais c’est exactement ce que nous voulons ici.
 
 Ce genre de code apparaît dans nos scripts très naturellement, c’est dans l’esprit de JavaScript.
 
-
 ```smart header="Une fonction est une valeur représentant une \"action\""
-Des valeurs régulières telles que des chaînes de caractères ou des nombres représentent des *données*.
+Des valeurs régulières telles que des chaînes de caractères ou des nombres représentent les *données*.
 
 Une fonction peut être perçue comme une *action*.
 
@@ -239,7 +237,9 @@ let sayHi = function(name) {  // (*) plus de magie
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
 
-**En mode strict, une fonction déclaration se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
+Une autre particularité des Fonction Declaration est leur portée de bloc.
+
+**En mode strict, quand une Fonction Déclaration se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
 Par exemple, imaginons que nous ayons besoin de déclarer une fonction `welcome()` en fonction de la variable d’`age` obtenue lors de l’exécution. Et ensuite, nous prévoyons de l'utiliser quelque temps plus tard.
 
@@ -291,7 +291,7 @@ if (age < 18) {
 
 } else {
 
-  function welcome() {     //  pour age = 16, ce "welcome" n'est jamais créé
+  function welcome() {    
     alert("Greetings!");
   }
 }
@@ -308,7 +308,7 @@ Que pouvons-nous faire pour rendre `welcome` visible en dehors de `if` ?
 
 L'approche correcte consisterait à utiliser une expression de fonction et à attribuer `welcome` à la variable déclarée en dehors de `if` et offrant la visibilité appropriée.
 
-Maintenant, cela fonctionne comme prévu :
+Ce code fonctionne comme prévu :
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -395,7 +395,7 @@ alert( sum(1, 2) ); // 3
 
 ```
 
-Si nous n’avons qu’un seul argument, alors les parenthèses peuvent être omises, ce qui le rend encore plus court :
+Si nous n’avons qu’un seul argument, alors les parenthèses autour peuvent être omises, ce qui le rend encore plus court :
 
 ```js run
 // identique à
@@ -456,7 +456,7 @@ alert( sum(1, 2) ); // 3
 
 Ici, nous avons félicité les fonctions fléchées pour leur brièveté. Mais ce n'est pas tout! Les fonctions fléchées ont d'autres caractéristiques intéressantes. Nous y reviendrons plus tard dans le chapitre <info:arrow-functions>.
 
-Pour l'instant, nous pouvons déjà les utiliser pour des actions d'une seule ligne et des rappels.
+Pour l'instant, nous pouvons déjà utiliser les fonctions fléchées pour les actions sur une ligne et les callbacks.
 ```
 
 ## Résumé
@@ -467,8 +467,7 @@ Pour l'instant, nous pouvons déjà les utiliser pour des actions d'une seule li
 - Les déclarations de fonctions sont traitées avant l'exécution du bloc de code. Elles sont visibles partout dans le bloc.
 - Les expressions de fonction sont créées lorsque le flux d’exécution les atteint.
 
-
-Dans la plupart des cas, lorsque nous devons déclarer une fonction, une déclaration de fonction est préférable car elle est visible avant la déclaration elle-même. Cela nous donne plus de flexibilité dans l'organisation du code et il est généralement plus lisible.
+Dans la plupart des cas, lorsque nous devons déclarer une fonction, une fonction déclaration est préférable parce qu'elle est visible avant la déclaration elle-même. Cela nous donne plus de flexibilité dans l'organisation du code et il est généralement plus lisible.
 
 Nous devrions donc utiliser une expression de fonction uniquement lorsqu'une déclaration de fonction n'est pas adaptée à la tâche. Nous en avons vu quelques exemples dans ce chapitre et nous en verrons davantage à l’avenir.
 

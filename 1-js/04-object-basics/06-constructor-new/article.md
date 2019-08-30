@@ -215,6 +215,8 @@ john = {
 */
 ```
 
+Pour créer des objets complexes, il existe une syntaxe plus avancée, [classes](info:classes), que nous allons couvrir plus tard.
+
 ## Résumé
 
 - Les fonctions constructeur ou, plus brièvement, les constructeurs, sont des fonctions normales, mais il est généralement convenu de les nommer avec une première lettre en majuscule.

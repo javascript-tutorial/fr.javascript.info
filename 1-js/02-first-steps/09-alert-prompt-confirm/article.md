@@ -30,7 +30,7 @@ La fonction `prompt` accepte deux arguments :
 result = prompt(title, [default]);
 ```
 
-Il montre une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
+Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
 
 `title`
 : Le texte à afficher au visiteur.
@@ -38,7 +38,7 @@ Il montre une fenêtre modale avec un message texte, un champ de saisie pour le 
 `default`
 : Un deuxième paramètre facultatif, la valeur initiale du champ de saisie.
 
-Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur `OK`. Ou ils peuvent annuler l'entrée en appuyant sur le bouton `ANNULER` ou en appuyant sur la touche `Échap`.
+Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur `OK`. Ou ils peuvent annuler l'entrée en appuyant sur le bouton `ANNULER` ou en appuyant sur la touche `key:Esc`.
 
 L'appel du `prompt` renvoie le texte du champ de saisie ou `null` si l'entrée a été annulée.
 
@@ -94,10 +94,10 @@ Nous avons couvert 3 fonctions spécifiques au navigateur pour interagir avec le
 : affiche un message.
 
 `prompt`
-: affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou, si on clique sur `Annuler` ou `Esc`, tous les navigateurs renvoient `null`.
+: affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou, si on clique sur `Annuler` ou `key:Esc`, `null`.
 
 `confirm`
-: affiche un message et attend que l'utilisateur appuie sur “OK” ou “Annuler”. Il renvoie `true` pour OK et `false` pour Annuler/Esc.
+: affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler". Il renvoie `true` pour OK et `false` pour Annuler/`key:Esc`.
 
 Toutes ces méthodes sont modales: elles interrompent l'exécution du script et n'autorisent pas le visiteur à interagir avec le reste de la page tant que le message n'a pas disparu.
 

@@ -1,8 +1,8 @@
 # Evenements de base de la souris
 
-Les évènements de souris ne proviennent pas uniquement  des "manipulateurs de la souris", mais ils peuvent aussi être émulés sur des appareils tactiles, afin de les rendre compatibles.
+Dans ce chapitre, nous entrerons dans plus de détails sur les événements de souris et leurs propriétés.
 
-Dans ce chapitre nous verrons plus en détail  les évènements clics et leurs propriétés.
+Remarque: de tels événements peuvent provenir non seulement de "périphériques de souris", mais également d'autres périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
 
 ## Les types d'évènements de Souris 
 
@@ -42,7 +42,7 @@ Une action peut déclencher plusieurs évènements.
 
 Par exemple, un clic déclenche d'abord  un évènement `mousedown`, lorsqu'un bouton est appuyé, ensuite  un évènement `mouseup` et un évènement `click` lorsqu’il est relâché.
 
-Au cas où une action unique initialise plusieurs évènements, leur ordre est fixé. Cela veut  dire, les gestionnaires d’évènements sont appelés selon l’ordre suivant `mousedown` -> `mouseup` -> `click`. Les évènements sont gérés selon la même séquence:  `onmouseup` finit avant que   `onclick` ne démarre.
+Au cas où une action unique initialise plusieurs évènements, leur ordre est fixé. C'est-à-dire que les gestionnaires sont appelés dans l'ordre `mousedown` -> `mouseup` -> `click`.
 
 ```online
 Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double clic aussi. Dans TestStand en bas tous les évènements de la souris sont enregistrés, et si il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
@@ -72,12 +72,14 @@ Le bouton du milieu est quelque peu exotique jusqu’à présent et est très ra
 
 Tous les évènements de la souris contiennent des informations à propos des touches de modifications qui sont appuyées.
 
-Les propriétés sont :
+Propriétés d'événement :
 
-- `shiftKey`
-- `altKey`
-- `ctrlKey`
-- `metaKey` (`key:Cmd` for Mac)
+- `shiftKey`: `key:Shift`
+- `altKey`: `key:Alt` (or `key:Opt` for Mac)
+- `ctrlKey`: `key:Ctrl`
+- `metaKey`: `key:Cmd` for Mac
+
+They are `true` if the corresponding key was pressed during the event.
 
 Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
 
@@ -94,24 +96,29 @@ Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
   };
 </script>
 ```
-```warn header="Attention: Sur Mac c’est souvent `Cmd` au lieu de `Ctrl`"
+```warn header="Attention : Sur Mac c’est souvent `Cmd` au lieu de `Ctrl`"
 
-Sur Windows et Lunix il y a les touches de Modification key:Alt`, `key:Shift` and `key:Ctrl`.Sur Mac il y a une de plus: `key:Cmd`,  elle correspond à la propriété `metaKey`.
+Sous Windows et Linux, il y a des touches modificatrices `key:Alt`, `key:Shift` et `key:Ctrl`. Sur Mac, il y en a une en plus : `key:Cmd`, correspondant à la propriété `metaKey`.
 
-Dans la plus part des cas lorsque Windows/Linux utilise `key:Ctrl`, les gens sur Mac utilisent `key:Cmd`. Donc là ou un utilisateur Windows appuie sur  `key:Ctrl+Enter` ou `key:Ctrl+A`, un utilisateur Mac va appuyer sur  `key:Cmd+Enter` oubien sur `key:Cmd+A`, ainsi de suite, la plupart des apps utilisent `key:Cmd`  au lieu de `key:Ctrl`.
+Dans la plupart des applications, lorsque Windows / Linux utilise `key:Ctrl`, sur Mac `key:Cmd` est utilisée.
 
-Donc si nous voulons supporter les combinaisons comme `key:Ctrl`+click, alors sur Mac on est sensé utiliser `key:Cmd`+click. C’est plus confortable pour les usagers de Mac.
+C'est-à-dire : lorsqu'un utilisateur Windows appuie sur `key:Ctrl+Enter` ou `key:Ctrl+A`, un utilisateur Mac presserait sur `key:Cmd+Enter` ou `key:Cmd+A`, etc.
 
-Même si nous voudrions forcer les usagers de Mac à utiliser to `key:Ctrl`+click --  cela semble être difficile. Le problème en est : qu’un clic-gauche avec `key:Ctrl` est interprète comme un *right-click* sur Mac, et cela génère l’évènement `contextmenu`, non pas un `click` comme sous Windows/Lunix.
+Donc, si nous voulons supporter des combinaisons comme `key:Ctrl`+click, alors pour Mac, il est logique d'utiliser `key:Cmd`+click. C'est plus confortable pour les utilisateurs de Mac.
 
-Donc si nous voulons que les usagers de tous les systèmes d’Exploitations soient confortables, alors avec `ctrlKey`  nous devons utiliser `metaKey`.
+Même si nous aimerions forcer les utilisateurs de Mac à `key:Ctrl`+click -- c'est un peu difficile. Le problème est: un clic gauche avec `key:Ctrl` est interprété comme un *clic droit* sur MacOS, et il génère l'évènement `menu contextuel`, et non un `click` comme sur Windows/Linux.
+
+Donc, si nous voulons que les utilisateurs de tous les systèmes opérationnels se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
 
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```
 
+
 ```warn header="Il y a aussi les appareils mobiles"
 
-Les combinaisons du clavier sont tout aussi bonnes comme ajout au processus de travail. De sorte que si un visiteur a un clavier—cela fonctionne. Et si votre appareil n'en possède pas—qu’il possède un autre moyen d’effectuer la même chose.
+Les combinaisons de clavier sont un bon ajout au flux de travail. Tant que le visiteur a un
+  clavier - ça fonctionne. Mais si leur appareil n’en a pas - alors il devrait y avoir un autre moyen de faire de même.
+
 ```
 
 ## Cordonnées: clientX/Y, pageX/Y
@@ -121,60 +128,33 @@ Tous les évènements de souris ont des cordonnées en deux types :
 1. Window-relative: `clientX` et `clientY`.
 2. Document-relative: `pageX` et `pageY`.
 
-Par exemple, si nous avons une fenêtre de taille 500x500, et la souris est au coin gauche en haut, alors `clientX` et  `clientY` ont une valeur de `0`. Et si la souris est au centre, alors `clientX` et  `clientY` ont une valeur de  `250`, quel que soit la position dans le document il se trouve. Et ils ont une position similaire à`position:fixed`.
+
+Par exemple, si nous avons une fenêtre de taille 500x500, et que la souris est dans le coin supérieur gauche, alors `clientX` et  `clientY` ont une valeur de `0`. Et si la souris est au centre, alors `clientX` et  `clientY` ont une valeur de  `250`, peu importe sa position dans le document. Et ils ont une position similaire à`position:fixed`.
+
 
 ````online
-Glisse la souris à l’intérieur des champs de saisie texte pour voir les `clientX/clientY` (C’est dans l `iframe`, ainsi les cordonnées sont relatives à cet `iframe`):
+Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exemple est dans l `iframe`, ainsi les cordonnées sont relatives à cet `iframe`) :
 
 ```html autorun height=50
 <input onmousemove="this.value=event.clientX+':'+event.clientY" value="Mouse over me">
 ```
 ````
-Les cordonnées relatives au document sont comptés à partir du coin gauche en haut du document, et non pas par rapport à la fenêtre.
-Les coordonnées `pageX`, `pageY` sont similaires à `position:absolute` au niveau document.
-Vous pouvez lire plus à propos des cordonnées dans le chapitre <info:coordinates>.
+Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir du coin supérieur gauche du document, pas de la fenêtre. Vous pouvez en savoir plus sur les coordonnées dans le chapitre <info:coordinates>.
 
-## Aucune sélection au clic mousedown
+## Désactiver la sélection
 
-Les clics de souris ont un effet secondaire qui peut être perturbant. Le double clic  sélectionne le texte.
+Un double clic de souris a un effet secondaire qui peut être gênant dans certaines interfaces: il sélectionne le texte.
 
-Si nous voulons gérer les évènements clic, alors la sélection en   "extra" ne rend pas bien.
-Par exemple, un double-clic sur le texte en bas le sélectionne en ajout à notre gestionnaire d’évènement : 
 
 ```html autorun height=50
-<b ondblclick="alert('dblclick')">Double-click me</b>
+<span ondblclick="alert('dblclick')">Double-click me</span>
 ```
 
-Il existe un moyen par css de stopper la sélection : la propriété `user-select` voir  [CSS UI Draft](https://www.w3.org/TR/css-ui-4/).
+Si on appuie sur le bouton gauche de la souris et, sans le relâcher, on déplace la souris, la sélection devient alors souvent indésirable.
 
-Plusieurs navigateurs le supportent avec les préfixes :
+Il existe plusieurs façons d’empêcher la sélection, que vous pouvez lire dans le chapitre <info:selection-range>.
 
-```html autorun height=50
-<style>
-  b {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-</style>
-
-Avant...
-<b ondblclick="alert('Test')">
-  Non sélectionnable
-</b>
-...Apres
-```
-
-Maintenant si vous effectuez un double-clic sur "Non sélectionnable",  le texte n’est pas sélectionné. Ça semble marcher.
-
-…But il y a un problème potentiel ! Le texte devient en réalité non sélectionnable. Même si un utilisateur commence la sélection à partir d’"Avant" et se termine par "Apres", la sélection saute la partie "Non sélectionnable". Voulons-nous vraiment rendre notre texte non sélectionnable ?
-
-La plus part du temps, ce n’est pas ce que nous voulons. Un utilisateur peut avoir des raisons valides de sélectionner le texte, pour la copie ou d’autres besoins. Cela pourrait être inconvenable si nous ne leur permettrons pas de le faire. Donc cette solution n’est pas aussi bonne.
-
-Ce que nous voulons c’est d’empêcher la sélection au  double-click, uniquement.
-
-La sélection du texte est l’action par défaut du navigateur de  l’évènement `mousedown`. Donc une solution alternative serait de gérer le `mousedown` et de l’empêcher, comme ainsi :
+Dans ce cas particulier, le moyen le plus raisonnable consiste à empêcher l'action du navigateur lors du `mousedown`. Il empêche ces deux sélections :
 
 ```html autorun height=50
 Avant...
@@ -184,27 +164,13 @@ Avant...
 ...Apres
 ```
 
-Maintenant l’élément en gras n’est pas sélectionné aux doubles clics.
-Le texte à l’intérieur est encore sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après celui-ci. Souvent, c’est suffisant cependant.
+Désormais, l'élément en gras n'est pas sélectionné lors d'un double-clic, et si vous appuyez sur le bouton gauche de la souris, la sélection ne sera pas lancée.
 
-````smart header="Canceling the selection"
-Au lieu d’*empêcher* la sélection, nous pouvons l’annuler a posteriori dans le gestionnaire de l’évènement
-Voici comment procéder:
+Remarque: le texte à l'intérieur est toujours sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après. Cela convient généralement aux utilisateurs.
 
-```html autorun height=50
-Avant...
-<b ondblclick="*!*getSelection().removeAllRanges()*/!*">
-  Double-click sur moi
-</b>
-...Après
-```
+````smart header="Prévenir la copie"
+Si nous voulons désactiver la sélection pour protéger le contenu de notre page du copier-coller, nous pouvons utiliser un autre événement : `oncopy`.
 
-Si vous faites un double-click sur l’élément en gras, alors la sélection apparait et ensuite elle est immédiatement enlevée. Cela n’est pas joli cependant.
-
-````
-
-````smart header="Preventing copying"
-Si nous voulons désactiver la sélection pour protéger notre contenu du copier-coller, alors nous pouvons utiliser un autre évènement : `oncopy`.
 ```html autorun height=80 no-beautify
 <div *!*oncopy="alert('Copying forbidden!');return false"*/!*>
 
@@ -215,7 +181,7 @@ Si vous connaissez JS ou HTML, alors vous pouvez tout obtenir à partir de la pa
 ```
 Si vous essayer de copier une partie de texte dans un `<div>`, cela ne va pas fonctionner, parce que l’action par défaut `oncopy`  est empêchée.
 
-Surement cela ne peut empêcher l’utilisateur d’ouvrir le code source HTML, mais tout le monde ne sait pas comment le faire.
+Certes, l'utilisateur a accès à la source HTML de la page et peut en extraire le contenu, mais tout le monde ne sait pas comment le faire.
 ````
 
 ## Résumé 
@@ -223,13 +189,12 @@ Surement cela ne peut empêcher l’utilisateur d’ouvrir le code source HTML, 
 Les évènements de souris ont les propriétés suivantes :
 
 - Button: `which`.
-- Modifier keys (`true` if pressed): `altKey`, `ctrlKey`, `shiftKey` et  `metaKey` (Mac).
-- Si vous voulez gérer `key:Ctrl`, alors n’oubliez pas les utilisateurs Mac qui utilisent `key:Cmd`, alors il est mieux de contrôler si `if (e.metaKey || e.ctrlKey)`.
-- Window-relative coordinates: `clientX/clientY`.
-- Document-relative coordinates: `pageX/pageY`.
+- Touches modificatrices (`true` si pressées) : `altKey`, `ctrlKey`, `shiftKey` et `metaKey` (Mac).
+  - Si vous voulez gérer `key:Ctrl`, alors n'oubliez pas les utilisateurs de Mac, ils utilisent généralement `key:Cmd`, il vaut donc mieux vérifier `if (e.metaKey || e.ctrlKey)`.
 
-Il est important de traiter la sélection de texte comme étant un effet secondaire non volontaire des clics
-Il y a plusieurs moyens de faire cela, par exemple : 
-1. La propriété css  `user-select:none` (avec les prefixes navigateur) désactive complètement la sélection de texte.
-2. Annule la sélection post-factum en utilisant `getSelection().removeAllRanges()`.
-3. Gere l’évènement `mousedown` et empêche l’action par default (souvent la meilleur option).
+- Coordonnées relatives à la fenêtre : `clientX/clientY`.
+- Coordonnées relatives au document : `pageX/pageY`.
+
+L'action par défaut du navigateur de `mousedown` est la sélection de texte. Si ce n'est pas bon pour l'interface, alors il faut l'empêcher.
+
+Dans le chapitre suivant, nous verrons plus de détails sur les événements qui suivent un mouvement de pointeur et sur la manière de suivre les changements d’élément en dessous.
