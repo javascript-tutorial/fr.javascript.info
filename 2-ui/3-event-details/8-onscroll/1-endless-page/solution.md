@@ -1,4 +1,12 @@
+<<<<<<< Updated upstream
 L'essence de la solution est une fonction qui ajoute plus de dates à la page  (ou charge plus de chose en réalité) alors que nous sommes en fin de page.
+=======
+<<<<<<< Updated upstream
+The core of the solution is a function that adds more dates to the page (or loads more stuff in real-life) while we're at the page end.
+=======
+L'essence de la solution est une fonction qui ajoute plus de dates à la page  (ou charge plus de choses en réalité) alors que nous sommes en fin de page.
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 Nous pouvons l'appeler immédiatement et y ajouter un contrôleur d’évènement avec  `window.onscroll`.
 
