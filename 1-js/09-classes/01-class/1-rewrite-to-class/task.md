@@ -1,9 +1,5 @@
-importance: 5
+# Réécrire en classe
 
----
+La classe `Clock` est écrite en style fonctionnelle. Réécrivez la en syntaxe de "classe".
 
-# Rewrite to class
-
-The `Clock` class is written in functional style. Rewrite it the "class" syntax.
-
-P.S. The clock ticks in the console, open it to see.
+P.S. La montre doit tictaquer dans la console, ouvrez la pour la voir.
