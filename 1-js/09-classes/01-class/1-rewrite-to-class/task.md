@@ -1,3 +1,8 @@
+importance: 5
+
+
+---
+
 # Réécrire en classe
 
 La classe `Clock` est écrite en style fonctionnelle. Réécrivez la en syntaxe de "classe".
