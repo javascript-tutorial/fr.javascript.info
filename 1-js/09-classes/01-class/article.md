@@ -9,7 +9,7 @@ En pratique, nous avons souvent besoin de créer beaucoup d'objets de même type
 
 Comme nous le savons dans le chapitre <info:constructor-new>, `new function` peut nous aider à faire cela.
 
-Mais en JavaScript moderne, il y a une construction de la "classe" est plus avancée, qui introduit de nombreux nouveaux aspects utiles en langage orienté objet.
+Mais dans le JavaScript moderne, il y a une construction de la "classe" plus avancée qui introduit de nombreux nouveaux aspects utiles en langage orienté objet.
 
 ## La syntaxe de "classe"
 
