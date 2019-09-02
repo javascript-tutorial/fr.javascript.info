@@ -19,7 +19,11 @@ C'est là que Babel vient à la rescousse.
 
 Actuellement, Babel comporte deux parties :
 
+<<<<<<< HEAD
 1. Tout d’abord, le programme transpileur, qui réécrit le code. Le développeur l'exécute sur son propre ordinateur. Il réécrit le code dans l'ancien standard. Et ensuite, le code est transmis au site Web pour les utilisateurs. Des systèmes de construction de projet moderne comme [webpack](http://webpack.github.io/) ou [brunch](http://brunch.io/) permettent de fournir des moyens d’exécuter automatiquement un transpileur à chaque changement de code, de sorte que cela devient très facile à intégrer dans le processus de développement.
+=======
+1. First, the transpiler program, which rewrites the code. The developer runs it on their own computer. It rewrites the code into the older standard. And then the code is delivered to the website for users. Modern project build systems like [webpack](http://webpack.github.io/) provide means to run transpiler automatically on every code change, so that very easy to integrate into development process.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 2. Ensuite, le polyfill.
 

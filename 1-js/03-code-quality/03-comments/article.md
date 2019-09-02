@@ -174,7 +174,12 @@ Les bons commentaires nous permettent de bien maintenir le code, d'y revenir apr
 
 **Évitez les commentaires :**
 
+<<<<<<< HEAD
 - Cela dit "comment fonctionne le code" et "ce qu'il fait".
 - Ne les mettez que s’il est impossible de rendre le code aussi simple et auto-descriptif qu’il n’en nécessite pas.
+=======
+- That tell "how code works" and "what it does".
+- Put them in only if it's impossible to make the code so simple and self-descriptive that it doesn't require them.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Les commentaires sont également utilisés pour les outils de documentation automatique tels que JSDoc3: ils les lisent et génèrent des documents HTML (ou des documents dans un autre format).

@@ -393,7 +393,11 @@ alert( JSON.stringify(meetup) );
 */
 ```
 
+<<<<<<< HEAD
 Comme on peut le voir, `toJSON` est utilisé à la fois pour l'appel direct `JSON.stringify(room)` et quand `room` est imbriqué dans un autre objet encodé.
+=======
+As we can see, `toJSON` is used both for the direct call `JSON.stringify(room)` and when `room` is nested in another encoded object.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 
 ## JSON.parse

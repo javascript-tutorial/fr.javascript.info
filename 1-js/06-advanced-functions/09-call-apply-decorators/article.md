@@ -57,9 +57,15 @@ Depuis un code extérieur, la fonction encapsulée `slow` fait toujours la même
 
 Pour résumer, il y a plusieurs avantages à utiliser un `cachingDecorator` distinct au lieu de modifier le code de `slow` lui-même:
 
+<<<<<<< HEAD
 - Le `cachingDecorator` est réutilisable. Nous pouvons l'appliquer à une autre fonction.
 - La logique de mise en cache est séparée, elle n’a pas augmenté la complexité de `slow` lui-même (s’il en existait)
 - Nous pouvons combiner plusieurs décorateurs si nécessaire (d'autres décorateurs suivront).
+=======
+- The `cachingDecorator` is reusable. We can apply it to another function.
+- The caching logic is separate, it did not increase the complexity of `slow` itself (if there was any).
+- We can combine multiple decorators if needed (other decorators will follow).
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 
 ## L'utilisation de « func.call » pour le contexte

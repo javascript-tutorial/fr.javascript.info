@@ -4,7 +4,11 @@
 Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement le langage. Mais une fois que vous maîtriserez les bases, vous aurez besoin d’autres ressources.
 
 
+<<<<<<< HEAD
 ## Spécification
+=======
+[The ECMA-262 specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contains the most in-depth, detailed and formalized information about JavaScript. It defines the language.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 **La spécification ECMA-262** contient les informations les plus détaillées et formalisées sur JavaScript. C'est elle qui définit le langage.
 

@@ -119,7 +119,7 @@ La méthode [arr.slice](mdn:js/Array/slice) est beaucoup plus simple qu'un simil
 La syntaxe est la suivante:
 
 ```js
-arr.slice(start, end)
+arr.slice([start], [end])
 ```
 
 Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `start` à `end` (sans compter `end`). Les deux `start` et `end` peuvent être négatifs, dans ce cas, la position depuis la fin du tableau est supposée.
@@ -137,6 +137,8 @@ alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
 alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
+
+We can also call it without arguments: `arr.slice()` creates a copy of `arr`. That's often used to obtain a copy for further transformations that should not affect the original array.
 
 ### concat
 

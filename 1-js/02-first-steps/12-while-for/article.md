@@ -104,12 +104,21 @@ for (let i = 0; i < 3; i++) { // affiche 0, puis 1, puis 2
 
 Examinons la déclaration `for` partie par partie :
 
+<<<<<<< HEAD
 | partie    |            |                                                                                        |
 |-----------|------------|----------------------------------------------------------------------------------------|
 | début     | `i = 0`    | Exécute une fois en entrant dans la boucle.                                            |
 | condition | `i < 3`    | Vérifié avant chaque itération de la boucle, en cas d'échec, la boucle s'arrête.       |
 | étape     | `i++`      | Exécute après le corps à chaque itération, mais avant la vérification de la condition. |
 | corps     | `alert(i)` | Exécute encore et encore tant que la condition est vraie                               |
+=======
+| part  |          |                                                                            |
+|-------|----------|----------------------------------------------------------------------------|
+| begin | `i = 0`    | Executes once upon entering the loop.                                      |
+| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| step| `i++`      | Executes after the body on each iteration. |
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 
 L'algorithme de boucle général fonctionne comme ceci :
@@ -301,7 +310,11 @@ C’est une autre raison pour ne pas utiliser l'opérateur point d’interrogati
 
 Parfois, nous devons sortir de plusieurs boucles imbriquées en même temps.
 
+<<<<<<< HEAD
 Par exemple, dans le code ci-dessous, nous passons en boucle sur `i` et `j` pour demander les coordonnées `(i, j)` de `(0,0)` à `(3,3)` :
+=======
+For example, in the code below we loop over `i` and `j`, prompting for the coordinates `(i, j)` from `(0,0)` to `(2,2)`:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {

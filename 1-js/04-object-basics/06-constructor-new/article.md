@@ -148,10 +148,14 @@ function BigUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return { name: "Godzilla" };  // <-- retourne un objet
+=======
+  return { name: "Godzilla" };  // <-- returns this object
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 }
 
-alert( new BigUser().name );  // Godzilla, got that object ^^
+alert( new BigUser().name );  // Godzilla, got that object
 ```
 
 Et voici un exemple avec un `return` vide (ou nous pourrions placer une primitive après, peu importe) :
@@ -161,10 +165,14 @@ function SmallUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return; // termine l'exécution, renvoie this
 
   // ...
 
+=======
+  return; // <-- returns this
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 }
 
 alert( new SmallUser().name );  // John
