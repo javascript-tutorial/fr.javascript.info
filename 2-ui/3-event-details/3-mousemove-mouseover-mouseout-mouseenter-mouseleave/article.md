@@ -66,10 +66,15 @@ Déplacez également le pointeur dans la `div` enfant, puis le déplacer rapidem
 [codetabs height=360 src="mouseoverout-fast"]
 ```
 
+<<<<<<< HEAD
 ```smart header="Si `mouseover` est déclenché, il doit y avoir `mouseout`"
 En cas de mouvements rapides de la souris, les éléments intermédiaires peuvent être ignorés, mais une chose est sûre : les éléments ne peuvent être ignorés que dans leur ensemble.
 
 Si le pointeur est "officiellement" entré dans un élément avec `mouseover`, alors en le quittant, on aura toujours `mouseout`.
+=======
+```smart header="If `mouseover` triggered, there must be `mouseout`"
+In case of fast mouse movements, intermediate elements may be ignored, but one thing we know for sure: if the pointer "officially" entered an element with `mouseover`, then upon leaving it we always get `mouseout`.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 ```
 
 ## Mouseout en quittant pour un enfant
@@ -111,7 +116,11 @@ parent.onmouseover = function(event) {
 };
 ```
 
+<<<<<<< HEAD
 Si le code à l'intérieur des gestionnaires ne regarde pas `target`, alors il pourrait penser que la souris a quitté l'élément` parent`, puis est revenue dessus. Mais ce n'est pas le cas! La souris n'est jamais partie, elle est simplement passée à l'élément enfant.
+=======
+If we don't examine `event.target` inside the handlers, then it may seem that the mouse pointer left `parent` element, and then came back over it. But it's not the case! The mouse never left, it just moved to the child element.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 S'il y a une action à la sortie de l'élément, par exemple une animation, alors une telle interprétation peut entraîner des effets secondaires indésirables.
 
@@ -206,6 +215,10 @@ Ces choses sont bonnes à noter :
 - Un mouvement rapide de la souris peut ignorer les éléments intermédiaires.
 - Les évènements `mouseover/out` et `mouseenter/leave` ont une propriété supplémentaire : `relatedTarget`. C'est l'élément duquel nous venons de/à, complémentaire à `target`.
 
+<<<<<<< HEAD
 Les évènements `mouseover/out` se déclenchent même lorsque nous passons de l'élément parent à un élément enfant. Le navigateur suppose que la souris ne peut survoler qu'un seul élément à la fois, le plus profond.
 
 Les évènements `mouseenter/leave` sont différents à cet égard: ils ne se déclenchent que lorsque la souris entre et sort de l’élément dans son ensemble. En outre, ils ne "bubble" pas.
+=======
+Events `mouseenter/leave` are different in that aspect: they only trigger when the mouse comes in and out the element as a whole. Also they do not bubble.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1

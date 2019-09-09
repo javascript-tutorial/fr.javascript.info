@@ -57,12 +57,20 @@ Depuis un code extérieur, la fonction encapsulée `slow` fait toujours la même
 
 Pour résumer, il y a plusieurs avantages à utiliser un `cachingDecorator` distinct au lieu de modifier le code de `slow` lui-même:
 
+<<<<<<< HEAD
 - Le `cachingDecorator` est réutilisable. Nous pouvons l'appliquer à une autre fonction.
 - La logique de mise en cache est séparée, elle n’a pas augmenté la complexité de `slow` lui-même (s’il en existait)
 - Nous pouvons combiner plusieurs décorateurs si nécessaire (d'autres décorateurs suivront).
 
 
 ## L'utilisation de « func.call » pour le contexte
+=======
+- The `cachingDecorator` is reusable. We can apply it to another function.
+- The caching logic is separate, it did not increase the complexity of `slow` itself (if there was any).
+- We can combine multiple decorators if needed (other decorators will follow).
+
+## Using "func.call" for the context
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Le décorateur de mise en cache mentionné ci-dessus n'est pas adapté pour travailler avec des méthodes d'objet.
 
@@ -168,9 +176,12 @@ let user = { name: "John" };
 say.call( user, "Hello" ); // John: Hello
 ```
 
+<<<<<<< HEAD
 
 Dans notre cas, nous pouvons utiliser `call` dans le wrapper pour passer le contexte à la fonction d'origine:
-
+=======
+In our case, we can use `call` in the wrapper to pass the context to the original function:
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 ```js run
 let worker = {
@@ -280,7 +291,11 @@ alert( worker.slow(3, 5) ); // ça marche
 alert( "Again " + worker.slow(3, 5) ); // pareil (mis en cache)
 ```
 
+<<<<<<< HEAD
 Maintenant, cela fonctionne avec un nombre quelconque d'arguments.
+=======
+Now it works with any number of arguments (though the hash function would also need to be adjusted to allow any number of arguments. An interesting way to handle this will be covered below).
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Il y a deux changements:
 
@@ -393,13 +408,31 @@ Tiré de la spécification presque "tel quel":
 
 Donc, techniquement, cela prend `this` et associe `this[0]`, `this[1]`... etc. Il est intentionnellement écrit de manière à permettre à tout type de tableau `this` (pas une coïncidence, de nombreuses méthodes suivent cette pratique). C'est pourquoi cela fonctionne aussi avec `this = arguments`.
 
+<<<<<<< HEAD
 ## Résumé
+=======
+## Decorators and function properties
+
+It is generally safe to replace a function or a method with a decorated one, except for one little thing. If the original function had properties on it, like `func.calledCount` or whatever, then the decorated one will not provide them. Because that is a wrapper. So one needs to be careful if one uses them.
+
+E.g. in the example above if `slow` function had any properties on it, then `cachingDecorator(slow)` is a wrapper without them.
+
+Some decorators may provide their own properties. E.g. a decorator may count how many times a function was invoked and how much time it took, and expose this information via wrapper properties.
+
+There exists a way to create decorators that keep access to function properties, but this requires using a special `Proxy` object to wrap a function. We'll discuss it later in the article <info:proxy#proxy-apply>.
+
+## Summary
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 *Decorator* est un wrapper autour d'une fonction qui modifie son comportement. Le travail principal est toujours effectué par la fonction.
 
+<<<<<<< HEAD
 Il est généralement prudent de remplacer une fonction ou une méthode par une fonction décorée, à une exception près. Si la fonction d'origine avait des propriétés, comme `func.calledCount` ou autre chose, la fonction décorée ne les fournira pas. Parce que c'est un wrapper. Il faut donc faire attention si on les utilise. Certains décorateurs fournissent leurs propres propriétés.
 
 Les décorateurs peuvent être considérés comme des "caractéristiques" ou des "aspects" pouvant être ajoutés à une fonction. Nous pouvons en ajouter un ou en ajouter plusieurs. Et tout ça sans changer de code!
+=======
+Decorators can be seen as "features" or "aspects" that can be added to a function. We can add one or add many. And all this without changing its code!
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Pour implémenter `cachingDecorator`, nous avons étudié des méthodes:
 

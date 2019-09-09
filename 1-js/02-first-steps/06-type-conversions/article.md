@@ -10,7 +10,7 @@ Il y a aussi des cas où nous devons convertir explicitement une valeur pour cor
 Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les primitives. Plus tard, après avoir appris les objets, nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
 
-## ToString
+## String Conversion
 
 La conversion `String` se produit lorsque nous avons besoin de la forme chaîne de caractères d'une valeur.
 
@@ -30,7 +30,7 @@ alert(typeof value); // string
 
 La conversion `String` est assez évidente. Un `false` devient `"false"`, `null` devient `"null"` etc.
 
-## ToNumber
+## Numeric Conversion
 
 La conversion numérique se produit automatiquement dans les fonctions et les expressions mathématiques.
 
@@ -94,7 +94,7 @@ alert( '1' + 2 ); // '12' (chaîne de caractères à gauche)
 Cela ne se produit que lorsque l'un des arguments est une chaîne de caractères. Sinon, les valeurs sont converties en nombres.
 ````
 
-## ToBoolean
+## Boolean Conversion
 
 La conversion booléenne est la plus simple.
 
@@ -124,14 +124,24 @@ alert( Boolean(" ") ); // espaces, également vrai (toute chaîne de caractères
 ```
 ````
 
+<<<<<<< HEAD
 
 ## Résumé
+=======
+## Summary
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Les  trois conversions de types les plus utilisées sont :  to string, to number et to boolean.
 
+<<<<<<< HEAD
 **`ToString`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec String (value). La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
 
 **`ToNumber`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
+=======
+**`String Conversion`** -- Occurs when we output something. Can be performed with `String(value)`. The conversion to string is usually obvious for primitive values.
+
+**`Numeric Conversion`** -- Occurs in math operations. Can be performed with `Number(value)`.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 La conversion vers `number` suit les règles suivantes :
 
@@ -142,7 +152,11 @@ La conversion vers `number` suit les règles suivantes :
 | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
 | `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. Une chaîne vide devient `0`. Une erreur donne `NaN`. |
 
+<<<<<<< HEAD
 **`ToBoolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
+=======
+**`Boolean Conversion`** -- Occurs in logical operations. Can be performed with `Boolean(value)`.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 La conversion vers `boolean` suit les règles suivantes :
 
