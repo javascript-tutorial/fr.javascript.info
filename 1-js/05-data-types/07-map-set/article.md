@@ -305,8 +305,11 @@ Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque i
 moins bonnes car cette méthode parcours chaque élément du tableau. `Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
 
 ## Iteration over Set
+## Parcourir un Set
 
 We can loop over a set either with `for..of` or using `forEach`:
+
+Nous pouvons parcourir les éléments d'un Set avec `for..of` ou en utilisant `forEach` 
 
 ```js run
 let set = new Set(["oranges", "apples", "bananas"]);
@@ -314,6 +317,7 @@ let set = new Set(["oranges", "apples", "bananas"]);
 for (let value of set) alert(value);
 
 // the same with forEach:
+// même chose en utilisant forEach:
 set.forEach((value, valueAgain, set) => {
   alert(value);
 });
@@ -321,19 +325,34 @@ set.forEach((value, valueAgain, set) => {
 
 Note the funny thing. The callback function passed in `forEach` has 3 arguments: a `value`, then *the same value* `valueAgain`, and then the target object. Indeed, the same value appears in the arguments twice.
 
+A noter que la fonction de callback utilisée par `forEach` prend 3 arguments en paramètres: une `value`, puis *la même valeur* `valueAgain`,
+et enfin le set lui-même.
+
 That's for compatibility with `Map` where the callback passed `forEach` has three arguments. Looks a bit strange, for sure. But may help to replace `Map` with `Set` in certain cases with ease, and vice versa.
+
+C'est pour des raisons de compatibilité avec `Map` que `forEach` prend en paramètre 3 arguments. C'est quelque peu surprenant, mais cela permet de 
+remplacer facilement une `Map` par un `Set`. 
 
 The same methods `Map` has for iterators are also supported:
 
+Les méthodes pour parcourir les éléments d'une `Map` peuvent être utilisées :
+
 - `set.keys()` -- returns an iterable object for values,
+- `set.keys()` -- retourne un objet iterable contenant les valeurs,
 - `set.values()` -- same as `set.keys()`, for compatibility with `Map`,
+- `set.values()` -- même chose que pour `set.keys()`, méthode présente pour des raisons de compatibilité avec `Map`,
 - `set.entries()` -- returns an iterable object for entries `[value, value]`, exists for compatibility with `Map`.
+- `set.entries()` -- retourne un objet iterable sous la forme de `[value, value]`, , méthode présente pour des raisons de compatibilité avec `Map`
 
 ## Summary
 
 `Map` -- is a collection of keyed values.
 
+`Map` -- est une collection de clé valeurs.
+
 Methods and properties:
+
+Méthodes et propriétés:
 
 - `new Map([iterable])` -- creates the map, with optional `iterable` (e.g. array) of `[key,value]` pairs for initialization.
 - `map.set(key, value)` -- stores the value by the key.
@@ -343,14 +362,28 @@ Methods and properties:
 - `map.clear()` -- removes everything from the map.
 - `map.size` -- returns the current element count.
 
+- `new Map([iterable])` -- créé une map, potentiellement initialisée avec un `iterable` (ex: un array) de couple clé valeur `[key, value]`.
+- `map.set(key, value)` -- définie la valeur `value` pour la clé `key`.
+- `map.get(key)` -- retourne la valeur associée à `key`, `undefined` si `key` n'existe pas.
+- `map.has(key)` -- retourne `true` si `key` existe sinon `false`.
+- `map.delete(key)` -- supprime la valeur associé à `key` dans la map.
+- `map.clear()` -- supprime tous les éléments dans la map.
+- `map.size` -- retourne le nombre d'éléments.
+
 The differences from a regular `Object`:
 
+La différence entre avec un objet traditionel :
+
 - Any keys, objects can be keys.
+- N'importe quel type peut être utilisé comme clé
 - Additional convenient methods, the `size` property.
+- Accès à des méthodes tels que `size`.
 
 `Set` -- is a collection of unique values.
+`Set` -- est une collection de valeurs uniques
 
 Methods and properties:
+Méthodes et propriétés :
 
 - `new Set([iterable])` -- creates the set, with optional `iterable` (e.g. array) of values for initialization.
 - `set.add(value)` -- adds a value (does nothing if `value` exists), returns the set itself.
@@ -359,4 +392,14 @@ Methods and properties:
 - `set.clear()` -- removes everything from the set.
 - `set.size` -- is the elements count.
 
+- `new Set([iterable])` -- créé un set, potentiellement initialisé avec un `iterable` (ex: un array) de valeurs.
+- `set.add(value)` -- ajoute une valeur sauf si elle existe et retourne le set en cours.
+- `set.delete(value)` -- supprime la valeur, retourne `true` si `value` existait au moment de l'appel sinon `false`.
+- `set.has(value)` -- retourne `true` si la valeur existe dans le `set`, sinon `false`.
+- `set.clear()` -- supprime tous les éléments du set.
+- `set.size` -- retourne le nombre d'éléments.
+
 Iteration over `Map` and `Set` is always in the insertion order, so we can't say that these collections are unordered, but we can't reorder elements or directly get an element by its number.
+
+On ne peut pas dire que les éléments dans une `Map` ou un `Set` sont désordonnés car ils sont toujours parcourut par ordre d'insertion.
+Il est cependant impossible de réorganiser les éléments ou bien de les retrouver par leur index.
