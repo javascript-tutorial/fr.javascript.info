@@ -33,10 +33,9 @@ map.set(1, 'num1');     // une clé de type numérique
 map.set(true, 'bool1'); // une clé de type booléenne
 
 // souvenez-vous, dans un `Object`, les clés sont converties en chaîne de caractères
-/* 
-  alors que `Map` conserve le type d'origine de la clé, 
-  c'est pourquoi les deux appels suivants retournent des valeurs différentes:
-*/
+// alors que `Map` conserve le type d'origine de la clé, 
+// c'est pourquoi les deux appels suivants retournent des valeurs différentes:
+
 alert( map.get(1)   ); // 'num1'
 alert( map.get('1') ); // 'str1'
 
@@ -62,7 +61,7 @@ visitsCountMap.set(john, 123);
 alert( visitsCountMap.get(john) ); // 123
 ```
 
-Pourvoir utilisé un `Object` comme une clé est l'une des raisons principales d'utiliser une `Map`.
+Pourvoir utiliser un `Object` comme une clé est l'une des raisons principales d'utiliser une `Map`.
 `Map` est à privilégier à `Object` lorsque que l'on utilise autre chose que des chaînes de caractères comme clé.
 
 Essayons de faire comme l'exemple précédent directement avec un `Object`:
@@ -267,7 +266,7 @@ Méthodes et propriétés:
 - `map.clear()` -- supprime tous les éléments dans la map.
 - `map.size` -- retourne le nombre d'éléments.
 
-La différence entre avec un objet traditionel :
+La différence entre `Map` avec un objet traditionel :
 
 - N'importe quel type peut être utilisé comme clé
 - Accès à des méthodes tels que `size`.
