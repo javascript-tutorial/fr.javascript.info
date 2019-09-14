@@ -6,7 +6,11 @@ importance: 5
 
 Le résultat du décorateur `debounce(f, ms)` devrait être un wrapper qui transmet l'appel à `f` au maximum une fois par `ms`, millisecondes.
 
+<<<<<<< HEAD
 En d’autres termes, lorsque nous appelons une fonction "debounce", elle garantit que tous les autres appels futurs dans les millisecondes `ms` les plus proches seront ignorés.
+=======
+In other words, when we call a "debounced" function, it guarantees that all future calls to the function made less than `ms` milliseconds after the previous call will be ignored.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Par exemple:
 
@@ -21,4 +25,8 @@ setTimeout( () => f(4), 1100); // exécute
 setTimeout( () => f(5), 1500); // ignorée (moins de 1000 ms à partir de la dernière exécution)
 ```
 
+<<<<<<< HEAD
 En pratique, `debounce` est utile pour les fonctions qui récupèrent/mettent à jour quelque chose quand on sait que rien de nouveau ne peut être fait dans un laps de temps aussi court, il est donc préférable de ne pas gaspiller de ressources.
+=======
+In practice `debounce` is useful for functions that retrieve/update something when we know that nothing new can be done in such a short period of time, so it's better not to waste resources.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1

@@ -90,7 +90,7 @@ class Article {
 
 let article = Article.createTodays();
 
-alert( article.title ); // Todays digest
+alert( article.title ); // Today's digest
 ```
 
 Maintenant, chaque fois que nous avons besoin de créer le résumé d'aujourd'hui, nous pouvons appeler `Article.createTodays()`. Encore une fois, ce n'est pas une méthode d'article, mais une méthode de toute la classe.

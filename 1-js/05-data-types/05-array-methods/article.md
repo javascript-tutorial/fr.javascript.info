@@ -119,7 +119,7 @@ La méthode [arr.slice](mdn:js/Array/slice) est beaucoup plus simple qu'un simil
 La syntaxe est la suivante:
 
 ```js
-arr.slice(start, end)
+arr.slice([start], [end])
 ```
 
 Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `start` à `end` (sans compter `end`). Les deux `start` et `end` peuvent être négatifs, dans ce cas, la position depuis la fin du tableau est supposée.
@@ -137,6 +137,8 @@ alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
 alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
+
+We can also call it without arguments: `arr.slice()` creates a copy of `arr`. That's often used to obtain a copy for further transformations that should not affect the original array.
 
 ### concat
 
@@ -657,33 +659,52 @@ arr.map(func, thisArg);
 
 La valeur du paramètre `thisArg` devient `this` pour `func`.
 
+<<<<<<< HEAD
 Par exemple, nous utilisons ici une méthode d'objet en tant que filtre et `thisArg` y contribue :
+=======
+For example, here we use a method of `army` object as a filter, and `thisArg` passes the context:
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 ```js run
-let user = {
-  age: 18,
-  younger(otherUser) {
-    return otherUser.age < this.age;
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
   }
 };
 
 let users = [
-  {age: 12},
   {age: 16},
-  {age: 32}
+  {age: 20},
+  {age: 23},
+  {age: 30}
 ];
 
 *!*
+<<<<<<< HEAD
 // trouve tous les utilisateurs plus jeunes que l'utilisateur
 let youngerUsers = users.filter(user.younger, user);
+=======
+// find users, for who army.canJoin returns true
+let soldiers = users.filter(army.canJoin, army);
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 */!*
 
-alert(youngerUsers.length); // 2
+alert(soldiers.length); // 2
+alert(soldiers[0].age); // 20
+alert(soldiers[1].age); // 23
 ```
 
+<<<<<<< HEAD
 Dans l'appel ci-dessus, nous utilisons `user.younger` en tant que filtre et nous fournissons également l'`user` en tant que contexte. Si nous ne fournissions pas le contexte, `users.filter(user.younger)` appellerait `user.younger` en tant que fonction autonome, avec `this=undefined`. Il en résulterait une erreur instantanée.
 
 ## Résumé
+=======
+If in the example above we used `users.filter(army.canJoin)`, then `army.canJoin` would be called as a standalone function, with `this=undefined`, thus leading to an instant error.
+
+A call to `users.filter(army.canJoin, army)` can be replaced with `users.filter(user => army.canJoin(user))`, that does the same. The former is used more often, as it's a bit easier to understand for most people.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Un cheat sheet des méthodes de tableau :
 
