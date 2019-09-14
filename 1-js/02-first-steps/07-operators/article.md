@@ -26,11 +26,7 @@ Avant de continuer, saisissons la terminologie commune.
     alert( y - x ); // 2, le moins binaire soustrait des valeurs
     ```
 
-<<<<<<< HEAD
-    D'un point de vue formel, nous parlons ici de deux opérateurs différents : la négation unaire (un seul opérande, inverse le signe) et la soustraction binaire (deux opérandes, soustrait).
-=======
-    Formally, in the examples above we have two different operators that share the same symbol: the negation operator, a unary operator that reverses the sign, and the subtraction operator, a binary operator that subtracts one number from another.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+    D'un point de vue formel, dans les exemples ci-dessus, nous avons deux opérateurs différents qui partagent le même symbole : l'opérateur de négation, un opérateur unaire qui inverse le signe, et l'opérateur de soustraction, un opérateur binaire qui soustrait un nombre d'un autre.
 
 ## Concaténation de chaînes de caractères, binaire `+`
 
