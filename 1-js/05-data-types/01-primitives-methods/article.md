@@ -49,11 +49,7 @@ La solution semble peu commode, mais la voici:
 
 Les "wrapper d'objets" (conteneurs) sont différents pour chaque type de primitive et sont appelés: `String`, `Number`, `Boolean` et `Symbol`. Ainsi, ils fournissent différents ensembles de méthodes.
 
-<<<<<<< HEAD
-Par exemple, il existe une méthode [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) qui renvoie une chaîne de caractères en majuscule. 
-=======
-For instance, there exists a string method [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) that returns a capitalized `str`.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Par exemple, il existe une méthode de string [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) qui renvoie une chaîne de caractères `str` en majuscule. 
 
 Voici comment ça fonctionne:
 
