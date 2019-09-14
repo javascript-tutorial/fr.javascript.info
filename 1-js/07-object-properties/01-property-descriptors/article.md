@@ -11,15 +11,9 @@ Dans ce chapitre, nous étudierons des options de configuration supplémentaires
 
 Les propriétés des objets, outre que **`valeur`**, ont trois attributs spéciaux (appelés drapeaux, ou "flags" en anglais):
 
-<<<<<<< HEAD
-- **`writable`** -- si `true`, peut être modifié, sinon c'est lecture seule.
+- **`writable`** -- si `true`, la valeur peut être changée, sinon c'est en lecture seule.
 - **`enumerable`** -- si `true`, alors listé dans les boucles, sinon non listé.
 - **`configurable`** -- si `true`, la propriété peut être supprimée et ces attributs peuvent être modifiés, sinon non.
-=======
-- **`writable`** -- if `true`, the value can be changed, otherwise it's read-only.
-- **`enumerable`** -- if `true`, then listed in loops, otherwise not listed.
-- **`configurable`** -- if `true`, the property can be deleted and these attributes can be modified, otherwise not.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Nous ne les avons pas encore vues, car généralement elles ne se présentent pas. Lorsque nous créons une propriété "de la manière habituelle", ils sont tous `true`. Mais nous pouvons aussi les changer à tout moment.
 
@@ -106,15 +100,9 @@ Comparez-le avec `user.name` "normalement créé" ci-dessus: maintenant tous les
 
 Voyons maintenant les effets des attributs par exemple.
 
-<<<<<<< HEAD
 ## Lecture seule
 
-Rendons `user.name` en lecture seule en modifiant le desripteur `writeable`:
-=======
-## Non-writable
-
-Let's make `user.name` non-writable (can't be reassigned) by changing `writable` flag:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Rendons `user.name` en lecture seule (ne peut pas être réaffecté) en modifiant l'indicateur `writeable` :
 
 ```js run
 let user = {
@@ -134,13 +122,8 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 
 Maintenant, personne ne peut changer le nom de notre utilisateur, à moins qu’ils appliquent leur propre `defineProperty` pour remplacer le nôtre.
 
-<<<<<<< HEAD
 ```smart header="Les erreurs apparaissent uniquement en mode strict"
 En mode non strict, aucune erreur ne se produit lors de l'écriture dans les propriétés en lecture seule, etc. Mais l'opération ne réussira toujours pas. Les actions qui violent les dexcripteurs sont simplement ignorées en mode non strict.
-=======
-```smart header="Errors appear only in strict mode"
-In the non-strict mode, no errors occur when writing to non-writable properties and such. But the operation still won't succeed. Flag-violating actions are just silently ignored in non-strict.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 ```
 
 Voici le même exemple, mais la propriété est créée à partir de zéro:
@@ -211,15 +194,9 @@ alert(Object.keys(user)); // name
 
 Le descripteur non configurable (`configurable: false`) est parfois prédéfini pour les objets et propriétés intégrés.
 
-<<<<<<< HEAD
-Une propriété non configurable ne peut pas être supprimée ou modifiée avec `defineProperty`.
+Une propriété non configurable ne peut pas être supprimée.
 
-Par exemple, `Math.PI` est en lecture seule, non énumérable et non configurable:
-=======
-A non-configurable property can not be deleted.
-
-For instance, `Math.PI` is non-writable, non-enumerable and non-configurable:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Par exemple, `Math.PI` est en lecture seule, non énumérable et non configurable :
 
 ```js run
 let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
@@ -242,17 +219,13 @@ Math.PI = 3; // Error
 // supprimer Math.PI ne fonctionnera pas non plus
 ```
 
-<<<<<<< HEAD
-Rendre une propriété non configurable est une route à sens unique. Nous ne pouvons pas le rétablir, car `defineProperty` ne fonctionne pas avec des propriétés non configurables.
-=======
-Making a property non-configurable is a one-way road. We cannot change it back with `defineProperty`.
+Rendre une propriété non configurable est une route à sens unique. Nous ne pouvons pas la rétablir avec  `defineProperty`. 
 
-To be precise, non-configurability imposes several restrictions on `defineProperty`:
-1. Can't change `configurable` flag.
-2. Can't change `enumerable` flag.
-3. Can't change `writable: false` to `true` (the other way round works).
-4. Can't change `get/set` for an accessor property (but can assign them if absent).
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Pour être précis, la non-configurabilité impose plusieurs restrictions à `defineProperty` :
+1. Impossible de changer le flag `configurable`.
+2. Impossible de changer le drapeau `enumerable`.
+3. Impossible de changer `writable: false` à `true` (l'inverse fonctionne).
+4. Impossible de changer `get/set` pour une propriété d'accesseur (mais peut les affecter en cas d'absence).
 
 Ici, nous faisons de `user.name` une constante "scellée pour toujours":
 
