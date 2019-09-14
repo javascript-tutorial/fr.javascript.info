@@ -2,11 +2,7 @@
 
 Les expressions régulières sont un moyen puissant de rechercher et de remplacer du texte.
 
-<<<<<<< HEAD
-En JavaScript, ils sont disponibles en tant qu'objet `RegExp` et sont également intégrés aux méthodes de chaînes de caractères.
-=======
-In JavaScript, they are available as [RegExp](mdn:js/RegExp) object, and also integrated in methods of strings.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+En JavaScript, ils sont disponibles en tant que object [RegExp](mdn:js/RegExp) et également intégrés dans les méthodes de chaînes de caractères.
 
 ## Expressions régulières
 
@@ -27,71 +23,43 @@ regexp = /pattern/; // aucun marqueur
 regexp = /pattern/gmi; // avec marqueurs g, m, et i (bientôt abordés)
 ```
 
-<<<<<<< HEAD
-Les slash `"/"` indique à JavaScript que l'on crée une expression rationnelle. Il joue le même rôle que les guillemets pour les chaînes de caractères (les "string").
-=======
-Slashes `pattern:/.../` tell JavaScript that we are creating a regular expression. They play the same role as quotes for strings.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Les slash `pattern:/.../` indique à JavaScript que l'on crée une expression régulière. Il joue le même rôle que les guillemets pour les chaînes de caractères (les "string").
 
-In both cases `regexp` becomes an object of the built-in `RegExp` class.
+Dans les deux cas `regexp` devient un objet de la classe intégrée `RegExp`.
 
-<<<<<<< HEAD
-Pour rechercher dans une chaîne de caractères, on oeut utiliser la méthode [search](mdn:js/String/search).
+La différence principale entre ces deux syntaxes réside dans le fait que les slashes `pattern: /.../` ne permettent pas d'insérer des expressions (comme les chaînes avec `$ {...}`). Ils sont complètement statiques.
 
-Un exemple :
-
-```js run
-let str = "I love JavaScript!"; // on va rechercher ici
-=======
-The main difference between these two syntaxes is that slashes `pattern:/.../` do not allow to insert expressions (like strings with `${...}`). They are fully static.
-
-Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp` is used when we need to create a regexp "on the fly", from a dynamically generated string, for instance:
+Les barres obliques sont utilisées lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante. Alors que `new RegExp` est utilisé lorsque nous devons créer une expression rationnelle "à la volée", à partir d'une chaîne générée dynamiquement, par exemple :
 
 ```js
 let tag = prompt("What tag do you want to find?", "h2");
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 let regexp = new RegExp(`<${tag}>`); // same as /<h2>/ if answered "h2" in the prompt above
 ```
 
-<<<<<<< HEAD
-La méthode `str.search` cherche le modèle `pattern:/love/` et renvoie la position à l'intérieur de la chaîne de caractères. Comme on peut l'imaginer, `pattern:/love/` est le modèle le plus simple qui soit. Il ne fait que de la simple recherche de sous-chaîne.
-
-Le code au-dessus fait la m^me chose que celui-ci:
-
-```js run
-let str = "I love JavaScript!"; // on va rechercher ici
-=======
 ## Flags
 
-Regular expressions may have flags that affect the search.
+Les expressions régulières peuvent avoir des flags qui affectent la recherche.
 
-There are only 6 of them in JavaScript:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Il n'y en a que 6 en JavaScript :
 
 `pattern:i`
-: With this flag the search is case-insensitive: no difference between `A` and `a` (see the example below).
+: Avec cet indicateur, la recherche est insensible à la casse: pas de différence entre `A` et` a` (voir l'exemple ci-dessous).
 
-<<<<<<< HEAD
-Ainsi, chercher le modèle `pattern:/love/` revient à chercher la chaîne `"love"`.
-
-Mais ce n'est que le début. Bientôt nous créerons des expressions rationnelles plus complexes avec de bien plus grandes possibilités de recherche.
-=======
 `pattern:g`
-: With this flag the search looks for all matches, without it -- only the first one.
+: Avec cet indicateur, la recherche liste toutes les correspondances, sans lui - seulement la première.
 
 `pattern:m`
-: Multiline mode (covered in the chapter <info:regexp-multiline-mode>).
+: Mode multiligne (couvert dans le chapitre <info:regexp-multiline-mode>).
 
 `pattern:s`
-: Enables "dotall" mode, that allows a dot `pattern:.` to match newline character `\n` (covered in the chapter <info:regexp-character-classes>).
+: Active le mode "dotall", qui permet à un `pattern : .` de correspondre au caractère de nouvelle ligne `\n` (traité dans le chapitre <info:regexp-character-classes>).
 
 `pattern:u`
-: Enables full unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
+: Active le support complet Unicode. Le flag permet le traitement correct des paires de substitution. Plus à ce sujet dans le chapitre <info:regexp-unicode>.
 
 `pattern:y`
-: "Sticky" mode: searching at the exact position in the text  (covered in the chapter <info:regexp-sticky>)
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+: mode "Sticky" : chercher à la position exacte dans le texte (couvert dans le chapitre <info:regexp-sticky>)
 
 ```smart header="Couleurs"
 À partir de maintenant le code couleur sera :
@@ -101,71 +69,26 @@ Mais ce n'est que le début. Bientôt nous créerons des expressions rationnelle
 - résultat -- `match:green`
 ```
 
-## Searching: str.match
+## Rechercher : str.match
 
-<<<<<<< HEAD
-````smart header="Quand utiliser `new RegExp`?"
-Normalement on utilise la syntaxe courte `/.../`. Mais l'insertion de variables`${...}` n'est pas supportée.
+Comme il a été dit précédemment, les expressions régulières sont intégrées aux méthodes de chaîne de caractères.
 
-D'un autre côté, `new RegExp` nous permet de construire un modèle dynamiquement à partir d'une chaîne, et il est donc plus flexible.
+La méthode `str.match(regexp)` trouve tous les résultats de `regexp` dans la chaîne de caractères `str`.
 
-Voici un exemple d'une expression rationnelle dynamiquement générée:
-=======
-As it was said previously, regular expressions are integrated with string methods.
-
-The method `str.match(regexp)` finds all matches of `regexp` in the string `str`.
-
-It has 3 working modes:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Il dispose de 3 modes de travail :
 
 1. If the regular expression has flag `pattern:g`, it returns an array of all matches:
     ```js run
     let str = "We will, we will rock you";
 
-<<<<<<< HEAD
-// trouve <h2> par défaut
-alert( "<h1> <h2> <h3>".search(regexp));
-```
-````
-=======
-    alert( str.match(/we/gi) ); // We,we (an array of 2 substrings that match)
+    alert( str.match(/we/gi) ); // We,we (un tableau de 2 sous-chaînes de caractères correspondant)
     ```
-    Please note that both `match:We` and `match:we` are found, because flag `pattern:i` makes the regular expression case-insensitive.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+    Veuillez noter que les deux `match:We` et `match:we` sont trouvés, parce que le flag `pattern:i` rend l'expression régulière insensible à la casse.
 
-2. If there's no such flag it returns only the first match in the form of an array, with the full match at index `0` and some additional details in properties:
+2. Si aucun indicateur de ce type n'existe, il retourne uniquement la première correspondance sous la forme d'un tableau, avec la correspondance complète à l'index `0` et quelques détails supplémentaires dans les propriétés :
     ```js run
     let str = "We will, we will rock you";
 
-<<<<<<< HEAD
-## Les marqueurs
-
-Les expressions rationnelles peuvent avoir des marqueurs qui modifieront la recherche.
-
-Il y en seulement 6 dans JavaScript:
-
-`i`
-: Avec ce marqueur la recherche est insensible à la casse: aucune différence entre `A` et `a` (voir exemple ci-dessousw).
-
-`g`
-: Avec ce marqueur, la recherche trouve toutes les occurrences du modèle, sans -- uniquement la première occurence (on en verra les usages dans le prochain chapitre).
-
-`m`
-: Mode multiligne (couvert dans le chapitre <info:regexp-multiline-mode>).
-
-`s`
-: Mode "Dotall", permet l'utilisation de `.` pour correspondre aux nouvelles lignes (couvert dans le chapitre <info:regexp-character-classes>).
-
-`u`
-: Active le support complet d'Unicode. Le marqueur permet une procédure correcte des paires de substitution. PLus d'informations dans le chapitre <info:regexp-unicode>.
-
-`y`
-: Mode "collant" (couvert dans le chapitre <info:regexp-sticky>)
-
-Tout cela sera couvert plus loin dans le tuoriel.
-
-POur l'instant, le marqueur le plus simple est le `i`, comme dans l'exemple:
-=======
     let result = str.match(/we/i); // without flag g
 
     alert( result[0] );     // We (1st match)
@@ -175,36 +98,35 @@ POur l'instant, le marqueur le plus simple est le `i`, comme dans l'exemple:
     alert( result.index );  // 0 (position of the match)
     alert( result.input );  // We will, we will rock you (source string)
     ```
-    The array may have other indexes, besides `0` if a part of the regular expression is enclosed in parentheses. We'll cover that in the chapter  <info:regexp-groups>.
+    Le tableau peut avoir d’autres index, en plus de `0` si une partie de l’expression régulière est entre parenthèses. Nous couvrirons cela dans le chapitre <info:regexp-groups>.
 
-3. And, finally, if there are no matches, `null` is returned (doesn't matter if there's flag `pattern:g` or not).
+3. Et, enfin, s'il n'y a pas de correspondance, `null` est renvoyé (peu importe qu'il y ait un flag `pattern:g` ou pas).
 
-    That's a very important nuance. If there are no matches, we get not an empty array, but `null`. Forgetting about that may lead to errors, e.g.:
+    C'est une nuance très importante. S'il n'y a pas de correspondance, nous n'obtenons pas un tableau vide, mais `null`. Oublier cela peut entraîner des erreurs, par exemple :
 
     ```js run
     let matches = "JavaScript".match(/HTML/); // = null
 
-    if (!matches.length) { // Error: Cannot read property 'length' of null
+    if (!matches.length) { // Error: Impossible de lire la propriété 'length' de null
       alert("Error in the line above");
     }
     ```
 
-    If we'd like the result to be always an array, we can write it this way:
+    Si nous souhaitons que le résultat soit toujours un tableau, nous pouvons l'écrire comme ceci :
 
     ```js run
     let matches = "JavaScript".match(/HTML/)*!* || []*/!*;
 
     if (!matches.length) {
-      alert("No matches"); // now it works
+      alert("No matches"); // maintenant ça fonctionne
     }
     ```
 
-## Replacing: str.replace
+## Remplacer : str.replace
 
-The method `str.replace(regexp, replacement)` replaces matches with `regexp` in string `str` with `replacement` (all matches, if there's flag `pattern:g`, otherwise only the first one).
+La méthode `str.replace(regexp, replacement)` remplace les correspondances avec `regexp` dans la chaîne de caractères `str` avec `replacement` (tous les résultats s'il y a un flag `pattern:g`, sinon seulement le premier).
 
-For instance:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Par exemple :
 
 ```js run
 // no flag g
@@ -214,34 +136,26 @@ alert( "We will, we will".replace(/we/i, "I") ); // I will, we will
 alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
 ```
 
-The second argument is the `replacement` string. We can use special character combinations in it to insert fragments of the match:
+Le deuxième argument est la chaîne de caractères `replacement`. Nous pouvons utiliser des combinaisons de caractères spéciaux pour insérer des fragments de la correspondance :
 
-<<<<<<< HEAD
-alert( str.search(/LOVE/i) ); // 2 (il a trouvé le modèle en minusules)
+| Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                                  |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$&`                 | insère toute la correspondance match                                                                                                                        |
+| <code>$&#096;</code> | insère une partie de la chaîne de caractères avant la correspondance                                                                                        |
+| `$'`                 | insère une partie de la chaîne de caractères après la correspondance                                                                                        |
+| `$n`                 | si `n` est un nombre à un ou deux chiffres, alors il insère le contenu des nièmes parenthèses, plus à ce sujet dans le chapitre <info:regexp-groups> |
+| `$<name>`            | insère le contenu des parenthèses avec le `name` donné, plus à ce sujet dans le chapitre <info:regexp-groups>                                               |
+| `$$`                 | insère le caractère `$`                                                                                                                                     |
 
-alert( str.search(/LOVE/) ); // -1 (aucune correspondence sans le marqueur `i`)
-```
-
-Ainsi donc, le marqueur `i` rends déjà les expressions rationnelles plus puissantes qu'une simple recherche de sous-chaîne. Mais il reste beaucoup à découvrir. Nous couvrirons les autres marqueurs et les autres fonctionnalités dans les prohains chapitres.
-=======
-| Symbols | Action in the replacement string |
-|--------|--------|
-|`$&`|inserts the whole match|
-|<code>$&#096;</code>|inserts a part of the string before the match|
-|`$'`|inserts a part of the string after the match|
-|`$n`|if `n` is a 1-2 digit number, then it inserts the contents of n-th parentheses, more about it in the chapter <info:regexp-groups>|
-|`$<name>`|inserts the contents of the parentheses with the given `name`, more about it in the chapter <info:regexp-groups>|
-|`$$`|inserts character `$` |
-
-An example with `pattern:$&`:
+Un exemple avec `pattern:$&` :
 
 ```js run
 alert( "I love HTML".replace(/HTML/, "$& and JavaScript") ); // I love HTML and JavaScript
 ```
 
-## Testing: regexp.test
+## Tester : regexp.test
 
-The method `regexp.test(str)` looks for at least one match, if found, returns `true`, otherwise `false`.
+La méthode `regexp.test(str)` recherche au moins une correspondance ; si elle est trouvée, retourne `true`, sinon` false`.
 
 ```js run
 let str = "I love JavaScript";
@@ -250,21 +164,14 @@ let regexp = /LOVE/i;
 alert( regexp.test(str) ); // true
 ```
 
-Further in this chapter we'll study more regular expressions, come across many other examples and also meet other methods.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Plus loin dans ce chapitre, nous étudierons davantage d’expressions régulières, trouverons de nombreux autres exemples et rencontrerons d’autres méthodes.
 
 Full information about the methods is given in the article <info:regexp-methods>.
 
 ## Résumé
 
-<<<<<<< HEAD
-- UNe expression rationnelle consite en un modèle, et des marqueurs optionnels: `g`, `i`, `m`, `u`, `s`, `y`.
-- Sans marqueurs ni caractères spéciaux, que nous verrons plus tard, la rechechre regexp revient à une simple recherche de sous-chîne de caractères.
-- La méthode `str.search(regexp)` renvoie la position à laquelle une correspondence est trouvée ou `-1` s'il n'y en a aucune. Dans le prochain chapitre nous verrons d'autres méthodes.
-=======
-- A regular expression consists of a pattern and optional flags: `pattern:g`, `pattern:i`, `pattern:m`, `pattern:u`, `pattern:s`, `pattern:y`.
-- Without flags and special symbols that we'll study later, the search by a regexp is the same as a substring search.
-- The method `str.match(regexp)` looks for matches: all of them if there's `pattern:g` flag, otherwise only the first one.
-- The method `str.replace(regexp, replacement)` replaces matches with `regexp` by `replacement`: all of them if there's `pattern:g` flag, otherwise only the first one.
-- The method `regexp.test(str)` returns `true` if there's at least one match, otherwise `false`.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+- Une expression régulière consiste en un modèle et des indicateurs facultatifs : `pattern:g`, `pattern:i`, `pattern:m`, `pattern:u`, `pattern:s`, `pattern:y`.
+- Sans les flags et symboles spéciaux que nous étudierons plus tard, la recherche par une expression régulière est identique à une recherche par sous-chaîne de caractères.
+- La méthode `str.match(regexp)` cherche des correspondances : toutes si il y a un flag `pattern:g`, sinon seulement le premier.
+- La méthode `str.replace(regexp, replacement)` remplace les correspondance avec `regexp` par `replacement` : toutes s'il y a  un flag `pattern:g`, sinon seulement le premier.
+- La méthode `regexp.test(str)` retourne `true` s'il y a au moins une correspondance, sinon `false`.

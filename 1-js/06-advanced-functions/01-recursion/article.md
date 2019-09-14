@@ -96,11 +96,7 @@ function pow(x, n) {
 
 Le nombre maximal d'appels imbriqués (y compris le premier) est appelé la *profondeur de récursivité*. Dans notre cas, ce sera exactement `n`.
 
-<<<<<<< HEAD
-La profondeur maximale de récursion est limitée par le moteur JavaScript. Nous sommes sur qu'il va jusqu'à 10000, certains moteurs en autorisent plus, mais 100000 est probablement hors limite pour la majorité d'entre eux. Il existe des optimisations automatiques qui aident à atténuer ce problème ("optimisations d'appels en aval"), mais elles ne sont pas encore prises en charge partout et ne fonctionnent que dans des cas simples.
-=======
-The maximal recursion depth is limited by JavaScript engine. We can rely on it being 10000, some engines allow more, but 100000 is probably out of limit for the majority of them. There are automatic optimizations that help alleviate this ("tail calls optimizations"), but they are not yet supported everywhere and work only in simple cases.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+La profondeur maximale de récursion est limitée par le moteur JavaScript. Nous sommes sur qu'il va jusqu'à 10000, certains moteurs en autorisent plus, mais 100000 est probablement hors limite pour la majorité d'entre eux. Il existe des optimisations automatiques qui aident à atténuer ce problème ("optimisation des appels de queue"), mais elles ne sont pas encore prises en charge partout et ne fonctionnent que dans des cas simples.
 
 Cela limite l'application de la récursion, mais cela reste très large. Il y a beaucoup de tâches pour lesquelles la pensée récursive donne un code plus simple et plus facile à gérer.
 

@@ -659,11 +659,7 @@ arr.map(func, thisArg);
 
 La valeur du paramètre `thisArg` devient `this` pour `func`.
 
-<<<<<<< HEAD
-Par exemple, nous utilisons ici une méthode d'objet en tant que filtre et `thisArg` y contribue :
-=======
-For example, here we use a method of `army` object as a filter, and `thisArg` passes the context:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Par exemple, nous utilisons ici une méthode de l'objet `army` en tant que filtre et `thisArg` passe le contexte :
 
 ```js run
 let army = {
@@ -682,13 +678,8 @@ let users = [
 ];
 
 *!*
-<<<<<<< HEAD
-// trouve tous les utilisateurs plus jeunes que l'utilisateur
-let youngerUsers = users.filter(user.younger, user);
-=======
-// find users, for who army.canJoin returns true
+// trouve les utilisateurs pour qui army.canJoin retourne true
 let soldiers = users.filter(army.canJoin, army);
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 */!*
 
 alert(soldiers.length); // 2
@@ -696,15 +687,11 @@ alert(soldiers[0].age); // 20
 alert(soldiers[1].age); // 23
 ```
 
-<<<<<<< HEAD
-Dans l'appel ci-dessus, nous utilisons `user.younger` en tant que filtre et nous fournissons également l'`user` en tant que contexte. Si nous ne fournissions pas le contexte, `users.filter(user.younger)` appellerait `user.younger` en tant que fonction autonome, avec `this=undefined`. Il en résulterait une erreur instantanée.
+Si, dans l'exemple ci-dessus, nous utilisions `users.filter(army.canJoin)`, alors `army.canJoin` serait appelée en tant que fonction autonome, avec `this = undefined`, ce qui entraînerait une erreur instantanée.
+
+Un appel à `users.filter(army.canJoin, army)` peut être remplacé par `users.filter(user => army.canJoin(user))`, qui fait la même chose. Le premier est utilisé plus souvent, car il est un peu plus facile à comprendre pour la plupart des gens.
 
 ## Résumé
-=======
-If in the example above we used `users.filter(army.canJoin)`, then `army.canJoin` would be called as a standalone function, with `this=undefined`, thus leading to an instant error.
-
-A call to `users.filter(army.canJoin, army)` can be replaced with `users.filter(user => army.canJoin(user))`, that does the same. The former is used more often, as it's a bit easier to understand for most people.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Un cheat sheet des méthodes de tableau :
 

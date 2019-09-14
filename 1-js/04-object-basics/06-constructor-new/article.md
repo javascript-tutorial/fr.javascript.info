@@ -27,11 +27,7 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
-<<<<<<< HEAD
-Quand une fonction est exécutée comme `new User(...)`, elle effectue les étapes suivantes :
-=======
-When a function is executed with `new`, it does the following steps:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Quand une fonction est exécutée avec `new`, elle effectue les étapes suivantes :
 
 1. Un nouvel objet vide est créé et affecté à `this`.
 2. Le corps de la fonction est exécuté. Habituellement, il modifie `this`, y ajoutant de nouvelles propriétés.
@@ -55,11 +51,7 @@ function User(name) {
 }
 ```
 
-<<<<<<< HEAD
-Donc, le résultat de `new User("Jack")` est le même objet que :
-=======
-So `let user = new User("Jack")` gives the same result as:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Donc `let user = new User("Jack")` donne le même résultat que :
 
 ```js
 let user = {
@@ -156,11 +148,7 @@ function BigUser() {
 
   this.name = "John";
 
-<<<<<<< HEAD
-  return { name: "Godzilla" };  // <-- retourne un objet
-=======
-  return { name: "Godzilla" };  // <-- returns this object
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+  return { name: "Godzilla" };  // <-- retourne cet objet
 }
 
 alert( new BigUser().name );  // Godzilla, got that object
@@ -173,14 +161,7 @@ function SmallUser() {
 
   this.name = "John";
 
-<<<<<<< HEAD
-  return; // termine l'exécution, renvoie this
-
-  // ...
-
-=======
-  return; // <-- returns this
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+  return; // renvoie this
 }
 
 alert( new SmallUser().name );  // John

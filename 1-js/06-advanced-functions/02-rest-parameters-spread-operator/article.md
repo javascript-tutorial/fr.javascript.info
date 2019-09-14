@@ -25,11 +25,7 @@ alert( sum(1, 2, 3, 4, 5) );
 
 Il n'y aura pas d'erreur en raison d'arguments "excessifs". Mais bien sûr, dans le résultat, seuls les deux premiers seront comptés.
 
-<<<<<<< HEAD
-Les paramètres restants peuvent être mentionnés dans une fonction définition à trois points `...`. Ils signifient littéralement "rassemblez les paramètres restants dans un tableau".
-=======
-The rest of the parameters can be included in the function definition by using three dots `...` followed by the name of the array that will contain them. The dots literally mean "gather the remaining parameters into an array".
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Le reste des paramètres peut être inclus dans la définition de la fonction en utilisant trois points `...` suivis du nom du tableau qui les contiendra. Les points signifient littéralement "rassemblez les paramètres restants dans un tableau".
 
 Par exemple, pour rassembler tous les arguments dans un tableau `args` :
 

@@ -148,13 +148,8 @@ Bitwise
 Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
 
-<<<<<<< HEAD
 Opérateurs logiques
-: ET logique `&&` et OU `||` effectuent une évaluation en circuit court puis renvoyent la valeur là où ils se sont arrêtés.
-=======
-Logical operators
-: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped (not necessary `true`/`false`). Logical NOT `!` converts the operand to boolean type and returns the inverse value.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+: ET logique `&&` et OU `||` effectuent une évaluation en circuit court puis renvoyent la valeur là où ils se sont arrêtés(pas nécessairement `true`/`false`). NOT logique `!` convertit l'opérande en type booléen et retourne la valeur inverse.
 
 Comparaisons
 : Le contrôle d’égalité `==` pour les valeurs de types différents les convertit en un nombre (sauf `null` et `undefined` égales entre elles et rien d’autre), elles sont donc égales :

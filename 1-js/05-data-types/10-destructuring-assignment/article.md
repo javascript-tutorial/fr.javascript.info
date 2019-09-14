@@ -356,11 +356,7 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
-<<<<<<< HEAD
-Donc ici, JavaScript suppose que nous avons un bloc de code, mais pourquoi il y a une erreur. Nous avons la déstructuration à la place.
-=======
-So here JavaScript assumes that we have a code block, that's why there's an error. We have destructuring instead.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Donc ici, JavaScript suppose que nous avons un bloc de code, c'est pourquoi il y a une erreur. Nous avons la déstructuration à la place.
 
 Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper l'expression entre parenthèses `(...)` :
 
@@ -407,11 +403,7 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
-<<<<<<< HEAD
-L'ensemble de l'objet `options`, à l'exception de` extra` qui n'a pas été mentionné, est affecté aux variables correspondantes :
-=======
-All properties of `options` object except `extra` that is absent in the left part, are assigned to corresponding variables:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Toutes les propriétés de l'objet `options`, à l'exception de `extra` qui est absente dans la partie gauche, sont affectés aux variables correspondantes :
 
 ![](destructuring-complex.svg)
 

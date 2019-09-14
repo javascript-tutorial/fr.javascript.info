@@ -18,11 +18,7 @@ function printNumbers(from, to) {
 printNumbers(5, 10);
 ```
 
-<<<<<<< HEAD
-Avec `setTimeout` de façon récursive :
-=======
-Using nested `setTimeout`:
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+Utilisation de `setTimeout` imbriqué :
 
 
 ```js run
