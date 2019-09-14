@@ -11,4 +11,3 @@ Si le visiteur entre “ECMAScript”, alors éditez “Bonne réponse !”, Sin
 ![](ifelse_task2.svg)
 
 [demo src="ifelse_task2"]
-

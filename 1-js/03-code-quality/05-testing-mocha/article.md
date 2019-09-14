@@ -1,4 +1,4 @@
-# Test automatisé avec mocha
+# Testing automatisé avec Mocha
 
 Les tests automatisés seront utilisés dans d'autres tâches. Ils sont également largement utilisés dans des projets réels.
 
@@ -19,15 +19,15 @@ Par exemple, nous créons une fonction `f`. On écrit du code, on teste : `f(1)`
 
 C’est très typique. Lorsque nous développons quelque chose, nous gardons à l’esprit beaucoup de cas d’utilisation possibles. Mais il est difficile de s’attendre à ce qu’un programmeur les vérifie manuellement après chaque modification. Il devient donc facile de réparer une chose et d'en casser une autre.
 
-**Le test automatisé signifie que les tests sont écrits séparément, en plus du code. Ils peuvent être exécutés automatiquement et vérifier tous les principaux cas d'utilisation.**
+**Le test automatisé signifie que les tests sont écrits séparément, en plus du code. Ils exécutent nos fonctions de différentes manières et comparent les résultats avec les attentes.**
 
 ## Behavior Driven Development (BDD)
 
-Utilisons une technique nommée [Behavior Driven Development](https://fr.wikipedia.org/wiki/Behavior-driven_development) ou, en bref, BDD. Cette approche est utilisée parmi de nombreux projets. BDD ne se limite pas aux tests. C’est bien plus.
+Commençons par une technique nommée [Behavior Driven Development](https://fr.wikipedia.org/wiki/Behavior-driven_development) ou, en bref, BDD. 
 
 **BDD, c'est trois choses en une : les tests ET la documentation ET les exemples.**
 
-Voyons un exemple.
+Pour comprendre BDD, examinons un cas pratique de développement.
 
 ## Développement de "pow": la spec
 
@@ -37,7 +37,7 @@ Cette tâche n’est qu’un exemple : il existe l’opérateur `**` en JavaScri
 
 Avant de créer le code de `pow`, nous pouvons imaginer ce que la fonction devrait faire et la décrire.
 
-Cette description s'appelle une *spécification* ou, en bref, une **spec**. Elle ressemble à ceci :
+Cette description s'appelle une *spécification* ou, en bref, une **spec**, et contient des descriptions de cas d'utilisation ainsi que des tests pour ceux-ci, comme ceci :
 
 ```js
 describe("pow", function() {
@@ -53,6 +53,7 @@ Une spécification a trois blocs de construction principaux que vous pouvez voir
 
 `describe("title", function() { ... })`
 : Quelle fonctionnalité nous décrivons. Utilisations pour grouper les "workers" - le bloc `it`. Dans notre cas, nous décrivons la fonction `pow`.
+Quelle fonctionnalité nous décrivons. Dans notre cas, nous décrivons la fonction `pow`. Utilisée pour grouper les "workers" - le bloc `it`.
 
 `it("use case description", function() { ... })`
 : Dans le titre de `it`, nous décrivons d'une *manière lisible par l'homme* le cas particulier d'utilisation, et le deuxième argument est une fonction qui le teste.
@@ -60,9 +61,9 @@ Une spécification a trois blocs de construction principaux que vous pouvez voir
 `assert.equal(value1, value2)`
 : Le code à l'intérieur du bloc `it`, si l'implémentation est correcte, doit s'exécuter sans erreur.
 
-    Les fonctions `assert.*` sont utilisées pour vérifier si `pow` fonctionne comme prévu. Ici, nous utilisons l’un d’eux - `assert.equal`, qui compare les arguments et génère une erreur s’ils ne sont pas égaux. Ici, il vérifie que le résultat de `pow(2, 3)` est égal à `8`.
+    Les fonctions `assert.*` sont utilisées pour vérifier si `pow` fonctionne comme prévu. Ici, nous utilisons l’un d’eux - `assert.equal`, qui compare les arguments et génère une erreur s’ils ne sont pas égaux. Ici, il vérifie que le résultat de `pow(2, 3)` est égal à `8`. Nous ajouterons plus tard d'autres types de comparaisons et de contrôles.
 
-    Nous verrons plus loin d'autres types de comparaisons et de contrôles.
+La spécification peut être exécutée et le test spécifié dans le bloc `it` sera exécuté. Nous verrons cela plus tard.
 
 ## Le flux de développement
 
@@ -80,7 +81,7 @@ Donc, le développement est *itératif*. Nous écrivons la spécification, la me
 
 Voyons ce flux de développement dans notre cas pratique.
 
-La première étape est terminée: nous avons une spécification initiale pour `pow`. Maintenant, avant de procéder à l’implémentation, utilisons quelques bibliothèques JavaScript pour exécuter les tests, histoire de voir qu’elles fonctionnent (elles échoueront toutes).
+La première étape est déjà terminée : nous avons une spécification initiale pour `pow`. Maintenant, avant de procéder à l’implémentation, utilisons quelques bibliothèques JavaScript pour exécuter les tests, histoire de voir qu’elles fonctionnent (elles échoueront toutes).
 
 ## La spec en action
 
@@ -340,7 +341,7 @@ Les tests récemment ajoutés échouent car notre implémentation ne les prend p
 
 Veuillez noter l'affirmation `assert.isNaN` : elle vérifie `NaN`.
 
-Il y a aussi d'autres affirmations dans Chai, par exemple :
+Il y a aussi d'autres affirmations dans [Chai](http://chaijs.com), par exemple :
 
 - `assert.equal(value1, value2)` -- vérifie l'égalité `value1 == value2`.
 - `assert.strictEqual(value1, value2)` -- vérifie la stricte égalité `value1 === value2`.
@@ -381,9 +382,9 @@ Dans BDD, la spécification commence, suivie de l'implémentation. À la fin, no
 
 La spécification peut être utilisée de trois manières :
 
-1. **Tests** garantir que le code fonctionne correctement.
-2. **Docs** -- les titres de `describe` et `it` indiquent ce que fait la fonction.
-3. **Examples** -- les tests sont en fait d'exemples de travail montrant comment une fonction peut être utilisée.
+1. En tant que **Tests** -- garantir que le code fonctionne correctement.
+2. En tant que **Docs** -- les titres de `describe` et `it` indiquent ce que fait la fonction.
+3. En tant que **Examples** -- les tests sont en fait d'exemples de travail montrant comment une fonction peut être utilisée.
 
 Avec la spécification, nous pouvons sans risque améliorer, modifier, même réécrire la fonction à partir de zéro et nous assurer qu'elle fonctionne toujours correctement.
 

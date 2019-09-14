@@ -1,10 +1,16 @@
 # Modèles et marqueurs
 
-Une expression rationnelle ("regular expressionÉ en anglais, abrévié en "regexp", ou juste "reg") consiste en un *modèle* et des *marqueurs* optionnels.
+Les expressions régulières sont un moyen puissant de rechercher et de remplacer du texte.
+
+En JavaScript, ils sont disponibles en tant qu'objet `RegExp` et sont également intégrés aux méthodes de chaînes de caractères.
+
+## Expressions régulières
+
+Une expression régulière (également "regexp" ou simplement "reg") est constituée d'un *pattern* et de *flags* optionnels.
 
 Il existe deux syntaxes pour créer un objet expression rationnelle.
 
-La syntaxe longue:
+La syntaxe "longue" :
 
 ```js
 regexp = new RegExp("pattern", "flags");

@@ -326,18 +326,18 @@ En d'autres termes, une entreprise a des départements.
 
 Maintenant, disons que nous voulons une fonction pour obtenir la somme de tous les salaires. Comment peut-on faire ça?
 
-Une approche itérative n’est pas facile, car la structure n’est pas simple. La première idée peut être de créer une boucle `for` sur company avec une sous-boucle imbriqué sur les départements de premier niveau. Mais ensuite, nous avons besoin de plus de sous-cadres imbriqués pour parcourir le personnel des départements de second niveau, tels que les `sites`. ... Et puis une autre sous-boucle dans ceux des départements de 3ème niveau qui pourraient apparaître dans le futur? Faut-il s'arrêter au niveau 3 ou faire 4 niveaux de boucles? Si nous mettons 3-4 sous-boucles imbriqués dans le code pour traverser un seul objet, cela devient plutôt moche.
+Une approche itérative n’est pas facile, car la structure n’est pas simple. La première idée peut être de créer une boucle `for` sur `company` avec une sous-boucle imbriqué sur les départements de premier niveau. Mais ensuite, nous avons besoin de plus de sous-boucles imbriquées pour parcourir le personnel des départements de second niveau, tels que les `sites`... Et puis une autre sous-boucle dans ceux des départements de 3ème niveau qui pourraient apparaître dans le futur ? Si nous mettons 3-4 sous-boucles imbriquées dans le code pour traverser un seul objet, cela devient plutôt moche.
 
 Essayons la récursion.
 
 Comme nous pouvons le constater, lorsque notre fonction demande à un département de faire la somme, il existe deux cas possibles:
 
-1. S’il s’agit d’un "simple" département avec un *éventail de personnes*, nous pouvons alors additionner les salaires en une simple boucle.
-2. Ou bien *c'est un objet avec `N` sous-départements * -- alors nous pouvons faire des appels` N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
+1. S’il s’agit d’un "simple" département avec un *tableau* de personnes, nous pouvons alors additionner les salaires en une simple boucle.
+2. Ou bien *c'est un objet* avec `N` sous-départements -- alors nous pouvons faire des appels` N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
 
-Le (1) est la base de la récursion, le cas trivial.
+Le premier cas est la base de la récursivité, le cas trivial, lorsque nous obtenons un tableau.
 
-Le (2) est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la séparation se terminera en (1).
+Le 2ème cas où nous obtenons un objet est l'étape récursive. Une tâche complexe est divisée en sous-tâches pour les plus petits départements. Ils peuvent à leur tour se séparer à nouveau, mais tôt ou tard, la scission se terminera à (1).
 
 L'algorithme est probablement encore plus facile à lire à partir du code:
 
@@ -444,7 +444,7 @@ let list = {
 
 Représentation graphique de la liste:
 
-![Liste chaînée](linked-list.svg)
+![linked list](linked-list.svg)
 
 An alternative code for creation:
 
@@ -464,7 +464,7 @@ let secondList = list.next.next;
 list.next.next = null;
 ```
 
-![séparation de la liste chaînée](linked-list-split.svg)
+![linked list split](linked-list-split.svg)
 
 Pour joindre:
 
@@ -488,7 +488,7 @@ list = { value: "new item", next: list };
 */!*
 ```
 
-![Liste chaînée](linked-list-0.svg)
+![linked list](linked-list-0.svg)
 
 Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 
@@ -496,7 +496,7 @@ Pour supprimer une valeur du milieu, changez le `next` de la précédente:
 list.next = list.next.next;
 ```
 
-![Liste chaînée](linked-list-remove-1.svg)
+![linked list](linked-list-remove-1.svg)
 
 `List.next` a sauté `1` à la valeur `2`. La valeur `1` est maintenant exclue de la chaîne. Si elle n'est pas stocké ailleurs, elle sera automatiquement supprimé de la mémoire.
 

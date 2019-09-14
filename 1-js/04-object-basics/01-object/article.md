@@ -154,7 +154,7 @@ let user = {
 };
 
 let key = "name";
-user.key // undefined
+alert( user.key ) // undefined
 ```
 
 ### Propriétés calculées
@@ -236,7 +236,7 @@ Dans ce cas, le visiteur peut choisir `__proto__` comme clé et la logique d’a
 
 Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
 
-Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set-weakmap-weakset>, qui supporte des clés arbitraires.
+Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set>, qui supporte des clés arbitraires.
 ````
 
 
@@ -322,7 +322,7 @@ alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette 
 ```
 
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
-Habituellement, la comparaison stricte `"=== undefined"` fonctionne correctement. Mais il y a un cas particulier où elle échoue, mais "in" fonctionne correctement.
+Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -343,7 +343,7 @@ Des situations comme celle-ci se produisent très rarement, parce que `undefined
 ````
 
 
-## La boucle "for … in"
+## La boucle "for..in"
 
 Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`. C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
 
@@ -531,7 +531,7 @@ Les opérateurs d'égalité `==` et d'égalité stricte `===` pour les objets fo
 
 **Deux objets ne sont égaux que s’ils sont le même objet.**
 
-Par exemple, deux variables référencent le même objet, elles sont égales :
+Par exemple, si deux variables référencent le même objet, elles sont égales :
 
 ```js run
 let a = {};
@@ -570,7 +570,7 @@ user.age = 25; // (*)
 alert(user.age); // 25
 ```
 
-Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à l’intérieur de l’objet, elle ne réaffecte pas `user`.
+Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe uniquement la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à *l’intérieur* de l’objet, elle ne réaffecte pas `user`.
 
 Le `const` donnerait une erreur si nous essayons de définir `user` sur autre chose, par exemple :
 

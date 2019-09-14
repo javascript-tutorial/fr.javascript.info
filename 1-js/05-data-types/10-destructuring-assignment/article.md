@@ -262,7 +262,7 @@ alert(height); // 200
 
 Comme pour les tableaux ou les paramètres de fonction, les valeurs par défaut peuvent être des expressions ou même des appels de fonction. Elles seront évaluées si la valeur n'est pas fournie.
 
-Le code ci-dessous demande la largeur, mais pas le titre.
+Le code `prompt` ci-dessous demande la `width`, mais pas le `title`.
 
 ```js run
 let options = {
@@ -293,7 +293,22 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
-### L'opérateur rest "..."
+Si nous avons un objet complexe avec de nombreuses propriétés, nous pouvons extraire que ce dont nous avons besoin :
+
+```js run
+let options = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+
+// extraire uniquement le titre en tant que variable
+let { title } = options;
+
+alert(title); // Menu
+```
+
+### Le pattern rest "..."
 
 Et si l'objet a plus de propriétés que de variables ? Peut-on en prendre puis assigner le "rest" quelque part ?
 
@@ -319,8 +334,6 @@ alert(rest.height);  // 200
 alert(rest.width);   // 100
 ```
 
-
-
 ````smart header="Gotcha if there's no `let`"
 Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
 
@@ -343,7 +356,9 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
-Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper toute la tâche entre parenthèses `(...)` :
+Donc ici, JavaScript suppose que nous avons un bloc de code, mais pourquoi il y a une erreur. Nous avons la déstructuration à la place.
+
+Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper l'expression entre parenthèses `(...)` :
 
 ```js run
 let title, width, height;
@@ -353,14 +368,13 @@ let title, width, height;
 
 alert( title ); // Menu
 ```
-
 ````
 
 ## Décomposition imbriquée
 
-Si un objet ou un tableau contient d'autres objets et tableaux, nous pouvons utiliser des modèles plus complexes à gauche pour extraire des parties plus profondes.
+Si un objet ou un tableau contient d'autres objets et tableaux imbriqués, nous pouvons utiliser des modèles à gauche plus complexes pour extraire des parties plus profondes.
 
-Dans le code ci-dessous `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure :
+Dans le code ci-dessous, `options` a un autre objet dans la propriété` size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
 
 ```js run
 let options = {
@@ -369,7 +383,7 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
-  extra: true    // quelque chose de plus que nous ne pourrons pas détruire
+  extra: true    
 };
 
 // affectation par décomposition divisée sur plusieurs lignes pour la clarté
@@ -389,19 +403,13 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
-L'ensemble de l'objet `options`, à l'exception d'`extra` qui n'a pas été mentionné, est affecté aux variables correspondantes.
-
-Notez que la `size` et les `items` eux-mêmes ne sont pas décomposés.
+L'ensemble de l'objet `options`, à l'exception de` extra` qui n'a pas été mentionné, est affecté aux variables correspondantes :
 
 ![](destructuring-complex.svg)
 
-Finalement nous avons `width`, `height`, `item1`, `item2` et `title` à partir de la valeur par défaut.
+Finnalement nous avons `width`, `height`, `item1`, `item2` et `title` à partir de la valeur par défaut.
 
-Si nous avons un objet complexe avec de nombreuses propriétés, nous pouvons extraire que ce dont nous avons besoin :
-```js
-// prendre la taille dans sa totalité dans une variable, ignorer le reste
-let { size } = options;
-```
+Notez qu'il n'y a pas de variables pour `size` et `items`, car nous prenons leur contenu à la place.
 
 ## Paramètres de fonction intelligente
 
@@ -420,6 +428,7 @@ Dans la vraie vie, le problème est de savoir comment retenir l'ordre des argume
 Comme ceci ?
 
 ```js
+// undefined where default values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 
@@ -471,29 +480,28 @@ function showMenu({
 showMenu(options);
 ```
 
-La syntaxe est la même que pour une affectation par décomposition :
+La syntaxe complète est la même que pour une affectation par décomposition :
 ```js
 function({
-  incomingProperty: parameterName = defaultValue
+  incomingProperty: varName = defaultValue
   ...
 })
 ```
 
+Ensuite, pour un objet de paramètres, il y aura une variable `varName` pour la propriété `incomingProperty`, avec `defaultValue` par défaut.
+
 Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
 
 ```js
-showMenu({});
-
+showMenu({}); // ok, all values are default
 
 showMenu(); // cela donnerait une erreur
 ```
 
-Nous pouvons résoudre ce problème en faisant de `{}` la valeur par défaut pour tout le processus de décomposition :
-
+Nous pouvons résoudre ce problème en faisant de `{}` la valeur par défaut pour l'objet entier de paramètres :
 
 ```js run
-// paramètres simplifiés un peu pour plus de clarté
-function showMenu(*!*{ title = "Menu", width = 100, height = 200 } = {}*/!*) {
+function showMenu({ title = "Menu", width = 100, height = 200 }*!* = {}*/!*) {
   alert( `${title} ${width} ${height}` );
 }
 
@@ -505,7 +513,7 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 ## Résumé
 
 - L'affectation par décomposition permet de mapper instantanément un objet ou un tableau sur de nombreuses variables.
-- La syntaxe de l'objet :
+- La syntaxe complète de l'objet :
     ```js
     let {prop : varName = default, ...rest} = object
     ```
@@ -514,7 +522,7 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 
     Les propriétés d'objet sans mappage sont copiées dans l'objet `rest`.
 
-- La syntaxe du tableau :
+- La syntaxe complète du tableau :
 
     ```js
     let [item1 = default, item2, ...rest] = array
@@ -522,4 +530,4 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 
     Le premier item va à `item1`; le second passe à `item2`, tout le reste du tableau correspond au `rest`.
 
-- Pour les cas plus complexes, le côté gauche doit avoir la même structure que le côté droit.
+- Il est possible d'extraire des données de tableaux / objets imbriqués, pour cela le côté gauche doit avoir la même structure que le droit.

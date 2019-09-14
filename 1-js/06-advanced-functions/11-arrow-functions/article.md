@@ -2,7 +2,7 @@
 
 Revisitons les fonctions fléchées.
 
-Les fonctions fléchées ne sont pas simplement un "raccourci" pour écrire moins de choses.
+Les fonctions fléchées ne sont pas simplement un "raccourci" pour écrire moins de choses. Elles ont des fonctionnalités très spécifiques et utiles.
 
 JavaScript est plein de situations où nous avons besoin d'écrire une petite fonction, exécutée ailleurs.
 
@@ -14,7 +14,7 @@ Par exemple:
 
 C'est dans l'esprit même de JavaScript de créer une fonction et de la transmettre quelque part.
 
-Et dans de telles fonctions, nous ne voulons généralement pas quitter le contexte actuel.
+Et dans de telles fonctions, nous ne voulons généralement pas quitter le contexte actuel. C'est là que les fonctions flèchées sont utiles.
 
 ## Les fonctions fléchées n'ont pas de "this"
 

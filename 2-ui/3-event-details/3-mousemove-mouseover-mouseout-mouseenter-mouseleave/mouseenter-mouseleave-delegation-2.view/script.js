@@ -2,37 +2,43 @@
 let currentElem = null;
 
 table.onmouseover = function(event) {
-  if (currentElem) {
-    // Avant d'entrer en contact avec un nouvel élément, la souris doit toujours quitte celui précèdent
-    // Si nous ne quittons pas la balise  <td>  pour le moment, alors nous sommes toujours là-dessus, alors nous pouvons ignorer l'évènement
-      return;
-  }
+  // avant d'entrer dans un nouvel élément, la souris quitte toujours le précédent
+  // Si currentElem est défini, nous n'avons pas quitté le précédent <td>,
+  // c'est un mouseover à l'intérieur, ignore l'événement
+  if (currentElem) return;
 
-  let target = event.target.closest('td');
-  if (!target || !table.contains(target)) return;
+  let target = event.target.closest("td");
 
-  //  Oui nous somme la dessus <td> maintenant
+  // nous ne sommes pas passés dans un <td> - ignorer
+  if (!target) return;
+
+  // déplacé dans <td>, mais en dehors de notre tableau (possible en cas de tableaux imbriquées)
+  // ignorer
+  if (!table.contains(target)) return;
+
+  // hourra! nous sommes entrés dans un nouveau <td>
   currentElem = target;
-  target.style.background = 'pink';
+  target.style.background = "pink";
 };
 
-
 table.onmouseout = function(event) {
-  // Si nous somme en dehors de toute balise de <td> maintenant, alors nous pouvons ignorer l'évènement
+  // si nous sommes en dehors de tout <td> maintenant, alors ignorez l'événement
+  // c'est probablement un mouvement à l'intérieur du tableau, mais en dehors des <td>,
+  // par exemple. d'un <tr> à un autre <tr>
   if (!currentElem) return;
 
-  // Nous quittons l'élément --  pour aller où? Peut-être sur un élément enfant?
+  // nous quittons l'élément - où aller ? Peut-être à un descendant ?
   let relatedTarget = event.relatedTarget;
-  if (relatedTarget) { // possible: relatedTarget = null
-    while (relatedTarget) {
-      // Remontez la chaine jusqu'au parent et contrôler-- si nous sommes toujours à l'intérieur de  currentElem
-      // ainsi donc il s'agit bien d'une transition interne --ignorez le
-      if (relatedTarget == currentElem) return;
-      relatedTarget = relatedTarget.parentNode;
-    }
+
+  while (relatedTarget) {
+    // monte dans la chaîne parente et vérifie - si nous sommes toujours dans currentElem
+    // alors c'est une transition interne - l'ignorer
+    if (relatedTarget == currentElem) return;
+
+    relatedTarget = relatedTarget.parentNode;
   }
 
-  // Nous avons quitté l'élément. Vraiment.
-  currentElem.style.background = '';
+  // nous avons quitté le <td>. vraiment.
+  currentElem.style.background = "";
   currentElem = null;
 };

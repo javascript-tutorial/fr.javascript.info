@@ -14,16 +14,16 @@ Examinons l'application réelle pour mieux comprendre cette exigence et voir d'o
 
 Dans le navigateur, nous pouvons configurer une fonction à exécuter à chaque mouvement de la souris et obtenir l’emplacement du pointeur à mesure qu’il se déplace. Pendant une utilisation active de la souris, cette fonction est généralement utilisée très souvent et peut atteindre 100 fois par seconde (toutes les 10 ms).
 
-**La fonction de suivi devrait mettre à jour certaines informations sur la page Web.**
+**Nous aimerions mettre à jour certaines informations sur la page Web lorsque le pointeur se déplace.**
 
-La mise à jour de la fonction `update()` est trop lourde pour le faire à chaque micro-mouvement. Cela n’a également aucun sens de le faire plus d’une fois toutes les 100 ms.
+... Mais la mise à jour de la fonction `update()` est trop lourde pour tous les micro-mouvements. Il est également inutile de mettre à jour plus d'une fois toutes les 100 ms.
 
-Nous allons donc l'envelopper dans le décorateur: utilisez `throttle(update, 100)` comme fonction à exécuter à chaque déplacement de souris à la place de `update()` d'origine. Le décorateur sera appelé souvent, mais `update()` sera appelé au maximum une fois toutes les 100 ms.
+Nous allons donc l'envelopper dans le décorateur : utilisez `throttle(update, 100)` comme fonction à exécuter à chaque déplacement de souris à la place de `update()` d'origine. Le décorateur sera appelé souvent, mais `update()` sera appelé au maximum une fois toutes les 100 ms.
 
 Visuellement, cela ressemblera à ceci:
 
 1. Pour le premier mouvement de souris, la variante décorée passe l'appel à `update`. Cela est important, l'utilisateur voit notre réaction à leur mouvement immédiatement.
-2. Puis, alors que la souris continue d'avancer, il ne se passe plus rien jusqu'à 100ms. La variante décorée ignore les appels.
+2. Puis, alors que la souris continue d'avancer, il ne se passe plus rien jusqu'à `100ms`. La variante décorée ignore les appels.
 3. À la fin de `100ms` - une autre `update` se produit avec les dernières coordonnées.
 4. Enfin, la souris s’arrête quelque part. La variante décorée attend que `100ms` expire, puis lance `update` avec les dernières coordonnées. Donc, peut-être le plus important, les coordonnées finales de la souris sont traitées.
 

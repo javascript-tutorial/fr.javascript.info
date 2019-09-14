@@ -8,7 +8,7 @@ Par exemple :
 - `Object.assign(dest, src1, ..., srcN)` -- copie les propriétés de `src1..N` dans `dest`.
 - ... etc.
 
-Dans ce chapitre, nous allons apprendre à faire de même. Et, plus important encore, comment être à l'aise avec ces fonctions et ces tableaux.
+Dans ce chapitre, nous allons apprendre à faire de même. Et aussi, comment passer des tableaux à des fonctions telles que des paramètres.
 
 ## Les paramètres Rest `...`
 
@@ -96,9 +96,7 @@ showName("Julius", "Caesar");
 showName("Ilya");
 ```
 
-Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction, quel que soit leur nombre total.
-
-Et cela fonctionne toujours, nous pouvons l'utiliser aujourd'hui.
+Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction. Et cela fonctionne toujours, on peut le trouver dans l'ancien code.
 
 Mais l’inconvénient est que, bien que les `arguments` ressemblent à un tableau et qu’ils soient itératifs, ce n’est pas un tableau. Il ne supporte pas les méthodes de tableau, nous ne pouvons donc pas appeler `arguments.map(...)` par exemple.
 
@@ -119,9 +117,9 @@ function f() {
 
 f(1); // 1
 ```
-````
 
 Comme nous nous en souvenons, les fonctions fléchées n’ont pas leur propre `this`. Nous savons maintenant qu’ils n’ont pas non plus l’objet spécial `arguments`.
+````
 
 ## L'opérateur Spread [#spread-operator]
 

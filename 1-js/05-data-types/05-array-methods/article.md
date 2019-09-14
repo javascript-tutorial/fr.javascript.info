@@ -122,26 +122,25 @@ La syntaxe est la suivante:
 arr.slice(start, end)
 ```
 
-Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `"start"` à `end"` (sans compter `"end"`). Le début et la fin peuvent être négatifs, dans ce cas, la position de la fin du tableau est assumé.
+Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `start` à `end` (sans compter `end`). Les deux `start` et `end` peuvent être négatifs, dans ce cas, la position depuis la fin du tableau est supposée.
 
-En fait, ça fonctionne comme str.slice, mais crée des sous-tableaux au lieu de sous-chaînes.
+Cela ressemble à une méthode string `str.slice`, mais au lieu de sous-chaînes de caractères, cela crée des sous-tableaux.
+
+Cela ressemble à une méthode de chaînes de caractères `str.slice`, mais au lieu de sous-chaînes de caractères, il crée des sous-tableaux.
 
 Par exemple:
 
 ```js run
-let str = "test";
 let arr = ["t", "e", "s", "t"];
 
-alert( str.slice(1, 3) ); // es
-alert( arr.slice(1, 3) ); // e,s
+alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
-alert( str.slice(-2) ); // st
-alert( arr.slice(-2) ); // s,t
+alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
 
 ### concat
 
-La méthode [arr.concat](mdn:js/Array/concat) joint le tableau à d'autres tableaux et/ou éléments.
+La méthode [arr.concat](mdn:js/Array/concat) crée un nouveau tableau qui inclut les valeurs d'autres tableaux et des éléments supplémentaires.
 
 La syntaxe est la suivante:
 
@@ -153,24 +152,24 @@ Il accepte n'importe quel nombre d'arguments -- des tableaux ou des valeurs.
 
 Le résultat est un nouveau tableau contenant les éléments `arr`, puis `arg1`, `arg2`, etc.
 
-Si un argument est un tableau ou a la propriété `Symbol.isConcatSpreadable`, tous ses éléments sont copiés. Sinon, l'argument lui-même est copié.
+Si un argument `argN` est un tableau, alors tous ses éléments sont copiés. Sinon, l'argument lui-même est copié.
 
 Par exemple:
 
 ```js run
 let arr = [1, 2];
 
-// fusionne arr avec [3,4]
+// créer un tableau à partir de : arr et [3,4]
 alert( arr.concat([3, 4])); // 1,2,3,4
 
-// fusionne arr avec [3,4] et [5,6]
+// créer un tableau à partir de : arr et [3,4] et [5,6]
 alert( arr.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
 
-// fusionne arr avec [3,4], et ajoute les valeurs 5 et 6
+// créer un tableau à partir de : arr et [3,4], puis ajoute les valeurs 5 et 6
 alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
-Normalement, il ne copie que les éléments des tableaux (il les "répand").Les autres objets, même s'ils ressemblent à des tableaux, sont ajoutés dans à l'ensemble:
+Normalement, il ne copie que les éléments des tableaux. Les autres objets, même s'ils ressemblent à des tableaux, sont ajoutés dans leur ensemble :
 
 ```js run
 let arr = [1, 2];
@@ -184,7 +183,7 @@ alert( arr.concat(arrayLike) ); // 1,2,[object Object]
 //[1, 2, arrayLike]
 ```
 
-Mais si un objet de type tableau a la propriété `Symbol.isConcatSpreadable`, ses éléments sont ajoutés à la place:
+… Mais si un objet de type tableau (array-like) a une propriété spéciale `Symbol.isConcatSpreadable`, il est traité comme un tableau par `concat` : ses éléments sont ajoutés à la place :
 
 ```js run
 let arr = [1, 2];
@@ -232,7 +231,7 @@ Le résultat de la fonction (s'il en renvoie) est jeté et ignoré.
 
 ## Recherche dans le tableau
 
-Ce sont des méthodes pour rechercher quelque chose dans un tableau.
+Voyons maintenant les méthodes de recherche dans un tableau.
 
 ### indexOf/lastIndexOf et includes
 
@@ -280,7 +279,7 @@ let result = arr.find(function(item, index, array) {
 });
 ```
 
-La fonction est appelée de manière répétitive pour chaque élément du tableau:
+La fonction est appelée pour chaque élément du tableau, l'un après l'autre :
 
 - `item` est l'élément.
 - `index` est sont index.
@@ -304,7 +303,7 @@ alert(user.name); // John
 
 Dans la vie réelle, les tableaux d'objets sont une chose courante, la méthode `find` est donc très utile.
 
-Notez que dans l'exemple, nous fournissons à `find` une fonction à argument unique, `item => item.id == 1`. Les autres paramètres de `find` sont rarement utilisés.
+Notez que dans l'exemple, nous fournissons à `find` la fonction `item => item.id == 1` avec un argument. C'est typique, les autres arguments de cette fonction sont rarement utilisés.
 
 La méthode [arr.findIndex](mdn:js/Array/findIndex) est essentiellement la même, mais elle retourne l'index où l'élément a été trouvé à la place de l'élément lui-même.
 
@@ -314,12 +313,12 @@ La méthode `find` recherche un seul (premier) élément qui rend la fonction tr
 
 S'il y en a beaucoup plus, nous pouvons utiliser [arr.filter(fn)](mdn:js/Array/filter).
 
-La syntaxe est à peu près identique à celle de `find`, mais elle renvoie un tableau d'éléments correspondants:
+La syntaxe est à peu près identique à celle de `find`, mais `filter` renvoie un tableau d'éléments correspondants :
 
 ```js
 let results = arr.filter(function(item, index, array) {
-  // devrait retourner true si l'élément passe le filtre
-  // retourne un tableau vide pour un scénario complet de falsy(fausseté)
+  // si true l'item est poussé vers résultats et l'itération continue
+  // retourne un tableau vide si rien n'est trouvé
 });
 ```
 
@@ -340,24 +339,23 @@ alert(someUsers.length); // 2
 
 ## Transformer un tableau
 
-Cette section traite des méthodes de transformation ou de réorganisation de tableau.
-
+Passons aux méthodes qui transforment et réorganisent un tableau.
 
 ### map
 
 La méthode [arr.map](mdn:js/Array/map) est l’une des plus utiles et des plus utilisées.
 
-La syntaxe est la suivante:
+Elle appelle la fonction pour chaque élément du tableau et renvoie le tableau de résultats.
+
+La syntaxe est :
 
 ```js
 let result = arr.map(function(item, index, array) {
-  // retourne la nouvelle valeur au lieu de l'item
-})
+  // renvoie la nouvelle valeur au lieu de l'item
+});
 ```
 
-Il appelle la fonction pour chaque élément du tableau et renvoie le tableau de résultats.
-
-Par exemple, ici nous transformons chaque élément par sa longueur:
+Par exemple, ici nous transformons chaque élément dans sa longueur :
 
 ```js run
 let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length)
@@ -366,14 +364,16 @@ alert(lengths); // 5,7,6
 
 ### sort(fn)
 
-La méthode [arr.sort](mdn:js/Array/sort) trie le tableau *en place*.
+La méthode [arr.sort](mdn:js/Array/sort) trie le tableau *en place*, en changeant son ordre d'élément..
+
+Elle renvoie également le tableau trié, mais la valeur renvoyée est généralement ignorée, comme `arr` est lui-même modifié.
 
 Par exemple:
 
 ```js run
 let arr = [ 1, 2, 15 ];
 
-// la méthode réordonne le contenu de arr (et le retourne)
+// la méthode réordonne le contenu de arr
 arr.sort();
 
 alert( arr );  // *!*1, 15, 2*/!*
@@ -385,20 +385,21 @@ L'ordre est devenu `1, 15, 2`. C'est incorrect. Mais pourquoi?
 
 **Les éléments sont triés en tant que chaînes par défaut.**
 
-Littéralement, tous les éléments sont convertis en chaînes, puis comparés. Donc, l'ordre lexicographique est appliqué et donc "2"> "15".
+Littéralement, tous les éléments sont convertis en chaînes de caractères pour comparaisons. Pour les chaînes de caractères, l’ordre lexicographique est appliqué et donc `"2" > "15"`.
 
-Pour utiliser notre propre ordre de tri, nous devons fournir une fonction de deux arguments en tant qu'argument de `arr.sort()`.
+Pour utiliser notre propre ordre de tri, nous devons fournir une fonction comme argument de `arr.sort()`.
 
-La fonction devrait fonctionner comme ceci:
+La fonction doit comparer deux valeurs arbitraires et renvoyer :
+
 ```js
 function compare(a, b) {
-  if (a > b) return 1;
-  if (a == b) return 0;
-  if (a < b) return -1;
+  if (a > b) return 1; // if the first value is greater than the second
+  if (a == b) return 0; // if values are equal
+  if (a < b) return -1; // if the first value is less than the second
 }
 ```
 
-Par exemple:
+Par exemple, pour trier en nombres :
 
 ```js run
 function compareNumeric(a, b) {
@@ -418,9 +419,9 @@ alert(arr);  // *!*1, 2, 15*/!*
 
 Maintenant, ça fonctionne comme nous l'avons prévu.
 
-Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non? Il peut contenir des nombres, des chaînes, des éléments HTML ou autre. Nous avons donc un ensemble de *quelque chose*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comparer ses éléments. La valeur par défaut est un ordre de chaîne.
+Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non ? Il peut contenir des nombres, des chaînes de caractères, des objets ou autre. Nous avons donc un ensemble de *quelques items*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comment comparer ses éléments. La valeur par défaut est un ordre de chaîne de caractères.
 
-La méthode `arr.sort(fn)` intégre une implémentation de l'algorithme de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement exact (c'est un [tri rapide optimisé](https://en.wikipedia.org/wiki/Quicksort) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
+La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme générique de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement interne (c'est un [tri rapide optimisé](https://fr.wikipedia.org/wiki/Tri_rapide) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
 
 À propos, si nous voulons savoir quels éléments sont comparés, rien ne nous empêche de les alerter:
 
@@ -430,7 +431,7 @@ La méthode `arr.sort(fn)` intégre une implémentation de l'algorithme de tri. 
 });
 ```
 
-L'algorithme peut comparer un élément plusieurs fois dans le processus, mais il essaie de faire le moins de comparaisons possible.
+L'algorithme peut comparer un élément à plusieurs autres dans le processus, mais il essaie de faire le moins de comparaisons possible.
 
 
 ````smart header="A comparison function may return any number"
@@ -454,7 +455,7 @@ Rappelez-vous des [fonctions de flèche](info:function-expressions-arrows#arrow-
 arr.sort( (a, b) => a - b );
 ```
 
-Cela fonctionne exactement comme l'autre version ci-dessus mais qui est plus longue.
+Cela fonctionne exactement comme la version longue ci-dessus.
 ````
 
 ### reverse
@@ -508,14 +509,14 @@ alert( str.split('') ); // t,e,s,t
 ```
 ````
 
-L'appel de [arr.join(str)](mdn:js/Array/join) fait l'inverse de `split`. Il crée une chaîne d'éléments `arr` collés entre eux par `str`.
+L'appel de [arr.join(séparateur)](mdn:js/Array/join) fait l'inverse de `split`. Il crée une chaîne de caractères avec les éléments de `arr` fusionnés entre eux par `séparateur`.
 
 Par exemple:
 
 ```js run
 let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
 
-let str = arr.join(';');
+let str = arr.join(';'); // glue the array into a string using ;
 
 alert( str ); // Bilbo;Gandalf;Nazgul
 ```
@@ -533,18 +534,21 @@ La syntaxe est la suivante:
 ```js
 let value = arr.reduce(function(previousValue, item, index, arr) {
   // ...
-}, initial);
+}, [initial]);
 ```
 
-La fonction est appliquée aux éléments. Vous remarquerez peut-être les arguments familiers, à partir du 2e:
+La fonction est appliquée à tous les éléments du tableau les uns après les autres et "poursuit" son résultat jusqu'au prochain appel.
 
+Les arguments :
+
+- `previousValue` -- est le résultat de l'appel de fonction précédent, égal à `initial` la première fois (si `initial` est fourni).
 - `item` -- est l'élément actuel du tableau.
 - `index` -- est sa position.
-- `arr` -- est le tableau.
+- `array` -- est le tableau.
 
-Jusqu'ici, c'est pareil que `forEach/map`. Mais il y a un autre argument:
+Lorsque la fonction est appliquée, le résultat de l'appel de fonction précédent est transmis au suivant en tant que premier argument.
 
-- `previousValue` -- est le résultat de l'appel de fonction précédent, `initial` pour le premier appel.
+Cela semble compliqué, mais ce n'est pas le cas si vous considérez le premier argument comme un "accumulateur" qui stocke le résultat combiné de toutes les exécutions précédentes. Et à la fin cela devient le résultat de `reduce`.
 
 Le moyen le plus simple pour comprendre c'est avec un exemple.
 
@@ -558,11 +562,11 @@ let result = arr.reduce((sum, current) => sum + current, 0);
 alert(result); // 15
 ```
 
-Ici, nous avons utilisé la variante la plus commune de `reduce` qui utilise seulement 2 arguments.
+La fonction passée à `reduce` utilise seulement 2 arguments, c’est généralement suffisant
 
 Voyons en détails ce qu'il se passe.
 
-1. Lors du premier passage, `sum` est la valeur initial (le dernier argument de `reduce`), égale à `0`, et `current` correspond au premier élément du tableau, égal `1`. Donc le résultant est `1`.
+1. Lors du premier passage, `sum` est la valeur de `initial` (le dernier argument de `reduce`), égale à `0`, et `current` correspond au premier élément du tableau, égal `1`. Donc le résultat de la fonction est `1`.
 2. Lors du deuxième passage, `sum = 1`, nous y ajoutons le deuxième élément (`2`) du tableau et il est retourné.
 3. Au troisième passage, `sum = 3` et nous y ajoutons un élément supplémentaire, et ainsi de suite ...
 
@@ -581,7 +585,7 @@ Ou sous la forme d'un tableau, où chaque ligne représente un appel de fonction
 |cinquième appel|`10`|`5`|`15`|
 
 
-Comme on peut le voir, le résultat de l'appel précédent devient le premier argument du suivant.
+Ici, nous pouvons clairement voir comment le résultat de l'appel précédent devient le premier argument du suivant.
 
 Nous pouvons également omettre la valeur initiale:
 
@@ -653,7 +657,7 @@ arr.map(func, thisArg);
 
 La valeur du paramètre `thisArg` devient `this` pour `func`.
 
-Par exemple, nous utilisons ici une méthode objet comme filtre où `thisArg` devient très utile:
+Par exemple, nous utilisons ici une méthode d'objet en tant que filtre et `thisArg` y contribue :
 
 ```js run
 let user = {
@@ -693,10 +697,13 @@ Un cheat sheet des méthodes de tableau :
   - `concat(...items)` -- retourne un nouveau tableau: copie tous les membres du groupe actuel et lui ajoute des éléments. Si un des `items` est un tableau, ses éléments sont pris.
 
 - Pour rechercher parmi des éléments:
-  - `indexOf/lastIndexOf(item, pos)` -- cherche l'`item` à partir de `pos`, retourne l'index `-1` s'il n'est pas trouvé.
+  - `indexOf/lastIndexOf(item, pos)` -- cherche l'`item` à partir de la position `pos`, retourne l'index `-1` s'il n'est pas trouvé.
   - `includes(value)` -- retourne `true` si le tableau a une `value`, sinon `false`.
-  - `find/filter(func)` -- filtre les éléments dans la fonction, retourne la première/toutes les valeurs qui retourne `true`.
-  - `findIndex` similaire `find`, mais renvoie l'index au lieu d'une valeur.
+  - `find/filter(func)` -- filtrer les éléments à travers la fonction, retourne en premier / toutes les valeurs qui retournent `true`.
+  - `findIndex` est similaire à `find`, mais renvoie l'index au lieu d'une valeur.
+
+- Pour parcourir les éléments :
+  - `forEach(func)` -- appelle `func` pour chaque élément, ne retourne rien.
 
 - Pour transformer le tableau:
   - `map(func)` -- crée un nouveau tableau à partir des résultats de `func` pour chaque élément.
@@ -723,7 +730,7 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
 - [arr.copyWithin(target, start, end)](mdn:js/Array/copyWithin) -- copie ses éléments de la position `start` jusqu'à la position `end` into *itself*, à la position `target` (écrase les éléments éxistants).
 
-Pour la liste complète, voir le manuel [manuel](mdn:js/Array).
+De prime abord, il peut sembler qu’il existe de nombreuses méthodes assez difficiles à retenir. Mais en réalité c'est beaucoup plus facile.
 
 À première vue, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
 

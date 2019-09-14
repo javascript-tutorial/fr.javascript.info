@@ -6,7 +6,7 @@ Pour ce faire, nous pouvons utiliser l'instruction `if` et l'opérateur conditio
 
 ## L'instruction "if"
 
-L'instruction `if` obtient une condition, l'évalue et, si le résultat est `true`, exécute le code.
+L'instruction `if(...)` évalue une condition entre parenthèses et, si le résultat est `true`, exécute un bloc de code.
 
 Par exemple :
 

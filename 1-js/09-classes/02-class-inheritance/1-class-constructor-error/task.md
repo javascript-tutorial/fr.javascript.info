@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Error creating an instance
+# Erreur lors de la création d'une instance
 
-Here's the code with `Rabbit` extending `Animal`.
+Voici le code avec `Rabbit` étendant` Animal`.
 
-Unfortunately, `Rabbit` objects can't be created. What's wrong? Fix it.
+Malheureusement, des objets `Rabbit` ne peuvent pas être créés. Qu'est-ce qui ne va pas? Répare le.
 ```js run
 class Animal {
 

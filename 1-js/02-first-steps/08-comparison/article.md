@@ -76,7 +76,9 @@ alert( '2' > 1 ); // true, la chaîne '2' devient un numéro 2
 alert( '01' == 1 ); // true, chaîne '01' devient un numéro 1
 ```
 
-Pour les valeurs booléennes, `true` devient `1` et `false` devient `0`, c'est pourquoi :
+Pour les valeurs booléennes, `true` devient `1` et `false` devient `0`.
+
+Par exemple :
 
 ```js run
 alert( true == 1 ); // true
@@ -137,8 +139,6 @@ Il existe également un opérateur de "strict non-égalité" `!==`, par analogie
 L’opérateur de vérification de l’égalité stricte est un peu plus long à écrire, mais rend évident ce qui se passe et laisse moins d’espace pour les erreurs.
 
 ## Comparaison avec null et undefined
-
-Voyons des cas plus extrêmes.
 
 Il existe un comportement non intuitif lorsque `null` ou `undefined` sont comparés à d’autres valeurs.
 
