@@ -124,24 +124,13 @@ alert( Boolean(" ") ); // espaces, également vrai (toute chaîne de caractères
 ```
 ````
 
-<<<<<<< HEAD
-
 ## Résumé
-=======
-## Summary
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Les  trois conversions de types les plus utilisées sont :  to string, to number et to boolean.
 
-<<<<<<< HEAD
-**`ToString`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec String (value). La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
+**`La conversion en String`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec `String(value)`. La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
 
-**`ToNumber`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
-=======
-**`String Conversion`** -- Occurs when we output something. Can be performed with `String(value)`. The conversion to string is usually obvious for primitive values.
-
-**`Numeric Conversion`** -- Occurs in math operations. Can be performed with `Number(value)`.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+**`La conversion en Number`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
 
 La conversion vers `number` suit les règles suivantes :
 
@@ -152,11 +141,7 @@ La conversion vers `number` suit les règles suivantes :
 | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
 | `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. Une chaîne vide devient `0`. Une erreur donne `NaN`. |
 
-<<<<<<< HEAD
-**`ToBoolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
-=======
-**`Boolean Conversion`** -- Occurs in logical operations. Can be performed with `Boolean(value)`.
->>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
+**`La conversion en Boolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
 
 La conversion vers `boolean` suit les règles suivantes :
 
