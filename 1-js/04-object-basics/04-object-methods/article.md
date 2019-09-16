@@ -60,8 +60,13 @@ user.sayHi = sayHi;
 user.sayHi(); // Hello!
 ```
 
+<<<<<<< HEAD
 ```smart header="Programmation orientée objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
+=======
+```smart header="Object-oriented programming"
+When we write our code using objects to represent entities, that's called [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming), in short: "OOP".
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
 ```
@@ -228,9 +233,15 @@ Si vous venez d'un autre langage de programmation, vous êtes probablement habit
 
 En JavaScript, `this` est "libre", sa valeur est évaluée au moment de l'appel et ne dépend pas de l'endroit où la méthode a été déclarée, mais plutôt de l'objet "avant le point".
 
+<<<<<<< HEAD
 Le concept de temps d'exécution évalué de `this` présente à la fois des avantages et des inconvénients. D'une part, une fonction peut être réutilisée pour différents objets. D'autre part, une plus grande flexibilité ouvre la place à des erreurs.
 
 Ici, notre position n'est pas de juger si cette décision de conception linguistique est bonne ou mauvaise. Nous comprendrons comment travailler avec elle, comment obtenir des avantages et éviter les problèmes.
+=======
+The concept of run-time evaluated `this` has both pluses and minuses. On the one hand, a function can be reused for different objects. On the other hand, the greater flexibility creates more possibilities for mistakes.
+
+Here our position is not to judge whether this language design decision is good or bad. We'll understand how to work with it, how to get benefits and avoid problems.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 ```
 
 ## Internals: Type de Référence

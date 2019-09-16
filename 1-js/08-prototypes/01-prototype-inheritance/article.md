@@ -308,9 +308,15 @@ Nous avons ici la chaîne d'héritage suivante: `rabbit` hérite de `animal`, qu
 
 Remarque, il y a une chose amusante. D'où vient la méthode `rabbit.hasOwnProperty`? Nous ne l'avons pas défini. En regardant la chaîne, nous pouvons voir que la méthode est fournie par `Object.prototype.hasOwnProperty`. En d'autres termes, c'est hérité.
 
+<<<<<<< HEAD
 ...Mais pourquoi `hasOwnProperty` n'apparaît pas dans la boucle `for..in`, comme `eats` et `jumps`, s'il répertorie toutes les propriétés héritées.
 
 La réponse est simple: ce n'est pas énumérable. Comme toutes les autres propriétés de `Object.prototype`, il possède l'attribut `enumerable: false`. C'est pourquoi ils ne sont pas répertoriés.
+=======
+...But why does `hasOwnProperty` not appear in the `for..in` loop like `eats` and `jumps` do, if `for..in` lists inherited properties?
+
+The answer is simple: it's not enumerable. Just like all other properties of `Object.prototype`, it has `enumerable:false` flag. And `for..in` only lists enumerable properties. That's why it and the rest of the `Object.prototype` properties are not listed.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 ```smart header="Presque toutes les autres méthodes d'obtention de clé/valeur ignorent les propriétés héritées"
 Presque toutes les autres méthodes d'obtention de clé/valeur, telles que `Object.keys`, `Object.values` et ainsi de suite ignorent les propriétés héritées.
@@ -320,6 +326,7 @@ Ils ne fonctionnent que sur l'objet lui-même. Les propriétés du prototype ne 
 
 ## Résumé
 
+<<<<<<< HEAD
 - En JavaScript, tous les objets ont une propriété masquée `[[Prototype]]` qui est soit un autre objet, soit `null`.
 - Nous pouvons utiliser `obj .__ proto__` pour y accéder (un accesseur/mutateur historique, il existe d'autres moyens, à couvrir bientôt).
 - L'objet référencé par `[[Prototype]]` s'appelle un "prototype".
@@ -327,3 +334,12 @@ Ils ne fonctionnent que sur l'objet lui-même. Les propriétés du prototype ne 
 - Les opérations d'écriture/suppression agissent directement sur l'objet, elles n'utilisent pas le prototype (en supposant qu'il s'agisse d'une propriété de données, et non d'un mutateur).
 - Si nous appelons `obj.method()`, et que la `méthode` est extraite du prototype, `this` fait toujours référence à `obj`. Les méthodes fonctionnent donc toujours avec l'objet actuel, même si elles sont héritées.
 - La boucle `for..in` parcourt les propriétés propres et héritées. Toutes les autres méthodes d'obtention de clé / valeur ne fonctionnent que sur l'objet lui-même.
+=======
+- In JavaScript, all objects have a hidden `[[Prototype]]` property that's either another object or `null`.
+- We can use `obj.__proto__` to access it (a historical getter/setter, there are other ways, to be covered soon).
+- The object referenced by `[[Prototype]]` is called a "prototype".
+- If we want to read a property of `obj` or call a method, and it doesn't exist, then JavaScript tries to find it in the prototype.
+- Write/delete operations act directly on the object, they don't use the prototype (assuming it's a data property, not a setter).
+- If we call `obj.method()`, and the `method` is taken from the prototype, `this` still references `obj`. So methods always work with the current object even if they are inherited.
+- The `for..in` loop iterates over both its own and its inherited properties. All other key/value-getting methods only operate on the object itself.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a

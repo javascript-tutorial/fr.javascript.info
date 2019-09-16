@@ -314,9 +314,16 @@ Il existe également des méthodes qui limitent l'accès à l'objet *entier*:
 [Object.seal(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/seal)
 : Interdit l'ajout/la suppression de propriétés. Définit `configurable: false` pour toutes les propriétés existantes.
 
+<<<<<<< HEAD
 [Object.freeze(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/freeze)
 : Interdit l'ajout/la suppression/la modification de propriétés. Définit `configurable: false, writeable: false` pour toutes les propriétés existantes.
 Et aussi il y a des tests pour eux:
+=======
+[Object.freeze(obj)](mdn:js/Object/freeze)
+: Forbids adding/removing/changing of properties. Sets `configurable: false, writable: false` for all existing properties.
+
+And also there are tests for them:
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 [Object.isExtensible(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/isExtensible)
 : Retourne `false` si l'ajout de propriétés est interdit, sinon `true`.

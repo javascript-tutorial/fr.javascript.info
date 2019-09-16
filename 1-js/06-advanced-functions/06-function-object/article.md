@@ -328,8 +328,13 @@ Maintenant cela fonctionne, car le nom `'func'` est local à la fonction. Il n'e
 
 Le code externe a toujours sa variable `sayHi` ou `welcome`. Et `func` est un "nom de fonction interne", c'est comment la fonction peut s'appeler en interne.
 
+<<<<<<< HEAD
 ```smart header="Il n'y a rien de tel pour la déclaration de fonction"
 La fonctionnalité "nom interne" décrite ici n'est disponible que pour les expressions de fonction, pas pour les déclarations de fonction. Pour les déclarations de fonctions, il n’y a aucune possibilité de syntaxe d’ajouter un nom "interne" supplémentaire.
+=======
+```smart header="There's no such thing for Function Declaration"
+The "internal name" feature described here is only available for Function Expressions, not for Function Declarations. For Function Declarations, there is no syntax for adding an "internal" name.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 Parfois, lorsque nous avons besoin d’un nom interne fiable, c’est la raison pour laquelle nous réécrivons une déclaration de fonction en tant qe'expression de fonction nommée.
 ```
