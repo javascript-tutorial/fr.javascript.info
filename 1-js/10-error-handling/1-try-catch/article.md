@@ -1,10 +1,6 @@
 # Gestion des erreurs, "try..catch"
 
-<<<<<<< HEAD
 Peu importe notre niveau de programmation, nos scripts comportent parfois des erreurs. Elles peuvent être dues à nos erreurs, à une entrée utilisateur imprévue, à une réponse erronée du serveur et à mille autres raisons.
-=======
-No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response and for a thousand other reasons.
->>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'imprimant sur la console.
 
