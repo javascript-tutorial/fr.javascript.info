@@ -302,13 +302,8 @@ Maintenable
 
     Pour les utilisateurs, lorsqu'une nouvelle version est disponible, il peut s'agir d'une refonte totale en interne, mais reste simple à mettre à niveau si l'interface externe est la même.
 
-<<<<<<< HEAD
-Cache la complexité
+Cacher la complexité
 : Les gens adorent utiliser des choses simples. Au moins de l'extérieur. Ce qui est à l'intérieur est une chose différente.
-=======
-Hiding complexity
-: People adore using things that are simple. At least from outside. What's inside is a different thing.
->>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
     Les programmeurs ne sont pas une exception.
 
