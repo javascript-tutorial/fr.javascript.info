@@ -44,7 +44,11 @@ alert( lazy.stomach ); // <rien>
 
 Maintenant, tout fonctionne bien, car `this.stomach=` n'effectue pas de recherche de `stomach`. La valeur est écrite directement dans l'objet `this`.
 
+<<<<<<< HEAD
 Nous pouvons également éviter le problème en nous assurant que chaque hamster a son propre `stomach`:
+=======
+Also we can totally avoid the problem by making sure that each hamster has their own stomach:
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 ```js run
 let hamster = {
