@@ -71,9 +71,15 @@ Pourquoi?
 
 C'est pour des raisons historiques.
 
+<<<<<<< HEAD
 - La propriété "" prototype "` d'une fonction constructeur fonctionne depuis des temps très anciens.
 - Plus tard dans l'année 2012: `Object.create` est apparu dans le standard. Cela permettait de créer des objets avec le prototype donné, mais ne permettait pas d'accéder/muter. Les navigateurs ont donc implémenté un accesseur non standard `__proto__` qui permettait d'accéder/muter un prototype à tout moment.
 - Plus tard dans l'année 2015: `Object.setPrototypeOf` et `Object.getPrototypeOf` ont été ajoutés à la norme pour exécuter la même fonctionnalité que `__proto__`. Comme `__proto__` était implémenté de facto partout, il était en quelque sorte obsolète et passait à l'Annexe B de la norme, qui est facultative pour les environnements autres que les navigateurs.
+=======
+- The `"prototype"` property of a constructor function works since very ancient times.
+- Later, in the year 2012: `Object.create` appeared in the standard. It allowed to create objects with the given prototype, but did not allow to get/set it. So browsers implemented non-standard `__proto__` accessor that allowed to get/set a prototype at any time.
+- Later, in the year 2015: `Object.setPrototypeOf` and `Object.getPrototypeOf` were added to the standard, to perform the same functionality as `__proto__`. As `__proto__` was de-facto implemented everywhere, it was kind-of deprecated and made its way to the Annex B of the standard, that is optional for non-browser environments.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Pour l'instant, nous avons tous ces moyens à notre disposition.
 
@@ -82,7 +88,11 @@ Pourquoi `__proto__` a-t-il été remplacé par les fonctions `getPrototypeOf/se
 ```warn header="Ne changez pas `[[Prototype]]` sur des objets existants si la vitesse est d'importance"
 Techniquement, nous pouvons accéder/muter `[[Prototype]]` à tout moment. Mais en général, nous ne le définissons qu’une fois au moment de la création de l’objet, puis nous ne modifions pas: `rabbit` hérite de` animal`, et cela ne changera pas.
 
+<<<<<<< HEAD
 Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volée" avec `Object.setPrototypeOf` ou `obj.__ proto __=` est une opération très lente, elle rompt les optimisations internes pour les opérations d'accès aux propriétés d'objet. Alors évitez-le à moins que vous ne sachiez ce que vous faites, ou que la vitesse de JavaScript n'a pas d'importance pour vous.
+=======
+And JavaScript engines are highly optimized for this. Changing a prototype "on-the-fly" with `Object.setPrototypeOf` or `obj.__proto__=` is a very slow operation, it breaks internal optimizations for object property access operations. So avoid it unless you know what you're doing, or JavaScript speed totally doesn't matter for you.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 ```
 
 ## Objets "très simples" [#very-plain]
@@ -108,6 +118,7 @@ Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: e
 
 Mais nous n'avions pas * l'intention * de mettre en œuvre un tel comportement, non? Nous voulons stocker des paires clé / valeur, et la clé nommée `"__proto __"` n'a pas été correctement enregistrée. Donc c'est un bug!
 
+<<<<<<< HEAD
 Ici les conséquences ne sont pas terribles. Mais dans d'autres cas, nous pouvons attribuer des valeurs d'objet, le prototype peut en effet être modifié. En conséquence, l'exécution ira de manière totalement inattendue.
 
 Quel est le pire - généralement les développeurs ne pensent pas du tout à cette possibilité. Cela rend ces bugs difficiles à remarquer et même à les transformer en vulnérabilités, en particulier lorsque JavaScript est utilisé côté serveur.
@@ -115,10 +126,23 @@ Quel est le pire - généralement les développeurs ne pensent pas du tout à ce
 Des choses inattendues peuvent également se produire lors de l'attribution à `toString`, une fonction par défaut, et d'autres méthodes intégrées.
 
 Comment échapper à ce problème?
+=======
+Here the consequences are not terrible. But in other cases we may be assigning object values, and then the prototype may indeed be changed. As the result, the execution will go wrong in totally unexpected ways.
+
+What's worse -- usually developers do not think about such possibility at all. That makes such bugs hard to notice and even turn them into vulnerabilities, especially when JavaScript is used on server-side.
+
+Unexpected things also may happen when assigning to `toString`, which is a function by default, and to other built-in methods.
+
+How to avoid the problem?
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Tout d'abord, nous pouvons simplement utiliser `Map`, puis tout va bien.
 
+<<<<<<< HEAD
 Mais `Object` peut également nous servir, car les créateurs de langage ont réfléchi à ce problème il y a longtemps.
+=======
+But `Object` also can serve us well here, because language creators gave thought to that problem long ago.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object.prototype`:
 

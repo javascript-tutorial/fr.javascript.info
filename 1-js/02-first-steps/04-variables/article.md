@@ -293,7 +293,11 @@ En d'autres termes, les constantes nommées en majuscules ne sont utilisées que
 
 En parlant de variables, il y a une autre chose extrêmement importante.
 
+<<<<<<< HEAD
 Un nom de variable doit avoir une signification propre et évidente, décrire les données qu’elle stocke.
+=======
+A variable name should have a clean, obvious meaning, describing the data that it stores.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Le nommage de variables est l’une des compétences les plus importantes et les plus complexes de la programmation. Un rapide coup d’œil sur les noms de variables peut révéler quel code est écrit par un débutant et par un développeur expérimenté.
 

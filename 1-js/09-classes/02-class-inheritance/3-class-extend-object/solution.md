@@ -25,8 +25,13 @@ Même après le correctif, il existe toujours une différence importante entre `
 
 Comme on le sait, la syntaxe "extend" configure deux prototypes:
 
+<<<<<<< HEAD
 1. Entre le `"prototype"` des fonctions du constructeur (pour les méthodes).
 2. Entre les fonctions du constructeur lui-même (pour les méthodes statiques).
+=======
+1. Between `"prototype"` of the constructor functions (for methods).
+2. Between the constructor functions themselves (for static methods).
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Dans notre cas, pour `class Rabbit extends Object`, cela signifie:
 

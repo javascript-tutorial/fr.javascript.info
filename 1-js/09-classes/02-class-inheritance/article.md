@@ -259,7 +259,11 @@ La réponse courte est: les constructeurs dans les classes qui héritent doivent
 
 ...Mais pourquoi? Que se passe t-il ici? En effet, l'exigence semble étrange.
 
+<<<<<<< HEAD
 Bien sûr, il y a une explication. Entrons dans les détails pour que vous compreniez vraiment ce qui se passe.
+=======
+Of course, there's an explanation. Let's get into details, so you'll really understand what's going on.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 En JavaScript, il existe une distinction entre une "fonction constructeur d'une classe héritante" et toutes les autres. Dans une classe qui hérite, la fonction constructeur correspondante est étiquetée avec une propriété interne spéciale `[[ConstructorKind]]:"derived"`.
 

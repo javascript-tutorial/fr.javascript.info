@@ -230,7 +230,11 @@ new User().sayHi(); // Hello
 
 ## Accesseurs/Mutateurs, autres syntaxes de raccourcis
 
+<<<<<<< HEAD
 Tout comme les objets littéraux, les classes peuvent inclure des accesseurs/mutateurs, des générateurs, des propriétés évaluées etc.
+=======
+Just like literal objects, classes may include getters/setters, computed properties etc.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Voici un exemple pour `user.name` implémente en utilisant les propriétés `get/set`:
 
@@ -297,9 +301,13 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 Pour un générateur de méthode, similairement, il suffit de préposer un `*`.
 
 ## Proprietes de Classe
+=======
+## Class properties
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 ```warn header="les anciens navigateurs peuvent avoir besoin de polyfill"
 Les propriétés au niveau Classe sont un ajout récent au langage.

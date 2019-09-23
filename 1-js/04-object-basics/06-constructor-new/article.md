@@ -136,8 +136,13 @@ Généralement, les constructeurs n'ont pas d'instruction `return`. Leur tâche 
 
 Mais s'il y a une déclaration `return`, alors la règle est simple :
 
+<<<<<<< HEAD
 - Si `return` est appelé avec un object, il est renvoyé à la place de `this`.
 - Si `return` est appelé avec une primitive, elle est ignorée.
+=======
+- If `return` is called with an object, then the object is returned instead of `this`.
+- If `return` is called with a primitive, it's ignored.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 En d'autres termes, `return` avec un objet renvoie cet objet, dans tous les autres cas, `this` est renvoyé.
 
