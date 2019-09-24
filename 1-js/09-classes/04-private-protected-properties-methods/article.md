@@ -249,7 +249,7 @@ Contrairement aux champs protégés, les champs privés sont imposés par le lan
 Mais si nous héritons de `CoffeeMachine`, nous n’aurons aucun accès direct à `#waterAmount`. Nous aurons besoin de compter sur l'accéseur/mutateur `waterAmount`:
 
 ```js
-class MegaCoffeeMachine extends CoffeeMachine() {
+class MegaCoffeeMachine extends CoffeeMachine {
   method() {
 *!*
     alert( this.#waterAmount ); // Error: can only access from CoffeeMachine
