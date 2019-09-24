@@ -129,11 +129,7 @@ Donc, généralement, modifier un prototype natif est considéré comme une mauv
 
 **Dans la programmation moderne, il n'y a qu'un seul cas où la modification de prototypes natifs est approuvée. Le polyfilling.**
 
-<<<<<<< HEAD
-Le terme Polyfill décrit l'action de faire un substitut à une méthode qui existe dans la spécification JavaScript, mais pas encore pris en charge par le moteur actuel JavaScript.
-=======
-Polyfilling is a term for making a substitute for a method that exists in JavaScript specification, but is not yet supported by current JavaScript engine.
->>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
+Polyfilling est un terme utilisé pour remplacer une méthode existante dans la spécification JavaScript, mais qui n'est pas encore prise en charge par le moteur JavaScript actuel.
 
 Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.
 
