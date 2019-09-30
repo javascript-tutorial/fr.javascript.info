@@ -46,9 +46,15 @@ Cela signifie que si le visiteur déplace la souris très rapidement, certains �
 
 ![](mouseover-mouseout-over-elems.svg)
 
+<<<<<<< HEAD
 Si la souris se déplace très rapidement de  `#FROM` aux  `#TO` éléments telle que décrite en haut, alors le `<div>`  intermédiaire (ou certains d'entre eux) peuvent être sautés. L'évènement  `mouseout` peut être déclenche  sur  `#FROM` et ensuite immédiatement le `mouseover` sur  `#TO`.
 
 C'est bon pour la performance, car s'il peut y avoir beaucoup d'éléments intermédiaires. Nous ne voulons pas vraiment traiter dans et hors de chacun.
+=======
+If the mouse moves very fast from `#FROM` to `#TO` elements as painted above, then intermediate `<div>` elements (or some of them) may be skipped. The `mouseout` event may trigger on `#FROM` and then immediately `mouseover` on `#TO`.
+
+That's good for performance, because there may be many intermediate elements. We don't really want to process in and out of each one.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 D'autre part, nous devons garder à l'esprit que le pointeur de la souris ne "visite" pas tous les éléments le long du chemin. Il peut "sauter".
 
@@ -66,12 +72,18 @@ Déplacez également le pointeur dans la `div` enfant, puis le déplacer rapidem
 [codetabs height=360 src="mouseoverout-fast"]
 ```
 
+<<<<<<< HEAD
 ```smart header="Si `mouseover` est déclenché, il doit y avoir `mouseout`"
 En cas de mouvements rapides de la souris, les éléments intermédiaires peuvent être ignorés, mais une chose est sûre : si le pointeur est "officiellement" entré dans un élément avec `mouseover`, alors en le quittant, on aura toujours` mouseout`.
+=======
+```smart header="If `mouseover` triggered, there must be `mouseout`"
+In case of fast mouse movements, intermediate elements may be ignored, but one thing we know for sure: if the pointer "officially" entered an element (`mouseover` event generated), then upon leaving it we always get `mouseout`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 ```
 
 ## Mouseout en quittant pour un enfant
 
+<<<<<<< HEAD
 Une caractéristique importante de `mouseout` -- il se déclenche lorsque le pointeur passe d'un élément à son descendant.
 
 Visuellement, le pointeur est toujours sur l'élément, mais nous obtenons `mouseout`!
@@ -79,26 +91,55 @@ Visuellement, le pointeur est toujours sur l'élément, mais nous obtenons `mous
 ![](mouseover-to-child.svg)
 
 Cela semble étrange, mais peut être facilement expliqué.
+=======
+An important feature of `mouseout` -- it triggers, when the pointer moves from an element to its descendant, e.g. from `#parent` to `#child` in this HTML:
+
+```html
+<div id="parent">
+  <div id="child">...</div>
+</div>
+```
+
+If we're on `#parent` and then move the pointer deeper into `#child`, but we get `mouseout` on `#parent`!
+
+![](mouseover-to-child.svg)
+
+That may seem strange, but can be easily explained.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 **Selon la logique du navigateur, le curseur de la souris ne peut survoler qu'*un seul* élément à tout moment - l'élément le plus imbriqué et le plus élevé par z-index.**
 
 Donc, s'il passe à un autre élément (même un descendant), alors il quitte le précédent.
 
+<<<<<<< HEAD
 Veuillez noter un détail important.
 
 L'événement `mouseover` sur un descendant "bubble up" (remonte). Donc, si l'élément parent a un tel gestionnaire, il se déclenche.
+=======
+Please note another important detail of event processing.
+
+The `mouseover` event on a descendant bubbles up. So, if `#parent` has `mouseover` handler, it triggers:
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 ![](mouseover-bubble-nested.svg)
 
 ```online
+<<<<<<< HEAD
 Vous pouvez le voir très bien dans l'exemple ci-dessous : `<div id="child">` est à l'intérieur de `<div id="parent">`. Il y a des gestionnaires sur le parent qui écoutent les événements `mouseover/out` et sortent leurs détails.
 
 Si vous déplacez la souris du parent vers l’enfant, vous voyez deux événements : `mouseout [target: parent]` (quitté le parent) et `mouseover [target: child]` (est venu à l'enfant, bubbled).
+=======
+You can see that very well in the example below: `<div id="child">` is inside the `<div id="parent">`. There are `mouseover/out` handlers on `#parent` element that output event details.
+
+If you move the mouse from `#parent` to `#child`, you see two events on `#parent`:
+1. `mouseout [target: parent]` (left the parent), then
+2. `mouseover [target: child]` (came to the child, bubbled).
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 [codetabs height=360 src="mouseoverout-child"]
 ```
 
-When we move from a parent element to a child, then two handlers trigger on the parent element: `mouseout` and `mouseover`:
+As shown, when the pointer moves from `#parent` element to `#child`, two handlers trigger on the parent element: `mouseout` and `mouseover`:
 
 ```js
 parent.onmouseout = function(event) {
@@ -109,11 +150,21 @@ parent.onmouseover = function(event) {
 };
 ```
 
+<<<<<<< HEAD
 Si nous n'examinons pas `event.target` dans les gestionnaires, il peut sembler que le pointeur de la souris a quitté l'élément `parent`, puis qu'il est revenu par-dessus. Mais ce n'est pas le cas! La souris n'est jamais partie, elle est simplement passée à l'élément enfant.
 
 S'il y a une action à la sortie de l'élément, par exemple une animation, alors une telle interprétation peut entraîner des effets secondaires indésirables.
 
 Pour l'éviter, nous pouvons vérifier `relatedTarget` et, si la souris est toujours dans l'élément, ignorer cet événement.
+=======
+**If we don't examine `event.target` inside the handlers, then it may seem that the mouse pointer left `#parent` element, and then immediately came back over it.**
+
+But that's not the case! The pointer is still over the parent, it just moved deeper into the child element.
+
+If there are some actions upon leaving the parent element, e.g. an animation runs in `parent.onmouseout`, we usually don't want it when the pointer just goes deeper into `#parent`.
+
+To avoid it, we can check `relatedTarget` in the handler and, if the mouse is still inside the element, then ignore such event.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Alternativement, nous pouvons utiliser d'autres événements : `mouseenter` и `mouseleave`, que nous allons couvrir maintenant, car ils n'ont pas ce genre de problèmes.
 

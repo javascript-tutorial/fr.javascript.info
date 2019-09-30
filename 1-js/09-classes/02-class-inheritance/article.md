@@ -261,7 +261,11 @@ La réponse courte est: les constructeurs dans les classes qui héritent doivent
 
 Bien sûr, il y a une explication. Entrons dans les détails pour que vous compreniez vraiment ce qui se passe.
 
+<<<<<<< HEAD
 En JavaScript, il existe une distinction entre une "fonction constructeur d'une classe héritante" et toutes les autres. Dans une classe qui hérite, la fonction constructeur correspondante est étiquetée avec une propriété interne spéciale `[[ConstructorKind]]:"derived"`.
+=======
+In JavaScript, there's a distinction between a "constructor function of an inheriting class" and all others. In an inheriting class, the corresponding constructor function is labeled with a special internal property `[[ConstructorKind]]:"derived"`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 La différence est:
 
@@ -312,7 +316,11 @@ Si vous lisez le tutoriel pour la première fois - cette section peut être igno
 Il concerne les mécanismes internes de l'héritage et du "super".
 ```
 
+<<<<<<< HEAD
 Passons un peu plus loin sous le capot de `super`. Nous verrons des choses intéressantes au passage.
+=======
+Let's get a little deeper under the hood of `super`. We'll see some interesting things along the way.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Tout d'abord, d'après tout ce que nous avons appris jusqu'à présent, `super` ne devrait pas fonctionner du tout!
 
