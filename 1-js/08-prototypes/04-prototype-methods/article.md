@@ -71,15 +71,9 @@ Pourquoi?
 
 C'est pour des raisons historiques.
 
-<<<<<<< HEAD
 - La propriété `"prototype"` d'une fonction constructeur fonctionne depuis très longtemps.
 - Plus tard dans l'année 2012 : `Object.create` est apparu dans le standard. Cela permettait de créer des objets avec le prototype donné, mais ne permettait pas d'y accéder/muter. Les navigateurs ont donc implémenté un accesseur non standard `__proto__` qui permettait d'accéder/muter un prototype à tout moment.
-- Plus tard dans l'année 2015 : `Object.setPrototypeOf` et `Object.getPrototypeOf` ont été ajoutés dans le standard pour exécuter la même fonctionnalité que `__proto__`. Comme `__proto__` était implémenté de facto partout, il était en quelque sorte obsolète et passait à l'Annexe B de la norme, qui est facultative pour les environnements autres que les navigateurs.
-=======
-- The `"prototype"` property of a constructor function works since very ancient times.
-- Later, in the year 2012: `Object.create` appeared in the standard. It gave the ability to create objects with a given prototype, but did not provide the ability to get/set it. So browsers implemented the non-standard `__proto__` accessor that allowed the user to get/set a prototype at any time.
-- Later, in the year 2015: `Object.setPrototypeOf` and `Object.getPrototypeOf` were added to the standard, to perform the same functionality as `__proto__`. As `__proto__` was de-facto implemented everywhere, it was kind-of deprecated and made its way to the Annex B of the standard, that is: optional for non-browser environments.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
+- Plus tard, dans l'année 2015 : `Object.setPrototypeOf` et `Object.getPrototypeOf` ont été ajoutés dans le standard pour exécuter la même fonctionnalité que `__proto__`. Comme `__proto__` était implémenté de facto partout, il était en quelque sorte obsolète et passait à l'Annexe B de la norme, qui est facultative pour les environnements autres que les navigateurs.
 
 Pour l'instant, nous avons tous ces moyens à notre disposition.
 
@@ -195,11 +189,7 @@ En outre, `Object.create` fournit un moyen simple de copier superficiellement un
 let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
 ```
 
-<<<<<<< HEAD
 Nous avons également précisé que `__proto__` est un accésseur/mutateur pour `[[Prototype]]` et réside dans `Object.prototype`, tout comme les autres méthodes.
-=======
-We also made it clear that `__proto__` is a getter/setter for `[[Prototype]]` and resides in `Object.prototype`, just like other methods.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Nous pouvons créer un objet sans prototype avec `Object.create(null)`. De tels objets sont utilisés comme "dictionnaires purs", ils n'ont aucun problème avec `"__proto __"` comme clé.
 
