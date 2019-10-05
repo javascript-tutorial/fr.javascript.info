@@ -201,11 +201,7 @@ Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classe
 
 *Mixin* -- est un terme générique de programmation orienté objet: une classe contenant des méthodes pour d’autres classes.
 
-<<<<<<< HEAD
-Certaines autres langues autorisent l'héritage multiple. JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
-=======
-Some other languages allow multiple inheritance. JavaScript does not support multiple inheritance, but mixins can be implemented by copying methods into prototype.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
+D'autres langages autorisent l'héritage multiple. JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
 
 Nous pouvons utiliser les mixins comme moyen d'ajouter à une classe plusieurs comportements, comme la gestion d'événements, comme nous l'avons vu ci-dessus.
 

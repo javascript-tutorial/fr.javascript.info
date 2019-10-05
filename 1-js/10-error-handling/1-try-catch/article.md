@@ -85,11 +85,7 @@ try {
 }
 ```
 
-<<<<<<< HEAD
 Le moteur JavaScript lit d'abord le code, puis l'exécute. Les erreurs qui se produisent lors de la phase de lecture sont appelées erreurs "d'analyse" et sont irrécupérables (de l'intérieur de ce code). C'est parce que le moteur ne peut pas comprendre le code.
-=======
-The JavaScript engine first reads the code, and then runs it. The errors that occur on the reading phase are called "parse-time" errors and are unrecoverable (from inside that code). That's because the engine can't understand the code.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Ainsi, `try..catch` ne peut gérer que les erreurs qui se produisent dans le code valide. De telles erreurs sont appelées "erreurs d'exécution" ou, parfois, "exceptions".
 ````
@@ -526,11 +522,7 @@ alert(result || "error occurred");
 alert( `execution took ${diff}ms` );
 ```
 
-<<<<<<< HEAD
-Vous pouvez vérifier en exécutant le code en entrant `35` dans `prompt` - il s'exécute normalement, `finally` après `try`. Puis entrez `-1` - il y aura une erreur immédiate, puis l'exécution prendra `0ms`. Les deux mesures sont effectuées correctement.
-=======
-You can check by running the code with entering `35` into `prompt` -- it executes normally, `finally` after `try`. And then enter `-1` -- there will be an immediate error, and the execution will take `0ms`. Both measurements are done correctly.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
+Vous pouvez vérifier en exécutant le code en entrant `35` dans `prompt` - il s'exécute normalement, `finally` après `try`. Puis entrez `-1` -- il y aura une erreur immédiate, puis l'exécution prendra `0ms`. Les deux mesures sont effectuées correctement.
 
 En d'autres termes, la fonction peut finir par `return` ou `throw`, cela n'a pas d'importance. La clause `finally` s'exécute dans les deux cas.
 

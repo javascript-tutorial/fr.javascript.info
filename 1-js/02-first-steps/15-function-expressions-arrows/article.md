@@ -41,11 +41,7 @@ Veuillez noter que la dernière ligne n'exécute pas la fonction, car il n'y a p
 
 En JavaScript, une fonction est une valeur, nous pouvons donc la traiter comme une valeur. Le code ci-dessus montre sa représentation sous forme de chaîne de caractères, qui est le code source.
 
-<<<<<<< HEAD
 Certes, une fonction est une valeur spéciale, en ce sens que nous pouvons l'appeler comme cela `sayHi()`.
-=======
-Surely, a function is a special value, in the sense that we can call it like `sayHi()`.
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Mais c’est toujours une valeur. Nous pouvons donc travailler avec comme avec d’autres types de valeurs.
 
