@@ -50,11 +50,7 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Les guillemets simples et doubles proviennent d'anciens temps de la création linguistique lorsque la nécessité de chaînes multilignes n'était pas prise en compte. Les backticks sont apparus beaucoup plus tard et sont donc plus polyvalents.
 
-<<<<<<< HEAD
 Les Backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Vous pouvez en savoir plus à ce sujet dans la [doc](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Litt%C3%A9raux_gabarits#Gabarits_%C3%A9tiquet%C3%A9s_2). Cela s'appelle des "tagged templates" (Gabarits étiquetés). Cette fonctionnalité facilite l'intégration de chaînes de caractères dans des modèles personnalisés ou d'autres fonctionnalités, mais elle est rarement utilisée.
-=======
-Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 
 ## Caractères spéciaux
