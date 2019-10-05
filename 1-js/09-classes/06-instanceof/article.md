@@ -44,7 +44,11 @@ alert( arr instanceof Array ); // true
 alert( arr instanceof Object ); // true
 ```
 
+<<<<<<< HEAD
 Veuillez noter que `arr` appartient également à la classe `Object`. C'est parce que `Array` hérite prototypiquement de `Object`.
+=======
+Please note that `arr` also belongs to the `Object` class. That's because `Array` prototypically inherits from `Object`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.
 

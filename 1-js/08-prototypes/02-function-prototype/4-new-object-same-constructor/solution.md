@@ -15,7 +15,11 @@ alert( user2.name ); // Pete (ça marche!)
 
 Cela a fonctionné, car `User.prototype.constructor == User`.
 
+<<<<<<< HEAD
 ..Mais si quelqu'un, pour ainsi dire, écrase `User.prototype` et oublie de recréer `"constructor"`, alors cela échouera.
+=======
+..But if someone, so to speak, overwrites `User.prototype` and forgets to recreate `"constructor"`, then it would fail.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Par exemple:
 

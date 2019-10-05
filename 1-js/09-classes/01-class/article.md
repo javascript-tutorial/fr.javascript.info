@@ -319,7 +319,11 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 La propriété `name` n'est pas placée dans `User.prototype`. Au lieu de cela, elle est créée par `new` avant l'appel du constructeur, c'est la propriété de l'objet lui-même.
+=======
+The property `name` is not placed into `User.prototype`. Instead, it is created by `new` before calling the constructor, it's a property of the object itself.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 ## Résumé
 

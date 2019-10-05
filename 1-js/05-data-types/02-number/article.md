@@ -423,7 +423,13 @@ Pour différents systèmes de numération:
 
 Pour convertit des valeurs telles que `12pt` et `100px` en un nombre:
 
+<<<<<<< HEAD
 - utilisez `parseInt / parseFloat` pour une conversion "souple", qui lit les nombres dans une chaîne de caractères jusqu'à trouver un caractères puis renvoie les nombres trouvés.
+=======
+- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems
+- `parseInt(str, base)` parses the string `str` into an integer in numeral system with given `base`, `2 ≤ base ≤ 36`.
+- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Pour les fractions:
 

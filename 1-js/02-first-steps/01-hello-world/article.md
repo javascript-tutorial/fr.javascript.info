@@ -61,7 +61,11 @@ Commentaires avant et après les scripts.
     //--></script>
     ```
 
+<<<<<<< HEAD
     Cette astuce n’est pas utilisée dans le JavaScript moderne. Ces commentaires ont été utilisés pour masquer le code JavaScript des anciens navigateurs qui ne connaissaient pas une balise `<script>`. Comme les navigateurs nés au cours des 15 dernières années n’ont pas ce problème, ce type de commentaire peut vous aider à identifier un ancien code.
+=======
+    This trick isn't used in modern JavaScript. These comments hide JavaScript code from old browsers that didn't know how to process the `<script>` tag. Since browsers released in the last 15 years don't have this issue, this kind of comment can help you identify really old code.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 
 ## Scripts externes
