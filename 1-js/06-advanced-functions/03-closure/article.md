@@ -366,25 +366,25 @@ Veuillez noter que la propriété additionnelle `[[Environment]]` est couverte i
 
     Désormais, lorsque l'appel recherche la variable `count`, il commence par rechercher son propre environnement lexical (vide), puis l'environnement lexical de l'appel` makeCounter() `extérieur, où il le trouve.
 
-    Please note how memory management works here. Although `makeCounter()` call finished some time ago, its Lexical Environment was retained in memory, because there's a nested function with `[[Environment]]` referencing it.
+    Veuillez noter comment fonctionne la gestion de la mémoire ici. Bien que l'appel de `makeCounter()` se soit terminé quelques temps auparavant, son environnement lexical a été conservé en mémoire, car il existe une fonction imbriquée avec `[[Environment]]` le référençant.
 
-    Generally, a Lexical Environment object lives as long as there is a function which may use it. And only when there are none remaining, it is cleared.
+    Généralement, un objet Environnement Lexical existe tant qu'il existe une fonction qui peut l'utiliser. Il est effacé uniquement lorsqu'il n'y en a plus.
 
-6. The call to `counter()` not only returns the value of `count`, but also increases it. Note that the modification is done "in place". The value of `count` is modified exactly in the environment where it was found.
+    L'appel à `counter()` renvoie non seulement la valeur de `count`, mais l'augmente également. Notez que la modification est faite "en place". La valeur de `count` est modifiée exactement dans l'environnement où elle a été trouvée.
 
     ![](lexenv-nested-makecounter-6.svg)
 
-7. Next `counter()` invocations do the same.
+7. Les prochains appels de `counter()` font de même.
 
-The answer to the second question from the beginning of the chapter should now be obvious.
+La réponse à la deuxième question du début du chapitre devrait maintenant être évidente.
 
-The `work()` function in the code below gets `name` from the place of its origin through the outer lexical environment reference:
+La fonction `work()` dans le code ci-dessous obtient `name` à partir de l'emplacement de son origine via la référence d'environnement lexical externe :
 
 ![](lexenv-nested-work.svg)
 
-So, the result is `"Pete"` here.
+Donc, le résultat est `"Pete"` ici.
 
-But if there were no `let name` in `makeWorker()`, then the search would go outside and take the global variable as we can see from the chain above. In that case it would be `"John"`.
+Mais s'il n'y avait pas de `let name` dans `makeWorker() `, alors la recherche irait à l'extérieur et prendrait la variable globale comme nous pouvons le voir à partir de la chaîne ci-dessus. Dans ce cas, ce serait `"John"`.
 
 ```smart header="Closures"
 There is a general programming term "closure", that developers generally should know.
