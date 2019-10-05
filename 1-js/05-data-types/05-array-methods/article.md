@@ -171,11 +171,7 @@ alert( arr.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
 alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
-<<<<<<< HEAD
 Normalement, il ne copie que les éléments des tableaux. Les autres objets, même s'ils ressemblent à des tableaux, sont ajoutés dans leur ensemble :
-=======
-Normally, it only copies elements from arrays. Other objects, even if they look like arrays, are added as a whole:
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 ```js run
 let arr = [1, 2];
@@ -189,11 +185,7 @@ alert( arr.concat(arrayLike) ); // 1,2,[object Object]
 //[1, 2, arrayLike]
 ```
 
-<<<<<<< HEAD
-… Mais si un objet de type tableau (array-like) a une propriété spéciale `Symbol.isConcatSpreadable`, il est traité comme un tableau par `concat` : ses éléments sont ajoutés à la place :
-=======
-...But if an array-like object has a special `Symbol.isConcatSpreadable` property, then it's treated as an array by `concat`: its elements are added instead:
->>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
+… Mais si un objet de type tableau (array-like) a une propriété spéciale `Symbol.isConcatSpreadable`, alors il est traité comme un tableau par `concat` : ses éléments sont ajoutés à la place :
 
 ```js run
 let arr = [1, 2];
