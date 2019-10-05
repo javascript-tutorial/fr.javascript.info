@@ -1,7 +1,7 @@
 
-Surely it will work just fine.
+Cela fonctionnera sûrement très bien.
 
-Both nested functions are created within the same outer Lexical Environment, so they share access to the same `count` variable:
+Les deux fonctions imbriquées sont créées dans le même environnement Lexical externe. Elles partagent donc l'accès à la même variable `count` :
 
 ```js run
 function Counter() {

@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Sort by field
+# Trier par champ
 
-We've got an array of objects to sort:
+Nous avons un tableau d'objets à trier :
 
 ```js
 let users = [
@@ -14,23 +14,23 @@ let users = [
 ];
 ```
 
-The usual way to do that would be:
+La manière habituelle de le faire serait :
 
 ```js
-// by name (Ann, John, Pete)
+// par nom (Ann, John, Pete)
 users.sort((a, b) => a.name > b.name ? 1 : -1);
 
-// by age (Pete, Ann, John)
+// par age (Pete, Ann, John)
 users.sort((a, b) => a.age > b.age ? 1 : -1);
 ```
 
-Can we make it even less verbose, like this?
+Peut-on le rendre encore moins verbeux, comme ceci ?
 
 ```js
 users.sort(byField('name'));
 users.sort(byField('age'));
 ```
 
-So, instead of writing a function, just put `byField(fieldName)`.
+Donc, au lieu d’écrire une fonction, il suffit de mettre `byField(fieldName)`.
 
-Write the function `byField` that can be used for that.
+Ecrivez la fonction `byField` qui peut être utilisée pour cela.
