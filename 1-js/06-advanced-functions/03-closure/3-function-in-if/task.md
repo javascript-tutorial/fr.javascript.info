@@ -1,7 +1,7 @@
 
-# Function in if
+# Fonction dans if
 
-Look at the code. What will be the result of the call at the last line?
+Regardez ce code. Quel sera le résultat de l'appel à la dernière ligne ?
 
 ```js run
 let phrase = "Hello";

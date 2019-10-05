@@ -387,24 +387,24 @@ Donc, le résultat est `"Pete"` ici.
 Mais s'il n'y avait pas de `let name` dans `makeWorker() `, alors la recherche irait à l'extérieur et prendrait la variable globale comme nous pouvons le voir à partir de la chaîne ci-dessus. Dans ce cas, ce serait `"John"`.
 
 ```smart header="Closures"
-There is a general programming term "closure", that developers generally should know.
+Il existe un terme général de programmation "closure", que les développeurs devraient généralement connaître.
 
-A [closure](https://en.wikipedia.org/wiki/Closure_(computer_programming)) is a function that remembers its outer variables and can access them. In some languages, that's not possible, or a function should be written in a special way to make it happen. But as explained above, in JavaScript, all functions are naturally closures (there is only one exclusion, to be covered in <info:new-function>).
+Une [closure](https://fr.wikipedia.org/wiki/Fermeture_(informatique)) est une fonction qui mémorise ses variables externes et peut y accéder. Dans certains langages, ce n'est pas possible ou une fonction doit être écrite de manière spéciale pour que cela se produise. Mais comme expliqué ci-dessus, en JavaScript, toutes les fonctions sont naturellement des fermetures (il n’existe qu’une seule exclusion, à couvrir dans le chapitre <info:new-function>).
 
-That is: they automatically remember where they were created using a hidden `[[Environment]]` property, and all of them can access outer variables.
+Autrement dit, elles se souviennent automatiquement de l'endroit où elles ont été créées à l'aide d'une propriété `[[Environment]]` masquée, et toutes peuvent accéder aux variables externes.
 
-When on an interview, a frontend developer gets a question about "what's a closure?", a valid answer would be a definition of the closure and an explanation that all functions in JavaScript are closures, and maybe few more words about technical details: the `[[Environment]]` property and how Lexical Environments work.
+Lors d’un entretien d'embauche, les développeurs front-end reçoivent souvent une question du genre "qu’est-ce qu’une closure ?", une réponse valable serait une définition de la closure et une explication selon laquelle toutes les fonctions en JavaScript sont des closures, et peut-être quelques mots supplémentaires sur les détails techniques : Propriété `[[Environment]]` et comment fonctionnent les environnements lexicaux.
 ```
 
-## Code blocks and loops, IIFE
+## Blocs de code et boucles, IIFE
 
-The examples above concentrated on functions. But a Lexical Environment exists for any code block `{...}`.
+Les exemples ci-dessus se sont concentrés sur les fonctions. Mais un environnement lexical existe pour tout bloc de code `{...}`.
 
-A Lexical Environment is created when a code block runs and contains block-local variables. Here are a couple of examples.
+Un environnement lexical est créé lors de l’exécution d’un bloc de code et contient des variables locales au bloc. Voici quelques exemples.
 
 ### If
 
-In the example below, the `user` variable exists only in the `if` block:
+Dans l'exemple ci-dessous, la variable `user` n'existe que dans le bloc` if` :
 
 <!--
     ```js run
@@ -416,47 +416,48 @@ In the example below, the `user` variable exists only in the `if` block:
         alert(`${phrase}, ${user}`); // Hello, John
     }
 
-    alert(user); // Error, can't see such variable!
-    ```-->
+    alert(user); // Error, ne peut pas voir une telle variable !
+    ```
+  -->
 
 ![](lexenv-if.svg)
 
-When the execution gets into the `if` block, the new "if-only" Lexical Environment is created for it.
+Lorsque l'exécution entre dans le bloc `if`, le nouvel environnement lexical "if-only" est créé.
 
-It has the reference to the outer one, so `phrase` can be found. But all variables and Function Expressions, declared inside `if`, reside in that Lexical Environment and can't be seen from the outside.
+Il a la référence à la partie externe, donc `phrase` peut être trouvée. Mais toutes les variables et fonctions expressions, déclarées à l'intérieur de `if`, résident dans cet environnement lexical et ne peuvent pas être vues de l'extérieur.
 
-For instance, after `if` finishes, the `alert` below won't see the `user`, hence the error.
+Par exemple, après la fin de `if`, l'`alert` ci-dessous ne verra pas `user`, d'où l'erreur.
 
 ### For, while
 
-For a loop, every iteration has a separate Lexical Environment. If a variable is declared in `for(let ...)`, then it's also in there:
+Pour une boucle, chaque itération a un environnement lexical séparé. Si une variable est déclarée dans `for(let ...)`, alors c'est aussi dedans :
 
 ```js run
 for (let i = 0; i < 10; i++) {
-  // Each loop has its own Lexical Environment
+  // Chaque boucle a son propre environnement lexical
   // {i: value}
 }
 
 alert(i); // Error, no such variable
 ```
 
-Please note: `let i` is visually outside of `{...}`. The `for` construct is special here: each iteration of the loop has its own Lexical Environment with the current `i` in it.
+Veuillez noter que `let i` est visuellement en dehors de `{...}`. La construction `for` est spéciale ici : chaque itération de la boucle a son propre environnement lexical contenant le `i` actuel.
 
-Again, similarly to `if`, after the loop `i` is not visible.
+De la même manière que `if`, après la boucle, `i` n'est pas visible.
 
-### Code blocks
+### Blocs de code
 
-We also can use a "bare" code block `{…}` to isolate variables into a "local scope".
+Nous pouvons également utiliser un bloc de code "nu" `{…}` pour isoler des variables dans une "portée locale".
 
-For instance, in a web browser all scripts (except with `type="module"`) share the same global area. So if we create a global variable in one script, it becomes available to others. But that becomes a source of conflicts if two scripts use the same variable name and overwrite each other.
+Par exemple, dans un navigateur Web, tous les scripts (sauf avec `type="module"`) partagent la même zone globale. Donc, si nous créons une variable globale dans un script, elle devient disponible pour les autres. Mais cela devient une source de conflits si deux scripts utilisent le même nom de variable et s’écrasent.
 
-That may happen if the variable name is a widespread word, and script authors are unaware of each other.
+Cela peut arriver si le nom de la variable est un mot répandu et que les auteurs de script ne se connaissent pas.
 
-If we'd like to avoid that, we can use a code block to isolate the whole script or a part of it:
+Si nous voulons éviter cela, nous pouvons utiliser un bloc de code pour isoler tout ou partie du script :
 
 ```js run
 {
-  // do some job with local variables that should not be seen outside
+  // travailer avec des variables locales qui ne doivent pas être vues à l'extérieur
 
   let message = "Hello";
 
@@ -466,17 +467,17 @@ If we'd like to avoid that, we can use a code block to isolate the whole script 
 alert(message); // Error: message is not defined
 ```
 
-The code outside of the block (or inside another script) doesn't see variables inside the block, because the block has its own Lexical Environment.
+Le code en dehors du bloc (ou à l'intérieur d'un autre script) ne voit pas les variables à l'intérieur du bloc, car le bloc a son propre environnement lexical.
 
 ### IIFE
 
-In the past, there were no block-level lexical environment in JavaScript.
+Dans le passé, il n’existait pas d’environnement lexical au niveau des blocs en JavaScript.
 
-So programmers had to invent something. And what they did is called "immediately-invoked function expressions" (abbreviated as IIFE).
+Les programmeurs ont donc dû inventer quelque chose. Et ce qu'ils ont fait s'appelle "immediately-invoked function expressions" (fonction expression immédiatement invoquées, en abrégé IIFE).
 
-That's not a thing we should use nowadays, but you can find them in old scripts, so it's better to understand them.
+Ce n'est pas une chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts, il est donc préférable de les comprendre.
 
-IIFE looks like this:
+IIFE ressemble à ceci :
 
 ```js run
 (function() {
@@ -488,12 +489,12 @@ IIFE looks like this:
 })();
 ```
 
-Here a Function Expression is created and immediately called. So the code executes right away and has its own private variables.
+Ici, une fonction expression est créée et appelée immédiatement. Donc, le code s'exécute tout de suite et a ses propres variables privées.
 
-The Function Expression is wrapped with parenthesis `(function {...})`, because when JavaScript meets `"function"` in the main code flow, it understands it as the start of a Function Declaration. But a Function Declaration must have a name, so this kind of code will give an error:
+La fonction expression est entourée de parenthèses `(function {...})`, parce que lorsque JavaScript rencontre `"function"` dans le flux de code principal, il est compris comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
-// Try to declare and immediately call a function
+// Essayons de déclarer et d'appeler immédiatement une fonction
 function() { // <-- Error: Unexpected token (
 
   let message = "Hello";
@@ -503,21 +504,21 @@ function() { // <-- Error: Unexpected token (
 }();
 ```
 
-Even if we say: "okay, let's add a name", that won't work, as JavaScript does not allow Function Declarations to be called immediately:
+Même si nous disons : "d'accord, ajoutons un nom", cela ne fonctionnera pas, car JavaScript ne permet pas d'appeler immédiatement les fonctions déclarations :
 
 ```js run
-// syntax error because of parentheses below
+// erreur de syntaxe à cause des parenthèses ci-dessous
 function go() {
 
-}(); // <-- can't call Function Declaration immediately
+}(); // <-- ne peut pas appeler la déclaration de fonction immédiatement
 ```
 
-So, parentheses around the function is a trick to show JavaScript that the function is created in the context of another expression, and hence it's a Function Expression: it needs no name and can be called immediately.
+Ainsi, les parenthèses autour de la fonction sont une astuce pour montrer à JavaScript que la fonction est créée dans le contexte d’une autre expression et qu’il s’agit donc d’une fonction expression, elle n’a pas besoin de nom et peut être appelée immédiatement.
 
-There exist other ways besides parentheses to tell JavaScript that we mean a Function Expression:
+Il existe d'autres moyens que les parenthèses pour indiquer à JavaScript qu'il s'agit d'une fonction expression :
 
 ```js run
-// Ways to create IIFE
+// Façons de créer des IIFE
 
 (function() {
   alert("Parentheses around the function");
@@ -536,11 +537,11 @@ There exist other ways besides parentheses to tell JavaScript that we mean a Fun
 }();
 ```
 
-In all the above cases we declare a Function Expression and run it immediately. Let's note again: nowadays there's no reason to write such code.
+Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. Notons encore : de nos jours, il n'y a aucune raison d'écrire un tel code.
 
 ## Garbage collection
 
-Usually, a Lexical Environment is cleaned up and deleted after the function run. For instance:
+Généralement, un environnement lexical est nettoyé et supprimé après l'exécution de la fonction. Par exemple :
 
 ```js
 function f() {
@@ -551,9 +552,9 @@ function f() {
 f();
 ```
 
-Here two values are technically the properties of the Lexical Environment. But after `f()` finishes that Lexical Environment becomes unreachable, so it's deleted from the memory.
+Ici, deux valeurs sont techniquement les propriétés de l'environnement lexical. Mais après la fin de `f()`, l'environnement lexical devient inaccessible, il est donc supprimé de la mémoire.
 
-...But if there's a nested function that is still reachable after the end of `f`, then it has `[[Environment]]` property that references the outer lexical environment, so it's also reachable and alive:
+... Mais s'il y a une fonction imbriquée qui est toujours accessible après la fin de `f`, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical externe, elle est donc aussi accessible et vivante :
 
 ```js
 function f() {
@@ -566,10 +567,10 @@ function f() {
 */!*
 }
 
-let g = f(); // g is reachable, and keeps the outer lexical environment in memory
+let g = f(); // g est accessible et garde en mémoire l'environnement lexical externe
 ```
 
-Please note that if `f()` is called many times, and resulting functions are saved, then all corresponding Lexical Environment objects will also be retained in memory. All 3 of them in the code below:
+Veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. Tous les 3 dans le code ci-dessous :
 
 ```js
 function f() {
@@ -578,14 +579,14 @@ function f() {
   return function() { alert(value); };
 }
 
-// 3 functions in array, every one of them links to Lexical Environment
-// from the corresponding f() run
+// 3 fonctions dans un tableau, chacune d'entre elles étant liée à l'environnement lexical
+// à partir de l'exécution de f() correspondante
 let arr = [f(), f(), f()];
 ```
 
-A Lexical Environment object dies when it becomes unreachable (just like any other object). In other words, it exists only while there's at least one nested function referencing it.
+Un objet Environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). En d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
 
-In the code below, after `g` becomes unreachable, enclosing Lexical Environment (and hence the `value`) is  cleaned from memory;
+Dans le code ci-dessous, lorsque `g` devient inaccessible, l'environnement lexical englobant (et par conséquent `value`) est nettoyé de la mémoire.
 
 ```js
 function f() {
@@ -597,29 +598,29 @@ function f() {
 }
 
 let g = f(); // while g is alive
-// their corresponding Lexical Environment lives
+// leur environnement lexical correspondant vit
 
-g = null; // ...and now the memory is cleaned up
+g = null; // ... et maintenant la mémoire est nettoyée
 ```
 
-### Real-life optimizations
+### Optimisations réelles
 
-As we've seen, in theory while a function is alive, all outer variables are also retained.
+Comme nous l'avons vu, en théorie, lorsqu'une fonction est vivante, toutes les variables externes sont également conservées.
 
-But in practice, JavaScript engines try to optimize that. They analyze variable usage and if it's obvious from the code that an outer variable is not used -- it is removed.
+Mais dans la pratique, les moteurs JavaScript tentent d'optimiser cela. Ils analysent l'utilisation des variables et s'il est évident d'après le code qu'une variable externe n'est pas utilisée -- elle est supprimée.
 
-**An important side effect in V8 (Chrome, Opera) is that such variable will become unavailable in debugging.**
+**Un effet secondaire important de V8 (Chrome, Opera) est qu’une telle variable ne sera plus disponible lors du débogage.**
 
-Try running the example below in Chrome with the Developer Tools open.
+Essayez d'exécuter l'exemple ci-dessous sous Chrome avec les outils de développement ouverts.
 
-When it pauses, in the console type `alert(value)`.
+Quand il se met en pause, dans la console, tapez `alert(value)`.
 
 ```js run
 function f() {
   let value = Math.random();
 
   function g() {
-    debugger; // in console: type alert(value); No such variable!
+    debugger; // dans la console : tapez alert(value); No such variable!
   }
 
   return g;
@@ -629,9 +630,9 @@ let g = f();
 g();
 ```
 
-As you could see -- there is no such variable! In theory, it should be accessible, but the engine optimized it out.
+Comme vous avez pu le constater, cette variable n'existe pas! En théorie, elle devrait être accessible, mais le moteur l'a optimisé.
 
-That may lead to funny (if not such time-consuming) debugging issues. One of them -- we can see a same-named outer variable instead of the expected one:
+Cela peut conduire à des problèmes de débogage amusants (voire fastidieux). L'un d'eux -- nous pouvons voir une variable externe portant le même nom au lieu de celle attendue :
 
 ```js run global
 let value = "Surprise!";
@@ -640,7 +641,7 @@ function f() {
   let value = "the closest value";
 
   function g() {
-    debugger; // in console: type alert(value); Surprise!
+    debugger; // dans la console : tapez alert(value); Surprise!
   }
 
   return g;
@@ -650,9 +651,9 @@ let g = f();
 g();
 ```
 
-```warn header="See ya!"
-This feature of V8 is good to know. If you are debugging with Chrome/Opera, sooner or later you will meet it.
+```warn header="À plus!"
+Cette fonctionnalité de V8 est bonne à savoir. Si vous déboguez avec Chrome/Opera, vous le rencontrerez tôt ou tard.
 
-That is not a bug in the debugger, but rather a special feature of V8. Perhaps it will be changed sometime.
-You always can check for it by running the examples on this page.
+Ce n'est pas un bug dans le débogueur, mais plutôt une fonctionnalité spéciale de V8. Peut-être que cela changera un jour.
+Vous pouvez toujours le vérifier en exécutant les exemples de cette page.
 ```
