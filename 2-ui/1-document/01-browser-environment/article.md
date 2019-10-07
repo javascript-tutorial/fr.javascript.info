@@ -1,10 +1,6 @@
 # L'environnement du navigateur, spécifications
 
-<<<<<<< HEAD
 Le langage JavaScript a été initialement créé pour les navigateurs web. Dès lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
-=======
-The JavaScript language was initially created for web browsers. Since then it has evolved and become a language with many uses and platforms.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Une plate-forme peut être un navigateur, un serveur Web ou un autre *hôte*, voire une machine à café. Chacun d'eux fournit des fonctionnalités spécifiques à la plate-forme. La spécification JavaScript appelle cela un *environnement hôte*.
 
@@ -63,24 +59,15 @@ La spécification DOM explique la structure d'un document et fournit des objets 
 Par exemple, les scripts côté serveur qui téléchargent des pages HTML et les traitent peuvent également utiliser le DOM. Ils peuvent cependant ne supporter qu'une partie de la spécification.
 ```
 
-<<<<<<< HEAD
 ```smart header="CSSOM pour le style"
 Les règles et les feuilles de style CSS sont structurées différemment du HTML. Il y a une spécification séparée [CSSOM](https://www.w3.org/TR/cssom-1/) cela explique comment ils sont représentés en tant qu'objets, et comment les lire et les écrire.
-=======
-```smart header="CSSOM for styling"
-CSS rules and stylesheets are structured in a different way than HTML. There's a separate specification, [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/), that explains how they are represented as objects, and how to read and write them.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 CSSOM est utilisé avec DOM lorsque nous modifions les règles de style pour le document. En pratique cependant, CSSOM est rarement requis, car les règles CSS sont généralement statiques. Nous avons rarement besoin d'ajouter / de supprimer des règles CSS à partir de JavaScript, mais c'est également possible.
 ```
 
 ## BOM (Browser Object Model)
 
-<<<<<<< HEAD
 Le modèle d'objet du navigateur (BOM en anglais) contient des objets supplémentaire fourni par le navigateur (l'environnement hôte) pour travailler avec tout à l'exception du document.
-=======
-The Browser Object Model (BOM) represents additional objects provided by the browser (host environment) for working with everything except the document.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Par exemple :
 
