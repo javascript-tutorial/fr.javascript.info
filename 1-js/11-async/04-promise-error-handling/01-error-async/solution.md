@@ -8,6 +8,6 @@ new Promise(function(resolve, reject) {
 }).catch(alert);
 ```
 
-Comme décris dans le chapitre, il y a un "`try..catch` implicite" autour du code de la fonction. Toutes les erreurs synchrones sont donc traitées.
+Comme décrit dans le chapitre, il y a un "`try..catch` implicite" autour du code de la fonction. Toutes les erreurs synchrones sont donc traitées.
 
 Mais ici, l'erreur n'est pas générée pendant l'exécution de l'exécuteur, mais plus tard. Donc la promesse ne peut pas tenir. 
