@@ -43,7 +43,7 @@ Si nous recherchons une propriété dans `rabbit`, et qu'elle en manque, JavaScr
 
 Par exemple:
 
-```js run
+```js
 let animal = {
   eats: true
 };

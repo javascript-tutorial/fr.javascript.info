@@ -356,7 +356,11 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
+<<<<<<< HEAD
 Donc ici, JavaScript suppose que nous avons un bloc de code, c'est pourquoi il y a une erreur. Nous avons la déstructuration à la place.
+=======
+So here JavaScript assumes that we have a code block, that's why there's an error. We want destructuring instead.
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper l'expression entre parenthèses `(...)` :
 
