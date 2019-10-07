@@ -89,13 +89,9 @@ Ce que `class User {...}` la construction fait en réalité est de:
 1. Créer une fonction nommée `User`,  qui devient le résultat de la déclaration de la classe. Le code  de la fonction est tirée de la méthode `constructor` (considérée comme étant vide au cas ou cette méthode n'est pas écrite).
 2. Garde les méthodes de la classe, telle que `sayHi`, dans `User.prototype`.
 
-<<<<<<< HEAD
-Apres cela, pour les nouveaux objets  `new User`, lorsqu'on appelle une méthode, elle est prise à partir du prototype, ainsi qu'on vient juste de décrire dans le chapitre <info:function-prototype>. Ainsi l'objet a accès aux méthodes de la classe.
-=======
-After `new User` object is created, when we call its method, it's taken from the prototype, just as described in the chapter <info:function-prototype>. So the object has access to class methods.
+Après la création de `new User`, lorsque nous appelons sa méthode, elle est extraite du prototype, comme décrit dans le chapitre <info:function-prototype>. Donc, l'objet a accès aux méthodes de classe.
 
-We can illustrate the result of `class User` declaration as:
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
+Nous pouvons illustrer le résultat de la déclaration de `class User` par :
 
 Nous pouvons illustrer le résultat de la déclaration de `class User` ainsi:
 ![](class-user.svg)
@@ -147,19 +143,11 @@ user.sayHi();
 
 Le résultat de cette définition est à peu près la même chose. Donc, il y a bien raison de vouloir considérer `class` comme pouvant être un sucre syntaxique pour définir un constructeur ensemble avec ses méthodes de prototype.
 
-<<<<<<< HEAD
-Bien qu’il y ait des différences importantes.
-=======
-Still, there are important differences.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
+Cependant, il existe des différences importantes.
 
 1. Tout d'abord, une fonction crée par une `classe` est labélisé par une propriété interne spéciale nommée `[[FunctionKind]]:"classConstructor"`. Donc ce n'est pas tout à fait la même chose que de la créer manuellement.
 
-<<<<<<< HEAD
-    Contrairement à une fonction normale, un constructeur de class doit être invoquée avec `new`:
-=======
-    And unlike a regular function, a class constructor must be called with `new`:
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
+    Contrairement à une fonction normale, un constructeur de class doit être invoquée avec `new` :
 
     ```js run
     class User {
