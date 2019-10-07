@@ -153,19 +153,11 @@ L'algorithme de base de la récupération de place (garbage collection) s'appell
 
 Les étapes suivantes du "ramasse-miettes" (garbage collection) sont régulièrement effectuées :
 
-<<<<<<< HEAD
-- Le ramasse-miettes prend des racines et les "marque" (se souvient).
+- Le ramasse-miettes prend les racines et les "marque" (se souvient).
 - Ensuite, il visite et "marque" toutes les références.
 - Ensuite, il visite les objets marqués et marque *leurs* références. Tous les objets visités sont mémorisés afin de ne pas visiter le même objet deux fois dans le futur.
 - … Et ainsi de suite tant qu'il y a des références non consultées (accessibles depuis les racines).
 - Tous les objets sont supprimés sauf ceux qui sont marqués.
-=======
-- The garbage collector takes roots and "marks" (remembers) them.
-- Then it visits and "marks" all references from them.
-- Then it visits marked objects and marks *their* references. All visited objects are remembered, so as not to visit the same object twice in the future.
-- ...And so on until every reachable (from the roots) references are visited.
-- All objects except marked ones are removed.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Par exemple, imaginons notre structure d'objet ressembler à ceci :
 
@@ -189,15 +181,9 @@ Désormais, les objets qui n'ont pas pu être visités sont considérés comme i
 
 ![](garbage-collection-5.svg)
 
-<<<<<<< HEAD
-C’est le concept de la façon dont le garbage collector fonctionne.
+Nous pouvons également imaginer que le processus consiste à renverser un énorme seau de peinture à la racine, qui traverse toutes les références et marque tous les objets accessibles. Les non marqués sont ensuite supprimés.
 
-Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
-=======
-We can also imagine the process as spilling a huge bucket of paint from the roots, that flows through all references and marks all reachable objects. The unmarked ones are then removed.
-
-That's the concept of how garbage collection works. JavaScript engines apply many optimizations to make it run faster and not affect the execution.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
+C'est le concept de la façon dont la garbage collection fonctionne. Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
 
 Certaines des optimisations :
 
@@ -205,11 +191,7 @@ Certaines des optimisations :
 - **Collection incrémentale** -- s'il y a beaucoup d'objets et que nous essayons de circuler et de marquer le jeu d'objets entier en même temps, cela peut prendre un certain temps et introduire des retards visibles dans l'exécution. Le moteur essaie donc de scinder le garbage collection (ramassage de miettes) en morceaux. Ensuite, ces parties sont exécutées une par une, séparément. Cela nécessite une comptabilité supplémentaire entre elles pour suivre les changements, mais nous avons beaucoup de petits retards au lieu d'un gros.
 - **Collection par inactivité** -- le garbage collector tente de s'exécuter uniquement lorsque le processeur (CPU) est inactif, afin de réduire les conséquences sur l'exécution.
 
-<<<<<<< HEAD
 Il existe d'autres optimisations et variantes d'algorithmes de récupération de place. Même si je souhaite les décrire ici, je dois m'abstenir, car différents moteurs implémentent différentes techniques et ajustements. Et, ce qui est encore plus important, les choses changent à mesure que les moteurs se développent. Donc aller plus loin de manière plus poussée, sans réel besoin, n’en vaut probablement pas la peine. À moins, bien sûr, que ce soit une question qui vous intéresse vraiment, vous trouverez quelques liens pour vous ci-dessous.
-=======
-There exist other optimizations and flavours of garbage collection algorithms. As much as I'd like to describe them here, I have to hold off, because different engines implement different tweaks and techniques. And, what's even more important, things change as engines develop, so studying deeper "in advance", without a real need is probably not worth that. Unless, of course, it is a matter of pure interest, then there will be some links for you below.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 ## Résumé
 
