@@ -21,11 +21,7 @@ alert(filteredArr); // 10, 50
 alert(filteredArr.isEmpty()); // false
 ```
 
-<<<<<<< HEAD
-Noter une chose très intéressante. Les méthodes intégrées telles que `filter`, `map` et autres renvoient des nouveaux objets exactement du type hérité `PowerArray`. Leur implémentation interne utilise la propriété d'objet `constructor` pour cela.
-=======
-Please note a very interesting thing. Built-in methods like `filter`, `map` and others -- return new objects of exactly the inherited type `PowerArray`. Their internal implementation uses the object's `constructor` property for that.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
+Notez une chose très intéressante. Les méthodes intégrées telles que `filter`, `map` et autres renvoient des nouveaux objets exactement du type hérité `PowerArray`. Leur implémentation interne utilise la propriété d'objet `constructor` pour cela.
 
 Dans l'exemple ci-dessus,
 ```js
@@ -78,11 +74,7 @@ Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object
 
 Comme nous le savons déjà, les classes natives s'étendent les uns des autres. Par exemple, `Array` extends `Object`.
 
-<<<<<<< HEAD
 Normalement, lorsqu'une classe en étend une autre, les méthodes statiques et non statiques sont héritées. Cela a été expliqué en détail dans le chapitre [](info:static-properties-methods#statics-and-inheritance).
-=======
-Normally, when one class extends another, both static and non-static methods are inherited. That was thoroughly explained in the article [](info:static-properties-methods#statics-and-inheritance).
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Mais les classes intégrées sont une exception. Ils n'héritent pas les méthodes statiques les uns des autres.
 

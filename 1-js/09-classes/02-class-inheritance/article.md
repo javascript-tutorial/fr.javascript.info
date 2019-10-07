@@ -131,11 +131,7 @@ class Rabbit extends Animal {
 }
 ```
 
-<<<<<<< HEAD
 ...Mais en général, nous ne voulons pas remplacer totalement une méthode parente, mais plutôt construire dessus, modifier ou étendre ses fonctionnalités. Nous faisons quelque chose dans notre méthode, mais appelons la méthode parente avant / après ou dans le processus.
-=======
-...But usually we don't want to totally replace a parent method, but rather to build on top of it to tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Les classes fournissent le mot clé `"super"` pour cela.
 
