@@ -1,13 +1,12 @@
+# Délai avec une promesse
 
-# Delay with a promise
+La fonction intégrée `setTimeout` utilise des rappels. Elle crée une alternative basée sur une promesse.
 
-The built-in function `setTimeout` uses callbacks. Create a promise-based alternative.
-
-The function `delay(ms)` should return a promise. That promise should resolve after `ms` milliseconds, so that we can add `.then` to it, like this:
+La fonction `delay(ms)` devrait retourner une promesse. Cette promesse devrait se résoudre après «ms» millisecondes, afin que nous puissions y ajouter `.then`, comme ceci:
 
 ```js
 function delay(ms) {
-  // your code
+  // votre code
 }
 
 delay(3000).then(() => alert('runs after 3 seconds'));
