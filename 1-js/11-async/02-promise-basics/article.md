@@ -155,7 +155,6 @@ let promise = new Promise(function(resolve, reject) {
   setTimeout(() => resolve("done!"), 1000);
 });
 
-// resolve runs the first function in .then
 // resolve exécute la première fonction en .then
 promise.then(
 *!*
