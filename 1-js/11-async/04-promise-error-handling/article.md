@@ -1,7 +1,7 @@
 
 # Gestion des erreurs avec des promesses
 
-Les chaînes de promesse sont excellentes pour la gestion des erreurs. Lorsqu'une promesse est rejetée, le contrôle saute au gestionnaire de rejet le plus proche. C'est très pratique en pratique.
+Les chaînes de promesses sont excellentes pour la gestion des erreurs. Lorsqu'une promesse est rejetée, le contrôle saute au gestionnaire de rejet le plus proche. C'est très pratique en pratique.
 
 Par exemple, dans le code en dessous de l'URL de `fetch` est faux (aucun site de ce type) et `.catch` gère l'erreur :
 
@@ -80,7 +80,7 @@ new Promise((resolve, reject) => {
 }).catch(alert); // Error: Whoops!
 ```
 
-This happens for all errors, not just those caused by the `throw` statement. For example, a programming error:
+Cela se produit pour toutes les erreurs, pas seulement celles causées par l'état `throw`. Par exemple, une erreur de programmation :
 
 ```js run
 new Promise((resolve, reject) => {
@@ -94,7 +94,7 @@ new Promise((resolve, reject) => {
 
 Le `.catch` final n'attrape pas seulement les rejets explicites, mais aussi les erreurs occasionnelles dans les gestionnaires ci-dessus.
 
-## Relancement
+## Renouvellement
 
 Comme nous l'avons déjà remarqué, `.catch` à la fin de la chaîne est similaire à `try...catch`. Nous pouvons avoir autant de gestionnaires `.then` que nous le voulons, puis utiliser un seul `.catch` à la fin pour gérer les erreurs dans chacun d'eux.
 
@@ -151,7 +151,7 @@ new Promise((resolve, reject) => {
 
 The execution jumps from the first `.catch` `(*)` to the next one `(**)` down the chain.
 
-## Rejections non gérées
+## Rejets non traités
 
 Que se passe-t-il lorsqu'une erreur n'est pas traitée ? Par exemple, nous avons oublié d'ajouter `.catch` à la fin de la chaîne, comme ici :
 
