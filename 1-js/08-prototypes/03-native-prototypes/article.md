@@ -189,16 +189,8 @@ L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalit�
 
 ## Résumé
 
-<<<<<<< HEAD
 - Tous les objets intégrés suivent le même schéma:
     - Les méthodes sont stockées dans le prototype (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.).
     - L'objet lui-même ne stocke que les données (éléments de tableau, propriétés de l'objet, date).
 - Les primitives stockent également des méthodes dans des prototypes d'objets wrapper: `Number.prototype`, `String.prototype`, `Boolean.prototype`. Seuls `undefined` et `null` n'ont pas d'objets wrapper.
 - Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par la méthode JavaScript du moteur.
-=======
-- All built-in objects follow the same pattern:
-    - The methods are stored in the prototype (`Array.prototype`, `Object.prototype`, `Date.prototype` etc).
-    - The object itself stores only the data (array items, object properties, the date).
-- Primitives also store methods in prototypes of wrapper objects: `Number.prototype`, `String.prototype`, `Boolean.prototype`. Only `undefined` and `null` do not have wrapper objects.
-- Built-in prototypes can be modified or populated with new methods. But it's not recommended to change them. Probably the only allowable case is when we add-in a new standard, but not yet supported by the engine JavaScript method.
->>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
