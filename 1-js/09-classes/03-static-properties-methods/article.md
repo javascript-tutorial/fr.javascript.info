@@ -191,8 +191,13 @@ class Rabbit extends Animal {}
 // pour les méthodes statiques
 alert(Rabbit.__proto__ === Animal); // true
 
+<<<<<<< HEAD
 // pour les méthodes régulières
 alert(Rabbit.prototype.__proto__ === Animal.prototype);
+=======
+// for regular methods
+alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 ```
 
 ## Résumé

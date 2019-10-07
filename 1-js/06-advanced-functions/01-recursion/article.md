@@ -185,7 +185,17 @@ Voici la pile de contexte lorsque nous sommes entrés dans le sous-appel `pow(2,
 
 Le nouveau contexte d'exécution actuel est en haut (et en gras) et les contextes précédemment mémorisés sont en dessous.
 
+<<<<<<< HEAD
 Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté. Ici, sur la photo, nous utilisons le mot "line", mais bien sûr, il est plus précis.
+=======
+When we finish the subcall -- it is easy to resume the previous context, because it keeps both variables and the exact place of the code where it stopped.
+
+```smart
+Here in the picture we use the word "line", as our example there's only one subcall in line, but generally a single line of code may contain multiple subcalls, like `pow(…) + pow(…) + somethingElse(…)`.
+
+So it would be more precise to say that the execution resumes "immediately after the subcall".
+```
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 ### pow(2, 1)
 
