@@ -217,6 +217,7 @@ Promise.race([
 
 La première promesse a été la plus rapide, donc, elle est devenue le résultat. Après la première promesse faite " vainqueur de la course ", tous les autres résultats/erreurs sont ignorés.
 
+
 ## Promise.resolve/reject
 
 Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.
