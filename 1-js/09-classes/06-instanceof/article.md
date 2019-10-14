@@ -105,7 +105,11 @@ Voici l'illustration de ce que `rabbit instanceof Animal` compare avec `Animal.p
 
 À propos, il y a aussi une méthode [objA.isPrototypeOf(objB)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/isPrototypeOf), qui renvoie `true` si `objA` se trouve quelque part dans la chaîne de prototypes pour `objB`. Ainsi, le test de `obj instanceof Class` peut être reformulé comme suit: `Class.prototype.isPrototypeOf(obj) `.
 
+<<<<<<< HEAD
 C'est drôle, mais le constructeur `Class` lui-même ne participe pas au contrôle! Seule la chaîne de prototypes et `Class.prototype` compte.
+=======
+It's funny, but the `Class` constructor itself does not participate in the check! Only the chain of prototypes and `Class.prototype` matters.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.
 

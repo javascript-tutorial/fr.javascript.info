@@ -68,8 +68,13 @@ alert(user.sayBye.name); // sayBye
 
 Cependant c'est pas magique. Il y a des cas où il n'y a aucun moyen de trouver le bon nom. Dans ce cas, la propriété name est vide, comme ci-dessous:
 
+<<<<<<< HEAD
 ```js
 // fonction créée dans un tableau
+=======
+```js run
+// function created inside array
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 let arr = [function() {}];
 
 alert( arr[0].name ); // <chaîne de caractères vide>
