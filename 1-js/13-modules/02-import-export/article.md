@@ -1,23 +1,23 @@
-# Export and Import
+# Exporter et importer
 
-Export and import directives have several syntax variants.
+Les directives d'exportation et d'importation ont plusieurs variantes de syntaxe.
 
-In the previous chapter we saw a simple use, now let's explore more examples.
+Dans le chapitre précédent, nous avons constaté une utilisation simple: explorons maintenant plus d’exemples.
 
-## Export before declarations
+## Exporter avant les déclarations
 
-We can label any declaration as exported by placing `export` before it, be it a variable, function or a class.
+Nous pouvons étiqueter n'importe quelle déclaration comme exportée en plaçant `export` devant elle, que ce soit une variable, une fonction ou une classe.
 
-For instance, here all exports are valid:
+Par exemple, ici toutes les exportations sont valides:
 
 ```js
-// export an array
+// exporter un tableau
 *!*export*/!* let months = ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// export a constant
+// exporter une constante
 *!*export*/!* const MODULES_BECAME_STANDARD_YEAR = 2015;
 
-// export a class
+// exporter une classe
 *!*export*/!* class User {
   constructor(name) {
     this.name = name;
@@ -25,26 +25,26 @@ For instance, here all exports are valid:
 }
 ```
 
-````smart header="No semicolons after export class/function"
-Please note that `export` before a class or a function does not make it a [function expression](info:function-expressions-arrows). It's still a function declaration, albeit exported.
+````smart header="Pas de point-virgule après la classe / fonction d'exportation"
+Veuillez noter que l'`export` avant une classe ou une fonction n'en fait pas une expression de fonction. C’est toujours une déclaration de fonction, bien qu’elle soit exportée.
 
-Most JavaScript style guides don't recommend semicolons after function and class declarations.
+La plupart des guides de bonnes pratiques JavaScript ne recommandent pas les points-virgules après les déclarations de fonctions et de classes.
 
-That's why there's no need for a semicolon at the end of `export class` and `export function`:
+C’est pourquoi il n’est pas nécessaire d’utiliser un point-virgule à la fin de `export class` et de `export function`:
 
 ```js
 export function sayHi(user) {
   alert(`Hello, ${user}!`);
-} *!* // no ; at the end */!*
+} *!* // pas de ; à la fin */!*
 ```
 
 ````
 
-## Export apart from declarations
+## Exporter en dehors des déclarations
 
-Also, we can put `export` separately.
+En outre, nous pouvons mettre l'`export` séparément.
 
-Here we first declare, and then export:
+Ici, nous déclarons d'abord, puis exportons:
 
 ```js  
 // 📁 say.js
@@ -57,15 +57,15 @@ function sayBye(user) {
 }
 
 *!*
-export {sayHi, sayBye}; // a list of exported variables
+export {sayHi, sayBye}; // une liste de variables exportées
 */!*
 ```
 
-...Or, technically we could put `export` above functions as well.
+… Ou, techniquement, nous pourrions également définir les fonctions d'`export` au-dessus des fonctions.
 
 ## Import *
 
-Usually, we put a list of what to import in curly braces `import {...}`, like this:
+Habituellement, nous mettons une liste de ce qu'il faut importer entre accolades `import {...}`, comme ceci:
 
 ```js
 // 📁 main.js
@@ -77,7 +77,7 @@ sayHi('John'); // Hello, John!
 sayBye('John'); // Bye, John!
 ```
 
-But if there's a lot to import, we can import everything as an object using `import * as <obj>`, for instance:
+Mais s’il y a beaucoup à importer, nous pouvons tout importer en tant qu’objet en utilisant `import * as <obj>`, par exemple:
 
 ```js
 // 📁 main.js
@@ -89,13 +89,13 @@ say.sayHi('John');
 say.sayBye('John');
 ```
 
-At first sight, "import everything" seems such a cool thing, short to write, why should we ever explicitly list what we need to import?
+À première vue, "importer tout" semble être une chose tellement cool, simple a écrire, pourquoi devrions-nous explicitement énumérer ce que nous devons importer?
 
-Well, there are few reasons.
+Eh bien, il y a quelques raisons.
 
-1. Modern build tools ([webpack](http://webpack.github.io) and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
+1. Les outils de construction modernes ([webpack](http://webpack.github.io) et autres) regroupent les modules et les optimisent pour accélérer le chargement et supprimer les éléments inutilisés.
 
-    Let's say, we added a 3rd-party library `say.js` to our project with many functions:
+    Disons que nous avons ajouté à notre projet une bibliothèque tierce, say.js, avec de nombreuses fonctions:
     ```js
     // 📁 say.js
     export function sayHi() { ... }
@@ -103,21 +103,21 @@ Well, there are few reasons.
     export function becomeSilent() { ... }
     ```
 
-    Now if we only use one of `say.js` functions in our project:
+    Maintenant, si nous n’utilisons qu’une des fonctions de say.js dans notre projet:
     ```js
     // 📁 main.js
     import {sayHi} from './say.js';
     ```
-    ...Then the optimizer will see that and remove the other functions from the bundled code, thus making the build smaller. That is called "tree-shaking".
+    … Ensuite, l'optimiseur verra cela et supprimera les autres fonctions du code fourni, rendant ainsi la construction plus petite. C'est ce qu'on appelle "tree-shaking".
 
-2. Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
-3. Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
+2. Énumérer explicitement ce qu'il faut importer donne des noms plus courts: `sayHi()` au lieu de `say.sayHi()`.
+3. La liste explicite des importations donne une meilleure vue d'ensemble de la structure du code: ce qui est utilisé et où. Cela facilite la prise en charge du code et la refactorisation.
 
 ## Import "as"
 
-We can also use `as` to import under different names.
+Nous pouvons également utiliser `as` pour importer sous différents noms.
 
-For instance, let's import `sayHi` into the local variable `hi` for brevity, and import `sayBye` as `bye`:
+Par exemple, importons `sayHi` dans la variable locale `hi` par souci de concision, et importons `sayBye` en `bye`:
 
 ```js
 // 📁 main.js
@@ -131,9 +131,9 @@ bye('John'); // Bye, John!
 
 ## Export "as"
 
-The similar syntax exists for `export`.
+La syntaxe similaire existe pour l'`export`.
 
-Let's export functions as `hi` and `bye`:
+Exportons les fonctions en tant que `hi` et `bye`:
 
 ```js
 // 📁 say.js
@@ -141,7 +141,7 @@ Let's export functions as `hi` and `bye`:
 export {sayHi as hi, sayBye as bye};
 ```
 
-Now `hi` and `bye` are official names for outsiders, to be used in imports:
+Maintenant, `hi` et `bye` sont les noms à utiliser dans les importations:
 
 ```js
 // 📁 main.js
@@ -153,66 +153,66 @@ say.*!*bye*/!*('John'); // Bye, John!
 
 ## Export default
 
-In practice, there are mainly two kinds of modules.
+En pratique, il existe principalement deux types de modules.
 
-1. Module that contains a library, pack of functions, like `say.js` above.
-2. Module that declares a single entity, e.g. a module `user.js` exports only `class User`.
+1. Module qui contient une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
+2. Module qui déclare une seule entité, par exemple le module `user.js` exporte uniquement la `class User`.
 
-Mostly, the second approach is preferred, so that every "thing" resides in its own module.
+La deuxième approche est généralement privilégiée, de sorte que chaque "chose" réside dans son propre module.
 
-Naturally, that requires a lot of files, as everything wants its own module, but that's not a problem at all. Actually, code navigation becomes easier, if files are well-named and structured into folders.
+Naturellement, cela nécessite beaucoup de fichiers, car toute chose veut son propre module, mais ce n’est pas un problème du tout. En fait, la navigation dans le code devient plus facile si les fichiers sont bien nommés et structurés en dossiers.
 
-Modules provide special `export default` ("the default export") syntax to make "one thing per module" way look better.
+Les modules fournissent une syntaxe spéciale pour l'`export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
 
-Put `export default` before the entity to export:
+Placez `export default` avant l'entité à exporter:
 
 ```js
 // 📁 user.js
-export *!*default*/!* class User { // just add "default"
+export *!*default*/!* class User { // ajouter juste "default"
   constructor(name) {
     this.name = name;
   }
 }
 ```
 
-There may be only one `export default` per file.
+Il ne peut y avoir qu'un seul `export default` par fichier.
 
-...And then import it without curly braces:
+… Et ensuite importez-le sans accolades:
 
 ```js
 // 📁 main.js
-import *!*User*/!* from './user.js'; // not {User}, just User
+import *!*User*/!* from './user.js'; // pas {User}, juste User
 
 new User('John');
 ```
 
-Imports without curly braces look nicer. A common mistake when starting to use modules is to forget curly braces at all. So, remember, `import` needs curly braces for named exports and doesn't need them for the default one.
+Les importations sans accolades sont plus agréables. Une erreur courante lorsque vous commencez à utiliser des modules est d’oublier les accolades. Par conséquent, rappelez-vous que l’`import` nécessite des accolades pour les exportations nommées et ne les utilise pas pour celle par défaut.
 
-| Named export | Default export |
-|--------------|----------------|
+| Export nommé | Export par défaut |
+|--------------|-------------------|
 | `export class User {...}` | `export default class User {...}` |
 | `import {User} from ...` | `import User from ...`|
 
-Technically, we may have both default and named exports in a single module, but in practice people usually don't mix them. A module has either named exports or the default one.
+Techniquement, nous pouvons avoir à la fois des exportations par défaut et des exportations nommées dans un seul module, mais dans la pratique, les gens ne les mélangent généralement pas. Un module a soit, des exports nommés, soit celui par défaut.
 
-As there may be at most one default export per file, the exported entity may have no name.
+Comme il peut y avoir au plus une exportation par défaut par fichier, l'entité exportée peut ne pas avoir de nom.
 
-For instance, these are all perfectly valid default exports:
+Par exemple, ce sont toutes des exportations par défaut parfaitement valides:
 
 ```js
-export default class { // no class name
+export default class { // pas de nom de classe
   constructor() { ... }
 }
 ```
 
 ```js
-export default function(user) { // no function name
+export default function(user) { // pas de nom de fonction
   alert(`Hello, ${user}!`);
 }
 ```
 
 ```js
-// export a single value, without making a variable
+// exporter une seule valeur sans créer de variable
 export default ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 ```
 
