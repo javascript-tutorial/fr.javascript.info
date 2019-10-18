@@ -109,23 +109,13 @@ Comme `super` cherche des méthodes du parent dans `[[HomeObject]].[[Prototype]]
 
 Faisons maintenant un mixin concret.
 
-<<<<<<< HEAD
 Une caractéristique importante de nombreux objets de navigateur (par exemple) est qu'ils peuvent générer des événements. Les événements sont un excellent moyen de "diffuser des informations" à tous ceux qui le souhaitent. Faisons donc un mixin qui permet d’ajouter facilement des fonctions relatives aux événements à n’importe quelle classe/objet.
 
 - Le mixin fournira une méthode `.trigger(name, [... data])` pour "générer un événement" quand quelque chose d'important lui arrive. L'argument `name` est un nom de l'événement, éventuellement suivi d'arguments supplémentaires avec les données d'événement.
-- Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclanche, et récupérera les arguments de l’appel `.trigger`.
+- Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.
 
 Après avoir ajouté le mixin, un objet `user` sera capable de générer un événement `"login"` lorsque le visiteur se connectera. Un autre objet, par exemple, `calendar` peut vouloir écouter de tels événements pour charger le calendrier de la personne connectée.
-=======
-An important feature of many browser objects (for instance) is that they can generate events. Events are a great way to "broadcast information" to anyone who wants it. So let's make a mixin that allows us to easily add event-related functions to any class/object.
-
-- The mixin will provide a method `.trigger(name, [...data])` to "generate an event" when something important happens to it. The `name` argument is a name of the event, optionally followed by additional arguments with event data.
-- Also the method `.on(name, handler)` that adds `handler` function as the listener to events with the given name. It will be called when an event with the given `name` triggers, and get the arguments from `.trigger` call.
-- ...And the method `.off(name, handler)` that removes the `handler` listener.
-
-After adding the mixin, an object `user` will be able to generate an event `"login"` when the visitor logs in. And another object, say, `calendar` may want to listen for such events to load the calendar for the logged-in person.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Ou bien, un `menu` peut générer l'événement `"select"` lorsqu'un élément de menu est sélectionné, et d'autres objets peuvent affecter des gestionnaires pour réagir à cet événement. Etc.
 
@@ -175,15 +165,9 @@ let eventMixin = {
 ```
 
 
-<<<<<<< HEAD
-- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement. Donc, c'est simplement ajouté à la liste.
+- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
 - `.off(eventName, handler)` - supprime la fonction de la liste des gestionnaires.
 - `.trigger(eventName, ... args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
-=======
-- `.on(eventName, handler)` -- assigns function `handler` to run when the event with that name occurs. Technically, there's an `_eventHandlers` property that stores an array of handlers for each event name, and it just adds it to the list.
-- `.off(eventName, handler)` -- removes the function from the handlers list.
-- `.trigger(eventName, ...args)` -- generates the event: all handlers from `_eventHandlers[eventName]` are called, with a list of arguments `...args`.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Usage:
 
@@ -209,11 +193,7 @@ menu.on("select", value => alert(`Value selected: ${value}`));
 menu.choose("123");
 ```
 
-<<<<<<< HEAD
 Maintenant, si nous souhaitons que le code réagisse lors de la sélection du menu, nous pouvons l'écouter avec `menu.on(...)`.
-=======
-Now, if we'd like any code to react to a menu selection, we can listen for it with `menu.on(...)`.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classes que nous le voudrions, sans interférer avec la chaîne d'héritage.
 
@@ -223,12 +203,6 @@ Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classe
 
 D'autres langages autorisent l'héritage multiple. JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
 
-<<<<<<< HEAD
 Nous pouvons utiliser les mixins comme moyen d'ajouter à une classe plusieurs comportements, comme la gestion d'événements, comme nous l'avons vu ci-dessus.
 
 Les mixins peuvent devenir un point de conflit s'ils écrasent accidentellement les méthodes de classe existantes. En règle générale, il convient de bien réfléchir aux méthodes de nommage d’un mixin, afin de minimiser la probabilité que cela se produise.
-=======
-We can use mixins as a way to augment a class by adding multiple behaviors, like event-handling as we have seen above.
-
-Mixins may become a point of conflict if they accidentally overwrite existing class methods. So generally one should think well about the naming methods of a mixin, to minimize the probability of that happening.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
