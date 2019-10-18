@@ -1,11 +1,7 @@
 
 # Héritage de classe
 
-<<<<<<< HEAD
-Disons que nous avons deux classes.
-=======
-Class inheritance is a way for one class to extend another class.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+L'héritage de classe est un moyen pour une classe d'étendre une autre classe.
 
 So we can create new functionality on top of the existing.
 
@@ -32,54 +28,19 @@ class Animal {
 let animal = new Animal("My animal");
 ```
 
-<<<<<<< HEAD
-![](rabbit-animal-independent-animal.svg)
-
-
-...Et `Rabbit`:
-
-```js
-class Rabbit {
-  constructor(name) {
-    this.name = name;
-  }
-  hide() {
-    alert(`${this.name} hides!`);
-  }
-}
-
-let rabbit = new Rabbit("My rabbit");
-```
-
-![](rabbit-animal-independent-rabbit.svg)
-
-
-En ce moment, ils sont totalement indépendants.
-
-Mais nous voudrions que `Rabbit` étende `Animal`. En d'autres termes, les lapins devraient être basés sur des animaux, avoir accès aux méthodes de `Animal` et les étendre avec ses propres méthodes.
-
-Pour hériter d'une autre classe, nous devrions spécifier `"extend"` et la classe parente avant les accolades `{..}`.
-
-Ici `Rabbit` hérite de `Animal`:
-=======
-Here's how we can represent `animal` object and `Animal` class graphically:
+Voici comment nous pouvons représenter graphiquement l'objet `animal` et la classe `Animal` :
 
 ![](rabbit-animal-independent-animal.svg)
 
-...And we would like to create another `class Rabbit`.
+... Et nous aimerions créer une autre `class Rabbit`.
 
-As rabbits are animals, `Rabbit` class should be based on `Animal`, have access to animal methods, so that rabbits can do what "generic" animals can do.
+Comme les lapins sont des animaux, la classe `Rabbit` devrait être basé sur `Animal`, avoir accès à des méthodes animales, de sorte que les lapins puissent faire ce que les animaux "génériques" peuvent faire.
 
-The syntax to extend another class is: `class Child extends Parent`.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+La syntaxe pour étendre une autre classe est la suivante : `class Child extends Parent`.
 
 Let's create `class Rabbit` that inherits from `Animal`:
 
-<<<<<<< HEAD
-// Hériter d'Animal en spécifiant "extends Animal"
-=======
 ```js
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 *!*
 class Rabbit extends Animal {
 */!*
@@ -94,30 +55,18 @@ rabbit.run(5); // White Rabbit court à la vitesse 5.
 rabbit.hide(); // White Rabbit se cache!
 ```
 
-<<<<<<< HEAD
-Maintenant, le code `Rabbit` est devenu un peu plus court, car il utilise le constructeur `Animal` par défaut, et il peut aussi `courir`, comme le font les animaux.
+Les objets de la classe `Rabbit` ont accès aux deux méthodes `Rabbit`, telles que `rabbit.hide()`, ainsi qu'aux méthodes `Animal`, telles que `rabbit.run()`.
 
-En interne, le mot clé `extend` ajoute la référence `[[Prototype]]` de `Rabbit.prototype` à `Animal.prototype`:
-
-![](animal-rabbit-extends.svg)
-
-Donc, si une méthode ne se trouve pas dans `Rabbit.prototype`, JavaScript prend de `Animal.prototype`.
-
-Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript utilise l'héritage prototypique pour les objets intégrés. Par exemple. `Date.prototype.[[Prototype]]` est `Object.prototype`, les dates ont donc des méthodes d'objet générique.
-=======
-Object of `Rabbit` class have access to both `Rabbit` methods, such as `rabbit.hide()`, and also to `Animal` methods, such as `rabbit.run()`.
-
-Internally, `extends` keyword works using the good old prototype mechanics. It sets `Rabbit.prototype.[[Prototype]]` to `Animal.prototype`. So, if a method is not found in `Rabbit.prototype`, JavaScript takes it from `Animal.prototype`.
+En interne, le mot clé `extended` fonctionne en utilisant le bon vieux prototype. Il établit `Rabbit.prototype.[[Prototype]]` vers `Animal.prototype`. Donc, si une méthode n'est pas trouvée dans `Rabbit.prototype`, JavaScript le prend de `Animal.prototype`.
 
 ![](animal-rabbit-extends.svg)
 
-For instance, to find `rabbit.run` method, the engine checks (bottom-up on the picture):
-1. The `rabbit` object (has no `run`).
-2. Its prototype, that is `Rabbit.prototype` (has `hide`, but not `run`).
-3. Its prototype, that is (due to `extends`) `Animal.prototype`, that finally has the `run` method.
+Par exemple, pour trouver la méthode `rabbit.run`, le moteur vérifie (de bas en haut sur l'image) :
+1. L'objet `rabbit` (n'a pas de `run`).
+2. Son prototype, c'est-à-dire `Rabbit.prototype` (a `hide`, mais pas `run`).
+3. Son prototype, c'est-à-dire (en raison de `extends`) `Animal.prototype`, qui a finalement la méthode `run`.
 
-As we can recall from the chapter <info:native-prototypes>, JavaScript itself uses prototypal inheritance for build-in objects. E.g. `Date.prototype.[[Prototype]]` is `Object.prototype`. That's why dates have access to generic object methods.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.
 
 ````smart header="Toute expression est autorisée après `extend`"
 La syntaxe de classe permet de spécifier non seulement une classe, mais toute expression après `extend`.
@@ -144,15 +93,9 @@ Cela peut être utile pour les modèles de programmation avancés lorsque nous u
 
 ## Remplacer une méthode
 
-<<<<<<< HEAD
-Maintenant, avançons et remplaçons une méthode. À l'instant, `Rabbit` hérite de la méthode `stop` qui définit `this.speed=0` à partir de `Animal`.
+Maintenant, avançons et substituons une méthode. Par défaut, toutes les méthodes qui ne sont pas spécifiées dans `class Rabbit` sont prises directement "telles quelles" dans `class Animal`.
 
-Si nous spécifions notre propre `stop` dans `Rabbit`, il sera utilisé à la place:
-=======
-Now let's move forward and override a method. By default, all methods that are not specified in `class Rabbit` are taken directly "as is" from `class Animal`.
-
-But if we specify our own method in `Rabbit`, such as `stop()` then it will be used instead:
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+Mais si nous spécifions notre propre méthode dans `Rabbit`, telle que `stop()`, elle sera utilisée à la place :
 
 ```js
 class Rabbit extends Animal {
@@ -163,11 +106,7 @@ class Rabbit extends Animal {
 }
 ```
 
-<<<<<<< HEAD
 ...Mais en général, nous ne voulons pas remplacer totalement une méthode parente, mais plutôt construire dessus, modifier ou étendre ses fonctionnalités. Nous faisons quelque chose dans notre méthode, mais appelons la méthode parente avant / après ou dans le processus.
-=======
-Usually we don't want to totally replace a parent method, but rather to build on top of it to tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Les classes fournissent le mot clé `"super"` pour cela.
 
