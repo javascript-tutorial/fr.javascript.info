@@ -211,11 +211,7 @@ La réponse est simple: `this` n'est pas du tout affecté par les prototypes.
 
 Ainsi, l'appel du groupe `admin.fullName=` utilise `admin` comme `this`, pas `user`.
 
-<<<<<<< HEAD
-C'est en fait une chose très importante, car nous pouvons avoir un gros objet avec de nombreuses méthodes et en hériter. Ensuite, les objets hérités peuvent exécuter ses méthodes et ils modifieront l’état de ces objets, pas le plus gros.
-=======
-That is actually a super-important thing, because we may have a big object with many methods, and have objects that inherit from it. And when the inheriting objects run the inherited methods, they will modify only their own states, not the state of the big object.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+C'est en fait une chose très importante, car nous pouvons avoir un gros objet avec de nombreuses méthodes et en hériter. Ensuite, les objets hérités peuvent exécuter ces méthodes héritées, ils ne modifieront que leurs propres états, pas l'état du gros objet.
 
 Par exemple, ici `animal` représente un "stockage de méthode" et `rabbit` en fait usage.
 

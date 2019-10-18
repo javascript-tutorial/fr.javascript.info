@@ -161,25 +161,14 @@ Par exemple:
 ```js run
 let arr = [1, 2];
 
-<<<<<<< HEAD
 // créer un tableau à partir de : arr et [3,4]
-alert( arr.concat([3, 4])); // 1,2,3,4
-
-// créer un tableau à partir de : arr et [3,4] et [5,6]
-alert( arr.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
-
-// créer un tableau à partir de : arr et [3,4], puis ajoute les valeurs 5 et 6
-alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
-=======
-// create an array from: arr and [3,4]
 alert( arr.concat([3, 4]) ); // 1,2,3,4
 
-// create an array from: arr and [3,4] and [5,6]
+// créer un tableau à partir de : arr et [3,4] et [5,6]
 alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
 
-// create an array from: arr and [3,4], then add values 5 and 6
+// créer un tableau à partir de : arr et [3,4], puis ajoute les valeurs 5 et 6
 alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 ```
 
 Normalement, il ne copie que les éléments des tableaux. Les autres objets, même s'ils ressemblent à des tableaux, sont ajoutés dans leur ensemble :
