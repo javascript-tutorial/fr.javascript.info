@@ -1,10 +1,6 @@
 # Gestion des erreurs, "try..catch"
 
-<<<<<<< HEAD
-Peu importe notre niveau de programmation, nos scripts comportent parfois des erreurs. Elles peuvent être dues à nos erreurs, à une entrée utilisateur imprévue, à une réponse erronée du serveur et à mille autres raisons.
-=======
-No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response, and for a thousand other reasons.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
+Peu importe notre niveau en programmation, nos scripts comportent parfois des erreurs. Elles peuvent être dues à nos erreurs, à une entrée utilisateur imprévue, à une réponse erronée du serveur et à mille autres raisons.
 
 Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'imprimant sur la console.
 
@@ -28,15 +24,9 @@ try {
 
 Cela fonctionne comme ceci:
 
-<<<<<<< HEAD
 1. Tout d'abord, le code dans `try {...}` est exécuté.
 2. S'il n'y a pas eu d'erreur, alors `catch (err)` est ignoré: l'exécution arrive à la fin de `try` et continue en ignorant `catch`.
 3. Si une erreur survient, alors l'exécution de `try` est arrêtée et le contrôle se place au début de `catch(err) `. La variable `err` (qui peut utiliser n'importe quel nom) contient un objet d'erreur avec des détails sur ce qui s'est passé.
-=======
-1. First, the code in `try {...}` is executed.
-2. If there were no errors, then `catch(err)` is ignored: the execution reaches the end of `try` and goes on, skipping `catch`.
-3. If an error occurs, then `try` execution is stopped, and the control flows to the beginning of `catch(err)`. The `err` variable (can use any name for it) will contain an error object with details about what happened.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ![](try-catch-flow.svg)
 
@@ -678,8 +668,4 @@ Nous pouvons également générer nos propres erreurs en utilisant l'opérateur 
 
 La technique de *propagation* est un modèle très important de gestion des erreurs: un bloc `catch` s'attend généralement à savoir comment gérer le type d'erreur particulier et sait comment le gérer. Il doit donc "propager" les erreurs qu'il ne connaît pas.
 
-<<<<<<< HEAD
 Même si nous n'avons pas `try..catch`, la plupart des environnements permettent de configurer un gestionnaire d'erreurs "globale" pour intercepter les erreurs qui "tombent". Dans le navigateur, c'est `window.onerror`.
-=======
-Even if we don't have `try..catch`, most environments allow us to setup a "global" error handler to catch errors that "fall out". In-browser, that's `window.onerror`.
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
