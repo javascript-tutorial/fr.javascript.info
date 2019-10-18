@@ -23,7 +23,11 @@ Notre fonction `readUser(json)` va non seulement lire JSON, mais aussi vérifier
 
 Notre classe `ValidationError` devrait hériter de la classe `Error` intégrée.
 
+<<<<<<< HEAD
 Cette classe est intégrée, voici le code approximatif, pour que nous comprenions ce que nous étendons:
+=======
+That class is built-in, but here's its approximate code so we can understand what we're extending:
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ```js
 // Le "pseudocode" pour la classe d'erreur intégrée définie par JavaScript lui-même
@@ -215,9 +219,15 @@ Maintenant, les erreurs personnalisées sont beaucoup plus courtes, en particuli
 
 Le but de la fonction `readUser` dans le code ci-dessus est "de lire les données de l'utilisateur". Il peut y avoir différents types d’erreurs dans le processus. À l'heure actuelle, nous avons `SyntaxError` et `ValidationError`, mais à l'avenir, la fonction `readUser` pourrait croître et générer probablement d'autres types d'erreurs.
 
+<<<<<<< HEAD
 Le code qui appelle `readUser` devrait gérer ces erreurs. Actuellement, il utilise plusieurs `if` dans le bloc `catch`, qui vérifient la classe, gèrent les erreurs connues et réexaminent les inconnues. Mais si la fonction `readUser` génère plusieurs types d’erreurs - nous devrions nous demander: voulons-nous vraiment vérifier tous les types d’erreur un par un dans chaque code qui appelle `readUser`?
 
 Souvent, la réponse est "Non": le code externe veut être "au-dessus de tout cela". Il veut avoir une sorte "d'erreur de lecture de données". Pourquoi exactement cela est arrivé est souvent sans importance (le message d'erreur le décrit). Ou encore mieux s'il existe un moyen d'obtenir des détails d'erreur, mais uniquement si nous en avons le besoin.
+=======
+The code which calls `readUser` should handle these errors. Right now it uses multiple `if`s in the `catch` block, that check the class and handle known errors and rethrow the unknown ones. But if the `readUser` function generates several kinds of errors, then we should ask ourselves: do we really want to check for all error types one-by-one in every code that calls `readUser`?
+
+Often the answer is "No": the outer code wants to be "one level above all that", it just wants to have some kind of "data reading error" -- why exactly it happened is often irrelevant (the error message describes it). Or, even better, it could have a way to get the error details, but only if we need to.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Faisons donc une nouvelle classe `ReadError` pour représenter de telles erreurs. Si une erreur se produit dans `readUser`, nous la détectons et générons `ReadError`. Nous conserverons également la référence à l'erreur d'origine dans sa propriété `cause`. Ensuite, le code externe devra seulement vérifier `ReadError`.
 

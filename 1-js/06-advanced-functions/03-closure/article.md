@@ -364,7 +364,11 @@ Veuillez noter que la propriété additionnelle `[[Environment]]` est couverte i
 
     ![](lexenv-nested-makecounter-5.svg)
 
+<<<<<<< HEAD
     Désormais, lorsque l'appel recherche la variable `count`, il commence par rechercher son propre environnement lexical (vide), puis l'environnement lexical de l'appel` makeCounter() `extérieur, où il le trouve.
+=======
+    Now when the call looks for `count` variable, it first searches its own Lexical Environment (empty), then the Lexical Environment of the outer `makeCounter()` call, where it finds it.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
     Veuillez noter comment fonctionne la gestion de la mémoire ici. Bien que l'appel de `makeCounter()` se soit terminé quelques temps auparavant, son environnement lexical a été conservé en mémoire, car il existe une fonction imbriquée avec `[[Environment]]` le référençant.
 

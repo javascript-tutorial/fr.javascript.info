@@ -78,7 +78,11 @@ Normalement, lorsqu'une classe en étend une autre, les méthodes statiques et n
 
 Mais les classes intégrées sont une exception. Ils n'héritent pas les méthodes statiques les uns des autres.
 
+<<<<<<< HEAD
 Par exemple, `Array` et `Date` héritent de `Object`, de sorte que leurs instances ont des méthodes issues de `Object.prototype`. Mais `Array.[[Prototype]]` ne fait pas référence à `Object`, il n'y a donc pas de méthodes statiques `Array.keys()` et `Date.keys()`.
+=======
+For example, both `Array` and `Date` inherit from `Object`, so their instances have methods from `Object.prototype`. But `Array.[[Prototype]]` does not reference `Object`, so there's no, for instance, `Array.keys()` (or `Date.keys()`) static method.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Voici la structure d'image pour `Date` et `Object`:
 
