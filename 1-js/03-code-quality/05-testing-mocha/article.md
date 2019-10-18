@@ -81,11 +81,7 @@ Donc, le développement est *itératif*. Nous écrivons la spécification, la me
 
 Voyons ce flux de développement dans notre cas pratique.
 
-<<<<<<< HEAD
 La première étape est déjà terminée : nous avons une spécification initiale pour `pow`. Maintenant, avant de procéder à l’implémentation, utilisons quelques bibliothèques JavaScript pour exécuter les tests, histoire de voir qu’elles fonctionnent (elles échoueront toutes).
-=======
-The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
->>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ## La spec en action
 
