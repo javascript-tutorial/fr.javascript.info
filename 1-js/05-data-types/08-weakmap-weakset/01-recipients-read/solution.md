@@ -1,6 +1,6 @@
 Stockons les messages lus dans `WeakSet`:
 
-```js
+```js run
 let messages = [
   {text: "Hello", from: "John"},
   {text: "How goes?", from: "John"},
