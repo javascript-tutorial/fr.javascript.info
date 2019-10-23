@@ -196,10 +196,14 @@ Voici un exemple de code qui prend en compte toutes les situations possibles :
 
 [js src="mouseenter-mouseleave-delegation-2/script.js"]
 
+Once again, the important features are:
+1. It uses event delegation to handle entering/leaving of any `<td>` inside the table. So it relies on `mouseover/out` instead of `mouseenter/leave` that don't bubble and hence allow no delegation.
+2. Extra events, such as moving between descendants of `<td>` are filtered out, so that `onEnter/Leave` runs only if the pointer leaves or enters `<td>` as a whole.
+
 ```online
 Voici l'exemple complet avec tous les détails:
 
-[codetabs height=380 src="mouseenter-mouseleave-delegation-2"]
+[codetabs height=460 src="mouseenter-mouseleave-delegation-2"]
 
 Essayez de déplacer le curseur dans et hors des cellules du tableau et à l'intérieur de celles-ci. Rapide ou lent - peu importe. Seul `<td>` dans son ensemble est mis en surbrillance, contrairement à l'exemple précédent.
 ```
