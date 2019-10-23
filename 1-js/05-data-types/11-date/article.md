@@ -60,13 +60,8 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
     Par exemple:
 
     ```js
-<<<<<<< HEAD
     new Date(2011, 0, 1, 0, 0, 0, 0); // // 1 Jan 2011, 00:00:00
-    new Date(2011, 0, 1); // la même chose car les heures, etc. sont égales à 0 par défaut
-=======
-    new Date(2011, 0, 1, 0, 0, 0, 0); // 1 Jan 2011, 00:00:00
-    new Date(2011, 0, 1); // the same, hours etc are 0 by default
->>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
+    new Date(2011, 0, 1); // la même chose car les heures etc sont égales à 0 par défaut
     ```
 
     La précision minimale est de 1 ms (1/1000 sec):

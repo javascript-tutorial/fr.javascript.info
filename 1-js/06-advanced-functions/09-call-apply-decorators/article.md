@@ -76,11 +76,7 @@ let worker = {
   },
 
   slow(x) {
-<<<<<<< HEAD
-    // en fait, il peut y avoir une tâche lourde ici
-=======
-    // scary CPU-heavy task here  
->>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
+    // tâche lourde et effrayante pour le CPU ici
     alert("Called with " + x);
     return x * this.someMethod(); // (*)
   }
@@ -377,11 +373,7 @@ hash(1, 2);
 
 L'astuce s'appelle *method borrowing* (empruntage de méthode).
 
-<<<<<<< HEAD
-Nous empruntons la méthode `join` d'un tableau régulier `[].join`. Et utilison `[].join.call` pour l'exécuter dans le contexte de `arguments`.
-=======
-We take (borrow) a join method from a regular array (`[].join`) and use `[].join.call` to run it in the context of `arguments`.
->>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
+Nous prenons (empruntons) la méthode `join` d'un tableau régulier (`[].join`) et utilisons `[].join.call` pour l'exécuter dans le contexte des `arguments`.
 
 Pourquoi ça marche?
 
