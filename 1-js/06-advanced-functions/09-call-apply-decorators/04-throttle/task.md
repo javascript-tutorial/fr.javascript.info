@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Décorateur d'étranglement
+# Décorateur d'accélération
 
-Créez un décorateur "d'étranglement" `throttle(f, ms)` - qui retourne un wrapper, en passant l'appel à `f` au maximum une fois par `ms` millisecondes. Les appels qui tombent dans le "temps de recharge" sont ignorés.
+Créez un décorateur "d'accélération" `throttle(f, ms)` - qui retourne un wrapper, en passant l'appel à `f` au maximum une fois par `ms` millisecondes. Les appels qui tombent dans le "temps de charge" sont ignorés.
 
 **La différence avec `debounce` - si un appel ignoré est le dernier pendant le temps de recharge, il s'exécute à la fin du délai.**
 
@@ -12,11 +12,7 @@ Examinons l'application réelle pour mieux comprendre cette exigence et voir d'o
 
 **Par exemple, nous voulons suivre les mouvements de la souris.**
 
-<<<<<<< HEAD
 Dans le navigateur, nous pouvons configurer une fonction à exécuter à chaque mouvement de la souris et obtenir l’emplacement du pointeur à mesure qu’il se déplace. Pendant une utilisation active de la souris, cette fonction est généralement utilisée très souvent et peut atteindre 100 fois par seconde (toutes les 10 ms).
-=======
-In a browser we can setup a function to run at every mouse movement and get the pointer location as it moves. During an active mouse usage, this function usually runs very frequently, can be something like 100 times per second (every 10 ms).
->>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 **Nous aimerions mettre à jour certaines informations sur la page Web lorsque le pointeur se déplace.**
 
