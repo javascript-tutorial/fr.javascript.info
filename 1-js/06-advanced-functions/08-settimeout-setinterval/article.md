@@ -286,11 +286,19 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 
 ## Résumé
 
+<<<<<<< HEAD
 - Les méthodes `setInterval(func, delay, ...args)` et `setTimeout(func, delay, ...args)` permettent d'exécuter `func` respectivement périodiquement et une seule fois après `delay` millisecondes.
 - Pour annuler l'exécution, nous devons appeler `clearInterval/clearTimeout` avec la valeur renvoyée par `setInterval/setTimeout`.
 - Les appels de `setTimeout` imbriqués sont une alternative plus flexible à `setInterval`, ils permettent de configurer le temps *entre* les exécution plus précisément.
 - L'ordonnancement à délai nul avec `setTimeout(func, 0)` (le même que `setTimeout(func)`) permet de planifier l'exécution "dès que possible, mais seulement une fois que le bloc de code courant a été exécuté".
 - Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour` setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
+=======
+- Methods `setTimeout(func, delay, ...args)` and `setInterval(func, delay, ...args)` allow us to run the `func` once/regularly after `delay` milliseconds.
+- To cancel the execution, we should call `clearTimeout/clearInterval` with the value returned by `setTimeout/setInterval`.
+- Nested `setTimeout` calls are a more flexible alternative to `setInterval`, allowing us to set the time *between* executions more precisely.
+- Zero delay scheduling with `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current script is complete".
+- The browser limits the minimal delay for five or more nested call of `setTimeout` or for `setInterval` (after 5th call) to 4ms. That's for historical reasons.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 

@@ -2,11 +2,19 @@
 
 Lorsque nous développons quelque chose, nous avons souvent besoin de nos propres classes d'erreur pour refléter des problèmes spécifiques qui peuvent mal tourner dans nos tâches. Pour les erreurs dans les opérations réseau, nous aurons peut-être besoin de `HttpError`, pour les opérations de base de données `DbError`, pour les opérations de recherche `NotFoundError`, etc.
 
+<<<<<<< HEAD
 Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais ils peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.
+=======
+Our errors should support basic error properties like `message`, `name` and, preferably, `stack`. But they also may have other properties of their own, e.g. `HttpError` objects may have a `statusCode` property with a value like `404` or `403` or `500`.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 JavaScript permet d'utiliser `throw` avec n'importe quel argument. Par conséquent, techniquement, nos classes d'erreur personnalisées n'ont pas besoin d'hériter de `Error`. Mais si nous héritons, il devient alors possible d'utiliser `obj instanceof Error` pour identifier les objets d'erreur. Il vaut donc mieux en hériter.
 
+<<<<<<< HEAD
 Au fur et à mesure que l'application grandit, nos propres erreurs forment naturellement une hiérarchie. Par exemple, `HttpTimeoutError` peut hériter de `HttpError`, etc.
+=======
+As the application grows, our own errors naturally form a hierarchy. For instance, `HttpTimeoutError` may inherit from `HttpError`, and so on.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ## Étendre Error
 
@@ -180,7 +188,11 @@ try {
 
 La nouvelle classe `PropertyRequiredError` est facile à utiliser: il suffit de passer le nom de la propriété: `new PropertyRequiredError(property)`. Le `message` est généré par le constructeur.
 
+<<<<<<< HEAD
 Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux - assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.
+=======
+Please note that `this.name` in `PropertyRequiredError` constructor is again assigned manually. That may become a bit tedious -- to assign `this.name = <class name>` in every custom error class. We can avoid it by making our own "basic error" class that assigns `this.name = this.constructor.name`. And then inherit all our custom errors from it.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Appelons cela `MyError`.
 
@@ -291,12 +303,22 @@ try {
 
 Dans le code ci-dessus, `readUser` fonctionne exactement comme décrit ci-dessus - corrige les erreurs de syntaxe et de validation et "throw" les erreurs `ReadError` (les erreurs inconnues sont propagées comme d'habitude).
 
+<<<<<<< HEAD
 Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.
+=======
+So the outer code checks `instanceof ReadError` and that's it. No need to list all possible error types.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Cette approche, "wrapping exceptions" en anglais, nous permet de prendre les "exceptions de bas niveau" et les "wrapper" dans `ReadError`, qui est plus abstrait et plus pratique à utiliser pour le code appelant. Cette approche est largement utilisée dans la programmation orientée objet.
 
 ## Résumé
 
+<<<<<<< HEAD
 - Nous pouvons hériter de `Error` et d'autres classes d'erreurs intégrées normalement, nous devons juste nous occuper de la propriété `name` et ne pas oublier d'appeler `super`.
 - Nous pouvons utiliser `instanceof` pour vérifier des erreurs particulières. Cela fonctionne aussi avec l'héritage. Mais parfois, nous avons un objet d'erreur provenant d'une bibliothèque tierce et il n'y a pas de moyen facile d'obtenir la classe. Dans ce cas, la propriété `name` peut être utilisée pour de telles vérifications.
 - Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.
+=======
+- We can inherit from `Error` and other built-in error classes normally. We just need to take care of the `name` property and don't forget to call `super`.
+- We can use `instanceof` to check for particular errors. It also works with inheritance. But sometimes we have an error object coming from a 3rd-party library and there's no easy way to get its class. Then `name` property can be used for such checks.
+- Wrapping exceptions is a widespread technique: a function handles low-level exceptions and creates higher-level errors instead of various low-level ones. Low-level exceptions sometimes become properties of that object like `err.cause` in the examples above, but that's not strictly required.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0

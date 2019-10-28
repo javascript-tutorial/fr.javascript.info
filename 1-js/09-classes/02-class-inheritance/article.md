@@ -66,7 +66,11 @@ Par exemple, pour trouver la méthode `rabbit.run`, le moteur vérifie (de bas e
 2. Son prototype, c'est-à-dire `Rabbit.prototype` (a `hide`, mais pas `run`).
 3. Son prototype, c'est-à-dire (en raison de `extends`) `Animal.prototype`, qui a finalement la méthode `run`.
 
+<<<<<<< HEAD
 Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.
+=======
+As we can recall from the chapter <info:native-prototypes>, JavaScript itself uses prototypal inheritance for built-in objects. E.g. `Date.prototype.[[Prototype]]` is `Object.prototype`. That's why dates have access to generic object methods.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ````smart header="Toute expression est autorisée après `extend`"
 La syntaxe de classe permet de spécifier non seulement une classe, mais toute expression après `extend`.
@@ -181,7 +185,11 @@ setTimeout(function() { super.stop() }, 1000);
 
 Avec les constructeurs, cela devient un peu délicat.
 
+<<<<<<< HEAD
 Jusqu'à maintenant, `Rabbit` n'avait pas son propre `constructor`.
+=======
+Until now, `Rabbit` did not have its own `constructor`.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Selon la [spécification](https://tc39.github.io/ecma262/#sec-runtime-semantics-classdefinitionevaluation), si une classe étend une autre classe et n'a pas de 'constructeur', alors le `constructor` "vide" suivant est généré:
 
@@ -236,6 +244,7 @@ La réponse courte est: les constructeurs dans les classes qui héritent doivent
 
 Bien sûr, il y a une explication. Entrons dans les détails pour que vous compreniez vraiment ce qui se passe.
 
+<<<<<<< HEAD
 En JavaScript, il existe une distinction entre une "fonction constructeur d'une classe héritante" et toutes les autres. Dans une classe qui hérite, la fonction constructeur correspondante est étiquetée avec une propriété interne spéciale `[[ConstructorKind]]:"derived"`.
 
 La différence est:
@@ -246,6 +255,18 @@ La différence est:
 Donc, si nous fabriquons notre propre constructeur, nous devons appeler `super`, car sinon l'objet de `this` ne sera pas créé. Et nous aurons une erreur.
 
 Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici:
+=======
+In JavaScript, there's a distinction between a constructor function of an inheriting class (so-called "derived constructor") and other functions. A derived constructor has a special internal property `[[ConstructorKind]]:"derived"`. That's a special internal label.
+
+That label affects its behavior with `new`.
+
+- When a regular function is executed with `new`, it creates an empty object and assigns it to `this`.
+- But when a derived constructor runs, it doesn't do this. It expects the parent constructor to do this job.
+
+So a derived constructor must call `super` in order to execute its parent (non-derived) constructor, otherwise the object for `this` won't be created. And we'll get an error.
+
+For the `Rabbit` constructor to work, it needs to call `super()` before using `this`, like here:
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js run
 class Animal {
@@ -528,5 +549,10 @@ rabbit.eat();  // Error calling super (parce qu'il n'y a pas de [[HomeObject]])
     - Les méthodes se souviennent de leur classe/objet dans la propriété interne `[[HomeObject]]`. C'est ainsi que `super` résout les méthodes parent.
     - Il n'est donc pas prudent de copier une méthode avec `super` d'un objet à un autre.
 
+<<<<<<< HEAD
 Également:
 - Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.
+=======
+Also:
+- Arrow functions don't have their own `this` or `super`, so they transparently fit into the surrounding context.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
