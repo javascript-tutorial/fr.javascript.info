@@ -1955,7 +1955,6 @@ If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
-Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `/;"	c
 Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, car c'est vraiment utile. Par exemple, Node.js a [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) pour ça. Et dans le navigateur, nous pouvons attribuer une fonction à la propriété [window.onerror](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onerror), qui fonctionnera en cas d'erreur non interceptée.	1-js/10-error-handling/1-try-catch/article.md	/^Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, c/;"	c
 IloveHTML5	9-regular-expressions/02-regexp-character-classes/love-html5-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="236" height="38" viewBox="0 0 236 38"><defs></;"	i
 Image gallery	2-ui/2-events/04-default-browser-action/3-image-gallery/task.md	/^# Image gallery$/;"	c
@@ -2053,7 +2052,6 @@ La balise "script"	1-js/02-first-steps/01-hello-world/article.md	/^## La balise 
 La bonne solution	1-js/05-data-types/02-number/9-random-int-min-max/solution.md	/^# La bonne solution$/;"	c
 La boucle "for"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "for"$/;"	s
 La boucle "while"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "while"$/;"	s
-La boucle `for..in` boucle aussi sur les propriétés héritées.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^La boucle `for..in` boucle aussi sur les propriétés héritées.$/;"	c
 La boucle for..in	1-js/08-prototypes/01-prototype-inheritance/article.md	/^## La boucle for..in$/;"	s
 La clause "else"	1-js/02-first-steps/10-ifelse/article.md	/^## La clause "else"$/;"	s
 La concision est l'âme de l'esprit	1-js/03-code-quality/04-ninja-code/article.md	/^## La concision est l'âme de l'esprit$/;"	s
@@ -2860,7 +2858,6 @@ Lookahead and lookbehind	9-regular-expressions/14-regexp-lookahead-lookbehind/ar
 Lookahead to the rescue!	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^### Lookahead to the rescue!$/;"	S
 Lookbehind	9-regular-expressions/14-regexp-lookahead-lookbehind/article.md	/^## Lookbehind$/;"	s
 Looping over keys	6-data-storage/02-localstorage/article.md	/^## Looping over keys$/;"	s
-Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier/;"	c
 Losing "this"	1-js/06-advanced-functions/10-bind/article.md	/^## Losing "this"$/;"	s
 L’ordre des évènements	2-ui/3-event-details/1-mouse-events-basics/article.md	/^### L’ordre des évènements$/;"	S
 Macrotasks and Microtasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Macrotasks and Microtasks$/;"	s
@@ -3219,7 +3216,7 @@ Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
 Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas créé par `B()`.	1-js/09-classes/06-instanceof/1-strange-instanceof/task.md	/^Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas /;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
-Pourquoi deux hamsters sont pleins?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont pleins?$/;"	c
+Pourquoi deux hamsters sont rassasiés ?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont rassasiés ?$/;"	c
 Pourquoi?	1-js/08-prototypes/04-prototype-methods/article.md	/^Pourquoi?$/;"	c
 Power of n	7-animation/3-js-animation/article.md	/^### Power of n$/;"	S
 Prenez de la hauteur. Soyez abstrait.	1-js/03-code-quality/04-ninja-code/article.md	/^## Prenez de la hauteur. Soyez abstrait.$/;"	s
@@ -4321,7 +4318,6 @@ Show a note near the element	2-ui/1-document/11-coordinates/2-position-at/task.m
 Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-position-at-absolute/task.md	/^# Show a note near the element (absolute)$/;"	c
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
 Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.	1-js/08-prototypes/02-function-prototype/article.md	/^Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour l/;"	c
-Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient également accès aux méthodes de `animal`. Mais `this` dans chaque appel de méthode serait l'objet correspondant, évalué au moment de l'appel (avant le point), et non `animal`. Ainsi, lorsque nous écrivons des données dans `this`, elles sont stockées dans ces objets.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
@@ -4546,7 +4542,6 @@ Une Introduction à JavaScript	1-js/01-getting-started/1-intro/article.md	/^# Un
 Une boucle infinie	1-js/05-data-types/02-number/4-endless-loop-error/task.md	/^# Une boucle infinie$/;"	c
 Une introduction	1-js/01-getting-started/index.md	/^# Une introduction$/;"	c
 Une primitive en tant qu'objet	1-js/05-data-types/01-primitives-methods/article.md	/^## Une primitive en tant qu'objet$/;"	s
-Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this` dans `set fullName(value)`? Où les propriétés `this.name` et `this.surname` sont écrites: dans `user` ou `admin` ?	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this/;"	c
 Une question à propos de "if"	1-js/02-first-steps/11-logical-operators/8-if-question/task.md	/^# Une question à propos de "if"$/;"	c
 Une simple page	1-js/02-first-steps/09-alert-prompt-confirm/1-simple-page/task.md	/^# Une simple page$/;"	c
 Une variable	1-js/02-first-steps/04-variables/article.md	/^## Une variable$/;"	s
@@ -4614,7 +4609,6 @@ Where's the "document" in the hierarchy?	2-ui/1-document/05-basic-dom-node-prope
 Which handlers run?	2-ui/2-events/01-introduction-browser-events/03-which-handlers-run/task.md	/^# Which handlers run?$/;"	c
 Who's-there?	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 Why "return false" doesn't work?	2-ui/2-events/04-default-browser-action/1-why-return-false-fails/task.md	/^# Why "return false" doesn't work?$/;"	c
-Why are both hamsters full?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Why are both hamsters full?$/;"	c
 Why do we need Origin?	5-network/05-fetch-crossorigin/1-do-we-need-origin/task.md	/^# Why do we need Origin?$/;"	c
 Why does "aaa" remain?	2-ui/1-document/07-modifying-document/5-why-aaa/task.md	/^# Why does "aaa" remain?$/;"	c
 Why is CORS needed? A brief history	5-network/05-fetch-crossorigin/article.md	/^## Why is CORS needed? A brief history$/;"	s
