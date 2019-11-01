@@ -3,11 +3,7 @@
 
 Comme nous le savons, les objets peuvent stocker des propriétés.
 
-<<<<<<< HEAD
 Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une propriété d'objet est en réalité une chose plus flexible et plus puissante.
-=======
-Until now, a property was a simple "key-value" pair to us. But an object property is actually a more flexible and powerful thing.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Dans ce chapitre, nous étudierons des options de configuration supplémentaires et, dans le prochain, nous verrons comment les transformer de manière invisible en fonctions de accesseur / mutateur.
 
@@ -138,11 +134,7 @@ let user = { };
 Object.defineProperty(user, "name", {
 *!*
   value: "John",
-<<<<<<< HEAD
-  // besoin de lister explicitement ce qui est true pour les nouvelles propriétés
-=======
-  // for new properties we need to explicitly list what's true
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+  // pour les nouvelles propriétés, nous devons lister explicitement ce qui est vrai
   enumerable: true,
   configurable: true
 */!*
@@ -156,11 +148,7 @@ user.name = "Pete"; // Error
 
 Ajoutons maintenant un `toString` personnalisé à `user`.
 
-<<<<<<< HEAD
 Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas dans `for..in`. Mais si nous ajoutons notre propre `toString`, alors, par défaut, il apparaît dans `for..in`, comme ceci:
-=======
-Normally, a built-in `toString` for objects is non-enumerable, it does not show up in `for..in`. But if we add a `toString` of our own, then by default it shows up in `for..in`, like this:
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js run
 let user = {
@@ -174,11 +162,7 @@ let user = {
 for (let key in user) alert(key); // name, toString
 ```
 
-<<<<<<< HEAD
-Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée:
-=======
-If we don't like it, then we can set `enumerable:false`. Then it won't appear in a `for..in` loop, just like the built-in one:
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée :
 
 ```js run
 let user = {

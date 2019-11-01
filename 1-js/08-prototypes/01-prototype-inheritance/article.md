@@ -34,11 +34,7 @@ rabbit.__proto__ = animal;
 ```smart header="`__proto__` est un accesseur/mutateur historique pour `[[Prototype]]`"
 Veuillez noter que `__proto__` n'est *pas le même* que `[[Prototype]]`. C'est un accesseur/mutateur pour ça.
 
-<<<<<<< HEAD
-Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
-=======
-It exists for historical reasons. In modern language it is replaced with functions `Object.getPrototypeOf/Object.setPrototypeOf` that also get/set the prototype. We'll study the reasons for that and these functions later.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Il existe pour des raisons historiques. Dans le langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
 
 Selon la spécification, `__proto__` ne doit être pris en charge que par les navigateurs. Cependant, tous les environnements, y compris côté serveur, le prennent en charge. Pour l'instant, comme la notation `__proto__` est un peu plus intuitive, nous l'utilisons dans les exemples.
 ```
@@ -207,11 +203,7 @@ Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le p
 
 ## La valeur de "this"
 
-<<<<<<< HEAD
-Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this` dans `set fullName(value)`? Où les propriétés `this.name` et `this.surname` sont écrites: dans `user` ou `admin` ?
-=======
-An interesting question may arise in the example above: what's the value of `this` inside `set fullName(value)`? Where are the properties `this.name` and `this.surname` written: into `user` or `admin`?
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Une question intéressante peut se poser dans l'exemple ci-dessus : quelle est la valeur de `this` dans `set fullName(value)` ? Où sont écrites les propriétés `this.name` et `this.surname` : dans `user` ou `admin` ?
 
 La réponse est simple: `this` n'est pas du tout affecté par les prototypes.
 
@@ -254,21 +246,13 @@ L'image résultante :
 
 ![](proto-animal-rabbit-walk-3.svg)
 
-<<<<<<< HEAD
 Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient également accès aux méthodes de `animal`. Mais `this` dans chaque appel de méthode serait l'objet correspondant, évalué au moment de l'appel (avant le point), et non `animal`. Ainsi, lorsque nous écrivons des données dans `this`, elles sont stockées dans ces objets.
-=======
-If we had other objects, like `bird`, `snake`, etc., inheriting from `animal`, they would also gain access to methods of `animal`. But `this` in each method call would be the corresponding object, evaluated at the call-time (before dot), not `animal`. So when we write data into `this`, it is stored into these objects.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 En conséquence, les méthodes sont partagées, mais pas l'état d'objet.
 
 ## La boucle for..in
 
-<<<<<<< HEAD
-La boucle `for..in` boucle aussi sur les propriétés héritées.
-=======
-The `for..in` loop iterates over inherited properties too.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+La boucle `for..in` itère aussi sur les propriétés héritées.
 
 Par exemple :
 
@@ -283,11 +267,7 @@ let rabbit = {
 };
 
 *!*
-<<<<<<< HEAD
-// Object.keys ne retourne que ses propres clés
-=======
-// Object.keys only returns own keys
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+// Object.keys ne renvoie que ses propres clés
 alert(Object.keys(rabbit)); // jumps
 */!*
 

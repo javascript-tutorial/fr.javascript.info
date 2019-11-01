@@ -2,19 +2,11 @@ importance: 5
 
 ---
 
-<<<<<<< HEAD
-# Pourquoi deux hamsters sont pleins?
-=======
-# Why are both hamsters full?
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+# Pourquoi deux hamsters sont rassasiés ?
 
 Nous avons deux hamsters: `speedy` et `lazy` héritant de l'objet général `hamster`.
 
-<<<<<<< HEAD
-Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier?
-=======
-When we feed one of them, the other one is also full. Why? How can we fix it?
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Lorsque nous nourrissons l'un d'eux, l'autre est également rassasié. Pourquoi ? Comment y remédier ?
 
 ```js run
 let hamster = {
@@ -37,7 +29,7 @@ let lazy = {
 speedy.eat("apple");
 alert( speedy.stomach ); // apple
 
-// Celui-ci l'a aussi, pourquoi? réparer s'il vous plaît.
+// Celui-ci l'a aussi, pourquoi ? Merci de corriger cela.
 alert( lazy.stomach ); // apple
 ```
 

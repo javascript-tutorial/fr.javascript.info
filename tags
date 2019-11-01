@@ -3081,7 +3081,7 @@ Oval-9-+-Shape	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="htt
 Oval-9-+-Shape-2	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="449" viewBox="0 0 566 449"><defs/;"	i
 Oval-9-+-Shape-3	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="449" viewBox="0 0 566 449"><defs/;"	i
 Over-the-River,	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
-Où est-ce écrit?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Où est-ce écrit?$/;"	c
+Où est-ce écrit ?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Où est-ce écrit ?$/;"	c
 POST requests	5-network/01-fetch/article.md	/^## POST requests$/;"	s
 POST, FormData	5-network/08-xmlhttprequest/article.md	/^## POST, FormData$/;"	s
 POST-/pay	6-data-storage/01-cookie/cookie-xsrf.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="166" viewBox="0 0 668 166"><defs/;"	i
@@ -3179,7 +3179,7 @@ Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## P
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
-Pourquoi deux hamsters sont pleins?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont pleins?$/;"	c
+Pourquoi deux hamsters sont rassasiés ?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont rassasiés ?$/;"	c
 Power of n	7-animation/3-js-animation/article.md	/^### Power of n$/;"	S
 Prenez de la hauteur. Soyez abstrait.	1-js/03-code-quality/04-ninja-code/article.md	/^## Prenez de la hauteur. Soyez abstrait.$/;"	s
 Preventing backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Preventing backtracking$/;"	s
@@ -4464,9 +4464,9 @@ Triangle-1	2-ui/1-document/09-size-and-scroll/metric-offset-width-height.svg	/^<
 Triangle-1	2-ui/1-document/09-size-and-scroll/metric-scroll-top.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="489" height="542" viewBox="0 0 489 542"><defs/;"	i
 Triangle-1	2-ui/1-document/09-size-and-scroll/metric-scroll-width-height.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="524" viewBox="0 0 463 524"><defs/;"	i
 Triangle-1	7-animation/1-bezier-curve/bezier3-e.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="149" height="187" viewBox="0 0 149 187"><defs/;"	i
-Trier dans l'ordre inverse	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Trier dans l'ordre inverse$/;"	c
 Trier les objets	1-js/05-data-types/05-array-methods/8-sort-objects/task.md	/^# Trier les objets$/;"	c
 Trier par champ	1-js/06-advanced-functions/03-closure/7-sort-by-field/task.md	/^# Trier par champ$/;"	c
+Trier par ordre décroissant	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Trier par ordre décroissant$/;"	c
 Tronquer le texte	1-js/05-data-types/03-string/3-truncate/task.md	/^# Tronquer le texte$/;"	c
 Type symbole	1-js/04-object-basics/03-symbol/article.md	/^# Type symbole$/;"	c
 Type-something	2-ui/1-document/03-dom-navigation/dom-links-elements.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="316" viewBox="0 0 440 316"><defs/;"	i

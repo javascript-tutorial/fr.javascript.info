@@ -118,18 +118,9 @@ Ici, nous avons dû créer des variables additionnelles `args` et` ctx` afin que
 
 Les fonctions fléchées :
 
-<<<<<<< HEAD
-- N'ont pas de `this`.
-- N'ont pas d'`arguments`.
-- Ne peuvent pas être appelées avec `new`.
-- (Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>).
+- N'ont pas de `this`
+- N'ont pas d'`arguments`
+- Ne peuvent pas être appelées avec `new`
+- Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>
 
-En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.
-=======
-- Do not have `this`
-- Do not have `arguments`
-- Can't be called with `new`
-- They also don't have `super`, but we didn't study it yet. We will on the chapter <info:class-inheritance>
-
-That's because they are meant for short pieces of code that do not have their own "context", but rather work in the current one. And they really shine in that use case.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+C'est parce qu'elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.

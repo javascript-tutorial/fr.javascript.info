@@ -169,11 +169,7 @@ rabbits.sort(Rabbit.compare);
 rabbits[0].run(); // Black Rabbit court à la vitesse 5.
 ```
 
-<<<<<<< HEAD
 Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.
-=======
-Now when we call `Rabbit.compare`, the inherited `Animal.compare` will be called.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Comment cela fonctionne t-il? Encore une fois, en utilisant des prototypes. Comme vous l'avez peut-être déjà deviné, `extends` donne à `Rabbit` la référence de `[[Prototype]]` à `Animal`.
 
@@ -184,11 +180,7 @@ Ainsi, `Rabbit extends Animal` crée deux références `[[Prototype]]`:
 1. La fonction `Rabbit` hérite de façon prototypique de la fonction `Animal`.
 2. `Rabbit.prototype` hérite de façon prototypique de `Animal.prototype`.
 
-<<<<<<< HEAD
 En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.
-=======
-As a result, inheritance works both for regular and static methods.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Vérifions cela par code:
 
@@ -205,11 +197,7 @@ alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
 
 ## Résumé
 
-<<<<<<< HEAD
-Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble", sans rapport avec une instance de classe concrète.
-=======
-Static methods are used for the functionality that belongs to the class "as a whole". It doesn't relate to a concrete class instance.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble". Cela ne concerne pas une instance de classe concrète.
 
 Par exemple, une méthode de comparaison `Article.compare(article1, article2)` ou une méthode d'usine `Article.createTodays()`.
 
