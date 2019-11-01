@@ -1554,7 +1554,6 @@ Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêch
 En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):	1-js/09-classes/04-private-protected-properties-methods/article.md	/^En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):$/;"	c
 En JavaScript, une classe est une sorte de fonction.	1-js/09-classes/01-class/article.md	/^En JavaScript, une classe est une sorte de fonction.$/;"	c
 En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.	1-js/09-classes/03-static-properties-methods/article.md	/^En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.$/;"	c
-En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.	1-js/06-advanced-functions/12-arrow-functions/article.md	/^En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "context/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
