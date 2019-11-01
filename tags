@@ -4347,7 +4347,6 @@ Somme avec des closures	1-js/06-advanced-functions/03-closure/4-closure-sum/task
 Somme des nombres du visiteur	1-js/05-data-types/02-number/1-sum-interface/task.md	/^# Somme des nombres du visiteur$/;"	c
 Somme des nombres saisis	1-js/05-data-types/04-array/5-array-input-sum/task.md	/^# Somme des nombres saisis$/;"	c
 Somme des propriétés de l'objet	1-js/04-object-basics/01-object/5-sum-object/task.md	/^# Somme des propriétés de l'objet$/;"	c
-Sort in decreasing order	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Sort in decreasing order$/;"	c
 Sort the table	2-ui/1-document/07-modifying-document/12-sort-table/task.md	/^# Sort the table$/;"	c
 Sortable table	2-ui/2-events/03-event-delegation/3-sortable-table/task.md	/^# Sortable table$/;"	c
 Spaces-around-a-nest	1-js/03-code-quality/02-coding-style/code-style.svg	/^            <text id="Spaces-around-a-nest" font-family="OpenSans-Bold, Open Sans" font-size="14/;"	i
@@ -4516,9 +4515,9 @@ Triangle-1	2-ui/1-document/09-size-and-scroll/metric-offset-width-height.svg	/^<
 Triangle-1	2-ui/1-document/09-size-and-scroll/metric-scroll-top.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="489" height="542" viewBox="0 0 489 542"><defs/;"	i
 Triangle-1	2-ui/1-document/09-size-and-scroll/metric-scroll-width-height.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="524" viewBox="0 0 463 524"><defs/;"	i
 Triangle-1	7-animation/1-bezier-curve/bezier3-e.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="149" height="187" viewBox="0 0 149 187"><defs/;"	i
-Trier dans l'ordre inverse	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Trier dans l'ordre inverse$/;"	c
 Trier les objets	1-js/05-data-types/05-array-methods/8-sort-objects/task.md	/^# Trier les objets$/;"	c
 Trier par champ	1-js/06-advanced-functions/03-closure/7-sort-by-field/task.md	/^# Trier par champ$/;"	c
+Trier par ordre décroissant	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Trier par ordre décroissant$/;"	c
 Tronquer le texte	1-js/05-data-types/03-string/3-truncate/task.md	/^# Tronquer le texte$/;"	c
 Type symbole	1-js/04-object-basics/03-symbol/article.md	/^# Type symbole$/;"	c
 Type-something	2-ui/1-document/03-dom-navigation/dom-links-elements.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="316" viewBox="0 0 440 316"><defs/;"	i
