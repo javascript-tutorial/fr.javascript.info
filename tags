@@ -655,7 +655,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 2	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
-2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.	1-js/10-error-handling/1-try-catch/article.md	/^2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.$/;"	c
 200	1-js/05-data-types/10-destructuring-assignment/destructuring-complex.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="488" height="150" viewBox="0 0 488 150"><defs/;"	i
 200	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 200-OK	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
@@ -1379,7 +1378,6 @@ Combined-Shape	1-js/04-object-basics/01-object/object.svg	/^<svg xmlns="http:\/\
 Combined-Shape	1-js/04-object-basics/01-object/variable-contains-reference.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="370" height="249" viewBox="0 0 370 249"><defs/;"	i
 Combined-Shape	1-js/04-object-basics/01-object/variable-copy-reference.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="260" viewBox="0 0 599 260"><defs/;"	i
 Commande du débogueur	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Commande du débogueur$/;"	s
-Comme ceci:	1-js/10-error-handling/1-try-catch/article.md	/^Comme ceci:$/;"	c
 Comment	2-ui/1-document/05-basic-dom-node-properties/dom-class-hierarchy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="478" height="364" viewBox="0 0 478 364"><defs/;"	i
 Commentaires	1-js/03-code-quality/03-comments/article.md	/^# Commentaires$/;"	c
 Comparaison avec null et undefined	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison avec null et undefined$/;"	s
@@ -1493,7 +1491,6 @@ Description imbriquée	1-js/03-code-quality/05-testing-mocha/article.md	/^## Des
 Deux façons de penser	1-js/06-advanced-functions/01-recursion/article.md	/^## Deux façons de penser$/;"	s
 Deux fonctions - un objet	1-js/04-object-basics/06-constructor-new/1-two-functions-one-object/task.md	/^# Deux fonctions - un objet$/;"	c
 Deux références	1-js/04-object-basics/02-garbage-collection/article.md	/^## Deux références$/;"	s
-Devrions-nous en être satisfaits? Bien sûr que non!	1-js/10-error-handling/1-try-catch/article.md	/^Devrions-nous en être satisfaits? Bien sûr que non!$/;"	c
 Dispatching custom events	2-ui/2-events/05-dispatch-events/article.md	/^# Dispatching custom events$/;"	c
 Document	2-ui/1-document/index.md	/^# Document$/;"	c
 Document	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
@@ -1936,7 +1933,6 @@ If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
-Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, car c'est vraiment utile. Par exemple, Node.js a [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) pour ça. Et dans le navigateur, nous pouvons attribuer une fonction à la propriété [window.onerror](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onerror), qui fonctionnera en cas d'erreur non interceptée.	1-js/10-error-handling/1-try-catch/article.md	/^Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, c/;"	c
 IloveHTML5	9-regular-expressions/02-regexp-character-classes/love-html5-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="236" height="38" viewBox="0 0 236 38"><defs></;"	i
 Image gallery	2-ui/2-events/04-default-browser-action/3-image-gallery/task.md	/^# Image gallery$/;"	c
 Image to blob	4-binary/03-blob/article.md	/^## Image to blob$/;"	s
