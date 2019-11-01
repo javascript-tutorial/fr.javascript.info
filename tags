@@ -1542,7 +1542,6 @@ Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Em
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
 En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):	1-js/09-classes/04-private-protected-properties-methods/article.md	/^En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):$/;"	c
-En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.	1-js/09-classes/03-static-properties-methods/article.md	/^En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.$/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
@@ -2106,7 +2105,6 @@ Les microtaches	1-js/11-async/07-microtask-queue/article.md	/^# Les microtaches$
 Les mixins	1-js/09-classes/07-mixins/article.md	/^# Les mixins$/;"	c
 Les modules sont différés	1-js/13-modules/01-modules-intro/article.md	/^### Les modules sont différés$/;"	S
 Les méthodes ne sont pas "libres"	1-js/09-classes/02-class-inheritance/article.md	/^### Les méthodes ne sont pas "libres"$/;"	S
-Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble", sans rapport avec une instance de classe concrète.	1-js/09-classes/03-static-properties-methods/article.md	/^Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans/;"	c
 Les paramètres Rest `...`	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^## Les paramètres Rest `...`$/;"	s
 Les paramètres Rest et l'opérateur spread	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^# Les paramètres Rest et l'opérateur spread$/;"	c
 Les points-virgules [#semicolon]	1-js/02-first-steps/02-structure/article.md	/^## Les points-virgules [#semicolon]$/;"	s
@@ -2845,7 +2843,6 @@ L’ordre des évènements	2-ui/3-event-details/1-mouse-events-basics/article.md
 Macrotasks and Microtasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Macrotasks and Microtasks$/;"	s
 Main-HTTP-request	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 Main-HTTP-response	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
-Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.	1-js/09-classes/03-static-properties-methods/article.md	/^Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé/;"	c
 Make external links orange	2-ui/1-document/06-dom-attributes-and-properties/2-yellow-links/task.md	/^# Make external links orange$/;"	c
 Making unselectable	2-ui/99-ui-misc/02-selection-range/article.md	/^## Making unselectable$/;"	s
 Manuels	1-js/01-getting-started/2-manuals-specifications/article.md	/^## Manuels$/;"	s
