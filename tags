@@ -3273,7 +3273,6 @@ Qu'est-ce qui rend JavaScript unique?	1-js/01-getting-started/1-intro/article.md
 Qualité du code	1-js/03-code-quality/index.md	/^# Qualité du code$/;"	c
 Quantifiers +, *, ? and {n}	9-regular-expressions/09-regexp-quantifiers/article.md	/^# Quantifiers +, *, ? and {n}$/;"	c
 Quantity {n}	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Quantity {n}$/;"	s
-Que faire passer à `askPassword` dans le code ci-dessous, de sorte qu'il appelle `user.login(true)` comme `ok` et `user.login(false)` comme `fail`?	1-js/06-advanced-functions/10-bind/6-ask-partial/task.md	/^Que faire passer à `askPassword` dans le code ci-dessous, de sorte qu'il appelle `user.login(tr/;"	c
 Que peut faire JavaScript dans le navigateur ?	1-js/01-getting-started/1-intro/article.md	/^## Que peut faire JavaScript dans le navigateur ?$/;"	s
 Que va afficher setTimeout ?	1-js/06-advanced-functions/08-settimeout-setinterval/4-settimeout-result/task.md	/^# Que va afficher setTimeout ?$/;"	c
 Quel est le problème dans le test ?	1-js/03-code-quality/05-testing-mocha/3-pow-test-wrong/task.md	/^# Quel est le problème dans le test ?$/;"	c
