@@ -294,6 +294,11 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
+- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.	1-js/09-classes/07-mixins/article.md	/^- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.$/;"	c
+- La propriété `"prototype"` n'a cet effet spécial que lorsqu'elle est définie sur une fonction constructeur et invoquée avec `new`.	1-js/08-prototypes/02-function-prototype/article.md	/^- La propriété `"prototype"` n'a cet effet spécial que lorsqu'elle est définie sur une fonct/;"	c
+- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
+- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.	1-js/09-classes/02-class-inheritance/article.md	/^- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de/;"	c
+- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par la méthode JavaScript du moteur.	1-js/08-prototypes/03-native-prototypes/article.md	/^- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -561,6 +566,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 1	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 1	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 1-Jan-2019	1-js/09-classes/05-extend-natives/object-date-inheritance.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="503" height="370" viewBox="0 0 503 370"><defs/;"	i
+1. Nous avons ajouté une chaîne supplémentaire (accentué), que montre `alert` maintenant?	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^1. Nous avons ajouté une chaîne supplémentaire (accentué), que montre `alert` maintenant?$/;"	c
 10	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
 10	4-binary/01-arraybuffer-binary-arrays/arraybuffer-views.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="603" height="286" viewBox="0 0 603 286"><defs/;"	i
 10	5-network/08-xmlhttprequest/phones-async.view/phones.json	/^    {$/;"	o
@@ -654,6 +660,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 2	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
+2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.	1-js/10-error-handling/1-try-catch/article.md	/^2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.$/;"	c
 200	1-js/05-data-types/10-destructuring-assignment/destructuring-complex.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="488" height="150" viewBox="0 0 488 150"><defs/;"	i
 200	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 200-OK	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
@@ -696,6 +703,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 3	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 3	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 3-copy	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
+3. Comme ceci (une ligne remplacé)?	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^3. Comme ceci (une ligne remplacé)?$/;"	c
 300	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 3:-['html']-5:-['css	6-data-storage/03-indexeddb/indexeddb-index.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="289" viewBox="0 0 440 289"><defs/;"	i
 4	1-js/05-data-types/05-array-methods/reduce.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="129" viewBox="0 0 620 129"><defs/;"	i
@@ -1233,6 +1241,7 @@ Async/await	1-js/11-async/08-async-await/article.md	/^# Async\/await$/;"	c
 Attributes and properties	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^# Attributes and properties$/;"	c
 Attributs de propriétés	1-js/07-object-properties/01-property-descriptors/article.md	/^## Attributs de propriétés$/;"	s
 Attributs et descripteurs de propriétés	1-js/07-object-properties/01-property-descriptors/article.md	/^# Attributs et descripteurs de propriétés$/;"	c
+Au fur et à mesure que l'application grandit, nos propres erreurs forment naturellement une hiérarchie. Par exemple, `HttpTimeoutError` peut hériter de `HttpError`, etc.	1-js/10-error-handling/2-custom-errors/article.md	/^Au fur et à mesure que l'application grandit, nos propres erreurs forment naturellement une hié/;"	c
 Aucun module "nu" autorisé	1-js/13-modules/01-modules-intro/article.md	/^### Aucun module "nu" autorisé$/;"	S
 Authoring	AUTHORING.md	/^# Authoring$/;"	c
 Auto-correction	1-js/05-data-types/11-date/article.md	/^## Auto-correction$/;"	s
@@ -1307,6 +1316,7 @@ BufferSource	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource
 Built-in browser autofill	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### Built-in browser autofill$/;"	S
 Built-in objects: Internal slots	1-js/99-js-misc/01-proxy/article.md	/^### Built-in objects: Internal slots$/;"	S
 Built-in shadow DOM	8-web-components/3-shadow-dom/article.md	/^## Built-in shadow DOM$/;"	s
+C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne [[HomeObject]] fait référence à sayHiMixin, comme indiqué sur l’image ci-dessus.	1-js/09-classes/07-mixins/article.md	/^C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMix/;"	c
 CORS for simple requests	5-network/05-fetch-crossorigin/article.md	/^## CORS for simple requests$/;"	s
 CSS for JS developers	css.md	/^# CSS for JS developers$/;"	c
 CSS hooks with custom properties	8-web-components/6-shadow-dom-style/article.md	/^## CSS hooks with custom properties$/;"	s
@@ -1339,6 +1349,8 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/inde
 Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
+Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`, il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.	1-js/08-prototypes/03-native-prototypes/article.md	/^Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que d/;"	c
+Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être un objet ou` null`, une chaîne de caractères ne peut pas devenir un prototype.	1-js/08-prototypes/04-prototype-methods/article.md	/^Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être u/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
 Character classes	9-regular-expressions/02-regexp-character-classes/article.md	/^# Character classes$/;"	c
@@ -1376,7 +1388,11 @@ Combined-Shape	1-js/04-object-basics/01-object/object.svg	/^<svg xmlns="http:\/\
 Combined-Shape	1-js/04-object-basics/01-object/variable-contains-reference.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="370" height="249" viewBox="0 0 370 249"><defs/;"	i
 Combined-Shape	1-js/04-object-basics/01-object/variable-copy-reference.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="260" viewBox="0 0 599 260"><defs/;"	i
 Commande du débogueur	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Commande du débogueur$/;"	s
+Comme ceci:	1-js/10-error-handling/1-try-catch/article.md	/^Comme ceci:$/;"	c
+Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.	1-js/09-classes/02-class-inheritance/article.md	/^Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-mê/;"	c
+Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`,` Number`, `Boolean`, ils fournissent les méthodes et disparaissent.	1-js/08-prototypes/03-native-prototypes/article.md	/^Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs pro/;"	c
 Comment	2-ui/1-document/05-basic-dom-node-properties/dom-class-hierarchy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="478" height="364" viewBox="0 0 478 364"><defs/;"	i
+Comment échapper à ce problème?	1-js/08-prototypes/04-prototype-methods/article.md	/^Comment échapper à ce problème?$/;"	c
 Commentaires	1-js/03-code-quality/03-comments/article.md	/^# Commentaires$/;"	c
 Comparaison avec null et undefined	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison avec null et undefined$/;"	s
 Comparaison de chaînes de caractères	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison de chaînes de caractères$/;"	s
@@ -1459,6 +1475,8 @@ DOM tree	2-ui/1-document/02-dom-nodes/article.md	/^# DOM tree$/;"	c
 DOMContentLoaded	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^## DOMContentLoaded$/;"	s
 DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and scripts$/;"	S
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
+Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMachine`, nous pouvons avoir une raison légitime d’accéder à ses composants internes. C'est pourquoi les champs protégés sont utilisés plus souvent, même s'ils ne sont pas pris en charge par la syntaxe du langage.	1-js/09-classes/04-private-protected-properties-methods/article.md	/^Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMa/;"	c
+Dans le code ci-dessous, nous avons l'intention d'appeler la méthode `user.go()` 4 fois de suite.	1-js/04-object-basics/04-object-methods/3-why-this/task.md	/^Dans le code ci-dessous, nous avons l'intention d'appeler la méthode `user.go()` 4 fois de suit/;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
@@ -1489,12 +1507,14 @@ Description imbriquée	1-js/03-code-quality/05-testing-mocha/article.md	/^## Des
 Deux façons de penser	1-js/06-advanced-functions/01-recursion/article.md	/^## Deux façons de penser$/;"	s
 Deux fonctions - un objet	1-js/04-object-basics/06-constructor-new/1-two-functions-one-object/task.md	/^# Deux fonctions - un objet$/;"	c
 Deux références	1-js/04-object-basics/02-garbage-collection/article.md	/^## Deux références$/;"	s
+Devrions-nous en être satisfaits? Bien sûr que non!	1-js/10-error-handling/1-try-catch/article.md	/^Devrions-nous en être satisfaits? Bien sûr que non!$/;"	c
 Dispatching custom events	2-ui/2-events/05-dispatch-events/article.md	/^# Dispatching custom events$/;"	c
 Document	2-ui/1-document/index.md	/^# Document$/;"	c
 Document	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
 Document and resource loading	2-ui/5-loading/index.md	/^# Document and resource loading$/;"	c
 Document coordinates [#getCoords]	2-ui/1-document/11-coordinates/article.md	/^## Document coordinates [#getCoords]$/;"	s
 DocumentFragment [#document-fragment]	2-ui/1-document/07-modifying-document/article.md	/^## DocumentFragment [#document-fragment]$/;"	s
+Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.	1-js/10-error-handling/2-custom-errors/article.md	/^Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous l/;"	c
 Donkey	2-ui/2-events/01-introduction-browser-events/06-hide-message/solution.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
 Donkey	2-ui/2-events/01-introduction-browser-events/06-hide-message/source.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
 Donkey	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
@@ -1532,10 +1552,15 @@ Element-only navigation	2-ui/1-document/03-dom-navigation/article.md	/^## Elemen
 Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Emprunt de prototypes$/;"	s
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
+En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):	1-js/09-classes/04-private-protected-properties-methods/article.md	/^En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):$/;"	c
+En JavaScript, une classe est une sorte de fonction.	1-js/09-classes/01-class/article.md	/^En JavaScript, une classe est une sorte de fonction.$/;"	c
+En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.	1-js/09-classes/03-static-properties-methods/article.md	/^En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.$/;"	c
+En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.	1-js/06-advanced-functions/12-arrow-functions/article.md	/^En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "context/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
 Encoding strings	5-network/07-url/article.md	/^### Encoding strings$/;"	S
+Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.	1-js/08-prototypes/03-native-prototypes/article.md	/^Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.$/;"	c
 Enter cookie samesite option	6-data-storage/01-cookie/article.md	/^### Enter cookie samesite option$/;"	S
 Environnement Lexical	1-js/06-advanced-functions/03-closure/article.md	/^## Environnement Lexical$/;"	s
 Environnement lexical intérieur et extérieur	1-js/06-advanced-functions/03-closure/article.md	/^### Environnement lexical intérieur et extérieur$/;"	S
@@ -1548,6 +1573,7 @@ Escaping	9-regular-expressions/07-regexp-escaping/article.md	/^## Escaping$/;"	s
 Escaping in […]	9-regular-expressions/08-regexp-character-sets-and-ranges/article.md	/^## Escaping in […]$/;"	s
 Escaping, special characters	9-regular-expressions/07-regexp-escaping/article.md	/^# Escaping, special characters$/;"	c
 Est-ce que "else" est requis ?	1-js/02-first-steps/14-function-basics/1-if-else-required/task.md	/^# Est-ce que "else" est requis ?$/;"	c
+Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volée" avec `Object.setPrototypeOf` ou `obj.__ proto __=` est une opération très lente, elle rompt les optimisations internes pour des opérations d'accès aux propriétés d'objet. Alors évitez-la à moins que vous ne sachiez ce que vous faites, ou que la vitesse de JavaScript n'a pas d'importance pour vous.	1-js/08-prototypes/04-prototype-methods/article.md	/^Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volé/;"	c
 Et maintenant ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Et maintenant ?$/;"	s
 Eval-calculator	1-js/99-js-misc/02-eval/1-eval-calculator/task.md	/^# Eval-calculator$/;"	c
 Eval: run a code string	1-js/99-js-misc/02-eval/article.md	/^# Eval: run a code string$/;"	c
@@ -1925,11 +1951,14 @@ Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/ta
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
 IIFE	1-js/06-advanced-functions/03-closure/article.md	/^### IIFE$/;"	S
+Ici les conséquences ne sont pas terribles. Mais dans d'autres cas, nous pouvons attribuer des valeurs d'objet, le prototype peut en effet être modifié. En conséquence, l'exécution se déroulera de manière totalement inattendue.	1-js/08-prototypes/04-prototype-methods/article.md	/^Ici les conséquences ne sont pas terribles. Mais dans d'autres cas, nous pouvons attribuer des /;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
 If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
+Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `/;"	c
+Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, car c'est vraiment utile. Par exemple, Node.js a [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) pour ça. Et dans le navigateur, nous pouvons attribuer une fonction à la propriété [window.onerror](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onerror), qui fonctionnera en cas d'erreur non interceptée.	1-js/10-error-handling/1-try-catch/article.md	/^Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, c/;"	c
 IloveHTML5	9-regular-expressions/02-regexp-character-classes/love-html5-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="236" height="38" viewBox="0 0 236 38"><defs></;"	i
 Image gallery	2-ui/2-events/04-default-browser-action/3-image-gallery/task.md	/^# Image gallery$/;"	c
 Image to blob	4-binary/03-blob/article.md	/^## Image to blob$/;"	s
@@ -1993,6 +2022,7 @@ JohnSmith	8-web-components/5-slots-composition/shadow-dom-user-card.svg	/^<svg x
 Jour de la semaine européenne	1-js/05-data-types/11-date/3-weekday/task.md	/^# Jour de la semaine européenne$/;"	c
 Jupiter	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Jupiter<\/h1>$/;"	h
 Jupiter	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Jupiter<\/h1>$/;"	h
+Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une propriété d'objet est en réalité une chose plus flexible et plus puissante.	1-js/07-object-properties/01-property-descriptors/article.md	/^Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une pro/;"	c
 KB_Germany	2-ui/3-event-details/5-keyboard-events/german-layout.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="600" height="200" viewBox="0 0 600 200"><defs/;"	i
 KB_United_States-NoAltGr	2-ui/3-event-details/5-keyboard-events/us-layout.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="602" height="202" viewBox="0 0 602 202"><defs/;"	i
 Keyboard-driven mouse	2-ui/4-forms-controls/2-focus-blur/5-keyboard-mouse/task.md	/^# Keyboard-driven mouse$/;"	c
@@ -2002,10 +2032,12 @@ Koa	5-network/01-fetch/post.view/server.js	/^const Koa = require('koa');$/;"	C
 Koa	5-network/02-formdata/post.view/server.js	/^const Koa = require('koa');$/;"	C
 Koa	5-network/04-fetch-abort/demo.view/server.js	/^const Koa = require('koa');$/;"	C
 L'Expression Class	1-js/09-classes/01-class/article.md	/^##  L'Expression Class$/;"	s
+L'accésseur/mutateur `__proto__` intégré est dangereux si nous souhaitons insérer des clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme la clé, et il y aura une erreur, avec des conséquences, espérons légères, mais généralement imprévisibles.	1-js/08-prototypes/04-prototype-methods/article.md	/^L'accésseur\/mutateur `__proto__` intégré est dangereux si nous souhaitons insérer des clés/;"	c
 L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/1-destruct-user/task.md	/^# L'affectation par décomposition$/;"	c
 L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/article.md	/^# L'affectation par décomposition$/;"	c
 L'ancien "var"	1-js/06-advanced-functions/04-var/article.md	/^# L'ancien "var"$/;"	c
 L'astuce du NON binaire	1-js/05-data-types/03-string/article.md	/^#### L'astuce du NON binaire$/;"	t
+L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalité des objets différents en cas de besoin.	1-js/08-prototypes/03-native-prototypes/article.md	/^L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalité des objets dif/;"	c
 L'environnement du navigateur, spécifications	2-ui/1-document/01-browser-environment/article.md	/^# L'environnement du navigateur, spécifications$/;"	c
 L'expression import()	1-js/13-modules/03-modules-dynamic-imports/article.md	/^## L'expression import()$/;"	s
 L'instruction "if"	1-js/02-first-steps/10-ifelse/article.md	/^## L'instruction "if"$/;"	s
@@ -2024,6 +2056,7 @@ La balise "script"	1-js/02-first-steps/01-hello-world/article.md	/^## La balise 
 La bonne solution	1-js/05-data-types/02-number/9-random-int-min-max/solution.md	/^# La bonne solution$/;"	c
 La boucle "for"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "for"$/;"	s
 La boucle "while"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "while"$/;"	s
+La boucle `for..in` boucle aussi sur les propriétés héritées.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^La boucle `for..in` boucle aussi sur les propriétés héritées.$/;"	c
 La boucle for..in	1-js/08-prototypes/01-prototype-inheritance/article.md	/^## La boucle for..in$/;"	s
 La clause "else"	1-js/02-first-steps/10-ifelse/article.md	/^## La clause "else"$/;"	s
 La concision est l'âme de l'esprit	1-js/03-code-quality/04-ninja-code/article.md	/^## La concision est l'âme de l'esprit$/;"	s
@@ -2055,6 +2088,7 @@ Le Clavier: les évènements keydown et keyup	2-ui/3-event-details/5-keyboard-ev
 Le Défilement	2-ui/3-event-details/8-onscroll/article.md	/^# Le Défilement$/;"	c
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
+Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object.prototype`:	1-js/08-prototypes/04-prototype-methods/article.md	/^Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object./;"	c
 Le balisage moderne	1-js/02-first-steps/01-hello-world/article.md	/^## Le balisage moderne$/;"	s
 Le constructeur, l'opérateur "new"	1-js/04-object-basics/06-constructor-new/article.md	/^# Le constructeur, l'opérateur "new"$/;"	c
 Le flux de développement	1-js/03-code-quality/05-testing-mocha/article.md	/^## Le flux de développement$/;"	s
@@ -2094,6 +2128,7 @@ Les microtaches	1-js/11-async/07-microtask-queue/article.md	/^# Les microtaches$
 Les mixins	1-js/09-classes/07-mixins/article.md	/^# Les mixins$/;"	c
 Les modules sont différés	1-js/13-modules/01-modules-intro/article.md	/^### Les modules sont différés$/;"	S
 Les méthodes ne sont pas "libres"	1-js/09-classes/02-class-inheritance/article.md	/^### Les méthodes ne sont pas "libres"$/;"	S
+Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble", sans rapport avec une instance de classe concrète.	1-js/09-classes/03-static-properties-methods/article.md	/^Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans/;"	c
 Les paramètres Rest `...`	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^## Les paramètres Rest `...`$/;"	s
 Les paramètres Rest et l'opérateur spread	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^# Les paramètres Rest et l'opérateur spread$/;"	c
 Les points-virgules [#semicolon]	1-js/02-first-steps/02-structure/article.md	/^## Les points-virgules [#semicolon]$/;"	s
@@ -2102,6 +2137,7 @@ Les types d'évènements de Souris	2-ui/3-event-details/1-mouse-events-basics/ar
 Les types de données	1-js/02-first-steps/05-types/article.md	/^# Les types de données$/;"	c
 Les valeurs par défaut	1-js/02-first-steps/14-function-basics/article.md	/^## Les valeurs par défaut$/;"	s
 Les valeurs par défaut	1-js/05-data-types/10-destructuring-assignment/article.md	/^### Les valeurs par défaut$/;"	S
+Les valeurs spéciales `null` et `undefined` sont distinctes. Ils n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux. Et il n'y a pas non plus de prototypes correspondants.	1-js/08-prototypes/03-native-prototypes/article.md	/^Les valeurs spéciales `null` et `undefined` sont distinctes. Ils n'ont pas de wrapper d'objet, /;"	c
 Les variables	1-js/02-first-steps/04-variables/article.md	/^# Les variables$/;"	c
 Les éditeurs de code	1-js/01-getting-started/3-code-editors/article.md	/^# Les éditeurs de code $/;"	c
 Les éditeurs légers	1-js/01-getting-started/3-code-editors/article.md	/^## Les éditeurs légers$/;"	s
@@ -2827,11 +2863,13 @@ Lookahead and lookbehind	9-regular-expressions/14-regexp-lookahead-lookbehind/ar
 Lookahead to the rescue!	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^### Lookahead to the rescue!$/;"	S
 Lookbehind	9-regular-expressions/14-regexp-lookahead-lookbehind/article.md	/^## Lookbehind$/;"	s
 Looping over keys	6-data-storage/02-localstorage/article.md	/^## Looping over keys$/;"	s
+Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier/;"	c
 Losing "this"	1-js/06-advanced-functions/10-bind/article.md	/^## Losing "this"$/;"	s
 L’ordre des évènements	2-ui/3-event-details/1-mouse-events-basics/article.md	/^### L’ordre des évènements$/;"	S
 Macrotasks and Microtasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Macrotasks and Microtasks$/;"	s
 Main-HTTP-request	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 Main-HTTP-response	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
+Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.	1-js/09-classes/03-static-properties-methods/article.md	/^Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé/;"	c
 Make external links orange	2-ui/1-document/06-dom-attributes-and-properties/2-yellow-links/task.md	/^# Make external links orange$/;"	c
 Making unselectable	2-ui/99-ui-misc/02-selection-range/article.md	/^## Making unselectable$/;"	s
 Manuels	1-js/01-getting-started/2-manuals-specifications/article.md	/^## Manuels$/;"	s
@@ -2912,9 +2950,14 @@ Non configurable	1-js/07-object-properties/01-property-descriptors/article.md	/^
 Non énumérable	1-js/07-object-properties/01-property-descriptors/article.md	/^## Non énumérable$/;"	s
 Non-capturing groups with ?:	9-regular-expressions/11-regexp-groups/article.md	/^## Non-capturing groups with ?:$/;"	s
 Non-standard attributes, dataset	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## Non-standard attributes, dataset$/;"	s
+Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas dans `for..in`. Mais si nous ajoutons notre propre `toString`, alors, par défaut, il apparaît dans `for..in`, comme ceci:	1-js/07-object-properties/01-property-descriptors/article.md	/^Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas /;"	c
+Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais ils peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.	1-js/10-error-handling/2-custom-errors/article.md	/^Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, /;"	c
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
+Nous avons des objets:	1-js/08-prototypes/01-prototype-inheritance/2-search-algorithm/task.md	/^Nous avons des objets:$/;"	c
+Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe, il devrait renvoyer le constructeur que JavaScript utilisera en interne pour créer de nouvelles entités dans `map`, `filter`, etc.	1-js/09-classes/05-extend-natives/article.md	/^Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe,/;"	c
+Nous pouvons appeler ces objets "très simple" car ils sont encore plus simples qu'un objet ordinaire `{...}`.	1-js/08-prototypes/04-prototype-methods/article.md	/^Nous pouvons appeler ces objets "très simple" car ils sont encore plus simples qu'un objet ordi/;"	c
 Number	1-js/02-first-steps/05-types/article.md	/^## Number$/;"	s
 Number.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Numeric Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## Numeric Conversion$/;"	s
@@ -3177,9 +3220,12 @@ Position the note inside (absolute)	2-ui/1-document/11-coordinates/4-position-in
 Positionnent correcte	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Positionnent correcte$/;"	s
 Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## Possible mistakes$/;"	s
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
+Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici:	1-js/09-classes/02-class-inheritance/article.md	/^Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`,/;"	c
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
+Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas créé par `B()`.	1-js/09-classes/06-instanceof/1-strange-instanceof/task.md	/^Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas /;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
 Pourquoi deux hamsters sont pleins?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont pleins?$/;"	c
+Pourquoi?	1-js/08-prototypes/04-prototype-methods/article.md	/^Pourquoi?$/;"	c
 Power of n	7-animation/3-js-animation/article.md	/^### Power of n$/;"	S
 Prenez de la hauteur. Soyez abstrait.	1-js/03-code-quality/04-ninja-code/article.md	/^## Prenez de la hauteur. Soyez abstrait.$/;"	s
 Preventing backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Preventing backtracking$/;"	s
@@ -3228,6 +3274,7 @@ Qu'est-ce qui rend JavaScript unique?	1-js/01-getting-started/1-intro/article.md
 Qualité du code	1-js/03-code-quality/index.md	/^# Qualité du code$/;"	c
 Quantifiers +, *, ? and {n}	9-regular-expressions/09-regexp-quantifiers/article.md	/^# Quantifiers +, *, ? and {n}$/;"	c
 Quantity {n}	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Quantity {n}$/;"	s
+Que faire passer à `askPassword` dans le code ci-dessous, de sorte qu'il appelle `user.login(true)` comme `ok` et `user.login(false)` comme `fail`?	1-js/06-advanced-functions/10-bind/6-ask-partial/task.md	/^Que faire passer à `askPassword` dans le code ci-dessous, de sorte qu'il appelle `user.login(tr/;"	c
 Que peut faire JavaScript dans le navigateur ?	1-js/01-getting-started/1-intro/article.md	/^## Que peut faire JavaScript dans le navigateur ?$/;"	s
 Que va afficher setTimeout ?	1-js/06-advanced-functions/08-settimeout-setinterval/4-settimeout-result/task.md	/^# Que va afficher setTimeout ?$/;"	c
 Quel est le problème dans le test ?	1-js/03-code-quality/05-testing-mocha/3-pow-test-wrong/task.md	/^# Quel est le problème dans le test ?$/;"	c
@@ -4279,6 +4326,9 @@ Shorthands	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Shorthand
 Show a note near the element	2-ui/1-document/11-coordinates/2-position-at/task.md	/^# Show a note near the element$/;"	c
 Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-position-at-absolute/task.md	/^# Show a note near the element (absolute)$/;"	c
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
+Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.	1-js/08-prototypes/02-function-prototype/article.md	/^Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour l/;"	c
+Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient également accès aux méthodes de `animal`. Mais `this` dans chaque appel de méthode serait l'objet correspondant, évalué au moment de l'appel (avant le point), et non `animal`. Ainsi, lorsque nous écrivons des données dans `this`, elles sont stockées dans ces objets.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient/;"	c
+Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée:	1-js/07-object-properties/01-property-descriptors/article.md	/^Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'appara/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
@@ -4298,6 +4348,7 @@ Somme avec des closures	1-js/06-advanced-functions/03-closure/4-closure-sum/task
 Somme des nombres du visiteur	1-js/05-data-types/02-number/1-sum-interface/task.md	/^# Somme des nombres du visiteur$/;"	c
 Somme des nombres saisis	1-js/05-data-types/04-array/5-array-input-sum/task.md	/^# Somme des nombres saisis$/;"	c
 Somme des propriétés de l'objet	1-js/04-object-basics/01-object/5-sum-object/task.md	/^# Somme des propriétés de l'objet$/;"	c
+Sort in decreasing order	1-js/05-data-types/05-array-methods/4-sort-back/task.md	/^# Sort in decreasing order$/;"	c
 Sort the table	2-ui/1-document/07-modifying-document/12-sort-table/task.md	/^# Sort the table$/;"	c
 Sortable table	2-ui/2-events/03-event-delegation/3-sortable-table/task.md	/^# Sortable table$/;"	c
 Spaces-around-a-nest	1-js/03-code-quality/02-coding-style/code-style.svg	/^            <text id="Spaces-around-a-nest" font-family="OpenSans-Bold, Open Sans" font-size="14/;"	i
@@ -4441,8 +4492,10 @@ Toggling the menu	2-ui/2-events/01-introduction-browser-events/05-sliding-menu/s
 Tooltip behavior	2-ui/2-events/03-event-delegation/4-behavior-tooltip/task.md	/^# Tooltip behavior$/;"	c
 Toujours en mode "use strict"	1-js/13-modules/01-modules-intro/article.md	/^### Toujours en mode "use strict"$/;"	S
 Toujours utiliser "use strict"	1-js/02-first-steps/03-strict-mode/article.md	/^## Toujours utiliser "use strict"$/;"	s
+Tout comme les fonctions, les classes peuvent être définies a l'intérieur d'une autre expression, passées en paramètres, retournées, assignées etc.	1-js/09-classes/01-class/article.md	/^Tout comme les fonctions, les classes peuvent être définies a l'intérieur d'une autre express/;"	c
 Toutes les images ayant data-src se chargent lorsqu'elles deviennent visible.	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h3>Toutes les images ayant <code>data-src<\/code> se chargent lorsqu'elles deviennent visible/;"	j
 Toutes les images ayant data-src se chargent lorsqu'elles deviennent visible.	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h3>Toutes les images ayant <code>data-src<\/code> se chargent lorsqu'elles deviennent visible/;"	j
+Toutes les méthodes qui renvoient des propriétés d'objet (comme `Object.keys` et autres) - renvoient leurs propres propriétés. Si nous voulons les hérités, alors nous pouvons utiliser `for..in`.	1-js/08-prototypes/04-prototype-methods/article.md	/^Toutes les méthodes qui renvoient des propriétés d'objet (comme `Object.keys` et autres) - re/;"	c
 Tracer l'exécution	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Tracer l'exécution$/;"	s
 Traduit border-left-width en borderLeftWidth	1-js/05-data-types/05-array-methods/1-camelcase/task.md	/^# Traduit border-left-width en borderLeftWidth$/;"	c
 Transactions	6-data-storage/03-indexeddb/article.md	/^## Transactions$/;"	s
@@ -4501,6 +4554,7 @@ Une Introduction à JavaScript	1-js/01-getting-started/1-intro/article.md	/^# Un
 Une boucle infinie	1-js/05-data-types/02-number/4-endless-loop-error/task.md	/^# Une boucle infinie$/;"	c
 Une introduction	1-js/01-getting-started/index.md	/^# Une introduction$/;"	c
 Une primitive en tant qu'objet	1-js/05-data-types/01-primitives-methods/article.md	/^## Une primitive en tant qu'objet$/;"	s
+Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this` dans `set fullName(value)`? Où les propriétés `this.name` et `this.surname` sont écrites: dans `user` ou `admin` ?	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this/;"	c
 Une question à propos de "if"	1-js/02-first-steps/11-logical-operators/8-if-question/task.md	/^# Une question à propos de "if"$/;"	c
 Une simple page	1-js/02-first-steps/09-alert-prompt-confirm/1-simple-page/task.md	/^# Une simple page$/;"	c
 Une variable	1-js/02-first-steps/04-variables/article.md	/^## Une variable$/;"	s
@@ -4541,6 +4595,7 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
+Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux - assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.	1-js/10-error-handling/2-custom-errors/article.md	/^Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attri/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
 Vérification d'existence	1-js/04-object-basics/01-object/article.md	/^## Vérification d'existence$/;"	s
 Vérification de classe: "instanceof"	1-js/09-classes/06-instanceof/article.md	/^# Vérification de classe: "instanceof"$/;"	c
@@ -4563,10 +4618,12 @@ What's common between...	8-web-components/1-webcomponents-intro/article.md	/^## 
 What's in the nodeType?	2-ui/1-document/05-basic-dom-node-properties/2-lastchild-nodetype-inline/task.md	/^# What's in the nodeType?$/;"	c
 What's the scroll from the bottom?	2-ui/1-document/09-size-and-scroll/1-get-scroll-height-bottom/task.md	/^# What's the scroll from the bottom?$/;"	c
 What's-the-“official	1-js/02-first-steps/10-ifelse/2-check-standard/ifelse_task2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="500" height="264" viewBox="0 0 500 264"><defs/;"	i
+Where does it write?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Where does it write?$/;"	c
 Where's the "document" in the hierarchy?	2-ui/1-document/05-basic-dom-node-properties/4-where-document-in-hierarchy/task.md	/^# Where's the "document" in the hierarchy?$/;"	c
 Which handlers run?	2-ui/2-events/01-introduction-browser-events/03-which-handlers-run/task.md	/^# Which handlers run?$/;"	c
 Who's-there?	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 Why "return false" doesn't work?	2-ui/2-events/04-default-browser-action/1-why-return-false-fails/task.md	/^# Why "return false" doesn't work?$/;"	c
+Why are both hamsters full?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Why are both hamsters full?$/;"	c
 Why do we need Origin?	5-network/05-fetch-crossorigin/1-do-we-need-origin/task.md	/^# Why do we need Origin?$/;"	c
 Why does "aaa" remain?	2-ui/1-document/07-modifying-document/5-why-aaa/task.md	/^# Why does "aaa" remain?$/;"	c
 Why is CORS needed? A brief history	5-network/05-fetch-crossorigin/article.md	/^## Why is CORS needed? A brief history$/;"	s
@@ -4656,6 +4713,7 @@ _name:-"Admin"	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="ht
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="230" height="206" viewBox="0 0 230 206"><defs/;"	i
 `	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="550" height="173" viewBox="0 0 550 173"><defs/;"	i
+`MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis que les méthodes, accesseurs et mutateurs sont écrits dans `MyClass.prototype`.	1-js/09-classes/01-class/article.md	/^`MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis qu/;"	c
 `[[HomeObject]]`	1-js/09-classes/02-class-inheritance/article.md	/^### `[[HomeObject]]`$/;"	S
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	d
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	i
