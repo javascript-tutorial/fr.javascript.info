@@ -294,7 +294,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
-- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -1234,7 +1233,6 @@ Async/await	1-js/11-async/08-async-await/article.md	/^# Async\/await$/;"	c
 Attributes and properties	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^# Attributes and properties$/;"	c
 Attributs de propriétés	1-js/07-object-properties/01-property-descriptors/article.md	/^## Attributs de propriétés$/;"	s
 Attributs et descripteurs de propriétés	1-js/07-object-properties/01-property-descriptors/article.md	/^# Attributs et descripteurs de propriétés$/;"	c
-Au fur et à mesure que l'application grandit, nos propres erreurs forment naturellement une hiérarchie. Par exemple, `HttpTimeoutError` peut hériter de `HttpError`, etc.	1-js/10-error-handling/2-custom-errors/article.md	/^Au fur et à mesure que l'application grandit, nos propres erreurs forment naturellement une hié/;"	c
 Aucun module "nu" autorisé	1-js/13-modules/01-modules-intro/article.md	/^### Aucun module "nu" autorisé$/;"	S
 Authoring	AUTHORING.md	/^# Authoring$/;"	c
 Auto-correction	1-js/05-data-types/11-date/article.md	/^## Auto-correction$/;"	s
@@ -1497,7 +1495,6 @@ Document	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="htt
 Document and resource loading	2-ui/5-loading/index.md	/^# Document and resource loading$/;"	c
 Document coordinates [#getCoords]	2-ui/1-document/11-coordinates/article.md	/^## Document coordinates [#getCoords]$/;"	s
 DocumentFragment [#document-fragment]	2-ui/1-document/07-modifying-document/article.md	/^## DocumentFragment [#document-fragment]$/;"	s
-Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.	1-js/10-error-handling/2-custom-errors/article.md	/^Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous l/;"	c
 Donkey	2-ui/2-events/01-introduction-browser-events/06-hide-message/solution.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
 Donkey	2-ui/2-events/01-introduction-browser-events/06-hide-message/source.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
 Donkey	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/index.html	/^      <h3>Donkey<\/h3>$/;"	j
@@ -2915,7 +2912,6 @@ Non configurable	1-js/07-object-properties/01-property-descriptors/article.md	/^
 Non énumérable	1-js/07-object-properties/01-property-descriptors/article.md	/^## Non énumérable$/;"	s
 Non-capturing groups with ?:	9-regular-expressions/11-regexp-groups/article.md	/^## Non-capturing groups with ?:$/;"	s
 Non-standard attributes, dataset	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## Non-standard attributes, dataset$/;"	s
-Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais ils peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.	1-js/10-error-handling/2-custom-errors/article.md	/^Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, /;"	c
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
@@ -4545,7 +4541,6 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
-Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux - assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.	1-js/10-error-handling/2-custom-errors/article.md	/^Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attri/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
 Vérification d'existence	1-js/04-object-basics/01-object/article.md	/^## Vérification d'existence$/;"	s
 Vérification de classe: "instanceof"	1-js/09-classes/06-instanceof/article.md	/^# Vérification de classe: "instanceof"$/;"	c
