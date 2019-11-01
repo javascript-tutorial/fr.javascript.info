@@ -1345,7 +1345,6 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/inde
 Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
-Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être un objet ou` null`, une chaîne de caractères ne peut pas devenir un prototype.	1-js/08-prototypes/04-prototype-methods/article.md	/^Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être u/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
 Character classes	9-regular-expressions/02-regexp-character-classes/article.md	/^# Character classes$/;"	c
@@ -1386,7 +1385,6 @@ Commande du débogueur	1-js/03-code-quality/01-debugging-chrome/article.md	/^## 
 Comme ceci:	1-js/10-error-handling/1-try-catch/article.md	/^Comme ceci:$/;"	c
 Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.	1-js/09-classes/02-class-inheritance/article.md	/^Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-mê/;"	c
 Comment	2-ui/1-document/05-basic-dom-node-properties/dom-class-hierarchy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="478" height="364" viewBox="0 0 478 364"><defs/;"	i
-Comment échapper à ce problème?	1-js/08-prototypes/04-prototype-methods/article.md	/^Comment échapper à ce problème?$/;"	c
 Commentaires	1-js/03-code-quality/03-comments/article.md	/^# Commentaires$/;"	c
 Comparaison avec null et undefined	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison avec null et undefined$/;"	s
 Comparaison de chaînes de caractères	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison de chaînes de caractères$/;"	s
@@ -1564,7 +1562,6 @@ Escaping	9-regular-expressions/07-regexp-escaping/article.md	/^## Escaping$/;"	s
 Escaping in […]	9-regular-expressions/08-regexp-character-sets-and-ranges/article.md	/^## Escaping in […]$/;"	s
 Escaping, special characters	9-regular-expressions/07-regexp-escaping/article.md	/^# Escaping, special characters$/;"	c
 Est-ce que "else" est requis ?	1-js/02-first-steps/14-function-basics/1-if-else-required/task.md	/^# Est-ce que "else" est requis ?$/;"	c
-Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volée" avec `Object.setPrototypeOf` ou `obj.__ proto __=` est une opération très lente, elle rompt les optimisations internes pour des opérations d'accès aux propriétés d'objet. Alors évitez-la à moins que vous ne sachiez ce que vous faites, ou que la vitesse de JavaScript n'a pas d'importance pour vous.	1-js/08-prototypes/04-prototype-methods/article.md	/^Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volé/;"	c
 Et maintenant ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Et maintenant ?$/;"	s
 Eval-calculator	1-js/99-js-misc/02-eval/1-eval-calculator/task.md	/^# Eval-calculator$/;"	c
 Eval: run a code string	1-js/99-js-misc/02-eval/article.md	/^# Eval: run a code string$/;"	c
@@ -1942,7 +1939,6 @@ Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/ta
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
 IIFE	1-js/06-advanced-functions/03-closure/article.md	/^### IIFE$/;"	S
-Ici les conséquences ne sont pas terribles. Mais dans d'autres cas, nous pouvons attribuer des valeurs d'objet, le prototype peut en effet être modifié. En conséquence, l'exécution se déroulera de manière totalement inattendue.	1-js/08-prototypes/04-prototype-methods/article.md	/^Ici les conséquences ne sont pas terribles. Mais dans d'autres cas, nous pouvons attribuer des /;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
 If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
@@ -2075,7 +2071,6 @@ Le Clavier: les évènements keydown et keyup	2-ui/3-event-details/5-keyboard-ev
 Le Défilement	2-ui/3-event-details/8-onscroll/article.md	/^# Le Défilement$/;"	c
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
-Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object.prototype`:	1-js/08-prototypes/04-prototype-methods/article.md	/^Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object./;"	c
 Le balisage moderne	1-js/02-first-steps/01-hello-world/article.md	/^## Le balisage moderne$/;"	s
 Le constructeur, l'opérateur "new"	1-js/04-object-basics/06-constructor-new/article.md	/^# Le constructeur, l'opérateur "new"$/;"	c
 Le flux de développement	1-js/03-code-quality/05-testing-mocha/article.md	/^## Le flux de développement$/;"	s
@@ -2940,7 +2935,6 @@ Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-u
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe, il devrait renvoyer le constructeur que JavaScript utilisera en interne pour créer de nouvelles entités dans `map`, `filter`, etc.	1-js/09-classes/05-extend-natives/article.md	/^Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe,/;"	c
-Nous pouvons appeler ces objets "très simple" car ils sont encore plus simples qu'un objet ordinaire `{...}`.	1-js/08-prototypes/04-prototype-methods/article.md	/^Nous pouvons appeler ces objets "très simple" car ils sont encore plus simples qu'un objet ordi/;"	c
 Number	1-js/02-first-steps/05-types/article.md	/^## Number$/;"	s
 Number.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Numeric Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## Numeric Conversion$/;"	s
@@ -3208,7 +3202,6 @@ Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down
 Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas créé par `B()`.	1-js/09-classes/06-instanceof/1-strange-instanceof/task.md	/^Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas /;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
 Pourquoi deux hamsters sont rassasiés ?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont rassasiés ?$/;"	c
-Pourquoi?	1-js/08-prototypes/04-prototype-methods/article.md	/^Pourquoi?$/;"	c
 Power of n	7-animation/3-js-animation/article.md	/^### Power of n$/;"	S
 Prenez de la hauteur. Soyez abstrait.	1-js/03-code-quality/04-ninja-code/article.md	/^## Prenez de la hauteur. Soyez abstrait.$/;"	s
 Preventing backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Preventing backtracking$/;"	s
