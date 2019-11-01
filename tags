@@ -566,7 +566,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 1	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 1	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 1-Jan-2019	1-js/09-classes/05-extend-natives/object-date-inheritance.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="503" height="370" viewBox="0 0 503 370"><defs/;"	i
-1. Nous avons ajouté une chaîne supplémentaire (accentué), que montre `alert` maintenant?	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^1. Nous avons ajouté une chaîne supplémentaire (accentué), que montre `alert` maintenant?$/;"	c
 10	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
 10	4-binary/01-arraybuffer-binary-arrays/arraybuffer-views.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="603" height="286" viewBox="0 0 603 286"><defs/;"	i
 10	5-network/08-xmlhttprequest/phones-async.view/phones.json	/^    {$/;"	o
@@ -703,7 +702,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 3	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 3	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 3-copy	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
-3. Comme ceci (une ligne remplacé)?	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^3. Comme ceci (une ligne remplacé)?$/;"	c
 300	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 3:-['html']-5:-['css	6-data-storage/03-indexeddb/indexeddb-index.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="289" viewBox="0 0 440 289"><defs/;"	i
 4	1-js/05-data-types/05-array-methods/reduce.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="129" viewBox="0 0 620 129"><defs/;"	i
