@@ -50,15 +50,10 @@ Il suffit donc de connaître son interface externe pour utiliser un objet. Nous 
 
 C'était une introduction générale.
 
-<<<<<<< HEAD
 En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):
-=======
-- Public: accessible from anywhere. They comprise the external interface. Until now we were only using public properties and methods.
-- Private: accessible only from inside the class. These are for the internal interface.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
-- Public: accessible de n'importe où. Ils comprennent l'interface externe. Jusqu'à présent, nous utilisions uniquement des propriétés et méthodes publiques.
-- Privé: accessible uniquement de l'intérieur de la classe. Ce sont pour l'interface interne.
+- Publique : accessible de n'importe où. Ils comprennent l'interface externe. Jusqu'à présent, nous utilisions uniquement des propriétés et méthodes publiques.
+- Privée : accessible uniquement de l'intérieur de la classe. Ce sont pour l'interface interne.
 
 Dans de nombreuses autres langues, il existe également des champs "protégés": accessibles uniquement de l'intérieur de la classe et de ceux qui l'étendent (comme privé, mais avec accès des classes héritées). Ils sont également utiles pour l'interface interne. En un sens, elles sont plus répandues que les méthodes privées, car nous souhaitons généralement que les classes héritées puissent y accéder.
 
@@ -263,11 +258,7 @@ class MegaCoffeeMachine extends CoffeeMachine {
 }
 ```
 
-<<<<<<< HEAD
-Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMachine`, nous pouvons avoir une raison légitime d’accéder à ses composants internes. C'est pourquoi les champs protégés sont utilisés plus souvent, même s'ils ne sont pas pris en charge par la syntaxe du langage.
-=======
-In many scenarios such limitation is too severe. If we extend a `CoffeeMachine`, we may have legitimate reasons to access its internals. That's why protected fields are used more often, even though they are not supported by the language syntax.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons une `CoffeeMachine`, nous pouvons avoir une raison légitime d’accéder à ses composants internes. C'est pourquoi les champs protégés sont utilisés plus souvent, même s'ils ne sont pas pris en charge par la syntaxe du langage.
 
 ````warn header="Les champs privés ne sont pas disponibles par this[nom]"
 Les champs privés sont spéciaux.
@@ -289,17 +280,13 @@ C'est impossible avec les champs privés: `this['#name']` ne fonctionne pas. C'e
 
 ## Résumé
 
-<<<<<<< HEAD
 En termes de POO, la délimitation de l'interface interne de l'interface externe est appelée [encapsulation]("https://fr.wikipedia.org/wiki/Encapsulation_(programmation)").
-=======
-Protection for users, so that they don't shoot themselves in the foot
-: Imagine, there's a team of developers using a coffee machine. It was made by the "Best CoffeeMachine" company, and works fine, but a protective cover was removed. So the internal interface is exposed.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Cela offre les avantages suivants:
 
-Protection pour les utilisateurs, afin qu'ils ne se tirent pas une balle dans le pied
-: Imaginez, il y a une équipe de développeurs utilisant une machine à café. Il a été fabriqué par la société "Best CoffeeMachine" et fonctionne parfaitement, mais une housse de protection a été retirée. Donc, l'interface interne est exposée.
+Protection des utilisateurs pour qu'ils ne se tirent pas une balle dans le pied
+: Imaginez, il y a une équipe de développeurs utilisant une machine à café. Elle a été fabriquée par la société "Best CoffeeMachine" et fonctionne parfaitement, mais une coque de protection a été retirée. Donc, l'interface interne est exposée.
+
 
     Tous les développeurs sont civilisés - ils utilisent la machine à café comme prévu. Mais l'un d'entre eux, John, a décidé qu'il était le plus intelligent et a apporté quelques modifications aux éléments internes de la machine à café. La machine à café a donc échoué deux jours plus tard.
     
@@ -323,16 +310,9 @@ Cacher la complexité
 
     **C'est toujours pratique lorsque les détails de l'implémentation sont cachés et qu'une interface externe simple et bien documentée est disponible.**
 
-<<<<<<< HEAD
-Pour masquer l'interface interne, nous utilisons des propriétés protégées ou privées:
+Pour masquer l'interface interne, nous utilisons des propriétés protégées ou privées :
 
-- Les champs protégés commencent par `_`. C'est une convention bien connue, non appliquée au niveau linguistique. Les programmeurs doivent uniquement accéder à un champ commençant par `_` depuis sa classe et les classes qui en héritent.
-- Les champs privés commencent par `#`. JavaScript garantit que nous ne pouvons accéder qu'à ceux la de l'intérieur de la classe.
-=======
-To hide an internal interface we use either protected or private properties:
-
-- Protected fields start with `_`. That's a well-known convention, not enforced at the language level. Programmers should only access a field starting with `_` from its class and classes inheriting from it.
-- Private fields start with `#`. JavaScript makes sure we can only access those from inside the class.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+- Les champs protégés commencent par `_`. C'est une convention bien connue, non appliquée au niveau du langage. Les programmeurs doivent uniquement accéder à un champ commençant par `_` depuis sa classe et les classes qui en héritent.
+- Les champs privés commencent par `#`. JavaScript garantit que nous ne pouvons accéder à ceux la que de l'intérieur de la classe.
 
 Pour le moment, les champs privés ne sont pas bien supportés par les navigateurs, mais peuvent être polyfilled.

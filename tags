@@ -1465,7 +1465,6 @@ DOM tree	2-ui/1-document/02-dom-nodes/article.md	/^# DOM tree$/;"	c
 DOMContentLoaded	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^## DOMContentLoaded$/;"	s
 DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and scripts$/;"	S
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
-Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMachine`, nous pouvons avoir une raison légitime d’accéder à ses composants internes. C'est pourquoi les champs protégés sont utilisés plus souvent, même s'ils ne sont pas pris en charge par la syntaxe du langage.	1-js/09-classes/04-private-protected-properties-methods/article.md	/^Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMa/;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
@@ -1541,7 +1540,6 @@ Element-only navigation	2-ui/1-document/03-dom-navigation/article.md	/^## Elemen
 Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Emprunt de prototypes$/;"	s
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
-En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):	1-js/09-classes/04-private-protected-properties-methods/article.md	/^En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):$/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
