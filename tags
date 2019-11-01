@@ -2020,7 +2020,6 @@ JohnSmith	8-web-components/5-slots-composition/shadow-dom-user-card.svg	/^<svg x
 Jour de la semaine européenne	1-js/05-data-types/11-date/3-weekday/task.md	/^# Jour de la semaine européenne$/;"	c
 Jupiter	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Jupiter<\/h1>$/;"	h
 Jupiter	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Jupiter<\/h1>$/;"	h
-Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une propriété d'objet est en réalité une chose plus flexible et plus puissante.	1-js/07-object-properties/01-property-descriptors/article.md	/^Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une pro/;"	c
 KB_Germany	2-ui/3-event-details/5-keyboard-events/german-layout.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="600" height="200" viewBox="0 0 600 200"><defs/;"	i
 KB_United_States-NoAltGr	2-ui/3-event-details/5-keyboard-events/us-layout.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="602" height="202" viewBox="0 0 602 202"><defs/;"	i
 Keyboard-driven mouse	2-ui/4-forms-controls/2-focus-blur/5-keyboard-mouse/task.md	/^# Keyboard-driven mouse$/;"	c
@@ -2948,7 +2947,6 @@ Non configurable	1-js/07-object-properties/01-property-descriptors/article.md	/^
 Non énumérable	1-js/07-object-properties/01-property-descriptors/article.md	/^## Non énumérable$/;"	s
 Non-capturing groups with ?:	9-regular-expressions/11-regexp-groups/article.md	/^## Non-capturing groups with ?:$/;"	s
 Non-standard attributes, dataset	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## Non-standard attributes, dataset$/;"	s
-Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas dans `for..in`. Mais si nous ajoutons notre propre `toString`, alors, par défaut, il apparaît dans `for..in`, comme ceci:	1-js/07-object-properties/01-property-descriptors/article.md	/^Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas /;"	c
 Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais ils peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.	1-js/10-error-handling/2-custom-errors/article.md	/^Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, /;"	c
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
@@ -4325,7 +4323,6 @@ Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-positio
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
 Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.	1-js/08-prototypes/02-function-prototype/article.md	/^Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour l/;"	c
 Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient également accès aux méthodes de `animal`. Mais `this` dans chaque appel de méthode serait l'objet correspondant, évalué au moment de l'appel (avant le point), et non `animal`. Ainsi, lorsque nous écrivons des données dans `this`, elles sont stockées dans ces objets.	1-js/08-prototypes/01-prototype-inheritance/article.md	/^Si nous avions d'autres objets tels que `bird`, `snake` etc. héritant de `animal`, ils auraient/;"	c
-Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée:	1-js/07-object-properties/01-property-descriptors/article.md	/^Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'appara/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
