@@ -3119,7 +3119,7 @@ Oval-9-+-Shape	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="htt
 Oval-9-+-Shape-2	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="449" viewBox="0 0 566 449"><defs/;"	i
 Oval-9-+-Shape-3	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="449" viewBox="0 0 566 449"><defs/;"	i
 Over-the-River,	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
-Où est-ce écrit?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Où est-ce écrit?$/;"	c
+Où est-ce écrit ?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Où est-ce écrit ?$/;"	c
 POST requests	5-network/01-fetch/article.md	/^## POST requests$/;"	s
 POST, FormData	5-network/08-xmlhttprequest/article.md	/^## POST, FormData$/;"	s
 POST-/pay	6-data-storage/01-cookie/cookie-xsrf.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="166" viewBox="0 0 668 166"><defs/;"	i
@@ -4610,7 +4610,6 @@ What's common between...	8-web-components/1-webcomponents-intro/article.md	/^## 
 What's in the nodeType?	2-ui/1-document/05-basic-dom-node-properties/2-lastchild-nodetype-inline/task.md	/^# What's in the nodeType?$/;"	c
 What's the scroll from the bottom?	2-ui/1-document/09-size-and-scroll/1-get-scroll-height-bottom/task.md	/^# What's the scroll from the bottom?$/;"	c
 What's-the-“official	1-js/02-first-steps/10-ifelse/2-check-standard/ifelse_task2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="500" height="264" viewBox="0 0 500 264"><defs/;"	i
-Where does it write?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Where does it write?$/;"	c
 Where's the "document" in the hierarchy?	2-ui/1-document/05-basic-dom-node-properties/4-where-document-in-hierarchy/task.md	/^# Where's the "document" in the hierarchy?$/;"	c
 Which handlers run?	2-ui/2-events/01-introduction-browser-events/03-which-handlers-run/task.md	/^# Which handlers run?$/;"	c
 Who's-there?	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
