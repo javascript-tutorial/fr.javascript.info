@@ -294,7 +294,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
-- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.	1-js/09-classes/07-mixins/article.md	/^- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.$/;"	c
 - Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -1311,7 +1310,6 @@ BufferSource	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource
 Built-in browser autofill	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### Built-in browser autofill$/;"	S
 Built-in objects: Internal slots	1-js/99-js-misc/01-proxy/article.md	/^### Built-in objects: Internal slots$/;"	S
 Built-in shadow DOM	8-web-components/3-shadow-dom/article.md	/^## Built-in shadow DOM$/;"	s
-C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne [[HomeObject]] fait référence à sayHiMixin, comme indiqué sur l’image ci-dessus.	1-js/09-classes/07-mixins/article.md	/^C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMix/;"	c
 CORS for simple requests	5-network/05-fetch-crossorigin/article.md	/^## CORS for simple requests$/;"	s
 CSS for JS developers	css.md	/^# CSS for JS developers$/;"	c
 CSS hooks with custom properties	8-web-components/6-shadow-dom-style/article.md	/^## CSS hooks with custom properties$/;"	s
@@ -3188,7 +3186,6 @@ Positionnent correcte	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^##
 Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## Possible mistakes$/;"	s
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
-Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas créé par `B()`.	1-js/09-classes/06-instanceof/1-strange-instanceof/task.md	/^Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas /;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
 Pourquoi deux hamsters sont rassasiés ?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont rassasiés ?$/;"	c
 Power of n	7-animation/3-js-animation/article.md	/^### Power of n$/;"	S

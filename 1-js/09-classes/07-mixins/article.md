@@ -101,11 +101,7 @@ Voici le schéma (voir la partie droite):
 
 ![](mixin-inheritance.svg)
 
-<<<<<<< HEAD
-C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne [[HomeObject]] fait référence à sayHiMixin, comme indiqué sur l’image ci-dessus.
-=======
-That's because methods `sayHi` and `sayBye` were initially created in `sayHiMixin`. So even though they got copied, their `[[HomeObject]]` internal property references `sayHiMixin`, as shown in the picture above.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
+C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne `[[HomeObject]]` fait référence à `sayHiMixin`, comme indiqué sur l’image ci-dessus.
 
 Comme `super` cherche des méthodes du parent dans `[[HomeObject]].[[Prototype]]`, cela signifie qu'il cherche `sayHiMixin.[[Prototype]]`, et non pas `User.[[Prototype]]`.
 
@@ -115,15 +111,9 @@ Faisons maintenant un mixin concret.
 
 Une caractéristique importante de nombreux objets de navigateur (par exemple) est qu'ils peuvent générer des événements. Les événements sont un excellent moyen de "diffuser des informations" à tous ceux qui le souhaitent. Faisons donc un mixin qui permet d’ajouter facilement des fonctions relatives aux événements à n’importe quelle classe/objet.
 
-<<<<<<< HEAD
 - Le mixin fournira une méthode `.trigger(name, [... data])` pour "générer un événement" quand quelque chose d'important lui arrive. L'argument `name` est un nom de l'événement, éventuellement suivi d'arguments supplémentaires avec les données d'événement.
 - Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.
-=======
-- The mixin will provide a method `.trigger(name, [...data])` to "generate an event" when something important happens to it. The `name` argument is a name of the event, optionally followed by additional arguments with event data.
-- Also the method `.on(name, handler)` that adds `handler` function as the listener to events with the given name. It will be called when an event with the given `name` triggers, and get the arguments from the `.trigger` call.
-- ...And the method `.off(name, handler)` that removes the `handler` listener.
->>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Après avoir ajouté le mixin, un objet `user` sera capable de générer un événement `"login"` lorsque le visiteur se connectera. Un autre objet, par exemple, `calendar` peut vouloir écouter de tels événements pour charger le calendrier de la personne connectée.
 
