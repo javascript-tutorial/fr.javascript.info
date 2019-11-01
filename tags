@@ -1476,7 +1476,6 @@ DOMContentLoaded	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^## DOM
 DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and scripts$/;"	S
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
 Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMachine`, nous pouvons avoir une raison légitime d’accéder à ses composants internes. C'est pourquoi les champs protégés sont utilisés plus souvent, même s'ils ne sont pas pris en charge par la syntaxe du langage.	1-js/09-classes/04-private-protected-properties-methods/article.md	/^Dans de nombreux scénarios, une telle limitation est trop sévère. Si nous étendons `CoffeeMa/;"	c
-Dans le code ci-dessous, nous avons l'intention d'appeler la méthode `user.go()` 4 fois de suite.	1-js/04-object-basics/04-object-methods/3-why-this/task.md	/^Dans le code ci-dessous, nous avons l'intention d'appeler la méthode `user.go()` 4 fois de suit/;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
