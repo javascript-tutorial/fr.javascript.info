@@ -295,7 +295,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.	1-js/09-classes/07-mixins/article.md	/^- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.$/;"	c
-- La propriété `"prototype"` n'a cet effet spécial que lorsqu'elle est définie sur une fonction constructeur et invoquée avec `new`.	1-js/08-prototypes/02-function-prototype/article.md	/^- La propriété `"prototype"` n'a cet effet spécial que lorsqu'elle est définie sur une fonct/;"	c
 - Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
 - Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.	1-js/09-classes/02-class-inheritance/article.md	/^- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de/;"	c
 - Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par la méthode JavaScript du moteur.	1-js/08-prototypes/03-native-prototypes/article.md	/^- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais/;"	c
@@ -4315,7 +4314,6 @@ Shorthands	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Shorthand
 Show a note near the element	2-ui/1-document/11-coordinates/2-position-at/task.md	/^# Show a note near the element$/;"	c
 Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-position-at-absolute/task.md	/^# Show a note near the element (absolute)$/;"	c
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
-Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.	1-js/08-prototypes/02-function-prototype/article.md	/^Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour l/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
