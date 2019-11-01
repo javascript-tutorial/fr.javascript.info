@@ -297,7 +297,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.	1-js/09-classes/07-mixins/article.md	/^- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.$/;"	c
 - Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
 - Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.	1-js/09-classes/02-class-inheritance/article.md	/^- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de/;"	c
-- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par la méthode JavaScript du moteur.	1-js/08-prototypes/03-native-prototypes/article.md	/^- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -1346,7 +1345,6 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/inde
 Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
-Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`, il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.	1-js/08-prototypes/03-native-prototypes/article.md	/^Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que d/;"	c
 Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être un objet ou` null`, une chaîne de caractères ne peut pas devenir un prototype.	1-js/08-prototypes/04-prototype-methods/article.md	/^Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être u/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
@@ -1387,7 +1385,6 @@ Combined-Shape	1-js/04-object-basics/01-object/variable-copy-reference.svg	/^<sv
 Commande du débogueur	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Commande du débogueur$/;"	s
 Comme ceci:	1-js/10-error-handling/1-try-catch/article.md	/^Comme ceci:$/;"	c
 Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.	1-js/09-classes/02-class-inheritance/article.md	/^Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-mê/;"	c
-Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`,` Number`, `Boolean`, ils fournissent les méthodes et disparaissent.	1-js/08-prototypes/03-native-prototypes/article.md	/^Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs pro/;"	c
 Comment	2-ui/1-document/05-basic-dom-node-properties/dom-class-hierarchy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="478" height="364" viewBox="0 0 478 364"><defs/;"	i
 Comment échapper à ce problème?	1-js/08-prototypes/04-prototype-methods/article.md	/^Comment échapper à ce problème?$/;"	c
 Commentaires	1-js/03-code-quality/03-comments/article.md	/^# Commentaires$/;"	c
@@ -1555,7 +1552,6 @@ En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
 Encoding strings	5-network/07-url/article.md	/^### Encoding strings$/;"	S
-Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.	1-js/08-prototypes/03-native-prototypes/article.md	/^Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.$/;"	c
 Enter cookie samesite option	6-data-storage/01-cookie/article.md	/^### Enter cookie samesite option$/;"	S
 Environnement Lexical	1-js/06-advanced-functions/03-closure/article.md	/^## Environnement Lexical$/;"	s
 Environnement lexical intérieur et extérieur	1-js/06-advanced-functions/03-closure/article.md	/^### Environnement lexical intérieur et extérieur$/;"	S
@@ -2030,7 +2026,6 @@ L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/
 L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/article.md	/^# L'affectation par décomposition$/;"	c
 L'ancien "var"	1-js/06-advanced-functions/04-var/article.md	/^# L'ancien "var"$/;"	c
 L'astuce du NON binaire	1-js/05-data-types/03-string/article.md	/^#### L'astuce du NON binaire$/;"	t
-L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalité des objets différents en cas de besoin.	1-js/08-prototypes/03-native-prototypes/article.md	/^L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalité des objets dif/;"	c
 L'environnement du navigateur, spécifications	2-ui/1-document/01-browser-environment/article.md	/^# L'environnement du navigateur, spécifications$/;"	c
 L'expression import()	1-js/13-modules/03-modules-dynamic-imports/article.md	/^## L'expression import()$/;"	s
 L'instruction "if"	1-js/02-first-steps/10-ifelse/article.md	/^## L'instruction "if"$/;"	s
@@ -2129,7 +2124,6 @@ Les types d'évènements de Souris	2-ui/3-event-details/1-mouse-events-basics/ar
 Les types de données	1-js/02-first-steps/05-types/article.md	/^# Les types de données$/;"	c
 Les valeurs par défaut	1-js/02-first-steps/14-function-basics/article.md	/^## Les valeurs par défaut$/;"	s
 Les valeurs par défaut	1-js/05-data-types/10-destructuring-assignment/article.md	/^### Les valeurs par défaut$/;"	S
-Les valeurs spéciales `null` et `undefined` sont distinctes. Ils n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux. Et il n'y a pas non plus de prototypes correspondants.	1-js/08-prototypes/03-native-prototypes/article.md	/^Les valeurs spéciales `null` et `undefined` sont distinctes. Ils n'ont pas de wrapper d'objet, /;"	c
 Les variables	1-js/02-first-steps/04-variables/article.md	/^# Les variables$/;"	c
 Les éditeurs de code	1-js/01-getting-started/3-code-editors/article.md	/^# Les éditeurs de code $/;"	c
 Les éditeurs légers	1-js/01-getting-started/3-code-editors/article.md	/^## Les éditeurs légers$/;"	s
