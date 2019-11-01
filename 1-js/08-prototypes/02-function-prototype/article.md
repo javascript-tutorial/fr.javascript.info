@@ -2,7 +2,11 @@
 
 Rappelez-vous que de nouveaux objets peuvent être créés avec une fonction constructeur, comme `new F()`.
 
+<<<<<<< HEAD
 Si `F.prototype` est un objet, l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.
+=======
+If `F.prototype` is an object, then the `new` operator uses it to set `[[Prototype]]` for the new object.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```smart header="Veuillez noter"
 JavaScript avait l'héritage prototypique depuis le début. C'était l'une des caractéristiques principales de la langue.
@@ -158,11 +162,19 @@ Rabbit.prototype = {
 
 Dans ce chapitre, nous avons brièvement décrit la manière de définir un `[[Prototype]]` pour les objets créés via une fonction constructeur. Plus tard, nous verrons des modèles de programmation plus avancés qui en dépendent.
 
+<<<<<<< HEAD
 Tout est assez simple, juste quelques précisions:
 
 - La propriété `F.prototype` (ne plaisante pas avec `[[Prototype]]`) définit `[[Prototype]]` de nouveaux objets lorsque `new F()` est appelée.
 - La valeur de `F.prototype` devrait être un objet ou `null`: les autres valeurs ne fonctionneront pas.
 - La propriété `"prototype"` n'a cet effet spécial que lorsqu'elle est définie sur une fonction constructeur et invoquée avec `new`.
+=======
+Everything is quite simple, just a few notes to make things clear:
+
+- The `F.prototype` property (don't mistake it for `[[Prototype]]`) sets `[[Prototype]]` of new objects when `new F()` is called.
+- The value of `F.prototype` should be either an object or `null`: other values won't work.
+-  The `"prototype"` property only has such a special effect when set on a constructor function, and invoked with `new`.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Sur les objets ordinaires, le `prototype` n'a rien de spécial:
 ```js

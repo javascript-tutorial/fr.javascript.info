@@ -68,7 +68,11 @@ Alors, c'est quoi exactement une `class`? Ce n'est pas totalement une nouvelle  
 
 Dévoilons maintenant la magie et regardons ce qu'est réellement une classe.  Cela va nous aider à comprendre plusieurs aspects complexes.
 
+<<<<<<< HEAD
 En JavaScript, une classe est une sorte de fonction.
+=======
+In JavaScript, a class is a kind of function.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Regardons ici:
 
@@ -180,7 +184,11 @@ En outres, la syntaxe `classe` apporte beaucoup d'autres caractéristiques que n
 
 ##  L'Expression Class
 
+<<<<<<< HEAD
 Tout comme les fonctions, les classes peuvent être définies a l'intérieur d'une autre expression, passées en paramètres, retournées, assignées etc.
+=======
+Just like functions, classes can be defined inside another expression, passed around, returned, assigned, etc.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Voici un exemple d'expression d'une classe:
 
@@ -345,6 +353,10 @@ class MyClass {
 }
 ```
 
+<<<<<<< HEAD
 `MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis que les méthodes, accesseurs et mutateurs sont écrits dans `MyClass.prototype`.
+=======
+`MyClass` is technically a function (the one that we provide as `constructor`), while methods, getters and setters are written to `MyClass.prototype`.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Dans les prochains chapitres nous apprendrons plus à propos des classes, y compris la notion d'héritage et les autres caractéristiques.

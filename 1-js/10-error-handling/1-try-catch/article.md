@@ -201,7 +201,11 @@ Vous trouverez des informations plus détaillées sur JSON dans le chapitre <inf
 
 **Si `json` est malformé, `JSON.parse` génère une erreur, de sorte que le script "meurt".**
 
+<<<<<<< HEAD
 Devrions-nous en être satisfaits? Bien sûr que non!
+=======
+Should we be satisfied with that? Of course not!
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 De cette façon, si quelque chose ne va pas avec les données, le visiteur ne le saura jamais (à moins d'ouvrir la console du développeur). Et les gens n'aiment vraiment pas quand quelque chose "meurt" sans aucun message d'erreur.
 
@@ -334,9 +338,15 @@ Maintenant, `catch` est devenu un emplacement unique pour toutes les erreurs de 
 
 ## Propager une exception
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessus, nous utilisons `try..catch` pour gérer des données incorrectes. Mais est-il possible que *une autre erreur inattendue* se produise dans le bloc `try {...}`? Comme une erreur de programmation ou quelque chose d'autre, pas seulement cette "donnée incorrecte".
 
 Comme ceci:
+=======
+In the example above we use `try..catch` to handle incorrect data. But is it possible that *another unexpected error* occurs within the `try {...}` block? Like a programming error (variable is not defined) or something else, not just this "incorrect data" thing.
+
+For example:
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js run
 let json = '{ "age": 30 }'; // données incomplètes
@@ -373,9 +383,15 @@ La règle est simple:
 
 La technique de "propagation" peut être expliquée plus en détail:
 
+<<<<<<< HEAD
 1. Catch obtient toutes les erreurs.
 2. Dans le bloc `catch (err) {...}`, nous analysons l'objet d'erreur `err`.
 2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.
+=======
+1. Catch gets all errors.
+2. In the `catch(err) {...}` block we analyze the error object `err`.
+2. If we don't know how to handle it, we do `throw err`.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Dans le code ci-dessous, nous utilisons la technique de "propagation" pour que `catch` ne traite que `SyntaxError`:
 
@@ -582,11 +598,19 @@ Dans le code ci-dessus, une erreur à l'intérieur de `try` tombe toujours, car 
 Les informations de cette section ne font pas partie du code JavaScript principal.
 ```
 
+<<<<<<< HEAD
 Imaginons que nous ayons une erreur fatale en dehors de `try..catch` et que le script soit mort. Comme une erreur de programmation ou autre chose terrible.
 
 Y a-t-il un moyen de réagir à de tels événements? Nous pouvons vouloir enregistrer l'erreur, montrer quelque chose à l'utilisateur (normalement, ils ne voient pas les messages d'erreur), etc.
 
 Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, car c'est vraiment utile. Par exemple, Node.js a [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) pour ça. Et dans le navigateur, nous pouvons attribuer une fonction à la propriété [window.onerror](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onerror), qui fonctionnera en cas d'erreur non interceptée.
+=======
+Let's imagine we've got a fatal error outside of `try..catch`, and the script died. Like a programming error or some other terrible thing.
+
+Is there a way to react on such occurrences? We may want to log the error, show something to the user (normally they don't see error messages), etc.
+
+There is none in the specification, but environments usually provide it, because it's really useful. For instance, Node.js has [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) for that. And in the browser we can assign a function to the special [window.onerror](mdn:api/GlobalEventHandlers/onerror) property, that will run in case of an uncaught error.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 La syntaxe:
 

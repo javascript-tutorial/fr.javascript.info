@@ -32,7 +32,11 @@ Lorsque `arr.filter()` est appelé, elle crée en interne le nouveau tableau de 
 
 Encore plus, nous pouvons personnaliser ce comportement.
 
+<<<<<<< HEAD
 Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe, il devrait renvoyer le constructeur que JavaScript utilisera en interne pour créer de nouvelles entités dans `map`, `filter`, etc.
+=======
+We can add a special static getter `Symbol.species` to the class. If it exists, it should return the constructor that JavaScript will use internally to create new entities in `map`, `filter` and so on.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Si nous souhaitons que des méthodes intégrées comme `map` ou `filter` renvoient des tableaux classiques, nous pouvons retourner `Array` dans `Symbol.species`, comme ici:
 
