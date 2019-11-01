@@ -2925,7 +2925,6 @@ Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
-Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe, il devrait renvoyer le constructeur que JavaScript utilisera en interne pour créer de nouvelles entités dans `map`, `filter`, etc.	1-js/09-classes/05-extend-natives/article.md	/^Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe,/;"	c
 Number	1-js/02-first-steps/05-types/article.md	/^## Number$/;"	s
 Number.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Numeric Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## Numeric Conversion$/;"	s
