@@ -296,7 +296,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.	1-js/09-classes/07-mixins/article.md	/^- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.$/;"	c
 - Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.	1-js/10-error-handling/2-custom-errors/article.md	/^- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de b/;"	c
-- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.	1-js/09-classes/02-class-inheritance/article.md	/^- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -1383,7 +1382,6 @@ Combined-Shape	1-js/04-object-basics/01-object/variable-contains-reference.svg	/
 Combined-Shape	1-js/04-object-basics/01-object/variable-copy-reference.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="260" viewBox="0 0 599 260"><defs/;"	i
 Commande du débogueur	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Commande du débogueur$/;"	s
 Comme ceci:	1-js/10-error-handling/1-try-catch/article.md	/^Comme ceci:$/;"	c
-Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.	1-js/09-classes/02-class-inheritance/article.md	/^Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-mê/;"	c
 Comment	2-ui/1-document/05-basic-dom-node-properties/dom-class-hierarchy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="478" height="364" viewBox="0 0 478 364"><defs/;"	i
 Commentaires	1-js/03-code-quality/03-comments/article.md	/^# Commentaires$/;"	c
 Comparaison avec null et undefined	1-js/02-first-steps/08-comparison/article.md	/^## Comparaison avec null et undefined$/;"	s
@@ -3195,7 +3193,6 @@ Position the note inside (absolute)	2-ui/1-document/11-coordinates/4-position-in
 Positionnent correcte	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Positionnent correcte$/;"	s
 Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## Possible mistakes$/;"	s
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
-Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici:	1-js/09-classes/02-class-inheritance/article.md	/^Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`,/;"	c
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
 Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas créé par `B()`.	1-js/09-classes/06-instanceof/1-strange-instanceof/task.md	/^Pourquoi `instanceof` ci-dessous renvoie `true`? Nous pouvons facilement voir que `a` n'est pas /;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
