@@ -1544,7 +1544,6 @@ Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Em
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
 En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):	1-js/09-classes/04-private-protected-properties-methods/article.md	/^En JavaScript, il existe deux types de champs d’objet (propriétés et méthodes):$/;"	c
-En JavaScript, une classe est une sorte de fonction.	1-js/09-classes/01-class/article.md	/^En JavaScript, une classe est une sorte de fonction.$/;"	c
 En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.	1-js/09-classes/03-static-properties-methods/article.md	/^En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.$/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
@@ -2017,7 +2016,6 @@ Koa	5-network/01-fetch/post.view/server.js	/^const Koa = require('koa');$/;"	C
 Koa	5-network/02-formdata/post.view/server.js	/^const Koa = require('koa');$/;"	C
 Koa	5-network/04-fetch-abort/demo.view/server.js	/^const Koa = require('koa');$/;"	C
 L'Expression Class	1-js/09-classes/01-class/article.md	/^##  L'Expression Class$/;"	s
-L'accésseur/mutateur `__proto__` intégré est dangereux si nous souhaitons insérer des clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme la clé, et il y aura une erreur, avec des conséquences, espérons légères, mais généralement imprévisibles.	1-js/08-prototypes/04-prototype-methods/article.md	/^L'accésseur\/mutateur `__proto__` intégré est dangereux si nous souhaitons insérer des clés/;"	c
 L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/1-destruct-user/task.md	/^# L'affectation par décomposition$/;"	c
 L'affectation par décomposition	1-js/05-data-types/10-destructuring-assignment/article.md	/^# L'affectation par décomposition$/;"	c
 L'ancien "var"	1-js/06-advanced-functions/04-var/article.md	/^# L'ancien "var"$/;"	c
@@ -4463,10 +4461,8 @@ Toggling the menu	2-ui/2-events/01-introduction-browser-events/05-sliding-menu/s
 Tooltip behavior	2-ui/2-events/03-event-delegation/4-behavior-tooltip/task.md	/^# Tooltip behavior$/;"	c
 Toujours en mode "use strict"	1-js/13-modules/01-modules-intro/article.md	/^### Toujours en mode "use strict"$/;"	S
 Toujours utiliser "use strict"	1-js/02-first-steps/03-strict-mode/article.md	/^## Toujours utiliser "use strict"$/;"	s
-Tout comme les fonctions, les classes peuvent être définies a l'intérieur d'une autre expression, passées en paramètres, retournées, assignées etc.	1-js/09-classes/01-class/article.md	/^Tout comme les fonctions, les classes peuvent être définies a l'intérieur d'une autre express/;"	c
 Toutes les images ayant data-src se chargent lorsqu'elles deviennent visible.	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h3>Toutes les images ayant <code>data-src<\/code> se chargent lorsqu'elles deviennent visible/;"	j
 Toutes les images ayant data-src se chargent lorsqu'elles deviennent visible.	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h3>Toutes les images ayant <code>data-src<\/code> se chargent lorsqu'elles deviennent visible/;"	j
-Toutes les méthodes qui renvoient des propriétés d'objet (comme `Object.keys` et autres) - renvoient leurs propres propriétés. Si nous voulons les hérités, alors nous pouvons utiliser `for..in`.	1-js/08-prototypes/04-prototype-methods/article.md	/^Toutes les méthodes qui renvoient des propriétés d'objet (comme `Object.keys` et autres) - re/;"	c
 Tracer l'exécution	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Tracer l'exécution$/;"	s
 Traduit border-left-width en borderLeftWidth	1-js/05-data-types/05-array-methods/1-camelcase/task.md	/^# Traduit border-left-width en borderLeftWidth$/;"	c
 Transactions	6-data-storage/03-indexeddb/article.md	/^## Transactions$/;"	s
@@ -4681,7 +4677,6 @@ _name:-"Admin"	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="ht
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="230" height="206" viewBox="0 0 230 206"><defs/;"	i
 `	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="550" height="173" viewBox="0 0 550 173"><defs/;"	i
-`MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis que les méthodes, accesseurs et mutateurs sont écrits dans `MyClass.prototype`.	1-js/09-classes/01-class/article.md	/^`MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis qu/;"	c
 `[[HomeObject]]`	1-js/09-classes/02-class-inheritance/article.md	/^### `[[HomeObject]]`$/;"	S
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	d
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	i
