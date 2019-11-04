@@ -352,11 +352,7 @@ welcome(); // ok maintenant
 ```smart header="Quand choisir la fonction déclaration par rapport à la fonction expression ?"
 En règle générale, lorsque nous devons déclarer une fonction, la première chose à prendre en compte est la syntaxe de la fonction déclaration, celle que nous utilisions auparavant. Cela donne plus de liberté dans l'organisation de notre code, car nous pouvons appeler de telles fonctions avant qu'elles ne soient déclarées.
 
-<<<<<<< HEAD
-C’est également meilleur pour la lisibilité, car il est plus facile de rechercher la `fonction f(…) {…}` dans le code que `let f = function(…) {…}`. Les fonction déclarations sont plus "accrocheuses".
-=======
-That's also better for readability, as it's easier to look up `function f(…) {…}` in the code than `let f = function(…) {…};`. Function Declarations are more "eye-catching".
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+C’est également meilleur pour la lisibilité, car il est plus facile de rechercher la `fonction f(…) {…}` dans le code que `let f = function(…) {…};`. Les fonction déclarations sont plus "accrocheuses".
 
 … Mais si une déclaration de fonction ne nous convient pas pour une raison quelconque (nous en avons vu un exemple ci-dessus), alors il convient d'utiliser une Fonction Expression.
 ```

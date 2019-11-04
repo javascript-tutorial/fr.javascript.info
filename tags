@@ -284,6 +284,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 *	1-js/12-generators-iterators/1-generators/generateSequence-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
 *	1-js/12-generators-iterators/1-generators/generateSequence-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
 *	1-js/12-generators-iterators/1-generators/generateSequence-4.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
+**Et si l'order importait pour nous? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done`?**	1-js/11-async/07-microtask-queue/article.md	/^**Et si l'order importait pour nous? Comment pouvons-nous faire en sorte que `code finished` s'e/;"	c
 +	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "+": (a, b) => a + b$/;"	p	class:Calculator.methods
 +	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
 ++	1-js/06-advanced-functions/03-closure/lexenv-nested-makecounter-6.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="782" height="225" viewBox="0 0 782 225"><defs/;"	i
@@ -294,6 +295,8 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
+- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".	1-js/11-async/04-promise-error-handling/article.md	/^- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (po/;"	c
+- `Array` (sauf `arr.values()`)	1-js/05-data-types/09-keys-values-entries/article.md	/^- `Array` (sauf `arr.values()`)$/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -351,6 +354,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ...	2-ui/99-ui-misc/03-event-loop/eventLoop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="479" height="279" viewBox="0 0 479 279"><defs/;"	i
 ...	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
 ...	5-network/05-fetch-crossorigin/cors-gmail-messages.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="651" height="285" viewBox="0 0 651 285"><defs/;"	i
+...Mais c'est plus court.	1-js/05-data-types/06-iterable/article.md	/^...Mais c'est plus court.    $/;"	c
 ...with-the-result-o	1-js/11-async/03-promise-chaining/promise-handler-variants.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="350" viewBox="0 0 659 350"><defs/;"	i
 .25	7-animation/1-bezier-curve/bezier3-draw1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 .5	7-animation/1-bezier-curve/bezier3-draw2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="340" height="350" viewBox="0 0 340 350"><defs/;"	i
@@ -654,6 +658,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 2	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
+2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est utilisée: `obj instanceOf Class` vérifie si `Class.prototype` est égal à l'un des prototypes de la chaîne de prototypes `obj`.	1-js/09-classes/06-instanceof/article.md	/^2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est u/;"	c
 200	1-js/05-data-types/10-destructuring-assignment/destructuring-complex.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="488" height="150" viewBox="0 0 488 150"><defs/;"	i
 200	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 200-OK	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
@@ -727,6 +732,7 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 5	5-network/08-xmlhttprequest/phones.json	/^    {$/;"	o
 5	5-network/08-xmlhttprequest/phones.view/phones.json	/^    {$/;"	o
 5	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
+5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.	1-js/11-async/05-promise-api/article.md	/^5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.$/;"	c
 6	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
 6	4-binary/01-arraybuffer-binary-arrays/arraybuffer-views.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="603" height="286" viewBox="0 0 603 286"><defs/;"	i
 6	5-network/08-xmlhttprequest/phones-async.view/phones.json	/^    {$/;"	o
@@ -1339,6 +1345,8 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/inde
 Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
+Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.	1-js/09-classes/06-instanceof/article.md	/^Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifié/;"	c
+Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions à la place, comme ceci :	1-js/06-advanced-functions/08-settimeout-setinterval/article.md	/^Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'uti/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
 Character classes	9-regular-expressions/02-regexp-character-classes/article.md	/^# Character classes$/;"	c
@@ -1459,6 +1467,9 @@ DOM tree	2-ui/1-document/02-dom-nodes/article.md	/^# DOM tree$/;"	c
 DOMContentLoaded	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^## DOMContentLoaded$/;"	s
 DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and scripts$/;"	S
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
+Dans ce cas, d'autres gestionnaires attendent jusqu'à ce qu'elle soit tenue, puis obtiennent son résultat.	1-js/11-async/03-promise-chaining/article.md	/^Dans ce cas, d'autres gestionnaires attendent jusqu'à ce qu'elle soit tenue, puis obtiennent so/;"	c
+Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.	1-js/11-async/05-promise-api/article.md	/^Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au /;"	c
+Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :	1-js/06-advanced-functions/08-settimeout-setinterval/article.md	/^Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :$/;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
@@ -1489,6 +1500,7 @@ Description imbriquée	1-js/03-code-quality/05-testing-mocha/article.md	/^## Des
 Deux façons de penser	1-js/06-advanced-functions/01-recursion/article.md	/^## Deux façons de penser$/;"	s
 Deux fonctions - un objet	1-js/04-object-basics/06-constructor-new/1-two-functions-one-object/task.md	/^# Deux fonctions - un objet$/;"	c
 Deux références	1-js/04-object-basics/02-garbage-collection/article.md	/^## Deux références$/;"	s
+Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'elles soient toutes prêtes.	1-js/11-async/05-promise-api/article.md	/^Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'e/;"	c
 Dispatching custom events	2-ui/2-events/05-dispatch-events/article.md	/^# Dispatching custom events$/;"	c
 Document	2-ui/1-document/index.md	/^# Document$/;"	c
 Document	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
@@ -1532,10 +1544,14 @@ Element-only navigation	2-ui/1-document/03-dom-navigation/article.md	/^## Elemen
 Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Emprunt de prototypes$/;"	s
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
+En d'autres termes, `.then` transmet les résultats/erreurs au prochain `.then/catch`. Donc, dans le premier exemple, il y a un `catch` en dessous, et dans le second - il n'y en a pas, donc l'erreur n'est pas gérée.	1-js/11-async/03-promise-chaining/01-then-vs-catch/solution.md	/^En d'autres termes, `.then` transmet les résultats\/erreurs au prochain `.then\/catch`. Donc, d/;"	c
+En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Promise`, qui ne sera réglé qu’après l’appel de `resolve(githubUser)` dans `setTimeout` `(**)`.	1-js/11-async/03-promise-chaining/article.md	/^En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Promise`, qui ne se/;"	c
+En règle générale, une action asynchrone doit toujours renvoyer une promesse.	1-js/11-async/03-promise-chaining/article.md	/^En règle générale, une action asynchrone doit toujours renvoyer une promesse.$/;"	c
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
 Encoding strings	5-network/07-url/article.md	/^### Encoding strings$/;"	S
+Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les promesses données, même si certaines d'entre elles sont rejetées.	1-js/11-async/05-promise-api/article.md	/^Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les /;"	c
 Enter cookie samesite option	6-data-storage/01-cookie/article.md	/^### Enter cookie samesite option$/;"	S
 Environnement Lexical	1-js/06-advanced-functions/03-closure/article.md	/^## Environnement Lexical$/;"	s
 Environnement lexical intérieur et extérieur	1-js/06-advanced-functions/03-closure/article.md	/^### Environnement lexical intérieur et extérieur$/;"	S
@@ -1705,6 +1721,7 @@ Function property after bind	1-js/06-advanced-functions/10-bind/4-function-prope
 Function.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Function.prototype	1-js/09-classes/02-class-inheritance/3-class-extend-object/rabbit-extends-object.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="458" height="344" viewBox="0 0 458 344"><defs/;"	i
 Function.prototype-Copy	1-js/09-classes/02-class-inheritance/3-class-extend-object/rabbit-extends-object.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="458" height="344" viewBox="0 0 458 344"><defs/;"	i
+Further conversions	1-js/04-object-basics/05-object-toprimitive/article.md	/^## Further conversions$/;"	s
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
@@ -1925,11 +1942,14 @@ Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/ta
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
 IIFE	1-js/06-advanced-functions/03-closure/article.md	/^### IIFE$/;"	S
+Ici la méthode [arr.find](mdn:js/Array/find) se révèle vraiment pratique.	1-js/05-data-types/05-array-methods/article.md	/^Ici la méthode [arr.find](mdn:js\/Array\/find) se révèle vraiment pratique.$/;"	c
+Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.	1-js/11-async/05-promise-api/article.md	/^Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Pr/;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
 If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
+Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractères ou si la méthode `Symbol.toPrimitive` renvoie un nombre pour un indice "number".	1-js/04-object-basics/05-object-toprimitive/article.md	/^Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractè/;"	c
 IloveHTML5	9-regular-expressions/02-regexp-character-classes/love-html5-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="236" height="38" viewBox="0 0 236 38"><defs></;"	i
 Image gallery	2-ui/2-events/04-default-browser-action/3-image-gallery/task.md	/^# Image gallery$/;"	c
 Image to blob	4-binary/03-blob/article.md	/^## Image to blob$/;"	s
@@ -1986,6 +2006,7 @@ JavaScript	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\
 JavaScript animations	7-animation/3-js-animation/article.md	/^# JavaScript animations$/;"	c
 JavaScript le language	1-js/index.md	/^# JavaScript le language$/;"	c
 JavaScript specials	1-js/02-first-steps/16-javascript-specials/article.md	/^# JavaScript specials$/;"	c
+JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)`: si il a une méthode appelable nommé `then`, il appelle cette méthode fournissant les fonctions natives `resolve` et `reject` comme arguments (semblable à executor) et attend que l’un d’eux soit appelé. Dans l'exemple ci-dessus, `resolve(2)` est appelé après 1 seconde `(**)`. Ensuite, le résultat est transmis plus loin dans la chaîne.	1-js/11-async/03-promise-chaining/article.md	/^JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)`: si il a une/;"	c
 Java[^script]	9-regular-expressions/08-regexp-character-sets-and-ranges/1-find-range-1/task.md	/^# Java[^script]$/;"	c
 John	1-js/05-data-types/09-keys-values-entries/01-sum-salaries/_js.view/test.js	/^      "John": 100,$/;"	p	class:AnonymousFunction629709630100.AnonymousFunction629709630200.salaries
 John	1-js/05-data-types/10-destructuring-assignment/6-max-salary/_js.view/test.js	/^      "John": 100,$/;"	p	class:AnonymousFunctionfc8e07120100.AnonymousFunctionfc8e07120200.salaries
@@ -2026,6 +2047,7 @@ La boucle "for"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "for"
 La boucle "while"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "while"$/;"	s
 La boucle for..in	1-js/08-prototypes/01-prototype-inheritance/article.md	/^## La boucle for..in$/;"	s
 La clause "else"	1-js/02-first-steps/10-ifelse/article.md	/^## La clause "else"$/;"	s
+La commande "Step" y pénètre et met en pause l'exécution à la première ligne, tandis que "Step over" exécute l'appel de fonction imbriqué de manière invisible, en ignorant les éléments internes de la fonction.	1-js/03-code-quality/01-debugging-chrome/article.md	/^    La commande "Step" y pénètre et met en pause l'exécution à la première ligne, tandis qu/;"	c
 La concision est l'âme de l'esprit	1-js/03-code-quality/04-ninja-code/article.md	/^## La concision est l'âme de l'esprit$/;"	s
 La console de développement	1-js/01-getting-started/4-devtools/article.md	/^# La console de développement$/;"	c
 La construction "switch"	1-js/02-first-steps/16-javascript-specials/article.md	/^## La construction "switch"$/;"	s
@@ -2033,10 +2055,12 @@ La différence entre les appels	1-js/08-prototypes/04-prototype-methods/3-compar
 La déclaration "switch"	1-js/02-first-steps/13-switch/article.md	/^# La déclaration "switch"$/;"	c
 La function constructeur	1-js/04-object-basics/06-constructor-new/article.md	/^## La function constructeur$/;"	s
 La gestion des erreurs	1-js/10-error-handling/index.md	/^# La gestion des erreurs$/;"	c
+La méthode [arr.splice(str)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.	1-js/05-data-types/05-array-methods/article.md	/^La méthode [arr.splice(str)](mdn:js\/Array\/splice) est un couteau suisse pour les tableaux. El/;"	c
 La méthode toString(base)	1-js/05-data-types/02-number/article.md	/^## La méthode toString(base)$/;"	s
 La plupart des méthodes supportent "thisArg"	1-js/05-data-types/05-array-methods/article.md	/^## La plupart des méthodes supportent "thisArg"$/;"	s
 La propriété "length"	1-js/06-advanced-functions/06-function-object/article.md	/^## La propriété "length"$/;"	s
 La propriété "name"	1-js/06-advanced-functions/06-function-object/article.md	/^## La propriété "name"$/;"	s
+La réponse courte est: **non, ils ne sont pas égaux**:	1-js/11-async/03-promise-chaining/01-then-vs-catch/solution.md	/^La réponse courte est: **non, ils ne sont pas égaux**:$/;"	c
 La solution simple mais fausse	1-js/05-data-types/02-number/9-random-int-min-max/solution.md	/^# La solution simple mais fausse$/;"	c
 La somme avec une quantité arbitraire de parenthèses	1-js/06-advanced-functions/06-function-object/5-sum-many-brackets/task.md	/^# La somme avec une quantité arbitraire de parenthèses$/;"	c
 La sortie	1-js/06-advanced-functions/01-recursion/article.md	/^### La sortie$/;"	S
@@ -2056,9 +2080,11 @@ Le Défilement	2-ui/3-event-details/8-onscroll/article.md	/^# Le Défilement$/;"
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
 Le Soleil	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Le Soleil<\/h1>$/;"	h
 Le balisage moderne	1-js/02-first-steps/01-hello-world/article.md	/^## Le balisage moderne$/;"	s
+Le code fonctionne, voir les commentaires sur les détails. Pourtant, il y a un problème potentiel, une erreur typique de ceux qui commencent à utiliser les promesses.	1-js/11-async/03-promise-chaining/article.md	/^Le code fonctionne, voir les commentaires sur les détails. Pourtant, il y a un problème potent/;"	c
 Le constructeur, l'opérateur "new"	1-js/04-object-basics/06-constructor-new/article.md	/^# Le constructeur, l'opérateur "new"$/;"	c
 Le flux de développement	1-js/03-code-quality/05-testing-mocha/article.md	/^## Le flux de développement$/;"	s
 Le mode moderne, "use strict"	1-js/02-first-steps/03-strict-mode/article.md	/^# Le mode moderne, "use strict"$/;"	c
+Le moteur JavaScript suit ces rejets et génère une erreur globale dans ce cas. Vous pouvez le voir dans la console si vous exécutez l'exemple ci-dessus.	1-js/11-async/04-promise-error-handling/article.md	/^Le moteur JavaScript suit ces rejets et génère une erreur globale dans ce cas. Vous pouvez le /;"	c
 Le nom de JavaScript	1-js/02-first-steps/10-ifelse/2-check-standard/task.md	/^# Le nom de JavaScript$/;"	c
 Le nom par "default"	1-js/13-modules/02-import-export/article.md	/^### Le nom par "default"$/;"	S
 Le pattern rest "..."	1-js/05-data-types/10-destructuring-assignment/article.md	/^### Le pattern rest "..."$/;"	S
@@ -2088,11 +2114,13 @@ Les fonctions fléchées n'ont pas de "this"	1-js/04-object-basics/04-object-met
 Les fonctions fléchées n'ont pas de "this"	1-js/06-advanced-functions/12-arrow-functions/article.md	/^## Les fonctions fléchées n'ont pas de "this"$/;"	s
 Les fonctions fléchées revisitées	1-js/06-advanced-functions/12-arrow-functions/article.md	/^# Les fonctions fléchées revisitées$/;"	c
 Les formes postfixes et préfixes	1-js/02-first-steps/07-operators/1-increment-order/task.md	/^# Les formes postfixes et préfixes$/;"	c
+Les gestionnaires de promesses passent toujours par cette file d'attente interne.	1-js/11-async/07-microtask-queue/article.md	/^Les gestionnaires de promesses passent toujours par cette file d'attente interne.$/;"	c
 Les internes	1-js/05-data-types/04-array/article.md	/^## Les internes$/;"	s
 Les langages "par dessus" JavaScript	1-js/01-getting-started/1-intro/article.md	/^## Les langages "par dessus" JavaScript$/;"	s
 Les microtaches	1-js/11-async/07-microtask-queue/article.md	/^# Les microtaches$/;"	c
 Les mixins	1-js/09-classes/07-mixins/article.md	/^# Les mixins$/;"	c
 Les modules sont différés	1-js/13-modules/01-modules-intro/article.md	/^### Les modules sont différés$/;"	S
+Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.	1-js/11-async/05-promise-api/article.md	/^Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code mode/;"	c
 Les méthodes ne sont pas "libres"	1-js/09-classes/02-class-inheritance/article.md	/^### Les méthodes ne sont pas "libres"$/;"	S
 Les paramètres Rest `...`	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^## Les paramètres Rest `...`$/;"	s
 Les paramètres Rest et l'opérateur spread	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^# Les paramètres Rest et l'opérateur spread$/;"	c
@@ -2832,6 +2860,7 @@ L’ordre des évènements	2-ui/3-event-details/1-mouse-events-basics/article.md
 Macrotasks and Microtasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Macrotasks and Microtasks$/;"	s
 Main-HTTP-request	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 Main-HTTP-response	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
+Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré	1-js/11-async/07-microtask-queue/article.md	/^Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non /;"	c
 Make external links orange	2-ui/1-document/06-dom-attributes-and-properties/2-yellow-links/task.md	/^# Make external links orange$/;"	c
 Making unselectable	2-ui/99-ui-misc/02-selection-range/article.md	/^## Making unselectable$/;"	s
 Manuels	1-js/01-getting-started/2-manuals-specifications/article.md	/^## Manuels$/;"	s
@@ -2912,9 +2941,12 @@ Non configurable	1-js/07-object-properties/01-property-descriptors/article.md	/^
 Non énumérable	1-js/07-object-properties/01-property-descriptors/article.md	/^## Non énumérable$/;"	s
 Non-capturing groups with ?:	9-regular-expressions/11-regexp-groups/article.md	/^## Non-capturing groups with ?:$/;"	s
 Non-standard attributes, dataset	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## Non-standard attributes, dataset$/;"	s
+Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.	1-js/09-classes/06-instanceof/article.md	/^Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nou/;"	c
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
+Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":	1-js/05-data-types/06-iterable/article.md	/^Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec d/;"	c
+Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandis verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".	1-js/11-async/03-promise-chaining/article.md	/^Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "p/;"	c
 Number	1-js/02-first-steps/05-types/article.md	/^## Number$/;"	s
 Number.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Numeric Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## Numeric Conversion$/;"	s
@@ -2995,6 +3027,7 @@ Origin:-https://java	5-network/05-fetch-crossorigin/xhr-another-domain.svg	/^<sv
 Other	1-js/02-first-steps/10-ifelse/2-check-standard/ifelse_task2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="500" height="264" viewBox="0 0 500 264"><defs/;"	i
 Other	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 Other resources	2-ui/5-loading/03-onload-onerror/article.md	/^## Other resources$/;"	s
+Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente. Ils ne sont pas encore exécutés. Le moteur JavaScript extrait une tâche de la file d'attente et l'exécute lorsqu'elle est libérée du code actuel.	1-js/11-async/07-microtask-queue/article.md	/^Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then\/catch\/finally` sont m/;"	c
 Outer corners	2-ui/1-document/11-coordinates/1-find-point-coordinates/solution.md	/^# Outer corners$/;"	c
 Oval	1-js/09-classes/02-class-inheritance/animal-rabbit-extends.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="560" height="316" viewBox="0 0 560 316"><defs/;"	i
 Oval	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
@@ -3090,6 +3123,9 @@ Page-1	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     style="fill:n
 Page-1-6	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     transform="translate(200,50)">$/;"	i
 Page: DOMContentLoaded, load, beforeunload, unload	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^# Page: DOMContentLoaded, load, beforeunload, unload$/;"	c
 Paires de substitution	1-js/05-data-types/03-string/article.md	/^### Paires de substitution$/;"	S
+Par exemple, ici `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` :	1-js/04-object-basics/05-object-toprimitive/article.md	/^Par exemple, ici `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` :$/;"	c
+Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse:	1-js/11-async/05-promise-api/article.md	/^Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) so/;"	c
+Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'utilisateur et afficher l'avatar:	1-js/11-async/03-promise-chaining/article.md	/^Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'ut/;"	c
 Parallel update problem	6-data-storage/03-indexeddb/article.md	/^### Parallel update problem$/;"	S
 Paramètres de fonction intelligente	1-js/05-data-types/10-destructuring-assignment/article.md	/^## Paramètres de fonction intelligente$/;"	s
 Parcourir un Set	1-js/05-data-types/07-map-set/article.md	/^## Parcourir un Set$/;"	s
@@ -3177,6 +3213,8 @@ Position the note inside (absolute)	2-ui/1-document/11-coordinates/4-position-in
 Positionnent correcte	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Positionnent correcte$/;"	s
 Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## Possible mistakes$/;"	s
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
+Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur:	1-js/09-classes/06-instanceof/article.md	/^Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voi/;"	c
+Pour lire la réponse complète, appelez la méthode `response.text()`: elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en conséquence.	1-js/11-async/03-promise-chaining/article.md	/^Pour lire la réponse complète, appelez la méthode `response.text()`: elle renvoie une promess/;"	c
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
 Pourquoi deux hamsters sont rassasiés ?	1-js/08-prototypes/01-prototype-inheritance/4-hamster-proto/task.md	/^# Pourquoi deux hamsters sont rassasiés ?$/;"	c
@@ -4279,6 +4317,7 @@ Shorthands	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Shorthand
 Show a note near the element	2-ui/1-document/11-coordinates/2-position-at/task.md	/^# Show a note near the element$/;"	c
 Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-position-at-absolute/task.md	/^# Show a note near the element (absolute)$/;"	c
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
+Si nous ne connaissions pas la file d'attente des microtaches, nous pourrions nous demander: "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté? Nous avons détecté l'erreur!".	1-js/11-async/07-microtask-queue/article.md	/^Si nous ne connaissions pas la file d'attente des microtaches, nous pourrions nous demander: "Po/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
@@ -4393,7 +4432,6 @@ Summary	9-regular-expressions/14-regexp-lookahead-lookbehind/article.md	/^## Sum
 Super: les internes, [[HomeObject]]	1-js/09-classes/02-class-inheritance/article.md	/^## Super: les internes, [[HomeObject]]$/;"	s
 Symbol.iterator	1-js/05-data-types/06-iterable/article.md	/^## Symbol.iterator$/;"	s
 Symbol.keyFor	1-js/04-object-basics/03-symbol/article.md	/^### Symbol.keyFor$/;"	S
-Symbol.toPrimitive	1-js/04-object-basics/05-object-toprimitive/article.md	/^## Symbol.toPrimitive$/;"	s
 Symbol.toStringTag	1-js/09-classes/06-instanceof/article.md	/^### Symbol.toStringTag$/;"	S
 Symboles	1-js/04-object-basics/03-symbol/article.md	/^## Symboles$/;"	s
 Symboles dans un littéral	1-js/04-object-basics/03-symbol/article.md	/^### Symboles dans un littéral$/;"	S
@@ -4500,9 +4538,11 @@ Underscores for fun	1-js/03-code-quality/04-ninja-code/article.md	/^## Underscor
 Une Introduction à JavaScript	1-js/01-getting-started/1-intro/article.md	/^# Une Introduction à JavaScript$/;"	c
 Une boucle infinie	1-js/05-data-types/02-number/4-endless-loop-error/task.md	/^# Une boucle infinie$/;"	c
 Une introduction	1-js/01-getting-started/index.md	/^# Une introduction$/;"	c
+Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler avec elle, en appliquant d'autres conversions si nécessaire.	1-js/04-object-basics/05-object-toprimitive/article.md	/^Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler /;"	c
 Une primitive en tant qu'objet	1-js/05-data-types/01-primitives-methods/article.md	/^## Une primitive en tant qu'objet$/;"	s
 Une question à propos de "if"	1-js/02-first-steps/11-logical-operators/8-if-question/task.md	/^# Une question à propos de "if"$/;"	c
 Une simple page	1-js/02-first-steps/09-alert-prompt-confirm/1-simple-page/task.md	/^# Une simple page$/;"	c
+Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour construire une fonction *polymorphique*, celle qui traite les arguments différemment en fonction de leur type.	1-js/09-classes/06-instanceof/article.md	/^Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour c/;"	c
 Une variable	1-js/02-first-steps/04-variables/article.md	/^## Une variable$/;"	s
 Unicode properties \\p{...}	9-regular-expressions/03-regexp-unicode/article.md	/^## Unicode properties \\p{...}$/;"	s
 Unicode: flag "u" and class \\p{...}	9-regular-expressions/03-regexp-unicode/article.md	/^# Unicode: flag "u" and class \\p{...}$/;"	c
@@ -4541,7 +4581,11 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
+Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a pas d'indice "booléen" (tous les objets sont vrais dans un contexte booléen) ou autre chose. Et si nous traitons `"default"` et `"number"` de la même manière, comme le font la plupart des programmes intégrés, il n'y a que deux conversions.	1-js/04-object-basics/05-object-toprimitive/article.md	/^Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a pas d'indice "b/;"	c
+Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. Le code à l'intérieur de `function() { return count ++; }` n'est pas en cours d'exécution.	1-js/06-advanced-functions/03-closure/article.md	/^    Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appe/;"	c
+Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.	1-js/11-async/05-promise-api/article.md	/^Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des prome/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
+Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau de biens par leurs identifiants, la logique est la même):	1-js/11-async/05-promise-api/article.md	/^Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans /;"	c
 Vérification d'existence	1-js/04-object-basics/01-object/article.md	/^## Vérification d'existence$/;"	s
 Vérification de classe: "instanceof"	1-js/09-classes/06-instanceof/article.md	/^# Vérification de classe: "instanceof"$/;"	c
 Vérification de la syntaxe	1-js/04-object-basics/04-object-methods/2-check-syntax/task.md	/^# Vérification de la syntaxe$/;"	c
@@ -4656,6 +4700,7 @@ _name:-"Admin"	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="ht
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="230" height="206" viewBox="0 0 230 206"><defs/;"	i
 `	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="550" height="173" viewBox="0 0 550 173"><defs/;"	i
+`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.	1-js/11-async/05-promise-api/article.md	/^`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itér/;"	c
 `[[HomeObject]]`	1-js/09-classes/02-class-inheritance/article.md	/^### `[[HomeObject]]`$/;"	S
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	d
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	i
