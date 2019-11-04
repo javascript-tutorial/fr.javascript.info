@@ -2,7 +2,11 @@
 
 L'opérateur `instanceof` permet de vérifier si un objet appartient à une certaine classe. Il prend également en compte l'héritage.
 
+<<<<<<< HEAD
 Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour construire une fonction *polymorphique*, celle qui traite les arguments différemment en fonction de leur type.
+=======
+Such a check may be necessary in many cases. Here we'll use it for building a *polymorphic* function, the one that treats arguments differently depending on their type.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ## L'opérateur instanceof [#ref-instanceof]
 
@@ -46,7 +50,11 @@ alert( arr instanceof Object ); // true
 
 Veuillez noter que `arr` appartient également à la classe `Object`. C'est parce que `Array` hérite de manière prototypale de `Object`.
 
+<<<<<<< HEAD
 Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.
+=======
+Normally, `instanceof` examines the prototype chain for the check. We can also set a custom logic in the static method `Symbol.hasInstance`.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 L'algorithme de `obj instanceof Class` fonctionne à peu près comme suit:
 
@@ -68,7 +76,11 @@ let obj = { canEat: true };
 alert(obj instanceof Animal); // true: Animal[Symbol.hasInstance](obj) est appelée
 ```
 
+<<<<<<< HEAD
 2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est utilisée: `obj instanceOf Class` vérifie si `Class.prototype` est égal à l'un des prototypes de la chaîne de prototypes `obj`.
+=======
+2. Most classes do not have `Symbol.hasInstance`. In that case, the standard logic is used: `obj instanceOf Class` checks whether `Class.prototype` is equal to one of the prototypes in the `obj` prototype chain.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
     En d'autres termes, comparez les uns après les autres:
 ```js
@@ -107,7 +119,11 @@ Voici l'illustration de ce que `rabbit instanceof Animal` compare avec `Animal.p
 
 C'est drôle, mais le constructeur `Class` lui-même ne participe pas au contrôle! Seule la chaîne de prototypes et `Class.prototype` compte.
 
+<<<<<<< HEAD
 Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.
+=======
+That can lead to interesting consequences when a `prototype` property is changed after the object is created.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Comme ici:
 
@@ -186,7 +202,11 @@ let user = {
 alert( {}.toString.call(user) ); // [object User]
 ```
 
+<<<<<<< HEAD
 Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur:
+=======
+For most environment-specific objects, there is such a property. Here are some browser specific examples:
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ```js run
 // toStringTag pour l'objet et la classe spécifiques à l'environnement:

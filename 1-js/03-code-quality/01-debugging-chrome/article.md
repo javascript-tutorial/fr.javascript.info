@@ -137,7 +137,11 @@ Il y a des boutons pour cela en haut du volet de droite. Actionnons-les.
 <span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": lance la commande suivante, mais *n'entre pas dans une fonction*, raccourci clavier `key:F10`.
 : Semblable à la précédente commande "Step", mais se comporte différemment si l'instruction suivante est un appel de fonction. C’est-à-dire qu’il ne s’agit pas d’une fonction intégrée, comme `alert`, mais d’une fonction propre.
 
+<<<<<<< HEAD
     La commande "Step" y pénètre et met en pause l'exécution à la première ligne, tandis que "Step over" exécute l'appel de fonction imbriqué de manière invisible, en ignorant les éléments internes de la fonction.
+=======
+    The "Step" command goes into it and pauses the execution at its first line, while "Step over" executes the nested function call invisibly, skipping the function internals.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
     L'exécution est alors suspendue immédiatement après cette fonction.
 

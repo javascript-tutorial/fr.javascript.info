@@ -352,7 +352,11 @@ Veuillez noter que la propriété additionnelle `[[Environment]]` est couverte i
 
     ![](lexenv-nested-makecounter-3.svg)
 
+<<<<<<< HEAD
     Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. Le code à l'intérieur de `function() { return count ++; }` n'est pas en cours d'exécution.
+=======
+    Please note that on this step the inner function was created, but not yet called. The code inside `return count++;` is not running.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 4. Au fur et à mesure de l'exécution, l'appel à `makeCounter()` se termine et le résultat (la fonction imbriquée minuscule) est affecté à la variable globale `counter` :
 
@@ -567,7 +571,12 @@ function f() {
 */!*
 }
 
+<<<<<<< HEAD
 let g = f(); // g est accessible et garde en mémoire l'environnement lexical externe
+=======
+let func = f(); // func gets a reference to g
+// so it stays and memory and its outer lexical environment stays as well
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 ```
 
 Veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. Tous les 3 dans le code ci-dessous :
@@ -597,10 +606,16 @@ function f() {
   return g;
 }
 
+<<<<<<< HEAD
 let g = f(); // while g is alive
 // leur environnement lexical correspondant vit
 
 g = null; // ... et maintenant la mémoire est nettoyée
+=======
+let func = f(); // while func has a reference to g, it stays in memory
+
+func = null; // ...and now the memory is cleaned up
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 ```
 
 ### Optimisations réelles
