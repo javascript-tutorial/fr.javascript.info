@@ -2047,7 +2047,6 @@ La boucle "for"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "for"
 La boucle "while"	1-js/02-first-steps/12-while-for/article.md	/^## La boucle "while"$/;"	s
 La boucle for..in	1-js/08-prototypes/01-prototype-inheritance/article.md	/^## La boucle for..in$/;"	s
 La clause "else"	1-js/02-first-steps/10-ifelse/article.md	/^## La clause "else"$/;"	s
-La commande "Step" y pénètre et met en pause l'exécution à la première ligne, tandis que "Step over" exécute l'appel de fonction imbriqué de manière invisible, en ignorant les éléments internes de la fonction.	1-js/03-code-quality/01-debugging-chrome/article.md	/^    La commande "Step" y pénètre et met en pause l'exécution à la première ligne, tandis qu/;"	c
 La concision est l'âme de l'esprit	1-js/03-code-quality/04-ninja-code/article.md	/^## La concision est l'âme de l'esprit$/;"	s
 La console de développement	1-js/01-getting-started/4-devtools/article.md	/^# La console de développement$/;"	c
 La construction "switch"	1-js/02-first-steps/16-javascript-specials/article.md	/^## La construction "switch"$/;"	s
