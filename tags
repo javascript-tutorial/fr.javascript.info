@@ -656,7 +656,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 2	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-matches.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
 2	9-regular-expressions/11-regexp-groups/regexp-nested-groups-pattern.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="320" height="130" viewBox="0 0 320 130"><defs/;"	i
-2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est utilisée: `obj instanceOf Class` vérifie si `Class.prototype` est égal à l'un des prototypes de la chaîne de prototypes `obj`.	1-js/09-classes/06-instanceof/article.md	/^2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est u/;"	c
 200	1-js/05-data-types/10-destructuring-assignment/destructuring-complex.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="488" height="150" viewBox="0 0 488 150"><defs/;"	i
 200	1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="173" viewBox="0 0 566 173"><defs/;"	i
 200-OK	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
@@ -1341,7 +1340,6 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/solution.view/inde
 Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
-Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.	1-js/09-classes/06-instanceof/article.md	/^Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifié/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
 Character classes	9-regular-expressions/02-regexp-character-classes/article.md	/^# Character classes$/;"	c
@@ -2926,7 +2924,6 @@ Non configurable	1-js/07-object-properties/01-property-descriptors/article.md	/^
 Non énumérable	1-js/07-object-properties/01-property-descriptors/article.md	/^## Non énumérable$/;"	s
 Non-capturing groups with ?:	9-regular-expressions/11-regexp-groups/article.md	/^## Non-capturing groups with ?:$/;"	s
 Non-standard attributes, dataset	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## Non-standard attributes, dataset$/;"	s
-Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.	1-js/09-classes/06-instanceof/article.md	/^Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nou/;"	c
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
@@ -3196,7 +3193,6 @@ Position the note inside (absolute)	2-ui/1-document/11-coordinates/4-position-in
 Positionnent correcte	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Positionnent correcte$/;"	s
 Possible mistakes	2-ui/2-events/01-introduction-browser-events/article.md	/^## Possible mistakes$/;"	s
 Potentiels Cibles pour un Déposer (déposables)	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## Potentiels Cibles pour un Déposer (déposables)$/;"	s
-Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur:	1-js/09-classes/06-instanceof/article.md	/^Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voi/;"	c
 Pour lire la réponse complète, appelez la méthode `response.text()`: elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en conséquence.	1-js/11-async/03-promise-chaining/article.md	/^Pour lire la réponse complète, appelez la méthode `response.text()`: elle renvoie une promess/;"	c
 Pourquoi 6.35.toFixed(1) == 6.3?	1-js/05-data-types/02-number/2-why-rounded-down/task.md	/^# Pourquoi 6.35.toFixed(1) == 6.3?$/;"	c
 Pourquoi avons-nous besoin de tests ?	1-js/03-code-quality/05-testing-mocha/article.md	/^## Pourquoi avons-nous besoin de tests ?$/;"	s
@@ -4524,7 +4520,6 @@ Une introduction	1-js/01-getting-started/index.md	/^# Une introduction$/;"	c
 Une primitive en tant qu'objet	1-js/05-data-types/01-primitives-methods/article.md	/^## Une primitive en tant qu'objet$/;"	s
 Une question à propos de "if"	1-js/02-first-steps/11-logical-operators/8-if-question/task.md	/^# Une question à propos de "if"$/;"	c
 Une simple page	1-js/02-first-steps/09-alert-prompt-confirm/1-simple-page/task.md	/^# Une simple page$/;"	c
-Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour construire une fonction *polymorphique*, celle qui traite les arguments différemment en fonction de leur type.	1-js/09-classes/06-instanceof/article.md	/^Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour c/;"	c
 Une variable	1-js/02-first-steps/04-variables/article.md	/^## Une variable$/;"	s
 Unicode properties \\p{...}	9-regular-expressions/03-regexp-unicode/article.md	/^## Unicode properties \\p{...}$/;"	s
 Unicode: flag "u" and class \\p{...}	9-regular-expressions/03-regexp-unicode/article.md	/^# Unicode: flag "u" and class \\p{...}$/;"	c
