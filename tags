@@ -354,7 +354,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ...	2-ui/99-ui-misc/03-event-loop/eventLoop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="479" height="279" viewBox="0 0 479 279"><defs/;"	i
 ...	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
 ...	5-network/05-fetch-crossorigin/cors-gmail-messages.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="651" height="285" viewBox="0 0 651 285"><defs/;"	i
-...Mais c'est plus court.	1-js/05-data-types/06-iterable/article.md	/^...Mais c'est plus court.    $/;"	c
 ...with-the-result-o	1-js/11-async/03-promise-chaining/promise-handler-variants.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="350" viewBox="0 0 659 350"><defs/;"	i
 .25	7-animation/1-bezier-curve/bezier3-draw1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 .5	7-animation/1-bezier-curve/bezier3-draw2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="340" height="350" viewBox="0 0 340 350"><defs/;"	i
@@ -2940,7 +2939,6 @@ Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour l
 Not-so-useful progress event	5-network/09-resume-upload/article.md	/^## Not-so-useful progress event$/;"	s
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/solution.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
 Notification is on the right	2-ui/1-document/08-styles-and-classes/2-create-notification/source.view/index.html	/^  <h2>Notification is on the right<\/h2>$/;"	i
-Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":	1-js/05-data-types/06-iterable/article.md	/^Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec d/;"	c
 Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandis verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".	1-js/11-async/03-promise-chaining/article.md	/^Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "p/;"	c
 Number	1-js/02-first-steps/05-types/article.md	/^## Number$/;"	s
 Number.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
