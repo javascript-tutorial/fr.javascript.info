@@ -284,7 +284,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 *	1-js/12-generators-iterators/1-generators/generateSequence-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
 *	1-js/12-generators-iterators/1-generators/generateSequence-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
 *	1-js/12-generators-iterators/1-generators/generateSequence-4.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="519" height="150" viewBox="0 0 519 150"><defs/;"	i
-**Et si l'order importait pour nous? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done`?**	1-js/11-async/07-microtask-queue/article.md	/^**Et si l'order importait pour nous? Comment pouvons-nous faire en sorte que `code finished` s'e/;"	c
 +	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "+": (a, b) => a + b$/;"	p	class:Calculator.methods
 +	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
 ++	1-js/06-advanced-functions/03-closure/lexenv-nested-makecounter-6.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="782" height="225" viewBox="0 0 782 225"><defs/;"	i
@@ -2083,7 +2082,6 @@ Les fonctions fléchées n'ont pas de "this"	1-js/04-object-basics/04-object-met
 Les fonctions fléchées n'ont pas de "this"	1-js/06-advanced-functions/12-arrow-functions/article.md	/^## Les fonctions fléchées n'ont pas de "this"$/;"	s
 Les fonctions fléchées revisitées	1-js/06-advanced-functions/12-arrow-functions/article.md	/^# Les fonctions fléchées revisitées$/;"	c
 Les formes postfixes et préfixes	1-js/02-first-steps/07-operators/1-increment-order/task.md	/^# Les formes postfixes et préfixes$/;"	c
-Les gestionnaires de promesses passent toujours par cette file d'attente interne.	1-js/11-async/07-microtask-queue/article.md	/^Les gestionnaires de promesses passent toujours par cette file d'attente interne.$/;"	c
 Les internes	1-js/05-data-types/04-array/article.md	/^## Les internes$/;"	s
 Les langages "par dessus" JavaScript	1-js/01-getting-started/1-intro/article.md	/^## Les langages "par dessus" JavaScript$/;"	s
 Les microtaches	1-js/11-async/07-microtask-queue/article.md	/^# Les microtaches$/;"	c
@@ -2828,7 +2826,6 @@ L’ordre des évènements	2-ui/3-event-details/1-mouse-events-basics/article.md
 Macrotasks and Microtasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Macrotasks and Microtasks$/;"	s
 Main-HTTP-request	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 Main-HTTP-response	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
-Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré	1-js/11-async/07-microtask-queue/article.md	/^Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non /;"	c
 Make external links orange	2-ui/1-document/06-dom-attributes-and-properties/2-yellow-links/task.md	/^# Make external links orange$/;"	c
 Making unselectable	2-ui/99-ui-misc/02-selection-range/article.md	/^## Making unselectable$/;"	s
 Manuels	1-js/01-getting-started/2-manuals-specifications/article.md	/^## Manuels$/;"	s
@@ -2992,7 +2989,6 @@ Origin:-https://java	5-network/05-fetch-crossorigin/xhr-another-domain.svg	/^<sv
 Other	1-js/02-first-steps/10-ifelse/2-check-standard/ifelse_task2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="500" height="264" viewBox="0 0 500 264"><defs/;"	i
 Other	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 Other resources	2-ui/5-loading/03-onload-onerror/article.md	/^## Other resources$/;"	s
-Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente. Ils ne sont pas encore exécutés. Le moteur JavaScript extrait une tâche de la file d'attente et l'exécute lorsqu'elle est libérée du code actuel.	1-js/11-async/07-microtask-queue/article.md	/^Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then\/catch\/finally` sont m/;"	c
 Outer corners	2-ui/1-document/11-coordinates/1-find-point-coordinates/solution.md	/^# Outer corners$/;"	c
 Oval	1-js/09-classes/02-class-inheritance/animal-rabbit-extends.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="560" height="316" viewBox="0 0 560 316"><defs/;"	i
 Oval	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
@@ -4277,7 +4273,6 @@ Shorthands	9-regular-expressions/09-regexp-quantifiers/article.md	/^## Shorthand
 Show a note near the element	2-ui/1-document/11-coordinates/2-position-at/task.md	/^# Show a note near the element$/;"	c
 Show a note near the element (absolute)	2-ui/1-document/11-coordinates/3-position-at-absolute/task.md	/^# Show a note near the element (absolute)$/;"	c
 Show descendants in a tree	2-ui/1-document/07-modifying-document/8-tree-count/task.md	/^# Show descendants in a tree$/;"	c
-Si nous ne connaissions pas la file d'attente des microtaches, nous pourrions nous demander: "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté? Nous avons détecté l'erreur!".	1-js/11-async/07-microtask-queue/article.md	/^Si nous ne connaissions pas la file d'attente des microtaches, nous pourrions nous demander: "Po/;"	c
 Siblings and the parent	2-ui/1-document/03-dom-navigation/article.md	/^## Siblings and the parent$/;"	s
 Simple requests	5-network/05-fetch-crossorigin/article.md	/^## Simple requests$/;"	s
 Simplified example	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## Simplified example$/;"	s
