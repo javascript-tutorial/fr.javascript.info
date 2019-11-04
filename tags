@@ -1941,7 +1941,6 @@ Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/ta
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
 IIFE	1-js/06-advanced-functions/03-closure/article.md	/^### IIFE$/;"	S
-Ici la méthode [arr.find](mdn:js/Array/find) se révèle vraiment pratique.	1-js/05-data-types/05-array-methods/article.md	/^Ici la méthode [arr.find](mdn:js\/Array\/find) se révèle vraiment pratique.$/;"	c
 Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.	1-js/11-async/05-promise-api/article.md	/^Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Pr/;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
 If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
@@ -2052,7 +2051,6 @@ La différence entre les appels	1-js/08-prototypes/04-prototype-methods/3-compar
 La déclaration "switch"	1-js/02-first-steps/13-switch/article.md	/^# La déclaration "switch"$/;"	c
 La function constructeur	1-js/04-object-basics/06-constructor-new/article.md	/^## La function constructeur$/;"	s
 La gestion des erreurs	1-js/10-error-handling/index.md	/^# La gestion des erreurs$/;"	c
-La méthode [arr.splice(str)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.	1-js/05-data-types/05-array-methods/article.md	/^La méthode [arr.splice(str)](mdn:js\/Array\/splice) est un couteau suisse pour les tableaux. El/;"	c
 La méthode toString(base)	1-js/05-data-types/02-number/article.md	/^## La méthode toString(base)$/;"	s
 La plupart des méthodes supportent "thisArg"	1-js/05-data-types/05-array-methods/article.md	/^## La plupart des méthodes supportent "thisArg"$/;"	s
 La propriété "length"	1-js/06-advanced-functions/06-function-object/article.md	/^## La propriété "length"$/;"	s
