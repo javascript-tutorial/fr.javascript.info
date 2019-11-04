@@ -296,7 +296,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
 - Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".	1-js/11-async/04-promise-error-handling/article.md	/^- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (po/;"	c
-- `Array` (sauf `arr.values()`)	1-js/05-data-types/09-keys-values-entries/article.md	/^- `Array` (sauf `arr.values()`)$/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i

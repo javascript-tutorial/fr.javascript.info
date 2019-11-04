@@ -10,11 +10,7 @@ Ils sont pris en charge par:
 
 - `Map`
 - `Set`
-<<<<<<< HEAD
-- `Array` (sauf `arr.values()`)
-=======
-- `Array`
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+- `Array` 
 
 Les objets simples prennent également en charge des méthodes similaires, mais la syntaxe est un peu différente.
 
