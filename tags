@@ -295,7 +295,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 ,	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 ,	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
 -	1-js/05-data-types/05-array-methods/6-calculator-extendable/_js.view/solution.js	/^    "-": (a, b) => a - b,$/;"	p	class:Calculator.methods
-- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".	1-js/11-async/04-promise-error-handling/article.md	/^- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (po/;"	c
 --"-----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy1.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --"."---------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_lazy3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
 --".----------------	9-regular-expressions/10-regexp-greedy-and-lazy/witch_greedy2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="463" height="130" viewBox="0 0 463 130"><defs/;"	i
@@ -2060,7 +2059,6 @@ Le balisage moderne	1-js/02-first-steps/01-hello-world/article.md	/^## Le balisa
 Le constructeur, l'opérateur "new"	1-js/04-object-basics/06-constructor-new/article.md	/^# Le constructeur, l'opérateur "new"$/;"	c
 Le flux de développement	1-js/03-code-quality/05-testing-mocha/article.md	/^## Le flux de développement$/;"	s
 Le mode moderne, "use strict"	1-js/02-first-steps/03-strict-mode/article.md	/^# Le mode moderne, "use strict"$/;"	c
-Le moteur JavaScript suit ces rejets et génère une erreur globale dans ce cas. Vous pouvez le voir dans la console si vous exécutez l'exemple ci-dessus.	1-js/11-async/04-promise-error-handling/article.md	/^Le moteur JavaScript suit ces rejets et génère une erreur globale dans ce cas. Vous pouvez le /;"	c
 Le nom de JavaScript	1-js/02-first-steps/10-ifelse/2-check-standard/task.md	/^# Le nom de JavaScript$/;"	c
 Le nom par "default"	1-js/13-modules/02-import-export/article.md	/^### Le nom par "default"$/;"	S
 Le pattern rest "..."	1-js/05-data-types/10-destructuring-assignment/article.md	/^### Le pattern rest "..."$/;"	S

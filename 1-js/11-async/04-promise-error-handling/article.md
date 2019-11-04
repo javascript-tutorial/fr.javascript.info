@@ -166,19 +166,11 @@ new Promise(function() {
 
 En cas d'erreur, la promesse est rejetée et l'exécution doit passer au gestionnaire de rejet le plus proche. Mais il n'y en a pas. L'erreur est donc "coincée". Il n'y a pas de code pour le gérer.
 
-<<<<<<< HEAD
 En pratique, tout comme pour les erreurs régulières qui sont non gérées dans le code, cela signifie que quelque chose a très mal tourné.
 
 Que se passe-t-il lorsqu'une erreur régulière se produit et n'est pas détectée par `try...catch` ? Le script meurt avec un message dans la console. Il se produit la même chose lors du rejet de promesses non tenues.
 
 Le moteur JavaScript suit ces rejets et génère une erreur globale dans ce cas. Vous pouvez le voir dans la console si vous exécutez l'exemple ci-dessus.
-=======
-In practice, just like with regular unhandled errors in code, it means that something has gone terribly wrong.
-
-What happens when a regular error occurs and is not caught by `try..catch`? The script dies with a message in the console. A similar thing happens with unhandled promise rejections.
-
-The JavaScript engine tracks such rejections and generates a global error in that case. You can see it in the console if you run the example above.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Dans le navigateur, nous pouvons détecter de telles erreurs en utilisant l'événement `unhandledrejection`:
 
@@ -206,14 +198,7 @@ Dans les environnements sans navigateur comme Node.js, il existe d'autres moyens
 
 ## Résumé
 
-<<<<<<< HEAD
-- `.catch` gère les erreurs dans les promesses de toutes sortes : qu'il s'agisse d'un appel `reject()', ou d'une erreur lancée dans un gestionnaire.
-- Nous devrions placer `.catch' exactement aux endroits où nous voulons traiter les erreurs et savoir comment les traiter. Le gestionnaire doit analyser les erreurs (les classes d'erreurs personnalisées aident) et relancer les erreurs inconnues (ce sont peut-être des erreurs de programmation).
+- `.catch` gère les erreurs dans les promesses de toutes sortes : qu'il s'agisse d'un appel `reject()`, ou d'une erreur lancée dans un gestionnaire.
+- Nous devrions placer `.catch` exactement aux endroits où nous voulons traiter les erreurs et savoir comment les traiter. Le gestionnaire doit analyser les erreurs (les classes d'erreurs personnalisées aident) et relancer les erreurs inconnues (ce sont peut-être des erreurs de programmation).
 - C'est acceptable de ne pas utiliser `.catch` du tout, s'il n'y a aucun moyen de récupérer d'une erreur.
 - Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".
-=======
-- `.catch` handles errors in promises of all kinds: be it a `reject()` call, or an error thrown in a handler.
-- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones (maybe they are programming mistakes).
-- It's ok not to use `.catch` at all, if there's no way to recover from an error.
-- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments) to track unhandled errors and inform the user (and probably our server) about them, so that our app never "just dies".
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
