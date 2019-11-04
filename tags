@@ -1342,7 +1342,6 @@ Cat	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/index.
 Catastrophic backtracking	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^# Catastrophic backtracking$/;"	c
 Catch links in the element	2-ui/2-events/04-default-browser-action/2-catch-link-navigation/task.md	/^# Catch links in the element$/;"	c
 Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.	1-js/09-classes/06-instanceof/article.md	/^Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifié/;"	c
-Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions à la place, comme ceci :	1-js/06-advanced-functions/08-settimeout-setinterval/article.md	/^Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'uti/;"	c
 Chaining	1-js/04-object-basics/04-object-methods/8-chain-calls/task.md	/^# Chaining$/;"	c
 Changement de "prototype"	1-js/08-prototypes/02-function-prototype/1-changing-prototype/task.md	/^# Changement de "prototype"$/;"	c
 Character classes	9-regular-expressions/02-regexp-character-classes/article.md	/^# Character classes$/;"	c
@@ -1465,7 +1464,6 @@ DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
 Dans ce cas, d'autres gestionnaires attendent jusqu'à ce qu'elle soit tenue, puis obtiennent son résultat.	1-js/11-async/03-promise-chaining/article.md	/^Dans ce cas, d'autres gestionnaires attendent jusqu'à ce qu'elle soit tenue, puis obtiennent so/;"	c
 Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.	1-js/11-async/05-promise-api/article.md	/^Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au /;"	c
-Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :	1-js/06-advanced-functions/08-settimeout-setinterval/article.md	/^Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :$/;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
