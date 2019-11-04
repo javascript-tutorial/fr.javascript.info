@@ -142,11 +142,7 @@ for (let char of str) {
 
 Pour mieux comprendre, voyons comment utiliser explicitement un itérateur.
 
-<<<<<<< HEAD
-Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
-=======
-We'll iterate over a string in exactly the same way as `for..of`, but with direct calls. This code creates a string iterator and gets values from it "manually":
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code crée un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
 
 ```js run
 let str = "Hello";
@@ -274,11 +270,7 @@ for (let char of str) {
 alert(chars);
 ```
 
-<<<<<<< HEAD
 ...Mais c'est plus court.    
-=======
-...But it is shorter.    
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Nous pouvons même créer une substitution-consciente de `slice` sur elle:
 

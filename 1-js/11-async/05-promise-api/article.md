@@ -4,11 +4,7 @@ Il y a 5 méthodes statiques dans la classe `Promise`. Nous allons rapidement co
 
 ## Promise.all
 
-<<<<<<< HEAD
-Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'elles soient toutes prêtes.
-=======
-Let's say we want to run many promises to execute in parallel, and wait until all of them are ready.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Disons que nous voulons exécuter de nombreuses promesses en parallèle, et attendre qu'elles soient toutes prêtes.
 
 Par exemple, téléchargez plusieurs URLs en parallèle et traitez le contenu lorsque tout est terminé.
 
@@ -20,11 +16,7 @@ La syntaxe est:
 let promise = Promise.all([...promises...]);
 ```
 
-<<<<<<< HEAD
 `Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.
-=======
-`Promise.all` takes an array of promises (it technically can be any iterable, but is usually an array) and returns a new promise.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont réglées et que le tableau de leurs résultats devient son résultat.
 
@@ -38,11 +30,7 @@ Promise.all([
 ]).then(alert); // 1,2,3 quand les promesses sont prêtes : chaque promesse apporte un élément du tableau
 ```
 
-<<<<<<< HEAD
-Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.
-=======
-Please note that the order of the resulting array members is the same as in its source promises. Even though the first promise takes the longest time to resolve, it's still first in the array of results.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses sources. Même si la première promesse prend le plus de temps à se résoudre, elle est toujours la première dans le tableau des résultats.
 
 Une astuce courante consiste à mapper un tableau de données de tâches dans un tableau de promesses, puis à l'intégrer dans `Promise.all`.
 
@@ -65,11 +53,7 @@ Promise.all(requests)
   ));
 ```
 
-<<<<<<< HEAD
-Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau de biens par leurs identifiants, la logique est la même):
-=======
-A bigger example with fetching user information for an array of GitHub users by their names (we could fetch an array of goods by their ids, the logic is identical):
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau d'informations par leurs identifiants, la logique est la même) :
 
 ```js run
 let names = ['iliakan', 'remy', 'jeresig'];
@@ -85,11 +69,7 @@ Promise.all(requests)
 
     return responses;
   })
-<<<<<<< HEAD
   // mappe le tableau de "responses" dans le tableau "response.json()" pour lire leurs contenus
-=======
-  // map array of responses into an array of response.json() to read their content
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
   .then(responses => Promise.all(responses.map(r => r.json())))
   // toutes les réponses JSON sont analysées : "users" est leur tableau
   .then(users => users.forEach(user => alert(user.name)));
@@ -109,11 +89,7 @@ Promise.all([
 ]).catch(alert); // Error: Whoops!
 ```
 
-<<<<<<< HEAD
-Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
-=======
-Here the second promise rejects in two seconds. That leads to an immediate rejection of `Promise.all`, so `.catch` executes: the rejection error becomes the outcome of the whole `Promise.all`.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute : l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
 
 ```warn header="En cas d'erreur, les autres promesses sont ignorées."
 Si une promesse est rejetée, `Promise.all` est immédiatement rejetée, oubliant complètement les autres dans la liste. Leurs résultats sont ignorés.
@@ -213,19 +189,11 @@ if(!Promise.allSettled) {
 }
 ```
 
-<<<<<<< HEAD
 Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.
-=======
-In this code, `promises.map` takes input values, turns them into promises (just in case a non-promise was passed) with `p => Promise.resolve(p)`, and then adds `.then` handler to every one.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Ce gestionnaire transforme un résultat réussi `v` en `{state:'fulfilled', value:v}`, et une erreur `r` en `{state:'rejected', reason:r}`. C'est exactement le format de `Promise.allSettled`.
 
-<<<<<<< HEAD
-Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les promesses données, même si certaines d'entre elles sont rejetées.
-=======
-Now we can use `Promise.allSettled` to get the results of *all* given promises, even if some of them reject.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou toutes les promesses données, même si certaines d'entre elles sont rejetées.
 
 ## Promise.race
 
@@ -252,11 +220,7 @@ La première promesse a été la plus rapide, donc, elle est devenue le résulta
 
 ## Promise.resolve/reject
 
-<<<<<<< HEAD
 Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.
-=======
-Methods `Promise.resolve` and `Promise.reject` are rarely needed in modern code, because `async/await` syntax (we'll cover it [a bit later](info:async-await)) makes them somewhat obsolete.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Nous les couvrons ici par souci de clarté, et pour ceux qui ne peuvent pas utiliser `async/await` pour une quelconque raison.
 
@@ -270,11 +234,7 @@ let promise = new Promise(resolve => resolve(value));
 
 La méthode est utilisée pour la compatibilité, lorsqu'une fonction est censée renvoyer une promesse.
 
-<<<<<<< HEAD
-Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse:
-=======
-For example, `loadCached` function below fetches a URL and remembers (caches) its content. For future calls with the same URL it immediately gets the previous content from cache, but uses `Promise.resolve` to make a promise of it, so that the returned value is always a promise:
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse :
 
 ```js
 let cache = new Map();
@@ -313,22 +273,12 @@ En pratique, cette méthode n'est presque jamais utilisée.
 
 Il y a 5 méthodes statiques de la classe `Promise`:
 
-<<<<<<< HEAD
 1. `Promise.all(promises)` -- attend que toutes les promesses se résolvent et retourne un tableau de leurs résultats. Si l'une des promesses données est rejetée, alors elle devient l'erreur de `Promise.all`, et tous les autres résultats sont ignorés.
 2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec:
     - `state`: `"fulfilled"` ou `"rejected"`
     - `value` (si rempli) ou `reason` (en cas de rejet).
-3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le dénouement.
+3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le résultat.
 4. `Promise.resolve(value)` -- fait une promesse résolue avec la valeur donnée.
 5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.
-=======
-1. `Promise.all(promises)` -- waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of `Promise.all`, and all other results are ignored.
-2. `Promise.allSettled(promises)` (recently added method) -- waits for all promises to settle and returns their results as an array of objects with:
-    - `state`: `"fulfilled"` or `"rejected"`
-    - `value` (if fulfilled) or `reason` (if rejected).
-3. `Promise.race(promises)` -- waits for the first promise to settle, and its result/error becomes the outcome.
-4. `Promise.resolve(value)` -- makes a resolved promise with the given value.
-5. `Promise.reject(error)` -- makes a rejected promise with the given error.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 De ces cinq, " Promise.all " est probablement le plus courant en pratique.

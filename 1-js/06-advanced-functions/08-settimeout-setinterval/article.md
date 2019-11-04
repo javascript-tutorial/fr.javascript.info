@@ -60,11 +60,7 @@ Ce qui fait que le code ci-dessous fonctionne aussi :
 setTimeout("alert('Bonjour')", 1000);
 ```
 
-<<<<<<< HEAD
-Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions à la place, comme ceci :
-=======
-But using strings is not recommended, use arrow functions instead of them, like this:
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions fléchées à la place, comme ceci :
 
 ```js run no-beautify
 setTimeout(() => alert('Bonjour'), 1000);
@@ -202,11 +198,7 @@ setTimeout(function run() {
 }, 100);
 ```
 
-<<<<<<< HEAD
-Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :
-=======
-For `setInterval` the internal scheduler will run `func(i++)` every 100ms:
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+Dans le cas du `setInterval` l'ordonnanceur interne va appeler `func(i++)` toutes les 100ms :
 
 ![](setinterval-interval.svg)
 

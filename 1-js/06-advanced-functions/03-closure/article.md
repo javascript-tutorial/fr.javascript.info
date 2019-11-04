@@ -317,198 +317,194 @@ Voici ce qui se passe dans l'exemple `makeCounter` pas à pas. Suivez-le pour vo
 
 Veuillez noter que la propriété additionnelle `[[Environment]]` est couverte ici. Nous ne l'avions pas mentionné avant pour la simplicité.
 
-1. Lorsque le script vient de commencer, il n’existe qu’un environnement lexical global :
+1. lorsque le script vient de commencer, il n’existe qu’un environnement lexical global :
 
     ![](lexenv-nested-makecounter-1.svg)
 
-    A ce moment précis, il n'y a qu'une fonction `makeCounter`, car c'est une fonction déclaration. Elle n'a pas encore été exécutée.
+    a ce moment précis, il n'y a qu'une fonction `makecounter`, car c'est une fonction déclaration. elle n'a pas encore été exécutée.
 
-    **Toutes les fonctions "à la naissance" reçoivent une propriété cachée `[[Environment]]` avec une référence à l'environnement lexical de leur création.**
+    **toutes les fonctions "à la naissance" reçoivent une propriété cachée `[[environment]]` avec une référence à l'environnement lexical de leur création.**
 
-    Nous n'en avons pas encore parlé. C'est ainsi que la fonction sait où elle a été créée.
+    nous n'en avons pas encore parlé. c'est ainsi que la fonction sait où elle a été créée.
 
-    Ici, `makeCounter` est créé dans l'environnement lexical global, donc `[[Environment]]` en garde une référence.
+    ici, `makecounter` est créé dans l'environnement lexical global, donc `[[environment]]` en garde une référence.
 
-    En d'autres termes, une fonction est "imprimée" avec une référence à l'environnement lexical où elle est née. Et `[[Environment]]` est la propriété cachée de la fonction qui a cette référence.
+    en d'autres termes, une fonction est "imprimée" avec une référence à l'environnement lexical où elle est née. et `[[environment]]` est la propriété cachée de la fonction qui a cette référence.
 
-2. Le code s'exécute, la nouvelle variable globale `counter` est déclarée et obtient le résultat de l'appel de `makeCounter() `. Voici un instantané du moment où l'exécution est sur la première ligne de `makeCounter()` :
+2. le code s'exécute, la nouvelle variable globale `counter` est déclarée et obtient le résultat de l'appel de `makecounter() `. voici un instantané du moment où l'exécution est sur la première ligne de `makecounter()` :
 
     ![](lexenv-nested-makecounter-2.svg)
 
-    Au moment de l'appel de `makeCounter()`, l'environnement lexical est créé pour contenir ses variables et ses arguments.
+    au moment de l'appel de `makecounter()`, l'environnement lexical est créé pour contenir ses variables et ses arguments.
 
-    Comme tous les environnements lexicaux, il stocke deux choses :
-    1. Un enregistrement d'environnement avec des variables locales. Dans notre cas, `count` est la seule variable locale (qui apparaît lorsque la ligne avec `let count` est exécutée).
+    comme tous les environnements lexicaux, il stocke deux choses :
+    1. un enregistrement d'environnement avec des variables locales. dans notre cas, `count` est la seule variable locale (qui apparaît lorsque la ligne avec `let count` est exécutée).
 
-    2. La référence lexicale externe, qui est définie sur la valeur de `[[Environment]]` de la fonction. Ici `[[Environnement]]` de `makeCounter` fait référence à l'environnement lexical global.
+    2. la référence lexicale externe, qui est définie sur la valeur de `[[environment]]` de la fonction. ici `[[environnement]]` de `makecounter` fait référence à l'environnement lexical global.
 
-    Nous avons donc maintenant deux environnements lexicaux: le premier est global, le second est pour l’appel `makeCounter` actuel, avec la référence externe à global.
+    nous avons donc maintenant deux environnements lexicaux: le premier est global, le second est pour l’appel `makecounter` actuel, avec la référence externe à global.
 
-3. Lors de l'exécution de `makeCounter()`, une petite fonction imbriquée est créée.
+3. lors de l'exécution de `makecounter()`, une petite fonction imbriquée est créée.
 
-    Peu importe que la fonction soit créée à l'aide de la fonction déclaration ou de la fonction expression. Toutes les fonctions obtiennent la propriété `[[Environment]]` qui fait référence à l'environnement lexical dans lequel elles ont été créées. Donc, notre nouvelle fonction imbriquée l'obtient également.
+    peu importe que la fonction soit créée à l'aide de la fonction déclaration ou de la fonction expression. toutes les fonctions obtiennent la propriété `[[environment]]` qui fait référence à l'environnement lexical dans lequel elles ont été créées. donc, notre nouvelle fonction imbriquée l'obtient également.
 
-    Pour notre nouvelle fonction imbriquée, la valeur de `[[Environment]]` est l'environnement lexical actuel de `makeCounter()` (où elle est née) :
+    pour notre nouvelle fonction imbriquée, la valeur de `[[environment]]` est l'environnement lexical actuel de `makecounter()` (où elle est née) :
 
     ![](lexenv-nested-makecounter-3.svg)
 
-<<<<<<< HEAD
-    Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. Le code à l'intérieur de `function() { return count ++; }` n'est pas en cours d'exécution.
-=======
-    Please note that on this step the inner function was created, but not yet called. The code inside `return count++;` is not running.
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+    veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. le code à l'intérieur `return count ++;` n'est pas en cours d'exécution.
 
-4. Au fur et à mesure de l'exécution, l'appel à `makeCounter()` se termine et le résultat (la fonction imbriquée minuscule) est affecté à la variable globale `counter` :
+4. au fur et à mesure de l'exécution, l'appel à `makecounter()` se termine et le résultat (la fonction imbriquée minuscule) est affecté à la variable globale `counter` :
 
     ![](lexenv-nested-makecounter-4.svg)
 
-    Cette fonction n'a qu'une seule ligne: `return count++`, qui sera exécutée lors de son exécution.
+    cette fonction n'a qu'une seule ligne: `return count++`, qui sera exécutée lors de son exécution.
 
-5. Lorsque `counter()` est appelé, un nouvel environnement lexical est créé pour l'appel. Il est vide, parce que `counter` n'a pas de variable locale par lui-même. Mais le `[[Environnement]]` de `counter` est utilisé comme référence `externe` pour lui, ce qui donne accès aux variables de l'ancien appel `makeCounter()` où il a été créé :
+5. lorsque `counter()` est appelé, un nouvel environnement lexical est créé pour l'appel. il est vide, parce que `counter` n'a pas de variable locale par lui-même. mais le `[[environnement]]` de `counter` est utilisé comme référence `externe` pour lui, ce qui donne accès aux variables de l'ancien appel `makecounter()` où il a été créé :
 
     ![](lexenv-nested-makecounter-5.svg)
 
-    Désormais, lorsque l'appel recherche la variable `count`, il commence par rechercher son propre environnement lexical (vide), puis l'environnement lexical de l'appel` makeCounter() `extérieur, où il le trouve.
+    désormais, lorsque l'appel recherche la variable `count`, il commence par rechercher son propre environnement lexical (vide), puis l'environnement lexical de l'appel` makecounter() `extérieur, où il le trouve.
 
-    Veuillez noter comment fonctionne la gestion de la mémoire ici. Bien que l'appel de `makeCounter()` se soit terminé quelques temps auparavant, son environnement lexical a été conservé en mémoire, car il existe une fonction imbriquée avec `[[Environment]]` le référençant.
+    veuillez noter comment fonctionne la gestion de la mémoire ici. bien que l'appel de `makecounter()` se soit terminé quelques temps auparavant, son environnement lexical a été conservé en mémoire, car il existe une fonction imbriquée avec `[[environment]]` le référençant.
 
-    Généralement, un objet Environnement Lexical existe tant qu'il existe une fonction qui peut l'utiliser. Il est effacé uniquement lorsqu'il n'y en a plus.
+    généralement, un objet environnement lexical existe tant qu'il existe une fonction qui peut l'utiliser. il est effacé uniquement lorsqu'il n'y en a plus.
 
-    L'appel à `counter()` renvoie non seulement la valeur de `count`, mais l'augmente également. Notez que la modification est faite "en place". La valeur de `count` est modifiée exactement dans l'environnement où elle a été trouvée.
+    l'appel à `counter()` renvoie non seulement la valeur de `count`, mais l'augmente également. notez que la modification est faite "en place". la valeur de `count` est modifiée exactement dans l'environnement où elle a été trouvée.
 
     ![](lexenv-nested-makecounter-6.svg)
 
-7. Les prochains appels de `counter()` font de même.
+7. les prochains appels de `counter()` font de même.
 
-La réponse à la deuxième question du début du chapitre devrait maintenant être évidente.
+la réponse à la deuxième question du début du chapitre devrait maintenant être évidente.
 
-La fonction `work()` dans le code ci-dessous obtient `name` à partir de l'emplacement de son origine via la référence d'environnement lexical externe :
+la fonction `work()` dans le code ci-dessous obtient `name` à partir de l'emplacement de son origine via la référence d'environnement lexical externe :
 
 ![](lexenv-nested-work.svg)
 
-Donc, le résultat est `"Pete"` ici.
+donc, le résultat est `"pete"` ici.
 
-Mais s'il n'y avait pas de `let name` dans `makeWorker() `, alors la recherche irait à l'extérieur et prendrait la variable globale comme nous pouvons le voir à partir de la chaîne ci-dessus. Dans ce cas, ce serait `"John"`.
+mais s'il n'y avait pas de `let name` dans `makeworker() `, alors la recherche irait à l'extérieur et prendrait la variable globale comme nous pouvons le voir à partir de la chaîne ci-dessus. dans ce cas, ce serait `"john"`.
 
-```smart header="Closures"
-Il existe un terme général de programmation "closure", que les développeurs devraient généralement connaître.
+```smart header="closures"
+il existe un terme général de programmation "closure", que les développeurs devraient généralement connaître.
 
-Une [closure](https://fr.wikipedia.org/wiki/Fermeture_(informatique)) est une fonction qui mémorise ses variables externes et peut y accéder. Dans certains langages, ce n'est pas possible ou une fonction doit être écrite de manière spéciale pour que cela se produise. Mais comme expliqué ci-dessus, en JavaScript, toutes les fonctions sont naturellement des fermetures (il n’existe qu’une seule exclusion, à couvrir dans le chapitre <info:new-function>).
+une [closure](https://fr.wikipedia.org/wiki/fermeture_(informatique)) est une fonction qui mémorise ses variables externes et peut y accéder. dans certains langages, ce n'est pas possible ou une fonction doit être écrite de manière spéciale pour que cela se produise. mais comme expliqué ci-dessus, en javascript, toutes les fonctions sont naturellement des fermetures (il n’existe qu’une seule exclusion, à couvrir dans le chapitre <info:new-function>).
 
-Autrement dit, elles se souviennent automatiquement de l'endroit où elles ont été créées à l'aide d'une propriété `[[Environment]]` masquée, et toutes peuvent accéder aux variables externes.
+autrement dit, elles se souviennent automatiquement de l'endroit où elles ont été créées à l'aide d'une propriété `[[environment]]` masquée, et toutes peuvent accéder aux variables externes.
 
-Lors d’un entretien d'embauche, les développeurs front-end reçoivent souvent une question du genre "qu’est-ce qu’une closure ?", une réponse valable serait une définition de la closure et une explication selon laquelle toutes les fonctions en JavaScript sont des closures, et peut-être quelques mots supplémentaires sur les détails techniques : Propriété `[[Environment]]` et comment fonctionnent les environnements lexicaux.
+lors d’un entretien d'embauche, les développeurs front-end reçoivent souvent une question du genre "qu’est-ce qu’une closure ?", une réponse valable serait une définition de la closure et une explication selon laquelle toutes les fonctions en javascript sont des closures, et peut-être quelques mots supplémentaires sur les détails techniques : propriété `[[environment]]` et comment fonctionnent les environnements lexicaux.
 ```
 
-## Blocs de code et boucles, IIFE
+## blocs de code et boucles, iife
 
-Les exemples ci-dessus se sont concentrés sur les fonctions. Mais un environnement lexical existe pour tout bloc de code `{...}`.
+les exemples ci-dessus se sont concentrés sur les fonctions. mais un environnement lexical existe pour tout bloc de code `{...}`.
 
-Un environnement lexical est créé lors de l’exécution d’un bloc de code et contient des variables locales au bloc. Voici quelques exemples.
+un environnement lexical est créé lors de l’exécution d’un bloc de code et contient des variables locales au bloc. voici quelques exemples.
 
-### If
+### if
 
-Dans l'exemple ci-dessous, la variable `user` n'existe que dans le bloc` if` :
+dans l'exemple ci-dessous, la variable `user` n'existe que dans le bloc` if` :
 
 <!--
     ```js run
-    let phrase = "Hello";
+    let phrase = "hello";
 
     if (true) {
-        let user = "John";
+        let user = "john";
 
-        alert(`${phrase}, ${user}`); // Hello, John
+        alert(`${phrase}, ${user}`); // hello, john
     }
 
-    alert(user); // Error, ne peut pas voir une telle variable !
+    alert(user); // error, ne peut pas voir une telle variable !
     ```
   -->
 
 ![](lexenv-if.svg)
 
-Lorsque l'exécution entre dans le bloc `if`, le nouvel environnement lexical "if-only" est créé.
+lorsque l'exécution entre dans le bloc `if`, le nouvel environnement lexical "if-only" est créé.
 
-Il a la référence à la partie externe, donc `phrase` peut être trouvée. Mais toutes les variables et fonctions expressions, déclarées à l'intérieur de `if`, résident dans cet environnement lexical et ne peuvent pas être vues de l'extérieur.
+il a la référence à la partie externe, donc `phrase` peut être trouvée. mais toutes les variables et fonctions expressions, déclarées à l'intérieur de `if`, résident dans cet environnement lexical et ne peuvent pas être vues de l'extérieur.
 
-Par exemple, après la fin de `if`, l'`alert` ci-dessous ne verra pas `user`, d'où l'erreur.
+par exemple, après la fin de `if`, l'`alert` ci-dessous ne verra pas `user`, d'où l'erreur.
 
-### For, while
+### for, while
 
-Pour une boucle, chaque itération a un environnement lexical séparé. Si une variable est déclarée dans `for(let ...)`, alors c'est aussi dedans :
+pour une boucle, chaque itération a un environnement lexical séparé. si une variable est déclarée dans `for(let ...)`, alors c'est aussi dedans :
 
 ```js run
 for (let i = 0; i < 10; i++) {
-  // Chaque boucle a son propre environnement lexical
+  // chaque boucle a son propre environnement lexical
   // {i: value}
 }
 
-alert(i); // Error, no such variable
+alert(i); // error, no such variable
 ```
 
-Veuillez noter que `let i` est visuellement en dehors de `{...}`. La construction `for` est spéciale ici : chaque itération de la boucle a son propre environnement lexical contenant le `i` actuel.
+veuillez noter que `let i` est visuellement en dehors de `{...}`. la construction `for` est spéciale ici : chaque itération de la boucle a son propre environnement lexical contenant le `i` actuel.
 
-De la même manière que `if`, après la boucle, `i` n'est pas visible.
+de la même manière que `if`, après la boucle, `i` n'est pas visible.
 
-### Blocs de code
+### blocs de code
 
-Nous pouvons également utiliser un bloc de code "nu" `{…}` pour isoler des variables dans une "portée locale".
+nous pouvons également utiliser un bloc de code "nu" `{…}` pour isoler des variables dans une "portée locale".
 
-Par exemple, dans un navigateur Web, tous les scripts (sauf avec `type="module"`) partagent la même zone globale. Donc, si nous créons une variable globale dans un script, elle devient disponible pour les autres. Mais cela devient une source de conflits si deux scripts utilisent le même nom de variable et s’écrasent.
+par exemple, dans un navigateur web, tous les scripts (sauf avec `type="module"`) partagent la même zone globale. donc, si nous créons une variable globale dans un script, elle devient disponible pour les autres. mais cela devient une source de conflits si deux scripts utilisent le même nom de variable et s’écrasent.
 
-Cela peut arriver si le nom de la variable est un mot répandu et que les auteurs de script ne se connaissent pas.
+cela peut arriver si le nom de la variable est un mot répandu et que les auteurs de script ne se connaissent pas.
 
-Si nous voulons éviter cela, nous pouvons utiliser un bloc de code pour isoler tout ou partie du script :
+si nous voulons éviter cela, nous pouvons utiliser un bloc de code pour isoler tout ou partie du script :
 
 ```js run
 {
   // travailer avec des variables locales qui ne doivent pas être vues à l'extérieur
 
-  let message = "Hello";
+  let message = "hello";
 
-  alert(message); // Hello
+  alert(message); // hello
 }
 
-alert(message); // Error: message is not defined
+alert(message); // error: message is not defined
 ```
 
-Le code en dehors du bloc (ou à l'intérieur d'un autre script) ne voit pas les variables à l'intérieur du bloc, car le bloc a son propre environnement lexical.
+le code en dehors du bloc (ou à l'intérieur d'un autre script) ne voit pas les variables à l'intérieur du bloc, car le bloc a son propre environnement lexical.
 
-### IIFE
+### iife
 
-Dans le passé, il n’existait pas d’environnement lexical au niveau des blocs en JavaScript.
+dans le passé, il n’existait pas d’environnement lexical au niveau des blocs en javascript.
 
-Les programmeurs ont donc dû inventer quelque chose. Et ce qu'ils ont fait s'appelle "immediately-invoked function expressions" (fonction expression immédiatement invoquées, en abrégé IIFE).
+les programmeurs ont donc dû inventer quelque chose. et ce qu'ils ont fait s'appelle "immediately-invoked function expressions" (fonction expression immédiatement invoquées, en abrégé iife).
 
-Ce n'est pas une chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts, il est donc préférable de les comprendre.
+ce n'est pas une chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts, il est donc préférable de les comprendre.
 
-Une IIFE ressemble à ceci :
+une iife ressemble à ceci :
 
 ```js run
 (function() {
 
-  let message = "Hello";
+  let message = "hello";
 
-  alert(message); // Hello
+  alert(message); // hello
 
 })();
 ```
 
-Ici, une fonction expression est créée et appelée immédiatement. Donc, le code s'exécute tout de suite et a ses propres variables privées.
+ici, une fonction expression est créée et appelée immédiatement. donc, le code s'exécute tout de suite et a ses propres variables privées.
 
-La fonction expression est entourée de parenthèses `(function {...})`, parce que lorsque JavaScript rencontre `"function"` dans le flux de code principal, il est compris comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
+la fonction expression est entourée de parenthèses `(function {...})`, parce que lorsque javascript rencontre `"function"` dans le flux de code principal, il est compris comme le début d'une fonction déclaration. mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
-// Essayons de déclarer et d'appeler immédiatement une fonction
-function() { // <-- Error: Unexpected token (
+// essayons de déclarer et d'appeler immédiatement une fonction
+function() { // <-- error: unexpected token (
 
-  let message = "Hello";
+  let message = "hello";
 
-  alert(message); // Hello
+  alert(message); // hello
 
 }();
 ```
 
-Même si nous disons : "d'accord, ajoutons un nom", cela ne fonctionnera pas, car JavaScript ne permet pas d'appeler immédiatement les fonctions déclarations :
+même si nous disons : "d'accord, ajoutons un nom", cela ne fonctionnera pas, car javascript ne permet pas d'appeler immédiatement les fonctions déclarations :
 
 ```js run
 // erreur de syntaxe à cause des parenthèses ci-dessous
@@ -517,35 +513,35 @@ function go() {
 }(); // <-- ne peut pas appeler la déclaration de fonction immédiatement
 ```
 
-Ainsi, les parenthèses autour de la fonction sont une astuce pour montrer à JavaScript que la fonction est créée dans le contexte d’une autre expression et qu’il s’agit donc d’une Fonction Expression : elle n’a pas besoin de nom et peut être appelée immédiatement.
+ainsi, les parenthèses autour de la fonction sont une astuce pour montrer à javascript que la fonction est créée dans le contexte d’une autre expression et qu’il s’agit donc d’une fonction expression : elle n’a pas besoin de nom et peut être appelée immédiatement.
 
-Il existe d'autres moyens que les parenthèses pour indiquer à JavaScript qu'il s'agit d'une fonction expression :
+il existe d'autres moyens que les parenthèses pour indiquer à javascript qu'il s'agit d'une fonction expression :
 
 ```js run
-// Façons de créer des IIFE
+// façons de créer des iife
 
 (function() {
-  alert("Parentheses around the function");
+  alert("parentheses around the function");
 }*!*)*/!*();
 
 (function() {
-  alert("Parentheses around the whole thing");
+  alert("parentheses around the whole thing");
 }()*!*)*/!*;
 
 *!*!*/!*function() {
-  alert("Bitwise NOT operator starts the expression");
+  alert("bitwise not operator starts the expression");
 }();
 
 *!*+*/!*function() {
-  alert("Unary plus starts the expression");
+  alert("unary plus starts the expression");
 }();
 ```
 
-Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. Notons encore : de nos jours, il n'y a aucune raison d'écrire un tel code.
+dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. notons encore : de nos jours, il n'y a aucune raison d'écrire un tel code.
 
-## Garbage collection
+## garbage collection
 
-Généralement, un Environnement Lexical est nettoyé et supprimé après l'exécution de la fonction. Par exemple :
+généralement, un environnement lexical est nettoyé et supprimé après l'exécution de la fonction. par exemple :
 
 ```js
 function f() {
@@ -556,9 +552,9 @@ function f() {
 f();
 ```
 
-Ici, les deux valeurs sont techniquement les propriétés de l'environnement lexical. Mais après la fin de `f()`, l'environnement lexical devient inaccessible, il est donc supprimé de la mémoire.
+ici, les deux valeurs sont techniquement les propriétés de l'environnement lexical. mais après la fin de `f()`, l'environnement lexical devient inaccessible, il est donc supprimé de la mémoire.
 
-... Mais s'il y a une fonction imbriquée qui est toujours accessible après la fin de `f`, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical externe, elle est donc aussi accessible et vivante :
+... mais s'il y a une fonction imbriquée qui est toujours accessible après la fin de `f`, alors elle a la propriété `[[environment]]` qui fait référence à l'environnement lexical externe, elle est donc aussi accessible et vivante :
 
 ```js
 function f() {
@@ -571,19 +567,15 @@ function f() {
 */!*
 }
 
-<<<<<<< HEAD
-let g = f(); // g est accessible et garde en mémoire l'environnement lexical externe
-=======
-let func = f(); // func gets a reference to g
-// so it stays and memory and its outer lexical environment stays as well
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+let func = f(); // func obtient une référence à g
+// donc il reste ainsi que la mémoire et son environnement lexical externe reste aussi
 ```
 
-Veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. Tous les 3 dans le code ci-dessous :
+veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. tous les 3 dans le code ci-dessous :
 
 ```js
 function f() {
-  let value = Math.random();
+  let value = math.random();
 
   return function() { alert(value); };
 }
@@ -593,9 +585,9 @@ function f() {
 let arr = [f(), f(), f()];
 ```
 
-Un objet Environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). En d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
+un objet environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). en d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
 
-Dans le code ci-dessous, lorsque `g` devient inaccessible, l'environnement lexical englobant (et par conséquent `value`) est nettoyé de la mémoire.
+dans le code ci-dessous, lorsque `g` devient inaccessible, l'environnement lexical englobant (et par conséquent `value`) est nettoyé de la mémoire.
 
 ```js
 function f() {
@@ -606,16 +598,9 @@ function f() {
   return g;
 }
 
-<<<<<<< HEAD
-let g = f(); // while g is alive
-// leur environnement lexical correspondant vit
+let func = f(); // pendant que func a une référence à g, il reste en mémoire
 
-g = null; // ... et maintenant la mémoire est nettoyée
-=======
-let func = f(); // while func has a reference to g, it stays in memory
-
-func = null; // ...and now the memory is cleaned up
->>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
+func = null; // ... et maintenant la mémoire est nettoyée
 ```
 
 ### Optimisations réelles
