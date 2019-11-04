@@ -187,7 +187,7 @@ L'affectation par décomposition fonctionne également avec les objets.
 La syntaxe de base est la suivante :
 
 ```js
-let {var1, var2} = {var1:…, var2…}
+let {var1, var2} = {var1:…, var2:…}
 ```
 
 Nous avons un objet existant à droite que nous souhaitons scinder en variables. Le côté gauche contient un "pattern" pour les propriétés correspondantes. Dans ce cas simple, c’est une liste de noms de variables dans `{...}`.

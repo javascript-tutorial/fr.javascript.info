@@ -212,7 +212,7 @@ Mais nous pouvons forcer la sortie à tout moment. Il y a une directive spécial
 
 Par exemple, la boucle ci-dessous demande à l'utilisateur une série de chiffres, mais "se casse" quand aucun numéro n'est entré :
 
-```js
+```js run
 let sum = 0;
 
 while (true) {
