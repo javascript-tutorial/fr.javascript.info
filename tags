@@ -1245,7 +1245,7 @@ Auto-correction	1-js/05-data-types/11-date/article.md	/^## Auto-correction$/;"	s
 Auto-repeat	2-ui/3-event-details/5-keyboard-events/article.md	/^## Auto-repeat$/;"	s
 Autocorrection	2-ui/1-document/02-dom-nodes/article.md	/^## Autocorrection$/;"	s
 Autosave a form field	6-data-storage/02-localstorage/1-form-autosave/task.md	/^# Autosave a form field$/;"	c
-Autres opérations	1-js/04-object-basics/05-object-toprimitive/article.md	/^## Autres opérations$/;"	s
+Autres conversions	1-js/04-object-basics/05-object-toprimitive/article.md	/^## Autres conversions$/;"	s
 Autres prototypes intégrés	1-js/08-prototypes/03-native-prototypes/article.md	/^## Autres prototypes intégrés$/;"	s
 Await	1-js/11-async/08-async-await/article.md	/^## Await$/;"	s
 BOM	2-ui/1-document/01-browser-environment/windowObjects.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="367" height="308" viewBox="0 0 367 308"><defs/;"	i
@@ -1721,7 +1721,6 @@ Function property after bind	1-js/06-advanced-functions/10-bind/4-function-prope
 Function.prototype	1-js/08-prototypes/03-native-prototypes/native-prototypes-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="692" height="411" viewBox="0 0 692 411"><defs/;"	i
 Function.prototype	1-js/09-classes/02-class-inheritance/3-class-extend-object/rabbit-extends-object.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="458" height="344" viewBox="0 0 458 344"><defs/;"	i
 Function.prototype-Copy	1-js/09-classes/02-class-inheritance/3-class-extend-object/rabbit-extends-object.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="458" height="344" viewBox="0 0 458 344"><defs/;"	i
-Further conversions	1-js/04-object-basics/05-object-toprimitive/article.md	/^## Further conversions$/;"	s
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
@@ -1949,7 +1948,6 @@ If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
-Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractères ou si la méthode `Symbol.toPrimitive` renvoie un nombre pour un indice "number".	1-js/04-object-basics/05-object-toprimitive/article.md	/^Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractè/;"	c
 IloveHTML5	9-regular-expressions/02-regexp-character-classes/love-html5-classes.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="236" height="38" viewBox="0 0 236 38"><defs></;"	i
 Image gallery	2-ui/2-events/04-default-browser-action/3-image-gallery/task.md	/^# Image gallery$/;"	c
 Image to blob	4-binary/03-blob/article.md	/^## Image to blob$/;"	s
@@ -3122,7 +3120,6 @@ Page-1	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     style="fill:n
 Page-1-6	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     transform="translate(200,50)">$/;"	i
 Page: DOMContentLoaded, load, beforeunload, unload	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^# Page: DOMContentLoaded, load, beforeunload, unload$/;"	c
 Paires de substitution	1-js/05-data-types/03-string/article.md	/^### Paires de substitution$/;"	S
-Par exemple, ici `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` :	1-js/04-object-basics/05-object-toprimitive/article.md	/^Par exemple, ici `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` :$/;"	c
 Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse:	1-js/11-async/05-promise-api/article.md	/^Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) so/;"	c
 Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'utilisateur et afficher l'avatar:	1-js/11-async/03-promise-chaining/article.md	/^Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'ut/;"	c
 Parallel update problem	6-data-storage/03-indexeddb/article.md	/^### Parallel update problem$/;"	S
@@ -4537,7 +4534,6 @@ Underscores for fun	1-js/03-code-quality/04-ninja-code/article.md	/^## Underscor
 Une Introduction à JavaScript	1-js/01-getting-started/1-intro/article.md	/^# Une Introduction à JavaScript$/;"	c
 Une boucle infinie	1-js/05-data-types/02-number/4-endless-loop-error/task.md	/^# Une boucle infinie$/;"	c
 Une introduction	1-js/01-getting-started/index.md	/^# Une introduction$/;"	c
-Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler avec elle, en appliquant d'autres conversions si nécessaire.	1-js/04-object-basics/05-object-toprimitive/article.md	/^Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler /;"	c
 Une primitive en tant qu'objet	1-js/05-data-types/01-primitives-methods/article.md	/^## Une primitive en tant qu'objet$/;"	s
 Une question à propos de "if"	1-js/02-first-steps/11-logical-operators/8-if-question/task.md	/^# Une question à propos de "if"$/;"	c
 Une simple page	1-js/02-first-steps/09-alert-prompt-confirm/1-simple-page/task.md	/^# Une simple page$/;"	c
@@ -4580,7 +4576,6 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
-Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a pas d'indice "booléen" (tous les objets sont vrais dans un contexte booléen) ou autre chose. Et si nous traitons `"default"` et `"number"` de la même manière, comme le font la plupart des programmes intégrés, il n'y a que deux conversions.	1-js/04-object-basics/05-object-toprimitive/article.md	/^Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a pas d'indice "b/;"	c
 Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. Le code à l'intérieur de `function() { return count ++; }` n'est pas en cours d'exécution.	1-js/06-advanced-functions/03-closure/article.md	/^    Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appe/;"	c
 Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.	1-js/11-async/05-promise-api/article.md	/^Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des prome/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
