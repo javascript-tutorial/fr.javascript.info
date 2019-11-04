@@ -1280,8 +1280,6 @@ Blob	4-binary/03-blob/article.md	/^# Blob$/;"	c
 Blob	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
 Blob to base64	4-binary/03-blob/article.md	/^## Blob to base64$/;"	s
 Blocking top-navigation	3-frames-and-windows/06-clickjacking/article.md	/^### Blocking top-navigation$/;"	S
-Blocs de code	1-js/06-advanced-functions/03-closure/article.md	/^### Blocs de code$/;"	S
-Blocs de code et boucles, IIFE	1-js/06-advanced-functions/03-closure/article.md	/^## Blocs de code et boucles, IIFE$/;"	s
 Bonjour objet	1-js/04-object-basics/01-object/2-hello-object/task.md	/^# Bonjour objet$/;"	c
 Bons commentaires	1-js/03-code-quality/03-comments/article.md	/^## Bons commentaires$/;"	s
 Bonus: Object.prototype.toString pour le type	1-js/09-classes/06-instanceof/article.md	/^## Bonus: Object.prototype.toString pour le type$/;"	s
@@ -1699,7 +1697,6 @@ Fonctions fléchées [#arrow-functions]	1-js/02-first-steps/15-function-expressi
 Fonctions imbriquées	1-js/06-advanced-functions/03-closure/article.md	/^## Fonctions imbriquées$/;"	s
 Fonctions puissantes !	1-js/03-code-quality/04-ninja-code/article.md	/^## Fonctions puissantes !$/;"	s
 Fondamentaux JavaScript	1-js/02-first-steps/index.md	/^# Fondamentaux JavaScript$/;"	c
-For, while	1-js/06-advanced-functions/03-closure/article.md	/^### For, while$/;"	S
 Forbid the scrolling	2-ui/1-document/10-size-and-scroll-window/article.md	/^## Forbid the scrolling$/;"	s
 Form elements	2-ui/4-forms-controls/1-form-elements/article.md	/^## Form elements$/;"	s
 Form properties and methods	2-ui/4-forms-controls/1-form-elements/article.md	/^# Form properties and methods$/;"	c
@@ -1723,7 +1720,6 @@ GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-2.svg	/^<svg xmlns="
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/messages	5-network/05-fetch-crossorigin/cors-gmail-messages.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="651" height="285" viewBox="0 0 651 285"><defs/;"	i
-Garbage collection	1-js/06-advanced-functions/03-closure/article.md	/^## Garbage collection$/;"	s
 Garbage collection	2-ui/99-ui-misc/01-mutation-observer/article.md	/^## Garbage collection$/;"	s
 Generator	1-js/12-generators-iterators/1-generators/genYield2-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="461" height="258" viewBox="0 0 461 258"><defs/;"	i
 Generator	1-js/12-generators-iterators/1-generators/genYield2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="559" height="216" viewBox="0 0 559 216"><defs/;"	i
@@ -1938,10 +1934,8 @@ Héritage prototypal	1-js/08-prototypes/01-prototype-inheritance/article.md	/^# 
 Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/task.md	/^# Hériter de SyntaxError$/;"	c
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
-IIFE	1-js/06-advanced-functions/03-closure/article.md	/^### IIFE$/;"	S
 Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.	1-js/11-async/05-promise-api/article.md	/^Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Pr/;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
-If	1-js/06-advanced-functions/03-closure/article.md	/^### If$/;"	S
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
 Ignore-the-rest-of-t	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
@@ -4571,7 +4565,6 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
-Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appelée. Le code à l'intérieur de `function() { return count ++; }` n'est pas en cours d'exécution.	1-js/06-advanced-functions/03-closure/article.md	/^    Veuillez noter qu'à cette étape, la fonction interne a été créée, mais pas encore appe/;"	c
 Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.	1-js/11-async/05-promise-api/article.md	/^Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des prome/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
 Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau de biens par leurs identifiants, la logique est la même):	1-js/11-async/05-promise-api/article.md	/^Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans /;"	c
@@ -4937,6 +4930,8 @@ blockquote:before	2-ui/1-document/11-coordinates/2-position-at/solution.view/ind
 blockquote:before	2-ui/1-document/11-coordinates/2-position-at/source.view/index.css	/^blockquote:before {$/;"	s
 blockquote:before	2-ui/1-document/11-coordinates/3-position-at-absolute/solution.view/index.css	/^blockquote:before {$/;"	s
 blockquote:before	2-ui/1-document/11-coordinates/4-position-inside-absolute/solution.view/index.css	/^blockquote:before {$/;"	s
+blocs de code	1-js/06-advanced-functions/03-closure/article.md	/^### blocs de code$/;"	S
+blocs de code et boucles, iife	1-js/06-advanced-functions/03-closure/article.md	/^## blocs de code et boucles, iife$/;"	s
 blue-zones	7-animation/1-bezier-curve/bezier-letter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="166" height="173" viewBox="0 0 166 173"><defs/;"	i
 boat	7-animation/2-css-animations/boat.view/index.html	/^  <img src="https:\/\/js.cx\/clipart\/boat.png" id="boat">$/;"	I
 body	2-ui/1-document/11-coordinates/1-find-point-coordinates/solution.view/index.css	/^body {$/;"	s
@@ -5533,6 +5528,7 @@ flyjet	7-animation/2-css-animations/1-animate-logo-css/source.view/index.html	/^
 flyjet	7-animation/2-css-animations/2-animate-logo-bezier-css/solution.view/index.html	/^  <img id="flyjet" src="https:\/\/en.js.cx\/clipart\/flyjet.jpg">$/;"	I
 focus	2-ui/99-ui-misc/02-selection-range/selection-direction-backward.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 focus	2-ui/99-ui-misc/02-selection-range/selection-direction-forward.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
+for, while	1-js/06-advanced-functions/03-closure/article.md	/^### for, while$/;"	S
 for-block-LexicalEnv	1-js/06-advanced-functions/03-closure/8-make-army/lexenv-makearmy.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="183" viewBox="0 0 566 183"><defs/;"	i
 form	2-ui/2-events/02-bubbling-and-capturing/both.view/example.css	/^form {$/;"	s
 form	2-ui/2-events/02-bubbling-and-capturing/bubble-target.view/example.css	/^form {$/;"	s
@@ -5687,6 +5683,7 @@ g8	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^       id="g8">$/;"
 g84	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     id="g84">$/;"	i
 g92	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     id="g92">$/;"	i
 g98	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     id="g98">$/;"	i
+garbage collection	1-js/06-advanced-functions/03-closure/article.md	/^## garbage collection$/;"	s
 garbage-collection	1-js/04-object-basics/02-garbage-collection/family-delete-refs.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="337" height="204" viewBox="0 0 337 204"><defs/;"	i
 garbage-collection	1-js/04-object-basics/02-garbage-collection/family-no-family.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="420" height="279" viewBox="0 0 420 279"><defs/;"	i
 garbage-collection	1-js/04-object-basics/02-garbage-collection/family-no-father-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="144" height="225" viewBox="0 0 144 225"><defs/;"	i
@@ -5904,6 +5901,7 @@ id:-'js'-price:-10	6-data-storage/03-indexeddb/indexeddb-cursor.svg	/^          
 id:-'js'-price:-10	6-data-storage/03-indexeddb/indexeddb-index.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="289" viewBox="0 0 440 289"><defs/;"	i
 id:-'nodejs'-price:	6-data-storage/03-indexeddb/indexeddb-cursor.svg	/^            <text id="id:-'nodejs'-price:" font-family="PTMono-Regular, PT Mono" font-size="14" /;"	i
 id:-'nodejs'-price:	6-data-storage/03-indexeddb/indexeddb-index.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="289" viewBox="0 0 440 289"><defs/;"	i
+if	1-js/06-advanced-functions/03-closure/article.md	/^### if$/;"	S
 if	1-js/06-advanced-functions/03-closure/lexenv-if.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="701" height="183" viewBox="0 0 701 183"><defs/;"	i
 if	1-js/06-advanced-functions/09-call-apply-decorators/decorator-makecaching-wrapper.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="458" height="260" viewBox="0 0 458 260"><defs/;"	i
 if	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
@@ -5915,6 +5913,7 @@ if-the-header-allows	5-network/05-fetch-crossorigin/xhr-another-domain.svg	/^<sv
 ifelse_task.svg	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 ifelse_task2.svg	1-js/02-first-steps/10-ifelse/2-check-standard/ifelse_task2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="500" height="264" viewBox="0 0 500 264"><defs/;"	i
 iframe	3-frames-and-windows/03-cross-window-communication/postmessage.view/index.html	/^  <iframe src="iframe.html" id="iframe" style="display:block;height:60px"><\/iframe>$/;"	I
+iife	1-js/06-advanced-functions/03-closure/article.md	/^### iife$/;"	S
 image-2	2-ui/1-document/09-size-and-scroll/metric-offset-parent.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	d
 image-2	2-ui/1-document/09-size-and-scroll/metric-offset-parent.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 image/png	4-binary/03-blob/blob.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="111" viewBox="0 0 659 111"><defs/;"	i
