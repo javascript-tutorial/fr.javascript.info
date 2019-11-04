@@ -728,7 +728,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 5	5-network/08-xmlhttprequest/phones.json	/^    {$/;"	o
 5	5-network/08-xmlhttprequest/phones.view/phones.json	/^    {$/;"	o
 5	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
-5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.	1-js/11-async/05-promise-api/article.md	/^5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.$/;"	c
 6	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
 6	4-binary/01-arraybuffer-binary-arrays/arraybuffer-views.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="603" height="286" viewBox="0 0 603 286"><defs/;"	i
 6	5-network/08-xmlhttprequest/phones-async.view/phones.json	/^    {$/;"	o
@@ -1459,7 +1458,6 @@ DOM tree	2-ui/1-document/02-dom-nodes/article.md	/^# DOM tree$/;"	c
 DOMContentLoaded	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^## DOMContentLoaded$/;"	s
 DOMContentLoaded and scripts	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and scripts$/;"	S
 DOMContentLoaded and styles	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^### DOMContentLoaded and styles$/;"	S
-Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.	1-js/11-async/05-promise-api/article.md	/^Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au /;"	c
 Dans un module, "this" n'est pas défini	1-js/13-modules/01-modules-intro/article.md	/^### Dans un module, "this" n'est pas défini$/;"	S
 Data transfer	5-network/11-websocket/article.md	/^## Data transfer$/;"	s
 DataView	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
@@ -1490,7 +1488,6 @@ Description imbriquée	1-js/03-code-quality/05-testing-mocha/article.md	/^## Des
 Deux façons de penser	1-js/06-advanced-functions/01-recursion/article.md	/^## Deux façons de penser$/;"	s
 Deux fonctions - un objet	1-js/04-object-basics/06-constructor-new/1-two-functions-one-object/task.md	/^# Deux fonctions - un objet$/;"	c
 Deux références	1-js/04-object-basics/02-garbage-collection/article.md	/^## Deux références$/;"	s
-Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'elles soient toutes prêtes.	1-js/11-async/05-promise-api/article.md	/^Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'e/;"	c
 Dispatching custom events	2-ui/2-events/05-dispatch-events/article.md	/^# Dispatching custom events$/;"	c
 Document	2-ui/1-document/index.md	/^# Document$/;"	c
 Document	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
@@ -1538,7 +1535,6 @@ En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
 Encoding strings	5-network/07-url/article.md	/^### Encoding strings$/;"	S
-Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les promesses données, même si certaines d'entre elles sont rejetées.	1-js/11-async/05-promise-api/article.md	/^Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les /;"	c
 Enter cookie samesite option	6-data-storage/01-cookie/article.md	/^### Enter cookie samesite option$/;"	S
 Environnement Lexical	1-js/06-advanced-functions/03-closure/article.md	/^## Environnement Lexical$/;"	s
 Environnement lexical intérieur et extérieur	1-js/06-advanced-functions/03-closure/article.md	/^### Environnement lexical intérieur et extérieur$/;"	S
@@ -1925,7 +1921,6 @@ Héritage prototypal	1-js/08-prototypes/01-prototype-inheritance/article.md	/^# 
 Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/task.md	/^# Hériter de SyntaxError$/;"	c
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
 IDE	1-js/01-getting-started/3-code-editors/article.md	/^## IDE$/;"	s
-Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.	1-js/11-async/05-promise-api/article.md	/^Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Pr/;"	c
 Icon	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     inkscape:connector-curvature="0" \/><path$/;"	i
 Iframe: wrong document pitfall	3-frames-and-windows/03-cross-window-communication/article.md	/^## Iframe: wrong document pitfall$/;"	s
 Ignore-catch-block	1-js/10-error-handling/1-try-catch/try-catch-flow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="514" height="411" viewBox="0 0 514 411"><defs/;"	i
@@ -2094,7 +2089,6 @@ Les langages "par dessus" JavaScript	1-js/01-getting-started/1-intro/article.md	
 Les microtaches	1-js/11-async/07-microtask-queue/article.md	/^# Les microtaches$/;"	c
 Les mixins	1-js/09-classes/07-mixins/article.md	/^# Les mixins$/;"	c
 Les modules sont différés	1-js/13-modules/01-modules-intro/article.md	/^### Les modules sont différés$/;"	S
-Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.	1-js/11-async/05-promise-api/article.md	/^Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code mode/;"	c
 Les méthodes ne sont pas "libres"	1-js/09-classes/02-class-inheritance/article.md	/^### Les méthodes ne sont pas "libres"$/;"	S
 Les paramètres Rest `...`	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^## Les paramètres Rest `...`$/;"	s
 Les paramètres Rest et l'opérateur spread	1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md	/^# Les paramètres Rest et l'opérateur spread$/;"	c
@@ -3094,7 +3088,6 @@ Page-1	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     style="fill:n
 Page-1-6	1-js/03-code-quality/01-debugging-chrome/largeIcons.svg	/^     transform="translate(200,50)">$/;"	i
 Page: DOMContentLoaded, load, beforeunload, unload	2-ui/5-loading/01-onload-ondomcontentloaded/article.md	/^# Page: DOMContentLoaded, load, beforeunload, unload$/;"	c
 Paires de substitution	1-js/05-data-types/03-string/article.md	/^### Paires de substitution$/;"	S
-Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse:	1-js/11-async/05-promise-api/article.md	/^Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) so/;"	c
 Parallel update problem	6-data-storage/03-indexeddb/article.md	/^### Parallel update problem$/;"	S
 Paramètres de fonction intelligente	1-js/05-data-types/10-destructuring-assignment/article.md	/^## Paramètres de fonction intelligente$/;"	s
 Parcourir un Set	1-js/05-data-types/07-map-set/article.md	/^## Parcourir un Set$/;"	s
@@ -4546,9 +4539,7 @@ Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variabl
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
 Venus	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Venus<\/h1>$/;"	h
-Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.	1-js/11-async/05-promise-api/article.md	/^Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des prome/;"	c
 Virgule	1-js/02-first-steps/07-operators/article.md	/^## Virgule$/;"	s
-Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau de biens par leurs identifiants, la logique est la même):	1-js/11-async/05-promise-api/article.md	/^Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans /;"	c
 Vérification d'existence	1-js/04-object-basics/01-object/article.md	/^## Vérification d'existence$/;"	s
 Vérification de classe: "instanceof"	1-js/09-classes/06-instanceof/article.md	/^# Vérification de classe: "instanceof"$/;"	c
 Vérification de la syntaxe	1-js/04-object-basics/04-object-methods/2-check-syntax/task.md	/^# Vérification de la syntaxe$/;"	c
@@ -4663,7 +4654,6 @@ _name:-"Admin"	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="ht
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit-admin.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="241" height="285" viewBox="0 0 241 285"><defs/;"	i
 _name:-"Guest"-name:	1-js/99-js-misc/01-proxy/proxy-inherit.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="230" height="206" viewBox="0 0 230 206"><defs/;"	i
 `	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="550" height="173" viewBox="0 0 550 173"><defs/;"	i
-`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.	1-js/11-async/05-promise-api/article.md	/^`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itér/;"	c
 `[[HomeObject]]`	1-js/09-classes/02-class-inheritance/article.md	/^### `[[HomeObject]]`$/;"	S
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	d
 a	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="a"><stop$/;"	i
