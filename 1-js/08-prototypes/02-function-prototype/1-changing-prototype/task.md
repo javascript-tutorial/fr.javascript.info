@@ -20,7 +20,7 @@ alert( rabbit.eats ); // true
 ```
 
 
-1. Nous avons ajouté une chaîne supplémentaire (accentué), que montre `alert` maintenant?
+1. Nous avons ajouté une chaîne de caractères supplémentaire (surlignée), qu'affiche `alert` maintenant?
 
     ```js
     function Rabbit() {}
@@ -54,7 +54,7 @@ alert( rabbit.eats ); // true
     alert( rabbit.eats ); // ?
     ```
 
-3. Comme ceci (une ligne remplacé)?
+3. Et comme ceci (une ligne remplacée)?
 
     ```js
     function Rabbit() {}

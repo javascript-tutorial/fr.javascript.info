@@ -6,7 +6,7 @@ importance: 5
 
 La tâche comporte deux parties.
 
-Nous avons des objets:
+Étant donné les objets suivants :
 
 ```js
 let head = {

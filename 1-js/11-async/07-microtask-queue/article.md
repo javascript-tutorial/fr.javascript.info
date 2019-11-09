@@ -30,7 +30,7 @@ Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs
 - La file d'attente est premier entré, premier sorti: les tâches mises en file d'attente en premier sont exécutées en premier.
 - L'exécution d'une tâche est lancée uniquement lorsque rien d'autre n'est en cours d'exécution.
 
-Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente. Ils ne sont pas encore exécutés. Le moteur JavaScript extrait une tâche de la file d'attente et l'exécute lorsqu'elle est libérée du code actuel.
+Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente. Ils ne sont pas encore exécutés. Lorsque le moteur JavaScript est libéré du code actuel, il extrait une tâche de la file d'attente et l'exécute.
 
 C'est pourquoi "code finished" dans l'exemple ci-dessus s'affiche en premier.
 
@@ -40,7 +40,7 @@ Les gestionnaires de promesses passent toujours par cette file d'attente interne
 
 S'il existe une chaîne avec plusieurs `.then/catch/finally`, chacun d'entre eux est exécuté de manière asynchrone. C'est-à-dire qu'il est d'abord mis en file d'attente et exécuté lorsque le code actuel est terminé et que les gestionnaires précédemment placés en file d'attente sont terminés.
 
-**Et si l'order importait pour nous? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done`?**
+**Et si l'order importait pour nous ? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done` ?**
 
 Facile, il suffit de le mettre dans la file d'attente avec `.then`:
 
@@ -54,7 +54,7 @@ Maintenant, l'ordre est comme prévu.
 
 ## Rejet non traité
 
-Souvenez-vous de l'événement `unhandledrejection` du chapitre <info:promise-error-handling>?
+Souvenez-vous de l'événement `unhandledrejection` du chapitre <info:promise-error-handling> ?
 
 Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré
 
@@ -95,7 +95,7 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 Maintenant, si vous l'exécutez, nous verrons d'abord le message `Promise Failed!`, Puis `caught`.
 
-Si nous ne connaissions pas la file d'attente des microtaches, nous pourrions nous demander: "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté? Nous avons détecté l'erreur!".
+Si nous ne connaissions pas la file d'attente de microtaches, nous pourrions nous demander : "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté ? Nous avons détecté l'erreur!".
 
 Mais nous comprenons maintenant que `unhandledrejection` est généré à la fin de la file d'attente des microtaches: le moteur examine les promesses et, si l'une d'entre elles est à l'état "rejected", l'événement se déclenche.
 

@@ -101,7 +101,7 @@ Voici le schéma (voir la partie droite):
 
 ![](mixin-inheritance.svg)
 
-C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne [[HomeObject]] fait référence à sayHiMixin, comme indiqué sur l’image ci-dessus.
+C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne `[[HomeObject]]` fait référence à `sayHiMixin`, comme indiqué sur l’image ci-dessus.
 
 Comme `super` cherche des méthodes du parent dans `[[HomeObject]].[[Prototype]]`, cela signifie qu'il cherche `sayHiMixin.[[Prototype]]`, et non pas `User.[[Prototype]]`.
 

@@ -36,7 +36,7 @@ C'est normal, car `delete obj.key` supprime une valeur par la` clé`. C'est tout
 
 Des méthodes spéciales doivent donc être utilisées.
 
-La méthode [arr.splice(str)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
+La méthode [arr.splice(start)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
 
 La syntaxe est la suivante:
 
@@ -270,7 +270,7 @@ alert( arr.includes(NaN) );// true (correct)
 
 Imaginez que nous ayons un tableau d'objets. Comment pouvons-nous trouver un objet avec la condition spécifique?
 
-Ici la méthode [arr.find](mdn:js/Array/find) se révèle vraiment pratique.
+Ici la méthode [arr.find(fn)](mdn:js/Array/find) se révèle vraiment pratique.
 
 La syntaxe est la suivante:
 ```js
@@ -577,7 +577,7 @@ Le flux de calcul:
 
 Ou sous la forme d'un tableau, où chaque ligne représente un appel de fonction sur l'élément de tableau suivant:
 
-|   |`sum`|`current`|`result`|
+|   |`sum`|`current`|result|
 |---|-----|---------|---------|
 |premier appel|`0`|`1`|`1`|
 |deuxième appel|`1`|`2`|`3`|

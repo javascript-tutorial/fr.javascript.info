@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Pourquoi deux hamsters sont pleins?
+# Pourquoi deux hamsters sont rassasiés ?
 
 Nous avons deux hamsters: `speedy` et `lazy` héritant de l'objet général `hamster`.
 
-Lorsque nous nourrissons l'un d'eux, l'autre est également plein. Pourquoi? Comment y remédier?
+Lorsque nous nourrissons l'un d'eux, l'autre est également rassasié. Pourquoi ? Comment y remédier ?
 
 ```js run
 let hamster = {
@@ -29,7 +29,7 @@ let lazy = {
 speedy.eat("apple");
 alert( speedy.stomach ); // apple
 
-// Celui-ci l'a aussi, pourquoi? réparer s'il vous plaît.
+// Celui-ci l'a aussi, pourquoi ? Merci de corriger cela.
 alert( lazy.stomach ); // apple
 ```
 

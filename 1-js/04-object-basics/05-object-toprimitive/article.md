@@ -53,21 +53,27 @@ let greater = user1 > user2;
 `"default"`
 : Se produit dans de rares cas où l'opérateur n'est "pas sûr" du type auquel il doit s'attendre.
 
-Par exemple, le binaire plus `+` peut fonctionner à la fois avec des chaînes de caractères (les concaténer) et des nombres (les ajouter). Ou quand un objet est comparé en utilisant `==` avec une chaîne, un numéro ou un symbole, il est également difficile de savoir quelle conversation doit être faite.
+    Par exemple, le binaire plus `+` peut fonctionner à la fois avec des chaînes de caractères (les concaténer) et des nombres (les ajouter), donc les chaînes de caractères et les chiffres feraient l'affaire. Donc, si le plus binaire obtient un objet sous forme d'argument, il utilise l'indicateur `"default"` pour le convertir.
 
-```js
-// binary plus
-let total = car1 + car2;
+    En outre, si un objet est comparé à l'aide de `==` avec une chaîne de caractères, un nombre ou un symbole, il est également difficile de savoir quelle conversion doit être effectuée, par conséquent l'indicateur `"default"` est utilisé.
 
-// obj == string/number/symbol
-if (user == 1) { ... };
+    ```js
+    // binary plus uses the "default" hint
+    let total = obj1 + obj2;
+
+    // obj == number uses the "default" hint
+    if (user == 1) { ... };
+    ```
+
+    Les opérateurs de comparaison supérieurs et inférieurs, tels que `<` `>`, peuvent également fonctionner avec des chaînes de caractères et des nombres. Néanmoins, ils utilisent l'indicateur `"number"`, pas `default`. C'est pour des raisons historiques,
+
+    En pratique cependant, nous n'avons pas besoin de nous souvenir de ces détails particuliers, car tous les objets intégrés, à l'exception d'un cas (l'objet `Date`, nous l'apprendrons plus tard), implémentent la conversion `'default'` de la même manière que `"number"`. Et nous pouvons faire la même chose.
+
+```smart header="Pas d'indice `\"boolean\"`"
+Veuillez noter qu'il n'y a que trois indices. C'est aussi simple que cela.
+
+Il n'y a pas d'indice "boolean" (tous les objets sont `true` dans un contexte booléen) ou autre chose. Et si nous traitons de la même manière `'default'` et `'number'`, comme le font la plupart des programmes intégrés, il n'y a au final que deux conversions.
 ```
-
-L'opérateur supérieur / inférieur `<>` peut également utiliser des chaînes de caractères et des nombres. Néanmoins, il utilise un indice `"number"` non `"default"`. C’est pour des raisons historiques.
-
-En pratique, tous les objets intégrés, à l'exception d'un cas (l'objet `Date`, nous l'apprendrons plus tard) implémentent la conversion `"default"` de la même manière que `"number"`. Et probablement nous devrions faire la même chose.
-
-Veuillez noter qu'il n'y a que trois "hints" ("indices"). C'est simple. Il n'y a pas d'indice "booléen" (tous les objets sont vrais dans un contexte booléen) ou autre chose. Et si nous traitons `"default"` et `"number"` de la même manière, comme le font la plupart des programmes intégrés, il n'y a que deux conversions.
 
 **Pour effectuer la conversion, JavaScript essaie de trouver et d'appeler trois méthodes d'objet :**
 
@@ -119,7 +125,29 @@ S'il n'y a pas de `Symbol.toPrimitive`, alors JavaScript essaye de les trouver e
 - `toString -> valueOf` pour le hint "string".
 - `valueOf -> toString` sinon.
 
-Par exemple, ici `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` :
+Ces méthodes doivent renvoyer une valeur primitive. Si `toString` ou `valueOf` renvoie un objet, il est ignoré (comme s'il n'y avait pas de méthode).
+
+Par défaut, un objet brut a les méthodes `toString` et `valueOf` suivantes :
+
+- La méthode `toString` renvoie une chaîne de caractères `"[object Object]"`.
+- La méthode `valueOf` renvoie un objet.
+
+Voici la démo :
+
+```js run
+let user = {name: "John"};
+
+alert(user); // [object Object]
+alert(user.valueOf() === user); // true
+```
+
+Donc, si nous essayons d'utiliser un objet en tant que chaîne de caractères, comme dans un `alert` ou autre chose, nous voyons par défaut `[object Object]`.
+
+Et la valeur par défaut `valueOf` n'est mentionnée ici que par souci d'exhaustivité, afin d'éviter toute confusion. Comme vous pouvez le constater, l'objet est renvoyé et est donc ignoré. Ne me demandez pas pourquoi, c'est pour des raisons historiques. Nous pouvons donc supposer que cela n'existe pas.
+
+Implémentons ces méthodes.
+
+Par exemple, ici, `user` fait la même chose que ci-dessus en combinant `toString` et `valueOf` au lieu de `Symbol.toPrimitive` :
 
 ```js run
 let user = {
@@ -166,7 +194,7 @@ En l'absence de `Symbol.toPrimitive` et de `valueOf`, `toString` gérera toutes 
 
 La chose importante à savoir sur toutes les méthodes de conversion de primitives est qu'elles ne renvoient pas nécessairement la primitive "hinted".
 
-Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractères ou si la méthode `Symbol.toPrimitive` renvoie un nombre pour un indice "number".
+Il n'y a pas de control pour vérifier si `ToString()` renvoie exactement une chaîne de caractères ou si la méthode `Symbol.toPrimitive` renvoie un nombre pour un indice `"number"`.
 
 **La seule chose obligatoire : ces méthodes doivent renvoyer une primitive, pas un objet.**
 
@@ -176,35 +204,41 @@ Pour des raisons historiques, si `toString` ou `valueOf` renvoie un objet, il n�
 En revanche, `Symbol.toPrimitive` doit renvoyer une primitive, sinon une erreur se produira.
 ```
 
-## Autres opérations
+## Autres conversions
 
-Une opération qui a initié la conversion obtient cette primitive, puis continue à travailler avec elle, en appliquant d'autres conversions si nécessaire.
+Comme nous le savons déjà, de nombreux opérateurs et fonctions effectuent des conversions de types, par exemple la multiplication `*` convertit les opérandes en nombres.
+
+Si nous passons un objet en argument, il y a deux étapes :
+1. L'objet est converti en primitive (en utilisant les règles décrites ci-dessus).
+2. Si la primitive résultante n'est pas du bon type, elle est convertie.
 
 Par exemple :
 
-- Les opérations mathématiques, sauf binaire plus, convertissent la primitive en nombre :
+```js run
+let obj = {
+  // toString gère toutes les conversions en l'absence d'autres méthodes
+  toString() {
+    return "2";
+  }
+};
 
-    ```js run
-    let obj = {
-      // toString gère toutes les conversions en l'absence d'autres méthodes
-      toString() {
-        return "2";
-      }
-    };
+alert(obj * 2); // 4, objet converti en primitive "2", puis la multiplication le transforme en un nombre
+```
 
-    alert(obj * 2); // 4, objet converti en primitive "2", puis multiplié par un nombre
-    ```
+1. La multiplication `obj * 2` convertit d'abord l'objet en primitive (cela devient une chaîne de caractère `"2"`).
+2. Ensuite `"2" * 2` devient `2 * 2` (la chaîne de caractères est convertie en nombre).
 
-- Le binaire plus va concaténer des chaînes dans la même situation :
-    ```js run
-    let obj = {
-      toString() {
-        return "2";
-      }
-    };
+Le binaire plus va concaténer des chaînes de caractères dans la même situation, car il accepte volontiers une chaîne de caractères :
 
-    alert(obj + 2); // 22 (la conversion en primitive a renvoyé une chaîne de caractères => concaténation)
-    ```
+```js run
+let obj = {
+  toString() {
+    return "2";
+  }
+};
+
+alert(obj + 2); // 22 ("2" + 2), la conversion en primitive a renvoyé une chaîne de caractères => concaténation
+```
 
 ## Résumé
 

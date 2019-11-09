@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Où est-ce écrit?
+# Où est-ce écrit ?
 
 Nous avons `rabbit` héritant de `animal`.
 

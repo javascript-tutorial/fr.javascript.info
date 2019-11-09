@@ -398,7 +398,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
 
     ```js run
     let str = "st*!*ringify*/!*";
-    alert( str.slice(2) ); // ringify, à partir de la 2e position jusqu'à la fin
+    alert( str.slice(2) ); // 'ringify', à partir de la 2e position jusqu'à la fin
     ```
 
     Des valeurs négatives pour `start/end` sont également possibles. Elles veulent dire que la position est comptée à partir de la fin de la chaîne de caractères :
@@ -407,7 +407,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     let str = "strin*!*gif*/!*y";
 
     // commence à la 4ème position à partir de la droite, se termine au 1er à partir de la droite
-    alert( str.slice(-4, -1) ); // gif
+    alert( str.slice(-4, -1) ); // 'gif'
     ```
 
 `str.substring(start [, end])`
@@ -439,14 +439,14 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
 
     ```js run
     let str = "st*!*ring*/!*ify";
-    alert( str.substr(2, 4) ); // ring, à partir de la 2ème position on obtient 4 caractères
+    alert( str.substr(2, 4) ); // 'ring', à partir de la 2ème position on obtient 4 caractères
     ```
 
     Le premier argument peut être négatif, pour compter à partir de la fin :
 
     ```js run
     let str = "strin*!*gi*/!*fy";
-    alert( str.substr(-4, 2) ); // gi, à partir de la 4ème position on obtient 2 caractères
+    alert( str.substr(-4, 2) ); // 'gi', à partir de la 4ème position on obtient 2 caractères
     ```
 
 Récapitulons ces méthodes pour éviter toute confusion :

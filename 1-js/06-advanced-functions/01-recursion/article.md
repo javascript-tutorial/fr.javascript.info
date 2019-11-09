@@ -459,6 +459,7 @@ let list = { value: 1 };
 list.next = { value: 2 };
 list.next.next = { value: 3 };
 list.next.next.next = { value: 4 };
+list.next.next.next.next = null;
 ```
 
 Ici, nous pouvons voir encore plus clairement qu'il y a plusieurs objets, chacun ayant les valeurs `value` et` next` pointant vers le voisin. La variable `list` est le premier objet de la chaîne. Par conséquent, en suivant les pointeurs `next`, nous pouvons atteindre n'importe quel élément.

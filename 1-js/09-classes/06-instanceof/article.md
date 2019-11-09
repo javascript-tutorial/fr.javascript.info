@@ -46,7 +46,7 @@ alert( arr instanceof Object ); // true
 
 Veuillez noter que `arr` appartient également à la classe `Object`. C'est parce que `Array` hérite de manière prototypale de `Object`.
 
-Normalement, l’opérateur `instanceof` examine la chaîne de prototypes pour le contrôle. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.
+Normalement, l’opérateur `instanceof` examine la chaîne prototypale pour la vérification. Nous pouvons également définir une logique personnalisée dans la méthode statique `Symbol.hasInstance`.
 
 L'algorithme de `obj instanceof Class` fonctionne à peu près comme suit:
 
@@ -68,7 +68,7 @@ let obj = { canEat: true };
 alert(obj instanceof Animal); // true: Animal[Symbol.hasInstance](obj) est appelée
 ```
 
-2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est utilisée: `obj instanceOf Class` vérifie si `Class.prototype` est égal à l'un des prototypes de la chaîne de prototypes `obj`.
+2. La plupart des classes n'ont pas `Symbol.hasInstance`. Dans ce cas, la logique standard est utilisée: `obj instanceOf Class` vérifie si `Class.prototype` est égale à l'un des prototypes de la chaîne prototypale `obj`.
 
     En d'autres termes, comparez les uns après les autres:
 ```js
@@ -107,7 +107,7 @@ Voici l'illustration de ce que `rabbit instanceof Animal` compare avec `Animal.p
 
 C'est drôle, mais le constructeur `Class` lui-même ne participe pas au contrôle! Seule la chaîne de prototypes et `Class.prototype` compte.
 
-Cela peut avoir des conséquences intéressantes lorsque la propriété `prototype` est modifiée après la création de l'objet.
+Cela peut avoir des conséquences intéressantes lorsque une propriété `prototype` est modifiée après la création de l'objet.
 
 Comme ici:
 
@@ -186,7 +186,7 @@ let user = {
 alert( {}.toString.call(user) ); // [object User]
 ```
 
-Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur:
+Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur :
 
 ```js run
 // toStringTag pour l'objet et la classe spécifiques à l'environnement:

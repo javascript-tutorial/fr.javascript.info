@@ -142,7 +142,7 @@ for (let char of str) {
 
 Pour mieux comprendre, voyons comment utiliser explicitement un itérateur.
 
-Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code obtient un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
+Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code crée un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
 
 ```js run
 let str = "Hello";
@@ -150,7 +150,9 @@ let str = "Hello";
 // fait la même chose que
 // for (let char of str) alert(char);
 
+*!*
 let iterator = str[Symbol.iterator]();
+*/!*
 
 while (true) {
   let result = iterator.next();

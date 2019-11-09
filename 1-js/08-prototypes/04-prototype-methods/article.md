@@ -79,7 +79,7 @@ Pour l'instant, nous avons tous ces moyens à notre disposition.
 
 Pourquoi `__proto__` a-t-il été remplacé par les fonctions `getPrototypeOf/setPrototypeOf`? C'est une question intéressante, qui nous oblige à comprendre pourquoi `__proto__` est mauvais. Lisez la suite pour obtenir la réponse.
 
-```warn header="Ne changez pas `[[Prototype]]` sur des objets existants si la vitesse est d'importance"
+```warn header="Ne changez pas `[[Prototype]]` sur des objets existants si la vitesse est importante"
 Techniquement, nous pouvons accéder/muter `[[Prototype]]` à tout moment. Mais en général, nous ne le définissons qu’une fois au moment de la création de l’objet, puis nous ne modifions pas : `rabbit` hérite de `animal`, et cela ne changera pas.
 
 Et les moteurs JavaScript sont hautement optimisés pour cela. Changer un prototype "à la volée" avec `Object.setPrototypeOf` ou `obj.__ proto __=` est une opération très lente, elle rompt les optimisations internes pour des opérations d'accès aux propriétés d'objet. Alors évitez-la à moins que vous ne sachiez ce que vous faites, ou que la vitesse de JavaScript n'a pas d'importance pour vous.
@@ -104,7 +104,7 @@ alert(obj[key]); // [object Object], pas "some value"!
 
 Ici, si l'utilisateur tape `__proto__`, l'assignation est ignorée!
 
-Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être un objet ou` null`, une chaîne de caractères ne peut pas devenir un prototype.
+Cela ne devrait pas nous surprendre. La propriété `__proto__` est spéciale: elle doit être un objet ou` null`. Une chaîne de caractères ne peut pas devenir un prototype.
 
 Mais nous n'avions pas * l'intention * de mettre en œuvre un tel comportement, non? Nous voulons stocker des paires clé / valeur, et la clé nommée `"__proto __"` n'a pas été correctement enregistrée. Donc c'est un bug!
 
@@ -114,13 +114,13 @@ Ce qui est pire -- généralement les développeurs ne pensent pas du tout à ce
 
 Des choses inattendues peuvent également se produire lors de l'attribution à `toString`, qui est une fonction par défaut, et d'autres méthodes intégrées.
 
-Comment échapper à ce problème?
+Comment pouvons-nous éviter ce problème ?
 
 Tout d'abord, nous pouvons simplement utiliser `Map`, puis tout va bien.
 
 Mais `Object` peut également bien nous servir ici, car les créateurs du langage ont réfléchi à ce problème il y a longtemps.
 
-Le `__proto__` n'est pas une propriété d'objet, mais un d'accesseur de propriété de `Object.prototype`:
+`__proto__` n'est pas une propriété d'un objet, mais un accesseur de propriété de `Object.prototype`:
 
 ![](object-prototype-2.svg)
 
@@ -147,6 +147,7 @@ alert(obj[key]); // "some value"
 
 Donc, il n'y a pas d'accésseur/mutateur hérité pour `__proto__`. Maintenant, il est traité comme une propriété de données normale, ainsi l'exemple ci-dessus fonctionne correctement.
 
+Nous pouvons appeler de tels objets des objets "très simples" ou "dictionnaire pur", car ils sont encore plus simples que les objets simples ordinaires `{...}`.
 Nous pouvons appeler ces objets "très simple" car ils sont encore plus simples qu'un objet ordinaire `{...}`.
 
 L'inconvénient est que de tels objets ne possèdent aucune méthode d'objet intégrée, par exemple `toString`:
@@ -173,13 +174,13 @@ alert(Object.keys(chineseDictionary)); // hello,bye
 
 ## Résumé
 
-Les méthodes modernes pour configurer et accéder directement au prototype sont les suivantes:
+Les méthodes modernes pour configurer et accéder directement au prototype sont les suivantes :
 
-- [Object.create(proto[, descriptors])](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/create) -- crée un objet vide avec `proto` donné comme `[[Prototype]]` (peut être `null`) et des descripteurs de propriété facultatifs.
-- [Object.getPrototypeOf(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getPrototypeOf) -- renvoie le `[[Prototype]]` de `obj` (identique à l'accésseur `__proto__`).
-- [Object.setPrototypeOf(obj, proto)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/setPrototypeOf) -- définit le `[[Prototype]]` de `obj` en tant que `proto` (identique au mutateur `__proto__`).
+- [Object.create(proto[, descriptors])](mdn:js/Object/create) -- crée un objet vide avec un `proto` en tant que `[[Prototype]]` (peut être `null`) et des descripteurs de propriété facultatifs.
+- [Object.getPrototypeOf(obj)](mdn:js/Object.getPrototypeOf) -- renvoie le `[[Prototype]]` de `obj` (le même que le `__proto__` getter).
+- [Object.setPrototypeOf(obj, proto)](mdn:js/Object.setPrototypeOf) -- configure le `[[Prototype]]` de `obj` vers `proto` (le même que le `__proto__` setter).
 
-L'accésseur/mutateur `__proto__` intégré est dangereux si nous souhaitons insérer des clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme la clé, et il y aura une erreur, avec des conséquences, espérons légères, mais généralement imprévisibles.
+Le getter/setter `__proto__` intégré est dangereux si nous souhaitons placer les clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme clé, et il y aura une erreur, avec des conséquences légères, espérons-le, mais généralement imprévisibles.
 
 Nous pouvons donc utiliser `Object.create(null)` pour créer un objet "très simple" sans `"__proto__"` ou nous en tenir à des objets `Map` pour cela.
 
@@ -195,10 +196,10 @@ Nous pouvons créer un objet sans prototype avec `Object.create(null)`. De tels 
 
 Autres méthodes:
 
-- [Object.keys(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/keys) / [Object.values(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/values) / [Object.entries(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/entries) -- renvoie un tableau énumérable de noms de propriétés/valuers/paires de clé/valeur.
-- [Object.getOwnPropertySymbols(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertySymbols) -- renvoie un tableau de toutes les clés symboliques propres.
-- [Object.getOwnPropertyNames(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyNames) -- renvoie un tableau de toutes les clés de chaîne propres.
-- [Reflect.ownKeys(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Reflect/ownKeys) -- renvoie un tableau de toutes les clés propres.
+- [Object.keys(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/keys) / [Object.values(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/values) / [Object.entries(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/entries) -- retourne un tableau de paires nom / propriété / clé-valeur de propriété de chaîne de caractères énumérable.
+- [Object.getOwnPropertySymbols(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertySymbols) -- renvoie un tableau de toutes les clés symboliques.
+- [ ] [Object.getOwnPropertyNames(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyNames) -- renvoie un tableau de toutes les clés de chaîne de caractères.
+- [Reflect.ownKeys(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Reflect/ownKeys) -- renvoie un tableau de toutes les clés.
 - [obj.hasOwnProperty(key)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/hasOwnProperty): renvoie `true` si `obj` a sa propre clé (non héritée) appelée `key`.
 
 Toutes les méthodes qui renvoient des propriétés d'objet (comme `Object.keys` et autres) - renvoient leurs propres propriétés. Si nous voulons les hérités, alors nous pouvons utiliser `for..in`.

@@ -345,6 +345,6 @@ class MyClass {
 }
 ```
 
-`MyClass` est techniquement une fonction (celle que nous donnons comme `constructor`), tandis que les méthodes, accesseurs et mutateurs sont écrits dans `MyClass.prototype`.
+`MyClass` est techniquement une fonction (celle que nous fournissons en tant que `constructor`), tandis que les méthodes, accesseurs et mutateurs sont écrits dans `MyClass.prototype`.
 
 Dans les prochains chapitres nous apprendrons plus à propos des classes, y compris la notion d'héritage et les autres caractéristiques.

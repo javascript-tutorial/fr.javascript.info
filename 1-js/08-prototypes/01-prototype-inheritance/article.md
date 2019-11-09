@@ -34,7 +34,7 @@ rabbit.__proto__ = animal;
 ```smart header="`__proto__` est un accesseur/mutateur historique pour `[[Prototype]]`"
 Veuillez noter que `__proto__` n'est *pas le même* que `[[Prototype]]`. C'est un accesseur/mutateur pour ça.
 
-Il existe pour des raisons historiques. En langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
+Il existe pour des raisons historiques. Dans le langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
 
 Selon la spécification, `__proto__` ne doit être pris en charge que par les navigateurs. Cependant, tous les environnements, y compris côté serveur, le prennent en charge. Pour l'instant, comme la notation `__proto__` est un peu plus intuitive, nous l'utilisons dans les exemples.
 ```
@@ -203,7 +203,7 @@ Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le p
 
 ## La valeur de "this"
 
-Une question intéressante peut se poser dans l'exemple ci-dessus: quelle est la valeur de `this` dans `set fullName(value)`? Où les propriétés `this.name` et `this.surname` sont écrites: dans `user` ou `admin` ?
+Une question intéressante peut se poser dans l'exemple ci-dessus : quelle est la valeur de `this` dans `set fullName(value)` ? Où sont écrites les propriétés `this.name` et `this.surname` : dans `user` ou `admin` ?
 
 La réponse est simple: `this` n'est pas du tout affecté par les prototypes.
 
@@ -252,7 +252,7 @@ En conséquence, les méthodes sont partagées, mais pas l'état d'objet.
 
 ## La boucle for..in
 
-La boucle `for..in` boucle aussi sur les propriétés héritées.
+La boucle `for..in` itère aussi sur les propriétés héritées.
 
 Par exemple :
 
@@ -267,7 +267,7 @@ let rabbit = {
 };
 
 *!*
-// Object.keys ne retourne que ses propres clés
+// Object.keys ne renvoie que ses propres clés
 alert(Object.keys(rabbit)); // jumps
 */!*
 

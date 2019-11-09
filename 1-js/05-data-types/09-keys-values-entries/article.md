@@ -10,7 +10,7 @@ Ils sont pris en charge par:
 
 - `Map`
 - `Set`
-- `Array` (sauf `arr.values()`)
+- `Array` 
 
 Les objets simples prennent également en charge des méthodes similaires, mais la syntaxe est un peu différente.
 

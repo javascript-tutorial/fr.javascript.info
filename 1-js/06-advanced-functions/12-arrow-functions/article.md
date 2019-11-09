@@ -118,9 +118,9 @@ Ici, nous avons dû créer des variables additionnelles `args` et` ctx` afin que
 
 Les fonctions fléchées :
 
-- N'ont pas de `this`.
-- N'ont pas d'`arguments`.
-- Ne peuvent pas être appelées avec `new`.
-- (Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>).
+- N'ont pas de `this`
+- N'ont pas d'`arguments`
+- Ne peuvent pas être appelées avec `new`
+- Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>
 
-En effet, elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.
+C'est parce qu'elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.

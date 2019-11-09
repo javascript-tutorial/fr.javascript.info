@@ -86,7 +86,7 @@ En pratique, nous avons rarement besoin de plusieurs gestionnaires pour une mêm
 
 Un gestionnaire, utilisé dans `.then(handler)` peut créer et renvoyer une promesse.
 
-Dans ce cas, d'autres gestionnaires attendent jusqu'à ce qu'elle soit tenue, puis obtiennent son résultat.
+Dans ce cas, les autres gestionnaires attendent que le problème soit réglé, puis le résultat est obtenu.
 
 Par exemple:
 
@@ -164,7 +164,7 @@ loadScript("/article/promise-chaining/one.js")
 
 Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu. Ensuite, il lance le chargement du script suivant. Les scripts sont donc chargés les uns après les autres.
 
-Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandis verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
+Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
 
 Techniquement, nous pourrions ajouter `.then` directement à chaque `loadScript`, comme ceci:
 
@@ -189,9 +189,9 @@ Parfois, il est correct d'écrire directement `.then`, car la fonction imbriqué
 
 
 ````smart header="Thenables"
-Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`, et il sera traité de la même manière q'une promesse.
+Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`. Il sera traité de la même manière q'une promesse.
 
-L'idée est que les bibliothèques tierces peuvent implémenter leurs propres objets "compatibles avec les promesses". Ils peuvent avoir un ensemble étendu de méthodes, mais aussi être compatibles avec les promesses natives, car ils implémentent `.then`.
+L'idée est que les bibliothèques tierces peuvent implémenter leurs propres objets "compatibles avec les promesses". Elles peuvent avoir un ensemble étendu de méthodes, mais aussi être compatibles avec les promesses natives, car ils implémentent `.then`.
 
 Voici un exemple d'un objet "thenable":
 
@@ -216,7 +216,7 @@ new Promise(resolve => resolve(1))
   .then(alert); // shows 2 after 1000ms
 ```
 
-JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)`: si il a une méthode appelable nommé `then`, il appelle cette méthode fournissant les fonctions natives `resolve` et `reject` comme arguments (semblable à executor) et attend que l’un d’eux soit appelé. Dans l'exemple ci-dessus, `resolve(2)` est appelé après 1 seconde `(**)`. Ensuite, le résultat est transmis plus loin dans la chaîne.
+JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)` : s il a une méthode appelable nommé `then`, il appelle cette méthode fournissant les fonctions natives `resolve` et `reject` comme arguments (semblable à un executeur) et attend que l’un d’eux soit appelé. Dans l'exemple ci-dessus, `resolve(2)` est appelé après 1 seconde `(**)`. Ensuite, le résultat est transmis plus loin dans la chaîne.
 
 Cette fonctionnalité nous permet d'intégrer des objets personnalisés avec des chaînes de promesse sans avoir à hériter de `Promise`.
 ````
@@ -234,7 +234,7 @@ let promise = fetch(url);
 
 Cela fait une requête réseau à la `url` et renvoie une promesse. La promesse se résout avec un objet `response` lorsque le serveur distant répond avec des en-têtes, mais *avant le téléchargement complet de la réponse*.
 
-Pour lire la réponse complète, appelez la méthode `response.text()`: elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en conséquence.
+Pour lire la réponse complète, nous devons appeler la méthode `response.text()` : elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en tant que résultat.
 
 Le code ci-dessous envoie une requête à `user.json` et charge son texte depuis le serveur:
 
@@ -323,7 +323,7 @@ En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Pro
 
 Le prochain `.then` dans la chaîne attendra cela.
 
-En règle générale, une action asynchrone doit toujours renvoyer une promesse.
+Comme bonne pratique, une action asynchrone doit toujours renvoyer une promesse.
 
 Cela permet de planifier des actions après. Même si nous n'avons pas l'intention d'étendre la chaîne maintenant, nous en aurons peut-être besoin plus tard.
 

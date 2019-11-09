@@ -134,7 +134,7 @@ let user = { };
 Object.defineProperty(user, "name", {
 *!*
   value: "John",
-  // besoin de lister explicitement ce qui est true pour les nouvelles propriétés
+  // pour les nouvelles propriétés, nous devons lister explicitement ce qui est vrai
   enumerable: true,
   configurable: true
 */!*
@@ -162,7 +162,7 @@ let user = {
 for (let key in user) alert(key); // name, toString
 ```
 
-Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée:
+Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée :
 
 ```js run
 let user = {

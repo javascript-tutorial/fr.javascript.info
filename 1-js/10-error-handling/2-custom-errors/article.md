@@ -2,7 +2,7 @@
 
 Lorsque nous développons quelque chose, nous avons souvent besoin de nos propres classes d'erreur pour refléter des problèmes spécifiques qui peuvent mal tourner dans nos tâches. Pour les erreurs dans les opérations réseau, nous aurons peut-être besoin de `HttpError`, pour les opérations de base de données `DbError`, pour les opérations de recherche `NotFoundError`, etc.
 
-Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais ils peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.
+Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais elles peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.
 
 JavaScript permet d'utiliser `throw` avec n'importe quel argument. Par conséquent, techniquement, nos classes d'erreur personnalisées n'ont pas besoin d'hériter de `Error`. Mais si nous héritons, il devient alors possible d'utiliser `obj instanceof Error` pour identifier les objets d'erreur. Il vaut donc mieux en hériter.
 
@@ -180,7 +180,7 @@ try {
 
 La nouvelle classe `PropertyRequiredError` est facile à utiliser: il suffit de passer le nom de la propriété: `new PropertyRequiredError(property)`. Le `message` est généré par le constructeur.
 
-Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux - assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.
+Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux -- d'assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.
 
 Appelons cela `MyError`.
 
@@ -297,6 +297,6 @@ Cette approche, "wrapping exceptions" en anglais, nous permet de prendre les "ex
 
 ## Résumé
 
-- Nous pouvons hériter de `Error` et d'autres classes d'erreurs intégrées normalement, nous devons juste nous occuper de la propriété `name` et ne pas oublier d'appeler `super`.
+- Nous pouvons hériter de `Error` et d'autres classes d'erreurs intégrées normalement. Nous devons juste nous occuper de la propriété `name` et ne pas oublier d'appeler `super`.
 - Nous pouvons utiliser `instanceof` pour vérifier des erreurs particulières. Cela fonctionne aussi avec l'héritage. Mais parfois, nous avons un objet d'erreur provenant d'une bibliothèque tierce et il n'y a pas de moyen facile d'obtenir la classe. Dans ce cas, la propriété `name` peut être utilisée pour de telles vérifications.
-- Le wrapping des exceptions est une technique répandue: une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.
+- Le wrapping des exceptions est une technique répandue : une fonction gère les exceptions de bas niveau et crée des erreurs de niveau supérieur au lieu de diverses erreurs de bas niveau. Les exceptions de bas niveau deviennent parfois des propriétés de cet objet comme `err.cause` dans les exemples ci-dessus, mais ce n'est pas strictement requis.

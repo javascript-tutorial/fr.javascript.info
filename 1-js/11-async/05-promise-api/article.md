@@ -4,7 +4,7 @@ Il y a 5 méthodes statiques dans la classe `Promise`. Nous allons rapidement co
 
 ## Promise.all
 
-Disons que nous voulons exécuter de nombreuses promesses, et ce en parallèle, et attendre qu'elles soient toutes prêtes.
+Disons que nous voulons exécuter de nombreuses promesses en parallèle, et attendre qu'elles soient toutes prêtes.
 
 Par exemple, téléchargez plusieurs URLs en parallèle et traitez le contenu lorsque tout est terminé.
 
@@ -30,7 +30,7 @@ Promise.all([
 ]).then(alert); // 1,2,3 quand les promesses sont prêtes : chaque promesse apporte un élément du tableau
 ```
 
-Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses source. Même si la première promesse prend le plus de temps à se concrétiser, elle est toujours la première dans le tableau des résultats.
+Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses sources. Même si la première promesse prend le plus de temps à se résoudre, elle est toujours la première dans le tableau des résultats.
 
 Une astuce courante consiste à mapper un tableau de données de tâches dans un tableau de promesses, puis à l'intégrer dans `Promise.all`.
 
@@ -53,7 +53,7 @@ Promise.all(requests)
   ));
 ```
 
-Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau de biens par leurs identifiants, la logique est la même):
+Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau d'informations par leurs identifiants, la logique est la même) :
 
 ```js run
 let names = ['iliakan', 'remy', 'jeresig'];
@@ -89,7 +89,7 @@ Promise.all([
 ]).catch(alert); // Error: Whoops!
 ```
 
-Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute: l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
+Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute : l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
 
 ```warn header="En cas d'erreur, les autres promesses sont ignorées."
 Si une promesse est rejetée, `Promise.all` est immédiatement rejetée, oubliant complètement les autres dans la liste. Leurs résultats sont ignorés.
@@ -193,7 +193,7 @@ Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en prom
 
 Ce gestionnaire transforme un résultat réussi `v` en `{state:'fulfilled', value:v}`, et une erreur `r` en `{state:'rejected', reason:r}`. C'est exactement le format de `Promise.allSettled`.
 
-Ensuite, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou *toutes* les promesses données, même si certaines d'entre elles sont rejetées.
+Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou toutes les promesses données, même si certaines d'entre elles sont rejetées.
 
 ## Promise.race
 
@@ -234,7 +234,7 @@ let promise = new Promise(resolve => resolve(value));
 
 La méthode est utilisée pour la compatibilité, lorsqu'une fonction est censée renvoyer une promesse.
 
-Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse:
+Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse :
 
 ```js
 let cache = new Map();
@@ -277,7 +277,7 @@ Il y a 5 méthodes statiques de la classe `Promise`:
 2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec:
     - `state`: `"fulfilled"` ou `"rejected"`
     - `value` (si rempli) ou `reason` (en cas de rejet).
-3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le dénouement.
+3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le résultat.
 4. `Promise.resolve(value)` -- fait une promesse résolue avec la valeur donnée.
 5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.
 

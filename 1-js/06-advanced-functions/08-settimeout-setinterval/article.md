@@ -60,7 +60,7 @@ Ce qui fait que le code ci-dessous fonctionne aussi :
 setTimeout("alert('Bonjour')", 1000);
 ```
 
-Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions à la place, comme ceci :
+Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions fléchées à la place, comme ceci :
 
 ```js run no-beautify
 setTimeout(() => alert('Bonjour'), 1000);
@@ -184,7 +184,7 @@ Comparons deux blocs de codes, le premier utilise `setInterval` :
 ```js
 let i = 1;
 setInterval(function() {
-  func(i);
+  func(i++);
 }, 100);
 ```
 
@@ -193,12 +193,12 @@ Le second utilise un `setTimeout` imbriqué :
 ```js
 let i = 1;
 setTimeout(function run() {
-  func(i);
+  func(i++);
   setTimeout(run, 100);
 }, 100);
 ```
 
-Dans le cas du `setInterval` l'ordonnanceur va appeler `func(i)` toutes les 100ms :
+Dans le cas du `setInterval` l'ordonnanceur interne va appeler `func(i++)` toutes les 100ms :
 
 ![](setinterval-interval.svg)
 

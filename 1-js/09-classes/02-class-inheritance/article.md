@@ -7,7 +7,7 @@ So we can create new functionality on top of the existing.
 
 ## The "extends" keyword
 
-Let's say with have class `Animal`:
+Let's say we have class `Animal`:
 
 ```js
 class Animal {
@@ -40,7 +40,7 @@ La syntaxe pour étendre une autre classe est la suivante : `class Child extends
 
 Let's create `class Rabbit` that inherits from `Animal`:
 
-```js
+```js run
 *!*
 class Rabbit extends Animal {
 */!*
@@ -66,7 +66,7 @@ Par exemple, pour trouver la méthode `rabbit.run`, le moteur vérifie (de bas e
 2. Son prototype, c'est-à-dire `Rabbit.prototype` (a `hide`, mais pas `run`).
 3. Son prototype, c'est-à-dire (en raison de `extends`) `Animal.prototype`, qui a finalement la méthode `run`.
 
-Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage de prototype pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.
+Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage prototypale pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.
 
 ````smart header="Toute expression est autorisée après `extend`"
 La syntaxe de classe permet de spécifier non seulement une classe, mais toute expression après `extend`.
@@ -236,16 +236,16 @@ La réponse courte est: les constructeurs dans les classes qui héritent doivent
 
 Bien sûr, il y a une explication. Entrons dans les détails pour que vous compreniez vraiment ce qui se passe.
 
-En JavaScript, il existe une distinction entre une "fonction constructeur d'une classe héritante" et toutes les autres. Dans une classe qui hérite, la fonction constructeur correspondante est étiquetée avec une propriété interne spéciale `[[ConstructorKind]]:"derived"`.
+En JavaScript, il existe une distinction entre une fonction constructeur d'une classe héritante (appelée "constructeur dérivé") et d'autres fonctions. Un constructeur dérivé a une propriété interne spéciale `[[ConstructorKind]] : "derived"`. C'est un label interne spécial.
 
-La différence est:
+Ce label affecte son comportement avec `new`.
 
-- Lorsqu'un constructeur normal s'exécute, il crée un objet vide et l'assigne à `this`.
+- Lorsqu'une fonction normale est exécutée avec `new`, elle crée un objet vide et l'assigne à `this`.
 - Mais lorsqu'un constructeur dérivé s'exécute, il ne le fait pas. Il s'attend à ce que le constructeur parent fasse ce travail.
 
-Donc, si nous fabriquons notre propre constructeur, nous devons appeler `super`, car sinon l'objet de `this` ne sera pas créé. Et nous aurons une erreur.
+Donc, un constructeur dérivé doit appeler `super` pour exécuter son constructeur parent (non dérivé), sinon l'objet pour `this` ne sera pas créé. Et nous aurons une erreur.
 
-Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici:
+Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici :
 
 ```js run
 class Animal {
@@ -528,5 +528,5 @@ rabbit.eat();  // Error calling super (parce qu'il n'y a pas de [[HomeObject]])
     - Les méthodes se souviennent de leur classe/objet dans la propriété interne `[[HomeObject]]`. C'est ainsi que `super` résout les méthodes parent.
     - Il n'est donc pas prudent de copier une méthode avec `super` d'un objet à un autre.
 
-Également:
-- Les fonctions de fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.
+Également :
+- Les fonctions fléchées n'ont pas leurs propre `this` ou `super`, elles s'adaptent donc de manière transparente au contexte environnant.

@@ -99,12 +99,12 @@ alert(f.__proto__.__proto__ == Object.prototype); // true, hérite d'objets
 
 Une chose complexe se produit avec les chaînes, les nombres et les booléens.
 
-Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`,` Number`, `Boolean`, ils fournissent les méthodes et disparaissent.
+Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`,` Number` et `Boolean`, ils fournissent les méthodes et disparaissent.
 
 Ces objets sont créés de manière invisible pour nous et la plupart des moteurs les optimisent, mais la spécification le décrit exactement de cette façon. Les méthodes de ces objets résident également dans des prototypes, disponibles sous les noms `String.prototype`, `Number.prototype` et `Boolean.prototype`.
 
 ```warn header="Les valeurs `null` et `undefined` n'ont pas de wrappers d'objet"
-Les valeurs spéciales `null` et `undefined` sont distinctes. Ils n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux. Et il n'y a pas non plus de prototypes correspondants.
+Les valeurs spéciales `null` et `undefined` se démarquent. Elles n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux. Et il n'y a pas non plus de prototypes correspondants.
 ```
 
 ## Modification des prototypes natifs [#native-prototype-change]
@@ -129,7 +129,7 @@ Donc, généralement, modifier un prototype natif est considéré comme une mauv
 
 **Dans la programmation moderne, il n'y a qu'un seul cas où la modification de prototypes natifs est approuvée. Le polyfilling.**
 
-Polyfilling est un terme utilisé pour remplacer une méthode existante dans la spécification JavaScript, mais qui n'est pas encore prise en charge par le moteur JavaScript actuel.
+Polyfilling est un terme utilisé pour remplacer une méthode existante dans la spécification JavaScript, mais qui n'est pas encore prise en charge par un moteur JavaScript particulier.
 
 Ensuite, nous pouvons l’implémenter manuellement et y ajouter le prototype intégré.
 
@@ -144,7 +144,7 @@ if (!String.prototype.repeat) { // s'il n'y a pas une telle méthode
 
     // en fait, le code devrait être un peu plus complexe que cela
     // (l'algorithme complet est dans la spécification)
-    // mais même un polyfill imparfait est souvent considéré comme suffisant pour être utilisé
+    // mais même un polyfill imparfait est souvent considéré comme suffisant
     return new Array(n + 1).join(this);
   };
 }
@@ -179,18 +179,18 @@ obj.join = Array.prototype.join;
 alert( obj.join(',') ); // Hello,world!
 ```
 
-Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`, il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.
+Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`. Il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.
 
 Une autre possibilité consiste à hériter en fixant `obj.__ proto__` sur `Array.prototype`, afin que toutes les méthodes `Array` soient automatiquement disponibles dans `obj`.
 
 Mais c'est impossible si `obj` hérite déjà d'un autre objet. N'oubliez pas que nous ne pouvons hériter que d'un objet à la fois.
 
-L'emprunt des méthodes est flexible, cela permet de mélanger la fonctionnalité des objets différents en cas de besoin.
+L'emprunt des méthodes est flexible, cela permet de mélanger les fonctionnalités provenants d'objets différents en cas de besoin.
 
 ## Résumé
 
-- Tous les objets intégrés suivent le même schéma:
+- Tous les objets intégrés suivent le même schéma :
     - Les méthodes sont stockées dans le prototype (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.).
     - L'objet lui-même ne stocke que les données (éléments de tableau, propriétés de l'objet, date).
 - Les primitives stockent également des méthodes dans des prototypes d'objets wrapper: `Number.prototype`, `String.prototype`, `Boolean.prototype`. Seuls `undefined` et `null` n'ont pas d'objets wrapper.
-- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par la méthode JavaScript du moteur.
+- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par le moteur JavaScript.

@@ -197,7 +197,7 @@ alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
 
 ## Résumé
 
-Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble", sans rapport avec une instance de classe concrète.
+Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble". Cela ne concerne pas une instance de classe concrète.
 
 Par exemple, une méthode de comparaison `Article.compare(article1, article2)` ou une méthode d'usine `Article.createTodays()`.
 
