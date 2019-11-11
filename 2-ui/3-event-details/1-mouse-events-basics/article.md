@@ -21,16 +21,26 @@ Les évènements simples les plus utilisés sont:
 `mousemove`
 : Chaque déplacement de la souris sur un élément déclenche cet évènement.
 
+<<<<<<< HEAD
 ...Il existe plusieurs autres types d'évènements aussi, nous allons les couvrir plus tard.
+=======
+`contextmenu`
+: Triggers when opening a context menu is attempted. In the most common case, that happens when the right mouse button is pressed. Although, there are other ways to open a context menu, e.g. using a special keyboard key, so it's not exactly the mouse event.
+
+...There are several other event types too, we'll cover them later.
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 ### Les évènements complexes
 
 `click`
 : est déclenché après un évènement `mousedown` et suite à un  `mouseup`  sur le même élément, si le bouton gauche de la souris a été utilisé
 
+<<<<<<< HEAD
 `contextmenu`
 : est déclenché après un  évènement `mousedown` si le bouton gauche de la souris a été utilisé.
 
+=======
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 `dblclick`
 : est déclenché après un  évènement double clique sur un élément.
 

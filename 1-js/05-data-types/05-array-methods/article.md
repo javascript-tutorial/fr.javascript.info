@@ -450,7 +450,11 @@ alert(arr);  // *!*1, 2, 15*/!*
 ````
 
 ````smart header="Arrow functions for the best"
+<<<<<<< HEAD
 Rappelez-vous des [fonctions de flèche](info:function-expressions-arrows#arrow-functions)? Nous pouvons les utiliser ici pour un tri plus net:
+=======
+Remember [arrow functions](info:arrow-functions-basics)? We can use them here for neater sorting:
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 ```js
 arr.sort( (a, b) => a - b );

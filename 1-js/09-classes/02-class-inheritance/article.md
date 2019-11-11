@@ -40,7 +40,7 @@ La syntaxe pour étendre une autre classe est la suivante : `class Child extends
 
 Let's create `class Rabbit` that inherits from `Animal`:
 
-```js run
+```js
 *!*
 class Rabbit extends Animal {
 */!*

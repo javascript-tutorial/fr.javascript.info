@@ -1,4 +1,8 @@
+<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
 # Fonctions Expressions et Fonctions Fléchées
+=======
+# Function expressions
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
 
 En JavaScript, une fonction n'est pas une "structure de langage magique", mais un type de valeur particulier.
 
@@ -357,6 +361,7 @@ C’est également meilleur pour la lisibilité, car il est plus facile de reche
 … Mais si une déclaration de fonction ne nous convient pas pour une raison quelconque (nous en avons vu un exemple ci-dessus), alors il convient d'utiliser une Fonction Expression.
 ```
 
+<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
 
 ## Fonctions fléchées [#arrow-functions]
 
@@ -460,6 +465,9 @@ Pour l'instant, nous pouvons déjà utiliser les fonctions fléchées pour les a
 ```
 
 ## Résumé
+=======
+## Summary
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
 
 - Les fonctions sont des valeurs. Ils peuvent être attribués, copiés ou déclarés à n’importe quel endroit du code.
 - Si la fonction est déclarée comme une instruction distincte dans le flux de code principal, cela s'appelle une "déclaration de fonction".
@@ -469,9 +477,13 @@ Pour l'instant, nous pouvons déjà utiliser les fonctions fléchées pour les a
 
 Dans la plupart des cas, lorsque nous devons déclarer une fonction, une fonction déclaration est préférable parce qu'elle est visible avant la déclaration elle-même. Cela nous donne plus de flexibilité dans l'organisation du code et il est généralement plus lisible.
 
+<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
 Nous devrions donc utiliser une expression de fonction uniquement lorsqu'une déclaration de fonction n'est pas adaptée à la tâche. Nous en avons vu quelques exemples dans ce chapitre et nous en verrons davantage à l’avenir.
 
 Les fonctions fléchées sont pratiques pour les one-liners (action sur une ligne). Ils viennent sous deux formes :
 
 1. Sans accolades : `(...args) => expression` -- le côté droit est une expression: la fonction l'évalue et renvoie le résultat.
 2. Avec des accolades : `(...args) => { body }` -- les accolades nous permettent d'écrire plusieurs instructions dans la fonction, mais nous avons besoin d'un `return` explicite pour retourner quelque chose.
+=======
+So we should use a Function Expression only when a Function Declaration is not fit for the task. We've seen a couple of examples of that in this chapter, and will see more in the future.
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
