@@ -272,11 +272,7 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 - Les paramètres peuvent avoir des valeurs par défaut : `function sum(a = 1, b = 2) {...}`.
 - Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est renvoyée, le résultat est `undefined`.
 
-<<<<<<< HEAD:1-js/02-first-steps/16-javascript-specials/article.md
-Details: voir <info:function-basics>, <info:function-expressions-arrows>.
-=======
-Details: see <info:function-basics>, <info:arrow-functions-basics>.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/17-javascript-specials/article.md
+Details : voir <info:function-basics>, <info:arrow-functions-basics>.
 
 ## Plus à venir
 
