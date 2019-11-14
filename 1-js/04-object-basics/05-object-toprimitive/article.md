@@ -129,13 +129,8 @@ Ces méthodes doivent renvoyer une valeur primitive. Si `toString` ou `valueOf` 
 
 Par défaut, un objet brut a les méthodes `toString` et `valueOf` suivantes :
 
-<<<<<<< HEAD
 - La méthode `toString` renvoie une chaîne de caractères `"[object Object]"`.
-- La méthode `valueOf` renvoie un objet.
-=======
-- The `toString` method returns a string `"[object Object]"`.
-- The `valueOf` method returns the object itself.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+- La méthode `valueOf` renvoie l'objet en question.
 
 Voici la démo :
 
@@ -211,11 +206,7 @@ En revanche, `Symbol.toPrimitive` doit renvoyer une primitive, sinon une erreur 
 
 ## Autres conversions
 
-<<<<<<< HEAD
 Comme nous le savons déjà, de nombreux opérateurs et fonctions effectuent des conversions de types, par exemple la multiplication `*` convertit les opérandes en nombres.
-=======
-As we know already, many operators and functions perform type conversions, e.g. multiplication `*` converts operands to numbers.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 Si nous passons un objet en argument, il y a deux étapes :
 1. L'objet est converti en primitive (en utilisant les règles décrites ci-dessus).

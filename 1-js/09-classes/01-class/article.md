@@ -117,15 +117,9 @@ alert(User.prototype.sayHi); // alert(this.name);
 alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi
 ```
 
-<<<<<<< HEAD
 ## Pas simplement un sucre syntaxique 
 
-Parfois certaines personnes disent la notion de `class` est un  "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce que en réalité nous pouvons  déclarer la même chose sans aucunement utiliser le mot clé `classe`:
-=======
-## Not just a syntactic sugar
-
-Sometimes people say that `class` is a "syntactic sugar" (syntax that is designed to make things easier to read, but doesn't introduce anything new), because we could actually declare the same without `class` keyword at all:
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce que en réalité nous pouvons  déclarer la même chose sans aucunement utiliser le mot clé `classe` :
 
 ```js run
 // Réécriture de class User en fonctions pures
@@ -147,11 +141,7 @@ let user = new User("John");
 user.sayHi();
 ```
 
-<<<<<<< HEAD
-Le résultat de cette définition est à peu près la même chose. Donc, il y a bien raison de vouloir considérer `class` comme pouvant être un sucre syntaxique pour définir un constructeur ensemble avec ses méthodes de prototype.
-=======
-The result of this definition is about the same. So, there are indeed reasons why `class` can be considered a syntactic sugar to define a constructor together with its prototype methods.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Le résultat de cette définition est à peu près la même chose. Donc, il y a bien des raisons de vouloir considérer `class` comme pouvant être un sucre syntaxique pour définir un constructeur ensemble avec ses méthodes de prototype.
 
 Cependant, il existe des différences importantes.
 
@@ -293,11 +283,7 @@ Object.defineProperties(User.prototype, {
 });
 ```
 
-<<<<<<< HEAD
-Voici un exemple avec une propriété évaluée entre crochets `[...]`:
-=======
-Here's an example with a computed property name in brackets `[...]`:
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Voici un exemple avec une propriété évaluée entre crochets `[...]` :
 
 ```js run
 class User {

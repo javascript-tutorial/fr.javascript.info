@@ -6,15 +6,9 @@ Ils sont intéressants parce qu’ils permettent de résoudre  facilement des ta
 
 Mais les Evènements natifs de types déplacer ont aussi leurs limites. Par exemple, nous ne pouvons pas limiter le glissement sur une certaine surface. Nous ne pouvons pas  le faire seulement de manière  "horizontale" ou "verticale". Il existe d’autres taches,  Glisser-déplacer, qui ne peuvent être implémentées en utilisant cet  Interface de Programmation d’Application.
 
-<<<<<<< HEAD
-Mais les événements de déplacements natifs ont aussi des limites. Par exemple, nous ne pouvons pas limiter le glissement dans une zone donnée. En outre, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Il existe d'autres tâches glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API.
+Mais les événements de déplacements natifs ont aussi des limites. Par exemple, nous ne pouvons pas limiter le glissement dans une zone donnée. En outre, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Il existe d'autres tâches de glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API. En outre, la prise en charge d'appareils mobiles pour de tels événements est quasi inexistante.
 
 Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événements de souris.
-=======
-But native Drag Events also have limitations. For instance, we can't limit dragging by a certain area. Also we can't make it "horizontal" or "vertical" only. There are other drag'n'drop tasks that can't be done using that API. Besides, mobile devices support for such events is almost non-existant.
-
-So here we'll see how to implement Drag'n'Drop using mouse events.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 L’algorithme de base du Glisser-Déposer ressemble à ceci:
 

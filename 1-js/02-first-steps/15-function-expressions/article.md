@@ -1,8 +1,4 @@
-<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
-# Fonctions Expressions et Fonctions Fléchées
-=======
-# Function expressions
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
+# Fonctions Expressions 
 
 En JavaScript, une fonction n'est pas une "structure de langage magique", mais un type de valeur particulier.
 
@@ -361,113 +357,8 @@ C’est également meilleur pour la lisibilité, car il est plus facile de reche
 … Mais si une déclaration de fonction ne nous convient pas pour une raison quelconque (nous en avons vu un exemple ci-dessus), alors il convient d'utiliser une Fonction Expression.
 ```
 
-<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
-
-## Fonctions fléchées [#arrow-functions]
-
-Il existe une autre syntaxe très simple et concise pour la création de fonctions, qui est souvent meilleure que Expressions de fonctions. On l’appelle "fonctions fléchées", car elle ressemble à ceci :
-
-
-```js
-let func = (arg1, arg2, ...argN) => expression
-```
-
-… Ceci crée une fonction `func` qui a les arguments `arg1..argN`, évalue l'`expression` du côté droit avec leur utilisation et retourne le résultat.
-
-En d’autres termes, c’est à peu près la même chose que :
-
-```js
-let func = function(arg1, arg2, ...argN) {
-  return expression;
-}
-```
-
-… Mais beaucoup plus concis.
-
-Voyons un exemple :
-
-```js run
-let sum = (a, b) => a + b;
-
-/* La fonction fléchée est une forme plus courte de :
-
-let sum = function(a, b) {
-  return a + b;
-};
-*/
-
-alert( sum(1, 2) ); // 3
-
-```
-
-Si nous n’avons qu’un seul argument, alors les parenthèses autour peuvent être omises, ce qui le rend encore plus court :
-
-```js run
-// identique à
-// let double = function(n) { return n * 2 }
-*!*
-let double = n => n * 2;
-*/!*
-
-alert( double(3) ); // 6
-```
-
-S'il n'y a pas d'argument, les parenthèses doivent être vides (mais elles doivent être présentes) :
-
-```js run
-let sayHi = () => alert("Hello!");
-
-sayHi();
-```
-
-Les fonctions fléchées peuvent être utilisées de la même manière que les expressions de fonction.
-
-Par exemple, voici l’exemple réécrit avec `welcome()` :
-
-```js run
-let age = prompt("What is your age?", 18);
-
-let welcome = (age < 18) ?
-  () => alert('Hello') :
-  () => alert("Greetings!");
-
-welcome(); // ok maintenant
-```
-
-Les fonctions fléchées peuvent sembler inconnues et pas très lisibles au début, mais cela change rapidement au fur et à mesure que les yeux s'habituent à la structure.
-
-Ils sont très pratiques pour les actions simples en une ligne, quand nous sommes trop paresseux pour écrire beaucoup de mots.
-
-```smart header="Fonctions de flèche multilignes"
-
-Les exemples ci-dessus ont pris les arguments à gauche de `=>` et ont évalué l'expression de droite avec eux.
-
-Parfois, nous avons besoin de quelque chose d'un peu plus complexe, comme plusieurs expressions ou déclarations. C'est également possible, mais nous devrions les enfermer entre des accolades. Ensuite, utilisez un `return` normal en leur sein.
-
-Comme ceci :
-
-```js run
-let sum = (a, b) => {  // l'accolade ouvre une fonction multiligne
-  let result = a + b;
-*!*
-  return result; // si nous utilisons des accolades, utilisez return pour obtenir des résultats
-*/!*
-};
-
-alert( sum(1, 2) ); // 3
-```
-
-```smart header="Plus à venir"
-
-Ici, nous avons félicité les fonctions fléchées pour leur brièveté. Mais ce n'est pas tout! Les fonctions fléchées ont d'autres caractéristiques intéressantes. Nous y reviendrons plus tard dans le chapitre <info:arrow-functions>.
-
-Pour l'instant, nous pouvons déjà utiliser les fonctions fléchées pour les actions sur une ligne et les callbacks.
-```
 
 ## Résumé
-=======
-## Summary
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
 
 - Les fonctions sont des valeurs. Ils peuvent être attribués, copiés ou déclarés à n’importe quel endroit du code.
 - Si la fonction est déclarée comme une instruction distincte dans le flux de code principal, cela s'appelle une "déclaration de fonction".
@@ -477,13 +368,4 @@ Pour l'instant, nous pouvons déjà utiliser les fonctions fléchées pour les a
 
 Dans la plupart des cas, lorsque nous devons déclarer une fonction, une fonction déclaration est préférable parce qu'elle est visible avant la déclaration elle-même. Cela nous donne plus de flexibilité dans l'organisation du code et il est généralement plus lisible.
 
-<<<<<<< HEAD:1-js/02-first-steps/15-function-expressions-arrows/article.md
-Nous devrions donc utiliser une expression de fonction uniquement lorsqu'une déclaration de fonction n'est pas adaptée à la tâche. Nous en avons vu quelques exemples dans ce chapitre et nous en verrons davantage à l’avenir.
-
-Les fonctions fléchées sont pratiques pour les one-liners (action sur une ligne). Ils viennent sous deux formes :
-
-1. Sans accolades : `(...args) => expression` -- le côté droit est une expression: la fonction l'évalue et renvoie le résultat.
-2. Avec des accolades : `(...args) => { body }` -- les accolades nous permettent d'écrire plusieurs instructions dans la fonction, mais nous avons besoin d'un `return` explicite pour retourner quelque chose.
-=======
-So we should use a Function Expression only when a Function Declaration is not fit for the task. We've seen a couple of examples of that in this chapter, and will see more in the future.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd:1-js/02-first-steps/15-function-expressions/article.md
+Nous devrions donc utiliser une fonction expression uniquement lorsqu'une fonction déclaration n'est pas adaptée à la tâche. Nous en avons vu quelques exemples dans ce chapitre et nous en verrons d'autres à l'avenir.
