@@ -125,19 +125,11 @@ C’est la même chose qu’une assignation directe à `Article`:
 Article.publisher = "Ilya Kantor";
 ```
 
-<<<<<<< HEAD
-## Héritage de méthodes statiques
+## Héritage de méthodes et de propriétés statiques
 
-Les méthodes statiques sont héritées.
+Les propriétés et méthodes statiques sont héritées.
 
-Par exemple, `Animal.compare` dans le code ci-dessous est héritée et accessible  par `Rabbit.compare`:
-=======
-## Inheritance of static properties and methods
-
-Static properties and methods are inherited.
-
-For instance, `Animal.compare` and `Animal.planet` in the code below are inherited and accessible as `Rabbit.compare` and `Rabbit.planet`:
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Par exemple, `Animal.compare` et `Animal.planet` dans le code ci-dessous sont hérités et accessibles  par `Rabbit.compare` `Rabbit.planet` :
 
 ```js run
 class Animal {
@@ -177,13 +169,9 @@ let rabbits = [
 rabbits.sort(Rabbit.compare);
 */!*
 
-<<<<<<< HEAD
-rabbits[0].run(); // Black Rabbit court à la vitesse 5.
-=======
 rabbits[0].run(); // Black Rabbit runs with speed 5.
 
 alert(Rabbit.planet); // Earth
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 ```
 
 Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.
