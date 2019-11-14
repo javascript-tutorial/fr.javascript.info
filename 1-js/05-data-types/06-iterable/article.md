@@ -214,7 +214,11 @@ let arr = Array.from(arrayLike); // (*)
 alert(arr.pop()); // World (la méthode fonctionne)
 ```
 
+<<<<<<< HEAD
 `Array.from` à la ligne `(*)` prend l'objet, l'examine comme étant un objet itérable ou un array-like (comme-un-tableau), crée ensuite un nouveau tableau et y copie tous les éléments.
+=======
+`Array.from` at the line `(*)` takes the object, examines it for being an iterable or array-like, then makes a new array and copies all items to it.
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 La même chose se passe pour un itérable:
 

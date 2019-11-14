@@ -19,12 +19,14 @@ User.staticMethod(); // true
 
 Cela revient en fait à l'affecter directement à une propriété:
 
-```js
+```js run
 class User() { }
 
 User.staticMethod = function() {
   alert(this === User);
 };
+
+User.staticMethod(); // true
 ```
 
 La valeur de `this` dans l'appel `User.staticMethod()` est le constructeur de la classe `User` lui-même (la règle "objet avant le point").
@@ -123,14 +125,23 @@ C’est la même chose qu’une assignation directe à `Article`:
 Article.publisher = "Ilya Kantor";
 ```
 
+<<<<<<< HEAD
 ## Héritage de méthodes statiques
 
 Les méthodes statiques sont héritées.
 
 Par exemple, `Animal.compare` dans le code ci-dessous est héritée et accessible  par `Rabbit.compare`:
+=======
+## Inheritance of static properties and methods
+
+Static properties and methods are inherited.
+
+For instance, `Animal.compare` and `Animal.planet` in the code below are inherited and accessible as `Rabbit.compare` and `Rabbit.planet`:
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 ```js run
 class Animal {
+  static planet = "Earth";
 
   constructor(name, speed) {
     this.speed = speed;
@@ -166,7 +177,13 @@ let rabbits = [
 rabbits.sort(Rabbit.compare);
 */!*
 
+<<<<<<< HEAD
 rabbits[0].run(); // Black Rabbit court à la vitesse 5.
+=======
+rabbits[0].run(); // Black Rabbit runs with speed 5.
+
+alert(Rabbit.planet); // Earth
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 ```
 
 Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.
