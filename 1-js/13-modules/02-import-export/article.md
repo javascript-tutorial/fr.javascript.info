@@ -155,25 +155,14 @@ say.*!*bye*/!*('John'); // Bye, John!
 
 En pratique, il existe principalement deux types de modules.
 
-<<<<<<< HEAD
-1. Module qui contient une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
-2. Module qui déclare une seule entité, par exemple le module `user.js` exporte uniquement la `class User`.
-=======
-1. Modules that contain a library, pack of functions, like `say.js` above.
-2. Modules that declare a single entity, e.g. a module `user.js` exports only `class User`.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+1. Les modules qui contiennent une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
+2. Les modules qui déclarent une seule entité, par exemple un module `user.js` qui exporte uniquement la `class User`.
 
 La deuxième approche est généralement privilégiée, de sorte que chaque "chose" réside dans son propre module.
 
-<<<<<<< HEAD
 Naturellement, cela nécessite beaucoup de fichiers, car toute chose veut son propre module, mais ce n’est pas un problème du tout. En fait, la navigation dans le code devient plus facile si les fichiers sont bien nommés et structurés en dossiers.
 
-Les modules fournissent une syntaxe spéciale pour l'`export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
-=======
-Naturally, that requires a lot of files, as everything wants its own module, but that's not a problem at all. Actually, code navigation becomes easier if files are well-named and structured into folders.
-
-Modules provide special `export default` ("the default export") syntax to make the "one thing per module" way look better.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Les modules fournissent une syntaxe spéciale `export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
 
 Placez `export default` avant l'entité à exporter:
 
@@ -300,15 +289,9 @@ import {User} from './user.js';
 ...Alors que pour une exportation par défaut, nous choisissons toujours le nom lors de l'importation:
 
 ```js
-<<<<<<< HEAD
 import User from './user.js'; // fonctionne
 import MyUser from './user.js'; // fonctionne aussi
-// n'importe quoi pourrait être importé ..., et ça fonctionnera
-=======
-import User from './user.js'; // works
-import MyUser from './user.js'; // works too
-// could be import Anything... and it'll still work
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+// n'importe quoi pourrait être importé ..., cela continuera de fonctionner
 ```
 Les membres de l'équipe peuvent donc utiliser des noms différents pour importer la même chose, et ce n'est pas bien.
 
@@ -335,11 +318,7 @@ export {sayHi} from './say.js'; // réexportez sayHi
 export {default as User} from './user.js'; // réexportez default
 ```
 
-<<<<<<< HEAD
-Pourquoi cela peut être nécessaire? Voyons un cas d'utilisation pratique.
-=======
-Why would that be needed? Let's see a practical use case.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
 Imaginons, nous écrivons un "package": un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides". utilisation interne dans d'autres modules.
 
@@ -409,15 +388,9 @@ export default class User {
 
 1. `export User from './user.js'` çe ne fonctionnera pas... C'est une erreur de syntaxe!
 
-<<<<<<< HEAD
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
 
-2. `export * from '. / user.js'` ne réexporte que les exportations nommées, ignore celle par défaut.
-=======
-    To re-export the default export, we have to write `export {default as User}`, as in the example above.    
-
-2. `export * from './user.js'` re-exports only named exports, but ignores the default one.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
     Si nous souhaitons réexporter l'export nommé et l'export par défaut, deux instructions sont nécessaires:
     ```js
@@ -425,11 +398,7 @@ export default class User {
     export {default} from './user.js'; // réexporter l'exportation par défaut
     ```
 
-<<<<<<< HEAD
-Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne l'aiment pas.
-=======
-Such oddities of re-exporting the default export are one of the reasons why some developers don't like them.
->>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
+Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne les aiment pas.
 
 ## Sommaire
 
