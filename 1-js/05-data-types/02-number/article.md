@@ -201,11 +201,7 @@ Si on vérifie si la somme de `0.1` et `0.2` est égale à `0.3` on obtient `fau
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
-<<<<<<< HEAD
-Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'e-shopping et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
-=======
-Ouch! There are more consequences than an incorrect comparison here. Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
->>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
+Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'ecommerce et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
 
 Mais pourquoi cela se produit-il ?
 
