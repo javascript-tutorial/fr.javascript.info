@@ -36,7 +36,7 @@ Le tri des lettres se fait par la chaîne d'appels en ligne `(*)`.
 Pour plus de commodité, divisons-le en plusieurs lignes :
 
 ```js
-let sorted = arr[i] // PAN
+let sorted = word // PAN
   .toLowerCase() // pan
   .split('') // ['p','a','n']
   .sort() // ['a','n','p']
