@@ -154,39 +154,7 @@
      */
 
     function isVisible(elem) {
-<<<<<<< HEAD
-
-      let coords = elem.getBoundingClientRect();
-
-      let windowHeight = document.documentElement.clientHeight;
-
-      // le rebord supérieur de l'elem est visible ou le rebord inferieur de l' elem est visible
-      let topVisible = coords.top > 0 && coords.top < windowHeight;
-      let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
-
-      return topVisible || bottomVisible;
-    }
-
-    /**
-    une variante du teste qui considère l'élément  visible s elle ne fait pas plus d'une page après/derrière l'écran en cours.
-
-    function isVisible(elem) {
-
-      let coords = elem.getBoundingClientRect();
-
-      let windowHeight = document.documentElement.clientHeight;
-
-      let extendedTop = -windowHeight;
-      let extendedBottom = 2 * windowHeight;
-
-      // top visible || bottom visible
-      let topVisible = coords.top > extendedTop && coords.top < extendedBottom;
-      let bottomVisible = coords.bottom < extendedBottom && coords.bottom > extendedTop;
-
-      return topVisible || bottomVisible;
-=======
       // todo: your code
->>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
     }
 
     function showVisible() {
