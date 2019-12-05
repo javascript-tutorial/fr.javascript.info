@@ -29,11 +29,7 @@ L'aspect exact des outils de développement dépend de votre version de Chrome. 
 - Ici, nous pouvons voir le message d'erreur de couleur rouge. Dans ce cas, le script contient une commande "lalala" inconnue.
 - Sur la droite, il y a un lien cliquable vers le code source bug.html:12 avec le numéro de ligne où l'erreur s'est produite.
 
-<<<<<<< HEAD
-Sous le message d'erreur, il y a un symbole bleu `>`. Il marque une "ligne de commande" où l'on peut taper des commandes JavaScript et appuyer sur `key:Entrée` pour les exécuter (`key:Shift+Entrée` pour entrer des commandes multilignes).
-=======
-Below the error message, there is a blue `>` symbol. It marks a "command line" where we can type JavaScript commands. Press `key:Enter` to run them.
->>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
+Sous le message d'erreur, il y a un symbole bleu `>`. Il marque une "ligne de commande" où l'on peut taper des commandes JavaScript et appuyer sur `key:Enter` pour les exécuter.
 
 Nous pouvons maintenant voir les erreurs et c’est suffisant pour le début. Nous reviendrons plus tard sur les outils de développement et approfondirons le débogage plus loin dans le chapitre <info:debugging-chrome>.
 
@@ -59,16 +55,6 @@ Ouvrez les préférences et accédez au volet "Avancé". Il y a une case à coch
 
 Maintenant `key:Cmd+Opt+C` peut activer la console. Notez également que le nouvel élément de menu supérieur nommé "Développement" est apparu. Il a beaucoup de commandes et d'options.
 
-<<<<<<< HEAD
-```smart header="Entrée multiligne"
-Habituellement, lorsque nous insérons une ligne de code dans la console, puis que nous appuyons sur `key:Enter`, la procédure s’exécute.
-
-Pour insérer plusieurs lignes, appuyez sur `key:Shift+Enter`. De cette façon, vous pouvez entrer de longs fragments de code JavaScript.
-```
-
-=======
-## Summary
->>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 
 ## Résumé

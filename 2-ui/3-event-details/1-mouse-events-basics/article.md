@@ -47,13 +47,9 @@ Au cas où une action unique initialise plusieurs évènements, leur ordre est f
 ```online
 Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double clic aussi. Dans TestStand en bas tous les évènements de la souris sont enregistrés, et si il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
 
-<<<<<<< HEAD
-Nous pouvons voir la propriété `which` qui permet de détecter le bouton de la souris.
-=======
-On the teststand below all mouse events are logged, and if there is more than a 1 second delay between them they are separated by a horizontal ruler.
+Sur le banc de test ci-dessous, tous les événements de souris sont enregistrés et s'il y a un délai de plus d'une seconde entre eux, ils sont séparés par une règle horizontale.
 
-Also we can see the `which` property that allows to detect the mouse button.
->>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
+Nous pouvons voir la propriété `which` qui permet de détecter le bouton de la souris.
 
 <input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Click me with the right or the left mouse button" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```
@@ -114,11 +110,7 @@ Donc, si nous voulons supporter des combinaisons comme `key:Ctrl`+click, alors p
 
 Même si nous aimerions forcer les utilisateurs de Mac à `key:Ctrl`+click -- c'est un peu difficile. Le problème est: un clic gauche avec `key:Ctrl` est interprété comme un *clic droit* sur MacOS, et il génère l'évènement `menu contextuel`, et non un `click` comme sur Windows/Linux.
 
-<<<<<<< HEAD
-Donc, si nous voulons que les utilisateurs de tous les systèmes opérationnels se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
-=======
-So if we want users of all operating systems to feel comfortable, then together with `ctrlKey` we should check `metaKey`.
->>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
+Donc, si nous voulons que les utilisateurs de tous les systèmes d'exploitation se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
 
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```
