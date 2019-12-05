@@ -149,9 +149,15 @@ function sayHi() {
 let user = { name: "John" };
 let admin = { name: "Admin" };
 
+<<<<<<< HEAD
 // utilisez call pour passer différents objets en tant que "this"
 sayHi.call( user ); // this = John
 sayHi.call( admin ); // this = Admin
+=======
+// use call to pass different objects as "this"
+sayHi.call( user ); // John
+sayHi.call( admin ); // Admin
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 ```
 
 Et ici, nous utilisons `call` pour appeler `say` avec le contexte et la phrase donnés:

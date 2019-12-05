@@ -25,8 +25,13 @@ Par exemple, ici toutes les exportations sont valides:
 }
 ```
 
+<<<<<<< HEAD
 ````smart header="Pas de point-virgule après la classe / fonction d'exportation"
 Veuillez noter que l'`export` avant une classe ou une fonction n'en fait pas une expression de fonction. C’est toujours une déclaration de fonction, bien qu’elle soit exportée.
+=======
+````smart header="No semicolons after export class/function"
+Please note that `export` before a class or a function does not make it a [function expression](info:function-expressions). It's still a function declaration, albeit exported.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 La plupart des guides de bonnes pratiques JavaScript ne recommandent pas les points-virgules après les déclarations de fonctions et de classes.
 

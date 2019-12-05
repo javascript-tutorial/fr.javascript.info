@@ -1,5 +1,6 @@
 # Les évènements Glisser-Déposer de la souris
 
+<<<<<<< HEAD
 Le Glisser-déposer  est une excellente solution d’interface. Prendre quelque chose, la déplacer et la déposer est une manière claire et simple  de faire plusieurs choses, de copier et (voir les gestionnaires de fichiers) en passant par le rangement (déposer dans un panier).
 
 Ils sont intéressants parce qu’ils permettent de résoudre  facilement des taches simples. Ils permettent aussi de gérer le glisser-déposer de fichiers  "externes" dans le navigateur. Donc nous pouvons prendre un fichier dans le gestionnaire du système d’exploitation et le déposer dans la fenêtre du navigateur. Ensuite JavaScript obtient l’accès à ses contenus.
@@ -7,6 +8,15 @@ Ils sont intéressants parce qu’ils permettent de résoudre  facilement des ta
 Mais les Evènements natifs de types déplacer ont aussi leurs limites. Par exemple, nous ne pouvons pas limiter le glissement sur une certaine surface. Nous ne pouvons pas  le faire seulement de manière  "horizontale" ou "verticale". Il existe d’autres taches,  Glisser-déplacer, qui ne peuvent être implémentées en utilisant cet  Interface de Programmation d’Application.
 
 Mais les événements de déplacements natifs ont aussi des limites. Par exemple, nous ne pouvons pas limiter le glissement dans une zone donnée. En outre, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Il existe d'autres tâches de glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API. En outre, la prise en charge d'appareils mobiles pour de tels événements est quasi inexistante.
+=======
+Drag'n'Drop is a great interface solution. Taking something and dragging and dropping it is a clear and simple way to do many things, from copying and moving documents (as in file managers) to ordering (dropping items into a cart).
+
+In the modern HTML standard there's a [section about Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) with special events such as `dragstart`, `dragend`, and so on.
+
+These events are useful in that they allow us to solve simple tasks easily. For instance, they allow us to handle the drag'n'drop of "external" files into the browser, so we can take a file in the OS file-manager and drop it into the browser window, thereby giving JavaScript access to its contents.
+
+But native Drag Events also have limitations. For instance, we can't limit dragging by a certain area. Also we can't make it "horizontal" or "vertical" only. And there are other drag'n'drop tasks that can't be done using that API. Also, mobile device support for such events is almost non-existant.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événements de souris.
 
@@ -125,7 +135,11 @@ Par exemple, si nous commençons le glissement par le rebord de la balle, alors 
 
     ```js
     // onmousemove
+<<<<<<< HEAD
     // la balle a une position: absolue
+=======
+    // ball has position:absoute
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
     ball.style.left = event.pageX - *!*shiftX*/!* + 'px';
     ball.style.top = event.pageY - *!*shiftY*/!* + 'px';
     ```

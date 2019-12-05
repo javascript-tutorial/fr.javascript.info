@@ -42,7 +42,11 @@ Seuls les commentaires peuvent apparaître avant `"use strict"`.
 ```warn header="Il n'y a aucun moyen d'annuler `use strict`"
 Il n'y a pas de directive `"no use strict"` ou similaire, qui réactiverait l'ancien comportement.
 
+<<<<<<< HEAD
 Une fois que nous entrons dans le mode strict, il n’ya plus de retour possible.
+=======
+Once we enter strict mode, there's no going back.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 ```
 ## Console du Navigateur
 

@@ -20,7 +20,7 @@ User.staticMethod(); // true
 Cela revient en fait à l'affecter directement à une propriété:
 
 ```js run
-class User() { }
+class User { }
 
 User.staticMethod = function() {
   alert(this === User);
