@@ -1,6 +1,6 @@
 # Promesse (promise)
 
-Imaginez que vous êtes un grand chauteur et les fans vous demandent jour et nuit votre prochain single.
+Imaginez que vous êtes un grand chanteur et les fans vous demandent jour et nuit votre prochain single.
 
 Pour avoir un peu de paix, vous promettez de leur envoyer dès que celui-ci est publié. Vous donnez à vos fans une liste d'abonnement. Ils peuvent y ajouter leur adresse mail, comme cela, quand le single est sorti, tous les emails reçoivent votre single. Et même si quelque chose arrive, comme un feu dans le studio, et que vous ne pouvez sortir le single, ils en seront aussi notifiés.
 
