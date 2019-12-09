@@ -12,7 +12,7 @@ Voici une petite fonction pour montrer la position actuelle du défilement:
 
 ```js autorun
 window.addEventListener('scroll', function() {
-  document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
+  document.getElementById('showScroll').innerHTML = window.pageYOffset + 'px';
 });
 ```
 
