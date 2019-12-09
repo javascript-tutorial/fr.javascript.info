@@ -82,7 +82,7 @@ Pour résumer, l'exécuteur devrait réaliser une tâche (normalement quelque ch
 
 Une promesse qui est soit tenue ou rejetée est appelée "settled" (acquitttée) opposé à une promesse initialisée à "en attente".
 
-```smart header="Il ne peut y avoir qu'un seul résultat ou une erreur"
+````smart header="Il ne peut y avoir qu'un seul résultat ou une erreur"
 L'exécuteur devrait appeler seulement une fois `resolve` ou `reject`. N'importe quel changement d'état est définitif.
 
 Les appels supplémentaires à `resolve` et `reject` sont ignorés :
@@ -101,13 +101,13 @@ let promise = new Promise(function(resolve, reject) {
 L'idée est que la tâche exécutée par un exécuteur ne peut avoir qu'un seul résultat ou une erreur.
 
 De plus, `resolve`/`reject` attendent qu'un seul argument (ou aucun) et ignorera les arguments suivants.
-```
+````
 
 ```smart header="Rompre avec l'objet `Error`"
 Dans le cas ou quelque chose se passe mal, l'exécuteur doit appeler `reject`. Cela est possible avec n'importe type d'argument (comme pour `resolve`). Mais  il est plutôt recommandé d'utiliser l'objet `Error` (ou les object en héritant). La raison va vous paraître évident dans un instant.
 ```
 
-```smart header="Appel de `resolve`/`reject` immédiat
+````smart header="Appel de `resolve`/`reject` immédiat"
 En pratique, un exécuteur réalise normalement une opération asynchrone et appelle `resolve`/`reject` après un certain temps, mais il n'est pas obligatoire d'être asynchrone. On peut aussi appeler immédiatement `resolve` ou `reject`, comme cela :
 
 ```js
@@ -122,7 +122,7 @@ Par exemple, cela peut arriver quand nous commençons une tâche mais nous voyon
 Pas de soucis. Nous acquittons immédiatement la promesse.
 ````
 
-```smart header="Le `state` et `result` est interne
+```smart header="Le `state` et `result` est interne"
 Les propriétés `state` et `result` de l'objet `Promise` sont internes. Nous ne pouvons directement accéder à celles-ci. Nous pouvons utiliser `.then`/`.catch`/`.finally` pour cela. Elles sont décrites ci-dessous.
 ```
 
