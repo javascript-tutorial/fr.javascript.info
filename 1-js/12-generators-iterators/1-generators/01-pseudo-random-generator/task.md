@@ -1,29 +1,29 @@
 
 # Pseudo-random generator
 
-There are many areas where we need random data.
+Il y a de nombreux cas où nous avons besoin de données aléatoires.
 
-One of them is testing. We may need random data: text, numbers etc, to test things out well.
+L'un d'eux est le test. Nous aurons peut-être besoin de données aléatoires: texte, chiffres, etc., pour bien tester les choses.
 
-In JavaScript, we could use `Math.random()`. But if something goes wrong, we'd like to be able to repeat the test, using exactly the same data.
+En JavaScript, nous pourrions utiliser `Math.random()`. Mais si quelque chose ne va pas, nous aimerions pouvoir répéter le test en utilisant exactement les mêmes données.
 
-For that, so called "seeded pseudo-random generators" are used. They take a "seed", the first value, and then generate next ones using a formula. So that the same seed yields the same sequence, and hence the whole flow is easily reproducible. We only need to remember the seed to repeat it.
+Pour cela, on utilise des "générateurs pseudo-aléatoires"(seeded pseudo-random generators). Ils prennent une "graine", la première valeur, puis génèrent les suivantes à l'aide d'une formule. De sorte que la même graine donne la même séquence, de sorte que tout le flux est facilement reproductible. Il suffit de rappeler la graine pour la répéter.
 
-An example of such formula, that generates somewhat uniformly distributed values:
+Un exemple d'une telle formule, qui génère des valeurs distribuées de manière assez uniforme:
 
 ```
 next = previous * 16807 % 2147483647
 ```
 
-If we use `1` as the seed, the values will be:
+Si on utilise `1` comme graine, les valeurs seront:
 1. `16807`
 2. `282475249`
 3. `1622650073`
-4. ...and so on...
+4. ...etc...
 
-The task is to create a generator function `pseudoRandom(seed)` that takes `seed` and creates the generator with this formula.
+La tâche ici est de créer une fonction de générateur `pseudoRandom(seed)` qui prend une `seed`(graine) et crée le générateur avec cette formule.
 
-Usage example:
+Exemple d'utilisation:
 
 ```js
 let generator = pseudoRandom(1);
