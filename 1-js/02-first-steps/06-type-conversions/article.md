@@ -1,6 +1,10 @@
 # Les conversions de types
 
+<<<<<<< HEAD
 La plupart du temps, les opérateurs et les fonctions convertissent automatiquement les valeurs qui leur sont attribuées dans le bon type.
+=======
+Most of the time, operators and functions automatically convert the values given to them to the right type.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour l'afficher. Les opérations mathématiques convertissent les valeurs en nombres.
 
@@ -81,6 +85,7 @@ alert( Number(false) );       // 0
 
 Veuillez noter que `null` et `undefined` se comportent différemment ici : `null` devient un zéro, alors qu'`undefined` devient `NaN`.
 
+<<<<<<< HEAD
 ````smart header="L\'addition \"+\" concatène les chaînes de caractères"
 Presque toutes les opérations mathématiques convertissent les valeurs en nombres. A l'exception notable de l'addition `+`. Si l'une des valeurs ajoutées est une chaîne de caractères, une autre est également convertie en chaîne de caractères.  
 
@@ -93,6 +98,9 @@ alert( '1' + 2 ); // '12' (chaîne de caractères à gauche)
 
 Cela ne se produit que lorsque l'un des arguments est une chaîne de caractères. Sinon, les valeurs sont converties en nombres.
 ````
+=======
+Most mathematical operators also perform such conversion, we'll see that in the next chapter.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 ## Boolean Conversion
 

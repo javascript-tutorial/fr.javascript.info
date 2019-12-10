@@ -66,7 +66,11 @@ Object.defineProperty(obj, propertyName, descriptor)
 : L'objet et sa propriété pour appliquer le descripteur.
 
 `descriptor`
+<<<<<<< HEAD
 : Descripteur de propriété à appliquer.
+=======
+: Property descriptor object to apply.
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 Si la propriété existe, `defineProperty` met à jour ses attributs. Sinon, il crée la propriété avec la valeur et les descripteurs donnés. Dans ce cas, si aucun drapeau n'est fourni, il est supposé `false`.
 
