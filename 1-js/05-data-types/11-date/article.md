@@ -33,8 +33,15 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
 
     C’est une représentation numérique d’une date. Nous pouvons toujours créer une date à partir d'un *horodatage* à l'aide de `new Date (*horodatage*)` et convertir l'objet `Date` existant en un *horodatage* à l'aide de la méthode `date.getTime ()` (voir ci-dessous).
 
-`new Date(date)`
-: S'il existe un seul argument, et qu'il s'agit d'une chaîne de caractères, il est automatiquement analysé. L'algorithme est le même que `Date.parse` utilise, nous le couvrirons plus tard.
+    Les dates antérieures au 01.01.1970 ont des horodatages négatifs, par exemple :
+    ```js run
+    // 31 Dec 1969
+    let Dec31_1969 = new Date(-24 * 3600 * 1000);
+    alert( Dec31_1969 );
+    ```
+
+`new Date(datestring)`
+: S'il existe un seul argument, et qu'il s'agit d'une chaîne, il est automatiquement analysé. L'algorithme est le même que celui utilisé par `Date.parse`, nous le couvrirons plus tard.
 
     ```js run
     let date = new Date("2017-01-26");

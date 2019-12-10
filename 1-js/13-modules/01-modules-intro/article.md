@@ -237,8 +237,8 @@ Les modules sont *toujours* différés, avec le même effet que l'attribut `defe
 
 En d'autres termes:
 - télécharger des modules externe `<script type="module" src="...">` ne bloque pas le traitement HTML, ils se chargent en parallèle avec d’autres ressources.
-- Les modules attendent que le document HTML soit complètement prêt (même s'ils sont minuscules et se chargent plus rapidement que HTML), puis s'exécutent.
-- l'ordre relatif des scripts est maintenu: les scripts qui entrent en premier dans le document sont exécutés en premier.
+- Les modules attendent que le document HTML soit complètement prêt (même s'ils sont minuscules et se chargent plus rapidement que le HTML), puis s'exécutent.
+- l'ordre relatif des scripts est maintenu : les scripts qui entrent en premier dans le document sont exécutés en premier.
 
 Comme effet secondaire, les modules "voient" toujours la page HTML entièrement chargée, y compris les éléments HTML situés en dessous.
 
@@ -264,7 +264,7 @@ Comparez au script habituel ci-dessous:
 <button id="button">Button</button>
 ```
 
-Remarque: le deuxième script fonctionne avant le premier! Nous verrons donc d'abord `undefined`, puis `object`.
+Remarque : le deuxième script fonctionne avant le premier ! Nous verrons donc d'abord `undefined`, puis `object`.
 
 C’est parce que les modules sont différés, nous attendons donc que le document soit traité. Les scripts réguliers s'exécutent immédiatement, nous avons donc vu son resultat en premier.
 
@@ -322,11 +322,11 @@ import {sayHi} from 'sayHi'; // Error, "bare" module
 // le module doit avoir un chemin, par exemple './sayHi.js'
 ```
 
-Certains environnements, tels que Node.js ou les outils de bundle, autorisent les modules nus, sans chemin d'accès, car ils disposent de moyens propres de recherche de modules. Mais les navigateurs ne supportent pas encore les modules nus.
+Certains environnements, tels que Node.js ou les outils de bundle autorisent les modules nus, sans chemin d'accès, car ils disposent de moyens propres de recherche de modules trouver des modules et des hooks pour les ajuster. Mais les navigateurs ne supportent pas encore les modules nus.
 
 ### Compatibilité, “nomodule”
 
-Les anciens navigateurs ne comprennent pas `type="module"`. Les scripts du type inconnu sont simplement ignorés. Pour eux, il est possible de fournir une solution de secours en utilisant l’attribut `nomodule`:
+Les anciens navigateurs ne comprennent pas `type="module"`. Les scripts de type inconnu sont simplement ignorés. Pour eux, il est possible de fournir une solution de secours en utilisant l’attribut `nomodule` :
 
 ```html run
 <script type="module">
@@ -347,13 +347,13 @@ L'un des avantages de l'utilisation des bundles est -- qu'ils permettent de mieu
 
 Les outils de construction font ce qui suit:
 
-1. Prenons un module «principal», celui qui est destiné à être placé dans `<script type="module">` en HTML.
-2. Analyser ses dépendances: importations puis importations d'importations etc.
-3. Construisez un seul fichier avec tous les modules (ou plusieurs fichiers réglables), en remplaçant les appels `import` natifs par des fonctions d’assemblage, pour que cela fonctionne. Les types de modules "spéciaux" tels que les modules HTML / CSS sont également pris en charge.
+1. Prenons un module "principal", celui qui est destiné à être placé dans `<script type="module">` dans le HTML.
+2. Analyser ses dépendances : importations puis importations d'importations etc.
+3. Construire un seul fichier avec tous les modules (ou plusieurs fichiers configurables), en remplaçant les appels `import` natifs par des fonctions d’assemblage, pour que cela fonctionne. Les types de modules "spéciaux" tels que les modules HTML/CSS sont également pris en charge.
 4. Dans le processus, d'autres transformations et optimisations peuvent être appliquées:
-    - Code inaccessible supprimé.
-    - Les exportations non utilisées ont été supprimées ("tree-shaking").
-    - Les instructions spécifiques au développement telles que `console` et le `debugger` ont été supprimées.
+    - Le code inaccessible est supprimé.
+    - Les exportations non utilisées sont supprimées ("tree-shaking").
+    - Les instructions spécifiques au développement telles que `console` et le `debugger` sont supprimées.
     - La syntaxe JavaScript moderne et ultramoderne peut être transformée en une ancienne version dotée de fonctionnalités similaires avec [Babel](https://babeljs.io/).
     - Le fichier résultant est minifié (espaces supprimés, variables remplacées par des noms plus courts, etc.).
 
@@ -379,7 +379,7 @@ Pour résumer, les concepts de base sont les suivants:
 3. Les modules utilisent toujours `use strict`.
 4. Le code des modules est exécuté une seule fois. Les exportations sont créées une fois et partagées entre les importateurs
 
-Lorsque nous utilisons des modules, chaque module implémente la fonctionnalité et l'exporte. Nous utilisons ensuite import pour l’importer directement là où il le faut. Le navigateur charge et exécute les scripts automatiquement.
+Lorsque nous utilisons des modules, chaque module implémente la fonctionnalité et l'exporte. Nous utilisons ensuite `import` pour l’importer directement là où il le faut. Le navigateur charge et exécute les scripts automatiquement.
 
 En production, les gens utilisent souvent des "bundlers" tels que [Webpack](https://webpack.js.org) qui regroupe des modules pour des raisons de performances ou pour d’autres raisons.
 

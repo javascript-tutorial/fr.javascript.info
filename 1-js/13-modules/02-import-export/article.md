@@ -25,8 +25,8 @@ Par exemple, ici toutes les exportations sont valides:
 }
 ```
 
-````smart header="Pas de point-virgule après la classe / fonction d'exportation"
-Veuillez noter que l'`export` avant une classe ou une fonction n'en fait pas une expression de fonction. C’est toujours une déclaration de fonction, bien qu’elle soit exportée.
+````smart header="Pas de point-virgule après la classe/fonction d'exportation"
+Veuillez noter que l'`export` avant une classe ou une fonction n'en fait pas une [function expression](info:function-expressions). C’est toujours une fonction déclaration, bien qu’elle soit exportée.
 
 La plupart des guides de bonnes pratiques JavaScript ne recommandent pas les points-virgules après les déclarations de fonctions et de classes.
 
@@ -155,14 +155,14 @@ say.*!*bye*/!*('John'); // Bye, John!
 
 En pratique, il existe principalement deux types de modules.
 
-1. Module qui contient une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
-2. Module qui déclare une seule entité, par exemple le module `user.js` exporte uniquement la `class User`.
+1. Les modules qui contiennent une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
+2. Les modules qui déclarent une seule entité, par exemple un module `user.js` qui exporte uniquement la `class User`.
 
 La deuxième approche est généralement privilégiée, de sorte que chaque "chose" réside dans son propre module.
 
 Naturellement, cela nécessite beaucoup de fichiers, car toute chose veut son propre module, mais ce n’est pas un problème du tout. En fait, la navigation dans le code devient plus facile si les fichiers sont bien nommés et structurés en dossiers.
 
-Les modules fournissent une syntaxe spéciale pour l'`export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
+Les modules fournissent une syntaxe spéciale `export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
 
 Placez `export default` avant l'entité à exporter:
 
@@ -291,7 +291,7 @@ import {User} from './user.js';
 ```js
 import User from './user.js'; // fonctionne
 import MyUser from './user.js'; // fonctionne aussi
-// n'importe quoi pourrait être importé ..., et ça fonctionnera
+// n'importe quoi pourrait être importé ..., cela continuera de fonctionner
 ```
 Les membres de l'équipe peuvent donc utiliser des noms différents pour importer la même chose, et ce n'est pas bien.
 
@@ -318,7 +318,7 @@ export {sayHi} from './say.js'; // réexportez sayHi
 export {default as User} from './user.js'; // réexportez default
 ```
 
-Pourquoi cela peut être nécessaire? Voyons un cas d'utilisation pratique.
+Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
 Imaginons, nous écrivons un "package": un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides". utilisation interne dans d'autres modules.
 
@@ -390,7 +390,7 @@ export default class User {
 
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
 
-2. `export * from '. / user.js'` ne réexporte que les exportations nommées, ignore celle par défaut.
+2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
     Si nous souhaitons réexporter l'export nommé et l'export par défaut, deux instructions sont nécessaires:
     ```js
@@ -398,7 +398,7 @@ export default class User {
     export {default} from './user.js'; // réexporter l'exportation par défaut
     ```
 
-Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne l'aiment pas.
+Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne les aiment pas.
 
 ## Sommaire
 

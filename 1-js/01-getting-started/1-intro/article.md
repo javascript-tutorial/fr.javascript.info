@@ -38,8 +38,7 @@ Les moteurs sont compliqués. Mais le fonctionnement de base est facile à compr
 2. Ensuite, il convertit ("compile") le script en langage machine.
 3. Enfin le code machine s'exécute, très rapidement.
 
-Le moteur applique des optimisations à chaque étape du processus. Il surveille même le script compilé en cours d'exécution, analyse les données qui le traversent et applique des optimisations au code machine en fonction de ces informations. Au final, les scripts sont assez rapides.
-```it's done, scripts run quite fast.
+Le moteur applique des optimisations à chaque étape du processus. Il surveille même le script compilé en cours d'exécution, analyse les données qui le traversent et applique des optimisations au code machine en fonction de ces informations. 
 ```
 
 ## Que peut faire JavaScript dans le navigateur ?

@@ -130,7 +130,7 @@ Ces méthodes doivent renvoyer une valeur primitive. Si `toString` ou `valueOf` 
 Par défaut, un objet brut a les méthodes `toString` et `valueOf` suivantes :
 
 - La méthode `toString` renvoie une chaîne de caractères `"[object Object]"`.
-- La méthode `valueOf` renvoie un objet.
+- La méthode `valueOf` renvoie l'objet en question.
 
 Voici la démo :
 

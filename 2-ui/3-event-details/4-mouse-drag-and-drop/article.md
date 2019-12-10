@@ -1,21 +1,16 @@
 # Les évènements Glisser-Déposer de la souris
 
-Le Glisser-déposer  est une excellente solution d’interface. Prendre quelque chose, la déplacer et la déposer est une manière claire et simple  de faire plusieurs choses, de copier et (voir les gestionnaires de fichiers) en passant par le rangement (déposer dans un panier).
+Drag'n'Drop est une excellente solution d'interface. Prendre quelque chose et le faire glisser est un moyen clair et simple de faire beaucoup de choses, de la copie et du déplacement de documents (comme dans les gestionnaires de fichiers) à la commande (déposer des articles dans un panier).
 
-Ils sont intéressants parce qu’ils permettent de résoudre  facilement des taches simples. Ils permettent aussi de gérer le glisser-déposer de fichiers  "externes" dans le navigateur. Donc nous pouvons prendre un fichier dans le gestionnaire du système d’exploitation et le déposer dans la fenêtre du navigateur. Ensuite JavaScript obtient l’accès à ses contenus.
+Dans la norme HTML moderne, il y a une [section à propos du Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) avec des événements spéciaux tels que `dragstart`, `dragend`, etc.
 
-Mais les Evènements natifs de types déplacer ont aussi leurs limites. Par exemple, nous ne pouvons pas limiter le glissement sur une certaine surface. Nous ne pouvons pas  le faire seulement de manière  "horizontale" ou "verticale". Il existe d’autres taches,  Glisser-déplacer, qui ne peuvent être implémentées en utilisant cet  Interface de Programmation d’Application.
+Ces événements sont utiles car ils nous permettent de résoudre facilement des tâches simples. Par exemple, ils nous permettent de gérer le glisser-déposer de fichiers "externes" dans le navigateur, afin que nous puissions prendre un fichier dans le gestionnaire de fichiers du système d'exploitation et le déposer dans la fenêtre du navigateur, permettant ainsi à JavaScript d'accéder à son contenu.
 
-Mais les événements de déplacements natifs ont aussi des limites. Par exemple, nous ne pouvons pas limiter le glissement dans une zone donnée. En outre, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Il existe d'autres tâches glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API.
+Mais les événements de glisser natifs ont également des limites. Par exemple, nous ne pouvons pas limiter le glissement d'une certaine zone. De plus, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Et il existe d'autres tâches de glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API. De plus, la prise en charge des appareils mobiles pour de tels événements est presque inexistante.
 
 Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événements de souris.
 
-L’algorithme de base du Glisser-Déposer ressemble à ceci:
-
-1. Attraper l’évènement `mousedown` sur un élément déplaçable.
-2. Préparer l’élément pour un glissement (peut être créer une copie de celui-ci ou autre chose).
-3. Ensuite à l’évènement `mousemove` le faire glisser en changeant les propriétés `left/top`  et `position:absolute`.
-4. A l’exécution de l’évènement `mouseup` (relâchement du bouton) – faire toutes les  actions liées a un Glisser-Déposer effectué.
+## l'algorithme Drag’and’Drop
 
 1. Sur `mousedown` - préparer l'élément pour le déplacement, si nécessaire (éventuellement en créer une copie).
 2. Puis sur `mousemove` le déplacer en changeant `left/top` et `position:absolute`.

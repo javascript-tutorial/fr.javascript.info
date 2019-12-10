@@ -8,7 +8,7 @@ En JavaScript, ils sont disponibles en tant que object [RegExp](mdn:js/RegExp) e
 
 Une expression régulière (également "regexp" ou simplement "reg") est constituée d'un *pattern* et de *flags* optionnels.
 
-Il existe deux syntaxes pour créer un objet expression rationnelle.
+Il existe deux syntaxes pour créer un objet expression régulière.
 
 La syntaxe "longue" :
 
@@ -16,7 +16,7 @@ La syntaxe "longue" :
 regexp = new RegExp("pattern", "flags");
 ```
 
-...Et la syntaxe courte, en utilisant des slash `"/"`:
+Et la syntaxe courte, en utilisant des slash `"/"` :
 
 ```js
 regexp = /pattern/; // aucun marqueur
@@ -27,9 +27,9 @@ Les slash `pattern:/.../` indique à JavaScript que l'on crée une expression r�
 
 Dans les deux cas `regexp` devient un objet de la classe intégrée `RegExp`.
 
-La différence principale entre ces deux syntaxes réside dans le fait que les slashes `pattern: /.../` ne permettent pas d'insérer des expressions (comme les chaînes avec `$ {...}`). Ils sont complètement statiques.
+La différence principale entre ces deux syntaxes réside dans le fait que les pattern utilisants des slashes `/.../` ne permettent pas d'insérer des expressions (comme les modèles littéraux de chaîne de caractères `$ {...}`). Ils sont complètement statiques.
 
-Les barres obliques sont utilisées lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante. Alors que `new RegExp` est utilisé lorsque nous devons créer une expression rationnelle "à la volée", à partir d'une chaîne générée dynamiquement, par exemple :
+Les slashes sont utilisés lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante. Alors que `new RegExp` est plus utilisé lorsque nous devons créer une expression régulière "à la volée" à partir d'une chaîne de caractères générée dynamiquement, par exemple :
 
 ```js
 let tag = prompt("What tag do you want to find?", "h2");
@@ -71,7 +71,7 @@ Il n'y en a que 6 en JavaScript :
 
 ## Rechercher : str.match
 
-Comme il a été dit précédemment, les expressions régulières sont intégrées aux méthodes de chaîne de caractères.
+Comme cela a été dit précédemment, les expressions régulières sont intégrées aux méthodes de chaîne de caractères.
 
 La méthode `str.match(regexp)` trouve tous les résultats de `regexp` dans la chaîne de caractères `str`.
 
@@ -124,7 +124,7 @@ Il dispose de 3 modes de travail :
 
 ## Remplacer : str.replace
 
-La méthode `str.replace(regexp, replacement)` remplace les correspondances avec `regexp` dans la chaîne de caractères `str` avec `replacement` (tous les résultats s'il y a un flag `pattern:g`, sinon seulement le premier).
+La méthode `str.replace(regexp, replacement)` remplace les correspondances en utilisant `regexp` dans la chaîne de caractères `str` avec `replacement` (tous les résultats s'il y a un flag `pattern:g`, sinon seulement le premier).
 
 Par exemple :
 
@@ -164,7 +164,7 @@ let regexp = /LOVE/i;
 alert( regexp.test(str) ); // true
 ```
 
-Plus loin dans ce chapitre, nous étudierons davantage d’expressions régulières, trouverons de nombreux autres exemples et rencontrerons d’autres méthodes.
+Plus loin dans ce chapitre, nous étudierons davantage d’expressions régulières, parcourerons de nombreux autres exemples et rencontrerons d’autres méthodes.
 
 Full information about the methods is given in the article <info:regexp-methods>.
 
@@ -173,5 +173,5 @@ Full information about the methods is given in the article <info:regexp-methods>
 - Une expression régulière consiste en un modèle et des indicateurs facultatifs : `pattern:g`, `pattern:i`, `pattern:m`, `pattern:u`, `pattern:s`, `pattern:y`.
 - Sans les flags et symboles spéciaux que nous étudierons plus tard, la recherche par une expression régulière est identique à une recherche par sous-chaîne de caractères.
 - La méthode `str.match(regexp)` cherche des correspondances : toutes si il y a un flag `pattern:g`, sinon seulement le premier.
-- La méthode `str.replace(regexp, replacement)` remplace les correspondance avec `regexp` par `replacement` : toutes s'il y a  un flag `pattern:g`, sinon seulement le premier.
+- La méthode `str.replace(regexp, replacement)` remplace les correspondance en utilisant `regexp` avec `replacement` : toutes s'il y a  un flag `pattern:g`, sinon seulement la première.
 - La méthode `regexp.test(str)` retourne `true` s'il y a au moins une correspondance, sinon `false`.

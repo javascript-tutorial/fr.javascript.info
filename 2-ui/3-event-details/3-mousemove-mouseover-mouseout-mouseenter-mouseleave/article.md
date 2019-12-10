@@ -145,7 +145,7 @@ Quand le pointeur quitte un élément -- `mouseleave` se déclenche.
 ```online
 Cet exemple est similaire à celui ci-dessus, mais maintenant l’élément supérieur a `mouseenter/mouseleave` au lieu de  `mouseover/mouseout`.
 
-Comme vous pouvez le constater, les seuls événements générés sont ceux liés au déplacement du pointeur dans l'élément supérieur. Rien ne se passe lorsque le pointeur se dirige vers l’enfant. Les transitions entre descendants sont ignorées.
+Comme vous pouvez le voir, les seuls événements générés sont ceux liés au déplacement du pointeur dans et hors de l'élément supérieur. Rien ne se passe lorsque le pointeur se dirige vers l'enfant et vice-versa. Les transitions entre les descendants sont ignorées.
 
 [codetabs height=340 src="mouseleave"]
 ```

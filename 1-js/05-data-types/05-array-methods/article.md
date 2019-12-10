@@ -450,7 +450,7 @@ alert(arr);  // *!*1, 2, 15*/!*
 ````
 
 ````smart header="Arrow functions for the best"
-Rappelez-vous des [fonctions de flèche](info:function-expressions-arrows#arrow-functions)? Nous pouvons les utiliser ici pour un tri plus net:
+Souvenez-vous des [fonctions fléchées](info:arrow-functions-basics) ? Nous pouvons les utiliser ici pour un tri plus net :
 
 ```js
 arr.sort( (a, b) => a - b );

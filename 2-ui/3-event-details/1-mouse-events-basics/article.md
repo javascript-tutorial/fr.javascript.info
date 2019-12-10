@@ -21,15 +21,15 @@ Les évènements simples les plus utilisés sont:
 `mousemove`
 : Chaque déplacement de la souris sur un élément déclenche cet évènement.
 
+`contextmenu`
+: Des déclencheurs lors de l'ouverture d'un menu contextuel sont tentés. Dans le cas le plus courant, cela se produit lorsque le bouton droit de la souris est enfoncé. Bien qu'il existe d'autres moyens d'ouvrir un menu contextuel, par exemple en utilisant une touche spéciale du clavier, donc ce n'est pas exactement l'événement de la souris.
+
 ...Il existe plusieurs autres types d'évènements aussi, nous allons les couvrir plus tard.
 
 ### Les évènements complexes
 
 `click`
 : est déclenché après un évènement `mousedown` et suite à un  `mouseup`  sur le même élément, si le bouton gauche de la souris a été utilisé
-
-`contextmenu`
-: est déclenché après un  évènement `mousedown` si le bouton gauche de la souris a été utilisé.
 
 `dblclick`
 : est déclenché après un  évènement double clique sur un élément.
@@ -46,6 +46,8 @@ Au cas où une action unique initialise plusieurs évènements, leur ordre est f
 
 ```online
 Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double clic aussi. Dans TestStand en bas tous les évènements de la souris sont enregistrés, et si il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
+
+Sur le banc de test ci-dessous, tous les événements de souris sont enregistrés et s'il y a un délai de plus d'une seconde entre eux, ils sont séparés par une règle horizontale.
 
 Nous pouvons voir la propriété `which` qui permet de détecter le bouton de la souris.
 
@@ -108,7 +110,7 @@ Donc, si nous voulons supporter des combinaisons comme `key:Ctrl`+click, alors p
 
 Même si nous aimerions forcer les utilisateurs de Mac à `key:Ctrl`+click -- c'est un peu difficile. Le problème est: un clic gauche avec `key:Ctrl` est interprété comme un *clic droit* sur MacOS, et il génère l'évènement `menu contextuel`, et non un `click` comme sur Windows/Linux.
 
-Donc, si nous voulons que les utilisateurs de tous les systèmes opérationnels se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
+Donc, si nous voulons que les utilisateurs de tous les systèmes d'exploitation se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
 
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```

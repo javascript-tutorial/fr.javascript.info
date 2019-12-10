@@ -119,7 +119,7 @@ alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi
 
 ## Pas simplement un sucre syntaxique 
 
-Parfois certaines personnes disent la notion de `class` est un  "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce que en réalité nous pouvons  déclarer la même chose sans aucunement utiliser le mot clé `classe`:
+Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce que en réalité nous pouvons  déclarer la même chose sans aucunement utiliser le mot clé `classe` :
 
 ```js run
 // Réécriture de class User en fonctions pures
@@ -141,7 +141,7 @@ let user = new User("John");
 user.sayHi();
 ```
 
-Le résultat de cette définition est à peu près la même chose. Donc, il y a bien raison de vouloir considérer `class` comme pouvant être un sucre syntaxique pour définir un constructeur ensemble avec ses méthodes de prototype.
+Le résultat de cette définition est à peu près la même chose. Donc, il y a bien des raisons de vouloir considérer `class` comme pouvant être un sucre syntaxique pour définir un constructeur ensemble avec ses méthodes de prototype.
 
 Cependant, il existe des différences importantes.
 
@@ -283,7 +283,7 @@ Object.defineProperties(User.prototype, {
 });
 ```
 
-Voici un exemple avec une propriété évaluée entre crochets `[...]`:
+Voici un exemple avec une propriété évaluée entre crochets `[...]` :
 
 ```js run
 class User {
@@ -319,6 +319,9 @@ class User {
 }
 
 new User().sayHi();
+
+alert(User.prototype.sayHi); // placed in User.prototype
+alert(User.prototype.name); // undefined, not placed in User.prototype
 ```
 
 La propriété `name` n'est pas placée dans `User.prototype`. Au lieu de cela, elle est créée par `new` avant l'appel du constructeur, c'est la propriété de l'objet lui-même.

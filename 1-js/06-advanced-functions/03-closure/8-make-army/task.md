@@ -31,5 +31,4 @@ army[5](); // et le numéro 5 affiche aussi 10...
 // ... tous les shooters affichent 10 au lieu de 0, 1, 2, 3 …
 ```
 
-Pourquoi tous les shooters affichent la même chose ? Corrigez le code pour qu’ils fonctionnent comme prévu.
-
+Pourquoi tous les shooters affichent la même valeur ? Corrigez le code pour qu’ils fonctionnent comme prévu.

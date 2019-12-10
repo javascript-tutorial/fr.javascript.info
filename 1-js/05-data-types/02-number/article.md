@@ -1,8 +1,12 @@
 # Nombres
 
-Tous les nombres en JavaScript sont stockés au format 64-bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), aussi appelé "double precision floating point numbers".
+En JavaScript moderne, il existe deux types de nombres :
 
-Développons ce que nous savons actuellement à leur sujet.
+1. Les nombres normaux en JavaScript sont stockés au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), également connu sous le nom de "nombres à virgule flottante double précision". Ce sont des chiffres que nous utilisons le plus souvent, et nous en parlerons dans ce chapitre.
+
+2. Les nombres BigInt pour représenter des entiers de longueur arbitraire. Ils sont parfois nécessaires, car un nombre régulier ne peut pas dépasser <code>2<sup>53</sup></code> ou être inférieur à <code>-2<sup>53</sup></code>. Comme les bigints sont utilisés dans quelques zones spéciales, nous leur consacrons un chapitre spécial <info:bigint>.
+
+Donc, ici, nous allons parler de chiffres réguliers. Augmentons nos connaissances à leur sujet.
 
 ## Plus de façons d'écrire un nombre
 
@@ -29,14 +33,13 @@ En d'autres termes, `"e"` multiplie le nombre de `1` avec le nombre de zéros do
 1.23e6 = 1.23 * 1000000 
 ```
 
-
 Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde):
 
 ```js
 let ms = 0.000001;
 ```
 
-Comme avant, on va utiliser `"e"`. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire:
+Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire la même chose avec :
 
 ```js
 let ms = 1e-6; // six zéros à gauche de 1
@@ -201,7 +204,7 @@ Si on vérifie si la somme de `0.1` et `0.2` est égale à `0.3` on obtient `fau
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
-Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'e-shopping et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
+Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'ecommerce et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
 
 Mais pourquoi cela se produit-il ?
 
@@ -272,11 +275,10 @@ JavaScript ne déclenche pas d'erreur dans de tels événements. il fait de son 
 ```smart header="Deux zéros"
 Une autre conséquence amusante de la représentation interne des nombres est l'existence de deux zéros: 0 et -0.
 
-C'est parce qu'un signe est représenté par un seul bit, ainsi chaque nombre peut être positif ou négatif, y compris un zéro.
+C'est parce qu'un signe est représenté par un seul bit, il peut donc être défini ou non pour n’importe quel nombre, y compris un zéro.
 
 Dans le plupart des cas, la distinction est imperceptible, car les opérateurs peuvent les traiter de la même manière.
 ```
-
 
 
 ## Tests: isFinite et isNaN
@@ -410,26 +412,28 @@ Il y a plus de fonctions et de constantes dans l'objet Math, y compris la trigon
 
 ## Résumé
 
-Pour écrire de grands nombres:
+Pour écrire de nombres avec beaucoup de zéros :
 
 - Ajoutez `"e"` avec le nombre de zéros au nombre. Comme: `123e6` est `123` avec 6 zéros soit `123 000 000`.
 - Un nombre négatif après le `"e"` entraîne la division du nombre par 1 avec des zéros donnés. Comme: `123-e6` est `123` avec 6 zéros après la virgule soit `0.000123`.
 
-Pour différents systèmes de numération:
+Pour différents systèmes de numération :
 
 - Il est possible d'écrire des nombres directement dans les systèmes hex (`0x`), octal(`0o`) et binaire (`0b`).
 - `parseInt(str, base)` passe la chaîne de caractères `str` vers un système numérique avec une `base` donnée : `2 ≤ base ≤ 36`.
 - `num.toString(base)` convertit un nombre en chaîne de caractères dans le système numérique de la `base` donnée.
 
-Pour convertit des valeurs telles que `12pt` et `100px` en un nombre:
+Pour convertit des valeurs telles que `12pt` et `100px` en un nombre :
+
+- Utiliser `parseInt/parseFloat` pour la conversion "soft", qui lit un nombre dans une chaîne de caractères, puis renvoie la valeur qu'ils pouvaient lire avant l'erreur.
 
 
-Pour les fractions:
+Pour les fractions :
 
 - Arrondissez en utilisant `Math.floor`, `Math.ceil`, `Math.trunc`, `Math.round` ou `num.toFixed(précision)`.
 - Assurez-vous de ne pas perdre de précision lorsque vous travaillez avec des fractions.
 
-Plus de fonctions mathématiques:
+Plus de fonctions mathématiques :
 
 - Voir l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math) quand vous en avez besoin. La bibliothèque est très petite, mais peut couvrir les besoins de base.
 
