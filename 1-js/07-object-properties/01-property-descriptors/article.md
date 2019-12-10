@@ -66,11 +66,7 @@ Object.defineProperty(obj, propertyName, descriptor)
 : L'objet et sa propriété pour appliquer le descripteur.
 
 `descriptor`
-<<<<<<< HEAD
-: Descripteur de propriété à appliquer.
-=======
-: Property descriptor object to apply.
->>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
+: Descripteur de propriété d'objet à appliquer.
 
 Si la propriété existe, `defineProperty` met à jour ses attributs. Sinon, il crée la propriété avec la valeur et les descripteurs donnés. Dans ce cas, si aucun drapeau n'est fourni, il est supposé `false`.
 
@@ -81,7 +77,7 @@ let user = {};
 
 *!*
 Object.defineProperty(user, "name", {
-  value: "John"
+value: "John"
 });
 */!*
 
@@ -90,14 +86,14 @@ let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
 alert( JSON.stringify(descriptor, null, 2 ) );
 /*
 {
-  "value": "John",
+"value": "John",
 *!*
-  "writable": false,
-  "enumerable": false,
-  "configurable": false
+"writable": false,
+"enumerable": false,
+"configurable": false
 */!*
 }
- */
+*/
 ```
 
 Comparez-le avec `user.name` "normalement créé" ci-dessus: maintenant tous les attributs sont falsy. Si ce n'est pas ce que nous voulons, nous ferions mieux de leur attribuer la valeur `true` dans `descriptor`.
@@ -110,12 +106,12 @@ Rendons `user.name` en lecture seule (ne peut pas être réaffecté) en modifian
 
 ```js run
 let user = {
-  name: "John"
+name: "John"
 };
 
 Object.defineProperty(user, "name", {
 *!*
-  writable: false
+writable: false
 */!*
 });
 
@@ -137,10 +133,10 @@ let user = { };
 
 Object.defineProperty(user, "name", {
 *!*
-  value: "John",
-  // pour les nouvelles propriétés, nous devons lister explicitement ce qui est vrai
-  enumerable: true,
-  configurable: true
+value: "John",
+// pour les nouvelles propriétés, nous devons lister explicitement ce qui est vrai
+enumerable: true,
+configurable: true
 */!*
 });
 
@@ -156,10 +152,10 @@ Normalement, un `toString` intégré pour les objets n'est pas énumérable, il 
 
 ```js run
 let user = {
-  name: "John",
-  toString() {
-    return this.name;
-  }
+name: "John",
+toString() {
+  return this.name;
+}
 };
 
 // Par défaut, nos deux propriétés sont répertoriées:
@@ -170,15 +166,15 @@ Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensu
 
 ```js run
 let user = {
-  name: "John",
-  toString() {
-    return this.name;
-  }
+name: "John",
+toString() {
+  return this.name;
+}
 };
 
 Object.defineProperty(user, "toString", {
 *!*
-  enumerable: false
+enumerable: false
 */!*
 });
 
@@ -208,10 +204,10 @@ let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
 alert( JSON.stringify(descriptor, null, 2 ) );
 /*
 {
-  "value": 3.141592653589793,
-  "writable": false,
-  "enumerable": false,
-  "configurable": false
+"value": 3.141592653589793,
+"writable": false,
+"enumerable": false,
+"configurable": false
 }
 */
 ```
@@ -237,9 +233,9 @@ Ici, nous faisons de `user.name` une constante "scellée pour toujours":
 let user = { };
 
 Object.defineProperty(user, "name", {
-  value: "John",
-  writable: false,
-  configurable: false
+value: "John",
+writable: false,
+configurable: false
 });
 
 *!*
@@ -266,9 +262,9 @@ La syntaxe est la suivante:
 
 ```js
 Object.defineProperties(obj, {
-  prop1: descriptor1,
-  prop2: descriptor2
-  // ...
+prop1: descriptor1,
+prop2: descriptor2
+// ...
 });
 ```
 
@@ -276,9 +272,9 @@ Par exemple:
 
 ```js
 Object.defineProperties(user, {
-  name: { value: "John", writable: false },
-  surname: { value: "Smith", writable: false },
-  // ...
+name: { value: "John", writable: false },
+surname: { value: "Smith", writable: false },
+// ...
 });
 ```
 
@@ -298,7 +294,7 @@ Normalement, lorsque nous clonons un objet, nous utilisons une affectation pour 
 
 ```js
 for (let key in user) {
-  clone[key] = user[key]
+clone[key] = user[key]
 }
 ```
 
