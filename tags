@@ -5,7 +5,7 @@
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	/26d41bb/
+!_TAG_PROGRAM_VERSION	0.0.0	/f7513be/
 "#waterLimit" privée	1-js/09-classes/04-private-protected-properties-methods/article.md	/^## "#waterLimit" privée$/;"	s
 "2+2=?"	1-js/12-generators-iterators/1-generators/genYield2-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="461" height="258" viewBox="0 0 461 258"><defs/;"	i
 "2+2=?"	1-js/12-generators-iterators/1-generators/genYield2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="559" height="216" viewBox="0 0 559 216"><defs/;"	i
@@ -51,7 +51,7 @@
 "toJSON" Personnalisé	1-js/05-data-types/12-json/article.md	/^## "toJSON" Personnalisé$/;"	s
 "use strict"	1-js/02-first-steps/03-strict-mode/article.md	/^## "use strict"$/;"	s
 "var" n'a pas de portée limitée aux blocs	1-js/06-advanced-functions/04-var/article.md	/^## "var" n'a pas de portée limitée aux blocs$/;"	s
-"yield" is a two-way road	1-js/12-generators-iterators/1-generators/article.md	/^## "yield" is a two-way road$/;"	s
+"yield" est une route à double sens	1-js/12-generators-iterators/1-generators/article.md	/^## "yield" est une route à double sens$/;"	s
 #FROM	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/mouseover-mouseout-over-elems.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 #TO	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/mouseover-mouseout-from-outside.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 #TO	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/mouseover-mouseout-over-elems.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
@@ -194,6 +194,7 @@
 #thumbs a:hover	2-ui/2-events/04-default-browser-action/3-image-gallery/source.view/gallery.css	/^#thumbs a:hover {$/;"	s
 #thumbs li	2-ui/2-events/04-default-browser-action/3-image-gallery/solution.view/gallery.css	/^#thumbs li {$/;"	s
 #tooltip	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/style.css	/^#tooltip {$/;"	i
+#tooltip	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/style.css	/^#tooltip {$/;"	i
 ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="550" height="173" viewBox="0 0 550 173"><defs/;"	i
 && (AND)	1-js/02-first-steps/11-logical-operators/article.md	/^## && (AND)$/;"	s
 '1.js'	1-js/11-async/01-callbacks/callback-hell.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="467" height="279" viewBox="0 0 467 279"><defs/;"	i
@@ -457,7 +458,6 @@ ${	1-js/06-advanced-functions/03-closure/lexical-environment-global-3.svg	/^<svg
 .then-copy-2	1-js/11-async/04-promise-error-handling/promise-then-many.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="373" height="152" viewBox="0 0 373 152"><defs/;"	i
 .thumb	2-ui/3-event-details/4-mouse-drag-and-drop/1-slider/solution.view/style.css	/^.thumb {$/;"	c
 .thumb	2-ui/3-event-details/4-mouse-drag-and-drop/1-slider/source.view/style.css	/^.thumb {$/;"	c
-.tooltip	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/style.css	/^.tooltip {$/;"	c
 .train	7-animation/2-css-animations/train-linear.view/style.css	/^.train {$/;"	c
 .train	7-animation/2-css-animations/train-over.view/style.css	/^.train {$/;"	c
 .train	7-animation/2-css-animations/train.view/style.css	/^.train {$/;"	c
@@ -909,6 +909,7 @@ Accessing array[-1]	1-js/99-js-misc/01-proxy/02-array-negative/task.md	/^# Acces
 Accessing popup from window	3-frames-and-windows/01-popup-windows/article.md	/^## Accessing popup from window$/;"	s
 Accessing the element: this	2-ui/2-events/01-introduction-browser-events/article.md	/^## Accessing the element: this$/;"	s
 Accessing window from popup	3-frames-and-windows/01-popup-windows/article.md	/^## Accessing window from popup   $/;"	s
+Accessor descriptors	1-js/07-object-properties/02-property-accessors/article.md	/^## Accessor descriptors$/;"	s
 Accolades	1-js/03-code-quality/02-coding-style/article.md	/^### Accolades$/;"	S
 Accumulator	1-js/04-object-basics/06-constructor-new/3-accumulator/_js.view/solution.js	/^function Accumulator(startingValue) {$/;"	c
 Actions par défaut	2-ui/3-event-details/5-keyboard-events/article.md	/^## Actions par défaut$/;"	s
@@ -957,9 +958,9 @@ Animate the bouncing ball	7-animation/3-js-animation/1-animate-ball/task.md	/^# 
 Animate the flying plane (CSS)	7-animation/2-css-animations/2-animate-logo-bezier-css/task.md	/^# Animate the flying plane (CSS)$/;"	c
 Animated circle	7-animation/2-css-animations/3-animate-circle/task.md	/^# Animated circle$/;"	c
 Animated circle with callback	1-js/11-async/01-callbacks/01-animate-circle-callback/task.md	/^# Animated circle with callback$/;"	c
-Animated circle with promise	1-js/11-async/02-promise-basics/03-animate-circle-promise/task.md	/^# Animated circle with promise$/;"	c
 Animation	7-animation/index.md	/^# Animation$/;"	c
 Animations-Toggle	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^     transform="translate(199.99866,124.00442)"><path$/;"	i
+Animé un cercle avec une promesse	1-js/11-async/02-promise-basics/03-animate-circle-promise/task.md	/^# Animé un cercle avec une promesse$/;"	c
 AnonymousFunction067ed8060100	1-js/05-data-types/04-array/10-maximal-subarray/_js.view/test.js	/^describe("getMaxSubSum", function() {$/;"	f
 AnonymousFunction067ed8060200	1-js/05-data-types/04-array/10-maximal-subarray/_js.view/test.js	/^  it("maximal subsum of [1, 2, 3] equals 6", function() {$/;"	f	function:AnonymousFunction067ed8060100
 AnonymousFunction067ed8060300	1-js/05-data-types/04-array/10-maximal-subarray/_js.view/test.js	/^  it("maximal subsum of [-1, 2, 3, -9] equals 5", function() {$/;"	f	function:AnonymousFunction067ed8060100
@@ -1016,9 +1017,9 @@ AnonymousFunction2b069fbf0400	2-ui/3-event-details/3-mousemove-mouseover-mouseou
 AnonymousFunction2b069fbf0500	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^      over: function() {$/;"	f	function:AnonymousFunction2b069fbf0100.AnonymousFunction2b069fbf0400
 AnonymousFunction2b069fbf0600	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^      out: function() {$/;"	f	function:AnonymousFunction2b069fbf0100.AnonymousFunction2b069fbf0400
 AnonymousFunction2b069fbf0700	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  afterEach(function() {$/;"	f	function:AnonymousFunction2b069fbf0100
-AnonymousFunction2b069fbf0800	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> immediately no tooltip", function() {$/;"	f	function:AnonymousFunction2b069fbf0100
-AnonymousFunction2b069fbf0900	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> pause shows tooltip", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
-AnonymousFunction2b069fbf0a00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> fast mouseout no tooltip", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
+AnonymousFunction2b069fbf0800	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> when the pointer just arrived, no tooltip", function() {$/;"	f	function:AnonymousFunction2b069fbf0100
+AnonymousFunction2b069fbf0900	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> after a delay, the tooltip shows up", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
+AnonymousFunction2b069fbf0a00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> followed by fast mouseout leads doesn't show tooltip", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
 AnonymousFunction2b069fbf0b00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> slow move -> tooltips", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
 AnonymousFunction2b069fbf0c00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/test.js	/^  it("mouseover -> fast move -> no tooltip", function() {$/;"	c	class:AnonymousFunction2b069fbf0100
 AnonymousFunction2fbe262c0100	5-network/01-fetch/01-fetch-users/_js.view/test.js	/^describe("getUsers", function() {$/;"	f
@@ -1044,9 +1045,9 @@ AnonymousFunction37e7d2330400	2-ui/3-event-details/3-mousemove-mouseover-mouseou
 AnonymousFunction37e7d2330500	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^      over: function() {$/;"	f	function:AnonymousFunction37e7d2330100.AnonymousFunction37e7d2330400
 AnonymousFunction37e7d2330600	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^      out: function() {$/;"	f	function:AnonymousFunction37e7d2330100.AnonymousFunction37e7d2330400
 AnonymousFunction37e7d2330700	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  afterEach(function() {$/;"	f	function:AnonymousFunction37e7d2330100
-AnonymousFunction37e7d2330800	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> immediately no tooltip", function() {$/;"	f	function:AnonymousFunction37e7d2330100
-AnonymousFunction37e7d2330900	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> pause shows tooltip", function() {$/;"	c	class:AnonymousFunction37e7d2330100
-AnonymousFunction37e7d2330a00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> fast mouseout no tooltip", function() {$/;"	c	class:AnonymousFunction37e7d2330100
+AnonymousFunction37e7d2330800	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> when the pointer just arrived, no tooltip", function() {$/;"	f	function:AnonymousFunction37e7d2330100
+AnonymousFunction37e7d2330900	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> after a delay, the tooltip shows up", function() {$/;"	c	class:AnonymousFunction37e7d2330100
+AnonymousFunction37e7d2330a00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> followed by fast mouseout leads doesn't show tooltip", function() {$/;"	c	class:AnonymousFunction37e7d2330100
 AnonymousFunction37e7d2330b00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> slow move -> tooltips", function() {$/;"	c	class:AnonymousFunction37e7d2330100
 AnonymousFunction37e7d2330c00	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/test.js	/^  it("mouseover -> fast move -> no tooltip", function() {$/;"	c	class:AnonymousFunction37e7d2330100
 AnonymousFunction3890f7300100	1-js/05-data-types/07-map-set/01-array-unique-map/_js.view/test.js	/^describe("unique", function() {$/;"	f
@@ -1259,6 +1260,8 @@ Benchmarking	1-js/05-data-types/11-date/article.md	/^## Benchmarking$/;"	s
 Beware: "innerHTML+=" does a full overwrite	2-ui/1-document/05-basic-dom-node-properties/article.md	/^### Beware: "innerHTML+=" does a full overwrite$/;"	S
 Bezier curve	7-animation/1-bezier-curve/article.md	/^# Bezier curve$/;"	c
 Bezier curve	7-animation/2-css-animations/article.md	/^### Bezier curve$/;"	S
+BigInt	1-js/02-first-steps/05-types/article.md	/^## BigInt$/;"	s
+BigInt	1-js/99-js-misc/05-bigint/article.md	/^# BigInt$/;"	c
 Binary data, files	4-binary/index.md	/^# Binary data, files$/;"	c
 Birthday:	8-web-components/5-slots-composition/shadow-dom-user-card.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="440" height="285" viewBox="0 0 440 285"><defs/;"	i
 Bitmap	1-js/03-code-quality/01-debugging-chrome/chrome-open-sources.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
@@ -1280,8 +1283,10 @@ Bonjour objet	1-js/04-object-basics/01-object/2-hello-object/task.md	/^# Bonjour
 Bons commentaires	1-js/03-code-quality/03-comments/article.md	/^## Bons commentaires$/;"	s
 Bonus: Object.prototype.toString pour le type	1-js/09-classes/06-instanceof/article.md	/^## Bonus: Object.prototype.toString pour le type$/;"	s
 Boolean (type logique)	1-js/02-first-steps/05-types/article.md	/^## Boolean (type logique)$/;"	s
+Boolean Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## Boolean Conversion$/;"	s
+Boolean operations	1-js/99-js-misc/05-bigint/article.md	/^## Boolean operations$/;"	s
 Booléen est le résultat	1-js/02-first-steps/08-comparison/article.md	/^## Booléen est le résultat$/;"	s
-Boucles	1-js/02-first-steps/16-javascript-specials/article.md	/^## Boucles$/;"	s
+Boucles	1-js/02-first-steps/17-javascript-specials/article.md	/^## Boucles$/;"	s
 Boucles	1-js/05-data-types/04-array/article.md	/^## Boucles$/;"	s
 Boucles : while et for	1-js/02-first-steps/12-while-for/article.md	/^# Boucles : while et for$/;"	c
 Bounce	7-animation/3-js-animation/article.md	/^### Bounce$/;"	S
@@ -1330,6 +1335,8 @@ Capturing groups in replacement	9-regular-expressions/11-regexp-groups/article.m
 Caractères spéciaux	1-js/05-data-types/03-string/article.md	/^## Caractères spéciaux$/;"	s
 Caractéristiques du module de base	1-js/13-modules/01-modules-intro/article.md	/^## Caractéristiques du module de base$/;"	s
 Carousel	2-ui/2-events/01-introduction-browser-events/07-carousel/task.md	/^# Carousel$/;"	c
+Cas d'utilisation : données supplémentaires	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Cas d'utilisation : données supplémentaires$/;"	s
+Cas d'utilisation : mise en cache	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Cas d'utilisation : mise en cache$/;"	s
 Cascading	8-web-components/6-shadow-dom-style/article.md	/^## Cascading$/;"	s
 Cat	2-ui/2-events/01-introduction-browser-events/06-hide-message/solution.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
 Cat	2-ui/2-events/01-introduction-browser-events/06-hide-message/source.view/index.html	/^      <h3>Cat<\/h3>$/;"	j
@@ -1386,6 +1393,7 @@ Comparer les strings	1-js/05-data-types/03-string/article.md	/^## Comparer les s
 Compatibilité, “nomodule”	1-js/13-modules/01-modules-intro/article.md	/^### Compatibilité, “nomodule”$/;"	S
 Component architecture	8-web-components/1-webcomponents-intro/article.md	/^## Component architecture$/;"	s
 Composants de date d'accès	1-js/05-data-types/11-date/article.md	/^## Composants de date d'accès$/;"	s
+Composition du générateur	1-js/12-generators-iterators/1-generators/article.md	/^## Composition du générateur$/;"	s
 Compter les propriétés	1-js/05-data-types/09-keys-values-entries/02-count-properties/task.md	/^# Compter les propriétés$/;"	c
 Computed styles: getComputedStyle	2-ui/1-document/08-styles-and-classes/article.md	/^## Computed styles: getComputedStyle$/;"	s
 Concatenate typed arrays	4-binary/01-arraybuffer-binary-arrays/01-concat/task.md	/^# Concatenate typed arrays$/;"	c
@@ -1398,7 +1406,6 @@ Console	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Console$/;"	s
 Console du Navigateur	1-js/02-first-steps/03-strict-mode/article.md	/^## Console du Navigateur$/;"	s
 Constante en majuscule ?	1-js/02-first-steps/04-variables/3-uppercast-constant/task.md	/^# Constante en majuscule ?$/;"	c
 Construire des outils	1-js/13-modules/01-modules-intro/article.md	/^## Construire des outils$/;"	s
-Consumers: then, catch, finally	1-js/11-async/02-promise-basics/article.md	/^## Consumers: then, catch, finally$/;"	s
 Continuer jusqu'à la prochaine itération [#continue]	1-js/02-first-steps/12-while-for/article.md	/^## Continuer jusqu'à la prochaine itération [#continue]$/;"	s
 Contributions	README.md	/^## Contributions$/;"	s
 Control points	7-animation/1-bezier-curve/article.md	/^## Control points$/;"	s
@@ -1475,7 +1482,6 @@ Default	2-ui/2-events/01-introduction-browser-events/04-move-ball-field/move-bal
 Default	2-ui/3-event-details/4-mouse-drag-and-drop/ball_shift.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 Default slot: first unnamed	8-web-components/5-slots-composition/article.md	/^## Default slot: first unnamed$/;"	s
 Default value with "get" trap	1-js/99-js-misc/01-proxy/article.md	/^## Default value with "get" trap$/;"	s
-Delay with a promise	1-js/11-async/02-promise-basics/02-delay-promise/task.md	/^# Delay with a promise$/;"	c
 Delegation example: actions in markup	2-ui/2-events/03-event-delegation/article.md	/^## Delegation example: actions in markup$/;"	s
 Deleting from store	6-data-storage/03-indexeddb/article.md	/^## Deleting from store$/;"	s
 Demo: a chat	5-network/10-long-polling/article.md	/^## Demo: a chat$/;"	s
@@ -1531,12 +1537,15 @@ Emprunt de prototypes	1-js/08-prototypes/03-native-prototypes/article.md	/^## Em
 Emprunter une méthode [#method-borrowing]	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Emprunter une méthode [#method-borrowing]$/;"	s
 Empêcher le défilement	2-ui/3-event-details/8-onscroll/article.md	/^## Empêcher le défilement$/;"	s
 En utilisant une boucle	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# En utilisant une boucle$/;"	c
+En-têtes de requêtes	5-network/01-fetch/article.md	/^## En-têtes de requêtes$/;"	s
+En-têtes de réponse	5-network/01-fetch/article.md	/^## En-têtes de réponse$/;"	s
 Encapsulation	8-web-components/3-shadow-dom/article.md	/^## Encapsulation$/;"	s
 Encoding	5-network/07-url/article.md	/^## Encoding$/;"	s
 Encoding strings	5-network/07-url/article.md	/^### Encoding strings$/;"	S
 Enter cookie samesite option	6-data-storage/01-cookie/article.md	/^### Enter cookie samesite option$/;"	S
 Environnement Lexical	1-js/06-advanced-functions/03-closure/article.md	/^## Environnement Lexical$/;"	s
 Environnement lexical intérieur et extérieur	1-js/06-advanced-functions/03-closure/article.md	/^### Environnement lexical intérieur et extérieur$/;"	S
+Envoi d'une image	5-network/01-fetch/article.md	/^## Envoi d'une image$/;"	s
 Erreur dans setTimeout	1-js/11-async/04-promise-error-handling/01-error-async/task.md	/^# Erreur dans setTimeout$/;"	c
 Erreur lors de la création d'une instance	1-js/09-classes/02-class-inheritance/1-class-constructor-error/task.md	/^# Erreur lors de la création d'une instance$/;"	c
 Error handling	6-data-storage/03-indexeddb/article.md	/^## Error handling$/;"	s
@@ -1611,7 +1620,6 @@ F.prototype	1-js/08-prototypes/02-function-prototype/article.md	/^# F.prototype$
 Fermeture	1-js/06-advanced-functions/07-new-function/article.md	/^## Fermeture$/;"	s
 Fetch	5-network/01-fetch/article.md	/^# Fetch$/;"	c
 Fetch API	5-network/06-fetch-api/article.md	/^# Fetch API$/;"	c
-Fetch users from GitHub	5-network/01-fetch/01-fetch-users/task.md	/^# Fetch users from GitHub$/;"	c
 Fetch: Abort	5-network/04-fetch-abort/article.md	/^# Fetch: Abort$/;"	c
 Fetch: Cross-Origin Requests	5-network/05-fetch-crossorigin/article.md	/^# Fetch: Cross-Origin Requests$/;"	c
 Fetch: Download progress	5-network/03-fetch-progress/article.md	/^# Fetch: Download progress$/;"	c
@@ -1670,16 +1678,17 @@ Float64Array-Copy	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffers
 Focus/blur on a window	3-frames-and-windows/01-popup-windows/article.md	/^## Focus\/blur on a window$/;"	s
 Focusing: focus/blur	2-ui/4-forms-controls/2-focus-blur/article.md	/^# Focusing: focus\/blur$/;"	c
 Fonction Declaration	1-js/06-advanced-functions/03-closure/article.md	/^### Fonction Declaration$/;"	S
-Fonction Expression vs Fonction Déclaration	1-js/02-first-steps/15-function-expressions-arrows/article.md	/^## Fonction Expression vs Fonction Déclaration$/;"	s
+Fonction Expression vs Fonction Déclaration	1-js/02-first-steps/15-function-expressions/article.md	/^## Fonction Expression vs Fonction Déclaration$/;"	s
 Fonction dans if	1-js/06-advanced-functions/03-closure/3-function-in-if/task.md	/^# Fonction dans if$/;"	c
 Fonction min(a, b)	1-js/02-first-steps/14-function-basics/3-min/task.md	/^# Fonction min(a, b)$/;"	c
 Fonction pow(x,n)	1-js/02-first-steps/14-function-basics/4-pow/task.md	/^# Fonction pow(x,n)$/;"	c
 Fonctionnalités spécifiques au navigateur	1-js/13-modules/01-modules-intro/article.md	/^## Fonctionnalités spécifiques au navigateur$/;"	s
 Fonctions	1-js/02-first-steps/14-function-basics/article.md	/^# Fonctions$/;"	c
-Fonctions	1-js/02-first-steps/16-javascript-specials/article.md	/^## Fonctions$/;"	s
+Fonctions	1-js/02-first-steps/17-javascript-specials/article.md	/^## Fonctions$/;"	s
 Fonctions == Commentaires	1-js/02-first-steps/14-function-basics/article.md	/^## Fonctions == Commentaires$/;"	s
-Fonctions Expressions et Fonctions Fléchées	1-js/02-first-steps/15-function-expressions-arrows/article.md	/^# Fonctions Expressions et Fonctions Fléchées$/;"	c
-Fonctions fléchées [#arrow-functions]	1-js/02-first-steps/15-function-expressions-arrows/article.md	/^## Fonctions fléchées [#arrow-functions]$/;"	s
+Fonctions Expressions	1-js/02-first-steps/15-function-expressions/article.md	/^# Fonctions Expressions $/;"	c
+Fonctions de générateur	1-js/12-generators-iterators/1-generators/article.md	/^## Fonctions de générateur$/;"	s
+Fonctions fléchées, les bases	1-js/02-first-steps/16-arrow-functions-basics/article.md	/^# Fonctions fléchées, les bases$/;"	c
 Fonctions imbriquées	1-js/06-advanced-functions/03-closure/article.md	/^## Fonctions imbriquées$/;"	s
 Fonctions puissantes !	1-js/03-code-quality/04-ninja-code/article.md	/^## Fonctions puissantes !$/;"	s
 Fondamentaux JavaScript	1-js/02-first-steps/index.md	/^# Fondamentaux JavaScript$/;"	c
@@ -1706,12 +1715,8 @@ GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-2.svg	/^<svg xmlns="
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party-3.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/banner.png	6-data-storage/01-cookie/cookie-third-party.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="192" viewBox="0 0 668 192"><defs/;"	i
 GET-/messages	5-network/05-fetch-crossorigin/cors-gmail-messages.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="651" height="285" viewBox="0 0 651 285"><defs/;"	i
-Garbage collection	2-ui/99-ui-misc/01-mutation-observer/article.md	/^## Garbage collection$/;"	s
 Generator	1-js/12-generators-iterators/1-generators/genYield2-2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="461" height="258" viewBox="0 0 461 258"><defs/;"	i
 Generator	1-js/12-generators-iterators/1-generators/genYield2.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="559" height="216" viewBox="0 0 559 216"><defs/;"	i
-Generator composition	1-js/12-generators-iterators/1-generators/article.md	/^## Generator composition$/;"	s
-Generator functions	1-js/12-generators-iterators/1-generators/article.md	/^## Generator functions$/;"	s
-Generators	1-js/12-generators-iterators/1-generators/article.md	/^# Generators$/;"	c
 Generators, advanced iteration	1-js/12-generators-iterators/index.md	/^# Generators, advanced iteration$/;"	c
 Gestion des erreurs avec des promesses	1-js/11-async/04-promise-error-handling/article.md	/^# Gestion des erreurs avec des promesses$/;"	c
 Gestion des erreurs, "try..catch"	1-js/10-error-handling/1-try-catch/article.md	/^# Gestion des erreurs, "try..catch"$/;"	c
@@ -1886,6 +1891,7 @@ Group-Copy-6	1-js/04-object-basics/02-garbage-collection/garbage-collection-5.sv
 Group-Copy-7	1-js/04-object-basics/02-garbage-collection/garbage-collection-4.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 Group-Copy-7	1-js/04-object-basics/02-garbage-collection/garbage-collection-5.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 Guides de style	1-js/03-code-quality/02-coding-style/article.md	/^## Guides de style$/;"	s
+Générateurs	1-js/12-generators-iterators/1-generators/article.md	/^# Générateurs$/;"	c
 HTML attributes	2-ui/1-document/06-dom-attributes-and-properties/article.md	/^## HTML attributes$/;"	s
 HTML-attribute	2-ui/2-events/01-introduction-browser-events/article.md	/^### HTML-attribute$/;"	S
 HTML/CSS	2-ui/2-events/01-introduction-browser-events/05-sliding-menu/solution.md	/^# HTML\/CSS$/;"	c
@@ -1915,7 +1921,7 @@ How to find an ellipsis "..." ?	9-regular-expressions/09-regexp-quantifiers/1-fi
 How to fix?	9-regular-expressions/15-regexp-catastrophic-backtracking/article.md	/^## How to fix?$/;"	s
 Héritage complémentaire	1-js/10-error-handling/2-custom-errors/article.md	/^## Héritage complémentaire$/;"	s
 Héritage de classe	1-js/09-classes/02-class-inheritance/article.md	/^# Héritage de classe$/;"	c
-Héritage de méthodes statiques	1-js/09-classes/03-static-properties-methods/article.md	/^## Héritage de méthodes statiques$/;"	s
+Héritage de méthodes et de propriétés statiques	1-js/09-classes/03-static-properties-methods/article.md	/^## Héritage de méthodes et de propriétés statiques$/;"	s
 Héritage prototypal	1-js/08-prototypes/01-prototype-inheritance/article.md	/^# Héritage prototypal$/;"	c
 Hériter de SyntaxError	1-js/10-error-handling/2-custom-errors/1-format-error/task.md	/^# Hériter de SyntaxError$/;"	c
 I-don't-know-you	1-js/02-first-steps/11-logical-operators/9-check-login/ifelse_task.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="599" height="493" viewBox="0 0 599 493"><defs/;"	i
@@ -1942,7 +1948,7 @@ Insert the HTML in the list	2-ui/1-document/07-modifying-document/11-append-to-l
 Inserting template	8-web-components/4-template-element/article.md	/^## Inserting template$/;"	s
 Insertion methods	2-ui/1-document/07-modifying-document/article.md	/^## Insertion methods$/;"	s
 Instructions	1-js/02-first-steps/02-structure/article.md	/^## Instructions$/;"	s
-Interaction	1-js/02-first-steps/16-javascript-specials/article.md	/^## Interaction$/;"	s
+Interaction	1-js/02-first-steps/17-javascript-specials/article.md	/^## Interaction$/;"	s
 Interaction : alert, prompt, confirm	1-js/02-first-steps/09-alert-prompt-confirm/article.md	/^# Interaction : alert, prompt, confirm$/;"	c
 Interaction with console	2-ui/1-document/02-dom-nodes/article.md	/^## Interaction with console$/;"	s
 Interface interne et externe	1-js/09-classes/04-private-protected-properties-methods/article.md	/^## Interface interne et externe$/;"	s
@@ -1979,7 +1985,7 @@ JavaScript	5-network/05-fetch-crossorigin/xhr-another-domain.svg	/^<svg xmlns="h
 JavaScript	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 JavaScript animations	7-animation/3-js-animation/article.md	/^# JavaScript animations$/;"	c
 JavaScript le language	1-js/index.md	/^# JavaScript le language$/;"	c
-JavaScript specials	1-js/02-first-steps/16-javascript-specials/article.md	/^# JavaScript specials$/;"	c
+JavaScript specials	1-js/02-first-steps/17-javascript-specials/article.md	/^# JavaScript specials$/;"	c
 Java[^script]	9-regular-expressions/08-regexp-character-sets-and-ranges/1-find-range-1/task.md	/^# Java[^script]$/;"	c
 John	1-js/05-data-types/09-keys-values-entries/01-sum-salaries/_js.view/test.js	/^      "John": 100,$/;"	p	class:AnonymousFunction629709630100.AnonymousFunction629709630200.salaries
 John	1-js/05-data-types/10-destructuring-assignment/6-max-salary/_js.view/test.js	/^      "John": 100,$/;"	p	class:AnonymousFunctionfc8e07120100.AnonymousFunctionfc8e07120200.salaries
@@ -2022,7 +2028,7 @@ La boucle for..in	1-js/08-prototypes/01-prototype-inheritance/article.md	/^## La
 La clause "else"	1-js/02-first-steps/10-ifelse/article.md	/^## La clause "else"$/;"	s
 La concision est l'âme de l'esprit	1-js/03-code-quality/04-ninja-code/article.md	/^## La concision est l'âme de l'esprit$/;"	s
 La console de développement	1-js/01-getting-started/4-devtools/article.md	/^# La console de développement$/;"	c
-La construction "switch"	1-js/02-first-steps/16-javascript-specials/article.md	/^## La construction "switch"$/;"	s
+La construction "switch"	1-js/02-first-steps/17-javascript-specials/article.md	/^## La construction "switch"$/;"	s
 La différence entre les appels	1-js/08-prototypes/04-prototype-methods/3-compare-calls/task.md	/^# La différence entre les appels$/;"	c
 La déclaration "switch"	1-js/02-first-steps/13-switch/article.md	/^# La déclaration "switch"$/;"	c
 La function constructeur	1-js/04-object-basics/06-constructor-new/article.md	/^## La function constructeur$/;"	s
@@ -2071,12 +2077,14 @@ Les Touches de Modifications: shift, alt, ctrl and meta	2-ui/3-event-details/1-m
 Les chaine de caractères sont immuables	1-js/05-data-types/03-string/article.md	/^## Les chaine de caractères sont immuables $/;"	s
 Les comparaisons correctes	1-js/05-data-types/03-string/article.md	/^### Les comparaisons correctes$/;"	S
 Les compteurs sont-ils indépendants ?	1-js/06-advanced-functions/03-closure/1-counter-independent/task.md	/^# Les compteurs sont-ils indépendants ?$/;"	c
+Les consommateurs: then, catch, finally	1-js/11-async/02-promise-basics/article.md	/^## Les consommateurs: then, catch, finally$/;"	s
 Les constantes en majuscules	1-js/02-first-steps/04-variables/article.md	/^### Les constantes en majuscules$/;"	S
-Les conversions de type	1-js/02-first-steps/06-type-conversions/1-primitive-conversions-questions/task.md	/^# Les conversions de type $/;"	c
+Les conversions de type	1-js/02-first-steps/07-operators/3-primitive-conversions-questions/task.md	/^# Les conversions de type $/;"	c
 Les conversions de types	1-js/02-first-steps/06-type-conversions/article.md	/^# Les conversions de types$/;"	c
 Les déclarations "var" sont traitées au début de la fonction	1-js/06-advanced-functions/04-var/article.md	/^## Les déclarations "var" sont traitées au début de la fonction$/;"	s
 Les environnements en détail	1-js/06-advanced-functions/03-closure/article.md	/^## Les environnements en détail$/;"	s
 Les erreurs personnalisées, Étendre Error	1-js/10-error-handling/2-custom-errors/article.md	/^# Les erreurs personnalisées, Étendre Error$/;"	c
+Les fonctions fléchées multiligne	1-js/02-first-steps/16-arrow-functions-basics/article.md	/^## Les fonctions fléchées multiligne$/;"	s
 Les fonctions fléchées n'ont pas "d'arguments"	1-js/06-advanced-functions/12-arrow-functions/article.md	/^## Les fonctions fléchées n'ont pas "d'arguments"$/;"	s
 Les fonctions fléchées n'ont pas de "this"	1-js/04-object-basics/04-object-methods/article.md	/^## Les fonctions fléchées n'ont pas de "this"$/;"	s
 Les fonctions fléchées n'ont pas de "this"	1-js/06-advanced-functions/12-arrow-functions/article.md	/^## Les fonctions fléchées n'ont pas de "this"$/;"	s
@@ -2842,6 +2850,7 @@ Mars	2-ui/3-event-details/8-onscroll/3-load-visible-img/solution.view/index.html
 Mars	2-ui/3-event-details/8-onscroll/3-load-visible-img/source.view/index.html	/^  <h1>Mars<\/h1>$/;"	h
 Mary	1-js/05-data-types/09-keys-values-entries/01-sum-salaries/_js.view/test.js	/^      "Mary": 250$/;"	p	class:AnonymousFunction629709630100.AnonymousFunction629709630200.salaries
 Mary	1-js/05-data-types/10-destructuring-assignment/6-max-salary/_js.view/test.js	/^      "Mary": 250$/;"	p	class:AnonymousFunctionfc8e07120100.AnonymousFunctionfc8e07120200.salaries
+Math operators	1-js/99-js-misc/05-bigint/article.md	/^## Math operators$/;"	s
 Maths	7-animation/1-bezier-curve/article.md	/^## Maths$/;"	s
 Mauvais commentaires	1-js/03-code-quality/03-comments/article.md	/^## Mauvais commentaires$/;"	s
 Mauvais style	1-js/03-code-quality/02-coding-style/1-style-errors/task.md	/^# Mauvais style$/;"	c
@@ -2974,7 +2983,7 @@ Omission facultative pour "catch"	1-js/10-error-handling/1-try-catch/article.md	
 On top: documentElement and body	2-ui/1-document/03-dom-navigation/article.md	/^## On top: documentElement and body$/;"	s
 Open database	6-data-storage/03-indexeddb/article.md	/^## Open database$/;"	s
 Opening a websocket	5-network/11-websocket/article.md	/^## Opening a websocket$/;"	s
-Operateurs	1-js/02-first-steps/16-javascript-specials/article.md	/^## Operateurs$/;"	s
+Operateurs	1-js/02-first-steps/17-javascript-specials/article.md	/^## Operateurs$/;"	s
 Optimisations réelles	1-js/06-advanced-functions/03-closure/article.md	/^### Optimisations réelles$/;"	S
 Optional groups	9-regular-expressions/11-regexp-groups/article.md	/^### Optional groups$/;"	S
 Opérateur ternaire '?'	1-js/02-first-steps/10-ifelse/article.md	/^## Opérateur ternaire '?'$/;"	s
@@ -3076,7 +3085,6 @@ Oval-9-+-Shape-2	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="h
 Oval-9-+-Shape-3	1-js/01-getting-started/1-intro/limitations.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="566" height="449" viewBox="0 0 566 449"><defs/;"	i
 Over-the-River,	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
 Où est-ce écrit ?	1-js/08-prototypes/01-prototype-inheritance/3-proto-and-this/task.md	/^# Où est-ce écrit ?$/;"	c
-POST requests	5-network/01-fetch/article.md	/^## POST requests$/;"	s
 POST, FormData	5-network/08-xmlhttprequest/article.md	/^## POST, FormData$/;"	s
 POST-/pay	6-data-storage/01-cookie/cookie-xsrf.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="668" height="166" viewBox="0 0 668 166"><defs/;"	i
 Page sans Fin	2-ui/3-event-details/8-onscroll/1-endless-page/task.md	/^# Page sans Fin$/;"	c
@@ -3160,10 +3168,11 @@ Placement de Fonction	1-js/03-code-quality/02-coding-style/article.md	/^## Place
 Placez les superhéros un peu partout dans le terrain de football.	2-ui/3-event-details/4-mouse-drag-and-drop/2-drag-heroes/solution.view/index.html	/^<h2>Placez les superhéros un peu partout dans le terrain de football.<\/h2>$/;"	i
 Placez les superhéros un peu partout dans le terrain de football.	2-ui/3-event-details/4-mouse-drag-and-drop/2-drag-heroes/source.view/index.html	/^  <h2>Placez les superhéros un peu partout dans le terrain de football.<\/h2>$/;"	i
 Plus de façons d'écrire un nombre	1-js/05-data-types/02-number/article.md	/^## Plus de façons d'écrire un nombre$/;"	s
-Plus à venir	1-js/02-first-steps/16-javascript-specials/article.md	/^## Plus à venir$/;"	s
+Plus à venir	1-js/02-first-steps/17-javascript-specials/article.md	/^## Plus à venir$/;"	s
 Plusieurs conditions : "else if"	1-js/02-first-steps/10-ifelse/article.md	/^## Plusieurs conditions : "else if"$/;"	s
 Polyfill	1-js/11-async/05-promise-api/article.md	/^### Polyfill$/;"	S
 Polyfills	1-js/03-code-quality/06-polyfills/article.md	/^# Polyfills$/;"	c
+Polyfills	1-js/99-js-misc/05-bigint/article.md	/^## Polyfills$/;"	s
 Popup blocking	3-frames-and-windows/01-popup-windows/article.md	/^## Popup blocking$/;"	s
 Popups and window methods	3-frames-and-windows/01-popup-windows/article.md	/^# Popups and window methods$/;"	c
 Portée au niveau du module	1-js/13-modules/01-modules-intro/article.md	/^### Portée au niveau du module$/;"	S
@@ -3180,9 +3189,9 @@ Preventing backtracking	9-regular-expressions/15-regexp-catastrophic-backtrackin
 Preventing browser actions	2-ui/2-events/04-default-browser-action/article.md	/^## Preventing browser actions$/;"	s
 Primitives	1-js/08-prototypes/03-native-prototypes/article.md	/^## Primitives$/;"	s
 Produire une liste de simple lien	1-js/06-advanced-functions/01-recursion/04-output-single-linked-list/task.md	/^# Produire une liste de simple lien$/;"	c
+Promesse (promise)	1-js/11-async/02-promise-basics/article.md	/^# Promesse (promise)$/;"	c
 Promesse API	1-js/11-async/05-promise-api/article.md	/^# Promesse API$/;"	c
 Promesse: then contre catch	1-js/11-async/03-promise-chaining/01-then-vs-catch/task.md	/^# Promesse: then contre catch$/;"	c
-Promise	1-js/11-async/02-promise-basics/article.md	/^# Promise$/;"	c
 Promise wrapper	6-data-storage/03-indexeddb/article.md	/^## Promise wrapper$/;"	s
 Promise.all	1-js/11-async/05-promise-api/article.md	/^## Promise.all$/;"	s
 Promise.race	1-js/11-async/05-promise-api/article.md	/^## Promise.race$/;"	s
@@ -3259,7 +3268,7 @@ Range methods	2-ui/99-ui-misc/02-selection-range/article.md	/^## Range methods$/
 Ranges	9-regular-expressions/08-regexp-character-sets-and-ranges/article.md	/^## Ranges$/;"	s
 Ranges and flag "u"	9-regular-expressions/08-regexp-character-sets-and-ranges/article.md	/^## Ranges and flag "u"$/;"	s
 Rate limiting	5-network/11-websocket/article.md	/^## Rate limiting$/;"	s
-Re-resolve a promise?	1-js/11-async/02-promise-basics/01-re-resolve/task.md	/^# Re-resolve a promise?$/;"	c
+Re-résoudre une promesse ?	1-js/11-async/02-promise-basics/01-re-resolve/task.md	/^# Re-résoudre une promesse ?$/;"	c
 Reading from document.cookie	6-data-storage/01-cookie/article.md	/^## Reading from document.cookie$/;"	s
 Ready states	5-network/08-xmlhttprequest/article.md	/^## Ready states$/;"	s
 Real-life example	1-js/12-generators-iterators/2-async-iterators-generators/article.md	/^## Real-life example$/;"	s
@@ -4038,6 +4047,7 @@ Rectangle-Copy-5	8-web-components/5-slots-composition/shadow-dom-user-card.svg	/
 Rectangle-Copy-6	8-web-components/1-webcomponents-intro/web-components-twitter.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" xmlns:xlink="http:\/\/www.w3.org\/1999\/xlink" width/;"	i
 Rectangle-path	2-ui/2-events/02-bubbling-and-capturing/eventflow.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="641" height="633" viewBox="0 0 641 633"><defs/;"	i
 References	1-js/99-js-misc/01-proxy/article.md	/^## References$/;"	s
+References	1-js/99-js-misc/05-bigint/article.md	/^## References$/;"	s
 References	2-ui/4-forms-controls/1-form-elements/article.md	/^## References$/;"	s
 References	2-ui/99-ui-misc/02-selection-range/article.md	/^## References$/;"	s
 References	8-web-components/2-custom-elements/article.md	/^## References$/;"	s
@@ -4055,9 +4065,8 @@ Rendering order	8-web-components/2-custom-elements/article.md	/^## Rendering ord
 Renouvellement	1-js/11-async/04-promise-error-handling/article.md	/^## Renouvellement$/;"	s
 Renvoie de promesses	1-js/11-async/03-promise-chaining/article.md	/^## Renvoie de promesses$/;"	s
 Replay	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       style="fill:#000000"><path$/;"	i
-Request headers	5-network/01-fetch/article.md	/^## Request headers$/;"	s
+Requêtes POST	5-network/01-fetch/article.md	/^## Requêtes POST$/;"	s
 Resource loading: onload and onerror	2-ui/5-loading/03-onload-onerror/article.md	/^# Resource loading: onload and onerror$/;"	c
-Response headers	5-network/01-fetch/article.md	/^## Response headers$/;"	s
 Response headers	5-network/05-fetch-crossorigin/article.md	/^## Response headers$/;"	s
 Resumable file upload	5-network/09-resume-upload/article.md	/^# Resumable file upload$/;"	c
 Retour des constructeurs	1-js/04-object-basics/06-constructor-new/article.md	/^## Retour des constructeurs$/;"	s
@@ -4072,6 +4081,7 @@ Router	5-network/01-fetch/post.view/server.js	/^const Router = require('koa-rout
 Router	5-network/02-formdata/post.view/server.js	/^const Router = require('koa-router');$/;"	C
 Router	5-network/04-fetch-abort/demo.view/server.js	/^const Router = require('koa-router');$/;"	C
 Ré-exportation de l'exportation par défaut	1-js/13-modules/02-import-export/article.md	/^### Ré-exportation de l'exportation par défaut$/;"	S
+Récupérer des utilisateurs depuis GitHub	5-network/01-fetch/01-fetch-users/task.md	/^# Récupérer des utilisateurs depuis GitHub$/;"	c
 Récursion et pile	1-js/06-advanced-functions/01-recursion/article.md	/^# Récursion et pile$/;"	c
 Réexportation	1-js/13-modules/02-import-export/article.md	/^## Réexportation$/;"	s
 Réglage des composants de date	1-js/05-data-types/11-date/article.md	/^## Réglage des composants de date$/;"	s
@@ -4086,7 +4096,8 @@ Résumé	1-js/02-first-steps/05-types/article.md	/^## Résumé$/;"	s
 Résumé	1-js/02-first-steps/08-comparison/article.md	/^## Résumé$/;"	s
 Résumé	1-js/02-first-steps/09-alert-prompt-confirm/article.md	/^## Résumé$/;"	s
 Résumé	1-js/02-first-steps/14-function-basics/article.md	/^## Résumé$/;"	s
-Résumé	1-js/02-first-steps/15-function-expressions-arrows/article.md	/^## Résumé$/;"	s
+Résumé	1-js/02-first-steps/15-function-expressions/article.md	/^## Résumé$/;"	s
+Résumé	1-js/02-first-steps/16-arrow-functions-basics/article.md	/^## Résumé$/;"	s
 Résumé	1-js/03-code-quality/01-debugging-chrome/article.md	/^## Résumé$/;"	s
 Résumé	1-js/03-code-quality/02-coding-style/article.md	/^## Résumé$/;"	s
 Résumé	1-js/03-code-quality/03-comments/article.md	/^## Résumé$/;"	s
@@ -4104,6 +4115,7 @@ Résumé	1-js/05-data-types/04-array/article.md	/^## Résumé$/;"	s
 Résumé	1-js/05-data-types/05-array-methods/article.md	/^## Résumé$/;"	s
 Résumé	1-js/05-data-types/06-iterable/article.md	/^## Résumé$/;"	s
 Résumé	1-js/05-data-types/07-map-set-weakmap-weakset/article.md	/^## Résumé$/;"	s
+Résumé	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Résumé$/;"	s
 Résumé	1-js/05-data-types/10-destructuring-assignment/article.md	/^## Résumé$/;"	s
 Résumé	1-js/05-data-types/12-json/article.md	/^## Résumé$/;"	s
 Résumé	1-js/06-advanced-functions/01-recursion/article.md	/^## Résumé$/;"	s
@@ -4129,14 +4141,16 @@ Résumé	1-js/11-async/03-promise-chaining/article.md	/^## Résumé$/;"	s
 Résumé	1-js/11-async/04-promise-error-handling/article.md	/^## Résumé$/;"	s
 Résumé	1-js/11-async/05-promise-api/article.md	/^## Résumé$/;"	s
 Résumé	1-js/11-async/07-microtask-queue/article.md	/^## Résumé$/;"	s
+Résumé	1-js/12-generators-iterators/1-generators/article.md	/^## Résumé$/;"	s
 Résumé	2-ui/1-document/01-browser-environment/article.md	/^## Résumé$/;"	s
 Résumé	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/article.md	/^## Résumé$/;"	s
 Résumé	2-ui/3-event-details/5-keyboard-events/article.md	/^## Résumé$/;"	s
+Résumé	5-network/01-fetch/article.md	/^## Résumé$/;"	s
 Résumé	9-regular-expressions/01-regexp-introduction/article.md	/^## Résumé$/;"	s
 Réutiliser des noms	1-js/03-code-quality/04-ninja-code/article.md	/^## Réutiliser des noms$/;"	s
 Réécrire 'if' en '?'	1-js/02-first-steps/10-ifelse/5-rewrite-if-question/task.md	/^# Réécrire 'if' en '?'$/;"	c
 Réécrire 'if..else' en '?'	1-js/02-first-steps/10-ifelse/6-rewrite-if-else-question/task.md	/^# Réécrire 'if..else' en '?'$/;"	c
-Réécrire avec les fonctions fléchées	1-js/02-first-steps/15-function-expressions-arrows/1-rewrite-arrow/task.md	/^# Réécrire avec les fonctions fléchées$/;"	c
+Réécrire avec les fonctions fléchées	1-js/02-first-steps/16-arrow-functions-basics/1-rewrite-arrow/task.md	/^# Réécrire avec les fonctions fléchées$/;"	c
 Réécrire en classe	1-js/09-classes/01-class/1-rewrite-to-class/task.md	/^# Réécrire en classe$/;"	c
 Réécrire le "if" dans un "switch"	1-js/02-first-steps/13-switch/2-rewrite-if-switch/task.md	/^# Réécrire le "if" dans un "switch"$/;"	c
 Réécrire le "switch" dans un "if"	1-js/02-first-steps/13-switch/1-rewrite-switch-if-else/task.md	/^# Réécrire le "switch" dans un "if"$/;"	c
@@ -4200,7 +4214,6 @@ Selection tracking demo	2-ui/99-ui-misc/02-selection-range/article.md	/^### Sele
 Sending a form with Blob data	5-network/02-formdata/article.md	/^## Sending a form with Blob data$/;"	s
 Sending a form with a file	5-network/02-formdata/article.md	/^## Sending a form with a file$/;"	s
 Sending a simple form	5-network/02-formdata/article.md	/^## Sending a simple form$/;"	s
-Sending an image	5-network/01-fetch/article.md	/^## Sending an image$/;"	s
 Server	5-network/05-fetch-crossorigin/xhr-another-domain.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="633" height="411" viewBox="0 0 633 411"><defs/;"	i
 Server	5-network/05-fetch-crossorigin/xhr-preflight.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="620" height="633" viewBox="0 0 620 633"><defs/;"	i
 Server	5-network/10-long-polling/long-polling.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="521" height="320" viewBox="0 0 521 320"><defs/;"	i
@@ -4309,7 +4322,7 @@ Stopping bubbling	2-ui/2-events/02-bubbling-and-capturing/article.md	/^## Stoppi
 Storage event	6-data-storage/02-localstorage/article.md	/^## Storage event$/;"	s
 Storing data in the browser	6-data-storage/index.md	/^# Storing data in the browser$/;"	c
 Strg	2-ui/3-event-details/5-keyboard-events/german-layout.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="600" height="200" viewBox="0 0 600 200"><defs/;"	i
-Strict mode	1-js/02-first-steps/16-javascript-specials/article.md	/^## Strict mode$/;"	s
+Strict mode	1-js/02-first-steps/17-javascript-specials/article.md	/^## Strict mode$/;"	s
 String	1-js/02-first-steps/05-types/article.md	/^## String$/;"	s
 String Conversion	1-js/02-first-steps/06-type-conversions/article.md	/^## String Conversion$/;"	s
 String quotes	1-js/02-first-steps/05-types/1-string-quotes/task.md	/^# String quotes$/;"	c
@@ -4317,7 +4330,7 @@ Strings	1-js/05-data-types/03-string/article.md	/^# Strings$/;"	c
 Strings only	6-data-storage/02-localstorage/article.md	/^## Strings only$/;"	s
 Structure	README.md	/^## Structure$/;"	s
 Structure du code	1-js/02-first-steps/02-structure/article.md	/^# Structure du code $/;"	c
-Structure du code	1-js/02-first-steps/16-javascript-specials/article.md	/^## Structure du code$/;"	s
+Structure du code	1-js/02-first-steps/17-javascript-specials/article.md	/^## Structure du code$/;"	s
 Structured animation	7-animation/3-js-animation/article.md	/^## Structured animation$/;"	s
 Structures récursives	1-js/06-advanced-functions/01-recursion/article.md	/^## Structures récursives$/;"	s
 Style de codage	1-js/03-code-quality/02-coding-style/article.md	/^# Style de codage$/;"	c
@@ -4325,9 +4338,7 @@ Styles and classes	2-ui/1-document/08-styles-and-classes/article.md	/^# Styles a
 Styling slotted content	8-web-components/6-shadow-dom-style/article.md	/^## Styling slotted content$/;"	s
 SubscribePane	5-network/10-long-polling/longpoll.view/browser.js	/^function SubscribePane(elem, url) {$/;"	f
 Summary	1-js/05-data-types/07-map-set/article.md	/^## Summary$/;"	s
-Summary	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Summary$/;"	s
 Summary	1-js/06-advanced-functions/10-bind/article.md	/^## Summary$/;"	s
-Summary	1-js/12-generators-iterators/1-generators/article.md	/^## Summary$/;"	s
 Summary	1-js/12-generators-iterators/2-async-iterators-generators/article.md	/^## Summary$/;"	s
 Summary	1-js/99-js-misc/01-proxy/article.md	/^## Summary$/;"	s
 Summary	1-js/99-js-misc/02-eval/article.md	/^## Summary$/;"	s
@@ -4361,7 +4372,6 @@ Summary	3-frames-and-windows/06-clickjacking/article.md	/^## Summary$/;"	s
 Summary	4-binary/01-arraybuffer-binary-arrays/article.md	/^## Summary$/;"	s
 Summary	4-binary/03-blob/article.md	/^## Summary$/;"	s
 Summary	4-binary/04-file/article.md	/^## Summary$/;"	s
-Summary	5-network/01-fetch/article.md	/^## Summary$/;"	s
 Summary	5-network/02-formdata/article.md	/^## Summary$/;"	s
 Summary	5-network/05-fetch-crossorigin/article.md	/^## Summary$/;"	s
 Summary	5-network/08-xmlhttprequest/article.md	/^## Summary$/;"	s
@@ -4476,6 +4486,7 @@ Uint32Array-Int32Arr	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buff
 Uint8Array	4-binary/01-arraybuffer-binary-arrays/arraybuffer-views.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="603" height="286" viewBox="0 0 603 286"><defs/;"	i
 Uint8Array-Int8Array	4-binary/01-arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="707" height="463" viewBox="0 0 707 463"><defs/;"	i
 Un code de module est chargé la première fois lorsqu'il est importé	1-js/13-modules/01-modules-intro/article.md	/^### Un code de module est chargé la première fois lorsqu'il est importé$/;"	S
+Un délai avec une promesse	1-js/11-async/02-promise-basics/02-delay-promise/task.md	/^# Un délai avec une promesse$/;"	c
 Un entier aléatoire de min à max	1-js/05-data-types/02-number/9-random-int-min-max/task.md	/^# Un entier aléatoire de min à max$/;"	c
 Un exemple	1-js/02-first-steps/13-switch/article.md	/^## Un exemple$/;"	s
 Un exemple concret	1-js/09-classes/04-private-protected-properties-methods/article.md	/^## Un exemple concret$/;"	s
@@ -4508,8 +4519,6 @@ Usage for architecture	2-ui/99-ui-misc/01-mutation-observer/article.md	/^## Usag
 Usage for integration	2-ui/99-ui-misc/01-mutation-observer/article.md	/^## Usage for integration$/;"	s
 Use case 2: progress indication	2-ui/99-ui-misc/03-event-loop/article.md	/^## Use case 2: progress indication$/;"	s
 Use case 3: doing something after the event	2-ui/99-ui-misc/03-event-loop/article.md	/^## Use case 3: doing something after the event$/;"	s
-Use case: additional data	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Use case: additional data$/;"	s
-Use case: caching	1-js/05-data-types/08-weakmap-weakset/article.md	/^## Use case: caching$/;"	s
 Use-case 1: splitting CPU-hungry tasks	2-ui/99-ui-misc/03-event-loop/article.md	/^## Use-case 1: splitting CPU-hungry tasks$/;"	s
 User	1-js/09-classes/01-class/class-user.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="486" height="94" viewBox="0 0 486 94"><defs></;"	i
 User.prototype	1-js/09-classes/01-class/class-user.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="486" height="94" viewBox="0 0 486 94"><defs></;"	i
@@ -4517,18 +4526,18 @@ User.prototype	1-js/09-classes/07-mixins/mixin-inheritance.svg	/^<svg xmlns="htt
 Using "eval"	1-js/99-js-misc/02-eval/article.md	/^## Using "eval"$/;"	s
 Using for compatibility	1-js/07-object-properties/02-property-accessors/article.md	/^## Using for compatibility$/;"	s
 Using forms	5-network/05-fetch-crossorigin/article.md	/^### Using forms$/;"	S
-Using generators for iterables	1-js/12-generators-iterators/1-generators/article.md	/^## Using generators for iterables$/;"	s
 Using requestAnimationFrame	7-animation/3-js-animation/article.md	/^## Using requestAnimationFrame$/;"	s
 Using scripts	5-network/05-fetch-crossorigin/article.md	/^### Using scripts$/;"	S
 Using setInterval	7-animation/3-js-animation/article.md	/^## Using setInterval$/;"	s
 Utilisation avec les polyfills	1-js/06-advanced-functions/05-global-object/article.md	/^## Utilisation avec les polyfills$/;"	s
 Utilisation de "func.call" pour le contexte	1-js/06-advanced-functions/09-call-apply-decorators/article.md	/^## Utilisation de "func.call" pour le contexte$/;"	s
 Utilisation de "this" dans le littéral d'objet	1-js/04-object-basics/04-object-methods/4-object-property-this/task.md	/^# Utilisation de "this" dans le littéral d'objet$/;"	c
+Utilisation de générateurs pour les itérables	1-js/12-generators-iterators/1-generators/article.md	/^## Utilisation de générateurs pour les itérables$/;"	s
 Utilisation non traditionnelle de '?'	1-js/02-first-steps/10-ifelse/article.md	/^## Utilisation non traditionnelle de '?'$/;"	s
 Utiliser Reviver	1-js/05-data-types/12-json/article.md	/^## Utiliser Reviver$/;"	s
 Utiliser des abréviations	1-js/03-code-quality/04-ninja-code/article.md	/^## Utiliser des abréviations$/;"	s
 Utiliser une récursion	1-js/06-advanced-functions/01-recursion/05-output-single-linked-list-reverse/solution.md	/^# Utiliser une récursion$/;"	c
-Variables	1-js/02-first-steps/16-javascript-specials/article.md	/^## Variables$/;"	s
+Variables	1-js/02-first-steps/17-javascript-specials/article.md	/^## Variables$/;"	s
 Variables externes	1-js/02-first-steps/14-function-basics/article.md	/^## Variables externes$/;"	s
 Variables locales	1-js/02-first-steps/14-function-basics/article.md	/^## Variables locales$/;"	s
 Variables à une lettre	1-js/03-code-quality/04-ninja-code/article.md	/^## Variables à une lettre$/;"	s
@@ -4544,8 +4553,8 @@ Vérifiez la plage entre	1-js/02-first-steps/11-logical-operators/6-check-if-in-
 Vérifiez à l'extérieur de la plage	1-js/02-first-steps/11-logical-operators/7-check-if-out-range/task.md	/^# Vérifiez à l'extérieur de la plage$/;"	c
 Walking the DOM	2-ui/1-document/03-dom-navigation/article.md	/^# Walking the DOM$/;"	c
 WeakMap	1-js/05-data-types/08-weakmap-weakset/article.md	/^## WeakMap$/;"	s
-WeakMap and WeakSet	1-js/05-data-types/08-weakmap-weakset/article.md	/^# WeakMap and WeakSet$/;"	c
 WeakMap et WeakSet	1-js/05-data-types/07-map-set-weakmap-weakset/article.md	/^## WeakMap et WeakSet$/;"	s
+WeakMap et WeakSet	1-js/05-data-types/08-weakmap-weakset/article.md	/^# WeakMap et WeakSet$/;"	c
 WeakSet	1-js/05-data-types/08-weakmap-weakset/article.md	/^## WeakSet$/;"	s
 Web components	8-web-components/index.md	/^# Web components$/;"	c
 WebSocket	5-network/11-websocket/article.md	/^# WebSocket$/;"	c
@@ -4913,6 +4922,7 @@ body	2-ui/2-events/03-event-delegation/1-hide-message-delegate/source.view/messa
 body	2-ui/2-events/04-default-browser-action/3-image-gallery/solution.view/gallery.css	/^body {$/;"	s
 body	2-ui/2-events/04-default-browser-action/3-image-gallery/source.view/gallery.css	/^body {$/;"	s
 body	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/solution.view/style.css	/^body {$/;"	s
+body	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/2-hoverintent/source.view/style.css	/^body {$/;"	s
 body	2-ui/3-event-details/3-mousemove-mouseover-mouseout-mouseenter-mouseleave/mouseoverout.view/style.css	/^body,$/;"	s
 body	2-ui/3-event-details/4-mouse-drag-and-drop/2-drag-heroes/solution.view/soccer.css	/^html, body {$/;"	s
 body	2-ui/3-event-details/4-mouse-drag-and-drop/2-drag-heroes/source.view/soccer.css	/^html, body {$/;"	s
@@ -6038,6 +6048,7 @@ key5:-value5	6-data-storage/03-indexeddb/indexeddb-structure.svg	/^<svg xmlns="h
 kinput	2-ui/3-event-details/5-keyboard-events/keyboard-dump.view/index.html	/^    <input type="text" placeholder="Press keys here" id="kinput">$/;"	I
 l	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="l"><stop$/;"	d
 l	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="l"><stop$/;"	i
+l'algorithme Drag’and’Drop	2-ui/3-event-details/4-mouse-drag-and-drop/article.md	/^## l'algorithme Drag’and’Drop$/;"	s
 l-0	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="l-0"><stop$/;"	d
 l-0	2-ui/1-document/02-dom-nodes/toolbarButtonGlyphs.svg	/^       id="l-0"><stop$/;"	i
 ladder	1-js/04-object-basics/04-object-methods/8-chain-calls/_js.view/solution.js	/^let ladder = {$/;"	c
@@ -8363,7 +8374,7 @@ th	2-ui/4-forms-controls/2-focus-blur/4-edit-td-click/solution.view/bagua.css	/^
 th	2-ui/4-forms-controls/2-focus-blur/4-edit-td-click/source.view/bagua.css	/^th {$/;"	s
 that-promise-settles	1-js/11-async/03-promise-chaining/promise-handler-variants.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="350" viewBox="0 0 659 350"><defs/;"	i
 the-call-of-.then(ha	1-js/11-async/03-promise-chaining/promise-handler-variants.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="659" height="350" viewBox="0 0 659 350"><defs/;"	i
-then	1-js/11-async/02-promise-basics/article.md	/^### then$/;"	S
+then (alors)	1-js/11-async/02-promise-basics/article.md	/^### then (alors)$/;"	S
 this	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 this-super-loop.svg	1-js/09-classes/02-class-inheritance/this-super-loop.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="347" height="238" viewBox="0 0 347 238"><defs/;"	i
 three	1-js/11-async/03-promise-chaining/three.js	/^function three() {$/;"	f
