@@ -121,11 +121,7 @@ Pendant l'appel, `say()` utilise la variable externe `phrase`. Regardons les dé
 
 Lorsqu'une fonction est exécutée, un nouvel environnement lexical est créé automatiquement pour stocker les variables locales et les paramètres de l'appel.
 
-<<<<<<< HEAD
 Par exemple, pour `say("John")`, cela ressemble à ceci (l'exécution est à la ligne, marquée d'une flèche) :
-=======
-For instance, for `say("John")`, it looks like this (the execution is at the line labeled with an arrow):
->>>>>>> 524d59884650be539544c34f71d821432b7280fd
 
 <!--
     ```js
