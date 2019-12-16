@@ -414,8 +414,8 @@ Il y a plus de fonctions et de constantes dans l'objet Math, y compris la trigon
 
 Pour écrire de nombres avec beaucoup de zéros :
 
-- Ajoutez `"e"` avec le nombre de zéros au nombre. Comme: `123e6` est `123` avec 6 zéros soit `123 000 000`.
-- Un nombre négatif après le `"e"` entraîne la division du nombre par 1 avec des zéros donnés. Comme: `123-e6` est `123` avec 6 zéros après la virgule soit `0.000123`.
+- Ajoutez `"e"` avec le nombre de zéros au nombre. Comme: `123e6` est `123` avec 6 zéros soit `123000000`.
+- Un nombre négatif après le `"e"` entraîne la division du nombre par 1 avec des zéros donnés. Comme: `123-e6` est `123` avec 6 zéros après la virgule soit `0.000123` (`123` millionièmes).
 
 Pour différents systèmes de numération :
 
@@ -423,12 +423,7 @@ Pour différents systèmes de numération :
 - `parseInt(str, base)` passe la chaîne de caractères `str` vers un système numérique avec une `base` donnée : `2 ≤ base ≤ 36`.
 - `num.toString(base)` convertit un nombre en chaîne de caractères dans le système numérique de la `base` donnée.
 
-<<<<<<< HEAD
 Pour convertit des valeurs telles que `12pt` et `100px` en un nombre :
-=======
-- Append `"e"` with the zeroes count to the number. Like: `123e6` is the same as `123` with 6 zeroes `123000000`.
-- A negative number after `"e"` causes the number to be divided by 1 with given zeroes. E.g. `123e-6` means `0.000123` (`123` millionths).
->>>>>>> 524d59884650be539544c34f71d821432b7280fd
 
 - Utiliser `parseInt/parseFloat` pour la conversion "soft", qui lit un nombre dans une chaîne de caractères, puis renvoie la valeur qu'ils pouvaient lire avant l'erreur.
 
@@ -441,5 +436,3 @@ Pour les fractions :
 Plus de fonctions mathématiques :
 
 - Voir l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math) quand vous en avez besoin. La bibliothèque est très petite, mais peut couvrir les besoins de base.
-
-
