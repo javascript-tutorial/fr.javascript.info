@@ -1,21 +1,21 @@
 
 # Fetch: Download progress
 
-The `fetch` method allows to track *download* progress.
+La méthode `fetch` permet de suivre la progression du *téléchargement*.
 
-Please note: there's currently no way for `fetch` to track *upload* progress. For that purpose, please use [XMLHttpRequest](info:xmlhttprequest), we'll cover it later.
+Veuillez noter: il n'y a actuellement aucun moyen pour `fetch` de suivre la progression du *téléchargement*. À cette fin, veuillez utiliser [XMLHttpRequest](info:xmlhttprequest), nous le couvrirons plus tard.
 
-To track download progress, we can use `response.body` property. It's  `ReadableStream` -- a special object that provides body chunk-by-chunk, as it comes. Readable streams are described in the [Streams API](https://streams.spec.whatwg.org/#rs-class) specification.
+Pour suivre la progression du téléchargement, nous pouvons utiliser la propriété `response.body`. C'est `ReadableStream` - un objet spécial qui fournit le corps morceau par morceau, comme il vient. Les flux lisibles sont décrits dans la spécification [Streams API](https://streams.spec.whatwg.org/#rs-class).
 
-Unlike `response.text()`, `response.json()` and other methods, `response.body` gives full control over the reading process, and we can count how much is consumed at any moment.
+Contrairement à `response.text()`, `response.json()` et à d'autres méthodes, `response.body` donne un contrôle total sur le processus de lecture, et nous pouvons compter la quantité consommée à tout moment.
 
-Here's the sketch of code that reads the reponse from `response.body`:
+Voici l'esquisse de code qui lit la réponse de `response.body` :
 
 ```js
-// instead of response.json() and other methods
+// au lieu de response.json() et d'autres méthodes
 const reader = response.body.getReader();
 
-// infinite loop while the body is downloading
+// boucle infinie pendant le téléchargement du corps
 while(true) {
   // done is true for the last chunk
   // value is Uint8Array of the chunk bytes
@@ -29,32 +29,32 @@ while(true) {
 }
 ```
 
-The result of `await reader.read()` call is an object with two properties:
-- **`done`** -- `true` when the reading is complete, otherwise `false`.
-- **`value`** -- a typed array of bytes: `Uint8Array`.
+Le résultat de l'appel `await reader.read()` est un objet avec deux propriétés :
+- **`done`** -- `true` lorsque la lecture est terminée, sinon `false`.
+- **`value`** -- un tableau typé d'octets : `Uint8Array`.
 
 ```smart
-Streams API also describes asynchronous iteration over `ReadableStream` with `for await..of` loop, but it's not yet widely supported (see [browser issues](https://github.com/whatwg/streams/issues/778#issuecomment-461341033)), so we use `while` loop.
+L'API Streams décrit également l'itération asynchrone sur `ReadableStream` avec la boucle `for wait..of`, mais elle n'est pas encore largement prise en charge (voir les [problèmes de navigateurs](https://github.com/whatwg/streams/issues/778#issuecomment-461341033)), nous utilisons donc la boucle `while`.
 ```
 
-We receive response chunks in the loop, until the loading finishes, that is: until `done` becomes `true`.
+Nous recevons des morceaux de réponse dans la boucle, jusqu'à ce que le chargement se termine, c'est-à-dire: jusqu'à ce que `done` devienne `true`.
 
-To log the progress, we just need for every received fragment `value` to add its length to the counter.
+Pour enregistrer la progression, nous avons juste besoin d'ajouter la longueur de la `value` de chaque fragment reçu au compteur.
 
-Here's the full working example that gets the response and logs the progress in console, more explanations to follow:
+Voici l'exemple de travail complet qui obtient la réponse et enregistre la progression dans la console, plus d'explications à suivre :
 
 ```js run async
-// Step 1: start the fetch and obtain a reader
+// Étape 1: démarrez la récupération et obtenir un lecteur
 let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100');
 
 const reader = response.body.getReader();
 
-// Step 2: get total length
+// Étape 2: obtenir la longueur totale
 const contentLength = +response.headers.get('Content-Length');
 
-// Step 3: read the data
-let receivedLength = 0; // received that many bytes at the moment
-let chunks = []; // array of received binary chunks (comprises the body)
+// Étape 3: lecture des données
+let receivedLength = 0; // reçu autant d'octets en ce moment
+let chunks = []; // tableau de morceaux binaires reçus (comprend le corps)
 while(true) {
   const {done, value} = await reader.read();
 
@@ -68,7 +68,7 @@ while(true) {
   console.log(`Received ${receivedLength} of ${contentLength}`)
 }
 
-// Step 4: concatenate chunks into single Uint8Array
+// Étape 4: concaténer des morceaux en un seul Uint8Array
 let chunksAll = new Uint8Array(receivedLength); // (4.1)
 let position = 0;
 for(let chunk of chunks) {
@@ -76,37 +76,37 @@ for(let chunk of chunks) {
 	position += chunk.length;
 }
 
-// Step 5: decode into a string
+// Étape 5: décoder en une chaîne de caractères
 let result = new TextDecoder("utf-8").decode(chunksAll);
 
-// We're done!
+// Nous avons fini !
 let commits = JSON.parse(result);
 alert(commits[0].author.login);
 ```
 
-Let's explain that step-by-step:
+Expliquons cela étape par étape :
 
-1. We perform `fetch` as usual, but instead of calling `response.json()`, we obtain a stream reader `response.body.getReader()`.
+1. Nous effectuons un `fetch` comme d'habitude, mais au lieu d'appeler `response.json() `, nous obtenons un lecteur de flux `response.body.getReader()`.
 
-    Please note, we can't use both these methods to read the same response: either use a reader or a response method to get the result.
-2. Prior to reading, we can figure out the full response length from the `Content-Length` header.
+    Veuillez noter que nous ne pouvons pas utiliser ces deux méthodes pour lire la même réponse : utilisez un lecteur ou une méthode de réponse pour obtenir le résultat.
+2. Avant la lecture, nous pouvons déterminer la longueur complète de la réponse à partir de l'en-tête `Content-Length`.
 
-    It may be absent for cross-origin requests (see chapter <info:fetch-crossorigin>) and, well, technically a server doesn't have to set it. But usually it's at place.
-3. Call `await reader.read()` until it's done.
+    Il peut être absent pour les requêtes cross-origin (voir le chapitre <info:fetch-crossorigin>), techniquement, un serveur n'a pas à le configurer. Mais généralement, c'est à sa place.
+3. Appel de `await reader.read()` jusqu'à ce que ce soit fait.
 
-    We gather response chunks in the array `chunks`. That's important, because after the response is consumed, we won't be able to "re-read" it using `response.json()` or another way (you can try, there'll be an error).
-4. At the end, we have `chunks` -- an array of `Uint8Array` byte chunks. We need to join them into a single result. Unfortunately, there's no single method that concatenates those, so there's some code to do that:
-    1. We create `chunksAll = new Uint8Array(receivedLength)` -- a same-typed array with the combined length.
-    2. Then use `.set(chunk, position)` method to copy each `chunk` one after another in it.
-5. We have the result in `chunksAll`. It's a byte array though, not a string.
+    Nous rassemblons des blocs de réponse dans le tableau `chunks`. C'est important, car une fois la réponse consommée, nous ne pourrons pas la "relire" à l'aide de `response.json()` ou d'une autre manière (vous pouvez essayer, il y aura une erreur).
+4. À la fin, nous avons `chunks` -- un tableau de morceaux d'octets `Uint8Array`. Nous devons les joindre en un seul résultat. Malheureusement, il n'y a pas de méthode unique qui les concatène, donc il y a du code pour le faire :
+    1. Nous créons `chunksAll = new Uint8Array(receivedLength)` -- un tableau de même type avec la longueur combinée.
+    2. Ensuite nous utilisons la méthode `.set(chunk, position)` pour copier chaque `chunk` l'un après l'autre.
+5. Nous avons le résultat dans `chunksAll`. C'est un tableau d'octets cependant, pas une chaîne de caractères.
 
-    To create a string, we need to interpret these bytes. The built-in [TextDecoder](info:text-decoder) does exactly that. Then we can `JSON.parse` it, if necessary.
+    Pour créer une chaîne de caractères, nous devons interpréter ces octets. Le [TextDecoder](info:text-decoder) intégré fait exactement cela. Ensuite, nous pouvons `JSON.parse`, si nécessaire.
 
-    What if we need binary content instead of a string? That's even simpler. Replace steps 4 and 5 with a single line that creates a `Blob` from all chunks:
+    Et si nous avions besoin d'un contenu binaire au lieu d'une chaîne de caractères ? C'est encore plus simple. Remplacez les étapes 4 et 5 par une seule ligne qui crée un `Blob` à partir de tous les morceaux :
     ```js
     let blob = new Blob(chunks);
     ```
 
-At we end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+À la fin, nous avons le résultat (sous forme de chaîne de caractères ou d'objet blob, selon ce qui est pratique) et le suivi des progrès dans le processus.
 
-Once again, please note, that's not for *upload* progress (no way now with `fetch`), only for *download* progress.
+Encore une fois, veuillez noter que ce n'est pas pour la progression en *upload* (pas de possibilité actuellement avec `fetch`), seulement pour la progression en *download*.
