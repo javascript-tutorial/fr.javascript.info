@@ -278,7 +278,13 @@ class User {
 C'est impossible avec les champs privés: `this['#name']` ne fonctionne pas. C'est une limitation de syntaxe pour assurer la confidentialité.
 ````
 
+<<<<<<< HEAD
 ## Résumé
+=======
+## Summary
+
+In terms of OOP, delimiting of the internal interface from the external one is called [encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)).
+>>>>>>> e92bb83e995dfea982dcdc5065036646bfca13f0
 
 En termes de POO, la délimitation de l'interface interne de l'interface externe est appelée [encapsulation]("https://fr.wikipedia.org/wiki/Encapsulation_(programmation)").
 
