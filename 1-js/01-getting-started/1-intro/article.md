@@ -57,7 +57,7 @@ Par exemple, JavaScript dans le navigateur est capable de :
 - Obtenir et définir des cookies, poser des questions au visiteur, afficher des messages.
 - Se souvenir des données du côté client ("stockage local").
 
-## Qu'est-ce que le JavaScript ne peut pas faire dans le navigateur? 
+## Qu'est-ce que JavaScript ne peut pas faire dans le navigateur ? 
 
 Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malfaisante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
@@ -81,7 +81,7 @@ Les exemples de telles restrictions sont:
 
 De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
 
-## Qu'est-ce qui rend JavaScript unique?
+## Qu'est-ce qui rend JavaScript unique ?
 
 Il y a au moins trois bonnes choses à propos de JavaScript:
 
