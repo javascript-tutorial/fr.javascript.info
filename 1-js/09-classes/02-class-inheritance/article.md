@@ -499,7 +499,11 @@ Dans l'exemple ci-dessous, une syntaxe non-méthode est utilisée pour la compar
 
 ```js run
 let animal = {
+<<<<<<< HEAD
   eat: function() { // écrire intentionnellement comme ceci au lieu de eat() {...
+=======
+  eat: function() { // intentionally writing like this instead of eat() {...
+>>>>>>> e92bb83e995dfea982dcdc5065036646bfca13f0
     // ...
   }
 };
