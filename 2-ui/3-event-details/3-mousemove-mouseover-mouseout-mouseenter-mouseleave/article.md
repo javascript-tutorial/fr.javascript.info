@@ -125,11 +125,7 @@ S'il y a des actions lorsque vous quittez l'élément parent, par exemple une an
 
 Pour l'éviter, nous pouvons vérifier `relatedTarget` dans le gestionnaire et, si la souris est toujours dans l'élément, alors ignorer cet événement.
 
-<<<<<<< HEAD
-Alternativement, nous pouvons utiliser d'autres événements : `mouseenter` и `mouseleave`, que nous allons couvrir maintenant, car ils n'ont pas ce genre de problèmes.
-=======
-Alternatively we can use other events: `mouseenter` and `mouseleave`, that we'll be covering now, as they don't have such problems.
->>>>>>> e92bb83e995dfea982dcdc5065036646bfca13f0
+Alternativement, nous pouvons utiliser d'autres événements : `mouseenter` et `mouseleave`, que nous allons couvrir maintenant, car ils n'ont pas ce genre de problèmes.
 
 ## Evènements mouseenter and mouseleave
 

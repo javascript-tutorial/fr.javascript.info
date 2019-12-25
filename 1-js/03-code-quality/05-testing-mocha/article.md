@@ -184,11 +184,7 @@ Le résultat :
 
 [iframe height=250 src="pow-2" edit border="1"]
 
-<<<<<<< HEAD
-Comme on pouvait s'y attendre, le deuxième test a échoué. Bien sûr, notre fonction retourne toujours `8`, alors que l'`assert` en attend `27`.
-=======
-As we could expect, the second test failed. Sure, our function always returns `8`, while the `assert` expects `81`.
->>>>>>> e92bb83e995dfea982dcdc5065036646bfca13f0
+Comme on pouvait s'y attendre, le deuxième test a échoué. Bien sûr, notre fonction retourne toujours `8`, alors que l'`assert` en attend `81`.
 
 ## Améliorer l'implémentation
 
