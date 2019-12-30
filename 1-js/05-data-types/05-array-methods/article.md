@@ -388,7 +388,11 @@ L'ordre est devenu `1, 15, 2`. C'est incorrect. Mais pourquoi?
 
 Littéralement, tous les éléments sont convertis en chaînes de caractères pour comparaisons. Pour les chaînes de caractères, l’ordre lexicographique est appliqué et donc `"2" > "15"`.
 
+<<<<<<< HEAD
 Pour utiliser notre propre ordre de tri, nous devons fournir une fonction comme argument de `arr.sort()`.
+=======
+Literally, all elements are converted to strings for comparisons. For strings, lexicographic ordering is applied and indeed `"2" > "15"`.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 La fonction doit comparer deux valeurs arbitraires et renvoyer :
 
@@ -434,7 +438,6 @@ La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme génériqu
 
 L'algorithme peut comparer un élément à plusieurs autres dans le processus, mais il essaie de faire le moins de comparaisons possible.
 
-
 ````smart header="A comparison function may return any number"
 En réalité, une fonction de comparaison est requise uniquement pour renvoyer un nombre positif pour dire "plus grand" et un nombre négatif pour dire "plus petit".
 
@@ -457,6 +460,22 @@ arr.sort( (a, b) => a - b );
 ```
 
 Cela fonctionne exactement comme la version longue ci-dessus.
+````
+
+````smart header="Use `localeCompare` for strings"
+Remember [strings](info:string#correct-comparisons) comparison algorithm? It compares letters by their codes by default.
+
+For many alphabets, it's better to use `str.localeCompare` method to correctly sort letters, such as `Ö`.
+
+For example, let's sort a few countries in German:
+
+```js run
+let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (wrong)
+
+alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (correct!)
+```
 ````
 
 ### reverse
@@ -533,7 +552,11 @@ Les méthodes [arr.reduce](mdn:js/Array/reduce) et [arr.reduceRight](mdn:js/Arra
 La syntaxe est la suivante:
 
 ```js
+<<<<<<< HEAD
 let value = arr.reduce(function(previousValue, item, index, arr) {
+=======
+let value = arr.reduce(function(accumulator, item, index, array) {
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
   // ...
 }, [initial]);
 ```
@@ -542,14 +565,27 @@ La fonction est appliquée à tous les éléments du tableau les uns après les 
 
 Les arguments :
 
+<<<<<<< HEAD
 - `previousValue` -- est le résultat de l'appel de fonction précédent, égal à `initial` la première fois (si `initial` est fourni).
 - `item` -- est l'élément actuel du tableau.
 - `index` -- est sa position.
 - `array` -- est le tableau.
+=======
+- `accumulator` -- is the result of the previous function call, equals `initial` the first time (if `initial` is provided).
+- `item` -- is the current array item.
+- `index` -- is its position.
+- `array` -- is the array.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Lorsque la fonction est appliquée, le résultat de l'appel de fonction précédent est transmis au suivant en tant que premier argument.
 
+<<<<<<< HEAD
 Cela semble compliqué, mais ce n'est pas le cas si vous considérez le premier argument comme un "accumulateur" qui stocke le résultat combiné de toutes les exécutions précédentes. Et à la fin cela devient le résultat de `reduce`.
+=======
+So, the first argument is essentially the accumulator that stores the combined result of all previous executions. And at the end it becomes the result of `reduce`.
+
+Sounds complicated?
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Le moyen le plus simple pour comprendre c'est avec un exemple.
 
@@ -615,8 +651,12 @@ let arr = [];
 arr.reduce((sum, current) => sum + current);
 ```
 
+<<<<<<< HEAD
 
 Il est donc conseillé de toujours spécifier la valeur initiale.
+=======
+So it's advised to always specify the initial value.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 La méthode [arr.reduceRight](mdn:js/Array/reduceRight) fait la même chose, mais va de droite à gauche.
 

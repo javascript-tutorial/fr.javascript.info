@@ -140,7 +140,11 @@ for(let value of generator) {
 }
 ```
 
+<<<<<<< HEAD
 Comme les générateurs sont itérables, nous pouvons appeler toutes les fonctionnalités associées, par exemple l'opérateur de propagation `...`:
+=======
+As generators are iterable, we can call all related functionality, e.g. the spread syntax `...`:
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ```js run
 function* generateSequence() {
@@ -154,7 +158,11 @@ let sequence = [0, ...generateSequence()];
 alert(sequence); // 0, 1, 2, 3
 ```
 
+<<<<<<< HEAD
 Dans le code ci-dessus, `...generateSequence()` transforme l'objet générateur itérable en tableau d'éléments (Essayer d'en savoir plus sur l'opérateur de propagation dans le chapitre [](info:rest-parameters-spread-operator#spread-operator))
+=======
+In the code above, `...generateSequence()` turns the iterable generator object into an array of items (read more about the spread syntax in the chapter [](info:rest-parameters-spread#spread-syntax))
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ## Utilisation de générateurs pour les itérables
 
