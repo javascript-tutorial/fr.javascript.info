@@ -1,4 +1,4 @@
-# Les paramètres Rest et la sytaxe spread
+# Les paramètres Rest et la syntaxe spread
 
 De nombreuses fonctions intégrées à JavaScript prennent en charge un nombre arbitraire d'arguments.
 
