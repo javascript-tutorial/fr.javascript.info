@@ -1,17 +1,13 @@
 
 # L'ancien "var"
 
-<<<<<<< HEAD
-Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable:
-=======
-```smart header="This article is for understanding old scripts"
-The information in this article is useful for understanding old scripts.
+```smart header="Cet article est pour comprendre les anciens scripts"
+Les informations contenues dans cet article sont utiles pour comprendre les anciens scripts.
 
-That's not how we write a new code.
+Ce n'est pas ainsi que nous écrivons un nouveau code.
 ```
 
-In the very first chapter about [variables](info:variables), we mentioned three ways of variable declaration:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable :
 
 1. `let`
 2. `const`
@@ -198,16 +194,13 @@ Parce que toutes les déclarations `var` sont traitées au début de la fonction
 
 Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
 
-<<<<<<< HEAD
-## Résumé
-=======
 ### IIFE
 
-As in the past there was only `var`, and it has no block-level visibility, programmers invented a way to emulate it. What they did was called "immediately-invoked function expressions" (abbreviated as IIFE).
+Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter. Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
 
-That's not something we should use nowadays, but you can find them in old scripts.
+Ce n'est pas quelque chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts.
 
-An IIFE looks like this:
+Un IIFE ressemble à ceci :
 
 ```js run
 (function() {
@@ -219,12 +212,12 @@ An IIFE looks like this:
 })();
 ```
 
-Here a Function Expression is created and immediately called. So the code executes right away and has its own private variables.
+Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
 
-The Function Expression is wrapped with parenthesis `(function {...})`, because when JavaScript meets `"function"` in the main code flow, it understands it as the start of a Function Declaration. But a Function Declaration must have a name, so this kind of code will give an error:
+La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"fonction"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
-// Try to declare and immediately call a function
+// Essayons de déclarer et d'appeler immédiatement une fonction
 function() { // <-- Error: Unexpected token (
 
   let message = "Hello";
@@ -234,21 +227,21 @@ function() { // <-- Error: Unexpected token (
 }();
 ```
 
-Even if we say: "okay, let's add a name", that won't work, as JavaScript does not allow Function Declarations to be called immediately:
+Même si nous disons : "d'accord, ajoutons un nom", cela ne fonctionnera toujours pas, parce que JavaScript ne permet pas d'appeler immédiatement les fonctions déclarations :
 
 ```js run
-// syntax error because of parentheses below
+// erreur de syntaxe à cause des parenthèses ci-dessous
 function go() {
 
-}(); // <-- can't call Function Declaration immediately
+}(); // <-- ne peut pas appeler la fonction déclaration immédiatement
 ```
 
-So, the parentheses around the function is a trick to show JavaScript that the function is created in the context of another expression, and hence it's a Function Expression: it needs no name and can be called immediately.
+Ainsi, les parenthèses autour de la fonction sont une astuce pour montrer à JavaScript que la fonction est créée dans le contexte d'une autre expression, et donc c'est une fonction expression : elle n'a pas besoin de nom et peut être appelée immédiatement.
 
-There exist other ways besides parentheses to tell JavaScript that we mean a Function Expression:
+Il existe d'autres façons que les parenthèses pour dire à JavaScript que nous souhaitons une fonction expression :
 
 ```js run
-// Ways to create IIFE
+// Façons de créer une IIFE
 
 (function() {
   alert("Parentheses around the function");
@@ -267,20 +260,15 @@ There exist other ways besides parentheses to tell JavaScript that we mean a Fun
 }();
 ```
 
-In all the above cases we declare a Function Expression and run it immediately. Let's note again: nowadays there's no reason to write such code.
+Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. Notons encore : de nos jours il n'y a aucune raison d'écrire un tel code.
 
-## Summary
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+## Résumé
 
 Il y a deux différences majeures entre `var` et `let/const`:
 
 1. Les variables `var` n'ont pas de portée limitée aux blocs. Elles sont, au minimum, visibles au niveau de la fonction.
 2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
 
-<<<<<<< HEAD
 Il y a une autre différence mineure associée à l'objet global, mais nous traiterons ce point dans le prochain chapitre.
-=======
-There's one more very minor difference related to the global object, that we'll cover in the next chapter.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Ces différences rendent `var` pire que `let` dans la plupart des cas. Les variables au niveau des blocs sont extraordinaires. C'est pourquoi `let` a été introduit au standard il y a longtemps et c'est maintenant un moyen majeur (avec `const`) pour déclarer une variable.
