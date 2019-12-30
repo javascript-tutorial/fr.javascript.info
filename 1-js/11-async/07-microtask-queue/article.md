@@ -109,8 +109,4 @@ Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois l
 
 Si nous devons garantir qu'un morceau de code est exécuté après `.then/catch/finally`, nous pouvons l'ajouter à un appel `.then` enchaîné.
 
-<<<<<<< HEAD
 Dans la plupart des moteurs Javascript, y compris les navigateurs et Node.js, le concept de microtaches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.
-=======
-In most JavaScript engines, including browsers and Node.js, the concept of microtasks is closely tied with "event loop" and "macrotasks". As these have no direct relation to promises, they are covered in another part of the tutorial, in the chapter <info:event-loop>.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117

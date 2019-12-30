@@ -4,15 +4,9 @@ Il y a 5 méthodes statiques dans la classe `Promise`. Nous allons rapidement co
 
 ## Promise.all
 
-<<<<<<< HEAD
 Disons que nous voulons exécuter de nombreuses promesses en parallèle, et attendre qu'elles soient toutes prêtes.
 
 Par exemple, téléchargez plusieurs URLs en parallèle et traitez le contenu lorsque tout est terminé.
-=======
-Let's say we want many promises to execute in parallel and wait until all of them are ready.
-
-For instance, download several URLs in parallel and process the content once they are all done.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 C'est à cela que sert `Promise.all`.
 
@@ -24,11 +18,7 @@ let promise = Promise.all([...promises...]);
 
 `Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.
 
-<<<<<<< HEAD
 La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont réglées et que le tableau de leurs résultats devient son résultat.
-=======
-The new promise resolves when all listed promises are settled, and the array of their results becomes its result.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Par exemple, le `Promise.all` ci-dessous se règle après 3 secondes, et ensuite son résultat est un tableau `[1, 2, 3]`:
 
@@ -99,20 +89,12 @@ Promise.all([
 ]).catch(alert); // Error: Whoops!
 ```
 
-<<<<<<< HEAD
 Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute : l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
-=======
-Here the second promise rejects in two seconds. That leads to an immediate rejection of `Promise.all`, so `.catch` executes: the rejection error becomes the outcome of the entire `Promise.all`.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ```warn header="En cas d'erreur, les autres promesses sont ignorées."
 Si une promesse est rejetée, `Promise.all` est immédiatement rejetée, oubliant complètement les autres dans la liste. Leurs résultats sont ignorés.
 
-<<<<<<< HEAD
-Par exemple, s'il y a plusieurs appels `fetch, comme dans l'exemple ci-dessus, et que l'un d'eux échoue, les autres continueront à s'exécuter, mais `Promise.all` ne les considérera plus. Ils vont probablement se régler, mais le résultat sera ignoré.
-=======
-For example, if there are multiple `fetch` calls, like in the example above, and one fails, the others will still continue to execute, but `Promise.all` won't watch them anymore. They will probably settle, but their results will be ignored.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+Par exemple, s'il y a plusieurs appels `fetch, comme dans l'exemple ci-dessus, et que l'un d'eux échoue, les autres continueront à s'exécuter, mais `Promise.all` ne les considérera plus. Ils vont probablement se résoudre, mais leurs résultats sera ignoré.
 
 `Promise.all` ne fait rien pour les annuler, car il n'y a pas de concept "d'annulation" dans les promesses. Dans[un autre chapitre](info:fetch-abort) nous couvrirons `AbortController` qui peut vous aider avec cela, mais ce n'est pas une partie de l'API Promise.
 ```
@@ -139,11 +121,7 @@ Ainsi, nous sommes en mesure de passer des valeurs disponibles à `Promise.all` 
 
 [recent browser="new"]
 
-<<<<<<< HEAD
-`Promise.all` rejette dans son ensemble si une quelconque promesse est rejetée. Cela est bon pour les cas "tout ou rien", quand on a besoin de *tous* les résultats pour continuer:
-=======
-`Promise.all` rejects as a whole if any promise rejects. That's good for "all or nothing" cases, when we need *all* results successful to proceed:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+`Promise.all` rejette dans son ensemble si une quelconque promesse est rejetée. Cela est bon pour les cas "tout ou rien", quand on a besoin de *tous* les résultats pour continuer :
 
 ```js
 Promise.all([
@@ -153,11 +131,7 @@ Promise.all([
 ]).then(render); // la méthode "render" a besoin des résultats de tous les "fetchs" 
 ```
 
-<<<<<<< HEAD
-`Promise.allSettled` attend que toutes les promesses se règlent. Le tableau résultant a:
-=======
-`Promise.allSettled` just waits for all promises to settle, regardless of the result. The resulting array has:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+`Promise.allSettled` attend juste que toutes les promesses se résolvent, quel que soit le résultat. Le tableau résultant a :
 
 - `{status:"fulfilled", value:result}` pour les réponses réussies,
 - `{status:"rejected", reason:error}` pour les erreurs.
@@ -195,11 +169,7 @@ Les `résultats` dans la ligne `(*)` ci-dessus seront:
 ]
 ```
 
-<<<<<<< HEAD
 Ainsi, pour chaque promesse, nous obtenons son statut et `value/error`.
-=======
-So for each promise we get its status and `value/error`.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ### Polyfill
 
@@ -227,11 +197,7 @@ Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résult
 
 ## Promise.race
 
-<<<<<<< HEAD
-Similaire à `Promise.all`, mais n'attend que la première promesse réglée, et obtient son résultat (ou erreur).
-=======
-Similar to `Promise.all`, but waits only for the first settled promise and gets its result (or error).
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+Similaire à `Promise.all`, mais n'attend que la première promesse soit résolue, et obtient son résultat (ou erreur).
 
 La syntaxe est :
 
@@ -256,17 +222,11 @@ La première promesse a été la plus rapide, donc, elle est devenue le résulta
 
 Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.
 
-<<<<<<< HEAD
 Nous les couvrons ici par souci de clarté, et pour ceux qui ne peuvent pas utiliser `async/await` pour une quelconque raison.
-
-- Promise.resolve(value) " crée une promesse résolue avec le résultat `value`.
-=======
-We cover them here for completeness and for those who can't use `async/await` for some reason.
 
 ### Promise.resolve
 
-`Promise.resolve(value)` creates a resolved promise with the result `value`.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+- `Promise.resolve(value)` crée une promesse résolue avec le résultat `value`.
 
 Comme pour:
 
@@ -276,11 +236,7 @@ let promise = new Promise(resolve => resolve(value));
 
 La méthode est utilisée pour la compatibilité, lorsqu'une fonction est censée renvoyer une promesse.
 
-<<<<<<< HEAD
-Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, il récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse :
-=======
-For example, the `loadCached` function below fetches a URL and remembers (caches) its content. For future calls with the same URL it immediately gets the previous content from cache, but uses `Promise.resolve` to make a promise of it, so the returned value is always a promise:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, elle récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse :
 
 ```js
 let cache = new Map();
@@ -305,11 +261,7 @@ Nous pouvons écrire `loadCached(url).then(...)`, car la fonction est garantie d
 
 ### Promise.reject
 
-<<<<<<< HEAD
 - `Promise.reject(error)` crée une promesse rejetée avec `error`.
-=======
-`Promise.reject(error)` creates a rejected promise with `error`.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Comme pour:
 
