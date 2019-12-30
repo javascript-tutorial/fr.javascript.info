@@ -98,11 +98,7 @@ Le `.catch` final n'attrape pas seulement les rejets explicites, mais aussi les 
 
 Comme nous l'avons déjà remarqué, `.catch` à la fin de la chaîne est similaire à `try...catch`. Nous pouvons avoir autant de gestionnaires `.then` que nous le voulons, puis utiliser un seul `.catch` à la fin pour gérer les erreurs dans chacun d'eux.
 
-<<<<<<< HEAD
-Dans un `try...catch` régulier nous pouvons analyser l'erreur et peut-être la relancer si nous ne pouvons pas la gérer. La même chose est possible pour les promesses.
-=======
-In a regular `try..catch` we can analyze the error and maybe rethrow it if it can't be handled. The same thing is possible for promises.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
+Dans un `try...catch` classique nous pouvons analyser l'erreur et peut-être la relancer si nous ne pouvons pas la gérer. La même chose est possible pour les promesses.
 
 Si nous utilisons`throw` dans `.catch`, alors le contrôle passe au gestionnaire d'erreur suivant qui est plus proche. Et si nous gérons l'erreur et finissons normalement, alors elle continue jusqu'au gestionnaire `.then` le plus proche.
 
