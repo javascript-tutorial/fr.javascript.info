@@ -1,8 +1,4 @@
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-# Les paramètres Rest et l'opérateur spread
-=======
-# Rest parameters and spread syntax
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+# Les paramètres Rest et la sytaxe spread
 
 De nombreuses fonctions intégrées à JavaScript prennent en charge un nombre arbitraire d'arguments.
 
@@ -125,13 +121,9 @@ f(1); // 1
 Comme nous nous en souvenons, les fonctions fléchées n’ont pas leur propre `this`. Nous savons maintenant qu’ils n’ont pas non plus l’objet spécial `arguments`.
 ````
 
-## L'opérateur Spread [#spread-operator]
-
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-Nous venons de voir comment obtenir un tableau à partir de la liste de paramètres.
-=======
 ## Spread syntax [#spread-syntax]
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+
+Nous venons de voir comment obtenir un tableau à partir de la liste de paramètres.
 
 Mais parfois, nous devons faire exactement l'inverse.
 
@@ -155,11 +147,7 @@ alert( Math.max(arr) ); // NaN
 
 Et nous ne pouvons sûrement pas lister manuellement les éléments dans le code `Math.max(arr[0], arr[1], arr[2])`, parce que nous pouvons ne pas savoir combien il y en a. Au fur et à mesure que notre script s'exécute, il peut y en avoir beaucoup ou pas du tout. Et ça deviendrait moche.
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-*Spread operator* à la rescousse! Il ressemble aux paramètres rest, en utilisant également `...`, mais fait tout le contraire.
-=======
-*Spread syntax* to the rescue! It looks similar to rest parameters, also using `...`, but does quite the opposite.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+*La sytaxe Spread* à la rescousse! Il ressemble aux paramètres rest, en utilisant également `...`, mais fait tout le contraire.
 
 Quand `...arr` est utilisé dans l'appel de fonction, il "développe" un objet itérable `arr` dans la liste des arguments.
 
@@ -180,11 +168,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(...arr1, ...arr2) ); // 8
 ```
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-On peut même combiner l'opérateur spread avec des valeurs normales :
-=======
-We can even combine the spread syntax with normal values:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+On peut même combiner la sytaxe spread avec des valeurs normales :
 
 
 ```js run
@@ -194,11 +178,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
 ```
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-De plus, l'opérateur spread peut être utilisé pour fusionner des tableaux :
-=======
-Also, the spread syntax can be used to merge arrays:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+De plus, la sytaxe spread peut être utilisée pour fusionner des tableaux :
 
 ```js run
 let arr = [3, 5, 1];
@@ -211,15 +191,9 @@ let merged = [0, ...arr, 2, ...arr2];
 alert(merged); // 0,3,5,1,2,8,9,15 (0, ensuite arr, ensuite 2, ensuite arr2)
 ```
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-Dans les exemples ci-dessus, nous avons utilisé un tableau pour illustrer l'opérateur spread, mais toutes les fonctions itérables feront l'affaire.
+Dans les exemples ci-dessus, nous avons utilisé un tableau pour illustrer la syntaxe spread, mais tout itérable fera l'affaire.
 
-Par exemple, nous utilisons ici l'opérateur spread pour transformer le string en tableau de caractères :
-=======
-In the examples above we used an array to demonstrate the spread syntax, but any iterable will do.
-
-For instance, here we use the spread syntax to turn the string into array of characters:
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+Par exemple, nous utilisons ici la syntaxe spread pour transformer le string en tableau de caractères :
 
 ```js run
 let str = "Hello";
@@ -227,11 +201,7 @@ let str = "Hello";
 alert( [...str] ); // H,e,l,l,o
 ```
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-L’opérateur spread utilise en interne des itérateurs pour rassembler les éléments, de la même manière que `for..of`.
-=======
-The spread syntax internally uses iterators to gather elements, the same way as `for..of` does.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+La syntaxe spread utilise en interne des itérateurs pour rassembler les éléments, de la même manière que `for..of`.
 
 Donc, pour une chaine de caractères, `for..of` retourn des caractères et `...str` devient `"H","e","l","l","o"`. La liste de caractères est transmise à l'initialiseur de tableau `[...str]`.
 
@@ -248,44 +218,25 @@ Le résultat est le même que `[...str]`.
 
 Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
 - `Array.from` fonctionne à la fois sur les tableaux et les iterables.
-- L'opérateur spread ne fonctionne que sur des iterables.
-=======
-- `Array.from` operates on both array-likes and iterables.
-- The spread syntax works only with iterables.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+- La syntaxe spread ne fonctionne que sur des iterables.
 
 Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
 
 ## Résumé
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
-Quand on voit `"..."` dans le code, il s’agit soit des paramètres rest ou de l’opérateur spread.
-=======
-When we see `"..."` in the code, it is either rest parameters or the spread syntax.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+Quand on voit `"..."` dans le code, il s’agit soit des paramètres rest ou de la syntaxe spread.
 
 Il existe un moyen facile de les distinguer :
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
 - Lorsque `...` se trouve à la fin des paramètres de fonction, il s'agit des "paramètres rest" et rassemble le reste de la liste des arguments dans un tableau.
-- Lorsque `...` est présent dans un appel de fonction ou similaire, on l'appelle "opérateur spread" (opérateur de propagation) et étend un tableau en une liste.
-=======
-- When `...` is at the end of function parameters, it's "rest parameters" and gathers the rest of the list of arguments into an array.
-- When `...` occurs in a function call or alike, it's called a "spread syntax" and expands an array into a list.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+- Lorsque `...` est présent dans un appel de fonction ou similaire, on l'appelle "la syntaxe spread" (syntaxe de propagation) et étend un tableau en une liste.
 
 Modèles d'utilisation :
 
-<<<<<<< HEAD:1-js/06-advanced-functions/02-rest-parameters-spread-operator/article.md
 - Les paramètres rest permettent de créer des fonctions acceptant un nombre quelconque d'arguments.
-- L'opérateur spread est utilisé pour passer un tableau à des fonctions nécessitant normalement une liste d'arguments.
-=======
-- Rest parameters are used to create functions that accept any number of arguments.
-- The spread syntax is used to pass an array to functions that normally require a list of many arguments.
->>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117:1-js/06-advanced-functions/02-rest-parameters-spread/article.md
+- La syntaxe spread est utilisée pour passer un tableau à des fonctions nécessitant normalement une liste d'arguments.
 
 Ensemble, ils permettent de voyager facilement entre une liste et un tableau de paramètres.
 
