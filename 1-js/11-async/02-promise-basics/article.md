@@ -8,9 +8,15 @@ Tout le monde est content : vous, puisque l'on vous laisse plus tranquille, et 
 
 C'est une analogie réelle à un problème courant de programmation :
 
+<<<<<<< HEAD
 1. Un "code produit" qui réalise quelque chose mais nécessite du temps. Par exemple, un code qui charge des données à travers un réseau. C'est le "chanteur".
 2. Un "code consommant" qui attend un résultat du "code produit" quand il est prêt. Beaucoup de fonctions peuvent avoir besoin de ce résultat. Ces fonctions sont les "fans".
 3. Une *promesse* (promise) est un objet spécial en javascript qui lie le "code produit" et le "code consommant" ensemble. En comparant à notre analogie c'est la "liste d'abonnement". Le "code produit" prends le temps nécessaires pour produire le résultat promis, et la "promesse" donne le résultat disponible pour le code abonné quand c'est prêt.
+=======
+1. A "producing code" that does something and takes time. For instance, some code that loads the data over a network. That's a "singer".
+2. A "consuming code" that wants the result of the "producing code" once it's ready. Many functions  may need that result. These are the "fans".
+3. A *promise* is a special JavaScript object that links the "producing code" and the "consuming code" together. In terms of our analogy: this is the "subscription list". The "producing code" takes whatever time it needs to produce the promised result, and the "promise" makes that result available to all of the subscribed code when it's ready.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 L'analogie n'est pas la plus correct, car les promesses en Javascript sont un peu plus complexes qu'une simple liste d'abonnement : elles ont d'autres possibilités mais aussi des certaines limitations. Toutefois c'est suffisant pour débuter.
 
@@ -22,7 +28,11 @@ let promise = new Promise(function(resolve, reject) {
 });
 ```
 
+<<<<<<< HEAD
 La fonction passée à `new Promise` est appelée l'*exécuteur*. Quand `new Promise` est créée, elle est lancée automatiquement. Elle contient le code produit, qui doit produire un résulat final. Dans l'analogie au-dessus : l'éxécuteur est le "chanteur".
+=======
+The function passed to `new Promise` is called the *executor*. When `new Promise` is created, the executor runs automatically. It contains the producing code which should eventually produce the result. In terms of the analogy above: the executor is the "singer".
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Ses arguments `resolve` (tenir) et `reject` (rompre) sont les fonctions de retours directement fournies par Javascript. Notre code est inclus seulement dans l'exécuteur.
 
@@ -31,7 +41,11 @@ Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas - cela n'a p
 - `resolve(value)` -  si la tâche s'est terminée avec succés, avec le résultat `value`.
 - `reject(error)` - si une erreur est survenue, `error` est l'object erreur.
 
+<<<<<<< HEAD
 Pour résumer : l'exécuteur se lance automatiquement, il doit réaliser une tâche puis lancer soit `resolve` soit `reject`.
+=======
+So to summarize: the executor runs automatically, it should do a job, and then call either `resolve` or `reject`.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 L'objet `promesse` retourné par le constructeur `new Promise` a des propriétés internes :
 
@@ -268,6 +282,10 @@ let promise = new Promise(resolve => resolve("done!"));
 
 promise.then(alert); // done! (s'affiche immédiatement)
 ```
+
+Note that this is different, and more powerful than the real life "subscription list" scenario. If the singer has already released their song and then a person signs up on the subscription list, they probably won't receive that song. Subscriptions in real life must be done prior to the event.
+
+Promises are more flexible. We can add handlers any time: if the result is already there, our handlers get it immediately.
 ````
 
 Ensuite, voyons des exemples plus pratiques pour lesquels les promesses nous aident à écrire du code asynchrone.

@@ -1,8 +1,14 @@
 # Promisification
 
+<<<<<<< HEAD
 La promisification represente une simple transformation. Il s'agit de la conversion d'une fonction qui accepte une fonction de rappel ("callback") en une fonction renvoyant une promesse.
 
 De telles transformations sont souvent nécessaires dans la vie réelle, car de nombreuses fonctions et bibliothèques sont basées sur des rappels. Mais les promesses sont plus pratiques. Il est donc logique de les transformer.
+=======
+"Promisification" is a long word for a simple transformation. It's the conversion of a function that accepts a callback into a function that returns a promise.
+
+Such transformations are often required in real-life, as many functions and libraries are callback-based. But promises are more convenient, so it makes sense to promisify them.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Par exemple, nous avons `loadScript(src, callback)` du chapitre <info:callbacks>.
 
@@ -21,7 +27,11 @@ function loadScript(src, callback) {
 // loadScript('path/script.js', (err, script) => {...})
 ```
 
+<<<<<<< HEAD
 Transformons-le. La nouvelle fonction `loadScriptPromise(src)` fera de même, mais acceptera seulement `src` (pas de `callback`) et renverra une promesse.
+=======
+Let's promisify it. The new `loadScriptPromise(src)` function achieves the same result, but it accepts only `src` (no `callback`) and returns a promise.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ```js
 let loadScriptPromise = function(src) {
@@ -41,9 +51,13 @@ Maintenant, `loadScriptPromise` s'intègre bien dans du code basé sur des prome
 
 Comme nous pouvons le constater, elle délègue tout le travail au `loadScript` d'origine, en fournissant son propre rappel qui se traduit par la promesse de "résoudre/rejeter".
 
+<<<<<<< HEAD
 En pratique, nous aurons probablement besoin de promettre de nombreuses fonctions. Il est donc logique d'utiliser une fonction assistante.
 
 Nous l'appellerons `promisify(f)`: elle accepte une fonction à tronsformer `f` et renvoie une fonction wrapper.
+=======
+In practice we'll probably need to promisify many functions, so it makes sense to use a helper. We'll call it `promisify(f)`: it accepts a to-promisify function `f` and returns a wrapper function.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Ce wrapper fait la même chose que dans le code ci-dessus: renvoie une promesse et passe l'appel au `f` d'origine, en suivant le résultat dans un rappel personnalisé:
 
@@ -103,7 +117,11 @@ f = promisify(f, true);
 f(...).then(arrayOfResults => ..., err => ...)
 ```
 
+<<<<<<< HEAD
 Pour des formats de rappel plus exotiques, comme ceux sans `err`: `callback(résultat)`, nous pouvons transformer de telles fonctions manuellement, sans utiliser la fonction assistante.
+=======
+For more exotic callback formats, like those without `err` at all: `callback(result)`, we can promisify such functions manually without using the helper.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 Il existe également des modules avec des fonctions de promisification un peu plus flexibles, e.g. [es6-promisify](https://github.com/digitaldesignlabs/es6-promisify). Dans Node.js, il existe une fonction intégrée `util.promisify` pour cela.
 
