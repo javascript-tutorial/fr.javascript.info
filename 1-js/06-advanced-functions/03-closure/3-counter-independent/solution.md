@@ -1,4 +1,4 @@
-The answer: **0,1.**
+La réponse : **0,1.**
 
 Les fonctions `counter` et `counter2` sont créées par différentes invocations de `makeCounter`.
 
