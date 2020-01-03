@@ -1,6 +1,6 @@
-The result is: **error**.
+Le résultat est : **error**.
 
-Try running it:
+Essayez de l'exécuter :
 
 ```js run
 let x = 1;
@@ -15,20 +15,20 @@ function func() {
 func();
 ```
 
-In this example we can observe the peculiar difference between a "non-existing" and "unitialized" variable.
+Dans cet exemple, nous pouvons observer la différence particulière entre une variable "non existante" et "non initialisée".
 
-As you may have read in the article [](info:closure), a variable starts in the "uninitialized" state from the moment when the execution enters a code block (or a function). And it stays uninitalized until the corresponding `let` statement.
+Comme vous l'avez peut-être lu dans l'article [](info:closure), une variable démarre à l'état "non initialisée" à partir du moment où l'exécution entre dans un bloc de code (ou une fonction). Et elle reste non initialisée jusqu'à la déclaration `let` correspondante.
 
-In other words, a variable technically exists, but can't be used before `let`.
+En d'autres termes, une variable existe techniquement, mais ne peut pas être utilisée avant `let`.
 
-The code above demonstrates it.
+Le code ci-dessus le démontre.
 
 ```js
 function func() {
 *!*
-  // the local variable x is known to the engine from the beginning of the function,
-  // but "unitialized" (unusable) until let ("dead zone")
-  // hence the error
+  // la variable locale x est connue du moteur depuis le début de la fonction,
+  // mais "non initialisée" (inutilisable) jusqu'à let ("zone morte")
+  // d'où l'erreur
 */!*
 
   console.log(x); // ReferenceError: Cannot access 'vx before initialization
@@ -37,4 +37,4 @@ function func() {
 }
 ```
 
-This zone of temporary unusability of a variable (from the beginning of the code block till `let`) is sometimes called the "dead zone".
+Cette zone d'inutilisabilité temporaire d'une variable (du début du bloc de code jusqu'à `let`) est parfois appelée "dead zone" (zone morte).
