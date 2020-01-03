@@ -1,5 +1,5 @@
-The answer is: **Pete**.
+La réponse est : **Pete**.
 
-A function gets outer variables as they are now, it uses the most recent values.
+Une fonction obtient des variables externes telles qu'elles sont maintenant, elle utilise les valeurs les plus récentes.
 
-Old variable values are not saved anywhere. When a function wants a variable, it takes the current value from its own Lexical Environment or the outer one.
+Les anciennes valeurs de variable ne sont enregistrées nulle part. Lorsqu'une fonction veut une variable, elle prend la valeur actuelle de son propre environnement lexical ou de l'environnement externe.
