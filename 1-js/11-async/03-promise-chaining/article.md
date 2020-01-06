@@ -1,7 +1,11 @@
 
 # Chaînage des promesses
 
+<<<<<<< HEAD
 Revenons au problème mentionné dans le chapitre <info:callbacks>: nous avons une séquence de tâches asynchrones à effectuer l'une après l'autre. Par exemple, charger des scripts. Comment pouvons-nous bien le coder?
+=======
+Let's return to the problem mentioned in the chapter <info:callbacks>: we have a sequence of asynchronous tasks to be performed one after another — for instance, loading scripts. How can we code it well?
+>>>>>>> 14e4e9f96bcc2bddc507f409eb4716ced897f91a
 
 Les promesses fournissent quelques options pour le faire.
 
@@ -164,7 +168,11 @@ loadScript("/article/promise-chaining/one.js")
 
 Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu. Ensuite, il lance le chargement du script suivant. Les scripts sont donc chargés les uns après les autres.
 
+<<<<<<< HEAD
 Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
+=======
+We can add more asynchronous actions to the chain. Please note that the code is still "flat" — it grows down, not to the right. There are no signs of the "pyramid of doom".
+>>>>>>> 14e4e9f96bcc2bddc507f409eb4716ced897f91a
 
 Techniquement, nous pourrions ajouter `.then` directement à chaque `loadScript`, comme ceci:
 
@@ -287,7 +295,11 @@ fetch('/article/promise-chaining/user.json')
   });
 ```
 
+<<<<<<< HEAD
 Le code fonctionne, voir les commentaires sur les détails. Pourtant, il y a un problème potentiel, une erreur typique de ceux qui commencent à utiliser les promesses.
+=======
+The code works; see comments about the details. However, there's a potential problem in it, a typical error for those who begin to use promises.
+>>>>>>> 14e4e9f96bcc2bddc507f409eb4716ced897f91a
 
 Regardez la ligne `(*)`: comment pouvons-nous faire quelque chose *après* l'avatar a fini d'afficher et d'être supprimé? Par exemple, nous aimerions montrer un formulaire pour éditer cet utilisateur ou autre chose. Pour l'instant, il n'y a pas moyen.
 
@@ -319,6 +331,7 @@ fetch('/article/promise-chaining/user.json')
   .then(githubUser => alert(`Finished showing ${githubUser.name}`));
 ```
 
+<<<<<<< HEAD
 En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Promise`, qui ne sera réglé qu’après l’appel de `resolve(githubUser)` dans `setTimeout` `(**)`.
 
 Le prochain `.then` dans la chaîne attendra cela.
@@ -326,6 +339,11 @@ Le prochain `.then` dans la chaîne attendra cela.
 Comme bonne pratique, une action asynchrone doit toujours renvoyer une promesse.
 
 Cela permet de planifier des actions après. Même si nous n'avons pas l'intention d'étendre la chaîne maintenant, nous en aurons peut-être besoin plus tard.
+=======
+That is, the `.then` handler in line `(*)` now returns `new Promise`, that becomes settled only after the call of `resolve(githubUser)` in `setTimeout` `(**)`. The next `.then` in the chain will wait for that.
+
+As a good practice, an asynchronous action should always return a promise. That makes it possible to plan actions after it; even if we don't plan to extend the chain now, we may need it later.
+>>>>>>> 14e4e9f96bcc2bddc507f409eb4716ced897f91a
 
 Enfin, nous pouvons scinder le code en fonctions réutilisables:
 
