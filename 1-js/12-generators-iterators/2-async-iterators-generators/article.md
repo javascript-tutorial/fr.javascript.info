@@ -1,11 +1,11 @@
 
-# Async iterators and generators
+# Itérateurs et générateurs asynchrones
 
 Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande. Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau. Les générateurs asynchrones rendent cela encore plus pratique.
 
 Voyons d'abord un exemple simple, pour comprendre la syntaxe, puis examinons un cas d'utilisation réel.
 
-## Async iterators
+## Itérateurs asynchrones
 
 Les itérateurs asynchrones sont similaires aux itérateurs réguliers, moyennant quelques différences syntaxiques.
 
@@ -54,7 +54,7 @@ Pour rendre l'objet itérable asynchrone :
 2. `next()` doit retourner un promesse (Promise).
 3. Pour itérer sur un tel objet, nous devrons utiliser une boucle `for await (let item of iterable)`.
 
-Faisons un objet `range' itérable, comme celui d'avant, mais maintenant il retournera des valeurs de façon asynchrone, une par seconde :
+Faisons un objet `range` itérable, comme celui d'avant, mais maintenant il retournera des valeurs de façon asynchrone, une par seconde :
 
 ```js run
 let range = {
@@ -131,7 +131,7 @@ alert( [...range] ); // Error, no Symbol.iterator
 C'est naturel, car il s'attend à trouver un `Symbol.iterator`, comme pour un `for..of` sans `await`. Pas un `Symbol.asyncIterator`.
 ````
 
-## Async generators
+## Générateurs asynchrones
 
 Comme nous le savons déjà, JavaScript supporte également les générateurs, et ils sont itérables.
 
@@ -194,7 +194,7 @@ Dans un générateur classique, nous utiliserions `result = generator.next()` po
 result = await generator.next(); // result = {value: ..., done: true/false}
 ```
 
-## Async iterables
+## Itérables asynchrones
 
 Nous savons déjà que pour rendre un objet itérable, nous devrions lui ajouter `Symbol.iterator`.
 
@@ -264,7 +264,7 @@ let range = {
 
 Maintenant, les valeurs arrivent toutes les 1 seconde.
 
-## Real-life example
+## Exemple concret
 
 Jusqu'à présent, nous avons vu des exemples simples, pour acquérir une compréhension de base. Maintenant, passons en revue un cas d'utilisation réel.
 
@@ -342,7 +342,7 @@ Un exemple d'utilisation (montrant les auteurs de commit en console) :
 That's just what we wanted. The internal mechanics of paginated requests is invisible from the outside. For us it's just an async generator that returns commits.
 C'est exactement ce que nous voulions. La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne les commits.
 
-## Summary
+## Résumé
 
 Les itérateurs et générateurs normaux fonctionnent bien avec les données dont la génération est rapide.
 
