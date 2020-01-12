@@ -1,4 +1,3 @@
-
 # Itérateurs et générateurs asynchrones
 
 Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande. Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau. Les générateurs asynchrones rendent cela encore plus pratique.
@@ -9,7 +8,7 @@ Voyons d'abord un exemple simple, pour comprendre la syntaxe, puis examinons un 
 
 Les itérateurs asynchrones sont similaires aux itérateurs réguliers, moyennant quelques différences syntaxiques.
 
-Un objet itérable "régulier", comme décrit dans le chapitre <info:iterable>, ressemble à ceci :
+Un objet itérable "régulier" ou synchrone, comme décrit dans le chapitre <info:iterable>, ressemble à ceci :
 
 ```js run
 let range = {
@@ -47,11 +46,11 @@ for(let value of range) {
 }
 ```
 
-Si nécessaire, veuillez vous référer au [chapitre sur les iterables](info:iterable) pour plus de détails sur les itérateurs réguliers.
+Cette partie à déjà été aborder en détail dans le [chapitre sur les iterables](info:iterable).
 
 Pour rendre l'objet itérable asynchrone :
 1. Nous devons utiliser `Symbol.asyncIterator` au lieu de `Symbol.iterator`.
-2. `next()` doit retourner une promesse (Promise).
+2. `next()` doit retourner une promesse.
 3. Pour itérer sur un tel objet, nous devrons utiliser une boucle `for await (let item of iterable)`.
 
 Faisons un objet `range` itérable, comme celui d'avant, mais maintenant il retournera des valeurs de façon asynchrone, une par seconde :
@@ -76,7 +75,7 @@ let range = {
 *!*
       async next() { // (2)
         // il doit retourner la valeur sous la forme d'un objet {done:.., value :...}
-        // (automatiquement enveloppé dans une promesse (Promise) par async)
+        // (automatiquement enveloppé dans une promesse par async)
 */!*
 
 *!*
@@ -107,7 +106,7 @@ let range = {
 
 Nous pouvons observer que la structure est similaire aux itérateurs réguliers :
 1. Pour rendre un objet itérable, asynchrone, il doit avoir une méthode `Symbol.asyncIterator` `(1)`.
-2. Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse (Promise) `(2)`.
+2. Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse `(2)`.
 3. La méthode `next()` n'a pas besoin d'être `async`, elle peut être une méthode normale retournant une promesse, mais `async` permet d'utiliser `await`, donc c'est pratique. Ici, nous ne faisons qu'attendre une seconde `(3)`.
 4. Pour itérer, nous utilisons `for await(let value of range)`(4)`, c'est-à-dire que nous ajoutons "await" après "for". Il appelle `range[Symbol.asyncIterator]()` une fois, et ensuite son `next()` pour chaque valeur.
 
@@ -119,22 +118,22 @@ Voici une petite antisèche :
 | valeur de retour de la fonction `next()`    | peu importe       | `Promise`  |
 | pour boucler, utilisez                      | `for..of`         | `for await..of` |
 
-````warn header="la syntaxe spread `...` ne fonctionne pas de manière asynchrone"
+````warn header="la 'spread syntax' `...` ne fonctionne pas de manière asynchrone"
 Les fonctionnalités qui nécessitent des itérateurs réguliers et synchrones ne fonctionnent pas avec les asynchrones.
 
-Par exemple, une syntaxe spread ne fonctionnera pas :
+Par exemple, la 'spread syntax' ne fonctionnera pas :
 ```js
 alert( [...range] ); // Erreur, pas de Symbol.iterator
 ```
 
-C'est naturel, car il s'attend à trouver un `Symbol.iterator`, comme pour un `for..of` sans `await`. Pas un `Symbol.asyncIterator`.
+C'est naturel, car il s'attend à trouver un `Symbol.iterator`, comme pour un `for..of` sans `await`. Et non un `Symbol.asyncIterator`.
 ````
 
 ## Générateurs asynchrones
 
 Comme nous le savons déjà, JavaScript supporte également les générateurs, et ils sont itérables.
 
-Rappelons un générateur de séquence du chapitre [](info:generators). Il génère une séquence de valeurs de `début' à `fin' :
+Rappelons un générateur de séquence du chapitre [](info:generators). Il génère une séquence de valeurs allant de 'start' à 'end' :
 
 ```js run
 function* generateSequence(start, end) {
@@ -148,7 +147,7 @@ for(let value of generateSequence(1, 5)) {
 }
 ```
 
-Dans les générateurs classiques, nous ne pouvons pas utiliser `await`. Toutes les valeurs doivent arriver tout de suite; la construction `for..of` est synchrone et ne tolère pas de délai.
+Dans les générateurs classiques, nous ne pouvons pas utiliser `await`. Toutes les valeurs doivent être disponibles immédiatement; la construction `for..of` est synchrone et ne tolère pas de délai.
 
 Mais que ce passe-t-il si nous utilisons 'await' dans le corps du générateur ? Pour effectuer des requêtes réseaux, par exemple.
 
@@ -179,11 +178,11 @@ Pas de soucis, il suffit de le précéder de `async`, comme ceci :
 })();
 ```
 
-Ici, nous avons un générateur asynchrone, itérable avec `for await...of`.
+Ici, nous avons un générateur asynchrone, itérable avec `for await..of`.
 
-Simplement en ajoutant le mot-clé `async`, le générateur peut utiliser `await`, compter sur des promesses (Promise) et d'autres fonctions asynchrones.
+Simplement en ajoutant le mot-clé `async`, le générateur peut utiliser `await`, compter sur des promesses et d'autres fonctions asynchrones.
 
-Techniquement, la méthode `generator.next()` d'un générateur asynchrone est elle aussi asynchrone, elle retourne des promesses (Promise).
+Techniquement, la méthode `generator.next()` d'un générateur asynchrone est elle aussi asynchrone, elle retourne des promesses .
 
 Dans un générateur classique, nous utiliserions `result = generator.next()` pour obtenir des valeurs. Alors que, dans un générateur asynchrone, nous devrions ajouter `await`, comme ceci :
 
@@ -265,24 +264,24 @@ Maintenant, une valeur arrive chaque seconde.
 
 Jusqu'à présent, nous avons vu des exemples simples, pour acquérir une compréhension de base. Maintenant, passons en revue un cas d'utilisation réel.
 
-Il existe de nombreux services en ligne qui fournissent des données par page. Par exemple, lorsque nous avons besoin d'une liste d'utilisateurs, une demande renvoie un compte prédéfini (par exemple 100 utilisateurs) - "une page", et fournit une URL vers la page suivante.
+Il existe de nombreux services en ligne qui fournissent des données par page. Par exemple, lorsque nous avons besoin d'une liste d'utilisateurs, le serveur nous répond avec un compte prédéfini (par exemple 100 utilisateurs) - "une page", et fournit une URL vers la page suivante.
 
 Ce modèle est très courant. Pas seulement pour des listes d'utilisateurs, mais de n'importe quoi. Par exemple, GitHub permet de récupérer les commits de la même manière, par page :
 - Nous faisons une requête à l'URL sous la forme `https://api.github.com/repos/<repo>/commits`.
-- Elle nous répond avec un JSON comprenant 30 commits, et fournissant aussi un lien vers la page suivante dans l'en-tête `Link`.
-- Nous pouvons dès lors utiliser ce lien pour la prochaine requête, pour obtenir plus de commits, et ainsi de suite.
+- le serveur nous répond avec un JSON comprenant 30 commits, et fournissant aussi un lien vers la page suivante dans l'en-tête `Link`.
+- Nous pouvons dès lors utiliser ce lien pour la prochaine requête, pour obtenir les 30 prochains commits, et ainsi de suite.
 
-Mais nous aimerions avoir une API plus simple: un objet itérable avec des commits, dans le but de les passer en revue comme ceci :
+Mais nous aimerions avoir une API plus simple: un objet itérable qui nous donne un commit à la fois, dans le but de les passer en revue comme ceci :
 
 ```js
 let repo = 'javascript-tutorial/en.javascript.info'; // Un dépôt GitHub depuis lequel récupérer les commits
 
 for await (let commit of fetchCommits(repo)) {
-  // traitement de la page de commits
+  // traitement du commit
 }
 ```
 
-Nous aimerions faire une fonction `fetchCommits(repo)` qui récupère les commits pour nous, faisant uniquement des requêtes quand c'est nécessaire. Et s'occupant toute seule de la gestion des pages. Pour nous, ce sera un simple "for await... of".
+Nous aimerions faire une fonction `fetchCommits(repo)` qui récupère les commits pour nous, faisant uniquement des requêtes quand c'est nécessaire. Et s'occupant toute seule de la gestion des pages. Pour nous, ce sera un simple "for await..of".
 
 Avec des générateurs asynchrones, c'est assez facile à implémenter :
 
@@ -303,7 +302,7 @@ async function* fetchCommits(repo) {
 
     url = nextPage;
 
-    for(let commit of body) { // (4) produit les commits un par un, jusqu'à la fin de la page
+    for(let commit of body) { // (4) génère les commits un par un, jusqu'à la fin de la page
       yield commit;
     }
   }
@@ -312,8 +311,8 @@ async function* fetchCommits(repo) {
 
 1. Nous utilisons la méthode [fetch](info:fetch) du navigateur pour télécharger à partir d'une URL distante. Elle nous permet de remplir l'en-tête si nécessaire, ici GitHub nécessite de fixer la valeur de l'en-tête `User-Agent`.
 2. Le résultat de fetch est analysé pour donner un JSON, c'est, une fois encore, une méthode spécifique à la méthode fetch.
-3. Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse. Elle a un format particulier, nous donc utilisons une expression régulière pour la retrouver. L'URL de la page suivante peut ressembler à `https://api.github.com/repositories/93253246/commits?page=2`, c'est GitHub qui la génère.
-4. Ensuite nous donnons un à un tous les commits reçus, et quand la liste est terminée -- à la prochaine itération `while(url)` se déclenchera, faisant une requête supplémentaire.
+3. Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse. Elle a un format particulier, nous utilisons donc une expression régulière pour la retrouver. L'URL de la page suivante peut ressembler à `https://api.github.com/repositories/93253246/commits?page=2`, c'est GitHub qui la génère pour nous.
+4. Ensuite nous donnons un à un tous les commits reçus. À la fin de la page, quand une nouvelle valeur est demandée, le générateur bouclera sur `while(url)`, faisant une nouvelle requête.
 
 Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 
@@ -334,27 +333,27 @@ Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 })();
 ```
 
-C'est exactement ce que nous voulions. La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne les commits.
+C'est exactement ce que nous voulions. La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne chacun des commits.
 
 ## Résumé
 
 Les itérateurs et générateurs normaux fonctionnent bien avec les données dont la génération est rapide.
 
-Lorsque nous nous attendons à ce que les données arrivent de manière asynchrone, puisque leur génération est chronophage, les équivalents asynchrones ainsi que " for await..of " au lieu de " for..of " peuvent être utilisés.
+Lorsque nous nous attendons à ce que les données arrivent de manière asynchrone, puisque leur génération est possiblement chronophage, les équivalents asynchrones ainsi que " for await..of " au lieu de " for..of " peuvent être utilisés.
 
 Différences de syntaxe entre les itérateurs asynchrones et synchrones :
 
 |       | itérateurs | itérateurs asynchrones |
 |-------|------------|------------------------|
 | Méthode de l'objet qui fournit un itérateur | `Symbol.iterator` | `Symbol.asyncIterator` |
-| valeur de retour de la fonction `next()`   | `{value:…, done: true/false}`         | Promesse (`Promise`) qui se resout en `{value:…, done: true/false}`  |
+| valeur de retour de la fonction `next()`   | `{value:…, done: true/false}`         | Promesse qui se resout en `{value:…, done: true/false}`  |
 
 Différences de syntaxe entre les générateurs asynchrones et synchrones :
 
 |       | Générateurs | Générateurs asynchrones |
 |-------|-------------|-------------------------|
 | Déclaration | `function*` | `async function*` |
-| valeur de retour de la fonction `next()`      | `{value:…, done: true/false}`         | Promesse (`Promise`) qui se résout en `{value:…, done: true/false}`  |
+| valeur de retour de la fonction `next()`      | `{value:…, done: true/false}`         | Promesse qui se résout en `{value:…, done: true/false}`  |
 
 Dans le développement Web, nous rencontrons souvent des flux de données, circulant morceau par morceau. Par exemple, dans le téléchargement ou l'envoi de gros fichiers.
 
