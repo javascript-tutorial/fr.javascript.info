@@ -1,28 +1,28 @@
 
-# URL objects
+# Les objets URL
 
-The built-in [URL](https://url.spec.whatwg.org/#api) class provides a convenient interface for creating and parsing URLs.
+La classe d'[URL](https://url.spec.whatwg.org/#api) intégrée fournit une interface pratique pour créer et analyser des URL.
 
-There are no networking methods that require exactly an `URL` object, strings are good enough. So technically we don't have to use `URL`. But sometimes it can be really helpful.
+Il n'y a pas de méthodes de mise en réseau qui nécessitent exactement un objet `URL`, les chaînes de caractères sont généralement suffisantes. Donc, techniquement, nous n'avons pas à utiliser `URL`. Mais parfois, cela peut être très utile.
 
-## Creating an URL
+## Création d'une URL
 
-The syntax to create a new `URL` object:
+La syntaxe pour créer un nouvel objet `URL` :
 
 ```js
 new URL(url, [base])
 ```
 
-- **`url`** -- the full URL or only path (if base is set, see below),
-- **`base`** -- an optional base URL: if set and `url` argument has only path, then the URL is generated relative to `base`.
+- **`url`** -- l'URL complète ou le seul chemin (si la base est définie, voir ci-dessous),
+- **`base`** -- une URL de base facultative : si définie et que l'argument `url` n'a que le chemin, l'URL est générée par rapport à la `base`.
 
-For example:
+Par exemple :
 
 ```js
 let url = new URL('https://javascript.info/profile/admin');
 ```
 
-These two URLs are same:
+Ces deux URL sont identiques :
 
 ```js run
 let url1 = new URL('https://javascript.info/profile/admin');
@@ -32,7 +32,7 @@ alert(url1); // https://javascript.info/profile/admin
 alert(url2); // https://javascript.info/profile/admin
 ```
 
-We can easily create a new URL based on the path relative to an existing URL:
+Nous pouvons facilement créer une nouvelle URL basée sur le chemin d'accès par rapport à une URL existante :
 
 ```js run
 let url = new URL('https://javascript.info/profile/admin');
@@ -41,7 +41,7 @@ let newUrl = new URL('tester', url);
 alert(newUrl); // https://javascript.info/profile/tester
 ```
 
-The `URL` object immediately allows us to access its components, so it's a nice way to parse the url, e.g.:
+L'objet `URL` nous permet immédiatement d'accéder à ses composants, c'est donc une bonne façon d'analyser l'url, par exemple :
 
 ```js run
 let url = new URL('https://javascript.info/url');
@@ -51,79 +51,79 @@ alert(url.host);     // javascript.info
 alert(url.pathname); // /url
 ```
 
-Here's the cheatsheet for URL components:
+Voici le cheatsheet pour les composants URL :
 
 ![](url-object.svg)
 
-- `href` is the full url, same as `url.toString()`
-- `protocol` ends with the colon character `:`
-- `search` - a string of parameters, starts with the question mark `?`
-- `hash` starts with the hash character `#`
-- there may be also `user` and `password` properties if HTTP authentication is present: `http://login:password@site.com` (not painted above, rarely used).
+- `href` est l'URL complète, identique à `url.toString()`
+- `protocol` se termine par le caractère deux-points `:`
+- `search` - une chaîne de caractères de paramètres, commence par le point d'interrogation `?`
+- `hash` commence par le caractère de hachage `#`
+- il peut y avoir aussi les propriétés `user` et `password` si l'authentification HTTP est présente : `http://login:password@site.com` (pas expliqué ci-dessus, très peu utilisé)
 
 
-```smart header="We can pass `URL` objects to networking (and most other) methods instead of a string"
-We can use an `URL` object in `fetch` or `XMLHttpRequest`, almost everywhere where an URL-string is expected.
+```smart header="Nous pouvons passer des objets `URL` aux méthodes de mise en réseau (et à la plupart des autres) au lieu d'une chaîne de caractères"
+Nous pouvons utiliser un objet `URL` dans` fetch` ou `XMLHttpRequest`, presque partout où une chaîne de caractères URL est attendue.
 
-Generally, `URL` object can be passed to any method instead of a string, as most method will perform the string conversion, that turns an `URL` object into a string with full URL.
+Généralement, l'objet `URL` peut être passé à n'importe quelle méthode au lieu d'une chaîne de caractères, car la plupart des méthodes effectueront la conversion vers cette dernière, qui transforme un objet` URL` en une chaîne de caractères avec une URL complète.
 ```
 
 ## SearchParams "?..."
 
-Let's say we want to create an url with given search params, for instance, `https://google.com/search?query=JavaScript`.
+Disons que nous voulons créer une URL avec des paramètres de recherche donnés, par exemple `https://google.com/search?query=JavaScript`.
 
-We can provide them in the URL string:
+Nous pouvons les fournir dans la chaîne de caractères URL :
 
 ```js
 new URL('https://google.com/search?query=JavaScript')
 ```
 
-...But parameters need to be encoded if they contain spaces, non-latin letters, etc (more about that below).
+… Mais les paramètres doivent être encodés s'ils contiennent des espaces, des lettres non latines, etc. (plus à ce sujet ci-dessous).
 
-So there's URL property for that: `url.searchParams`, an object of type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
+Il y a donc une propriété URL pour cela : `url.searchParams`, un objet de type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
 
-It provides convenient methods for search parameters:
+Elle fournit des méthodes pratiques pour les paramètres de recherche :
 
-- **`append(name, value)`** -- add the parameter by `name`,
-- **`delete(name)`** -- remove the parameter by `name`,
-- **`get(name)`** -- get the parameter by `name`,
-- **`getAll(name)`** -- get all parameters with the same `name` (that's possible, e.g. `?user=John&user=Pete`),
-- **`has(name)`** -- check for the existance of the parameter by `name`,
-- **`set(name, value)`** -- set/replace the parameter,
-- **`sort()`** -- sort parameters by name, rarely needed,
-- ...and it's also iterable, similar to `Map`.
+- **`append(name, value)`** -- ajouter le paramètre `name`,
+- **`delete(name)`** -- supprime le paramètre `name`,
+- **`get(name)`** -- obtenir le paramètre `name`,
+- **`getAll(name)`** -- obtient tous les paramètres avec le même `name` (par exemple `?user=John&user=Pete`),
+- **`has(name)`** -- vérifie l'existence du paramètre `name`,
+- **`set(name, value)`** -- défini/remplace le paramètre,
+- **`sort()`** -- trie les paramètres par nom, rarement nécessaire,
+- … et elle est également itérable, semblable à `Map`.
 
-An example with parameters that contain spaces and punctuation marks:
+Un exemple avec des paramètres contenant des espaces et des signes de ponctuation :
 
 ```js run
 let url = new URL('https://google.com/search');
 
-url.searchParams.set('q', 'test me!'); // added parameter with a space and !
+url.searchParams.set('q', 'test me!'); // paramètre ajouté avec un espace et !
 
 alert(url); // https://google.com/search?q=test+me%21
 
-url.searchParams.set('tbs', 'qdr:y'); // added parameter with a colon :
+url.searchParams.set('tbs', 'qdr:y'); // paramètre ajouté avec deux points :
 
-// parameters are automatically encoded
+// les paramètres sont automatiquement encodés
 alert(url); // https://google.com/search?q=test+me%21&tbs=qdr%3Ay
 
-// iterate over search parameters (decoded)
+// itérer sur les paramètres de recherche (décodés)
 for(let [name, value] of url.searchParams) {
-  alert(`${name}=${value}`); // q=test me!, then tbs=qdr:y
+  alert(`${name}=${value}`); // q=test me!, ensuite tbs=qdr:y
 }
 ```
 
 
-## Encoding
+## Encodage
 
-There's a standard [RFC3986](https://tools.ietf.org/html/rfc3986) that defines which characters are allowed in URLs and which are not.
+Il y a une norme [RFC3986](https://tools.ietf.org/html/rfc3986) qui définit quels caractères sont autorisés dans les URL et lesquels ne le sont pas.
 
-Those that are not allowed, must be encoded, for instance non-latin letters and spaces - replaced with their UTF-8 codes, prefixed by `%`, such as `%20` (a space can be encoded by `+`, for historical reasons, but that's an exception).
+Ceux qui ne sont pas autorisés doivent être encodés, par exemple les lettres et les espaces non latins - remplacés par leurs codes UTF-8, préfixés par `%`, tels que `%20` (un espace peut être encodé par `+`, pour des raisons historiques, mais c'est une exception).
 
-The good news is that `URL` objects handle all that automatically. We just supply all parameters unencoded, and then convert the `URL` to string:
+La bonne nouvelle est que les objets `URL` gèrent tout cela automatiquement. Nous fournissons simplement tous les paramètres non codés, puis convertissons l'URL en chaîne de caractères :
 
 ```js run
-// using some cyrillic characters for this example
+// en utilisant des caractères cyrilliques pour cet exemple
 
 let url = new URL('https://ru.wikipedia.org/wiki/Тест');
 
@@ -131,50 +131,50 @@ url.searchParams.set('key', 'ъ');
 alert(url); //https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%81%D1%82?key=%D1%8A
 ```
 
-As you can see, both `Тест` in the url path and `ъ` in the parameter are encoded.
+Comme vous pouvez le voir, `Тест` dans le chemin de l'url et `ъ` dans le paramètre sont encodés.
 
-The URL became longer, because each cyrillic letter is represented with two bytes in UTF-8, so there are two `%..` entities.
+L'URL est devenue plus longue, car chaque lettre cyrillique est représentée avec deux octets en UTF-8, il y a donc deux entités `%..`.
 
-### Encoding strings
+### Encodage de chaîne de caractères
 
-In old times, before `URL` objects appeared, people used strings for URLs.
+Autrefois, avant que les objets `URL` n'apparaissent, les gens utilisaient des chaînes de caractères pour les URL.
 
-As of now, `URL` objects are often more convenient, but strings can still be used as well. In many cases using a string makes the code shorter.
+Pour l'instant, les objets `URL` sont souvent plus pratiques, mais les chaînes de caractères peuvent toujours être utilisées également. Dans de nombreux cas, l'utilisation d'une chaîne de caractères raccourcit le code.
 
-If we use a string though, we need to encode/decode special characters manually.
+Si nous utilisons une chaîne de caractères, nous devons encoder/décoder les caractères spéciaux manuellement.
 
-There are built-in functions for that:
+Il existe des fonctions intégrées pour cela :
 
-- [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) - encodes URL as a whole.
-- [decodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) - decodes it back.
-- [encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) - encodes a URL component, such as a search parameter, or a hash, or a pathname.
-- [decodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) - decodes it back.
+- [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) - encode l'URL dans son ensemble.
+- [decodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) - la décode de nouveau.
+- [encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) - encode un composant URL, tel qu'un paramètre de recherche, un hachage ou un chemin d'accès.
+- [decodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) - la décode de nouveau.
 
-A natural question is: "What's the difference between `encodeURIComponent` and `encodeURI`? When we should use either?"
+Une question naturelle est: "Quelle est la différence entre `encodeURIComponent` et `encodeURI` ? Quand devrions-nous utiliser l'une ou l'autre ?"
 
-That's easy to understand if we look at the URL, that's split into components in the picture above:
+C'est facile à comprendre si nous regardons l'URL, qui est divisée en composants dans l'image ci-dessus :
 
 ```
 https://site.com:8080/path/page?p1=v1&p2=v2#hash
 ```
 
-As we can see, characters such as `:`, `?`, `=`, `&`, `#` are allowed in URL.
+Comme nous pouvons le voir, les caractères tels que `:`, `?`, `=`, `&`, `#` sont autorisés dans l'URL.
 
-...On the other hand, if we look at a single URL component, such as a search parameter, these characters must be encoded, not to break the formatting.
+… D'un autre côté, si nous regardons un seul composant URL, tel qu'un paramètre de recherche, ces caractères doivent être encodés, pour ne pas casser la mise en forme.
 
-- `encodeURI` encodes only characters that are totally forbidden in URL.
-- `encodeURIComponent` encodes same characters, and, in addition to them, characters `#`, `$`, `&`, `+`, `,`, `/`, `:`, `;`, `=`, `?` and `@`.
+- `encodeURI` encode uniquement les caractères totalement interdits dans l'URL.
+- `encodeURIComponent` encode les mêmes caractères et, en plus d'eux, les caractères `#`, `$`, `&`, `+`, `,`, `/`, `:`, `;`, `=`, `?` et `@`.
 
-So, for a whole URL we can use `encodeURI`:
+Donc, pour une URL entière, nous pouvons utiliser `encodeURI` :
 
 ```js run
-// using cyrillic characters in url path
+// en utilisant des caractères cyrilliques dans le chemin de l'url
 let url = encodeURI('http://site.com/привет');
 
 alert(url); // http://site.com/%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82
 ```
 
-...While for URL parameters we should use `encodeURIComponent` instead:
+… Alors que pour les paramètres d'URL, nous devrions plutôt utiliser `encodeURIComponent` :
 
 ```js run
 let music = encodeURIComponent('Rock&Roll');
@@ -183,7 +183,7 @@ let url = `https://google.com/search?q=${music}`;
 alert(url); // https://google.com/search?q=Rock%26Roll
 ```
 
-Compare it with `encodeURI`:
+Comparons-le avec `encodeURI` :
 
 ```js run
 let music = encodeURI('Rock&Roll');
@@ -192,26 +192,26 @@ let url = `https://google.com/search?q=${music}`;
 alert(url); // https://google.com/search?q=Rock&Roll
 ```
 
-As we can see, `encodeURI` does not encode `&`, as this is a legit character in URL as a whole.
+Comme nous pouvons le voir, `encodeURI` n'encode pas `&`, car il s'agit d'un caractère légitime dans l'URL.
 
-But we should encode `&` inside a search parameter, otherwise, we get `q=Rock&Roll` - that is actually `q=Rock` plus some obscure parameter `Roll`. Not as intended.
+Mais nous devons encoder `&` à l'intérieur d'un paramètre de recherche, sinon, nous obtenons `q=Rock&Roll` - qui est en fait `q=Rock` plus un paramètre obscur `Roll`. Pas comme prévu.
 
-So we should use only `encodeURIComponent` for each search parameter, to correctly insert it in the URL string. The safest is to encode both name and value, unless we're absolutely sure that it has only allowed characters.
+Nous devons donc utiliser uniquement `encodeURIComponent` pour chaque paramètre de recherche, pour l'insérer correctement dans la chaîne de caractères URL. Le plus sûr est d'encoder à la fois le nom et la valeur, à moins que nous ne soyons absolument sûrs qu'il n'a que des caractères autorisés.
 
-````smart header="Encoding difference compared to `URL`"
-Classes [URL](https://url.spec.whatwg.org/#url-class) and [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) are based on the latest URI specification: [RFC3986](https://tools.ietf.org/html/rfc3986), while `encode*` functions are based on the obsolete version [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).
+````smart header="Différence d'encodage par rapport à `URL`"
+Les classes [URL](https://url.spec.whatwg.org/#url-class) et [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) sont basés sur la dernière spécification d'URI : [RFC3986](https://tools.ietf.org/html/rfc3986), tandis que les fonctions `encode*` sont basées sur la version obsolète [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).
 
-There are few differences, e.g. IPv6 addresses are encoded differently:
+Il y a peu de différences, par exemple, Les adresses IPv6 sont encodées différemment :
 
 ```js run
-// valid url with IPv6 address
+// URL valide avec adresse IPv6
 let url = 'http://[2607:f8b0:4005:802::1007]/';
 
 alert(encodeURI(url)); // http://%5B2607:f8b0:4005:802::1007%5D/
 alert(new URL(url)); // http://[2607:f8b0:4005:802::1007]/
 ```
 
-As we can see, `encodeURI` replaced square brackets `[...]`, that's not correct, the reason is: IPv6 urls did not exist at the time of RFC2396 (August 1998).
+Comme nous pouvons le voir, `encodeURI` a remplacé les crochets `[...]`, ce qui n'est pas correct, la raison est que les URL IPv6 n'existaient pas au moment de la RFC2396 (août 1998).
 
-Such cases are rare, `encode*` functions work well most of the time.
+De tels cas sont rares, les fonctions `encode*` fonctionnent bien la plupart du temps.
 ````
