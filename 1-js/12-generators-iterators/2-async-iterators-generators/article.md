@@ -105,6 +105,7 @@ let range = {
 ```
 
 Nous pouvons observer que la structure est similaire aux itérateurs réguliers :
+
 1. Pour rendre un objet itérable, asynchrone, il doit avoir une méthode `Symbol.asyncIterator` `(1)`.
 2. Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse `(2)`.
 3. La méthode `next()` n'a pas besoin d'être `async`, elle peut être une méthode normale retournant une promesse, mais `async` permet d'utiliser `await`, donc c'est pratique. Ici, nous ne faisons qu'attendre une seconde `(3)`.
