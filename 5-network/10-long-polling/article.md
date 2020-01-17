@@ -1,63 +1,63 @@
-# Long polling
+# L'interrogation longue 
 
-Long polling is the simplest way of having persistent connection with server, that doesn't use any specific protocol like WebSocket or Server Side Events.
+L'interrogation longue est le moyen le plus simple d'avoir une connexion persistante avec le serveur, qui n'utilise aucun protocole spécifique comme WebSocket ou Server Side Events.
 
-Being very easy to implement, it's also good enough in a lot of cases.
+Étant très facile à mettre en œuvre, elle est également assez bonne dans de nombreux cas.
 
-## Regular Polling
+## Interrogation régulière
 
-The simplest way to get new information from the server is periodic polling. That is, regular requests to the server: "Hello, I'm here, do you have any information for me?". For example, once in 10 seconds.
+Le moyen le plus simple d'obtenir de nouvelles informations du serveur est l'interrogation périodique. Autrement dit, des requêtes régulières au serveur : "Bonjour, je suis là, avez-vous des informations pour moi ?". Par exemple, une fois toutes les 10 secondes.
 
-In response, the server first takes a notice to itself that the client is online, and second - sends a packet of messages it got till that moment.
+En réponse, le serveur se signale d'abord à lui-même que le client est en ligne, et deuxièmement - envoie un paquet de messages qu'il a reçu jusqu'à ce moment.
 
-That works, but there are downsides:
-1. Messages are passed with a delay up to 10 seconds (between requests).
-2. Even if there are no messages, the server is bombed with requests every 10 seconds, even if the user switched somewhere else or is asleep. That's quite a load to handle, speaking performance-wise.
+Cela fonctionne, mais il y a des inconvénients :
+1. Les messages sont transmis avec un délai allant jusqu'à 10 secondes (entre les requêtes).
+2. Même s'il n'y a pas de messages, le serveur est bombardé de requêtes toutes les 10 secondes, même si l'utilisateur est passé ailleurs ou est endormi. C'est une charge à gérer, en termes de performances.
 
-So, if we're talking about a very small service, the approach may be viable, but generally, it needs an improvement.
+Donc, si nous parlons d'un très petit service, l'approche peut être viable, mais en général, elle doit être améliorée.
 
-## Long polling
+## Interrogation longue
 
-So-called "long polling" is a much better way to poll the server.
+"L'interrogation longue" est une bien meilleure façon d'interroger le serveur.
 
-It's also very easy to implement, and delivers messages without delays.
+Elle est également très facile à mettre en œuvre et délivre des messages sans délai.
 
-The flow:
+Le flux :
 
-1. A request is sent to the server.
-2. The server doesn't close the connection until it has a message to send.
-3. When a message appears - the server responds to the request with it.
-4. The browser makes a new request immediately.
+1. Une requête est envoyée au serveur.
+2. Le serveur ne ferme pas la connexion tant qu'il n'a pas de message à envoyer.
+3. Lorsqu'un message apparaît - le serveur répond à la requête avec lui.
+4. Le navigateur fait immédiatement une nouvelle requête.
 
-The situation when the browser sent a request and has a pending connection with the server, is standard for this method. Only when a message is delivered, the connection is reestablished.
+Lorsque le navigateur a envoyé une demande et a une connexion en attente avec le serveur est une situation relativement courante pour cette méthode. Ce n'est que lorsqu'un message est remis que la connexion est rétablie.
 
 ![](long-polling.svg)
 
-If the connection is lost, because of, say, a network error, the browser immediately sends a new request.
+Si la connexion est perdue, en raison, par exemple, d'une erreur de réseau, le navigateur envoie immédiatement une nouvelle demande.
 
-A sketch of client-side `subscribe` function that makes long requests:
+Une esquisse de la fonction `subscribe` côté client qui fait de longues requêtes :
 
 ```js
 async function subscribe() {
   let response = await fetch("/subscribe");
 
   if (response.status == 502) {
-    // Status 502 is a connection timeout error,
-    // may happen when the connection was pending for too long,
-    // and the remote server or a proxy closed it
-    // let's reconnect
+    // Le statut 502 est une erreur de dépassement de délai de connexion,
+    // peut se produire lorsque la connexion est en attente depuis trop longtemps,
+    // et le serveur distant ou un proxy l'a fermé
+    // reconnectons-nous
     await subscribe();
   } else if (response.status != 200) {
-    // An error - let's show it
+    // Une erreur - affichons-la
     showMessage(response.statusText);
-    // Reconnect in one second
+    // Reconnexion en une seconde
     await new Promise(resolve => setTimeout(resolve, 1000));
     await subscribe();
   } else {
-    // Get and show the message
+    // Obtenons et affichons le message
     let message = await response.text();
     showMessage(message);
-    // Call subscribe() again to get the next message
+    // Appelons à nouveau subscribe() pour recevoir le message suivant
     await subscribe();
   }
 }
@@ -65,32 +65,32 @@ async function subscribe() {
 subscribe();
 ```
 
-As you can see, `subscribe` function makes a fetch, then waits for the response, handles it and calls itself again.
+Comme vous pouvez le voir, la fonction `subscribe` effectue une extraction, puis attend la réponse, la gère et se rappelle.
 
-```warn header="Server should be ok with many pending connections"
-The server architecture must be able to work with many pending connections.
+```warn header="Le serveur devrait être ok avec de nombreuses connexions en attente"
+L'architecture du serveur doit pouvoir fonctionner avec de nombreuses connexions en attente.
 
-Certain server architectures run a process per connect. For many connections there will be as many processes, and each process takes a lot of memory. So many connections just consume it all.
+Certaines architectures de serveur exécutent un processus par connexion. Pour de nombreuses connexions, il y aura autant de processus, et chaque processus prend beaucoup de mémoire. Autant de connexions risquent de consommer toutes ressources.
 
-That's often the case for backends written in PHP, Ruby languages, but technically isn't a language, but rather implementation issue. Most modern language allow to implement a proper backend, but some of them make it easier than the other.
+C'est souvent le cas pour les backends écrits en PHP, en Ruby, mais techniquement ce n'est pas un problème de langage, mais plutôt d'implémentation. La plupart des langages modernes permettent d'implémenter un backend approprié, mais certains le rendent plus facile que l'autre.
 
-Backends written using Node.js usually don't have such problems.
+Les backends écrits en utilisant Node.js n'ont généralement pas ce genre de problèmes.
 ```
 
-## Demo: a chat
+## Démo: un tchat
 
-Here's a demo chat, you can also download it and run locally (if you're familiar with Node.js and can install modules):
+Voici un tchat de démonstration, vous pouvez également le télécharger et l'exécuter localement (si vous connaissez Node.js et pouvez installer des modules) :
 
 [codetabs src="longpoll" height=500]
 
-Browser code is in `browser.js`.
+Le code du navigateur est dans `browser.js`.
 
-## Area of usage
+## Zone d'utilisation
 
-Long polling works great in situations when messages are rare.
+L'interrogation longue fonctionne très bien dans les situations où les messages sont rares.
 
-If messages come very often, then the chart of requesting-receiving messages, painted above, becomes saw-like.
+Si les messages arrivent très souvent, alors le tableau des messages de demande de réception, schématisé ci-dessus, ressemble à une scie.
 
-Every message is a separate request, supplied with headers, authentication overhead, and so on.
+Chaque message est une requête distincte, fournie avec des en-têtes, une surcharge d'authentification, etc.
 
-So, in this case, another method is preferred, such as [Websocket](info:websocket) or [Server Sent Events](info:server-sent-events).
+Donc, dans ce cas, une autre méthode est préférée, comme [Websocket](info:websocket) ou [Événements envoyés par le serveur](info:server-sent-events).
