@@ -4,7 +4,11 @@ Avant d’écrire un code plus complexe, parlons de débogage.
 
 Le [Debugging](https://en.wikipedia.org/wiki/Debugging) est le processus de recherche et de correction des erreurs dans un script. Tous les navigateurs modernes et la plupart des autres environnements prennent en charge les outils de débogage - une interface utilisateur spéciale dans les outils de développement facilitant grandement le débogage. Cela permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
 
+<<<<<<< HEAD
 Nous allons utiliser Chrome ici, car il possède suffisamment de fonctionnalités, la plupart des autres navigateurs utilisent un processus similaire.
+=======
+We'll be using Chrome here, because it has enough features, most other browsers have a similar process.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 ## Le volet "Sources"
 
@@ -24,11 +28,19 @@ Cliquez dessus et sélectionnez `hello.js` dans l’arborescence. Voici ce qui d
 
 ![](chrome-tabs.svg)
 
+<<<<<<< HEAD
 Ici nous pouvons voir trois zones : 
 
 1. La **Zone Ressources** répertorie les fichiers HTML, JavaScript, CSS et autres, y compris les images attachées à la page. Les extensions Chrome peuvent également apparaître ici.
 2. La **Zone Source** affiche le code source.
 3. La **zone d’information et de contrôle** est réservée au débogage, nous allons bientôt l’explorer.
+=======
+The Sources panel has 3 parts:
+
+1. The **File Navigator** pane lists HTML, JavaScript, CSS and other files, including images that are attached to the page. Chrome extensions may appear here too.
+2. The **Code Editor** pane shows the source code.
+3. The **JavaScript Debugging** pane is for debugging, we'll explore it soon.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 Maintenant, vous pouvez cliquer sur le même bouton <span class="devtools" style="background-position:-172px -122px"></span> à nouveau pour masquer la liste des ressources et laisser un peu d’espace au code.
 

@@ -267,7 +267,7 @@ Il peut y avoir plusieurs occurrences de `return` dans une seule fonction. Par e
 
 ```js run
 function checkAge(age) {
-  if (age > 18) {
+  if (age >= 18) {
 *!*
     return true;
 */!*
