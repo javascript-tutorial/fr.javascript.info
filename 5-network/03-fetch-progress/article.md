@@ -107,10 +107,6 @@ Expliquons cela étape par étape :
     let blob = new Blob(chunks);
     ```
 
-<<<<<<< HEAD
 À la fin, nous avons le résultat (sous forme de chaîne de caractères ou d'objet blob, selon ce qui est pratique) et le suivi des progrès dans le processus.
-=======
-At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
->>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 Encore une fois, veuillez noter que ce n'est pas pour la progression en *upload* (pas de possibilité actuellement avec `fetch`), seulement pour la progression en *download*.
