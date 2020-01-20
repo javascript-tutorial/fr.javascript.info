@@ -45,17 +45,13 @@ alert( map.size ); // 3
 Au travers de cet exemple nous pouvons voir, qu'à la différence des `Objects`, les clés ne sont pas converties en chaîne de caractère.
 Il est donc possible d'utiliser n'importe quel type.
 
-<<<<<<< HEAD
-**On peut aussi utiliser les `Objects` comme clé dans une `Map`.**
-=======
-```smart header="`map[key]` isn't the right way to use a `Map`"
-Although `map[key]` also works, e.g. we can set `map[key] = 2`, this is treating `map` as a plain JavaScript object, so it implies all corresponding limitations (no object keys and so on).
+```smart header="`map[key]` n'est pas la bonne façon d'utiliser un `Map`"
+Bien que `map[key]` fonctionne également, par exemple nous pouvons définir `map[key] = 2`, cela traite `map` comme un objet JavaScript simple, ce qui implique toutes les limitations correspondantes (pas de clés d'objet, etc.).
 
-So we should use `map` methods: `set`, `get` and so on.
+Nous devons donc utiliser les méthodes `map`: `set`, `get` et ainsi de suite.
 ```
 
-**Map can also use objects as keys.**
->>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
+**Map peut également utiliser des objets comme clés.**
 
 Par exemple:
 
