@@ -31,9 +31,15 @@ Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas - cela n'a p
 - `resolve(value)` -  si la tâche s'est terminée avec succés, avec le résultat `value`.
 - `reject(error)` - si une erreur est survenue, `error` est l'object erreur.
 
+<<<<<<< HEAD
 Pour résumer : l'exécuteur se lance automatiquement, il doit réaliser une tâche puis lancer soit `resolve` soit `reject`.
 
 L'objet `promesse` retourné par le constructeur `new Promise` a des propriétés internes :
+=======
+So to summarize: the executor runs automatically and performs a job. Then it should call `resolve` if it was succssful or `reject` if there was an error.
+
+The `promise` object returned by the `new Promise` constructor has internal properties:
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 - `state` (état) - initiallement à `"pending"` (en attente), se change soit en `"fulfilled"` (tenue) lorsque `resolve` est appelé ou `"rejected"` (rompue) si `reject` est appelé.
 - `result` - initialement à `undefined` se change à `value` quand `resolve(value)` est appelé ou `error` quand `reject(error)` est appelé.
@@ -59,7 +65,14 @@ On peut voir deux chose en lançant le code ci-dessus :
 1. L'exécuteur est appelé automatiquement et immédiatement (avec `new Promise`).
 2. L'exécuteur reçoit deux arguments : `resolve` et `reject` - ces deux fonctions sont pré-définies par le moteur de Javascript. Aussi nous n'avons pas besoin de les créer. Nous devons seulement appelé l'une ou l'autre quand le résultat est prêt.
 
+<<<<<<< HEAD
     Après une seconde de "calcul" l'exécuteur appelle `resolve("done")` pour produire le résultat. Cela change l'état de l'objet `promesse` :
+=======
+1. The executor is called automatically and immediately (by `new Promise`).
+2. The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don't need to create them. We should only call one of them when ready.
+
+    After one second of "processing" the executor calls `resolve("done")` to produce the result. This changes the state of the `promise` object:
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
     ![](promise-resolve-1.svg)
 
@@ -78,7 +91,11 @@ L'appel a `reject(...)` change l'object promesse à l'état `"rejected"` :
 
 ![](promise-reject-1.svg)
 
+<<<<<<< HEAD
 Pour résumer, l'exécuteur devrait réaliser une tâche (normalement quelque chose qui prends du temps) puis appelle `resolve` ou `reject` pour changer l'état de l'objet promesse correspondant.
+=======
+To summarize, the executor should perform a job (usually something that takes time) and then call `resolve` or `reject` to change the state of the corresponding promise object.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 Une promesse qui est soit tenue ou rejetée est appelée "settled" (acquitttée) opposé à une promesse initialisée à "en attente".
 
@@ -165,7 +182,11 @@ promise.then(
 
 La première fonction s'est exécutée.
 
+<<<<<<< HEAD
 Et dans le cas d'une rupture -- la deuxième seulement s'exécute :
+=======
+And in the case of a rejection, the second one:
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 ```js run
 let promise = new Promise(function(resolve, reject) {
@@ -202,8 +223,13 @@ let promise = new Promise((resolve, reject) => {
 });
 
 *!*
+<<<<<<< HEAD
 // .catch(f) est similaire à .then(null, f)
 promise.catch(alert); // affiche "Error: Whoops!" après 1 seconde
+=======
+// .catch(f) is the same as promise.then(null, f)
+promise.catch(alert); // shows "Error: Whoops!" after 1 second
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 */!*
 ```
 
@@ -250,7 +276,11 @@ Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya que
       throw new Error("error");
     })
       .finally(() => alert("Promise ready"))
+<<<<<<< HEAD
       .catch(err => alert(err));  // <-- .catch gère l'objet erreur
+=======
+      .catch(err => alert(err));  // <-- .catch handles the error object
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
     ```
 
     Cela est vraiment pratique, en effet `finally` n'est pas censer gérer le résultat d'une promesse. Donc il passe à travers.

@@ -44,7 +44,11 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
 
     Cela suppose que le serveur effectue le suivi des uploads de fichiers par l'en-tête `X-File-Id`. Doit être implémenté côté serveur.
 
+<<<<<<< HEAD
     Si le fichier n'existe pas encore sur le serveur, la réponse du serveur doit être `0`.
+=======
+    If the file doesn't yet exist at the server, then the server response should be `0`
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 3. Ensuite, nous pouvons utiliser un `Blob` par la méhtode `slice` pour envoyer le fichier depuis `startByte` :
     ```js
