@@ -26,24 +26,14 @@ La fonction passée à `new Promise` est appelée l'*exécuteur*. Quand `new Pro
 
 Ses arguments `resolve` (tenir) et `reject` (rompre) sont les fonctions de retours directement fournies par Javascript. Notre code est inclus seulement dans l'exécuteur.
 
-<<<<<<< HEAD
-Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas - cela n'a pas d'importance -, il appellera un des deux fonctions de retours :
-=======
-When the executor obtains the result, be it soon or late, doesn't matter, it should call one of these callbacks:
->>>>>>> ff042a03191dfad1268219ae78758193a5803b38
+Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas, cela n'a pas d'importance, il appellera une des deux fonctions callbacks :
 
 - `resolve(value)` -  si la tâche s'est terminée avec succés, avec le résultat `value`.
 - `reject(error)` - si une erreur est survenue, `error` est l'object erreur.
 
-<<<<<<< HEAD
-Donc, pour résumer: l'exécuteur s'exécute automatiquement et effectue un travail. Ensuite, il devrait appeler `resolve` s'il a réussi ou `reject` s'il y avait une erreur.
+Donc, pour résumer : l'exécuteur s'exécute automatiquement et effectue un travail. Ensuite, il devrait appeler `resolve` s'il a réussi ou `reject` s'il y avait une erreur.
 
 L'objet `promise` retourné par le constructeur `new Promise` a des propriétés internes :
-=======
-So to summarize: the executor runs automatically and attempts to perform a job. When it is finished with the attempt it calls `resolve` if it was successful or `reject` if there was an error.
-
-The `promise` object returned by the `new Promise` constructor has these internal properties:
->>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 - `state` (état) - initiallement à `"pending"` (en attente), se change soit en `"fulfilled"` (tenue) lorsque `resolve` est appelé ou `"rejected"` (rompue) si `reject` est appelé.
 - `result` - initialement à `undefined` se change à `value` quand `resolve(value)` est appelé ou `error` quand `reject(error)` est appelé.
