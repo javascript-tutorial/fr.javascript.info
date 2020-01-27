@@ -321,8 +321,13 @@ let key = "age";
 alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette propriété
 ```
 
+<<<<<<< HEAD
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
 Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
+=======
+````smart header="Using \"in\" for properties that store `undefined`"
+Usually, the strict comparison `"=== undefined"` check the property existence just fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
