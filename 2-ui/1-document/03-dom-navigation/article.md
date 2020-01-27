@@ -5,37 +5,37 @@ libs:
 ---
 
 
-# Walking the DOM
+# Parcourir le DOM
 
-The DOM allows us to do anything with elements and their contents, but first we need to reach the corresponding DOM object.
+Le DOM nous permet de faire n'importe quoi avec les éléments et leur contenu, mais nous devons d'abord atteindre l'objet DOM correspondant.
 
-All operations on the DOM start with the `document` object. That's the main "entry point" to DOM. From it we can access any node.
+Toutes les opérations sur le DOM commencent par l'objet `document`. C'est le "point d'entrée" principal du DOM. De là, nous pouvons accéder à n'importe quel nœud.
 
-Here's a picture of links that allow for travel between DOM nodes:
+Voici une image des liens qui permettent de voyager entre les nœuds DOM :
 
 ![](dom-links.svg)
 
-Let's discuss them in more detail.
+Discutons-en plus en détail.
 
-## On top: documentElement and body
+## En haut : documentElement et body
 
-The topmost tree nodes are available directly as `document` properties:
+Les nœuds supérieurs de l'arbre sont disponibles directement en tant que propriétés de `document` :
 
 `<html>` = `document.documentElement`
-: The topmost document node is `document.documentElement`. That's the DOM node of the `<html>` tag.
+: Le nœud de document le plus haut est `document.documentElement`. C'est le noeud DOM de la balise `<html>`.
 
 `<body>` = `document.body`
-: Another widely used DOM node is the `<body>` element -- `document.body`.
+: Un autre nœud DOM largement utilisé est l'élément `<body>` -- `document.body`.
 
 `<head>` = `document.head`
-: The `<head>` tag is available as `document.head`.
+: La balise `<head>` est disponible en tant que `document.head`.
 
-````warn header="There's a catch: `document.body` can be `null`"
-A script cannot access an element that doesn't exist at the moment of running.
+````warn header="Il y a un hic : `document.body` peut être `null`"
+Un script ne peut pas accéder à un élément qui n'existe pas au moment de l'exécution.
 
-In particular, if a script is inside `<head>`, then `document.body` is unavailable, because the browser did not read it yet.
+En particulier, si un script se trouve dans `<head>`, alors `document.body` n'est pas disponible, car le navigateur ne l'a pas encore lu.
 
-So, in the example below the first `alert` shows `null`:
+Ainsi, dans l'exemple ci-dessous, la première `alert` affiche `null` :
 
 ```html run
 <html>
@@ -43,7 +43,7 @@ So, in the example below the first `alert` shows `null`:
 <head>
   <script>
 *!*
-    alert( "From HEAD: " + document.body ); // null, there's no <body> yet
+    alert( "From HEAD: " + document.body ); // null, il n'y a pas encore de <body>
 */!*
   </script>
 </head>
@@ -51,7 +51,7 @@ So, in the example below the first `alert` shows `null`:
 <body>
 
   <script>
-    alert( "From BODY: " + document.body ); // HTMLBodyElement, now it exists
+    alert( "From BODY: " + document.body ); // HTMLBodyElement maintenant existe
   </script>
 
 </body>
@@ -59,18 +59,18 @@ So, in the example below the first `alert` shows `null`:
 ```
 ````
 
-```smart header="In the DOM world `null` means \"doesn't exist\""
-In the DOM, the `null` value means "doesn't exist" or "no such node".
+```smart header="Dans le monde du DOM, `null` signifie \"n'existe pas \""
+Dans le DOM, la valeur `null` signifie "n'existe pas" ou "pas ce genre de nœud".
 ```
 
-## Children: childNodes, firstChild, lastChild
+## Enfants : childNodes, firstChild, lastChild
 
-There are two terms that we'll use from now on:
+Nous utiliserons désormais deux termes :
 
-- **Child nodes (or children)** -- elements that are direct children. In other words, they are nested exactly in the given one. For instance, `<head>` and `<body>` are children of `<html>` element.
-- **Descendants** -- all elements that are nested in the given one, including children, their children and so on.
+- **Noeuds enfants (ou enfants)** -- éléments qui sont des enfants directs. En d'autres termes, ils sont imbriqués dans celui donné. Par exemple, `<head>` et `<body>` sont des enfants de l'élément `<html>`.
+- **Descendants** -- tous les éléments imbriqués dans l'élément donné, y compris les enfants, leurs enfants, etc.
 
-For instance, here `<body>` has children `<div>` and `<ul>` (and few blank text nodes):
+Par exemple, ici `<body>` a des enfants `<div>` et `<ul>` (et quelques nœuds texte vides) :
 
 ```html run
 <html>
@@ -86,11 +86,11 @@ For instance, here `<body>` has children `<div>` and `<ul>` (and few blank text 
 </html>
 ```
 
-...And descendants of `<body>` are not only direct children `<div>`, `<ul>` but also more deeply nested elements, such as `<li>` (a child of `<ul>`) and `<b>` (a child of `<li>`) -- the entire subtree.
+... Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>` ) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
 
-**The `childNodes` collection lists all child nodes, including text nodes.**
+**La collection `childNodes` répertorie tous les nœuds enfants, y compris les nœuds texte.**
 
-The example below shows children of `document.body`:
+L'exemple ci-dessous montre des enfants de `document.body` :
 
 ```html run
 <html>
@@ -115,19 +115,19 @@ The example below shows children of `document.body`:
 </html>
 ```
 
-Please note an interesting detail here. If we run the example above, the last element shown is `<script>`. In fact, the document has more stuff below, but at the moment of the script execution the browser did not read it yet, so the script doesn't see it.
+Veuillez noter un détail intéressant ici. Si nous exécutons l'exemple ci-dessus, le dernier élément affiché est `<script>`. En fait, le document contient plus de choses en dessous, mais au moment de l'exécution du script, le navigateur ne l'a pas encore lu, donc le script ne le voit pas.
 
-**Properties `firstChild` and `lastChild` give fast access to the first and last children.**
+**Les propriétés `firstChild` et `lastChild` donnent un accès rapide aux premier et dernier enfants.**
 
-They are just shorthands. If there exist child nodes, then the following is always true:
+Ce ne sont que des raccourcis. S'il existe des nœuds enfants, ce qui suit est toujours vrai :
 ```js
 elem.childNodes[0] === elem.firstChild
 elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
 ```
 
-There's also a special function `elem.hasChildNodes()` to check whether there are any child nodes.
+Il y a aussi une fonction spéciale `elem.hasChildNodes()` pour vérifier s'il y a des nœuds enfants.
 
-### DOM collections
+### Collections DOM
 
 As we can see, `childNodes` looks like an array. But actually it's not an array, but rather a *collection* -- a special array-like iterable object.
 
