@@ -91,7 +91,7 @@ Par exemple :
 ```js
 // les guillemets backtick ` permettent de scinder la chaîne de caractères en plusieurs lignes
 let str = `
-  Ecma International's TC39 is a group of JavaScript developers,
+  ECMA International's TC39 is a group of JavaScript developers,
   implementers, academics, and more, collaborating with the community
   to maintain and evolve the definition of JavaScript.
 `;

@@ -92,7 +92,11 @@ new Promise((resolve, reject) => {
 }).catch(alert); // ReferenceError: blabla is not defined
 ```
 
+<<<<<<< HEAD
 Le `.catch` final n'attrape pas seulement les rejets explicites, mais aussi les erreurs occasionnelles dans les gestionnaires ci-dessus.
+=======
+The final `.catch` not only catches explicit rejections, but also accidental errors in the handlers above.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 ## Renouvellement
 
@@ -100,7 +104,11 @@ Comme nous l'avons déjà remarqué, `.catch` à la fin de la chaîne est simila
 
 Dans un `try...catch` classique nous pouvons analyser l'erreur et peut-être la relancer si nous ne pouvons pas la gérer. La même chose est possible pour les promesses.
 
+<<<<<<< HEAD
 Si nous utilisons`throw` dans `.catch`, alors le contrôle passe au gestionnaire d'erreur suivant qui est plus proche. Et si nous gérons l'erreur et finissons normalement, alors elle continue jusqu'au gestionnaire `.then` le plus proche.
+=======
+If we `throw` inside `.catch`, then the control goes to the next closest error handler. And if we handle the error and finish normally, then it continues to the next closest successful `.then` handler.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 In the example below the `.catch` successfully handles the error:
 

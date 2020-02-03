@@ -23,7 +23,11 @@ Pourquoi le `.then` se déclenche par la suite? Que se passe-t-il?
 
 ## File d'attente pour microtaches
 
+<<<<<<< HEAD
 Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (ES8 terme).
+=======
+Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue `PromiseJobs`, more often referred to as the "microtask queue" (ES8 term).
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
 

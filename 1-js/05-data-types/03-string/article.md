@@ -541,7 +541,11 @@ L'algorithme "approprié" pour effectuer des comparaisons de chaînes est plus c
 
 Le navigateur doit donc connaître la langue à comparer.
 
+<<<<<<< HEAD
 Heureusement, tous les navigateurs modernes (IE10- nécessite la bibliothèque supplémentaire [Intl.JS](https://github.com/andyearnshaw/Intl.js/)) supportent le standard d'internationalisation [ECMA 402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+=======
+Luckily, all modern browsers (IE10- requires the additional library [Intl.js](https://github.com/andyearnshaw/Intl.js/)) support the internationalization standard [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Elle fournit une méthode spéciale pour comparer des chaînes de caractères dans différentes langues, en respectant leurs règles.
 

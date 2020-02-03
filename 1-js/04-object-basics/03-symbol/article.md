@@ -19,7 +19,11 @@ let id = Symbol();
 Lors de la création, nous pouvons donner à symbole une description (également appelée nom de symbole), particulièrement utile pour le débogage :
 
 ```js
+<<<<<<< HEAD
 // id est un symbole avec la description "id"
+=======
+// id is a symbol with the description "id"
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 let id = Symbol("id");
 ```
 
