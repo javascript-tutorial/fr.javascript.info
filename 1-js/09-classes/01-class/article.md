@@ -265,11 +265,7 @@ class User {
 let user = new User("John");
 alert(user.name); // John
 
-<<<<<<< HEAD
 user = new User(""); // le nom est trop court.
-=======
-user = new User(""); // Name is too short.
->>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 ```
 
 La déclaration de la classe Cree des accesseurs et des mutateurs dans `User.prototype`, ainsi:
