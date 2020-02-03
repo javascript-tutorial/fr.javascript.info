@@ -256,7 +256,7 @@ Pour les valeurs paires de `i`, la directive `continue` arrête l'exécution du 
 ````smart header="La directive `continue` aide à réduire le niveau d'imbrication"
 Une boucle affichant des valeurs impaires pourrait ressembler à ceci :
 
-```js
+```js run
 for (let i = 0; i < 10; i++) {
 
   if (i % 2) {
@@ -268,7 +268,11 @@ for (let i = 0; i < 10; i++) {
 
 D'un point de vue technique, c'est identique à l'exemple du dessus. Certes, nous pouvons simplement envelopper le code dans un bloc `if` au lieu de `continue`.
 
+<<<<<<< HEAD
 Mais comme effet secondaire, nous avons obtenu un niveau d'imbrication supplémentaire (l'appel de l'`alert` à l'intérieur des accolades). Si le code à l'intérieur est plus long que quelques lignes, la lisibilité globale peut en être réduite.
+=======
+But as a side-effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of `if` is longer than a few lines, that may decrease the overall readability.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 ````
 
 ````warn header="Pas de `break/continue` à droite de '?'"
