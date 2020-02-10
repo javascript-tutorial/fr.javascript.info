@@ -16,7 +16,11 @@ Le prototype est un peu "magique". Lorsque nous voulons lire une propriété de 
 
 La propriété `[[Prototype]]` est interne et cachée, mais il y a plusieurs façons de la définir.
 
+<<<<<<< HEAD
 L'un d'eux consiste à utiliser `__proto__`, comme ceci :
+=======
+One of them is to use the special name `__proto__`, like this:
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 ```js run
 let animal = {
