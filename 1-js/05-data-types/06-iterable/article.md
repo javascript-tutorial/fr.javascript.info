@@ -12,11 +12,7 @@ Si un objet n'est pas techniquement un tableau, mais représente une collection 
 
 Nous pouvons facilement saisir le concept des itérables en faisant le nôtre.
 
-<<<<<<< HEAD
-Par exemple, nous avons un objet, ce n'est pas un tableau, mais semble convenir pour une boucle `for..of`.
-=======
-For instance, we have an object that is not an array, but looks suitable for `for..of`.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Par exemple, nous avons un objet qui n'est pas un tableau, mais qui semble convenir pour une boucle `for..of`.
 
 Comme un objet `range` qui représente un intervalle de nombres:
 
@@ -296,21 +292,12 @@ alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution dif
 
 Les objets pouvant être utilisés dans `for..of` s'appellent *iterable*.
 
-<<<<<<< HEAD
 - Techniquement, les iterables doivent implémenter la méthode nommée `Symbol.iterator`.
-    - Le résultat de `obj [Symbol.iterator]` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
-    - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, valeur: any}`, ici `done: true` dénote la fin de l'itération, sinon la `valeur` est la valeur suivante.
+    - Le résultat de `obj[Symbol.iterator]` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
+    - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, value: any}`, ici `done: true` dénote la fin du processus de l'itération, sinon la `value` est la valeur suivante.
 - La méthode `Symbol.iterator` est appelée automatiquement par `for..of`, mais nous pouvons aussi le faire directement.
-- Les iterables intégrés tels que des chaînes ou des tableaux implémentent également `Symbol.iterator`.
-- L'itérateur de chaîne connaît les paires de substitution.
-=======
-- Technically, iterables must implement the method named `Symbol.iterator`.
-    - The result of `obj[Symbol.iterator]` is called an *iterator*. It handles the further iteration process.
-    - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
-- The `Symbol.iterator` method is called automatically by `for..of`, but we also can do it directly.
-- Built-in iterables like strings or arrays, also implement `Symbol.iterator`.
-- String iterator knows about surrogate pairs.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+- Les iterables intégrés tels que des chaînes de caractères ou des tableaux implémentent également `Symbol.iterator`.
+- L'itérateur de chaîne de caractères connaît les paires de substitution.
 
 
 Les objets qui ont des propriétés indexées et des `length` sont appelés *array-like (comme-un-tableau)*. De tels objets peuvent également avoir d'autres propriétés et méthodes, mais ne possèdent pas les méthodes intégrées des tableaux.
