@@ -101,13 +101,9 @@ Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 user.likes birds = true
 ```
 
-<<<<<<< HEAD
-C’est parce que le point exige que la clé soit un identificateur de variable valide. C'est-à-dire : pas d'espaces et autres limitations.
-=======
-JavaScript doesn't understand that. It thinks that we address `user.likes`, and then gives a syntax error when comes across unexpected `birds`.
+JavaScript ne comprend pas cela. Il pense que nous adressons `user.likes`, ensuite il donne une erreur de syntaxe lorsqu'il rencontre des `birds` inattendus.
 
-The dot requires the key to be a valid variable identifier. That implies: contains no spaces, doesn't start with a digit and doesn't include special characters (`$` и `_` are allowed).
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Le point nécessite que la clé soit un identificateur de variable valide. Cela implique qu'elle ne contient aucun espace, ne commence pas par un chiffre et n'inclut pas de caractères spéciaux (`$` et `_` sont autorisés).
 
 Il existe une autre “notation entre crochets” qui fonctionne avec n’importe quelle chaîne :
 
@@ -209,48 +205,7 @@ Les crochets sont beaucoup plus puissants que la notation par points. Ils autori
 
 Ainsi, la plupart du temps, lorsque les noms de propriété sont connus et simples, le point est utilisé. Et si nous avons besoin de quelque chose de plus complexe, nous passons aux crochets.
 
-<<<<<<< HEAD
-
-
-````smart header="Les mots réservés sont autorisés comme noms de propriétés"
-Une variable ne peut pas avoir un nom égal à l'un des mots réservés à la langue tels que "for", "let", "return", etc.
-
-Mais pour une propriété d’objet, il n’ya pas de telle restriction. N'importe quel nom est autorisé :
-
-```js run
-let obj = {
-  for: 1,
-  let: 2,
-  return: 3
-}
-
-alert( obj.for + obj.let + obj.return );  // 6
-```
-
-En principe, tout nom est autorisé, mais il en existe un spécial: `"__proto__"` qui bénéficie d’un traitement spécial pour des raisons historiques. Par exemple, nous ne pouvons pas définir une valeur non-objet :
-
-```js run
-let obj = {};
-obj.__proto__ = 5;
-alert(obj.__proto__); // [object Object], n'a pas fonctionné comme prévu
-```
-
-Comme on le voit d'après le code, l'affectation à une primitive `5` est ignorée.
-
-Cela peut devenir une source de bugs et même de vulnérabilités si nous avons l’intention de stocker des paires clé-valeur arbitraires dans un objet et d’autoriser un visiteur à spécifier les clés.
-
-Dans ce cas, le visiteur peut choisir `__proto__` comme clé et la logique d’attribution sera ruinée (comme affiché ci-dessus).
-
-Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
-
-Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set>, qui supporte des clés arbitraires.
-````
-
-
 ## Valeur de propriété abrégée (Property value shorthand)
-=======
-## Property value shorthand
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Dans le code, nous utilisons souvent des variables existantes en tant que valeurs pour les noms de propriétés.
 
@@ -294,32 +249,29 @@ let user = {
 };
 ```
 
-<<<<<<< HEAD
-## Vérification d'existence
-=======
-## Property names limitations
+## Limitations des noms de propriété
 
-Property names (keys) must be either strings or symbols (a special type for identifiers, to be covered later).
+Les noms de propriété (clés) doivent être des chaînes de caractères ou des symboles (un type spécial pour les identifiants, à couvrir plus tard).
 
-Other types are automatically converted to strings.
+Les autres types sont automatiquement convertis en chaînes de caractères.
 
-For instance, a number `0` becomes a string `"0"` when used as a property key:
+Par exemple, un nombre `0` devient une chaîne de caractères `"0"` lorsqu'il est utilisé comme clé de propriété :
 
 ```js run
 let obj = {
-  0: "test" // same as "0": "test"
+  0: "test" // pareil que "0": "test"
 };
 
-// both alerts access the same property (the number 0 is converted to string "0")
+// les deux alertes accèdent à la même propriété (le nombre 0 est converti en chaîne "0")
 alert( obj["0"] ); // test
-alert( obj[0] ); // test (same property)
+alert( obj[0] ); // test (même propriété)
 ```
 
-**Reserved words are allowed as property names.**
+**Les mots réservés sont autorisés comme noms de propriété.**
 
-As we already know, a variable cannot have a name equal to one of language-reserved words like "for", "let", "return" etc.
+Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés du langage comme `for`, `let`, `return` etc.
 
-But for an object property, there's no such restriction. Any name is fine:
+Mais pour une propriété d'objet, il n'y a pas ce genre de restriction. Tous les noms sont acceptés :
 
 ```js run
 let obj = {
@@ -331,30 +283,29 @@ let obj = {
 alert( obj.for + obj.let + obj.return );  // 6
 ```
 
-We can use any string as a key, but there's a special property named `__proto__` that gets special treatment for historical reasons.
+Nous pouvons utiliser n'importe quelle chaîne de caractères comme clé, mais il existe une propriété spéciale nommée `__proto__` qui reçoit un traitement spécial pour des raisons historiques.
 
-For instance, we can't set it to a non-object value:
+Par exemple, nous ne pouvons pas la définir sur une valeur non-objet :
 
 ```js run
 let obj = {};
 obj.__proto__ = 5; // assign a number
-alert(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
+alert(obj.__proto__); // [object Object] - la valeur est un objet, n'a pas fonctionné comme prévu
 ```
 
-As we see from the code, the assignment to a primitive `5` is ignored.
+Comme nous le voyons dans le code, l'affectation à une primitive `5` est ignorée.
 
-The nature of `__proto__` will be revealed in detail later in the chapter [](info:prototype-inheritance).
+La nature de `__proto__` sera révélée en détail plus loin dans le chapitre [](info:prototype-inheritance).
 
-As for now, it's important to know that such behavior of `__proto__` can become a source of bugs and even vulnerabilities if we intend to store user-provided keys in an object.
+Pour l'instant, il est important de savoir qu'un tel comportement de `__proto__` peut devenir une source de bugs et même de vulnérabilités si nous avons l'intention de stocker des clés fournies par l'utilisateur dans un objet.
 
-The problem is that a visitor may choose `__proto__` as the key, and the assignment logic will be ruined (as shown above).
+Le problème est qu'un visiteur peut choisir `__proto__` comme clé, et la logique d'affectation sera ruinée (comme indiqué ci-dessus).
 
-Later we'll see workarounds for the problem:
-1. We'll see how to make an objects treat `__proto__` as a regular property in the chapter [](info:prototype-methods).
-2. There's also study another data structure [Map](info:map-set) in the chapter <info:map-set>, which supports arbitrary keys.
+Plus tard, nous verrons des solutions à ce problème :
+1. Nous verrons comment faire en sorte qu'un objet traite `__proto__` comme une propriété régulière dans le chapitre [](info:prototype-methods).
+2. Il y a aussi à étudier une autre structure de données [Map](info:map-set) dans le chapitre <info:map-set>, qui prend en charge les clés arbitraires.
 
-## Property existance test, "in" operator
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+## Test d'existence de propriété, opérateur "in"
 
 Une caractéristique notable des objets est qu’il est possible d’accéder à n’importe quelle propriété. Il n’y aura pas d’erreur si la propriété n’existe pas ! L'accès à une propriété non existante renvoie simplement `undefined`. Le langage fournit un moyen très courant de vérifier si la propriété existe -- pour l'obtenir et la comparer avec `undefined` :
 
@@ -366,7 +317,7 @@ alert( user.noSuchProperty === undefined ); // true signifie "pas une telle prop
 
 Il existe également un opérateur spécial `"in"` pour vérifier l'existence d'une propriété.
 
-La syntax est :
+La syntaxe est :
 ```js
 "key" in object
 ```
