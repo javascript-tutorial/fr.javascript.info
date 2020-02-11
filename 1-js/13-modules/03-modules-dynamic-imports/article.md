@@ -94,9 +94,5 @@ Les importations dynamiques fonctionnent dans des scripts standard, elles n’ex
 ```smart
 Bien que `import()` ressemble à un appel de fonction, il s’agit d’une syntaxe spéciale qui utilise des parenthèses (similaire à `super()`).
 
-<<<<<<< HEAD
 Nous ne pouvons donc pas copier `import` dans une variable ni utiliser `call/apply` avec elle. Ce n'est pas une fonction.
-=======
-So we can't copy `import` to a variable or use `call/apply` with it. It's not a function.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 ```
