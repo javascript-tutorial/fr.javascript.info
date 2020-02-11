@@ -23,8 +23,13 @@ Un module est juste un fichier. Un script est un module.
 
 Les modules peuvent se charger mutuellement et utiliser des directives spéciales, `export` et `import`, pour échanger des fonctionnalités, appeler les fonctions d’un module dans un autre:
 
+<<<<<<< HEAD
 - `export` permet d'indiquer les variables et fonctions devant être accessible en dehors du document.
 - `import` permet d'importer les variables et fonctions d'autres modules.
+=======
+- `export` keyword labels variables and functions that should be accessible from outside the current module.
+- `import` allows the import of functionality from other modules.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Par exemple, si nous avons un fichier `sayHi.js` exportant une fonction
 
@@ -45,7 +50,11 @@ alert(sayHi); // function...
 sayHi('John'); // Hello, John!
 ```
 
+<<<<<<< HEAD
 La directive `import` charge le module qui a pour chemin `./sayHi.js` par rapport au fichier actuel et affecte la fonction exportée `sayHi` à la variable correspondante.
+=======
+The `import` directive loads the module by path `./sayHi.js` relative to the current file, and assigns exported function `sayHi` to the corresponding variable.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Lançons l’exemple dans le navigateur.
 
@@ -85,7 +94,11 @@ Les modules sont censés `export` ce qui doit être accessible de l'extérieur e
 
 Nous devons donc importer `user.js` dans `hello.js` et en tirer les fonctionnalités requises au lieu de nous fier à des variables globales.
 
+<<<<<<< HEAD
 Un exemple:
+=======
+This is the correct variant:
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 [codetabs src="scopes-working" height="140" current="hello.js"]
 
@@ -110,7 +123,11 @@ Si nous devons réellement créer une variable globale, nous pouvons l’affecte
 
 Si le même module est importé dans plusieurs autres emplacements, son code n'est exécuté que la première fois, puis les exportations sont données à tous les importateurs.
 
+<<<<<<< HEAD
 Cela a des conséquences importantes. Voyons cela sur des exemples.
+=======
+That has important consequences. Let's look at them using examples:
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Premièrement, si exécuter un code de module entraîne des effets secondaires, comme afficher un message, l'importer plusieurs fois ne le déclenchera qu'une seule fois - la première fois:
 
@@ -163,7 +180,11 @@ alert(admin.name); // Pete
 
 Donc, répétons-le, le module n’est exécuté qu’une fois. Les exportations sont générées, puis partagées entre les importateurs. Par conséquent, si quelque chose change d'objet `admin`, les autres modules le verront.
 
+<<<<<<< HEAD
 Un tel comportement permet de configurer des modules lors de la première importation. Nous pouvons configurer ses propriétés une fois, puis dans les importations ultérieures, il est prêt.
+=======
+Such behavior allows us to *configure* modules on first import. We can setup its properties once, and then in further imports it's ready.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Par exemple, le module `admin.js` peut fournir certaines fonctionnalités, mais attendez-vous à ce que les informations d'identification entrent dans l'objet `admin` de l'extérieur:
 
@@ -268,11 +289,19 @@ Remarque : le deuxième script fonctionne avant le premier ! Nous verrons donc d
 
 C’est parce que les modules sont différés, nous attendons donc que le document soit traité. Les scripts réguliers s'exécutent immédiatement, nous avons donc vu son resultat en premier.
 
+<<<<<<< HEAD
 Lorsque vous utilisez des modules, vous devez savoir que la page HTML apparaît lors de son chargement et que les modules JavaScript s'exécutent par la suite, afin que l'utilisateur puisse voir la page avant que l'application JavaScript soit prête. Certaines fonctionnalités peuvent ne pas encore fonctionner. Nous devons définir des "indicateurs de chargement" ou veiller à ce que le visiteur ne soit pas confus.
+=======
+When using modules, we should be aware that the HTML page shows up as it loads, and JavaScript modules run after that, so the user may see the page before the JavaScript application is ready. Some functionality may not work yet. We should put "loading indicators", or otherwise ensure that the visitor won't be confused by that.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 ### Async fonctionne sur les scripts en ligne
 
+<<<<<<< HEAD
 Pour les scripts non modulaires, l'attribut `async` ne fonctionne que sur les scripts externes. Les scripts asynchrones s'exécutent immédiatement lorsqu'ils sont prêts, indépendamment des autres scripts ou du document HTML.
+=======
+For non-module scripts, the `async` attribute only works on external scripts. Async scripts run immediately when ready, independently of other scripts or the HTML document.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Pour les modules, cela fonctionne sur tous les scripts.
 

@@ -140,8 +140,12 @@ Et voici une autre partie du code, peut-être un autre fichier qui l'utilise :
 // 📁 main.js
 let john = { name: "John" };
 
+<<<<<<< HEAD
 countUser(john); // compter ses visites
 countUser(john);
+=======
+countUser(john); // count his visits
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 // plus tard, John nous quitte
 john = null;

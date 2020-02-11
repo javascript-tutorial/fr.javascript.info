@@ -252,7 +252,11 @@ fetch('/article/promise-chaining/user.json')
   });
 ```
 
+<<<<<<< HEAD
 Il existe également une méthode `response.json()` qui lit les données distantes et les analyse au format JSON. Dans notre cas, c'est encore plus pratique, alors passons à cela.
+=======
+The `response` object returned from `fetch` also includes the method `response.json()` that reads the remote data and parses it as JSON. In our case that's even more convenient, so let's switch to it.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Nous allons également utiliser les fonctions fléchées pour la brièveté:
 
