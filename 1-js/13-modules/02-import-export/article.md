@@ -438,11 +438,7 @@ sayHi();
 import {sayHi} from './say.js'; // importer à la fin du fichier
 ```
 
-<<<<<<< HEAD
 En pratique, les importations se font généralement au début du fichier, mais ce n'est que pour des raisons de commodité.
-=======
-In practice imports are usually at the start of the file, but that's only for more convenience.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 **Veuillez noter que les instructions import/export ne fonctionnent pas si elles sont à l'intérieur `{...}`.**
 

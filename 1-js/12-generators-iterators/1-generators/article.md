@@ -102,11 +102,7 @@ Mais généralement, la première syntaxe est préférée, car l'étoile `*` ind
 
 Comme vous l'avez probablement déjà deviné en regardant la méthode `next()`, les générateurs sont [iterable](info:iterable).
 
-<<<<<<< HEAD
-Nous pouvons obtenir des valeurs de boucle sur `for..of`:
-=======
-We can loop over their values using `for..of`:
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Nous pouvons parcourir leurs valeurs en utilisant `for..of` :
 
 ```js run
 function* generateSequence() {
@@ -318,19 +314,11 @@ alert(str); // 0..9A..Za..z
 
 Une composition de générateur est un moyen naturel d'insérer le flux d'un générateur dans un autre. Il n'utilise pas de mémoire supplémentaire pour stocker les résultats intermédiaires.
 
-<<<<<<< HEAD
 ## "yield" est une route à double sens
-=======
-## "yield" is a two-way street
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Jusqu'à présent, les générateurs étaient similaires aux objets itérables, avec une syntaxe spéciale pour générer des valeurs. Mais en fait, ils sont beaucoup plus puissants et flexibles.
 
-<<<<<<< HEAD
-C'est parce que `yield` est une route à double sens: il renvoie non seulement le résultat à l'extérieur, mais peut également transmettre la valeur à l'intérieur du générateur.
-=======
-That's because `yield` is a two-way street: it not only returns the result to the outside, but also can pass the value inside the generator.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+C'est parce que `yield` est une route à double sens : il renvoie non seulement le résultat à l'extérieur, mais peut également transmettre la valeur à l'intérieur du générateur.
 
 Pour ce faire, nous devons appeler `generator.next(arg)`, avec un argument. Cet argument devient le résultat de `yield`.
 

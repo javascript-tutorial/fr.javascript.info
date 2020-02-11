@@ -4,11 +4,7 @@ Peu importe notre niveau en programmation, nos scripts comportent parfois des er
 
 Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'imprimant sur la console.
 
-<<<<<<< HEAD
-Mais il existe une construction de syntaxe `try..catch` qui permet de "rattraper" les erreurs et, au lieu de mourir, de faire quelque chose de plus raisonnable.
-=======
-But there's a syntax construct `try..catch` that allows us to "catch" errors so the script can, instead of dying, do something more reasonable.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Mais il existe une construction de syntaxe `try..catch` qui permet "d'attraper" les erreurs et, au lieu de mourir en cas de problème, de faire quelque chose de plus raisonnable.
 
 ## La syntaxe "try..catch"
 
@@ -28,27 +24,15 @@ try {
 
 Cela fonctionne comme ceci:
 
-<<<<<<< HEAD
 1. Tout d'abord, le code dans `try {...}` est exécuté.
-2. S'il n'y a pas eu d'erreur, alors `catch (err)` est ignoré: l'exécution arrive à la fin de `try` et continue en ignorant `catch`.
+2. S'il n'y a pas eu d'erreur, alors `catch(err)` est ignoré : l'exécution arrive à la fin de `try` et continue en ignorant `catch`.
 3. Si une erreur survient, alors l'exécution de `try` est arrêtée et le contrôle se place au début de `catch(err) `. La variable `err` (qui peut utiliser n'importe quel nom) contient un objet d'erreur avec des détails sur ce qui s'est passé.
 
 ![](try-catch-flow.svg)
 
-Donc, une erreur dans le bloc `try {…}` ne tue pas le script: nous avons une opportunité de la gérer dans `catch`.
+Donc, une erreur dans le bloc `try {…}` ne tue pas le script -- nous avons une opportunité de la gérer dans `catch`.
 
 Voyons des exemples.
-=======
-1. First, the code in `try {...}` is executed.
-2. If there were no errors, then `catch(err)` is ignored: the execution reaches the end of `try` and goes on, skipping `catch`.
-3. If an error occurs, then the `try` execution is stopped, and control flows to the beginning of `catch(err)`. The `err` variable (we can use any name for it) will contain an error object with details about what happened.
-
-![](try-catch-flow.svg)
-
-So, an error inside the `try {…}` block does not kill the script -- we have a chance to handle it in `catch`.
-
-Let's look at some examples.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 - Un exemple sans erreur: affiche `alert` `(1)` et `(2)`:
 
@@ -103,11 +87,7 @@ try {
 
 Le moteur JavaScript lit d'abord le code, puis l'exécute. Les erreurs qui se produisent lors de la phase de lecture sont appelées erreurs "d'analyse" et sont irrécupérables (de l'intérieur de ce code). C'est parce que le moteur ne peut pas comprendre le code.
 
-<<<<<<< HEAD
-Ainsi, `try..catch` ne peut gérer que les erreurs qui se produisent dans le code valide. De telles erreurs sont appelées "erreurs d'exécution" ou, parfois, "exceptions".
-=======
-So, `try..catch` can only handle errors that occur in valid code. Such errors are called "runtime errors" or, sometimes, "exceptions".
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Ainsi, `try..catch` ne peut gérer que les erreurs qui se produisent dans du code valide. De telles erreurs sont appelées "erreurs d'exécution" ou, parfois, "exceptions".
 ````
 
 

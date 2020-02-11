@@ -94,11 +94,8 @@ Mais ce devrait être deux déclarations distinctes, pas une seule. Une telle fu
 
 Il est recommandé de mettre les points-virgules entre les instructions, même si elles sont séparées par des nouvelles lignes. Cette règle est largement adoptée par la communauté. Notons encore une fois - *il est possible* de laisser de côté les points-virgules la plupart du temps. Mais il est plus sûr -- surtout pour un débutant -- de les utiliser.
 
-<<<<<<< HEAD
-## Les Commentaires
-=======
-## Comments [#code-comments]
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+## Les Commentaires [#code-comments]
+
 
 Au fil du temps, le programme devient de plus en plus complexe. Il devient nécessaire d'ajouter des *commentaires* qui décrivent ce qui se passe et pourquoi.
 

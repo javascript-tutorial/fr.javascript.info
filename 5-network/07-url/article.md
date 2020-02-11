@@ -3,15 +3,9 @@
 
 La classe d'[URL](https://url.spec.whatwg.org/#api) intégrée fournit une interface pratique pour créer et analyser des URL.
 
-<<<<<<< HEAD
-Il n'y a pas de méthodes de mise en réseau qui nécessitent exactement un objet `URL`, les chaînes de caractères sont généralement suffisantes. Donc, techniquement, nous n'avons pas à utiliser `URL`. Mais parfois, cela peut être très utile.
+Il n'y a pas de méthodes de mise en réseau qui nécessitent exactement un objet `URL`, les chaînes de caractères sont assez bonnes. Donc, techniquement, nous n'avons pas à utiliser `URL`. Mais parfois, cela peut être très utile.
 
 ## Création d'une URL
-=======
-There are no networking methods that require exactly a `URL` object, strings are good enough. So technically we don't have to use `URL`. But sometimes it can be really helpful.
-
-## Creating a URL
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 La syntaxe pour créer un nouvel objet `URL` :
 
@@ -68,26 +62,15 @@ Voici le cheatsheet pour les composants URL :
 - il peut y avoir aussi les propriétés `user` et `password` si l'authentification HTTP est présente : `http://login:password@site.com` (pas expliqué ci-dessus, très peu utilisé)
 
 
-<<<<<<< HEAD
 ```smart header="Nous pouvons passer des objets `URL` aux méthodes de mise en réseau (et à la plupart des autres) au lieu d'une chaîne de caractères"
-Nous pouvons utiliser un objet `URL` dans` fetch` ou `XMLHttpRequest`, presque partout où une chaîne de caractères URL est attendue.
+Nous pouvons utiliser un objet `URL` dans `fetch` ou `XMLHttpRequest`, presque partout où une chaîne de caractères URL est attendue.
 
-Généralement, l'objet `URL` peut être passé à n'importe quelle méthode au lieu d'une chaîne de caractères, car la plupart des méthodes effectueront la conversion vers cette dernière, qui transforme un objet` URL` en une chaîne de caractères avec une URL complète.
-=======
-```smart header="We can pass `URL` objects to networking (and most other) methods instead of a string"
-We can use a `URL` object in `fetch` or `XMLHttpRequest`, almost everywhere where a URL-string is expected.
-
-Generally, `URL` object can be passed to any method instead of a string, as most method will perform the string conversion, that turns a `URL` object into a string with full URL.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
+Généralement, l'objet `URL` peut être passé à n'importe quelle méthode au lieu d'une chaîne de caractères, car la plupart des méthodes effectueront la conversion de chaîne de caractères, qui transforme un objet `URL` en une chaîne de caractères avec une URL complète.
 ```
 
 ## SearchParams "?..."
 
-<<<<<<< HEAD
 Disons que nous voulons créer une URL avec des paramètres de recherche donnés, par exemple `https://google.com/search?query=JavaScript`.
-=======
-Let's say we want to create a url with given search params, for instance, `https://google.com/search?query=JavaScript`.
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Nous pouvons les fournir dans la chaîne de caractères URL :
 
