@@ -179,27 +179,7 @@ alert( clone[id] ); // 123
 
 Il n’y a pas de paradoxe ici. C'est par conception. L'idée est que lorsque nous clonons un objet ou que nous fusionnons des objets, nous souhaitons généralement que *toutes* les propriétés soient copiées (y compris les symboles tels que `id`).
 
-<<<<<<< HEAD
-````smart header="Les clés de propriété d'autres types sont forcées en chaînes de caractères"
-Nous ne pouvons utiliser que des chaînes de caractères ou des symboles en tant que clés dans des objets. Les autres types sont convertis en chaînes de caractères.
-
-Par exemple, un nombre `0` devient une chaîne de caractères `"0"` lorsqu'il est utilisé comme clé de propriété :
-
-```js run
-let obj = {
-  0: "test" // identique à "0": "test"
-};
-
-// les deux alertes accèdent à la même propriété (le nombre 0 est converti en chaîne de caractères "0")
-alert( obj["0"] ); // test
-alert( obj[0] ); // test (même propriété)
-```
-````
-
 ## Symboles globaux
-=======
-## Global symbols
->>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Comme nous l’avons vu, habituellement tous les symboles sont différents, même s’ils portent les mêmes noms. Mais parfois, nous voulons que les symboles portant le même nom soient les mêmes entités. Par exemple, différentes parties de notre application veulent accéder au symbole `"id"` qui signifie exactement la même propriété.
 
