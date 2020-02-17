@@ -63,11 +63,7 @@ Les capacités de JavaScript dans le navigateur sont limitées pour la sécurit�
 
 Les exemples de telles restrictions sont:
 
-<<<<<<< HEAD
-- JavaScript sur une page Web ne peut pas lire / écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système OS.
-=======
-- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
->>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
+- JavaScript sur une page Web ne peut pas lire/écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système d'exploitation.
 
     Les navigateurs modernes lui permettent de fonctionner avec des fichiers, mais l'accès est limité et n'est fourni que si l'utilisateur effectue certaines actions, comme «déposer» un fichier dans une fenêtre de navigateur ou le sélectionner via une balise `<input>`.
 

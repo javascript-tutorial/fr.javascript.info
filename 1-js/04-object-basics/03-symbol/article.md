@@ -226,11 +226,7 @@ alert( Symbol.keyFor(sym) ); // name
 alert( Symbol.keyFor(sym2) ); // id
 ```
 
-<<<<<<< HEAD
 `Symbol.keyFor` utilise en interne le registre de symboles global pour rechercher la clé du symbole. Donc, cela ne fonctionne pas pour les symboles non globaux. Si le symbole n’est pas global, il ne pourra pas le trouver et retournera `undefined`.
-=======
-The `Symbol.keyFor` internally uses the global symbol registry to look up the key for the symbol. So it doesn't work for non-global symbols. If the symbol is not global, it won't be able to find it and returns `undefined`.
->>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
 
 Cela dit, tous les symboles ont la propriété `description`.
 

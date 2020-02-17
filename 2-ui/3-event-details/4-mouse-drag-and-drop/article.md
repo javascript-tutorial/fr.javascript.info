@@ -293,8 +293,4 @@ Les composantes clés sont:
 - Nous pouvons utiliser la délégation d’évènements avec  `mousedown/up`.  Un gestionnaire d’évènement sur une grande surface qui contrôle la propriété `event.target` peut gérer  le Glisser-déposer pour des centaines d’éléments.
 - Ainsi de suite.
 
-<<<<<<< HEAD
-Il existe des cadres de programmation qui fondent leur architecture sur cela: `DragZone`, `Droppable`, `Draggable` et autres classes. La plus part d’entre elles font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Ou bien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et cela pourrait être plus flexible que d’adapter quelque chose d’autre.
-=======
-There are frameworks that build architecture over it: `DragZone`, `Droppable`, `Draggable` and other classes. Most of them do the similar stuff to what's described above, so it should be easy to understand them now. Or roll your own, as you can see that that's easy enough to do, sometimes easier than adapting a third-part solution.
->>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
+Il existe des frameworks qui fondent leur architecture sur cela : `DragZone`, `Droppable`, `Draggable` et d'autres classes. La plupart d’entre elles font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Ou bien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et comme vous le voyez cela pourrait être plus flexible que d’adapter une solution tierce.
