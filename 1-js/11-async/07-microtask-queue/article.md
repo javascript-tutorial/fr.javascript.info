@@ -54,7 +54,11 @@ Maintenant, l'ordre est comme prévu.
 
 ## Rejet non traité
 
+<<<<<<< HEAD
 Souvenez-vous de l'événement `unhandledrejection` du chapitre <info:promise-error-handling> ?
+=======
+Remember the `unhandledrejection` event from the article <info:promise-error-handling>?
+>>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
 
 Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré
 
@@ -109,4 +113,8 @@ Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois l
 
 Si nous devons garantir qu'un morceau de code est exécuté après `.then/catch/finally`, nous pouvons l'ajouter à un appel `.then` enchaîné.
 
+<<<<<<< HEAD
 Dans la plupart des moteurs Javascript, y compris les navigateurs et Node.js, le concept de microtaches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.
+=======
+In most Javascript engines, including browsers and Node.js, the concept of microtasks is closely tied with the "event loop" and "macrotasks". As these have no direct relation to promises, they are covered in another part of the tutorial, in the article <info:event-loop>.
+>>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8

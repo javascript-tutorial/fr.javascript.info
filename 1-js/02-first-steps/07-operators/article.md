@@ -136,6 +136,7 @@ Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro corr
 
 Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Pr%C3%A9c%C3%A9dence_des_op%C3%A9rateurs#Tableau) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
 
+<<<<<<< HEAD
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
 | ...        | ...             | ...     |
@@ -148,6 +149,20 @@ Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/We
 | ...        | ...             | ...     |
 | 3          | affectation     | `=`     |
 | ...        | ...             | ...     |
+=======
+| Precedence | Name | Sign |
+|------------|------|------|
+| ... | ... | ... |
+| 17 | unary plus | `+` |
+| 17 | unary negation | `-` |
+| 15 | multiplication | `*` |
+| 15 | division | `/` |
+| 13 | addition | `+` |
+| 13 | subtraction | `-` |
+| ... | ... | ... |
+| 3 | assignment | `=` |
+| ... | ... | ... |
+>>>>>>> 9acc1302a14a3bbabbc9bf95d04581094bd0f1a8
 
 Comme on peut le voir, le "plus unaire" a une priorité de `16`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+pommes + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
 
