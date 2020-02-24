@@ -149,11 +149,7 @@ Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/We
 | 3          | affectation     | `=`     |
 | ...        | ...             | ...     |
 
-<<<<<<< HEAD
-Comme on peut le voir, le "plus unaire" a une priorité de `16`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+pommes + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
-=======
-As we can see, the "unary plus" has a priority of `17` which is higher than the `13` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
->>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
+Comme on peut le voir, le "plus unaire" a une priorité de `17`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+apples + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
 
 ## Affectation
 

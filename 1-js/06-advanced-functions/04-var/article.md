@@ -153,11 +153,7 @@ Alors dans l'exemple au dessus, la branche `if (false)` n'est jamais exécutée,
 
 **Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
-<<<<<<< HEAD
-Il convient mieux de démontrer cet énoncé avec un exemple, comme celui ci :
-=======
-That's best demonstrated with an example:
->>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
+Cela est mieux démontré avec un exemple :
 
 ```js run
 function sayHi() {
