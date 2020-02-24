@@ -301,11 +301,19 @@ Pour l'instant, il est important de savoir qu'un tel comportement de `__proto__`
 
 Le problème est qu'un visiteur peut choisir `__proto__` comme clé, et la logique d'affectation sera ruinée (comme indiqué ci-dessus).
 
+<<<<<<< HEAD
 Plus tard, nous verrons des solutions à ce problème :
 1. Nous verrons comment faire en sorte qu'un objet traite `__proto__` comme une propriété régulière dans le chapitre [](info:prototype-methods).
 2. Il y a aussi à étudier une autre structure de données [Map](info:map-set) dans le chapitre <info:map-set>, qui prend en charge les clés arbitraires.
 
 ## Test d'existence de propriété, opérateur "in"
+=======
+There are two workarounds for the problem:
+1. Modify the object's behavior to treat `__proto__` as a regular property. We'll learn how to do it in the chapter [](info:prototype-methods).
+2. Using [Map](info:map-set) data structure which supports arbitrary keys. We'll learn it in the chapter <info:map-set>.
+
+## Property existence test, "in" operator
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 Une caractéristique notable des objets est qu’il est possible d’accéder à n’importe quelle propriété. Il n’y aura pas d’erreur si la propriété n’existe pas ! L'accès à une propriété non existante renvoie simplement `undefined`. Le langage fournit un moyen très courant de vérifier si la propriété existe -- pour l'obtenir et la comparer avec `undefined` :
 

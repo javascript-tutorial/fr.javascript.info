@@ -10,15 +10,24 @@ La tâche est la suivante: trouver le sous-tableau contigu de `arr` avec la somm
 
 Écrire la fonction `getMaxSubSum(arr)` qui retournera cette somme.
 
-For instance: 
+For instance:
 
 ```js
+<<<<<<< HEAD
 getMaxSubSum([-1, *!*2, 3*/!*, -9]) = 5 (la somme des éléments en surbrillance)
 getMaxSubSum([*!*2, -1, 2, 3*/!*, -9]) = 6
 getMaxSubSum([-1, 2, 3, -9, *!*11*/!*]) = 11
 getMaxSubSum([-2, -1, *!*1, 2*/!*]) = 3
 getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) = 100
 getMaxSubSum([*!*1, 2, 3*/!*]) = 6 (prend tout)
+=======
+getMaxSubSum([-1, *!*2, 3*/!*, -9]) == 5 (the sum of highlighted items)
+getMaxSubSum([*!*2, -1, 2, 3*/!*, -9]) == 6
+getMaxSubSum([-1, 2, 3, -9, *!*11*/!*]) == 11
+getMaxSubSum([-2, -1, *!*1, 2*/!*]) == 3
+getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) == 100
+getMaxSubSum([*!*1, 2, 3*/!*]) == 6 (take all)
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 ```
 
 Si tous les éléments sont négatifs, cela signifie que nous n'en prenons aucun (le sous-tableau est vide), la somme est donc zéro:

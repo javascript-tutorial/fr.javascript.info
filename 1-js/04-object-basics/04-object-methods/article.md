@@ -63,7 +63,11 @@ user.sayHi(); // Hello!
 ```smart header="Programmation orientée objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
+<<<<<<< HEAD
 La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
+=======
+OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E. Gamma, R. Helm, R. Johnson, J. Vissides or "Object-Oriented Analysis and Design with Applications" by G. Booch, and more.
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 ```
 ### Méthode abrégée
 

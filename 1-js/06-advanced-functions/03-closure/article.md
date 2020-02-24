@@ -345,7 +345,11 @@ let arr = [f(), f(), f()];
 
 un objet environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). en d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
 
+<<<<<<< HEAD
 Dans le code ci-dessous, une fois la fonction imbriquée supprimée, son environnement lexical englobant (et donc la `value`) est nettoyé de la mémoire;
+=======
+In the code below, after the nested function is removed, its enclosing Lexical Environment (and hence the `value`) is cleaned from memory:
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 ```js
 function f() {
