@@ -349,13 +349,8 @@ L'algorithme est probablement encore plus facile à lire à partir du code:
 
 
 ```js run
-<<<<<<< HEAD
 let company = { // le même objet, compressé pour la brièveté
-  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
-=======
-let company = { // the same object, compressed for brevity
   sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 1600 }],
->>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
   development: {
     sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
     internals: [{name: 'Jack', salary: 1300}]
