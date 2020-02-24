@@ -1,5 +1,5 @@
 
-# L'objet Function, EFN
+# L'objet Function, NFE
 
 Comme nous le savons déjà, une fonction en JavaScript est une valeur.
 
@@ -205,11 +205,11 @@ alert( counter() ); // 10
 
 Le choix dépend donc de nos objectifs.
 
-## Expression de fonction nommée
+## Fonction Expression Nommée (NFE)
 
-Expression de fonction nommée, ou EFN, est un terme pour les expressions de fonction qui ont un nom.
+Fonction Expression Nommée, ou NFE ("Named Function Expression" en anglais), est un terme pour les fonctions expressions qui ont un nom.
 
-Par exemple, prenons une expression de fonction ordinaire:
+Par exemple, prenons une fonction expression ordinaire :
 
 ```js
 let sayHi = function(who) {
