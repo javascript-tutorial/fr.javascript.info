@@ -136,13 +136,8 @@ alert('Hello');
 alert('World');
 ```
 
-<<<<<<< HEAD
 ```smart header="Utiliser les raccourcis !"
-Dans la plupart des éditeurs, une ligne de code peut être commentée par le raccourci `key:Ctrl+/` pour un commentaire sur une seule ligne et quelque chose comme `key:Ctrl+Shift+/` -- pour les commentaires multilignes (sélectionnez un morceau de code et appuyez sur la combinaison de touches). Pour Mac essayez `key:Cmd` au lieu de `key:Ctrl`.
-=======
-```smart header="Use hotkeys!"
-In most editors, a line of code can be commented out by pressing the `key:Ctrl+/` hotkey for a single-line comment and something like `key:Ctrl+Shift+/` -- for multiline comments (select a piece of code and press the hotkey). For Mac, try `key:Cmd` instead of `key:Ctrl` and `key:Option` instead of `key:Shift`.
->>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
+Dans la plupart des éditeurs, une ligne de code peut être commentée par le raccourci `key:Ctrl+/` pour un commentaire sur une seule ligne et quelque chose comme `key:Ctrl+Shift+/` -- pour les commentaires multilignes (sélectionnez un morceau de code et appuyez sur la combinaison de touches). Pour Mac essayez `key:Cmd` au lieu de `key:Ctrl` et `key:Option` au lieu de `key:Shift`.
 ```
 
 ````warn header="Les commentaires imbriqués ne sont pas supportés !"
