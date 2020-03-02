@@ -125,8 +125,13 @@ Outre les méthodes indiquées, il existe deux méthodes spéciales qui ne poss�
 [getTime()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getTime)
 : Renvoie l'horodatage de la date - nombre de millisecondes écoulées à partir du 1er janvier 1970 UTC + 0.
 
+<<<<<<< HEAD
 [getTimezoneOffset()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/getTimezoneOffset)
 : Renvoie la différence entre le fuseau horaire local et l'heure UTC, en minutes:
+=======
+[getTimezoneOffset()](mdn:js/Date/getTimezoneOffset)
+: Returns the difference between UTC and the local time zone, in minutes:
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
     ```js run
     // si vous êtes dans le fuseau horaire UTC-1, génère 60

@@ -2,7 +2,11 @@
 
 Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande. Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau. Les générateurs asynchrones rendent cela encore plus pratique.
 
+<<<<<<< HEAD
 Voyons d'abord un exemple simple, pour comprendre la syntaxe, puis examinons un cas d'utilisation réel.
+=======
+Asynchronous iterators allow us to iterate over data that comes asynchronously, on-demand. Like, for instance, when we download something chunk-by-chunk over a network. And asynchronous generators make it even more convenient.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ## Itérateurs asynchrones
 
@@ -48,10 +52,17 @@ for(let value of range) {
 
 Cette partie à déjà été aborder en détail dans le [chapitre sur les iterables](info:iterable).
 
+<<<<<<< HEAD
 Pour rendre l'objet itérable asynchrone :
 1. Nous devons utiliser `Symbol.asyncIterator` au lieu de `Symbol.iterator`.
 2. `next()` doit retourner une promesse.
 3. Pour itérer sur un tel objet, nous devrons utiliser une boucle `for await (let item of iterable)`.
+=======
+To make the object iterable asynchronously:
+1. We need to use `Symbol.asyncIterator` instead of `Symbol.iterator`.
+2. `next()` should return a promise.
+3. To iterate over such an object, we should use a `for await (let item of iterable)` loop.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Faisons un objet `range` itérable, comme celui d'avant, mais maintenant il retournera des valeurs de façon asynchrone, une par seconde :
 
@@ -106,10 +117,17 @@ let range = {
 
 Nous pouvons observer que la structure est similaire aux itérateurs réguliers :
 
+<<<<<<< HEAD
 1. Pour rendre un objet itérable, asynchrone, il doit avoir une méthode `Symbol.asyncIterator` `(1)`.
 2. Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse `(2)`.
 3. La méthode `next()` n'a pas besoin d'être `async`, elle peut être une méthode normale retournant une promesse, mais `async` permet d'utiliser `await`, donc c'est pratique. Ici, nous ne faisons qu'attendre une seconde `(3)`.
 4. Pour itérer, nous utilisons `for await(let value of range)`(4)`, c'est-à-dire que nous ajoutons "await" après "for". Il appelle `range[Symbol.asyncIterator]()` une fois, et ensuite son `next()` pour chaque valeur.
+=======
+1. To make an object asynchronously iterable, it must have a method `Symbol.asyncIterator` `(1)`.
+2. This method must return the object with `next()` method returning a promise `(2)`.
+3. The `next()` method doesn't have to be `async`, it may be a regular method returning a promise, but `async` allows us to use `await`, so that's convenient. Here we just delay for a second `(3)`.
+4. To iterate, we use `for await(let value of range)` `(4)`, namely add "await" after "for". It calls `range[Symbol.asyncIterator]()` once, and then its `next()` for values.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Voici une petite antisèche :
 
@@ -265,7 +283,11 @@ Maintenant, une valeur arrive chaque seconde.
 
 Jusqu'à présent, nous avons vu des exemples simples, pour acquérir une compréhension de base. Maintenant, passons en revue un cas d'utilisation réel.
 
+<<<<<<< HEAD
 Il existe de nombreux services en ligne qui fournissent des données par page. Par exemple, lorsque nous avons besoin d'une liste d'utilisateurs, le serveur nous répond avec un compte prédéfini (par exemple 100 utilisateurs) - "une page", et fournit une URL vers la page suivante.
+=======
+This pattern is very common. It's not about users, but just about anything. For instance, GitHub allows us to retrieve commits in the same, paginated fashion:
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Ce modèle est très courant. Pas seulement pour des listes d'utilisateurs, mais de n'importe quoi. Par exemple, GitHub permet de récupérer les commits de la même manière, par page :
 - Nous faisons une requête à l'URL sous la forme `https://api.github.com/repos/<repo>/commits`.

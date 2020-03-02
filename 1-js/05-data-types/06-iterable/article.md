@@ -1,7 +1,11 @@
 
 # Iterables
 
+<<<<<<< HEAD
 Les objets *Iterable* sont une généralisation des tableaux. C'est un concept qui permet de rendre n'importe quel objet utilisable dans une boucle `for..of`.
+=======
+*Iterable* objects is a generalization of arrays. That's a concept that allows us to make any object useable in a `for..of` loop.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Bien sûr, les tableaux sont itérables. Mais il existe de nombreux autres objets intégrés, qui sont également itérables. Par exemple, les chaînes de caractères sont également itérables.
 
@@ -224,12 +228,20 @@ let arr = Array.from(range);
 alert(arr); // 1,2,3,4,5 (array toString conversion fonctionne)
 ```
 
+<<<<<<< HEAD
 La syntaxe complète de `Array.from` permet de fournir une fonction optionnelle de "mapping":
+=======
+The full syntax for `Array.from` also allows us to provide an optional "mapping" function:
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 ```js
 Array.from(obj[, mapFn, thisArg])
 ```
 
+<<<<<<< HEAD
 Le second argument `mapFn` peut être une fonction à appliquer à chaque élément avant de l'ajouter au tableau, et `thisArg` permet de définir le `this`.
+=======
+The optional second argument `mapFn` can be a function that will be applied to each element before adding it to the array, and `thisArg` allows us to set `this` for it.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Par exemple:
 
