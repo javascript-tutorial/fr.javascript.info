@@ -1,11 +1,7 @@
 
 # Objets
 
-<<<<<<< HEAD
-Comme nous le savons du chapitre <info:types>, il existe sept types de données dans le langage JavaScript. Six d'entre elles sont appelées "primitives", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
-=======
-As we know from the chapter <info:types>, there are eight data types in JavaScript. Seven of them are called "primitive", because their values contain only a single thing (be it a string or a number or whatever).
->>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
+Comme nous le savons du chapitre <info:types>, il existe huit types de données dans le langage JavaScript. Sept d'entre elles sont appelées "primitives", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
 
 En revanche, les objets sont utilisés pour stocker des collections de données variées et d’entités plus complexes. En JavaScript, les objets pénètrent dans presque tous les aspects du langage. Nous devons donc d'abord les comprendre avant d'aller plus loin.
 
