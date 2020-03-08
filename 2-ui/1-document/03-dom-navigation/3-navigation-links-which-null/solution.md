@@ -1,6 +1,6 @@
-1. Yes, true. The element `elem.lastChild` is always the last one, it has no `nextSibling`.
-2. No, wrong, because `elem.children[0]` is the first child *among elements*. But there may exist non-element nodes before it. So `previousSibling` may be a text node.
+1. Oui c'est vrai. L'élément `elem.lastChild` est toujours le dernier, il n'a pas de `nextSibling`.
+2. Non, c'est faux, car `elem.children[0]` est le premier enfant *parmi les éléments*. Mais il peut exister des nœuds non-éléments avant lui. Ainsi, `previousSibling` peut être un nœud texte.
 
-Please note: for both cases if there are no children, then there will be an error.
+Remarque: dans les deux cas, s'il n'y a pas d'enfants, il y aura une erreur.
 
-If there are no children, `elem.lastChild` is `null`, so we can't access `elem.lastChild.nextSibling`. And the collection `elem.children` is empty (like an empty array `[]`).
+S'il n'y a pas d'enfants, `elem.lastChild` est  `null`, nous ne pouvons donc pas accéder à `elem.lastChild.nextSibling`. Et la collection `elem.children` est vide (comme un tableau vide `[]`).
