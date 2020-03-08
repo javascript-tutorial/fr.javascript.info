@@ -2,17 +2,17 @@ importance: 5
 
 ---
 
-# Select all diagonal cells
+# Sélectionner toutes les cellules diagonales
 
-Write the code to paint all diagonal table cells in red.
+Écrivez le code pour colorer toutes les cellules du tableau diagonal en rouge.
 
-You'll need to get all diagonal `<td>` from the `<table>` and paint them using the code:
+Vous devrez obtenir toutes les diagonales `<td>` de la `<table>` et les colorer en utilisant le code :
 
 ```js
-// td should be the reference to the table cell
+// td doit être la référence à la cellule du tableau
 td.style.backgroundColor = 'red';
 ```
 
-The result should be:
+Le résultat devrait être :
 
 [iframe src="solution" height=180]
