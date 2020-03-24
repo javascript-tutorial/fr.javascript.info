@@ -191,7 +191,11 @@ if(!Promise.allSettled) {
 
 Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.
 
+<<<<<<< HEAD
 Ce gestionnaire transforme un résultat réussi `v` en `{state:'fulfilled', value:v}`, et une erreur `r` en `{state:'rejected', reason:r}`. C'est exactement le format de `Promise.allSettled`.
+=======
+That handler turns a successful result `value` into `{state:'fulfilled', value}`, and an error `reason` into `{state:'rejected', reason}`. That's exactly the format of `Promise.allSettled`.
+>>>>>>> 162280b6d238ce32bbd8ff7a3f7992be82c2311a
 
 Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou toutes les promesses données, même si certaines d'entre elles sont rejetées.
 

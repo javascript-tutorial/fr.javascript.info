@@ -67,7 +67,7 @@ let welcome = (age < 18) ?
   () => alert('Hello') :
   () => alert("Greetings!");
 
-welcome(); // ok now
+welcome();
 ```
 
 Les fonctions fléchées peuvent paraître étranges et peu lisibles au début, mais cela change rapidement avec les yeux s'habituant à cette structure.

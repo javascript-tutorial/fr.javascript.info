@@ -215,8 +215,13 @@ Par exemple :
 function makeUser(name, age) {
   return {
     name: name,
+<<<<<<< HEAD
     age: age
     // ...autres propriétés
+=======
+    age: age,
+    // ...other properties
+>>>>>>> 162280b6d238ce32bbd8ff7a3f7992be82c2311a
   };
 }
 
@@ -232,8 +237,13 @@ Au lieu de `name:name`, nous pouvons simplement écrire `name`, comme ceci :
 function makeUser(name, age) {
 *!*
   return {
+<<<<<<< HEAD
     name, // pareil que name: name
     age   // pareil que age: age
+=======
+    name, // same as name: name
+    age,  // same as age: age
+>>>>>>> 162280b6d238ce32bbd8ff7a3f7992be82c2311a
     // ...
   };
 */!*
