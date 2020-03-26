@@ -1,14 +1,14 @@
 
-Any `setTimeout` will run only after the current code has finished.
+`setTimeout` ne peut s'exécuter qu'une fois le bloc de code courant terminé.
 
-The `i` will be the last one: `100000000`.
+Le `i` sera donc le dernier : `100000000`.
 
 ```js run
 let i = 0;
 
 setTimeout(() => alert(i), 100); // 100000000
 
-// assume that the time to execute this function is >100ms
+// on considère que cette fonction met plus de 100ms à s'exécuter
 for(let j = 0; j < 100000000; j++) {
   i++; 
 }

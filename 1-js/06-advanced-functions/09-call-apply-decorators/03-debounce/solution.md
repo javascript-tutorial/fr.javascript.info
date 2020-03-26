@@ -16,13 +16,13 @@ function debounce(f, ms) {
 }
 ```
 
-A call to `debounce` returns a wrapper. There may be two states:
+Un appel à `debounce` renvoie un wrapper. Il peut y avoir deux états:
 
-- `isCooldown = false` -- ready to run.
-- `isCooldown = true` -- waiting for the timeout.
+- `isCooldown = false` -- prêt à exécuter.
+- `isCooldown = true` -- en attente du timeout.
 
-In the first call `isCooldown` is falsy, so the call proceeds, and the state changes to `true`.
+Lors du premier appel, `is Cooldown` est fausse. L'appel se poursuit et l'état passe à` true`.
 
-While `isCooldown` is true, all other calls are ignored.
+Alors que `isCooldown` est vrai, tous les autres appels sont ignorés.
 
-Then `setTimeout` reverts it to `false` after the given delay.
+Ensuite, `setTimeout` le rétablit à `false` après le délai imparti.

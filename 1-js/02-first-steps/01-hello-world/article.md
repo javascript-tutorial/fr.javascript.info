@@ -1,6 +1,6 @@
 # Hello, world!
 
-Le tutoriel que vous êtes en train de lire est à propos du coeur de JavaScript, le langage lui même. Plus loins, vous allez apprendre Node.JS qui est une plateforme qui l'utilise.
+Cette partie du tutoriel est à propos du coeur de JavaScript, le langage lui même. 
 
 Mais nous avons besoin d'un environnement de travail pour exécuter nos scripts et, étant donné que ce guide est en ligne, le navigateur est un bon choix. Nous allons nous efforcer d'utiliser les commandes spécifiques au navigateur (comme `alert`) au minimum afin de ne pas y consacrer du temps si vous prévoyez de vous concentrer sur un autre environnement tel que Node.JS. Par ailleurs, les détails du navigateur sont expliqués dans [la partie suivante](/ui) du didacticiel.
 
@@ -46,8 +46,8 @@ La balise `<script>` contient du code JavaScript qui est automatiquement exécut
 La balise `<script>` a quelques attributs qui sont rarement utilisés de nos jours, mais nous pouvons les trouver dans l'ancien code :
 
  L'attribut `type` : <code>&lt;script <u>type</u>=...&gt;</code>
+: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habiutellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais c’est un sujet avancé; nous parlerons de modules dans une autre partie du tutoriel.
 
- : L'ancien standard HTML4 nécessitait pour un script d'avoir un `type`. En général, il s'agissait de `type = "text / javascript"`. Dorénavant il n’est plus nécessaire. En outre, le standard moderne HTML5 a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules Javascript. Mais c’est un sujet avancé, nous parlerons des modules plus tard dans une autre partie du tutoriel.
 
  L'attribut `language` : <code>&lt;script <u>language</u>=...&gt;</code>
 : Cet attribut était destiné à afficher la langue du script. Pour l'instant, cet attribut n'a aucun sens, le langage est le JavaScript par défaut. Pas besoin de l'utiliser.
@@ -61,7 +61,7 @@ Commentaires avant et après les scripts.
     //--></script>
     ```
 
-    Cette astuce n’est pas utilisée dans le JavaScript moderne. Ces commentaires ont été utilisés pour masquer le code JavaScript des anciens navigateurs qui ne connaissaient pas une balise `<script>`. Comme les navigateurs nés au cours des 15 dernières années n’ont pas ce problème, ce type de commentaire peut vous aider à identifier un ancien code.
+    Cette astuce n’est pas utilisée dans le JavaScript moderne. Ces commentaires ont été utilisés pour masquer le code JavaScript des anciens navigateurs qui ne savaient pas comment traiter une balise `<script>`. Comme les navigateurs nés au cours des 15 dernières années n’ont pas ce problème, ce type de commentaire peut vous aider à identifier un code très ancien.
 
 
 ## Scripts externes
@@ -74,9 +74,7 @@ Le fichier de script est attaché à HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
-Ici `/chemin/vers/script.js` est un chemin absolu vers le fichier contenant le script (à partir de la racine du site).
-
-Il est également possible de fournir un chemin relatif à la page en cours. Par exemple, `src="script.js"` signifierait un fichier `"script.js"` dans le dossier actuel.
+Ici, `/chemin/vers/script.js` est un chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courrant.
 
 Nous pouvons également donner une URL complète, par exemple :
 

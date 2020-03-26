@@ -26,7 +26,7 @@ Avant de continuer, saisissons la terminologie commune.
     alert( y - x ); // 2, le moins binaire soustrait des valeurs
     ```
 
-    D'un point de vue formel, nous parlons ici de deux opérateurs différents : la négation unaire (un seul opérande, inverse le signe) et la soustraction binaire (deux opérandes, soustrait).
+    D'un point de vue formel, dans les exemples ci-dessus, nous avons deux opérateurs différents qui partagent le même symbole : l'opérateur de négation, un opérateur unaire qui inverse le signe, et l'opérateur de soustraction, un opérateur binaire qui soustrait un nombre d'un autre.
 
 ## Concaténation de chaînes de caractères, binaire `+`
 
@@ -93,9 +93,8 @@ alert( +"" );   // 0
 
 En fait, il fait la même chose que `Number(...)`, mais il est plus court.
 
-Un besoin de convertir des chaînes de caractères en nombres apparaît très souvent. Par exemple, si nous obtenons des valeurs à partir de champs de formulaire HTML, ce sont généralement des chaînes de caractères.
+La nécessité de convertir des chaînes de caractères en nombres est très fréquente. Par exemple, si nous obtenons des valeurs à partir de champs de formulaire HTML, il s’agit généralement de chaînes de caractères. Et si on veut les additionner ?
 
-Que se passe-t-il si on veut les additionner ?
 
 Le binaire plus les ajouterait comme des chaînes de caractères : 
 
@@ -127,11 +126,11 @@ Pourquoi les plus unaires sont-ils appliqués aux valeurs avant les binaires ? C
 
 ## Précédence des opérateurs
 
-Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur priorité ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
+Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
 
 De l'école, nous savons tous que la multiplication dans l'expression `1 + 2 * 2` devrait être calculée avant l'addition. C’est exactement cela la précédence. La multiplication est dite avoir une *précédence supérieure* à l'addition.
 
-Les parenthèses outrepassent toute précédence, donc si nous ne sommes pas satisfaits de l'ordre de traitement, nous pouvons les utiliser, comme: `(1 + 2) * 2`.
+Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisfaits de l'ordre par défaut, nous pouvons les utiliser, comme: `(1 + 2) * 2`.
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
@@ -140,17 +139,17 @@ Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/We
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
 | ...        | ...             | ...     |
-| 16         | plus unaire     | `+`     |
-| 16         | négation unaire | `-`     |
-| 14         | multiplication  | `*`     |
-| 14         | division        | `/`     |
+| 17         | plus unaire     | `+`     |
+| 17         | négation unaire | `-`     |
+| 15         | multiplication  | `*`     |
+| 15         | division        | `/`     |
 | 13         | addition        | `+`     |
 | 13         | soustraction    | `-`     |
 | ...        | ...             | ...     |
 | 3          | affectation     | `=`     |
 | ...        | ...             | ...     |
 
-Comme on peut le voir, le "plus unaire" a une priorité de `16`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+pommes + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
+Comme on peut le voir, le "plus unaire" a une priorité de `17`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+apples + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
 
 ## Affectation
 
@@ -199,7 +198,7 @@ alert( a ); // 3
 alert( c ); // 0
 ```
 
-Dans l'exemple ci-dessus, le résultat de `(a = b + 1)` est la valeur attribuée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour soustraire de `3`.
+Dans l'exemple ci-dessus, le résultat de `(a = b + 1)` est la valeur attribuée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour d'autres évaluations.
 
 Code drôle, n'est-ce pas ? Nous devrions comprendre comment cela fonctionne, car parfois nous pouvons le voir dans des bibliothèques tierces, mais nous ne devrions pas écrire quoi que ce soit de similaire nous-mêmes. De telles astuces ne permettent pas de rendre le code plus clair et lisible.
 ````
@@ -253,14 +252,14 @@ Il y a donc des opérateurs spéciaux pour cela :
 
     ```js run no-beautify
     let counter = 2;
-    counter++;      // fonctionne de la même manière que "counter = counter + 1", mais il est plus court
+    counter++;      // fonctionne de la même manière que counter = counter + 1, mais c'est plus court
     alert( counter ); // 3
     ```
 - **Décrémentation** `--` diminue une variable de 1 : 
 
     ```js run no-beautify
     let counter = 2;
-    counter--;      // fonctionne de la même manière que "counter = counter - 1", mais il est plus court
+    counter--;      // fonctionne de la même manière que counter = counter - 1, mais c'est plus court
     alert( counter ); // 1
     ```
 
@@ -427,7 +426,7 @@ Ici, la première expression `1 + 2` est évaluée mais son résultat n'est pas 
 ```smart header="La virgule a une très faible précédence"
 Veuillez noter que l'opérateur virgule a une précédence très basse, inférieure à `=`, donc les parenthèses sont importantes dans l'exemple ci-dessus.
 
-Sans eux : `a = 1 + 2, 3 + 4` évalue d'abord `+`, additionnant les nombres dans `a = 3, 7`, ensuite l'opérateur d'affectation `=` assigne `a = 3`, puis le nombre après la virgule `7` n'est pas traité c'est ignoré.
+Sans eux : `a = 1 + 2, 3 + 4` évalue d'abord `+`, additionnant les nombres dans `a = 3, 7`, ensuite l'opérateur d'affectation `=` assigne `a = 3`, et le reste est ignoré. C'est comme `(a = 1 + 2), 3 + 4`.
 ```
 
 Pourquoi avons-nous besoin d'un tel opérateur qui jette tout sauf la dernière partie ?
@@ -443,4 +442,4 @@ for (*!*a = 1, b = 3, c = a * b*/!*; a < 10; a++) {
 }
 ```
 
-Ces astuces sont utilisées dans de nombreux frameworks JavaScript, c’est pourquoi nous les mentionnons. Mais généralement, ils n'améliorent pas la lisibilité du code, nous devrions donc bien réfléchir avant d'écrire comme ça.
+Ces astuces sont utilisées dans de nombreux frameworks JavaScript, c’est pourquoi nous les mentionnons. Mais généralement, ils n'améliorent pas la lisibilité du code, nous devrions bien réfléchir avant de les utiliser.

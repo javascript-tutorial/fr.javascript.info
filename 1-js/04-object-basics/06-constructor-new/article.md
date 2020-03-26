@@ -27,7 +27,7 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
-Quand une fonction est exécutée comme `new User(...)`, elle effectue les étapes suivantes :
+Quand une fonction est exécutée avec `new`, elle effectue les étapes suivantes :
 
 1. Un nouvel objet vide est créé et affecté à `this`.
 2. Le corps de la fonction est exécuté. Habituellement, il modifie `this`, y ajoutant de nouvelles propriétés.
@@ -51,7 +51,7 @@ function User(name) {
 }
 ```
 
-Donc, le résultat de `new User("Jack")` est le même objet que :
+Donc `let user = new User("Jack")` donne le même résultat que :
 
 ```js
 let user = {
@@ -136,7 +136,7 @@ Généralement, les constructeurs n'ont pas d'instruction `return`. Leur tâche 
 
 Mais s'il y a une déclaration `return`, alors la règle est simple :
 
-- Si `return` est appelé avec un object, il est renvoyé à la place de `this`.
+- Si `return` est appelé avec un object, alors il est renvoyé à la place de `this`.
 - Si `return` est appelé avec une primitive, elle est ignorée.
 
 En d'autres termes, `return` avec un objet renvoie cet objet, dans tous les autres cas, `this` est renvoyé.
@@ -148,10 +148,10 @@ function BigUser() {
 
   this.name = "John";
 
-  return { name: "Godzilla" };  // <-- retourne un objet
+  return { name: "Godzilla" };  // <-- retourne cet objet
 }
 
-alert( new BigUser().name );  // Godzilla, got that object ^^
+alert( new BigUser().name );  // Godzilla, got that object
 ```
 
 Et voici un exemple avec un `return` vide (ou nous pourrions placer une primitive après, peu importe) :
@@ -161,10 +161,7 @@ function SmallUser() {
 
   this.name = "John";
 
-  return; // termine l'exécution, renvoie this
-
-  // ...
-
+  return; // renvoie this
 }
 
 alert( new SmallUser().name );  // John
@@ -214,6 +211,8 @@ john = {
 }
 */
 ```
+
+Pour créer des objets complexes, il existe une syntaxe plus avancée, [classes](info:classes), que nous allons couvrir plus tard.
 
 ## Résumé
 

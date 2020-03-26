@@ -10,7 +10,7 @@ Il y a aussi des cas où nous devons convertir explicitement une valeur pour cor
 Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les primitives. Plus tard, après avoir appris les objets, nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
 
-## ToString
+## String Conversion
 
 La conversion `String` se produit lorsque nous avons besoin de la forme chaîne de caractères d'une valeur.
 
@@ -30,7 +30,7 @@ alert(typeof value); // string
 
 La conversion `String` est assez évidente. Un `false` devient `"false"`, `null` devient `"null"` etc.
 
-## ToNumber
+## Numeric Conversion
 
 La conversion numérique se produit automatiquement dans les fonctions et les expressions mathématiques.
 
@@ -81,20 +81,9 @@ alert( Number(false) );       // 0
 
 Veuillez noter que `null` et `undefined` se comportent différemment ici : `null` devient un zéro, alors qu'`undefined` devient `NaN`.
 
-````smart header="L\'addition \"+\" concatène les chaînes de caractères"
-Presque toutes les opérations mathématiques convertissent les valeurs en nombres. A l'exception notable de l'addition `+`. Si l'une des valeurs ajoutées est une chaîne de caractères, une autre est également convertie en chaîne de caractères.  
+La plupart des opérateurs mathématiques effectuent également une telle conversion, nous le verrons dans le chapitre suivant.
 
-Puis il les concatènes (joint) :
-
-```js run
-alert( 1 + '2' ); // '12' (chaîne de caractères à droite)
-alert( '1' + 2 ); // '12' (chaîne de caractères à gauche)
-```
-
-Cela ne se produit que lorsque l'un des arguments est une chaîne de caractères. Sinon, les valeurs sont converties en nombres.
-````
-
-## ToBoolean
+## Boolean Conversion
 
 La conversion booléenne est la plus simple.
 
@@ -124,14 +113,13 @@ alert( Boolean(" ") ); // espaces, également vrai (toute chaîne de caractères
 ```
 ````
 
-
 ## Résumé
 
 Les  trois conversions de types les plus utilisées sont :  to string, to number et to boolean.
 
-**`ToString`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec String (value). La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
+**`La conversion en String`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec `String(value)`. La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
 
-**`ToNumber`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
+**`La conversion en Number`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
 
 La conversion vers `number` suit les règles suivantes :
 
@@ -142,7 +130,7 @@ La conversion vers `number` suit les règles suivantes :
 | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
 | `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. Une chaîne vide devient `0`. Une erreur donne `NaN`. |
 
-**`ToBoolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
+**`La conversion en Boolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
 
 La conversion vers `boolean` suit les règles suivantes :
 

@@ -2,29 +2,29 @@ importance: 4
 
 ---
 
-# Load visible images
+# Charger les images visibles
 
-Let's say we have a slow-speed client and want to save their mobile traffic.
+Disons que nous avons un client lent et nous voulons sauvegarder leur trafique de donnée mobile.
 
-For that purpose we decide not to show images immediately, but rather replace them with placeholders, like this:
+A cet effet, nous décidons de ne pas montrer les images immédiatement, mais plutôt les remplacer avec des conteneurs d'images, comme ainsi:
 
 ```html
 <img *!*src="placeholder.svg"*/!* width="128" height="128" *!*data-src="real.jpg"*/!*>
 ```
 
-So, initially all images are `placeholder.svg`. When the page scrolls to the position where the user can see the image -- we change `src` to the one in `data-src`, and so the image loads.
+Donc, initialement toutes les images sont des `placeholder.svg`. Lorsque la page défile a la  position ou l'utilisateur peut voir l'image -- nous changeons `src` à celui qui est dans `data-src`, ainsi l'image va être chargée.
 
-Here's an example in `iframe`:
+Voici un exemple dans un `iframe`:
 
 [iframe src="solution"]
 
-Scroll it to see images load "on-demand".
+Défilez-le pour voir les images s'afficher à la "demande".
 
-Requirements:
-- When the page loads, those images that are on-screen should load immediately, prior to any scrolling.
-- Some images may be regular, without `data-src`. The code should not touch them.
-- Once an image is loaded, it should not reload any more when scrolled in/out.
+Les requis:
+- Quand la page est chargée, ces images qui sont à l'écran doivent s'afficher immédiatement, avant tout défilement.
+- Certaines images peuvent être régulières, sans la propriété `data-src`. Le code ne doit pas les toucher.
+- Une fois une image est chargée, elle ne doit plus être rechargée lorsqu'elle est défilée en vue/hors de vue.
 
-P.S. If you can, make a more advanced solution that would "preload" images that are one page below/after the current position.
+P.S. Si vous pouvez, trouvez une solution plus avancée  qui pourrait "pré-charger" les images qui sont sur une page en bas/après la position actuelle.
 
-P.P.S. Only vertical scroll is to be handled, no horizontal scrolling.
+P.P.S. Le défilement vertical sera seulement géré, et non pas le défilement horizontal.

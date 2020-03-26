@@ -2,19 +2,21 @@ importance: 5
 
 ---
 
-# Drag superheroes around the field
+# Glisser les superhéros à l’intérieur du terrain
 
-This task can help you to check understanding of several aspects of Drag'n'Drop and DOM.
+Cette tache peut vous aider à contrôler votre compréhension de plusieurs aspects du Glissez-déplacez et du DOM
 
-Make all elements with class `draggable` -- draggable. Like a ball in the chapter.
+Donnez tous les éléments la classe `draggable` -- déplaçable. Comme une balle dans le chapitre. 
+Etapes requises:
 
-Requirements:
+- Utilisez la délégation d’évènement pour détecter start: un gestionnaire d’évènement unique  sur `document` pour l’évènement  `mousedown`.
+- Si les éléments sont glisses jusqu’a aux limites supérieures ou inferieure de la fenêtre – la page défile en haut/bas pour permettre plus de déplacement.
+- IL n’y a pas de défilement horizontal.
+- Les éléments déplaçables éléments ne doivent jamais quitter la fenêtre, même si après un déplacement  rapide de la souris.
 
-- Use event delegation to track drag start: a single event handler on `document` for `mousedown`.
-- If elements are dragged to top/bottom window edges -- the page scrolls up/down to allow further dragging.
-- There is no horizontal scroll.
-- Draggable elements should never leave the window, even after swift mouse moves.
-
-The demo is too big to fit it here, so here's the link.
+- Utiliser la délégation d’événements pour suivre le début du glissement: un seul gestionnaire d’événements sur `document` pour `mousedown`.
+- Si des éléments sont déplacés vers les bords supérieur/inférieur de la fenêtre -- la page défilera vers le haut/le bas pour permettre un déplacement ultérieur.
+- Il n'y a pas de défilement horizontal (cela simplifie un peu la tâche car l'ajouter est facile).
+- Les éléments déplaçables ou leurs parties ne doivent jamais quitter la fenêtre, même après un déplacement rapide de la souris.
 
 [demo src="solution"]

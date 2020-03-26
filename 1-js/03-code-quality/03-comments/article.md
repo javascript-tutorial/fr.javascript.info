@@ -4,7 +4,7 @@ Comme nous le savons du chapitre <info:structure>, les commentaires peuvent êtr
 
 Nous les utilisons normalement pour décrire comment et pourquoi le code fonctionne.
 
-De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation se trompent généralement.
+De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation les utilise souvent à tort.
 
 ## Mauvais commentaires
 
@@ -120,10 +120,10 @@ En réalité, nous ne pouvons pas totalement éviter les commentaires «explicat
 Ainsi, les commentaires explicatifs sont généralement mauvais. Quels commentaires sont bons ?
 
 Décrivez l'architecture
-: Fournissez une vue d’ensemble des composants, de leurs interactions, de ce que sont les flux de contrôle dans diverses situations… En bref, la vue du code à vol d'oiseau. Il existe un langage de diagramme spécial [UML](https://fr.wikipedia.org/wiki/UML_(informatique)) pour les diagrammes d'architecture de haut niveau. Ça vaut vraiment la peine de l'étudier.
+: Fournissez une vue d’ensemble des composants, de leurs interactions, de ce que sont les flux de contrôle dans diverses situations… En bref -- une vue plongeante du code. Il existe un langage spécial [UML](https://fr.wikipedia.org/wiki/UML_(informatique)) pour les diagrammes d'architecture de haut niveau. Ça vaut vraiment la peine de l'étudier.
 
-Documenter l'utilisation d'une fonction
-: Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) documenter une fonction : utilisation, paramètres, valeur renvoyée.
+Documenter les paramètres de fonction et leur utilisation
+: Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) pour documenter une fonction : utilisation, paramètres, valeur renvoyée.
 
     Par exemple :
     ```js
@@ -174,7 +174,7 @@ Les bons commentaires nous permettent de bien maintenir le code, d'y revenir apr
 
 **Évitez les commentaires :**
 
-- Cela dit "comment fonctionne le code" et "ce qu'il fait".
+- Qui disent "comment fonctionne le code" et "ce qu'il fait".
 - Ne les mettez que s’il est impossible de rendre le code aussi simple et auto-descriptif qu’il n’en nécessite pas.
 
 Les commentaires sont également utilisés pour les outils de documentation automatique tels que JSDoc3: ils les lisent et génèrent des documents HTML (ou des documents dans un autre format).

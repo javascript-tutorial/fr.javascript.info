@@ -2,25 +2,24 @@ importance: 5
 
 ---
 
-# What will setTimeout show?
+# Que va afficher setTimeout ?
 
-In the code below there's a `setTimeout` call scheduled, then a heavy calculation is run, that takes more than 100ms to finish.
+Dans le code ci-dessous il y a une exécution planifié par `setTimeout`, suivie par un calcul conséquent qui prend plus de 100ms à tourner.
 
-When will the scheduled function run?
+Quand la fonction planifiée va-t-elle s'exécuter ?
 
-1. After the loop.
-2. Before the loop.
-3. In the beginning of the loop.
+1. Après la boucle.
+2. Avant la boucle.
+3. Au début de la boucle.
 
-
-What is `alert` going to show?
+Qu'est-ce que `alert` va afficher ?
 
 ```js
 let i = 0;
 
 setTimeout(() => alert(i), 100); // ?
 
-// assume that the time to execute this function is >100ms
+// on considère que cette fonction met plus de 100ms à s'exécuter
 for(let j = 0; j < 100000000; j++) {
   i++; 
 }

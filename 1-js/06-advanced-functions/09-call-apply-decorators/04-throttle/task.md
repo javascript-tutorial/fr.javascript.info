@@ -2,47 +2,47 @@ importance: 5
 
 ---
 
-# Throttle decorator
+# Décorateur d'accélération
 
-Create a "throttling" decorator `throttle(f, ms)` -- that returns a wrapper, passing the call to `f` at maximum once per `ms` milliseconds. Those calls that fall into the "cooldown" period, are ignored.
+Créez un décorateur "d'accélération" `throttle(f, ms)` - qui retourne un wrapper, en passant l'appel à `f` au maximum une fois par `ms` millisecondes. Les appels qui tombent dans le "temps de charge" sont ignorés.
 
-**The difference with `debounce` -- if an ignored call is the last during the cooldown, then it executes at the end of the delay.**
+**La différence avec `debounce` - si un appel ignoré est le dernier pendant le temps de recharge, il s'exécute à la fin du délai.**
 
-Let's check the real-life application to better understand that requirement and to see where it comes from.
+Examinons l'application réelle pour mieux comprendre cette exigence et voir d'où elle vient.
 
-**For instance, we want to track mouse movements.**
+**Par exemple, nous voulons suivre les mouvements de la souris.**
 
-In browser we can setup a function to run at every mouse movement and get the pointer location as it moves. During an active mouse usage, this function usually runs very frequently, can be something like 100 times per second (every 10 ms).
+Dans le navigateur, nous pouvons configurer une fonction à exécuter à chaque mouvement de la souris et obtenir l’emplacement du pointeur à mesure qu’il se déplace. Pendant une utilisation active de la souris, cette fonction est généralement utilisée très souvent et peut atteindre 100 fois par seconde (toutes les 10 ms).
 
-**The tracking function should update some information on the web-page.**
+**Nous aimerions mettre à jour certaines informations sur la page Web lorsque le pointeur se déplace.**
 
-Updating function `update()` is too heavy to do it on every micro-movement. There is also no sense in making it more often than once per 100ms.
+... Mais la mise à jour de la fonction `update()` est trop lourde pour tous les micro-mouvements. Il est également inutile de mettre à jour plus d'une fois toutes les 100 ms.
 
-So we'll wrap it into the decorator: use `throttle(update, 100)` as the function to run on each mouse move instead of the original `update()`. The decorator will be called often, but `update()` will be called at maximum once per 100ms.
+Nous allons donc l'envelopper dans le décorateur : utilisez `throttle(update, 100)` comme fonction à exécuter à chaque déplacement de souris à la place de `update()` d'origine. Le décorateur sera appelé souvent, mais `update()` sera appelé au maximum une fois toutes les 100 ms.
 
-Visually, it will look like this:
+Visuellement, cela ressemblera à ceci:
 
-1. For the first mouse movement the decorated variant passes the call to `update`. That's important, the user sees our reaction to their move immediately.
-2. Then as the mouse moves on, until `100ms` nothing happens. The decorated variant ignores calls.
-3. At the end of `100ms` -- one more `update` happens with the last coordinates. 
-4. Then, finally, the mouse stops somewhere. The decorated variant waits until `100ms` expire and then runs `update` with last coordinates. So, perhaps the most important, the final mouse coordinates are processed.
+1. Pour le premier mouvement de souris, la variante décorée passe l'appel à `update`. Cela est important, l'utilisateur voit notre réaction à leur mouvement immédiatement.
+2. Puis, alors que la souris continue d'avancer, il ne se passe plus rien jusqu'à `100ms`. La variante décorée ignore les appels.
+3. À la fin de `100ms` - une autre `update` se produit avec les dernières coordonnées.
+4. Enfin, la souris s’arrête quelque part. La variante décorée attend que `100ms` expire, puis lance `update` avec les dernières coordonnées. Donc, peut-être le plus important, les coordonnées finales de la souris sont traitées.
 
-A code example:
+Un exemple de code:
 
 ```js
 function f(a) {
-  console.log(a)
-};
+  console.log(a);
+}
 
-// f1000 passes calls to f at maximum once per 1000 ms
+// f1000 passe les appels à f au maximum une fois toutes les 1000 ms
 let f1000 = throttle(f, 1000);
 
-f1000(1); // shows 1
-f1000(2); // (throttling, 1000ms not out yet)
-f1000(3); // (throttling, 1000ms not out yet)
+f1000(1); // montre 1
+f1000(2); // (étranglement, 1000ms pas encore écoulée)
+f1000(3); // (étranglement, 1000ms pas encore écoulée)
 
-// when 1000 ms time out...
-// ...outputs 3, intermediate value 2 was ignored
+// quand 1000ms expirent...
+// ...sort 3, la valeur intermédiaire 2 a été ignorée
 ```
 
-P.S. Arguments and the context `this` passed to `f1000` should be passed to the original `f`.
+P.S. Les arguments et le contexte `this` transmis à `f1000` doivent être transmis à `f` d'origine.

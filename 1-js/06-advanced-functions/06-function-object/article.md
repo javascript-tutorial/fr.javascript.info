@@ -1,20 +1,21 @@
 
-# Function object, NFE
+# L'objet Function, NFE
 
-As we already know, functions in JavaScript are values.
+Comme nous le savons déjà, une fonction en JavaScript est une valeur.
 
-Every value in JavaScript has a type. What type is a function?
+Chaque valeur en JavaScript a un type. Quel type est une fonction?
 
-In JavaScript, functions are objects.
+Pour JavaScript, les fonctions sont des objets.
 
-A good way to imagine functions is as callable "action objects". We can not only call them, but also treat them as objects: add/remove properties, pass by reference etc.
+Un bon moyen d’imaginer des fonctions est en tant que des "objets d’action" qu'on peut appeler. Nous pouvons non seulement les appeler, mais aussi les traiter comme des objets: ajouter/supprimer des propriétés, passer par référence, etc.
 
+## La propriété "name"
 
-## The "name" property
+Les objets Function contiennent quelques propriétés utilisables.
 
-Function objects contain a few useable properties.
+Les objets fonction contiennent des propriétés utilisables.
 
-For instance, a function's name is accessible as the "name" property:
+Par exemple, le nom d'une fonction est accessible en tant que propriété "name" :
 
 ```js run
 function sayHi() {
@@ -24,29 +25,29 @@ function sayHi() {
 alert(sayHi.name); // sayHi
 ```
 
-What's more funny, the name-assigning logic is smart. It also assigns the correct name to functions that are used in assignments:
+Ce qui est drôle, c'est que la logique d'attribution de noms est intelligente. Elle attribue également le nom correct à une fonction même si elle est créée sans, puis immédiatement attribué :
 
 ```js run
 let sayHi = function() {
   alert("Hi");
-}
+};
 
-alert(sayHi.name); // sayHi (works!)
+alert(sayHi.name); // sayHi (il y a un nom!)
 ```
 
-It also works if the assignment is done via a default value:
+Cela fonctionne aussi si l’affectation est faite avec une valeur par défaut:
 
 ```js run
 function f(sayHi = function() {}) {
-  alert(sayHi.name); // sayHi (works!)
+  alert(sayHi.name); // sayHi (ça marche!)
 }
 
 f();
 ```
 
-In the specification, this feature is called a "contextual name". If the function does not provide one, then in an assignment it is figured out from the context.
+Dans la spécification, cette fonctionnalité est appelée "contextual name". Si la fonction n'en fournit pas, alors dans l'affectation elle est extraite du contexte.
 
-Object methods have names too:
+Les méthodes d'objet ont aussi des noms:
 
 ```js run
 let user = {
@@ -65,21 +66,21 @@ alert(user.sayHi.name); // sayHi
 alert(user.sayBye.name); // sayBye
 ```
 
-There's no magic though. There are cases when there's no way to figure out the right name. In that case, the name property is empty, like here:
+Cependant c'est pas magique. Il y a des cas où il n'y a aucun moyen de trouver le bon nom. Dans ce cas, la propriété name est vide, comme ci-dessous:
 
 ```js
-// function created inside array
+// fonction créée dans un tableau
 let arr = [function() {}];
 
-alert( arr[0].name ); // <empty string>
-// the engine has no way to set up the right name, so there is none
+alert( arr[0].name ); // <chaîne de caractères vide>
+// le moteur n'a aucun moyen de définir le bon nom. Donc, il n'y en a pas
 ```
 
-In practice, however, most functions do have a name.
+Par contre, en pratique la plupart des fonctions ont un nom.
 
-## The "length" property
+## La propriété "length"
 
-There is another built-in property "length" that returns the number of function parameters, for instance:
+Il existe une autre propriété native, "length", qui renvoie le nombre de paramètres de la fonction, par exemple:
 
 ```js run
 function f1(a) {}
@@ -91,20 +92,20 @@ alert(f2.length); // 2
 alert(many.length); // 2
 ```
 
-Here we can see that rest parameters are not counted.
+Nous pouvons voir que les paramètres du reste ne sont pas comptés.
 
-The `length` property is sometimes used for introspection in functions that operate on other functions.
+La propriété `length` est parfois utilisée pour la [réfléxion (introspection en anglais)](https://fr.wikipedia.org/wiki/R%C3%A9flexion_(informatique)) dans des fonctions qui opèrent sur d'autres fonctions.
 
-For instance, in the code below the `ask` function accepts a `question` to ask and an arbitrary number of `handler` functions to call.
+Par exemple, dans le code ci-dessous, la fonction `ask` accepte une `question` à poser et un nombre arbitraire de fonctions `handler` (gestionnaires) à appeler.
 
-Once a user provides their answer, the function calls the handlers. We can pass two kinds of handlers:
+Une fois qu'un utilisateur a fourni sa réponse, la fonction appelle les gestionnaires. Nous pouvons transmettre deux types de gestionnaires:
 
-- A zero-argument function, which is only called when the user gives a positive answer.
-- A function with arguments, which is called in either case and returns an answer.
+- Une fonction sans argument, qui n'est appelée que lorsque l'utilisateur donne une réponse positive.
+- Une fonction avec des arguments, appelée dans les deux cas et renvoyant une réponse.
 
-The idea is that we have a simple, no-arguments handler syntax for positive cases (most frequent variant), but are able to provide universal handlers as well.
+Pour appeler `handler` correctement, nous examinons la propriété `handler.length`.
 
-To call `handlers` the right way, we examine the `length` property:
+L'idée est que nous avons une syntaxe de gestionnaire simple, sans argument, pour les cas positifs (variante la plus fréquente), mais que nous pouvons également prendre en charge les gestionnaires universels :
 
 ```js run
 function ask(question, ...handlers) {
@@ -120,47 +121,46 @@ function ask(question, ...handlers) {
 
 }
 
-// for positive answer, both handlers are called
-// for negative answer, only the second one
+// pour une réponse positive, les deux gestionnaires sont appelés
+// pour réponse négative, seulement le second
 ask("Question?", () => alert('You said yes'), result => alert(result));
 ```
 
-This is a particular case of so-called [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)) -- treating arguments differently depending on their type or, in our case depending on the `length`. The idea does have a use in JavaScript libraries.
+Ceci est un cas particulier de ce qu'on appelle [polymorphism](https://en.wikipedia.org/wiki/Polymorphism_(computer_science)) -- le traitement des arguments différemment selon leur type ou, dans notre cas, en fonction de la `length`. L'idée a une utilisation dans les bibliothèques JavaScript.
 
-## Custom properties
+## Propriétés personnalisées
 
-We can also add properties of our own.
+Nous pouvons également ajouter nos propres propriétés.
 
-Here we add the `counter` property to track the total calls count:
+Nous ajoutons ici la propriété `counter` pour suivre le nombre total d'appels:
 
 ```js run
 function sayHi() {
   alert("Hi");
 
   *!*
-  // let's count how many times we run
+  // comptons combien de fois nous executons
   sayHi.counter++;
   */!*
 }
-sayHi.counter = 0; // initial value
+sayHi.counter = 0; // valeur initiale
 
 sayHi(); // Hi
 sayHi(); // Hi
 
-alert( `Called ${sayHi.counter} times` ); // Called 2 times
+alert( `Called ${sayHi.counter} times` ); // Appelée 2 fois
 ```
 
-```warn header="A property is not a variable"
-A property assigned to a function like `sayHi.counter = 0` does *not* define a local variable `counter` inside it. In other words, a property `counter` and a variable `let counter` are two unrelated things.
+```warn header="Une propriété n'est pas une variable"
+Une propriété affectée à une fonction comme `sayHi.counter = 0` *ne définit pas* une variable locale `counter` à l'intérieur de celle-ci. En d'autres termes, une propriété `counter` et une variable `let counter` sont deux choses indépendantes.
 
-We can treat a function as an object, store properties in it, but that has no effect on its execution. Variables are not function properties and vice versa. These are just parallel worlds.
+On peut traiter une fonction comme un objet, y stocker des propriétés, mais cela n’a aucun effet sur son exécution. Les variables ne sont pas des propriétés de fonction et inversement. Ce sont des mondes parallèles.
 ```
-
-Function properties can replace closures sometimes. For instance, we can rewrite the counter function example from the chapter <info:closure> to use a function property:
+Les propriétés de fonction peuvent parfois remplacer les fermetures. Par exemple, nous pouvons réécrire l’exemple de fonction de compteur du chapitre <info:fermeture> pour utiliser une propriété de fonction:
 
 ```js run
 function makeCounter() {
-  // instead of:
+  // au lieu de:
   // let count = 0
 
   function counter() {
@@ -177,11 +177,11 @@ alert( counter() ); // 0
 alert( counter() ); // 1
 ```
 
-The `count` is now stored in the function directly, not in its outer Lexical Environment.
+Le `count` est maintenant stocké dans la fonction directement, pas dans son environnement lexical externe
 
-Is it better or worse than using a closure?
+Est-ce meilleur ou pire que d'utiliser une fermeture?
 
-The main difference is that if the value of `count` lives in an outer variable, then external code is unable to access it. Only nested functions may modify it. And if it's bound to a function, then such a thing is possible:
+La principale différence est que si la valeur de `count` réside dans une variable externe, le code externe ne peut pas y accéder. Seules les fonctions imbriquées peuvent le modifier. Et si c'est lié à une fonction, une telle chose est possible:
 
 ```js run
 function makeCounter() {
@@ -203,13 +203,13 @@ alert( counter() ); // 10
 */!*
 ```
 
-So the choice of implementation depends on our aims.
+Le choix dépend donc de nos objectifs.
 
-## Named Function Expression
+## Fonction Expression Nommée (NFE)
 
-Named Function Expression, or NFE, is a term for Function Expressions that have a name.
+Fonction Expression Nommée, ou NFE ("Named Function Expression" en anglais), est un terme pour les fonctions expressions qui ont un nom.
 
-For instance, let's take an ordinary Function Expression:
+Par exemple, prenons une fonction expression ordinaire :
 
 ```js
 let sayHi = function(who) {
@@ -217,7 +217,7 @@ let sayHi = function(who) {
 };
 ```
 
-And add a name to it:
+Et ajoutons un nom à cela:
 
 ```js
 let sayHi = function *!*func*/!*(who) {
@@ -225,13 +225,13 @@ let sayHi = function *!*func*/!*(who) {
 };
 ```
 
-Did we achieve anything here? What's the purpose of that additional `"func"` name?
+Avons-nous réalisé quelque chose ici? Quel est le but de ce nom supplémentaire `"func"`?
 
-First let's note, that we still have a Function Expression. Adding the name `"func"` after `function` did not make it a Function Declaration, because it is still created as a part of an assignment expression.
+Notons d'abord que nous avons toujours une expression de fonction. L'ajout du nom `"func"` après `function` n'en a pas fait une déclaration de fonction, car il est toujours créé dans le cadre d'une expression d'affectation.
 
-Adding such a name also did not break anything.
+L'ajout d'un tel nom n'a également rien cassé.
 
-The function is still available as `sayHi()`:
+La fonction est toujours disponible sous la forme `sayHi()`:
 
 ```js run
 let sayHi = function *!*func*/!*(who) {
@@ -241,12 +241,12 @@ let sayHi = function *!*func*/!*(who) {
 sayHi("John"); // Hello, John
 ```
 
-There are two special things about the name `func`:
+Il y a deux particularités à propos du nom `func`, voici les raisons : 
 
-1. It allows the function to reference itself internally.
-2. It is not visible outside of the function.
+1. Il permet à la fonction de se référencer en interne.
+2. Il n'est pas visible en dehors de la fonction.
 
-For instance, the function `sayHi` below calls itself again with `"Guest"` if no `who` is provided:
+Par exemple, la fonction `sayHi` ci-dessous s’appelle à nouveau avec `"Guest"` si aucun `who` est fourni:
 
 ```js run
 let sayHi = function *!*func*/!*(who) {
@@ -254,21 +254,21 @@ let sayHi = function *!*func*/!*(who) {
     alert(`Hello, ${who}`);
   } else {
 *!*
-    func("Guest"); // use func to re-call itself
+    func("Guest"); // utilise func pour se rappeler
 */!*
   }
 };
 
 sayHi(); // Hello, Guest
 
-// But this won't work:
-func(); // Error, func is not defined (not visible outside of the function)
+// Mais ceci ne marchera pas:
+func(); // Error, func is not defined (pas visible à l'extérieur de la fonction)
 ```
 
-Why do we use `func`? Maybe just use `sayHi` for the nested call?
+Pourquoi utilisons-nous `func`? Peut-être juste utiliser `sayHi` pour l'appel imbriqué?
 
 
-Actually, in most cases we can:
+En fait, dans la plupart des cas, nous pouvons:
 
 ```js
 let sayHi = function(who) {
@@ -282,7 +282,7 @@ let sayHi = function(who) {
 };
 ```
 
-The problem with that code is that the value of `sayHi` may change. The function may go to another variable, and the code will start to give errors:
+Le problème avec ce code est que `sayHi` peut changer dans le code externe. Si la fonction est assignée à une autre variable, le code commencera à donner des erreurs :
 
 ```js run
 let sayHi = function(who) {
@@ -298,14 +298,14 @@ let sayHi = function(who) {
 let welcome = sayHi;
 sayHi = null;
 
-welcome(); // Error, the nested sayHi call doesn't work any more!
+welcome(); // Error, l'appel sayHi imbriqué ne fonctionne plus!
 ```
 
-That happens because the function takes `sayHi` from its outer lexical environment. There's no local `sayHi`, so the outer variable is used. And at the moment of the call that outer `sayHi` is `null`.
+Cela se produit parce que la fonction tire `sayHi` de son environnement lexical externe. Il n'y a pas de `sayHi` local, donc la variable externe est utilisée. Et au moment de l'appel, cet `sayHi` extérieur est `null`.
 
-The optional name which we can put into the Function Expression is meant to solve exactly these kinds of problems.
+Le nom optionnel que nous pouvons mettre dans l’expression de fonction est destiné à résoudre exactement ce type de problèmes.
 
-Let's use it to fix our code:
+Utilisons-le pour corriger notre code:
 
 ```js run
 let sayHi = function *!*func*/!*(who) {
@@ -313,7 +313,7 @@ let sayHi = function *!*func*/!*(who) {
     alert(`Hello, ${who}`);
   } else {
 *!*
-    func("Guest"); // Now all fine
+    func("Guest"); // Maintenant tout va bien
 */!*
   }
 };
@@ -321,32 +321,32 @@ let sayHi = function *!*func*/!*(who) {
 let welcome = sayHi;
 sayHi = null;
 
-welcome(); // Hello, Guest (nested call works)
+welcome(); // Hello, Guest (l'appel imbriqué fonctionne)
 ```
 
-Now it works, because the name `"func"` is function-local. It is not taken from outside (and not visible there). The specification guarantees that it will always reference the current function.
+Maintenant cela fonctionne, car le nom `'func'` est local à la fonction. Il n'est pas pris de l'extérieur (et non visible là-bas). La spécification garantit qu'elle fera toujours référence à la fonction actuelle.
 
-The outer code still has it's variable `sayHi` or `welcome`. And `func` is an "internal function name", how the function can call itself internally.
+Le code externe a toujours sa variable `sayHi` ou `welcome`. Et `func` est un "nom de fonction interne", c'est comment la fonction peut s'appeler en interne.
 
-```smart header="There's no such thing for Function Declaration"
-The "internal name" feature described here is only available for Function Expressions, not to Function Declarations. For Function Declarations, there's just no syntax possibility to add a one more "internal" name.
+```smart header="Il n'y a rien de tel pour la déclaration de fonction"
+La fonctionnalité "nom interne" décrite ici n'est disponible que pour les expressions de fonction, pas pour les déclarations de fonction. Pour les déclarations de fonctions, il n’y a aucune possibilité de syntaxe d’ajouter un nom "interne" supplémentaire.
 
-Sometimes, when we need a reliable internal name, it's the reason to rewrite a Function Declaration to Named Function Expression form.
+Parfois, lorsque nous avons besoin d’un nom interne fiable, c’est la raison pour laquelle nous réécrivons une déclaration de fonction en tant qe'expression de fonction nommée.
 ```
 
-## Summary
+## Résumé
 
-Functions are objects.
+Les fonctions sont des objets.
 
-Here we covered their properties:
+Ici nous avons couvert leurs propriétés:
 
-- `name` -- the function name. Usually taken from the function definition, but if there's none, JavaScript tries to guess it from the context (e.g. an assignment).
-- `length` -- the number of arguments in the function definition. Rest parameters are not counted.
+- `name` - le nom de la fonction. Habituellement tiré de la définition de la fonction, mais s’il n’en existe pas, JavaScript essaie de le deviner à partir du contexte (par exemple, une affectation).
+- `length` - le nombre d'arguments dans la définition de la fonction. Les paramètres du reste ne sont pas comptés.
 
-If the function is declared as a Function Expression (not in the main code flow), and it carries the name, then it is called a Named Function Expression. The name can be used inside to reference itself, for recursive calls or such.
+Si la fonction est déclarée en tant qu'expression de fonction (et non dans le flux du code principal) et qu'elle porte `name`, elle est appelée expression de fonction nommée. Le nom peut être utilisé à l'intérieur pour se référencer, pour des appels récursifs ou autres.
 
-Also, functions may carry additional properties. Many well-known JavaScript libraries make great use of this feature.
+De plus, les fonctions peuvent avoir des propriétés supplémentaires. De nombreuses bibliothèques JavaScript bien connues font bon usage de cette fonctionnalité.
 
-They create a "main" function and attach many other "helper" functions to it. For instance, the [jquery](https://jquery.com) library creates a function named `$`. The [lodash](https://lodash.com) library creates a function `_`. And then adds `_.clone`, `_.keyBy` and other properties to (see the [docs](https://lodash.com/docs) when you want learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.
+Ils créent une fonction "principale" et y attachent de nombreuses autres fonctions "d'assistance". Par exemple, la bibliothèque [jquery](https://jquery.com) crée une fonction nommée `$`. La bibliothèque [lodash](https://lodash.com) crée une fonction `_`. Et ajoute ensuite `_.clone`,` _.keyBy` et d'autres propriétés (voir la [doc](https://lodash.com/docs) lorsque vous souhaitez en savoir plus à leur sujet). En fait, elles le font pour réduire leur pollution de l'espace global, de sorte qu'une seule bibliothèque ne donne qu'une seule variable globale. Cela réduit la possibilité de conflits de noms.
 
-So, a function can do a useful job by itself and also carry a bunch of other functionality in properties.
+Ainsi, une fonction peut faire un travail utile par elle-même et aussi porter un tas d’autres fonctionnalités dans les propriétés.

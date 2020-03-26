@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Rewrite setTimeout with setInterval
+# Réécrire setTimeout avec setInterval
 
-Here's the function that uses nested `setTimeout` to split a job into pieces.
+Voici une fonction qui utilise un `setTimeout` imbriqué pour découper une tâche en petit bouts.
 
-Rewrite it to `setInterval`:
+Réécrire le bloc suivant en utilisant `setInterval`:
 
 ```js run
 let i = 0;
@@ -21,7 +21,7 @@ function count() {
     setTimeout(count);
   }
 
-  // a piece of heavy job
+  // un morceau d'une très grosse tâche
   for(let j = 0; j < 1000000; j++) {
     i++;
   }

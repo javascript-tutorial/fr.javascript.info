@@ -17,7 +17,7 @@ while (condition) {
 }
 ```
 
-Tant que la `condition` est `true`, le `code` du corps de la boucle est exécuté.
+Tant que la `condition` est vraie, le `code` du corps de la boucle est exécuté.
 
 Par exemple, la boucle ci-dessous affiche `i` tant que `i < 3` :
 
@@ -84,7 +84,7 @@ Cette forme de syntaxe est rarement utilisée, sauf lorsque vous souhaitez que l
 
 ## La boucle "for"
 
-La boucle `for` est la plus utilisée.
+La boucle `for` est plus complexe, mais c’est aussi la boucle la plus utilisée.
 
 Cela ressemble à ceci :
 
@@ -108,8 +108,8 @@ Examinons la déclaration `for` partie par partie :
 |-----------|------------|----------------------------------------------------------------------------------------|
 | début     | `i = 0`    | Exécute une fois en entrant dans la boucle.                                            |
 | condition | `i < 3`    | Vérifié avant chaque itération de la boucle, en cas d'échec, la boucle s'arrête.       |
-| étape     | `i++`      | Exécute après le corps à chaque itération, mais avant la vérification de la condition. |
 | corps     | `alert(i)` | Exécute encore et encore tant que la condition est vraie                               |
+| étape     | `i++`      | Exécute après le corps à chaque itération, mais avant la vérification de la condition. |
 
 
 L'algorithme de boucle général fonctionne comme ceci :
@@ -121,7 +121,9 @@ Exécuter le début
 → ...
 ```
 
-Si vous ne connaissez pas les boucles, alors il serait peut-être utile de revenir à l'exemple et de reproduire le déroulement pas à pas sur une feuille de papier.
+C'est-à-dire que `begin` est exécuté une fois, puis itéré : après chaque test de `condition`, `body` et `step` sont exécutés.
+
+Si vous débutez dans les boucles, il pourrait être utile de revenir à l'exemple et de reproduire comment elle s'exécute pas à pas sur une feuille de papier.
 
 Voici ce qui se passe exactement dans notre cas :
 
@@ -210,7 +212,7 @@ Mais nous pouvons forcer la sortie à tout moment. Il y a une directive spécial
 
 Par exemple, la boucle ci-dessous demande à l'utilisateur une série de chiffres, mais "se casse" quand aucun numéro n'est entré :
 
-```js
+```js run
 let sum = 0;
 
 while (true) {
@@ -254,7 +256,7 @@ Pour les valeurs paires de `i`, la directive `continue` arrête l'exécution du 
 ````smart header="La directive `continue` aide à réduire le niveau d'imbrication"
 Une boucle affichant des valeurs impaires pourrait ressembler à ceci :
 
-```js
+```js run
 for (let i = 0; i < 10; i++) {
 
   if (i % 2) {
@@ -266,7 +268,7 @@ for (let i = 0; i < 10; i++) {
 
 D'un point de vue technique, c'est identique à l'exemple du dessus. Certes, nous pouvons simplement envelopper le code dans un bloc `if` au lieu de `continue`.
 
-Mais comme effet secondaire, nous avons obtenu un niveau d'imbrication supplémentaire (l'appel de l'`alert` à l'intérieur des accolades). Si le code à l'intérieur est plus long que quelques lignes, la lisibilité globale peut en être réduite.
+Mais comme effet secondaire, nous avons obtenu un niveau d'imbrication supplémentaire (l'appel de l'`alert` à l'intérieur des accolades). Si le code à l'intérieur du `if` est plus long que quelques lignes, la lisibilité globale peut en être réduite.
 ````
 
 ````warn header="Pas de `break/continue` à droite de '?'"
@@ -289,7 +291,7 @@ if (i > 5) {
 (i > 5) ? alert(i) : *!*continue*/!*; // continue n'est pas autorisé ici
 ```
 
-… Ensuite cesse de fonctionner. Le code comme celui-ci donnera une erreur de syntaxe :
+… Ensuite cesse de fonctionner : il y a une erreur de syntaxe.
 
 
 C’est une autre raison pour ne pas utiliser l'opérateur point d’interrogation `?` au lieu de `if`.
@@ -299,7 +301,7 @@ C’est une autre raison pour ne pas utiliser l'opérateur point d’interrogati
 
 Parfois, nous devons sortir de plusieurs boucles imbriquées en même temps.
 
-Par exemple, dans le code ci-dessous, nous passons en boucle sur `i` et `j` pour demander les coordonnées `(i, j)` de `(0,0)` à `(3,3)` :
+Par exemple, dans le code ci-dessous, nous bouclons sur `i` et `j` pour demander les coordonnées `(i, j)` de `(0,0)` à `(2,2)` :
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {
@@ -308,8 +310,7 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
-    // Et si je veux sortir d'ici à Done (ci-dessous) ?
-
+    // Et si nous voulons sortir d'ici à Done (ci-dessous) ?
   }
 }
 
@@ -360,12 +361,12 @@ for (let i = 0; i < 3; i++) { ... }
 
 La directive `continue` peut également être utilisée avec un label. Dans ce cas, l'exécution passe à l'itération suivante de la boucle labelisée.
 
-````warn header="Les labels ne sont pas des \"goto\""
-Les labels ne nous permettent pas de sauter de manière arbitraire dans le code.
+````warn header="Les labels ne permettent pas de \"sauter\" n'importe où"
+Les labels ne nous permettent pas de sauter dans un endroit arbitraire du code.
 
 Par exemple, il est impossible de faire ceci :
 ```js
-break label;  // Sauter au label ? Non.
+break label;  // ne saute pas au label ci-dessous
 
 label: for (...)
 ```

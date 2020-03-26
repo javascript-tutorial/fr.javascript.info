@@ -1,23 +1,23 @@
-# Export and Import
+# Exporter et importer
 
-Export and import directives are very versatile.
+Les directives d'exportation et d'importation ont plusieurs variantes de syntaxe.
 
-In the previous chapter we saw a simple use, now let's explore more examples.
+Dans le chapitre précédent, nous avons constaté une utilisation simple: explorons maintenant plus d’exemples.
 
-## Export before declarations
+## Exporter avant les déclarations
 
-We can label any declaration as exported by placing `export` before it, be it a variable, function or a class.
+Nous pouvons étiqueter n'importe quelle déclaration comme exportée en plaçant `export` devant elle, que ce soit une variable, une fonction ou une classe.
 
-For instance, here all exports are valid:
+Par exemple, ici toutes les exportations sont valides:
 
 ```js
-// export an array
+// exporter un tableau
 *!*export*/!* let months = ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// export a constant
+// exporter une constante
 *!*export*/!* const MODULES_BECAME_STANDARD_YEAR = 2015;
 
-// export a class
+// exporter une classe
 *!*export*/!* class User {
   constructor(name) {
     this.name = name;
@@ -25,26 +25,26 @@ For instance, here all exports are valid:
 }
 ```
 
-````smart header="No semicolons after export class/function"
-Please note that `export` before a class or a function does not make it a [function expression](info:function-expressions-arrows). It's still a function declaration, albeit exported.
+````smart header="Pas de point-virgule après la classe/fonction d'exportation"
+Veuillez noter que l'`export` avant une classe ou une fonction n'en fait pas une [function expression](info:function-expressions). C’est toujours une fonction déclaration, bien qu’elle soit exportée.
 
-Most JavaScript style guides recommend semicolons after statements, but not after function and class declarations.
+La plupart des guides de bonnes pratiques JavaScript ne recommandent pas les points-virgules après les déclarations de fonctions et de classes.
 
-That's why there should be no semicolons at the end of `export class` and `export function`.
+C’est pourquoi il n’est pas nécessaire d’utiliser un point-virgule à la fin de `export class` et de `export function`:
 
 ```js
 export function sayHi(user) {
   alert(`Hello, ${user}!`);
-} *!* // no ; at the end */!*
+} *!* // pas de ; à la fin */!*
 ```
 
 ````
 
-## Export apart from declarations
+## Exporter en dehors des déclarations
 
-Also, we can put `export` separately.
+En outre, nous pouvons mettre l'`export` séparément.
 
-Here we first declare, and then export:
+Ici, nous déclarons d'abord, puis exportons:
 
 ```js  
 // 📁 say.js
@@ -57,15 +57,15 @@ function sayBye(user) {
 }
 
 *!*
-export {sayHi, sayBye}; // a list of exported variables
+export {sayHi, sayBye}; // une liste de variables exportées
 */!*
 ```
 
-...Or, technically we could put `export` above functions as well.
+… Ou, techniquement, nous pourrions également définir les fonctions d'`export` au-dessus des fonctions.
 
 ## Import *
 
-Usually, we put a list of what to import into `import {...}`, like this:
+Habituellement, nous mettons une liste de ce qu'il faut importer entre accolades `import {...}`, comme ceci:
 
 ```js
 // 📁 main.js
@@ -77,7 +77,7 @@ sayHi('John'); // Hello, John!
 sayBye('John'); // Bye, John!
 ```
 
-But if the list is long, we can import everything as an object using `import * as <obj>`, for instance:
+Mais s’il y a beaucoup à importer, nous pouvons tout importer en tant qu’objet en utilisant `import * as <obj>`, par exemple:
 
 ```js
 // 📁 main.js
@@ -89,35 +89,35 @@ say.sayHi('John');
 say.sayBye('John');
 ```
 
-At first sight, "import everything" seems such a cool thing, short to write, why should we ever explicitly list what we need to import?
+À première vue, "importer tout" semble être une chose tellement cool, simple a écrire, pourquoi devrions-nous explicitement énumérer ce que nous devons importer?
 
-Well, there are few reasons.
+Eh bien, il y a quelques raisons.
 
-1. Modern build tools ([webpack](http://webpack.github.io) and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
+1. Les outils de construction modernes ([webpack](http://webpack.github.io) et autres) regroupent les modules et les optimisent pour accélérer le chargement et supprimer les éléments inutilisés.
 
-    Let's say, we added a 3rd-party library `lib.js` to our project with many functions:
+    Disons que nous avons ajouté à notre projet une bibliothèque tierce, say.js, avec de nombreuses fonctions:
     ```js
-    // 📁 lib.js
+    // 📁 say.js
     export function sayHi() { ... }
     export function sayBye() { ... }
     export function becomeSilent() { ... }
     ```
 
-    Now if we only use one of `lib.js` functions in our project:
+    Maintenant, si nous n’utilisons qu’une des fonctions de say.js dans notre projet:
     ```js
     // 📁 main.js
-    import {sayHi} from './lib.js';
+    import {sayHi} from './say.js';
     ```
-    ...Then the optimizer will automatically detect it and totally remove the other functions from the bundled code, thus making the build smaller. That is called "tree-shaking".
+    … Ensuite, l'optimiseur verra cela et supprimera les autres fonctions du code fourni, rendant ainsi la construction plus petite. C'est ce qu'on appelle "tree-shaking".
 
-2. Explicitly listing what to import gives shorter names: `sayHi()` instead of `lib.sayHi()`.
-3. Explicit imports give better overview of the code structure: what is used and where. It makes code support and refactoring easier.
+2. Énumérer explicitement ce qu'il faut importer donne des noms plus courts: `sayHi()` au lieu de `say.sayHi()`.
+3. La liste explicite des importations donne une meilleure vue d'ensemble de la structure du code: ce qui est utilisé et où. Cela facilite la prise en charge du code et la refactorisation.
 
 ## Import "as"
 
-We can also use `as` to import under different names.
+Nous pouvons également utiliser `as` pour importer sous différents noms.
 
-For instance, let's import `sayHi` into the local variable `hi` for brevity, and same for `sayBye`:
+Par exemple, importons `sayHi` dans la variable locale `hi` par souci de concision, et importons `sayBye` en `bye`:
 
 ```js
 // 📁 main.js
@@ -131,9 +131,9 @@ bye('John'); // Bye, John!
 
 ## Export "as"
 
-The similar syntax exists for `export`.
+La syntaxe similaire existe pour l'`export`.
 
-Let's export functions as `hi` and `bye`:
+Exportons les fonctions en tant que `hi` et `bye`:
 
 ```js
 // 📁 say.js
@@ -141,106 +141,107 @@ Let's export functions as `hi` and `bye`:
 export {sayHi as hi, sayBye as bye};
 ```
 
-Now `hi` and `bye` are official names for outsiders:
+Maintenant, `hi` et `bye` sont les noms à utiliser dans les importations:
 
 ```js
 // 📁 main.js
 import * as say from './say.js';
 
-say.hi('John'); // Hello, John!
-say.bye('John'); // Bye, John!
+say.*!*hi*/!*('John'); // Hello, John!
+say.*!*bye*/!*('John'); // Bye, John!
 ```
 
-## export default
+## Export default
 
-So far, we've seen how to import/export multiple things, optionally "as" other names.
+En pratique, il existe principalement deux types de modules.
 
-In practice, modules contain either:
-- A library, pack of functions, like `lib.js`.
-- Or an entity, like `class User` is described in `user.js`, the whole module has only this class.
+1. Les modules qui contiennent une bibliothèque, un pack de fonctions, comme `say.js` ci-dessus.
+2. Les modules qui déclarent une seule entité, par exemple un module `user.js` qui exporte uniquement la `class User`.
 
-Mostly, the second approach is preferred, so that every "thing" resides in its own module.
+La deuxième approche est généralement privilégiée, de sorte que chaque "chose" réside dans son propre module.
 
-Naturally, that requires a lot of files, as everything wants its own module, but that's not a problem at all. Actually, code navigation becomes easier, if files are well-named and structured into folders.
+Naturellement, cela nécessite beaucoup de fichiers, car toute chose veut son propre module, mais ce n’est pas un problème du tout. En fait, la navigation dans le code devient plus facile si les fichiers sont bien nommés et structurés en dossiers.
 
-Modules provide special `export default` syntax to make "one thing per module" way look better.
+Les modules fournissent une syntaxe spéciale `export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
 
-It requires following `export` and `import` statements:
-
-1. Put `export default` before the "main export" of the module.
-2. Call `import` without curly braces.
-
-For instance, here `user.js` exports `class User`:
+Placez `export default` avant l'entité à exporter:
 
 ```js
 // 📁 user.js
-export *!*default*/!* class User { // just add "default"
+export *!*default*/!* class User { // ajouter juste "default"
   constructor(name) {
     this.name = name;
   }
 }
 ```
 
-...And `main.js` imports it:
+Il ne peut y avoir qu'un seul `export default` par fichier.
+
+… Et ensuite importez-le sans accolades:
 
 ```js
 // 📁 main.js
-import *!*User*/!* from './user.js'; // not {User}, just User
+import *!*User*/!* from './user.js'; // pas {User}, juste User
 
 new User('John');
 ```
 
-Imports without curly braces look nicer. A common mistake when starting to use modules is to forget curly braces at all. So, remember, `import` needs curly braces for named imports and doesn't need them for the default one.
+Les importations sans accolades sont plus agréables. Une erreur courante lorsque vous commencez à utiliser des modules est d’oublier les accolades. Par conséquent, rappelez-vous que l’`import` nécessite des accolades pour les exportations nommées et ne les utilise pas pour celle par défaut.
 
-| Named export | Default export |
-|--------------|----------------|
+| Export nommé | Export par défaut |
+|--------------|-------------------|
 | `export class User {...}` | `export default class User {...}` |
 | `import {User} from ...` | `import User from ...`|
 
-Naturally, there may be only one "default" export per file.
+Techniquement, nous pouvons avoir à la fois des exportations par défaut et des exportations nommées dans un seul module, mais dans la pratique, les gens ne les mélangent généralement pas. Un module a soit, des exports nommés, soit celui par défaut.
 
-We may have both default and named exports in a single module, but in practice people usually don't mix them. A module has either named exports or the default one.
+Comme il peut y avoir au plus une exportation par défaut par fichier, l'entité exportée peut ne pas avoir de nom.
 
-**Another thing to note is that named exports must (naturally) have a name, while `export default` may be anonymous.**
-
-For instance, these are all perfectly valid default exports:
+Par exemple, ce sont toutes des exportations par défaut parfaitement valides:
 
 ```js
-export default class { // no class name
+export default class { // pas de nom de classe
   constructor() { ... }
 }
+```
 
-export default function(user) { // no function name
+```js
+export default function(user) { // pas de nom de fonction
   alert(`Hello, ${user}!`);
 }
+```
 
-// export a single value, without making a variable
+```js
+// exporter une seule valeur sans créer de variable
 export default ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 ```
 
-That's fine, because `export default` is only one per file. Contrary to that, omitting a name for named imports would be an error:
+Ne pas donner de nom, c'est bien, car l'`export default` est unique. Par conséquent, l'importation sans accolades sait ce qu'il faut importer.
+
+Sans `defaut`, une telle exportation donnerait une erreur:
 
 ```js
-export class { // Error! (non-default export needs a name)
+export class { // Erreur! (un export autre que par défaut nécessite un nom)
   constructor() {}
 }
 ```     
 
-### "Default" alias
+### Le nom par "default"
 
-The "default" keyword is used as an "alias" for the default export, for standalone exports and other scenarios when we need to reference it.
+Dans certaines situations, le mot clé `default` est utilisé pour référencer l'exportation par défaut.
 
-For example, if we already have a function declared, that's how to `export default` it (separately from the definition):
+Par exemple, pour exporter une fonction séparément de sa définition:
 
 ```js
 function sayHi(user) {
   alert(`Hello, ${user}!`);
 }
 
-export {sayHi as default}; // same as if we added "export default" before the function
+// comme si nous avions ajouté "export default" avant la fonction
+export {sayHi as default};
 ```
 
-Or, let's say a module `user.js` exports one main "default" thing and a few named ones (rarely the case, but happens):
+Ou, dans un autre cas, supposons qu'un module `user.js` exporte un élément principal par "défaut" et quelques éléments nommés (rarement le cas, mais ça arrive):
 
 ```js
 // 📁 user.js
@@ -255,7 +256,7 @@ export function sayHi(user) {
 }
 ```
 
-Here's how to import the default export along with a named one:
+Voici comment importer l'exportation par défaut avec celle nommée:
 
 ```js
 // 📁 main.js
@@ -264,41 +265,37 @@ import {*!*default as User*/!*, sayHi} from './user.js';
 new User('John');
 ```
 
-Or, if we consider importing `*` as an object, then the `default` property is exactly the default export:
+Et, enfin, si vous importez tout `*` comme objet, la propriété `default` est exactement l'exportation par défaut:
 
 ```js
 // 📁 main.js
 import * as user from './user.js';
 
-let User = user.default;
+let User = user.default; // l'exportation par défaut
 new User('John');
 ```
 
+### Un mot contre les exportations par défaut
 
-### Should I use default exports?
+Les exportations nommées sont explicites. Ils nomment exactement ce qu’ils importent, nous avons donc ces informations, c’est une bonne chose.
 
-One should be careful about using default exports, because they are more difficult to maintain.
-
-Named exports are explicit. They exactly name what they import, so we have that information from them, that's a good thing.
-
-Also, named exports enforce us to use exactly the right name to import:
+Les exportations nommées nous obligent à utiliser exactement le bon nom pour importer::
 
 ```js
 import {User} from './user.js';
-// import {MyUser} won't work, the name must be {User}
+// importer {MyUser} ne fonctionnera pas, le nom devrait être {User}
 ```
 
-For default exports, we always choose the name when importing:
+...Alors que pour une exportation par défaut, nous choisissons toujours le nom lors de l'importation:
 
 ```js
-import User from './user.js'; // works
-import MyUser from './user.js'; // works too
-// could be import Anything..., and it'll be work
+import User from './user.js'; // fonctionne
+import MyUser from './user.js'; // fonctionne aussi
+// n'importe quoi pourrait être importé ..., cela continuera de fonctionner
 ```
+Les membres de l'équipe peuvent donc utiliser des noms différents pour importer la même chose, et ce n'est pas bien.
 
-So, there's a little bit more freedom that can be abused, so that team members may use different names for the same thing.
-
-Usually, to avoid that and keep the code consistent, there's a rule that imported variables should correspond to file names, e.g:
+Habituellement, pour éviter cela et garder le code cohérent, il existe une règle voulant que les variables importées correspondent aux noms de fichier, par exemple:
 
 ```js
 import User from './user.js';
@@ -307,135 +304,151 @@ import func from '/path/to/func.js';
 ...
 ```
 
-Another solution would be to use named exports everywhere. Even if only a single thing is exported, it's still exported under a name, without `default`.
+Néanmoins, certaines équipes considèrent qu'il s'agit d'un grave inconvénient des exportations par défaut. Ils préfèrent donc toujours utiliser des exportations nommées. Même si une seule chose est exportée, elle est toujours exportée sous un nom, sans `default`.
 
-That also makes re-export (see below) a little bit easier.
+Cela facilite également la réexportation (voir ci-dessous).
 
-## Re-export
+## Réexportation
 
-"Re-export" syntax `export ... from ...` allows to import things and immediately export them (possibly under another name), like this:
+La syntaxe "re-export" `export ... from ...` permet d'importer et d'exporter immédiatement des éléments (éventuellement sous un autre nom), comme ceci:
 
 ```js
-export {sayHi} from './say.js';
-export {default as User} from './user.js';
+export {sayHi} from './say.js'; // réexportez sayHi
+
+export {default as User} from './user.js'; // réexportez default
 ```
 
-What's the point, why that's needed? Let's see a practical use case.
+Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
-Imagine, we're writing a "package": a folder with a lot of modules, mostly needed internally, with some of the functionality exported outside (tools like NPM allow to publish and distribute packages, but here it doesn't matter).
+Imaginons, nous écrivons un "package": un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides". utilisation interne dans d'autres modules.
 
-A directory structure could be like this:
+La structure de fichier pourrait être comme ceci:
 ```
 auth/
-  index.js  
-  user.js
-  helpers.js
-  tests/
-    login.js
-  providers/
-    github.js
-    facebook.js
-    ...
+    index.js  
+    user.js
+    helpers.js
+    tests/
+        login.js
+    providers/
+        github.js
+        facebook.js
+        ...
 ```
 
-We'd like to expose the package functionality via a single entry point, the "main file" `auth/index.js`, to be used like this:
+Nous aimerions exposer les fonctionnalités du paquet via un seul point d’entrée, le "fichier principal" `auth / index.js`, à utiliser comme ceci:
 
 ```js
 import {login, logout} from 'auth/index.js'
 ```
 
-The idea is that outsiders, developers who use our package, should not meddle with its internal structure. They should not search for files inside our package folder. We export only what's necessary in `auth/index.js` and keep the rest hidden from prying eyes.
+L'idée est que les tiers, les développeurs qui utilisent notre package, ne doivent pas se mêler de sa structure interne, rechercher des fichiers dans notre dossier de packages. Nous n'exportons que ce qui est nécessaire dans `auth / index.js` et gardons le reste caché des regards indiscrets.
 
-Now, as the actual exported functionality is scattered among the package, we can gather and "re-export" it in `auth/index.js`:
+La fonctionnalité exportée étant dispersée dans le package, nous pouvons l'importer dans `auth / index.js` et l'exporter:
 
 ```js
 // 📁 auth/index.js
+
+// importer les login / logout et les exporter immédiatement
 import {login, logout} from './helpers.js';
 export {login, logout};
 
+// importer par défaut en tant qu'utilisateur et l'exporter
 import User from './user.js';
 export {User};
-
-import Github from './providers/github.js';
-export {Github};
 ...
 ```
 
-"Re-exporting" is just a shorter notation for that:
+Maintenant, les utilisateurs de notre paquet peuvent `import {login} from "auth/index.js"`.
+
+La syntaxe `export ... from ...` est juste une notation plus courte pour importer et exporter directement:
 
 ```js
 // 📁 auth/index.js
+// importer login / logout et les exporter immédiatement
 export {login, logout} from './helpers.js';
-// or, to re-export all helpers, we could use:
-// export * from './helpers.js';
 
+// importer par défaut en tant qu'User et exporter immédiatement
 export {default as User} from './user.js';
-
-export {default as Github} from './providers/github.js';
 ...
 ```
 
-````warn header="Re-exporting default is tricky"
-Please note: `export User from './user.js'` won't work. It's actually a syntax error. To re-export the default export, we must mention it explicitly `{default as ...}`, like in the example above.
+### Ré-exportation de l'exportation par défaut
 
-Also, there's another oddity: `export * from './user.js'` re-exports only named exports, excluding the default one. Once again, we need to mention it explicitly.
+L'exportation par défaut nécessite un traitement séparé lors de la réexportation.
 
-For instance, to re-export everything, two statements will be necessary:
+Disons que nous avons `user.js` et que nous aimerions réexporter la classe `User` à partir de celle-ci:
+
 ```js
-export * from './module.js'; // to re-export named exports
-export {default} from './module.js'; // to re-export default
+// 📁 user.js
+export default class User {
+  // ...
+}
 ```
 
-The default should be mentioned explicitly only when re-exporting: `import * as obj` works fine. It imports the default export as `obj.default`. So there's a slight asymmetry between import and export constructs here.
-````
+1. `export User from './user.js'` çe ne fonctionnera pas... C'est une erreur de syntaxe!
 
-## Summary
+    Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
 
-There are following types of `export`:
+2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
-- Before declaration:
+    Si nous souhaitons réexporter l'export nommé et l'export par défaut, deux instructions sont nécessaires:
+    ```js
+    export * from './user.js'; // réexporter les exportations nommées
+    export {default} from './user.js'; // réexporter l'exportation par défaut
+    ```
+
+Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne les aiment pas.
+
+## Sommaire
+
+Voici tous les types d'`export` que nous avons abordés dans ce chapitre et dans les chapitres précédents.
+
+Vous pouvez vérifier vous-même en les lisant et en vous rappelant leur signification:
+
+- Avant la déclaration d'une classe / fonction / ..:
   - `export [default] class/function/variable ...`
-- Standalone:
+- Exportation autonome:
   - `export {x [as y], ...}`.
-- Re-export:
-  - `export {x [as y], ...} from "mod"`
-  - `export * from "mod"` (doesn't re-export default).
-  - `export {default [as y]} from "mod"` (re-export default).
+- Réexportation:
+  - `export {x [as y], ...} from "module"`
+  - `export * from "module"` (ne ré-exporte pas par défaut).
+  - `export {default [as y]} from "module"` (ré-export par défaut).
 
 Import:
 
-- Named exports from module:
-  - `import {x [as y], ...} from "mod"`
-- Default export:  
-  - `import x from "mod"`
-  - `import {default as x} from "mod"`
-- Everything:
-  - `import * as obj from "mod"`
-- Import the module (it runs), but do not assign it to a variable:
-  - `import "mod"`
+- Exportations nommées du module:
+  - `import {x [as y], ...} from "module"`
+- Export par défaut: 
+  - `import x from "module"`
+  - `import {default as x} from "module"`
+- Tout:
+  - `import * as obj from "module"`
+- Import le module (son code s'exécute), mais ne l'affecte pas à une variable:
+  - `import "module"`
 
-We can put import/export statements at the top or at the bottom of a script, that doesn't matter.
+Nous pouvons mettre des déclarations `import/export` en haut ou en bas d'un script, cela n'a pas d'importance.
 
-So this is technically fine:
+Donc, techniquement, ce code est correct:
 ```js
 sayHi();
 
 // ...
 
-import {sayHi} from './say.js'; // import at the end of the script
+import {sayHi} from './say.js'; // importer à la fin du fichier
 ```
 
-In practice imports are usually at the start of the file, but that's only for better convenience.
+En pratique, les importations se font généralement au début du fichier, mais ce n'est que pour des raisons de commodité.
 
-**Please note that import/export statements don't work if inside `{...}`.**
+**Veuillez noter que les instructions import/export ne fonctionnent pas si elles sont à l'intérieur `{...}`.**
 
-A conditional import, like this, won't work:
+Une importation conditionnelle, comme celle-ci, ne fonctionnera pas:
 ```js
 if (something) {
-  import {sayHi} from "./say.js"; // Error: import must be at top level
+  import {sayHi} from "./say.js"; // Erreur: l'importation doit être au plus haut niveau
 }
 ```
 
-...But what if we really need to import something conditionally? Or at the right time? Like, load a module upon request, when it's really needed?
+...Mais que se passe-t-il si nous devons vraiment importer quelque chose de manière conditionnelle? Ou au bon moment? Aimez-vous, charger un module sur demande, quand c'est vraiment nécessaire?
 
-We'll see dynamic imports in the next chapter.
+Nous verrons les importations dynamiques dans le chapitre suivant.

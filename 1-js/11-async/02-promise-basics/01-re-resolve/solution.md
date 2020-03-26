@@ -1,3 +1,3 @@
-The output is: `1`.
+Le résultat est : `1`.
 
-The second call to `resolve` is ignored, because only the first call of `reject/resolve` is taken into account. Further calls are ignored.
+Le second appel à `resolve` est ignoré, puisque seul le premier appel à `reject/resolve` est pris en compte. Les autres appels sont simplement ignorés.

@@ -38,7 +38,7 @@ let user = {
 };
 ```
 
-![](memory-user-john.png)
+![](memory-user-john.svg)
 
 Ici, la flèche représente une référence d'objet. La variable globale `"user"` fait référence à l’objet `{name: "John"}` (nous l’appellerons John par souci de brièveté). La propriété `"name"` de John stocke une primitive, elle est donc stockée à l'intérieur de l'objet.
 
@@ -48,7 +48,7 @@ Si la valeur de `user` est écrasée, la référence est perdue :
 user = null;
 ```
 
-![](memory-user-john-lost.png)
+![](memory-user-john-lost.svg)
 
 Maintenant, John devient inaccessible. Il n’y a aucun moyen d’y accéder, pas de référence. Le ramasse-miettes (garbage collector) détruit les données et libère la mémoire.
 
@@ -67,7 +67,7 @@ let admin = user;
 */!*
 ```
 
-![](memory-user-john-admin.png)
+![](memory-user-john-admin.svg)
 
 Maintenant si nous faisons la même chose :
 ```js
@@ -102,7 +102,7 @@ La fonction `marry` "marie" deux objets en leur donnant des références et renv
 
 Le résultat de la structure de mémoire :
 
-![](family.png)
+![](family.svg)
 
 À partir de maintenant, tous les objets sont accessibles.
 
@@ -113,19 +113,19 @@ delete family.father;
 delete family.mother.husband;
 ```
 
-![](family-delete-refs.png)
+![](family-delete-refs.svg)
 
 Il ne suffit pas de supprimer une seule de ces deux références, car tous les objets seraient toujours accessibles.
 
 Mais si nous supprimons les deux, alors nous pouvons voir que John n’a plus de référence entrante :
 
-![](family-no-father.png)
+![](family-no-father.svg)
 
 Les références sortantes importent peu. Seuls les objets entrants peuvent rendre un objet accessible. Ainsi, John est maintenant inaccessible et sera supprimé de la mémoire avec toutes ses données qui sont également devenues inaccessibles.
 
 Après le passage du ramasse-miettes (garbage collector) :
 
-![](family-no-father-2.png)
+![](family-no-father-2.svg)
 
 ## Île inaccessible
 
@@ -139,7 +139,7 @@ family = null;
 
 L'image en mémoire devient :
 
-![](family-no-family.png)
+![](family-no-family.svg)
 
 Cet exemple montre à quel point le concept d'accessibilité est important.
 
@@ -153,7 +153,7 @@ L'algorithme de base de la récupération de place (garbage collection) s'appell
 
 Les étapes suivantes du "ramasse-miettes" (garbage collection) sont régulièrement effectuées :
 
-- Le ramasse-miettes prend des racines et les "marque" (se souvient).
+- Le ramasse-miettes prend les racines et les "marque" (se souvient).
 - Ensuite, il visite et "marque" toutes les références.
 - Ensuite, il visite les objets marqués et marque *leurs* références. Tous les objets visités sont mémorisés afin de ne pas visiter le même objet deux fois dans le futur.
 - … Et ainsi de suite tant qu'il y a des références non consultées (accessibles depuis les racines).
@@ -161,29 +161,29 @@ Les étapes suivantes du "ramasse-miettes" (garbage collection) sont régulière
 
 Par exemple, imaginons notre structure d'objet ressembler à ceci :
 
-![](garbage-collection-1.png)
+![](garbage-collection-1.svg)
 
 Nous pouvons clairement voir une "île inaccessible" sur le côté droit. Voyons maintenant comment le garbage collector "mark-and-sweep" le gère.
 
 La première étape marque les racines :
 
-![](garbage-collection-2.png)
+![](garbage-collection-2.svg)
 
 Ensuite, leurs références sont marquées :
 
-![](garbage-collection-3.png)
+![](garbage-collection-3.svg)
 
 … Et leurs références, autant que possible :
 
-![](garbage-collection-4.png)
+![](garbage-collection-4.svg)
 
 Désormais, les objets qui n'ont pas pu être visités sont considérés comme inaccessibles et seront supprimés :
 
-![](garbage-collection-5.png)
+![](garbage-collection-5.svg)
 
-C’est le concept de la façon dont le garbage collector fonctionne.
+Nous pouvons également imaginer que le processus consiste à renverser un énorme seau de peinture à la racine, qui traverse toutes les références et marque tous les objets accessibles. Les non marqués sont ensuite supprimés.
 
-Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
+C'est le concept de la façon dont la garbage collection fonctionne. Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
 
 Certaines des optimisations :
 

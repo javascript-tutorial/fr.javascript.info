@@ -2,23 +2,23 @@ importance: 5
 
 ---
 
-# Debounce decorator
+# Décorateur debounce
 
-The result of `debounce(f, ms)` decorator should be a wrapper that passes the call to `f` at maximum once per `ms` milliseconds.
+Le résultat du décorateur `debounce(f, ms)` devrait être un wrapper qui transmet l'appel à `f` au maximum une fois par `ms`, millisecondes.
 
-In other words, when we call a "debounced" function, it guarantees that all other future in the closest `ms` milliseconds will be ignored.
+En d'autres termes, lorsque nous appelons une fonction "debounce", cela garantit que tous les futurs appels à la fonction effectuée moins de `ms` millisecondes après l'appel précédent seront ignorés.
 
-For instance:
+Par exemple:
 
 ```js no-beautify
 let f = debounce(alert, 1000);
 
-f(1); // runs immediately
-f(2); // ignored
+f(1); // exécute immédiatement
+f(2); // ignorée
 
-setTimeout( () => f(3), 100); // ignored ( only 100 ms passed )
-setTimeout( () => f(4), 1100); // runs
-setTimeout( () => f(5), 1500); // ignored (less than 1000 ms from the last run)
+setTimeout( () => f(3), 100); // ignorée (seulement 100 ms passé)
+setTimeout( () => f(4), 1100); // exécute
+setTimeout( () => f(5), 1500); // ignorée (moins de 1000 ms à partir de la dernière exécution)
 ```
 
-In practice `debounce` is useful for functions that retrieve/update something when we know that nothing new can be done in such a short period of time, so it's better not to waste resources.
+En pratique, `debounce` est utile pour les fonctions qui récupèrent/mettent à jour quelque chose quand on sait que rien de nouveau ne peut être fait dans un laps de temps aussi court, il est donc préférable de ne pas gaspiller de ressources.

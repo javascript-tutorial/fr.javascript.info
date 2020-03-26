@@ -1,5 +1,5 @@
-To drag the element we can use `position:fixed`, it makes coordinates easier to manage. At the end we should switch it back to `position:absolute`.
+Pour déplacer l’élément nous pouvons utiliser `position:fixed`, cela rend les coordonnées plus facile à manipuler. A la fin nous devons le  repositionner à `position:absolute` pour mettre l'élément dans le document.
 
-Then, when coordinates are at window top/bottom, we use `window.scrollTo` to scroll it.
+Ensuite, lorsque les coordonnées sont en haut ou au bas de la fenêtre, nous pouvons utiliser `window.scrollTo` pour le faire défiler.
 
-More details in the code, in comments.
+Plus de détails dans votre code, en commentaires.

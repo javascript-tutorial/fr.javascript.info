@@ -1,6 +1,6 @@
-The first solution we could try here is the recursive one.
+La première solution que nous pourrions essayer ici est la solution récursive.
 
-Fibonacci numbers are recursive by definition:
+Les nombres de Fibonacci sont récursifs par définition:
 
 ```js run
 function fib(n) {
@@ -9,14 +9,14 @@ function fib(n) {
 
 alert( fib(3) ); // 2
 alert( fib(7) ); // 13
-// fib(77); // will be extremely slow!
+// fib(77); // Sera extrêmement lent!
 ```
 
-...But for big values of `n` it's very slow. For instance, `fib(77)` may hang up the engine for some time eating all CPU resources.
+...Mais pour les grandes valeurs de `n` c'est très lent. Par exemple, `fib(77)` peut bloquer le moteur pendant un certain temps en consommant toutes les ressources du processeur.
 
-That's because the function makes too many subcalls. The same values are re-evaluated again and again.
+C'est parce que la fonction crée trop de sous-appels. Les mêmes valeurs sont réévaluées encore et encore.
 
-For instance, let's see a piece of calculations for `fib(5)`:
+Par exemple, voyons un calcul pour `fib(5)`:
 
 ```js no-beautify
 ...
@@ -25,68 +25,68 @@ fib(4) = fib(3) + fib(2)
 ...
 ```
 
-Here we can see that the value of `fib(3)` is needed for both `fib(5)` and `fib(4)`. So `fib(3)` will be called and evaluated two times completely independently.
+Ici, nous pouvons voir que la valeur de `fib(3)` est nécessaire pour les deux `fib(5)` et `fib(4)`. Alors `fib(3)` sera appelé et évalué deux fois de manière totalement indépendante.
 
-Here's the full recursion tree:
+Voici l'arbre de récursion complet:
 
-![fibonacci recursion tree](fibonacci-recursion-tree.png)
+![fibonacci recursion tree](fibonacci-recursion-tree.svg)
 
-We can clearly notice that `fib(3)` is evaluated two times and `fib(2)` is evaluated three times. The total amount of computations grows much faster than `n`, making it enormous even for `n=77`.
+Nous pouvons clairement remarquer que `fib(3)` est évalué deux fois et `fib(2)` est évalué trois fois. La quantité totale de calculs augmente beaucoup plus vite que `n`, le rendant énorme même pour `n=77`.
 
-We can optimize that by remembering already-evaluated values: if a value of say `fib(3)` is calculated once, then we can just reuse it in future computations.
+Nous pouvons optimiser cela en nous rappelant les valeurs déjà évaluées: si une valeur de `fib(3)` est calculé une fois, alors nous pouvons simplement le réutiliser dans les calculs futurs.
 
-Another variant would be to give up recursion and use a totally different loop-based algorithm.
+Une autre variante consisterait à abandonner la récursion et à utiliser un algorithme totalement différent basé sur des boucles.
 
-Instead of going from `n` down to lower values, we can make a loop that starts from `1` and `2`, then gets `fib(3)` as their sum, then `fib(4)` as the sum of two previous values, then `fib(5)` and goes up and up, till it gets to the needed value. On each step we only need to remember two previous values.
+Au lieu de partir de `n` jusqu'à des valeurs plus basses, nous pouvons faire une boucle qui commence à partir de `1` et `2`, puis obtient `fib(3)` comme leur somme, ensuite `fib(4)` comme la somme de deux valeurs précédentes, ensuite `fib(5)` et monte, jusqu'à ce qu'il atteigne la valeur nécessaire. À chaque étape, il suffit de rappeler deux valeurs précédentes.
 
-Here are the steps of the new algorithm in details.
+Voici les étapes du nouvel algorithme en détails.
 
-The start:
+Le début:
 
 ```js
-// a = fib(1), b = fib(2), these values are by definition 1
+// a = fib(1), b = fib(2), ces valeurs sont par définition 1
 let a = 1, b = 1;
 
-// get c = fib(3) as their sum
+// obtien c = fib(3) comme leur somme
 let c = a + b;
 
-/* we now have fib(1), fib(2), fib(3)
+/* nous avons maintenant fib(1), fib(2), fib(3)
 a  b  c
 1, 1, 2
 */
 ```
 
-Now we want to get `fib(4) = fib(2) + fib(3)`.
+Maintenant, nous voulons obtenir `fib(4) = fib(2) + fib(3)`.
 
-Let's shift the variables: `a,b` will get `fib(2),fib(3)`, and `c` will get their sum:
+Passons aux variables: `a,b` aura `fib(2),fib(3)`, et `c` obtiendra leur somme:
 
 ```js no-beautify
-a = b; // now a = fib(2)
-b = c; // now b = fib(3)
+a = b; // maintenant a = fib(2)
+b = c; // maintenant b = fib(3)
 c = a + b; // c = fib(4)
 
-/* now we have the sequence:
+/* maintenant nous avons la séquence:
    a  b  c
 1, 1, 2, 3
 */
 ```
 
-The next step gives another sequence number:
+L'étape suivante donne un autre numéro de séquence:
 
 ```js no-beautify
-a = b; // now a = fib(3)
-b = c; // now b = fib(4)
+a = b; // maintenant a = fib(3)
+b = c; // maintenant b = fib(4)
 c = a + b; // c = fib(5)
 
-/* now the sequence is (one more number):
+/* maintenant la séquence est (encore un numéro):
       a  b  c
 1, 1, 2, 3, 5
 */
 ```
 
-...And so on until we get the needed value. That's much faster than recursion and involves no duplicate computations.
+...Et ainsi de suite jusqu'à l'obtention de la valeur nécessaire. C'est beaucoup plus rapide que la récursion et n'implique aucun calcul en double.
 
-The full code:
+Le code complet:
 
 ```js run
 function fib(n) {
@@ -105,6 +105,6 @@ alert( fib(7) ); // 13
 alert( fib(77) ); // 5527939700884757
 ```
 
-The loop starts with `i=3`, because the first and the second sequence values are hard-coded into variables `a=1`, `b=1`.
+La boucle commence par `i=3`, parce que les première et deuxième valeurs de séquence sont codées en dur dans des variables `a=1`, `b=1`.
 
-The approach is called [dynamic programming bottom-up](https://en.wikipedia.org/wiki/Dynamic_programming).
+Cette approche s'appelle la [programmation dynamique de bas en haut](https://fr.wikipedia.org/wiki/Programmation_dynamique).

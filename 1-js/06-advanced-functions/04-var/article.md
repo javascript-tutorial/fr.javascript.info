@@ -1,7 +1,13 @@
 
 # L'ancien "var"
 
-Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable:
+```smart header="Cet article est pour comprendre les anciens scripts"
+Les informations contenues dans cet article sont utiles pour comprendre les anciens scripts.
+
+Ce n'est pas ainsi que nous écrivons un nouveau code.
+```
+
+Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable :
 
 1. `let`
 2. `const`
@@ -31,7 +37,7 @@ alert(phrase); // Erreur, phrase n'est pas définie
 
 ## "var" n'a pas de portée limitée aux blocs
 
-Les variables `var` sont globales ou à l'échelle de la fonction. En d'autres mots, elles sont visibles à travers les blocs.
+Les variables, déclarées avec `var`, sont globales ou à l'échelle de la fonction. Elles sont visibles à travers les blocs.
 
 Par exemple:
 
@@ -45,7 +51,7 @@ alert(test); // vrai, la variable existe après if
 */!*
 ```
 
-`var` ignore les blocs de code, alors nous avons une variable globale `test`.
+Comme `var` ignore les blocs de code, nous avons une variable globale `test`.
 
 Si nous aurions utilisé `let test` au lieu de `var test`, la variable aurait seulement été visible à l'intérieur de `if`:
 
@@ -147,7 +153,7 @@ Alors dans l'exemple au dessus, la branche `if (false)` n'est jamais exécutée,
 
 **Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
-Il convient mieux de démontrer cet énoncé avec un exemple, comme celui ci :
+Cela est mieux démontré avec un exemple :
 
 ```js run
 function sayHi() {
@@ -187,6 +193,74 @@ sayHi();
 Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où. Mais les variables sont indéfinies jusqu'aux affectations.
 
 Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
+
+### IIFE
+
+Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter. Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
+
+Ce n'est pas quelque chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts.
+
+Un IIFE ressemble à ceci :
+
+```js run
+(function() {
+
+  let message = "Hello";
+
+  alert(message); // Hello
+
+})();
+```
+
+Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
+
+La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"fonction"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
+
+```js run
+// Essayons de déclarer et d'appeler immédiatement une fonction
+function() { // <-- Error: Unexpected token (
+
+  let message = "Hello";
+
+  alert(message); // Hello
+
+}();
+```
+
+Même si nous disons : "d'accord, ajoutons un nom", cela ne fonctionnera toujours pas, parce que JavaScript ne permet pas d'appeler immédiatement les fonctions déclarations :
+
+```js run
+// erreur de syntaxe à cause des parenthèses ci-dessous
+function go() {
+
+}(); // <-- ne peut pas appeler la fonction déclaration immédiatement
+```
+
+Ainsi, les parenthèses autour de la fonction sont une astuce pour montrer à JavaScript que la fonction est créée dans le contexte d'une autre expression, et donc c'est une fonction expression : elle n'a pas besoin de nom et peut être appelée immédiatement.
+
+Il existe d'autres façons que les parenthèses pour dire à JavaScript que nous souhaitons une fonction expression :
+
+```js run
+// Façons de créer une IIFE
+
+(function() {
+  alert("Parentheses around the function");
+}*!*)*/!*();
+
+(function() {
+  alert("Parentheses around the whole thing");
+}()*!*)*/!*;
+
+*!*!*/!*function() {
+  alert("Bitwise NOT operator starts the expression");
+}();
+
+*!*+*/!*function() {
+  alert("Unary plus starts the expression");
+}();
+```
+
+Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. Notons encore : de nos jours il n'y a aucune raison d'écrire un tel code.
 
 ## Résumé
 

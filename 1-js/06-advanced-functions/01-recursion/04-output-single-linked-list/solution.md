@@ -1,6 +1,6 @@
-# Loop-based solution
+# Solution basée sur la boucle
 
-The loop-based variant of the solution:
+La variante de la solution basée sur la boucle:
 
 ```js run
 let list = {
@@ -30,7 +30,7 @@ function printList(list) {
 printList(list);
 ```
 
-Please note that we use a temporary variable `tmp` to walk over the list. Technically, we could use a function parameter `list` instead:
+Veuillez noter que nous utilisons une variable temporaire `tmp` pour parcourir la liste. Techniquement, nous pourrions utiliser un paramètre de fonction `list` à la place:
 
 ```js
 function printList(list) {
@@ -43,15 +43,15 @@ function printList(list) {
 }
 ```
 
-...But that would be unwise. In the future we may need to extend a function, do something else with the list. If we change `list`, then we loose such ability.
+...Mais ce ne serait pas sage. Dans le futur, nous allons peut-être devoir étendre une fonction, faire autre chose avec la liste. Si nous changeons `list`, alors nous perdons cette capacité.
 
-Talking about good variable names, `list` here is the list itself. The first element of it. And it should remain like that. That's clear and reliable.
+Parlant des bons noms de variables, `list` est la liste elle-même. Le premier élément de celui-ci. Et ça devrait rester comme ça. C'est clair et fiable.
 
-From the other side, the role of `tmp` is exclusively a list traversal, like `i` in the `for` loop.
+De l’autre côté, le rôle de `tmp` est exclusivement une liste de traversée, comme `i` dans la boucle `for`.
 
-# Recursive solution
+# Solution récursive
 
-The recursive variant of `printList(list)` follows a simple logic: to output a list we should output the current element `list`, then do the same for `list.next`:
+La variante récursive de `printList(list)` suit une logique simple: pour afficher une liste, il faut afficher l'élément courant `list`, puis faire de même pour `list.next`:
 
 ```js run
 let list = {
@@ -70,10 +70,10 @@ let list = {
 
 function printList(list) {
 
-  alert(list.value); // output the current item
+  alert(list.value); // affiche l'élément en cours
 
   if (list.next) {
-    printList(list.next); // do the same for the rest of the list
+    printList(list.next); // fait la même chose pour le reste de la liste
   }
 
 }
@@ -81,8 +81,8 @@ function printList(list) {
 printList(list);
 ```
 
-Now what's better?
+Maintenant qu'est-ce qui est le mieux?
 
-Technically, the loop is more effective. These two variants do the same, but the loop does not spend resources for nested function calls.
+Techniquement, la boucle est plus efficace. Ces deux variantes font la même chose, mais la boucle ne dépense pas de ressources pour les appels de fonction imbriqués.
 
-From the other side, the recursive variant is shorter and sometimes easier to understand.
+De l'autre côté, la variante récursive est plus courte et parfois plus facile à comprendre.

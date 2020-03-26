@@ -2,14 +2,14 @@ importance: 5
 
 ---
 
-# Create an object with the same constructor
+# Créer un objet avec le même constructeur
 
-Imagine, we have an arbitrary object `obj`, created by a constructor function -- we don't know which one, but we'd like to create a new object using it.
+Imaginez nous avons un objet arbitraire `obj`, créé par une fonction constructeur - nous ne savons pas lequel, mais nous aimerions créer un nouvel objet à l'aide de celui-ci.
 
-Can we do it like that?
+Pouvons-nous le faire comme ça?
 
 ```js
 let obj2 = new obj.constructor();
 ```
 
-Give an example of a constructor function for `obj` which lets such code work right. And an example that makes it work wrong.
+Donne un exemple de fonction constructeur pour `obj` qui laisse ce code fonctionner correctement. Et un exemple qui fait que ça marche mal.

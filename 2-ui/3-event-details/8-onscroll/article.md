@@ -1,39 +1,43 @@
-# Scrolling
+# Le Défilement
 
-Scroll events allow to react on a page or element scrolling. There are quite a few good things we can do here.
 
-For instance:
-- Show/hide additional controls or information depending on where in the document the user is.
-- Load more data when the user scrolls down till the end of the page.
+L'événement `scroll` permet de réagir sur le défilement d'une page ou d'un élément. Il y a pas mal de bonnes choses que nous pouvons faire ici.
 
-Here's a small function to show the current scroll:
+
+Par exemple:
+- Montrer/cacher des contrôles additionnelles ou information selon la ou se trouve l'utilisateur sur le document.
+- Charger plus de données lorsque l'utilisateur défile vers le bas jusqu'à la fin de la page.
+
+Voici une petite fonction pour montrer la position actuelle du défilement:
 
 ```js autorun
 window.addEventListener('scroll', function() {
-  document.getElementById('showScroll').innerHTML = pageYOffset + 'px';
+  document.getElementById('showScroll').innerHTML = window.pageYOffset + 'px';
 });
 ```
 
 ```online
-In action:
+en action:
 
-Current scroll = <b id="showScroll">scroll the window</b>
+Current scroll = <b id="showScroll">Faites défiler la fenêtre</b>
 ```
 
-The `scroll` event works both on the `window` and on scrollable elements.
+L'évènement `scroll` fonctionne aussi bien avec `window` qu'avec les éléments defilables.
 
-## Prevent scrolling
+## Empêcher le défilement
 
-How do we make something unscrollable? We can't prevent scrolling by using `event.preventDefault()` in `onscroll` listener, because it triggers *after* the scroll has already happened.
 
-But we can prevent scrolling by `event.preventDefault()` on an event that causes the scroll.
+Comment fait-on quelque chose de non-scrollable ?
 
-For instance:
-- `wheel` event -- a mouse wheel roll (a "scrolling" touchpad action generates it too).
-- `keydown` event for `key:pageUp` and `key:pageDown`.
+Nous ne pouvons pas empêcher le défilement en utilisant `event.preventDefault()` dans l'écouteur `onscroll`, car il se déclenche *après* le défilement qui est déjà passé.
 
-If we add an event handler to these events and `event.preventDefault()` in it, then the scroll won't start.
+Mais nous pouvons empêcher le défilement avec `event.preventDefault()` sur un événement qui provoque le défilement, par exemple, l'événement `keydown` pour `key:pageUp` et `key:pageDown`.
 
-Sometimes that may help, but it's more reliable to use CSS to make something unscrollable, such as the `overflow` property.
 
-Here are few tasks that you can solve or look through to see the applications on `onscroll`.
+Si nous ajoutons un gestionnaire d'évènement a ces évènements et à `event.preventDefault()` , alors le défilement ne pas se déclencher.
+
+
+Il existe de nombreuses façons d’initialiser un défilement. Il est donc plus fiable d’utiliser la propriété CSS `overflow`.
+
+
+Voici quelques taches que vous pouvez résoudre oubien regarder afin de voir une application de l'évènement `onscroll`.

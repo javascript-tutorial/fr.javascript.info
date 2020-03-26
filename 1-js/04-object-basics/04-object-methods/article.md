@@ -63,7 +63,7 @@ user.sayHi(); // Hello!
 ```smart header="Programmation orientée objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
-La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E.Gamma, R. Helm, R.Johnson, J.Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
+La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E. Gamma, R. Helm, R. Johnson, J. Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
 ```
 ### Méthode abrégée
 
@@ -111,6 +111,7 @@ let user = {
 
   sayHi() {
 *!*
+    // "this" is the "current object"
     alert(this.name);
 */!*
   }
@@ -166,9 +167,9 @@ Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fo
 
 ## "this" n'est pas lié
 
-En JavaScript, le mot clé "this" se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
+En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
 
-Il n’ya pas d’erreur de syntaxe dans le code comme celui-ci :
+Il n’y a pas d’erreur de syntaxe dans le code suivant :
 
 ```js
 function sayHi() {
@@ -176,7 +177,7 @@ function sayHi() {
 }
 ```
 
-La valeur de `this` est évaluée pendant l'exécution en fonction du contexte. Et ça peut être n'importe quoi.
+La valeur de `this` est évaluée pendant l'exécution, en fonction du contexte.
 
 Par exemple, ici la même fonction est assignée à deux objets différents et a un "this" différent dans les appels :
 
@@ -219,7 +220,7 @@ Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder 
 
 En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique qui corrige `"use strict"`.
 
-Un tel appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
+Cen genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
 ````
 
 ```smart header="Les conséquences d'un `this` non lié"
@@ -257,7 +258,7 @@ user.hi(); // John (le simple appel fonctionne)
 */!*
 ```
 
-Sur la dernière ligne, un opérateur conditionnel choisit soit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
+Sur la dernière ligne il y a un opérateur conditionnel qui choisit soit `user.hi` ou `user.bye`. Dans ce cas, le résultat est `user.hi`.
 
 La méthode est immédiatement appelée avec des parenthèses `()`. Mais ça ne fonctionne pas correctement !
 
@@ -353,7 +354,7 @@ C’est une particularité des fonctions fléchées. C’est utile lorsque nous 
 
 La valeur de `this` est définie au moment de l'exécution.
 - Lorsqu'une fonction est déclarée, elle peut utiliser `this`, mais ce `this` n'a aucune valeur jusqu'à ce que la fonction soit appelée.
-- Cette fonction peut être copiée entre des objets.
+- Une fonction peut être copiée entre des objets.
 - Lorsqu'une fonction est appelée dans la syntaxe "méthode" : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
 
 Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`. Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.

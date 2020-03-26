@@ -1,20 +1,20 @@
 
-Answers:
+Réponses:
 
-1. `true`. 
+1. `true`.
 
-    The assignment to `Rabbit.prototype` sets up `[[Prototype]]` for new objects, but it does not affect the existing ones. 
+     L'affectation à `Rabbit.prototype` configure `[[Prototype]]` pour les nouveaux objets, mais n'affecte pas les objets existants.
 
-2. `false`. 
+2. `false`.
 
-    Objects are assigned by reference. The object from `Rabbit.prototype` is not duplicated, it's still a single object is referenced both by `Rabbit.prototype` and by the `[[Prototype]]` of `rabbit`. 
+     Les objets sont assignés par référence. L'objet de `Rabbit.prototype` n'est pas dupliqué, mais un objet unique est référencé à la fois par `Rabbit.prototype` et par le `[[Prototype]]` de `rabbit`.
 
-    So when we change its content through one reference, it is visible through the other one.
+     Ainsi, lorsque nous modifions son contenu par l’une des références, il est visible par l’autre.
 
 3. `true`.
 
-    All `delete` operations are applied directly to the object. Here `delete rabbit.eats` tries to remove `eats` property from `rabbit`, but it doesn't have it. So the operation won't have any effect.
+     Toutes les opérations `delete` sont appliquées directement à l'objet. `Delete rabbit.eats` tente ici de supprimer la propriété `eats` de `rabbit`, mais ne l’a pas. Donc l'opération n'aura aucun effet.
 
 4. `undefined`.
 
-    The property `eats` is deleted from the prototype, it doesn't exist any more.
+     La propriété `eats` est supprimée du prototype, elle n’existe plus.

@@ -6,7 +6,7 @@
   <style>
     body {
       height: 2000px;
-      /* the tooltip should work after page scroll too */
+    /* L'info-bulle doit fonctionner après un défilement de la page aussi*/
     }
 
     .tooltip {
@@ -49,16 +49,16 @@
 <body>
 
 
-  <div data-tooltip="Here is the house interior" id="house">
-    <div data-tooltip="Here is the roof" id="roof"></div>
+ <div data-tooltip=" Voici l'interieure de la maison" id="house">
+    <div data-tooltip="Voici le toit" id="roof"></div>
 
-    <p>Once upon a time there was a mother pig who had three little pigs.</p>
+    <p> Il était une fois, une maman cochon qui avait trois petits cochons.</p>
 
-    <p>The three little pigs grew so big that their mother said to them, "You are too big to live here any longer. You must go and build houses for yourselves. But take care that the wolf does not catch you."
+    <p>Les trois petits cochons devinrent tellement grands que leur maman leur dit, "Vous êtes trop grands pour habiter ici d'avantage. Vous devez partir et construire vos maisons par vous-mêmes. Mais prenez gardes à ce que le loup ne vous attrape pas"
 
-    <p>The three little pigs set off. "We will take care that the wolf does not catch us," they said.</p>
+    <p>Les trois petits cochons partirent. "Nous allons faire attention à ce que le loup ne nous attrape point," dirent ils.</p>
 
-    <p>Soon they met a man. <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Hover over me</a></p>
+    <p>Bientôt ils rencontrèrent un homme. <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Survolez moi</a></p>
 
   </div>
 
@@ -66,25 +66,25 @@
     let tooltip;
 
     document.onmouseover = function(event) {
-      // important: a fast-moving mouse may "jump" right to a child on an annotated node, skipping the parent
-      // so mouseover may happen on a child.
+      // important: une souris qui se deplace rapidement peut sauter  "sauter" juste sur un élément enfant d'un noeud annote, sautant le parent
+      // Donc l'évènement mouseover peut survenir sur un élément enfant.
 
       let anchorElem = event.target.closest('[data-tooltip]');
 
       if (!anchorElem) return;
 
-      // show tooltip and remember it
+      // monte l'info-bulle et s'en rappelle
       tooltip = showTooltip(anchorElem, anchorElem.dataset.tooltip);
     }
 
     document.onmouseout = function() {
-      // it is possible that mouseout triggered, but we're still inside the element
-      // (its target was inside, and it bubbled)
-      // but in this case we'll have an immediate mouseover,
-      // so the tooltip will be destroyed and shown again
+      // Il est possible que l'évènement  mouseout se déclenche, mais nous sommes toujours dans l'élément
+      // (sa cible était à l'intérieur et l'évènement a remonté)
+      // Mais dans ce cas nous aurons un évènement  mouseover immédiatement,
+      // donc l'info-bulle sera détruit et remontre
       //
-      // luckily, the "blinking" won't be visible,
-      // as both events happen almost at the same time
+      // Heureusement, le "clignotement"  ne sera pas visible,
+      // Comme les deux évènements se déroulent presque au même moment
       if (tooltip) {
         tooltip.remove();
         tooltip = false;
@@ -101,7 +101,7 @@
 
       let coords = anchorElem.getBoundingClientRect();
 
-      // position the tooltip over the center of the element
+      // positionne l’info-bulle au centre de l’ element
       let left = coords.left + (anchorElem.offsetWidth - tooltipElem.offsetWidth) / 2;
       if (left < 0) left = 0;
 

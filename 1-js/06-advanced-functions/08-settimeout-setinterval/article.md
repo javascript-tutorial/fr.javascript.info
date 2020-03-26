@@ -1,36 +1,34 @@
-# Scheduling: setTimeout and setInterval
+# L'ordonnancement avec setTimeout et setInterval
 
-We may decide to execute a function not right now, but at a certain time later. That's called "scheduling a call".
+Peut-être que nous ne voulons pas exécuter une fonction tout de suite, mais à un certain moment dans le futur. Cela s'appelle "ordonnancer (ou planifier) un appel de fonction".
 
-There are two methods for it:
+Il existe deux méthodes pour cela :
+- `setTimeout` permet d'exécuter une fonction une unique fois après un certain laps de temps.
+- `setInterval` nous permet d'exécuter une fonction de manière répétée, en commençant après l'intervalle de temps, puis en répétant continuellement à cet intervalle.
 
-- `setTimeout` allows to run a function once after the interval of time.
-- `setInterval` allows to run a function regularly with the interval between the runs.
-
-These methods are not a part of JavaScript specification. But most environments have the internal scheduler and provide these methods. In particular, they are supported in all browsers and Node.js.
-
+Ces méthodes ne font pas partie de la spécification JavaScript. Mais la plupart des environnements ont un planificateur interne et fournissent ces méthodes. En particulier, elles sont supportées par tous les navigateurs et Node.js.
 
 ## setTimeout
 
-The syntax:
+La syntaxe:
 
 ```js
 let timerId = setTimeout(func|code, [delay], [arg1], [arg2], ...)
 ```
 
-Parameters:
+Les paramètres:
 
 `func|code`
-: Function or a string of code to execute.
-Usually, that's a function. For historical reasons, a string of code can be passed, but that's not recommended.
+: Fonction ou chaîne de caractères représentant du code à exécuter.
+En général, c'est une fonction. Pour des raisons historiques, une chaîne de caractères représentant du code peut être donnée en argument, mais ce n'est pas recommandé.
 
 `delay`
-: The delay before run, in milliseconds (1000 ms = 1 second), by default 0.
+: La durée d'attente avant l'exécution, en millisecondes (1000ms = 1 seconde), par défaut 0.
 
 `arg1`, `arg2`...
-: Arguments for the function (not supported in IE9-)
+: Arguments à passer à la fonction (incompatible avec IE9-).
 
-For instance, this code calls `sayHi()` after one second:
+Par exemple, le code ci-dessous appelle la fonction `sayHi()` une unique fois au bout de 1 seconde :
 
 ```js run
 function sayHi() {
@@ -42,7 +40,7 @@ setTimeout(sayHi, 1000);
 */!*
 ```
 
-With arguments:
+Dans le cas où fonction `sayHi()` requiert des arguments :
 
 ```js run
 function sayHi(phrase, who) {
@@ -50,97 +48,97 @@ function sayHi(phrase, who) {
 }
 
 *!*
-setTimeout(sayHi, 1000, "Hello", "John"); // Hello, John
+setTimeout(sayHi, 1000, "Bonjour", "Jean"); // Bonjour, Jean
 */!*
 ```
 
-If the first argument is a string, then JavaScript creates a function from it.
+Si le premier argument est une chaîne de caractères, JavaScript crée alors une fonction à partir de celle-ci.
 
-So, this will also work:
-
-```js run no-beautify
-setTimeout("alert('Hello')", 1000);
-```
-
-But using strings is not recommended, use functions instead of them, like this:
+Ce qui fait que le code ci-dessous fonctionne aussi :
 
 ```js run no-beautify
-setTimeout(() => alert('Hello'), 1000);
+setTimeout("alert('Bonjour')", 1000);
 ```
 
-````smart header="Pass a function, but don't run it"
-Novice developers sometimes make a mistake by adding brackets `()` after the function:
+Cependant, utiliser des chaînes de caractères n'est pas recommandé, il est préférable d'utiliser des fonctions fléchées à la place, comme ceci :
+
+```js run no-beautify
+setTimeout(() => alert('Bonjour'), 1000);
+```
+
+````smart header="Passer une fonction, mais sans l'exécuter"
+Les développeurs novices font parfois l'erreur d'ajouter des parenthèses `()` après la fonction :
 
 ```js
-// wrong!
+// Faux!
 setTimeout(sayHi(), 1000);
 ```
-That doesn't work, because `setTimeout` expects a reference to function. And here `sayHi()` runs the function, and the *result of its execution* is passed to `setTimeout`. In our case the result of `sayHi()` is `undefined` (the function returns nothing), so nothing is scheduled.
+Cela ne fonctionne pas car `setTimeout` attend une référence à une fonciton. Ici `sayHi()` appelle la fonction et le *résultat de cette exécution* est passé à `setTimeout`. Dans notre cas, le résultat de `sayHi()` est `undefined` (la fonction ne renvoie rien), du coup, rien n'est planifié.
 ````
 
-### Canceling with clearTimeout
+### Annuler une tâche avec clearTimeout
 
-A call to `setTimeout` returns a "timer identifier" `timerId` that we can use to cancel the execution.
+Un appel à `setTimeout` renvoie un "identifiant de timer" `timerId` que l'on peut utiliser pour annuler l'exécution de la fonction.
 
-The syntax to cancel:
+La syntaxe pour annuler une tâche planifiée est la suivante :
 
 ```js
 let timerId = setTimeout(...);
 clearTimeout(timerId);
 ```
 
-In the code below, we schedule the function and then cancel it (changed our mind). As a result, nothing happens:
+Dans le code ci-dessous, nous planifions l'appel à la fonction avant de l'annuler, au final rien ne s'est passé :
 
 ```js run no-beautify
-let timerId = setTimeout(() => alert("never happens"), 1000);
-alert(timerId); // timer identifier
+let timerId = setTimeout(() => alert("Je n'arriverai jamais"), 1000);
+alert(timerId); // Identifiant du timer
 
 clearTimeout(timerId);
-alert(timerId); // same identifier (doesn't become null after canceling)
+alert(timerId); // Le même identifiant (ne devient pas null après l'annulation)
 ```
 
-As we can see from `alert` output, in a browser the timer identifier is a number. In other environments, this can be something else. For instance, Node.js returns a timer object with additional methods.
+Comme on peut le voir dans les résultats des `alert`, dans notre navigateur, l'identifiant du timer est un nombre. Selon l'environnement, il peut être d'un autre type. Par exemple, Node.js renvoie un objet timer équipé d'autres méthodes.
 
-Again, there is no universal specification for these methods, so that's fine.
+Encore une fois, il n'y a pas de spécification universelle pour ces méthodes, donc ce n'est pas gênant.
 
-For browsers, timers are described in the [timers section](https://www.w3.org/TR/html5/webappapis.html#timers) of HTML5 standard.
+Dans le cas des navigateurs web, les timers sont décrits dans [la section sur les timers](https://www.w3.org/TR/html5/webappapis.html#timers) de la documentation du standard HTML5.
 
 ## setInterval
 
-The `setInterval` method has the same syntax as `setTimeout`:
+La méthode `setInterval` a la même syntaxe que `setTimeout`:
 
 ```js
 let timerId = setInterval(func|code, [delay], [arg1], [arg2], ...)
 ```
 
-All arguments have the same meaning. But unlike `setTimeout` it runs the function not only once, but regularly after the given interval of time.
+Tous ses arguments ont la même signfication que précédemment, mais contrairement à `setTimeout`, `setInterval` appelle la fonction non pas une fois, mais périodiquement après un interval de temps donné.
 
-To stop further calls, we should call `clearInterval(timerId)`.
+Afin d'annuler les appels futurs à la fonction, il est nécessaire d'appeler `clearInterval(timerId)`.
 
-The following example will show the message every 2 seconds. After 5 seconds, the output is stopped:
+L'exemple suivant affiche le message toutes les 2 secondes, puis arrête la tâche au bout de 5 secondes :
 
 ```js run
-// repeat with the interval of 2 seconds
+// Se répète toutes les 2 secondes
 let timerId = setInterval(() => alert('tick'), 2000);
 
-// after 5 seconds stop
+// S'arrête après 5 secondes
 setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
 ```
 
-```smart header="Time goes on while `alert` is shown"
-In most browsers, including Chrome and Firefox the internal timer continues "ticking" while showing `alert/confirm/prompt`.
+```smart header="Le temps continue de s'écouler pendant que `alert` est affiché"
+Dans la majorité des navigateurs, dont Chrome et Firefox, le timer interne continue à s'incrémenter pendant qu'un message est affiché (via `alert`, `confirm` ou `prompt`).
 
-So if you run the code above and don't dismiss the `alert` window for some time, then in the next `alert` will be shown immediately as you do it. The actual interval between alerts will be shorter than 5 seconds.
+Donc, si vous exécutez le code ci-dessus et ne fermez pas la fenêtre `alert` pendant un certain temps, alors, dans la prochaine` alert`, s'affichera immédiatement au fur et à mesure que vous le ferez. L'intervalle réel entre les alertes sera inférieur à 2 secondes.
 ```
 
-## Recursive setTimeout
+## setTimeout imbriqué
 
-There are two ways of running something regularly.
+Il y a deux façon d'ordonnancer l'exécution périodique d'une tâche.
 
-One is `setInterval`. The other one is a recursive `setTimeout`, like this:
+L'un est `setInterval`. L'autre est un `setTimeout` imbriqué, comme ceci :
 
 ```js
-/** instead of:
+/** Au lieu de :
 let timerId = setInterval(() => alert('tick'), 2000);
 */
 
@@ -152,13 +150,13 @@ let timerId = setTimeout(function tick() {
 }, 2000);
 ```
 
-The `setTimeout` above schedules the next call right at the end of the current one `(*)`.
+Le `setTimeout` ci-dessus planifie le prochain appel de la fonction à la fin de l'appel en cours `(*)`.
 
-The recursive `setTimeout` is a more flexible method than `setInterval`. This way the next call may be scheduled differently, depending on the results of the current one.
+Le `setTimeout` imbriqué est une méthode plus flexible que `setInterval`. Ainsi, le prochain appel peut être programmé différemment, en fonction des résultats de l'appel en cours.
 
-For instance, we need to write a service that sends a request to the server every 5 seconds asking for data, but in case the server is overloaded, it should increase the interval to 10, 20, 40 seconds...
+Par exemple, on peut avoir besoin d'implémenter un service qui envoie une requête à un serveur toutes les 5 secondes pour récupérer de la donnée, mais dans le cas où le serveur est surchargé, on doit augmenter le délai à 10 secondes, puis 20 secondes, 40 secondes...
 
-Here's the pseudocode:
+Voici le pseudo-code correspondant :
 ```js
 let delay = 5000;
 
@@ -166,7 +164,7 @@ let timerId = setTimeout(function request() {
   ...send request...
 
   if (request failed due to server overload) {
-    // increase the interval to the next run
+    // Augmente l'intervalle avant le prochain appel
     delay *= 2;
   }
 
@@ -175,76 +173,77 @@ let timerId = setTimeout(function request() {
 }, delay);
 ```
 
+Ou par exemple, si les fonction qu'on souhaite planifier demandent beaucoup de ressources CPU, on peut alors mesurer leur temps d'exécution et planifier le prochain appel en fonction.
 
-And if we the functions that we're scheduling are CPU-hungry, then we can measure the time taken by the execution and plan the next call sooner or later.
+Et si les fonctions que nous planifions sont gourmandes en ressources processeur, nous pouvons mesurer le temps pris par l'exécution et planifier le prochain appel tôt ou tard.
 
-**Recursive `setTimeout` guarantees a delay between the executions, `setInterval` -- does not.**
+**Un `setTimeout` imbriqué permet de définir le délai entre les exécutions plus précisément que `setInterval`.**
 
-Let's compare two code fragments. The first one uses `setInterval`:
+Comparons deux blocs de codes, le premier utilise `setInterval` :
 
 ```js
 let i = 1;
 setInterval(function() {
-  func(i);
+  func(i++);
 }, 100);
 ```
 
-The second one uses recursive `setTimeout`:
+Le second utilise un `setTimeout` imbriqué :
 
 ```js
 let i = 1;
 setTimeout(function run() {
-  func(i);
+  func(i++);
   setTimeout(run, 100);
 }, 100);
 ```
 
-For `setInterval` the internal scheduler will run `func(i)` every 100ms:
+Dans le cas du `setInterval` l'ordonnanceur interne va appeler `func(i++)` toutes les 100ms :
 
-![](setinterval-interval.png)
+![](setinterval-interval.svg)
 
-Did you notice?
+Rien d'étrange ?
 
-**The real delay between `func` calls for `setInterval` is less than in the code!**
+**Le vrai délai entre deux appels à `func` est plus court que dans le code.**
 
-That's normal, because the time taken by `func`'s execution "consumes" a part of the interval.
+C'est normal car le temps d'exécution de `func` "consomme" une partie de ce délai.
 
-It is possible that `func`'s execution turns out to be longer than we expected and takes more than 100ms.
+Il est donc possible que le temps d'exécution de `func` soit plus long que prévu et prenne plus de 100ms.
 
-In this case the engine waits for `func` to complete, then checks the scheduler and if the time is up, runs it again *immediately*.
+Dans ce cas le moteur interne attend que l'exécution de `func` soit terminée, puis consulte l'ordonnanceur et si le délai est déjà "consommé", il réexécute la fonction *immédiatement*.
 
-In the edge case, if the function always executes longer than `delay` ms, then the calls will happen without a pause at all.
+Dans ce cas extrême, si la fonction qui s'exécute met toujours plus de temps que `delay` ms, alors les appels successifs vont s'effectuer sans aucun temps de pause.
 
-And here is the picture for the recursive `setTimeout`:
+Et voici l'image pour le `setTimeout` imbriqué :
 
-![](settimeout-interval.png)
+![](settimeout-interval.svg)
 
-**The recursive `setTimeout` guarantees the fixed delay (here 100ms).**
+**Le `setTimeout` imbriqué garantit le délai fixé (ici 100 ms).**
 
-That's because a new call is planned at the end of the previous one.
+Dans ce cas, c'est parce que le nouvel appel est planifié à la fin du précédent.
 
-````smart header="Garbage collection"
-When a function is passed in `setInterval/setTimeout`, an internal reference is created to it and saved in the scheduler. It prevents the function from being garbage collected, even if there are no other references to it.
+````smart header="Le ramasse-miettes et le callback setInterval/setTimeout"
+Quand une fonction est passée à `setInterval`/`setTimeout`, une référence interne à cette fonction est créée et conservée dans l'ordonnanceur. Cela empêche que la fonction soit détruite par le ramasse-miettes, même si il n'y a pas d'autres références à cette dernière.
 
 ```js
-// the function stays in memory until the scheduler calls it
+// La fonction reste en mémoire jusqu'à ce que l'ordonnanceur l'exécute
 setTimeout(function() {...}, 100);
 ```
 
-For `setInterval` the function stays in memory until `clearInterval` is called.
+Pour `setInterval`, la fonction reste en mémoire jusqu'à ce qu'on appelle `clearInterval`.
 
-There's a side-effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+Mais il y a un effet de bord, une fonction référence l'environement lexical extérieur, donc tant qu'elle existe, les variables extérieures existent aussi. Ces variables peuvent occuper autant d'espace mémoire que la fonction elle-même. De ce fait quand on n'a plus besoin d'une fonction planifiée, il est préférable de l'annuler, même si elle est courte.
 ````
 
-## setTimeout(...,0)
+## setTimeout sans délai
 
-There's a special use case: `setTimeout(func, 0)`, or just `setTimeout(func)`.
+Il y a un cas d'usage particulier : `setTimeout(func, 0)` ou plus simplement `setTimeout(func)`.
 
-This schedules the execution of `func` as soon as possible. But scheduler will invoke it only after the current code is complete.
+Ceci programme l'exécution de `func` dès que possible. Mais le planificateur ne l'invoquera qu'une fois le script en cours d'exécution terminé.
 
-So the function is scheduled to run "right after" the current code. In other words, *asynchronously*.
+La fonction est donc programmée pour s'exécuter "juste après" le script en cours.
 
-For instance, this outputs "Hello", then immediately "World":
+Par exemple, le code ci dessous affiche "Hello", et immédiatement après, "World" :
 
 ```js run
 setTimeout(() => alert("World"));
@@ -252,211 +251,52 @@ setTimeout(() => alert("World"));
 alert("Hello");
 ```
 
-The first line "puts the call into calendar after 0ms". But the scheduler will only "check the calendar" after the current code is complete, so `"Hello"` is first, and `"World"` -- after it.
+La première ligne "met l'appel dans le calendrier après 0 ms". Mais le planificateur "vérifiera le calendrier" uniquement une fois le script en cours terminé. `"Hello"` est donc le premier, et `"World"` -- après.
 
-### Splitting CPU-hungry tasks
+Il y a aussi d'autres cas d'usage avancés d'ordonnancement à délai nul, spécifique au cas des navigateurs web, dont nous parlerons dans le chapitre <info:event-loop>.
 
-There's a trick to split CPU-hungry tasks using `setTimeout`.
+````smart header="Un délai nul n'est pas vraiment nul (pour un navigateur)"
+Il y a une limitation intrinsèque à chaque navigateur sur la fréquence à laquelle des timers consécutifs peuvent s'exécuter. Le [standard HTML5](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) indique : "au delà de 5 timers consécutifs, l'interval est obligatoirement d'au moins 4 millisecondes.".
 
-For instance, a syntax-highlighting script (used to colorize code examples on this page) is quite CPU-heavy. To highlight the code, it performs the analysis, creates many colored elements, adds them to the document -- for a big text that takes a lot. It may even cause the browser to "hang", which is unacceptable.
-
-So we can split the long text into pieces. First 100 lines, then plan another 100 lines using `setTimeout(..., 0)`, and so on.
-
-For clarity, let's take a simpler example for consideration. We have a function to count from `1` to `1000000000`.
-
-If you run it, the CPU will hang. For server-side JS that's clearly noticeable, and if you are running it in-browser, then try to click other buttons on the page -- you'll see that whole JavaScript actually is paused, no other actions work until it finishes.
-
-```js run
-let i = 0;
-
-let start = Date.now();
-
-function count() {
-
-  // do a heavy job
-  for (let j = 0; j < 1e9; j++) {
-    i++;
-  }
-
-  alert("Done in " + (Date.now() - start) + 'ms');
-}
-
-count();
-```
-
-The browser may even show "the script takes too long" warning (but hopefully it won't, because the number is not very big).
-
-Let's split the job using the nested `setTimeout`:
-
-```js run
-let i = 0;
-
-let start = Date.now();
-
-function count() {
-
-  // do a piece of the heavy job (*)
-  do {
-    i++;
-  } while (i % 1e6 != 0);
-
-  if (i == 1e9) {
-    alert("Done in " + (Date.now() - start) + 'ms');
-  } else {
-    setTimeout(count); // schedule the new call (**)
-  }
-
-}
-
-count();
-```
-
-Now the browser UI is fully functional during the "counting" process.
-
-We do a part of the job `(*)`:
-
-1. First run: `i=1...1000000`.
-2. Second run: `i=1000001..2000000`.
-3. ...and so on, the `while` checks if `i` is evenly divided by `1000000`.
-
-Then the next call is scheduled in `(**)` if we're not done yet.
-
-Pauses between `count` executions provide just enough "breath" for the JavaScript engine to do something else, to react to other user actions.
-
-The notable thing is that both variants -- with and without splitting the job by `setTimeout` -- are comparable in speed. There's no much difference in the overall counting time.
-
-To make them closer, let's make an improvement.
-
-We'll move the scheduling in the beginning of the `count()`:
-
-```js run
-let i = 0;
-
-let start = Date.now();
-
-function count() {
-
-  // move the scheduling at the beginning
-  if (i < 1e9 - 1e6) {
-    setTimeout(count); // schedule the new call
-  }
-
-  do {
-    i++;
-  } while (i % 1e6 != 0);
-
-  if (i == 1e9) {
-    alert("Done in " + (Date.now() - start) + 'ms');
-  }
-
-}
-
-count();
-```
-
-Now when we start to `count()` and see that we'll need to `count()` more, we schedule that immediately, before doing the job.
-
-If you run it, it's easy to notice that it takes significantly less time.
-
-````smart header="Minimal delay of nested timers in-browser"
-In the browser, there's a limitation of how often nested timers can run. The [HTML5 standard](https://www.w3.org/TR/html5/webappapis.html#timers) says: "after five nested timers, the interval is forced to be at least four milliseconds.".
-
-Let's demonstrate what it means with the example below. The `setTimeout` call in it re-schedules itself after `0ms`. Each call remembers the real time from the previous one in the `times` array. What do the real delays look like? Let's see:
+Nous allons illustrer ce que cela veut dire dans l'exemple ci-dessous. L'appel à `setTimeout` s'y ré-ordonnance lui-même avec un délai nul. Chaque appel se souvient de l'heure de l'appel précédent grâce au tableau `times`. Cela va nous permettre de mesurer les délais réels entre les exécutions :
 
 ```js run
 let start = Date.now();
 let times = [];
 
 setTimeout(function run() {
-  times.push(Date.now() - start); // remember delay from the previous call
+  times.push(Date.now() - start); // on garde en mémoire le délai depuis l'appel précédent
 
-  if (start + 100 < Date.now()) alert(times); // show the delays after 100ms
-  else setTimeout(run); // else re-schedule
+  if (start + 100 < Date.now()) alert(times); // on affiche les délais si plus de 100ms se sont écoulées
+  else setTimeout(run); // sinon on planifie un nouvel appel
 });
 
-// an example of the output:
+// voici un exemple de résultat :
 // 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100
 ```
 
-First timers run immediately (just as written in the spec), and then the delay comes into play and we see `9, 15, 20, 24...`.
+Les 4 premiers timers s'exécutent immédiatemment (comme indiqué dans la spécification), ensuite on peut voir `9, 15, 20, 24...`. Le délai minimum de 4ms entre appel entre alors en jeu.
 
-That limitation comes from ancient times and many scripts rely on it, so it exists for historical reasons.
+Cette même limitation s'applique si on utilise `setInterval` au lieu de `setTimeout` : `setInterfal(f)` appelle `f` un certain nombre de fois avec un délai nul avant d'observer un délai d'au moins 4ms.
 
-For server-side JavaScript, that limitation does not exist, and there exist other ways to schedule an immediate asynchronous job, like [process.nextTick](https://nodejs.org/api/process.html) and [setImmediate](https://nodejs.org/api/timers.html) for Node.js. So the notion is browser-specific only.
+Cette limitation est l'héritage d'un lointain passé et beaucoup de scripts se basent dessus, d'où la nécessité de cette limitation pour des raisons historiques.
+
+Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d'autres façon de planifier immédiatement des tâches asynchrones, notamment [setImmediate](https://nodejs.org/api/timers.html) pour Node.js. Il faut donc garder à l'esprit que ce nota bene est spécifique aux navigateurs web.
 ````
 
-### Allowing the browser to render
+## Résumé
 
-Another benefit of splitting heavy tasks for browser scripts is that we can show a progress bar or something to the user.
+- Les méthodes `setInterval(func, delay, ...args)` et `setTimeout(func, delay, ...args)` permettent d'exécuter `func` respectivement périodiquement et une seule fois après `delay` millisecondes.
+- Pour annuler l'exécution, nous devons appeler `clearInterval/clearTimeout` avec la valeur renvoyée par `setInterval/setTimeout`.
+- Les appels de `setTimeout` imbriqués sont une alternative plus flexible à `setInterval`, ils permettent de configurer le temps *entre* les exécution plus précisément.
+- L'ordonnancement à délai nul avec `setTimeout(func, 0)` (le même que `setTimeout(func)`) permet de planifier l'exécution "dès que possible, mais seulement une fois que le bloc de code courant a été exécuté".
+- Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour` setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
 
-Usually the browser does all "repainting" after the currently running code is complete. So if we do a single huge function that changes many elements, the changes are not painted out till it finishes.
+Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 
-Here's the demo:
-```html run
-<div id="progress"></div>
+Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
+- Le CPU est surchargé.
+- L'onglet du navigateur est en tâche de fond.
+- L'ordinateur est en mode économie d'énergie.
 
-<script>
-  let i = 0;
-
-  function count() {
-    for (let j = 0; j < 1e6; j++) {
-      i++;
-      // put the current i into the <div>
-      // (we'll talk about innerHTML in the specific chapter, it just writes into element here)
-      progress.innerHTML = i;
-    }
-  }
-
-  count();
-</script>
-```
-
-If you run it, the changes to `i` will show up after the whole count finishes.
-
-And if we use `setTimeout` to split it into pieces then changes are applied in-between the runs, so this looks better:
-
-```html run
-<div id="progress"></div>
-
-<script>
-  let i = 0;
-
-  function count() {
-
-    // do a piece of the heavy job (*)
-    do {
-      i++;
-      progress.innerHTML = i;
-    } while (i % 1e3 != 0);
-
-    if (i < 1e9) {
-      setTimeout(count);
-    }
-
-  }
-
-  count();
-</script>
-```
-
-Now the `<div>` shows increasing values of `i`.
-
-## Summary
-
-- Methods `setInterval(func, delay, ...args)` and `setTimeout(func, delay, ...args)` allow to run the `func` regularly/once after `delay` milliseconds.
-- To cancel the execution, we should call `clearInterval/clearTimeout` with the value returned by `setInterval/setTimeout`.
-- Nested `setTimeout` calls is a more flexible alternative to `setInterval`. Also they can guarantee the minimal time *between* the executions.
-- Zero-timeout scheduling `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current code is complete".
-
-Some use cases of `setTimeout(func)`:
-- To split CPU-hungry tasks into pieces, so that the script doesn't "hang"
-- To let the browser do something else while the process is going on (paint the progress bar).
-
-Please note that all scheduling methods do not *guarantee* the exact delay. We should not rely on that in the scheduled code.
-
-For example, the in-browser timer may slow down for a lot of reasons:
-- The CPU is overloaded.
-- The browser tab is in the background mode.
-- The laptop is on battery.
-
-All that may increase the minimal timer resolution (the minimal delay) to 300ms or even 1000ms depending on the browser and settings.
+Tout ceci peut augmenter la résolution de l'horloge (le délai minimum) jusqu'à 300ms voire 1000ms en fonction du navigateur et des paramètres de performance au niveau du système d'exploitation.

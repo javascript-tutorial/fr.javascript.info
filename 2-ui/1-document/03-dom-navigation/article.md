@@ -5,37 +5,37 @@ libs:
 ---
 
 
-# Walking the DOM
+# Parcourir le DOM
 
-The DOM allows us to do anything with elements and their contents, but first we need to reach the corresponding DOM object.
+Le DOM nous permet de faire n'importe quoi avec les éléments et leur contenu, mais nous devons d'abord atteindre l'objet DOM correspondant.
 
-All operations on the DOM start with the `document` object. From it we can access any node.
+Toutes les opérations sur le DOM commencent par l'objet `document`. C'est le "point d'entrée" principal du DOM. De là, nous pouvons accéder à n'importe quel nœud.
 
-Here's a picture of links that allow for travel between DOM nodes:
+Voici une image des liens qui permettent de voyager entre les nœuds DOM :
 
-![](dom-links.png)
+![](dom-links.svg)
 
-Let's discuss them in more detail.
+Discutons-en plus en détail.
 
-## On top: documentElement and body
+## En haut : documentElement et body
 
-The topmost tree nodes are available directly as `document` properties:
+Les nœuds supérieurs de l'arbre sont disponibles directement en tant que propriétés de `document` :
 
 `<html>` = `document.documentElement`
-: The topmost document node is `document.documentElement`. That's DOM node of `<html>` tag.
+: Le nœud de document le plus haut est `document.documentElement`. C'est le noeud DOM de la balise `<html>`.
 
 `<body>` = `document.body`
-: Another widely used DOM node is the `<body>` element -- `document.body`.
+: Un autre nœud DOM largement utilisé est l'élément `<body>` -- `document.body`.
 
 `<head>` = `document.head`
-: The `<head>` tag is available as `document.head`.
+: La balise `<head>` est disponible en tant que `document.head`.
 
-````warn header="There's a catch: `document.body` can be `null`"
-A script cannot access an element that doesn't exist at the moment of running.
+````warn header="Il y a un hic : `document.body` peut être `null`"
+Un script ne peut pas accéder à un élément qui n'existe pas au moment de l'exécution.
 
-In particular, if a script is inside `<head>`, then `document.body` is unavailable, because the browser did not read it yet.
+En particulier, si un script se trouve dans `<head>`, alors `document.body` n'est pas disponible, car le navigateur ne l'a pas encore lu.
 
-So, in the example below the first `alert` shows `null`:
+Ainsi, dans l'exemple ci-dessous, la première `alert` affiche `null` :
 
 ```html run
 <html>
@@ -43,7 +43,7 @@ So, in the example below the first `alert` shows `null`:
 <head>
   <script>
 *!*
-    alert( "From HEAD: " + document.body ); // null, there's no <body> yet
+    alert( "From HEAD: " + document.body ); // null, il n'y a pas encore de <body>
 */!*
   </script>
 </head>
@@ -51,7 +51,7 @@ So, in the example below the first `alert` shows `null`:
 <body>
 
   <script>
-    alert( "From BODY: " + document.body ); // HTMLBodyElement, now it exists
+    alert( "From BODY: " + document.body ); // HTMLBodyElement maintenant existe
   </script>
 
 </body>
@@ -59,18 +59,18 @@ So, in the example below the first `alert` shows `null`:
 ```
 ````
 
-```smart header="In the DOM world `null` means \"doesn't exist\""
-In the DOM, the `null` value means "doesn't exist" or "no such node".
+```smart header="Dans le monde du DOM, `null` signifie \"n'existe pas \""
+Dans le DOM, la valeur `null` signifie "n'existe pas" ou "pas ce genre de nœud".
 ```
 
-## Children: childNodes, firstChild, lastChild
+## Enfants : childNodes, firstChild, lastChild
 
-There are two terms that we'll use from now on:
+Nous utiliserons désormais deux termes :
 
-- **Child nodes (or children)** -- elements that are direct children. In other words, they are nested exactly in the given one. For instance, `<head>` and `<body>` are children of `<html>` element.
-- **Descendants** -- all elements that are nested in the given one, including children, their children and so on.
+- **Noeuds enfants (ou enfants)** -- éléments qui sont des enfants directs. En d'autres termes, ils sont imbriqués dans celui donné. Par exemple, `<head>` et `<body>` sont des enfants de l'élément `<html>`.
+- **Descendants** -- tous les éléments imbriqués dans l'élément donné, y compris les enfants, leurs enfants, etc.
 
-For instance, here `<body>` has children `<div>` and `<ul>` (and few blank text nodes):
+Par exemple, ici `<body>` a des enfants `<div>` et `<ul>` (et quelques nœuds texte vides) :
 
 ```html run
 <html>
@@ -86,11 +86,11 @@ For instance, here `<body>` has children `<div>` and `<ul>` (and few blank text 
 </html>
 ```
 
-...And all descendants of `<body>` are not only direct children `<div>`, `<ul>` but also more deeply nested elements, such as `<li>` (a child of `<ul>`) and `<b>` (a child of `<li>`) -- the entire subtree.
+... Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>` ) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
 
-**The `childNodes` collection provides access to all child nodes, including text nodes.**
+**La collection `childNodes` répertorie tous les nœuds enfants, y compris les nœuds texte.**
 
-The example below shows children of `document.body`:
+L'exemple ci-dessous montre des enfants de `document.body` :
 
 ```html run
 <html>
@@ -115,137 +115,142 @@ The example below shows children of `document.body`:
 </html>
 ```
 
-Please note an interesting detail here. If we run the example above, the last element shown is `<script>`. In fact, the document has more stuff below, but at the moment of the script execution the browser did not read it yet, so the script doesn't see it.
+Veuillez noter un détail intéressant ici. Si nous exécutons l'exemple ci-dessus, le dernier élément affiché est `<script>`. En fait, le document contient plus de choses en dessous, mais au moment de l'exécution du script, le navigateur ne l'a pas encore lu, donc le script ne le voit pas.
 
-**Properties `firstChild` and `lastChild` give fast access to the first and last children.**
+**Les propriétés `firstChild` et `lastChild` donnent un accès rapide aux premier et dernier enfants.**
 
-They are just shorthands. If there exist child nodes, then the following is always true:
+Ce ne sont que des raccourcis. S'il existe des nœuds enfants, ce qui suit est toujours vrai :
 ```js
 elem.childNodes[0] === elem.firstChild
 elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
 ```
 
-There's also a special function `elem.hasChildNodes()` to check whether there are any child nodes.
+Il y a aussi une fonction spéciale `elem.hasChildNodes()` pour vérifier s'il y a des nœuds enfants.
 
-### DOM collections
+### Collections DOM
 
-As we can see, `childNodes` looks like an array. But actually it's not an array, but rather a *collection* -- a special array-like iterable object.
+Comme nous pouvons le voir, `childNodes` ressemble à un tableau. Mais en réalité ce n'est pas un tableau, mais plutôt une * collection * -- un objet itérable spécial semblable à un tableau.
 
-There are two important consequences:
+Il y a deux conséquences importantes :
 
-1. We can use `for..of` to iterate over it:
+1. Nous pouvons utiliser `for..of` pour itérer dessus :
   ```js
   for (let node of document.body.childNodes) {
     alert(node); // shows all nodes from the collection
   }
   ```
-  That's because it's iterable (provides the `Symbol.iterator` property, as required).
+  C'est parce qu'il est itérable (fournit la propriété `Symbol.iterator`, selon les besoins).
 
-2. Array methods won't work, because it's not an array:
+2. Les méthodes de tableau ne fonctionneront pas, car ce n'est pas un tableau :
   ```js run
   alert(document.body.childNodes.filter); // undefined (there's no filter method!)
   ```
 
-The first thing is nice. The second is tolerable, because we can use `Array.from` to create a "real" array from the collection, if we want array methods:
+La première chose est sympa. La seconde est tolérable, car nous pouvons utiliser `Array.from` pour créer un "vrai" tableau à partir de la collection, si nous voulons des méthodes de tableau :
 
   ```js run
-  alert( Array.from(document.body.childNodes).filter ); // now it's there
+  alert( Array.from(document.body.childNodes).filter ); // function
   ```
 
-```warn header="DOM collections are read-only"
-DOM collections, and even more -- *all* navigation properties listed in this chapter are read-only.
+```warn header="Les collections DOM sont en lecture seule"
+Les collections DOM, et plus encore -- *toutes* les propriétés de navigation répertoriées dans ce chapitre sont en lecture seule.
 
-We can't replace a child by something else by assigning `childNodes[i] = ...`.
+Nous ne pouvons pas remplacer un enfant par autre chose en attribuant `childNodes[i] = ...`.
 
-Changing DOM needs other methods. We will see them in the next chapter.
+Changer le DOM nécessite d'autres méthodes. Nous les verrons dans le prochain chapitre.
 ```
 
-```warn header="DOM collections are live"
-Almost all DOM collections with minor exceptions are *live*. In other words, they reflect the current state of DOM.
+```warn header="Les collections DOM sont live"
+Presque toutes les collections DOM avec des exceptions mineures sont *live*. En d'autres termes, elles reflètent l'état actuel du DOM.
 
-If we keep a reference to `elem.childNodes`, and add/remove nodes into DOM, then they appear in the collection automatically.
+Si nous gardons une référence à `element.childNodes`, et ajoutons/supprimons des nœuds dans le DOM, alors ils apparaissent automatiquement dans la collection.
 ```
 
-````warn header="Don't use `for..in` to loop over collections"
-Collections are iterable using `for..of`. Sometimes people try to use `for..in` for that.
+````warn header="N'utilisez pas `for..in` pour parcourir les collections"
+Les collections sont itérables en utilisant `for..of`. Parfois, les gens essaient d'utiliser `for..in` pour cela.
 
-Please, don't. The `for..in` loop iterates over all enumerable properties. And collections have some "extra" rarely used properties that we usually do not want to get:
+À ne pas faire. La boucle `for..in` parcourt toutes les propriétés énumérables. Et les collections ont des propriétés "supplémentaires" rarement utilisées que nous ne voulons généralement pas obtenir :
 
 ```html run
 <body>
 <script>
-  // shows 0, 1, length, item, values and more.
+  // affiche 0, 1, length, item, values et plus encore.
   for (let prop in document.body.childNodes) alert(prop);
 </script>
 </body>
 ````
 
-## Siblings and the parent
+## Frères, sœurs et parent
 
-*Siblings* are nodes that are children of the same parent. For instance, `<head>` and `<body>` are siblings:
+*Les frères et sœurs* sont des nœuds qui sont les enfants du même parent.
 
-- `<body>` is said to be the "next" or "right" sibling of `<head>`,
-- `<head>` is said to be the "previous" or "left" sibling of `<body>`.
+Par exemple, ici `<head>` et `<body>` sont des frères et sœurs :
 
-The parent is available as `parentNode`.
-
-The next node in the same parent (next sibling) is `nextSibling`, and the previous one is `previousSibling`.
-
-For instance:
-
-```html run
-<html><head></head><body><script>
-  // HTML is "dense" to evade extra "blank" text nodes.
-
-  // parent of <body> is <html>
-  alert( document.body.parentNode === document.documentElement ); // true
-
-  // after <head> goes <body>
-  alert( document.head.nextSibling ); // HTMLBodyElement
-
-  // before <body> goes <head>
-  alert( document.body.previousSibling ); // HTMLHeadElement
-</script></body></html>
+```html
+<html>
+  <head>...</head><body>...</body>
+</html>
 ```
 
-## Element-only navigation
+- `<body>` est dit être le frère "suivant" ou "droit" de `<head>`,
+- `<head>` est dit être le frère "précédent" ou "gauche" de `<body>`.
 
-Navigation properties listed above refer to *all* nodes. For instance, in `childNodes` we can see both text nodes, element nodes, and even comment nodes if there exist.
+Le frère suivant est dans la propriété `nextSibling`, et le précédent - dans `previousSibling`.
 
-But for many tasks we don't want text or comment nodes. We want to manipulate element nodes that represent tags and form the structure of the page.
+Le parent est disponible en tant que `parentNode`.
 
-So let's see more navigation links that only take *element nodes* into account:
+Par exemple :
 
-![](dom-links-elements.png)
+```js
+// le parent de <body> est <html>
+alert( document.body.parentNode === document.documentElement ); // true
 
-The links are similar to those given above, just with `Element` word inside:
+// après <head> vient <body>
+alert( document.head.nextSibling ); // HTMLBodyElement
 
-- `children` -- only those children that are element nodes.
-- `firstElementChild`, `lastElementChild` -- first and last element children.
-- `previousElementSibling`, `nextElementSibling` -- neighbour elements.
-- `parentElement` -- parent element.
+// avant <body> vient <head>
+alert( document.body.previousSibling ); // HTMLHeadElement
+```
 
-````smart header="Why `parentElement`? Can the parent be *not* an element?"
-The `parentElement` property returns the "element" parent, while `parentNode` returns "any node" parent. These properties are usually the same: they both get the parent.
+## Navigation par élément uniquement
 
-With the one exception of `document.documentElement`:
+Les propriétés de navigation répertoriées ci-dessus font référence à *tous* les nœuds. Par exemple, dans `childNodes`, nous pouvons voir à la fois les nœuds texte, les nœuds élément et même les nœuds commentaire s'il en existe.
+
+Mais pour de nombreuses tâches, nous ne voulons pas de nœuds texte ou commentaire. Nous voulons manipuler des nœuds élément qui représentent des balises et forment la structure de la page.
+
+Voyons donc plus de liens de navigation qui ne prennent en compte que les *nœuds élément* :
+
+![](dom-links-elements.svg)
+
+Les liens sont similaires à ceux donnés ci-dessus, juste avec le mot `Element` à l'intérieur :
+
+- `children` -- seuls les enfants qui sont des nœuds élément.
+- `firstElementChild`, `lastElementChild` -- enfants du premier et du dernier élément.
+- `previousElementSibling`, `nextElementSibling` -- éléments voisins.
+- `parentElement` -- élément parent.
+
+````smart header="Pourquoi `parentElement` ? Le parent peut-il ne *pas* être un élément ?"
+La propriété `parentElement` renvoie l'élément parent, tandis que `parentNode` retourne le parent "peu importe le nœud". Ces propriétés sont généralement les mêmes : elles obtiennent toutes deux le parent.
+
+À la seule exception de `document.documentElement` :
 
 ```js run
 alert( document.documentElement.parentNode ); // document
 alert( document.documentElement.parentElement ); // null
 ```
 
-In other words, the `documentElement` (`<html>`) is the root node. Formally, it has `document` as its parent. But `document` is not an element node, so `parentNode` returns it and `parentElement` does not.
+La raison en est que le nœud racine `document.documentElement` (`<html>`) a
+`document` comme parent. Mais `document` n'est pas un nœud élément, donc `parentNode` le renvoie et pas `parentElement`.
 
-This loop travels up from an arbitrary element `elem` to `<html>`, but not to the `document`:
+Ce détail peut être utile lorsque nous voulons passer d'un élément arbitraire `elem` à `<html>`, mais pas au `document` :
 ```js
-while(elem = elem.parentElement) {
-  alert( elem ); // parent chain till <html>
+while(elem = elem.parentElement) { // remonter jusqu'à <html>
+  alert( elem );
 }
 ```
 ````
 
-Let's modify one of the examples above: replace `childNodes` with `children`. Now it shows only elements:
+Modifions l'un des exemples ci-dessus : remplaçons `childNodes` par `children`. Maintenant, il ne montre que des éléments :
 
 ```html run
 <html>
@@ -270,31 +275,31 @@ Let's modify one of the examples above: replace `childNodes` with `children`. No
 </html>
 ```
 
-## More links: tables [#dom-navigation-tables]
+## Plus de liens : tableaux [#dom-navigation-tables]
 
-Till now we described the basic navigation properties.
+Jusqu'à présent, nous avons décrit les propriétés de navigation de base.
 
-Certain types of DOM elements may provide additional properties, specific to their type, for convenience.
+Certains types d'éléments DOM peuvent fournir des propriétés supplémentaires, spécifiques à leur type, pour plus de commodité.
 
-Tables are a great example and important particular case of that.
+Les tableaux en sont un excellent exemple et représentent un cas particulièrement important :
 
-**The `<table>`** element supports (in addition to the given above) these properties:
-- `table.rows` -- the collection of `<tr>` elements of the table.
-- `table.caption/tHead/tFoot` -- references to elements `<caption>`, `<thead>`, `<tfoot>`.
-- `table.tBodies` -- the collection of `<tbody>` elements (can be many according to the standard).
+**L'élément `<table>`** supporte (en plus de ce qui précède) ces propriétés :
+- `table.rows` -- la collection d'éléments `<tr>` du tableau.
+- `table.caption/tHead/tFoot` -- références aux éléments `<caption>`, `<thead>`, `<tfoot>`.
+- `table.tBodies` -- la collection d'éléments `<tbody>` (peut être multiple selon la norme, mais il y en aura toujours au moins une - même s'elle n'est pas dans le HTML source, le navigateur la mettra dans le DOM).
 
-**`<thead>`, `<tfoot>`, `<tbody>`** elements provide the `rows` property:
-- `tbody.rows` -- the collection of `<tr>` inside.
+**`<thead>`, `<tfoot>`, `<tbody>`** les éléments fournissent la propriété `rows` :
+- `tbody.rows` -- la collection de `<tr>` à l'intérieur.
 
 **`<tr>`:**
-- `tr.cells` -- the collection of `<td>` and `<th>` cells inside the given `<tr>`.
-- `tr.sectionRowIndex` -- the position (index) of the given `<tr>` inside the enclosing `<thead>/<tbody>/<tfoot>`.
-- `tr.rowIndex` -- the number of the `<tr>` in the table as a whole (including all table rows).
+- `tr.cells` -- la collection de cellules `<td>` et `<th>` à l'intérieur du `<tr>` donné.
+- `tr.sectionRowIndex` -- la position (index) du `<tr>` donné à l'intérieur du `<thead>/<tbody>/<tfoot>`.
+- `tr.rowIndex` -- le nombre de `<tr>` dans le tableau dans son ensemble (y compris toutes les lignes du tableau).
 
-**`<td>` and `<th>`:**
-- `td.cellIndex` -- the number of the cell inside the enclosing `<tr>`.
+**`<td>` et `<th>` : **
+- `td.cellIndex` -- le numéro de la cellule à l'intérieur du `<tr>` qui l'entoure.
 
-An example of usage:
+Un exemple d'utilisation :
 
 ```html run height=100
 <table id="table">
@@ -307,22 +312,23 @@ An example of usage:
 </table>
 
 <script>
-  // get the content of the first row, second cell
-  alert( table.*!*rows[0].cells[1]*/!*.innerHTML ) // "two"
+  // obtenir td avec "two" (première ligne, deuxième colonne)
+  let td = table.*!*rows[0].cells[1]*/!*;
+  td.style.backgroundColor = "red"; // le mettre en valeur
 </script>
 ```
 
-The specification: [tabular data](https://html.spec.whatwg.org/multipage/tables.html).
+La spécification : [tabular data](https://html.spec.whatwg.org/multipage/tables.html).
 
-There are also additional navigation properties for HTML forms. We'll look at them later when we start working with forms.
+Il existe également des propriétés de navigation supplémentaires pour les formulaires HTML. Nous les examinerons plus tard lorsque nous commencerons à travailler avec des formulaires.
 
-# Summary
+## Résumé
 
-Given a DOM node, we can go to its immediate neighbours using navigation properties.
+Étant donné un nœud DOM, nous pouvons aller vers ses voisins immédiats en utilisant les propriétés de navigation.
 
-There are two main sets of them:
+Il en existe deux ensembles principaux :
 
-- For all nodes: `parentNode`, `childNodes`, `firstChild`, `lastChild`, `previousSibling`, `nextSibling`.
-- For element nodes only: `parentElement`, `children`, `firstElementChild`, `lastElementChild`, `previousElementSibling`, `nextElementSibling`.
+- Pour tous les nœuds : `parentNode`, `childNodes`, `firstChild`, `lastChild`, `previousSibling`, `nextSibling`.
+- Pour les nœuds élément uniquement : `parentElement`, `children`, `firstElementChild`, `lastElementChild`, `previousElementSibling`, `nextElementSibling`.
 
-Some types of DOM elements, e.g. tables, provide additional properties and collections to access their content.
+Certains types d'éléments DOM, par exemple , fournissent des propriétés et des collections supplémentaires pour accéder à leur contenu.

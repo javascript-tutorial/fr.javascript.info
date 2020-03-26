@@ -1,7 +1,7 @@
 
 # Objets
 
-Comme nous le savons du chapitre <info:types>, il existe sept types de données dans le langage JavaScript. Six d'entre elles sont appelées "primitives", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
+Comme nous le savons du chapitre <info:types>, il existe huit types de données dans le langage JavaScript. Sept d'entre elles sont appelées "primitives", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
 
 En revanche, les objets sont utilisés pour stocker des collections de données variées et d’entités plus complexes. En JavaScript, les objets pénètrent dans presque tous les aspects du langage. Nous devons donc d'abord les comprendre avant d'aller plus loin.
 
@@ -9,7 +9,7 @@ Un objet peut être créé avec des accolades `{…}`, avec une liste optionnell
 
 Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
-![](object.png)
+![](object.svg)
 
 Un objet vide ("armoire vide") peut être créé en utilisant l'une des deux syntaxes suivantes :
 
@@ -18,7 +18,7 @@ let user = new Object(); // syntaxe "constructeur d'objet"
 let user = {};  // syntaxe "littéral objet"
 ```
 
-![](object-user-empty.png)
+![](object-user-empty.svg)
 
 Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
 
@@ -42,14 +42,14 @@ Dans l'objet `user`, il y a deux propriétés :
 
 L'objet `user` résultant peut être imaginé comme une armoire avec deux fichiers signés intitulés "nom" et "âge".
 
-![user object](object-user.png)
+![user object](object-user.svg)
 
 Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
 
 Les valeurs de propriété sont accessibles à l'aide de la notation par points :
 
 ```js
-// récupère les champs de l'objet :
+// récupère les valeurs de propriété de l'objet :
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -60,7 +60,7 @@ La valeur peut être de tout type. Ajoutons un booléen :
 user.isAdmin = true;
 ```
 
-![user object 2](object-user-isadmin.png)
+![user object 2](object-user-isadmin.svg)
 
 Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 
@@ -68,7 +68,7 @@ Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
 delete user.age;
 ```
 
-![user object 3](object-user-delete.png)
+![user object 3](object-user-delete.svg)
 
 Nous pouvons également utiliser des noms de propriété multi-mots, mais ils doivent ensuite être entourés de quotes :
 
@@ -80,7 +80,7 @@ let user = {
 };
 ```
 
-![](object-user-props.png)
+![](object-user-props.svg)
 
 
 La dernière propriété de la liste peut se terminer par une virgule :
@@ -101,10 +101,11 @@ Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 user.likes birds = true
 ```
 
-C’est parce que le point exige que la clé soit un identificateur de variable valide. C'est-à-dire : pas d'espaces et autres limitations.
+JavaScript ne comprend pas cela. Il pense que nous adressons `user.likes`, ensuite il donne une erreur de syntaxe lorsqu'il rencontre des `birds` inattendus.
+
+Le point nécessite que la clé soit un identificateur de variable valide. Cela implique qu'elle ne contient aucun espace, ne commence pas par un chiffre et n'inclut pas de caractères spéciaux (`$` et `_` sont autorisés).
 
 Il existe une autre “notation entre crochets” qui fonctionne avec n’importe quelle chaîne :
-
 
 ```js run
 let user = {};
@@ -130,7 +131,7 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-Ici, la clé variable peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. La notation par points ne peut pas être utilisée de la même manière.
+Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. 
 
 Par exemple :
 
@@ -146,6 +147,17 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (si entré "name")
 ```
 
+The dot notation cannot be used in a similar way:
+
+```js run
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+alert( user.key ) // undefined
+```
 
 ### Propriétés calculées
 
@@ -193,42 +205,6 @@ Les crochets sont beaucoup plus puissants que la notation par points. Ils autori
 
 Ainsi, la plupart du temps, lorsque les noms de propriété sont connus et simples, le point est utilisé. Et si nous avons besoin de quelque chose de plus complexe, nous passons aux crochets.
 
-
-
-````smart header="Les mots réservés sont autorisés comme noms de propriétés"
-Une variable ne peut pas avoir un nom égal à l'un des mots réservés à la langue tels que "for", "let", "return", etc.
-
-Mais pour une propriété d’objet, il n’ya pas de telle restriction. N'importe quel nom est autorisé :
-
-```js run
-let obj = {
-  for: 1,
-  let: 2,
-  return: 3
-}
-
-alert( obj.for + obj.let + obj.return );  // 6
-```
-
-En principe, tout nom est autorisé, mais il en existe un spécial: `"__proto__"` qui bénéficie d’un traitement spécial pour des raisons historiques. Par exemple, nous ne pouvons pas définir une valeur non-objet :
-
-```js run
-let obj = {};
-obj.__proto__ = 5;
-alert(obj.__proto__); // [object Object], n'a pas fonctionné comme prévu
-```
-
-Comme on le voit d'après le code, l'affectation à une primitive `5` est ignorée.
-
-Cela peut devenir une source de bugs et même de vulnérabilités si nous avons l’intention de stocker des paires clé-valeur arbitraires dans un objet et d’autoriser un visiteur à spécifier les clés.
-
-Dans ce cas, le visiteur peut choisir "_proto_" comme clé et la logique d’attribution sera ruinée (comme indiqué ci-dessus).
-
-Il existe un moyen de faire en sorte que les objets traitent `__proto__` comme une propriété régulière, ce que nous verrons plus tard, mais nous devons d’abord en savoir plus sur les objets.
-Il existe également une autre structure de données [Map](info:map-set-weakmap-weakset), que nous apprendrons dans le chapitre <info:map-set-weakmap-weakset>, qui supporte des clés arbitraires.
-````
-
-
 ## Valeur de propriété abrégée (Property value shorthand)
 
 Dans le code, nous utilisons souvent des variables existantes en tant que valeurs pour les noms de propriétés.
@@ -273,7 +249,63 @@ let user = {
 };
 ```
 
-## Vérification d'existence
+## Limitations des noms de propriété
+
+Les noms de propriété (clés) doivent être des chaînes de caractères ou des symboles (un type spécial pour les identifiants, à couvrir plus tard).
+
+Les autres types sont automatiquement convertis en chaînes de caractères.
+
+Par exemple, un nombre `0` devient une chaîne de caractères `"0"` lorsqu'il est utilisé comme clé de propriété :
+
+```js run
+let obj = {
+  0: "test" // pareil que "0": "test"
+};
+
+// les deux alertes accèdent à la même propriété (le nombre 0 est converti en chaîne "0")
+alert( obj["0"] ); // test
+alert( obj[0] ); // test (même propriété)
+```
+
+**Les mots réservés sont autorisés comme noms de propriété.**
+
+Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés du langage comme `for`, `let`, `return` etc.
+
+Mais pour une propriété d'objet, il n'y a pas ce genre de restriction. Tous les noms sont acceptés :
+
+```js run
+let obj = {
+  for: 1,
+  let: 2,
+  return: 3
+};
+
+alert( obj.for + obj.let + obj.return );  // 6
+```
+
+Nous pouvons utiliser n'importe quelle chaîne de caractères comme clé, mais il existe une propriété spéciale nommée `__proto__` qui reçoit un traitement spécial pour des raisons historiques.
+
+Par exemple, nous ne pouvons pas la définir sur une valeur non-objet :
+
+```js run
+let obj = {};
+obj.__proto__ = 5; // assign a number
+alert(obj.__proto__); // [object Object] - la valeur est un objet, n'a pas fonctionné comme prévu
+```
+
+Comme nous le voyons dans le code, l'affectation à une primitive `5` est ignorée.
+
+La nature de `__proto__` sera révélée en détail plus loin dans le chapitre [](info:prototype-inheritance).
+
+Pour l'instant, il est important de savoir qu'un tel comportement de `__proto__` peut devenir une source de bugs et même de vulnérabilités si nous avons l'intention de stocker des clés fournies par l'utilisateur dans un objet.
+
+Le problème est qu'un visiteur peut choisir `__proto__` comme clé, et la logique d'affectation sera ruinée (comme indiqué ci-dessus).
+
+Il existe deux solutions de contournement pour le problème :
+1. Modifiez le comportement de l'objet pour traiter `__proto__` comme une propriété régulière. Nous apprendrons comment le faire dans le chapitre [](info:prototype-methods).
+2. En utilisant la structure de données [Map](info:map-set) qui prend en charge les clés arbitraires. Nous l'apprendrons dans le chapitre <info:map-set>.
+
+## Test d'existence de propriété, opérateur "in"
 
 Une caractéristique notable des objets est qu’il est possible d’accéder à n’importe quelle propriété. Il n’y aura pas d’erreur si la propriété n’existe pas ! L'accès à une propriété non existante renvoie simplement `undefined`. Le langage fournit un moyen très courant de vérifier si la propriété existe -- pour l'obtenir et la comparer avec `undefined` :
 
@@ -285,7 +317,7 @@ alert( user.noSuchProperty === undefined ); // true signifie "pas une telle prop
 
 Il existe également un opérateur spécial `"in"` pour vérifier l'existence d'une propriété.
 
-La syntax est :
+La syntaxe est :
 ```js
 "key" in object
 ```
@@ -311,7 +343,7 @@ alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette 
 ```
 
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
-Habituellement, la comparaison stricte `"=== undefined"` fonctionne correctement. Mais il y a un cas particulier où elle échoue, mais "in" fonctionne correctement.
+Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -332,7 +364,7 @@ Des situations comme celle-ci se produisent très rarement, parce que `undefined
 ````
 
 
-## La boucle "for … in"
+## La boucle "for..in"
 
 Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`. C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
 
@@ -464,7 +496,7 @@ let phrase = message;
 
 Par conséquent, nous avons deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
 
-![](variable-copy-value.png)
+![](variable-copy-value.svg)
 
 Les objets ne sont pas comme ça.
 
@@ -478,7 +510,7 @@ let user = {
 };
 ```
 
-![](variable-contains-reference.png)
+![](variable-contains-reference.svg)
 
 Ici, l'objet est stocké quelque part en mémoire. Et la variable `user` a une "référence" à cet objet.
 
@@ -496,7 +528,7 @@ let admin = user; // copier la référence
 
 Maintenant nous avons deux variables, chacune avec la référence au même objet :
 
-![](variable-copy-reference.png)
+![](variable-copy-reference.svg)
 
 Nous pouvons utiliser n’importe quelle variable pour accéder à l'armoire et modifier son contenu :
 
@@ -520,7 +552,7 @@ Les opérateurs d'égalité `==` et d'égalité stricte `===` pour les objets fo
 
 **Deux objets ne sont égaux que s’ils sont le même objet.**
 
-Par exemple, deux variables référencent le même objet, elles sont égales :
+Par exemple, si deux variables référencent le même objet, elles sont égales :
 
 ```js run
 let a = {};
@@ -559,7 +591,7 @@ user.age = 25; // (*)
 alert(user.age); // 25
 ```
 
-Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à l’intérieur de l’objet, elle ne réaffecte pas `user`.
+Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe uniquement la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à *l’intérieur* de l’objet, elle ne réaffecte pas `user`.
 
 Le `const` donnerait une erreur si nous essayons de définir `user` sur autre chose, par exemple :
 

@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Output a single-linked list in the reverse order
+# Afficher une liste à lien unique dans l'ordre inverse
 
-Output a single-linked list from the previous task <info:task/output-single-linked-list> in the reverse order.
+Afficher une liste à lien unique de la tâche précédente <info:task/output-single-linked-list> dans l'ordre inverse.
 
-Make two solutions: using a loop and using a recursion.
+Faites deux solutions: en utilisant une boucle et en utilisant une récursion.

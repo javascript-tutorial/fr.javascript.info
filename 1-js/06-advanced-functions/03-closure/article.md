@@ -1,211 +1,106 @@
 
-# Closure
+# Variable scope
 
-JavaScript is a very function-oriented language. It gives us a lot of freedom. A function can be created dynamically,  copied to another variable or passed as an argument to another function and called from a totally different place later.
+JavaScript est un langage orienté vers le fonctionnel. Cela nous donne beaucoup de liberté. Une fonction peut être créée dynamiquement, passée en argument à une autre fonction et appelée ultérieurement à partir d'un code totalement différent.
 
-We know that a function can access variables outside of it, this feature is used quite often.
+Nous savons déjà qu'une fonction peut accéder à des variables en dehors de celle-ci.
 
-But what happens when an outer variable changes? Does a function get the most recent value or the one that existed when the function was created?
+Développons maintenant nos connaissances pour inclure des scénarios plus complexes.
 
-Also, what happens when a function travels to another place in the code and is called from there -- does it get access to the outer variables of the new place?
+```smart header="Nous parlerons ici des variables `let/const`"
+En JavaScript, il y a 3 façons de déclarer une variable: `let`, `const`(les modernes) et `var` (le vestige du passé).
 
-Different languages behave differently here, and in this chapter we cover the behaviour of JavaScript.
+- Dans cet article, nous utiliserons des variables `let` dans les exemples.
+- Les variables, déclarées avec `const`, se comportent de la même manière, donc cet article concerne également `const`.
+- L'ancien `var` a quelques différences notables, elles seront traitées dans l'article <info:var>.
+```
 
-## A couple of questions
+## Code blocks
 
-Let's consider two situations to begin with, and then study the internal mechanics piece-by-piece, so that you'll be able to answer the following questions and more complex ones in the future.
+Si une variable est déclarée à l'intérieur d'un bloc de code `{...}`, elle n'est visible qu'à l'intérieur de ce bloc.
 
-1. The function `sayHi` uses an external variable `name`. When the function runs, which value is it going to use?
-
-    ```js
-    let name = "John";
-
-    function sayHi() {
-      alert("Hi, " + name);
-    }
-
-    name = "Pete";
-
-    *!*
-    sayHi(); // what will it show: "John" or "Pete"?
-    */!*
-    ```
-
-    Such situations are common both in browser and server-side development. A function may be scheduled to execute later than it is created, for instance after a user action or a network request.
-
-    So, the question is: does it pick up the latest changes?
-
-
-2. The function `makeWorker` makes another function and returns it. That new function can be called from somewhere else. Will it have access to the outer variables from its creation place, or the invocation place, or both?
-
-    ```js
-    function makeWorker() {
-      let name = "Pete";
-
-      return function() {
-        alert(name);
-      };
-    }
-
-    let name = "John";
-
-    // create a function
-    let work = makeWorker();
-
-    // call it
-    *!*
-    work(); // what will it show? "Pete" (name where created) or "John" (name where called)?
-    */!*
-    ```
-
-
-## Lexical Environment
-
-To understand what's going on, let's first discuss what a "variable" actually is.
-
-In JavaScript, every running function, code block `{...}`, and the script as a whole have an internal (hidden) associated object known as the *Lexical Environment*.
-
-The Lexical Environment object consists of two parts:
-
-1. *Environment Record* -- an object that stores all local variables as its properties (and some other information like the value of `this`).
-2. A reference to the *outer lexical environment*, the one associated with the outer code.
-
-**So, a "variable" is just a property of the special internal object, `Environment Record`. "To get or change a variable" means "to get or change a property of that object".**
-
-For instance, in this simple code, there is only one Lexical Environment:
-
-![lexical environment](lexical-environment-global.png)
-
-This is a so-called global Lexical Environment, associated with the whole script.
-
-On the picture above, the rectangle means Environment Record (variable store) and the arrow means the outer reference. The global Lexical Environment has no outer reference, so it points to `null`.
-
-Here's the bigger picture of what happens when a `let` changes:
-
-![lexical environment](lexical-environment-global-2.png)
-
-Rectangles on the right-hand side demonstrate how the global Lexical Environment changes during the execution:
-
-1. When the script starts, the Lexical Environment is empty.
-2. The `let phrase` definition appears. It has been assigned no value, so `undefined` is stored.
-3. `phrase` is assigned a value.
-4. `phrase` changes value.
-
-Everything looks simple for now, right?
-
-To summarize:
-
-- A variable is a property of a special internal object, associated with the currently executing block/function/script.
-- Working with variables is actually working with the properties of that object.
-
-### Function Declaration
-
-Till now, we only observed variables. Now enter Function Declarations.
-
-**Unlike `let` variables, they are fully initialized not when the execution reaches them, but earlier, when a Lexical Environment is created.**
-
-For top-level functions, it means the moment when the script is started.
-
-That is why we can call a function declaration before it is defined.
-
-The code below demonstrates that the Lexical Environment is non-empty from the beginning. It has `say`, because that's a Function Declaration. And later it gets `phrase`, declared with `let`:
-
-![lexical environment](lexical-environment-global-3.png)
-
-
-### Inner and outer Lexical Environment
-
-Now let's go on and explore what happens when a function accesses an outer variable.
-
-During the call, `say()` uses the outer variable `phrase`, let's look at the details of what's going on.
-
-First, when a function runs, a new function Lexical Environment is created automatically. That's a general rule for all functions. That Lexical Environment is used to store local variables and parameters of the call.
-
-For instance, for `say("John")`, it looks like this (the execution is at the line, labelled with an arrow):
-
-<!--
-    ```js
-    let phrase = "Hello";
-
-    function say(name) {
-     alert( `${phrase}, ${name}` );
-    }
-
-    say("John"); // Hello, John
-    ```-->
-
-![lexical environment](lexical-environment-simple.png)
-
-So, during the function call we have two Lexical Environments: the inner one (for the function call) and the outer one (global):
-
-- The inner Lexical Environment corresponds to the current execution of `say`.
-
-    It has a single property: `name`, the function argument. We called `say("John")`, so the value of `name` is `"John"`.
-- The outer Lexical Environment is the global Lexical Environment.
-
-    It has `phrase` and the function itself.
-
-The inner Lexical Environment has a reference to the outer one.
-
-**When the code wants to access a variable -- the inner Lexical Environment is searched first, then the outer one, then the more outer one and so on until the global one.**
-
-If a variable is not found anywhere, that's an error in strict mode. Without `use strict`, an assignment to an undefined variable creates a new global variable, for backwards compatibility.
-
-Let's see how the search proceeds in our example:
-
-- When the `alert` inside `say` wants to access `name`, it finds it immediately in the function Lexical Environment.
-- When it wants to access `phrase`, then there is no `phrase` locally, so it follows the reference to the enclosing Lexical Environment and finds it there.
-
-![lexical environment lookup](lexical-environment-simple-lookup.png)
-
-Now we can give the answer to the first question from the beginning of the chapter.
-
-**A function gets outer variables as they are now; it uses the most recent values.**
-
-That's because of the described mechanism. Old variable values are not saved anywhere. When a function wants them, it takes the current values from its own or an outer Lexical Environment.
-
-So the answer to the first question is `Pete`:
+Par exemple :
 
 ```js run
-let name = "John";
+{
+  // faire un travail avec des variables locales qui ne devraient pas être vues à l'extérieur
 
-function sayHi() {
-  alert("Hi, " + name);
+  let message = "Hello"; // visible uniquement dans ce bloc
+
+  alert(message); // Hello
 }
 
-name = "Pete"; // (*)
+alert(message); // Error: message is not defined
+```
 
+Nous pouvons l'utiliser pour isoler un morceau de code qui fait sa propre tâche, avec des variables qui lui appartiennent uniquement :
+
+```js run
+{
+  // show message
+  let message = "Hello";
+  alert(message);
+}
+
+{
+  // show another message
+  let message = "Goodbye";
+  alert(message);
+}
+```
+
+````smart header="Il y aurait une erreur sans blocs"
+Veuillez noter que sans blocs séparés, il y aurait une erreur, si nous utilisons `let` avec le nom de variable existant :
+
+```js run
+// show message
+let message = "Hello";
+alert(message);
+
+// show another message
 *!*
-sayHi(); // Pete
+let message = "Goodbye"; // Error: variable already declared
 */!*
+alert(message);
+```
+````
+
+Pour `if`, `for`, `while` et ainsi de suite, les variables déclarées dans `{...}` ne sont également visibles qu'à l'intérieur :
+
+```js run
+if (true) {
+  let phrase = "Hello!";
+
+  alert(phrase); // Hello!
+}
+
+alert(phrase); // Error, no such variable!
 ```
 
+Here, after `if` finishes, the `alert` below won't see the `phrase`, hence the error.
 
-The execution flow of the code above:
+C'est super, car cela nous permet de créer des variables locales, spécifiques à une branche `if`.
 
-1. The global Lexical Environment has `name: "John"`.
-2. At the line `(*)` the global variable is changed, now it has `name: "Pete"`.
-3. When the function `sayHi()`, is executed and takes `name` from outside. Here that's from the global Lexical Environment where it's already `"Pete"`.
+La même chose vaut pour les boucles `for` et `while` :
 
+```js run
+for (let i = 0; i < 3; i++) {
+  // la variable i n'est visible que dans ce for
+  alert(i); // 0, ensuite 1, ensuite 2
+}
 
-```smart header="One call -- one Lexical Environment"
-Please note that a new function Lexical Environment is created each time a function runs.
-
-And if a function is called multiple times, then each invocation will have its own Lexical Environment, with local variables and parameters specific for that very run.
+alert(i); // Error, no such variable
 ```
 
-```smart header="Lexical Environment is a specification object"
-"Lexical Environment" is a specification object. We can't get this object in our code and manipulate it directly. JavaScript engines also may optimize it, discard variables that are unused to save memory and perform other internal tricks, but the visible behavior should be as described.
-```
+Visually, `let i` is outside of `{...}`. But the `for` construct is special here: the variable, declared inside it, is considered a part of the block.
 
+## Fonctions imbriquées
 
-## Nested functions
+Une fonction est appelée "imbriquée" lorsqu'elle est créée dans une autre fonction.
 
-A function is called "nested" when it is created inside another function.
+Il est facilement possible de faire cela avec JavaScript.
 
-It is easily possible to do this with JavaScript.
-
-We can use it to organize our code, like this:
+Nous pouvons l'utiliser pour organiser notre code, comme ceci :
 
 ```js
 function sayHiBye(firstName, lastName) {
@@ -221,34 +116,18 @@ function sayHiBye(firstName, lastName) {
 }
 ```
 
-Here the *nested* function `getFullName()` is made for convenience. It can access the outer variables and so can return the full name. Nested functions are quite common in JavaScript.
+Ici, la fonction *imbriquée* `getFullName()` est faite pour plus de commodité. Elle peut accéder aux variables externes et peut donc renvoyer le nom complet. Les fonctions imbriquées sont assez courantes dans JavaScript.
 
-What's much more interesting, a nested function can be returned: either as a property of a new object (if the outer function creates an object with methods) or as a result by itself. It can then be used somewhere else. No matter where, it still has access to the same outer variables.
+Ce qui est beaucoup plus intéressant, une fonction imbriquée peut être retournée : soit en tant que propriété d'un nouvel objet, soit en tant que résultat par elle-même. Elle peut ensuite être utilisée ailleurs. Peu importe où, elle a toujours accès aux mêmes variables externes.
 
-For instance, here the nested function is assigned to the new object by the [constructor function](info:constructor-new):
-
-```js run
-// constructor function returns a new object
-function User(name) {
-
-  // the object method is created as a nested function
-  this.sayHi = function() {
-    alert(name);
-  };
-}
-
-let user = new User("John");
-user.sayHi(); // the method "sayHi" code has access to the outer "name"
-```
-
-And here we just create and return a "counting" function:
+Ci-dessous, `makeCounter` crée la fonction "counter" qui renvoie le nombre suivant à chaque appel :
 
 ```js run
 function makeCounter() {
   let count = 0;
 
   return function() {
-    return count++; // has access to the outer "count"
+    return count++;
   };
 }
 
@@ -259,369 +138,247 @@ alert( counter() ); // 1
 alert( counter() ); // 2
 ```
 
-Let's go on with the `makeCounter` example. It creates the "counter" function that returns the next number on each invocation. Despite being simple, slightly modified variants of that code have practical uses, for instance, as a [pseudorandom number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator), and more.
+Bien que simples, des variantes légèrement modifiées de ce code ont des utilisations pratiques, par exemple un [générateur de nombres aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires) pour générer des valeurs aléatoires pour des tests automatisés.
 
-How does the counter work internally?
+Comment cela marche-t-il ? Si nous créons plusieurs compteurs, seront-ils indépendants ? Que se passe-t-il avec les variables ici ?
 
-When the inner function runs, the variable in `count++` is searched from inside out. For the example above, the order will be:
+La compréhension de ce genre de choses est excellente pour la connaissance globale de JavaScript et bénéfique pour les scénarios plus complexes. Allons donc un peu en profondeur.
 
-![](lexical-search-order.png)
+## Lexical Environment
 
-1. The locals of the nested function...
-2. The variables of the outer function...
-3. And so on until it reaches global variables.
+```warn header="Voilà des dragons !"
+L'explication technique approfondie reste à venir.
 
-In this example `count` is found on  step `2`. When an outer variable is modified, it's changed where it's found. So `count++` finds the outer variable and increases it in the Lexical Environment where it belongs. Like if we had `let count = 1`.
+Bien que je souhaiterai éviter les détails de bas niveau du langage, toute compréhension sans eux serait manquante et incomplète, alors préparez-vous.
+```
 
-Here are two questions to consider:
+Pour plus de clarté, l'explication est divisée en plusieurs étapes.
 
-1. Can we somehow reset the counter `count` from the code that doesn't belong to `makeCounter`? E.g. after `alert` calls in the example above.
-2. If we call `makeCounter()` multiple times -- it returns many `counter` functions. Are they independent or do they share the same `count`?
+### Étape 1. Variables
 
-Try to answer them before you continue reading.
+En JavaScript, chaque fonction en cours d'exécution, bloc de code `{...}` et le script dans son ensemble ont un objet associé interne (caché) connu sous le nom de *Environnement Lexical*.
 
-...
+L'objet environnement lexical se compose de deux parties :
 
-All done?
+1. *Environment Record* -- un objet qui stocke toutes les variables locales comme ses propriétés (et quelques autres informations comme la valeur de `this`).
+2. Une référence à *l'environnement lexical externe*, celui associé au code externe.
 
-Okay, let's go over the answers.
+**Une "variable" est juste une propriété de l'objet interne spécial `Environment Record`. "Pour obtenir ou modifier une variable" signifie "pour obtenir ou modifier une propriété de cet objet".**
 
-1. There is no way: `count` is a local function variable, we can't access it from the outside.
-2. For every call to `makeCounter()` a new function Lexical Environment is created, with its own `count`. So the resulting `counter` functions are independent.
+Dans ce code simple sans fonctions, il n'y a qu'un seul environnement lexical :
 
-Here's the demo:
+![lexical environment](lexical-environment-global.svg)
 
-```js run
+Il s'agit de l'environnement Lexical dit *global*, associé à l'ensemble du script.
+
+Sur l'image ci-dessus, le rectangle signifie Environment Record(stockage de variable) et la flèche signifie la référence externe. L'environnement lexical global n'a pas de référence externe, c'est pourquoi la flèche pointe vers `null`.
+
+À mesure que le code commence à s'exécuter et se poursuit, l'environnement lexical change.
+
+Voici un peu plus de code :
+
+![lexical environment](closure-variable-phrase.svg)
+
+Les rectangles sur le côté droit montrent comment l'environnement lexical global change pendant l'exécution :
+
+1. Lorsque le script démarre, l'environnement lexical est prérempli avec toutes les variables déclarées.
+    - Initialement, ils sont à l'état "non initialisé". C'est un état interne spécial, cela signifie que le moteur connaît la variable, mais ne permettra pas de l'utiliser avant `let`. C'est presque comme si la variable n'existait pas.
+2. Ensuite, la définition de `let phrase` apparaît. Il n'y a pas encore d'affectation, donc sa valeur est `undefined`. Nous pouvons utiliser la variable depuis ce moment.
+3. `phrase` se voit attribuer une valeur.
+4. `phrase` change la valeur.
+
+Tout semble simple pour l'instant, non ?
+
+- Une variable est la propriété d'un objet interne spécial, associé au bloc/fonction/script en cours d'exécution.
+- Travailler avec des variables, c'est travailler avec les propriétés de cet objet.
+
+```smart header="L'environnement lexical est un objet de spécification"
+"L'environnement lexical" est un objet de spécification : il n'existe que "théoriquement" dans la [spécification du language](https://tc39.es/ecma262/#sec-lexical-environments) pour décrire comment les choses fonctionnent. nous ne pouvons pas obtenir cet objet dans notre code et le manipuler directement.
+
+JavaScript engines also may optimize it, discard variables that are unused to save memory and perform other internal tricks, as long as the visible behavior remains as described.
+```
+
+### Step 2. Fonctions Declarations
+
+Une fonction est également une valeur, comme une variable.
+
+**La différence est qu'une fonction déclaration est instantanément et complètement initialisée.**
+
+Lorsqu'un environnement lexical est créé, une fonction déclaration devient immédiatement une fonction prête à l'emploi (contrairement à `let`, qui est inutilisable jusqu'à la déclaration).
+
+C'est pourquoi nous pouvons utiliser une fonction, déclarée comme fonction déclaration, avant même la déclaration elle-même.
+
+Par exemple, voici l'état initial de l'environnement lexical global lorsque nous ajoutons une fonction :
+
+![](closure-function-declaration.svg)
+
+Naturellement, ce comportement ne s'applique qu'aux fonctions déclarations, pas aux fonctions expressions où nous attribuons une fonction à une variable, telle que `let say = function(name)...`.
+
+### Step 3. Environnement lexical intérieur et extérieur
+
+Lorsqu'une fonction s'exécute, au début de l'appel, un nouvel environnement lexical est créé automatiquement pour stocker les variables locales et les paramètres de l'appel.
+
+Par exemple, pour `say("John")`, cela ressemble à ceci (l'exécution est à la ligne, marquée d'une flèche) :
+
+<!--
+    ```js
+    let phrase = "Hello";
+
+    function say(name) {
+     alert( `${phrase}, ${name}` );
+    }
+
+    say("John"); // Hello, John
+    ```-->
+
+![](lexical-environment-simple.svg)
+
+Pendant l'appel de la fonction, nous avons deux environnements lexicaux : l'intérieur(pour l'appel de la fonction) et l'extérieur(global) :
+
+- L'environnement lexical interne correspond à l'exécution actuelle de `say`. Il a une seule propriété: `nom`, l'argument de la fonction. Nous avons appelé `say("John")`, donc la valeur du `name` est `"John"`.
+- L'environnement lexical externe est l'environnement lexical global. Il a la variable `phrase` et la fonction elle-même.
+
+L'environnement lexical intérieur a une référence à l'environnement `outer`(extérieur).
+
+**Lorsque le code veut accéder à une variable - l'environnement lexical interne est recherché en premier, puis celui externe, puis le plus externe et ainsi de suite jusqu'à celui global.**
+
+Si une variable n'est trouvée nulle part, c'est une erreur en mode strict (sans `use strict` une affectation à une variable non existante crée une nouvelle variable globale, pour la compatibilité avec l'ancien code).
+
+Dans cet exemple, la recherche se déroule comme ceci :
+
+- Pour la variable `name`, l'`alert` à l'intérieur de `say` la trouve immédiatement dans l'environnement lexical interne.
+- Lorsqu'elle veut accéder à `phrase`, il n'y a pas de `phrase` localement, elle suit donc la référence à l'environnement lexical externe et la trouve là.
+
+![lexical environment lookup](lexical-environment-simple-lookup.svg)
+
+
+### Step 4. Retourner une fonction
+
+Revenons à l'exemple `makeCounter`.
+
+```js
 function makeCounter() {
   let count = 0;
+
   return function() {
     return count++;
   };
 }
 
-let counter1 = makeCounter();
-let counter2 = makeCounter();
-
-alert( counter1() ); // 0
-alert( counter1() ); // 1
-
-alert( counter2() ); // 0 (independent)
+let counter = makeCounter();
 ```
 
+Au début de chaque appel `makeCounter()`, un nouvel objet environnement lexical est créé, pour stocker les variables pour cette exécution `makeCounter`.
 
-Hopefully, the situation with outer variables is clear now. For most situations such understanding is enough. There are few details in the specification that we omitted for brevity. So in the next section we cover even more details, not to miss anything.
+Nous avons donc deux environnements lexicaux imbriqués, comme dans l'exemple ci-dessus :
 
-## Environments in detail
+![](closure-makecounter.svg)
 
-Here's what's going on in the `makeCounter` example step-by-step, follow it to make sure that you know things in the very detail.
+Ce qui est différent, c'est que, pendant l'exécution de `makeCounter()`, une minuscule fonction imbriquée est créée à partir d'une seule ligne : `return count++`. Nous ne l'exécutons pas encore, nous créons seulement.
 
-Please note the additional `[[Environment]]` property is covered here. We didn't mention it before for simplicity.
+Toutes les fonctions se souviennent de l'environnement lexical dans lequel elles ont été créées. Techniquement, il n'y a pas de magie ici : toutes les fonctions ont la propriété cachée nommée `[[Environment]]`, qui garde la référence à l'environnement lexical où la fonction a été créée :
 
-1. When the script has just started, there is only global Lexical Environment:
+![](closure-makecounter-environment.svg)
 
-    ![](lexenv-nested-makecounter-1.png)
+Ainsi, `counter.[[Environment]]` a la référence à l'environnement lexical `{count: 0}`. C'est ainsi que la fonction se souvient de l'endroit où elle a été créée, quel que soit son nom. La référence `[[Environnement]]` est définie une fois pour toutes au moment de la création de la fonction.
 
-    At that starting moment there is only `makeCounter` function, because it's a Function Declaration. It did not run yet.
+Plus tard, lorsque `counter()` est appelé, un nouvel environnement lexical est créé pour l'appel, et sa référence externe à l'environnement lexical est tirée de `counter.[[Environnement]]` :
 
-    **All functions "on birth" receive a hidden property `[[Environment]]` with a reference to the Lexical Environment of their creation.** We didn't talk about it yet, but that's how the function knows where it was made.
+![](closure-makecounter-nested-call.svg)
 
-    Here, `makeCounter` is created in the global Lexical Environment, so `[[Environment]]` keeps a reference to it.
+Maintenant, lorsque le code à l'intérieur de `counter()` recherche la variable `count`, il recherche d'abord son propre environnement lexical (vide, car il n'y a pas de variables locales), puis l'environnement lexical de l'appel externe `makeCounter()`, où le trouve et change.
 
-    In other words, a function is "imprinted" with a reference to the Lexical Environment where it was born. And `[[Environment]]` is the hidden function property that has that reference.
+**Une variable est mise à jour dans l'environnement lexical où elle se trouve.**
 
-2. The code runs on, the new global variable `counter` is declared and for its value `makeCounter()` is called. Here's a snapshot of the moment when the execution is on the first line inside `makeCounter()`:
+Voici l'état après l'exécution :
 
-    ![](lexenv-nested-makecounter-2.png)
+![](closure-makecounter-nested-call-2.svg)
 
-    At the moment of the call of `makeCounter()`, the Lexical Environment is created, to hold its variables and arguments.
+Si nous appelons `counter()` plusieurs fois, la variable `count` sera augmentée à `2`, `3` et ainsi de suite, au même endroit.
 
-    As all Lexical Environments, it stores two things:
-    1. An Environment Record with local variables. In our case `count` is the only local variable (appearing when the line with `let count` is executed).
-    2. The outer lexical reference, which is set to `[[Environment]]` of the function. Here `[[Environment]]` of `makeCounter` references the global Lexical Environment.
+```smart header="Closure"
+Il existe un terme général de programmation "closure", que les développeurs devraient généralement connaître.
 
-    So, now we have two Lexical Environments: the first one is global, the second one is for the current `makeCounter` call, with the outer reference to global.
+Une [closure](https://fr.wikipedia.org/wiki/Fermeture_(informatique)) est une fonction qui se souvient de ses variables externes et peut y accéder. Dans certains langages, ce n'est pas possible, ou une fonction doit être écrite d'une manière spécifique pour y arriver. Mais comme expliqué ci-dessus, en JavaScript, toutes les fonctions sont naturellement des fermetures (il n'y a qu'une seule exception, à couvrir dans <info:new-function>).
 
-3. During the execution of `makeCounter()`, a tiny nested function is created.
+C'est-à-dire : elles se souviennent automatiquement de l'endroit où elles ont été créées en utilisant une propriété cachée `[[Environnement]]`, puis leur code peut accéder aux variables externes.
 
-    It doesn't matter whether the function is created using Function Declaration or Function Expression. All functions get the `[[Environment]]` property that references the Lexical Environment in which they were made. So our new tiny nested function gets it as well.
-
-    For our new nested function the value of `[[Environment]]` is the current Lexical Environment of `makeCounter()` (where it was born):
-
-    ![](lexenv-nested-makecounter-3.png)
-
-    Please note that on this step the inner function was created, but not yet called. The code inside `function() { return count++; }` is not running.
-
-4. As the execution goes on, the call to `makeCounter()` finishes, and the result (the tiny nested function) is assigned to the global variable `counter`:
-
-    ![](lexenv-nested-makecounter-4.png)
-
-    That function has only one line: `return count++`, that will be executed when we run it.
-
-5. When the `counter()` is called, an "empty" Lexical Environment is created for it. It has no local variables by itself. But the `[[Environment]]` of `counter` is used as the outer reference for it, so it has access to the variables of the former `makeCounter()` call where it was created:
-
-    ![](lexenv-nested-makecounter-5.png)
-
-    Now if it accesses a variable, it first searches its own Lexical Environment (empty), then the Lexical Environment of the former `makeCounter()` call, then the global one.
-
-    When it looks for `count`, it finds it among the variables `makeCounter`, in the nearest outer Lexical Environment.
-
-    Please note how memory management works here. Although `makeCounter()` call finished some time ago, its Lexical Environment was retained in memory, because there's a nested function with `[[Environment]]` referencing it.
-
-    Generally, a Lexical Environment object lives as long as there is a function which may use it. And only when there are none remaining, it is cleared.
-
-6. The call to `counter()` not only returns the value of `count`, but also increases it. Note that the modification is done "in place". The value of `count` is modified exactly in the environment where it was found.
-
-    ![](lexenv-nested-makecounter-6.png)
-
-    So we return to the previous step with the only change -- the new value of `count`. The following calls all do the same.
-
-7. Next `counter()` invocations do the same.
-
-The answer to the second question from the beginning of the chapter should now be obvious.
-
-The `work()` function in the code below uses the `name` from the place of its origin through the outer lexical environment reference:
-
-![](lexenv-nested-work.png)
-
-So, the result is `"Pete"` here.
-
-But if there were no `let name` in `makeWorker()`, then the search would go outside and take the global variable as we can see from the chain above. In that case it would be `"John"`.
-
-```smart header="Closures"
-There is a general programming term "closure", that developers generally should know.
-
-A [closure](https://en.wikipedia.org/wiki/Closure_(computer_programming)) is a function that remembers its outer variables and can access them. In some languages, that's not possible, or a function should be written in a special way to make it happen. But as explained above, in JavaScript, all functions are naturally closures (there is only one exclusion, to be covered in <info:new-function>).
-
-That is: they automatically remember where they were created using a hidden `[[Environment]]` property, and all of them can access outer variables.
-
-When on an interview, a frontend developer gets a question about "what's a closure?", a valid answer would be a definition of the closure and an explanation that all functions in JavaScript are closures, and maybe few more words about technical details: the `[[Environment]]` property and how Lexical Environments work.
+Lors d'un entretien d'embauche, un développeur frontend reçoit assez souvent une question du genre "qu'est-ce qu'une closure ?". Une réponse valide serait une définition de la closure ainsi qu'une explication sure le fait que toutes les fonctions en JavaScript sont des closures, et peut-être quelques mots de plus sur les détails techniques : la propriété `[[Environment]]` et comment fonctionnent les environnements lexicaux.
 ```
-
-## Code blocks and loops, IIFE
-
-The examples above concentrated on functions. But a Lexical Environment exists for any code block `{...}`.
-
-A Lexical Environment is created when a code block runs and contains block-local variables. Here are a couple of examples.
-
-### If
-
-In the example below, the `user` variable exists only in the `if` block:
-
-<!--
-    ```js run
-    let phrase = "Hello";
-
-    if (true) {
-        let user = "John";
-
-        alert(`${phrase}, ${user}`); // Hello, John
-    }
-
-    alert(user); // Error, can't see such variable!
-    ```-->
-
-![](lexenv-if.png)
-
-When the execution gets into the `if` block, the new "if-only" Lexical Environment is created for it.
-
-It has the reference to the outer one, so `phrase` can be found. But all variables and Function Expressions, declared inside `if`, reside in that Lexical Environment and can't be seen from the outside.
-
-For instance, after `if` finishes, the `alert` below won't see the `user`, hence the error.
-
-### For, while
-
-For a loop, every iteration has a separate Lexical Environment. If a variable is declared in `for`, then it's also local to that Lexical Environment:
-
-```js run
-for (let i = 0; i < 10; i++) {
-  // Each loop has its own Lexical Environment
-  // {i: value}
-}
-
-alert(i); // Error, no such variable
-```
-
-Please note: `let i` is visually outside of `{...}`. The `for` construct is somewhat special here: each iteration of the loop has its own Lexical Environment with the current `i` in it.
-
-Again, similarly to `if`, after the loop `i` is not visible.
-
-### Code blocks
-
-We also can use a "bare" code block `{…}` to isolate variables into a "local scope".
-
-For instance, in a web browser all scripts (except with `type="module"`) share the same global area. So if we create a global variable in one script, it becomes available to others. But that becomes a source of conflicts if two scripts use the same variable name and overwrite each other.
-
-That may happen if the variable name is a widespread word, and script authors are unaware of each other.
-
-If we'd like to avoid that, we can use a code block to isolate the whole script or a part of it:
-
-```js run
-{
-  // do some job with local variables that should not be seen outside
-
-  let message = "Hello";
-
-  alert(message); // Hello
-}
-
-alert(message); // Error: message is not defined
-```
-
-The code outside of the block (or inside another script) doesn't see variables inside the block, because the block has its own Lexical Environment.
-
-### IIFE
-
-In the past, there were no block-level lexical environment in JavaScript.
-
-So programmers had to invent something. And what they did is called "immediately-invoked function expressions" (abbreviated as IIFE).
-
-That's not a thing we should use nowadays, but you can find them in old scripts, so it's better to understand them.
-
-IIFE looks like this:
-
-```js run
-(function() {
-
-  let message = "Hello";
-
-  alert(message); // Hello
-
-})();
-```
-
-Here a Function Expression is created and immediately called. So the code executes right away and has its own private variables.
-
-The Function Expression is wrapped with parenthesis `(function {...})`, because when JavaScript meets `"function"` in the main code flow, it understands it as the start of a Function Declaration. But a Function Declaration must have a name, so this kind of code will give an error:
-
-```js run
-// Try to declare and immediately call a function
-function() { // <-- Error: Unexpected token (
-
-  let message = "Hello";
-
-  alert(message); // Hello
-
-}();
-```
-
-Even if we say: "okay, let's add a name", that won't work, as JavaScript does not allow Function Declarations to be called immediately:
-
-```js run
-// syntax error because of parentheses below
-function go() {
-
-}(); // <-- can't call Function Declaration immediately
-```
-
-So, parentheses around the function is a trick to show JavaScript that the function is created in the context of another expression, and hence it's a Function Expression: it needs no name and can be called immediately.
-
-There exist other ways besides parentheses to tell JavaScript that we mean a Function Expression:
-
-```js run
-// Ways to create IIFE
-
-(function() {
-  alert("Parentheses around the function");
-}*!*)*/!*();
-
-(function() {
-  alert("Parentheses around the whole thing");
-}()*!*)*/!*;
-
-*!*!*/!*function() {
-  alert("Bitwise NOT operator starts the expression");
-}();
-
-*!*+*/!*function() {
-  alert("Unary plus starts the expression");
-}();
-```
-
-In all the above cases we declare a Function Expression and run it immediately.
 
 ## Garbage collection
 
-Usually, a Lexical Environment is cleaned up and deleted after the function run. For instance:
+Habituellement, un environnement lexical est supprimé de la mémoire avec toutes les variables une fois l'appel de fonction terminé. C'est parce qu'il n'y a plus aucune référence à cela. Comme tout objet JavaScript, il n'est conservé en mémoire que lorsqu'il est accessible.
 
-```js
-function f() {
-  let value1 = 123;
-  let value2 = 456;
-}
+… Mais s'il y a une fonction imbriquée qui est toujours accessible après la fin d'une fonction, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical.
 
-f();
-```
+Dans ce cas, l'environnement lexical est toujours accessible même après la fin de la fonction, il reste donc en vie.
 
-Here two values are technically the properties of the Lexical Environment. But after `f()` finishes that Lexical Environment becomes unreachable, so it's deleted from the memory.
-
-...But if there's a nested function that is still reachable after the end of `f`, then its `[[Environment]]` reference keeps the outer lexical environment alive as well:
+Par exemple :
 
 ```js
 function f() {
   let value = 123;
 
-  function g() { alert(value); }
-
-*!*
-  return g;
-*/!*
+  return function() {
+    alert(value);
+  }
 }
 
-let g = f(); // g is reachable, and keeps the outer lexical environment in memory
+let g = f(); // g.[[Environment]] stocke une référence à l'environnement lexical
+// de l'appel f() correspondant
 ```
 
-Please note that if `f()` is called many times, and resulting functions are saved, then the corresponding Lexical Environment objects will also be retained in memory. All 3 of them in the code below:
+veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. tous les 3 dans le code ci-dessous :
 
 ```js
 function f() {
-  let value = Math.random();
+  let value = math.random();
 
   return function() { alert(value); };
 }
 
-// 3 functions in array, every one of them links to Lexical Environment (LE for short)
-// from the corresponding f() run
-//         LE   LE   LE
+// 3 fonctions dans un tableau, chacune d'entre elles étant liée à l'environnement lexical
+// à partir de l'exécution de f() correspondante
 let arr = [f(), f(), f()];
 ```
 
-A Lexical Environment object dies when it becomes unreachable (just like any other object). In other words, it exists only while there's at least one nested function referencing it.
+un objet environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). en d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
 
-In the code below, after `g` becomes unreachable, enclosing Lexical Environment (and hence the `value`) is  cleaned from memory;
+Dans le code ci-dessous, une fois que la fonction imbriquée est supprimée, son environnement lexical englobant (et donc la `value`) est nettoyé de la mémoire :
 
 ```js
 function f() {
   let value = 123;
 
-  function g() { alert(value); }
-
-  return g;
+  return function() {
+    alert(value);
+  }
 }
 
-let g = f(); // while g is alive
-// there corresponding Lexical Environment lives
+let g = f(); // tant que la fonction g existe, la valeur reste en mémoire
 
-g = null; // ...and now the memory is cleaned up
+g = null; // … et maintenant la mémoire est nettoyée
 ```
 
-### Real-life optimizations
+### Optimisations réelles
 
-As we've seen, in theory while a function is alive, all outer variables are also retained.
+Comme nous l'avons vu, en théorie, lorsqu'une fonction est vivante, toutes les variables externes sont également conservées.
 
-But in practice, JavaScript engines try to optimize that. They analyze variable usage and if it's easy to see that an outer variable is not used -- it is removed.
+Mais dans la pratique, les moteurs JavaScript tentent d'optimiser cela. Ils analysent l'utilisation des variables et s'il est évident d'après le code qu'une variable externe n'est pas utilisée -- elle est supprimée.
 
-**An important side effect in V8 (Chrome, Opera) is that such variable will become unavailable in debugging.**
+**Un effet secondaire important de V8 (Chrome, Opera) est qu’une telle variable ne sera plus disponible lors du débogage.**
 
-Try running the example below in Chrome with the Developer Tools open.
+Essayez d'exécuter l'exemple ci-dessous sous Chrome avec les outils de développement ouverts.
 
-When it pauses, in the console type `alert(value)`.
+Quand il se met en pause, dans la console, tapez `alert(value)`.
 
 ```js run
 function f() {
   let value = Math.random();
 
   function g() {
-    debugger; // in console: type alert( value ); No such variable!
+    debugger; // dans la console : tapez alert(value); No such variable!
   }
 
   return g;
@@ -631,9 +388,9 @@ let g = f();
 g();
 ```
 
-As you could see -- there is no such variable! In theory, it should be accessible, but the engine optimized it out.
+Comme vous avez pu le constater, cette variable n'existe pas! En théorie, elle devrait être accessible, mais le moteur l'a optimisé.
 
-That may lead to funny (if not such time-consuming) debugging issues. One of them -- we can see a same-named outer variable instead of the expected one:
+Cela peut conduire à des problèmes de débogage amusants (voire fastidieux). L'un d'eux -- nous pouvons voir une variable externe portant le même nom au lieu de celle attendue :
 
 ```js run global
 let value = "Surprise!";
@@ -642,7 +399,7 @@ function f() {
   let value = "the closest value";
 
   function g() {
-    debugger; // in console: type alert( value ); Surprise!
+    debugger; // dans la console : tapez alert(value); Surprise!
   }
 
   return g;
@@ -652,9 +409,6 @@ let g = f();
 g();
 ```
 
-```warn header="See ya!"
-This feature of V8 is good to know. If you are debugging with Chrome/Opera, sooner or later you will meet it.
+Cette fonctionnalité du V8 est bonne à savoir. Si vous déboguez avec Chrome/Opera, tôt ou tard vous la rencontrerez.
 
-That is not a bug in the debugger, but rather a special feature of V8. Perhaps it will be changed sometime.
-You always can check for it by running the examples on this page.
-```
+Ce n'est pas un bogue dans le débogueur, mais plutôt une caractéristique spéciale de V8. Peut-être que cela sera changé un jour. Vous pouvez toujours le vérifier en exécutant les exemples sur cette page.

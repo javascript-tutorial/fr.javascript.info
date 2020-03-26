@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Why two hamsters are full?
+# Pourquoi deux hamsters sont rassasiés ?
 
-We have two hamsters: `speedy` and `lazy` inheriting from the general `hamster` object. 
+Nous avons deux hamsters: `speedy` et `lazy` héritant de l'objet général `hamster`.
 
-When we feed one of them, the other one is also full. Why? How to fix it?
+Lorsque nous nourrissons l'un d'eux, l'autre est également rassasié. Pourquoi ? Comment y remédier ?
 
 ```js run
 let hamster = {
@@ -25,11 +25,11 @@ let lazy = {
   __proto__: hamster
 };
 
-// This one found the food
+// Celui-ci a trouvé la nourriture
 speedy.eat("apple");
 alert( speedy.stomach ); // apple
 
-// This one also has it, why? fix please.
+// Celui-ci l'a aussi, pourquoi ? Merci de corriger cela.
 alert( lazy.stomach ); // apple
 ```
 

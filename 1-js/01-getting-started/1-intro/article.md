@@ -12,8 +12,8 @@ Les scripts sont fournis et exécutés en texte brut. Ils n'ont pas besoin d'une
 
 De part cet aspect, JavaScript est très différent d'un autre langage appelé [Java](https://fr.wikipedia.org/wiki/Java_(langage)).
 
-```smart header="Pourquoi <u>Java</u>Script?"
-Quand Javascript a été créé, il portait initialement un autre nom: "LiveScript". Mais à cette époque le langage Java était très populaire, il a donc été décidé que positionner un nouveau langage en tant que "petit frère" de Java pourrait aider.
+```smart header="Pourquoi est-il appelé <u>Java</u>Script ?"
+Quand Javascript a été créé, il portait initialement un autre nom : "LiveScript". Mais à cette époque le langage Java était très populaire, il a donc été décidé que positionner un nouveau langage en tant que "petit frère" de Java pourrait aider.
 
 Mais au fur et à mesure de son évolution, JavaScript est devenu un langage totalement indépendant, avec ses propres spécifications appelées [ECMAScript](https://fr.wikipedia.org/wiki/ECMAScript), aujourd'hui il n'a aucun rapport avec Java.
 ```
@@ -38,8 +38,7 @@ Les moteurs sont compliqués. Mais le fonctionnement de base est facile à compr
 2. Ensuite, il convertit ("compile") le script en langage machine.
 3. Enfin le code machine s'exécute, très rapidement.
 
-Le moteur applique des optimisations à chaque étape du processus. Il surveille même le script compilé en cours d'exécution, analyse les données qui le traversent et applique des optimisations au code machine en fonction de ces informations. Au final, les scripts sont assez rapides.
-```it's done, scripts run quite fast.
+Le moteur applique des optimisations à chaque étape du processus. Il surveille même le script compilé en cours d'exécution, analyse les données qui le traversent et applique des optimisations au code machine en fonction de ces informations. 
 ```
 
 ## Que peut faire JavaScript dans le navigateur ?
@@ -58,13 +57,13 @@ Par exemple, JavaScript dans le navigateur est capable de :
 - Obtenir et définir des cookies, poser des questions au visiteur, afficher des messages.
 - Se souvenir des données du côté client ("stockage local").
 
-## Qu'est-ce que le JavaScript ne peut pas faire dans le navigateur? 
+## Qu'est-ce que JavaScript ne peut pas faire dans le navigateur ? 
 
 Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malfaisante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
 Les exemples de telles restrictions sont:
 
-- JavaScript sur une page Web ne peut pas lire / écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système OS.
+- JavaScript sur une page Web ne peut pas lire/écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système d'exploitation.
 
     Les navigateurs modernes lui permettent de fonctionner avec des fichiers, mais l'accès est limité et n'est fourni que si l'utilisateur effectue certaines actions, comme «déposer» un fichier dans une fenêtre de navigateur ou le sélectionner via une balise `<input>`.
 
@@ -78,11 +77,11 @@ Les exemples de telles restrictions sont:
 
 - JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page en cours. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
 
-![](limitations.png)
+![](limitations.svg)
 
 De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
 
-## Qu'est-ce qui rend JavaScript unique?
+## Qu'est-ce qui rend JavaScript unique ?
 
 Il y a au moins trois bonnes choses à propos de JavaScript:
 
@@ -96,8 +95,7 @@ JavaScript est la seule technologie de navigateur qui combine ces trois élémen
 
 C’est ce qui rend JavaScript unique. C’est pourquoi c’est l’outil le plus répandu pour créer des interfaces de navigateur.
 
-Lorsqu'on prévoit d’apprendre une nouvelle technologie, il est utile de vérifier ses perspectives. Passons donc aux tendances modernes qui incluent de nouveaux langages et capacités de navigation.
-
+Cela dit, JavaScript permet également de créer des serveurs, des applications mobiles, etc.
 
 ## Les langages "par dessus" JavaScript
 
@@ -109,7 +107,7 @@ Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont *tra
 
 Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans une autre langue et de la convertir automatiquement "sous le capot".
 
-Les exemples les plus courants de ce genre de langages :
+Les exemples de ce genre de langages :
 
 - [CoffeeScript](http://coffeescript.org/) est un "sucre syntaxique" pour JavaScript, il introduit une syntaxe plus courte, permettant d’écrire du code plus précis et plus clair. Habituellement, les développeurs Ruby l'aiment bien.
 - [TypeScript](http://www.typescriptlang.org/) se concentre sur l'ajout de "typage strict des données" pour simplifier le développement et la prise en charge de systèmes complexes. Il est développé par Microsoft.

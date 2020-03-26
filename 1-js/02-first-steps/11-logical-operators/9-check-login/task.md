@@ -6,17 +6,17 @@ importance: 3
 
 Écrivez le code qui demande une connexion avec `prompt`.
 
-Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée est une ligne vide ou `key:Esc` -- affichez "Canceled", s'il s'agit d'une autre chaîne de caractères, affichez "I don't know you".
+Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée est une ligne vide ou `key:Esc` -- affichez "Canceled", s'il s'agit d'une autre chaîne de caractères -- alors affichez "I don't know you".
 
 Le mot de passe est vérifié comme suit :
 
-- S'il est égal à "TheMaster", affichez "Welcome!",
-- Une autre chaînede caractères - affiche "Wrong password",
+- S'il est égal à "TheMaster", alors affichez "Welcome!",
+- Une autre chaînede caractères -- affichez "Wrong password",
 - Pour une chaîne de caractères vide ou une entrée annulée, affichez "Canceled".
 
 Le schéma :
 
-![](ifelse_task.png)
+![](ifelse_task.svg)
 
 Veuillez utiliser des blocs `if` imbriqués. Attention à la lisibilité globale du code.
 

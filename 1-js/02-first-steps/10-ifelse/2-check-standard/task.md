@@ -8,7 +8,6 @@ En utilisant la construction `if..else`, écrivez le code qui demande : 'Quel es
 
 Si le visiteur entre “ECMAScript”, alors éditez “Bonne réponse !”, Sinon -- retourne “Ne sait pas ? ECMAScript!"
 
-![](ifelse_task2.png)
+![](ifelse_task2.svg)
 
 [demo src="ifelse_task2"]
-

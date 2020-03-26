@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# DOM children
+# Enfants DOM
 
-For the page:
+Regardez cette page :
 
 ```html
 <html>
@@ -18,7 +18,7 @@ For the page:
 </html>
 ```
 
-How to access:
-- The `<div>` DOM node?
-- The `<ul>` DOM node?
-- The second `<li>` (with Pete)?
+Pour chacun des éléments suivants, donnez au moins un moyen d’y accéder :
+- Le noeud `<div>` du DOM ?
+- Le noeud `<ul>` du DOM ?
+- Le deuxième `<li>` (avec Pete) ?

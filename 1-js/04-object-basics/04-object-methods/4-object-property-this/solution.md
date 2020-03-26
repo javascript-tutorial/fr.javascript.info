@@ -22,6 +22,17 @@ La valeur de `this` est un pour toute la fonction, les blocs de code et les litt
 
 Donc `ref: this` prend actuellement le `this` courant de la fonction.
 
+Nous pouvons réécrire la fonction et renvoyer le même `this` avec la valeur `undefined` :
+
+```js run
+function makeUser(){
+  return this; // cette fois il n'y a pas d'objet littéral
+}
+
+alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
+```
+Comme vous pouvez le constater, le résultat de `alert( makeUser().name )` est identique à celui de `alert( user.ref.name )` de l'exemple précédent.
+
 Voici le cas contraire :
 
 ```js run

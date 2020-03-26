@@ -1,4 +1,5 @@
+Comme nous pouvons le voir avec HTML / CSS, le curseur est un `<div>` avec un fond coloré, qui contient un executeur - une autre `<div>` avec `position: relative`.
 
-We have a horizontal Drag'n'Drop here.
+Pour positionner l'executeur , nous utilisons `position: relative`, afin de fournir les coordonnées relatives à son parent, ici c'est plus pratique que` position: absolute`.
 
-To position the element we use `position:relative` and slider-relative coordinates for the thumb. Here it's more convenient here than `position:absolute`.
+Ensuite, nous implémentons un glisser-déposer horizontal uniquement avec une limitation par la largeur.

@@ -10,7 +10,7 @@ message = 123456;
 
 Les langages de programmation qui permettent de telles choses sont appelés "typés dynamiquement", ce qui signifie qu'il existe des types de données, mais que les variables ne sont liées à aucun d'entre eux.
 
-Il existe sept types de données de base en JavaScript. Nous étudierons ici les bases et dans les chapitres suivants, nous parlerons de chacun d’eux en détail.
+Il existe huit types de données de base en JavaScript. Nous étudierons ici les bases et dans les chapitres suivants, nous parlerons de chacun d’eux en détail.
 
 ## Number
 
@@ -62,6 +62,25 @@ Les valeurs numériques spéciales appartiennent formellement au type "number". 
 
 Nous allons en voir plus sur le travail avec les nombres dans le chapitre <info:number>.
 
+## BigInt
+
+En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>2<sup>53</sup></code> (ou moins de <code>-2<sup>53</sup></code> pour les négatifs), c'est une limitation technique causée par leur représentation interne. Cela correspond à environ 16 chiffres décimaux. Ainsi, dans la plupart des cas, la limitation ne pose pas de problème, mais nous avons parfois besoin de très gros chiffres, par exemple pour les horodatages de cryptographie ou de précision à la microseconde.
+
+`BigInt` a récemment été ajouté au langage pour représenter des entiers de longueur arbitraire.
+
+Un `BigInt` est créé en ajoutant `n` à la fin d'un entier littéral :
+
+```js
+// le "n" à la fin signifie que c'est un BigInt
+const bigInt = 1234567890123456789012345678901234567890n;
+```
+
+Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>.
+
+```smart header="Problèmes de compatibilité"
+Actuellement, `BigInt` est pris en charge dans Firefox et Chrome, mais pas dans Safari/IE/Edge.
+```
+
 ## String
 
 Une chaîne de caractères en JavaScript doit être entre guillemets.
@@ -69,7 +88,7 @@ Une chaîne de caractères en JavaScript doit être entre guillemets.
 ```js
 let str = "Hello";
 let str2 = 'Single quotes are ok too';
-let phrase = `can embed ${str}`;
+let phrase = `can embed another ${str}`;
 ```
 
 En JavaScript, il existe 3 types de guillemets.
@@ -78,7 +97,7 @@ En JavaScript, il existe 3 types de guillemets.
 2. Single quotes: `'Hello'`.
 3. Backticks: <code>&#96;Hello&#96;</code>.
 
-Les guillemets simples et doubles sont des guillemets "simples". Il n'y a pas de différence entre eux en JavaScript.
+Les guillemets simples et doubles sont des guillemets "simples". Il n'y a pratiquement pas de différence entre eux en JavaScript.
 
 Les backticks sont des guillemets "à fonctionnalité étendue". Ils nous permettent d’intégrer des variables et des expressions dans une chaîne en les encapsulant dans `${…}`, par exemple :
 
@@ -102,7 +121,7 @@ alert( "the result is ${1 + 2}" ); // le résultat est ${1 + 2} (les doubles quo
 Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <info:string>.
 
 ```smart header="Il n'y a pas de type *character*."
-Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de `char`.
+Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
 En JavaScript, il n'y a pas un tel type. Il n’ya qu’un seul type : `string`. Une chaîne de caractères ne peut comporter qu'un seul caractère ou plusieurs. 
 ```
@@ -178,7 +197,7 @@ Le type `object` est spécial.
 
 Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). En revanche, les objets servent à stocker des collections de données et des entités plus complexes. Nous les traiterons plus tard dans le chapitre <info:object> après en avoir suffisamment appris sur les primitives.
 
-Le type `symbol` est utilisé pour créer des identificateurs uniques pour les objets. Nous devons le mentionner ici pour être complet, mais il est préférable de les étudier après les objets.
+Le type `symbol` est utilisé pour créer des identificateurs uniques pour les objets. Nous devons le mentionner ici pour être complet, mais nous l'étudierons après les objets.
 
 ## L'opérateur typeof [#type-typeof]
 
@@ -197,6 +216,8 @@ L'appel `typeof x` renvoie une chaîne de caractères avec le nom du type :
 typeof undefined // "undefined"
 
 typeof 0 // "number"
+
+typeof 10n // "bigint"
 
 typeof true // "boolean"
 
@@ -220,15 +241,16 @@ typeof alert // "function"  (3)
 Les trois dernières lignes peuvent nécessiter des explications supplémentaires :
 
 1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
-2. Le résultat de `typeof null` est "object". C'est faux. C'est une erreur officiellement reconnue dans `typeof`, conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Donc, encore une fois, c’est une erreur dans le langage.
-3. Le résultat de `typeof alert` est "function", car `alert` est une fonction du langage. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’ya pas de type "fonction" dans le langage. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment. Formellement, c'est incorrect, mais très pratique.
+2. Le résultat de `typeof null` est `"object"`. C'est faux. C'est une erreur officiellement reconnue dans `typeof`, conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Donc, encore une fois, c’est une erreur dans le langage.
+3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction du langage. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction". Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Ce n’est pas tout à fait correct, mais très pratique à l'usage.
 
 
 ## Résumé
 
-Il existe 7 types de données de base en JavaScript.
+Il existe 8 types de données de base en JavaScript.
 
-- `number` pour les nombres de toute nature : entier ou virgule flottante.
+- `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à ±2<sup>53</sup>.
+- `bigint` pour des nombres entiers de longueur arbitraire.
 - `string` pour les strings. Une chaîne de caractères peut avoir un ou plusieurs caractères, il n’existe pas de type à caractère unique distinct.
 - `boolean` pour `true`/`false`.
 - `null` pour les valeurs inconnues - un type autonome qui a une seule valeur `null`.

@@ -1,3 +1,3 @@
-# Object properties configuration
+# Configuration des propriétés d'objet
 
-In this section we return to objects and study their properties even more in-depth.
+Dans cette section, nous revenons sur les objets et étudions leurs propriétés encore plus en profondeur.

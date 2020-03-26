@@ -4,7 +4,7 @@ JavaScript a longtemps évolué sans problèmes de compatibilité. De nouvelles 
 
 Cela a l'avantage de ne jamais casser le code existant. Mais l'inconvénient était que toute erreur ou décision imparfaite prise par les créateurs de JavaScript restait bloquée dans lea langage pour toujours.
 
-Il en avait été ainsi jusqu'en 2009 lorsque ECMAScript 5 (ES5) est apparu. Il a ajouté de nouvelles fonctionnalités au langage et modifié certaines des fonctionnalités existantes. Pour conserver l'ancien code, la plupart des modifications sont désactivées par défaut. Il leur faut une permission explicite avec une directive spéciale `"use strict"`.
+Il en avait été ainsi jusqu'en 2009 lorsque ECMAScript 5 (ES5) est apparu. Il a ajouté de nouvelles fonctionnalités au langage et modifié certaines des fonctionnalités existantes. Pour conserver l'ancien code, la plupart des modifications sont désactivées par défaut. Vous devez les activer explicitement avec une directive spéciale : `"use strict"`.
 
 ## "use strict"
 
@@ -19,9 +19,7 @@ Par exemple
 ...
 ```
 
-Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt.
-
-Notons également que `"use strict"` peut être placé au début d'une fonction (pour la plupart des types de fonctions) au lieu du script entier. Le mode strict est alors activé uniquement dans cette fonction. Mais généralement, les gens l'utilisent pour tout le script.
+Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt. A l'avenir, notons que "use strict" peut être placé au début du corps de la fonction au lieu de l'intégralité du script. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
 
 
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"
@@ -44,7 +42,7 @@ Seuls les commentaires peuvent apparaître avant `"use strict"`.
 ```warn header="Il n'y a aucun moyen d'annuler `use strict`"
 Il n'y a pas de directive `"no use strict"` ou similaire, qui réactiverait l'ancien comportement.
 
-Une fois que nous entrons dans le mode strict, il n’ya plus de retour possible.
+Une fois que nous entrons dans le mode strict, il n’y a plus de retour possible.
 ```
 ## Console du Navigateur
 

@@ -2,29 +2,31 @@ importance: 5
 
 ---
 
-# "Smart" tooltip
+# Info-bulle "Intelligente"
 
-Write a function that shows a tooltip over an element only if the visitor moves the mouse *over it*, but not *through it*.
+Ecrivez une fonction qui montre une info-bulle  sur un élément seulement si le visiteur déplace la souris *sur celui-ci*, et non pas *en le traversant*.
 
-In other words, if the visitor moves the mouse on the element and stopped -- show the tooltip. And if they just moved the mouse through fast, then no need, who wants extra blinking?
+En d'autres termes, si l'usager déplace la souris sur l'élément et s'arrête dessus -- afficher l'info bulle. Et si le visiteur déplace seulement la souris en traversant rapidement l'élément, pas besoin de le faire, qui a besoin d'un clignotement supplémentaire ?
 
-Technically, we can measure the mouse speed over the element, and if it's slow then we assume that it comes "over the element" and show the tooltip, if it's fast -- then we ignore it.
+Techniquement, nous pouvons mesurer la vitesse de la souris sur un élément, et si elle est lente alors nous pouvons assumer qu'elle  arrive "sur l'élément" et monter l'info-bulle, si elle est rapide -- alors on l'ignore.
 
-Make a universal object `new HoverIntent(options)` for it. With `options`:
+Créer un objet universel `new HoverIntent(options)` pour cela. 
 
-- `elem` -- element to track.
-- `over` -- a function to call if the mouse is slowly moving over the element.
-- `out` -- a function to call when the mouse leaves the element (if `over` was called).
+Ses `options` :
 
-An example of using such object for the tooltip:
+- `elem` -- l'élément à surveiller.
+- `over` -- une fonction à appeler si la souris arrive sur l’élément : c’est-à-dire qu’elle se déplace lentement ou s’arrête dessus.
+- `out` -- une fonction à appeler quand la souris quitte l'élément (si `over` était appelé).
+
+Un exemple d'usage d'un tel objet pour l'info-bulle:
 
 ```js
-// a sample tooltip
+// un example d'info-bulle
 let tooltip = document.createElement('div');
 tooltip.className = "tooltip";
 tooltip.innerHTML = "Tooltip";
 
-// the object will track mouse and call over/out
+// L’objet va  suivre la souris et appeler les fonctions over/out
 new HoverIntent({
   elem,
   over() {
@@ -38,10 +40,10 @@ new HoverIntent({
 });
 ```
 
-The demo:
+La demo:
 
 [iframe src="solution" height=140]
 
-If you move the mouse over the "clock" fast then nothing happens, and if you do it slow or stop on them, then there will be a tooltip.
+Si vous déplacez la souris rapidement sur la "montre" alors rien ne se passe, et si vous le faites lentement  ou que vous vous arrêtez, alors il y aura une info-bulle.
 
-Please note: the tooltip doesn't "blink" when the cursor moves between the clock subelements.
+Notez bien: l'info-bulle ne "clignote" pas lorsque le curseur se déplace entre la montre et les sous éléments.

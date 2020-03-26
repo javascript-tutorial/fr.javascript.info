@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Searching algorithm
+# Algorithme de recherche
 
-The task has two parts.
+La tâche comporte deux parties.
 
-We have an object:
+Étant donné les objets suivants :
 
 ```js
 let head = {
@@ -27,5 +27,5 @@ let pockets = {
 };
 ```
 
-1. Use `__proto__` to assign prototypes in a way that any property lookup will follow the path: `pockets` -> `bed` -> `table` -> `head`. For instance, `pockets.pen` should be `3` (found in `table`), and `bed.glasses` should be `1` (found in `head`).
-2. Answer the question: is it faster to get `glasses` as `pockets.glasses` or `head.glasses`? Benchmark if needed.
+1. Utilisez `__proto__` pour attribuer des prototypes de manière à ce que toute recherche de propriété suive le chemin:`pockets` -> `bed` -> `table` -> `head`. Par exemple, `pocket.pen` devrait être `3` (trouvé dans `table`), et `bed.glasses` devrait être `1` (trouvé dans `head`).
+2. Répondez à la question: est-il plus rapide d’obtenir `glasses` en tant que `pockets.glasses` ou `head.glasses`? Analyse si nécessaire.

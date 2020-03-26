@@ -1,26 +1,26 @@
-# Arrow functions revisited
+# Les fonctions fléchées revisitées
 
-Let's revisit arrow functions.
+Revisitons les fonctions fléchées.
 
-Arrow functions are not just a "shorthand" for writing small stuff.
+Les fonctions fléchées ne sont pas simplement un "raccourci" pour écrire de petites choses. Elles ont des fonctionnalités très spécifiques et utiles.
 
-JavaScript is full of situations where we need to write a small function, that's executed somewhere else.
+JavaScript est plein de situations dans lesquelles nous devons écrire une petite fonction exécutée ailleurs.
 
-For instance:
+Par exemple :
 
-- `arr.forEach(func)` -- `func` is executed by `forEach` for every array item.
-- `setTimeout(func)` -- `func` is executed by the built-in scheduler.
-- ...there are more.
+- `arr.forEach(func)` -- `func` est exécutée par `forEach` pour chaque élément du tableau.
+- `setTimeout(func)` -- `func` est exécuté par le planificateur intégré.
+- ... plus à suivre.
 
-It's in the very spirit of JavaScript to create a function and pass it somewhere.
+C'est dans l'esprit même de JavaScript de créer une fonction et de la transmettre quelque part.
 
-And in such functions we usually don't want to leave the current context.
+Et dans de telles fonctions, nous ne voulons généralement pas quitter le contexte actuel. C'est là que les fonctions fléchées sont utiles.
 
-## Arrow functions have no "this"
+## Les fonctions fléchées n'ont pas de "this"
 
-As we remember from the chapter <info:object-methods>, arrow functions do not have `this`. If `this` is accessed, it is taken from the outside.
+Comme nous nous en souvenons du chapitre <info:object-methods>, les fonctions fléchées n'ont pas de `this`. Si `this` est utilisé, il est pris de l'extérieur.
 
-For instance, we can use it to iterate inside an object method:
+Par exemple, nous pouvons l'utiliser pour itérer à l'intérieur d'une méthode d'objet :
 
 ```js run
 let group = {
@@ -39,9 +39,9 @@ let group = {
 group.showList();
 ```
 
-Here in `forEach`, the arrow function is used, so `this.title` in it is exactly the same as in the outer method `showList`. That is: `group.title`.
+Ici, dans `forEach`, la fonction fléchée est utilisée, donc `this.title` est exactement la même chose que dans la méthode externe `showList`. C'est-à-dire `group.title`.
 
-If we used a "regular" function, there would be an error:
+Si nous utilisions une fonction "régulière", il y aurait une erreur :
 
 ```js run
 let group = {
@@ -61,28 +61,28 @@ let group = {
 group.showList();
 ```
 
-The error occurs because `forEach` runs functions with `this=undefined` by default, so the attempt to access `undefined.title` is made.
+L'erreur se produit parce que `forEach` exécute des fonctions avec `this = undefined` par défaut. La tentative d'accès à `undefined.title` est faite.
 
-That doesn't affect arrow functions, because they just don't have `this`.
+Cela n’affecte pas les fonctions fléchées, car elles n’ont tout simplement pas de `this`.
 
-```warn header="Arrow functions can't run with `new`"
-Not having `this` naturally means another limitation: arrow functions can't be used as constructors. They can't be called with `new`.
+```warn header="Les fonctions fléchées ne peuvent pas fonctionner avec `new`"
+Ne pas avoir de `this` signifie naturellement une autre limitation : les fonctions fléchées ne peuvent pas être utilisées en tant que constructeurs. Elles ne peuvent pas être appelées avec `new`.
 ```
 
-```smart header="Arrow functions VS bind"
-There's a subtle difference between an arrow function `=>` and a regular function called with `.bind(this)`:
+```smart header="Les fonctions fléchées VS bind"
+Il y a une différence subtile entre une fonction fléchée `=>` et une fonction régulière appelée avec `.bind(this)` :
 
-- `.bind(this)` creates a "bound version" of the function.
-- The arrow `=>` doesn't create any binding. The function simply doesn't have `this`. The lookup of `this` is made exactly the same way as a regular variable search: in the outer lexical environment.
+- `.bind(this)` crée une "version liée" de la fonction.
+- The arrow `=>` ne crée aucune liaison. La fonction n'a tout simplement pas de `this`. La recherche de `this` est faite exactement de la même manière qu’une recherche de variable normale : dans l’environnement lexical externe.
 ```
 
-## Arrows have no "arguments"
+## Les fonctions fléchées n'ont pas "d'arguments"
 
-Arrow functions also have no `arguments` variable.
+Les fonctions fléchées n'ont pas non plus de variable `arguments`.
 
-That's great for decorators, when we need to forward a call with the current `this` and `arguments`.
+C'est très bien pour les décorateurs, quand nous devons transférer un appel avec les `arguments` et `this` actuels.
 
-For instance, `defer(f, ms)` gets a function and returns a wrapper around it that delays the call by `ms` milliseconds:
+Par exemple, `defer(f, ms)` obtient une fonction et retourne un wrapper qui retarde l'appel de `ms` millisecondes :
 
 ```js run
 function defer(f, ms) {
@@ -96,10 +96,10 @@ function sayHi(who) {
 }
 
 let sayHiDeferred = defer(sayHi, 2000);
-sayHiDeferred("John"); // Hello, John after 2 seconds
+sayHiDeferred("John"); // Hello, John après 2 secondes
 ```
 
-The same without an arrow function would look like:
+La même chose sans une fonction fléchée ressemblerait à ceci :
 
 ```js
 function defer(f, ms) {
@@ -112,15 +112,15 @@ function defer(f, ms) {
 }
 ```
 
-Here we had to create additional variables `args` and `ctx` so that the function inside `setTimeout` could take them.
+Ici, nous avons dû créer des variables additionnelles `args` et` ctx` afin que la fonction à l'intérieur de `setTimeout` puisse les prendre.
 
-## Summary
+## Résumé
 
-Arrow functions:
+Les fonctions fléchées :
 
-- Do not have `this`.
-- Do not have `arguments`.
-- Can't be called with `new`.
-- (They also don't have `super`, but we didn't study it. Will be in the chapter <info:class-inheritance>).
+- N'ont pas de `this`
+- N'ont pas d'`arguments`
+- Ne peuvent pas être appelées avec `new`
+- Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>
 
-That's because they are meant for short pieces of code that do not have their own "context", but rather works in the current one. And they really shine in that use case.
+C'est parce qu'elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.

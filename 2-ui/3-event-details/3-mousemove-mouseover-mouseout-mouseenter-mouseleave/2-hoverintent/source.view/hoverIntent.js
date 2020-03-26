@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
-// Here's a brief sketch of the class
-// with things that you'll need anyway
+// Voici une ébauche rapide de la classe
+// avec les chose dont vous aurez besoin de toute manière
 class HoverIntent {
-
   constructor({
-    sensitivity = 0.1, // speed less than 0.1px/ms means "hovering over an element"
-    interval = 100, // measure mouse speed once per 100ms: calculate the distance between previous and next points
+    sensitivity = 0.1, // si la vitesse est de moins de 0.1px/ms cela signifie "survolez un élément"
+    interval = 100, // mesurer  la vitesse de la souris  une fois  par 100ms: calculer les distance entre les points précédents et suivants
     elem,
     over,
     out
@@ -17,17 +16,16 @@ class HoverIntent {
     this.over = over;
     this.out = out;
 
-    // make sure "this" is the object in event handlers.
+    // s’assurer que  "this" est l’objet dans les gestionnaires des évènements.
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
 
-    // assign the handlers
+    // assigner les gestionnaires d’évènements
     elem.addEventListener("mouseover", this.onMouseOver);
     elem.addEventListener("mouseout", this.onMouseOut);
 
-    // continue from this point
-
+    // continuer apartir d’ici
   }
 
   onMouseOver(event) {
@@ -42,9 +40,8 @@ class HoverIntent {
     /* ... */
   }
 
-
   destroy() {
-    /* your code to "disable" the functionality, remove all handlers */
+    /* votre code pour  "désactiver" la fonctionnalité,  enlever tous les gestionnaires d’évènements*/
+    /* il est nécessaire que les tests fonctionnent */
   }
-
 }

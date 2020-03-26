@@ -1,48 +1,48 @@
 
-# Microtasks and event loop
+# Les microtaches
 
-Promise handlers `.then`/`.catch`/`.finally` are always asynchronous.
+Les gestionnaires de promesses `.then`/`.catch`/`.finally` sont toujours asynchrones.
 
-Even when a Promise is immediately resolved, the code on the lines *below* `.then`/`.catch`/`.finally` will still execute before these handlers .
+Même lorsqu'une promesse est immédiatement résolue, le code sur les lignes situées *ci-dessous* `.then`/`.catch`/`.finally` sera toujours exécuté avant ces gestionnaires.
 
-Here's the demo:
+Voici la démo:
 
 ```js run
 let promise = Promise.resolve();
 
-promise.then(() => alert("promise done"));
+promise.then(() => alert("promise done!"));
 
-alert("code finished"); // this alert shows first
+alert("code finished"); // cette alerte s'affiche d'abord
 ```
 
-If you run it, you see `code finished` first, and then `promise done`.
+Si vous exécutez, vous voyez `code finished` d'abord, puis `promise done!`.
 
-That's strange, because the promise is definitely done from the beginning.
+C'est étrange, car la promesse est certainement résolue depuis le début.
 
-Why did the `.then` trigger afterwards? What's going on?
+Pourquoi le `.then` se déclenche par la suite? Que se passe-t-il?
 
-## Microtasks
+## File d'attente pour microtaches
 
-Asynchronous tasks need proper management. For that, the standard specifies an internal queue `PromiseJobs`, more often referred to as "microtask queue" (v8 term).
+Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme ES8).
 
-As said in the [specification](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
+Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
 
-- The queue is first-in-first-out: tasks enqueued first are run first.
-- Execution of a task is initiated only when nothing else is running.
+- La file d'attente est premier entré, premier sorti: les tâches mises en file d'attente en premier sont exécutées en premier.
+- L'exécution d'une tâche est lancée uniquement lorsque rien d'autre n'est en cours d'exécution.
 
-Or, to say that simply, when a promise is ready, its `.then/catch/finally` handlers are put into the queue. They are not executed yet. JavaScript engine takes a task from the queue and executes it, when it becomes free from the current code.
+Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente ; ils ne sont pas encore exécutés. Lorsque le moteur JavaScript est libéré du code actuel, il extrait une tâche de la file d'attente et l'exécute.
 
-That's why "code finished" in the example above shows first.
+C'est pourquoi "code finished" dans l'exemple ci-dessus s'affiche en premier.
 
-![](promiseQueue.png)
+![](promiseQueue.svg)
 
-Promise handlers always go through that internal queue.
+Les gestionnaires de promesses passent toujours par cette file d'attente interne.
 
-If there's a chain with multiple `.then/catch/finally`, then every one of them is executed asynchronously. That is, it first gets queued, and executed when the current code is complete and previously queued handlers are finished.
+S'il existe une chaîne avec plusieurs `.then/catch/finally`, chacun d'entre eux est exécuté de manière asynchrone. C'est-à-dire qu'il est d'abord mis en file d'attente et exécuté lorsque le code actuel est terminé et que les gestionnaires précédemment placés en file d'attente sont terminés.
 
-**What if the order matters for us? How can we make `code finished` work after `promise done`?**
+**Et si l'order importait pour nous ? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done` ?**
 
-Easy, just put it into the queue with `.then`:
+Facile, il suffit de le mettre dans la file d'attente avec `.then`:
 
 ```js run
 Promise.resolve()
@@ -50,101 +50,17 @@ Promise.resolve()
   .then(() => alert("code finished"));
 ```
 
-Now the order is as intended.
+Maintenant, l'ordre est comme prévu.
 
-## Event loop
+## Rejet non traité
 
-In-browser JavaScript execution flow, as well as Node.js, is based on an *event loop*.
+Souvenez-vous de l'événement `unhandledrejection` du chapitre <info:promise-error-handling> ?
 
-"Event loop" is a process when the engine sleeps and waits for events. When they occur - handles them and sleeps again.
+Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré
 
-Events may come either from external sources, like user actions, or just as the end signal of an internal task.
+**Un "rejet non traité" se produit lorsqu'une erreur de promesse n'est pas traitée à la fin de la file d'attente des microtaches.**
 
-Examples of events:
-- `mousemove`, a user moved their mouse.
-- `setTimeout` handler is to be called.
-- an external `<script src="...">` is loaded, ready to be executed.
-- a network operation, e.g. `fetch` is complete.
-- ...etc.
-
-Things happen -- the engine handles them -- and waits for more to happen (while sleeping and consuming close to zero CPU).
-
-![](eventLoop.png)
-
-As you can see, there's also a queue here. A so-called "macrotask queue" (v8 term).
-
-When an event happens, while the engine is busy, its handling is enqueued.
-
-For instance, while the engine is busy processing a network `fetch`, a user may move their mouse causing `mousemove`, and `setTimeout` may be due and so on, just as painted on the picture above.
-
-Events from the macrotask queue are processed on "first come – first served" basis. When the engine browser finishes with `fetch`, it handles `mousemove` event, then `setTimeout` handler, and so on.
-
-So far, quite simple, right? The engine is busy, so other tasks queue up.
-
-Now the important stuff.
-
-**Microtask queue has a higher priority than the macrotask queue.**
-
-In other words, the engine first executes all microtasks, and then takes a macrotask. Promise handling always has the priority.
-
-For instance, take a look:
-
-```js run
-setTimeout(() => alert("timeout"));
-
-Promise.resolve()
-  .then(() => alert("promise"));
-
-alert("code");
-```
-
-What's the order?
-
-1. `code` shows first, because it's a regular synchronous call.
-2. `promise` shows second, because `.then` passes through the microtask queue, and runs after the current code.
-3. `timeout` shows last, because it's a macrotask.
-
-It may happen that while handling a macrotask, new promises are created.
-
-Or, vice-versa, a microtask schedules a macrotask (e.g. `setTimeout`).
-
-For instance, here `.then` schedules a `setTimeout`:
-
-```js run
-Promise.resolve()
-  .then(() => {
-    setTimeout(() => alert("timeout"), 0);
-  })
-  .then(() => {
-    alert("promise");
-  });
-```
-
-Naturally, `promise` shows up first, because `setTimeout` macrotask awaits in the less-priority macrotask queue.
-
-As a logical consequence, macrotasks are handled only when promises give the engine a "free time". So if we have a chain of promise handlers that don't wait for anything, execute right one after another, then a `setTimeout` (or a user action handler) can never run in-between them.
-
-## Unhandled rejection
-
-Remember "unhandled rejection" event from the chapter <info:promise-error-handling>?
-
-Now we can describe how JavaScript finds out that a rejection was not handled.
-
-**"Unhandled rejection" is when a promise error is not handled at the end of the microtask queue.**
-
-For instance, consider this code:
-
-```js run
-let promise = Promise.reject(new Error("Promise Failed!"));
-
-window.addEventListener('unhandledrejection', event => {
-  alert(event.reason); // Promise Failed!
-});
-```
-
-We create a rejected `promise` and do not handle the error. So we have the "unhandled rejection" event (printed in browser console too).
-
-We wouldn't have it if we added `.catch`, like this:
+Normalement, si nous nous attendons à une erreur, nous ajoutons `.catch` dans la chaîne de promesse pour la gérer:
 
 ```js run
 let promise = Promise.reject(new Error("Promise Failed!"));
@@ -152,40 +68,45 @@ let promise = Promise.reject(new Error("Promise Failed!"));
 promise.catch(err => alert('caught'));
 */!*
 
-// no error, all quiet
+// n'exécute pas: erreur gérée
 window.addEventListener('unhandledrejection', event => alert(event.reason));
 ```
 
-Now let's say, we'll be catching the error, but after `setTimeout`:
+… Mais si nous oublions d’ajouter `.catch`, dans ce cas le moteur déclenche l’événement une fois que la file d’attente de microtaches est vide :
+
+```js run
+let promise = Promise.reject(new Error("Promise Failed!"));
+
+// Promise Failed!
+window.addEventListener('unhandledrejection', event => alert(event.reason));
+```
+
+Et si nous gérons l'erreur plus tard? Comme ceci:
 
 ```js run
 let promise = Promise.reject(new Error("Promise Failed!"));
 *!*
-setTimeout(() => promise.catch(err => alert('caught')));
+setTimeout(() => promise.catch(err => alert('caught')), 1000);
 */!*
 
 // Error: Promise Failed!
 window.addEventListener('unhandledrejection', event => alert(event.reason));
 ```
 
-Now the unhandled rejection appears again. Why? Because `unhandledrejection` is generated when the microtask queue is complete. The engine examines promises and, if any of them is in "rejected" state, then the event triggers.
+Maintenant, si vous l'exécutez, nous verrons d'abord le message `Promise Failed!`, Puis `caught`.
 
-In the example, the `.catch` added by `setTimeout` triggers too, of course it does, but later, after `unhandledrejection` has already occurred.
+Si nous ne connaissions pas la file d'attente de microtaches, nous pourrions nous demander : "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté ? Nous avons capturé et géré l'erreur !".
 
-## Summary
+Mais nous comprenons maintenant que `unhandledrejection` est généré à la fin de la file d'attente des microtaches : le moteur examine les promesses et, si l'une d'entre elles est à l'état "rejected", l'événement se déclenche.
 
-- Promise handling is always asynchronous, as all promise actions pass through the internal "promise jobs" queue, also called "microtask queue" (v8 term).
+Dans l'exemple ci-dessus, `.catch` ajouté par `setTimeout` se déclenche également, mais plus tard, après que `unhandledrejection` se soit déjà produit, mais cela ne change rien.
 
-    **So, `.then/catch/finally` handlers are called after the current code is finished.**
+## Résumé
 
-    If we need to guarantee that a piece of code is executed after `.then/catch/finally`, it's best to add it into a chained `.then` call.
+Le traitement des promesses est toujours asynchrone, car toutes les actions de promesse passent par la file d'attente interne "promise jobs", également appelée "file d'attente pour microtaches" (terme ES8).
 
-- There's also a "macrotask queue" that keeps various events, network operation results, `setTimeout`-scheduled calls, and so on. These are also called "macrotasks" (v8 term).
+Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois le code actuel terminé.
 
-    The engine uses the macrotask queue to handle them in the appearance order.
+Si nous devons garantir qu'un morceau de code est exécuté après `.then/catch/finally`, nous pouvons l'ajouter à un appel `.then` enchaîné.
 
-    **Macrotasks run after the code is finished *and* after the microtask queue is empty.**
-
-    In other words, they have lower priority.
-
-So the order is: regular code, then promise handling, then everything else, like events etc.
+Dans la plupart des moteurs Javascript, y compris les navigateurs et Node.js, le concept de microtaches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.

@@ -32,6 +32,7 @@ En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris
 Les options suivantes méritent votre attention :
 
 - [Atom](https://atom.io/) (multiplateforme, gratuit).
+- Visual Studio Code (multiplateforme, gratuit).
 - [Sublime Text](http://www.sublimetext.com) (multiplateforme, payant).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuit).
 - [Vim](http://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.

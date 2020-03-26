@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# The difference between calls
+# La différence entre les appels
 
-Let's create a new `rabbit` object:
+Créons un nouvel objet `rabbit`:
 
 ```js
 function Rabbit(name) {
@@ -17,7 +17,7 @@ Rabbit.prototype.sayHi = function() {
 let rabbit = new Rabbit("Rabbit");
 ```
 
-These calls do the same thing or not?
+Ces appels font la même chose ou pas?
 
 ```js
 rabbit.sayHi();

@@ -1,99 +1,40 @@
-# Promise API
+# Promesse API
 
-There are 5 static methods in the `Promise` class. We'll quickly cover their use cases here.
-
-## Promise.resolve
-
-The syntax:
-
-```js
-let promise = Promise.resolve(value);
-```
-
-Returns a resolved promise with the given `value`.
-
-Same as:
-
-```js
-let promise = new Promise(resolve => resolve(value));
-```
-
-The method is used when we already have a value, but would like to have it "wrapped" into a promise.
-
-For instance, the `loadCached` function below fetches the `url` and remembers the result, so that future calls on the same URL return it immediately:
-
-```js
-function loadCached(url) {
-  let cache = loadCached.cache || (loadCached.cache = new Map());
-
-  if (cache.has(url)) {
-*!*
-    return Promise.resolve(cache.get(url)); // (*)
-*/!*
-  }
-
-  return fetch(url)
-    .then(response => response.text())
-    .then(text => {
-      cache.set(url,text);
-      return text;
-    });
-}
-```
-
-We can use `loadCached(url).then(…)`, because the function is guaranteed to return a promise. That's the purpose `Promise.resolve` serves in the line `(*)`: it makes sure the interface is unified. We can always use `.then` after `loadCached`.
-
-## Promise.reject
-
-The syntax:
-
-```js
-let promise = Promise.reject(error);
-```
-
-Create a rejected promise with the `error`.
-
-Same as:
-
-```js
-let promise = new Promise((resolve, reject) => reject(error));
-```
-
-We cover it here for completeness, rarely used in real code.
+Il y a 5 méthodes statiques dans la classe `Promise`. Nous allons rapidement couvrir leurs usages ici.
 
 ## Promise.all
 
-Let's say we want to run many promises to execute in parallel, and wait till all of them are ready.
+Disons que nous voulons exécuter de nombreuses promesses en parallèle, et attendre qu'elles soient toutes prêtes.
 
-For instance, download several URLs in parallel and process the content when all are done.
+Par exemple, téléchargez plusieurs URLs en parallèle et traitez le contenu lorsque tout est terminé.
 
-That's what `Promise.all` is for.
+C'est à cela que sert `Promise.all`.
 
-The syntax is:
+La syntaxe est:
 
 ```js
 let promise = Promise.all([...promises...]);
 ```
 
-It takes an array of promises (technically can be any iterable, but usually an array) and returns a new promise.
+`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.
 
-The new promise resolves when all listed promises are settled and has an array of their results.
+La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont réglées et que le tableau de leurs résultats devient son résultat.
 
-For instance, the `Promise.all` below settles after 3 seconds, and then its result is an array `[1, 2, 3]`:
+Par exemple, le `Promise.all` ci-dessous se règle après 3 secondes, et ensuite son résultat est un tableau `[1, 2, 3]`:
 
 ```js run
 Promise.all([
   new Promise(resolve => setTimeout(() => resolve(1), 3000)), // 1
   new Promise(resolve => setTimeout(() => resolve(2), 2000)), // 2
   new Promise(resolve => setTimeout(() => resolve(3), 1000))  // 3
-]).then(alert); // 1,2,3 when promises are ready: each promise contributes an array member
+]).then(alert); // 1,2,3 quand les promesses sont prêtes : chaque promesse apporte un élément du tableau
 ```
 
-Please note that the relative order is the same. Even though the first promise takes the longest time to resolve, it is still first in the array of results.
+Veuillez noter que l'ordre des éléments du tableau résultant est le même que celui des promesses sources. Même si la première promesse prend le plus de temps à se résoudre, elle est toujours la première dans le tableau des résultats.
 
-A common trick is to map an array of job data into an array of promises, and then wrap that into `Promise.all`.
+Une astuce courante consiste à mapper un tableau de données de tâches dans un tableau de promesses, puis à l'intégrer dans `Promise.all`.
 
-For instance, if we have an array of URLs, we can fetch them all like this:
+Par exemple, si nous avons un tableau d'URLs, nous pouvons tous les récupérer comme ceci:
 
 ```js run
 let urls = [
@@ -102,17 +43,17 @@ let urls = [
   'https://api.github.com/users/jeresig'
 ];
 
-// map every url to the promise of the fetch
+// mappe chaque url à la promesse du fetch
 let requests = urls.map(url => fetch(url));
 
-// Promise.all waits until all jobs are resolved
+// Promise.all attend jusqu'à ce que toutes les tâches soient résolues
 Promise.all(requests)
   .then(responses => responses.forEach(
     response => alert(`${response.url}: ${response.status}`)
   ));
 ```
 
-A bigger example with fetching user information for an array of github users by their names (or we could fetch an array of goods by their ids, the logic is same):
+Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau d'informations par leurs identifiants, la logique est la même) :
 
 ```js run
 let names = ['iliakan', 'remy', 'jeresig'];
@@ -121,22 +62,22 @@ let requests = names.map(name => fetch(`https://api.github.com/users/${name}`));
 
 Promise.all(requests)
   .then(responses => {
-    // all responses are ready, we can show HTTP status codes
+    // toutes les réponses sont résolues avec succès
     for(let response of responses) {
-      alert(`${response.url}: ${response.status}`); // shows 200 for every url
+      alert(`${response.url}: ${response.status}`); // affiche 200 pour chaque url
     }
 
     return responses;
   })
-  // map array of responses into array of response.json() to read their content
+  // mappe le tableau de "responses" dans le tableau "response.json()" pour lire leurs contenus
   .then(responses => Promise.all(responses.map(r => r.json())))
-  // all JSON answers are parsed: "users" is the array of them
+  // toutes les réponses JSON sont analysées : "users" est leur tableau
   .then(users => users.forEach(user => alert(user.name)));
 ```
 
-**If any of the promises is rejected, `Promise.all` immediately rejects with that error.**
+**Si l'une des promesses est rejetée, la promesse retournée par `Promise.all` est rejetée immédiatement avec cette erreur.**
 
-For instance:
+Par exemple:
 
 ```js run
 Promise.all([
@@ -148,57 +89,56 @@ Promise.all([
 ]).catch(alert); // Error: Whoops!
 ```
 
-Here the second promise rejects in two seconds. That leads to immediate rejection of `Promise.all`, so `.catch` executes: the rejection error becomes the outcome of the whole `Promise.all`.
+Ici, la deuxième promesse est rejetée en deux secondes. Cela conduit au rejet immédiat de `Promise.all`, donc `.catch` s'exécute : l'erreur de rejet devient le résultat de l'ensemble `Promise.all`.
 
-```warn header="In case of an error, other promises are ignored"
-If one promise rejects, `Promise.all` immediately rejects, completely forgetting about the other ones in the list. Their results are ignored.
+```warn header="En cas d'erreur, les autres promesses sont ignorées."
+Si une promesse est rejetée, `Promise.all` est immédiatement rejetée, oubliant complètement les autres dans la liste. Leurs résultats sont ignorés.
 
-For example, if there are multiple `fetch` calls, like in the example above, and one fails, other ones will still continue to execute, but `Promise.all` don't watch them any more. They will probably settle, but the result will be ignored.
+Par exemple, s'il y a plusieurs appels `fetch, comme dans l'exemple ci-dessus, et que l'un d'eux échoue, les autres continueront à s'exécuter, mais `Promise.all` ne les considérera plus. Ils vont probablement se résoudre, mais leurs résultats sera ignoré.
 
-`Promise.all` does nothing to cancel them, as there's no concept of "cancellation" in promises. In [another chapter](fetch-abort) we'll cover `AbortController` that aims to help with that, but it's not a part of the Promise API.
+`Promise.all` ne fait rien pour les annuler, car il n'y a pas de concept "d'annulation" dans les promesses. Dans[un autre chapitre](info:fetch-abort) nous couvrirons `AbortController` qui peut vous aider avec cela, mais ce n'est pas une partie de l'API Promise.
 ```
 
-````smart header="`Promise.all(...)` allows non-promise items in `iterable`"
-Normally, `Promise.all(...)` accepts an iterable (in most cases an array) of promises. But if any of those objects is not a promise, it's wrapped in `Promise.resolve`.
+````smart header="`Promise.all(iterable)` autorise toutes les valeurs \"régulières\" qui ne sont pas une promesse dans `iterable`"
+Normallement, `Promise.all(...)` accepte un itérable (dans la plupart des cas, un tableau) de promesses. Mais si l'un de ces objets n'est pas une promesse, il est transmis au tableau résultant "tel quel".
 
-For instance, here the results are `[1, 2, 3]`:
+Par exemple, ici les résultats sont les suivants `[1, 2, 3]`:
 
 ```js run
 Promise.all([
   new Promise((resolve, reject) => {
     setTimeout(() => resolve(1), 1000)
   }),
-  2, // treated as Promise.resolve(2)
-  3  // treated as Promise.resolve(3)
+  2,
+  3
 ]).then(alert); // 1, 2, 3
 ```
 
-So we are able to pass non-promise values to `Promise.all` where convenient.
-
+Ainsi, nous sommes en mesure de passer des valeurs disponibles à `Promise.all` où cela nous convient.
 ````
 
 ## Promise.allSettled
 
 [recent browser="new"]
 
-`Promise.all` rejects as a whole if any promise rejects. That's good in cases, when we need *all* results to go on:
+`Promise.all` rejette dans son ensemble si une quelconque promesse est rejetée. Cela est bon pour les cas "tout ou rien", quand on a besoin de *tous* les résultats pour continuer :
 
 ```js
 Promise.all([
   fetch('/template.html'),
   fetch('/style.css'),
   fetch('/data.json')
-]).then(render); // render method needs them all
+]).then(render); // la méthode "render" a besoin des résultats de tous les "fetchs" 
 ```
 
-`Promise.allSettled` waits for all promises to settle: even if one rejects, it waits for the others. The resulting array has:
+`Promise.allSettled` attend juste que toutes les promesses se résolvent, quel que soit le résultat. Le tableau résultant a :
 
-- `{status:"fulfilled", value:result}` for successful responses,
-- `{status:"rejected", reason:error}` for errors.
+- `{status:"fulfilled", value:result}` pour les réponses réussies,
+- `{status:"rejected", reason:error}` pour les erreurs.
 
-For example, we'd like to fetch the information about multiple users. Even if one request fails, we're interested in the others.
+Par exemple, nous aimerions récupérer l'information sur les utilisateurs multiples. Même si une demande échoue, les autres nous intéressent.
 
-Let's use `Promise.allSettled`:
+Utilisons `Promise.allSettled`:
 
 ```js run
 let urls = [
@@ -220,7 +160,7 @@ Promise.allSettled(urls.map(url => fetch(url)))
   });
 ```
 
-The `results` in the line `(*)` above will be:
+Les `résultats` dans la ligne `(*)` ci-dessus seront:
 ```js
 [
   {status: 'fulfilled', value: ...response...},
@@ -229,43 +169,43 @@ The `results` in the line `(*)` above will be:
 ]
 ```
 
-So, for each promise we get its status and `value/reason`.
+Ainsi, pour chaque promesse, nous obtenons son statut et `value/error`.
 
 ### Polyfill
 
-If the browser doesn't support `Promise.allSettled`, it's easy to polyfill:
+Si le navigateur ne prend pas en charge `Promise.allSettled`, il est facile de le polyfill:
 
 ```js
 if(!Promise.allSettled) {
   Promise.allSettled = function(promises) {
-    return Promise.all(promises.map(p => Promise.resolve(p).then(v => ({
+    return Promise.all(promises.map(p => Promise.resolve(p).then(value => ({
       state: 'fulfilled',
-      value: v,
-    }), r => ({
+      value
+    }), reason => ({
       state: 'rejected',
-      reason: r,
+      reason
     }))));
   };
 }
 ```
 
-In this code, `promises.map` takes input values, turns into promises (just in case a non-promise was passed) with `p => Promise.resolve(p)`, and then adds `.then` handler to it.
+Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.
 
-That handler turns a successful result `v` into `{state:'fulfilled', value:v}`, and an error `r` into `{state:'rejected', reason:r}`. That's exactly the format of `Promise.allSettled`.
+Ce gestionnaire transforme un résultat réussi `v` en `{state:'fulfilled', value:v}`, et une erreur `r` en `{state:'rejected', reason:r}`. C'est exactement le format de `Promise.allSettled`.
 
-Then we can use `Promise.allSettled` to get the results or *all* given promises, even if some of them reject.
+Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou toutes les promesses données, même si certaines d'entre elles sont rejetées.
 
 ## Promise.race
 
-Similar to `Promise.all`, it takes an iterable of promises, but instead of waiting for all of them to finish, it waits for the first result (or error), and goes on with it.
+Similaire à `Promise.all`, mais n'attend que la première promesse soit résolue, et obtient son résultat (ou erreur).
 
-The syntax is:
+La syntaxe est :
 
 ```js
 let promise = Promise.race(iterable);
 ```
 
-For instance, here the result will be `1`:
+Par exemple, ici, le résultat sera `1` :
 
 ```js run
 Promise.race([
@@ -275,18 +215,72 @@ Promise.race([
 ]).then(alert); // 1
 ```
 
-So, the first result/error becomes the result of the whole `Promise.race`. After the first settled promise "wins the race", all further results/errors are ignored.
+La première promesse a été la plus rapide, donc, elle est devenue le résultat. Après la première promesse faite " vainqueur de la course ", tous les autres résultats/erreurs sont ignorés.
 
-## Summary
 
-There are 5 static methods of `Promise` class:
+## Promise.resolve/reject
 
-1. `Promise.resolve(value)` -- makes a resolved promise with the given value.
-2. `Promise.reject(error)` -- makes a rejected promise with the given error.
-3. `Promise.all(promises)` -- waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, then it becomes the error of `Promise.all`, and all other results are ignored.
-4. `Promise.allSettled(promises)` (a new method) -- waits for all promises to resolve or reject and returns an array of their results as object with:
-    - `state`: `'fulfilled'` or `'rejected'`
-    - `value` (if fulfilled) or `reason` (if rejected).
-5. `Promise.race(promises)` -- waits for the first promise to settle, and its result/error becomes the outcome.
+Les méthodes `Promise.resolve` et `Promise.reject` sont rarement nécessaires dans le code moderne, parce que la syntaxe `async/await` (nous les couvrirons dans [un peu plus tard](info:async-await)) les rend en quelque sorte obsolètes.
 
-Of these five, `Promise.all/allSettled` are the most common in practice.
+Nous les couvrons ici par souci de clarté, et pour ceux qui ne peuvent pas utiliser `async/await` pour une quelconque raison.
+
+### Promise.resolve
+
+- `Promise.resolve(value)` crée une promesse résolue avec le résultat `value`.
+
+Comme pour:
+
+```js
+let promise = new Promise(resolve => resolve(value));
+```
+
+La méthode est utilisée pour la compatibilité, lorsqu'une fonction est censée renvoyer une promesse.
+
+Par exemple, la fonction `loadCached` ci-dessous récupère l'URL et mémorise (met en cache) son contenu. Pour les appels futurs avec la même URL, elle récupère immédiatement le contenu précédent du cache, mais utilise `Promise.resolve` pour en faire une promesse, de sorte que la valeur retournée soit toujours une promesse :
+
+```js
+let cache = new Map();
+
+function loadCached(url) {
+  if (cache.has(url)) {
+*!*
+    return Promise.resolve(cache.get(url)); // (*)
+*/!*
+  }
+
+  return fetch(url)
+    .then(response => response.text())
+    .then(text => {
+      cache.set(url,text);
+      return text;
+    });
+}
+```
+
+Nous pouvons écrire `loadCached(url).then(...)`, car la fonction est garantie de renvoyer une promesse. Nous pouvons toujours utiliser `.then` après `loadCached`. C'est le but de `Promise.resolve` dans la ligne `(*)`.
+
+### Promise.reject
+
+- `Promise.reject(error)` crée une promesse rejetée avec `error`.
+
+Comme pour:
+
+```js
+let promise = new Promise((resolve, reject) => reject(error));
+```
+
+En pratique, cette méthode n'est presque jamais utilisée.
+
+## Résumé
+
+Il y a 5 méthodes statiques de la classe `Promise`:
+
+1. `Promise.all(promises)` -- attend que toutes les promesses se résolvent et retourne un tableau de leurs résultats. Si l'une des promesses données est rejetée, alors elle devient l'erreur de `Promise.all`, et tous les autres résultats sont ignorés.
+2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec:
+    - `state`: `"fulfilled"` ou `"rejected"`
+    - `value` (si rempli) ou `reason` (en cas de rejet).
+3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le résultat.
+4. `Promise.resolve(value)` -- fait une promesse résolue avec la valeur donnée.
+5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.
+
+De ces cinq, " Promise.all " est probablement le plus courant en pratique.

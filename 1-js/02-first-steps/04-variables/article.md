@@ -12,7 +12,7 @@ Une [variable](https://fr.wikipedia.org/wiki/Variable_(informatique)) est un "st
 
 Pour créer une variable en JavaScript, nous devons utiliser le mot-clé `let`.
 
-L'instruction ci-dessous crée (autrement dit: *déclare* ou *définit*) une variable avec le nom "message" :
+L'instruction ci-dessous crée (autrement dit: *déclare*) une variable avec le nom "message" :
 
 ```js
 let message;
@@ -99,7 +99,7 @@ Nous pouvons facilement saisir le concept d'une "variable" si nous l'imaginons c
 
 Par exemple, la variable message peut être imaginé comme une boîte étiquetée "message" avec la valeur "Hello!" à l'intérieur :
 
-![](variable.png)
+![](variable.svg)
 
 Nous pouvons mettre n'importe quelle valeur dans la boîte.
 
@@ -117,7 +117,7 @@ alert(message);
 
 Lorsque la valeur est modifiée, les anciennes données sont supprimées de la variable :
 
-![](variable-change.png)
+![](variable-change.svg)
 
 Nous pouvons également déclarer deux variables et copier des données de l'une à l'autre.
 
@@ -240,7 +240,7 @@ Pour déclarer une constante (non changeante), on peut utiliser `const` plutôt 
 const myBirthday = '18.04.1982';
 ```
 
-Les variables déclarées à l'aide de `const` sont appelées "constantes". Elles ne peuvent pas être changés. Une tentative de le faire provoquerait une erreur :
+Les variables déclarées à l'aide de `const` sont appelées "constantes". Elles ne peuvent pas être réassignées. Une tentative de le faire provoquerait une erreur :
 
 ```js run
 const myBirthday = '18.04.1982';
@@ -293,7 +293,7 @@ En d'autres termes, les constantes nommées en majuscules ne sont utilisées que
 
 En parlant de variables, il y a une autre chose extrêmement importante.
 
-Un nom de variable doit avoir une signification propre et évidente, décrire les données qu’elle stocke.
+Un nom de variable doit avoir une signification claire et évidente, décrivant les données qu'elle stocke.
 
 Le nommage de variables est l’une des compétences les plus importantes et les plus complexes de la programmation. Un rapide coup d’œil sur les noms de variables peut révéler quel code est écrit par un débutant et par un développeur expérimenté.
 
@@ -326,8 +326,8 @@ Les minificateurs et navigateurs modernes optimisent suffisamment le code pour n
 
 Nous pouvons déclarer des variables pour stocker des données. Cela peut être fait en utilisant `var` ou `let` ou `const`.
 
-- `let` -- est une déclaration de variable moderne. Le code doit être en mode strict pour utiliser `let` dans Chrome (V8).
-- `var` -- est une déclaration de variable old-school. Normalement, nous ne l’utilisons pas du tout, mais nous couvrirons les différences subtiles par rapport à `let` juste au cas où vous en avez besoin.
+- `let` -- est une déclaration de variable moderne.
+- `var` -- est une déclaration de variable old-school. Normalement, nous ne l’utilisons pas du tout, mais nous couvrirons les différences subtiles par rapport à `let` dans le chapitre <info:var>, juste au cas où vous en auriez besoin.
 - `const` -- est équivalent à `let`, mais la valeur de la variable ne peut pas être modifiée.
 
 Les variables doivent être nommées d’une manière qui nous permet de comprendre facilement ce qui est à l’intérieur.

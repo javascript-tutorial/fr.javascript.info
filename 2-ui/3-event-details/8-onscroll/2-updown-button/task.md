@@ -2,15 +2,17 @@ importance: 5
 
 ---
 
-# Up/down button
+# Bouton Up/down 
 
-Create a "to the top" button to help with page scrolling.
+Créer un bouton nomme "to the top" pour aider à effectuer un défilement de page.
 
-It should work like this:
-- While the page is not scrolled down at least for the window height -- it's invisible.
-- When the page is scrolled down more than the window height -- there appears an "upwards" arrow in the left-top corner. If the page is scrolled back, it disappears.
-- When the arrow is clicked, the page scrolls to the top.
+Cela doit être ainsi:
+- Tandis que la page n'est pas défilée vers le bas pour au moins une hauteur égale a la fenêtre --  être invisible.
+- Quand la page est défilée vers le bas au-delà de la hauteur de la fenêtre -- il doit apparaitre une flèche pointant "vers le haut" au coin gauche supérieur. Si la page est défilée dans l'autre sens, elle disparait.
+- Lorsqu'on clique sur la flèche, la page défile vers le haut.
 
-Like this:
+
+Comme ceci (coin supérieur gauche, faites défiler pour voir) :
+
 
 [iframe border="1" height="200" link src="solution"]

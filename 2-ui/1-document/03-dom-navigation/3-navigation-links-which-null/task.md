@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# The sibling question
+# La question des frères et sœurs
 
-If `elem` -- is an arbitrary DOM element node...
+Si `element` - est un nœud élément arbitraire du DOM ...
 
-- Is it true that `elem.lastChild.nextSibling` is always `null`?
-- Is it true that `elem.children[0].previousSibling` is always `null` ?
+- Est-il vrai que `elem.lastChild.nextSibling` est toujours `null` ?
+- Est-il vrai que `elem.children[0].previousSibling` est toujours `null` ?

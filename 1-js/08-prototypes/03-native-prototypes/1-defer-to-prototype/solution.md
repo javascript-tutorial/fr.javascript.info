@@ -9,5 +9,5 @@ function f() {
   alert("Hello!");
 }
 
-f.defer(1000); // shows "Hello!" after 1 sec
+f.defer(1000); // montre "Hello!" après 1 seconde
 ```

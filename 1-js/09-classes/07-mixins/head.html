@@ -2,7 +2,7 @@
 let eventMixin = {
 
   /**
-   * Subscribe to event, usage:
+   * Souscrire à l'événement, usage:
    *  menu.on('select', function(item) { ... }
   */
   on(eventName, handler) {
@@ -14,7 +14,7 @@ let eventMixin = {
   },
 
   /**
-   * Cancel the subscription, usage:
+   * Annuler la souscription, usage:
    *  menu.off('select', handler)
    */
   off(eventName, handler) {
@@ -28,15 +28,15 @@ let eventMixin = {
   },
 
   /**
-   * Generate the event and attach the data to it
+   * Générer un événement avec le nom et les données donnés
    *  this.trigger('select', data1, data2);
    */
   trigger(eventName, ...args) {
     if (!this._eventHandlers || !this._eventHandlers[eventName]) {
-      return; // no handlers for that event name
+      return; // aucun gestionnaire pour ce nom d'événement
     }
 
-    // call the handlers
+    // appeler les gestionnaires
     this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
   }
 };

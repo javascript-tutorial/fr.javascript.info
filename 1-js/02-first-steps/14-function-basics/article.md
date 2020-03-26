@@ -20,9 +20,13 @@ function showMessage() {
 }
 ```
 
-Le mot-clé `function` commence, puis le *nom de la fonction*, puis une liste de *paramètres* entre les parenthèses (vides dans l'exemple ci-dessus) et enfin le code de la fonction, également appelé "le corps de la fonction", entre des accolades.
+Le mot-clé `function` commence en premier, puis le *nom de la fonction*, puis une liste de *paramètres* entre les parenthèses (séparés par des virgules, vides dans l'exemple ci-dessus) et enfin le code de la fonction, également appelé "le corps de la fonction", entre des accolades.
 
-![](function_basics.png)
+```js
+function name(parameters) {
+  ...body...
+}
+```
 
 Notre nouvelle fonction peut être appelée par son nom : `showMessage()`.
 
@@ -206,14 +210,15 @@ function showMessage(from, text = anotherFunction()) {
 ```
 ```smart header="Évaluation des paramètres par défaut"
 
-En JavaScript, un paramètre par défaut est évalué chaque fois que la fonction est appelée sans le paramètre correspondant. Dans l'exemple ci-dessus, `anotherFunction ()` est appelé à chaque fois que `showMessage ()` est appelé sans le paramètre `text`. Cela contraste avec d'autres langages tels que Python, où les paramètres par défaut ne sont évalués qu'une seule fois lors de l'interprétation initiale.
+En JavaScript, un paramètre par défaut est évalué chaque fois que la fonction est appelée sans le paramètre correspondant. 
 
+Dans l'exemple ci-dessus, `anotherFunction()` est appelé à chaque fois que `showMessage()` est appelé sans le paramètre `text`. 
 ```
 
-````smart header="Paramètres par défaut old-style"
+````smart header="Paramètres par défaut à l'ancienne"
 Les anciennes éditions de JavaScript ne prenaient pas en charge les paramètres par défaut. Il existe donc d'autres moyens de les prendre en charge, que vous pouvez trouver principalement dans les anciens scripts.
 
-Par exemple, une vérification explicite pour savoir si la valeur est non définie :
+Par exemple, une vérification explicite pour savoir si la valeur est `undefined` :
 
 ```js
 function showMessage(from, text) {
@@ -262,7 +267,7 @@ Il peut y avoir plusieurs occurrences de `return` dans une seule fonction. Par e
 
 ```js run
 function checkAge(age) {
-  if (age > 18) {
+  if (age >= 18) {
 *!*
     return true;
 */!*
@@ -333,7 +338,19 @@ Cela ne fonctionne pas, car JavaScript suppose un point-virgule après le `retur
 return*!*;*/!*
  (some + long + expression + or + whatever * f(a) + f(b))
 ```
-Ainsi, cela devient un `return` vide. Nous devrions mettre la valeur sur la même ligne à la place.
+
+Donc, cela devient effectivement un retour vide.
+
+Si nous voulons que l'expression renvoyée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`. Ou du moins mettre les parenthèses d'ouverture comme suit :
+
+```js
+return (
+  some + long + expression
+  + or +
+  whatever * f(a) + f(b)
+  )
+```
+Et cela fonctionnera comme prévu.
 ````
 
 ## Nommer une fonction [#function-naming]

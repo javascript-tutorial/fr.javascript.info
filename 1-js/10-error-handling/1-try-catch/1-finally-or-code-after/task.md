@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Finally or just the code?
+# Finally ou juste le code?
 
-Compare the two code fragments.
+Comparez les deux fragments de code.
 
-1. The first one uses `finally` to execute the code after `try..catch`:
+1. Le premier utilise `finally` pour exécuter le code après `try..catch`:
 
     ```js
     try {
@@ -19,7 +19,7 @@ Compare the two code fragments.
     */!*
     }
     ```
-2. The second fragment puts the cleaning right after `try..catch`:
+2. Le deuxième fragment met le "cleanup" juste après `try..catch`:
 
     ```js
     try {
@@ -33,6 +33,6 @@ Compare the two code fragments.
     */!*
     ```
 
-We definitely need the cleanup after the work, doesn't matter if there was an error or not.
+Nous avons absolument besoin du nettoyage après le travail, peu importe qu'il y ait une erreur ou non.
 
-Is there an advantage here in using `finally` or both code fragments are equal? If there is such an advantage, then give an example when it matters.
+Y at-il un avantage ici à utiliser `finally` ou les deux fragments de code sont égaux? Si un tel avantage existe, donnez un exemple lorsque cela compte.
