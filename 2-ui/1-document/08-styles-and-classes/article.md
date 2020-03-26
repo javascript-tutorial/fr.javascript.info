@@ -114,31 +114,31 @@ button.style.WebkitBorderRadius = '5px';
 
 ## Réinitialiser la propriété de style
 
-Sometimes we want to assign a style property, and later remove it.
+Parfois nous voulons attribuer une propriété de style, et ensuite la retirer.
 
-For instance, to hide an element, we can set `elem.style.display = "none"`.
+Par exemple, pour cacher un élément, nous pouvons définir `elem.style.display = "none"`.
 
-Then later we may want to remove the `style.display` as if it were not set. Instead of `delete elem.style.display` we should assign an empty string to it: `elem.style.display = ""`.
+Plus tard, nous voulons peut-être enlever `style.display` comme si cette propriété n'était définie. Au lieu de `delete elem.style.display`, nous devrions attribuer une chaîne vide à la propriété de style: `elem.style.display = ""`.
 
 ```js run
-// if we run this code, the <body> will blink
-document.body.style.display = "none"; // hide
+// si nous exécutons cette code, <body> clignotera
+document.body.style.display = "none"; // cacher
 
-setTimeout(() => document.body.style.display = "", 1000); // back to normal
+setTimeout(() => document.body.style.display = "", 1000); // retour à la normale
 ```
 
-If we set `style.display` to an empty string, then the browser applies CSS classes and its built-in styles normally, as if there were no such `style.display` property at all.
+Si nous attribuons `style.display` à une chaîne vide, le navigateur applique les classes CSS et ses styles intégrés normalement, comme s'il n'y avait pas de propriété `style.display`.
 
-````smart header="Full rewrite with `style.cssText`"
-Normally, we use `style.*` to assign individual style properties. We can't set the full style like `div.style="color: red; width: 100px"`, because `div.style` is an object, and it's read-only.
+````smart header="Réécriture complète avec `style.cssText`"
+Normalement, nous utilisons `style.*` pour attribuer des propriétés de style individuelles. Nous ne pouvons pas attribuer le style complet comme `div.style="color: red; width: 100px"`, parce que `div.style` est un object, et il est en lecture seulement.
 
-To set the full style as a string, there's a special property `style.cssText`:
+Pour définir un style complet comme une chaîne, il y a une propriété spéciale `style.cssText`:
 
 ```html run
-<div id="div">Button</div>
+<div id="div">Bouton</div>
 
 <script>
-  // we can set special style flags like "important" here
+  // nous pouvons attribuer des drapeaux de style spéciaux comme "important" ici
   div.style.cssText=`color: red !important;
     background-color: yellow;
     width: 100px;
@@ -149,7 +149,7 @@ To set the full style as a string, there's a special property `style.cssText`:
 </script>
 ```
 
-This property is rarely used, because such assignment removes all existing styles: it does not add, but replaces them. May occasionally delete something needed. But we can safely use it for new elements, when we know we won't delete an existing style.
+Cette propriété est rarement utilisée parce qu'une telle affectation enlève tous les styles pré-existants: au lieu d'être ajouté, elle les remplace. Peut occasionnellement effacer quelque chose de nécessaire. But we can safely use it for new elements, when we know we won't delete an existing style.
 
 The same can be accomplished by setting an attribute: `div.setAttribute('style', 'color: red...')`.
 ````
