@@ -250,20 +250,20 @@ Prenons, par exemple:
 ```smart header="Valeurs calculées et résolues"
 Il y a deux concepts dans [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
-1. A *computed* style value is the value after all CSS rules and CSS inheritance is applied, as the  result of the CSS cascade. It can look like `height:1em` or `font-size:125%`.
-2. A *resolved* style value is the one finally applied to the element. Values like `1em` or `125%` are relative. The browser takes the computed value and makes all units fixed and absolute, for instance: `height:20px` or `font-size:16px`. For geometry properties resolved values may have a floating point, like `width:50.5px`.
+1. Une valeur de style "calculée" est le résultat d'une cascade CSS, après que tous les règles et héritage CSS sont appliqués. Elle peut ressembler comme `height:1em` ou `font-size:125%`.
+2. Une valeur de style "résolue" est celle qui est finalement appliquée à l'élément. Les valeurs comme `1em` ou `125%` sont relatives. Le navigateur prends la valeur calculée et fait que toutes les unités sont fixes et absolues; par exemple: `height:20px` ou `font-size:16px`. Pour les propriétés géométriques, les valeurs résolues peuvent avoir une virgule flottante, comme `width:50.5px`.
 
-A long time ago `getComputedStyle` was created to get computed values, but it turned out that resolved values are much more convenient, and the standard changed.
+Il y a longtemps, `getComputedStyle` a été créé pour extraire les valeurs calculées, mais il s'est avéré que les valeurs résolues étaient beaucoup plus pratiques, alors la norme a changé.
 
-So nowadays `getComputedStyle` actually returns the resolved value of the property, usually in `px` for geometry.
+Maintenant, `getComputedStyle` renvoie la valeur résolue de la propriété, habituellement en `px` pour géométrie.
 ```
 
-````warn header="`getComputedStyle` requires the full property name"
-We should always ask for the exact property that we want, like `paddingLeft` or `marginTop` or `borderTopWidth`. Otherwise the correct result is not guaranteed.
+````warn header="`getComputedStyle` exige le nom complet de la propriété"
+Nous devons toujours demander pour la propriété exacte requise, comme `paddingLeft` ou `marginTop` ou `borderTopWidth`. Sinon, recevoir le bon résultat n'est pas garanti.
 
-For instance, if there are properties `paddingLeft/paddingTop`, then what should we get for `getComputedStyle(elem).padding`? Nothing, or maybe a "generated" value from known paddings? There's no standard rule here.
+Par exemple, s'il y a les propriétés `paddingLeft/paddingTop`, qu'est-ce que nous recevrons de `getComputedStyle(elem).padding`? Rien, ou peut-être une valeur générée des écarts de remplissage connus? Il n'y a pas de règle standard ici.
 
-There are other inconsistencies. As an example, some browsers (Chrome) show `10px` in the document below, and some of them (Firefox) --  do not:
+Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrome) indique `10px` dans le document ci-dessous, et certains (Firefox) -- n'indique pas:
 
 ```html run
 <style>
@@ -273,32 +273,32 @@ There are other inconsistencies. As an example, some browsers (Chrome) show `10p
 </style>
 <script>
   let style = getComputedStyle(document.body);
-  alert(style.margin); // empty string in Firefox
+  alert(style.margin); // chaîne vide dans Firefox
 </script>
 ```
 ````
 
-```smart header="Styles applied to `:visited` links are hidden!"
-Visited links may be colored using `:visited` CSS pseudoclass.
+```smart header="Styles appliqués aux liens `:visited` sont cachés!"
+Les liens visités peuvent être coloriés en utilisant la pseudo-classe CSS `:visited`.
 
-But `getComputedStyle` does not give access to that color, because otherwise an arbitrary page could find out whether the user visited a link by creating it on the page and checking the styles.
+Cependant, `getComputedStyle` ne donne pas accès à cette couleur, parce qu'autrement une page arbitraire pourrait savoir si l'utilisateur aurait visité un lien en créant un lien sur la page et vérifier les styles.
 
-JavaScript may not see the styles applied by `:visited`. And also, there's a limitation in CSS that forbids applying geometry-changing styles in `:visited`. That's to guarantee that there's no side way for an evil page to test if a link was visited and hence to break the privacy.
+JavaScript ne pourrait pas voir les styles appliqués par `:visited`. De plus, il y a une limitation avec CSS qui interdit l'application de styles qui changent la géométrie dans `:visited`. C'est pour garantir qu'il n'y a aucun moyen pour une page malfaisante de tester si un lien a été visité, qui donc porte atteinte à la vie privée.
 ```
 
-## Summary
+## Récapitulation
 
-To manage classes, there are two DOM properties:
+Pour gérer les classes, il y a deux propriétés DOM:
 
-- `className` -- the string value, good to manage the whole set of classes.
-- `classList` -- the object with methods `add/remove/toggle/contains`, good for individual classes.
+- `className` -- la valeur de chaîne, utile pour gérer l'ensemble complet des classes.
+- `classList` -- l'object avec les méthodes `add/remove/toggle/contains`, utile pour les classes individuelles.
 
-To change the styles:
+Pour changer les styles:
 
-- The `style` property is an object with camelCased styles. Reading and writing to it has the same meaning as modifying individual properties in the `"style"` attribute. To see how to apply `important` and other rare stuff -- there's a list of methods at [MDN](mdn:api/CSSStyleDeclaration).
+- La propriété `style` est un objet avec les styles en camelCase. Lire et y écrire a le même sens que de modifier les propriétés individuelles dans l'attribut `"style"`. Pour savoir comment appliquer `important` et d'autres trucs rares -- il y a une liste de méthodes à [MDN](mdn:api/CSSStyleDeclaration).
 
-- The `style.cssText` property corresponds to the whole `"style"` attribute, the full string of styles.
+- La propriété `style.cssText` correspond à l'attribut entier de `"style"`, la chaîne complète des styles.
 
-To read the resolved styles (with respect to all classes, after all CSS is applied and final values are calculated):
+Pour lire les styles résolus (par rapport à toutes les classes, après que tout le CSS est appliqué et que les valeurs finales sont calculées):
 
-- The `getComputedStyle(elem, [pseudo])` returns the style-like object with them. Read-only.
+- `getComputedStyle(elem, [pseudo])` renvoie un objet de style avec eux. Lecture seulement.
