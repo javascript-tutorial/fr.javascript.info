@@ -9,7 +9,7 @@ Il y a, en général, deux façons de styliser un élément:
 
 JavaScript peut modifier les classes et les propriétés de `style`.
 
-Nous devrions toujours choisir d'utiliser les classes CSS plutôt que `style`. Ce dernier devrait seulement être utilisé si les classes sont incapables d'effectuer la tâche requise.
+Nous devons toujours favoriser l'utilisation des classes CSS plutôt que `style`. Ce dernier devrait seulement être utilisé si les classes sont incapables d'effectuer la tâche requise.
 
 Par exemple, `style` est acceptable si nous calculons les coordonnées d'un élément dynamiquement et souhaitons les définir à partir de JavaScript, comme ceci:
 
@@ -21,14 +21,13 @@ elem.style.left = left; // par ex. '123px', calculé lors de l'exécution
 elem.style.top = top; // par ex. '456px'
 ```
 
-Pour les autres cas, comme rendre le texte rouge, ajouter une icône d'arrière-plan -- décrivez cela dans CSS et ensuite ajoutez la classe (JavaScript peut effectuer ceci). 
-For other cases, like making the text red, adding a background icon -- describe that in CSS and then add the class (JavaScript can do that). C'est plus flexible et plus facile à gérer.
+Pour les autres cas, comme rendre le texte rouge, ajouter une icône d'arrière-plan -- décrivez cela dans CSS et ensuite ajoutez la classe (JavaScript peut effectuer ceci). C'est plus flexible et plus facile à gérer.
 
 ## className et classList
 
 Changer une classe est l'une des actions les plus utilisées dans les scripts.
 
-Dans les temps anciens, il existait une limitation dans JavaScript: un mot réservé comme `"class"` ne pouvait pas être une propriété d'un object. Cette limitation n'existe plus maintenant, mais à l'époque, il était impossible d'avoir une propriété de `"class"`, comme `elem.class`.
+Autrefois, il existait une limitation dans JavaScript: un mot réservé comme `"class"` ne pouvait pas être une propriété d'un object. Cette limitation n'existe plus maintenant, mais à l'époque, il était impossible d'avoir une propriété de `"class"`, comme `elem.class`.
 
 Alors pour les classes, une propriété similaire, `"className"`, a été introduite: `elem.className` correspond à l'attribut `"class"`.
 
@@ -118,7 +117,7 @@ Parfois nous voulons attribuer une propriété de style, et ensuite la retirer.
 
 Par exemple, pour cacher un élément, nous pouvons définir `elem.style.display = "none"`.
 
-Plus tard, nous voulons peut-être enlever `style.display` comme si cette propriété n'était définie. Au lieu de `delete elem.style.display`, nous devrions attribuer une chaîne vide à la propriété de style: `elem.style.display = ""`.
+Plus tard, nous voulons peut-être enlever `style.display` comme si cette propriété n'était définie. Au lieu de `delete elem.style.display`, nous devons attribuer une chaîne vide à la propriété de style: `elem.style.display = ""`.
 
 ```js run
 // si nous exécutons cette code, <body> clignotera
@@ -183,11 +182,11 @@ Il est à noter: le navigateur "décortique"  la propriété `style.margin` dans
 
 ## Styles calculés: getComputedStyle
 
-Alors, modifier un style est facile. Mais comment pouvons le *lire*?
+Alors, modifier un style est facile. Mais comment pouvons-nous le *lire*?
 
 Par exemple, nous voulons savoir la taille, les marges et la couleur d'un élément. Comment faire?
 
-**La propriété `style` fonctionne seulement sur la valeur de l'attribut `"style"`, sans aucune cascade CSS.**
+**La propriété `style` opère seulement sur la valeur de l'attribut `"style"`, sans aucune cascade CSS.**
 
 Alors nous ne pouvons rien lire des classes CSS en utilisant `elem.style`.
 
@@ -251,7 +250,7 @@ Prenons, par exemple:
 Il y a deux concepts dans [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
 1. Une valeur de style "calculée" est le résultat d'une cascade CSS, après que tous les règles et héritage CSS sont appliqués. Elle peut ressembler comme `height:1em` ou `font-size:125%`.
-2. Une valeur de style "résolue" est celle qui est finalement appliquée à l'élément. Les valeurs comme `1em` ou `125%` sont relatives. Le navigateur prends la valeur calculée et fait que toutes les unités sont fixes et absolues; par exemple: `height:20px` ou `font-size:16px`. Pour les propriétés géométriques, les valeurs résolues peuvent avoir une virgule flottante, comme `width:50.5px`.
+2. Une valeur de style "résolue" est celle qui est finalement appliquée à l'élément. Les valeurs comme `1em` ou `125%` sont relatives. Le navigateur prend la valeur calculée et fait que toutes les unités sont fixes et absolues; par exemple: `height:20px` ou `font-size:16px`. Pour les propriétés géométriques, les valeurs résolues peuvent avoir une virgule flottante, comme `width:50.5px`.
 
 Il y a longtemps, `getComputedStyle` a été créé pour extraire les valeurs calculées, mais il s'est avéré que les valeurs résolues étaient beaucoup plus pratiques, alors la norme a changé.
 
@@ -263,7 +262,7 @@ Nous devons toujours demander pour la propriété exacte requise, comme `padding
 
 Par exemple, s'il y a les propriétés `paddingLeft/paddingTop`, qu'est-ce que nous recevrons de `getComputedStyle(elem).padding`? Rien, ou peut-être une valeur générée des écarts de remplissage connus? Il n'y a pas de règle standard ici.
 
-Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrome) indique `10px` dans le document ci-dessous, et certains (Firefox) -- n'indique pas:
+Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrome) indique `10px` dans le document ci-dessous, et certains (Firefox) -- n'en indique pas:
 
 ```html run
 <style>
@@ -283,7 +282,7 @@ Les liens visités peuvent être coloriés en utilisant la pseudo-classe CSS `:v
 
 Cependant, `getComputedStyle` ne donne pas accès à cette couleur, parce qu'autrement une page arbitraire pourrait savoir si l'utilisateur aurait visité un lien en créant un lien sur la page et vérifier les styles.
 
-JavaScript ne pourrait pas voir les styles appliqués par `:visited`. De plus, il y a une limitation avec CSS qui interdit l'application de styles qui changent la géométrie dans `:visited`. C'est pour garantir qu'il n'y a aucun moyen pour une page malfaisante de tester si un lien a été visité, qui donc porte atteinte à la vie privée.
+JavaScript ne pourrait pas voir les styles appliqués par `:visited`. De plus, il y a une limitation avec CSS qui interdit l'application de styles qui changent la géométrie dans `:visited`. C'est pour garantir qu'il n'y a aucun moyen pour une page malfaisante de tester si un lien a été visité, qui porterait atteinte à la vie privée.
 ```
 
 ## Récapitulation
@@ -295,7 +294,7 @@ Pour gérer les classes, il y a deux propriétés DOM:
 
 Pour changer les styles:
 
-- La propriété `style` est un objet avec les styles en camelCase. Lire et y écrire a le même sens que de modifier les propriétés individuelles dans l'attribut `"style"`. Pour savoir comment appliquer `important` et d'autres trucs rares -- il y a une liste de méthodes à [MDN](mdn:api/CSSStyleDeclaration).
+- La propriété `style` est un objet avec les styles en camelCase. Lire et y écrire a le même sens que de modifier les propriétés individuelles dans l'attribut `"style"`. Pour savoir comment appliquer `important` et autres trucs rares -- il y a une liste de méthodes à [MDN](mdn:api/CSSStyleDeclaration).
 
 - La propriété `style.cssText` correspond à l'attribut entier de `"style"`, la chaîne complète des styles.
 
