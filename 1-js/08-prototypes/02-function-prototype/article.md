@@ -40,8 +40,13 @@ C'est l'image résultante:
 
 Sur l'image, `"prototype"` est une flèche horizontale, ce qui signifie une propriété normale, et `[[Prototype]]` est vertical, ce qui signifie l'héritage de `rabbit` de `animal`.
 
+<<<<<<< HEAD
 ```smart header="`F.prototype` utilisé uniquement pendant `new F`"
 La propriété `F.prototype` est utilisée uniquement lorsque `new F` est appelé, elle attribue `[[Prototype]]` du nouvel objet. Après cela, il n'y a plus de connexion entre `F.prototype` et le nouvel objet. Pensez-y comme à un "don unique".
+=======
+```smart header="`F.prototype` only used at `new F` time"
+`F.prototype` property is only used when `new F` is called, it assigns `[[Prototype]]` of the new object.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Si, après la création, la propriété `F.prototype` change (`F.prototype = <un autre objet>`), les nouveaux objets créés par `new F` auront un autre objet comme `[[Prototype]]`, mais les objets déjà existants conservent l'ancien.
 ```

@@ -103,7 +103,11 @@ user.likes birds = true
 
 JavaScript ne comprend pas cela. Il pense que nous adressons `user.likes`, ensuite il donne une erreur de syntaxe lorsqu'il rencontre des `birds` inattendus.
 
+<<<<<<< HEAD
 Le point nécessite que la clé soit un identificateur de variable valide. Cela implique qu'elle ne contient aucun espace, ne commence pas par un chiffre et n'inclut pas de caractères spéciaux (`$` et `_` sont autorisés).
+=======
+The dot requires the key to be a valid variable identifier. That implies: contains no spaces, doesn't start with a digit and doesn't include special characters (`$` and `_` are allowed).
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Il existe une autre “notation entre crochets” qui fonctionne avec n’importe quelle chaîne :
 
@@ -215,8 +219,13 @@ Par exemple :
 function makeUser(name, age) {
   return {
     name: name,
+<<<<<<< HEAD
     age: age
     // ...autres propriétés
+=======
+    age: age,
+    // ...other properties
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
   };
 }
 
@@ -232,8 +241,13 @@ Au lieu de `name:name`, nous pouvons simplement écrire `name`, comme ceci :
 function makeUser(name, age) {
 *!*
   return {
+<<<<<<< HEAD
     name, // pareil que name: name
     age   // pareil que age: age
+=======
+    name, // same as name: name
+    age,  // same as age: age
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
     // ...
   };
 */!*

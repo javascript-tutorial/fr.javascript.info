@@ -125,6 +125,7 @@ Décrivez l'architecture
 Documenter les paramètres de fonction et leur utilisation
 : Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) pour documenter une fonction : utilisation, paramètres, valeur renvoyée.
 
+<<<<<<< HEAD
     Par exemple :
     ```js
     /**
@@ -144,6 +145,27 @@ Documenter les paramètres de fonction et leur utilisation
     À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peut aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
 
     En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc3/jsdoc) qui peut générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
+=======
+For instance:
+```js
+/**
+ * Returns x raised to the n-th power.
+ *
+ * @param {number} x The number to raise.
+ * @param {number} n The power, must be a natural number.
+ * @return {number} x raised to the n-th power.
+ */
+function pow(x, n) {
+  ...
+}
+```
+
+Such comments allow us to understand the purpose of the function and use it the right way without looking in its code.
+
+By the way, many editors like [WebStorm](https://www.jetbrains.com/webstorm/) can understand them as well and use them to provide autocomplete and some automatic code-checking.
+
+Also, there are tools like [JSDoc 3](https://github.com/jsdoc3/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <http://usejsdoc.org/>.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Pourquoi la tâche est-elle résolue de cette façon ?
 : Ce qui est écrit est important. Mais ce qui *n’est pas* écrit peut être encore plus important pour comprendre ce qui se passe. Pourquoi la tâche est-elle résolue exactement de cette façon ? Le code ne donne pas de réponse.

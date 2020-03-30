@@ -217,8 +217,13 @@ Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le c
 La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"fonction"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
+<<<<<<< HEAD
 // Essayons de déclarer et d'appeler immédiatement une fonction
 function() { // <-- Error: Unexpected token (
+=======
+// Try to declare and immediately call a function
+function() { // <-- Error: Function statements require a function name
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
   let message = "Hello";
 

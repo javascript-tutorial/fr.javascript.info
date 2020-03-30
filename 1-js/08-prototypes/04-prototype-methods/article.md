@@ -65,7 +65,11 @@ Cet appel crée une copie véritablement exacte de `obj`, y compris de toutes le
 
 ## Bref historique
 
+<<<<<<< HEAD
 Si on compte tous les moyens de gérer `[[Prototype]]`, il y en a beaucoup! De nombreuses façons de faire la même chose!
+=======
+If we count all the ways to manage `[[Prototype]]`, there are a lot! Many ways to do the same thing!
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Pourquoi?
 
