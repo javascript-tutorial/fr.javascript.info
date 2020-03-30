@@ -1,70 +1,71 @@
 # ArrayBuffer, binary arrays
 
-In web-development we meet binary data mostly while dealing with files (create, upload, download). Another typical use case is image processing.
+Dans le développement web, nous rencontrons des données binaires principalement lorsque l'on travaille avec des fichiers (création, envoi, téléchargement). Un autre cas d'utilisation est le traitement d'image.
 
-That's all possible in JavaScript, and binary operations are high-performant.
+Tout ceci est possible en JavaScript, et les opérations binaires sont très performantes.
 
-Although, there's a bit of confusion, because there are many classes. To name a few:
+Cependant, il y a de la confusion, car il y a beaucoup de "classes".
+Pour en nommer quelques unes:
 - `ArrayBuffer`, `Uint8Array`, `DataView`, `Blob`, `File`, etc.
 
-Binary data in JavaScript is implemented in a non-standard way, compared to other languages. But when we sort things out, everything becomes fairly simple.
+En javascript, les données binaires sont implémentées de façon non standard, comparé à d'autres langages. Mais quand nous trions les choses, tout devient beaucoup plus simple.
 
-**The basic binary object is `ArrayBuffer` -- a reference to a fixed-length contiguous memory area.**
+**L'objet binaire de base est un `ArrayBuffer` -- une référence à une zone contigu de taille fixe de la mémoire.**
 
-We create it like this:
+Nous le créons comme ceci:
 ```js run
-let buffer = new ArrayBuffer(16); // create a buffer of length 16
+let buffer = new ArrayBuffer(16); // crée un Buffer de taille 16
 alert(buffer.byteLength); // 16
 ```
 
-This allocates a contiguous memory area of 16 bytes and pre-fills it with zeroes.
+Cela alloue une zone contigue de 16 octets dans la mémoire et la pré-remplie avec des zéros.
 
-```warn header="`ArrayBuffer` is not an array of something"
-Let's eliminate a possible source of confusion. `ArrayBuffer` has nothing in common with `Array`:
-- It has a fixed length, we can't increase or decrease it.
-- It takes exactly that much space in the memory.
-- To access individual bytes, another "view" object is needed, not `buffer[index]`.
+```warn header="L'`ArrayBuffer` n'est pas un tableau de quelque chose."
+Commençons par éliminer une possible source de confusion. `ArrayBuffer` n'a rien en commun avec `Array`:
+- Il possède une taille fixe, on ne peut pas l'agrandir ou le reduire.
+- Il prend exactement autant d'espace en mémoire.
+- Pour accéder à des octets individuels, un autre objet de "vue" est nécessaire, on n'utilise pas `buffer[index]`.
 ```
 
-`ArrayBuffer` is a memory area. What's stored in it? It has no clue. Just a raw sequence of bytes.
+`ArrayBuffer` est une zone de la mémoire. Qui y'a t'il à l'intérieur ? Juste une séquence d'octets.
 
-**To manipulate an `ArrayBuffer`, we need to use a "view" object.**
+**Pour manipuler un `ArrayBuffer`, nous avons besoin d'utiliser un objet de "vue".**
 
-A view object does not store anything on it's own. It's the "eyeglasses" that give an interpretation of the bytes stored in the `ArrayBuffer`.
+Un objet de "vue" de stocke rien tout seul. Ce sont les yeux qui donnent une interprétation des octets stockés dans l'`ArrayBuffer`.
 
-For instance:
+Par exemple:
 
-- **`Uint8Array`** -- treats each byte in `ArrayBuffer` as a separate number, with possible values are from 0 to 255 (a byte is 8-bit, so it can hold only that much). Such value is called a "8-bit unsigned integer".
-- **`Uint16Array`** -- treats every 2 bytes as an integer, with possible values from 0 to 65535. That's called a "16-bit unsigned integer".
-- **`Uint32Array`** -- treats every 4 bytes as an integer, with possible values from 0 to 4294967295. That's called a "32-bit unsigned integer".
-- **`Float64Array`** -- treats every 8 bytes as a floating point number with possible values from <code>5.0x10<sup>-324</sup></code> to <code>1.8x10<sup>308</sup></code>.
+- **`Uint8Array`** -- Traite chaque octet dans l'`ArrayBuffer` comme un nombre unique, avec des valeurs possibles entre 0 jusqu'à 255 (Un octet est sur 8 bits). On appelle ces valeurs des "entiers non signés sur 8 bits".
+- **`Uint16Array`** -- Traite par paquet de 2 octets en tant qu'entier, avec des valeurs possibles entre 0 jusqu'à 65535. On appelle ces valeurs des "entiers non signés sur 16 bits".
+- **`Uint32Array`** -- Traite par paquet de 4 octets en tant qu'entier, avec des valeurs possibles entre 0 jusqu'à 4294967295. On appelle ces valeurs des "entiers non signés sur 32bits".
+- **`Float64Array`** -- Traite par paquet de 8 octets en tant que nombre flottant avec des valeurs possibles entre <code>5.0x10<sup>-324</sup></code> et <code>1.8x10<sup>308</sup></code>.
 
-So, the binary data in an `ArrayBuffer` of 16 bytes can be interpreted as 16 "tiny numbers", or 8 bigger numbers (2 bytes each), or 4 even bigger (4 bytes each), or 2 floating-point values with high precision (8 bytes each).
+Donc, les données binaires dans un `ArrayBuffer` de 16 octets peuvent être interprétées comme 16 "petits nombres" , ou 8 grands nombres (2 octets chacun), ou 4 encore plus grands (4 octets chacun), ou 2 valeurs flottantes avec une haute précision (8 octets chacun).
 
 ![](arraybuffer-views.svg)
 
-`ArrayBuffer` is the core object, the root of everything, the raw binary data.
+`ArrayBuffer` est l'objet central, le centre de tout, les données binaires brutes.
 
-But if we're going to write into it, or iterate over it, basically for almost any operation – we must use a view, e.g:
+Mais si nous voulons écrire dessus, ou intérer dessus, pour n'importe quelle opération – nous devons utiliser une "vue", e.g:
 
 ```js run
-let buffer = new ArrayBuffer(16); // create a buffer of length 16
+let buffer = new ArrayBuffer(16); // crée un buffer de taille 16
 
 *!*
-let view = new Uint32Array(buffer); // treat buffer as a sequence of 32-bit integers
+let view = new Uint32Array(buffer); // Traite le buffer en une séquence d'entiers de 32 bits.
 
-alert(Uint32Array.BYTES_PER_ELEMENT); // 4 bytes per integer
+alert(Uint32Array.BYTES_PER_ELEMENT); // 4 octets par entier.
 */!*
 
-alert(view.length); // 4, it stores that many integers
-alert(view.byteLength); // 16, the size in bytes
+alert(view.length); // 4, il stocke cette quantité d'entiers.
+alert(view.byteLength); // 16, la taille en octets.
 
-// let's write a value
+// Ecrivons une valeur
 view[0] = 123456;
 
-// iterate over values
+// Itérons sur les valeurs
 for(let num of view) {
-  alert(num); // 123456, then 0, 0, 0 (4 values total)
+  alert(num); // 123456, then 0, 0, 0 (4 valeurs au total)
 }
 
 ```
