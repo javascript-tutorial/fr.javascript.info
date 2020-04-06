@@ -438,7 +438,11 @@ Cela fonctionne comme prévu, en raison de la mécanique `[[HomeObject]]`. Une m
 
 Comme nous l'avons vu précédemment, les fonctions sont généralement "libres" et ne sont pas liées à des objets en JavaScript. Ils peuvent donc être copiés entre des objets et appelés avec un autre `this`.
 
+<<<<<<< HEAD
 L'existence même de `[[HomeObject]]` viole ce principe, car les méthodes se souviennent de leurs objets. `[[HomeObject]]` ne peut pas être changé, ce lien est donc permanent.
+=======
+The very existence of `[[HomeObject]]` violates that principle, because methods remember their objects. `[[HomeObject]]` can't be changed, so this bond is forever.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Le seul endroit dans la langue où `[[HomeObject]]` est utilisé - est `super`. Donc, si une méthode n'utilise pas `super`, on peut toujours la considérer comme libre et la copier entre les objets. Mais avec `super`, les choses peuvent mal tourner.
 
@@ -478,7 +482,11 @@ tree.sayHi();  // I'm an animal (?!?)
 */!*
 ```
 
+<<<<<<< HEAD
 Un appel à `tree.sayHi()` indique "I'm an animal". Certainement faux.
+=======
+A call to `tree.sayHi()` shows "I'm an animal". Definitely wrong.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 La raison est simple:
 - Dans la ligne `(*)`, la méthode `tree.sayHi` a été copiée à partir de `rabbit`. Peut-être que nous voulions simplement éviter la duplication de code?

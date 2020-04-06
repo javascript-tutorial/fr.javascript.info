@@ -81,6 +81,7 @@ let x = 5;
 x = "John";
 ```
 
+<<<<<<< HEAD
 Il y a 7 types de données :
 
 - `number` pour les nombres à virgule flottante et les nombres entiers,
@@ -89,6 +90,17 @@ Il y a 7 types de données :
 - `null` -- un type avec une seule valeur `null`, signifiant "vide" ou "n'existe pas",
 - `undefined` -- un type avec une seule valeur `undefined`, signifiant "non assigné",
 - `object` et `symbol` -- Pour les structures de données complexes et les identifiants uniques, nous ne les avons pas encore appris.
+=======
+There are 8 data types:
+
+- `number` for both floating-point and integer numbers,
+- `bigint` for integer numbers of arbitrary length,
+- `string` for strings,
+- `boolean` for logical values: `true/false`,
+- `null` -- a type with a single value `null`, meaning "empty" or "does not exist",
+- `undefined` -- a type with a single value `undefined`, meaning "not assigned",
+- `object` and `symbol` -- for complex data structures and unique identifiers, we haven't learnt them yet.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 L'opérateur `typeof` renvoie le type d'une valeur, à deux exceptions près :
 ```js
