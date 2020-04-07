@@ -38,15 +38,9 @@ alert( curriedSum(1)(2) ); // 3
 
 Comme vous pouvez le voir, l'implémentation est simple : il ne s'agit que de deux enveloppes.
 
-<<<<<<< HEAD
 - Le résultat de `curry(func)` est une enveloppe `function(a)`.
 - Lorsqu'il est appelé comme `curriedSum(1)`, l'argument est sauvegardé dans l'environnement lexical, et une nouvelle enveloppe `function(b)` est retournée.
 - Ensuite cette enveloppe est appelée avec `2` comme argument, et passe l'appel à la fonction originelle `sum`.
-=======
-- The result of `curry(func)` is a wrapper `function(a)`.
-- When it is called like `curriedSum(1)`, the argument is saved in the Lexical Environment, and a new wrapper is returned `function(b)`.
-- Then this wrapper is called with `2` as an argument, and it passes the call to the original `sum`.
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Des implémentations plus avancées de la curryfication, comme [_.curry](https://lodash.com/docs#curry) de la bibliothèque lodash, retournent une enveloppe qui permet à une fonction d'être à la fois appelée normalement et partiellement :
 
