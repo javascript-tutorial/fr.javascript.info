@@ -326,7 +326,11 @@ Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères 
 
 ```smart header="Comparer avec Object.is"
 
+<<<<<<< HEAD
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes:
+=======
+There is a special built-in method [`Object.is`](mdn:js/Object/is) that compares values like `===`, but is more reliable for two edge cases:
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
 2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
@@ -423,7 +427,13 @@ Pour différents systèmes de numération :
 - `parseInt(str, base)` passe la chaîne de caractères `str` vers un système numérique avec une `base` donnée : `2 ≤ base ≤ 36`.
 - `num.toString(base)` convertit un nombre en chaîne de caractères dans le système numérique de la `base` donnée.
 
+<<<<<<< HEAD
 Pour convertit des valeurs telles que `12pt` et `100px` en un nombre :
+=======
+- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems.
+- `parseInt(str, base)` parses the string `str` into an integer in numeral system with given `base`, `2 ≤ base ≤ 36`.
+- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 - Utiliser `parseInt/parseFloat` pour la conversion "soft", qui lit un nombre dans une chaîne de caractères, puis renvoie la valeur qu'ils pouvaient lire avant l'erreur.
 

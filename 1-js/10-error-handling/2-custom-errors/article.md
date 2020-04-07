@@ -215,11 +215,47 @@ Maintenant, les erreurs personnalisées sont beaucoup plus courtes, en particuli
 
 Le but de la fonction `readUser` dans le code ci-dessus est "de lire les données de l'utilisateur". Il peut y avoir différents types d’erreurs dans le processus. À l'heure actuelle, nous avons `SyntaxError` et `ValidationError`, mais à l'avenir, la fonction `readUser` pourrait croître et générer probablement d'autres types d'erreurs.
 
+<<<<<<< HEAD
 Le code qui appelle `readUser` devrait gérer ces erreurs. Actuellement, il utilise plusieurs `if` dans le bloc `catch`, qui vérifient la classe, gèrent les erreurs connues et réexaminent les inconnues. Mais si la fonction `readUser` génère plusieurs types d’erreurs - nous devrions nous demander: voulons-nous vraiment vérifier tous les types d’erreur un par un dans chaque code qui appelle `readUser`?
 
 Souvent, la réponse est "Non": le code externe veut être "au-dessus de tout cela". Il veut avoir une sorte "d'erreur de lecture de données". Pourquoi exactement cela est arrivé est souvent sans importance (le message d'erreur le décrit). Ou encore mieux s'il existe un moyen d'obtenir des détails d'erreur, mais uniquement si nous en avons le besoin.
 
 Faisons donc une nouvelle classe `ReadError` pour représenter de telles erreurs. Si une erreur se produit dans `readUser`, nous la détectons et générons `ReadError`. Nous conserverons également la référence à l'erreur d'origine dans sa propriété `cause`. Ensuite, le code externe devra seulement vérifier `ReadError`.
+=======
+The code which calls `readUser` should handle these errors. Right now it uses multiple `if`s in the `catch` block, that check the class and handle known errors and rethrow the unknown ones.
+
+The scheme is like this:
+
+```js
+try {
+  ...
+  readUser()  // the potential error source
+  ...
+} catch (err) {
+  if (err instanceof ValidationError) {
+    // handle validation errors
+  } else if (err instanceof SyntaxError) {
+    // handle syntax errors
+  } else {
+    throw err; // unknown error, rethrow it
+  }
+}
+```
+
+In the code above we can see two types of errors, but there can be more.
+
+If the `readUser` function generates several kinds of errors, then we should ask ourselves: do we really want to check for all error types one-by-one every time?
+
+Often the answer is "No": we'd like to be "one level above all that". We just want to know if there was a "data reading error" -- why exactly it happened is often irrelevant (the error message describes it). Or, even better, we'd like to have a way to get the error details, but only if we need to.
+
+The technique that we describe here is called "wrapping exceptions".
+
+1. We'll make a new class `ReadError` to represent a generic "data reading" error.
+2. The function `readUser` will catch data reading errors that occur inside it, such as `ValidationError` and `SyntaxError`, and generate a `ReadError` instead.
+3. The `ReadError` object will keep the reference to the original error in its `cause` property.
+
+Then the code that calls `readUser` will only have to check for `ReadError`, not for every kind of data reading errors. And if it needs more details of an error, it can check its `cause` property.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Voici le code qui définit `ReadError` et illustre son utilisation dans `readUser` et `try..catch`:
 
@@ -293,7 +329,11 @@ Dans le code ci-dessus, `readUser` fonctionne exactement comme décrit ci-dessus
 
 Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.
 
+<<<<<<< HEAD
 Cette approche, "wrapping exceptions" en anglais, nous permet de prendre les "exceptions de bas niveau" et les "wrapper" dans `ReadError`, qui est plus abstrait et plus pratique à utiliser pour le code appelant. Cette approche est largement utilisée dans la programmation orientée objet.
+=======
+The approach is called "wrapping exceptions", because we take "low level" exceptions and "wrap" them into `ReadError` that is more abstract. It is widely used in object-oriented programming.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 ## Résumé
 
