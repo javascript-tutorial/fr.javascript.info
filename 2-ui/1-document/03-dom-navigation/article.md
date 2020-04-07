@@ -201,13 +201,8 @@ Le parent est disponible en tant que `parentNode`.
 
 Par exemple :
 
-<<<<<<< HEAD
-```js
-// le parent de <body> est <html>
-=======
 ```js run
-// parent of <body> is <html>
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
+// le parent de <body> est <html>
 alert( document.body.parentNode === document.documentElement ); // true
 
 // après <head> vient <body>
