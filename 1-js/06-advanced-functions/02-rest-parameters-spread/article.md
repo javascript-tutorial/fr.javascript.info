@@ -224,56 +224,52 @@ Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
 
-<<<<<<< HEAD
-## Résumé
-=======
-## Get a new copy of an object/array
+## Obtenez une nouvelle copie d'un objet/tableau
 
-Remember when we talked about `Object.assign()` [in the past](https://javascript.info/object#cloning-and-merging-object-assign)?
+Souvenez-vous quand nous avons parlé de `Object.assign()` [par le passé](https://javascript.info/object#cloning-and-merging-object-assign)?
 
-It is possible to do the same thing with the spread operator!
+Il est possible de faire la même chose avec l'opérateur spread !
 
 ```js run
 let arr = [1, 2, 3];
-let arrCopy = [...arr]; // spread the array into a list of parameters
-                        // then put the result into a new array
+let arrCopy = [...arr]; // répartir le tableau dans une liste de paramètres
+                        // puis mettre le résultat dans un nouveau tableau
 
-// do the arrays have the same contents?
+// les tableaux ont-ils le même contenu ?
 alert(JSON.stringify(arr) === JSON.stringify(arrCopy)); // true
 
-// are the arrays equal?
-alert(arr === arrCopy); // false (not same reference)
+// les tableaux sont-ils égaux ?
+alert(arr === arrCopy); // false (pas la même référence)
 
-// modifying our initial array does not modify the copy:
+// la modification de notre tableau initial ne modifie pas la copie :
 arr.push(4);
 alert(arr); // 1, 2, 3, 4
 alert(arrCopy); // 1, 2, 3
 ```
 
-Note that it is possible to do the same thing to make a copy of an object:
+Notez qu'il est possible de faire la même chose pour faire une copie d'un objet :
 
 ```js run
 let obj = { a: 1, b: 2, c: 3 };
-let objCopy = { ...obj }; // spread the object into a list of parameters
-                          // then return the result in a new object
+let objCopy = { ...obj }; // répartir l'objet dans une liste de paramètres
+                          // puis retourne le résultat dans un nouvel objet
 
-// do the objects have the same contents?
+// les objets ont-ils le même contenu ?
 alert(JSON.stringify(obj) === JSON.stringify(objCopy)); // true
 
-// are the objects equal?
-alert(obj === objCopy); // false (not same reference)
+// les objets sont-ils égaux ?
+alert(obj === objCopy); // false (pas la même référence)
 
-// modifying our initial object does not modify the copy:
+// la modification de notre objet initial ne modifie pas la copie :
 obj.d = 4;
 alert(JSON.stringify(obj)); // {"a":1,"b":2,"c":3,"d":4}
 alert(JSON.stringify(objCopy)); // {"a":1,"b":2,"c":3}
 ```
 
-This way of copying an object is much shorter than `let objCopy = Object.assign({}, obj);` or for an array `let arrCopy = Object.assign([], arr);` so we prefer to use it whenever we can.
+Cette façon de copier un objet est beaucoup plus courte que `let objCopy = Object.assign({}, obj);` ou pous un tableau `let arrCopy = Object.assign([], arr);` nous préférons donc l'utiliser chaque fois que nous le pouvons.
 
 
-## Summary
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
+## Résumé
 
 Quand on voit `"..."` dans le code, il s’agit soit des paramètres rest ou de la syntaxe spread.
 
