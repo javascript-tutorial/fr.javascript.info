@@ -249,13 +249,8 @@ Prenons, par exemple:
 ```smart header="Valeurs calculées et résolues"
 Il y a deux concepts dans [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
-<<<<<<< HEAD
 1. Une valeur de style "calculée" est le résultat d'une cascade CSS, après que tous les règles et héritage CSS sont appliqués. Elle peut ressembler comme `height:1em` ou `font-size:125%`.
 2. Une valeur de style "résolue" est celle qui est finalement appliquée à l'élément. Les valeurs comme `1em` ou `125%` sont relatives. Le navigateur prend la valeur calculée et fait que toutes les unités sont fixes et absolues; par exemple: `height:20px` ou `font-size:16px`. Pour les propriétés géométriques, les valeurs résolues peuvent avoir une virgule flottante, comme `width:50.5px`.
-=======
-1. A *computed* style value is the value after all CSS rules and CSS inheritance is applied, as the result of the CSS cascade. It can look like `height:1em` or `font-size:125%`.
-2. A *resolved* style value is the one finally applied to the element. Values like `1em` or `125%` are relative. The browser takes the computed value and makes all units fixed and absolute, for instance: `height:20px` or `font-size:16px`. For geometry properties resolved values may have a floating point, like `width:50.5px`.
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Il y a longtemps, `getComputedStyle` a été créé pour extraire les valeurs calculées, mais il s'est avéré que les valeurs résolues étaient beaucoup plus pratiques, alors la norme a changé.
 

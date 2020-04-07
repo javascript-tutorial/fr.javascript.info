@@ -299,27 +299,17 @@ class User {
 new User().sayHi();
 ```
 
-<<<<<<< HEAD
 ## Proprietes de Classe
 
 ```warn header="les anciens navigateurs peuvent avoir besoin de polyfill"
-Les propriétés au niveau Classe sont un ajout récent au langage.
+Les propriétés de classe sont un ajout récent au langage.
 ```
 
-Dans l'exemple ci-dessus, `User` avait uniquement des méthodes. Maintenant, nous allons y ajouter une propriété:
-=======
-## Class fields
+Auparavant, les classes n'avaient que des méthodes.
 
-```warn header="Old browsers may need a polyfill"
-Class fields are a recent addition to the language.
-```
+Les "Class fields" (champs de classe) sont une syntaxe qui permet d'ajouter des propriétés.
 
-Previously, classes only had methods.
-
-"Class fields" is a syntax that allows to add any properties.
-
-For instance, let's add `name` property to `class User`:
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
+Par exemple, ajoutons la propriété `name` à `class User` :
 
 ```js run
 class User {
@@ -338,20 +328,17 @@ alert(User.prototype.sayHi); // placed in User.prototype
 alert(User.prototype.name); // undefined, not placed in User.prototype
 ```
 
-<<<<<<< HEAD
-La propriété `name` n'est pas placée dans `User.prototype`. Au lieu de cela, elle est créée par `new` avant l'appel du constructeur, c'est la propriété de l'objet lui-même.
-=======
-The important thing about class fields is that they are set on individual objects, not `User.prototype`.
+La chose importante à propos des champs de classe est qu'ils sont définis sur des objets individuels, pas `User.prototype`.
 
-Technically, they are processed after the constructor has done it's job.
+Techniquement, ils sont traités une fois que le constructeur a fait son travail.
 
-### Making bound methods with class fields
+### Création de méthodes liées avec des champs de classe
 
-As demonstrated in the chapter <info:bind> functions in JavaScript have a dynamic `this`. It depends on the context of the call.
+Comme démontré dans le chapitre <info:bind> les fonctions en JavaScript ont un `this` dynamique. Cela dépend du contexte de l'appel.
 
-So if an object method is passed around and called in another context, `this` won't be a reference to its object any more.
+Donc, si une méthode objet est contournée et appelée dans un autre contexte, `this` ne sera plus une référence à son objet.
 
-For instance, this code will show `undefined`:
+Par exemple, ce code affichera `undefined` :
 
 ```js run
 class Button {
@@ -371,12 +358,12 @@ setTimeout(button.click, 1000); // undefined
 */!*
 ```
 
-The problem is called "losing `this`".
+Le problème est appelé "perdre le `this`".
 
-There are two approaches to fixing it, as discussed in the chapter <info:bind>:
+Il existe deux approches pour le corriger, comme indiqué dans le chapitre <info:bind> :
 
-1. Pass a wrapper-function, such as `setTimeout(() => button.click(), 1000)`.
-2. Bind the method to object, e.g. in the constructor:
+1. Passer une fonction wrapper, telle que `setTimeout(() => button.click(), 1000)`.
+2. Liez la méthode à un objet, par exemple chez le constructeur :
 
 ```js run
 class Button {
@@ -399,7 +386,7 @@ setTimeout(button.click, 1000); // hello
 */!*
 ```
 
-Class fields provide a more elegant syntax for the latter solution:
+Les champs de classe fournissent une syntaxe plus élégante pour cette dernière solution :
 
 ```js run
 class Button {
@@ -418,10 +405,9 @@ let button = new Button("hello");
 setTimeout(button.click, 1000); // hello
 ```
 
-The class field `click = () => {...}` creates an independent function on each `Button` object, with `this` bound to the object. Then we can pass `button.click` around anywhere, and it will be called with the right `this`.
+Le champ de classe `click = () => {...}` crée une fonction indépendante sur chaque objet `Button`, avec` this` lié à l'objet. Ensuite, nous pouvons passer `button.click` partout, et il sera appelé avec le bon` this`.
 
-That's especially useful in browser environment, when we need to setup a method as an event listener.
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
+Cela est particulièrement utile dans un environnement de navigateur, lorsque nous devons configurer une méthode comme un écouteur d'événements.
 
 ## Résumé
 

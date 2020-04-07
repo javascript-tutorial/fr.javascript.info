@@ -3,11 +3,7 @@ Voici les explications.
 
 1. C’est un appel de méthode d’objet standard.
 
-<<<<<<< HEAD
 2. De même, les parenthèses ne changent pas l'ordre des opérations ici, le point est le premier quand même.
-=======
-2. The same, parentheses do not change the order of operations here, the dot is first anyway.
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 3. Nous avons ici un appel plus complexe `(expression).method()`. L'appel fonctionne comme s'il était divisé en deux lignes :
 
