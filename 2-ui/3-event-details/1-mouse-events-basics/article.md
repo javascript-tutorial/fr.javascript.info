@@ -115,17 +115,12 @@ Donc, si nous voulons que les utilisateurs de tous les systèmes d'exploitation 
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```
 
-<<<<<<< HEAD
 
 ```warn header="Il y a aussi les appareils mobiles"
 
 Les combinaisons de clavier sont un bon ajout au flux de travail. Tant que le visiteur a un
-  clavier - ça fonctionne. Mais si leur appareil n’en a pas - alors il devrait y avoir un autre moyen de faire de même.
+  clavier - ça fonctionne. Mais si leur appareil n’en a pas -- alors il devrait y avoir un autre moyen de faire la même chose.
 
-=======
-```warn header="There are also mobile devices"
-Keyboard combinations are good as an addition to the workflow. So that if the visitor has a keyboard -- it works. And if their device doesn't have it -- then there should be another way to do the same.
->>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 ```
 
 ## Cordonnées: clientX/Y, pageX/Y
