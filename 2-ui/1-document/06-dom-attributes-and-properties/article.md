@@ -236,7 +236,7 @@ Voici un exemple :
 Si nous avons besoin de la valeur de `href` ou de tout autre attribut exactement comme écrit dans le HTML, nous pouvons utiliser `getAttribute`.
 
 
-## Attributs non standard, jeu de données
+## Attributs non standard, dataset
 
 Lors de l'écriture HTML, nous utilisons beaucoup d'attributs standard. Mais qu'en est-il des modèles non standard et personnalisés ? Voyons d'abord s'ils sont utiles ou non? Pourquoi ?
 
