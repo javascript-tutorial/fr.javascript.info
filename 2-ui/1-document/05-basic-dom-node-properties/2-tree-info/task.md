@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Count descendants
+# Compter les descendants
 
-There's a tree structured as nested `ul/li`.
+Il y a un arbre structuré comme un `ul/li` imbriqué.
 
-Write the code that for each `<li>` shows:
+Écrivez le code qui pour que chaque `<li>` affiche :
 
-1. What's the text inside it (without the subtree)
-2. The number of nested `<li>` -- all descendants, including the deeply nested ones.
+1. Quel est le texte à l'intérieur (sans le sous-arbre)
+2. Le nombre de `<li>` imbriqués - tous les descendants, y compris ceux profondément imbriqués.
 
 [demo src="solution"]
