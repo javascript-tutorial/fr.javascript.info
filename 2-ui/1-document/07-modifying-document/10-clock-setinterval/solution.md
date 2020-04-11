@@ -1,6 +1,6 @@
-First, let's make HTML/CSS.
+Tout d'abord, créons notre HTML/CSS.
 
-Each component of the time would look great in its own `<span>`:
+Chaque composante du temps aurait fière allure dans son propre `<span>` :
 
 ```html
 <div id="clock">
@@ -8,9 +8,9 @@ Each component of the time would look great in its own `<span>`:
 </div>
 ```
 
-Also we'll need CSS to color them.
+Nous aurons également besoin de CSS pour les colorer.
 
-The `update` function will refresh the clock, to be called by `setInterval` every second:
+La fonction `update` rafraîchira l'horloge, qui sera appelée par `setInterval` toutes les secondes :
 
 ```js
 function update() {
@@ -32,14 +32,14 @@ function update() {
 }
 ```
 
-In the line `(*)` we every time check the current date. The calls to `setInterval` are not reliable: they may happen with delays.
+Dans la ligne `(*)` nous vérifions à chaque fois la date actuelle. Les appels à `setInterval` ne sont pas fiables : ils peuvent survenir avec des retards.
 
-The clock-managing functions:
+Les fonctions de gestion d'horloge :
 
 ```js
 let timerId;
 
-function clockStart() { // run the clock
+function clockStart() { // exécute l'horloge
   timerId = setInterval(update, 1000);
   update(); // (*)
 }
@@ -50,4 +50,4 @@ function clockStop() {
 }
 ```
 
-Please note that the call to `update()` is not only scheduled in `clockStart()`, but immediately run in the line `(*)`. Otherwise the visitor would have to wait till the first execution of `setInterval`. And the clock would be empty till then.
+Veuillez noter que l'appel à `update()` est non seulement planifié dans `clockStart()`, mais s'exécute immédiatement dans la ligne `(*)`. Sinon, le visiteur devra attendre la première exécution de `setInterval`. Et l'horloge serait vide jusque-là.

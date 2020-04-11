@@ -2,16 +2,16 @@ importance: 4
 
 ---
 
-# Create a calendar
+# Créer un calendrier
 
-Write a function `createCalendar(elem, year, month)`.
+Écrivez une fonction `createCalendar(elem, year, month)`.
 
-The call should create a calendar for the given year/month and put it inside `elem`.
+L'appel doit créer un calendrier pour l'année/le mois donné et le mettre dans `elem`.
 
-The calendar should be a table, where a week is `<tr>`, and a day is `<td>`. The table top should be `<th>` with weekday names: the first day should be Monday, and so on till Sunday.
+Le calendrier doit être un tableau, où une semaine est un `<tr>` et un jour est un `<td>`. Le dessus du tableau doit être un `<th>` avec les noms des jours de la semaine : le premier jour doit être le lundi, et ainsi de suite jusqu'au dimanche.
 
-For instance, `createCalendar(cal, 2012, 9)` should generate in element `cal` the following calendar:
+Par exemple, `createCalendar(cal, 2012, 9)` devrait générer dans l'élément `cal` le calendrier suivant :
 
 [iframe height=210 src="solution"]
 
-P.S. For this task it's enough to generate the calendar, should not yet be clickable.
+P.S. Pour cette tâche, il suffit de générer le calendrier, il ne doit pas encore être cliquable.
