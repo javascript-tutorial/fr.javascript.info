@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Sort the table
+# Trier le tableau
 
-There's a table:
+Il y a un tableau :
 
 ```html run
 <table>
@@ -30,6 +30,6 @@ There's a table:
 </table>
 ```
 
-There may be more rows in it.
+Il peut y avoir plus de lignes.
 
-Write the code to sort it by the `"name"` column.
+Écrivez le code pour le trier par la colonne `"name"`.

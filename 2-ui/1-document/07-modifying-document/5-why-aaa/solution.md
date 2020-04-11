@@ -1,9 +1,9 @@
-The HTML in the task is incorrect. That's the reason of the odd thing.
+Le code HTML de cette tâche est incorrect. Voilà la raison de la chose étrange.
 
-The browser has to fix it automatically. But there may be no text inside the `<table>`: according to the spec only table-specific tags are allowed. So the browser adds `"aaa"` *before* the `<table>`.
+Le navigateur doit le réparer automatiquement. Mais il peut ne pas y avoir de texte à l'intérieur de la `<table>` : selon la spécification, seules les balises spécifiques à la table sont autorisées. Le navigateur ajoute donc `"aaa"` *avant* la `<table>`.
 
-Now it's obvious that when we remove the table, it remains.
+Maintenant, il est évident que lorsque nous retirons la `table`, la chaîne de caractères reste.
 
-The question can be easily answered by exploring the DOM using the browser tools. It shows `"aaa"` before the `<table>`.
+La question peut être facilement répondue en explorant le DOM à l'aide des outils du navigateur. Il montre `"aaa"` avant la `<table>`.
 
-The HTML standard specifies in detail how to process bad HTML, and such behavior of the browser is correct.
+Le standard HTML spécifie en détail comment traiter un mauvais HTML, et un tel comportement du navigateur est correct.

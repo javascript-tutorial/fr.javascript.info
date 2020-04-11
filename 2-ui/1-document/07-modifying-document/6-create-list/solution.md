@@ -1,1 +1,1 @@
-Please note the usage of `textContent` to assign the `<li>` content.
+Veuillez noter l'utilisation de `textContent` pour attribuer le contenu `<li>`.

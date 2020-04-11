@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Clear the element
+# Effacer l'élément
 
-Create a function `clear(elem)` that removes everything from the element.
+Créez une fonction `clear(elem)` qui supprime tout de l'élément.
 
 ```html run height=60
 <ol id="elem">
@@ -13,8 +13,8 @@ Create a function `clear(elem)` that removes everything from the element.
 </ol>
 
 <script>
-  function clear(elem) { /* your code */ }
+  function clear(elem) { /* votre code */ }
 
-  clear(elem); // clears the list
+  clear(elem); // efface la liste
 </script>
 ```
