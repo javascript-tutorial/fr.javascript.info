@@ -2,19 +2,19 @@ importance: 5
 
 ---
 
-# Place the ball in the field center
+# Placer la balle au centre du terrain
 
-Here's how the source document looks:
+Voici à quoi ressemble le document source :
 
 [iframe src="source" edit link height=180]
 
-What are coordinates of the field center?
+Quelles sont les coordonnées du centre de terrain ?
 
-Calculate them and use to place the ball into the center of the green field:
+Calculez et utilisez-les pour placer la balle au centre du champ vert :
 
 [iframe src="solution" height=180]
 
-- The element should be moved by JavaScript, not CSS.
-- The code should work with any ball size (`10`, `20`, `30` pixels) and any field size, not be bound to the given values.
+- L'élément doit être déplacé par JavaScript, pas CSS.
+- Le code doit fonctionner avec n'importe quelle taille de boule (`10`, `20`, `30` pixels) et n'importe quelle taille de champ, ne pas être lié aux valeurs données.
 
-P.S. Sure, centering could be done with CSS, but here we want exactly JavaScript. Further we'll meet other topics and more complex situations when JavaScript must be used. Here we do a "warm-up".
+P.S. Bien sûr, le centrage pourrait être effectué avec CSS, mais ici, nous voulons exactement JavaScript. De plus, nous rencontrerons d'autres sujets et des situations plus complexes lorsque JavaScript doit être utilisé. Ici, nous faisons un "échauffement".

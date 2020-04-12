@@ -2,10 +2,10 @@ importance: 3
 
 ---
 
-# What is the scrollbar width?
+# Quelle est la largeur de la barre de défilement ?
 
-Write the code that returns the width of a standard scrollbar.
+Écrivez le code qui renvoie la largeur d'une barre de défilement standard.
 
-For Windows it usually varies between `12px` and `20px`. If the browser doesn't reserve any space for it (the scrollbar is half-translucent over the text, also happens), then it may be `0px`.
+Pour Windows, il varie généralement entre `12px` et `20px`. Si le navigateur ne lui réserve pas d'espace (la barre de défilement est à moitié translucide sur le texte, cela arrive également), alors il peut s'agir de `0px`.
 
-P.S. The code should work for any HTML document, do not depend on its content.
+P.S. Le code devrait fonctionner pour tout document HTML, ne dépend pas de son contenu.
