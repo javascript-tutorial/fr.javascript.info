@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# The difference: CSS width versus clientWidth
+# La différence: largeur CSS vs clientWidth
 
-What's the difference between `getComputedStyle(elem).width` and `elem.clientWidth`?
+Quelle est la différence entre `getComputedStyle(elem).width` et `elem.clientWidth` ?
 
-Give at least 3 differences. The more the better.
+Donnez au moins 3 différences. Plus c'est mieux.

@@ -1,16 +1,16 @@
-To get the scrollbar width, we can create an element with the scroll, but without borders and paddings.
+Pour obtenir la largeur de la barre de défilement, nous pouvons créer un élément avec le défilement, mais sans bordures ni paddings.
 
-Then the difference between its full width `offsetWidth` and the inner content area width `clientWidth` will be exactly the scrollbar:
+Ensuite, la différence entre sa largeur totale `offsetWidth` et la largeur de la zone de contenu interne `clientWidth` sera exactement la barre de défilement :
 
 ```js run
-// create a div with the scroll
+// créer une div avec le défilement
 let div = document.createElement('div');
 
 div.style.overflowY = 'scroll';
 div.style.width = '50px';
 div.style.height = '50px';
 
-// must put it in the document, otherwise sizes will be 0
+// doit le mettre dans le document, sinon les tailles seront 0
 document.body.append(div);
 let scrollWidth = div.offsetWidth - div.clientWidth;
 

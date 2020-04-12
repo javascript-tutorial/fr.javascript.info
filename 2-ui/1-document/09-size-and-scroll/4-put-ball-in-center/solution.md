@@ -1,53 +1,53 @@
-The ball has `position:absolute`. It means that its `left/top` coordinates are measured from the nearest positioned element, that is `#field` (because it has `position:relative`).
+La balle a une `position:absolue`. Cela signifie que ses coordonnées `gauche/haut` sont mesurées à partir de l'élément positionné le plus proche, c'est-à-dire `#field` (car il a `position:relative`).
 
-The coordinates start from the inner left-upper corner of the field:
+Les coordonnées commencent à partir du coin supérieur gauche intérieur du champ :
 
 ![](field.svg)
 
-The inner field width/height is `clientWidth/clientHeight`. So the field center has coordinates `(clientWidth/2, clientHeight/2)`.
+La largeur/hauteur du champ intérieur est `clientWidth/clientHeight`. Le centre de terrain a donc les coordonnées `(clientWidth/2, clientHeight/2)`.
 
-...But if we set `ball.style.left/top` to such values, then not the ball as a whole, but the left-upper edge of the ball would be in the center:
+...Mais si nous définissons `ball.style.left/top` à de telles valeurs, alors pas la balle dans son ensemble, mais le bord supérieur gauche de la balle serait au centre :
 
 ```js
 ball.style.left = Math.round(field.clientWidth / 2) + 'px';
 ball.style.top = Math.round(field.clientHeight / 2) + 'px';
 ```
 
-Here's how it looks:
+Voici à quoi ça ressemble :
 
 [iframe height=180 src="ball-half"]
 
-To align the ball center with the center of the field, we should move the ball to the half of its width to the left and to the half of its height to the top:
+Pour aligner le centre de la balle avec le centre du terrain, nous devons déplacer la balle sur la moitié de sa largeur à gauche et sur la moitié de sa hauteur vers le haut :
 
 ```js
 ball.style.left = Math.round(field.clientWidth / 2 - ball.offsetWidth / 2) + 'px';
 ball.style.top = Math.round(field.clientHeight / 2 - ball.offsetHeight / 2) + 'px';
 ```
 
-Now the ball is finally centered.
+Maintenant, la balle est enfin centrée.
 
-````warn header="Attention: the pitfall!"
+````warn header="Attention : l'écueil !"
 
-The code won't work reliably while `<img>` has no width/height:
+Le code ne fonctionnera pas de manière fiable tant que `<img>` n'a pas de largeur/hauteur :
 
 ```html
 <img src="ball.png" id="ball">
 ```
 ````
 
-When the browser does not know the width/height of an image (from tag attributes or CSS), then it assumes them to equal `0` until the image finishes loading.
+Lorsque le navigateur ne connaît pas la largeur/hauteur d'une image (à partir des attributs de balise ou CSS), il suppose qu'ils sont égaux à `0` jusqu'à ce que le chargement de l'image soit terminé.
 
-So the value of `ball.offsetWidth` will be `0` until the image loads. That leads to wrong coordinates in the code above.
+Ainsi, la valeur de `ball.offsetWidth` sera `0` jusqu'à ce que l'image se charge. Cela conduit à de mauvaises coordonnées dans le code ci-dessus.
 
-After the first load, the browser usually caches the image, and on reloads it will have the size immediately. But on the first load the value of `ball.offsetWidth` is `0`.
+Après le premier chargement, le navigateur met généralement l'image en cache et lors des rechargements, elle aura immédiatement la taille. Mais lors du premier chargement, la valeur de `ball.offsetWidth` est `0`.
 
-We should fix that by adding `width/height` to `<img>`:
+Nous devons corriger cela en ajoutant `width/height` à `<img>` :
 
 ```html
 <img src="ball.png" *!*width="40" height="40"*/!* id="ball">
 ```
 
-...Or provide the size in CSS:
+...Ou indiquez la taille en CSS :
 
 ```css
 #ball {

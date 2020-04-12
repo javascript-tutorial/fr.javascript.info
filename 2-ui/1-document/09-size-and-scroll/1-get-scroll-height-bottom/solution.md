@@ -1,7 +1,7 @@
-The solution is:
+La solution est :
 
 ```js
 let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
 ```
 
-In other words: (full height) minus (scrolled out top part) minus (visible part) -- that's exactly the scrolled out bottom part.
+En d'autres termes : (pleine hauteur) moins (partie supérieure déroulée) moins (partie visible) -- c'est exactement la partie inférieure déroulée.
