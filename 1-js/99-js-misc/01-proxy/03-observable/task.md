@@ -1,9 +1,9 @@
 
 # Observable
 
-Create a function `makeObservable(target)` that "makes the object observable" by returning a proxy.
+Créez une fonction `makeObservable(target)` qui "rend l'objet observable" en renvoyant un proxy.
 
-Here's how it should work:
+Voici comment cela devrait fonctionner:
 
 ```js run
 function makeObservable(target) {
@@ -20,8 +20,8 @@ user.observe((key, value) => {
 user.name = "John"; // alerts: SET name=John
 ```
 
-In other words, an object returned by `makeObservable` is just like the original one, but also has the method `observe(handler)` that sets `handler` function to be called on any property change.
+En d'autres termes, un objet retourné par `makeObservable` est exactement comme celui d'origine, mais possède également la méthode `observe(handler)` qui définit la fonction de `handler` à appeler lors de tout changement de propriété.
 
-Whenever a property changes, `handler(key, value)` is called with the name and value of the property.
+Chaque fois qu'une propriété change, le `handler(key, value)` est appelé avec le nom et la valeur de la propriété.
 
-P.S. In this task, please only take care about writing to a property. Other operations can be implemented in a similar way.
+P.S. Dans cette tâche, veillez uniquement à écrire sur une propriété. D'autres opérations peuvent être implémentées de manière similaire.
