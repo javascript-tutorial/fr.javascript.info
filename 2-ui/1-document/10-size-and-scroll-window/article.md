@@ -1,50 +1,50 @@
-# Window sizes and scrolling
+# Tailles des fenêtres et défilement
 
-How do we find the width and height of the browser window? How do we get the full width and height of the document, including the scrolled out part? How do we scroll the page using JavaScript?
+Comment trouver la largeur et la hauteur de la fenêtre du navigateur ? Comment obtenir la largeur et la hauteur complètes du document, y compris la partie déroulante ? Comment faire défiler la page en utilisant JavaScript ?
 
-For most such requests, we can use the root document element `document.documentElement`, that corresponds to the `<html>` tag. But there are additional methods and peculiarities important enough to consider.
+Pour la plupart de ces requêtes, nous pouvons utiliser l'élément de document racine `document.documentElement`, qui correspond à la balise `<html>`. Mais il existe des méthodes et des particularités supplémentaires suffisamment importantes pour être prises en compte.
 
-## Width/height of the window
+## Largeur/hauteur de la fenêtre
 
-To get window width and height we can use `clientWidth/clientHeight` of `document.documentElement`:
+Pour obtenir la largeur et la hauteur de la fenêtre, nous pouvons utiliser `clientWidth/clientHeight` de `document.documentElement` :
 
 ![](document-client-width-height.svg)
 
 ```online
-For instance, this button shows the height of your window:
+Par exemple, ce bouton affiche la hauteur de votre fenêtre :
 
 <button onclick="alert(document.documentElement.clientHeight)">alert(document.documentElement.clientHeight)</button>
 ```
 
-````warn header="Not `window.innerWidth/Height`"
-Browsers also support properties `window.innerWidth/innerHeight`. They look like what we want. So why not to use them instead?
+````warn header="Pas `window.innerWidth/Height`"
+Les navigateurs prennent également en charge les propriétés `window.innerWidth/innerHeight`. Ils ressemblent à ce que nous voulons. Alors pourquoi ne pas les utiliser à la place ?
 
-If there exists a scrollbar, and it occupies some space, `clientWidth/clientHeight` provide the width/height without it (subtract it). In other words, they return width/height of the visible part of the document, available for the content.
+S'il existe une barre de défilement et qu'elle occupe de l'espace, `clientWidth/clientHeight` fournit la largeur/hauteur sans elle (cela la soustrait). En d'autres termes, elles renvoient la largeur/hauteur de la partie visible du document, disponible pour le contenu.
 
-...And `window.innerWidth/innerHeight` include the scrollbar.
+… Et `window.innerWidth/innerHeight` inclut la barre de défilement.
 
-If there's a scrollbar, and it occupies some space, then these two lines show different values:
+S'il y a une barre de défilement et qu'elle occupe de l'espace, ces deux lignes affichent des valeurs différentes :
 ```js run
-alert( window.innerWidth ); // full window width
-alert( document.documentElement.clientWidth ); // window width minus the scrollbar
+alert( window.innerWidth ); // pleine largeur de fenêtre
+alert( document.documentElement.clientWidth ); // largeur de la fenêtre moins la barre de défilement
 ```
 
-In most cases we need the *available* window width: to draw or position something. That is: inside scrollbars if there are any. So we should use `documentElement.clientHeight/Width`.
+Dans la plupart des cas, nous avons besoin de la largeur de fenêtre *disponible* : pour dessiner ou positionner quelque chose. C'est-à-dire : à l'intérieur des barres de défilement s'il y en a. Nous devons donc utiliser `documentElement.clientHeight/Width`.
 ````
 
-```warn header="`DOCTYPE` is important"
-Please note: top-level geometry properties may work a little bit differently when there's no `<!DOCTYPE HTML>` in HTML. Odd things are possible.
+```warn header="`Le DOCTYPE` est important"
+Remarque: les propriétés de géométrie de niveau supérieur peuvent fonctionner un peu différemment lorsqu'il n'y a pas de `<!DOCTYPE HTML>` dans HTML. Des choses étranges sont possibles.
 
-In modern HTML we should always write `DOCTYPE`.
+Dans le HTML moderne, nous devons toujours écrire le `DOCTYPE`.
 ```
 
-## Width/height of the document
+## Largeur/hauteur du document
 
-Theoretically, as the root document element is `document.documentElement`, and it encloses all the content, we could measure document full size as `document.documentElement.scrollWidth/scrollHeight`.
+Théoriquement, comme l'élément de document racine est `document.documentElement` et qu'il contient tout le contenu, nous pourrions mesurer le document en taille réelle comme `document.documentElement.scrollWidth/scrollHeight`.
 
-But on that element, for the whole page, these properties do not work as intended. In Chrome/Safari/Opera if there's no scroll, then `documentElement.scrollHeight` may be even less than  `documentElement.clientHeight`! Sounds like a nonsense, weird, right?
+Mais sur cet élément, pour la page entière, ces propriétés ne fonctionnent pas comme prévu. Dans Chrome/Safari/Opera s'il n'y a pas de défilement, alors `documentElement.scrollHeight` peut être encore moins que `documentElement.clientHeight` ! Cela ressemble à un non-sens, bizarre, non ?
 
-To reliably obtain the full document height, we should take the maximum of these properties:
+Pour obtenir de manière fiable la pleine hauteur du document, nous devons prendre le maximum de ces propriétés :
 
 ```js run
 let scrollHeight = Math.max(
@@ -56,101 +56,101 @@ let scrollHeight = Math.max(
 alert('Full document height, with scrolled out part: ' + scrollHeight);
 ```
 
-Why so? Better don't ask. These inconsistencies come from ancient times, not a "smart" logic.
+Pourquoi ? Mieux vaut ne pas demander. Ces incohérences viennent des temps anciens, pas d'une logique "intelligente".
 
-## Get the current scroll [#page-scroll]
+## Obtenez le défilement actuel [#page-scroll]
 
-DOM elements have their current scroll state in `elem.scrollLeft/scrollTop`.
+Les éléments DOM ont leur état de défilement actuel dans `elem.scrollLeft/scrollTop`.
 
-For document scroll `document.documentElement.scrollLeft/Top` works in most browsers, except older WebKit-based ones, like Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), where we should use `document.body` instead of `document.documentElement`.
+Pour le défilement de document, `document.documentElement.scrollLeft/Top` fonctionne dans la plupart des navigateurs, à l'exception des plus anciens basés sur WebKit, comme Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), où nous devrions utiliser `document.body` au lieu de `document.documentElement`.
 
-Luckily, we don't have to remember these peculiarities at all, because the scroll is available in the special properties `window.pageXOffset/pageYOffset`:
+Heureusement, nous n'avons pas du tout à nous souvenir de ces particularités, car le défilement est disponible dans les propriétés spéciales `window.pageXOffset/pageYOffset` :
 
 ```js run
 alert('Current scroll from the top: ' + window.pageYOffset);
 alert('Current scroll from the left: ' + window.pageXOffset);
 ```
 
-These properties are read-only.
+Ces propriétés sont en lecture seule.
 
-## Scrolling: scrollTo, scrollBy, scrollIntoView [#window-scroll]
+## Défilement : scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
 ```warn
-To scroll the page from JavaScript, its DOM must be fully built.
+Pour faire défiler la page à partir de JavaScript, son DOM doit être entièrement construit.
 
-For instance, if we try to scroll the page from the script in `<head>`, it won't work.
+Par exemple, si nous essayons de faire défiler la page à partir du script dans `<head>`, cela ne fonctionnera pas.
 ```
 
-Regular elements can be scrolled by changing `scrollTop/scrollLeft`.
+Les éléments réguliers peuvent défiler en changeant `scrollTop/scrollLeft`.
 
-We can do the same for the page using `document.documentElement.scrollTop/Left` (except Safari, where `document.body.scrollTop/Left` should be used instead).
+Nous pouvons faire de même pour la page utilisant `document.documentElement.scrollTop/Left` (sauf Safari, où `document.body.scrollTop/Left` devrait être utilisé à la place).
 
-Alternatively, there's a simpler, universal solution: special methods  [window.scrollBy(x,y)](mdn:api/Window/scrollBy) and [window.scrollTo(pageX,pageY)](mdn:api/Window/scrollTo).
+Alternativement, il existe une solution plus simple et universelle: des méthodes spéciales [window.scrollBy(x,y)](mdn:api/Window/scrollBy) et [window.scrollTo(pageX,pageY)](mdn:api/Window/scrollTo).
 
-- The method `scrollBy(x,y)` scrolls the page *relative to its current position*. For instance, `scrollBy(0,10)` scrolls the page `10px` down.
+- La méthode `scrollBy(x, y)` fait défiler la page *par rapport à sa position actuelle*. Par exemple, `scrollBy(0,10)` fait défiler la page `10px` vers le bas.
 
     ```online
-    The button below demonstrates this:
+    Le bouton ci-dessous illustre cela:
 
     <button onclick="window.scrollBy(0,10)">window.scrollBy(0,10)</button>
     ```
-- The method `scrollTo(pageX,pageY)` scrolls the page *to absolute coordinates*, so that the top-left corner of the visible part has coordinates `(pageX, pageY)` relative to the document's top-left corner. It's like setting `scrollLeft/scrollTop`.
+- La méthode `scrollTo(pageX,pageY)` fait défiler la page *jusqu'aux coordonnées absolues*, de sorte que le coin supérieur gauche de la partie visible ait les coordonnées `(pageX, pageY)` par rapport au coin supérieur gauche du document. C'est comme définir `scrollLeft/scrollTop`.
 
-    To scroll to the very beginning, we can use `scrollTo(0,0)`.
+    Pour faire défiler jusqu'au tout début, nous pouvons utiliser `scrollTo(0,0)`.
 
     ```online
     <button onclick="window.scrollTo(0,0)">window.scrollTo(0,0)</button>
     ```
 
-These methods work for all browsers the same way.
+Ces méthodes fonctionnent de la même manière pour tous les navigateurs.
 
 ## scrollIntoView
 
-For completeness, let's cover one more method:  [elem.scrollIntoView(top)](mdn:api/Element/scrollIntoView).
+Pour être complet, couvrons une autre méthode : [elem.scrollIntoView(top)](mdn:api/Element/scrollIntoView).
 
-The call to `elem.scrollIntoView(top)` scrolls the page to make `elem` visible. It has one argument:
+L'appel à `elem.scrollIntoView(top)` fait défiler la page pour rendre `elem` visible. Il a un argument :
 
-- if `top=true` (that's the default), then the page will be scrolled to make `elem` appear on the top of the window. The upper edge of the element is aligned with the window top.
-- if `top=false`, then the page scrolls to make `elem` appear at the bottom. The bottom edge of the element is aligned with the window bottom.
+- si `top=true` (c'est la valeur par défaut), alors la page défilera pour faire apparaître `elem` en haut de la fenêtre. Le bord supérieur de l'élément est aligné avec le haut de la fenêtre.
+- si `top=false`, alors la page défile pour faire apparaître `elem` en bas. Le bord inférieur de l'élément est aligné avec le bas de la fenêtre.
 
 ```online
-The button below scrolls the page to make itself show at the window top:
+Le bouton ci-dessous fait défiler la page pour aligner l'élément en haut de la fenêtre :
 
 <button onclick="this.scrollIntoView()">this.scrollIntoView()</button>
 
-And this button scrolls the page to show it at the bottom:
+Et ce bouton fait défiler la page pour l'aligner en bas :
 
 <button onclick="this.scrollIntoView(false)">this.scrollIntoView(false)</button>
 ```
 
-## Forbid the scrolling
+## Interdire le défilement
 
-Sometimes we need to make the document "unscrollable". For instance, when we need to cover it with a large message requiring immediate attention, and we want the visitor to interact with that message, not with the document.
+Parfois, nous devons rendre le document "non-défilable". Par exemple, lorsque nous devons le couvrir d'un gros message nécessitant une attention immédiate et que nous voulons que le visiteur interagisse avec ce message, pas avec le document.
 
-To make the document unscrollable, it's enough to set `document.body.style.overflow = "hidden"`. The page will freeze on its current scroll.
+Pour rendre le document impossible à faire défiler, il suffit de définir `document.body.style.overflow = "hidden"`. La page se fige sur son défilement actuel.
 
 ```online
-Try it:
+Essayez-le :
 
 <button onclick="document.body.style.overflow = 'hidden'">document.body.style.overflow = 'hidden'</button>
 
 <button onclick="document.body.style.overflow = ''">document.body.style.overflow = ''</button>
 
-The first button freezes the scroll, the second one resumes it.
+Le premier bouton fige le défilement, le second le reprend.
 ```
 
-We can use the same technique to "freeze" the scroll for other elements, not just for `document.body`.
+Nous pouvons utiliser la même technique pour "figer" le défilement pour d'autres éléments, pas seulement pour `document.body`.
 
-The drawback of the method is that the scrollbar disappears. If it occupied some space, then that space is now free, and the content "jumps" to fill it.
+L'inconvénient de la méthode est que la barre de défilement disparaît. S'il occupait de l'espace, cet espace est désormais libre et le contenu "saute" pour le remplir.
 
-That looks a bit odd, but can be worked around if we compare `clientWidth` before and after the freeze, and if it increased (the scrollbar disappeared) then add `padding` to `document.body` in place of the scrollbar, to keep the content width the same.
+Cela semble un peu étrange, mais peut être contourné si nous comparons `clientWidth` avant et après le gel, et s'il a augmenté (la barre de défilement a disparu), puis ajoutez un `padding` à `document.body` à la place de la barre de défilement, pour conservez la même largeur de contenu.
 
-## Summary
+## Résumé
 
-Geometry:
+Géométrie :
 
-- Width/height of the visible part of the document (content area width/height): `document.documentElement.clientWidth/Height`
-- Width/height of the whole document, with the scrolled out part:
+- Largeur/hauteur de la partie visible du document (largeur/hauteur de la zone de contenu) : `document.documentElement.clientWidth/Height`
+- Largeur/hauteur de l'ensemble du document, avec la partie déroulante :
 
     ```js
     let scrollHeight = Math.max(
@@ -160,11 +160,11 @@ Geometry:
     );
     ```
 
-Scrolling:
+Défilement :
 
-- Read the current scroll: `window.pageYOffset/pageXOffset`.
-- Change the current scroll:
+- Lire le défilement actuel : `window.pageYOffset/pageXOffset`.
+- Modifiez le défilement actuel :
 
-    - `window.scrollTo(pageX,pageY)` -- absolute coordinates,
-    - `window.scrollBy(x,y)` -- scroll relative the current place,
-    - `elem.scrollIntoView(top)` -- scroll to make `elem` visible (align with the top/bottom of the window).
+    - `window.scrollTo(pageX,pageY)` -- coordonnées absolues,
+    - `window.scrollBy(x,y)` -- défilement par rapport à l'endroit actuel,
+    - `elem.scrollIntoView(top)` -- défilement pour rendre `elem` visible (alignement avec le haut/bas de la fenêtre).
