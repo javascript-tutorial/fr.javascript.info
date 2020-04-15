@@ -2,17 +2,17 @@ importance: 5
 
 ---
 
-# Show a note near the element
+# Afficher une note près de l'élément
 
-Create a function `positionAt(anchor, position, elem)` that positions `elem`, depending on `position` near `anchor` element.
+Créez une fonction `positionAt(anchor, position, elem)` qui positionne `elem`, en fonction de `position` près de l'élément `anchor`.
 
-The `position` must be a string with any one of 3 values:
-- `"top"` - position `elem` right above `anchor`
-- `"right"` - position `elem` immediately at the right of `anchor`
-- `"bottom"` - position `elem` right below `anchor`
+La `position` doit être une chaîne de caractères avec l'une des 3 valeurs :
+- `"top"` - position `elem` juste au dessus de `anchor`
+- `"right"` - position `elem` immédiatement à droite de `anchor`
+- `"bottom"` - position `elem` juste en dessous `anchor`
 
-It's used inside function `showNote(anchor, position, html)`, provided in the task source code, that creates a "note" element with given `html` and shows it at the given `position` near the `anchor`.
+Il est utilisé à l'intérieur de la fonction `showNote(anchor, position, html)`, fournie dans le code source de la tâche, qui crée un élément "note" avec `html` donné et l'affiche à la `position` donnée près de `anchor`.
 
-Here's the demo of notes:
+Voici la démo des notes :
 
 [iframe src="solution" height="350" border="1" link]

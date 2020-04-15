@@ -2,23 +2,23 @@ importance: 5
 
 ---
 
-# Find window coordinates of the field
+# Trouver les coordonnées de la fenêtre du champ
 
-In the iframe below you can see a document with the green "field".
+Dans l'iframe ci-dessous, vous pouvez voir un document avec le "champ" vert.
 
-Use JavaScript to find window coordinates of corners pointed by with arrows.
+Utilisez JavaScript pour trouver les coordonnées de la fenêtre des coins pointés par des flèches.
 
-There's a small feature implemented in the document for convenience. A click at any place shows coordinates there.
+Il y a une petite fonctionnalité implémentée dans le document pour plus de commodité. Un clic à n'importe quel endroit montre les coordonnées là-bas.
 
 [iframe border=1 height=360 src="source" link edit]
 
-Your code should use DOM to get window coordinates of:
+Votre code doit utiliser DOM pour obtenir les coordonnées de la fenêtre de :
 
-1. Upper-left, outer corner (that's simple).
-2. Bottom-right, outer corner (simple too).
-3. Upper-left, inner corner (a bit harder).
-4. Bottom-right, inner corner (there are several ways, choose one).
+1. Coin extérieur supérieur gauche (c'est simple).
+2. En bas à droite, coin extérieur (simple aussi).
+3. Coin intérieur supérieur gauche (un peu plus dur).
+4. En bas à droite, coin intérieur (il y a plusieurs façons, choisissez-en une).
 
-The coordinates that you calculate should be the same as those returned by the mouse click.
+Les coordonnées que vous calculez doivent être les mêmes que celles renvoyées par le clic de souris.
 
-P.S. The code should also work if the element has another size or border, not bound to any fixed values.
+P.S. Le code devrait également fonctionner si l'élément a une autre taille ou bordure, qui n'est lié à aucune valeur fixe.
