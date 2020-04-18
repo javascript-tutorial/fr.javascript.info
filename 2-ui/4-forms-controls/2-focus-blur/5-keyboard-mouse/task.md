@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Keyboard-driven mouse
+# Souris dirigée par le clavier
 
-Focus on the mouse. Then use arrow keys to move it:
+Mettre la concentration sur la soruis. Puis utiliser les touches flèches pour la déplacer:
 
 [demo src="solution"]
 
-P.S. Don't put event handlers anywhere except the `#mouse` element.
-P.P.S. Don't modify HTML/CSS, the approach should be generic and work with any element.
+P.S. Ne mettez de gestionnaire d'évènement que sur l'élément `#mouse`.
+P.P.S. Ne modifiez pas le HTML/CSS, l'approche devrait être générique et fonctionner avec n'importe quel élément.

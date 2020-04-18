@@ -4,7 +4,7 @@ let editingTd;
 
 table.onclick = function(event) {
 
-  // 3 possible targets
+  // 3 cibles possible
   let target = event.target.closest('.edit-cancel,.edit-ok,td');
 
   if (!table.contains(target)) return;
@@ -14,7 +14,7 @@ table.onclick = function(event) {
   } else if (target.className == 'edit-ok') {
     finishTdEdit(editingTd.elem, true);
   } else if (target.nodeName == 'TD') {
-    if (editingTd) return; // already editing
+    if (editingTd) return; // déjà en cours d'édition
 
     makeTdEditable(target);
   }
@@ -27,7 +27,7 @@ function makeTdEditable(td) {
     data: td.innerHTML
   };
 
-  td.classList.add('edit-td'); // td is in edit state, CSS also styles the area inside
+  td.classList.add('edit-td'); // td est en train d'être édité, CSS stylise aussi la zone à l'intérieur
 
   let textArea = document.createElement('textarea');
   textArea.style.width = td.clientWidth + 'px';
