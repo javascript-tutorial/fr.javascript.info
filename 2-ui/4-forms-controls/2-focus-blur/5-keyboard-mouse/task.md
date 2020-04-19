@@ -4,7 +4,7 @@ importance: 4
 
 # Souris dirigée par le clavier
 
-Mettre la concentration sur la soruis. Puis utiliser les touches flèches pour la déplacer:
+Mettre le focus sur la souris. Puis utiliser les touches flèches pour la déplacer:
 
 [demo src="solution"]
 

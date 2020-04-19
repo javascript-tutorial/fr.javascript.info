@@ -7,7 +7,7 @@
   /* retire la poignée de redimensionnement dans Firefox */
   resize: none;
 
-  /* retire le contour lors de la concentration sur Chrome */
+  /* retire le contour lors du focus sur Chrome */
   outline: none;
 
   /* retire la barre de défillement sur IE */
