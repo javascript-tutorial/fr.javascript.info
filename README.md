@@ -1,6 +1,6 @@
 # Le tutoriel JavaScript moderne
 
-Ce repository héberge la traduction de <https://javascript.info> en français.
+Ce répertoire héberge la traduction de <https://javascript.info> en français.
 
 Aidez-nous à améliorer la traduction.
 
