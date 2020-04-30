@@ -1,4 +1,4 @@
-# ArrayBuffer, binary arrays
+# ArrayBuffer, tableaux binaires
 
 Dans le développement web, nous rencontrons des données binaires principalement lorsque l'on travaille avec des fichiers (création, envoi, téléchargement). Un autre cas d'utilisation est le traitement d'image.
 
@@ -74,15 +74,15 @@ for(let num of view) {
 
 Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Ils partagent le même ensemble de méthodes et de propriétés.
 
-Please note, there's no constructor called `TypedArray`, it's just a common "umbrella" term to represent one of views over `ArrayBuffer`: `Int8Array`, `Uint8Array` and so on, the full list will soon follow.
+Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'un terme commun pour représenter une de ces vues : `ArrayBuffer`: `Int8Array`, `Uint8Array` etc., la liste entière va bientôt suivre.
 
-When you see something like `new TypedArray`, it means any of `new Int8Array`, `new Uint8Array`, etc.
+Lorsque vous voyez quelque chose comme `new TypedArray`, Il s'agit de n'importe quoi parmi `new Int8Array`, `new Uint8Array`, etc.
 
-Typed array behave like regular arrays: have indexes and iterable.
+Les `TypedArray` ressemblent à des tableaux classiques: ils ont des indexs et sont itérables.
 
-A typed array constructor (be it `Int8Array` or `Float64Array`, doesn't matter) behaves differently depending on argument types.
+A typed array constructor (soit `Int8Array` ou `Float64Array`, peut importe) behaves differently depending on argument types.
 
-There are 5 variants of arguments:
+Il y a 5 variantes d'arguments:
 
 ```js
 new TypedArray(buffer, [byteOffset], [length]);
@@ -92,7 +92,7 @@ new TypedArray(length);
 new TypedArray();
 ```
 
-1. If an `ArrayBuffer` argument is supplied, the view is created over it. We used that syntax already.
+1. Si un `ArrayBuffer` est fourni, la vue est créée dessus. Nous avons déjà utilisé cette syntaxe.
 
     Optionally we can provide `byteOffset` to start from (0 by default) and the `length` (till the end of the buffer by default), then the view will cover only a part of the `buffer`.
 
