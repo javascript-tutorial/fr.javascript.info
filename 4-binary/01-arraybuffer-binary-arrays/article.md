@@ -10,7 +10,7 @@ Pour en nommer quelques unes:
 
 En javascript, les données binaires sont implémentées de façon non standard, comparé à d'autres langages. Mais quand nous trions les choses, tout devient beaucoup plus simple.
 
-**L'objet binaire de base est un `ArrayBuffer` -- une référence à une zone contigu de taille fixe de la mémoire.**
+**L'objet binaire de base est un `ArrayBuffer` -- une référence à une zone contigüe de taille fixe de la mémoire.**
 
 Nous le créons comme ceci:
 ```js run
@@ -20,9 +20,9 @@ alert(buffer.byteLength); // 16
 
 Cela alloue une zone contigue de 16 octets dans la mémoire et la pré-remplie avec des zéros.
 
-```warn header="L'`ArrayBuffer` n'est pas un tableau de quelque chose."
+```warn header="L'`ArrayBuffer` n'est pas un tableau de 'quelque chose'."
 Commençons par éliminer une possible source de confusion. `ArrayBuffer` n'a rien en commun avec `Array`:
-- Il possède une taille fixe, on ne peut pas l'agrandir ou le reduire.
+- Il possède une taille fixe, on ne peut pas l'agrandir ou la    reduire.
 - Il prend exactement autant d'espace en mémoire.
 - Pour accéder à des octets individuels, un autre objet de "vue" est nécessaire, on n'utilise pas `buffer[index]`.
 ```
@@ -31,7 +31,7 @@ Commençons par éliminer une possible source de confusion. `ArrayBuffer` n'a ri
 
 **Pour manipuler un `ArrayBuffer`, nous avons besoin d'utiliser un objet de "vue".**
 
-Un objet de "vue" de stocke rien tout seul. Ce sont les yeux qui donnent une interprétation des octets stockés dans l'`ArrayBuffer`.
+Un objet de "vue" ne stocke rien tout seul. Ce sont les lunettes qui donnent une interprétation des octets stockés dans l'`ArrayBuffer`.
 
 Par exemple:
 
@@ -46,7 +46,7 @@ Donc, les données binaires dans un `ArrayBuffer` de 16 octets peuvent être int
 
 `ArrayBuffer` est l'objet central, le centre de tout, les données binaires brutes.
 
-Mais si nous voulons écrire dessus, ou intérer dessus, pour n'importe quelle opération – nous devons utiliser une "vue", e.g:
+Mais si nous voulons écrire à l'intérieur, ou itérer dessus, pour n'importe quelle opération – nous devons utiliser une "vue", e.g:
 
 ```js run
 let buffer = new ArrayBuffer(16); // crée un buffer de taille 16
@@ -65,17 +65,16 @@ view[0] = 123456;
 
 // Itérons sur les valeurs
 for(let num of view) {
-  alert(num); // 123456, then 0, 0, 0 (4 valeurs au total)
+  alert(num); // 123456, puis 0, 0, 0 (4 valeurs au total)
 }
 
 ```
 
 ## TypedArray
 
-The common term for all these views (`Uint8Array`, `Uint32Array`, etc) is [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). They share the same set of methods and properities.
+Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Ils partagent le même ensemble de méthodes et de propriétés.
 
 They are much more like regular arrays: have indexes and iterable.
-
 
 A typed array constructor (be it `Int8Array` or `Float64Array`, doesn't matter) behaves differently depending on argument types.
 
