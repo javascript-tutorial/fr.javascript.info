@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Editable div
+# Div éditable
 
-Create a `<div>` that turns into `<textarea>` when clicked.
+Créez une `<div>` qui se transforme en `<textarea>` lorsque l'on clique dessus.
 
-The textarea allows to edit the HTML in the `<div>`.
+La zone de texte permet de modifier le HTML présent dans la `<div>`.
 
-When the user presses `key:Enter` or it loses focus, the `<textarea>` turns back into `<div>`, and its content becomes HTML in `<div>`.
+Lorsque l'utilisateur appuie sur `key:Enter` ou perds le focus, la `<textarea>` se transforme à nouveau en `<div>`, et son contenu devient le HTML dans `<div>`.
 
 [demo src="solution"]

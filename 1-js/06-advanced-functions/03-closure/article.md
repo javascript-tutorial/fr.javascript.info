@@ -182,7 +182,7 @@ Voici un peu plus de code :
 Les rectangles sur le côté droit montrent comment l'environnement lexical global change pendant l'exécution :
 
 1. Lorsque le script démarre, l'environnement lexical est prérempli avec toutes les variables déclarées.
-    - Initialement, ils sont à l'état "non initialisé". C'est un état interne spécial, cela signifie que le moteur connaît la variable, mais ne permettra pas de l'utiliser avant `let`. C'est presque comme si la variable n'existait pas.
+    - Initialement, elles sont à l'état "non initialisé". C'est un état interne spécial, cela signifie que le moteur connaît la variable, mais elle ne peut pas être référencée tant qu'elle n'a pas été déclarée avec `let`. C'est presque la même chose que si la variable n'existait pas.
 2. Ensuite, la définition de `let phrase` apparaît. Il n'y a pas encore d'affectation, donc sa valeur est `undefined`. Nous pouvons utiliser la variable depuis ce moment.
 3. `phrase` se voit attribuer une valeur.
 4. `phrase` change la valeur.

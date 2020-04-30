@@ -1,14 +1,14 @@
-# Error on reading non-existant property
+# Erreur lors de la lecture d'une propriété inexistante
 
-Usually, an attempt to read a non-existant property returns `undefined`.
+Habituellement, une tentative de lecture d'une propriété inexistante renvoie `undefined`.
 
-Create a proxy that throws an error for an attempt to read of a non-existant property instead.
+Créez à la place un proxy qui génère une erreur pour une tentative de lecture d'une propriété inexistante.
 
-That can help to detect programming mistakes early.
+Cela peut aider à détecter précocement les erreurs de programmation.
 
-Write a function `wrap(target)` that takes an object `target` and return a proxy that adds this functionality aspect.
+Écrivez une fonction `wrap(target)` qui prend un objet `target` et retourne un proxy qui ajoute cet aspect fonctionnel.
 
-That's how it should work:
+Voilà comment cela devrait fonctionner:
 
 ```js
 let user = {
@@ -27,6 +27,6 @@ user = wrap(user);
 
 alert(user.name); // John
 *!*
-alert(user.age); // ReferenceError: Property doesn't exist "age"
+alert(user.age); // ReferenceError: la propriété n'existe pas "age"
 */!*
 ```

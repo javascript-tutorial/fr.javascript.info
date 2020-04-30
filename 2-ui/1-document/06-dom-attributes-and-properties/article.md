@@ -1,18 +1,18 @@
-# Attributes and properties
+# Attributs et propriétés
 
-When the browser loads the page, it "reads" (another word: "parses") the HTML and generates DOM objects from it. For element nodes, most standard HTML attributes automatically become properties of DOM objects.
+Lorsque le navigateur charge la page, il "lit" (un autre mot: "analyse") le code HTML et en génère des objets DOM. Pour les nœuds éléments, la plupart des attributs HTML standards deviennent automatiquement des propriétés des objets DOM.
 
-For instance, if the tag is `<body id="page">`, then the DOM object has `body.id="page"`.
+Par exemple, si la balise est `<body id="page">`, alors l'objet DOM a `body.id="page"`.
 
-But the attribute-property mapping is not one-to-one! In this chapter we'll pay attention to separate these two notions, to see how to work with them, when they are the same, and when they are different.
+Mais le mapping des propriétés d'attribut ne se fait pas un à un ! Dans ce chapitre, nous ferons attention à séparer ces deux notions, pour voir comment travailler avec elles, quand elles sont identiques et quand elles sont différentes.
 
-## DOM properties
+## Propriétés DOM
 
-We've already seen built-in DOM properties. There are a lot. But technically no one limits us, and if there aren't enough, we can add our own.
+Nous avons déjà vu des propriétés DOM intégrées. Il y en a beaucoup. Mais techniquement, personne ne nous limite et s'il n'y en a pas assez, nous pouvons ajouter les nôtres.
 
-DOM nodes are regular JavaScript objects. We can alter them.
+Les nœuds DOM sont des objets JavaScript normaux. Nous pouvons les modifier.
 
-For instance, let's create a new property in `document.body`:
+Par exemple, créons une nouvelle propriété dans `document.body` :
 
 ```js run
 document.body.myData = {
@@ -23,17 +23,17 @@ document.body.myData = {
 alert(document.body.myData.title); // Imperator
 ```
 
-We can add a method as well:
+Nous pouvons également ajouter une méthode :
 
 ```js run
 document.body.sayTagName = function() {
   alert(this.tagName);
 };
 
-document.body.sayTagName(); // BODY (the value of "this" in the method is document.body)
+document.body.sayTagName(); // BODY (la valeur de "this" dans la méthode est document.body)
 ```
 
-We can also modify built-in prototypes like `Element.prototype` and add new methods to all elements:
+Nous pouvons également modifier des prototypes intégrés comme `Element.prototype` et ajouter de nouvelles méthodes à tous les éléments :
 
 ```js run
 Element.prototype.sayHi = function() {
@@ -44,59 +44,59 @@ document.documentElement.sayHi(); // Hello, I'm HTML
 document.body.sayHi(); // Hello, I'm BODY
 ```
 
-So, DOM properties and methods behave just like those of regular JavaScript objects:
+Ainsi, les propriétés et méthodes DOM se comportent comme celles des objets JavaScript normaux :
 
-- They can have any value.
-- They are case-sensitive (write `elem.nodeType`, not `elem.NoDeTyPe`).
+- Ils peuvent avoir n'importe quelle valeur.
+- Ils sont sensibles à la casse (écrivez `elem.nodeType`, pas `elem.NoDeTyPe`).
 
-## HTML attributes
+## Attributs HTML
 
-In HTML, tags may have attributes. When the browser parses the HTML to create DOM objects for tags, it recognizes *standard* attributes and creates DOM properties from them.
+En HTML, les balises peuvent avoir des attributs. Lorsque le navigateur analyse le code HTML pour créer des objets DOM pour les balises, il reconnaît les attributs * standard * et crée des propriétés DOM à partir d'elles.
 
-So when an element has `id` or another *standard* attribute, the corresponding property gets created. But that doesn't happen if the attribute is non-standard.
+Ainsi, lorsqu'un élément a `id` ou un autre attribut *standard*, la propriété correspondante est créée. Mais cela ne se produit pas si l'attribut n'est pas standard.
 
-For instance:
+Par exemple :
 ```html run
 <body id="test" something="non-standard">
   <script>
     alert(document.body.id); // test
 *!*
-    // non-standard attribute does not yield a property
+    // l'attribut non standard ne donne pas de propriété
     alert(document.body.something); // undefined
 */!*
   </script>
 </body>
 ```
 
-Please note that a standard attribute for one element can be unknown for another one. For instance, `"type"` is standard for `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), but not for `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)). Standard attributes are described in the specification for the corresponding element class.
+Veuillez noter qu'un attribut standard pour un élément peut être inconnu pour un autre. Par exemple, `"type"` est standard pour `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), mais pas pour `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)). Les attributs standard sont décrits dans la spécification de la classe d'élément correspondante.
 
-Here we can see it:
+Ici, nous pouvons le voir :
 ```html run
 <body id="body" type="...">
   <input id="input" type="text">
   <script>
     alert(input.type); // text
 *!*
-    alert(body.type); // undefined: DOM property not created, because it's non-standard
+    alert(body.type); // undefined: Propriété DOM non créée, car non standard
 */!*
   </script>
 </body>
 ```
 
-So, if an attribute is non-standard, there won't be a DOM-property for it. Is there a way to access such attributes?
+Donc, si un attribut n'est pas standard, il n'y aura pas de propriété DOM pour lui. Existe-t-il un moyen d'accéder à ces attributs ?
 
-Sure. All attributes are accessible by using the following methods:
+Bien sûr, tous les attributs sont accessibles en utilisant les méthodes suivantes :
 
-- `elem.hasAttribute(name)` -- checks for existence.
-- `elem.getAttribute(name)` -- gets the value.
-- `elem.setAttribute(name, value)` -- sets the value.
-- `elem.removeAttribute(name)` -- removes the attribute.
+- `elem.hasAttribute(name)` -- vérifie l'existence.
+- `elem.getAttribute(name)` -- obtient la valeur.
+- `elem.setAttribute(name, value)` -- définit la valeur.
+- `elem.removeAttribute(name)` -- supprime l'attribut.
 
-These methods operate exactly with what's written in HTML.
+Ces méthodes fonctionnent exactement avec ce qui est écrit en HTML.
 
-Also one can read all attributes using `elem.attributes`: a collection of objects that belong to a built-in [Attr](https://dom.spec.whatwg.org/#attr) class, with `name` and `value` properties.
+On peut aussi lire tous les attributs en utilisant `elem.attributes` : une collection d'objets qui appartiennent à une classe intégrée [Attr](https://dom.spec.whatwg.org/#attr),avec `name` et la propriété `value`.
 
-Here's a demo of reading a non-standard property:
+Voici une démonstration de la lecture d'une propriété non standard :
 
 ```html run
 <body something="non-standard">
@@ -108,43 +108,43 @@ Here's a demo of reading a non-standard property:
 </body>
 ```
 
-HTML attributes have the following features:
+Les attributs HTML ont les fonctionnalités suivantes :
 
-- Their name is case-insensitive (`id` is same as `ID`).
-- Their values are always strings.
+- Leur nom est insensible à la casse (`id` est identique à` ID`).
+- Leurs valeurs sont toujours des chaînes de caractères.
 
-Here's an extended demo of working with attributes:
+Voici une démonstration détaillée de l'utilisation des attributs :
 
 ```html run
 <body>
   <div id="elem" about="Elephant"></div>
 
   <script>
-    alert( elem.getAttribute('About') ); // (1) 'Elephant', reading
+    alert( elem.getAttribute('About') ); // (1) 'Elephant', lecture
 
-    elem.setAttribute('Test', 123); // (2), writing
+    elem.setAttribute('Test', 123); // (2), écriture
 
-    alert( elem.outerHTML ); // (3), see if the attribute is in HTML (yes)
+    alert( elem.outerHTML ); // (3), voir si l'attribut est en HTML (oui)
 
-    for (let attr of elem.attributes) { // (4) list all
+    for (let attr of elem.attributes) { // (4) lister tout
       alert( `${attr.name} = ${attr.value}` );
     }
   </script>
 </body>
 ```
 
-Please note:
+Veuillez noter :
 
-1. `getAttribute('About')` -- the first letter is uppercase here, and in HTML it's all lowercase. But that doesn't matter: attribute names are case-insensitive.
-2. We can assign anything to an attribute, but it becomes a string. So here we have `"123"` as the value.
-3. All attributes including ones that we set are visible in `outerHTML`.
-4. The `attributes` collection is iterable and has all the attributes of the element (standard and non-standard) as objects with `name` and `value` properties.
+1. `getAttribute('About')` -- la première lettre est en majuscules ici, et en HTML tout est en minuscules. Mais cela n'a pas d'importance: les noms d'attribut ne sont pas sensibles à la casse.
+2. Nous pouvons assigner n'importe quoi à un attribut, mais il devient une chaîne. Nous avons donc ici `"123"` comme valeur.
+3. Tous les attributs, y compris ceux que nous définissons, sont visibles dans `outerHTML`.
+4. La collection `attributes` est itérable et possède tous les attributs de l'élément (standard et non standard) en tant qu'objets avec les propriétés `name` et `value`.
 
-## Property-attribute synchronization
+## Synchronisation des attributs de propriété
 
-When a standard attribute changes, the corresponding property is auto-updated, and (with some exceptions) vice versa.
+Lorsqu'un attribut standard change, la propriété correspondante est automatiquement mise à jour et (à quelques exceptions près) vice versa.
 
-In the example below `id` is modified as an attribute, and we can see the property changed too. And then the same backwards:
+Dans l'exemple ci-dessous, `id` est modifié en tant qu'attribut, et nous pouvons également voir la propriété modifiée. Et puis la même chose à l'envers :
 
 ```html run
 <input>
@@ -154,15 +154,15 @@ In the example below `id` is modified as an attribute, and we can see the proper
 
   // attribute => property
   input.setAttribute('id', 'id');
-  alert(input.id); // id (updated)
+  alert(input.id); // id (mis à jour)
 
   // property => attribute
   input.id = 'newId';
-  alert(input.getAttribute('id')); // newId (updated)
+  alert(input.getAttribute('id')); // newId (mis à jour)
 </script>
 ```
 
-But there are exclusions, for instance `input.value` synchronizes only from attribute -> to property, but not back:
+Mais il y a des exclusions, par exemple `input.value` se synchronise uniquement de l'attribut -> vers la propriété, mais pas dans l'autre sens :
 
 ```html run
 <input>
@@ -177,31 +177,31 @@ But there are exclusions, for instance `input.value` synchronizes only from attr
 *!*
   // NOT property => attribute
   input.value = 'newValue';
-  alert(input.getAttribute('value')); // text (not updated!)
+  alert(input.getAttribute('value')); // text (non mis à jour !)
 */!*
 </script>
 ```
 
-In the example above:
-- Changing the attribute `value` updates the property.
-- But the property change does not affect the attribute.
+Dans l'exemple ci-dessus :
+- La modification de l'attribut `value` met à jour la propriété.
+- Mais le changement de propriété n'affecte pas l'attribut.
 
-That "feature" may actually come in handy, because the user actions may lead to `value` changes, and then after them, if we want to recover the "original" value from HTML, it's in the attribute.
+Cette "fonctionnalité" peut en fait être utile, car les actions de l'utilisateur peuvent entraîner des changements de `value`, puis après cela, si nous voulons récupérer la valeur "d'origine" du HTML, c'est dans l'attribut.
 
-## DOM properties are typed
+## Les propriétés DOM sont typées
 
-DOM properties are not always strings. For instance, the `input.checked` property (for checkboxes) is a boolean:
+Les propriétés DOM ne sont pas toujours des chaînes de caractères. Par exemple, la propriété `input.checked` (pour les cases à cocher) est un booléen :
 
 ```html run
 <input id="input" type="checkbox" checked> checkbox
 
 <script>
-  alert(input.getAttribute('checked')); // the attribute value is: empty string
-  alert(input.checked); // the property value is: true
+  alert(input.getAttribute('checked')); // la valeur d'attribut est une chaîne de caractères vide
+  alert(input.checked); // la valeur de la propriété est : true
 </script>
 ```
 
-There are other examples. The `style` attribute is a string, but the `style` property is an object:
+Il y a d'autres exemples. L'attribut `style` est une chaîne de caractères, mais la propriété `style` est un objet :
 
 ```html run
 <div id="div" style="color:red;font-size:120%">Hello</div>
@@ -216,11 +216,11 @@ There are other examples. The `style` attribute is a string, but the `style` pro
 </script>
 ```
 
-Most properties are strings though.
+Cependant la plupart des propriétés sont des chaînes de caractères.
 
-Quite rarely, even if a DOM property type is a string, it may differ from the attribute. For instance, the `href` DOM property is always a *full* URL, even if the attribute contains a relative URL or just a `#hash`.
+Très rarement, même si un type de propriété DOM est une chaîne de caractères, il peut différer de l'attribut. Par exemple, la propriété DOM `href` est toujours une URL *complète*, même si l'attribut contient une URL relative ou juste un `#hash`.
 
-Here's an example:
+Voici un exemple :
 
 ```html height=30 run
 <a id="a" href="#hello">link</a>
@@ -233,16 +233,16 @@ Here's an example:
 </script>
 ```
 
-If we need the value of `href` or any other attribute exactly as written in the HTML, we can use `getAttribute`.
+Si nous avons besoin de la valeur de `href` ou de tout autre attribut exactement comme écrit dans le HTML, nous pouvons utiliser `getAttribute`.
 
 
-## Non-standard attributes, dataset
+## Attributs non standard, dataset
 
-When writing HTML, we use a lot of standard attributes. But what about non-standard, custom ones? First, let's see whether they are useful or not? What for?
+Lors de l'écriture HTML, nous utilisons beaucoup d'attributs standard. Mais qu'en est-il des modèles non standard et personnalisés ? Voyons d'abord s'ils sont utiles ou non? Pourquoi ?
 
-Sometimes non-standard attributes are used to pass custom data from HTML to JavaScript, or to "mark" HTML-elements for JavaScript.
+Parfois, des attributs non standard sont utilisés pour transmettre des données personnalisées de HTML à JavaScript ou pour "marquer" des éléments HTML pour JavaScript.
 
-Like this:
+Comme ceci :
 
 ```html run
 <!-- mark the div to show "name" here -->
@@ -251,7 +251,7 @@ Like this:
 <div *!*show-info="age"*/!*></div>
 
 <script>
-  // the code finds an element with the mark and shows what's requested
+  // le code trouve un élément avec la marque et montre ce qui est demandé
   let user = {
     name: "Pete",
     age: 25
@@ -260,18 +260,18 @@ Like this:
   for(let div of document.querySelectorAll('[show-info]')) {
     // insert the corresponding info into the field
     let field = div.getAttribute('show-info');
-    div.innerHTML = user[field]; // first Pete into "name", then 25 into "age"
+    div.innerHTML = user[field]; // d'abord Pete dans "name", puis 25 dans "age"
   }
 </script>
 ```
 
-Also they can be used to style an element.
+Ils peuvent également être utilisés pour styliser un élément.
 
-For instance, here for the order state the attribute `order-state` is used:
+Par exemple, ici pour la commande de l'état de l'attribut, `order-state` est utilisé :
 
 ```html run
 <style>
-  /* styles rely on the custom attribute "order-state" */
+  /* les styles reposent sur l'attribut personnalisé "order-state" */
   .order[order-state="new"] {
     color: green;
   }
@@ -298,24 +298,24 @@ For instance, here for the order state the attribute `order-state` is used:
 </div>
 ```
 
-Why would using an attribute be preferable to having classes like `.order-state-new`, `.order-state-pending`, `order-state-canceled`?
+Pourquoi l'utilisation d'un attribut serait-elle préférable à des classes comme `.order-state-new`, `.order-state-pending`, `order-state-canceled` ?
 
-Because an attribute is more convenient to manage. The state can be changed as easy as:
+Parce qu'un attribut est plus pratique à gérer. L'état peut être changé aussi facilement que :
 
 ```js
-// a bit simpler than removing old/adding a new class
+// un peu plus simple que de supprimer l'ancienne / ajouter une nouvelle classe
 div.setAttribute('order-state', 'canceled');
 ```
 
-But there may be a possible problem with custom attributes. What if we use a non-standard attribute for our purposes and later the standard introduces it and makes it do something? The HTML language is alive, it grows, and more attributes appear to suit the needs of developers. There may be unexpected effects in such case.
+Mais il peut y avoir un problème possible avec les attributs personnalisés. Que se passe-t-il si nous utilisons un attribut non standard selon nos besoins et que plus tard le standard l'introduit et lui fait faire quelque chose ? Le langage HTML est vivant, il grandit et de plus en plus d'attributs semblent répondre aux besoins des développeurs. Il peut y avoir des effets inattendus dans ce cas.
 
-To avoid conflicts, there exist [data-*](https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes) attributes.
+Pour éviter les conflits, il existe les attributs [data-*](https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes).
 
-**All attributes starting with "data-" are reserved for programmers' use. They are available in the `dataset` property.**
+**Tous les attributs commençant par "data-" sont réservés à l'usage des programmeurs. Ils sont disponibles dans la propriété `dataset`.**
 
-For instance, if an `elem` has an attribute named `"data-about"`, it's available as `elem.dataset.about`.
+Par exemple, si un `elem` a un attribut nommé `"data-about"`, il est disponible en tant que `elem.dataset.about`.
 
-Like this:
+Comme ceci :
 
 ```html run
 <body data-about="Elephants">
@@ -324,9 +324,9 @@ Like this:
 </script>
 ```
 
-Multiword attributes like `data-order-state` become camel-cased: `dataset.orderState`.
+Les attributs de plusieurs mots comme `data-order-state` deviennent camel-cased : `dataset.orderState`.
 
-Here's a rewritten "order state" example:
+Voici un exemple d'"order state" réécrit :
 
 ```html run
 <style>
@@ -356,31 +356,31 @@ Here's a rewritten "order state" example:
 </script>
 ```
 
-Using `data-*` attributes is a valid, safe way to pass custom data.
+L'utilisation des attributs `data- *` est un moyen valide et sûr de transmettre des données personnalisées.
 
-Please note that we can not only read, but also modify data-attributes. Then CSS updates the view accordingly: in the example above the last line `(*)` changes the color to blue.
+Veuillez noter que nous pouvons non seulement lire, mais également modifier les attributs de données. Ensuite, CSS met à jour la vue en conséquence : dans l'exemple ci-dessus, la dernière ligne `(*)` change la couleur en bleu.
 
-## Summary
+## Résumé
 
-- Attributes -- is what's written in HTML.
-- Properties -- is what's in DOM objects.
+- Les attributs - sont ce qui est écrit en HTML.
+- Les propriétés - sont ce qui se trouve dans les objets DOM.
 
-A small comparison:
+Une petite comparaison :
 
-|            | Properties | Attributes |
-|------------|------------|------------|
-|Type|Any value, standard properties have types described in the spec|A string|
-|Name|Name is case-sensitive|Name is not case-sensitive|
+|      | Propriétés                                                                                    | Attributs                            |
+|------|-----------------------------------------------------------------------------------------------|--------------------------------------|
+| Type | N'importe quelle valeur, les propriétés standards ont des types décrits dans la spécification | Une chaîne de caractères             |
+| Nom  | Le nom est sensible à la casse                                                                | Le nom n'est pas sensible à la casse |
 
-Methods to work with attributes are:
+Les méthodes de travail avec les attributs sont les suivantes :
 
-- `elem.hasAttribute(name)` -- to check for existence.
-- `elem.getAttribute(name)` -- to get the value.
-- `elem.setAttribute(name, value)` -- to set the value.
-- `elem.removeAttribute(name)` -- to remove the attribute.
-- `elem.attributes` is a collection of all attributes.
+- `elem.hasAttribute(name)` -- pour vérifier l'existence.
+- `elem.getAttribute(name)` -- pour obtenir la valeur.
+- `elem.setAttribute(name, value)` -- pour définir la valeur.
+- `elem.removeAttribute(name)` -- pour supprimer l'attribut.
+- `elem.attributes` est une collection de tous les attributs.
 
-For most situations using DOM properties is preferable. We should refer to attributes only when DOM properties do not suit us, when we need exactly attributes, for instance:
+Pour la plupart des situations, l'utilisation des propriétés DOM est préférable. Nous devons nous référer aux attributs uniquement lorsque les propriétés DOM ne nous conviennent pas, lorsque nous avons besoin exactement d'attributs, par exemple :
 
-- We need a non-standard attribute. But if it starts with `data-`, then we should use `dataset`.
-- We want to read the value "as written" in HTML. The value of the DOM property may be different, for instance the `href` property is always a full URL, and we may want to get the "original" value.
+- Nous avons besoin d'un attribut non standard. Mais s'il commence par `data-`, alors nous devrions utiliser `dataset`.
+- Nous voulons lire la valeur "telle qu'elle est écrite" en HTML. La valeur de la propriété DOM peut être différente, par exemple la propriété `href` est toujours une URL complète, et nous pouvons vouloir obtenir la valeur "originale".

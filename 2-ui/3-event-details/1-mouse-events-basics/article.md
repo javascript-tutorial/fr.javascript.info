@@ -65,8 +65,8 @@ Mais si nous voulons controler les évènements `mousedown` et `mouseup`, nous e
 Voici les trois valeurs possibles:
 
 - `event.which == 1` -- the left button
-- `event.which == 2` - the middle button
-- `event.which == 3` - the right button
+- `event.which == 2` -- the middle button
+- `event.which == 3` -- the right button
 
 Le bouton du milieu est quelque peu exotique jusqu’à présent et est très rarement utilisé. 
 
@@ -119,7 +119,7 @@ Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || e
 ```warn header="Il y a aussi les appareils mobiles"
 
 Les combinaisons de clavier sont un bon ajout au flux de travail. Tant que le visiteur a un
-  clavier - ça fonctionne. Mais si leur appareil n’en a pas - alors il devrait y avoir un autre moyen de faire de même.
+  clavier - ça fonctionne. Mais si leur appareil n’en a pas -- alors il devrait y avoir un autre moyen de faire la même chose.
 
 ```
 

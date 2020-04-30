@@ -2,10 +2,10 @@ importance: 4
 
 ---
 
-# Eval-calculator
+# Calculatrice-eval
 
-Create a calculator that prompts for an arithmetic expression and returns its result.
+Créez une calculatrice qui demande une expression arithmétique et retourne son résultat.
 
-There's no need to check the expression for correctness in this task. Just evaluate and return the result.
+Il n'y a pas besoin de vérifier l'exactitude de l'expression. Évaluez simplement la et retournez le résultat.
 
 [demo]

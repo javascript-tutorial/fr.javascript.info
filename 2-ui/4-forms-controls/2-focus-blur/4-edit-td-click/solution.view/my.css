@@ -3,14 +3,14 @@
   margin: 0;
   padding: 0;
   display: block;
-  
-  /* remove resizing handle in Firefox */
+
+  /* retire la poignée de redimensionnement dans Firefox */
   resize: none;
-  
-  /* remove outline on focus in Chrome */
+
+  /* retire le contour lors du focus sur Chrome */
   outline: none;
-  
-  /* remove scrollbar in IE */
+
+  /* retire la barre de défillement sur IE */
   overflow: auto;
 }
 

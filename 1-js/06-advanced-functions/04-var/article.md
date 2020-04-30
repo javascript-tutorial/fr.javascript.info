@@ -218,7 +218,7 @@ La fonction expression est entourée de parenthèses `(fonction {...})`, car lor
 
 ```js run
 // Essayons de déclarer et d'appeler immédiatement une fonction
-function() { // <-- Error: Unexpected token (
+function() { // <-- Erreur : Les instructions de fonction nécessitent un nom de fonction
 
   let message = "Hello";
 

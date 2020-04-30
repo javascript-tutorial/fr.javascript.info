@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Show descendants in a tree
+# Afficher les descendants dans un arbre
 
-There's a tree organized as nested `ul/li`.
+Il y a un arbre organisé comme un `ul/li` imbriqué.
 
-Write the code that adds to each `<li>` the number of its descendants. Skip leaves (nodes without children).
+Écrivez le code qui ajoute à chaque `<li>` le nombre de ses descendants. Sautez les feuilles (nœuds sans enfants).
 
-The result:
+Le resultat :
 
 [iframe border=1 src="solution"]

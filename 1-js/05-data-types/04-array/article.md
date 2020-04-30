@@ -123,7 +123,7 @@ Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est
 
 Les tableaux en JavaScript peuvent fonctionner à la fois en queue et en stack. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
 
-En informatique, la structure de données qui le permet s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue) (Double file d'attente).
+En informatique, la structure de données qui permet cela s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue) (Double file d'attente).
 
 **Méthodes qui fonctionnent avec la fin du tableau:**
 

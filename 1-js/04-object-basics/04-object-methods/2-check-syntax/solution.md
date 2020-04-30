@@ -34,5 +34,5 @@ let user = {
 (user.go)() // John
 ```
 
-Veuillez noter que les parenthèses autour de `(user.go)` ne font rien ici. Habituellement, ils configurent l'ordre des opérations, mais ici le point `.` fonctionne toujours de toute façon, donc aucun effet. Seul le point-virgule compte.
+Veuillez noter que les parenthèses autour de `(user.go)` ne font rien ici. Habituellement, elles configurent l'ordre des opérations, mais ici le point `.` fonctionne toujours en premier de toute façon, donc aucun effet. Seul le point-virgule compte.
 

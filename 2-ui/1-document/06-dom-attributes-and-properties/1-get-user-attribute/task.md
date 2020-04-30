@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Get the attribute
+# Obtenez l'attribut
 
-Write the code to select the element with `data-widget-name` attribute from the document and to read its value.
+Écrivez le code pour sélectionner l'élément avec l'attribut `data-widget-name` dans le document et pour lire sa valeur.
 
 ```html run
 <!DOCTYPE html>

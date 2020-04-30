@@ -302,10 +302,14 @@ new User().sayHi();
 ## Proprietes de Classe
 
 ```warn header="les anciens navigateurs peuvent avoir besoin de polyfill"
-Les propriétés au niveau Classe sont un ajout récent au langage.
+Les propriétés de classe sont un ajout récent au langage.
 ```
 
-Dans l'exemple ci-dessus, `User` avait uniquement des méthodes. Maintenant, nous allons y ajouter une propriété:
+Auparavant, les classes n'avaient que des méthodes.
+
+Les "Class fields" (champs de classe) sont une syntaxe qui permet d'ajouter des propriétés.
+
+Par exemple, ajoutons la propriété `name` à `class User` :
 
 ```js run
 class User {
@@ -324,7 +328,86 @@ alert(User.prototype.sayHi); // placed in User.prototype
 alert(User.prototype.name); // undefined, not placed in User.prototype
 ```
 
-La propriété `name` n'est pas placée dans `User.prototype`. Au lieu de cela, elle est créée par `new` avant l'appel du constructeur, c'est la propriété de l'objet lui-même.
+La chose importante à propos des champs de classe est qu'ils sont définis sur des objets individuels, pas `User.prototype`.
+
+Techniquement, ils sont traités une fois que le constructeur a fait son travail.
+
+### Création de méthodes liées avec des champs de classe
+
+Comme démontré dans le chapitre <info:bind> les fonctions en JavaScript ont un `this` dynamique. Cela dépend du contexte de l'appel.
+
+Donc, si une méthode objet est contournée et appelée dans un autre contexte, `this` ne sera plus une référence à son objet.
+
+Par exemple, ce code affichera `undefined` :
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+*!*
+setTimeout(button.click, 1000); // undefined
+*/!*
+```
+
+Le problème est appelé "perdre le `this`".
+
+Il existe deux approches pour le corriger, comme indiqué dans le chapitre <info:bind> :
+
+1. Passer une fonction wrapper, telle que `setTimeout(() => button.click(), 1000)`.
+2. Liez la méthode à un objet, par exemple chez le constructeur :
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+*!*
+    this.click = this.click.bind(this);
+*/!*
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+*!*
+setTimeout(button.click, 1000); // hello
+*/!*
+```
+
+Les champs de classe fournissent une syntaxe plus élégante pour cette dernière solution :
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+*!*
+  click = () => {
+    alert(this.value);
+  }
+*/!*
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // hello
+```
+
+Le champ de classe `click = () => {...}` crée une fonction indépendante sur chaque objet `Button`, avec` this` lié à l'objet. Ensuite, nous pouvons passer `button.click` partout, et il sera appelé avec le bon` this`.
+
+Cela est particulièrement utile dans un environnement de navigateur, lorsque nous devons configurer une méthode comme un écouteur d'événements.
 
 ## Résumé
 

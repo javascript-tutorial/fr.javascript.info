@@ -46,7 +46,7 @@ La balise `<script>` contient du code JavaScript qui est automatiquement exécut
 La balise `<script>` a quelques attributs qui sont rarement utilisés de nos jours, mais nous pouvons les trouver dans l'ancien code :
 
  L'attribut `type` : <code>&lt;script <u>type</u>=...&gt;</code>
-: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habiutellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais c’est un sujet avancé; nous parlerons de modules dans une autre partie du tutoriel.
+: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habiutellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais c’est un sujet avancé, nous parlerons de modules dans une autre partie du tutoriel.
 
 
  L'attribut `language` : <code>&lt;script <u>language</u>=...&gt;</code>

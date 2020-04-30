@@ -125,25 +125,25 @@ Décrivez l'architecture
 Documenter les paramètres de fonction et leur utilisation
 : Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) pour documenter une fonction : utilisation, paramètres, valeur renvoyée.
 
-    Par exemple :
-    ```js
-    /**
-     * Renvoie x élevé à la n-ième puissance.
-     *
-     * @param {number} x Le nombre à augmenter.
-     * @param {number} n L'exposant doit être un nombre naturel.
-     * @return {number} x élevé à la n-ème puissance.
-     */
-    function pow(x, n) {
-      ...
-    }
-    ```
+Par exemple :
+```js
+/**
+ * Renvoie x élevé à la n-ième puissance.
+ *
+ * @param {number} x Le nombre à augmenter.
+ * @param {number} n L'exposant doit être un nombre naturel.
+ * @return {number} x élevé à la n-ème puissance.
+ */
+function pow(x, n) {
+  ...
+}
+```
 
-    De tels commentaires nous permettent de comprendre le but de la fonction et de l’utiliser correctement sans regarder dans son code.
+De tels commentaires nous permettent de comprendre le but de la fonction et de l’utiliser correctement sans regarder dans son code.
 
-    À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peut aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
+À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peut aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
 
-    En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc3/jsdoc) qui peut générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
+En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc3/jsdoc) qui peut générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
 
 Pourquoi la tâche est-elle résolue de cette façon ?
 : Ce qui est écrit est important. Mais ce qui *n’est pas* écrit peut être encore plus important pour comprendre ce qui se passe. Pourquoi la tâche est-elle résolue exactement de cette façon ? Le code ne donne pas de réponse.

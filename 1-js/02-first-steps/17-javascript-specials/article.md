@@ -81,9 +81,10 @@ let x = 5;
 x = "John";
 ```
 
-Il y a 7 types de données :
+Il y a 8 types de données :
 
 - `number` pour les nombres à virgule flottante et les nombres entiers,
+- `bigint` pour les nombres entiers de longueur arbitraire,
 - `string` pour les chaînes de caractères
 - `boolean` pour les valeurs logiques : `true/false`,
 - `null` -- un type avec une seule valeur `null`, signifiant "vide" ou "n'existe pas",

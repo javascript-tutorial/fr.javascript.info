@@ -215,11 +215,39 @@ Maintenant, les erreurs personnalisées sont beaucoup plus courtes, en particuli
 
 Le but de la fonction `readUser` dans le code ci-dessus est "de lire les données de l'utilisateur". Il peut y avoir différents types d’erreurs dans le processus. À l'heure actuelle, nous avons `SyntaxError` et `ValidationError`, mais à l'avenir, la fonction `readUser` pourrait croître et générer probablement d'autres types d'erreurs.
 
-Le code qui appelle `readUser` devrait gérer ces erreurs. Actuellement, il utilise plusieurs `if` dans le bloc `catch`, qui vérifient la classe, gèrent les erreurs connues et réexaminent les inconnues. Mais si la fonction `readUser` génère plusieurs types d’erreurs - nous devrions nous demander: voulons-nous vraiment vérifier tous les types d’erreur un par un dans chaque code qui appelle `readUser`?
+Le code qui appelle `readUser` devrait gérer ces erreurs. À l'heure actuelle, il utilise plusieurs if dans le bloc `catch`, qui vérifient la classe et gèrent les erreurs connues et rejettent les inconnues.
 
-Souvent, la réponse est "Non": le code externe veut être "au-dessus de tout cela". Il veut avoir une sorte "d'erreur de lecture de données". Pourquoi exactement cela est arrivé est souvent sans importance (le message d'erreur le décrit). Ou encore mieux s'il existe un moyen d'obtenir des détails d'erreur, mais uniquement si nous en avons le besoin.
+Le schéma est le suivant :
 
-Faisons donc une nouvelle classe `ReadError` pour représenter de telles erreurs. Si une erreur se produit dans `readUser`, nous la détectons et générons `ReadError`. Nous conserverons également la référence à l'erreur d'origine dans sa propriété `cause`. Ensuite, le code externe devra seulement vérifier `ReadError`.
+```js
+try {
+  ...
+  readUser()  // la source d'erreur potentielle
+  ...
+} catch (err) {
+  if (err instanceof ValidationError) {
+    // handle validation errors
+  } else if (err instanceof SyntaxError) {
+    // handle syntax errors
+  } else {
+    throw err; // erreur inconnue, la relancer
+  }
+}
+```
+
+Dans le code ci-dessus, nous pouvons voir deux types d'erreurs, mais il peut y en avoir plus.
+
+Si la fonction `readUser` génère plusieurs types d'erreurs, alors nous devrions nous demander : voulons-nous vraiment vérifier tous les types d'erreur un par un à chaque fois ?
+
+Souvent, la réponse est "non", nous aimerions être "un niveau au-dessus de tout cela". Nous voulons simplement savoir s'il y a eu une "erreur de lecture des données" -- pourquoi exactement cela s'est produit est souvent hors de propos (le message d'erreur le décrit). Ou, encore mieux, nous aimerions avoir un moyen d'obtenir les détails de l'erreur, mais seulement si nous en avons besoin.
+
+La technique que nous décrivons ici est appelée "encapsulation d'exceptions".
+
+1. Nous allons créer une nouvelle classe `ReadError` pour représenter une erreur générique de "lecture des données".
+2. La fonction `readUser` interceptera les erreurs de lecture de données qui se produisent à l'intérieur, telles que `ValidationError` et `SyntaxError`, et générera à la place une `ReadError`.
+3. L'objet `ReadError` conservera la référence à l'erreur d'origine dans sa propriété `cause`.
+
+Ensuite, le code qui appelle `readUser` n'aura qu'à vérifier` ReadError`, pas pour tous les types d'erreurs de lecture de données. Et s'il a besoin de plus de détails sur une erreur, il peut vérifier sa propriété `cause`.
 
 Voici le code qui définit `ReadError` et illustre son utilisation dans `readUser` et `try..catch`:
 
@@ -293,7 +321,7 @@ Dans le code ci-dessus, `readUser` fonctionne exactement comme décrit ci-dessus
 
 Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.
 
-Cette approche, "wrapping exceptions" en anglais, nous permet de prendre les "exceptions de bas niveau" et les "wrapper" dans `ReadError`, qui est plus abstrait et plus pratique à utiliser pour le code appelant. Cette approche est largement utilisée dans la programmation orientée objet.
+L'approche est appelée "encapsulation d'exceptions", car nous prenons les exceptions "de bas niveau" et les "encapsulons" dans `ReadError` qui est plus abstrait. Il est largement utilisé dans la programmation orientée objet.
 
 ## Résumé
 

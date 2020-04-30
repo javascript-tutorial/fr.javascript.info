@@ -1,33 +1,33 @@
 
-We can see which class it belongs by outputting it, like:
+Nous pouvons voir à quelle classe il appartient en le sortant, comme :
 
 ```js run
 alert(document); // [object HTMLDocument]
 ```
 
-Or:
+Ou :
 
 ```js run
 alert(document.constructor.name); // HTMLDocument
 ```
 
-So, `document` is an instance of `HTMLDocument` class.
+Ainsi, `document` est une instance de la classe `HTMLDocument`.
 
-What's its place in the hierarchy?
+Quelle est sa place dans la hiérarchie ?
 
-Yeah, we could browse the specification, but it would be faster to figure out manually.
+Oui, nous pourrions parcourir les spécifications, mais il serait plus rapide de le déterminer manuellement.
 
-Let's traverse the prototype chain via `__proto__`.
+Parcourons la chaîne du prototype via `__proto__`.
 
-As we know, methods of a class are in the `prototype` of the constructor. For instance, `HTMLDocument.prototype` has methods for documents.
+Comme nous le savons, les méthodes d'une classe sont dans le `prototype` du constructeur. Par exemple, `HTMLDocument.prototype` a des méthodes pour les documents.
 
-Also, there's a reference to the constructor function inside the `prototype`:
+De plus, il y a une référence à la fonction constructeur à l'intérieur du `prototype` :
 
 ```js run
 alert(HTMLDocument.prototype.constructor === HTMLDocument); // true
 ```
 
-To get a name of the class as a string, we can use `constructor.name`. Let's do it for the whole `document` prototype chain, till class `Node`:
+Pour obtenir le nom de la classe sous forme de chaîne de caractères, nous pouvons utiliser `constructor.name`. Faisons-le pour toute la chaîne du prototype de `document`, jusqu'à la classe` Node`:
 
 ```js run
 alert(HTMLDocument.prototype.constructor.name); // HTMLDocument
@@ -35,6 +35,6 @@ alert(HTMLDocument.prototype.__proto__.constructor.name); // Document
 alert(HTMLDocument.prototype.__proto__.__proto__.constructor.name); // Node
 ```
 
-That's the hierarchy.
+Voilà la hiérarchie.
 
-We also could examine the object using `console.dir(document)` and see these names by opening `__proto__`. The console takes them from `constructor` internally.
+Nous pourrions également examiner l'objet en utilisant `console.dir(document)` et voir ces noms en ouvrant `__proto__`. La console les prend du constructeur en interne.

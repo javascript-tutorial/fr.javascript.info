@@ -215,7 +215,7 @@ Par exemple :
 function makeUser(name, age) {
   return {
     name: name,
-    age: age
+    age: age,
     // ...autres propriétés
   };
 }
@@ -233,7 +233,7 @@ function makeUser(name, age) {
 *!*
   return {
     name, // pareil que name: name
-    age   // pareil que age: age
+    age,  // pareil que age: age
     // ...
   };
 */!*

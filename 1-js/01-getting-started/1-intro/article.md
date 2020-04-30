@@ -4,7 +4,7 @@ Voyons ce qui est spécial à propos de JavaScript, ce qu'il nous permet de fair
 
 ## Qu'est-ce que JavaScript?
 
-*JavaScript* a été initiallement créé pour *"rendre les pages web vivantes"*.
+*JavaScript* a été initiallement créé pour "rendre les pages web vivantes".
 
 Les programmes dans ce langage sont appelés *scripts*. Ils peuvent être écrits directement dans une page HTML et exécutés automatiquement au chargement des pages.
 

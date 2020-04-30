@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Create a tree from the object
+# Créer un arbre à partir de l'objet
 
-Write a function `createTree` that creates a nested `ul/li` list from the nested object.
+Écrivez une fonction `createTree` qui crée une liste imbriquée `ul/li` à partir de l'objet imbriqué.
 
-For instance:
+Par exemple :
 
 ```js
 let data = {
@@ -28,24 +28,24 @@ let data = {
 };
 ```
 
-The syntax:
+La syntaxe :
 
 ```js
 let container = document.getElementById('container');
 *!*
-createTree(container, data); // creates the tree in the container
+createTree(container, data); // crée l'arbre dans le conteneur
 */!*
 ```
 
-The result (tree) should look like this:
+Le résultat (arbre) devrait ressembler à ceci :
 
 [iframe border=1 src="build-tree-dom"]
 
-Choose one of two ways of solving this task:
+Choisissez l'une des deux façons de résoudre cette tâche :
 
-1. Create the HTML for the tree and then assign to `container.innerHTML`.
-2. Create tree nodes and append with DOM methods.
+1. Créez le code HTML de l'arborescence, puis attribuez-le à `container.innerHTML`.
+2. Créez des nœuds d'arbre et ajoutez-les avec les méthodes DOM.
 
-Would be great if you could do both.
+Ce serait génial si vous pouviez faire les deux.
 
-P.S. The tree should not have "extra" elements like empty `<ul></ul>` for the leaves.
+P.S. L'arbre ne doit pas avoir d'éléments "supplémentaires" comme des `<ul></ul>` vides pour les feuilles (de l'arbre).

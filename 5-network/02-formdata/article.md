@@ -12,7 +12,7 @@ let formData = new FormData([form]);
 
 Si un élément HTML `form` est fourni, il capture automatiquement ses champs.
 
-La particularité de `FormData` est que les méthodes réseau, telles que `fetch`, peuvent accepter un objet `FormData` en tant que corps. Il est encodé et envoyé avec `Content-Type: form/multipart`.
+La particularité de `FormData` est que les méthodes réseau, telles que `fetch`, peuvent accepter un objet `FormData` en tant que corps. Il est encodé et envoyé avec `Content-Type: multipart/form-data`.
 
 Du point de vue du serveur, cela ressemble à une soumission de formulaire habituelle.
 
@@ -81,7 +81,7 @@ for(let [name, value] of formData) {
 
 ## Envoi d'un formulaire avec un fichier
 
-Le formulaire est toujours envoyé en tant que `Content-Type: formulaire/multipart`, cet encodage permet d'envoyer des fichiers. Ainsi, les champs `<input type="file">` sont également envoyés, comme pour une soumission de formulaire habituelle.
+Le formulaire est toujours envoyé en tant que `Content-Type: multipart/form-data`, cet encodage permet d'envoyer des fichiers. Ainsi, les champs `<input type="file">` sont également envoyés, comme pour une soumission de formulaire habituelle.
 
 Voici un exemple avec ce genre de formulaire :
 
