@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Image gallery
+# Galerie d'images
 
-Create an image gallery where the main image changes by the click on a thumbnail.
+Créer une galerie d'images dans laquelle l'image principale change lors d'un clic sur une miniature.
 
-Like this:
+Comme ceci:
 
 [iframe src="solution" height=600]
 
-P.S. Use event delegation.
+P.S. Utilisez la délégation d'évènement.

@@ -1,1 +1,1 @@
-The solution is to assign the handler to the container and track clicks. If a click is on the `<a>` link, then change `src` of `#largeImg` to the `href` of the thumbnail.
+La solution est d'assigner le gestionnaire au conteneur et suivre les clics. Si un clic est sur le lien `<a>`, alors changer `src` de `#largeImg` pour le `href` de la miniature.
