@@ -1,4 +1,4 @@
-Lorsque le navigateur lis l'attribut `on*`, comme `onclick`, il créer le gestionnaire depuis son contenu.
+Lorsque le navigateur lit l'attribut `on*`, comme `onclick`, il créer le gestionnaire depuis son contenu.
 
 Pour `onclick="handler()"` la fonction sera:
 
