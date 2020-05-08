@@ -1,5 +1,5 @@
-An empty string is the only match: it starts and immediately finishes.
+Une chaîne vide est la seule correspondance : elle commence et se termine aussitôt.
 
-The task once again demonstrates that anchors are not characters, but tests.
+Cette tâche montre à nouveau que les ancres ne sont pas des caractères, mais des tests.
 
-The string is empty `""`. The engine first matches the `pattern:^` (input start), yes it's there, and then immediately the end `pattern:$`, it's here too. So there's a match.
+La chaîne est vide `""`. Le moteur regarde en premier `pattern:^` (début de l'entrée), ça correspond, et immédiatement après la fin `pattern:$`, ça correspond également. Donc il y a une correspondance.
