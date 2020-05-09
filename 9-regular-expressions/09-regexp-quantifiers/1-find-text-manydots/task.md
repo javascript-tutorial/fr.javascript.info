@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-#  How to find an ellipsis "..." ?
+#  Comment trouver une ellipse "..." ?
 
-Create a regexp to find ellipsis: 3 (or more?) dots in a row.
+Créer une regexp pour trouver une ellipse: 3 (ou plus?) points à la suite.
 
-Check it:
+Vérifiez:
 
 ```js
-let regexp = /your regexp/g;
+let regexp = /votre regexp/g;
 alert( "Hello!... How goes?.....".match(regexp) ); // ..., .....
 ```
