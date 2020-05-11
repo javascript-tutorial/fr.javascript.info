@@ -11,7 +11,7 @@ let str1 = "Mary had a little lamb";
 alert( /^Mary/.test(str1) ); // true
 ```
 
-Le paterne `pattern:^Mary` signifie : "le texte commence puis Mary".
+Le pattern `pattern:^Mary` signifie : "le texte commence puis Mary".
 
 Similairement, nous pouvons vérifier si le texte termine par `snow` en utilisant `pattern:snow$`:
 
@@ -24,7 +24,7 @@ In these particular cases we could use string methods `startsWith/endsWith` inst
 
 ## Test pour une correspondance complète
 
-Les deux ancres mises ensemble `pattern:^...$` pour vérifier si une chaîne de caractères correspond entièrement à un paterne. Par exemple, pour vérifier si l'entrée de l'utilisateur est dans le bon format.
+Les deux ancres mises ensemble `pattern:^...$` pour vérifier si une chaîne de caractères correspond entièrement à un pattern. Par exemple, pour vérifier si l'entrée de l'utilisateur est dans le bon format.
 
 Vérifions si une chaîne de caractères est une heure au format `12:34`. En résumé : deux nombres, puis deux points, et enfin deux autres nombres.
 
