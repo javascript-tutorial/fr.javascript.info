@@ -8,7 +8,7 @@ Dans le mode multiligne, elles ne vérifient pas seulement le début et la fin d
 
 ## Recherche au début de ligne ^
 
-Dans l'exemple ci-dessous, le texte comporte plusieurs lignes. Le paterne `pattern:/^\d/gm` prend un chiffre au début de chaque ligne:
+Dans l'exemple ci-dessous, le texte comporte plusieurs lignes. Le pattern `pattern:/^\d/gm` prend un chiffre au début de chaque ligne:
 
 ```js run
 let str = `1st place: Winnie
@@ -80,4 +80,4 @@ C'est parce qu'il n'y a pas de retour à la ligne après `subject:3` (il y a la 
 
 Une autre différence : maintenant, chaque correspondance inclue un caractère de retour à la ligne `match:\n`. Contrairement aux ancres `pattern:^` `pattern:$`, qui ne testent qu'une condition (début/fin d'une ligne), `\n` est un caractère, donc il devient une partie du résultat.
 
-Ainsi, un `\n` dans le paterne est utilisé quand nous avons besoin dudit caractère dans le résultat, tandis que les ancres sont utilisées pour chercher quelque chose au début/à la fin d'une ligne.
+Ainsi, un `\n` dans le pattern est utilisé quand nous avons besoin dudit caractère dans le résultat, tandis que les ancres sont utilisées pour chercher quelque chose au début/à la fin d'une ligne.
