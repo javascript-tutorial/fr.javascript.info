@@ -1,33 +1,33 @@
-# Backreferences in pattern: \N and \k<name>
+# Rétro référence dans le paterne : \N et \k<name>
 
-We can use the contents of capturing groups `pattern:(...)` not only in the result or in the replacement string, but also in the pattern itself.
+Nous pouvons utiliser le contenu des groupes de capture `pattern:(...)` non seulement dans le résultat ou dans la chaîne de caractères de remplacement, mais également dans le paterne en lui-même.
 
-## Backreference by number: \N
+## Rétro référence par un nombre : \N
 
-A group can be referenced in the pattern using `pattern:\N`, where `N` is the group number.
+Un groupe peut être référencé dans le paterne par `pattern:\N`, où `N` est le numéro du groupe.
 
-To make clear why that's helpful, let's consider a task.
+Pour rendre son utilité claire, considérons la tâche ci-dessous.
 
-We need to find quoted strings: either single-quoted `subject:'...'` or a double-quoted `subject:"..."` -- both variants should match.
+Nous devons trouver des chaînes citées : soit par des apostrophes `subject:'...'`, soit par des guillemets `subject:"..."` -- les deux variantes devraient correspondre.
 
-How to find them?
+Comment les trouver ?
 
-We can put both kinds of quotes in the square brackets: `pattern:['"](.*?)['"]`, but it would find strings with mixed quotes, like `match:"...'` and `match:'..."`. That would lead to incorrect matches when one quote appears inside other ones, like in the string `subject:"She's the one!"`:
+Nous pouvons mettre les deux types entre crochets : `pattern:['"](.*?)['"]`, mais ce paterne pourrait correspondre avec des mélanges comme `match:"...'` ou `match:'..."`. Cela mènerait à des correspondances incorrectes lorsqu'une citation apparaît dans une autre, comme dans le texte `subject:"She's the one!"`:
 
 ```js run
 let str = `He said: "She's the one!".`;
 
 let regexp = /['"](.*?)['"]/g;
 
-// The result is not what we'd like to have
+// Le résultat n'est pas celui que nous aimerions avoir
 alert( str.match(regexp) ); // "She'
 ```
 
-As we can see, the pattern found an opening quote `match:"`, then the text is consumed till the other quote `match:'`, that closes the match.
+Comme nous pouvons le voir, le paterne trouve des guillemets ouvrant `match:"`, puis le texte est récupéré jusqu'au `match:'`, ce qui termine la correspondance.
 
-To make sure that the pattern looks for the closing quote exactly the same as the opening one, we can wrap it into a capturing group and backreference it: `pattern:(['"])(.*?)\1`.
+Pour faire en sorte que le paterne vérifie que le caractère terminant la citation est précisément le même que celui qui l'ouvre, nous pouvons l'envelopper dans un groupe de capture et le rétro référencier : `pattern:(['"])(.*?)\1`.
 
-Here's the correct code:
+Voilà le code correct :
 
 ```js run
 let str = `He said: "She's the one!".`;
@@ -39,27 +39,27 @@ let regexp = /(['"])(.*?)\1/g;
 alert( str.match(regexp) ); // "She's the one!"
 ```
 
-Now it works! The regular expression engine finds the first quote `pattern:(['"])` and memorizes its content. That's the first capturing group.
+Maintenant, ça fonctionne ! Le moteur trouve le premier caractère de citation `pattern:(['"])` et mémorise son contenu. C'est le premier groupe de capture.
 
-Further in the pattern `pattern:\1` means "find the same text as in the first group", exactly the same quote in our case.
+Plus loin dans le paterne, `pattern:\1` signifie "cherche le même texte que dans le premier groupe de capture", le même caractère de citation dans notre cas.
 
-Similar to that, `pattern:\2` would mean the contents of the second group, `pattern:\3` - the 3rd group, and so on.
+Similairement, `pattern:\2` voudrait référencier le 2nd groupe, `pattern:\3` - le 3e groupe, et ainsi de suite.
 
 ```smart
-If we use `?:` in the group, then we can't reference it. Groups that are excluded from capturing `(?:...)` are not memorized by the engine.
+Si nous utilisons `?:` dans le groupe, alors nous ne pouvons pas le référencer. Les groupes exclus de la capture `(?:...)` ne sont pas mémorisés par le moteur.
 ```
 
-```warn header="Don't mess up: in the pattern `pattern:\1`, in the replacement: `pattern:$1`"
-In the replacement string we use a dollar sign: `pattern:$1`, while in the pattern - a backslash `pattern:\1`.
+```warn header="Ne mélangez pas : dans le paterne, `pattern:\1`, dans le replacement : `pattern:$1`"
+Dans la chaîne de remplacement, on utilise un signe dollar : `pattern:$1`, alors que dans un paterne - un antislash `pattern:\1`.
 ```
 
-## Backreference by name: `\k<name>`
+## Rétro référence par le nom: `\k<name>`
 
-If a regexp has many parentheses, it's convenient to give them names.
+Si une expression régulière a beaucoup de groupes, il est pratique de leur attribuer un nom.
 
-To reference a named group we can use `pattern:\k<имя>`.
+Pour référencer un groupe nommé, on peut utiliser `pattern:\k<имя>`.
 
-In the example below the group with quotes is named `pattern:?<quote>`, so the backreference is `pattern:\k<quote>`:
+Dans l'exemple ci-dessous, le groupe du caractère de citation s'appelle `pattern:?<quote>`, donc la rétro référence est `pattern:\k<quote>`:
 
 ```js run
 let str = `He said: "She's the one!".`;
