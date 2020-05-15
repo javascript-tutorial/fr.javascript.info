@@ -4,11 +4,11 @@ Dans le développement web, nous rencontrons des données binaires principalemen
 
 Tout ceci est possible en JavaScript, et les opérations binaires sont très performantes.
 
-Cependant, il y a de la confusion, car il y a beaucoup de "classes".
+Cependant, il y a de la confusion, car il y a beaucoup de classes disponibles.
 Pour en nommer quelques unes:
 - `ArrayBuffer`, `Uint8Array`, `DataView`, `Blob`, `File`, etc.
 
-En javascript, les données binaires sont implémentées de façon non standard, comparé à d'autres langages. Mais quand nous trions les choses, tout devient beaucoup plus simple.
+En javascript, les données binaires sont implémentées de façon non standard, comparé à d'autres langages. Mais quand nous mettons de l'ordre dans tout ça, tout devient beaucoup plus simple.
 
 **L'objet binaire de base est un `ArrayBuffer` -- une référence à une zone contigüe de taille fixe de la mémoire.**
 
@@ -22,8 +22,8 @@ Cela alloue une zone contigue de 16 octets dans la mémoire et la pré-remplie a
 
 ```warn header="L'`ArrayBuffer` n'est pas un tableau de 'quelque chose'."
 Commençons par éliminer une possible source de confusion. `ArrayBuffer` n'a rien en commun avec `Array`:
-- Il possède une taille fixe, on ne peut pas l'agrandir ou la    reduire.
-- Il prend exactement autant d'espace en mémoire.
+- Il possède une taille fixe, nous ne pouvons ni l'aggrandir, ni le réduire.
+- Il prend une taille spécifique en mémoire.
 - Pour accéder à des octets individuels, un autre objet de "vue" est nécessaire, on n'utilise pas `buffer[index]`.
 ```
 
@@ -72,15 +72,15 @@ for(let num of view) {
 
 ## TypedArray
 
-Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Ils partagent le même ensemble de méthodes et de propriétés.
+Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Elles partagent le même ensemble de méthodes et de propriétés.
 
-Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'un terme commun pour représenter une de ces vues : `ArrayBuffer`: `Int8Array`, `Uint8Array` etc., la liste entière va bientôt suivre.
+Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'un terme pour représenter une de ces vues : `ArrayBuffer`: `Int8Array`, `Uint8Array` etc., la liste entière va bientôt suivre.
 
 Lorsque vous voyez quelque chose comme `new TypedArray`, Il s'agit de n'importe quoi parmi `new Int8Array`, `new Uint8Array`, etc.
 
 Les `TypedArray` ressemblent à des tableaux classiques: ils ont des indexs et sont itérables.
 
-A typed array constructor (soit `Int8Array` ou `Float64Array`, peut importe) behaves differently depending on argument types.
+Un constructeur `TypedArray` (soit `Int8Array` ou `Float64Array`, peut importe) se comporte différement en fonction du type des arguments.
 
 Il y a 5 variantes d'arguments:
 
@@ -94,19 +94,19 @@ new TypedArray();
 
 1. Si un `ArrayBuffer` est fourni, la vue est créée dessus. Nous avons déjà utilisé cette syntaxe.
 
-    Optionally we can provide `byteOffset` to start from (0 by default) and the `length` (till the end of the buffer by default), then the view will cover only a part of the `buffer`.
+    Nous pouvons éventuellement fournir un décalage (`byteOffset`) pour commencer à partir de là (0 par défaut) et la longueur (`length`) (jusqu'à la fin du buffer par défaut), alors la vue ne va couvrir qu'une partie du `buffer`.
 
-2. If an `Array`, or any array-like object is given, it creates a typed array of the same length and copies the content.
+2. Si c'est un `Array`, ou quelque chose ressemblant à un tableau qui est fourni, il crée un `TypedArray` de la même longueur et copie le contenu.
 
-    We can use it to pre-fill the array with the data:
+    Nous pouvons l'utiliser pour pré-remplir le tableau avec les données:
     ```js run
     *!*
     let arr = new Uint8Array([0, 1, 2, 3]);
     */!*
-    alert( arr.length ); // 4, created binary array of the same length
-    alert( arr[1] ); // 1, filled with 4 bytes (unsigned 8-bit integers) with given values
+    alert( arr.length ); // 4, a créé une liste binaire de la même taille
+    alert( arr[1] ); // 1, remplit avec 4 octets (entiers non signés sur 8 bits) avec des valeurs données
     ```
-3. If another `TypedArray` is supplied, it does the same: creates a typed array of the same length and copies values. Values are converted to the new type in the process, if needed.
+3. Si un autre `TypedArray` est fourni, il fait la même chose: il crée un `TypedArray` de la même taille et copie le contenu. Les valeurs sont converties vers le nouveau type dans le processus si besoin.
     ```js run
     let arr16 = new Uint16Array([1, 1000]);
     *!*
@@ -116,14 +116,14 @@ new TypedArray();
     alert( arr8[1] ); // 232, tried to copy 1000, but can't fit 1000 into 8 bits (explanations below)
     ```
 
-4. For a numeric argument `length` -- creates the typed array to contain that many elements. Its byte length will be `length` multiplied by the number of bytes in a single item `TypedArray.BYTES_PER_ELEMENT`:
+4. Pour un argument numérique `length` -- Il crée un `TypedArray` qui contient autant d'éléments. Sa taille en octet va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
     ```js run
-    let arr = new Uint16Array(4); // create typed array for 4 integers
-    alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 bytes per integer
-    alert( arr.byteLength ); // 8 (size in bytes)
+    let arr = new Uint16Array(4); // Création d'un TypedArray de 4 entiers
+    alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 octets par entier
+    alert( arr.byteLength ); // 8 (taille en octets)
     ```
 
-5. Without arguments, creates an zero-length typed array.
+5. Sans arguments, il crée un `TypedArray` de taille nulle.
 
 We can create a `TypedArray` directly, without mentioning `ArrayBuffer`. But a view cannot exist without an underlying `ArrayBuffer`, so gets created automatically in all these cases except the first one (when provided).
 
