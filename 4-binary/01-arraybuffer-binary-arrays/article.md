@@ -1,4 +1,4 @@
-# ArrayBuffer, tableaux binaires
+# ArrayBuffer, tableaux binaires*a
 
 Dans le développement web, nous rencontrons des données binaires principalement lorsque l'on travaille avec des fichiers (création, envoi, téléchargement). Un autre cas d'utilisation est le traitement d'image.
 
@@ -125,59 +125,59 @@ new TypedArray();
 
 5. Sans arguments, il crée un `TypedArray` de taille nulle.
 
-We can create a `TypedArray` directly, without mentioning `ArrayBuffer`. But a view cannot exist without an underlying `ArrayBuffer`, so gets created automatically in all these cases except the first one (when provided).
+Nous pouvons créer un `TypedArray` directement, sans mentionner un `ArrayBuffer`. Mais une vue ne peut pas exister sans un `ArrayBuffer`, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
 
-To access the `ArrayBuffer`, there are properties:
-- `arr.buffer` -- references the `ArrayBuffer`.
-- `arr.byteLength` -- the length of the `ArrayBuffer`.
+Pour accéder à l'`ArrayBuffer`, ils y a plusieurs propriétés:
+- `arr.buffer` -- qui fait référence à l'`ArrayBuffer`.
+- `arr.byteLength` -- qui correspond à la taille de l'`ArrayBuffer`.
 
-So, we can always move from one view to another:
+Donc nous pouvons toujours passer d'une vue à l'autre:
 ```js
 let arr8 = new Uint8Array([0, 1, 2, 3]);
 
-// another view on the same data
+// Une autre vue avec les mêmes données
 let arr16 = new Uint16Array(arr8.buffer);
 ```
 
 
-Here's the list of typed arrays:
+Voici une liste de `TypedArray`:
 
-- `Uint8Array`, `Uint16Array`, `Uint32Array` -- for integer numbers of 8, 16 and 32 bits.
-  - `Uint8ClampedArray` -- for 8-bit integers, "clamps" them on assignment (see below).
-- `Int8Array`, `Int16Array`, `Int32Array` -- for signed integer numbers (can be negative).
-- `Float32Array`, `Float64Array` -- for signed floating-point numbers of 32 and 64 bits.
+- `Uint8Array`, `Uint16Array`, `Uint32Array` -- Pour les entiers de 8, 16 et 32 bits.
+  - `Uint8ClampedArray` -- Pour les entiers de 8 bits, avec un "resserage" à l'assignement (voir plus loin).
+- `Int8Array`, `Int16Array`, `Int32Array` -- Pour les nombres entiers signés (peuvent être négatifs).
+- `Float32Array`, `Float64Array` -- Pour les nombres flottants signés de 32 et 64 bits.
 
-```warn header="No `int8` or similar single-valued types"
-Please note, despite of the names like `Int8Array`, there's no single-value type like `int`, or `int8` in JavaScript.
+```warn header="Pas de `int8` ou de types similaires"
+Malgré la présence de noms tels que `Int8Array`, il n'y a pas de type comme `int` ou `int8` dans JavaScript. 
 
-That's logical, as `Int8Array` is not an array of these individual values, but rather a view on `ArrayBuffer`.
+C'est logique car `Int8Array` n'est pas un tableau de ces valeurs individuelles, mais plutôt une vue sur `ArrayBuffer`.
 ```
 
-### Out-of-bounds behavior
+### Comportement hors limite
 
-What if we attempt to write an out-of-bounds value into a typed array? There will be no error. But extra bits are cut-off.
+Que se passe t'il lorsque nous essayons d'écrire des valeurs en dehors des limites dans un `TypedArray` ? Il n'y aura pas d'erreurs, mais les bits en trop seront supprimés.
 
-For instance, let's try to put 256 into `Uint8Array`. In binary form, 256 is `100000000` (9 bits), but `Uint8Array` only provides 8 bits per value, that makes the available range from 0 to 255.
+Par exemple, essayons d'ajouter 256 dans un `Uint8Array`. En binaire, 256 s'écrit `100000000` (9 bits), mais un `Uint8Array` ne permet que 8 bits par valeur, ce qui donne des valeurs possibles entre 0 et 255.
 
-For bigger numbers, only the rightmost (less significant) 8 bits are stored, and the rest is cut off:
+Pour les grands nombres, seuls les 8 bits les plus à droite (moins significatif) sont sauvegardés, et le reste est supprimé:
 
 ![](8bit-integer-256.svg)
 
-So we'll get zero.
+Donc nous allons obtenir 0.
 
-For 257, the binary form is `100000001` (9 bits), the rightmost 8 get stored, so we'll have `1` in the array:
+Pour 257, l'écriture binaire est `100000001` (9 bits), les 8 bits les plus à droite sont gardés, donc on aura un `1` dans notre tableau:
 
 ![](8bit-integer-257.svg)
 
-In other words, the number modulo 2<sup>8</sup> is saved.
+En d'autres termes, Le nombre modulo 2<sup>8</sup> est sauvegardé.
 
-Here's the demo:
+Démonstration:
 
 ```js run
 let uint8array = new Uint8Array(16);
 
 let num = 256;
-alert(num.toString(2)); // 100000000 (binary representation)
+alert(num.toString(2)); // 100000000 (représentation binaire)
 
 uint8array[0] = 256;
 uint8array[1] = 257;
@@ -186,27 +186,25 @@ alert(uint8array[0]); // 0
 alert(uint8array[1]); // 1
 ```
 
-`Uint8ClampedArray` is special in this aspect, its behavior is different. It saves 255 for any number that is greater than 255, and 0 for any negative number. That behavior is useful for image processing.
+`Uint8ClampedArray` est différent car il possède un comportement spécial. Il sauvegarde 255 pour n'importe quel nombre qui est plus grand que 255, et 0 pour n'importe quel nombre négatif. Ce comportement est utile pour le traitement d'images.
 
 ## TypedArray methods
 
-`TypedArray` has regular `Array` methods, with notable exceptions.
+`TypedArray` possède les méthodes de `Array`, avec quelques exceptions notables.
 
-We can iterate, `map`, `slice`, `find`, `reduce` etc.
+Nous pouvons itérer, `map`, `slice`, `find`, `reduce` etc.
 
-There are few things we can't do though:
+Mais certaines choses ne sont pas possibles:
 
-- No `splice` -- we can't "delete" a value, because typed arrays are views on a buffer, and these are fixed, contiguous areas of memory. All we can do is to assign a zero.
-- No `concat` method.
+- Pas de `splice` -- On ne peut pas supprimer une valeur, car les `TypedArray` sont des vues sur un `buffer`, qui sont des zones fixes dans la mémoire. Tout ce que nous pouvons faire est de mettre un 0.
+- Pas de méthode `concat`.
 
-There are two additional methods:
+Il y a deux méthodes supplémentaires:
 
-- `arr.set(fromArr, [offset])` copies all elements from `fromArr` to the `arr`, starting at position `offset` (0 by default).
-- `arr.subarray([begin, end])` creates a new view of the same type from `begin` to `end` (exclusive). That's similar to `slice` method (that's also supported), but doesn't copy anything -- just creates a new view, to operate on the given piece of data.
+- `arr.set(fromArr, [offset])` copie tous les éléments de `fromArr` vers `arr`, en commençant à partir de la position `offset` (0 par défaut).
+- `arr.subarray([begin, end])` crée une nouvelle vue du même type de `begin` jusqu'à `end` (non-inclus). C'est similaire à la méthode `slice` (qui est également disponible), mais elle ne copie rien -- il s'agit juste d'une création d'une nouvelle vue, pour travailler sur un certain morceau de données.
 
-These methods allow us to copy typed arrays, mix them, create new arrays from existing ones, and so on.
-
-
+Les méthodes nous permettent de copier des `TypedArray`, de les mélanger, de créer des nouveaux tableaux depuis ceux existants, et bien d'autres choses.
 
 ## DataView
 
@@ -247,27 +245,27 @@ dataView.setUint32(0, 0); // set 4-byte number to zero, thus setting all bytes t
 
 `DataView` is great when we store mixed-format data in the same buffer. E.g we store a sequence of pairs (16-bit integer, 32-bit float). Then `DataView` allows to access them easily.
 
-## Summary
+## Résumé
 
-`ArrayBuffer` is the core object, a reference to the fixed-length contiguous memory area.
+`ArrayBuffer` est l'objet au coeur de tout, c'est une référence à une zone de taille fixe dans la mémoire.
 
-To do almost any operation on `ArrayBuffer`, we need a view.
+Pour faire presque n'importe quelle opération sur un `ArrayBuffer`, nous avons besoin d'une vue.
 
-- It can be a `TypedArray`:
-    - `Uint8Array`, `Uint16Array`, `Uint32Array` -- for unsigned integers of 8, 16, and 32 bits.
-    - `Uint8ClampedArray` -- for 8-bit integers, "clamps" them on assignment.
-    - `Int8Array`, `Int16Array`, `Int32Array` -- for signed integer numbers (can be negative).
-    - `Float32Array`, `Float64Array` -- for signed floating-point numbers of 32 and 64 bits.
-- Or a `DataView` -- the view that uses methods to specify a format, e.g. `getUint8(offset)`.
+- Il peut s'agir d'un `TypedArray`:
+    - `Uint8Array`, `Uint16Array`, `Uint32Array` -- pour les entiers non-signés de 8, 16, et 32 bits.
+    - `Uint8ClampedArray` -- pour les entiers de 8 bits, "clamps" them on assignment.
+    - `Int8Array`, `Int16Array`, `Int32Array` -- pour les entiers signés (peuvent être négatifs).
+    - `Float32Array`, `Float64Array` -- pour les nombres flottants signés de 32 et 64 bits.
+- Ou d'une `DataView` -- la vue qui utilise des méthodes pour spécifier un format, e.g. `getUint8(offset)`.
 
-In most cases we create and operate directly on typed arrays, leaving `ArrayBuffer` under cover, as a "common discriminator". We can access it as `.buffer` and make another view if needed.
+Dans la majorité des cas, on crée et on opère directement sur les `TypedArray`, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vie si besoin.
 
-There are also two additional terms, that are used in descriptions of methods that operate on binary data:
-- `ArrayBufferView` is an umbrella term for all these kinds of views.
-- `BufferSource` is an umbrella term for `ArrayBuffer` or `ArrayBufferView`.
+Il y a également 2 termes supplémentaires, qui sont utilisés dans les descriptions des méthodes pour travailler sur les données binaires:
+- `ArrayBufferView` qui est le terme pour tous les types de vues.
+- `BufferSource` qui est un terme désignant soit un `ArrayBuffer` ou un `ArrayBufferView`.
 
-We'll see these terms in the next chapters. `BufferSource` is one of the most common terms, as it means "any kind of binary data" -- an `ArrayBuffer` or a view over it.
+Nous verrons ces termes dans les prochains chapitres. `BufferSource` est l'un des termes les plus communs, qui veut dire "n'importe quel type de données binaires" -- un `ArrayBuffer` ou une vue par dessus.
 
-Here's a cheatsheet:
+Voici un résumé:
 
 ![](arraybuffer-view-buffersource.svg)
