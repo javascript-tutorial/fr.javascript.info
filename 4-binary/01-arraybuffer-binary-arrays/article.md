@@ -70,7 +70,7 @@ for(let num of view) {
 
 ```
 
-## TypedArray
+## TypedArray - tableau typé
 
 Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Elles partagent le même ensemble de méthodes et de propriétés.
 
@@ -78,7 +78,7 @@ Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'u
 
 Lorsque vous voyez quelque chose comme `new TypedArray`, Il s'agit de n'importe quoi parmi `new Int8Array`, `new Uint8Array`, etc.
 
-Les `TypedArray` ressemblent à des tableaux classiques: ils ont des indexs et sont itérables.
+Les tableaux typés ressemblent à des tableaux classiques: ils ont des indexs et sont itérables.
 
 Un constructeur `TypedArray` (soit `Int8Array` ou `Float64Array`, peut importe) se comporte différement en fonction du type des arguments.
 
@@ -96,7 +96,7 @@ new TypedArray();
 
     Nous pouvons éventuellement fournir un décalage (`byteOffset`) pour commencer à partir de là (0 par défaut) et la longueur (`length`) (jusqu'à la fin du buffer par défaut), alors la vue ne va couvrir qu'une partie du `buffer`.
 
-2. Si c'est un `Array`, ou quelque chose ressemblant à un tableau qui est fourni, il crée un `TypedArray` de la même longueur et copie le contenu.
+2. Si c'est un `Array`, ou quelque chose ressemblant à un tableau qui est fourni, il crée un tableau typé de la même longueur et copie le contenu.
 
     Nous pouvons l'utiliser pour pré-remplir le tableau avec les données:
     ```js run
@@ -106,26 +106,26 @@ new TypedArray();
     alert( arr.length ); // 4, a créé une liste binaire de la même taille
     alert( arr[1] ); // 1, remplit avec 4 octets (entiers non signés sur 8 bits) avec des valeurs données
     ```
-3. Si un autre `TypedArray` est fourni, il fait la même chose: il crée un `TypedArray` de la même taille et copie le contenu. Les valeurs sont converties vers le nouveau type dans le processus si besoin.
+3. Si un autre tableau typé est fourni, il fait la même chose: il crée un tableau typé de la même taille et copie le contenu. Les valeurs sont converties vers le nouveau type dans le processus si besoin.
     ```js run
     let arr16 = new Uint16Array([1, 1000]);
     *!*
     let arr8 = new Uint8Array(arr16);
     */!*
     alert( arr8[0] ); // 1
-    alert( arr8[1] ); // 232, tried to copy 1000, but can't fit 1000 into 8 bits (explanations below)
+    alert( arr8[1] ); // 232, 1000 ne rentre pas dans 8 bits (explications plus loin)
     ```
 
-4. Pour un argument numérique `length` -- Il crée un `TypedArray` qui contient autant d'éléments. Sa taille en octet va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
+4. Pour un argument numérique `length` -- Il crée un tableau typé qui contient autant d'éléments. Sa taille en octet va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
     ```js run
-    let arr = new Uint16Array(4); // Création d'un TypedArray de 4 entiers
+    let arr = new Uint16Array(4); // Création d'un tableau typé de 4 entiers
     alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 octets par entier
     alert( arr.byteLength ); // 8 (taille en octets)
     ```
 
-5. Sans arguments, il crée un `TypedArray` de taille nulle.
+5. Sans arguments, il crée un tableau typé de taille nulle.
 
-Nous pouvons créer un `TypedArray` directement, sans mentionner un `ArrayBuffer`. Mais une vue ne peut pas exister sans un `ArrayBuffer`, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
+Nous pouvons créer un tableau typé directement, sans mentionner un `ArrayBuffer`. Mais une vue ne peut pas exister sans un `ArrayBuffer`, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
 
 Pour accéder à l'`ArrayBuffer`, ils y a plusieurs propriétés:
 - `arr.buffer` -- qui fait référence à l'`ArrayBuffer`.
@@ -140,22 +140,22 @@ let arr16 = new Uint16Array(arr8.buffer);
 ```
 
 
-Voici une liste de `TypedArray`:
+Voici une liste de tableaux typés:
 
 - `Uint8Array`, `Uint16Array`, `Uint32Array` -- Pour les entiers de 8, 16 et 32 bits.
-  - `Uint8ClampedArray` -- Pour les entiers de 8 bits, avec un "resserage" à l'assignement (voir plus loin).
+  - `Uint8ClampedArray` -- Pour les entiers de 8 bits, avec une "restriction" à l'affectation (voir plus loin).
 - `Int8Array`, `Int16Array`, `Int32Array` -- Pour les nombres entiers signés (peuvent être négatifs).
 - `Float32Array`, `Float64Array` -- Pour les nombres flottants signés de 32 et 64 bits.
 
 ```warn header="Pas de `int8` ou de types similaires"
 Malgré la présence de noms tels que `Int8Array`, il n'y a pas de type comme `int` ou `int8` dans JavaScript. 
 
-C'est logique car `Int8Array` n'est pas un tableau de ces valeurs individuelles, mais plutôt une vue sur `ArrayBuffer`.
+Car en effet `Int8Array` n'est pas un tableau de ces valeurs individuelles, mais plutôt une vue sur `ArrayBuffer`.
 ```
 
 ### Comportement hors limite
 
-Que se passe t'il lorsque nous essayons d'écrire des valeurs en dehors des limites dans un `TypedArray` ? Il n'y aura pas d'erreurs, mais les bits en trop seront supprimés.
+Que se passe t'il lorsque nous essayons d'écrire des valeurs en dehors des limites dans un tableau typé ? Il n'y aura pas d'erreurs, mais les bits en trop seront supprimés.
 
 Par exemple, essayons d'ajouter 256 dans un `Uint8Array`. En binaire, 256 s'écrit `100000000` (9 bits), mais un `Uint8Array` ne permet que 8 bits par valeur, ce qui donne des valeurs possibles entre 0 et 255.
 
@@ -186,7 +186,7 @@ alert(uint8array[0]); // 0
 alert(uint8array[1]); // 1
 ```
 
-`Uint8ClampedArray` est différent car il possède un comportement spécial. Il sauvegarde 255 pour n'importe quel nombre qui est plus grand que 255, et 0 pour n'importe quel nombre négatif. Ce comportement est utile pour le traitement d'images.
+`Uint8ClampedArray` possède un comportement différent. Il garde 255 pour n'importe quel nombre qui est plus grand que 255, et 0 pour n'importe quel nombre négatif. Ce comportement est utile dans le traitement d'images.
 
 ## TypedArray methods
 
@@ -196,7 +196,7 @@ Nous pouvons itérer, `map`, `slice`, `find`, `reduce` etc.
 
 Mais certaines choses ne sont pas possibles:
 
-- Pas de `splice` -- On ne peut pas supprimer une valeur, car les `TypedArray` sont des vues sur un `buffer`, qui sont des zones fixes dans la mémoire. Tout ce que nous pouvons faire est de mettre un 0.
+- Pas de `splice` -- On ne peut pas supprimer une valeur, car les tableaux typés sont des vues sur un `buffer`, qui sont des zones fixes dans la mémoire. Tout ce que nous pouvons faire est de mettre un 0.
 - Pas de méthode `concat`.
 
 Il y a deux méthodes supplémentaires:
@@ -204,46 +204,46 @@ Il y a deux méthodes supplémentaires:
 - `arr.set(fromArr, [offset])` copie tous les éléments de `fromArr` vers `arr`, en commençant à partir de la position `offset` (0 par défaut).
 - `arr.subarray([begin, end])` crée une nouvelle vue du même type de `begin` jusqu'à `end` (non-inclus). C'est similaire à la méthode `slice` (qui est également disponible), mais elle ne copie rien -- il s'agit juste d'une création d'une nouvelle vue, pour travailler sur un certain morceau de données.
 
-Les méthodes nous permettent de copier des `TypedArray`, de les mélanger, de créer des nouveaux tableaux depuis ceux existants, et bien d'autres choses.
+Les méthodes nous permettent de copier des tableaux typés, de les mélanger, de créer des nouveaux tableaux depuis ceux existants, et bien d'autres choses.
 
 ## DataView
 
-[DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) is a special super-flexible "untyped" view over `ArrayBuffer`. It allows to access the data on any offset in any format.
+[DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) est une vue spéciale non typée par dessus `ArrayBuffer`. Il permet d'accéder aux données avec n'importe quel décalage et avec n'importe quel format.
 
-- For typed arrays, the constructor dictates what the format is. The whole array is supposed to be uniform. The i-th number is `arr[i]`.
-- With `DataView` we access the data with methods like `.getUint8(i)` or `.getUint16(i)`. We choose the format at method call time instead of the construction time.
+- Pour les tableaux typés, le constructeur détermine le format. Le tableau entier est supposé être uniforme. Le i-ème nombre est noté `arr[i]`.
+- Avec `DataView` nous accédons aux données avec des méthodes comme `.getUint8(i)` ou `.getUint16(i)`. Nous choisissons le format au moment de l'utilisation de la méthode au lieu du moment de la création.
 
-The syntax:
+Voici la syntaxe:
 
 ```js
 new DataView(buffer, [byteOffset], [byteLength])
 ```
 
-- **`buffer`** -- the underlying `ArrayBuffer`. Unlike typed arrays, `DataView` doesn't create a buffer on its own. We need to have it ready.
-- **`byteOffset`** -- the starting byte position of the view (by default 0).
-- **`byteLength`** -- the byte length of the view (by default till the end of `buffer`).
+- **`buffer`** -- `ArrayBuffer`. Contrairement aux tableaux typés, `DataView` ne crée pas un buffer lui même. Nous avons besoin de le lui fournir directement.
+- **`byteOffset`** -- L'octet de départ de la vue (par défaut à 0).
+- **`byteLength`** -- La taille totale de la vue en octets (par défaut jusqu'à la fin de `buffer`).
 
-For instance, here we extract numbers in different formats from the same buffer:
+Pour l'exemple, nous allons récupérer des nombres dans plusieurs formats avec le même buffer:
 
 ```js run
-// binary array of 4 bytes, all have the maximal value 255
+// Tableau binaire de 4 octets, tous ayant la valeur maximale - 255
 let buffer = new Uint8Array([255, 255, 255, 255]).buffer;
 
 let dataView = new DataView(buffer);
 
-// get 8-bit number at offset 0
+// récupération d'un nombre en 8 bits avec un décalage de 0
 alert( dataView.getUint8(0) ); // 255
 
-// now get 16-bit number at offset 0, it consists of 2 bytes, together iterpreted as 65535
-alert( dataView.getUint16(0) ); // 65535 (biggest 16-bit unsigned int)
+// récupération d'un nombre en 16 bits avec un décalage de 0, soit 2 octets, qui sont interprétés ensemble en 65535
+alert( dataView.getUint16(0) ); // 65535 (Plus grand entier non signé en 16 bits)
 
-// get 32-bit number at offset 0
-alert( dataView.getUint32(0) ); // 4294967295 (biggest 32-bit unsigned int)
+// récupération d'un nombre en 32 bits avec un décalage de 0
+alert( dataView.getUint32(0) ); // 4294967295 (Plus grand entier non signé en 32 bits)
 
-dataView.setUint32(0, 0); // set 4-byte number to zero, thus setting all bytes to 0
+dataView.setUint32(0, 0); // Fixe le nombre sous 4 octets à 0, fixant ainsi tous les octets à 0
 ```
 
-`DataView` is great when we store mixed-format data in the same buffer. E.g we store a sequence of pairs (16-bit integer, 32-bit float). Then `DataView` allows to access them easily.
+`DataView` est utile lorsque l'on met des données sous plusieurs formats dans le même buffer. Par exemple, on stocke une séquence de paires (16-bit integer, 32-bit float). Le `DataView` nous permettra d'y accéder facilement.
 
 ## Résumé
 
@@ -251,20 +251,20 @@ dataView.setUint32(0, 0); // set 4-byte number to zero, thus setting all bytes t
 
 Pour faire presque n'importe quelle opération sur un `ArrayBuffer`, nous avons besoin d'une vue.
 
-- Il peut s'agir d'un `TypedArray`:
+- Il peut s'agir d'un tableau typé:
     - `Uint8Array`, `Uint16Array`, `Uint32Array` -- pour les entiers non-signés de 8, 16, et 32 bits.
     - `Uint8ClampedArray` -- pour les entiers de 8 bits, "clamps" them on assignment.
     - `Int8Array`, `Int16Array`, `Int32Array` -- pour les entiers signés (peuvent être négatifs).
     - `Float32Array`, `Float64Array` -- pour les nombres flottants signés de 32 et 64 bits.
 - Ou d'une `DataView` -- la vue qui utilise des méthodes pour spécifier un format, e.g. `getUint8(offset)`.
 
-Dans la majorité des cas, on crée et on opère directement sur les `TypedArray`, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vie si besoin.
+Dans la majorité des cas, on crée et on opère directement sur les tableaux typés, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vie si besoin.
 
 Il y a également 2 termes supplémentaires, qui sont utilisés dans les descriptions des méthodes pour travailler sur les données binaires:
 - `ArrayBufferView` qui est le terme pour tous les types de vues.
 - `BufferSource` qui est un terme désignant soit un `ArrayBuffer` ou un `ArrayBufferView`.
 
-Nous verrons ces termes dans les prochains chapitres. `BufferSource` est l'un des termes les plus communs, qui veut dire "n'importe quel type de données binaires" -- un `ArrayBuffer` ou une vue par dessus.
+Nous verrons ces termes dans les prochains chapitres. `BufferSource` est l'un des termes les plus communs, qui veut dire "toutes sortes de données binaires" -- un `ArrayBuffer` ou une vue par dessus.
 
 Voici un résumé:
 

@@ -1,4 +1,4 @@
 
-# Concatenate typed arrays
+# Concaténation de tableaux typés
 
-Given an array of `Uint8Array`, write a function `concat(arrays)` that returns a concatenation of them into a single array.
+En passant un tableau de `Uint8Array`, écrivez une fonction `concat(arrays)` qui retourne une concaténation dans un seul tableau.
