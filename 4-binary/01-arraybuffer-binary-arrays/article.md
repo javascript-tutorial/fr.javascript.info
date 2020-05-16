@@ -1,4 +1,4 @@
-# ArrayBuffer, tableaux binaires*a
+# ArrayBuffer, tableaux binaires
 
 Dans le développement web, nous rencontrons des données binaires principalement lorsque l'on travaille avec des fichiers (création, envoi, téléchargement). Un autre cas d'utilisation est le traitement d'image.
 
