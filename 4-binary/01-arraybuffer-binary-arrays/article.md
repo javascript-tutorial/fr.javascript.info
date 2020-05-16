@@ -74,7 +74,7 @@ for(let num of view) {
 
 Le terme commun pour toutes ces vues (`Uint8Array`, `Uint32Array`, etc) est [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Elles partagent le même ensemble de méthodes et de propriétés.
 
-Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'un terme pour représenter une de ces vues : `ArrayBuffer`: `Int8Array`, `Uint8Array` etc., la liste entière va bientôt suivre.
+Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'un terme pour représenter une des vues par dessus un `ArrayBuffer`: `Int8Array`, `Uint8Array` etc. La liste entière va bientôt suivre.
 
 Lorsque vous voyez quelque chose comme `new TypedArray`, Il s'agit de n'importe quoi parmi `new Int8Array`, `new Uint8Array`, etc.
 
@@ -116,7 +116,7 @@ new TypedArray();
     alert( arr8[1] ); // 232, 1000 ne rentre pas dans 8 bits (explications plus loin)
     ```
 
-4. Pour un argument numérique `length` -- Il crée un tableau typé qui contient autant d'éléments. Sa taille en octet va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
+4. Si un argument `length` est fourni -- Il crée un tableau typé qui contient autant d'éléments. Sa taille en octets va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
     ```js run
     let arr = new Uint16Array(4); // Création d'un tableau typé de 4 entiers
     alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 octets par entier
@@ -125,9 +125,9 @@ new TypedArray();
 
 5. Sans arguments, il crée un tableau typé de taille nulle.
 
-Nous pouvons créer un tableau typé directement, sans mentionner un `ArrayBuffer`. Mais une vue ne peut pas exister sans un `ArrayBuffer`, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
+Nous pouvons créer un tableau typé directement sans fournir un `ArrayBuffer`. Mais une vue ne peut pas exister sans, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
 
-Pour accéder à l'`ArrayBuffer`, ils y a plusieurs propriétés:
+Pour accéder à l'`ArrayBuffer`, il y a plusieurs propriétés:
 - `arr.buffer` -- qui fait référence à l'`ArrayBuffer`.
 - `arr.byteLength` -- qui correspond à la taille de l'`ArrayBuffer`.
 
@@ -188,7 +188,7 @@ alert(uint8array[1]); // 1
 
 `Uint8ClampedArray` possède un comportement différent. Il garde 255 pour n'importe quel nombre qui est plus grand que 255, et 0 pour n'importe quel nombre négatif. Ce comportement est utile dans le traitement d'images.
 
-## TypedArray methods
+## Méthodes des tableaux typés
 
 `TypedArray` possède les méthodes de `Array`, avec quelques exceptions notables.
 
@@ -208,7 +208,7 @@ Les méthodes nous permettent de copier des tableaux typés, de les mélanger, d
 
 ## DataView
 
-[DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) est une vue spéciale non typée par dessus `ArrayBuffer`. Il permet d'accéder aux données avec n'importe quel décalage et avec n'importe quel format.
+[DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) est une vue spéciale non typée par dessus `ArrayBuffer`. Elle permet d'accéder aux données avec n'importe quel décalage et avec n'importe quel format.
 
 - Pour les tableaux typés, le constructeur détermine le format. Le tableau entier est supposé être uniforme. Le i-ème nombre est noté `arr[i]`.
 - Avec `DataView` nous accédons aux données avec des méthodes comme `.getUint8(i)` ou `.getUint16(i)`. Nous choisissons le format au moment de l'utilisation de la méthode au lieu du moment de la création.
@@ -219,7 +219,7 @@ Voici la syntaxe:
 new DataView(buffer, [byteOffset], [byteLength])
 ```
 
-- **`buffer`** -- `ArrayBuffer`. Contrairement aux tableaux typés, `DataView` ne crée pas un buffer lui même. Nous avons besoin de le lui fournir directement.
+- **`buffer`** -- `ArrayBuffer`. Contrairement aux tableaux typés, `DataView` ne crée pas soit même un buffer. Nous avons besoin de le lui fournir directement.
 - **`byteOffset`** -- L'octet de départ de la vue (par défaut à 0).
 - **`byteLength`** -- La taille totale de la vue en octets (par défaut jusqu'à la fin de `buffer`).
 
@@ -243,7 +243,7 @@ alert( dataView.getUint32(0) ); // 4294967295 (Plus grand entier non signé en 3
 dataView.setUint32(0, 0); // Fixe le nombre sous 4 octets à 0, fixant ainsi tous les octets à 0
 ```
 
-`DataView` est utile lorsque l'on met des données sous plusieurs formats dans le même buffer. Par exemple, on stocke une séquence de paires (16-bit integer, 32-bit float). Le `DataView` nous permettra d'y accéder facilement.
+`DataView` est utile lorsque l'on met des données sous plusieurs formats dans le même buffer. Par exemple, on stocke une séquence de paires (16-bit integer, 32-bit float). `DataView` nous permettra d'y accéder facilement.
 
 ## Résumé
 
@@ -256,9 +256,9 @@ Pour faire presque n'importe quelle opération sur un `ArrayBuffer`, nous avons 
     - `Uint8ClampedArray` -- pour les entiers de 8 bits, "clamps" them on assignment.
     - `Int8Array`, `Int16Array`, `Int32Array` -- pour les entiers signés (peuvent être négatifs).
     - `Float32Array`, `Float64Array` -- pour les nombres flottants signés de 32 et 64 bits.
-- Ou d'une `DataView` -- la vue qui utilise des méthodes pour spécifier un format, e.g. `getUint8(offset)`.
+- Ou d'un `DataView` -- la vue qui utilise des méthodes pour spécifier un format, e.g. `getUint8(offset)`.
 
-Dans la majorité des cas, on crée et on opère directement sur les tableaux typés, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vie si besoin.
+Dans la majorité des cas, on crée et on opère directement sur les tableaux typés, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vue si besoin.
 
 Il y a également 2 termes supplémentaires, qui sont utilisés dans les descriptions des méthodes pour travailler sur les données binaires:
 - `ArrayBufferView` qui est le terme pour tous les types de vues.
