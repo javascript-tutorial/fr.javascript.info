@@ -1,3 +1,3 @@
-# Binary data, files
+# Les données binaires et les fichiers
 
-Working with binary data and files in JavaScript.
+Manipulation des données binaires et les fichiers en JavaScript.
