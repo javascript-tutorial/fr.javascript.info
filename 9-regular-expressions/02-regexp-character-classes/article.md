@@ -41,7 +41,7 @@ Les plus utilisés sont :
 : Un chiffre: un caractère de `0` à `9`.
 
 `pattern:\s` ("s" vient de "space" ("espace"))
-: Un symbole d'espace: inclut les espaces, les tabulations `\t`, les sauts de ligne `\n` et quelques autres caractères rares, tels que `\v`,` \f` et `\r`.
+: Un symbole d'espace: inclut les espaces, les tabulations `\t`, les sauts de ligne `\n` et quelques autres caractères rares, tels que `\v`, `\f` et `\r`.
 
 `pattern:\w` ("w" vient de "word" ("mot"))
 : Un caractère "verbeux": soit une lettre de l'alphabet latin, soit un chiffre ou un trait de soulignement `_`. Les lettres non latines (comme le cyrillique ou l'hindi) n'appartiennent pas au `pattern:\w`.
@@ -50,7 +50,7 @@ Par exemple, `pattern:\d\s\w` signifie un "chiffre" suivi d'un "caractère espac
 
 **Une expression régulière peut contenir à la fois des symboles normaux et des classes de caractères.**
 
-Par exemple, `pattern: CSS\d` correspond à une chaîne `match:CSS` suivi d'un chiffre :
+Par exemple, `pattern:CSS\d` correspond à une chaîne `match:CSS` suivi d'un chiffre :
 
 ```js run
 let str = "Is there CSS4?";
@@ -79,7 +79,7 @@ L'"inverse" signifie qu'il correspond à tous les autres caractères, par exempl
 : Non-chiffre: tout caractère sauf `pattern:\d`, par exemple une lettre.
 
 `pattern:\S`
-: Non-espace: tout caractère sauf `pattern:\d`, par exemple une lettre.
+: Non-espace: tout caractère sauf `pattern:\s`, par exemple une lettre.
 
 `pattern:\W`
 : Caractère non verbal : tout sauf `pattern:\w`, par exemple une lettre non latine ou un espace.
@@ -144,7 +144,7 @@ C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, a
 alert( "A\nB".match(/A.B/s) ); // A\nB (correspondance!)
 ```
 
-````warn header="Non pris en charge dans Firefox, IE, Edge"
+````warn header="Non pris en charge par Firefox, IE, Edge"
 Voir <https://caniuse.com/#search=dotall> pour l'état de support le plus récent. Au moment de la rédaction, il n'inclut pas Firefox, IE, Edge.
 
 Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons utiliser une expression rationnelle comme `pattern: [\s\S]` pour faire correspondre "n'importe quel caractère".
@@ -153,7 +153,7 @@ Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons uti
 alert( "A\nB".match(/A[\s\S]B/) ); // A\nB (correspondance!)
 ```
 
-Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace". En d'autres termes, "n'importe quoi". Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern: [\d\D]`, cela n'a pas d'importance. Ou même le `pattern: [^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
+Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace". En d'autres termes, "n'importe quoi". Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern:[\d\D]`, cela n'a pas d'importance. Ou même le `pattern:[^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
 
 Nous pouvons également utiliser cette astuce si nous voulons les deux types de "points" dans le même motif: le point réel `pattern:.` se comportant de manière habituelle ("ne pas inclure de saut de ligne") est également une facon de correspondre à "n'importe quel caractère" avec `pattern:[\s\S]` ou un motif semblable.
 ````
