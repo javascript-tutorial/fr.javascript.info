@@ -1,14 +1,14 @@
 # Classes de caractères
 
-Considérons un exemple pratique -- nous avons un numero de téléphone tel que `"+7(903)-123-45-67"`, et nous souhaitons le convertir en nombres purs: `79031234567`.
+Considérons un exemple pratique -- nous avons un numero de téléphone tel que `"+7(903)-123-45-67"`, et nous souhaitons le convertir en nombres purs : `79031234567`.
 
 Pour ce faire, nous pouvons rechercher et supprimer tout ce qui n'est pas un nombre. Les classes de caractères peuvent nous aider.
 
 Une *classe de caractères* est une notation spéciale qui correspond à n'importe quel symbole d'un certain ensemble.
 
-Pour commencer, explorons la classe "digit". Il est écrit comme `pattern:\d` et correspond à "n'importe quel chiffre".
+Pour commencer, explorons la classe "digit". Elle s'écrit comme `pattern:\d` et correspond à "n'importe quel chiffre".
 
-Par exemple, recherchons le premier chiffre du numéro de téléphone:
+Par exemple, recherchons le premier chiffre du numéro de téléphone :
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -18,9 +18,9 @@ let regexp = /\d/;
 alert( str.match(regexp) ); // 7
 ```
 
-Sans l'indicateur `pattern:g`, l'expression régulière ne recherche que la première correspondance, c'est-à-dire le premier chiffre` pattern:\d`.
+Sans l'indicateur `pattern:g`, l'expression régulière ne recherche que la première correspondance, c'est-à-dire le premier chiffre `pattern:\d`.
 
-Ajoutons l'indicateur `pattern:g` pour trouver tous les chiffres:
+Ajoutons l'indicateur `pattern:g` pour trouver tous les chiffres :
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -35,7 +35,7 @@ alert( str.match(regexp).join('') ); // 79031234567
 
 C'était une classe de caractères pour les chiffres. Il existe également d'autres classes de caractères.
 
-Les plus utilisés sont:
+Les plus utilisés sont :
 
 `pattern:\d` ("d" vient de "digit" ("chiffre"))
 : Un chiffre: un caractère de `0` à `9`.
@@ -50,7 +50,7 @@ Par exemple, `pattern:\d\s\w` signifie un "chiffre" suivi d'un "caractère espac
 
 **Une expression régulière peut contenir à la fois des symboles normaux et des classes de caractères.**
 
-Par exemple, `pattern: CSS\d` correspond à une chaîne `match:CSS` suivi d'un chiffre:
+Par exemple, `pattern: CSS\d` correspond à une chaîne `match:CSS` suivi d'un chiffre :
 
 ```js run
 let str = "Is there CSS4?";
@@ -59,13 +59,13 @@ let regexp = /CSS\d/
 alert( str.match(regexp) ); // CSS4
 ```
 
-On peut également utiliser les classes de caractères:
+On peut également utiliser les classes de caractères :
 
 ```js run
 alert( "I love HTML5!".match(/\s\w\w\w\w\d/) ); // ' HTML5'
 ```
 
-La correspondance (chaque classe de caractères d'expression régulière a le caractère de résultat correspondant):
+La correspondance (chaque classe de caractères d'expression régulière a le caractère de résultat correspondant) :
 
 ![](love-html5-classes.svg)
 
@@ -73,7 +73,7 @@ La correspondance (chaque classe de caractères d'expression régulière a le ca
 
 Pour chaque classe de caractères, il existe une "classe inverse", notée avec la même lettre, mais en majuscule.
 
-L'"inverse" signifie qu'il correspond à tous les autres caractères, par exemple:
+L'"inverse" signifie qu'il correspond à tous les autres caractères, par exemple :
 
 `pattern:\D`
 : Non-chiffre: tout caractère sauf `pattern:\d`, par exemple une lettre.
@@ -82,7 +82,7 @@ L'"inverse" signifie qu'il correspond à tous les autres caractères, par exempl
 : Non-espace: tout caractère sauf `pattern:\d`, par exemple une lettre.
 
 `pattern:\W`
-: Caractère non verbal: tout sauf `pattern:\w`, par exemple une lettre non latine ou un espace.
+: Caractère non verbal : tout sauf `pattern:\w`, par exemple une lettre non latine ou un espace.
 
 Au début du chapitre, nous avons vu comment créer un numéro de téléphone uniquement à partir d'une chaîne comme `subject:+7(903)-123-45-67`: trouver tous les chiffres et les concaténer.
 
@@ -120,7 +120,7 @@ alert( "CS-4".match(regexp) ); // CS-4
 alert( "CS 4".match(regexp) ); // CS 4 (espace est aussi un caractère)
 ```
 
-Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre:
+Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre :
 
 ```js run
 alert( "CS4".match(/CS.4/) ); // null, pas de correspondance car il n'y a pas de caractère pour le point
@@ -138,7 +138,7 @@ alert( "A\nB".match(/A.B/) ); // null (pas de correspondance)
 
 Il existe de nombreuses situations où nous aimerions qu'un point signifie littéralement "n'importe quel caractère", y compris le saut de ligne.
 
-C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère:
+C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère :
 
 ```js run
 alert( "A\nB".match(/A.B/s) ); // A\nB (correspondance!)
@@ -163,13 +163,13 @@ Habituellement, nous prêtons peu d'attention aux espaces. Pour nous, les chaîn
 
 Mais si une expression régulière ne prend pas en compte les espaces, elle peut ne pas fonctionner.
 
-Essayons de trouver des chiffres séparés par un tiret:
+Essayons de trouver des chiffres séparés par un tiret :
 
 ```js run
 alert( "1 - 5".match(/\d-\d/) ); // null, pas de correspondance!
 ```
 
-Corrigeons-le en ajoutant des espaces dans l'expression régulière `pattern:\d - \d`:
+Corrigeons-le en ajoutant des espaces dans l'expression régulière `pattern:\d - \d` :
 
 ```js run
 alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, désormais, cela fonctionne
@@ -186,7 +186,7 @@ En d'autres termes, dans une expression régulière, tous les caractères compte
 
 ## Résumé
 
-Il existe les classes de caractères suivantes:
+Il existe les classes de caractères suivantes :
 
 - `pattern:\d` -- chiffres.
 - `pattern:\D` -- non-chiffres.
