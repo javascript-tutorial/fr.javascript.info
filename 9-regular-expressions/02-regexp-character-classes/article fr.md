@@ -172,32 +172,32 @@ alert( "1 - 5".match(/\d-\d/) ); // null, pas de correspondance!
 Corrigeons-le en ajoutant des espaces dans l'expression régulière `pattern:\d - \d`:
 
 ```js run
-alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, now it works
-// or we can use \s class:
-alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, also works
+alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, désormais, cela fonctionne
+// ou on peut utiliser la classe \s:
+alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, fonctionne aussi
 ```
 
-**A space is a character. Equal in importance with any other character.**
+**Un espace est un caractère. Aussi important que n'importe quel autre caractère.**
 
-We can't add or remove spaces from a regular expression and expect to work the same.
+Nous ne pouvons pas ajouter ou supprimer des espaces dans une expression régulière et nous attendre à ce que cela fonctionne de la même manière.
 
-In other words, in a regular expression all characters matter, spaces too.
+En d'autres termes, dans une expression régulière, tous les caractères comptent, les espaces aussi.
 ````
 
-## Summary
+## Résumé
 
-There exist following character classes:
+Il existe les classes de caractères suivantes:
 
-- `pattern:\d` -- digits.
-- `pattern:\D` -- non-digits.
-- `pattern:\s` -- space symbols, tabs, newlines.
-- `pattern:\S` -- all but `pattern:\s`.
-- `pattern:\w` -- Latin letters, digits, underscore `'_'`.
-- `pattern:\W` -- all but `pattern:\w`.
-- `pattern:.` -- any character if with the regexp `'s'` flag, otherwise any except a newline `\n`.
+- `pattern:\d` -- chiffres.
+- `pattern:\D` -- non-chiffres.
+- `pattern:\s` -- symboles d'espace, tabulations, sauts de ligne.
+- `pattern:\S` -- tout sauf `pattern:\s`.
+- `pattern:\w` -- Lettres latines, chiffres, soulignement `'_'`.
+- `pattern:\W` -- tout sauf `pattern:\w`.
+- `pattern:.` -- n'importe quel caractère avec l'indicateur d'expression régulière `'s'`, sinon tout sauf un saut de ligne `\n`.
 
-...But that's not all!
+...Mais ce n'est pas tout!
 
-Unicode encoding, used by JavaScript for strings, provides many properties for characters, like: which language the letter belongs to (if it's a letter) it is it a punctuation sign, etc.
+Le codage Unicode, utilisé par JavaScript pour les chaînes, fournit de nombreuses propriétés aux caractères, tels que: à quelle langue la lettre appartient (si c'est une lettre), si c'est un signe de ponctuation, etc.
 
-We can search by these properties as well. That requires flag `pattern:u`, covered in the next article.
+Nous pouvons également faire une recherche selon leurs propriétés. Cela nécessite l'indicateur `pattern:u`, couvert dans le prochain article.
