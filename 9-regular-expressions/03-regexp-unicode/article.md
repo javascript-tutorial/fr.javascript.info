@@ -18,7 +18,7 @@ Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les code
 
 Il y a longtemps, lorsque le langage JavaScript a été créé, l'encodage Unicode était plus simple : il n'y avait pas de caractères à 4 octets. Ainsi, certaines fonctionnalités du langage les gèrent toujours de manière incorrecte.
 
-Par exemple, la propriété `length` pense qu'il y a deux caractères:
+Par exemple, la propriété `length` pense qu'il y a deux caractères :
 
 ```js run
 alert('😄'.length); // 2
@@ -47,7 +47,7 @@ Nous pouvons rechercher des caractères avec une propriété, écrite sous la fo
 
 Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
 
-Dans l'exemple ci-dessous, on trouvera trois types de lettres: Anglais, Géorgien et Coréen.
+Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgien et Coréen.
 
 ```js run
 let str = "A ბ ㄱ";
@@ -56,19 +56,19 @@ alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
 alert( str.match(/\p{L}/g) ); // null (aucune correspondance, puisqu'il n'y a pas l'indicateur "u")
 ```
 
-Voici les principales catégories de caractères et leurs sous-catégories:
+Voici les principales catégories de caractères et leurs sous-catégories :
 
-- Lettre `L`:
+- Lettre `L` :
   - minuscules `Ll`,
   - modificateur `Lm`,
   - titre `Lt`,
   - majuscule `Lu`,
   - autres `Lo`.
-- Nombre `N`:
+- Nombre `N` :
   - chiffre décimal `Nd`,
   - numéro de lettre `Nl`,
   - autre `No`.
-- Ponctuation `P`:
+- Ponctuation `P` :
   - connecteur `Pc`,
   - tiret `Pd`,
   - citation initiale `Pi`,
@@ -76,20 +76,20 @@ Voici les principales catégories de caractères et leurs sous-catégories:
   - ponctuation ouvrante `Ps`,
   - ponctuation fermante `Pe`,
   - autre `Po`.
-- Marqueur `M` (accents, etc.):
+- Marqueur `M` (accents, etc.) :
   - espacement combinant `Mc`,
   - contenant `Me`,
   - sans espacement `Mn`.
-- Symbole `S`:
+- Symbole `S` :
   - devise `Sc`,
   - modificateur `Sk`,
   - mathématique `Sm`,
   - autre `So`.
-- Séparateur `Z`:
+- Séparateur `Z` :
   - ligne `Zl`,
   - paragraphe `Zp`,
   - espace `Zs`.
-- Autre `C`:
+- Autre `C` :
   - contrôle `Cc`,
   - format `Cf`,
   - non affecté `Cn`,
@@ -99,19 +99,19 @@ Voici les principales catégories de caractères et leurs sous-catégories:
 
 Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
 
-Il existe également d'autres catégories dérivées, comme:
+Il existe également d'autres catégories dérivées, comme :
 - `Alphabetic` (Alphabétique)(`Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques)(`OAlpha`).
 - `Hex_Digit` comprend des chiffres hexadécimaux : `0-9`, `a-f`.
 - ...Et ainsi de suite.
 
-Unicode prend en charge de nombreuses propriétés différentes, leur liste complète nécessiterait beaucoup d'espace, voici donc les références:
+Unicode prend en charge de nombreuses propriétés différentes, leur liste complète nécessiterait beaucoup d'espace, voici donc les références :
 
-- Liste de toutes les propriétés par caractère: <https://unicode.org/cldr/utility/character.jsp>.
-- Liste de tous les caractères par propriété: <https://unicode.org/cldr/utility/list-unicodeset.jsp>.
-- Alias ​​courts pour les propriétés: <https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt>.
+- Liste de toutes les propriétés par caractère : <https://unicode.org/cldr/utility/character.jsp>.
+- Liste de tous les caractères par propriété : <https://unicode.org/cldr/utility/list-unicodeset.jsp>.
+- Alias ​​courts pour les propriétés : <https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt>.
 - Une base complète de caractères Unicode au format texte, avec toutes les propriétés, se trouve ici: <https://www.unicode.org/Public/UCD/latest/ucd/>.
 
-### Exemple: nombres hexadécimaux
+### Exemple : nombres hexadécimaux
 
 Par exemple, recherchons des nombres hexadécimaux, écrits sous la forme `xFF`, où `F` est un chiffre hexadécimal (0..1 ou A..F).
 
@@ -123,13 +123,13 @@ let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
 alert("number: xAF".match(regexp)); // xAF
 ```
 
-### Exemple: Hiéroglyphes Chinois
+### Exemple : Hiéroglyphes Chinois
 
 Cherchons des hiéroglyphes Chinois.
 
-Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur: `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète](https://en.wikipedia.org/wiki/Script_(Unicode)).
+Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
 
-Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques: `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois: `pattern:\p{sc=Han}`, et ainsi de suite:
+Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques : `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois : `pattern:\p{sc=Han}`, et ainsi de suite :
 
 ```js run
 let regexp = /\p{sc=Han}/gu; // renvoie des hiéroglyphes Chinois
@@ -159,9 +159,9 @@ Plus loin, dans l'article <info:regexp-quantifiers>, nous verrons comment recher
 
 L'indicateur `pattern:u` permet la prise en charge d'Unicode dans les expressions régulières.
 
-Cela signifie deux choses:
+Cela signifie deux choses :
 
-1. Les caractères de 4 octets sont traités correctement: comme un seul caractère, pas comme deux caractères de 2 octets.
-2. Les propriétés Unicode peuvent être utilisées dans la recherche: `\p{…}`.
+1. Les caractères de 4 octets sont traités correctement : comme un seul caractère, pas comme deux caractères de 2 octets.
+2. Les propriétés Unicode peuvent être utilisées dans la recherche : `\p{…}`.
 
 Avec les propriétés Unicode, nous pouvons rechercher des mots dans des langues données, des caractères spéciaux (guillemets, devises) et ainsi de suite.
