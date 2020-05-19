@@ -18,7 +18,7 @@ Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les code
 
 Il y a longtemps, lorsque le langage JavaScript a été créé, l'encodage Unicode était plus simple : il n'y avait pas de caractères à 4 octets. Ainsi, certaines fonctionnalités du langage les gèrent toujours de manière incorrecte.
 
-Par exemple, `length` pense qu'il y a deux caractères:
+Par exemple, la propriété `length` pense qu'il y a deux caractères:
 
 ```js run
 alert('😄'.length); // 2
@@ -41,9 +41,9 @@ Il existe une bibliothèque logicielle [XRegExp](http://xregexp.com) qui fournit
 
 Chaque caractère dans Unicode a beaucoup de propriétés. Ils décrivent à quelle "catégorie" le caractère appartient, et contiennent diverses informations à son sujet.
 
-Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue). Et la propriété `Number` (Nombre) signifie que c'est un chiffre: peut-être l'arabe ou le chinois, et ainsi de suite.
+Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue). Et la propriété `Number` (Nombre) signifie que c'est un chiffre : peut-être l'arabe ou le chinois, et ainsi de suite.
 
-Nous pouvons rechercher des caractères avec une propriété, écrite comme `pattern:\p{…}`. Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
+Nous pouvons rechercher des caractères avec une propriété, écrite sous la forme `pattern:\p{…}`. Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
 
 Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
 
@@ -72,7 +72,7 @@ Voici les principales catégories de caractères et leurs sous-catégories:
   - connecteur `Pc`,
   - tiret `Pd`,
   - citation initiale `Pi`,
-  - citation final `Pf`,
+  - citation finale `Pf`,
   - ponctuation ouvrante `Ps`,
   - ponctuation fermante `Pe`,
   - autre `Po`.
@@ -83,7 +83,7 @@ Voici les principales catégories de caractères et leurs sous-catégories:
 - Symbole `S`:
   - devise `Sc`,
   - modificateur `Sk`,
-  - math `Sm`,
+  - mathématique `Sm`,
   - autre `So`.
 - Séparateur `Z`:
   - ligne `Zl`,
@@ -97,10 +97,10 @@ Voici les principales catégories de caractères et leurs sous-catégories:
   - substitut `Cs`.
 
 
-Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire ``pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
+Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
 
 Il existe également d'autres catégories dérivées, comme:
-- `Alphabétique` (`Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques)(`OAlpha`).
+- `Alphabetic` (Alphabétique)(`Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques)(`OAlpha`).
 - `Hex_Digit` comprend des chiffres hexadécimaux : `0-9`, `a-f`.
 - ...Et ainsi de suite.
 
@@ -115,7 +115,7 @@ Unicode prend en charge de nombreuses propriétés différentes, leur liste comp
 
 Par exemple, recherchons des nombres hexadécimaux, écrits sous la forme `xFF`, où `F` est un chiffre hexadécimal (0..1 ou A..F).
 
-Un chiffre hexadécimal peut être désigné par `pattern:\p{Hex_Digit}`:
+Un chiffre hexadécimal peut être désigné par `pattern:\p{Hex_Digit}` :
 
 ```js run
 let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
