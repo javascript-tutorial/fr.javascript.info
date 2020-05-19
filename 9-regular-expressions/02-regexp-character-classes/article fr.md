@@ -84,7 +84,7 @@ L'"inverse" signifie qu'il correspond à tous les autres caractères, par exempl
 `pattern:\W`
 : Caractère non verbal : tout sauf `pattern:\w`, par exemple une lettre non latine ou un espace.
 
-Au début du chapitre, nous avons vu comment créer un numéro de téléphone uniquement à partir d'une chaîne comme `subject:+7(903)-123-45-67`: trouver tous les chiffres et les concaténer.
+Au début du chapitre, nous avons vu comment créer un numéro de téléphone uniquement à partir d'une chaîne telle que `subject:+7(903)-123-45-67`: trouver tous les chiffres et les concaténer.
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -117,7 +117,7 @@ let regexp = /CS.4/;
 
 alert( "CSS4".match(regexp) ); // CSS4
 alert( "CS-4".match(regexp) ); // CS-4
-alert( "CS 4".match(regexp) ); // CS 4 (espace est aussi un caractère)
+alert( "CS 4".match(regexp) ); // CS 4 (l'espace est aussi un caractère)
 ```
 
 Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre :
@@ -126,7 +126,7 @@ Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'abs
 alert( "CS4".match(/CS.4/) ); // null, pas de correspondance car il n'y a pas de caractère pour le point
 ```
 
-### Point comme littéralement n'importe quel caractère avec l'indicateur "s"
+### Point tel que n'importe quel caractère avec l'indicateur "s"
 
 Par défaut, un point ne correspond pas au caractère de saut de ligne `\n`.
 
@@ -145,7 +145,7 @@ alert( "A\nB".match(/A.B/s) ); // A\nB (correspondance!)
 ```
 
 ````warn header="Non pris en charge dans Firefox, IE, Edge"
-Check <https://caniuse.com/#search=dotall> pour l'état de support le plus récent. Au moment de la rédaction, il n'inclut pas Firefox, IE, Edge.
+Voir <https://caniuse.com/#search=dotall> pour l'état de support le plus récent. Au moment de la rédaction, il n'inclut pas Firefox, IE, Edge.
 
 Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons utiliser une expression rationnelle comme `pattern: [\s\S]` pour faire correspondre "n'importe quel caractère".
 
@@ -198,6 +198,6 @@ Il existe les classes de caractères suivantes :
 
 ...Mais ce n'est pas tout!
 
-Le codage Unicode, utilisé par JavaScript pour les chaînes, fournit de nombreuses propriétés aux caractères, tels que: à quelle langue la lettre appartient (si c'est une lettre), si c'est un signe de ponctuation, etc.
+Le codage Unicode, utilisé par JavaScript pour les chaînes, fournit de nombreuses propriétés aux caractères, tels que : à quelle langue la lettre appartient (si c'est une lettre), si c'est un signe de ponctuation, etc.
 
 Nous pouvons également faire une recherche selon leurs propriétés. Cela nécessite l'indicateur `pattern:u`, couvert dans le prochain article.
