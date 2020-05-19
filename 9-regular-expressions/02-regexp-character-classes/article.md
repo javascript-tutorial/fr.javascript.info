@@ -1,14 +1,14 @@
-# Character classes
+# Classes de caractères
 
-Consider a practical task -- we have a phone number like `"+7(903)-123-45-67"`, and we need to turn it into pure numbers: `79031234567`.
+Considérons un exemple pratique -- nous avons un numero de téléphone tel que `"+7(903)-123-45-67"`, et nous souhaitons le convertir en nombres purs : `79031234567`.
 
-To do so, we can find and remove anything that's not a number. Character classes can help with that.
+Pour ce faire, nous pouvons rechercher et supprimer tout ce qui n'est pas un nombre. Les classes de caractères peuvent nous aider.
 
-A *character class* is a special notation that matches any symbol from a certain set.
+Une *classe de caractères* est une notation spéciale qui correspond à n'importe quel symbole d'un certain ensemble.
 
-For the start, let's explore the "digit" class. It's written as `pattern:\d` and corresponds to "any single digit".
+Pour commencer, explorons la classe "digit". Elle s'écrit comme `pattern:\d` et correspond à "n'importe quel chiffre".
 
-For instance, the let's find the first digit in the phone number:
+Par exemple, recherchons le premier chiffre du numéro de téléphone :
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -18,39 +18,39 @@ let regexp = /\d/;
 alert( str.match(regexp) ); // 7
 ```
 
-Without the flag `pattern:g`, the regular expression only looks for the first match, that is the first digit `pattern:\d`.
+Sans l'indicateur `pattern:g`, l'expression régulière ne recherche que la première correspondance, c'est-à-dire le premier chiffre `pattern:\d`.
 
-Let's add the `pattern:g` flag to find all digits:
+Ajoutons l'indicateur `pattern:g` pour trouver tous les chiffres :
 
 ```js run
 let str = "+7(903)-123-45-67";
 
 let regexp = /\d/g;
 
-alert( str.match(regexp) ); // array of matches: 7,9,0,3,1,2,3,4,5,6,7
+alert( str.match(regexp) ); // liste de correspondances: 7,9,0,3,1,2,3,4,5,6,7
 
-// let's make the digits-only phone number of them:
+// Obtenons un numéro de télephone composé uniquement de ces chiffres:
 alert( str.match(regexp).join('') ); // 79031234567
 ```
 
-That was a character class for digits. There are other character classes as well.
+C'était une classe de caractères pour les chiffres. Il existe également d'autres classes de caractères.
 
-Most used are:
+Les plus utilisés sont :
 
-`pattern:\d` ("d" is from "digit")
-: A digit: a character from `0` to `9`.
+`pattern:\d` ("d" vient de "digit" ("chiffre"))
+: Un chiffre: un caractère de `0` à `9`.
 
-`pattern:\s` ("s" is from "space")
-: A space symbol: includes spaces, tabs `\t`, newlines `\n` and few other rare characters, such as `\v`, `\f` and `\r`.
+`pattern:\s` ("s" vient de "space" ("espace"))
+: Un symbole d'espace: inclut les espaces, les tabulations `\t`, les sauts de ligne `\n` et quelques autres caractères rares, tels que `\v`,` \f` et `\r`.
 
-`pattern:\w` ("w" is from "word")
-: A "wordly" character: either a letter of Latin alphabet or a digit or an underscore `_`. Non-Latin letters (like cyrillic or hindi) do not belong to `pattern:\w`.
+`pattern:\w` ("w" vient de "word" ("mot"))
+: Un caractère "verbeux": soit une lettre de l'alphabet latin, soit un chiffre ou un trait de soulignement `_`. Les lettres non latines (comme le cyrillique ou l'hindi) n'appartiennent pas au `pattern:\w`.
 
-For instance, `pattern:\d\s\w` means a "digit" followed by a "space character" followed by a "wordly character", such as `match:1 a`.
+Par exemple, `pattern:\d\s\w` signifie un "chiffre" suivi d'un "caractère espace" suivi d'un "caractère verbeux", tel que `match:1 a`.
 
-**A regexp may contain both regular symbols and character classes.**
+**Une expression régulière peut contenir à la fois des symboles normaux et des classes de caractères.**
 
-For instance, `pattern:CSS\d` matches a string `match:CSS` with a digit after it:
+Par exemple, `pattern: CSS\d` correspond à une chaîne `match:CSS` suivi d'un chiffre :
 
 ```js run
 let str = "Is there CSS4?";
@@ -59,32 +59,32 @@ let regexp = /CSS\d/
 alert( str.match(regexp) ); // CSS4
 ```
 
-Also we can use many character classes:
+On peut également utiliser les classes de caractères :
 
 ```js run
 alert( "I love HTML5!".match(/\s\w\w\w\w\d/) ); // ' HTML5'
 ```
 
-The match (each regexp character class has the corresponding result character):
+La correspondance (chaque classe de caractères d'expression régulière a le caractère de résultat correspondant) :
 
 ![](love-html5-classes.svg)
 
-## Inverse classes
+## Classes inverses
 
-For every character class there exists an "inverse class", denoted with the same letter, but uppercased.
+Pour chaque classe de caractères, il existe une "classe inverse", notée avec la même lettre, mais en majuscule.
 
-The "inverse" means that it matches all other characters, for instance:
+L'"inverse" signifie qu'il correspond à tous les autres caractères, par exemple :
 
 `pattern:\D`
-: Non-digit: any character except `pattern:\d`, for instance a letter.
+: Non-chiffre: tout caractère sauf `pattern:\d`, par exemple une lettre.
 
 `pattern:\S`
-: Non-space: any character except `pattern:\s`, for instance a letter.
+: Non-espace: tout caractère sauf `pattern:\d`, par exemple une lettre.
 
 `pattern:\W`
-: Non-wordly character: anything but `pattern:\w`, e.g a non-latin letter or a space.
+: Caractère non verbal : tout sauf `pattern:\w`, par exemple une lettre non latine ou un espace.
 
-In the beginning of the chapter we saw how to make a number-only phone number from a string like `subject:+7(903)-123-45-67`: find all digits and join them.
+Au début du chapitre, nous avons vu comment créer un numéro de téléphone uniquement à partir d'une chaîne telle que `subject:+7(903)-123-45-67`: trouver tous les chiffres et les concaténer.
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -92,7 +92,7 @@ let str = "+7(903)-123-45-67";
 alert( str.match(/\d/g).join('') ); // 79031234567
 ```
 
-An alternative, shorter way is to find non-digits `pattern:\D` and remove them from the string:
+Une autre manière, plus courte, consiste à rechercher un motif non numérique `pattern:\D` et à le supprimer de la chaîne:
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -100,104 +100,104 @@ let str = "+7(903)-123-45-67";
 alert( str.replace(/\D/g, "") ); // 79031234567
 ```
 
-## A dot is "any character"
+## Un point est "n'importe quel caractère"
 
-A dot `pattern:.` is a special character class that matches "any character except a newline".
+Un point `pattern:.` est une classe de caractères spéciale qui correspond à "n'importe quel caractère sauf une nouvelle ligne".
 
-For instance:
+Par exemple:
 
 ```js run
 alert( "Z".match(/./) ); // Z
 ```
 
-Or in the middle of a regexp:
+Ou au milieu d'une expression régulière:
 
 ```js run
 let regexp = /CS.4/;
 
 alert( "CSS4".match(regexp) ); // CSS4
 alert( "CS-4".match(regexp) ); // CS-4
-alert( "CS 4".match(regexp) ); // CS 4 (space is also a character)
+alert( "CS 4".match(regexp) ); // CS 4 (l'espace est aussi un caractère)
 ```
 
-Please note that a dot means "any character", but not the "absense of a character". There must be a character to match it:
+Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre :
 
 ```js run
-alert( "CS4".match(/CS.4/) ); // null, no match because there's no character for the dot
+alert( "CS4".match(/CS.4/) ); // null, pas de correspondance car il n'y a pas de caractère pour le point
 ```
 
-### Dot as literally any character with "s" flag
+### Point tel que n'importe quel caractère avec l'indicateur "s"
 
-By default, a dot doesn't match the newline character `\n`.
+Par défaut, un point ne correspond pas au caractère de saut de ligne `\n`.
 
-For instance, the regexp `pattern:A.B` matches `match:A`, and then `match:B` with any character between them, except a newline `\n`:
+Par exemple, l'expression rationnelle `pattern:A.B` correspond à `match:A`, puis `match:B` avec n'importe quel caractère entre eux, sauf un saut de ligne `\n`:
 
 ```js run
-alert( "A\nB".match(/A.B/) ); // null (no match)
+alert( "A\nB".match(/A.B/) ); // null (pas de correspondance)
 ```
 
-There are many situations when we'd like a dot to mean literally "any character", newline included.
+Il existe de nombreuses situations où nous aimerions qu'un point signifie littéralement "n'importe quel caractère", y compris le saut de ligne.
 
-That's what flag `pattern:s` does. If a regexp has it, then a dot `pattern:.` matches literally any character:
+C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère :
 
 ```js run
-alert( "A\nB".match(/A.B/s) ); // A\nB (match!)
+alert( "A\nB".match(/A.B/s) ); // A\nB (correspondance!)
 ```
 
-````warn header="Not supported in Firefox, IE, Edge"
-Check <https://caniuse.com/#search=dotall> for the most recent state of support. At the time of writing it doesn't include Firefox, IE, Edge.
+````warn header="Non pris en charge dans Firefox, IE, Edge"
+Voir <https://caniuse.com/#search=dotall> pour l'état de support le plus récent. Au moment de la rédaction, il n'inclut pas Firefox, IE, Edge.
 
-Luckily, there's an alternative, that works everywhere. We can use a regexp like `pattern:[\s\S]` to match "any character".
+Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons utiliser une expression rationnelle comme `pattern: [\s\S]` pour faire correspondre "n'importe quel caractère".
 
 ```js run
-alert( "A\nB".match(/A[\s\S]B/) ); // A\nB (match!)
+alert( "A\nB".match(/A[\s\S]B/) ); // A\nB (correspondance!)
 ```
 
-The pattern `pattern:[\s\S]` literally says: "a space character OR not a space character". In other words, "anything". We could use another pair of complementary classes, such as `pattern:[\d\D]`, that doesn't matter. Or even the `pattern:[^]` -- as it means match any character except nothing.
+Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace". En d'autres termes, "n'importe quoi". Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern: [\d\D]`, cela n'a pas d'importance. Ou même le `pattern: [^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
 
-Also we can use this trick if we want both kind of "dots" in the same pattern: the actual dot `pattern:.` behaving the regular way ("not including a newline"), and also a way to match "any character" with `pattern:[\s\S]` or alike.
+Nous pouvons également utiliser cette astuce si nous voulons les deux types de "points" dans le même motif: le point réel `pattern:.` se comportant de manière habituelle ("ne pas inclure de saut de ligne") est également une facon de correspondre à "n'importe quel caractère" avec `pattern:[\s\S]` ou un motif semblable.
 ````
 
-````warn header="Pay attention to spaces"
-Usually we pay little attention to spaces. For us strings `subject:1-5` and `subject:1 - 5` are nearly identical.
+````warn header="Faites attention aux espaces"
+Habituellement, nous prêtons peu d'attention aux espaces. Pour nous, les chaînes `subject:1-5` et `subject:1 - 5` sont presque identiques.
 
-But if a regexp doesn't take spaces into account, it may fail to work.
+Mais si une expression régulière ne prend pas en compte les espaces, elle peut ne pas fonctionner.
 
-Let's try to find digits separated by a hyphen:
-
-```js run
-alert( "1 - 5".match(/\d-\d/) ); // null, no match!
-```
-
-Let's fix it adding spaces into the regexp `pattern:\d - \d`:
+Essayons de trouver des chiffres séparés par un tiret :
 
 ```js run
-alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, now it works
-// or we can use \s class:
-alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, also works
+alert( "1 - 5".match(/\d-\d/) ); // null, pas de correspondance!
 ```
 
-**A space is a character. Equal in importance with any other character.**
+Corrigeons-le en ajoutant des espaces dans l'expression régulière `pattern:\d - \d` :
 
-We can't add or remove spaces from a regular expression and expect to work the same.
+```js run
+alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, désormais, cela fonctionne
+// ou on peut utiliser la classe \s:
+alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, fonctionne aussi
+```
 
-In other words, in a regular expression all characters matter, spaces too.
+**Un espace est un caractère. Aussi important que n'importe quel autre caractère.**
+
+Nous ne pouvons pas ajouter ou supprimer des espaces dans une expression régulière et nous attendre à ce que cela fonctionne de la même manière.
+
+En d'autres termes, dans une expression régulière, tous les caractères comptent, les espaces aussi.
 ````
 
-## Summary
+## Résumé
 
-There exist following character classes:
+Il existe les classes de caractères suivantes :
 
-- `pattern:\d` -- digits.
-- `pattern:\D` -- non-digits.
-- `pattern:\s` -- space symbols, tabs, newlines.
-- `pattern:\S` -- all but `pattern:\s`.
-- `pattern:\w` -- Latin letters, digits, underscore `'_'`.
-- `pattern:\W` -- all but `pattern:\w`.
-- `pattern:.` -- any character if with the regexp `'s'` flag, otherwise any except a newline `\n`.
+- `pattern:\d` -- chiffres.
+- `pattern:\D` -- non-chiffres.
+- `pattern:\s` -- symboles d'espace, tabulations, sauts de ligne.
+- `pattern:\S` -- tout sauf `pattern:\s`.
+- `pattern:\w` -- Lettres latines, chiffres, soulignement `'_'`.
+- `pattern:\W` -- tout sauf `pattern:\w`.
+- `pattern:.` -- n'importe quel caractère avec l'indicateur d'expression régulière `'s'`, sinon tout sauf un saut de ligne `\n`.
 
-...But that's not all!
+...Mais ce n'est pas tout!
 
-Unicode encoding, used by JavaScript for strings, provides many properties for characters, like: which language the letter belongs to (if it's a letter) it is it a punctuation sign, etc.
+Le codage Unicode, utilisé par JavaScript pour les chaînes, fournit de nombreuses propriétés aux caractères, tels que : à quelle langue la lettre appartient (si c'est une lettre), si c'est un signe de ponctuation, etc.
 
-We can search by these properties as well. That requires flag `pattern:u`, covered in the next article.
+Nous pouvons également faire une recherche selon leurs propriétés. Cela nécessite l'indicateur `pattern:u`, couvert dans le prochain article.
