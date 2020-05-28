@@ -1,4 +1,4 @@
-# Opérateurs
+# Opérateurs de base, mathématiques
 
 De nombreux opérateurs nous sont connus de l'école. Ce sont les additions `+`, multiplications `*`, soustractions `-` et ainsi de suite.
 
