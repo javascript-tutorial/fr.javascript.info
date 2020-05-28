@@ -1,6 +1,6 @@
 # Opérateurs
 
-De nombreux opérateurs nous sont connus de l'école.  Ce sont les  additions `+`, multiplications `*`, soustractions `-` et ainsi de suite.
+De nombreux opérateurs nous sont connus de l'école. Ce sont les additions `+`, multiplications `*`, soustractions `-` et ainsi de suite.
 
 Dans ce chapitre, nous nous concentrons sur les aspects qui ne sont pas couverts par l'arithmétique scolaire.
 
@@ -19,7 +19,7 @@ Avant de continuer, saisissons la terminologie commune.
     */!*
     alert( x ); // -1, le moins unaire a été appliqué
     ```
-- Un opérateur est `binaire` s'il a deux opérandes. La même négation existe également dans la forme binaire :
+- Un opérateur est *binaire* s'il a deux opérandes. La même négation existe également dans la forme binaire :
 
     ```js run no-beautify
     let x = 1, y = 3;
@@ -27,6 +27,52 @@ Avant de continuer, saisissons la terminologie commune.
     ```
 
     D'un point de vue formel, dans les exemples ci-dessus, nous avons deux opérateurs différents qui partagent le même symbole : l'opérateur de négation, un opérateur unaire qui inverse le signe, et l'opérateur de soustraction, un opérateur binaire qui soustrait un nombre d'un autre.
+
+## Opérations mathématiques
+
+Les opérations mathématiques suivantes sont supportées :
+
+- Addition `+`,
+- Soustraction `-`,
+- Multiplication `*`,
+- Division `/`,
+- Reste `%`,
+- Exponentiation `**`.
+
+Les quatre premières sont assez simples, tandis que `%` et `**` nécéssitent quelques explications.
+
+### Reste % (Modulo)
+
+L'opérateur reste `%`, malgré son apparence, n'est pas lié aux pourcentages.
+
+Le résultat de `a % b` est le [reste](https://fr.wikipedia.org/wiki/Reste) de la division entière de `a` par `b`.
+
+Par exemple:
+
+```js run
+alert( 5 % 2 ); // 1, le reste de 5 divisé par 2
+alert( 8 % 3 ); // 2, le reste de 8 divisé par 3
+```
+
+### Exponentiation **
+
+L'opérateur d'exponentiation `a ** b` multiplie `a` par lui-même `b` fois.
+
+Par exemple:
+
+```js run
+alert( 2 ** 2 ); // 4  (2 multiplié par lui-même 2 fois)
+alert( 2 ** 3 ); // 8  (2 * 2 * 2, 3 fois)
+alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2, 4 fois)
+```
+
+Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. Par exemple, une racine carrée est une exponentiation de `1/2`:
+
+```js run
+alert( 4 ** (1/2) ); // 2 (la puissance de 1/2 équivaut à une racine carrée)
+alert( 8 ** (1/3) ); // 2 (la puissance de 1/3 équivaut à une racine cubique)
+```
+
 
 ## Concaténation de chaînes de caractères, binaire `+`
 
@@ -56,23 +102,24 @@ Cependant, notez que les opérations se déroulent de gauche à droite. S'il y a
 
 
 ```js run
-alert(2 + 2 + '1' ); // "41" and not "221"
+alert(2 + 2 + '1' ); // "41" et non "221"
 ```
 
-La concaténation et la conversion en chaînes de caractères sont une caractéristique particulière du binaire plus `+`. Les autres opérateurs arithmétiques ne travaillent qu'avec des nombres. Ils convertissent toujours leurs opérandes en nombres.
+Ici, les opérateurs travaillent les uns après les autres. Le premier `+` additionne deux nombres, donc il renvoie `4`, puis le `+` suivant ajoute la chaîne `1`, donc c'est comme `4 + '1' = 41`.
 
-Par exemple, soustraction et division :
+Le binaire `+` est le seul opérateur qui prend en charge les chaînes de cette manière. D'autres opérateurs arithmétiques ne fonctionnent qu'avec des nombres et convertissent toujours leurs opérandes en nombres.
 
+Voici l'exemple pour la soustraction et la division:
 ```js run
-alert( 2 - '1' ); // 1
-alert( '6' / '2' ); // 3
+alert( 6 - '2' ); // 4, convertit '2' en nombre
+alert( '6' / '2' ); // 3, convertit les deux opérandes en nombres
 ```
 
 ## Conversion numérique, unaire +
 
 Le plus `+` existe sous deux formes. La forme binaire que nous avons utilisée ci-dessus et la forme unaire.
 
-L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est converti en nombre.
+L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est convertit en nombre.
 
 Par exemple :
 
@@ -94,7 +141,6 @@ alert( +"" );   // 0
 En fait, il fait la même chose que `Number(...)`, mais il est plus court.
 
 La nécessité de convertir des chaînes de caractères en nombres est très fréquente. Par exemple, si nous obtenons des valeurs à partir de champs de formulaire HTML, il s’agit généralement de chaînes de caractères. Et si on veut les additionner ?
-
 
 Le binaire plus les ajouterait comme des chaînes de caractères : 
 
@@ -141,6 +187,7 @@ Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/We
 | ...        | ...             | ...     |
 | 17         | plus unaire     | `+`     |
 | 17         | négation unaire | `-`     |
+| 16         | exponentiation  | `**`    |
 | 15         | multiplication  | `*`     |
 | 15         | division        | `/`     |
 | 13         | addition        | `+`     |
@@ -163,7 +210,37 @@ let x = 2 * 2 + 1;
 alert( x ); // 5
 ```
 
-Il est possible de chaîner des affectations :
+### Assignment = retourne une valeur
+
+Le fait que `=` soit un opérateur, pas une construction de langage "magique" a une implication intéressante.
+
+La plupart des opérateurs en JavaScript renvoient une valeur. C'est évident pour `+` et `-`, mais aussi vrai pour `=`.
+
+L'appel `x = valeur` écrit la` valeur` dans `x` *puis la renvoie*.
+
+Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe:
+
+```js run
+let a = 1;
+let b = 2;
+
+*!*
+let c = 3 - (a = b + 1);
+*/!*
+
+alert( a ); // 3
+alert( c ); // 0
+```
+
+Dans l'exemple ci-dessus, le résultat de l'expression`(a = b + 1)` est la valeur qui a été affectée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour d'autres évaluations.
+
+Drôle de code, n'est-ce pas? Nous devons comprendre comment cela fonctionne, car parfois nous le voyons dans les bibliothèques JavaScript.
+
+Cependant, n'écrivez pas le code comme ça. De telles astuces ne rendent certainement pas le code plus clair ou lisible.
+
+### Affectations chaînées
+
+Une autre caractéristique intéressante est la possibilité de chaîner des affectations :
 
 ```js run
 let a, b, c;
@@ -179,65 +256,47 @@ alert( c ); // 4
 
 Les affectations en chaîne sont évaluées de droite à gauche. D'abord, l'expression la plus à droite `2 + 2` est évaluée puis assignée aux variables de gauche: `c`, `b` et `a`. À la fin, toutes les variables partagent une seule valeur.
 
-````smart header="L'opérateur d'affectation `\"=\"` renvoie une valeur"
-Un opérateur retourne toujours une valeur. C’est évident pour la plupart d’entre eux, comme une addition `+` ou une multiplication `*`. Mais l'opérateur d'affectation suit également cette règle.
+Encore une fois, pour des raisons de lisibilité, il est préférable de diviser ce code en quelques lignes:
 
-L'appel `x = valeur` écrit la valeur dans `x` puis `la retourne`.
-
-Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe :
-
-```js run
-let a = 1;
-let b = 2;
-
-*!*
-let c = 3 - (a = b + 1);
-*/!*
-
-alert( a ); // 3
-alert( c ); // 0
+```js
+c = 2 + 2;
+b = c;
+a = c;
 ```
+C'est plus facile à lire, en particulier lors de la numérisation rapide du code.
 
-Dans l'exemple ci-dessus, le résultat de `(a = b + 1)` est la valeur attribuée à `a` (c'est-à-dire `3`). Il est ensuite utilisé pour d'autres évaluations.
+## Modification sur place
 
-Code drôle, n'est-ce pas ? Nous devrions comprendre comment cela fonctionne, car parfois nous pouvons le voir dans des bibliothèques tierces, mais nous ne devrions pas écrire quoi que ce soit de similaire nous-mêmes. De telles astuces ne permettent pas de rendre le code plus clair et lisible.
-````
-
-## Reste % (Modulo)
-
-L'opérateur reste `%` malgré son apparence n'a pas de relation avec les pourcentages.
-
-Le résultat de `a % b` est le reste de la division entière de `a` par `b`.
-
-Par exemple : 
-
-```js run
-alert( 5 % 2 ); // 1 est le reste de 5 divisé par 2
-alert( 8 % 3 ); // 2 est le reste de 8 divisé par 3
-alert( 6 % 3 ); // 0 est le reste de 6 divisé par 3
-```
-
-## Exponentiation **
-
-L'opérateur d'exponentiation `**` est un ajout récent au langage.
-
-Pour un entier naturel `b`, le résultat de `a ** b` est `a` multiplié par lui-même `b`fois.
+Nous avons souvent besoin d'appliquer un opérateur à une variable et d'y stocker le nouveau résultat.
 
 Par exemple :
 
-```js run
-alert( 2 ** 2 ); // 4  (2 * 2)
-alert( 2 ** 3 ); // 8  (2 * 2 * 2)
-alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2)
+```js
+let n = 2;
+n = n + 5;
+n = n * 2;
 ```
 
-L'opérateur travaille également pour les nombres non entiers.
-
-Par exemple : 
+Cette notation peut être raccourcie en utilisant les opérateurs `+=` et `*=` :
 
 ```js run
-alert( 4 ** (1/2) ); // 2 (puissance de 1/2 est la même chose qu'une racine carrée, c'est des maths)
-alert( 8 ** (1/3) ); // 2 (la puissance de 1/3 est la même que celle d'une racine cubique)
+let n = 2;
+n += 5; // maintenant n = 7 (identique à n = n + 5)
+n *= 2; // maintenant n = 14 (identique à n = n * 2)
+
+alert( n ); // 14
+```
+
+Il existe de opérateurs de "modification et assignation" courts pour tous les opérateurs arithmétiques et binaires: `/=`, `-=` etc.
+
+Ces opérateurs ont la même précédence qu'une affectation normale. Ils s'exécutent donc après la plupart des autres calculs :
+
+```js run
+let n = 2;
+
+n *= 3 + 5;
+
+alert( n ); // 16  (partie droite évaluée en premier, identique à n *= 8)
 ```
 
 ## Incrémentation / décrémentation
@@ -287,7 +346,7 @@ let a = ++counter; // (*)
 alert(a); // *!*2*/!*
 ```
 
-Ici, dans la ligne `(*)`, l'appel du préfixe `++counter` incrémente le compteur et retourne la nouvelle valeur qui est 2. Ainsi, l'alerte affiche 2.
+Ici, dans la ligne `(*)`, l'appel du *préfixe* `++counter` incrémente le compteur et retourne la nouvelle valeur qui est `2`. Ainsi, l'`alert` affiche `2`.
 
 Maintenant, utilisons la forme postfixe :
 
@@ -298,7 +357,7 @@ let a = counter++; // (*) changé ++counter pour counter++
 alert(a); // *!*1*/!*
 ```
 
-Dans la ligne `(*)`, la forme postfixe `counter++` incrémente également `counter`, mais renvoie l'**ancienne** valeur (avant l'incrémentation). Donc, l'`alert` montre 1.
+Dans la ligne `(*)`, la forme postfixe `counter++` incrémente également `counter`, mais renvoie l'*ancienne* valeur (avant l'incrémentation). Donc, l'`alert` montre `1`.
 
 Pour résumer : 
 
@@ -370,40 +429,6 @@ La liste des opérateurs :
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
 Ces opérateurs sont très rarement utilisés. Pour les comprendre, nous devrions nous intéresser à la représentation numérique de bas niveau, et il ne serait pas optimal de le faire dès maintenant. Surtout parce que nous n’en aurons pas besoin de sitôt. Si vous êtes curieux, vous pouvez lire l'article [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires) sur MDN. Il serait plus pratique de le faire quand un besoin réel se fait sentir.
-
-## Modification sur place
-
-Nous avons souvent besoin d'appliquer un opérateur à une variable et d'y stocker le nouveau résultat.
-
-Par exemple :
-
-```js
-let n = 2;
-n = n + 5;
-n = n * 2;
-```
-
-Cette notation peut être raccourcie en utilisant les opérateurs `+=` et `*=` :
-
-```js run
-let n = 2;
-n += 5; // maintenant n = 7 (identique à n = n + 5)
-n *= 2; // maintenant n = 14 (identique à n = n * 2)
-
-alert( n ); // 14
-```
-
-Il existe de opérateurs de "modification et assignation" courts pour tous les opérateurs arithmétiques et binaires: `/=`, `-=` etc.
-
-Ces opérateurs ont la même précédence qu'une affectation normale. Ils s'exécutent donc après la plupart des autres calculs :
-
-```js run
-let n = 2;
-
-n *= 3 + 5;
-
-alert( n ); // 16  (partie droite évaluée en premier, identique à n *= 8)
-```
 
 ## Virgule
 
