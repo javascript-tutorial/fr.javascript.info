@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Corrige l'addition
+# Corrigez l'addition
 
 Voici un code qui demande à l'utilisateur deux nombres et montre leur somme.
 
 Cela ne fonctionne pas correctement. La sortie dans l'exemple ci-dessous est `12` (pour les valeurs d'invite par défaut).
 
-Pourquoi? Répare le. Le résultat doit être `3`.
+Pourquoi ? Réparez-le. Le résultat doit être `3`.
 
 ```js run
 let a = prompt("First number?", 1);
