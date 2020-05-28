@@ -1,121 +1,121 @@
-# Unicode: flag "u" and class \p{...}
+# Unicode: indicateur "u" et classe \p{...}
 
-JavaScript uses [Unicode encoding](https://en.wikipedia.org/wiki/Unicode) for strings. Most characters are encoded with 2 bytes, but that allows to represent at most 65536 characters.
+JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) pour les chaînes de cractères. La plupart des caractères sont codés sur 2 octets, mais cela permet de représenter au plus 65536 caractères.
 
-That range is not big enough to encode all possible characters, that's why some rare characters are encoded with 4 bytes, for instance like `𝒳` (mathematical X) or `😄` (a smile), some hieroglyphs and so on.
+Cette plage n'est pas assez grande pour encoder tous les caractères possibles, c'est pourquoi certains caractères rares sont encodés sur 4 octets, par exemple comme `𝒳` (X mathématique) ou `😄` (un sourire), certains hiéroglyphes et ainsi de suite.
 
-Here are the unicode values of some characters:
+Voici les valeurs unicode de certains caractères :
 
-| Character  | Unicode | Bytes count in unicode  |
-|------------|---------|--------|
-| a | `0x0061` |  2 |
-| ≈ | `0x2248` |  2 |
-|𝒳| `0x1d4b3` | 4 |
-|𝒴| `0x1d4b4` | 4 |
-|😄| `0x1f604` | 4 |
+| Caractère | Unicode | Nombre d'octets en unicode |
+|-----------|---------|----------|
+| a | `0x0061` | 2 |
+| ≈ | `0x2248` | 2 |
+| 𝒳 | `0x1d4b3` | 4 |
+| 𝒴 | `0x1d4b4` | 4 |
+| 😄 | `0x1f604` | 4 |
 
-So characters like `a` and `≈` occupy 2 bytes, while codes for `𝒳`, `𝒴` and `😄` are longer, they have 4 bytes.
+Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les codes pour `𝒳`, `𝒴` et `😄` sont plus longs, ils ont 4 octets.
 
-Long time ago, when JavaScript language was created, Unicode encoding was simpler: there were no 4-byte characters. So, some language features still handle them incorrectly.
+Il y a longtemps, lorsque le langage JavaScript a été créé, l'encodage Unicode était plus simple : il n'y avait pas de caractères à 4 octets. Ainsi, certaines fonctionnalités du langage les gèrent toujours de manière incorrecte.
 
-For instance, `length` thinks that here are two characters:
+Par exemple, la propriété `length` pense qu'il y a deux caractères :
 
 ```js run
 alert('😄'.length); // 2
 alert('𝒳'.length); // 2
 ```
 
-...But we can see that there's only one, right? The point is that `length` treats 4 bytes as two 2-byte characters. That's incorrect, because they must be considered only together (so-called "surrogate pair", you can read about them in the article <info:string>).
+... Mais nous pouvons voir qu'il n'y en a qu'un, n'est-ce pas? Le fait est que la propriété `length` traite 4 octets comme deux caractères de 2 octets. C'est incorrect, car ils doivent être considérés uniquement ensemble (aussi appelé "paire de substitution", vous pouvez en lire plus dans l'article <info:string>).
 
-By default, regular expressions also treat 4-byte "long characters" as a pair of 2-byte ones. And, as it happens with strings, that may lead to odd results. We'll see that a bit later, in the article <info:regexp-character-sets-and-ranges>.
+Par défaut, les expressions régulières traitent également les "caractères longs" de 4 octets comme une paire de caractères de 2 octets. Et, comme cela arrive avec les chaînes, cela peut conduire à des résultats étranges. Nous verrons cela un peu plus tard, dans l'article <info:regexp-character-sets-and-ranges>.
 
-Unlike strings, regular expressions have flag `pattern:u` that fixes such problems. With such flag, a regexp handles 4-byte characters correctly. And also Unicode property search becomes available, we'll get to it next.
+Contrairement aux chaînes de caractères, les expressions régulières ont l'indicateur `pattern:u` qui résout ces problèmes. Avec un tel indicateur, une expression rationnelle gère correctement les caractères de 4 octets. Et ainsi la recherche de propriétés Unicode devient également disponible, nous y reviendrons ensuite.
 
-## Unicode properties \p{...}
+## Propriétés Unicode \p{...}
 
-```warn header="Not supported in Firefox and Edge"
-Despite being a part of the standard since 2018, unicode properties are not supported in Firefox ([bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1361876)) and Edge ([bug](https://github.com/Microsoft/ChakraCore/issues/2969)).
+```warn header =" Non pris en charge par Firefox et Edge "
+Bien qu'elles fassent partie de la norme depuis 2018, les propriétés unicode ne sont pas prises en charge dans Firefox ([bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1361876)) et Edge ([bug](https://github.com/Microsoft/ChakraCore/issues/2969)).
 
-There's [XRegExp](http://xregexp.com) library that provides "extended" regular expressions with cross-browser support for unicode properties.
+Il existe une bibliothèque logicielle [XRegExp](http://xregexp.com) qui fournit des expressions régulières "étendues" avec prise en charge multi-navigateur pour les propriétés unicode.
 ```
 
-Every character in Unicode has a lot of properties. They describe what "category" the character belongs to, contain miscellaneous information about it.
+Chaque caractère dans Unicode a beaucoup de propriétés. Ils décrivent à quelle "catégorie" le caractère appartient, et contiennent diverses informations à son sujet.
 
-For instance, if a character has `Letter` property, it means that the character belongs to an alphabet (of any language). And `Number` property means that it's a digit: maybe Arabic or Chinese, and so on.
+Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue). Et la propriété `Number` (Nombre) signifie que c'est un chiffre : peut-être l'arabe ou le chinois, et ainsi de suite.
 
-We can search for characters with a property, written as `pattern:\p{…}`. To use `pattern:\p{…}`, a regular expression must have flag `pattern:u`.
+Nous pouvons rechercher des caractères avec une propriété, écrite sous la forme `pattern:\p{…}`. Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
 
-For instance, `\p{Letter}` denotes a letter in any of language. We can also use `\p{L}`, as `L` is an alias of `Letter`. There are shorter aliases for almost every property.
+Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
 
-In the example below three kinds of letters will be found: English, Georgean and Korean.
+Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgien et Coréen.
 
 ```js run
 let str = "A ბ ㄱ";
 
 alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
-alert( str.match(/\p{L}/g) ); // null (no matches, as there's no flag "u")
+alert( str.match(/\p{L}/g) ); // null (aucune correspondance, puisqu'il n'y a pas l'indicateur "u")
 ```
 
-Here's the main character categories and their subcategories:
+Voici les principales catégories de caractères et leurs sous-catégories :
 
-- Letter `L`:
-  - lowercase `Ll`
-  - modifier `Lm`,
-  - titlecase `Lt`,
-  - uppercase `Lu`,
-  - other `Lo`.
-- Number `N`:
-  - decimal digit `Nd`,
-  - letter number `Nl`,
-  - other `No`.
-- Punctuation `P`:
-  - connector `Pc`,
-  - dash `Pd`,
-  - initial quote `Pi`,
-  - final quote `Pf`,
-  - open `Ps`,
-  - close `Pe`,
-  - other `Po`.
-- Mark `M` (accents etc):
-  - spacing combining `Mc`,
-  - enclosing `Me`,
-  - non-spacing `Mn`.
-- Symbol `S`:
-  - currency `Sc`,
-  - modifier `Sk`,
-  - math `Sm`,
-  - other `So`.
-- Separator `Z`:
-  - line `Zl`,
-  - paragraph `Zp`,
-  - space `Zs`.
-- Other `C`:
-  - control `Cc`,
+- Lettre `L` :
+  - minuscules `Ll`,
+  - modificateur `Lm`,
+  - titre `Lt`,
+  - majuscule `Lu`,
+  - autres `Lo`.
+- Nombre `N` :
+  - chiffre décimal `Nd`,
+  - numéro de lettre `Nl`,
+  - autre `No`.
+- Ponctuation `P` :
+  - connecteur `Pc`,
+  - tiret `Pd`,
+  - citation initiale `Pi`,
+  - citation finale `Pf`,
+  - ponctuation ouvrante `Ps`,
+  - ponctuation fermante `Pe`,
+  - autre `Po`.
+- Marqueur `M` (accents, etc.) :
+  - espacement combinant `Mc`,
+  - contenant `Me`,
+  - sans espacement `Mn`.
+- Symbole `S` :
+  - devise `Sc`,
+  - modificateur `Sk`,
+  - mathématique `Sm`,
+  - autre `So`.
+- Séparateur `Z` :
+  - ligne `Zl`,
+  - paragraphe `Zp`,
+  - espace `Zs`.
+- Autre `C` :
+  - contrôle `Cc`,
   - format `Cf`,
-  - not assigned `Cn`,
-  -- private use `Co`,
-  - surrogate `Cs`.
+  - non affecté `Cn`,
+  - usage privé `Co`,
+  - substitut `Cs`.
 
 
-So, e.g. if we need letters in lower case, we can write `pattern:\p{Ll}`, punctuation signs: `pattern:\p{P}` and so on.
+Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
 
-There are also other derived categories, like:
-- `Alphabetic` (`Alpha`), includes Letters `L`, plus letter numbers `Nl` (e.g. Ⅻ - a character for the roman number 12), plus some other symbols `Other_Alphabetic` (`OAlpha`).
-- `Hex_Digit` includes hexadecimal digits: `0-9`, `a-f`.
-- ...And so on.
+Il existe également d'autres catégories dérivées, comme :
+- `Alphabetic` (Alphabétique)(`Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques)(`OAlpha`).
+- `Hex_Digit` comprend des chiffres hexadécimaux : `0-9`, `a-f`.
+- ...Et ainsi de suite.
 
-Unicode supports many different properties, their full list would require a lot of space, so here are the references:
+Unicode prend en charge de nombreuses propriétés différentes, leur liste complète nécessiterait beaucoup d'espace, voici donc les références :
 
-- List all properties by a character: <https://unicode.org/cldr/utility/character.jsp>.
-- List all characters by a property: <https://unicode.org/cldr/utility/list-unicodeset.jsp>.
-- Short aliases for properties: <https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt>.
-- A full base of Unicode characters in text format, with all properties, is here: <https://www.unicode.org/Public/UCD/latest/ucd/>.
+- Liste de toutes les propriétés par caractère : <https://unicode.org/cldr/utility/character.jsp>.
+- Liste de tous les caractères par propriété : <https://unicode.org/cldr/utility/list-unicodeset.jsp>.
+- Alias ​​courts pour les propriétés : <https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt>.
+- Une base complète de caractères Unicode au format texte, avec toutes les propriétés, se trouve ici: <https://www.unicode.org/Public/UCD/latest/ucd/>.
 
-### Example: hexadecimal numbers
+### Exemple : nombres hexadécimaux
 
-For instance, let's look for hexadecimal numbers, written as `xFF`, where `F` is a hex digit (0..1 or A..F).
+Par exemple, recherchons des nombres hexadécimaux, écrits sous la forme `xFF`, où `F` est un chiffre hexadécimal (0..1 ou A..F).
 
-A hex digit can be denoted as `pattern:\p{Hex_Digit}`:
+Un chiffre hexadécimal peut être désigné par `pattern:\p{Hex_Digit}` :
 
 ```js run
 let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
@@ -123,27 +123,27 @@ let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
 alert("number: xAF".match(regexp)); // xAF
 ```
 
-### Example: Chinese hieroglyphs
+### Exemple : Hiéroglyphes Chinois
 
-Let's look for Chinese hieroglyphs.
+Cherchons des hiéroglyphes Chinois.
 
-There's a unicode property `Script` (a writing system), that may have a value: `Cyrillic`, `Greek`, `Arabic`, `Han` (Chinese) and so on, [here's the full list]("https://en.wikipedia.org/wiki/Script_(Unicode)").
+Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
 
-To look for characters in a given writing system we should use `pattern:Script=<value>`, e.g. for Cyrillic letters: `pattern:\p{sc=Cyrillic}`, for Chinese hieroglyphs: `pattern:\p{sc=Han}`, and so on:
+Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques : `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois : `pattern:\p{sc=Han}`, et ainsi de suite :
 
 ```js run
-let regexp = /\p{sc=Han}/gu; // returns Chinese hieroglyphs
+let regexp = /\p{sc=Han}/gu; // renvoie des hiéroglyphes Chinois
 
 let str = `Hello Привет 你好 123_456`;
 
 alert( str.match(regexp) ); // 你,好
 ```
 
-### Example: currency
+### Exemple: devise
 
-Characters that denote a currency, such as `$`, `€`, `¥`, have unicode property  `pattern:\p{Currency_Symbol}`, the short alias: `pattern:\p{Sc}`.
+Les caractères qui désignent une devise, tels que `$`, `€`, `¥`, ont la propriété unicode `pattern:\p{Currency_Symbol}`, l'alias court : `pattern:\p{Sc}`.
 
-Let's use it to look for prices in the format "currency, followed by a digit":
+Utilisons-le pour rechercher des prix au format "devise, suivi d'un chiffre" :
 
 ```js run
 let regexp = /\p{Sc}\d/gu;
@@ -153,15 +153,15 @@ let  str = `Prices: $2, €1, ¥9`;
 alert( str.match(regexp) ); // $2,€1,¥9
 ```
 
-Later, in the article <info:regexp-quantifiers> we'll see how to look for numbers that contain many digits.
+Plus loin, dans l'article <info:regexp-quantifiers>, nous verrons comment rechercher des nombres contenant de nombreux chiffres.
 
-## Summary
+## Résumé
 
-Flag `pattern:u` enables the support of Unicode in regular expressions.
+L'indicateur `pattern:u` permet la prise en charge d'Unicode dans les expressions régulières.
 
-That means two things:
+Cela signifie deux choses :
 
-1. Characters of 4 bytes are handled correctly: as a single character, not two 2-byte characters.
-2. Unicode properties can be used in the search: `\p{…}`.
+1. Les caractères de 4 octets sont traités correctement : comme un seul caractère, pas comme deux caractères de 2 octets.
+2. Les propriétés Unicode peuvent être utilisées dans la recherche : `\p{…}`.
 
-With Unicode properties we can look for words in given languages, special characters (quotes, currencies) and so on.
+Avec les propriétés Unicode, nous pouvons rechercher des mots dans des langues données, des caractères spéciaux (guillemets, devises) et ainsi de suite.
