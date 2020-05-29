@@ -298,7 +298,7 @@ async function* fetchCommits(repo) {
 
     // (3) l'URL de la page suivante est dans le header, il faut l'extraire
     let nextPage = response.headers.get('Link').match(/<(.*?)>; rel="next"/);
-    nextPage = nextPage && nextPage[1];
+    nextPage = nextPage?.[1];
 
     url = nextPage;
 

@@ -2,18 +2,18 @@ importance: 4
 
 ---
 
-# Quelles valeurs sont affichées par la boucle "for" ?
+# Which values get shown by the "for" loop?
 
-Pour chaque boucle, notez les valeurs qui vont s'afficher. Ensuite, comparez avec la réponse.
+For each loop write down which values it is going to show. Then compare with the answer.
 
-Les deux boucles `alert` les mêmes valeurs ou pas ?
+Both loops `alert` same values or not?
 
-1. La forme postfix :
+1. The postfix form:
 
     ```js
     for (let i = 0; i < 5; i++) alert( i );
     ```
-2. La forme préfix :
+2. The prefix form:
 
     ```js
     for (let i = 0; i < 5; ++i) alert( i );

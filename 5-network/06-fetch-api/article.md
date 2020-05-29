@@ -85,6 +85,7 @@ Contrairement à l'option `referrer` qui permet de définir la valeur exacte de 
 
 Les valeurs possibles sont décrites dans la [spécification Referrer Policy](https://w3c.github.io/webappsec-referrer-policy/):
 
+<<<<<<< HEAD
 - **`"no-referrer-when-downgrade"`** -- la valeur par défaut : le `Referer` complet est toujours envoyé, sauf si nous envoyons une requête de HTTPS à HTTP (vers un protocole moins sécurisé).
 - **`"no-referrer"`** -- ne jamais envoyer de `Referer`.
 - **`"origin"`** -- envoyer uniquement l'origine dans `Referer`, pas l'URL de la page complète, par exemple uniquement `http://site.com` au lieu de` http://site.com/path`.
@@ -93,6 +94,16 @@ Les valeurs possibles sont décrites dans la [spécification Referrer Policy](ht
 - **`"strict-origin"`** -- envoyer uniquement l'origine, ne pas envoyer de `Referer` pour les requêtes HTTPS → HTTP.
 - **`"strict-origin-when-cross-origin"`** -- pour la même origine envoyer un `Referer` complet, pour une cross-origin, envoyer uniquement l'origine, à moins que ce ne soit HTTPS → requête HTTP, puis ne rien envoyer.
 - **`"unsafe-url"`** -- toujours envoyer l'url complète dans `Referer`, même pour les requêtes HTTPS → HTTP
+=======
+- **`"no-referrer-when-downgrade"`** -- the default value: full `Referer` is sent always, unless we send a request from HTTPS to HTTP (to less secure protocol).
+- **`"no-referrer"`** -- never send `Referer`.
+- **`"origin"`** -- only send the origin in `Referer`, not the full page URL, e.g. only `http://site.com` instead of `http://site.com/path`.
+- **`"origin-when-cross-origin"`** -- send full `Referer` to the same origin, but only the origin part for cross-origin requests (as above).
+- **`"same-origin"`** -- send full `Referer` to the same origin, but no `Referer` for cross-origin requests.
+- **`"strict-origin"`** -- send only origin, don't send `Referer` for HTTPS→HTTP requests.
+- **`"strict-origin-when-cross-origin"`** -- for same-origin send full `Referer`, for cross-origin send only origin, unless it's HTTPS→HTTP request, then send nothing.
+- **`"unsafe-url"`** -- always send full url in `Referer`, even for HTTPS→HTTP requests.
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 Voici un tableau avec toutes les combinaisons :
 

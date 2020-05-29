@@ -224,11 +224,19 @@ Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
 
+<<<<<<< HEAD
 ## Obtenez une nouvelle copie d'un objet/tableau
+=======
+## Get a new copy of an array/object
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 Souvenez-vous quand nous avons parlé de `Object.assign()` [par le passé](https://javascript.info/object#cloning-and-merging-object-assign)?
 
+<<<<<<< HEAD
 Il est possible de faire la même chose avec l'opérateur spread !
+=======
+It is possible to do the same thing with the spread syntax.
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 ```js run
 let arr = [1, 2, 3];
