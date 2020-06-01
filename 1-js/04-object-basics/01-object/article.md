@@ -92,7 +92,35 @@ let user = {
 ```
 Cela s'appelle une virgule  "trailing" ou "hanging". Elle facilite l'ajout/suppression/déplacement des propriétés, car toutes les lignes se ressemblent.
 
+<<<<<<< HEAD
 ## Crochets
+=======
+````smart header="Object with const can be changed"
+Please note: an object declared as `const` *can* be modified.
+
+For instance:
+
+```js run
+const user = {
+  name: "John"
+};
+
+*!*
+user.name = "Pete"; // (*)
+*/!*
+
+alert(user.name); // Pete
+```
+
+It might seem that the line `(*)` would cause an error, but no. The `const` fixes the value of `user`, but not its contents.
+
+The `const` would give an error only if we try to set `user=...` as a whole.
+
+There's another way to make constant object properties, we'll cover it later in the chapter <info:property-descriptors>.
+````
+
+## Square brackets
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 
@@ -161,7 +189,11 @@ alert( user.key ) // undefined
 
 ### Propriétés calculées
 
+<<<<<<< HEAD
 Nous pouvons utiliser des crochets dans un objet littéral. Cela s'appelle des propriétés calculées (*computed propertie*).
+=======
+We can use square brackets in an object literal, when creating an object. That's called *computed properties*.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 Par exemple :
 
@@ -249,6 +281,7 @@ let user = {
 };
 ```
 
+<<<<<<< HEAD
 ## Limitations des noms de propriété
 
 Les noms de propriété (clés) doivent être des chaînes de caractères ou des symboles (un type spécial pour les identifiants, à couvrir plus tard).
@@ -256,9 +289,19 @@ Les noms de propriété (clés) doivent être des chaînes de caractères ou des
 Les autres types sont automatiquement convertis en chaînes de caractères.
 
 Par exemple, un nombre `0` devient une chaîne de caractères `"0"` lorsqu'il est utilisé comme clé de propriété :
+=======
+
+## Property names limitations
+
+As we already know, a variable cannot have a name equal to one of language-reserved words like "for", "let", "return" etc.
+
+But for an object property, there's no such restriction:
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ```js run
+// these properties are all right
 let obj = {
+<<<<<<< HEAD
   0: "test" // pareil que "0": "test"
 };
 
@@ -272,9 +315,7 @@ alert( obj[0] ); // test (même propriété)
 Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés du langage comme `for`, `let`, `return` etc.
 
 Mais pour une propriété d'objet, il n'y a pas ce genre de restriction. Tous les noms sont acceptés :
-
-```js run
-let obj = {
+=======
   for: 1,
   let: 2,
   return: 3
@@ -283,9 +324,30 @@ let obj = {
 alert( obj.for + obj.let + obj.return );  // 6
 ```
 
+In short, there are no limitations on property names. They can be any strings or symbols (a special type for identifiers, to be covered later).
+
+Other types are automatically converted to strings.
+
+For instance, a number `0` becomes a string `"0"` when used as a property key:
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
+
+```js run
+let obj = {
+  0: "test" // same as "0": "test"
+};
+
+// both alerts access the same property (the number 0 is converted to string "0")
+alert( obj["0"] ); // test
+alert( obj[0] ); // test (same property)
+```
+
+<<<<<<< HEAD
 Nous pouvons utiliser n'importe quelle chaîne de caractères comme clé, mais il existe une propriété spéciale nommée `__proto__` qui reçoit un traitement spécial pour des raisons historiques.
 
 Par exemple, nous ne pouvons pas la définir sur une valeur non-objet :
+=======
+There's a minor gotcha with a special property named `__proto__`. We can't set it to a non-object value:
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ```js run
 let obj = {};
@@ -295,6 +357,7 @@ alert(obj.__proto__); // [object Object] - la valeur est un objet, n'a pas fonct
 
 Comme nous le voyons dans le code, l'affectation à une primitive `5` est ignorée.
 
+<<<<<<< HEAD
 La nature de `__proto__` sera révélée en détail plus loin dans le chapitre [](info:prototype-inheritance).
 
 Pour l'instant, il est important de savoir qu'un tel comportement de `__proto__` peut devenir une source de bugs et même de vulnérabilités si nous avons l'intention de stocker des clés fournies par l'utilisateur dans un objet.
@@ -304,10 +367,19 @@ Le problème est qu'un visiteur peut choisir `__proto__` comme clé, et la logiq
 Il existe deux solutions de contournement pour le problème :
 1. Modifiez le comportement de l'objet pour traiter `__proto__` comme une propriété régulière. Nous apprendrons comment le faire dans le chapitre [](info:prototype-methods).
 2. En utilisant la structure de données [Map](info:map-set) qui prend en charge les clés arbitraires. Nous l'apprendrons dans le chapitre <info:map-set>.
+=======
+We'll cover the special nature of `__proto__` in [subsequent chapters](info:prototype-inheritance), and suggest the [ways to fix](info:prototype-methods) such behavior.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ## Test d'existence de propriété, opérateur "in"
 
+<<<<<<< HEAD
 Une caractéristique notable des objets est qu’il est possible d’accéder à n’importe quelle propriété. Il n’y aura pas d’erreur si la propriété n’existe pas ! L'accès à une propriété non existante renvoie simplement `undefined`. Le langage fournit un moyen très courant de vérifier si la propriété existe -- pour l'obtenir et la comparer avec `undefined` :
+=======
+A notable feature of objects in JavaScript, compared to many other languages, is that it's possible to access any property. There will be no error if the property doesn't exist!
+
+Reading a non-existing property just returns `undefined`. So we can easily test whether the property exists:
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ```js run
 let user = {};
@@ -315,7 +387,11 @@ let user = {};
 alert( user.noSuchProperty === undefined ); // true signifie "pas une telle propriété"
 ```
 
+<<<<<<< HEAD
 Il existe également un opérateur spécial `"in"` pour vérifier l'existence d'une propriété.
+=======
+There's also a special operator `"in"` for that.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 La syntaxe est :
 ```js
@@ -333,17 +409,30 @@ alert( "blabla" in user ); // false, user.blabla n'existe pas
 
 Veuillez noter que sur le côté gauche de `in`, il doit y avoir un *nom de propriété*. C’est généralement une chaîne de caractères entre guillemets.
 
+<<<<<<< HEAD
 Si nous omettons les guillemets, cela signifierait une variable contenant le nom à tester. Par exemple :
+=======
+If we omit quotes, that means a variable, it should contain the actual name to be tested. For instance:
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ```js run
 let user = { age: 30 };
 
 let key = "age";
+<<<<<<< HEAD
 alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette propriété
 ```
 
 ````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
 Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
+=======
+alert( *!*key*/!* in user ); // true, property "age" exists
+```
+
+Why does the `in` operator exist? Isn't it enough to compare against `undefined`?
+
+Well, most of the time the comparison with `undefined` works fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -357,11 +446,18 @@ alert( obj.test ); // c'est indéfini, donc - pas une telle propriété ?
 alert( "test" in obj ); // true, la propriété existe !
 ```
 
+<<<<<<< HEAD
 
 Dans le code ci-dessus, la propriété `obj.test` existe techniquement. Donc, l'opérateur `in` fonctionne bien.
 
 Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué. Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides". Ainsi, l'opérateur `in` est un invité exotique dans le code.
 ````
+=======
+In the code above, the property `obj.test` technically exists. So the `in` operator works right.
+
+Situations like this happen very rarely, because `undefined` should not be explicitly assigned. We mostly use `null` for "unknown" or "empty" values. So the `in` operator is an exotic guest in the code.
+
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 
 ## La boucle "for..in"
@@ -397,8 +493,12 @@ Notez que toutes les constructions "for" nous permettent de déclarer la variabl
 
 En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`. Par exemple, `"for(let prop in obj)"` est également largement utilisé.
 
+<<<<<<< HEAD
 
 ### Ordonné comme un objet
+=======
+### Ordered like an object
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 Les objets sont-ils ordonnés ? En d'autres termes, si nous parcourons un objet en boucle, obtenons-nous toutes les propriétés dans le même ordre où elles ont été ajoutées ? Pouvons-nous compter sur cela ?
 
@@ -481,6 +581,7 @@ for(let code in codes) {
 
 Maintenant, cela fonctionne comme prévu.
 
+<<<<<<< HEAD
 ## Copier par référence
 
 L'une des différences fondamentales entre les objets et les primitives est qu'ils sont stockés et copiés "par référence".
@@ -736,6 +837,9 @@ Pour résoudre ce problème, nous devons utiliser la boucle de clonage qui exami
 Il existe un algorithme standard pour le clonage en profondeur qui traite le cas ci-dessus et des cas plus complexes, appelé l'[Algorithme de clonage structuré](http://w3c.github.io/html/infrastructure.html#safe-passing-of-structured-data). Pour ne pas réinventer la roue, nous pouvons utiliser une implémentation fonctionnelle de celle-ci à partir de la bibliothèque JavaScript [lodash](https://lodash.com), la méthode s'appelle [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
 
 
+=======
+## Summary
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 ## Résumé
 
@@ -749,6 +853,7 @@ Pour accéder à une propriété, nous pouvons utiliser :
 - La notation par points : `obj.property`.
 - Notation entre crochets `obj["property"]`. Les crochets permettent de prendre la clé d’une variable, comme `obj[varWithKey]`.
 
+<<<<<<< HEAD
 Opérateurs supplémentaires :
 - Pour supprimer une propriété : `delete obj.prop`.
 - Pour vérifier si une propriété avec la clé donnée existe : `"key" in obj`.
@@ -757,6 +862,9 @@ Opérateurs supplémentaires :
 Les objets sont assignés et copiés par référence. En d'autres termes, une variable stocke non pas la "valeur d'objet", mais une "référence" (adresse en mémoire) pour la valeur. Donc, copier une telle variable ou la passer comme argument de fonction copie cette référence, pas l'objet. Toutes les opérations via des références copiées (telles que l'ajout / la suppression de propriétés) sont effectuées sur le même objet.
 
 Pour faire une "copie réelle" (un clone), nous pouvons utiliser `Object.assign` ou  [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+=======
+What we've studied in this chapter is called a "plain object", or just `Object`.
+>>>>>>> 69e44506c3e9dac74c282be37b55ba7ff122ae74
 
 Ce que nous avons étudié dans ce chapitre s’appelle un "objet simple" (plain object) ou juste `Object`.  
 Il existe de nombreux autres types d'objets en JavaScript :
