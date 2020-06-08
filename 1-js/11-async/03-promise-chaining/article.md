@@ -247,8 +247,13 @@ fetch('/article/promise-chaining/user.json')
     return response.text();
   })
   .then(function(text) {
+<<<<<<< HEAD
     // ...et voici le contenu du fichier distant
     alert(text); // {"name": "iliakan", isAdmin: true}
+=======
+    // ...and here's the content of the remote file
+    alert(text); // {"name": "iliakan", "isAdmin": true}
+>>>>>>> d35baee32dcce127a69325c274799bb81db1afd8
   });
 ```
 

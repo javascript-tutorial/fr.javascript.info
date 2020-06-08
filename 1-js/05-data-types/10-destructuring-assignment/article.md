@@ -121,7 +121,30 @@ for (let [key, value] of user) {
 }
 ```
 ````
+<<<<<<< HEAD
 ### Le rest '...'
+=======
+
+```smart header="Swap variables trick"
+A well-known trick for swapping values of two variables:
+
+```js run
+let guest = "Jane";
+let admin = "Pete";
+
+// Swap values: make guest=Pete, admin=Jane
+[guest, admin] = [admin, guest];
+
+alert(`${guest} ${admin}`); // Pete Jane (successfully swapped!)
+```
+
+Here we create a temporary array of two variables and immediately destructure it in swapped order.
+
+We can swap more than two variables this way.
+```
+
+### The rest '...'
+>>>>>>> d35baee32dcce127a69325c274799bb81db1afd8
 
 Si nous voulons non seulement obtenir les premières valeurs, mais aussi rassembler tout ce qui suit, nous pouvons ajouter un paramètre supplémentaire qui obtient "le reste" à l'aide de trois points `"..."`:
 

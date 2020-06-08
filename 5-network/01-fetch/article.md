@@ -128,8 +128,14 @@ Nous ne pouvons choisir qu'une seule méthode de lecture du corps.
 Si nous avons déjà la réponse avec `response.text()`, alors `response.json()` ne fonctionnera pas, car le contenu du corps a déjà été traité.
 
 ```js
+<<<<<<< HEAD
 let text = await response.text(); // corps de la réponse consommé
 let parsed = await response.json(); // echec (déjà consommé)
+=======
+let text = await response.text(); // response body consumed
+let parsed = await response.json(); // fails (already consumed)
+```
+>>>>>>> d35baee32dcce127a69325c274799bb81db1afd8
 ````
 
 ## En-têtes de réponse
