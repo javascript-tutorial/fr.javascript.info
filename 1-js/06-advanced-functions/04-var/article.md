@@ -13,6 +13,7 @@ Dans le tout premier chapitre qui parle des [variables](info:variables), nous av
 2. `const`
 3. `var`
 
+<<<<<<< HEAD
 `let` et `const` agissent exactement de la même façon en ce qui concerne les environnements lexicaux (Lexical Environments).
 
 Cependant, `var` est une bête d'une autre nature qui provient des temps très anciens. Ce n'est pas généralement utilisé dans les scripts modernes, mais elle peut se retrouver encore dans les anciens scripts.
@@ -27,13 +28,27 @@ function sayHi() {
 
   alert(phrase); // Hello
 }
+=======
+The `var` declaration is similar to `let`. Most of the time we can replace `let` by `var` or vice-versa and expect things to work:
 
-sayHi();
+```js run
+var message = "Hi";
+alert(message); // Hi
+```
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
+But internally `var` is a very different beast, that originates from very old times. It's generally not used in modern scripts, but still lurks in the old ones.
+
+<<<<<<< HEAD
 alert(phrase); // Erreur, phrase n'est pas définie
 ```
 
 ...mais voici les différences.
+=======
+If you don't plan on meeting such scripts you may even skip this chapter or postpone it.
+
+On the other hand, it's important to understand differences when migrating old scripts from `var` to `let`, to avoid odd errors.
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 ## "var" n'a pas de portée limitée aux blocs
 
@@ -94,7 +109,31 @@ alert(phrase); // Erreur : phrase n'est pas définie (vérifiez la console déve
 
 Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
 
+<<<<<<< HEAD
 ## Les déclarations "var" sont traitées au début de la fonction
+=======
+## "var" tolerates redeclarations
+
+If we declare the same variable with `let` twice in the same scope, that's an error:
+
+```js run
+let user;
+let user; // SyntaxError: 'user' has already been declared
+```
+
+With `var`, we can redeclare a variable any number of times. If we use `var` with an already-declared variable, it's just ignored:
+
+```js run
+var user = "Pete";
+
+var user = "John"; // this "var" does nothing (already declared)
+// ...it doesn't trigger an error
+
+alert(user); // John
+```
+
+## "var" variables can be declared below their use
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 Les déclarations `var` sont traitées quand la fonction commence (ou quand le script commence pour le cas global).
 

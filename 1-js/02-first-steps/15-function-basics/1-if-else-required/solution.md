@@ -1,1 +1,1 @@
-Aucune différence.
+No difference.

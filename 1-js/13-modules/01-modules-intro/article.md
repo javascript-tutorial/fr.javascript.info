@@ -57,7 +57,15 @@ Comme ça:
 
 Le navigateur extrait et évalue automatiquement le module importé (et, le cas échéant, ses importations), puis exécute le script.
 
+<<<<<<< HEAD
 ## Caractéristiques du module de base
+=======
+```warn header="Modules work only via HTTP, not in local files"
+If you try to open a web-page locally, via `file://` protocol, you'll find that `import/export` directives don't work. Use a local web-server, such as [static-server](https://www.npmjs.com/package/static-server#getting-started) or use the "live server" capability of your editor, such as VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to test them.
+```
+
+## Core module features
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 Qu'est-ce qui est différent dans les modules par rapport aux scripts "normaux"?
 
