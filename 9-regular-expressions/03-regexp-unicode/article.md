@@ -92,9 +92,15 @@ Voici les principales catégories de caractères et leurs sous-catégories :
 - Autre `C` :
   - contrôle `Cc`,
   - format `Cf`,
+<<<<<<< HEAD
   - non affecté `Cn`,
   - usage privé `Co`,
   - substitut `Cs`.
+=======
+  - not assigned `Cn`,
+  - private use `Co`,
+  - surrogate `Cs`.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 
 Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
@@ -127,7 +133,11 @@ alert("number: xAF".match(regexp)); // xAF
 
 Cherchons des hiéroglyphes Chinois.
 
+<<<<<<< HEAD
 Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
+=======
+There's a unicode property `Script` (a writing system), that may have a value: `Cyrillic`, `Greek`, `Arabic`, `Han` (Chinese) and so on, [here's the full list](https://en.wikipedia.org/wiki/Script_(Unicode)).
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques : `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois : `pattern:\p{sc=Han}`, et ainsi de suite :
 

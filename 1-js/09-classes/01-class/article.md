@@ -128,8 +128,13 @@ Parfois certaines personnes disent que la notion de `class` est un "sucre syntax
 function User(name) {
   this.name = name;
 }
+<<<<<<< HEAD
 // Tout prototype de fonction a une propriété constructeur par défaut,
 // Alors  nous n'avons pas besoin de le créer
+=======
+// a function prototype has "constructor" property by default,
+// so we don't need to create it
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 // 2. Ajouter la méthode au prototype
 User.prototype.sayHi = function() {
@@ -147,7 +152,11 @@ Cependant, il existe des différences importantes.
 
 1. Tout d'abord, une fonction crée par une `classe` est labélisé par une propriété interne spéciale nommée `[[FunctionKind]]:"classConstructor"`. Donc ce n'est pas tout à fait la même chose que de la créer manuellement.
 
+<<<<<<< HEAD
     Contrairement à une fonction normale, un constructeur de class doit être invoquée avec `new` :
+=======
+    The language checks for that property in a variety of places. For example, unlike a regular function, it must be called with `new`:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
     ```js run
     class User {
@@ -167,6 +176,7 @@ Cependant, il existe des différences importantes.
 
     alert(User); // class User { ... }
     ```
+    There are other differences, we'll see them soon.
 
 2. Les méthodes de Class sont non-énumérable.
     Une définition de la classe attribue à la propriété  `énumérable` le drapeau de `false` a  les méthodes du `"prototype"`.
@@ -210,8 +220,12 @@ new User().sayHi(); // ça fonctionne, montre la définition de MyClass
 alert(MyClass); // erreur, le nom MyClass n'est pas visible en dehors de la classe
 ```
 
+<<<<<<< HEAD
 
 Nous pouvons même créer les classes dynamiquement "a la demande", comme ainsi:
+=======
+We can even make classes dynamically "on-demand", like this:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ```js run
 function makeClass(phrase) {
@@ -230,7 +244,11 @@ new User().sayHi(); // Hello
 ```
 
 
+<<<<<<< HEAD
 ## Accesseurs/Mutateurs, autres syntaxes de raccourcis
+=======
+## Getters/setters
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 Tout comme les objets littéraux, les classes peuvent inclure des accesseurs/mutateurs, des propriétés évaluées etc.
 
@@ -268,22 +286,19 @@ alert(user.name); // John
 user = new User(""); // le nom est trop court.
 ```
 
+<<<<<<< HEAD
 La déclaration de la classe Cree des accesseurs et des mutateurs dans `User.prototype`, ainsi:
+=======
+Technically, such class declaration works by creating getters and setters in `User.prototype`.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
-```js
-Object.defineProperties(User.prototype, {
-  name: {
-    get() {
-      return this._name
-    },
-    set(name) {
-      // ...
-    }
-  }
-});
-```
+## Computed names [...]
 
+<<<<<<< HEAD
 Voici un exemple avec une propriété évaluée entre crochets `[...]` :
+=======
+Here's an example with a computed method name using brackets `[...]`:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ```js run
 class User {
@@ -299,13 +314,23 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 ## Proprietes de Classe
+=======
+Such features are easy to remember, as they resemble that of literal objects.
+
+## Class fields
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ```warn header="les anciens navigateurs peuvent avoir besoin de polyfill"
 Les propriétés de classe sont un ajout récent au langage.
 ```
 
+<<<<<<< HEAD
 Auparavant, les classes n'avaient que des méthodes.
+=======
+Previously, our classes only had methods.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 Les "Class fields" (champs de classe) sont une syntaxe qui permet d'ajouter des propriétés.
 
@@ -314,7 +339,7 @@ Par exemple, ajoutons la propriété `name` à `class User` :
 ```js run
 class User {
 *!*
-  name = "Anonymous";
+  name = "John";
 */!*
 
   sayHi() {
@@ -322,15 +347,43 @@ class User {
   }
 }
 
-new User().sayHi();
-
-alert(User.prototype.sayHi); // placed in User.prototype
-alert(User.prototype.name); // undefined, not placed in User.prototype
+new User().sayHi(); // Hello, John!
 ```
 
+So, we just write "<property name> = <value>" in the declaration, and that's it.
+
+The important difference of class fields is that they are set on individual objects, not `User.prototype`:
+
+```js run
+class User {
+*!*
+  name = "John";
+*/!*
+}
+
+let user = new User();
+alert(user.name); // John
+alert(User.prototype.name); // undefined
+```
+
+<<<<<<< HEAD
 La chose importante à propos des champs de classe est qu'ils sont définis sur des objets individuels, pas `User.prototype`.
 
 Techniquement, ils sont traités une fois que le constructeur a fait son travail.
+=======
+Technically, they are processed after the constructor has done it's job, and we can use for them complex expressions and function calls:
+
+```js run
+class User {
+*!*
+  name = prompt("Name, please?", "John");
+*/!*
+}
+
+let user = new User();
+alert(user.name); // John
+```
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 ### Création de méthodes liées avec des champs de classe
 
