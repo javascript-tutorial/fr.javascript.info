@@ -57,7 +57,10 @@ Les descripteurs sont dans le même format que décrit dans le chapitre <info:pr
 Nous pouvons utiliser `Object.create` pour effectuer un clonage d'objet plus puissant que la copie des propriétés dans la boucle `for..in`:
 
 ```js
+<<<<<<< HEAD
 // clone superficielle et complètement identique d'obj
+=======
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
 ```
 
@@ -116,7 +119,11 @@ Des choses inattendues peuvent également se produire lors de l'attribution à `
 
 Comment pouvons-nous éviter ce problème ?
 
+<<<<<<< HEAD
 Tout d'abord, nous pouvons simplement utiliser `Map`, puis tout va bien.
+=======
+First, we can just switch to using `Map` for storage instead of plain objects, then everything's fine.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Mais `Object` peut également bien nous servir ici, car les créateurs du langage ont réfléchi à ce problème il y a longtemps.
 
@@ -128,7 +135,11 @@ Ainsi, si `obj.__ proto__` est lu ou muté, l'accésseur/mutateur correspondant 
 
 Comme il a été dit au début de cette section de tutoriel: `__proto__` est un moyen d'accéder `[[Prototype]] `, il n'est pas `[[Prototype]]` lui-même.
 
+<<<<<<< HEAD
 Maintenant, si nous voulons utiliser un objet comme un tableau associatif, nous pouvons le faire avec une petite astuce:
+=======
+Now, if we intend to use an object as an associative array and be free of such problems, we can do it with a little trick:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ```js run
 *!*

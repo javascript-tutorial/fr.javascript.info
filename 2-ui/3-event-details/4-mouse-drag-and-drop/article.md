@@ -4,9 +4,15 @@ Drag'n'Drop est une excellente solution d'interface. Prendre quelque chose et le
 
 Dans la norme HTML moderne, il y a une [section à propos du Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) avec des événements spéciaux tels que `dragstart`, `dragend`, etc.
 
+<<<<<<< HEAD
 Ces événements sont utiles car ils nous permettent de résoudre facilement des tâches simples. Par exemple, ils nous permettent de gérer le glisser-déposer de fichiers "externes" dans le navigateur, afin que nous puissions prendre un fichier dans le gestionnaire de fichiers du système d'exploitation et le déposer dans la fenêtre du navigateur, permettant ainsi à JavaScript d'accéder à son contenu.
 
 Mais les événements de glisser natifs ont également des limites. Par exemple, nous ne pouvons pas limiter le glissement d'une certaine zone. De plus, nous ne pouvons pas le rendre "horizontal" ou "vertical" uniquement. Et il existe d'autres tâches de glisser-déposer qui ne peuvent pas être effectuées à l'aide de cette API. De plus, la prise en charge des appareils mobiles pour de tels événements est presque inexistante.
+=======
+These events allow us to support special kinds of drag'n'drop, such as handling dragging a file from OS file-manager and dropping it into the browser window. Then JavaScript can access the contents of such files.
+
+But native Drag Events also have limitations. For instance, we can't prevent dragging from a certain area. Also we can't make the dragging "horizontal" or "vertical" only. And there are many other drag'n'drop tasks that can't be done using them. Also, mobile device support for such events is very weak.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événements de souris.
 
@@ -16,22 +22,38 @@ Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événeme
 2. Puis sur `mousemove` le déplacer en changeant `left/top` et `position:absolute`.
 3. Sur `mouseup` - effectue toutes les actions liées à un Drag'n'Drop terminé.
 
+<<<<<<< HEAD
 Ce sont les bases. Par la suite, nous pouvons l’étendre, par exemple, en mettant en évidence des éléments droppables (disponibles pour le dépôt) lorsque vous les survolez.
 
 Voici l'algorithme pour le glisser-déposer d'une balle :
+=======
+1. On `mousedown` - prepare the element for moving, if needed (maybe create a clone of it, add a class to it or whatever).
+2. Then on `mousemove` move it by changing `left/top` with `position:absolute`.
+3. On `mouseup` - perform all actions related to finishing the drag'n'drop.
+
+These are the basics. Later we'll see how to other features, such as highlighting current underlying elements while we drag over them.
+
+Here's the implementation of dragging a ball:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ```js
-ball.onmousedown = function(event) { // (1) start the process
-
-  // (2) prepare to moving: make absolute and on top by z-index
+ball.onmousedown = function(event) { 
+  // (1) prepare to moving: make absolute and on top by z-index
   ball.style.position = 'absolute';
   ball.style.zIndex = 1000;
+<<<<<<< HEAD
   // le deplacer hors de ses parents en cours directement sur un l’element body 
   // le positionner relativement à l’élément body
   document.body.append(ball);  
   // ... et mettre cette balle positionnée de manière absolue sous le curseur
 
   moveAt(event.pageX, event.pageY);
+=======
+
+  // move it out of any current parents directly into body
+  // to make it positioned relative to the body
+  document.body.append(ball);  
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
   // Centrer la balle aux coordonnées (pageX, pageY)
   function moveAt(pageX, pageY) {
@@ -39,14 +61,24 @@ ball.onmousedown = function(event) { // (1) start the process
     ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
   }
 
+  // move our absolutely positioned ball under the pointer
+  moveAt(event.pageX, event.pageY);
+
   function onMouseMove(event) {
     moveAt(event.pageX, event.pageY);
   }
 
+<<<<<<< HEAD
   // (3) Faire glisser la balle a l’evenement mousemove
   document.addEventListener('mousemove', onMouseMove);
 
   // (4) déposer la balle, enlever les gestionnaires d’évènements dont on a pas besoin
+=======
+  // (2) move the ball on mousemove
+  document.addEventListener('mousemove', onMouseMove);
+
+  // (3) drop the ball, remove unneeded handlers
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
   ball.onmouseup = function() {
     document.removeEventListener('mousemove', onMouseMove);
     ball.onmouseup = null;
@@ -62,10 +94,17 @@ Voici un exemple en action:
 
 [iframe src="ball" height=230]
 
+<<<<<<< HEAD
 Essayez de faire glisser-déposer avec la souris et vous verrez un tel comportement.
 ```
 
 C’est parce que le navigateur a son propre Glisser-Déposer pour les images  et quelques autres  éléments qui s’exécute automatiquement et entre en conflit avec le nôtre.
+=======
+Try to drag'n'drop with the mouse and you'll see such behavior.
+```
+
+That's because the browser has its own drag'n'drop support for images and some other elements. It runs automatically and conflicts with ours.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Pour le désactiver:
 

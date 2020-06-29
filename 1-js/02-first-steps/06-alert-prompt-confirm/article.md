@@ -1,109 +1,105 @@
-# Interaction : alert, prompt, confirm
+# Interaction: alert, prompt, confirm
 
-Dans cette partie du didacticiel nous allons couvrir le JavaScript "tel quel", sans modifications spécifiques à l’environnement.
-
-Mais nous utilisons toujours un navigateur comme environnement de démonstration. Nous devrions donc connaître au moins quelques fonctions d’interface utilisateur. Dans ce chapitre, nous allons nous familiariser avec les fonctions du navigateur `alert`,  `prompt` et `confirm`.
+As we'll be using the browser as our demo environment, let's see a couple of functions to interact with the user: `alert`, `prompt` and `confirm`.
 
 ## alert
 
-Syntax:
+This one we've seen already. It shows a message and waits for the user to presses "OK".
 
-```js
-alert(message);
-```
-
-Cela affiche un message et met en pause l'exécution du script jusqu'à ce que l'utilisateur appuie sur "OK".
-
-Par exemple :
+For example:
 
 ```js run
 alert("Hello");
 ```
 
-La mini-fenêtre avec le message s'appelle une `fenêtre modale`. Le mot "modal" signifie que le visiteur ne peut pas interagir avec le reste de la page, appuyer sur d’autres boutons, jusqu’à ce qu’ils aient pris en charge la fenêtre. Dans ce cas précis - jusqu'à ce qu'ils appuient sur "OK".
+The mini-window with the message is called a *modal window*. The word "modal" means that the visitor can't interact with the rest of the page, press other buttons, etc, until they have dealt with the window. In this case -- until they press "OK".
 
 ## prompt
 
-La fonction `prompt` accepte deux arguments :
+The function `prompt` accepts two arguments:
 
 ```js no-beautify
 result = prompt(title, [default]);
 ```
 
-Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour le visiteur et les boutons `OK/ANNULER`.
+It shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel.
 
 `title`
-: Le texte à afficher au visiteur.
+: The text to show the visitor.
 
 `default`
-: Un deuxième paramètre facultatif, la valeur initiale du champ de saisie.
+: An optional second parameter, the initial value for the input field.
 
-Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur `OK`. Ou ils peuvent annuler l'entrée en appuyant sur le bouton `ANNULER` ou en appuyant sur la touche `key:Esc`.
+```smart header="The square brackets in syntax `[...]`"
+The square brackets around `default` in the syntax above denote that the parameter as optional, not required.
+```
 
-L'appel du `prompt` renvoie le texte du champ de saisie ou `null` si l'entrée a été annulée.
+The visitor can type something in the prompt input field and press OK. Then we get that text in the `result`. Or they can cancel the input by pressing Cancel or hitting the `key:Esc` key, then we get `null` as the `result`.
 
-Par exemple :
+The call to `prompt` returns the text from the input field or `null` if the input was canceled.
+
+For instance:
 
 ```js run
 let age = prompt('How old are you?', 100);
 
-alert(`You are ${age} years old!`); // Vous avez 100 ans !
+alert(`You are ${age} years old!`); // You are 100 years old!
 ```
 
-````warn header="IE: toujours fournir un `default`"
-Le deuxième paramètre est facultatif. Mais si nous ne le fournissons pas, Internet Explorer insère le texte `"undefined"` dans le `prompt`.
+````warn header="In IE: always supply a `default`"
+The second parameter is optional, but if we don't supply it, Internet Explorer will insert the text `"undefined"` into the prompt.
 
-Exécutez ce code dans Internet Explorer pour le voir :
+Run this code in Internet Explorer to see:
 
 ```js run
 let test = prompt("Test");
 ```
 
-Donc, pour bien paraître dans IE, il est recommandé de toujours fournir le second argument :
+So, for prompts to look good in IE, we recommend always providing the second argument:
 
 ```js run
-let test = prompt("Test", ''); // <-- pour IE
+let test = prompt("Test", ''); // <-- for IE
 ```
 ````
 
 ## confirm
 
-La syntaxe :
+The syntax:
 
 ```js
 result = confirm(question);
 ```
 
-La fonction `confirm` affiche une fenêtre modale avec une `question` et deux boutons: OK et Annuler.
+The function `confirm` shows a modal window with a `question` and two buttons: OK and Cancel.
 
-Le résultat est `true` si OK est pressé et `false` dans les autres cas.
+The result is `true` if OK is pressed and `false` otherwise.
 
-Par exemple :
+For example:
 
 ```js run
 let isBoss = confirm("Are you the boss?");
 
-alert( isBoss ); // true si OK est pressé
+alert( isBoss ); // true if OK is pressed
 ```
 
-## Résumé
+## Summary
 
-Nous avons couvert 3 fonctions spécifiques au navigateur pour interagir avec le visiteur :
+We covered 3 browser-specific functions to interact with visitors:
 
 `alert`
-: affiche un message.
+: shows a message.
 
 `prompt`
-: affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou, si on clique sur `Annuler` ou `key:Esc`, `null`.
+: shows a message asking the user to input text. It returns the text or, if Cancel button or `key:Esc` is clicked, `null`.
 
 `confirm`
-: affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler". Il renvoie `true` pour OK et `false` pour Annuler/`key:Esc`.
+: shows a message and waits for the user to press "OK" or "Cancel". It returns `true` for OK and `false` for Cancel/`key:Esc`.
 
-Toutes ces méthodes sont modales: elles interrompent l'exécution du script et n'autorisent pas le visiteur à interagir avec le reste de la page tant que le message n'a pas disparu.
+All these methods are modal: they pause script execution and don't allow the visitor to interact with the rest of the page until the window has been dismissed.
 
-Il existe deux limitations communes à toutes les méthodes ci-dessus :
+There are two limitations shared by all the methods above:
 
-1. L'emplacement exact de la fenêtre modale est déterminé par le navigateur. C’est généralement au centre.
-2. L'aspect exact de la fenêtre dépend également du navigateur. Nous ne pouvons pas le modifier.
+1. The exact location of the modal window is determined by the browser. Usually, it's in the center.
+2. The exact look of the window also depends on the browser. We can't modify it.
 
-C'est le prix de la simplicité. Il y a d'autres manières d'afficher des fenêtres plus belles et une interaction plus riche avec le visiteur, mais si les apparences vous importent peu, ces méthodes fonctionnent très bien.
+That is the price for simplicity. There are other ways to show nicer windows and richer interaction with the visitor, but if "bells and whistles" do not matter much, these methods work just fine.

@@ -2,11 +2,19 @@
 
 Le langage JavaScript a été initialement créé pour les navigateurs web. Dès lors, il a évolué et est devenu un langage aux multiples utilisations et plateformes.
 
+<<<<<<< HEAD
 Une plate-forme peut être un navigateur, un serveur Web ou un autre *hôte*, voire une machine à café. Chacun d'eux fournit des fonctionnalités spécifiques à la plate-forme. La spécification JavaScript appelle cela un *environnement hôte*.
+=======
+A platform may be a browser, or a web-server or another *host*, even a "smart" coffee machine, if it can run JavaScript. Each of them provides platform-specific functionality. The JavaScript specification calls that a *host environment*.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Un environnement hôte fournit ses propres objets et fonctions en plus du noyau du langage. Les navigateurs Web permettent de contrôler les pages Web. Node.js fournit des fonctionnalités côté serveur, etc.
 
+<<<<<<< HEAD
 Voici une vue globale de ce que nous avons lorsque JavaScript s'exécute dans un navigateur Web :
+=======
+Here's a bird's-eye view of what we have when JavaScript runs in a web browser:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ![](windowObjects.svg)
 
@@ -49,9 +57,13 @@ document.body.style.background = "red";
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
+<<<<<<< HEAD
 Ici on a utilisé `document.body.style`, mais il y a bien plus encore. Les propriétés et les méthodes sont décrites dans la spécification :
 
 - **DOM Living Standard** à <https://dom.spec.whatwg.org>
+=======
+Here we used `document.body.style`, but there's much, much more. Properties and methods are described in the specification: [DOM Living Standard](https://dom.spec.whatwg.org).
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ```smart header="DOM n'est pas seulement pour les navigateurs"
 La spécification DOM explique la structure d'un document et fournit des objets pour le manipuler. Il existe également des instruments autres que les navigateurs qui utilisent DOM.
@@ -59,10 +71,17 @@ La spécification DOM explique la structure d'un document et fournit des objets 
 Par exemple, les scripts côté serveur qui téléchargent des pages HTML et les traitent peuvent également utiliser le DOM. Ils peuvent cependant ne supporter qu'une partie de la spécification.
 ```
 
+<<<<<<< HEAD
 ```smart header="CSSOM pour le style"
 Les règles et les feuilles de style CSS sont structurées différemment du HTML. Il y a une spécification séparée [CSSOM](https://www.w3.org/TR/cssom-1/) cela explique comment ils sont représentés en tant qu'objets, et comment les lire et les écrire.
 
 CSSOM est utilisé avec DOM lorsque nous modifions les règles de style pour le document. En pratique cependant, CSSOM est rarement requis, car les règles CSS sont généralement statiques. Nous avons rarement besoin d'ajouter / de supprimer des règles CSS à partir de JavaScript, mais c'est également possible.
+=======
+```smart header="CSSOM for styling"
+There's also a separate specification, [CSS Object Model (CSSOM)](https://www.w3.org/TR/cssom-1/) for CSS rules and stylesheets, that explains how they are represented as objects, and how to read and write them.
+
+CSSOM is used together with DOM when we modify style rules for the document. In practice though, CSSOM is rarely required, because we rarely need to modify CSS rules from JavaScript (usually we just add/remove CSS classes, not modify their CSS rules), but that's also possible.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 ```
 
 ## BOM (Browser Object Model)

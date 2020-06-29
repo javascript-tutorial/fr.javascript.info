@@ -308,7 +308,11 @@ JavaScript n'obtient la réponse à la requête principale ou une erreur que s'i
 
 ## Identifiants
 
+<<<<<<< HEAD
 Une requête cross-origin par défaut n'apporte aucune information d'identification (cookies ou authentification HTTP).
+=======
+A cross-origin request initiated by JavaScript code by default does not bring any credentials (cookies or HTTP authentication).
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 C'est rare pour les requêtes HTTP. Habituellement, une requête de `http://site.com` est accompagnée de tous les cookies de ce domaine. Mais les requêtes cross-origin faites par des méthodes JavaScript sont une exception.
 

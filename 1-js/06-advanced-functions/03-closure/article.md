@@ -181,11 +181,19 @@ Voici un peu plus de code :
 
 Les rectangles sur le côté droit montrent comment l'environnement lexical global change pendant l'exécution :
 
+<<<<<<< HEAD
 1. Lorsque le script démarre, l'environnement lexical est prérempli avec toutes les variables déclarées.
     - Initialement, elles sont à l'état "non initialisé". C'est un état interne spécial, cela signifie que le moteur connaît la variable, mais elle ne peut pas être référencée tant qu'elle n'a pas été déclarée avec `let`. C'est presque la même chose que si la variable n'existait pas.
 2. Ensuite, la définition de `let phrase` apparaît. Il n'y a pas encore d'affectation, donc sa valeur est `undefined`. Nous pouvons utiliser la variable depuis ce moment.
 3. `phrase` se voit attribuer une valeur.
 4. `phrase` change la valeur.
+=======
+1. When the script starts, the Lexical Environment is pre-populated with all declared variables.
+    - Initially, they are in the "Uninitialized" state. That's a special internal state, it means that the engine knows about the variable, but it cannot be referenced until it has been declared with `let`. It's almost the same as if the variable didn't exist.
+2. Then `let phrase` definition appears. There's no assignment yet, so its value is `undefined`. We can use the variable from this point forward.
+3. `phrase` is assigned a value.
+4. `phrase` changes the value.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Tout semble simple pour l'instant, non ?
 
@@ -286,7 +294,11 @@ Plus tard, lorsque `counter()` est appelé, un nouvel environnement lexical est 
 
 ![](closure-makecounter-nested-call.svg)
 
+<<<<<<< HEAD
 Maintenant, lorsque le code à l'intérieur de `counter()` recherche la variable `count`, il recherche d'abord son propre environnement lexical (vide, car il n'y a pas de variables locales), puis l'environnement lexical de l'appel externe `makeCounter()`, où le trouve et change.
+=======
+Now when the code inside `counter()` looks for `count` variable, it first searches its own Lexical Environment (empty, as there are no local variables there), then the Lexical Environment of the outer `makeCounter()` call, where it finds and changes it.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 **Une variable est mise à jour dans l'environnement lexical où elle se trouve.**
 
