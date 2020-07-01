@@ -59,7 +59,7 @@ Techniquement, le nom et la valeur peuvent avoir n'importe quel caractère, pour
 let name = "my name";
 let value = "John Smith"
 
-// code le cookie comme my%20name=John%20Smith
+// code le cookie en my%20name=John%20Smith
 document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
 alert(document.cookie); // ...; my%20name=John%20Smith
