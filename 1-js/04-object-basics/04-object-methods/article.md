@@ -233,6 +233,7 @@ Le concept de temps d'exécution évalué de `this` présente à la fois des ava
 Ici, notre position n'est pas de juger si cette décision de conception linguistique est bonne ou mauvaise. Nous comprendrons comment travailler avec elle, comment obtenir des avantages et éviter les problèmes.
 ```
 
+<<<<<<< HEAD
 ## Internals: Type de Référence
 
 ```warn header="Fonction du langage approfondie"
@@ -326,6 +327,9 @@ Le type de référence est un type interne "intermédiaire" spécial, dans le bu
 En conséquence, la valeur de this n’est transmise correctement que si la fonction est appelée directement à l’aide d’une syntaxe point `obj.method()` ou de crochets `obj[méthode]()` (ils font la même chose ici). Plus loin dans ce tutoriel, nous allons apprendre différentes manières de résoudre ce problème, telles que [func.bind()](/bind#solution-2-bind).
 
 ## Les fonctions fléchées n'ont pas de "this"
+=======
+## Arrow functions have no "this"
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Les fonctions fléchées sont spéciales : elles n’ont pas leur "propre" `this`. Si nous faisons référence à `this` à partir d’une telle fonction, cela provient de la fonction externe "normale".
 

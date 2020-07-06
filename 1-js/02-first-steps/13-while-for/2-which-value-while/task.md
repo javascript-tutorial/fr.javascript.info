@@ -2,19 +2,19 @@ importance: 4
 
 ---
 
-# Quelles valeurs affiche la boucle while ?
+# Which values does the while loop show?
 
-A votre avis, quelles sont les valeurs affichées pour chaque boucle ?  Notez-les puis comparer avec la réponse.
+For every loop iteration, write down which value it outputs and then compare it with the solution.
 
-Les deux boucles affichent-elles les mêmes valeurs dans l'`alert` ou pas ?
+Both loops `alert` the same values, or not?
 
-1. Le préfixe sous forme `++i` :
+1. The prefix form `++i`:
 
     ```js
     let i = 0;
     while (++i < 5) alert( i );
     ```
-2. Le postfixe sous forme `i++` :
+2. The postfix form `i++`
 
     ```js
     let i = 0;

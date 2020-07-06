@@ -13,6 +13,7 @@
 
 
   <script>
+<<<<<<< HEAD
     ball.onmousedown = function(event) { // (1) commence le processus
 
       // (2) prépare le glissement: utiliser les propriétés absolute et top par  z-index
@@ -23,6 +24,15 @@
       moveAt(event.pageX, event.pageY);
 
       // Centrer la balle avec les coordonnées  (pageX, pageY)
+=======
+    ball.onmousedown = function(event) { 
+      ball.style.position = 'absolute';
+      ball.style.zIndex = 1000;
+      document.body.appendChild(ball);
+
+      moveAt(event.pageX, event.pageY);
+
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
       function moveAt(pageX, pageY) {
         ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
         ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
@@ -32,10 +42,15 @@
         moveAt(event.pageX, event.pageY);
       }
 
+<<<<<<< HEAD
       // (3) déplacer la balle avec l'évènement mousemove
       document.addEventListener('mousemove', onMouseMove);
 
       // (4) relâche la balle, enlève les gestionnaires dont on n’a pas besoin
+=======
+      document.addEventListener('mousemove', onMouseMove);
+
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
       ball.onmouseup = function() {
         document.removeEventListener('mousemove', onMouseMove);
         ball.onmouseup = null;

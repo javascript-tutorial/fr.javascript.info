@@ -662,7 +662,11 @@ Dans la plupart des cas, nous pouvons faire de même sans `Reflect`, par exemple
 
 ### Proxying a getter
 
+<<<<<<< HEAD
 Voyons un exemple qui montre pourquoi `Reflect.get` est meilleur. Et nous verrons également pourquoi `get/set` a le troisième argument `receiver`, que nous n'avions pas utilisé auparavant.
+=======
+Let's see an example that demonstrates why `Reflect.get` is better. And we'll also see why `get/set` have the third argument `receiver`, that we didn't use before.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Nous avons un objet `user` avec la propriété `_name` et un getter pour cela.
 

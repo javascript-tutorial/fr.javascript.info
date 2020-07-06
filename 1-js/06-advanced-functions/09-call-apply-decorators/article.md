@@ -210,7 +210,11 @@ Pour que tout soit clair, voyons plus en détail comment `this` est passé:
 2. Ainsi, lorsque `worker.slow(2)` est exécuté, le wrapper obtient `2` en argument et `this = worker` (c'est l'objet avant le point).
 3. Dans le wrapper, en supposant que le résultat ne soit pas encore mis en cache, `func.call(this, x)` passe le `this` (`= worker`) actuel et l'argument actuel (`= 2`) à la méthode d'origine. .
 
+<<<<<<< HEAD
 ## Passer plusieurs argument avec "func.apply"
+=======
+## Going multi-argument
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Rendons maintenant `cachingDecorator` encore plus universel. Jusqu'à présent, il ne travaillait qu'avec des fonctions à un seul argument.
 
@@ -237,7 +241,11 @@ Il y a beaucoup de solutions possibles:
 
 Pour de nombreuses applications pratiques, la 3ème variante est suffisante, nous allons donc nous y tenir.
 
+<<<<<<< HEAD
 Nous devons aussi remplacer `func.call(this, x)` avec `func.call(this, ...arguments)`, pour passer tous les arguments à l'appel de fonction encapsulé, pas seulement le premier.
+=======
+Also we need to pass not just `x`, but all arguments in `func.call`. Let's recall that in a `function()` we can get a pseudo-array of its arguments as `arguments`, so `func.call(this, x)` should be replaced with `func.call(this, ...arguments)`.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Voici un plus puissant `cachingDecorator` :
 
@@ -285,6 +293,8 @@ Il y a deux changements:
 - Dans la ligne `(*)`, il appelle `hash` pour créer une clé unique à partir de `arguments`. Ici, nous utilisons une simple fonction "d'assemblage" qui transforme les arguments `(3, 5)` en la clé `"3,5"`. Les cas plus complexes peuvent nécessiter d'autres fonctions de hachage.
 - Ensuite `(**)` utilise `func.call(this, ...arguments)` pour transmettre le contexte et tous les arguments obtenus par le wrapper (pas seulement le premier) à la fonction d'origine.
 
+## func.apply
+
 Instead of `func.call(this, ...arguments)` we could use `func.apply(this, arguments)`.
 
 The syntax of built-in method [func.apply](mdn:js/Function/apply) is:
@@ -304,14 +314,14 @@ func.call(context, ...args); // pass an array as list with spread syntax
 func.apply(context, args);   // is same as using call
 ```
 
-There's only a minor difference:
+There's only a subtle difference:
 
 - The spread syntax `...` allows to pass *iterable* `args` as the list to `call`.
 - The `apply` accepts only *array-like* `args`.
 
-So, these calls complement each other. Where we expect an iterable, `call` works, where we expect an array-like, `apply` works.
+So, where we expect an iterable, `call` works, and where we expect an array-like, `apply` works.
 
-And for objects that are both iterable and array-like, like a real array, we technically could use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
+And for objects that are both iterable and array-like, like a real array, we can use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
 
 Passing all arguments along with the context to another function is called *call forwarding*.
 
@@ -345,7 +355,11 @@ function hash(args) {
 }
 ```
 
+<<<<<<< HEAD
 ... Malheureusement, ça ne marchera pas. Parce que nous appelons `hash(arguments)` et l’objet `arguments` est à la fois itérable et semblable à un tableau, mais pas un vrai tableau.
+=======
+...Unfortunately, that won't work. Because we are calling `hash(arguments)`, and `arguments` object is both iterable and array-like, but not a real array.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Donc, appeler `join` échouerait, comme on peut le voir ci-dessous:
 

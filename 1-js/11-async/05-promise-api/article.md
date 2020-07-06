@@ -179,10 +179,10 @@ Si le navigateur ne prend pas en charge `Promise.allSettled`, il est facile de l
 if(!Promise.allSettled) {
   Promise.allSettled = function(promises) {
     return Promise.all(promises.map(p => Promise.resolve(p).then(value => ({
-      state: 'fulfilled',
+      status: 'fulfilled',
       value
     }), reason => ({
-      state: 'rejected',
+      status: 'rejected',
       reason
     }))));
   };
@@ -191,7 +191,11 @@ if(!Promise.allSettled) {
 
 Dans ce code, `promises.map` prend les valeurs d'entrée, les transforme en promesses (juste au cas où autre chose qu'une promesse serait transmis) avec `p => Promise.resolve(p)`, puis ajoute le gestionnaire `.then` à chacun.
 
+<<<<<<< HEAD
 Ce gestionnaire transforme un résultat réussi `value` en `{state:'fulfilled', value}`, et une erreur `reason` en `{state:'rejected', reason}`. C'est exactement le format de `Promise.allSettled`.
+=======
+That handler turns a successful result `value` into `{status:'fulfilled', value}`, and an error `reason` into `{status:'rejected', reason}`. That's exactly the format of `Promise.allSettled`.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Dorénavant, nous pouvons utiliser `Promise.allSettled` pour obtenir les résultats ou toutes les promesses données, même si certaines d'entre elles sont rejetées.
 
@@ -275,6 +279,7 @@ En pratique, cette méthode n'est presque jamais utilisée.
 
 Il y a 5 méthodes statiques de la classe `Promise`:
 
+<<<<<<< HEAD
 1. `Promise.all(promises)` -- attend que toutes les promesses se résolvent et retourne un tableau de leurs résultats. Si l'une des promesses données est rejetée, alors elle devient l'erreur de `Promise.all`, et tous les autres résultats sont ignorés.
 2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec:
     - `state`: `"fulfilled"` ou `"rejected"`
@@ -282,5 +287,14 @@ Il y a 5 méthodes statiques de la classe `Promise`:
 3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le résultat.
 4. `Promise.resolve(value)` -- fait une promesse résolue avec la valeur donnée.
 5. `Promise.reject(error)` -- fait une promesse rejetée avec l'erreur donnée.
+=======
+1. `Promise.all(promises)` -- waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of `Promise.all`, and all other results are ignored.
+2. `Promise.allSettled(promises)` (recently added method) -- waits for all promises to settle and returns their results as an array of objects with:
+    - `status`: `"fulfilled"` or `"rejected"`
+    - `value` (if fulfilled) or `reason` (if rejected).
+3. `Promise.race(promises)` -- waits for the first promise to settle, and its result/error becomes the outcome.
+4. `Promise.resolve(value)` -- makes a resolved promise with the given value.
+5. `Promise.reject(error)` -- makes a rejected promise with the given error.
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 De ces cinq, " Promise.all " est probablement le plus courant en pratique.
