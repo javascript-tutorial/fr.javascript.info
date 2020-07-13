@@ -57,7 +57,11 @@ Dans la chaîne de remplacement, on utilise un signe dollar : `pattern:$1`, alor
 
 Si une expression régulière a beaucoup de groupes, il est pratique de leur attribuer un nom.
 
+<<<<<<< HEAD
 Pour référencer un groupe nommé, on peut utiliser `pattern:\k<имя>`.
+=======
+To reference a named group we can use `pattern:\k<name>`.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Dans l'exemple ci-dessous, le groupe du caractère de citation s'appelle `pattern:?<quote>`, donc la rétro référence est `pattern:\k<quote>`:
 

@@ -156,7 +156,7 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 `shift`
 : Extrait le premier élément du tableau et le renvoie:
 
-    ```js
+    ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
     alert( fruits.shift() ); // supprime Apple et l'alerte
@@ -167,7 +167,7 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 `unshift`
 : Ajoute l'élément au début du tableau:
 
-    ```js
+    ```js run
     let fruits = ["Orange", "Pear"];
 
     fruits.unshift('Apple');

@@ -1,13 +1,21 @@
 
 # Modules, introduction
 
+<<<<<<< HEAD
 Au fur et à mesure que notre application grandit, nous souhaitons la scinder en plusieurs fichiers, appelés «modules». Un module contient généralement une classe ou une bibliothèque de fonctions.
+=======
+As our application grows bigger, we want to split it into multiple files, so called "modules". A module may contain a class or a library of functions for a specific purpose.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Pendant longtemps, JavaScript n'avait pas de module. Ce n’était pas un problème, car au départ les scripts étaient petits et simples, il n’était donc pas nécessaire.
 
 Mais les scripts sont devenus de plus en plus complexes et la communauté a donc inventé diverses méthodes pour organiser le code en modules, des bibliothèques spéciales pour charger des modules à la demande.
 
+<<<<<<< HEAD
 Par exemple:
+=======
+To name some (for historical reasons):
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 - [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- un des systèmes de modules les plus anciens, initialement mis en œuvre par la bibliothèque [require.js](http://requirejs.org/).
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- le système de module créé pour Node.js
@@ -15,11 +23,19 @@ Par exemple:
 
 Maintenant, tous ces éléments deviennent lentement du passé, mais nous pouvons toujours les trouver dans d’anciens scripts.
 
+<<<<<<< HEAD
 Le système de modules natif apparu dans la norme en 2015, a progressivement évolué depuis et est maintenant pris en charge par tous les principaux navigateurs et dans Node.js. Nous allons donc l’étudier à partir de maintenant.
+=======
+The language-level module system appeared in the standard in 2015, gradually evolved since then, and is now supported by all major browsers and in Node.js. So we'll study the modern JavaScript modules from now on.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## Qu'est-ce qu'un module?
 
+<<<<<<< HEAD
 Un module est juste un fichier. Un script est un module.
+=======
+A module is just a file. One script is one module. As simple as that.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Les modules peuvent se charger mutuellement et utiliser des directives spéciales, `export` et `import`, pour échanger des fonctionnalités, appeler les fonctions d’un module dans un autre:
 
@@ -57,7 +73,15 @@ Comme ça:
 
 Le navigateur extrait et évalue automatiquement le module importé (et, le cas échéant, ses importations), puis exécute le script.
 
+<<<<<<< HEAD
 ## Caractéristiques du module de base
+=======
+```warn header="Modules work only via HTTP(s), not in local files"
+If you try to open a web-page locally, via `file://` protocol, you'll find that `import/export` directives don't work. Use a local web-server, such as [static-server](https://www.npmjs.com/package/static-server#getting-started) or use the "live server" capability of your editor, such as VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to test modules.
+```
+
+## Core module features
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Qu'est-ce qui est différent dans les modules par rapport aux scripts "normaux"?
 

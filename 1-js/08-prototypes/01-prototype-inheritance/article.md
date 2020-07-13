@@ -31,8 +31,13 @@ rabbit.__proto__ = animal;
 */!*
 ```
 
+<<<<<<< HEAD
 ```smart header="`__proto__` est un accesseur/mutateur historique pour `[[Prototype]]`"
 Veuillez noter que `__proto__` n'est *pas le même* que `[[Prototype]]`. C'est un accesseur/mutateur pour ça.
+=======
+```smart header="`__proto__` is a historical getter/setter for `[[Prototype]]`"
+Please note that `__proto__` is *not the same* as `[[Prototype]]`. It's a getter/setter for it.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Il existe pour des raisons historiques. Dans le langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
 

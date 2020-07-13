@@ -28,7 +28,11 @@ Voici à quoi cela ressemblera :
 */!*
 ```
 
+<<<<<<< HEAD
 C'était un exemple HTML. Créons maintenant la même `div` avec JavaScript (en supposant que les styles sont dans le HTML ou un fichier CSS externe).
+=======
+That was the HTML example. Now let's create the same `div` with JavaScript (assuming that the styles are in the HTML/CSS already).
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## Création d'un élément
 
@@ -48,21 +52,42 @@ Pour créer des nœuds DOM, il existe deux méthodes :
     let textNode = document.createTextNode('Here I am');
     ```
 
+<<<<<<< HEAD
 ### Création du message
 
 Dans notre cas, le message est une `div` avec la classe `alert` et le HTML qu'il contient :
+=======
+Most of the time we need to create element nodes, such as the `div` for the message.
+
+### Creating the message
+
+Creating the message div takes 3 steps:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```js
+// 1. Create <div> element
 let div = document.createElement('div');
+
+// 2. Set its class to "alert"
 div.className = "alert";
+
+// Fill it with the content
 div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
 ```
 
+<<<<<<< HEAD
 Nous avons créé l'élément, mais pour l'instant, il n'est que dans une variable. Nous ne pouvons pas voir l'élément sur la page, car il ne fait pas encore partie du document.
+=======
+We've created the element. But as of now it's only in a variable named `div`, not in the page yet. So we can't see it.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## Méthodes d'insertion
 
+<<<<<<< HEAD
 Pour faire apparaître la `div`, nous devons l'insérer quelque part dans `document`. Par exemple, dans `document.body`.
+=======
+To make the `div` show up, we need to insert it somewhere into `document`. For instance, into `<body>` element, referenced by `document.body`.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Il existe une méthode spéciale `append` pour cela : `document.body.append(div)`.
 
@@ -90,6 +115,7 @@ Voici le code complet :
 </script>
 ```
 
+<<<<<<< HEAD
 Cet ensemble de méthodes fournit plus de façons d'insérer :
 
 - `node.append(...nodes or strings)` -- ajouter des nœuds ou des chaînes de caractères à la fin de `node`,
@@ -99,6 +125,23 @@ Cet ensemble de méthodes fournit plus de façons d'insérer :
 - `node.replaceWith(...nodes or strings)` –- remplace `node` avec les nœuds ou chaînes de caractères donnés.
 
 Voici un exemple d'utilisation de ces méthodes pour ajouter des éléments à une liste et le texte avant/après :
+=======
+Here we called `append` on `document.body`, but we can call `append` method on any other element, to put another element into it. For instance, we can append something to `<div>` by calling `div.append(anotherElement)`.
+
+Here are more insertion methods, they specify different places where to insert:
+
+- `node.append(...nodes or strings)` -- append nodes or strings *at the end* of `node`,
+- `node.prepend(...nodes or strings)` -- insert nodes or strings *at the beginning* of `node`,
+- `node.before(...nodes or strings)` –- insert nodes or strings *before* `node`,
+- `node.after(...nodes or strings)` –- insert nodes or strings *after* `node`,
+- `node.replaceWith(...nodes or strings)` –- replaces `node` with the given nodes or strings.
+
+Arguments of these methods are an arbitrary list of DOM nodes to insert, or text strings (that become text nodes automatically).
+
+Let's see them in action.
+
+Here's an example of using these methods to add items to a list and the text before/after it:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```html autorun
 <ol id="ol">
@@ -121,7 +164,11 @@ Voici un exemple d'utilisation de ces méthodes pour ajouter des éléments à u
 </script>
 ```
 
+<<<<<<< HEAD
 Voici une image visuelle de ce que font les méthodes :
+=======
+Here's a visual picture of what the methods do:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ![](before-prepend-append-after.svg)
 
@@ -139,7 +186,11 @@ before
 after
 ```
 
+<<<<<<< HEAD
 Ces méthodes peuvent insérer plusieurs listes de nœuds et de morceaux de texte en un seul appel.
+=======
+As said, these methods can insert multiple nodes and text pieces in a single call.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Par exemple, ici une chaîne de caractères et un élément sont insérés :
 
@@ -150,7 +201,11 @@ Par exemple, ici une chaîne de caractères et un élément sont insérés :
 </script>
 ```
 
+<<<<<<< HEAD
 Tout le texte est inséré *en tant que texte*.
+=======
+Please note: the text is inserted "as text", not "as HTML", with proper escaping of characters such as `<`, `>`.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Le HTML final est donc :
 
@@ -166,7 +221,11 @@ En d'autres termes, les chaînes de caractères sont insérées de manière sûr
 
 Ainsi, ces méthodes ne peuvent être utilisées que pour insérer des nœuds DOM ou des morceaux de texte.
 
+<<<<<<< HEAD
 Mais que se passe-t-il si nous voulons insérer du HTML "en html", avec toutes les balises et les trucs qui fonctionnent, comme `elem.innerHTML` ?
+=======
+But what if we'd like to insert an HTML string "as html", with all tags and stuff working, in the same manner as `elem.innerHTML` does it?
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## insertAdjacentHTML/Text/Element
 

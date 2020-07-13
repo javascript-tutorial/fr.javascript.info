@@ -19,8 +19,12 @@ Par exemple
 ...
 ```
 
+<<<<<<< HEAD
 Nous allons apprendre les fonctions (un moyen de regrouper les commandes) bientôt. A l'avenir, notons que "use strict" peut être placé au début du corps de la fonction au lieu de l'intégralité du script. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
 
+=======
+Quite soon we're going to learn functions (a way to group commands), so let's note in advance that `"use strict"` can be put at the beginning of a function. Doing that enables strict mode in that function only. But usually people use it for the whole script.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"
 Assurez-vous que `"use strict"` est en haut du script, sinon le mode strict peut ne pas être activé.
@@ -48,9 +52,19 @@ Une fois que nous entrons dans le mode strict, il n’y a plus de retour possibl
 
 Pour l’avenir, lorsque vous utilisez une console de navigation pour tester des fonctionnalités, veuillez noter qu’elle n’utilise pas `use strict` par défaut.
 
+<<<<<<< HEAD
 Parfois, lorsque `use strict` fait une différence, vous obtenez des résultats incorrects.
 
 Vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme cela :
+=======
+When you use a [developer console](info:devtools) to run code, please note that it doesn't `use strict` by default.
+
+Sometimes, when `use strict` makes a difference, you'll get incorrect results.
+
+So, how to actually `use strict` in the console?
+
+First, you can try to press `key:Shift+Enter` to input multiple lines, and put `use strict` on top, like this:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```js
 'use strict'; <Shift+Enter for a newline>
@@ -60,12 +74,17 @@ Vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes
 
 Cela fonctionne dans la plupart des navigateurs, à savoir Firefox et Chrome.
 
+<<<<<<< HEAD
 Si ce n’est pas le cas, le moyen le plus fiable d’assurer `use strict` serait d'entrer le code dans la console comme ceci :
+=======
+If it doesn't, e.g. in an old browser, there's an ugly, but reliable way to ensure `use strict`. Put it inside this kind of wrapper:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```js
 (function() {
   'use strict';
 
+<<<<<<< HEAD
   // ...votre code...
 })()
 ```
@@ -82,3 +101,24 @@ Dans les chapitres suivants, au fur et à mesure que nous apprendrons les foncti
 2. Le mode strict est activé par `"use strict"` en haut du fichier. Il existe également plusieurs fonctionnalités de langage telles que "classes" et "modules" qui permettent un mode strict automatiquement.
 3. Le mode strict est pris en charge par tous les navigateurs modernes.
 4. Il est toujours recommandé de lancer les scripts avec `"use strict"`. Tous les exemples de ce tutoriel le supposent, sauf si (très rarement) c'est spécifié autrement.
+=======
+  // ...your code here...
+})()
+```
+
+## Should we "use strict"?
+
+The question may sound obvious, but it's not so.
+
+One could recommend to start scripts with `"use strict"`... But you know what's cool?
+
+Modern JavaScript supports "classes" and "modules" - advanced language structures (we'll surely get to them), that enable `use strict` automatically. So we don't need to add the `"use strict"` directive, if we use them.
+
+**So, for now `"use strict";` is a welcome guest at the top of your scripts. Later, when your code is all in classes and modules, you may omit it.**
+
+As of now, we've got to know about `use strict` in general.
+
+In the next chapters, as we learn language features, we'll see the differences between the strict and old modes. Luckily, there aren't many and they actually make our lives better.
+
+All examples in this tutorial assume strict mode unless (very rarely) specified otherwise.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439

@@ -14,8 +14,13 @@ let socket = new WebSocket("*!*ws*/!*://javascript.info");
 
 Il existe également un protocole chiffré `wss://`. C'est comme HTTPS mais pour les websockets.
 
+<<<<<<< HEAD
 ```smart header="Toujours préférer `wss://`"
 Le protocole `wss://` est non seulement chiffré, mais également plus fiable.
+=======
+```smart header="Always prefer `wss://`"
+The `wss://` protocol is not only encrypted, but also more reliable.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 C'est parce que les données `ws://` ne sont pas chiffrées, par conséquent visibles pour tout intermédiaire. Les anciens serveurs proxy ne connaissent pas WebSocket, ils peuvent voir des en-têtes "étranges" et abandonner la connexion.
 
