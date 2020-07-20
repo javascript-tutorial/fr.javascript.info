@@ -73,7 +73,11 @@ D'habitude c'est pratique. Mais si nous voulons aussi des clés symboliques, il 
 
 Les objets manquent de nombreuses méthodes existantes pour les tableaux, par exemple `map`, `filter` et autres.
 
+<<<<<<< HEAD
 Si nous souhaitons leur appliquer ces méthodes, nous pouvons utiliser `Object.entries` suivis par `Object.fromEntries` :
+=======
+If we'd like to apply them, then we can use `Object.entries` followed by `Object.fromEntries`:
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc
 
 1. Utilisons `Object.entries(obj)` pour obtenir un tableau de paires clé / valeur de `obj`.
 2. Utilisons des méthodes de tableau sur ce tableau, par exemple `map`.

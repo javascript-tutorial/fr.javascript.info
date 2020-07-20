@@ -134,7 +134,11 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
+<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
   [id]: 123 // pas "id: 123"
+=======
+  [id]: 123 // not "id": 123
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc:1-js/04-object-basics/08-symbol/article.md
 */!*
 };
 ```

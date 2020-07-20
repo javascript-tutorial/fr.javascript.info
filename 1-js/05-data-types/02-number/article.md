@@ -148,7 +148,11 @@ Il y a deux façons de le faire:
 
 1. Multiplier et diviser.
 
+<<<<<<< HEAD
     Par exemple, pour arrondir le nombre au deuxième chiffre après la décimale, multipliez le nombre par 100, appelez la fonction d'arrondi puis divisez-la.
+=======
+    For example, to round the number to the 2nd digit after the decimal, we can multiply the number by `100` (or a bigger power of 10), call the rounding function and then divide it back.
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc
     ```js run
     let num = 1.23456;
 

@@ -7,9 +7,9 @@ do {
 } while (num <= 100 && num);
 ```
 
-La boucle `do..while` se répète tant que les deux vérifications sont vrai :
+The loop `do..while` repeats while both checks are truthy:
 
-1. La vérification de `num <= 100` - c’est-à-dire que la valeur entrée n’est toujours pas supérieure à `100`.
-2. La vérification que `&& num` est `false` lorsque `num` est `null` ou une chaîne vide. Ensuite, la boucle `while` s'arrête aussi.
+1. The check for `num <= 100` -- that is, the entered value is still not greater than `100`.
+2. The check `&& num` is false when `num` is `null` or a empty string. Then the `while` loop stops too.
 
-P.S. Si `num` est `null`, alors `num <= 100` est `true`. Par conséquent, sans la seconde vérification, la boucle ne s’arrêterait pas si l’utilisateur cliquait sur CANCEL. Les deux vérifications sont obligatoires.
+P.S. If `num` is `null` then `num <= 100` is `true`, so without the 2nd check the loop wouldn't stop if the user clicks CANCEL. Both checks are required.
