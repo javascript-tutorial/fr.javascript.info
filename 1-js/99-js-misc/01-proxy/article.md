@@ -662,7 +662,11 @@ Dans la plupart des cas, nous pouvons faire de même sans `Reflect`, par exemple
 
 ### Proxying a getter
 
+<<<<<<< HEAD
 Voyons un exemple qui montre pourquoi `Reflect.get` est meilleur. Et nous verrons également pourquoi `get/set` a le troisième argument `receiver`, que nous n'avions pas utilisé auparavant.
+=======
+Let's see an example that demonstrates why `Reflect.get` is better. And we'll also see why `get/set` have the third argument `receiver`, that we didn't use before.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Nous avons un objet `user` avec la propriété `_name` et un getter pour cela.
 
@@ -840,7 +844,11 @@ Il n'y a donc pas de problème de ce type lors de l'utilisation d'un proxy.
 
 ### Champs privés
 
+<<<<<<< HEAD
 La même chose se produit avec les champs de classe privés.
+=======
+A similar thing happens with private class fields.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Par exemple, la méthode `getName()` accède à la propriété privée `#name` et s'arrête après le proxy:
 
@@ -963,7 +971,11 @@ revoke();
 alert(proxy.data); // Erreur
 ```
 
+<<<<<<< HEAD
 Un appel à `revoke()` supprime toutes les références internes à l'objet cible du proxy, afin qu'elles ne soient plus connectées. L'objet cible peut être récupéré après cela.
+=======
+A call to `revoke()` removes all internal references to the target object from the proxy, so they are no longer connected. The target object can be garbage-collected after that.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Nous pouvons également stocker `revoke` dans un `WeakMap`, pour pouvoir le retrouver facilement par un objet proxy:
 

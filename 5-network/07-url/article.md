@@ -84,6 +84,7 @@ Il y a donc une propriété URL pour cela : `url.searchParams`, un objet de type
 
 Elle fournit des méthodes pratiques pour les paramètres de recherche :
 
+<<<<<<< HEAD
 - **`append(name, value)`** -- ajouter le paramètre `name`,
 - **`delete(name)`** -- supprime le paramètre `name`,
 - **`get(name)`** -- obtenir le paramètre `name`,
@@ -92,6 +93,16 @@ Elle fournit des méthodes pratiques pour les paramètres de recherche :
 - **`set(name, value)`** -- défini/remplace le paramètre,
 - **`sort()`** -- trie les paramètres par nom, rarement nécessaire,
 - … et elle est également itérable, semblable à `Map`.
+=======
+- **`append(name, value)`** -- add the parameter by `name`,
+- **`delete(name)`** -- remove the parameter by `name`,
+- **`get(name)`** -- get the parameter by `name`,
+- **`getAll(name)`** -- get all parameters with the same `name` (that's possible, e.g. `?user=John&user=Pete`),
+- **`has(name)`** -- check for the existence of the parameter by `name`,
+- **`set(name, value)`** -- set/replace the parameter,
+- **`sort()`** -- sort parameters by name, rarely needed,
+- ...and it's also iterable, similar to `Map`.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Un exemple avec des paramètres contenant des espaces et des signes de ponctuation :
 

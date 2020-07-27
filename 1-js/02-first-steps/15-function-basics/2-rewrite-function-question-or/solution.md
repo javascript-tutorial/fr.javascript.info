@@ -1,4 +1,4 @@
-En utilisant un opérateur point d’interrogation `'?'` :
+Using a question mark operator `'?'`:
 
 ```js
 function checkAge(age) {
@@ -6,7 +6,7 @@ function checkAge(age) {
 }
 ```
 
-En utilisant OU `||` (la variante la plus courte) :
+Using OR `||` (the shortest variant):
 
 ```js
 function checkAge(age) {
@@ -14,4 +14,4 @@ function checkAge(age) {
 }
 ```
 
-Notez que les parenthèses autour de `age > 18` ans ne sont pas obligatoires ici. Ils existent pour une meilleure lisibilité.
+Note that the parentheses around `age > 18` are not required here. They exist for better readabilty.

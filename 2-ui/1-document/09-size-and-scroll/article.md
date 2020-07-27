@@ -211,7 +211,11 @@ Si vous cliquez sur l'élément ci-dessous, le code `elem.scrollTop + = 10` s'ex
 <div onclick="this.scrollTop+=10" style="cursor:pointer;border:1px solid black;width:100px;height:80px;overflow:auto">Click<br>Me<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
 ```
 
+<<<<<<< HEAD
 Mettre `scrollTop` à `0` ou `Infinity` fera défiler l'élément vers le haut/bas respectivement.
+=======
+Setting `scrollTop` to `0` or a big value, such as `1e9` will make the element scroll to the very top/bottom respectively.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 ````
 
 ## Ne prenez pas la largeur/hauteur du CSS
