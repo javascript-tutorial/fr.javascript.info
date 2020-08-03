@@ -140,7 +140,7 @@ let eventMixin = {
    *  menu.off('select', handler)
    */
   off(eventName, handler) {
-    let handlers = this._eventHandlers && this._eventHandlers[eventName];
+    let handlers = this._eventHandlers?.[eventName];
     if (!handlers) return;
     for (let i = 0; i < handlers.length; i++) {
       if (handlers[i] === handler) {
@@ -154,8 +154,13 @@ let eventMixin = {
    *  this.trigger('select', data1, data2);
    */
   trigger(eventName, ...args) {
+<<<<<<< HEAD
     if (!this._eventHandlers || !this._eventHandlers[eventName]) {
       return; // aucun gestionnaire pour ce nom d'événement
+=======
+    if (!this._eventHandlers?.[eventName]) {
+      return; // no handlers for that event name
+>>>>>>> cdf382de4cf3ed39ca70cb7df60c4c4886f2d22e
     }
 
     // appeler les gestionnaires

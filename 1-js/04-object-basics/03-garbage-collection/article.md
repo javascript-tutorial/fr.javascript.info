@@ -23,7 +23,11 @@ En termes simples, les valeurs "accessibles" sont celles qui sont accessibles ou
 
 2. Toute autre valeur est considérée comme accessible si elle est accessible depuis une racine par une référence ou par une chaîne de références.
 
+<<<<<<< HEAD:1-js/04-object-basics/02-garbage-collection/article.md
     Par exemple, s’il existe un objet dans une variable locale et que cet objet a une propriété référençant un autre objet, cet objet est considéré comme accessible. Et ceux auxquels il fait référence sont également accessibles. Des exemples détaillés à suivre.
+=======
+    For instance, if there's an object in a global variable, and that object has a property referencing another object, that object is considered reachable. And those that it references are also reachable. Detailed examples to follow.
+>>>>>>> cdf382de4cf3ed39ca70cb7df60c4c4886f2d22e:1-js/04-object-basics/03-garbage-collection/article.md
 
 Il existe un processus d’arrière-plan dans le moteur JavaScript appelé [Ramasse-miettes (Garbage Collector)](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)). Il surveille tous les objets et supprime ceux qui sont devenus inaccessibles.
 
