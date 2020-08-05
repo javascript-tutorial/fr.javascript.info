@@ -8,7 +8,7 @@
 
 <body style="height:3000px">
 
-  <h2>Click the button below</h2>
+  <h2>Cliqué sur le   button ci-dessous</h2>
 
   <input type="button" value="Click to show the form" id="show-button">
 
@@ -23,13 +23,13 @@
   </div>
 
   <script>
-    // Show a half-transparent DIV to "shadow" the page
-    // (the form is not inside, but near it, because it shouldn't be half-transparent)
+    // Afficher un DIV semi-transparent pour "masquer(shadow)" la page
+    // (le formulaire n'est pas à l'intérieur, mais juste apres, car elle ne doit pas être à moitié transparente)
     function showCover() {
       let coverDiv = document.createElement('div');
       coverDiv.id = 'cover-div';
 
-      // make the page unscrollable while the modal form is open
+      // rendre la page non défilable lorsque le formulaire modal est ouvert
       document.body.style.overflowY = 'hidden';
 
       document.body.append(coverDiv);
@@ -56,7 +56,7 @@
 
       form.onsubmit = function() {
         let value = form.text.value;
-        if (value == '') return false; // ignore empty submit
+        if (value == '') return false; // ignorer la soumission d'un formulaire vide
 
         complete(value);
         return false;
