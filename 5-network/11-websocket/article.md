@@ -14,8 +14,13 @@ let socket = new WebSocket("*!*ws*/!*://javascript.info");
 
 Il existe également un protocole chiffré `wss://`. C'est comme HTTPS mais pour les websockets.
 
+<<<<<<< HEAD
 ```smart header="Toujours préférer `wss://`"
 Le protocole `wss://` est non seulement chiffré, mais également plus fiable.
+=======
+```smart header="Always prefer `wss://`"
+The `wss://` protocol is not only encrypted, but also more reliable.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 C'est parce que les données `ws://` ne sont pas chiffrées, par conséquent visibles pour tout intermédiaire. Les anciens serveurs proxy ne connaissent pas WebSocket, ils peuvent voir des en-têtes "étranges" et abandonner la connexion.
 
@@ -177,12 +182,16 @@ Un appel `socket.send(body)` autorise `body` dans une chaîne de caractères ou 
 
 **Lorsque nous recevons les données, le texte vient toujours sous forme de chaîne de caractères. Et pour les données binaires, nous pouvons choisir entre les formats `Blob` et `ArrayBuffer`.**
 
+<<<<<<< HEAD
 Cela est défini par la propriété `socket.bufferType`, c'est `"blob"` par défaut, donc les données binaires viennent en tant qu'objets `Blob`.
+=======
+That's set by `socket.binaryType` property, it's `"blob"` by default, so binary data comes as `Blob` objects.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 [Blob](info:blob) est un objet binaire de haut niveau, il s'intègre directement avec `<a>`, `<img>` et d'autres balises, c'est donc un défaut sain. Mais pour le traitement binaire, pour accéder aux octets de données individuels, nous pouvons le changer en `"arraybuffer"` :
 
 ```js
-socket.bufferType = "arraybuffer";
+socket.binaryType = "arraybuffer";
 socket.onmessage = (event) => {
   // event.data est soit une chaîne de caractères (si du texte), soit un arraybuffer (si binaire)
 };

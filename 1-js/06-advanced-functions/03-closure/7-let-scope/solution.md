@@ -15,7 +15,11 @@ function func() {
 func();
 ```
 
+<<<<<<< HEAD
 Dans cet exemple, nous pouvons observer la différence particulière entre une variable "non existante" et "non initialisée".
+=======
+In this example we can observe the peculiar difference between a "non-existing" and "uninitialized" variable.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Comme vous l'avez peut-être lu dans l'article [](info:closure), une variable démarre à l'état "non initialisée" à partir du moment où l'exécution entre dans un bloc de code (ou une fonction). Et elle reste non initialisée jusqu'à la déclaration `let` correspondante.
 

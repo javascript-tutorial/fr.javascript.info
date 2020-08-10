@@ -7,9 +7,15 @@ Le `__proto__` est considéré comme dépassée et quelque peu obsolète (dans l
 
 Les méthodes modernes sont:
 
+<<<<<<< HEAD
 - [Object.create(proto[, descriptors])](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/create) -- crée un objet vide avec `proto` donné comme `[[Prototype]]` et des descripteurs de propriété facultatifs.
 - [Object.getPrototypeOf(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getPrototypeOf) -- renvoie le `[[Prototype]]` de `obj`.
 - [Object.setPrototypeOf(obj, proto)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/setPrototypeOf) -- définit le `[[Prototype]]` de `obj` en tant que `proto`.
+=======
+- [Object.create(proto, [descriptors])](mdn:js/Object/create) -- creates an empty object with given `proto` as `[[Prototype]]` and optional property descriptors.
+- [Object.getPrototypeOf(obj)](mdn:js/Object/getPrototypeOf) -- returns the `[[Prototype]]` of `obj`.
+- [Object.setPrototypeOf(obj, proto)](mdn:js/Object/setPrototypeOf) -- sets the `[[Prototype]]` of `obj` to `proto`.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Ceux-ci devraient être utilisés à la place de `__proto__`.
 
@@ -57,7 +63,10 @@ Les descripteurs sont dans le même format que décrit dans le chapitre <info:pr
 Nous pouvons utiliser `Object.create` pour effectuer un clonage d'objet plus puissant que la copie des propriétés dans la boucle `for..in`:
 
 ```js
+<<<<<<< HEAD
 // clone superficielle et complètement identique d'obj
+=======
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
 ```
 
@@ -116,7 +125,11 @@ Des choses inattendues peuvent également se produire lors de l'attribution à `
 
 Comment pouvons-nous éviter ce problème ?
 
+<<<<<<< HEAD
 Tout d'abord, nous pouvons simplement utiliser `Map`, puis tout va bien.
+=======
+First, we can just switch to using `Map` for storage instead of plain objects, then everything's fine.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Mais `Object` peut également bien nous servir ici, car les créateurs du langage ont réfléchi à ce problème il y a longtemps.
 
@@ -128,7 +141,11 @@ Ainsi, si `obj.__ proto__` est lu ou muté, l'accésseur/mutateur correspondant 
 
 Comme il a été dit au début de cette section de tutoriel: `__proto__` est un moyen d'accéder `[[Prototype]] `, il n'est pas `[[Prototype]]` lui-même.
 
+<<<<<<< HEAD
 Maintenant, si nous voulons utiliser un objet comme un tableau associatif, nous pouvons le faire avec une petite astuce:
+=======
+Now, if we intend to use an object as an associative array and be free of such problems, we can do it with a little trick:
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js run
 *!*
@@ -176,9 +193,15 @@ alert(Object.keys(chineseDictionary)); // hello,bye
 
 Les méthodes modernes pour configurer et accéder directement au prototype sont les suivantes :
 
+<<<<<<< HEAD
 - [Object.create(proto[, descriptors])](mdn:js/Object/create) -- crée un objet vide avec un `proto` en tant que `[[Prototype]]` (peut être `null`) et des descripteurs de propriété facultatifs.
 - [Object.getPrototypeOf(obj)](mdn:js/Object.getPrototypeOf) -- renvoie le `[[Prototype]]` de `obj` (le même que le `__proto__` getter).
 - [Object.setPrototypeOf(obj, proto)](mdn:js/Object.setPrototypeOf) -- configure le `[[Prototype]]` de `obj` vers `proto` (le même que le `__proto__` setter).
+=======
+- [Object.create(proto, [descriptors])](mdn:js/Object/create) -- creates an empty object with a given `proto` as `[[Prototype]]` (can be `null`) and optional property descriptors.
+- [Object.getPrototypeOf(obj)](mdn:js/Object.getPrototypeOf) -- returns the `[[Prototype]]` of `obj` (same as `__proto__` getter).
+- [Object.setPrototypeOf(obj, proto)](mdn:js/Object.setPrototypeOf) -- sets the `[[Prototype]]` of `obj` to `proto` (same as `__proto__` setter).
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Le getter/setter `__proto__` intégré est dangereux si nous souhaitons placer les clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme clé, et il y aura une erreur, avec des conséquences légères, espérons-le, mais généralement imprévisibles.
 

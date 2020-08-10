@@ -42,7 +42,11 @@ Dites-leur que le plus court est toujours mieux. Initiez-les dans les chemins du
 Le Dao se cache sans mots. Seul le Dao est bien commencé et bien terminé.
 ```
 
+<<<<<<< HEAD
 Une autre façon de coder plus rapidement consiste à utiliser des noms de variable d'une seule lettre partout. Comme `a`, `b` ou `c`.
+=======
+Another way to code shorter is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Une petite variable disparaît dans le code comme un vrai ninja dans la forêt. Personne ne pourra la trouver en utilisant la "recherche" de l'éditeur. Et même si quelqu'un le fait, il ne pourra pas "déchiffrer" la signification du nom `a` ou `b`.
 
