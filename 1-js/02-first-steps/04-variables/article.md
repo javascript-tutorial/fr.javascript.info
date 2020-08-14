@@ -135,27 +135,22 @@ alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
 
-<<<<<<< HEAD
-```smart header="Langages fonctionnels"
-Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle), comme [Scala](http://www.scala-lang.org/) ou [Erlang](http://www.erlang.org/) qui interdisent de modifier une valeur de variable.
-=======
-````warn header="Declaring twice triggers an error"
-A variable should be declared only once.
+````warn header="Déclarer deux fois déclenche une erreur"
+Une variable ne doit être déclarée qu'une seule fois.
 
-A repeated declaration of the same variable is an error:
+Une déclaration répétée de la même variable est une erreur :
 
 ```js run
 let message = "This";
 
-// repeated 'let' leads to an error
+// répéter 'let' conduit à une erreur
 let message = "That"; // SyntaxError: 'message' has already been declared
 ```
-So, we should declare a variable once and then refer to it without `let`.
+Donc, nous devrions déclarer une variable une fois et y faire référence sans `let`.
 ````
 
-```smart header="Functional languages"
-It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+```smart header="Langages fonctionnels"
+Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle), comme [Scala](http://www.scala-lang.org/) ou [Erlang](http://www.erlang.org/) qui interdisent de modifier une valeur de variable.
 
 Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réutiliser l’ancienne.
 
@@ -209,12 +204,8 @@ let имя = '...';
 let 我 = '...';
 ```
 
-<<<<<<< HEAD
-Techniquement, il n'y a pas d'erreur ici, ces noms sont autorisés, mais il existe une tradition internationale d'utiliser l'anglais dans les noms de variables. Même si nous écrivons un petit script, sa vie peut être longue. Les personnes d'autres pays peuvent avoir besoin de le lire quelque temps.
+Techniquement, il n'y a pas d'erreur ici, ces noms sont autorisés, mais il existe une convention internationale d'utiliser l'anglais dans les noms de variables. Même si nous écrivons un petit script, sa vie peut être longue. Les personnes d'autres pays peuvent avoir besoin de les lire quelque temps.
 
-=======
-Technically, there is no error here. Such names are allowed, but there is an international convention to use English in variable names. Even if we're writing a small script, it may have a long life ahead. People from other countries may need to read it some time.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 ````
 
 ````warn header="Noms réservés"
