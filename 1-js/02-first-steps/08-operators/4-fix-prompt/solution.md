@@ -1,12 +1,7 @@
 <<<<<<< HEAD
-La raison en est que l'invite renvoie l'entrée utilisateur sous forme de chaîne.
+La raison en est que le prompt renvoie l'entrée utilisateur sous forme de chaîne de caractères.
 
 Les variables ont donc respectivement les valeurs `"1"` et `"2"`.
-=======
-The reason is that prompt returns user input as a string.
-
-So variables have values `"1"` and `"2"` respectively.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js run
 let a = "1"; // prompt("First number?", 1);
