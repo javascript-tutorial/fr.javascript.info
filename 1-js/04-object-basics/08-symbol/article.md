@@ -122,7 +122,11 @@ user.id = "Their id value"
 // Boom! écrasé par un autre script!
 ```
 
+<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
 ### Symboles dans un littéral
+=======
+### Symbols in an object literal
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c:1-js/04-object-basics/08-symbol/article.md
 
 Si nous voulons utiliser un symbole dans un objet littéral `{...}`, nous avons besoin de crochets.
 
@@ -134,7 +138,11 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
+<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
   [id]: 123 // pas "id: 123"
+=======
+  [id]: 123 // not "id": 123
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c:1-js/04-object-basics/08-symbol/article.md
 */!*
 };
 ```

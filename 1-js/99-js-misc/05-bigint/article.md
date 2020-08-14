@@ -50,7 +50,11 @@ Les opérations de conversion sont toujours silencieuses, ne donnent jamais d'er
 ````smart header="Le plus unaire n'est pas supporté sur les bigints"
 Le plus unaire `+value` est un moyen bien connu pour convertir `value` en un nombre.
 
+<<<<<<< HEAD
 Sur les bigints ce n'est pas supporté, pour éviter la confusion :
+=======
+In order to avoid confusion, it's not supported on bigints:
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 ```js run
 let bigint = 1n;
 

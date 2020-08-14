@@ -2,7 +2,11 @@
 
 Les directives d'exportation et d'importation ont plusieurs variantes de syntaxe.
 
+<<<<<<< HEAD
 Dans le chapitre précédent, nous avons constaté une utilisation simple: explorons maintenant plus d’exemples.
+=======
+In the previous article we saw a simple use, now let's explore more examples.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ## Exporter avant les déclarations
 
@@ -162,7 +166,11 @@ La deuxième approche est généralement privilégiée, de sorte que chaque "cho
 
 Naturellement, cela nécessite beaucoup de fichiers, car toute chose veut son propre module, mais ce n’est pas un problème du tout. En fait, la navigation dans le code devient plus facile si les fichiers sont bien nommés et structurés en dossiers.
 
+<<<<<<< HEAD
 Les modules fournissent une syntaxe spéciale `export default` ("l'exportation par défaut") afin d'améliorer l'aspect "une chose par module".
+=======
+Modules provide a special `export default` ("the default export") syntax to make the "one thing per module" way look better.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Placez `export default` avant l'entité à exporter:
 
@@ -216,9 +224,15 @@ export default function(user) { // pas de nom de fonction
 export default ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 ```
 
+<<<<<<< HEAD
 Ne pas donner de nom, c'est bien, car l'`export default` est unique. Par conséquent, l'importation sans accolades sait ce qu'il faut importer.
 
 Sans `defaut`, une telle exportation donnerait une erreur:
+=======
+Not giving a name is fine, because there is only one `export default` per file, so `import` without curly braces knows what to import.
+
+Without `default`, such an export would give an error:
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js
 export class { // Erreur! (un export autre que par défaut nécessite un nom)
@@ -241,7 +255,11 @@ function sayHi(user) {
 export {sayHi as default};
 ```
 
+<<<<<<< HEAD
 Ou, dans un autre cas, supposons qu'un module `user.js` exporte un élément principal par "défaut" et quelques éléments nommés (rarement le cas, mais ça arrive):
+=======
+Or, another situation, let's say a module `user.js` exports one main "default" thing, and a few named ones (rarely the case, but it happens):
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js
 // 📁 user.js
@@ -277,9 +295,15 @@ new User('John');
 
 ### Un mot contre les exportations par défaut
 
+<<<<<<< HEAD
 Les exportations nommées sont explicites. Ils nomment exactement ce qu’ils importent, nous avons donc ces informations, c’est une bonne chose.
 
 Les exportations nommées nous obligent à utiliser exactement le bon nom pour importer::
+=======
+Named exports are explicit. They exactly name what they import, so we have that information from them; that's a good thing.
+
+Named exports force us to use exactly the right name to import:
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js
 import {User} from './user.js';
@@ -320,7 +344,11 @@ export {default as User} from './user.js'; // réexportez default
 
 Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
+<<<<<<< HEAD
 Imaginons, nous écrivons un "package": un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides". utilisation interne dans d'autres modules.
+=======
+Imagine, we're writing a "package": a folder with a lot of modules, with some of the functionality exported outside (tools like NPM allow us to publish and distribute such packages), and many modules are just "helpers", for internal use in other package modules.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 La structure de fichier pourrait être comme ceci:
 ```
@@ -402,7 +430,11 @@ Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons 
 
 ## Sommaire
 
+<<<<<<< HEAD
 Voici tous les types d'`export` que nous avons abordés dans ce chapitre et dans les chapitres précédents.
+=======
+Here are all types of `export` that we covered in this and previous articles.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Vous pouvez vérifier vous-même en les lisant et en vous rappelant leur signification:
 
@@ -451,4 +483,8 @@ if (something) {
 
 ...Mais que se passe-t-il si nous devons vraiment importer quelque chose de manière conditionnelle? Ou au bon moment? Aimez-vous, charger un module sur demande, quand c'est vraiment nécessaire?
 
+<<<<<<< HEAD
 Nous verrons les importations dynamiques dans le chapitre suivant.
+=======
+We'll see dynamic imports in the next article.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
