@@ -1,22 +1,22 @@
-# The "switch" statement
+# La déclaration "switch"
 
-A `switch` statement can replace multiple `if` checks.
+Une instruction `switch` peut remplacer plusieurs vérification `if`.
 
-It gives a more descriptive way to compare a value with multiple variants.
+Cela donne un moyen plus descriptif de comparer une valeur avec plusieurs variantes.
 
-## The syntax
+## La syntaxe
 
-The `switch` has one or more `case` blocks and an optional default.
+Le `switch` a un ou plusieurs blocs `case` (cas) et une valeur par défaut facultative.
 
-It looks like this:
+Cela ressemble à ceci :
 
 ```js no-beautify
 switch(x) {
-  case 'value1':  // if (x === 'value1')
+  case 'value1':  // si (x === 'value1')
     ...
     [break]
 
-  case 'value2':  // if (x === 'value2')
+  case 'value2':  // si (x === 'value2')
     ...
     [break]
 
@@ -26,13 +26,13 @@ switch(x) {
 }
 ```
 
-- The value of `x` is checked for a strict equality to the value from the first `case` (that is, `value1`) then to the second (`value2`) and so on.
-- If the equality is found, `switch` starts to execute the code starting from the corresponding `case`, until the nearest `break` (or until the end of `switch`).
-- If no case is matched then the `default` code is executed (if it exists).
+- La valeur de `x` est vérifiée pour une égalité stricte avec la valeur du premier `case` (c'est-à-dire, `value1`), puis du second (`value2`) et ainsi de suite.
+- Si l'égalité est trouvée, `switch` commence à exécuter le code à partir du `case` correspondant, jusqu'au prochain `break` (ou jusqu'à la fin du switch).
+- Si aucun cas ne correspond, le code par défaut (`default`) est exécuté (s'il existe).
 
-## An example
+## Un exemple
 
-An example of `switch` (the executed code is highlighted):
+Un exemple de `switch` (le code exécuté est mis en évidence) :
 
 ```js run
 let a = 2 + 2;
@@ -54,13 +54,13 @@ switch (a) {
 }
 ```
 
-Here the `switch` starts to compare `a` from the first `case` variant that is `3`. The match fails.
+Ici, le `switch` commence à comparer `a` avec le premier `case` dont la valeur est `3`. La correspondance échoue.
 
-Then `4`. That's a match, so the execution starts from `case 4` until the nearest `break`.
+Ensuite `4`, c’est une correspondance. L’exécution commence donc à partir du `case 4` jusqu’au prochain `break`.
 
-**If there is no `break` then the execution continues with the next `case` without any checks.**
+**S'il n'y a pas de `break`, l'exécution continue avec le `case` suivant sans aucun contrôle.**
 
-An example without `break`:
+Un exemple sans `break`:
 
 ```js run
 let a = 2 + 2;
@@ -79,7 +79,7 @@ switch (a) {
 }
 ```
 
-In the example above we'll see sequential execution of three `alert`s:
+Dans l'exemple ci-dessus, nous verrons l'exécution séquentielle de trois `alert` :
 
 ```js
 alert( 'Exactly!' );
@@ -87,10 +87,10 @@ alert( 'Too big' );
 alert( "I don't know such values" );
 ```
 
-````smart header="Any expression can be a `switch/case` argument"
-Both `switch` and `case` allow arbitrary expressions.
+````smart header="Toute expression peut être un argument `switch/case`"
+`Switch` et `case` permettent des expressions arbitraires.
 
-For example:
+Par exemple :
 
 ```js run
 let a = "1";
@@ -107,17 +107,17 @@ switch (+a) {
     alert("this doesn't run");
 }
 ```
-Here `+a` gives `1`, that's compared with `b + 1` in `case`, and the corresponding code is executed.
+Ici `+a` donne `1`, qui est comparé à `b + 1` dans le `case`, et le code correspondant est exécuté.
 ````
 
-## Grouping of "case"
+## Groupement de "case"
 
-Several variants of `case` which share the same code can be grouped.
+Plusieurs variantes de `case` partageant le même code peuvent être regroupées.
 
-For example, if we want the same code to run for `case 3` and `case 5`:
+Par exemple, si nous voulons que le même code soit exécuté pour les `case 3` et `case 5` :
 
 ```js run no-beautify
-let a = 3;
+let a = 2 + 2;
 
 switch (a) {
   case 4:
@@ -137,15 +137,15 @@ switch (a) {
 }
 ```
 
-Now both `3` and `5` show the same message.
+Maintenant, les `3` et `5` affichent le même message.
 
-The ability to "group" cases is a side-effect of how `switch/case` works without `break`. Here the execution of `case 3` starts from the line `(*)` and goes through `case 5`, because there's no `break`.
+La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans interruption. Ici, l’exécution du `case 3` commence à partir de la ligne `(*)` et passe par le `case 5`, car il n’ya pas de `break`.
 
-## Type matters
+## Le type compte
 
-Let's emphasize that the equality check is always strict. The values must be of the same type to match.
+Soulignons que le contrôle d’égalité est toujours strict. Les valeurs doivent être du même type pour correspondre.
 
-For example, let's consider the code:
+Par exemple, considérons le code suivant :
 
 ```js run
 let arg = prompt("Enter a value?");
@@ -167,6 +167,6 @@ switch (arg) {
 }
 ```
 
-1. For `0`, `1`, the first `alert` runs.
-2. For `2` the second `alert` runs.
-3. But for `3`, the result of the `prompt` is a string `"3"`, which is not strictly equal `===` to the number `3`. So we've got a dead code in `case 3`! The `default` variant will execute.
+1. Pour `0`, `1`, la première `alert` est exécutée.
+2. Pour `2`, la deuxième `alert` est exécutée.
+3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort dans le `case 3`! La variante par défaut sera donc exécutée.
