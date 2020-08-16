@@ -53,11 +53,7 @@ let greater = user1 > user2;
 `"default"`
 : Se produit dans de rares cas où l'opérateur n'est "pas sûr" du type auquel il doit s'attendre.
 
-<<<<<<< HEAD:1-js/04-object-basics/05-object-toprimitive/article.md
     Par exemple, le binaire plus `+` peut fonctionner à la fois avec des chaînes de caractères (les concaténer) et des nombres (les ajouter), donc les chaînes de caractères et les chiffres feraient l'affaire. Donc, si le plus binaire obtient un objet sous forme d'argument, il utilise l'indicateur `"default"` pour le convertir.
-=======
-    For instance, binary plus `+` can work both with strings (concatenates them) and numbers (adds them), so both strings and numbers would do. So if a binary plus gets an object as an argument, it uses the `"default"` hint to convert it.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c:1-js/04-object-basics/09-object-toprimitive/article.md
 
     En outre, si un objet est comparé à l'aide de `==` avec une chaîne de caractères, un nombre ou un symbole, il est également difficile de savoir quelle conversion doit être effectuée, par conséquent l'indicateur `"default"` est utilisé.
 
