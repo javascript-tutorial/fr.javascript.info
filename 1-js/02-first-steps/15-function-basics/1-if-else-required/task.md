@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Is "else" required?
+# Est-ce que "else" est requis ?
 
-The following function returns `true` if the parameter `age` is greater than `18`.
+La fonction suivante renvoie `true` si le paramètre `age` est supérieur à `18`.
 
-Otherwise it asks for a confirmation and returns its result:
+Sinon, il demande une confirmation et renvoie son résultat :
 
 ```js
 function checkAge(age) {
@@ -21,7 +21,7 @@ function checkAge(age) {
 }
 ```
 
-Will the function work differently if `else` is removed?
+La fonction fonctionnera-t-elle différemment si `else` est supprimé ?
 
 ```js
 function checkAge(age) {
@@ -35,4 +35,4 @@ function checkAge(age) {
 }
 ```
 
-Is there any difference in the behavior of these two variants?
+Existe-t-il une différence dans le comportement de ces deux variantes ?
