@@ -1,16 +1,16 @@
-# Arrow functions, the basics
+# Fonctions fléchées, les bases
 
-There's another very simple and concise syntax for creating functions, that's often better than Function Expressions.
+Il existe une syntaxe plus simple et concise pour créer des fonctions, c'est souvent mieux que les Expressions de Fonction.
 
-It's called "arrow functions", because it looks like this:
+Les "fonctions fléchées" sont appelées ainsi pour leur syntaxe :
 
 ```js
 let func = (arg1, arg2, ...argN) => expression
 ```
 
-...This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
+...Cela va créér une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
 
-In other words, it's the shorter version of:
+C'est donc la version raccourcie de :
 
 ```js
 let func = function(arg1, arg2, ...argN) {
@@ -18,12 +18,12 @@ let func = function(arg1, arg2, ...argN) {
 };
 ```
 
-Let's see a concrete example:
+Voyons un exemple concret :
 
 ```js run
 let sum = (a, b) => a + b;
 
-/* This arrow function is a shorter form of:
+/* Cette fonction fléchée est la forme raccourcie de :
 
 let sum = function(a, b) {
   return a + b;
@@ -33,22 +33,22 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
-As you can, see `(a, b) => a + b` means a function that accepts two arguments named `a` and `b`. Upon the execution, it evaluates the expression `a + b` and returns the result.
+Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments nommés `a` et `b`. Lors de l'éxécution, elle évalue l'expression `a + b` et retourne le résultat.
 
-- If we have only one argument, then parentheses around parameters can be omitted, making that even shorter.
+- Pour un argument unique, alors les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
     For example:
 
     ```js run
     *!*
     let double = n => n * 2;
-    // roughly the same as: let double = function(n) { return n * 2 }
+    // Similaire à : let double = function(n) { return n * 2 }
     */!*
 
     alert( double(3) ); // 6
     ```
 
-- If there are no arguments, parentheses will be empty (but they should be present):
+- Sans arguments, les parenthèses seront alors vides (mais elles doivent êtres présentes) :
 
     ```js run
     let sayHi = () => alert("Hello!");
@@ -56,9 +56,9 @@ As you can, see `(a, b) => a + b` means a function that accepts two arguments na
     sayHi();
     ```
 
-Arrow functions can be used in the same way as Function Expressions.
+Les fonctions fléchées peuvent être utilisées de la même manière que les Expressions de Fonction.
 
-For instance, to dynamically create a function:
+Par exemple pour créer une fonction dynamiquement :
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -67,45 +67,45 @@ let welcome = (age < 18) ?
   () => alert('Hello') :
   () => alert("Greetings!");
 
-welcome();
+welcome(); // ok now
 ```
 
-Arrow functions may appear unfamiliar and not very readable at first, but that quickly changes as the eyes get used to the structure.
+Les fonctions fléchées peuvent paraître étranges et peu lisibles au début, mais cela change rapidement avec les yeux s'habituant à cette structure.
 
-They are very convenient for simple one-line actions, when we're just too lazy to write many words.
+Elles sont très utile pour des actions sur une ligne et que l'on est juste paresseux d'écrire d'autres mots.
 
-## Multiline arrow functions
+## Les fonctions fléchées multiligne
 
-The examples above took arguments from the left of `=>` and evaluated the right-side expression with them.
+L'exemple ci-dessous prend les arguments sur la gauche de `=>` et évalue le coté droit avec ces arguments.
 
-Sometimes we need something a little bit more complex, like multiple expressions or statements. It is also possible, but we should enclose them in curly braces. Then use a normal `return` within them.
+Parfois nous avons besoin de plus de compléxité, comme des expressions multiples ou des déclarations. Cela est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
 
-Like this:
+Comme cela :
 
 ```js run
-let sum = (a, b) => {  // the curly brace opens a multiline function
+let sum = (a, b) => {  // Les accolades ouvre une fonction multiligne
   let result = a + b;
 *!*
-  return result; // if we use curly braces, then we need an explicit "return" 
+  return result; // Si nous utilisons des accolades le "return" est nécessaire
 */!*
 };
 
 alert( sum(1, 2) ); // 3
 ```
 
-```smart header="More to come"
-Here we praised arrow functions for brevity. But that's not all!
+```smart header="Plus à venir"
+Ici nous nous arrêtons sur les fonctions fléchées pour leur syntaxe bréve mais ce n'est pas tout !
 
-Arrow functions have other interesting features.
+Les fonctions fléchées ont d'autres particularités intéressantes.
 
-To study them in-depth, we first need to get to know some other aspects of JavaScript, so we'll return to arrow functions later in the chapter <info:arrow-functions>.
+Pour les aprrendre en profondeur, nous devons d'abord voir d'autres aspects de Javascript, nous reviendrons donc aux fonctions fléchées plus tard dans le chapitre <info:arrow-functions>.
 
-For now, we can already use arrow functions for one-line actions and callbacks.
+Pour l'instant, nous pouvons les utiliser pour des actions sur une ligne ou des callbacks (rappels).
 ```
 
-## Summary
+## Résumé
 
-Arrow functions are handy for one-liners. They come in two flavors:
+Les fonctions fléchées sont pratiques pour les déclarations sur une ligne. Elles ont deux syntaxes :
 
-1. Without curly braces: `(...args) => expression` -- the right side is an expression: the function evaluates it and returns the result.
-2. With curly braces: `(...args) => { body }` -- brackets allow us to write multiple statements inside the function, but we need an explicit `return` to return something.
+1. Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat.
+2. Avec accolades : `(...args) => { body }` -- les accolades nous permet des déclarations multiples au sein de la fonction, mais nous devons ajouter un `return` pour retourner quelque chose.
