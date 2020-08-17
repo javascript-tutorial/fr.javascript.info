@@ -128,13 +128,8 @@ Parfois certaines personnes disent que la notion de `class` est un "sucre syntax
 function User(name) {
   this.name = name;
 }
-<<<<<<< HEAD
-// Tout prototype de fonction a une propriété constructeur par défaut,
-// Alors  nous n'avons pas besoin de le créer
-=======
-// a function prototype has "constructor" property by default,
-// so we don't need to create it
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+// un prototype de fonction a une propriété constructeur par défaut,
+// nous n'avons donc pas besoin de le créer
 
 // 2. Ajouter la méthode au prototype
 User.prototype.sayHi = function() {
@@ -152,11 +147,7 @@ Cependant, il existe des différences importantes.
 
 1. Tout d'abord, une fonction crée par une `classe` est labélisé par une propriété interne spéciale nommée `[[FunctionKind]]:"classConstructor"`. Donc ce n'est pas tout à fait la même chose que de la créer manuellement.
 
-<<<<<<< HEAD
-    Contrairement à une fonction normale, un constructeur de class doit être invoquée avec `new` :
-=======
-    The language checks for that property in a variety of places. For example, unlike a regular function, it must be called with `new`:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+    Le langage vérifie cette propriété à divers endroits. Par exemple, contrairement à une fonction régulière, elle doit être appelée avec `new` :
 
     ```js run
     class User {
@@ -220,12 +211,7 @@ new User().sayHi(); // ça fonctionne, montre la définition de MyClass
 alert(MyClass); // erreur, le nom MyClass n'est pas visible en dehors de la classe
 ```
 
-<<<<<<< HEAD
-
-Nous pouvons même créer les classes dynamiquement "a la demande", comme ainsi:
-=======
-We can even make classes dynamically "on-demand", like this:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous pouvons même créer les classes dynamiquement "a la demande", comme ainsi :
 
 ```js run
 function makeClass(phrase) {
@@ -244,11 +230,7 @@ new User().sayHi(); // Hello
 ```
 
 
-<<<<<<< HEAD
-## Accesseurs/Mutateurs, autres syntaxes de raccourcis
-=======
-## Getters/setters
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Accesseurs/Mutateurs
 
 Tout comme les objets littéraux, les classes peuvent inclure des accesseurs/mutateurs, des propriétés évaluées etc.
 
@@ -286,19 +268,11 @@ alert(user.name); // John
 user = new User(""); // le nom est trop court.
 ```
 
-<<<<<<< HEAD
-La déclaration de la classe Cree des accesseurs et des mutateurs dans `User.prototype`, ainsi:
-=======
-Technically, such class declaration works by creating getters and setters in `User.prototype`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Techniquement, une telle déclaration de classe fonctionne en créant des getters et des setters dans `User.prototype`.
 
 ## Computed names [...]
 
-<<<<<<< HEAD
-Voici un exemple avec une propriété évaluée entre crochets `[...]` :
-=======
-Here's an example with a computed method name using brackets `[...]`:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Voici un exemple avec un nom de méthode calculé utilisant des crochets `[...]` :
 
 ```js run
 class User {
@@ -314,23 +288,15 @@ class User {
 new User().sayHi();
 ```
 
-<<<<<<< HEAD
-## Proprietes de Classe
-=======
-Such features are easy to remember, as they resemble that of literal objects.
+Ces caractéristiques sont faciles à retenir, car elles ressemblent à celles d'objets littéraux.
 
-## Class fields
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Champs de classe
 
 ```warn header="les anciens navigateurs peuvent avoir besoin de polyfill"
 Les propriétés de classe sont un ajout récent au langage.
 ```
 
-<<<<<<< HEAD
-Auparavant, les classes n'avaient que des méthodes.
-=======
-Previously, our classes only had methods.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Auparavant, nos classes n'avaient que des méthodes.
 
 Les "Class fields" (champs de classe) sont une syntaxe qui permet d'ajouter des propriétés.
 
@@ -366,12 +332,7 @@ alert(user.name); // John
 alert(User.prototype.name); // undefined
 ```
 
-<<<<<<< HEAD
-La chose importante à propos des champs de classe est qu'ils sont définis sur des objets individuels, pas `User.prototype`.
-
-Techniquement, ils sont traités une fois que le constructeur a fait son travail.
-=======
-We can also assign values using more complex expressions and function calls:
+Nous pouvons également attribuer des valeurs à l'aide d'expressions et d'appels de fonctions plus complexes :
 
 ```js run
 class User {
@@ -384,7 +345,6 @@ let user = new User();
 alert(user.name); // John
 ```
 
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ### Création de méthodes liées avec des champs de classe
 
@@ -416,38 +376,10 @@ Le problème est appelé "perdre le `this`".
 
 Il existe deux approches pour le corriger, comme indiqué dans le chapitre <info:bind> :
 
-<<<<<<< HEAD
 1. Passer une fonction wrapper, telle que `setTimeout(() => button.click(), 1000)`.
 2. Liez la méthode à un objet, par exemple chez le constructeur :
 
-```js run
-class Button {
-  constructor(value) {
-    this.value = value;
-*!*
-    this.click = this.click.bind(this);
-*/!*
-  }
-
-  click() {
-    alert(this.value);
-  }
-}
-
-let button = new Button("hello");
-
-*!*
-setTimeout(button.click, 1000); // hello
-*/!*
-```
-
-Les champs de classe fournissent une syntaxe plus élégante pour cette dernière solution :
-=======
-1. Pass a wrapper-function, such as `setTimeout(() => button.click(), 1000)`.
-2. Bind the method to object, e.g. in the constructor.
-
-Class fields provide another, quite elegant syntax:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Les champs de classe fournissent une syntaxe plus élégante :
 
 ```js run
 class Button {
@@ -466,15 +398,9 @@ let button = new Button("hello");
 setTimeout(button.click, 1000); // hello
 ```
 
-<<<<<<< HEAD
-Le champ de classe `click = () => {...}` crée une fonction indépendante sur chaque objet `Button`, avec` this` lié à l'objet. Ensuite, nous pouvons passer `button.click` partout, et il sera appelé avec le bon` this`.
+Le champ de classe `click = () => {...}` est créé par objet, il y a une fonction distincte pour chaque objet `Button`, avec `this` à l'intérieur référençant cet objet. Nous pouvons passer `button.click` n'importe où, et la valeur de `this` sera toujours correcte.
 
-Cela est particulièrement utile dans un environnement de navigateur, lorsque nous devons configurer une méthode comme un écouteur d'événements.
-=======
-The class field `click = () => {...}` is created on a per-object basis, there's a separate function for each `Button` object, with `this` inside it referencing that object. We can pass `button.click` around anywhere, and the value of `this` will always be correct.
-
-That's especially useful in browser environment, for event listeners.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+C'est particulièrement utile dans un environnement de navigateur, pour les écouteurs d'événements.
 
 ## Résumé
 

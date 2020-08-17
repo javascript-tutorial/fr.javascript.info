@@ -93,11 +93,7 @@ xhr.onload = function() {
   if (xhr.status != 200) { // analyse l'état HTTP de la réponse
     alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
   } else { // show the result
-<<<<<<< HEAD
-    alert(`Done, got ${xhr.response.length} bytes`); // responseText est le serveur
-=======
-    alert(`Done, got ${xhr.response.length} bytes`); // response is the server
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+    alert(`Done, got ${xhr.response.length} bytes`); // response est le serveur
   }
 };
 
@@ -515,23 +511,13 @@ xhr.onerror = function() {
 
 Il y a en fait plus d'événements, la [spécification moderne](http://www.w3.org/TR/XMLHttpRequest/#events) les répertorie (dans l'ordre du cycle de vie) :
 
-<<<<<<< HEAD
 - `loadstart` -- la requête a commencé.
-- `progress` -- un paquet de données de la réponse est arrivé, tout le corps de la réponse est actuellement dans `responseText`.
+- `progress` -- un paquet de données de la réponse est arrivé, tout le corps de la réponse est actuellement dans `response`.
 - `abort` -- la requête a été annulée par l'appel `xhr.abort()`.
 - `error` -- une erreur de connexion s'est produite, par exemple nom de domaine incorrect. Ne se produit pas pour les erreurs HTTP comme 404.
 - `load` -- la requête s'est terminée avec succès.
 - `timeout` -- la requête a été annulée en raison du délai d'attente (ne se produit que si elle a été définie).
 - `loadend` -- se déclenche après `load`, `error`, `timeout` ou `abort`.
-=======
-- `loadstart` -- the request has started.
-- `progress` -- a data packet of the response has arrived, the whole response body at the moment is in `response`.
-- `abort` -- the request was canceled by the call `xhr.abort()`.
-- `error` -- connection error has occurred, e.g. wrong domain name. Doesn't happen for HTTP-errors like 404.
-- `load` -- the request has finished successfully.
-- `timeout` -- the request was canceled due to timeout (only happens if it was set).
-- `loadend` -- triggers after `load`, `error`, `timeout` or `abort`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Les événements `error`, `abort`, `timeout`, et `load` s'excluent mutuellement. Un seul d'entre eux peut se produire.
 

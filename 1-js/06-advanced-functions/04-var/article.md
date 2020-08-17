@@ -13,42 +13,18 @@ Dans le tout premier chapitre qui parle des [variables](info:variables), nous av
 2. `const`
 3. `var`
 
-<<<<<<< HEAD
-`let` et `const` agissent exactement de la même façon en ce qui concerne les environnements lexicaux (Lexical Environments).
-
-Cependant, `var` est une bête d'une autre nature qui provient des temps très anciens. Ce n'est pas généralement utilisé dans les scripts modernes, mais elle peut se retrouver encore dans les anciens scripts.
-
-Si vous ne planifiez pas rencontrer ces types de scripts, vous pouvez même sauter ce chapitre ou le remettre à plus tard, mais il y a une chance que cela peut vous causer des ennuis dans le futur.
-
-Au premier regard, `var` agit de manière similaire à `let`. C'est à dire, elle déclare une variable:
-
-```js run
-function sayHi() {
-  var phrase = "Hello"; // variable locale, "var" au lieu de "let"
-
-  alert(phrase); // Hello
-}
-=======
-The `var` declaration is similar to `let`. Most of the time we can replace `let` by `var` or vice-versa and expect things to work:
+La déclaration `var` est similaire à `let`. La plupart du temps, nous pouvons remplacer `let` par `var` ou vice-versa et nous attendre à ce que les choses fonctionnent :
 
 ```js run
 var message = "Hi";
 alert(message); // Hi
 ```
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
-But internally `var` is a very different beast, that originates from very old times. It's generally not used in modern scripts, but still lurks in the old ones.
+Mais en interne, `var` est une bête très différente, originaire de très vieux temps. Il n'est généralement pas utilisé dans les scripts modernes, mais se cache toujours dans les anciens.
 
-<<<<<<< HEAD
-alert(phrase); // Erreur, phrase n'est pas définie
-```
+Si vous ne prévoyez pas de rencontrer de tels scripts, vous pouvez même sauter ce chapitre ou le reporter.
 
-...mais voici les différences.
-=======
-If you don't plan on meeting such scripts you may even skip this chapter or postpone it.
-
-On the other hand, it's important to understand differences when migrating old scripts from `var` to `let`, to avoid odd errors.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+D'un autre côté, il est important de comprendre les différences lors de la migration d'anciens scripts de `var` vers `let`, pour éviter des erreurs étranges.
 
 ## "var" n'a pas de portée limitée aux blocs
 
@@ -109,31 +85,27 @@ alert(phrase); // Erreur : phrase n'est pas définie (vérifiez la console déve
 
 Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
 
-<<<<<<< HEAD
-## Les déclarations "var" sont traitées au début de la fonction
-=======
-## "var" tolerates redeclarations
+## "var" tolère les redéclarations
 
-If we declare the same variable with `let` twice in the same scope, that's an error:
+Si nous déclarons la même variable avec `let` deux fois dans la même portée, c'est une erreur :
 
 ```js run
 let user;
 let user; // SyntaxError: 'user' has already been declared
 ```
 
-With `var`, we can redeclare a variable any number of times. If we use `var` with an already-declared variable, it's just ignored:
+Avec `var`, nous pouvons redéclarer une variable autant de fois que nécessaire. Si nous utilisons `var` avec une variable déjà déclarée, elle est simplement ignorée :
 
 ```js run
 var user = "Pete";
 
-var user = "John"; // this "var" does nothing (already declared)
-// ...it doesn't trigger an error
+var user = "John"; // ce "var" ne fait rien (déjà déclaré)
+// ...ça ne déclenche pas d'erreur
 
 alert(user); // John
 ```
 
-## "var" variables can be declared below their use
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## "var" les variables peuvent être déclarées sous leur utilisation
 
 Les déclarations `var` sont traitées quand la fonction commence (ou quand le script commence pour le cas global).
 

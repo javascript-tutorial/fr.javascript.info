@@ -92,13 +92,10 @@ let user = {
 ```
 Cela s'appelle une virgule  "trailing" ou "hanging". Elle facilite l'ajout/suppression/déplacement des propriétés, car toutes les lignes se ressemblent.
 
-<<<<<<< HEAD
-## Crochets
-=======
-````smart header="Object with const can be changed"
-Please note: an object declared as `const` *can* be modified.
+````smart header="L'objet avec const peut être modifié"
+Remarque: un objet déclaré comme `const` *peut* être modifié.
 
-For instance:
+Par exemple :
 
 ```js run
 const user = {
@@ -112,15 +109,14 @@ user.name = "Pete"; // (*)
 alert(user.name); // Pete
 ```
 
-It might seem that the line `(*)` would cause an error, but no. The `const` fixes the value of `user`, but not its contents.
+Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. Le `const` fixe la valeur de `user`, mais pas son contenu.
 
-The `const` would give an error only if we try to set `user=...` as a whole.
+Le `const` donnerait une erreur seulement si nous essayons de définir `user = ...` dans son ensemble.
 
-There's another way to make constant object properties, we'll cover it later in the chapter <info:property-descriptors>.
+Il existe une autre façon de créer des propriétés d'objet constantes, nous le couvrirons plus tard dans le chapitre <info:property-descriptors>.
 ````
 
-## Square brackets
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Crochets
 
 Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 
@@ -189,11 +185,7 @@ alert( user.key ) // undefined
 
 ### Propriétés calculées
 
-<<<<<<< HEAD
-Nous pouvons utiliser des crochets dans un objet littéral. Cela s'appelle des propriétés calculées (*computed propertie*).
-=======
-We can use square brackets in an object literal, when creating an object. That's called *computed properties*.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous pouvons utiliser des crochets dans un objet littéral, lorsqu'on crée un objet. Cela s'appelle des propriétés calculées (*computed propertie*).
 
 Par exemple :
 
@@ -281,41 +273,15 @@ let user = {
 };
 ```
 
-<<<<<<< HEAD
 ## Limitations des noms de propriété
 
-Les noms de propriété (clés) doivent être des chaînes de caractères ou des symboles (un type spécial pour les identifiants, à couvrir plus tard).
+Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés au language comme "for", "let", "return" etc.
 
-Les autres types sont automatiquement convertis en chaînes de caractères.
-
-Par exemple, un nombre `0` devient une chaîne de caractères `"0"` lorsqu'il est utilisé comme clé de propriété :
-=======
-
-## Property names limitations
-
-As we already know, a variable cannot have a name equal to one of language-reserved words like "for", "let", "return" etc.
-
-But for an object property, there's no such restriction:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Mais pour une propriété d'objet, il n'y a pas de telle restriction :
 
 ```js run
 // these properties are all right
 let obj = {
-<<<<<<< HEAD
-  0: "test" // pareil que "0": "test"
-};
-
-// les deux alertes accèdent à la même propriété (le nombre 0 est converti en chaîne "0")
-alert( obj["0"] ); // test
-alert( obj[0] ); // test (même propriété)
-```
-
-**Les mots réservés sont autorisés comme noms de propriété.**
-
-Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés du langage comme `for`, `let`, `return` etc.
-
-Mais pour une propriété d'objet, il n'y a pas ce genre de restriction. Tous les noms sont acceptés :
-=======
   for: 1,
   let: 2,
   return: 3
@@ -324,12 +290,11 @@ Mais pour une propriété d'objet, il n'y a pas ce genre de restriction. Tous le
 alert( obj.for + obj.let + obj.return );  // 6
 ```
 
-In short, there are no limitations on property names. They can be any strings or symbols (a special type for identifiers, to be covered later).
+En bref, il n'y a aucune limitation sur les noms de propriété. Il peut s'agir de n'importe quelle chaîne de caractères ou symbole (un type spécial pour les identifiants, qui sera traité plus tard).
 
-Other types are automatically converted to strings.
+Les autres types sont automatiquement convertis en chaînes de caractères.
 
-For instance, a number `0` becomes a string `"0"` when used as a property key:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Par exemple, un nombre `0` devient une chaîne `"0"` lorsqu'il est utilisé comme clé de propriété :
 
 ```js run
 let obj = {
@@ -341,13 +306,8 @@ alert( obj["0"] ); // test
 alert( obj[0] ); // test (same property)
 ```
 
-<<<<<<< HEAD
-Nous pouvons utiliser n'importe quelle chaîne de caractères comme clé, mais il existe une propriété spéciale nommée `__proto__` qui reçoit un traitement spécial pour des raisons historiques.
+Il y a un problème mineur avec une propriété spéciale nommée `__proto__`. Nous ne pouvons pas le définir sur une valeur non-objet :
 
-Par exemple, nous ne pouvons pas la définir sur une valeur non-objet :
-=======
-There's a minor gotcha with a special property named `__proto__`. We can't set it to a non-object value:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ```js run
 let obj = {};
@@ -357,29 +317,13 @@ alert(obj.__proto__); // [object Object] - la valeur est un objet, n'a pas fonct
 
 Comme nous le voyons dans le code, l'affectation à une primitive `5` est ignorée.
 
-<<<<<<< HEAD
-La nature de `__proto__` sera révélée en détail plus loin dans le chapitre [](info:prototype-inheritance).
-
-Pour l'instant, il est important de savoir qu'un tel comportement de `__proto__` peut devenir une source de bugs et même de vulnérabilités si nous avons l'intention de stocker des clés fournies par l'utilisateur dans un objet.
-
-Le problème est qu'un visiteur peut choisir `__proto__` comme clé, et la logique d'affectation sera ruinée (comme indiqué ci-dessus).
-
-Il existe deux solutions de contournement pour le problème :
-1. Modifiez le comportement de l'objet pour traiter `__proto__` comme une propriété régulière. Nous apprendrons comment le faire dans le chapitre [](info:prototype-methods).
-2. En utilisant la structure de données [Map](info:map-set) qui prend en charge les clés arbitraires. Nous l'apprendrons dans le chapitre <info:map-set>.
-=======
-We'll cover the special nature of `__proto__` in [subsequent chapters](info:prototype-inheritance), and suggest the [ways to fix](info:prototype-methods) such behavior.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous couvrirons la nature particulière de `__proto__` dans les [chapitres suivants](info:prototype-inheritance), et nous suggèrerons une [façon de corriger](info:prototype-methods) ce genre de comportement.
 
 ## Test d'existence de propriété, opérateur "in"
 
-<<<<<<< HEAD
-Une caractéristique notable des objets est qu’il est possible d’accéder à n’importe quelle propriété. Il n’y aura pas d’erreur si la propriété n’existe pas ! L'accès à une propriété non existante renvoie simplement `undefined`. Le langage fournit un moyen très courant de vérifier si la propriété existe -- pour l'obtenir et la comparer avec `undefined` :
-=======
-A notable feature of objects in JavaScript, compared to many other languages, is that it's possible to access any property. There will be no error if the property doesn't exist!
+Une caractéristique notable des objets en JavaScript, par rapport à de nombreux autres langages, est qu'il est possible d'accéder à n'importe quelle propriété. Il n'y aura pas d'erreur si la propriété n'existe pas !
 
-Reading a non-existing property just returns `undefined`. So we can easily test whether the property exists:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+La lecture d'une propriété non existante renvoie simplement `undefined`. Nous pouvons donc facilement tester si la propriété existe :
 
 ```js run
 let user = {};
@@ -387,11 +331,7 @@ let user = {};
 alert( user.noSuchProperty === undefined ); // true signifie "pas une telle propriété"
 ```
 
-<<<<<<< HEAD
-Il existe également un opérateur spécial `"in"` pour vérifier l'existence d'une propriété.
-=======
-There's also a special operator `"in"` for that.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Il existe également un opérateur spécial `"in"` pour cela.
 
 La syntaxe est :
 ```js
@@ -409,30 +349,18 @@ alert( "blabla" in user ); // false, user.blabla n'existe pas
 
 Veuillez noter que sur le côté gauche de `in`, il doit y avoir un *nom de propriété*. C’est généralement une chaîne de caractères entre guillemets.
 
-<<<<<<< HEAD
-Si nous omettons les guillemets, cela signifierait une variable contenant le nom à tester. Par exemple :
-=======
-If we omit quotes, that means a variable, it should contain the actual name to be tested. For instance:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Si nous omettons les guillemets, cela signifie une variable, elle doit contenir le nom réel à tester. Par exemple :
 
 ```js run
 let user = { age: 30 };
 
 let key = "age";
-<<<<<<< HEAD
-alert( *!*key*/!* in user ); // true, prend le nom de la clé et vérifie cette propriété
+alert( *!*key*/!* in user ); // true, la propriété "age" existe
 ```
 
-````smart header="Utilisation de \"in\" pour les propriétés qui stockent `undefined`"
-Habituellement, la comparaison stricte `"=== undefined"` vérifie l'existence de la propriété très bien. Mais il y a un cas particulier où elle échoue, mais `"in"` fonctionne correctement.
-=======
-alert( *!*key*/!* in user ); // true, property "age" exists
-```
+Pourquoi l'opérateur `in` existe-t-il ? N'est-ce pas suffisant de comparer avec `undefined` ?
 
-Why does the `in` operator exist? Isn't it enough to compare against `undefined`?
-
-Well, most of the time the comparison with `undefined` works fine. But there's a special case when it fails, but `"in"` works correctly.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Eh bien, la plupart du temps, la comparaison avec `undefined` fonctionne bien. Mais il y a un cas particulier quand il échoue, mais `"in"`fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -446,18 +374,10 @@ alert( obj.test ); // c'est indéfini, donc - pas une telle propriété ?
 alert( "test" in obj ); // true, la propriété existe !
 ```
 
-<<<<<<< HEAD
 
 Dans le code ci-dessus, la propriété `obj.test` existe techniquement. Donc, l'opérateur `in` fonctionne bien.
 
 Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué. Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides". Ainsi, l'opérateur `in` est un invité exotique dans le code.
-````
-=======
-In the code above, the property `obj.test` technically exists. So the `in` operator works right.
-
-Situations like this happen very rarely, because `undefined` should not be explicitly assigned. We mostly use `null` for "unknown" or "empty" values. So the `in` operator is an exotic guest in the code.
-
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 
 ## La boucle "for..in"
@@ -493,12 +413,8 @@ Notez que toutes les constructions "for" nous permettent de déclarer la variabl
 
 En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`. Par exemple, `"for(let prop in obj)"` est également largement utilisé.
 
-<<<<<<< HEAD
 
 ### Ordonné comme un objet
-=======
-### Ordered like an object
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Les objets sont-ils ordonnés ? En d'autres termes, si nous parcourons un objet en boucle, obtenons-nous toutes les propriétés dans le même ordre où elles ont été ajoutées ? Pouvons-nous compter sur cela ?
 
@@ -581,265 +497,6 @@ for(let code in codes) {
 
 Maintenant, cela fonctionne comme prévu.
 
-<<<<<<< HEAD
-## Copier par référence
-
-L'une des différences fondamentales entre les objets et les primitives est qu'ils sont stockés et copiés "par référence".
-
-Les valeurs primitives: chaînes de caractères, nombres, booléens - sont attribuées / copiées "comme une seule valeur".
-
-Par exemple :
-
-```js
-let message = "Hello!";
-let phrase = message;
-```
-
-Par conséquent, nous avons deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
-
-![](variable-copy-value.svg)
-
-Les objets ne sont pas comme ça.
-
-**Une variable ne stocke pas l'objet lui-même, mais son "adresse en mémoire", autrement dit "une référence".**
-
-Voici l'image d'un objet :
-
-```js
-let user = {
-  name: "John"
-};
-```
-
-![](variable-contains-reference.svg)
-
-Ici, l'objet est stocké quelque part en mémoire. Et la variable `user` a une "référence" à cet objet.
-
-**Lorsqu'une variable d'objet est copiée - la référence est copiée, l'objet n'est pas dupliqué.**
-
-Si nous imaginons un objet comme une armoire, une variable en est la clé. La copie d'une variable duplique la clé, mais pas l'armoire elle-même.
-
-Par exemple :
-
-```js no-beautify
-let user = { name: "John" };
-
-let admin = user; // copier la référence
-```
-
-Maintenant nous avons deux variables, chacune avec la référence au même objet :
-
-![](variable-copy-reference.svg)
-
-Nous pouvons utiliser n’importe quelle variable pour accéder à l'armoire et modifier son contenu :
-
-```js run
-let user = { name: 'John' };
-
-let admin = user;
-
-*!*
-admin.name = 'Pete'; // modifié par la référence "admin"
-*/!*
-
-alert(*!*user.name*/!*); // 'Pete', les changements sont visibles depuis la référence "user"
-```
-
-L'exemple ci-dessus montre qu'il n'y a qu'un seul objet. Comme si nous avions une armoire avec deux clés et en utilisions une (`admin`) pour y entrer. Ensuite, si nous utilisions plus tard l'autre clé (`user`), nous constaterions des changements.
-
-### Comparaison par référence
-
-Les opérateurs d'égalité `==` et d'égalité stricte `===` pour les objets fonctionnent exactement de la même manière.
-
-**Deux objets ne sont égaux que s’ils sont le même objet.**
-
-Par exemple, si deux variables référencent le même objet, elles sont égales :
-
-```js run
-let a = {};
-let b = a; // copier la référence
-
-alert( a == b ); // true, les deux variables font référence au même objet
-alert( a === b ); // true
-```
-
-Et ici, deux objets indépendants ne sont pas égaux, même s'ils sont vides :
-
-```js run
-let a = {};
-let b = {}; // deux objets indépendants
-
-alert( a == b ); // false
-```
-
-Pour des comparaisons comme `obj1 > obj2` ou pour une comparaison avec une primitive `obj == 5`, les objets sont convertis en primitives. Nous étudierons très bientôt le fonctionnement des conversions d’objets, mais à vrai dire, de telles comparaisons ne sont nécessaires que très rarement et résultent généralement d’une erreur de codage.
-
-### Objet Const
-
-Un objet déclaré comme `const` *peut* être modifié.
-
-Par exemple :
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-user.age = 25; // (*)
-*/!*
-
-alert(user.age); // 25
-```
-
-Il peut sembler que la ligne `(*)` cause une erreur, mais non, il n’y a absolument aucun problème. C’est parce que `const` fixe uniquement la valeur de `user` lui-même. Et ici, `user` stocke la référence au même objet tout le temps. La ligne `(*)` va à *l’intérieur* de l’objet, elle ne réaffecte pas `user`.
-
-Le `const` donnerait une erreur si nous essayons de définir `user` sur autre chose, par exemple :
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-// Erreur (ne peut pas réaffecter user)
-*/!*
-user = {
-  name: "Pete"
-};
-```
-
-… Mais que faire si nous voulons créer des propriétés d'objet constantes ? Donc, `user.age = 25` donnerait une erreur. C’est possible aussi. Nous couvrirons cela dans le chapitre <info:property-descriptors>.
-
-## Clonage et fusion, Object.assign
-
-Donc, la copie d'une variable d'objet crée une autre référence au même objet.
-
-Mais que faire si nous avons besoin de dupliquer un objet ? Créer une copie indépendante, un clone ?
-
-C’est également faisable, mais un peu plus difficile, car il n’existe pas de méthode intégrée pour cela en JavaScript. En fait, cela est rarement nécessaire. La copie par référence est bonne la plupart du temps.
-
-Mais si nous le voulons vraiment, nous devons créer un nouvel objet et répliquer la structure de l’existant en itérant sur ses propriétés et en les copiant au niveau primitif.
-
-Comme ceci :
-
-```js run
-let user = {
-  name: "John",
-  age: 30
-};
-
-*!*
-let clone = {}; // le nouvel objet vide
-
-// copions toutes les propriétés de user dedans
-for (let key in user) {
-  clone[key] = user[key];
-}
-*/!*
-
-// maintenant clone est un clone totalement indépendant
-clone.name = "Pete"; // changé les données qu'il contient
-
-alert( user.name ); // toujours John dans l'objet original
-```
-
-Nous pouvons aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
-
-La syntaxe est :
-
-```js
-Object.assign(dest[, src1, src2, src3...])
-```
-
-- Arguments `dest`, et `src1, ..., srcN` (peut être autant que nécessaire) sont des objets.
-- Il copie les propriétés de tous les objets `src1, ..., srcN` dans `dest`. En d'autres termes, les propriétés de tous les arguments à partir du 2e sont copiées dans le 1er. Puis ça renvoit `dest`.
-
-Par exemple, nous pouvons l’utiliser pour fusionner plusieurs objets en un seul :
-```js
-let user = { name: "John" };
-
-let permissions1 = { canView: true };
-let permissions2 = { canEdit: true };
-
-*!*
-// copie toutes les propriétés de permissions1 et permissions2 dans user
-Object.assign(user, permissions1, permissions2);
-*/!*
-
-// maintenant user = { name: "John", canView: true, canEdit: true }
-```
-
-Si l'objet destinataire (`user`) a déjà la même propriété nommée, elle sera écrasée :
-
-```js
-let user = { name: "John" };
-
-// écrase name, ajoute isAdmin
-Object.assign(user, { name: "Pete", isAdmin: true });
-
-// maintenant user = { name: "Pete", isAdmin: true }
-```
-
-Nous pouvons également utiliser `Object.assign` pour remplacer la boucle pour un clonage simple :
-
-```js
-let user = {
-  name: "John",
-  age: 30
-};
-
-*!*
-let clone = Object.assign({}, user);
-*/!*
-```
-
-Il copie toutes les propriétés de `user` dans l'objet vide et le renvoie. En fait, c'est le même principe que la boucle, mais  en plus court.
-
-Jusqu'à présent, nous avons supposé que toutes les propriétés de `user` sont primitives. Mais les propriétés peuvent être des références à d'autres objets. Que faire avec elles ?
-
-Comme ceci :
-```js run
-let user = {
-  name: "John",
-  sizes: {
-    height: 182,
-    width: 50
-  }
-};
-
-alert( user.sizes.height ); // 182
-```
-
-Maintenant, il ne suffit plus de copier `clone.sizes = user.sizes`, car `user.sizes` est un objet, il sera copié par référence. Donc, `clone` et `user` partageront les mêmes tailles :
-
-Comme ceci :
-```js run
-let user = {
-  name: "John",
-  sizes: {
-    height: 182,
-    width: 50
-  }
-};
-
-let clone = Object.assign({}, user);
-
-alert( user.sizes === clone.sizes ); // true, même objet
-
-// user et clone partagent les mêmes tailles
-user.sizes.width++;       // change une propriété d'un endroit
-alert(clone.sizes.width); // 51, voir le résultat de l'autre endroit
-```
-
-Pour résoudre ce problème, nous devons utiliser la boucle de clonage qui examine chaque valeur de `user[key]` et, s’il s’agit d’un objet, répliquer également sa structure. Cela s'appelle un "clonage en profondeur" (deep cloning).
-
-Il existe un algorithme standard pour le clonage en profondeur qui traite le cas ci-dessus et des cas plus complexes, appelé l'[Algorithme de clonage structuré](http://w3c.github.io/html/infrastructure.html#safe-passing-of-structured-data). Pour ne pas réinventer la roue, nous pouvons utiliser une implémentation fonctionnelle de celle-ci à partir de la bibliothèque JavaScript [lodash](https://lodash.com), la méthode s'appelle [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
-
-
-=======
-## Summary
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ## Résumé
 
@@ -853,18 +510,10 @@ Pour accéder à une propriété, nous pouvons utiliser :
 - La notation par points : `obj.property`.
 - Notation entre crochets `obj["property"]`. Les crochets permettent de prendre la clé d’une variable, comme `obj[varWithKey]`.
 
-<<<<<<< HEAD
 Opérateurs supplémentaires :
 - Pour supprimer une propriété : `delete obj.prop`.
 - Pour vérifier si une propriété avec la clé donnée existe : `"key" in obj`.
-- Pour parcourir un objet la boucle : `for(let key in obj)`.
-
-Les objets sont assignés et copiés par référence. En d'autres termes, une variable stocke non pas la "valeur d'objet", mais une "référence" (adresse en mémoire) pour la valeur. Donc, copier une telle variable ou la passer comme argument de fonction copie cette référence, pas l'objet. Toutes les opérations via des références copiées (telles que l'ajout / la suppression de propriétés) sont effectuées sur le même objet.
-
-Pour faire une "copie réelle" (un clone), nous pouvons utiliser `Object.assign` ou  [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
-=======
-What we've studied in this chapter is called a "plain object", or just `Object`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+- Pour parcourir un objet : la boucle `for (let key in obj)`.
 
 Ce que nous avons étudié dans ce chapitre s’appelle un "objet simple" (plain object) ou juste `Object`.  
 Il existe de nombreux autres types d'objets en JavaScript :

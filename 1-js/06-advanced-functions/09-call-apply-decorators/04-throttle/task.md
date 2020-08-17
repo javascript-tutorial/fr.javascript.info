@@ -4,32 +4,20 @@ importance: 5
 
 # Décorateur d'accélération
 
-<<<<<<< HEAD
-Créez un décorateur "d'accélération" `throttle(f, ms)` - qui retourne un wrapper, en passant l'appel à `f` au maximum une fois par `ms` millisecondes. Les appels qui tombent dans le "temps de charge" sont ignorés.
+Créez un décorateur "d'accélération" `throttle(f, ms)` -- qui retourne un wrapper.
 
-**La différence avec `debounce` - si un appel ignoré est le dernier pendant le temps de recharge, il s'exécute à la fin du délai.**
-=======
-Create a "throttling" decorator `throttle(f, ms)` -- that returns a wrapper.
+Lorsqu'il est appelé plusieurs fois, il passe l'appel à `f` au maximum une fois par `ms` millisecondes.
 
-When it's called multiple times, it passes the call to `f` at maximum once per `ms` milliseconds.
-
-The difference with debounce is that it's completely different decorator:
-- `debounce` runs the function once after the "cooldown" period. Good for processing the final result.
-- `throttle` runs it not more often than given `ms` time. Good for regular updates that shouldn't be very often.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+La différence avec debounce est que c'est un décorateur complètement différent :
+- `debounce` exécute la fonction une fois après la période de "cooldown". Bon pour traiter le résultat final.
+- `throttle` ne l'exécute pas plus souvent que le temps donné en `ms`. Bon pour les mises à jour régulières qui ne devraient pas être très fréquentes.
 
 Examinons l'application réelle pour mieux comprendre cette exigence et voir d'où elle vient.
 
 **Par exemple, nous voulons suivre les mouvements de la souris.**
 
-<<<<<<< HEAD
 Dans le navigateur, nous pouvons configurer une fonction à exécuter à chaque mouvement de la souris et obtenir l’emplacement du pointeur à mesure qu’il se déplace. Pendant une utilisation active de la souris, cette fonction est généralement utilisée très souvent et peut atteindre 100 fois par seconde (toutes les 10 ms).
-
 **Nous aimerions mettre à jour certaines informations sur la page Web lorsque le pointeur se déplace.**
-=======
-In a browser we can setup a function to run at every mouse movement and get the pointer location as it moves. During an active mouse usage, this function usually runs very frequently, can be something like 100 times per second (every 10 ms).
-**We'd like to update some information on the web-page when the pointer moves.**
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ... Mais la mise à jour de la fonction `update()` est trop lourde pour tous les micro-mouvements. Il est également inutile de mettre à jour plus d'une fois toutes les 100 ms.
 

@@ -210,11 +210,7 @@ Pour que tout soit clair, voyons plus en détail comment `this` est passé:
 2. Ainsi, lorsque `worker.slow(2)` est exécuté, le wrapper obtient `2` en argument et `this = worker` (c'est l'objet avant le point).
 3. Dans le wrapper, en supposant que le résultat ne soit pas encore mis en cache, `func.call(this, x)` passe le `this` (`= worker`) actuel et l'argument actuel (`= 2`) à la méthode d'origine. .
 
-<<<<<<< HEAD
-## Passer plusieurs argument avec "func.apply"
-=======
-## Going multi-argument
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Passer plusieurs arguments 
 
 Rendons maintenant `cachingDecorator` encore plus universel. Jusqu'à présent, il ne travaillait qu'avec des fonctions à un seul argument.
 
@@ -241,11 +237,7 @@ Il y a beaucoup de solutions possibles:
 
 Pour de nombreuses applications pratiques, la 3ème variante est suffisante, nous allons donc nous y tenir.
 
-<<<<<<< HEAD
-Nous devons aussi remplacer `func.call(this, x)` avec `func.call(this, ...arguments)`, pour passer tous les arguments à l'appel de fonction encapsulé, pas seulement le premier.
-=======
-Also we need to pass not just `x`, but all arguments in `func.call`. Let's recall that in a `function()` we can get a pseudo-array of its arguments as `arguments`, so `func.call(this, x)` should be replaced with `func.call(this, ...arguments)`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous devons également transmettre non seulement `x`, mais tous les arguments dans `func.call`. Rappelons que dans une `function()` on peut obtenir un pseudo-tableau de ses arguments comme `arguments`, donc` func.call(this, x) `doit être remplacé par `func.call(this, ...arguments)`.
 
 Voici un plus puissant `cachingDecorator` :
 
@@ -355,11 +347,7 @@ function hash(args) {
 }
 ```
 
-<<<<<<< HEAD
 ... Malheureusement, ça ne marchera pas. Parce que nous appelons `hash(arguments)` et l’objet `arguments` est à la fois itérable et semblable à un tableau, mais pas un vrai tableau.
-=======
-...Unfortunately, that won't work. Because we are calling `hash(arguments)`, and `arguments` object is both iterable and array-like, but not a real array.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Donc, appeler `join` échouerait, comme on peut le voir ci-dessous:
 

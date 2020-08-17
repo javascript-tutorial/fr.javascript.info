@@ -1,21 +1,13 @@
 
 # Modules, introduction
 
-<<<<<<< HEAD
-Au fur et à mesure que notre application grandit, nous souhaitons la scinder en plusieurs fichiers, appelés «modules». Un module contient généralement une classe ou une bibliothèque de fonctions.
-=======
-As our application grows bigger, we want to split it into multiple files, so called "modules". A module may contain a class or a library of functions for a specific purpose.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Au fur et à mesure que notre application grandit, nous souhaitons la scinder en plusieurs fichiers, appelés "modules". Un module contient généralement une classe ou une bibliothèque de fonctions pour une tâche précise.
 
 Pendant longtemps, JavaScript n'avait pas de module. Ce n’était pas un problème, car au départ les scripts étaient petits et simples, il n’était donc pas nécessaire.
 
 Mais les scripts sont devenus de plus en plus complexes et la communauté a donc inventé diverses méthodes pour organiser le code en modules, des bibliothèques spéciales pour charger des modules à la demande.
 
-<<<<<<< HEAD
-Par exemple:
-=======
-To name some (for historical reasons):
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Pour en nommer quelques-uns (pour des raisons historiques) :
 
 - [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- un des systèmes de modules les plus anciens, initialement mis en œuvre par la bibliothèque [require.js](http://requirejs.org/).
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- le système de module créé pour Node.js
@@ -23,19 +15,11 @@ To name some (for historical reasons):
 
 Maintenant, tous ces éléments deviennent lentement du passé, mais nous pouvons toujours les trouver dans d’anciens scripts.
 
-<<<<<<< HEAD
-Le système de modules natif apparu dans la norme en 2015, a progressivement évolué depuis et est maintenant pris en charge par tous les principaux navigateurs et dans Node.js. Nous allons donc l’étudier à partir de maintenant.
-=======
-The language-level module system appeared in the standard in 2015, gradually evolved since then, and is now supported by all major browsers and in Node.js. So we'll study the modern JavaScript modules from now on.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Le système de modules au niveau du langage est apparu dans la norme en 2015, a progressivement évolué depuis, et est désormais pris en charge par tous les principaux navigateurs et dans Node.js. Nous allons donc étudier les modules JavaScript modernes à partir de maintenant.
 
 ## Qu'est-ce qu'un module?
 
-<<<<<<< HEAD
-Un module est juste un fichier. Un script est un module.
-=======
-A module is just a file. One script is one module. As simple as that.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Un module n'est qu'un fichier. Un script est un module. Aussi simple que cela.
 
 Les modules peuvent se charger mutuellement et utiliser des directives spéciales, `export` et `import`, pour échanger des fonctionnalités, appeler les fonctions d’un module dans un autre:
 
@@ -73,15 +57,11 @@ Comme ça:
 
 Le navigateur extrait et évalue automatiquement le module importé (et, le cas échéant, ses importations), puis exécute le script.
 
-<<<<<<< HEAD
-## Caractéristiques du module de base
-=======
-```warn header="Modules work only via HTTP(s), not in local files"
-If you try to open a web-page locally, via `file://` protocol, you'll find that `import/export` directives don't work. Use a local web-server, such as [static-server](https://www.npmjs.com/package/static-server#getting-started) or use the "live server" capability of your editor, such as VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to test modules.
+```warn header="Les modules fonctionnent uniquement via HTTP(s), pas dans des fichiers locaux"
+Si vous essayez d'ouvrir une page Web localement, via le protocole `file: //`, vous verrez que les directives `import / export` ne fonctionnent pas. Utilisez un serveur Web local, tel que [static-server](https://www.npmjs.com/package/static-server#getting-started) ou utilisez la fonctionnalité "live server" de votre éditeur, telle que VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) pour tester les modules.
 ```
 
-## Core module features
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Caractéristiques du module de base
 
 Qu'est-ce qui est différent dans les modules par rapport aux scripts "normaux"?
 

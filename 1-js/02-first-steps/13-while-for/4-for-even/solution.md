@@ -8,4 +8,4 @@ for (let i = 2; i <= 10; i++) {
 }
 ```
 
-We use the "modulo" operator `%` to get the remainder and check for the evenness here.
+Ici nous utilisons l'opérateur “modulo” `%` pour obtenir le reste et vérifier si c'est pair ou pas.

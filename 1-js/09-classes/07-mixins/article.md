@@ -154,13 +154,8 @@ let eventMixin = {
    *  this.trigger('select', data1, data2);
    */
   trigger(eventName, ...args) {
-<<<<<<< HEAD
-    if (!this._eventHandlers || !this._eventHandlers[eventName]) {
-      return; // aucun gestionnaire pour ce nom d'événement
-=======
     if (!this._eventHandlers?.[eventName]) {
-      return; // no handlers for that event name
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+      return; // aucun gestionnaire pour ce nom d'événement
     }
 
     // appeler les gestionnaires
