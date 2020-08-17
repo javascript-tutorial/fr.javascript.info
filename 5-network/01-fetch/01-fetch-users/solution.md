@@ -3,7 +3,11 @@ Pour récupérer un utilisateur, nous avons besoin de : `fetch('https://api.gith
 
 Si la réponse a le statut `200`, appelons `.json()` pour lire l'objet JS.
 
+<<<<<<< HEAD
 Sinon, si un `fetch` échoue, ou si la réponse a un statut différent de 200, nous renvoyons simplement `null` dans le tableau de résutats.
+=======
+Otherwise, if a `fetch` fails, or the response has non-200 status, we just return `null` in the resulting array.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Voici donc le code :
 
