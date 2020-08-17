@@ -122,11 +122,7 @@ Ici, le bloc `.catch` se termine normalement. Le prochain gestionnaire `.then` r
 Dans l'exemple ci-dessous nous voyons l'autre situation avec `.catch`. Le gestionnaire `(*)` attrape l'erreur et ne peut tout simplement pas la gérer (par ex: il sait seulement comment gérer `URIError`), donc il la relance:
 
 ```js run
-<<<<<<< HEAD
-// l'exécution: catch -> catch -> then
-=======
-// the execution: catch -> catch
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+// l'exécution: catch -> catch 
 new Promise((resolve, reject) => {
 
   throw new Error("Whoops!");
