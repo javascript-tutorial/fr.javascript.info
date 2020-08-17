@@ -6,23 +6,8 @@ function debounce(func, ms) {
     timeout = setTimeout(() => func.apply(this, arguments), ms);
   };
 }
-<<<<<<< HEAD
-```
-
-Un appel à `debounce` renvoie un wrapper. Il peut y avoir deux états:
-
-- `isCooldown = false` -- prêt à exécuter.
-- `isCooldown = true` -- en attente du timeout.
-
-Lors du premier appel, `is Cooldown` est fausse. L'appel se poursuit et l'état passe à` true`.
-
-Alors que `isCooldown` est vrai, tous les autres appels sont ignorés.
-
-Ensuite, `setTimeout` le rétablit à `false` après le délai imparti.
-=======
 
 ```
 
-A call to `debounce` returns a wrapper. When called, it schedules the original function call after given `ms` and cancels the previous such timeout.
+Un appel à `debounce` renvoie un wrapper. Lorsqu'il est appelé, il planifie l'appel de la fonction d'origine après `ms` donné et annule le délai d'expiration précédent.
 
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c

@@ -4,36 +4,17 @@ importance: 5
 
 # Décorateur debounce
 
-<<<<<<< HEAD
-Le résultat du décorateur `debounce(f, ms)` devrait être un wrapper qui transmet l'appel à `f` au maximum une fois par `ms`, millisecondes.
+Le résultat du décorateur `debounce(f, ms)` est un wrapper qui suspend les appels à `f` jusqu'à ce qu'il y ait `ms` millisecondes d'inactivité (pas d'appels, "période de cooldown"), puis invoque `f` une fois avec les derniers arguments.
 
-En d'autres termes, lorsque nous appelons une fonction "debounce", cela garantit que tous les futurs appels à la fonction effectuée moins de `ms` millisecondes après l'appel précédent seront ignorés.
+Par exemple, nous avons eu une fonction `f` et l'avons remplacée par `f = debounce(f, 1000)`.
 
-Par exemple:
-=======
-The result of `debounce(f, ms)` decorator is a wrapper that suspends calls to `f` until there's `ms` milliseconds of inactivity (no calls, "cooldown period"), then invokes `f` once with the latest arguments.
-
-For instance, we had a function `f` and replaced it with `f = debounce(f, 1000)`.
-
-Then if the wrapped function is called at 0ms, 200ms and 500ms, and then there are no calls, then the actual `f` will be only called once, at 1500ms. That is: after the cooldown period of 1000ms from the last call.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Ensuite, si la fonction encapsulée est appelée à 0ms, 200ms et 500ms, et qu'il n'y a aucun appel, alors le `f` actuel ne sera appelé qu'une seule fois, à 1500 ms. Autrement dit: après la période de temps de recharge de 1000 ms à partir du dernier appel.
 
 ![](debounce.svg)
 
-<<<<<<< HEAD
-f(1); // exécute immédiatement
-f(2); // ignorée
+... Et il récupérera les arguments du tout dernier appel, les autres appels sont ignorés.
 
-setTimeout( () => f(3), 100); // ignorée (seulement 100 ms passé)
-setTimeout( () => f(4), 1100); // exécute
-setTimeout( () => f(5), 1500); // ignorée (moins de 1000 ms à partir de la dernière exécution)
-```
-
-En pratique, `debounce` est utile pour les fonctions qui récupèrent/mettent à jour quelque chose quand on sait que rien de nouveau ne peut être fait dans un laps de temps aussi court, il est donc préférable de ne pas gaspiller de ressources.
-=======
-...And it will get the arguments of the very last call, other calls are ignored.
-
-Here's the code for it (uses the debounce decorator from the [Lodash library](https://lodash.com/docs/4.17.15#debounce):
+Voici le code pour cela (utilise le décorateur debounce de la [librairie Lodash](https://lodash.com/docs/4.17.15#debounce)):
 
 ```js
 let f = _.debounce(alert, 1000);
@@ -41,31 +22,30 @@ let f = _.debounce(alert, 1000);
 f("a"); 
 setTimeout( () => f("b"), 200);
 setTimeout( () => f("c"), 500); 
-// debounced function waits 1000ms after the last call and then runs: alert("c")
+// la fonction debounce attend 1000ms après le dernier appel puis exécute : alert("c")
 ```
 
 
-Now a practical example. Let's say, the user types something, and we'd like to send a request to the server when the input is finished.
+Maintenant, un exemple pratique. Disons que l'utilisateur tape quelque chose et que nous aimerions envoyer une requête au serveur lorsque l'entrée est terminée.
 
-There's no point in sending the request for every character typed. Instead we'd like to wait, and then process the whole result.
+Il ne sert à rien d'envoyer la requête pour chaque caractère saisi. Au lieu de cela, nous aimerions attendre, puis traiter l'ensemble du résultat.
 
-In a web-browser, we can setup an event handler -- a function that's called on every change of an input field. Normally, an event handler is called very often, for every typed key. But if we `debounce` it by 1000ms, then it will be only called once, after 1000ms after the last input.
+Dans un navigateur Web, nous pouvons configurer un gestionnaire d'événements - une fonction qui est appelée à chaque modification d'un champ de saisie. Normalement, un gestionnaire d'événements est appelé très souvent, pour chaque touche tapée. Mais si on le `debounce` de 1000ms, il ne sera appelé qu'une seule fois, après 1000ms après la dernière entrée.
 
 ```online
 
-In this live example, the handler puts the result into a box below, try it:
+Dans cet exemple en live, le gestionnaire place le résultat dans une case ci-dessous, essayez-le :
 
 [iframe border=1 src="debounce" height=200]
 
-See? The second input calls the debounced function, so its content is processed after 1000ms from the last input.
+Vous voyez ? La deuxième entrée appelle la fonction "debounced", donc son contenu est traité après 1000ms à partir de la dernière entrée.
 ```
 
-So, `debounce` is a great way to process a sequence of events: be it a sequence of key presses, mouse movements or something else.
+Donc, `debounce` est un excellent moyen de traiter une séquence d'événements: que ce soit une séquence de touches, de mouvements de souris ou autre.
 
 
-It waits the given time after the last call, and then runs its function, that can process the result.
+Il attend le temps donné après le dernier appel, puis exécute sa fonction, qui peut traiter le résultat.
 
-The task is to implement `debounce` decorator.
+La tâche est d'implémenter le décorateur `debounce`.
 
-Hint: that's just a few lines if you think about it :)
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Indice : ce ne sont que quelques lignes si vous y réfléchissez :)
