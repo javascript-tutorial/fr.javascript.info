@@ -353,55 +353,33 @@ try {
 
 Bien sûr, tout est possible! Les programmeurs font des erreurs. Même dans les utilitaires à code source ouvert utilisés par des millions de personnes pendant des décennies, on découvre soudainement un bug qui conduit à de terribles piratages.
 
-<<<<<<< HEAD
-Dans notre cas, `try..catch` est destiné à intercepter les erreurs "incorrect data". Mais par sa nature, `catch` obtient *toutes* les erreurs de `try`. Ici, une erreur inattendue se produit, mais le message `"JSON Error"` est toujours affiché. C'est faux et rend également le code plus difficile à déboguer.
+Dans notre cas, `try..catch` est destiné à intercepter les erreurs "incorrect data". Mais par sa nature, `catch` obtient *toutes* les erreurs de `try`. Ici, une erreur inattendue se produit, mais le même message `"JSON Error"` est toujours affiché. C'est faux et rend également le code plus difficile à déboguer.
 
-Heureusement, nous pouvons savoir quelle erreur nous obtenons, par exemple grâce à son `name`:
-=======
-In our case, `try..catch` is placed to catch "incorrect data" errors. But by its nature, `catch` gets *all* errors from `try`. Here it gets an unexpected error, but still shows the same `"JSON Error"` message. That's wrong and also makes the code more difficult to debug.
+Pour éviter de tels problèmes, nous pouvons utiliser la technique du "rethrowing" (re-lancement). La règle est simple :
 
-To avoid such problems, we can employ the "rethrowing" technique. The rule is simple:
+**Catch ne doit traiter que les erreurs qu'il connaît et "renvoyer" toutes les autres.**
 
-**Catch should only process errors that it knows and "rethrow" all others.**
+La technique "rethrowing" peut être expliqué plus en détail comme :
 
-The "rethrowing" technique can be explained in more detail as:
+1. Catch obtient toutes les erreurs.
+2. Dans le bloc `catch(err) {...}` nous analysons l'objet d'erreur `err`.
+3. Si nous ne savons pas comment le gérer, nous faisons `throw err`.
 
-1. Catch gets all errors.
-2. In the `catch(err) {...}` block we analyze the error object `err`.
-3. If we don't know how to handle it, we do `throw err`.
-
-Usually, we can check the error type using the `instanceof` operator:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Habituellement, nous pouvons vérifier le type d'erreur en utilisant l'opérateur `instanceof` :
 
 ```js run
 try {
   user = { /*...*/ };
 } catch(err) {
 *!*
-<<<<<<< HEAD
-  alert(e.name); // "ReferenceError" essaie d'accéder à une variable non définie
-=======
   if (err instanceof ReferenceError) {
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 */!*
     alert('ReferenceError'); // "ReferenceError" for accessing an undefined variable
   }
 }
 ```
 
-<<<<<<< HEAD
-La règle est simple:
-
-**Catch ne devrait traiter que les erreurs qu’il connaît et "propager" toutes les autres.**
-
-La technique de "propagation" peut être expliquée plus en détail:
-
-1. Catch récupère toutes les erreurs.
-2. Dans le bloc `catch (err) {...}`, nous analysons l'objet d'erreur `err`.
-2. Si nous ne savons pas comment gérer cela, alors nous faisons `throw err`.
-=======
-We can also get the error class name from `err.name` property. All native errors have it. Another option is to read `err.constructor.name`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous pouvons également obtenir le nom de la classe d'erreur à partir de la propriété `err.name`. Toutes les erreurs natives l'ont. Une autre option est de lire `err.constructor.name`.
 
 Dans le code ci-dessous, nous utilisons la technique de "propagation" pour que `catch` ne traite que `SyntaxError`:
 
