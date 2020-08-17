@@ -230,13 +230,9 @@ let rabbit = new Rabbit("White Rabbit", 10); // Error: this is not defined.
 
 Oups! Nous avons une erreur. Maintenant, nous ne pouvons pas créer de lapins. Qu'est-ce qui s'est passé?
 
-<<<<<<< HEAD
-La réponse courte est: les constructeurs dans les classes qui héritent doivent appeler `super(...)`, et (!) Le faire avant d'utiliser `this`.
-=======
-The short answer is:
+La réponse courte est : 
 
-- **Constructors in inheriting classes must call `super(...)`, and (!) do it before using `this`.**
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+- **les constructeurs dans les classes qui héritent doivent appeler `super(...)`, et (!) le faire avant d'utiliser `this`.**
 
 ...Mais pourquoi? Que se passe t-il ici? En effet, l'exigence semble étrange.
 
@@ -249,11 +245,7 @@ Ce label affecte son comportement avec `new`.
 - Lorsqu'une fonction normale est exécutée avec `new`, elle crée un objet vide et l'assigne à `this`.
 - Mais lorsqu'un constructeur dérivé s'exécute, il ne le fait pas. Il s'attend à ce que le constructeur parent fasse ce travail.
 
-<<<<<<< HEAD
-Donc, un constructeur dérivé doit appeler `super` pour exécuter son constructeur parent (non dérivé), sinon l'objet pour `this` ne sera pas créé. Et nous aurons une erreur.
-=======
-So a derived constructor must call `super` in order to execute its parent (base) constructor, otherwise the object for `this` won't be created. And we'll get an error.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Ainsi, un constructeur dérivé doit appeler `super` pour exécuter son constructeur parent (de base), sinon l'objet pour` this` ne sera pas créé. Et nous aurons une erreur.
 
 Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici :
 
@@ -289,25 +281,21 @@ alert(rabbit.earLength); // 10
 ```
 
 
-<<<<<<< HEAD
-## Super: les internes, [[HomeObject]]
-=======
+### Remplacer les champs de classe : une note délicate
 
-### Overriding class fields: a tricky note
+```warn header="Note avancée"
+Cette note suppose que vous avez une certaine expérience avec les classes, peut-être dans d'autres langages de programmation.
 
-```warn header="Advanced note"
-This note assumes you have a certain experience with classes, maybe in other programming languages.
+Cela donne un meilleur aperçu du langage et explique également le comportement qui pourrait être une source de bogues (mais pas très souvent).
 
-It provides better insight into the language and also explains the behavior that might be a source of bugs (but not very often).
-
-If you find it difficult to understand, just go on, continue reading, then return to it some time later.
+Si vous avez du mal à comprendre, continuez, continuez à lire, puis revenez-y un peu plus tard.
 ```
 
-We can override not only methods, but also class fields.
+Nous pouvons remplacer non seulement les méthodes, mais également les champs de classe.
 
-Although, there's a tricky behavior when we access an overridden field in parent constructor, quite different from most other programming languages.
+Cependant, il existe un comportement délicat lorsque nous accédons à un champ surchargé dans le constructeur parent, assez différent de la plupart des autres langages de programmation.
 
-Consider this example:
+Prenons cet exemple :
 
 ```js run
 class Animal {
@@ -328,28 +316,28 @@ new Rabbit(); // animal
 */!*
 ```
 
-Here, class `Rabbit` extends `Animal` and overrides `name` field with its own value.
+Ici, la classe `Rabbit` étend `Animal` et remplace le champ `name` par sa propre valeur.
 
-There's no own constructor in `Rabbit`, so `Animal` constructor is called.
+Il n'y a pas de constructeur propre dans `Rabbit`, donc le constructeur `Animal` est appelé.
 
-What's interesting is that in both cases: `new Animal()` and `new Rabbit()`, the `alert` in the line `(*)` shows `animal`.
+Ce qui est intéressant, c'est que dans les deux cas : `new Animal()` et `new Rabbit()`, l' `alert` dans la ligne `(*)` montre `animal`.
 
-**In other words, parent constructor always uses its own field value, not the overridden one.**
+**En d'autres termes, le constructeur parent utilise toujours sa propre valeur de champ, pas celle remplacée.**
 
-What's odd about it?
+Qu'est-ce qui est étrange à ce sujet ?
 
-If it's not clear yet, please compare with methods.
+Si ce n'est pas encore clair, veuillez comparer avec les méthodes.
 
-Here's the same code, but instead of `this.name` field we call `this.showName()` method:
+Voici le même code, mais au lieu du champ `this.name`, nous appelons la méthode `this.showName()`:
 
 ```js run
 class Animal {
-  showName() {  // instead of this.name = 'animal'
+  showName() {  // au lieu de this.name = 'animal'
     alert('animal');
   }
 
   constructor() {
-    this.showName(); // instead of alert(this.name);
+    this.showName(); // au lieu de alert(this.name);
   }
 }
 
@@ -365,31 +353,30 @@ new Rabbit(); // rabbit
 */!*
 ```
 
-Please note: now the output is different.
+Remarque: maintenant la sortie est différente.
 
-And that's what we naturally expect. When the parent constructor is called in the derived class, it uses the overridden method.
+Et c'est ce à quoi nous nous attendons naturellement. Lorsque le constructeur parent est appelé dans la classe dérivée, il utilise la méthode substituée.
 
-...But for class fields it's not so. As said, the parent constructor always uses the parent field.
+... Mais ce n'est pas le cas pour les champs de classe. Comme dit, le constructeur parent utilise toujours le champ parent.
 
-Why is there the difference?
+Pourquoi y a-t-il une différence ?
 
-Well, the reason is in the field initialization order. The class field is initialized:
-- Before constructor for the base class (that doesn't extend anything),
-- Imediately after `super()` for the derived class.
+Eh bien, la raison est dans l'ordre d'initialisation du champ. Le champ de classe est initialisé :
+- Avant le constructeur de la classe de base (qui n'étend rien),
+- Immédiatement après `super()` pour la classe dérivée.
 
-In our case, `Rabbit` is the derived class. There's no `constructor()` in it. As said previously, that's the same as if there was an empty constructor with only `super(...args)`.
+Dans notre cas, `Rabbit` est la classe dérivée. Il n'y a pas de `constructor()` dedans. Comme dit précédemment, c'est la même chose que s'il y avait un constructeur vide avec seulement `super(...args)`.
 
-So, `new Rabbit()` calls `super()`, thus executing the parent constructor, and (per the rule for derived classes) only after that its class fields are initialized. At the time of the parent constructor execution, there are no `Rabbit` class fields yet, that's why `Animal` fields are used.
+Ainsi, `new Rabbit()` appelle `super()`, exécutant ainsi le constructeur parent, et (selon la règle pour les classes dérivées) seulement après que ses champs de classe sont initialisés. Au moment de l'exécution du constructeur parent, il n'y a pas encore de champs de classe `Rabbit`, c'est pourquoi les champs `Animal` sont utilisés.
 
-This subtle difference between fields and methods is specific to JavaScript
+Cette subtile différence entre les champs et les méthodes est propre à JavaScript.
 
-Luckily, this behavior only reveals itself if an overridden field is used in the parent constructor. Then it may be difficult to understand what's going on, so we're explaining it here.
+Heureusement, ce comportement ne se révèle que si un champ surchargé est utilisé dans le constructeur parent. Ensuite, il peut être difficile de comprendre ce qui se passe, alors nous l'expliquons ici.
 
-If it becomes a problem, one can fix it by using methods or getters/setters instead of fields.
+Si cela devient un problème, on peut le résoudre en utilisant des méthodes ou des getters / setters au lieu de champs.
 
 
-## Super: internals, [[HomeObject]]
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+## Super: les internes, [[HomeObject]]
 
 ```warn header="Informations avancées"
 Si vous lisez le tutoriel pour la première fois - cette section peut être ignorée.
