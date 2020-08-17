@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Evenements de base de la souris
-=======
-# Mouse events
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+# Evenements de la souris
 
 Dans ce chapitre, nous verrons plus en détails les événements de la souris et leurs propriétés.
 
@@ -10,15 +6,7 @@ Remarque: Ces événements peuvent provenir non seulement de "périphériques de
 
 ## Les types d'évènements de Souris 
 
-<<<<<<< HEAD
-Nous  regroupons les évènements de la souris en deux catégories: "Simples" et "Complexes" .
-
-###  Les évènements simples
-
-Les évènements simples les plus utilisés sont: 
-=======
-We've already seen some of these events:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous avons déjà vu certains de ces événements :
 
 `mousedown/mouseup`
 : Le bouton de la souris est appuyé puis relâché sur un élément.
@@ -29,44 +17,22 @@ We've already seen some of these events:
 `mousemove`
 : Chaque déplacement de la souris sur un élément déclenche cet évènement.
 
-<<<<<<< HEAD
-`contextmenu`
-: Des déclencheurs lors de l'ouverture d'un menu contextuel sont tentés. Dans le cas le plus courant, cela se produit lorsque le bouton droit de la souris est enfoncé. Bien qu'il existe d'autres moyens d'ouvrir un menu contextuel, par exemple en utilisant une touche spéciale du clavier, donc ce n'est pas exactement l'événement de la souris.
-
-...Il existe plusieurs autres types d'évènements aussi, nous allons les couvrir plus tard.
-
-### Les évènements complexes
-
-=======
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 `click`
 : est déclenché après un évènement `mousedown` et suite à un  `mouseup`  sur le même élément, si le bouton gauche de la souris a été utilisé
 
 `dblclick`
-<<<<<<< HEAD
-: est déclenché après un  évènement double clique sur un élément.
-
-Les évènements complexes sont faits à partir d’évènements simples, donc en théorie nous pourrions nous en passer. Mais ils existent et cela est une bonne chose parce qu’ils sont convenables.
-
-### L’ordre des évènements
-
-Une action peut déclencher plusieurs évènements.
-
-Par exemple, un clic déclenche d'abord  un évènement `mousedown`, lorsqu'un bouton est appuyé, ensuite  un évènement `mouseup` et un évènement `click` lorsqu’il est relâché.
-=======
-: Triggers after two clicks on the same element within a short timeframe. Rarely used nowadays.
+: Se déclenche après deux clics sur le même élément dans un court laps de temps. Rarement utilisé de nos jours.
 
 `contextmenu`
-: Triggers when the right mouse button is pressed. There are other ways to open a context menu, e.g. using a special keyboard key, it triggers in that case also, so it's not exactly the mouse event.
+: Se déclenche lorsque le bouton droit de la souris est enfoncé. Il existe d'autres façons d'ouvrir un menu contextuel, par ex. en utilisant une touche spéciale du clavier, il se déclenche dans ce cas également, donc ce n'est pas exactement l'événement de la souris.
 
-...There are several other events too, we'll cover them later.
+... Il y a aussi plusieurs autres événements, nous les couvrirons plus tard.
 
-## Events order
+## Ordre des événements
 
-As you can see from the list above, a user action may trigger multiple events.
+Comme vous pouvez le voir dans la liste ci-dessus, une action utilisateur peut déclencher plusieurs événements.
 
-For instance, a left-button click first triggers `mousedown`, when the button is pressed, then `mouseup` and `click` when it's released.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Par exemple, un clic gauche déclenche d'abord `mousedown`, lorsque le bouton est enfoncé, puis `mouseup` et `click` lorsqu'il est relâché.
 
 Au cas où une action unique initialise plusieurs évènements, leur ordre est fixé. C'est-à-dire que les gestionnaires sont appelés dans l'ordre `mousedown` -> `mouseup` -> `click`.
 
@@ -75,62 +41,42 @@ Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évène
 
 Sur le banc de test ci-dessous, tous les événements de souris sont enregistrés et s'il y a un délai de plus d'une seconde entre eux, ils sont séparés par une règle horizontale.
 
-<<<<<<< HEAD
-Nous pouvons voir la propriété `which` qui permet de détecter le bouton de la souris.
-=======
-Also we can see the `button` property that allows to detect the mouse button, it's explained below.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Nous pouvons également voir la propriété `button` qui permet de détecter le bouton de la souris, c'est expliqué ci-dessous.
 
 <input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Click me with the right or the left mouse button" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```
 
-<<<<<<< HEAD
-## Obtenir le bouton: which
+## Bouton de la souris
 
-Les évènements relatifs à l’événement clic ont toujours la propriété `which`, qui permet d’obtenir le bouton exact de la souris .
+Les événements liés aux clics ont toujours la propriété `button`, qui permet d'obtenir le bouton exact de la souris.
 
-Elle  n’est pas utilisée pour  les évènements  `click` et  `contextmenu`, parce que le premier se passe uniquement sur le clic gauche et le dernier – uniquement sur le clic droit.
+Nous ne l'utilisons généralement pas pour les événements `click` et `contextmenu`, car le premier se produit uniquement lors d'un clic gauche, et le second - uniquement lors d'un clic droit.
 
-Mais si nous voulons controler les évènements `mousedown` et `mouseup`, nous en avons besoin, parce que ces évènements se déclenchent sur n’importe quel bouton, `which` nous permet de distinguer entre "right-mousedown" et  "left-mousedown".
+D'un autre côté, les gestionnaires `mousedown` et `mouseup` peuvent avoir besoin de `event.button`, car ces événements se déclenchent sur n'importe quel bouton, donc` button` permet de faire la distinction entre "right-mousedown" et "left-mousedown".
 
-Voici les trois valeurs possibles:
-=======
-## Mouse button
+Les valeurs possibles de `event.button` sont :
 
-Click-related events always have the `button` property, which allows to get the exact mouse button.
+| État du bouton              | `event.button` |
+|-----------------------------|----------------|
+| Bouton gauche (principal)   | 0              |
+| Bouton central (auxiliaire) | 1              |
+| Bouton droit (secondaire)   | 2              |
+| X1 bouton (arrière)         | 3              |
+| X2 bouton (avant)          | 4              |
 
-We usually don't use it for `click` and `contextmenu` events, because the former happens only on left-click, and the latter -- only on right-click.
+La plupart des souris n'ont que les boutons gauche et droit, donc les valeurs possibles sont `0` ou `2`. Les appareils tactiles génèrent également des événements similaires lorsque l'on appuie dessus.
 
-From the other hand, `mousedown` and `mouseup` handlers we may need `event.button`, because these events trigger on any button, so `button` allows to distinguish between "right-mousedown" and "left-mousedown".
+Il existe également la propriété `event.buttons` qui a tous les boutons actuellement pressés sous forme d'entier, un bit par bouton. En pratique cette propriété est très rarement utilisée, vous pouvez trouver des détails sur [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons) si jamais vous en avez besoin.
 
-The possible values of `event.button` are:
+```warn header="Le `event.which` obsolète"
+L'ancien code peut utiliser la propriété `event.which` qui est une ancienne manière non standard d'obtenir un bouton, avec des valeurs possibles :
 
-| Button state | `event.button` |
-|--------------|----------------|
-| Left button (primary) | 0 |
-| Middle button (auxillary) | 1 |
-| Right button (secondary) | 2 |
-| X1 button (back) | 3 |
-| X2 button (forward) | 4 |
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+- `event.which == 1` – bouton gauche,
+- `event.which == 2` – bouton du milieu,
+- `event.which == 3` – bouton de droite.
 
-Most mouse devices only have the left and right buttons, so possible values are `0` or `2`. Touch devices also generate similar events when one taps on them.
-
-<<<<<<< HEAD
-Le bouton du milieu est quelque peu exotique jusqu’à présent et est très rarement utilisé. 
-=======
-Also there's `event.buttons` property that has all currently pressed buttons as an integer, one bit per button. In practice this property is very rarely used, you can find details at [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons) if you ever need it.
-
-```warn header="The outdated `event.which`"
-Old code may use `event.which` property that's an old non-standard way of getting a button, with possible values:
-
-- `event.which == 1` – left button,
-- `event.which == 2` – middle button,
-- `event.which == 3` – right button.
-
-As of now, `event.which` is deprecated, we shouldn't use it.
+Dorénavant, `event.which` est obsolète, nous ne devrions pas l'utiliser.
 ```
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 ## Les Touches de Modifications: shift, alt, ctrl and meta
 
@@ -177,45 +123,25 @@ Donc, si nous voulons que les utilisateurs de tous les systèmes d'exploitation 
 Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
 ```
 
-<<<<<<< HEAD
-
 ```warn header="Il y a aussi les appareils mobiles"
 
-Les combinaisons de clavier sont un bon ajout au flux de travail. Tant que le visiteur a un
-  clavier - ça fonctionne. Mais si leur appareil n’en a pas -- alors il devrait y avoir un autre moyen de faire la même chose.
+Les combinaisons de clavier sont un bon complément au flux de travail. Donc, si le visiteur utilise un clavier -- ils fonctionnent.
 
-=======
-```warn header="There are also mobile devices"
-Keyboard combinations are good as an addition to the workflow. So that if the visitor uses a keyboard -- they work. 
-
-But if their device doesn't have it -- then there should be a way to live without modifier keys.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Mais si leur appareil n'en a pas, il devrait y avoir un moyen de vivre sans touches de modification.
 ```
 
 ## Cordonnées: clientX/Y, pageX/Y
 
-Tous les évènements de souris ont des cordonnées en deux types :
-
-<<<<<<< HEAD
-1. Window-relative: `clientX` et `clientY`.
-2. Document-relative: `pageX` et `pageY`.
-=======
-All mouse events provide coordinates in two flavours:
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Tous les événements de souris fournissent des coordonnées de deux manières :
 
 
-<<<<<<< HEAD
-Par exemple, si nous avons une fenêtre de taille 500x500, et que la souris est dans le coin supérieur gauche, alors `clientX` et  `clientY` ont une valeur de `0`. Et si la souris est au centre, alors `clientX` et  `clientY` ont une valeur de  `250`, peu importe sa position dans le document. Et ils ont une position similaire à`position:fixed`.
+Nous avons déjà couvert la différence entre eux dans le chapitre <info:coordinates>.
 
-=======
-We already covered the difference between them in the chapter <info:coordinates>.
+En résumé, les coordonnées relatives au document `pageX/Y` sont comptées à partir du coin supérieur gauche du document, et ne changent pas lorsque la page défile, tandis que` clientX/Y` sont comptées à partir du coin supérieur gauche de la fenêtre actuelle . Lorsque la page défile, ils changent.
 
-In short, document-relative coordinates `pageX/Y` are counted from the left-upper corner of the document, and do not change when the page is scrolled, while `clientX/Y` are counted from the current window left-upper corner. When the page is scrolled, they change.
+Par exemple, si nous avons une fenêtre de taille 500x500 et que la souris est dans le coin supérieur gauche, alors `clientX` et `clientY` sont `0`, peu importe comment la page est défilée.
 
-For instance, if we have a window of the size 500x500, and the mouse is in the left-upper corner, then `clientX` and `clientY` are `0`, no matter how the page is scrolled. 
-
-And if the mouse is in the center, then `clientX` and `clientY` are `250`, no matter what place in the document it is. They are similar to `position:fixed` in that aspect.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Et si la souris est au centre, alors `clientX` et `clientY` sont `250`, quelle que soit la place dans le document. Ils sont similaires à `position:fixed` dans cet aspect.
 
 ````online
 Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exemple est dans l `iframe`, ainsi les cordonnées sont relatives à cet `iframe`) :
@@ -226,15 +152,9 @@ Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exempl
 ````
 Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir du coin supérieur gauche du document, pas de la fenêtre. Vous pouvez en savoir plus sur les coordonnées dans le chapitre <info:coordinates>.
 
-<<<<<<< HEAD
-## Désactiver la sélection
+## Empêcher la sélection sur le mousedown
 
-Un double clic de souris a un effet secondaire qui peut être gênant dans certaines interfaces: il sélectionne le texte.
-=======
-## Preventing selection on mousedown
-
-Double mouse click has a side-effect that may be disturbing in some interfaces: it selects text.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
 
 
 ```html autorun height=50
@@ -279,15 +199,9 @@ Certes, l'utilisateur a accès à la source HTML de la page et peut en extraire 
 
 Les évènements de souris ont les propriétés suivantes :
 
-<<<<<<< HEAD
-- Button: `which`.
-- Touches modificatrices (`true` si pressées) : `altKey`, `ctrlKey`, `shiftKey` et `metaKey` (Mac).
-  - Si vous voulez gérer `key:Ctrl`, alors n'oubliez pas les utilisateurs de Mac, ils utilisent généralement `key:Cmd`, il vaut donc mieux vérifier `if (e.metaKey || e.ctrlKey)`.
-=======
-- Button: `button`.
-- Modifier keys (`true` if pressed): `altKey`, `ctrlKey`, `shiftKey` and `metaKey` (Mac).
-  - If you want to handle `key:Ctrl`, then don't forget Mac users, they usually use `key:Cmd`, so it's better to check `if (e.metaKey || e.ctrlKey)`.
->>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
+- Bouton: `button`.
+- Touches de modification (`true` si pressées): `altKey`, `ctrlKey`, `shiftKey` et `metaKey` (Mac).
+  - Si vous voulez gérer `key:Ctrl`, alors n'oubliez pas les utilisateurs de Mac, ils utilisent généralement `key:Cmd`, il est donc préférable de vérifier `if (e.metaKey || e.ctrlKey)`.
 
 - Coordonnées relatives à la fenêtre : `clientX/clientY`.
 - Coordonnées relatives au document : `pageX/pageY`.
