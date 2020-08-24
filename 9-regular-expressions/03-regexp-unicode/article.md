@@ -33,6 +33,7 @@ Contrairement aux chaînes de caractères, les expressions régulières ont l'in
 
 ## Propriétés Unicode \p{...}
 
+<<<<<<< HEAD
 ```warn header =" Non pris en charge par Firefox et Edge "
 Bien qu'elles fassent partie de la norme depuis 2018, les propriétés unicode ne sont pas prises en charge dans Firefox ([bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1361876)) et Edge ([bug](https://github.com/Microsoft/ChakraCore/issues/2969)).
 
@@ -40,6 +41,9 @@ Il existe une bibliothèque logicielle [XRegExp](http://xregexp.com) qui fournit
 ```
 
 Chaque caractère dans Unicode a beaucoup de propriétés. Ils décrivent à quelle "catégorie" le caractère appartient, et contiennent diverses informations à son sujet.
+=======
+Every character in Unicode has a lot of properties. They describe what "category" the character belongs to, contain miscellaneous information about it.
+>>>>>>> b85413d0bdd6f4f468fcadeacb4c4056e3671ce1
 
 Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue). Et la propriété `Number` (Nombre) signifie que c'est un chiffre : peut-être l'arabe ou le chinois, et ainsi de suite.
 
