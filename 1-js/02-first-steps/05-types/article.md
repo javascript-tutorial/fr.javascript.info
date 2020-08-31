@@ -82,8 +82,13 @@ const bigInt = 1234567890123456789012345678901234567890n;
 
 Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>. Lisez-le lorsque vous avez besoin d'aussi gros chiffres.
 
+<<<<<<< HEAD
 ```smart header="Problèmes de compatibilité"
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge, mais pas dans Safari/IE.
+=======
+```smart header="Compatibility issues"
+Right now `BigInt` is supported in Firefox/Chrome/Edge, but not in Safari/IE.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 ```
 
 ## String

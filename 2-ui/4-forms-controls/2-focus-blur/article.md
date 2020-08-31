@@ -1,6 +1,10 @@
 # Focus: focus/blur
 
+<<<<<<< HEAD
 Un élément reçois le focus quand l'utilisateur clique dessus ou utilise la touche `key:Tab` du clavier. Il y a aussi un attribut HTML `autofocus` qui met le focus sur un élément par défaut lorsque la page charge et d'autres moyens d'obtenir un focus sont utilisées.
+=======
+An element receives the focus when the user either clicks on it or uses the `key:Tab` key on the keyboard. There's also an `autofocus` HTML attribute that puts the focus onto an element by default when a page loads and other means of getting the focus.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Avoir le focus sur un élément signifie généralement: "préparez-vous à accepter des données ici", c'est donc le moment où nous pouvons exécuter le code pour initialiser la fonctionnalité requise.
 
@@ -18,8 +22,13 @@ Utilisons les pour la validation d'un champ de saisie.
 
 Dans l'example ci-dessous:
 
+<<<<<<< HEAD
 - Le gestionnaire `blur` vérifie si l'adresse mail est entrée, et sinon -- affiche une erreur.
 - Le gestionnaire `focus` masque le message d'erreur (au moment de `blur` le champ sera vérifié à nouveau):
+=======
+- The `blur` handler checks if the field has an email entered, and if not -- shows an error.
+- The `focus` handler hides the error message (on `blur` it will be checked again):
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```html run autorun height=60
 <style>
@@ -108,7 +117,11 @@ Par défaut beaucoup d'éléments ne supportent pas le focus.
 
 La liste change un peu selon les navigateurs, mais une chose est toujours vrai: le support de `focus/blur` est garanti pour les éléments avec lesquels le visiteur peut interagir: `<button>`, `<input>`, `<select>`, `<a>`, etc.
 
+<<<<<<< HEAD
 D'un autre côté, les éléments qui existent pour mettre quelque chose en forme, comme `<div>`, `<span>`, `<table>` -- ne peuvent pas recevoir de focus par défaut. La méthode `elem.focus()` ne fonctionne pas sur eux, et les évènements `focus/blur` ne sont jamais activés.
+=======
+On the other hand, elements that exist to format something, such as `<div>`, `<span>`, `<table>` -- are unfocusable by default. The method `elem.focus()` doesn't work on them, and `focus/blur` events are never triggered.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Cela peut être changé en utilisant l'attribut HTML `tabindex`.
 
@@ -131,7 +144,11 @@ Il y a deux valeurs spéciales:
 Par exemple, voici une liste. Cliquez sur le premier élément et appuyez sur `key:Tab`:
 
 ```html autorun no-beautify
+<<<<<<< HEAD
 Cliquez sur le premier élément et appuyez sur Tabulation. Suivez l'ordre. Veuillez noter que plusieurs Tabulations à la suite peuvent déplacer le focus en dehors de l'iframe avec l'exemple.
+=======
+Click the first item and press Tab. Keep track of the order. Please note that many subsequent Tabs can move the focus out of the iframe in the example.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 <ul>
   <li tabindex="1">Un</li>
   <li tabindex="0">Zéro</li>
@@ -216,7 +233,11 @@ Voici donc une autre variante qui fonctionne:
 
 ## Résumé
 
+<<<<<<< HEAD
 Les évènements `focus` et `blur` se déclenchent lors du focus/perte de focus sur un élément.
+=======
+Events `focus` and `blur` trigger on an element focusing/losing focus.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Leur particularités sont:
 
