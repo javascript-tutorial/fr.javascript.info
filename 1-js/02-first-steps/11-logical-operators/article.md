@@ -223,8 +223,13 @@ La priorité de l'opérateur AND `&&` est supérieure à OR `||`.
 Donc, le code `a && b || c && d` est essentiellement le même que si `&&` était entre parenthèses: `(a && b) || (c && d)`.
 ````
 
+<<<<<<< HEAD
 ````warn header="Ne remplacez pas `if` par || ou &&"
 Parfois, les gens utilisent l'opérateur AND `&&` comme "plus court pour écrire `if`".
+=======
+````warn header="Don't replace `if` with || or &&"
+Sometimes, people use the AND `&&` operator as a "shorter way to write `if`".
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Par exemple :
 

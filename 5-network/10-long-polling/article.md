@@ -6,7 +6,11 @@ L'interrogation longue est le moyen le plus simple d'avoir une connexion persist
 
 ## Interrogation régulière
 
+<<<<<<< HEAD
 Le moyen le plus simple d'obtenir de nouvelles informations du serveur est l'interrogation périodique. Autrement dit, des requêtes régulières au serveur : "Bonjour, je suis là, avez-vous des informations pour moi ?". Par exemple, une fois toutes les 10 secondes.
+=======
+The simplest way to get new information from the server is periodic polling. That is, regular requests to the server: "Hello, I'm here, do you have any information for me?". For example, once every 10 seconds.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 En réponse, le serveur se signale d'abord à lui-même que le client est en ligne, et deuxièmement - envoie un paquet de messages qu'il a reçu jusqu'à ce moment.
 
@@ -70,9 +74,15 @@ Comme vous pouvez le voir, la fonction `subscribe` effectue une extraction, puis
 ```warn header="Le serveur devrait être ok avec de nombreuses connexions en attente"
 L'architecture du serveur doit pouvoir fonctionner avec de nombreuses connexions en attente.
 
+<<<<<<< HEAD
 Certaines architectures de serveur exécutent un processus par connexion. Pour de nombreuses connexions, il y aura autant de processus, et chaque processus prend beaucoup de mémoire. Autant de connexions risquent de consommer toutes ressources.
 
 C'est souvent le cas pour les backends écrits en PHP, en Ruby, mais techniquement ce n'est pas un problème de langage, mais plutôt d'implémentation. La plupart des langages modernes permettent d'implémenter un backend approprié, mais certains le rendent plus facile que l'autre.
+=======
+Certain server architectures run one process per connect. So there will be as many processes as connections, and each process takes a lot of memory. Too many connections just will consume it all.
+
+That's often the case for backends written in PHP, Ruby languages, but technically isn't a language issue, but rather implementation one. Most modern language allow to implement a proper backend, but some of them make it easier than others..
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Les backends écrits en utilisant Node.js n'ont généralement pas ce genre de problèmes.
 ```

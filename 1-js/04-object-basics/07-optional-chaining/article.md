@@ -81,7 +81,11 @@ S'il n'y a pas du tout de variable `user`, alors `user?.anything` déclenche une
 // ReferenceError: user is not defined
 user?.address;
 ```
+<<<<<<< HEAD
 Il doit y avoir `let/const/var user`. Le chaînage optionnel ne fonctionne que pour les variables déclarées.
+=======
+There must be `let/const/var user`. The optional chaining works only for declared variables.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 ````
 
 ## Court-circuit

@@ -292,16 +292,29 @@ alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution dif
 
 Les objets pouvant être utilisés dans `for..of` s'appellent *iterable*.
 
+<<<<<<< HEAD
 - Techniquement, les iterables doivent implémenter la méthode nommée `Symbol.iterator`.
     - Le résultat de `obj[Symbol.iterator]` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
     - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, value: any}`, ici `done: true` dénote la fin du processus de l'itération, sinon la `value` est la valeur suivante.
 - La méthode `Symbol.iterator` est appelée automatiquement par `for..of`, mais nous pouvons aussi le faire directement.
 - Les iterables intégrés tels que des chaînes de caractères ou des tableaux implémentent également `Symbol.iterator`.
 - L'itérateur de chaîne de caractères connaît les paires de substitution.
+=======
+- Technically, iterables must implement the method named `Symbol.iterator`.
+    - The result of `obj[Symbol.iterator]()` is called an *iterator*. It handles the further iteration process.
+    - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
+- The `Symbol.iterator` method is called automatically by `for..of`, but we also can do it directly.
+- Built-in iterables like strings or arrays, also implement `Symbol.iterator`.
+- String iterator knows about surrogate pairs.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 
 Les objets qui ont des propriétés indexées et des `length` sont appelés *array-like (comme-un-tableau)*. De tels objets peuvent également avoir d'autres propriétés et méthodes, mais ne possèdent pas les méthodes intégrées des tableaux.
 
 Si nous regardons à l'intérieur de la spécification -- nous verrons que la plupart des méthodes intégrées supposent qu'elles fonctionnent avec des éléments iterables ou des array-like (comme-un-tableau) au lieu de "vrais" tableaux, car c'est plus abstrait.
 
+<<<<<<< HEAD
 `Array.from(obj[, mapFn, thisArg])` fait un véritable `Array` d'un `obj` itérable ou array-like (comme-un-tableau), et nous pouvons ensuite utiliser des méthodes de tableau sur celui-ci. Les arguments optionnels `mapFn` et `thisArg` nous permettent d'appliquer une fonction à chaque élément.
+=======
+`Array.from(obj[, mapFn, thisArg])` makes a real `Array` from an iterable or array-like `obj`, and we can then use array methods on it. The optional arguments `mapFn` and `thisArg` allow us to apply a function to each item.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017

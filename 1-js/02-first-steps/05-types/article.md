@@ -82,8 +82,13 @@ const bigInt = 1234567890123456789012345678901234567890n;
 
 Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>. Lisez-le lorsque vous avez besoin d'aussi gros chiffres.
 
+<<<<<<< HEAD
 ```smart header="Problèmes de compatibilité"
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge, mais pas dans Safari/IE.
+=======
+```smart header="Compatibility issues"
+Right now `BigInt` is supported in Firefox/Chrome/Edge, but not in Safari/IE.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 ```
 
 ## String
@@ -128,7 +133,11 @@ Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <i
 ```smart header="Il n'y a pas de type *character*."
 Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
+<<<<<<< HEAD
 En JavaScript, il n'y a pas un tel type. Il n’ya qu’un seul type : `string`. Une chaîne de caractères ne peut comporter qu'un seul caractère ou plusieurs. 
+=======
+In JavaScript, there is no such type. There's only one type: `string`. A string may consist of zero characters (be empty), one character or many of them.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 ```
 
 ## Boolean (type logique)
