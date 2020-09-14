@@ -243,7 +243,7 @@ configurable: false
 // tout cela ne marchera pas:
 //   user.name = "Pete"
 //   delete user.name
-//   defineProperty(user, "name", { value: "Pete" })
+//   Object.defineProperty(user, "name", { value: "Pete" })
 Object.defineProperty(user, "name", {writable: true}); // Error
 */!*
 ```

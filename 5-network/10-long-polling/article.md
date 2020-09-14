@@ -6,7 +6,11 @@ L'interrogation longue est le moyen le plus simple d'avoir une connexion persist
 
 ## Interrogation régulière
 
+<<<<<<< HEAD
 Le moyen le plus simple d'obtenir de nouvelles informations du serveur est l'interrogation périodique. Autrement dit, des requêtes régulières au serveur : "Bonjour, je suis là, avez-vous des informations pour moi ?". Par exemple, une fois toutes les 10 secondes.
+=======
+The simplest way to get new information from the server is periodic polling. That is, regular requests to the server: "Hello, I'm here, do you have any information for me?". For example, once every 10 seconds.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 En réponse, le serveur se signale d'abord à lui-même que le client est en ligne, et deuxièmement - envoie un paquet de messages qu'il a reçu jusqu'à ce moment.
 
@@ -70,11 +74,21 @@ Comme vous pouvez le voir, la fonction `subscribe` effectue une extraction, puis
 ```warn header="Le serveur devrait être ok avec de nombreuses connexions en attente"
 L'architecture du serveur doit pouvoir fonctionner avec de nombreuses connexions en attente.
 
+<<<<<<< HEAD
 Certaines architectures de serveur exécutent un processus par connexion. Pour de nombreuses connexions, il y aura autant de processus, et chaque processus prend beaucoup de mémoire. Autant de connexions risquent de consommer toutes ressources.
 
 C'est souvent le cas pour les backends écrits en PHP, en Ruby, mais techniquement ce n'est pas un problème de langage, mais plutôt d'implémentation. La plupart des langages modernes permettent d'implémenter un backend approprié, mais certains le rendent plus facile que l'autre.
 
 Les backends écrits en utilisant Node.js n'ont généralement pas ce genre de problèmes.
+=======
+Certain server architectures run one process per connection; resulting in there being as many processes as there are connections, while each process consumes quite a bit of memory. So, too many connections will just consume it all.
+
+That's often the case for backends written in languages like PHP and Ruby.
+
+Servers written using Node.js usually don't have such problems.
+
+That said, it isn't a programming language issue. Most modern languages, including PHP and Ruby allow to implement a proper backend. Just please make sure that your server architecture works fine with many simultaneous connections.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 ```
 
 ## Démo: un tchat

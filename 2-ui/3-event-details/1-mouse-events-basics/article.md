@@ -56,6 +56,7 @@ D'un autre côté, les gestionnaires `mousedown` et `mouseup` peuvent avoir beso
 
 Les valeurs possibles de `event.button` sont :
 
+<<<<<<< HEAD
 | État du bouton              | `event.button` |
 |-----------------------------|----------------|
 | Bouton gauche (principal)   | 0              |
@@ -63,6 +64,15 @@ Les valeurs possibles de `event.button` sont :
 | Bouton droit (secondaire)   | 2              |
 | X1 bouton (arrière)         | 3              |
 | X2 bouton (avant)          | 4              |
+=======
+| Button state | `event.button` |
+|--------------|----------------|
+| Left button (primary) | 0 |
+| Middle button (auxiliary) | 1 |
+| Right button (secondary) | 2 |
+| X1 button (back) | 3 |
+| X2 button (forward) | 4 |
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 La plupart des souris n'ont que les boutons gauche et droit, donc les valeurs possibles sont `0` ou `2`. Les appareils tactiles génèrent également des événements similaires lorsque l'on appuie dessus.
 
@@ -156,6 +166,10 @@ Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir
 
 Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
 
+<<<<<<< HEAD
+=======
+For instance, double-clicking on the text below selects it in addition to our handler:
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 ```html autorun height=50
 <span ondblclick="alert('dblclick')">Double-click me</span>

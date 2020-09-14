@@ -30,8 +30,13 @@ Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour 
 `default`
 : Un deuxième paramètre facultatif, la valeur initiale du champ d'entrée.
 
+<<<<<<< HEAD
 ```smart header="Les crochets dans la syntaxe `[...]`"
 Les crochets autour de `default` dans la syntaxe ci-dessus indiquent que le paramètre est facultatif, non obligatoire.
+=======
+```smart header="The square brackets in syntax `[...]`"
+The square brackets around `default` in the syntax above denote that the parameter is optional, not required.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 ```
 
 Le visiteur peut taper quelque chose dans le champ de saisie d'invite et appuyer sur OK. Ensuite, nous obtenons ce texte dans le `result`. Ou ils peuvent annuler l'entrée en appuyant sur Annuler ou en appuyant sur la touche `key:Esc`, puis nous obtenons `null` comme `result`.
