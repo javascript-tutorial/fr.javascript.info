@@ -361,9 +361,15 @@ Et c'est ce à quoi nous nous attendons naturellement. Lorsque le constructeur p
 
 Pourquoi y a-t-il une différence ?
 
+<<<<<<< HEAD
 Eh bien, la raison est dans l'ordre d'initialisation du champ. Le champ de classe est initialisé :
 - Avant le constructeur de la classe de base (qui n'étend rien),
 - Immédiatement après `super()` pour la classe dérivée.
+=======
+Well, the reason is in the field initialization order. The class field is initialized:
+- Before constructor for the base class (that doesn't extend anything),
+- Immediately after `super()` for the derived class.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 Dans notre cas, `Rabbit` est la classe dérivée. Il n'y a pas de `constructor()` dedans. Comme dit précédemment, c'est la même chose que s'il y avait un constructeur vide avec seulement `super(...args)`.
 
@@ -544,7 +550,7 @@ Voici la démo d'un mauvais résultat de `super` après la copie:
 ```js run
 let animal = {
   sayHi() {
-    console.log(`I'm an animal`);
+    alert(`I'm an animal`);
   }
 };
 
@@ -558,7 +564,7 @@ let rabbit = {
 
 let plant = {
   sayHi() {
-    console.log("I'm a plant");
+    alert("I'm a plant");
   }
 };
 

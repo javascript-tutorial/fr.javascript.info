@@ -33,7 +33,9 @@ Nous pouvons le vérifier comme ceci:
 let obj = {};
 
 alert(obj.__proto__ === Object.prototype); // true
-// obj.toString === obj.__proto__.toString == Object.prototype.toString
+
+alert(obj.toString === obj.__proto__.toString); //true
+alert(obj.toString === Object.prototype.toString); //true
 ```
 
 Veuillez noter qu'il n'y a plus de `[[Prototype]]` dans la chaîne au dessus de `Object.prototype`:

@@ -428,7 +428,11 @@ La liste des opérateurs :
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
+<<<<<<< HEAD
 Ces opérateurs sont très rarement utilisés. Pour les comprendre, nous devrions nous intéresser à la représentation numérique de bas niveau, et il ne serait pas optimal de le faire dès maintenant. Surtout parce que nous n’en aurons pas besoin de sitôt. Si vous êtes curieux, vous pouvez lire l'article [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires) sur MDN. Il serait plus pratique de le faire quand un besoin réel se fait sentir.
+=======
+These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won't need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Bitwise) chapter on MDN when a need arises.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 ## Virgule
 

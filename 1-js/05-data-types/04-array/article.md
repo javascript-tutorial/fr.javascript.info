@@ -193,7 +193,11 @@ Un tableau est un type d'objet spécial. Les crochets utilisés pour accéder à
 
 Ils étendent les objets en fournissant des méthodes spéciales pour travailler avec des collections ordonnées de données ainsi que la propriété `length`. Mais au fond c'est toujours un objet.
 
+<<<<<<< HEAD
 N'oubliez pas qu'il n'y a que 7 types de base en JavaScript. `Array` est un objet et se comporte donc comme un objet.
+=======
+Remember, there are only eight basic data types in JavaScript (see the [Data types](info:types) chapter for more info). Array is an object and thus behaves like an object.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 Par exemple, il est copié par référence:
 

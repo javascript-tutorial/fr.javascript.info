@@ -60,11 +60,19 @@ Pourquoi ? Mieux vaut ne pas demander. Ces incohérences viennent des temps anci
 
 ## Obtenez le défilement actuel [#page-scroll]
 
+<<<<<<< HEAD
 Les éléments DOM ont leur état de défilement actuel dans `elem.scrollLeft/scrollTop`.
 
 Pour le défilement de document, `document.documentElement.scrollLeft/Top` fonctionne dans la plupart des navigateurs, à l'exception des plus anciens basés sur WebKit, comme Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), où nous devrions utiliser `document.body` au lieu de `document.documentElement`.
 
 Heureusement, nous n'avons pas du tout à nous souvenir de ces particularités, car le défilement est disponible dans les propriétés spéciales `window.pageXOffset/pageYOffset` :
+=======
+DOM elements have their current scroll state in their `scrollLeft/scrollTop` properties.
+
+For document scroll, `document.documentElement.scrollLeft/Top` works in most browsers, except older WebKit-based ones, like Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), where we should use `document.body` instead of `document.documentElement`.
+
+Luckily, we don't have to remember these peculiarities at all, because the scroll is available in the special properties, `window.pageXOffset/pageYOffset`:
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 ```js run
 alert('Current scroll from the top: ' + window.pageYOffset);

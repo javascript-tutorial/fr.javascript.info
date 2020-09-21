@@ -7,7 +7,11 @@ Nous savons déjà qu'une fonction peut accéder à des variables en dehors de c
 
 Mais que se passe-t-il si les variables externes changent depuis la création d'une fonction ? La fonction obtiendra-t-elle des valeurs plus récentes ou les anciennes ?
 
+<<<<<<< HEAD
 Et si une fonction est transmise en tant que paramètre et appelée depuis un autre endroit de code, aura-t-elle accès aux variables externes au nouvel endroit ?
+=======
+And what if a function is passed along as a parameter and called from another place of code, will it get access to outer variables at the new place?
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 Développons maintenant nos connaissances pour inclure des scénarios plus complexes.
 
@@ -314,7 +318,11 @@ Lors d'un entretien d'embauche, un développeur frontend reçoit assez souvent u
 
 Habituellement, un environnement lexical est supprimé de la mémoire avec toutes les variables une fois l'appel de fonction terminé. C'est parce qu'il n'y a plus aucune référence à cela. Comme tout objet JavaScript, il n'est conservé en mémoire que lorsqu'il est accessible.
 
+<<<<<<< HEAD
 … Mais s'il y a une fonction imbriquée qui est toujours accessible après la fin d'une fonction, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical.
+=======
+However, if there's a nested function that is still reachable after the end of a function, then it has `[[Environment]]` property that references the lexical environment.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 Dans ce cas, l'environnement lexical est toujours accessible même après la fin de la fonction, il reste donc en vie.
 
@@ -333,7 +341,11 @@ let g = f(); // g.[[Environment]] stocke une référence à l'environnement lexi
 // de l'appel f() correspondant
 ```
 
+<<<<<<< HEAD
 veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. tous les 3 dans le code ci-dessous :
+=======
+Please note that if `f()` is called many times, and resulting functions are saved, then all corresponding Lexical Environment objects will also be retained in memory. In the code below, all 3 of them:
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 ```js
 function f() {
@@ -415,4 +427,8 @@ g();
 
 Cette fonctionnalité du V8 est bonne à savoir. Si vous déboguez avec Chrome/Opera, tôt ou tard vous la rencontrerez.
 
+<<<<<<< HEAD
 Ce n'est pas un bogue dans le débogueur, mais plutôt une caractéristique spéciale de V8. Peut-être que cela sera changé un jour. Vous pouvez toujours le vérifier en exécutant les exemples sur cette page.
+=======
+That is not a bug in the debugger, but rather a special feature of V8. Perhaps it will be changed sometime. You can always check for it by running the examples on this page.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3

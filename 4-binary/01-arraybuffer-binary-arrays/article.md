@@ -234,8 +234,13 @@ let dataView = new DataView(buffer);
 // récupération d'un nombre en 8 bits avec un décalage de 0
 alert( dataView.getUint8(0) ); // 255
 
+<<<<<<< HEAD
 // récupération d'un nombre en 16 bits avec un décalage de 0, soit 2 octets, qui sont interprétés ensemble en 65535
 alert( dataView.getUint16(0) ); // 65535 (Plus grand entier non signé en 16 bits)
+=======
+// now get 16-bit number at offset 0, it consists of 2 bytes, together interpreted as 65535
+alert( dataView.getUint16(0) ); // 65535 (biggest 16-bit unsigned int)
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 // récupération d'un nombre en 32 bits avec un décalage de 0
 alert( dataView.getUint32(0) ); // 4294967295 (Plus grand entier non signé en 32 bits)
@@ -243,7 +248,11 @@ alert( dataView.getUint32(0) ); // 4294967295 (Plus grand entier non signé en 3
 dataView.setUint32(0, 0); // Fixe le nombre sous 4 octets à 0, fixant ainsi tous les octets à 0
 ```
 
+<<<<<<< HEAD
 `DataView` est utile lorsque l'on met des données sous plusieurs formats dans le même buffer. Par exemple, on stocke une séquence de paires (16-bit integer, 32-bit float). `DataView` nous permettra d'y accéder facilement.
+=======
+`DataView` is great when we store mixed-format data in the same buffer. For example, when we store a sequence of pairs (16-bit integer, 32-bit float), `DataView` allows to access them easily.
+>>>>>>> e074a5f825a3d10b0c1e5e82561162f75516d7e3
 
 ## Résumé
 
