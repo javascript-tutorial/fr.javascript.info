@@ -1,5 +1,9 @@
 # Le Défilement
 
+<<<<<<< HEAD
+=======
+The `scroll` event allows reacting to a page or element scrolling. There are quite a few good things we can do here.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 L'événement `scroll` permet de réagir sur le défilement d'une page ou d'un élément. Il y a pas mal de bonnes choses que nous pouvons faire ici.
 
@@ -40,4 +44,8 @@ Si nous ajoutons un gestionnaire d'évènement a ces évènements et à `event.p
 Il existe de nombreuses façons d’initialiser un défilement. Il est donc plus fiable d’utiliser la propriété CSS `overflow`.
 
 
+<<<<<<< HEAD
 Voici quelques taches que vous pouvez résoudre oubien regarder afin de voir une application de l'évènement `onscroll`.
+=======
+Here are few tasks that you can solve or look through to see applications of `onscroll`.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d

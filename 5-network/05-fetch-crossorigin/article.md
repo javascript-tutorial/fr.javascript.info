@@ -213,9 +213,18 @@ Une requête de contrôle en amont utilise la méthode `OPTIONS`, aucun corps et
 
 Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
 
+<<<<<<< HEAD
 - `Access-Control-Allow-Methods` doit avoir la méthode autorisée.
 - `Access-Control-Allow-Headers` doit avoir une liste d'en-têtes autorisés.
 - De plus, l'en-tête `Access-Control-Max-Age` peut spécifier un nombre de secondes pour mettre en cache les autorisations. Ainsi, le navigateur n'aura pas à envoyer de contrôle en amont pour les requêtes ultérieures qui satisfont aux autorisations données.
+=======
+If the server agrees to serve the requests, then it should respond with empty body, status 200 and headers:
+
+- `Access-Control-Allow-Origin` must be either `*` or the requesting origin, such as `https://javascript.info`, to allow it.
+- `Access-Control-Allow-Methods` must have the allowed method.
+- `Access-Control-Allow-Headers` must have a list of allowed headers.
+- Additionally, the header `Access-Control-Max-Age` may specify a number of seconds to cache the permissions. So the browser won't have to send a preflight for subsequent requests that satisfy given permissions.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 ![](xhr-preflight.svg)
 
@@ -257,16 +266,28 @@ Access-Control-Request-Headers: Content-Type,API-Key
 
 ### Étape 2 (réponse en amont)
 
+<<<<<<< HEAD
 Le serveur doit répondre avec le statut 200 et les en-têtes :
+=======
+The server should respond with status 200 and headers:
+- `Access-Control-Allow-Origin: https://javascript.info`
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 - `Access-Control-Allow-Methods: PATCH`
 - `Access-Control-Allow-Headers: Content-Type,API-Key`.
 
 Cela permet une communication future, sinon une erreur est déclenchée.
 
+<<<<<<< HEAD
 Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en ajoutant à la liste :
+=======
+If the server expects other methods and headers in the future, it makes sense to allow them in advance by adding to the list.
+
+For example, this response also allows `PUT`, `DELETE` and additional headers:
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 ```http
 200 OK
+Access-Control-Allow-Origin: https://javascript.info
 Access-Control-Allow-Methods: PUT,PATCH,DELETE
 Access-Control-Allow-Headers: API-Key,Content-Type,If-Modified-Since,Cache-Control
 Access-Control-Max-Age: 86400
@@ -274,7 +295,11 @@ Access-Control-Max-Age: 86400
 
 Maintenant, le navigateur peut voir que `PATCH` est dans `Access-Control-Allow-Methods` et `Content-Type,API-Key` sont dans la liste `Access-Control-Allow-Headers`, il envoie donc la requête principale.
 
+<<<<<<< HEAD
 De plus, la réponse de contrôle en amont est mise en cache pour le temps spécifié par l'en-tête `Access-Control-Max-Age` (86400 secondes, un jour), de sorte que les requêtes suivantes ne provoqueront pas de contrôle en amont. En supposant qu'elles correspondent aux quotas mis en cache, elles seront envoyées directement.
+=======
+If there's header `Access-Control-Max-Age` with a number of seconds, then the preflight permissions are cached for the given time. The response above will be cached for 86400 seconds (one day). Within this timeframe, subsequent requests will not cause a preflight. Assuming that they fit the cached allowances, they will be sent directly.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 ### Étape 3 (requête réelle)
 

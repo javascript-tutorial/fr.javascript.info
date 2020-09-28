@@ -1,8 +1,13 @@
 # Ninja code
 
 
+<<<<<<< HEAD
 ```quote author="Confucius"
 Apprendre sans réfléchir est vain. Réfléchir sans apprendre est dangereux.
+=======
+```quote author="Confucius (Analects)"
+Learning without thought is labor lost; thought without learning is perilous.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 ```
 
 Les programmeurs ninjas du passé ont utilisé ces astuces pour aiguiser l'esprit des mainteneurs de code.
@@ -103,8 +108,13 @@ Une lecture rapide de ce code devient impossible. Et quand il ya une faute de fr
 
 ## Des synonymes intelligents
 
+<<<<<<< HEAD
 ```quote author="Confucius"
 L'une des chose les plus difficiles est de trouver un chat noir dans une pièce sombre, surtout s’il n’y a pas de chat.
+=======
+```quote author="Laozi (Tao Te Ching)"
+The Tao that can be told is not the eternal Tao. The name that can be named is not the eternal name.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 ```
 
 Utiliser des noms *similaires* pour les *mêmes* choses rend la vie plus intéressante et montre votre créativité au public.

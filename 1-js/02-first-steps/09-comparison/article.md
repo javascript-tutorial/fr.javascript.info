@@ -9,10 +9,16 @@ Il y a de nombreux opérateurs de comparaison que nous connaissons des mathémat
 
 ## Booléen est le résultat
 
+<<<<<<< HEAD
 Tout comme tous les autres opérateurs, une comparaison renvoie une valeur. Cette valeur est du type booléen.
 
 - `true` -- signifie "oui", "correct" ou "vrai".
 - `false` -- signifie "non", "incorrect" ou "faux".
+=======
+In this article we'll learn more about different types of comparisons, how JavaScript makes them, including important peculiarities.
+
+At the end you'll find a good recipe to avoid "JavaScript quirks"-related issues.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 Par exemple :
 
@@ -51,7 +57,11 @@ L'algorithme pour comparer deux chaînes  de caractères est simple :
 4. Répéter jusqu'à la fin d'une chaîne de caractères.
 5. Si les deux chaînes de caractères se sont terminées simultanément, alors elles sont égales. Sinon, la chaîne la plus longue est plus grande.
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessus, la comparaison `'Z' > 'A'` obtient le résultat à la première étape.
+=======
+In the examples above, the comparison `'Z' > 'A'` gets to a result at the first step while the strings `'Glow'` and `'Glee'` are compared character-by-character:
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 Les chaînes de caractères `"Glow"` et `"Glee"` sont comparées caractère par caractère :
 

@@ -145,10 +145,17 @@ Si nous utilisons une chaîne de caractères, nous devons encoder/décoder les c
 
 Il existe des fonctions intégrées pour cela :
 
+<<<<<<< HEAD
 - [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) - encode l'URL dans son ensemble.
 - [decodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) - la décode de nouveau.
 - [encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) - encode un composant URL, tel qu'un paramètre de recherche, un hachage ou un chemin d'accès.
 - [decodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) - la décode de nouveau.
+=======
+- [encodeURI](mdn:/JavaScript/Reference/Global_Objects/encodeURI) - encodes URL as a whole.
+- [decodeURI](mdn:/JavaScript/Reference/Global_Objects/decodeURI) - decodes it back.
+- [encodeURIComponent](mdn:/JavaScript/Reference/Global_Objects/encodeURIComponent) - encodes a URL component, such as a search parameter, or a hash, or a pathname.
+- [decodeURIComponent](mdn:/JavaScript/Reference/Global_Objects/decodeURIComponent) - decodes it back.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 Une question naturelle est: "Quelle est la différence entre `encodeURIComponent` et `encodeURI` ? Quand devrions-nous utiliser l'une ou l'autre ?"
 

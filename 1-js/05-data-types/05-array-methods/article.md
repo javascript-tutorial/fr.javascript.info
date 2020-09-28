@@ -36,15 +36,26 @@ C'est normal, car `delete obj.key` supprime une valeur par la` clé`. C'est tout
 
 Des méthodes spéciales doivent donc être utilisées.
 
+<<<<<<< HEAD
 La méthode [arr.splice(start)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
+=======
+The [arr.splice](mdn:js/Array/splice) method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 La syntaxe est la suivante:
 
 ```js
+<<<<<<< HEAD
 arr.splice(index[, nombreDeSuppression, elem1, ..., elemN])
 ```
 
 Il commence à partir de la position `index`: supprime les éléments `nombreDeSuppression` puis insère elem1, ..., elemN à leur place. Il renvoie ensuite le tableau des éléments supprimés.
+=======
+arr.splice(start[, deleteCount, elem1, ..., elemN])
+```
+
+It modified `arr` starting from the index `start`: removes `deleteCount` elements and then inserts `elem1, ..., elemN` at their place. Returns the array of removed elements.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 Cette méthode est facile à comprendre avec des exemples.
 
@@ -719,11 +730,22 @@ Un cheat sheet des méthodes de tableau :
   - `slice(start, end)` -- crée un nouveau tableau, y copie les éléments de `start` jusqu'à `end` (non inclus).
   - `concat(...items)` -- retourne un nouveau tableau: copie tous les membres du groupe actuel et lui ajoute des éléments. Si un des `items` est un tableau, ses éléments sont pris.
 
+<<<<<<< HEAD
 - Pour rechercher parmi des éléments:
   - `indexOf/lastIndexOf(item, pos)` -- cherche l'`item` à partir de la position `pos`, retourne l'index `-1` s'il n'est pas trouvé.
   - `includes(value)` -- retourne `true` si le tableau a une `value`, sinon `false`.
   - `find/filter(func)` -- filtrer les éléments à travers la fonction, retourne en premier / toutes les valeurs qui retournent `true`.
   - `findIndex` est similaire à `find`, mais renvoie l'index au lieu d'une valeur.
+=======
+- To add/remove elements:
+  - `push(...items)` -- adds items to the end,
+  - `pop()` -- extracts an item from the end,
+  - `shift()` -- extracts an item from the beginning,
+  - `unshift(...items)` -- adds items to the beginning.
+  - `splice(pos, deleteCount, ...items)` -- at index `pos` delete `deleteCount` elements and insert `items`.
+  - `slice(start, end)` -- creates a new array, copies elements from index `start` till `end` (not inclusive) into it.
+  - `concat(...items)` -- returns a new array: copies all members of the current one and adds `items` to it. If any of `items` is an array, then its elements are taken.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 - Pour parcourir les éléments :
   - `forEach(func)` -- appelle `func` pour chaque élément, ne retourne rien.
@@ -749,7 +771,20 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
   La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si tout / tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
 
+<<<<<<< HEAD
 - [arr.fill(value, start, end)](mdn:js/Array/fill) -- remplit le tableau avec la `value` répétée de l'index `start` à `end`.
+=======
+  We can use `every` to compare arrays:
+  ```js run
+  function arraysEqual(arr1, arr2) {
+    return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+  }
+
+  alert( arraysEqual([1, 2], [1, 2])); // true
+  ```
+
+- [arr.fill(value, start, end)](mdn:js/Array/fill) -- fills the array with repeating `value` from index `start` to `end`.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 - [arr.copyWithin(target, start, end)](mdn:js/Array/copyWithin) -- copie ses éléments de la position `start` jusqu'à la position `end` into *itself*, à la position `target` (écrase les éléments éxistants).
 

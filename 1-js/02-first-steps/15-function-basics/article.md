@@ -186,7 +186,11 @@ Par exemple, la fonction `showMessage(from, text)` mentionnée précédemment pe
 showMessage("Ann");
 ```
 
+<<<<<<< HEAD
 Ce n’est pas une erreur. Un tel appel produirait `"Ann: undefined"`. Il n’y a pas de `text`, donc on suppose que `text === undefined`.
+=======
+That's not an error. Such a call would output `"*Ann*: undefined"`. There's no `text`, so it's assumed that `text === undefined`.
+>>>>>>> f489145731a45df6e369a3c063e52250f3f0061d
 
 Si nous voulons utiliser un `text` "par défaut" dans ce cas, nous pouvons le spécifier après `=` :
 
