@@ -126,5 +126,10 @@ Nous pouvons utiliser du code JSBI "tel quel" pour les moteurs ne supportant pas
 
 ## Références
 
+<<<<<<< HEAD
 - [Documentation MDN sur le type BigInt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/BigInt).
 - [Spécification](https://tc39.es/ecma262/#sec-bigint-objects).
+=======
+- [MDN docs on BigInt](mdn:/JavaScript/Reference/Global_Objects/BigInt).
+- [Specification](https://tc39.es/ecma262/#sec-bigint-objects).
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca

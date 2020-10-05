@@ -28,7 +28,11 @@ D'un autre côté, il est important de comprendre les différences lors de la mi
 
 ## "var" n'a pas de portée limitée aux blocs
 
+<<<<<<< HEAD
 Les variables, déclarées avec `var`, sont globales ou à l'échelle de la fonction. Elles sont visibles à travers les blocs.
+=======
+Variables, declared with `var`, are either function-scoped or global-scoped. They are visible through blocks.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Par exemple:
 
@@ -60,11 +64,17 @@ Même principe pour les boucles: `var` ne peut pas être locale pour les blocs n
 
 ```js
 for (var i = 0; i < 10; i++) {
+  var one = 1;
   // ...
 }
 
 *!*
+<<<<<<< HEAD
 alert(i); // 10, "i" est visible après la boucle, c'est une variable globale
+=======
+alert(i);   // 10, "i" is visible after loop, it's a global variable
+alert(one); // 1, "one" is visible after loop, it's a global variable
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 */!*
 ```
 
@@ -83,7 +93,11 @@ sayHi();
 alert(phrase); // Erreur : phrase n'est pas définie (vérifiez la console développeur)
 ```
 
+<<<<<<< HEAD
 Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
+=======
+As we can see, `var` pierces through `if`, `for` or other code blocks. That's because a long time ago in JavaScript, blocks had no Lexical Environments, and `var` is a remnant of that.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ## "var" tolère les redéclarations
 
@@ -203,11 +217,19 @@ sayHi();
 
 Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où. Mais les variables sont indéfinies jusqu'aux affectations.
 
+<<<<<<< HEAD
 Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
+=======
+In both examples above, `alert` runs without an error, because the variable `phrase` exists. But its value is not yet assigned, so it shows `undefined`.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
-### IIFE
+## IIFE
 
+<<<<<<< HEAD
 Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter. Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
+=======
+In the past, as there was only `var`, and it has no block-level visibility, programmers invented a way to emulate it. What they did was called "immediately-invoked function expressions" (abbreviated as IIFE).
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Ce n'est pas quelque chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts.
 
@@ -216,13 +238,14 @@ Un IIFE ressemble à ceci :
 ```js run
 (function() {
 
-  let message = "Hello";
+  var message = "Hello";
 
   alert(message); // Hello
 
 })();
 ```
 
+<<<<<<< HEAD
 Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
 
 La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"fonction"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
@@ -230,8 +253,17 @@ La fonction expression est entourée de parenthèses `(fonction {...})`, car lor
 ```js run
 // Essayons de déclarer et d'appeler immédiatement une fonction
 function() { // <-- Erreur : Les instructions de fonction nécessitent un nom de fonction
+=======
+Here, a Function Expression is created and immediately called. So the code executes right away and has its own private variables.
 
-  let message = "Hello";
+The Function Expression is wrapped with parenthesis `(function {...})`, because when JavaScript engine encounters `"function"` in the main code, it understands it as the start of a Function Declaration. But a Function Declaration must have a name, so this kind of code will give an error:
+
+```js run
+// Tries to declare and immediately call a function
+function() { // <-- Error: Function statements require a function name
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+
+  var message = "Hello";
 
   alert(message); // Hello
 
@@ -277,8 +309,13 @@ Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécu
 
 Il y a deux différences majeures entre `var` et `let/const`:
 
+<<<<<<< HEAD
 1. Les variables `var` n'ont pas de portée limitée aux blocs. Elles sont, au minimum, visibles au niveau de la fonction.
 2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
+=======
+1. `var` variables have no block scope; their visibility is scoped to current function, or global, if declared outside function.
+2. `var` declarations are processed at function start (script start for globals).
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Il y a une autre différence mineure associée à l'objet global, mais nous traiterons ce point dans le prochain chapitre.
 

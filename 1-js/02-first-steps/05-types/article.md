@@ -82,9 +82,17 @@ const bigInt = 1234567890123456789012345678901234567890n;
 
 Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>. Lisez-le lorsque vous avez besoin d'aussi gros chiffres.
 
+<<<<<<< HEAD
 ```smart header="Problèmes de compatibilité"
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge, mais pas dans Safari/IE.
+=======
+
+```smart header="Compatibility issues"
+Right now, `BigInt` is supported in Firefox/Chrome/Edge/Safari, but not in IE.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 ```
+
+You can check [*MDN* BigInt compatibility table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility) to know which versions of a browser are supported.
 
 ## String
 
@@ -128,7 +136,11 @@ Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <i
 ```smart header="Il n'y a pas de type *character*."
 Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
+<<<<<<< HEAD
 En JavaScript, il n'y a pas un tel type. Il n’ya qu’un seul type : `string`. Une chaîne de caractères ne peut comporter qu'un seul caractère ou plusieurs. 
+=======
+In JavaScript, there is no such type. There's only one type: `string`. A string may consist of zero characters (be empty), one character or many of them.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 ```
 
 ## Boolean (type logique)
@@ -257,6 +269,7 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 
 Il existe 8 types de données de base en JavaScript.
 
+<<<<<<< HEAD
 - `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à ±2<sup>53</sup>.
 - `bigint` pour des nombres entiers de longueur arbitraire.
 - `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir un ou plusieurs caractères, il n’existe pas de type à caractère unique distinct.
@@ -265,6 +278,16 @@ Il existe 8 types de données de base en JavaScript.
 - `undefined` pour les valeurs non attribuées - un type autonome avec une valeur unique `undefined`.
 - `object` pour des structures de données plus complexes.
 - `symbol` pour les identifiants uniques.
+=======
+- `number` for numbers of any kind: integer or floating-point, integers are limited by <code>±(2<sup>53</sup>-1)</code>.
+- `bigint` is for integer numbers of arbitrary length.
+- `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+- `boolean` for `true`/`false`.
+- `null` for unknown values -- a standalone type that has a single value `null`.
+- `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+- `object` for more complex data structures.
+- `symbol` for unique identifiers.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable.
 

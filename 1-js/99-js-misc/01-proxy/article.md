@@ -55,6 +55,7 @@ Pour chaque méthode interne, il y a un piège dans ce tableau: le nom de la mé
 
 | Méthode interne | Méthode d'handler | Se déclenche lorsque... |
 |-----------------|----------------|-------------|
+<<<<<<< HEAD
 | `[[Get]]` | `get` | lit une propriété |
 | `[[Set]]` | `set` | écrit une propriété |
 | `[[HasProperty]]` | `has` | utilise l'opérateur `in` |
@@ -68,6 +69,21 @@ Pour chaque méthode interne, il y a un piège dans ce tableau: le nom de la mé
 | `[[DefineOwnProperty]]` | `defineProperty` | [Object.defineProperty](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperty), [Object.defineProperties](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperties) |
 | `[[GetOwnProperty]]` | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries` |
 | `[[OwnPropertyKeys]]` | `ownKeys` | [Object.getOwnPropertyNames](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertySymbols), `for..in`, `Object/keys/values/entries` |
+=======
+| `[[Get]]` | `get` | reading a property |
+| `[[Set]]` | `set` | writing to a property |
+| `[[HasProperty]]` | `has` | `in` operator |
+| `[[Delete]]` | `deleteProperty` | `delete` operator |
+| `[[Call]]` | `apply` | function call |
+| `[[Construct]]` | `construct` | `new` operator |
+| `[[GetPrototypeOf]]` | `getPrototypeOf` | [Object.getPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) |
+| `[[SetPrototypeOf]]` | `setPrototypeOf` | [Object.setPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/setPrototypeOf) |
+| `[[IsExtensible]]` | `isExtensible` | [Object.isExtensible](mdn:/JavaScript/Reference/Global_Objects/Object/isExtensible) |
+| `[[PreventExtensions]]` | `preventExtensions` | [Object.preventExtensions](mdn:/JavaScript/Reference/Global_Objects/Object/preventExtensions) |
+| `[[DefineOwnProperty]]` | `defineProperty` | [Object.defineProperty](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperty), [Object.defineProperties](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperties) |
+| `[[GetOwnProperty]]` | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries` |
+| `[[OwnPropertyKeys]]` | `ownKeys` | [Object.getOwnPropertyNames](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols), `for..in`, `Object/keys/values/entries` |
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ```warn header="Invariants"
 JavaScript applique certains invariants -- conditions qui doivent être remplies par des méthodes et des pièges internes.
@@ -993,8 +1009,13 @@ Nous utilisons ici `WeakMap` au lieu de `Map` car cela ne bloquera pas le "garba
 
 ## Références
 
+<<<<<<< HEAD
 - spécification: [Proxy](https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots).
 - MDN: [Proxy](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Proxy).
+=======
+- Specification: [Proxy](https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots).
+- MDN: [Proxy](mdn:/JavaScript/Reference/Global_Objects/Proxy).
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ## Sommaire
 
@@ -1012,17 +1033,29 @@ let proxy = new Proxy(target, {
 
 ... Ensuite, nous devrions utiliser le `proxy` partout au lieu de `target`. Un proxy n'a pas ses propres propriétés ou méthodes. Il intercepte une opération si l'interruption est fournie, sinon la transmet à `target`.
 
+<<<<<<< HEAD
 Nous pouvons piéger:
 - Lecture (`get`), écriture (`set`), suppression (`deleteProperty`) d'une propriété (même inexistante).
 - Appeler une fonction (piège `apply`).
 - L'opérateur `new` (piège `construct`).
 - De nombreuses autres opérations (la liste complète se trouve au début de l'article et dans la [documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Proxy)).
+=======
+We can trap:
+- Reading (`get`), writing (`set`), deleting (`deleteProperty`) a property (even a non-existing one).
+- Calling a function (`apply` trap).
+- The `new` operator (`construct` trap).
+- Many other operations (the full list is at the beginning of the article and in the [docs](mdn:/JavaScript/Reference/Global_Objects/Proxy)).
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Cela nous permet de créer des propriétés et des méthodes "virtuelles", d'implémenter des valeurs par défaut, des objets observables, des décorateurs de fonctions et bien plus encore.
 
 Nous pouvons également envelopper un objet plusieurs fois dans différents proxys, en le décorant avec divers aspects de la fonctionnalité.
 
+<<<<<<< HEAD
 L'API de [Reflect](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Reflect) est conçu pour compléter [Proxy](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Proxy). Pour tout piège `proxy`, il existe un appel `Reflect` avec les mêmes arguments. Nous devons les utiliser pour transférer des appels vers des objets cibles
+=======
+The [Reflect](mdn:/JavaScript/Reference/Global_Objects/Reflect) API is designed to complement [Proxy](mdn:/JavaScript/Reference/Global_Objects/Proxy). For any `Proxy` trap, there's a `Reflect` call with same arguments. We should use those to forward calls to target objects.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Les proxy ont certaines limites:
 

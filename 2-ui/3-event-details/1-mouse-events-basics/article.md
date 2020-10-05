@@ -56,6 +56,7 @@ D'un autre côté, les gestionnaires `mousedown` et `mouseup` peuvent avoir beso
 
 Les valeurs possibles de `event.button` sont :
 
+<<<<<<< HEAD
 | État du bouton              | `event.button` |
 |-----------------------------|----------------|
 | Bouton gauche (principal)   | 0              |
@@ -63,10 +64,23 @@ Les valeurs possibles de `event.button` sont :
 | Bouton droit (secondaire)   | 2              |
 | X1 bouton (arrière)         | 3              |
 | X2 bouton (avant)          | 4              |
+=======
+| Button state | `event.button` |
+|--------------|----------------|
+| Left button (primary) | 0 |
+| Middle button (auxiliary) | 1 |
+| Right button (secondary) | 2 |
+| X1 button (back) | 3 |
+| X2 button (forward) | 4 |
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 La plupart des souris n'ont que les boutons gauche et droit, donc les valeurs possibles sont `0` ou `2`. Les appareils tactiles génèrent également des événements similaires lorsque l'on appuie dessus.
 
+<<<<<<< HEAD
 Il existe également la propriété `event.buttons` qui a tous les boutons actuellement pressés sous forme d'entier, un bit par bouton. En pratique cette propriété est très rarement utilisée, vous pouvez trouver des détails sur [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons) si jamais vous en avez besoin.
+=======
+Also there's `event.buttons` property that has all currently pressed buttons as an integer, one bit per button. In practice this property is very rarely used, you can find details at [MDN](mdn:/api/MouseEvent/buttons) if you ever need it.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ```warn header="Le `event.which` obsolète"
 L'ancien code peut utiliser la propriété `event.which` qui est une ancienne manière non standard d'obtenir un bouton, avec des valeurs possibles :
@@ -156,6 +170,10 @@ Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir
 
 Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
 
+<<<<<<< HEAD
+=======
+For instance, double-clicking on the text below selects it in addition to our handler:
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ```html autorun height=50
 <span ondblclick="alert('dblclick')">Double-click me</span>

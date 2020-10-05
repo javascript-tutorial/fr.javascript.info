@@ -61,6 +61,7 @@ function populate() {
     // la fin du document
     let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
 
+<<<<<<< HEAD
 
     // si l'utilisateur a suffisamment défilé (<100px de la fin)
     if (windowRelativeBottom < document.documentElement.clientHeight + 100) {
@@ -69,6 +70,13 @@ function populate() {
     document.body.insertAdjacentHTML("beforeend", `<p>Date: ${new Date()}</p>`);
     }
 
+=======
+    // if the user hasn't scrolled far enough (>100px to the end)
+    if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
+    
+    // let's add more data
+    document.body.insertAdjacentHTML("beforeend", `<p>Date: ${new Date()}</p>`);
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
   }
 }
 ```
