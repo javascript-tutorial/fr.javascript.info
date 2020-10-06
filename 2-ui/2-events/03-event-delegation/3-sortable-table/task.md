@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Sortable table
+# Table triable
 
-Make the table sortable: clicks on `<th>` elements should sort it by corresponding column.
+Rendre le tableau triable: les clics sur les éléments `<th>` doivent le trier par colonne correspondante.
 
-Each `<th>` has the type in the attribute, like this:
+Chaque `<th>` a le type dans l'attribut, comme ceci:
 
 ```html
 <table id="grid">
@@ -32,12 +32,12 @@ Each `<th>` has the type in the attribute, like this:
 </table>
 ```
 
-In the example above the first column has numbers, and the second one -- strings. The sorting function should handle sort according to the type.
+Dans l'exemple ci-dessus, la première colonne contient des nombres et la seconde -- des chaînes. La fonction de tri doit gérer le tri en fonction du type.
 
-Only `"string"` and `"number"` types should be supported.
+Seuls les types `"string"` et `"number"` doivent être pris en charge.
 
-The working example:
+L'exemple de travail:
 
 [iframe border=1 src="solution" height=190]
 
-P.S. The table can be big, with any number of rows and columns.
+P.S. La table peut être grande, avec n'importe quel nombre de lignes et de colonnes.

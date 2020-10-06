@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Tree menu
+# Menu arborescent
 
-Create a tree that shows/hides node children on click:
+Créez une arborescence qui affiche / masque les enfants des nœuds au clic:
 
 [iframe border=1 src="solution"]
 
-Requirements:
+Conditions:
 
-- Only one event handler (use delegation)
-- A click outside the node title (on an empty space) should not do anything.
+- Un seul gestionnaire d'événements (utiliser la délégation d'événement)
+- Un clic en dehors du titre du nœud (sur un espace vide) ne devrait rien faire.
