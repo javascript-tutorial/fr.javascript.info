@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Hide messages with delegation
+# Masquer les messages avec délégation d'événement
 
-There's a list of messages with removal buttons `[x]`. Make the buttons work.
+Il y a une liste de messages avec des boutons de suppression "[x]". Faites fonctionner les boutons.
 
-Like this:
+Comme ceci:
 
 [iframe src="solution" height=420]
 
-P.S. Should be only one event listener on the container, use event delegation.
+P.S. Il devrait y avoir qu'un seul écouteur d'événement sur le conteneur, utiliser la délégation d'événement.

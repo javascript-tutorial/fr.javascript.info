@@ -1,30 +1,30 @@
 # TextDecoder and TextEncoder
 
-What if the binary data is actually a string? For instance, we received a file with textual data.
+Que faire si les données binaires sont en fait une chaîne de charactères ? Par exemple, nous avons reçu un fichier contenant des données textuelles.
 
-The build-in [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) object allows to read the value into an actual JavaScript string, given the buffer and the encoding.
+L'object [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) permet de lire la valeur dans une chaîne de charactères, en donnant le Buffer et l'encodage.
 
-We first need to create it:
+Nous devons d'abord le créer:
 ```js
 let decoder = new TextDecoder([label], [options]);
 ```
 
-- **`label`** -- the encoding, `utf-8` by default, but `big5`, `windows-1251` and many other are also supported.
-- **`options`** -- optional object:
-  - **`fatal`** -- boolean, if `true` then throw an exception for invalid (non-decodable) characters, otherwise (default) replace them with character `\uFFFD`.
-  - **`ignoreBOM`** -- boolean, if `true` then ignore BOM (an optional byte-order unicode mark), rarely needed.
+- **`label`** -- l'encodage, `utf-8` par défaut, mais `big5`, `windows-1251` et bien d'autres sont également pris en charge.
+- **`options`** -- objet optionnel:
+  - **`fatal`** -- boolean, si `true` une exception pour les caractères invalides (non décodables) est lancé, sinon (par défaut) remplacez-les par un caractère `\uFFFD`.
+  - **`ignoreBOM`** -- boolean, si `true` ignore la BOM (une marque unicode facultative d'ordre des octets), rarement nécessaire.
 
-...And then decode:
+...Et puis décoder:
 
 ```js
 let str = decoder.decode([input], [options]);
 ```
 
-- **`input`** -- `BufferSource` to decode.
-- **`options`** -- optional object:
-  - **`stream`** -- true for decoding streams, when `decoder` is called repeatedly with incoming chunks of data. In that case a multi-byte character may occasionally split between chunks. This options tells `TextDecoder` to memorize "unfinished" characters and decode them when the next chunk comes.
+- **`input`** -- `Source du buffer` à décoder.
+- **`options`** -- objet optionnel:
+  - **`stream`** -- vrai pour les flux de décodage, lorsque `decoder` est appelé à plusieurs reprises avec des blocs de données entrants. Dans ce cas, un caractère multi-octets peut parfois être divisé entre des morceaux. Cette option indique à `TextDecoder` de mémoriser les caractères" inachevés "et de les décoder lorsque le morceau suivant arrive.
 
-For instance:
+Par exemple:
 
 ```js run
 let uint8Array = new Uint8Array([72, 101, 108, 108, 111]);
@@ -39,14 +39,14 @@ let uint8Array = new Uint8Array([228, 189, 160, 229, 165, 189]);
 alert( new TextDecoder().decode(uint8Array) ); // 你好
 ```
 
-We can decode a part of the buffer by creating a subarray view for it:
+Nous pouvons décoder une partie du Buffer en créant une vue de sous-tableau pour celui-ci:
 
 
 ```js run
 let uint8Array = new Uint8Array([0, 72, 101, 108, 108, 111, 0]);
 
-// the string is in the middle
-// create a new view over it, without copying anything
+// la chaîne de charactères est au milieu
+// créer une nouvelle vue, sans rien copier
 let binaryString = uint8Array.subarray(1, -1);
 
 alert( new TextDecoder().decode(binaryString) ); // Hello
@@ -54,19 +54,19 @@ alert( new TextDecoder().decode(binaryString) ); // Hello
 
 ## TextEncoder
 
-[TextEncoder](https://encoding.spec.whatwg.org/#interface-textencoder) does the reverse thing -- converts a string into bytes.
+[TextEncoder](https://encoding.spec.whatwg.org/#interface-textencoder) fait la chose inverse -- convertit une chaîne de charactères en bytes.
 
-The syntax is:
+La syntaxe est:
 
 ```js
 let encoder = new TextEncoder();
 ```
 
-The only encoding it supports is "utf-8".
+Le seul encodage qu'il prend en charge est l'"utf-8".
 
-It has two methods:
-- **`encode(str)`** -- returns `Uint8Array` from a string.
-- **`encodeInto(str, destination)`** -- encodes `str` into `destination` that must be `Uint8Array`.
+Il a deux méthodes:
+- **`encode(str)`** -- prend une chaîne de charactères et renvoie un `Uint8Array`.
+- **`encodeInto(str, destination)`** -- encode `str` dans `destination` (qui doit être un `Uint8Array`).
 
 ```js run
 let encoder = new TextEncoder();
