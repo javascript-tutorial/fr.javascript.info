@@ -13,7 +13,7 @@ Une fenêtre modale peut être implémentée en utilisant un `<div id="cover-div
 }
 ```
 
-Parce que le `<div>` couvre tout, il obtient tous les clics, pas la page en dessous.
+Parce que la `<div>` couvre tout, il obtient tous les clics, pas la page en dessous.
 
 Nous pouvons également empêcher le défilement de la page en définissant `body.style.overflowY ='hidden'`.
 
