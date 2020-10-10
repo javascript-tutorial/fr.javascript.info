@@ -226,11 +226,16 @@ new Promise((resolve, reject) => {
 *!*
   // se lance quand la promesse est acquittée, peu importe si celle-ci est tenue ou rompue
   .finally(() => stop loading indicator)
+  // so the loading indicator is always stopped before we process the result/error
 */!*
   .then(result => show result, err => show error)
 ```
 
+<<<<<<< HEAD
 Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya quelques différences importantes :
+=======
+That said, `finally(f)` isn't exactly an alias of `then(f,f)` though. There are few subtle differences:
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 1. Un gestionnaire `finally` ne prends pas d'arguments. Dans un `finally` nous ne savons pas si la promesse est tenue ou rompue. Cela ne pose pas de soucis, notre tâche est habituellement de réaliser les procédures finales "générales".
 2. Un gestionnaire `finally` passe le résultat ou l'erreur au gestionnaire suivant.
@@ -253,6 +258,7 @@ Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya que
       .catch(err => alert(err));  // <-- .catch gère l'objet error
     ```
 
+<<<<<<< HEAD
     Cela est vraiment pratique, en effet `finally` n'est pas censer gérer le résultat d'une promesse. Donc il passe à travers.
 
     Nous parlerons plus en détails de l'enchaînements de promesses et le passage de résultats à travers les gestionnaires dans le prochain chapitre.
@@ -261,6 +267,15 @@ Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya que
 
 ````smart header="Les promesses acquittées lancent les gestionnaries immédiatement"
 Si une promesse est en attente, les gestionnaires `.then/catch/finally` l'attendent. Par contre, si une promesse est déja acquittée, ils s'exécuteront immédiatement.
+=======
+That's very convenient, because `finally` is not meant to process a promise result. So it passes it through.
+
+We'll talk more about promise chaining and result-passing between handlers in the next chapter.
+
+
+````smart header="We can attach handlers to settled promises"
+If a promise is pending, `.then/catch/finally` handlers wait for it. Otherwise, if a promise has already settled, they just run:
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 ```js run
 // la prommesse est acquittée immédiatement à la création
@@ -269,9 +284,9 @@ let promise = new Promise(resolve => resolve("done!"));
 promise.then(alert); // done! (s'affiche immédiatement)
 ```
 
-Note that this is different, and more powerful than the real life "subscription list" scenario. If the singer has already released their song and then a person signs up on the subscription list, they probably won't receive that song. Subscriptions in real life must be done prior to the event.
+Note that this makes promises more powerful than the real life "subscription list" scenario. If the singer has already released their song and then a person signs up on the subscription list, they probably won't receive that song. Subscriptions in real life must be done prior to the event.
 
-Promises are more flexible. We can add handlers any time: if the result is already there, our handlers get it immediately.
+Promises are more flexible. We can add handlers any time: if the result is already there, they just execute.
 ````
 
 Ensuite, voyons des exemples plus pratiques pour lesquels les promesses nous aident à écrire du code asynchrone.

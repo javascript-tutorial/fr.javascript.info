@@ -2,9 +2,11 @@
 
 Le cycle de vie d'une page HTML comporte trois événements importants:
 
+
 - `DOMContentLoaded` -- le navigateur a complètement chargé le HTML et l'arborescence DOM est construite, mais les ressources externes telles que les images `<img>` et les feuilles de style peuvent ne pas être encore chargées.
-- `load` -- non seulement le HTML est chargé, mais également toutes les ressources externes: images, styles, etc.
+- `load` -- non seulement le HTML est chargé, mais également toutes les ressources externes : images, styles, etc.
 - `beforeunload/unload` -- l'utilisateur quitte la page.
+
 
 Chaque événement peut être utile:
 
@@ -33,7 +35,9 @@ Par exemple:
   function ready() {
     alert('DOM is ready');
 
+
     // l'image n'est pas encore chargée (sauf si elle a été mise en cache), donc la taille est 0x0
+
     alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
   }
 
@@ -205,7 +209,9 @@ Comme ceci:
 function work() { /*...*/ }
 
 if (document.readyState == 'loading') {
-  // chargement encore, attendez l'événement
+
+  // en cours de chargement, attendez l'événement
+
   document.addEventListener('DOMContentLoaded', work);
 } else {
   // DOM est prêt!

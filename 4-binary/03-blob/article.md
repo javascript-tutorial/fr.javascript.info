@@ -97,7 +97,9 @@ Voilà à quoi ressemble la valeur de `link.href`:
 blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 ```
 
+
 Le navigateur stocke un mappage URL -> `Blob` en interne pour chaque URL générée par `URL.createObjectURL`. Donc, ces URL sont courtes, mais permettent d'accéder au `Blob`.
+
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
 
@@ -119,7 +121,9 @@ Une alternative à `URL.createObjectURL` est de convertir un `Blob` en une chaî
 
 Cet encodage représente des données binaires sous la forme d'une chaîne de caractères "lisibles" ultra-sûrs avec des codes ASCII de 0 à 64. Et ce qui est plus important - nous pouvons utiliser cet encodage dans "data-urls".
 
-Une [URL de données](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) a la forme `data:[<mediatype>][;base64],<data>`. Nous pouvons utiliser de telles URL partout, au même titre que les URL "ordinaires".
+
+Une [URL de données](mdn:/http/Data_URIs) a la forme `data:[<mediatype>][;base64],<data>`. Nous pouvons utiliser de telles URL partout, au même titre que les URL "ordinaires".
+
 
 Par exemple, voici un smiley:
 
@@ -166,8 +170,10 @@ Nous pouvons créer un `Blob` d'une image, une partie d'image, ou même faire un
 
 Les opérations sur les images se font via l'élément `<canvas>`:
 
-1. Dessinez une image (ou sa partie) sur le canevas en utilisant [canvas.drawImage](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage).
-2. Appeler la méthode canvas [.toBlob(callback, format, quality)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob) qui crée un `Blob` et exécute `callback` avec lui une fois terminé.
+
+1. Dessinez une image (ou sa partie) sur le canevas en utilisant [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
+2. Appeler la méthode canvas [.toBlob(callback, format, quality)](mdn:/api/HTMLCanvasElement/toBlob) qui crée un `Blob` et exécute `callback` avec lui une fois terminé.
+
 
 Dans l'exemple ci-dessous, une image est simplement copiée, mais nous pourrions la couper ou la transformer sur un canevas avant de créer un blob:
 

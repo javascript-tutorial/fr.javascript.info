@@ -332,7 +332,11 @@ Il existe 3 méthodes pour les en-têtes HTTP :
 
 ## POST, FormData
 
+<<<<<<< HEAD
 Pour faire une requête POST, nous pouvons utiliser l'objet intégrée [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+=======
+To make a POST request, we can use the built-in [FormData](mdn:api/FormData) object.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 La syntaxe :
 

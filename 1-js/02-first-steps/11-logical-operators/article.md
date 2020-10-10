@@ -84,7 +84,11 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
+<<<<<<< HEAD
 En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
+=======
+In other words, a chain of OR `||` returns the first truthy value or the last one if no truthy value is found.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Par exemple :
 
@@ -101,9 +105,15 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
 1. **Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
 
+<<<<<<< HEAD
     Par exemple, nous avons les variables `firstName`, `lastName` et `nickName`, toutes optionnelles.
 
     Utilisons OR `||` pour choisir celui qui contient les données et l'afficher (ou `anonyme` si rien n'est défini) :
+=======
+    For instance, we have `firstName`, `lastName` and `nickName` variables, all optional (i.e. can be undefined or have falsy values).
+
+    Let's use OR `||` to choose the one that has the data and show it (or `"Anonymous"` if nothing set):
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
     ```js run
     let firstName = "";
@@ -115,7 +125,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     */!*
     ```
 
-    If all variables were falsy, `Anonymous` would show up.
+    If all variables were falsy, `"Anonymous"` would show up.
 
 2. **Évaluation des courts-circuits.**
 
@@ -223,8 +233,13 @@ La priorité de l'opérateur AND `&&` est supérieure à OR `||`.
 Donc, le code `a && b || c && d` est essentiellement le même que si `&&` était entre parenthèses: `(a && b) || (c && d)`.
 ````
 
+<<<<<<< HEAD
 ````warn header="Ne remplacez pas `if` par || ou &&"
 Parfois, les gens utilisent l'opérateur AND `&&` comme "plus court pour écrire `if`".
+=======
+````warn header="Don't replace `if` with `||` or `&&`"
+Sometimes, people use the AND `&&` operator as a "shorter way to write `if`".
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 
 Par exemple :
 
@@ -244,7 +259,11 @@ let x = 1;
 if (x > 0) alert( 'Greater than zero!' );
 ```
 
+<<<<<<< HEAD
 La variante avec `&&` semble être plus courte. Mais `if` est plus évident et a tendance à être un peu plus lisible. Il est donc recommandé d'utiliser chaque construction pour sa finalité. Utilisez `if` si nous voulons `if`. Et utilisez `&&` si nous voulons AND.
+=======
+Although, the variant with `&&` appears shorter, `if` is more obvious and tends to be a little bit more readable. So we recommend using every construct for its purpose: use `if` if we want `if` and use `&&` if we want AND.
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
 ````
 
 
