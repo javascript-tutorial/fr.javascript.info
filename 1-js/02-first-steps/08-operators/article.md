@@ -180,11 +180,7 @@ Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisf
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
-<<<<<<< HEAD
-Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Pr%C3%A9c%C3%A9dence_des_op%C3%A9rateurs#Tableau) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
-=======
-Here's an extract from the [precedence table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (you don't need to remember this, but note that unary operators are higher than corresponding binary ones):
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
 
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
@@ -432,11 +428,8 @@ La liste des opérateurs :
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
-<<<<<<< HEAD
-Ces opérateurs sont très rarement utilisés. Pour les comprendre, nous devrions nous intéresser à la représentation numérique de bas niveau, et il ne serait pas optimal de le faire dès maintenant. Surtout parce que nous n’en aurons pas besoin de sitôt. Si vous êtes curieux, vous pouvez lire l'article [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires) sur MDN. Il serait plus pratique de le faire quand un besoin réel se fait sentir.
-=======
-These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won't need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Bitwise) chapter on MDN when a need arises.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+Ces opérateurs sont très rarement utilisés, lorsque nous devons jouer avec des nombres au niveau le plus bas (bit à bit). Nous n'aurons pas besoin de ces opérateurs de si tôt, car le développement Web les utilise peu, mais dans certains domaines particuliers, comme la cryptographie, ils sont utiles. Vous pouvez lire le chapitre [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs#Op%C3%A9rateurs_binaires) sur MDN en cas de besoin.
+
 
 ## Virgule
 
