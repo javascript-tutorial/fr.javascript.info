@@ -111,7 +111,11 @@ alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 
 Comme vous pouvez le constater, nous devons précéder le simple quote intérieure du backslash `\'`, sinon, cela indiquerait la fin de la chaîne de caractères.
 
+<<<<<<< HEAD
 Bien sûr, il ne faut échapper que les guillemets identiques à ceux qui les entourent. Donc, comme solution plus élégante, nous pourrions passer aux guillemets doubles ou aux backticks :
+=======
+Of course, only the quotes that are the same as the enclosing ones need to be escaped. So, as a more elegant solution, we could switch to double quotes or backticks instead:
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!
@@ -316,7 +320,11 @@ if (str.indexOf("Widget") != -1) {
 #### L'astuce du NON binaire
 L’un des vieux trucs utilisés ici est l'opérateur [NON binaire](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires#(NON_binaire)) `~`. Il convertit le nombre en un entier de 32 bits (supprime la partie décimale, s'elle existe), puis inverse tous les bits de sa représentation binaire.
 
+<<<<<<< HEAD
 Pour les entiers 32 bits, l'appel `~n` signifie exactement la même chose que `-(n+1)` (en raison du format IEEE-754).
+=======
+One of the old tricks used here is the [bitwise NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT) `~` operator. It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation.
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 En pratique, cela signifie une chose simple: pour les entiers 32 bits, `~n` est égal à `-(n + 1)`.
 
@@ -349,7 +357,11 @@ Il n'est généralement pas recommandé d'utiliser les fonctionnalités du langa
 
 Rappelez-vous juste que : `if (~str.indexOf(...))` se lit "si trouvé".
 
+<<<<<<< HEAD
 Pour être précis cependant, les grands nombres sont tronqués à 32 bits par l'opérateur `~`. Il existe donc d'autres gros nombres qui donnent `0`, le plus petit correspondant à `~4294967295 = 0`. Cela rend cette vérification est correcte que si une chaîne n'est pas si longue.
+=======
+To be precise though, as big numbers are truncated to 32 bits by `~` operator, there exist other numbers that give `0`, the smallest is `~4294967295=0`. That makes such check correct only if a string is not that long.
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 Pour le moment, nous ne voyons cette astuce que dans l'ancien code, car JavaScript fournit une méthode `.includes` (voir ci-dessous).
 
