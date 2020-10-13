@@ -44,7 +44,9 @@ La syntaxe est la suivante:
 arr.splice(start[, deleteCount, elem1, ..., elemN])
 ```
 
+
 Il a modifié `arr` à partir de l'index `start` : supprime les éléments `deleteCount` puis insère `elem1, ..., elemN` à leur place. Renvoie le tableau des éléments supprimés.
+
 
 Cette méthode est facile à comprendre avec des exemples.
 
@@ -421,13 +423,16 @@ Maintenant, ça fonctionne comme nous l'avons prévu.
 
 Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non ? Il peut contenir des nombres, des chaînes de caractères, des objets ou autre. Nous avons donc un ensemble de *quelques items*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comment comparer ses éléments. La valeur par défaut est un ordre de chaîne de caractères.
 
+
 La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme générique de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement interne (c'est un [tri rapide optimisé](https://fr.wikipedia.org/wiki/Tri_rapide) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
+
 
 À propos, si nous voulons savoir quels éléments sont comparés, rien ne nous empêche de les alerter:
 
 ```js run
 [1, -2, 15, 2, 0, 8].sort(function(a, b) {
   alert( a + " <> " + b );
+  return a - b;
 });
 ```
 
@@ -705,7 +710,9 @@ Si, dans l'exemple ci-dessus, nous utilisions `users.filter(army.canJoin)`, alor
 
 Un appel à `users.filter(army.canJoin, army)` peut être remplacé par `users.filter(user => army.canJoin(user))`, qui fait la même chose. Le premier est utilisé plus souvent, car il est un peu plus facile à comprendre pour la plupart des gens.
 
+
 ## Résumé
+
 
 Un cheat sheet des méthodes de tableau :
 
@@ -714,25 +721,22 @@ Un cheat sheet des méthodes de tableau :
   - `pop()` -- extrait un élément en partant de la fin,
   - `shift()` -- extrait un élément depuis le début,
   - `unshift(...items)` -- ajoute des éléments au début.
-  - `splice(pos, deleteCount, ...items)` -- à l'index `pos`, supprime les éléments` deleteCount` et insére `items`.
-  - `slice(start, end)` -- crée un nouveau tableau, copie les éléments de l'index `start` jusqu'à `end` (non inclus) dans celui-ci.
-  - `concat(...items)` -- retourne un nouveau tableau : copie tous les membres de celui en cours et y ajoute les `items`. Si l'un des `items` est un tableau, alors ses éléments sont pris.
-- Pour rechercher parmi les éléments :
-  - `indexOf/lastIndexOf(item, pos)` -- recherche `item` à partir de la position `pos`, renvoie l'index ou `-1` s'il n'est pas trouvé.
-  - `includes(value)` -- renvoie `true` si le tableau a `value`, sinon `false`.
-  - `find/filter(func)` -- filtre les éléments à travers la fonction, retourne les premières/toutes les valeurs qui font renvoyer `true`.
-  - `findIndex` est comme `find`, mais renvoie l'index au lieu d'une valeur.
-
+  - `splice(pos, deleteCount, ...items)` -- à l'index `pos` supprime les éléments `deleteCount` et insert `items`.
+  - `slice(start, end)` -- crée un nouveau tableau, y copie les éléments de `start` jusqu'à `end` (non inclus).
+  - `concat(...items)` -- retourne un nouveau tableau: copie tous les membres du groupe actuel et lui ajoute des éléments. Si un des `items` est un tableau, ses éléments sont pris.
+- Pour rechercher parmi des éléments:
+  - `indexOf/lastIndexOf(item, pos)` -- cherche l'`item` à partir de la position `pos`, retourne l'index `-1` s'il n'est pas trouvé.
+  - `includes(value)` -- retourne `true` si le tableau a une `value`, sinon `false`.
+  - `find/filter(func)` -- filtrer les éléments à travers la fonction, retourne en premier / toutes les valeurs qui retournent `true`.
+  - `findIndex` est similaire à `find`, mais renvoie l'index au lieu d'une valeur.
 - Pour parcourir les éléments :
   - `forEach(func)` -- appelle `func` pour chaque élément, ne retourne rien.
-
 - Pour transformer le tableau:
   - `map(func)` -- crée un nouveau tableau à partir des résultats de `func` pour chaque élément.
   - `sort(func)` -- trie le tableau sur place, puis le renvoie.
   - `reverse()` -- inverse le tableau sur place, puis le renvoie.
   - `split/join` -- convertit une chaîne en tableau et retour.
   - `reduce(func, initial)` -- calcule une valeur unique sur le tableau en appelant `func` pour chaque élément et en transmettant un résultat intermédiaire entre les appels.
-
 - Aditionellement:
   - `Array.isArray(arr)` vérifie que l'`arr` est bien un tableau.
 
@@ -740,11 +744,12 @@ Veuillez noter que les méthodes `sort`, `reverse` et `splice` modifient le tabl
 
 Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation. Mais il y en a encore d'autres:
 
+
 - [arr.some(fn)](mdn:js/Array/some)/[arr.every(fn)](mdn:js/Array/every) vérifie le tableau.
 
-  La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si tout / tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
+  La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si n'importe quel/tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
 
-    Ces méthodes se comportent en quelque sorte comme les opérateurs `||` et `&&` : si `fn` renvoie une valeur vraie, `arr.some()` retourne immédiatement `true` et arrête d'itérer sur les autres éléments ; si `fn` renvoie une valeur fausse, `arr.every()` retourne immédiatement `false` et arrête également d'itérer sur les autres éléments.
+Ces méthodes se comportent en quelque sorte comme les opérateurs `||` et `&&` : si `fn` renvoie une valeur vraie, `arr.some()` retourne immédiatement `true` et arrête d'itérer sur les autres éléments ; si `fn` renvoie une valeur fausse, `arr.every()` retourne immédiatement `false` et arrête également d'itérer sur les autres éléments.
 
   On peut utiliser `every` pour compaere les tableaux :
   ```js run

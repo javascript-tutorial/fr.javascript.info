@@ -32,11 +32,19 @@ user.sayHi = function() {
 user.sayHi(); // Hello!
 ```
 
+<<<<<<< HEAD
 Ici, nous venons d'utiliser une expression de fonction pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
 
 Ensuite, nous pouvons l'appeler. L'utilisateur peut maintenant parler!
 
 Une fonction qui est la propriété d'un objet s'appelle sa *méthode*.
+=======
+Here we've just used a Function Expression to create a function and assign it to the property `user.sayHi` of the object.
+
+Then we can call it as `user.sayHi()`. The user can now speak!
+
+A function that is a property of an object is called its *method*.
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 Nous avons donc ici une méthode `sayHi` de l’objet `user`.
 
@@ -160,14 +168,24 @@ let user = {
 let admin = user;
 user = null; // écraser pour rendre les choses évidentes
 
+<<<<<<< HEAD
 admin.sayHi(); // Oups ! Dans sayHi(), l'ancien nom est utilisé ! Erreur !
+=======
+*!*
+admin.sayHi(); // TypeError: Cannot read property 'name' of null
+*/!*
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 ```
 
 Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fonctionnerait.
 
 ## "this" n'est pas lié
 
+<<<<<<< HEAD
 En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
+=======
+In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function, even if it's not a method of an object.
+>>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 Il n’y a pas d’erreur de syntaxe dans le code suivant :
 

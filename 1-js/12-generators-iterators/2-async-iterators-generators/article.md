@@ -153,7 +153,9 @@ Rappelons maintenant les générateurs, car ils permettent de raccourcir le code
 
 Par soucis de simplicité, nous omettons certaines choses importantes, ce sont des "fonctions qui génèrent (produisent) des valeurs". Elles sont expliquées en détails dans le chapitre [](info:generators).
 
-Les générateurs sont étiquetés avec `function*` (notez le début) et utilisent `yield` pour générer une valeur, puis nous pouvons utiliser `for..of` pour boucler par dessus.
+
+Les générateurs sont étiquetés avec `function*` (notez l'étoile) et utilisent `yield` pour générer une valeur, puis nous pouvons utiliser `for..of` pour boucler par dessus.
+
 
 Cet exemple génère une séquence de valeurs de `start` à `end` :
 
