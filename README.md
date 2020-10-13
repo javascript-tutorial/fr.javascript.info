@@ -1,10 +1,6 @@
 # Le tutoriel JavaScript moderne
 
-<<<<<<< HEAD
-Ce repository héberge la traduction de <https://javascript.info> en français.
-=======
-This repository hosts the English content of the Modern JavaScript Tutorial, published in [https://javascript.info](https://javascript.info).
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+Ce dépôt héberge le contenu français du tutoriel JavaScript moderne, publié à l'adresse [https://javascript.info](https://javascript.info).
 
 Aidez-nous à améliorer la traduction.
 
@@ -108,13 +104,9 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 
 ## Exécuter une version locale
 
-<<<<<<< HEAD
-Vous pouvez exécuter le tutoriel localement pour voir immédiatement les modifications sur site.
-=======
-  - `index.md` stands for a chapter
-  - `article.md` stands for an article
-  - `task.md` stands for a task (solution must be provided in `solution.md` file as well)
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+  - `index.md` représente un chapitre
+  - `article.md` représente un article
+  - `task.md` représente un exercice (la solution doit également être fournie dans le fichier `solution.md`)
 
 Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
 Chacun de ces fichiers commence à partir du `# titre principal`.
