@@ -7,11 +7,7 @@ Le code suivant:
 window.open('https://javascript.info/')
 ```
 
-<<<<<<< HEAD
-...Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
-=======
-...And it will open a new window with given URL. Most modern browsers are configured to open url in new tabs instead of separate windows.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+... Et cela Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
 
 Les pop-up existent depuis longtemps. L'idée initiale était de montrer du contenu supplémentaire sans fermer la fenêtre principale. Désormais, il y a d'autres manières de faire ça : on peut charger du contenu dynamiquement avec [fetch](info:fetch) et l'afficher dans une `<div>` générée dynamiquement. Les pop-up ne sont donc plus des choses utilisées de nos jours. 
 
@@ -19,15 +15,9 @@ Les pop-up sont également délicate sur les appareils mobiles puis que ces dern
 
 Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes :
 
-<<<<<<< HEAD
 1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé. 
 2. Il est très facile d'ouvrir une pop-up.
 3. Une pop-up peut naviguer, changer d'url et envoyer des messages à la fenêtre qui l'a ouverte.
-=======
-1. A popup is a separate window which has its own independent JavaScript environment. So opening a popup from a third-party, non-trusted site is safe.
-2. It's very easy to open a popup.
-3. A popup can navigate (change URL) and send messages to the opener window.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
 
 
 ## Bloquage de pop-up
@@ -103,11 +93,7 @@ Il existe également certains paramètres spécifiques aux navigateurs qui sont 
 
 ## Exemple: une fenêtre minimaliste  
 
-<<<<<<< HEAD
-Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver: 
-=======
-Let's open a window with minimal set of features, just to see which of them browser allows to disable:
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver : 
 
 ```js run
 let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
