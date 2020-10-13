@@ -13,7 +13,7 @@ Nous connaissons déjà des méthodes qui ajoutent et suppriment des éléments 
 
 En voici quelques autres.
 
-### splice ()
+### splice 
 
 Comment supprimer un élément du tableau?
 
@@ -36,30 +36,17 @@ C'est normal, car `delete obj.key` supprime une valeur par la` clé`. C'est tout
 
 Des méthodes spéciales doivent donc être utilisées.
 
-<<<<<<< HEAD
-La méthode [arr.splice(start)](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
-=======
-The [arr.splice](mdn:js/Array/splice) method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+La méthode [arr.splice](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
 
 La syntaxe est la suivante:
 
 ```js
-<<<<<<< HEAD
-arr.splice(index[, nombreDeSuppression, elem1, ..., elemN])
-```
-
-Il commence à partir de la position `index`: supprime les éléments `nombreDeSuppression` puis insère elem1, ..., elemN à leur place. Il renvoie ensuite le tableau des éléments supprimés.
-=======
 arr.splice(start[, deleteCount, elem1, ..., elemN])
 ```
 
-<<<<<<< HEAD
-It modified `arr` starting from the index `start`: removes `deleteCount` elements and then inserts `elem1, ..., elemN` at their place. Returns the array of removed elements.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
-=======
-It modifies `arr` starting from the index `start`: removes `deleteCount` elements and then inserts `elem1, ..., elemN` at their place. Returns the array of removed elements.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+
+Il a modifié `arr` à partir de l'index `start` : supprime les éléments `deleteCount` puis insère `elem1, ..., elemN` à leur place. Renvoie le tableau des éléments supprimés.
+
 
 Cette méthode est facile à comprendre avec des exemples.
 
@@ -112,7 +99,7 @@ arr.splice(2, 0, "complex", "language");
 alert( arr ); // "I", "study", "complex", "language", "JavaScript"
 ```
 
-````smart header="Negative indexes allowed"
+````smart header="Index négatifs autorisés"
 Ici et dans d'autres méthodes de tableau, les index négatifs sont autorisés. Ils spécifient la position à partir de la fin du tableau, comme ici:
 
 ```js run
@@ -141,7 +128,6 @@ Il retourne un nouveau tableau dans lequel il copie tous les éléments index qu
 
 Cela ressemble à une méthode string `str.slice`, mais au lieu de sous-chaînes de caractères, cela crée des sous-tableaux.
 
-Cela ressemble à une méthode de chaînes de caractères `str.slice`, mais au lieu de sous-chaînes de caractères, il crée des sous-tableaux.
 
 Par exemple:
 
@@ -218,7 +204,7 @@ alert( arr.concat(arrayLike) ); // 1,2,something,else
 
 ## Itérer: forEach (pourChaque)
 
-La méthode [arr.forEach] (mdn:js/Array/forEach) permet d’exécuter une fonction pour chaque élément du tableau.
+La méthode [arr.forEach](mdn:js/Array/forEach) permet d’exécuter une fonction pour chaque élément du tableau.
 
 La syntaxe:
 ```js
@@ -437,11 +423,9 @@ Maintenant, ça fonctionne comme nous l'avons prévu.
 
 Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non ? Il peut contenir des nombres, des chaînes de caractères, des objets ou autre. Nous avons donc un ensemble de *quelques items*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comment comparer ses éléments. La valeur par défaut est un ordre de chaîne de caractères.
 
-<<<<<<< HEAD
+
 La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme générique de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement interne (c'est un [tri rapide optimisé](https://fr.wikipedia.org/wiki/Tri_rapide) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
-=======
-The `arr.sort(fn)` method implements a generic sorting algorithm. We don't need to care how it internally works (an optimized [quicksort](https://en.wikipedia.org/wiki/Quicksort) or [Timsort](https://en.wikipedia.org/wiki/Timsort) most of the time). It will walk the array, compare its elements using the provided function and reorder them, all we need is to provide the `fn` which does the comparison.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+
 
 À propos, si nous voulons savoir quels éléments sont comparés, rien ne nous empêche de les alerter:
 
@@ -454,7 +438,7 @@ The `arr.sort(fn)` method implements a generic sorting algorithm. We don't need 
 
 L'algorithme peut comparer un élément à plusieurs autres dans le processus, mais il essaie de faire le moins de comparaisons possible.
 
-````smart header="A comparison function may return any number"
+````smart header="Une fonction de comparaison peut renvoyer n'importe quel nombre"
 En réalité, une fonction de comparaison est requise uniquement pour renvoyer un nombre positif pour dire "plus grand" et un nombre négatif pour dire "plus petit".
 
 Cela permet d'écrire des fonctions plus courtes:
@@ -468,7 +452,7 @@ alert(arr);  // *!*1, 2, 15*/!*
 ```
 ````
 
-````smart header="Arrow functions for the best"
+````smart header="Fonction fléchée pour le meilleur"
 Souvenez-vous des [fonctions fléchées](info:arrow-functions-basics) ? Nous pouvons les utiliser ici pour un tri plus net :
 
 ```js
@@ -478,12 +462,12 @@ arr.sort( (a, b) => a - b );
 Cela fonctionne exactement comme la version longue ci-dessus.
 ````
 
-````smart header="Use `localeCompare` for strings"
-Remember [strings](info:string#correct-comparisons) comparison algorithm? It compares letters by their codes by default.
+````smart header="Utiliser `localeCompare` pour les chaînes de caractères"
+Souvenez-vous de l'algorithme de comparaison [des chaînes de caractères](info:string#correct-comparisons) ? Il compare les lettres par leurs codes par défaut.
 
-For many alphabets, it's better to use `str.localeCompare` method to correctly sort letters, such as `Ö`.
+Pour de nombreux alphabets, il est préférable d'utiliser la méthode `str.localeCompare` pour trier correctement les lettres, comme `Ö`.
 
-For example, let's sort a few countries in German:
+Par exemple, trions quelques pays en allemand :
 
 ```js run
 let countries = ['Österreich', 'Andorra', 'Vietnam'];
@@ -535,7 +519,7 @@ let arr = 'Bilbo, Gandalf, Nazgul, Saruman'.split(', ', 2);
 alert(arr); // Bilbo, Gandalf
 ```
 
-````smart header="Split into letters"
+````smart header="Divisé en lettres"
 L'appel de `split(s)` avec un `s` vide diviserait la chaîne en un tableau de lettres:
 
 ```js run
@@ -726,62 +710,33 @@ Si, dans l'exemple ci-dessus, nous utilisions `users.filter(army.canJoin)`, alor
 
 Un appel à `users.filter(army.canJoin, army)` peut être remplacé par `users.filter(user => army.canJoin(user))`, qui fait la même chose. Le premier est utilisé plus souvent, car il est un peu plus facile à comprendre pour la plupart des gens.
 
-<<<<<<< HEAD
+
 ## Résumé
-=======
-A call to `users.filter(army.canJoin, army)` can be replaced with `users.filter(user => army.canJoin(user))`, that does the same. The latter is used more often, as it's a bit easier to understand for most people.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+
 
 Un cheat sheet des méthodes de tableau :
 
-- Pour ajouter/supprimer des éléments:
+- Pour ajouter / supprimer des éléments :
   - `push(...items)` -- ajoute des éléments à la fin,
-  - `pop()` -- extrait un élément de la fin,,
-  - `shift()` -- extrait un élément du début,
+  - `pop()` -- extrait un élément en partant de la fin,
+  - `shift()` -- extrait un élément depuis le début,
   - `unshift(...items)` -- ajoute des éléments au début.
   - `splice(pos, deleteCount, ...items)` -- à l'index `pos` supprime les éléments `deleteCount` et insert `items`.
   - `slice(start, end)` -- crée un nouveau tableau, y copie les éléments de `start` jusqu'à `end` (non inclus).
   - `concat(...items)` -- retourne un nouveau tableau: copie tous les membres du groupe actuel et lui ajoute des éléments. Si un des `items` est un tableau, ses éléments sont pris.
-
-<<<<<<< HEAD
 - Pour rechercher parmi des éléments:
   - `indexOf/lastIndexOf(item, pos)` -- cherche l'`item` à partir de la position `pos`, retourne l'index `-1` s'il n'est pas trouvé.
   - `includes(value)` -- retourne `true` si le tableau a une `value`, sinon `false`.
   - `find/filter(func)` -- filtrer les éléments à travers la fonction, retourne en premier / toutes les valeurs qui retournent `true`.
   - `findIndex` est similaire à `find`, mais renvoie l'index au lieu d'une valeur.
-=======
-- To add/remove elements:
-  - `push(...items)` -- adds items to the end,
-  - `pop()` -- extracts an item from the end,
-  - `shift()` -- extracts an item from the beginning,
-  - `unshift(...items)` -- adds items to the beginning.
-  - `splice(pos, deleteCount, ...items)` -- at index `pos` deletes `deleteCount` elements and inserts `items`.
-  - `slice(start, end)` -- creates a new array, copies elements from index `start` till `end` (not inclusive) into it.
-  - `concat(...items)` -- returns a new array: copies all members of the current one and adds `items` to it. If any of `items` is an array, then its elements are taken.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
-
 - Pour parcourir les éléments :
   - `forEach(func)` -- appelle `func` pour chaque élément, ne retourne rien.
-
 - Pour transformer le tableau:
   - `map(func)` -- crée un nouveau tableau à partir des résultats de `func` pour chaque élément.
   - `sort(func)` -- trie le tableau sur place, puis le renvoie.
   - `reverse()` -- inverse le tableau sur place, puis le renvoie.
   - `split/join` -- convertit une chaîne en tableau et retour.
   - `reduce(func, initial)` -- calcule une valeur unique sur le tableau en appelant `func` pour chaque élément et en transmettant un résultat intermédiaire entre les appels.
-
-<<<<<<< HEAD
-- Pour parcourir des éléments:
-  - `forEach(func)` -- Appelle `func` pour chaque élément, ne retourne rien du tout.
-=======
-- To transform the array:
-  - `map(func)` -- creates a new array from results of calling `func` for every element.
-  - `sort(func)` -- sorts the array in-place, then returns it.
-  - `reverse()` -- reverses the array in-place, then returns it.
-  - `split/join` -- convert a string to array and back.
-  - `reduce/reduceRight(func, initial)` -- calculate a single value over the array by calling `func` for each element and passing an intermediate result between the calls.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
-
 - Aditionellement:
   - `Array.isArray(arr)` vérifie que l'`arr` est bien un tableau.
 
@@ -789,22 +744,14 @@ Veuillez noter que les méthodes `sort`, `reverse` et `splice` modifient le tabl
 
 Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation. Mais il y en a encore d'autres:
 
-<<<<<<< HEAD
+
 - [arr.some(fn)](mdn:js/Array/some)/[arr.every(fn)](mdn:js/Array/every) vérifie le tableau.
 
-  La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si tout / tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
-=======
-- [arr.some(fn)](mdn:js/Array/some)/[arr.every(fn)](mdn:js/Array/every) check the array.
+  La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si n'importe quel/tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
 
-  The function `fn` is called on each element of the array similar to `map`. If any/all results are `true`, returns `true`, otherwise `false`.
-  
-  These methods behave sort of like `||` and `&&` operators: if `fn`  returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest items; if `fn`  returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest items as well.
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+Ces méthodes se comportent en quelque sorte comme les opérateurs `||` et `&&` : si `fn` renvoie une valeur vraie, `arr.some()` retourne immédiatement `true` et arrête d'itérer sur les autres éléments ; si `fn` renvoie une valeur fausse, `arr.every()` retourne immédiatement `false` et arrête également d'itérer sur les autres éléments.
 
-<<<<<<< HEAD
-- [arr.fill(value, start, end)](mdn:js/Array/fill) -- remplit le tableau avec la `value` répétée de l'index `start` à `end`.
-=======
-  We can use `every` to compare arrays:
+  On peut utiliser `every` pour compaere les tableaux :
   ```js run
   function arraysEqual(arr1, arr2) {
     return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
@@ -813,18 +760,14 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
   alert( arraysEqual([1, 2], [1, 2])); // true
   ```
 
-- [arr.fill(value, start, end)](mdn:js/Array/fill) -- fills the array with repeating `value` from index `start` to `end`.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+- [arr.fill(value, start, end)](mdn:js/Array/fill) -- remplit le tableau avec une répétition de `value` de l'index `start` à `end`.
 
 - [arr.copyWithin(target, start, end)](mdn:js/Array/copyWithin) -- copie ses éléments de la position `start` jusqu'à la position `end` into *itself*, à la position `target` (écrase les éléments éxistants).
 
-<<<<<<< HEAD
-De prime abord, il peut sembler qu’il existe de nombreuses méthodes assez difficiles à retenir. Mais en réalité c'est beaucoup plus facile.
-=======
-- [arr.flat(depth)](mdn:js/Array/flat)/[arr.flatMap(fn)](mdn:js/Array/flatMap) create a new flat array from a multidimensional array.
+- [arr.flat(depth)](mdn:js/Array/flat)/[arr.flatMap(fn)](mdn:js/Array/flatMap) créer un nouveau tableau plat à partir d'un tableau multidimensionnel.
 
-For the full list, see the [manual](mdn:js/Array).
->>>>>>> 0599d07b3c13ee25f583fc091cead3c17a7e7779
+Pour la liste complète, consultez le [manuel](mdn:js/Array).
+
 
 À première vue, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
 
