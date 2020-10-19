@@ -1,4 +1,4 @@
-# Pop-up et fenêtre
+# Les méthodes de pop-ups et fenêtres
 
 Une fenêtre pop-up est l'une des plus anciennes méthodes pour montrer un document supplémentaire à l'utilisateur.
 
