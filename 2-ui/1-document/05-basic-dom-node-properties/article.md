@@ -397,15 +397,20 @@ Comparez les deux :
 <div id="elem2"></div>
 
 <script>
-  let name = prompt("What's your name?", "<b>Winnie-the-pooh!</b>");
+  let name = prompt("What's your name?", "<b>Winnie-the-Pooh!</b>");
 
   elem1.innerHTML = name;
   elem2.textContent = name;
 </script>
 ```
 
+<<<<<<< HEAD
 1. La première `<div>` obtient le nom "en HTML" : toutes les balises deviennent des balises, nous voyons donc le nom en gras.
 2. La seconde `<div>` obtient le nom "sous forme de texte", donc nous voyons littéralement `<b>Winnie-the-pooh!</b>`.
+=======
+1. The first `<div>` gets the name "as HTML": all tags become tags, so we see the bold name.
+2. The second `<div>` gets the name "as text", so we literally see `<b>Winnie-the-Pooh!</b>`.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Dans la plupart des cas, nous attendons le texte d'un utilisateur et souhaitons le traiter comme du texte. Nous ne voulons pas de HTML inattendu sur notre site. Une affectation à `textContent` fait exactement cela.
 
@@ -413,7 +418,11 @@ Dans la plupart des cas, nous attendons le texte d'un utilisateur et souhaitons 
 
 L'attribut "hidden" (caché) et la propriété DOM spécifient si l'élément est visible ou non.
 
+<<<<<<< HEAD
 Nous pouvons l'utiliser dans le HTML ou l'attribuer en utilisant JavaScript, comme ceci :
+=======
+We can use it in HTML or assign it using JavaScript, like this:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 ```html run height="80"
 <div>Both divs below are hidden</div>
