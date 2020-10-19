@@ -106,14 +106,14 @@ Si vous déplacez la souris de `#parent` à `#enfant`, vous voyez deux événeme
 [codetabs height=360 src="mouseoverout-child"]
 ```
 
-As shown, when the pointer moves from `#parent` element to `#child`, two handlers trigger on the parent element: `mouseout` and `mouseover`:
+Comme indiqué, lorsque le pointeur passe de l'élément `#parent` à l'élément `#child`,  deux gestionnaires se déclenchent sur l'élément parent : `mouseout` et `mouseover`:
 
 ```js
 parent.onmouseout = function(event) {
-  /* event.target: parent element */
+  /* event.target: élément parent */
 };
 parent.onmouseover = function(event) {
-  /* event.target: child element (bubbled) */
+  /* event.target: élément enfant */
 };
 ```
 
@@ -178,7 +178,7 @@ table.onmouseout = function(event) {
 ```
 
 ```online
-Here they are in action. As the mouse travels across the elements of this table, the current one is highlighted:
+Les voici en action. Lorsque la souris se déplace sur les éléments de ce tableau, celui qui est survolé est mis en évidence:
 
 [codetabs height=480 src="mouseenter-mouseleave-delegation"]
 ```
@@ -196,9 +196,9 @@ Voici un exemple de code qui prend en compte toutes les situations possibles :
 
 [js src="mouseenter-mouseleave-delegation-2/script.js"]
 
-Once again, the important features are:
-1. It uses event delegation to handle entering/leaving of any `<td>` inside the table. So it relies on `mouseover/out` instead of `mouseenter/leave` that don't bubble and hence allow no delegation.
-2. Extra events, such as moving between descendants of `<td>` are filtered out, so that `onEnter/Leave` runs only if the pointer leaves or enters `<td>` as a whole.
+Les caractéristiques importantes sont les suivantes:
+1. Il utilise la délégation d'événements pour gérer l'entrée/sortie de tout `<td>` à l'intérieur de la table. Il s'appuie donc sur le `mouseover/out` au lieu du `mouseenter/leave` qui ne fait pas de bulles et ne permet donc aucune délégation..
+2. Les événements supplémentaires, tels que le déplacement entre les descendants de `<td>` sont filtrés, de sorte que `onEnter/Leave` ne fonctionne que si le pointeur quitte ou entre dans `<td>` dans son ensemble.
 
 ```online
 Voici l'exemple complet avec tous les détails:
