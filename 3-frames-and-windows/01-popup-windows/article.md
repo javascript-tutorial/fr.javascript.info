@@ -13,6 +13,7 @@ Les pop-up existent depuis longtemps. L'idée initiale était de montrer du cont
 
 Les pop-up sont également délicate sur les appareils mobiles puis que ces derniers ne peuvent pas afficher plusieurs fenêtres simultanément.
 
+
 Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes :
 
 1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé. 
