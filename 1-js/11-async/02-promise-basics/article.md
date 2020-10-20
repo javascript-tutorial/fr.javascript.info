@@ -226,11 +226,12 @@ new Promise((resolve, reject) => {
 *!*
   // se lance quand la promesse est acquittée, peu importe si celle-ci est tenue ou rompue
   .finally(() => stop loading indicator)
+  // so the loading indicator is always stopped before we process the result/error
 */!*
   .then(result => show result, err => show error)
 ```
 
-Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya quelques différences importantes :
+Cela dit, `finally(f)` n'est pas exactement un alias de `then(f,f)`. Il existe quelques différences subtiles :
 
 1. Un gestionnaire `finally` ne prends pas d'arguments. Dans un `finally` nous ne savons pas si la promesse est tenue ou rompue. Cela ne pose pas de soucis, notre tâche est habituellement de réaliser les procédures finales "générales".
 2. Un gestionnaire `finally` passe le résultat ou l'erreur au gestionnaire suivant.
@@ -257,10 +258,8 @@ Ce n'est pourtant pas exactement la même exécution que `.then(f,f)`. Il ya que
 
     Nous parlerons plus en détails de l'enchaînements de promesses et le passage de résultats à travers les gestionnaires dans le prochain chapitre.
 
-3. En dernier mais pas des moindres, `.finally(f)` est une syntaxe plus pratique que `.then(f, f)` : aucun besoin ici de doubler la fonction `f`.
-
-````smart header="Les promesses acquittées lancent les gestionnaries immédiatement"
-Si une promesse est en attente, les gestionnaires `.then/catch/finally` l'attendent. Par contre, si une promesse est déja acquittée, ils s'exécuteront immédiatement.
+````smart header="Nous pouvons attacher des gestionnaires à des promesses configurées"
+Si une promesse est en attente, les gestionnaires `.then/catch/finally` l'attendent. Sinon, si une promesse est déjà configurée, ils exécutent simplement :
 
 ```js run
 // la prommesse est acquittée immédiatement à la création
@@ -269,9 +268,9 @@ let promise = new Promise(resolve => resolve("done!"));
 promise.then(alert); // done! (s'affiche immédiatement)
 ```
 
-Note that this is different, and more powerful than the real life "subscription list" scenario. If the singer has already released their song and then a person signs up on the subscription list, they probably won't receive that song. Subscriptions in real life must be done prior to the event.
+Notez que cela rend les promesses plus puissantes que le scénario réel de "liste d'abonnement". Si le chanteur a déjà sorti sa chanson et qu'une personne s'inscrit sur la liste d'abonnement, elle ne recevra probablement pas cette chanson. Les abonnements dans la vraie vie doivent être effectués avant l'événement.
 
-Promises are more flexible. We can add handlers any time: if the result is already there, our handlers get it immediately.
+Les promesses sont plus flexibles. Nous pouvons ajouter des gestionnaires à tout moment : si le résultat est déjà là, ils s'exécutent simplement.
 ````
 
 Ensuite, voyons des exemples plus pratiques pour lesquels les promesses nous aident à écrire du code asynchrone.

@@ -193,7 +193,7 @@ Un tableau est un type d'objet spécial. Les crochets utilisés pour accéder à
 
 Ils étendent les objets en fournissant des méthodes spéciales pour travailler avec des collections ordonnées de données ainsi que la propriété `length`. Mais au fond c'est toujours un objet.
 
-N'oubliez pas qu'il n'y a que 7 types de base en JavaScript. `Array` est un objet et se comporte donc comme un objet.
+N'oubliez pas qu'il n'y a que huit types de base en JavaScript (voir le chapitre [Les types de données](info:types) pour plus d'infos). `Array` est un objet et se comporte donc comme un objet.
 
 Par exemple, il est copié par référence:
 
@@ -429,6 +429,53 @@ alert( "1" + 1 ); // "11"
 alert( "1,2" + 1 ); // "1,21"
 ```
 
+## Ne comparez pas les tableaux avec ==
+
+Les tableaux en JavaScript, contrairement à certains autres langages de programmation, ne doivent pas être comparés à l'opérateur `==`.
+
+Cet opérateur n'a pas de traitement spécial pour les tableaux, il fonctionne avec eux comme avec n'importe quel objet.
+
+Rappelons les règles :
+
+- Deux objets sont égaux `==` uniquement s'ils font référence au même objet.
+- Si l'un des arguments de `==` est un objet, et l'autre est une primitive, alors l'objet est converti en primitif, comme expliqué dans le chapitre <info:object-toprimitive>.
+- ...À l'exception de `null` et `undefined ` qui s'égalent `==` l'un l'autre et rien d'autre.
+
+La comparaison stricte `===` est encore plus simple, car elle ne convertit pas les types.
+
+Donc, si nous comparons des tableaux avec `==`, ils ne sont jamais les mêmes, sauf si nous comparons deux variables qui référencent exactement le même tableau.
+
+Par exemple :
+```js run
+alert( [] == [] ); // false
+alert( [0] == [0] ); // false
+```
+
+Ces tableaux sont des objets techniquement différents. Donc, ils ne sont pas égaux. L'opérateur `==` ne fait pas de comparaison élément par élément.
+
+La comparaison avec les primitives peut également donner des résultats apparemment étranges :
+
+```js run
+alert( 0 == [] ); // true
+
+alert('0' == [] ); // false
+```
+
+Ici, dans les deux cas, nous comparons une primitive à un objet tableau. Ainsi, le tableau `[]` est converti en primitive à des fins de comparaison et devient une chaîne vide `''`.
+
+Ensuite, le processus de comparaison se poursuit avec les primitives, comme décrit dans le chapitre <info:type-conversions> :
+
+```js run
+// après que [] soit converti vers ''
+alert( 0 == '' ); // true, tant que '' soit converti en nombre 0
+
+alert('0' == '' ); // false, pas de conversion de type, différentes chaînes de caractères
+```
+
+Alors, comment comparer des tableaux ?
+
+C'est simple: n'utilisez pas l'opérateur `==`. Au lieu de cela, comparez-les élément par élément dans une boucle ou en utilisant les méthodes d'itération expliquées dans le chapitre suivant.
+
 ## Résumé
 
 Array est un type d’objet spécial, adapté au stockage et à la gestion des éléments de données ordonnées.
@@ -460,4 +507,8 @@ Pour boucler sur les éléments du tableau:
    - `for (let item of arr)` -- la syntaxe moderne pour les éléments uniquement,
    - `pour (let i in arr)` -- ne jamais utiliser.
 
-Nous reviendrons sur les tableaux et étudierons plus de méthodes pour ajouter, supprimer, extraire des éléments et trier des tableaux dans le chapitre <info:array-methods>.
+Pour comparer des tableaux, n'utilisez pas l'opérateur `==` (ainsi que `>`, `<` et autres), car ils n'ont pas de traitement spécial pour les tableaux. Ils les traitent comme n'importe quel objet, et ce n'est pas ce que nous voulons habituellement.
+
+A la place, vous pouvez utiliser la boucle `for..of` pour comparer les tableaux élément par élément.
+
+Nous continuerons avec les tableaux et étudierons d'autres méthodes pour ajouter, supprimer, extraire des éléments et trier des tableaux dans le prochain chapitre <info:array-methods>.

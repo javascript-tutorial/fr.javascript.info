@@ -213,6 +213,7 @@ Une requête de contrôle en amont utilise la méthode `OPTIONS`, aucun corps et
 
 Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
 
+- `Access-Control-Allow-Origin` doit être soit `*` soit l'origine de la demande, telle que `https://javascript.info`, pour l'autoriser.
 - `Access-Control-Allow-Methods` doit avoir la méthode autorisée.
 - `Access-Control-Allow-Headers` doit avoir une liste d'en-têtes autorisés.
 - De plus, l'en-tête `Access-Control-Max-Age` peut spécifier un nombre de secondes pour mettre en cache les autorisations. Ainsi, le navigateur n'aura pas à envoyer de contrôle en amont pour les requêtes ultérieures qui satisfont aux autorisations données.
@@ -258,15 +259,19 @@ Access-Control-Request-Headers: Content-Type,API-Key
 ### Étape 2 (réponse en amont)
 
 Le serveur doit répondre avec le statut 200 et les en-têtes :
+- `Access-Control-Allow-Origin: https://javascript.info`
 - `Access-Control-Allow-Methods: PATCH`
 - `Access-Control-Allow-Headers: Content-Type,API-Key`.
 
 Cela permet une communication future, sinon une erreur est déclenchée.
 
-Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en ajoutant à la liste :
+Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en ajoutant à la liste. 
+
+Par exemple, cette réponse autorise également `PUT`, `DELETE` et des en-têtes supplémentaires :
 
 ```http
 200 OK
+Access-Control-Allow-Origin: https://javascript.info
 Access-Control-Allow-Methods: PUT,PATCH,DELETE
 Access-Control-Allow-Headers: API-Key,Content-Type,If-Modified-Since,Cache-Control
 Access-Control-Max-Age: 86400
@@ -274,7 +279,7 @@ Access-Control-Max-Age: 86400
 
 Maintenant, le navigateur peut voir que `PATCH` est dans `Access-Control-Allow-Methods` et `Content-Type,API-Key` sont dans la liste `Access-Control-Allow-Headers`, il envoie donc la requête principale.
 
-De plus, la réponse de contrôle en amont est mise en cache pour le temps spécifié par l'en-tête `Access-Control-Max-Age` (86400 secondes, un jour), de sorte que les requêtes suivantes ne provoqueront pas de contrôle en amont. En supposant qu'elles correspondent aux quotas mis en cache, elles seront envoyées directement.
+S'il y a un en-tête `Access-Control-Max-Age` avec un certain nombre de secondes, alors les autorisations de contrôle en amont sont mises en cache pour le temps donné. La réponse ci-dessus sera mise en cache pendant 86 400 secondes (un jour). Dans ce délai, les demandes ultérieures n'entraîneront pas de contrôle en amont. En supposant qu'ils correspondent aux quotas mis en cache, ils seront envoyés directement.
 
 ### Étape 3 (requête réelle)
 

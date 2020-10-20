@@ -108,7 +108,7 @@ Par défaut beaucoup d'éléments ne supportent pas le focus.
 
 La liste change un peu selon les navigateurs, mais une chose est toujours vrai: le support de `focus/blur` est garanti pour les éléments avec lesquels le visiteur peut interagir: `<button>`, `<input>`, `<select>`, `<a>`, etc.
 
-D'un autre côté, les éléments qui existent pour mettre quelque chose en forme, comme `<div>`, `<span>`, `<table>` -- ne peuvent pas recevoir de focus par défaut. La méthode `elem.focus()` ne fonctionne pas sur eux, et les évènements `focus/blur` ne sont jamais activés.
+D'un autre côté, les éléments qui existent pour mettre quelque chose en forme, comme `<div>`, `<span>`, `<table>` -- ne peuvent pas recevoir de focus par défaut. La méthode `elem.focus()` ne fonctionne pas sur eux, et les évènements `focus/blur` ne sont jamais déclenchés.
 
 Cela peut être changé en utilisant l'attribut HTML `tabindex`.
 

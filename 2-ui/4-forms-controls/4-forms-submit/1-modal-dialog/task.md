@@ -2,23 +2,23 @@ importance: 5
 
 ---
 
-# Modal form
+# Formulaire modal
 
-Create a function `showPrompt(html, callback)` that shows a form with the message `html`, an input field and buttons `OK/CANCEL`.
+Créez une fonction `showPrompt(html, callback)` qui montre un formulaire avec le message `html`, un champ de saisie et des boutons `OK/CANCEL`.
 
-- A user should type something into a text field and press `key:Enter` or the OK button, then `callback(value)` is called with the value they entered.
-- Otherwise if the user presses `key:Esc` or CANCEL, then `callback(null)` is called.
+- Un utilisateur doit taper quelque chose dans un champ de texte et appuyer sur `key:Enter` ou sur le bouton OK, puis `callback(value)` est appelé avec la valeur saisie.
+- Sinon, si l'utilisateur appuie sur `key:Esc` ou CANCEL, alors `callback(null)` est appelé.
 
-In both cases that ends the input process and removes the form.
+Dans les deux cas, cela met fin au processus de saisie et supprime le formulaire.
 
-Requirements:
+Conditions:
 
-- The form should be in the center of the window.
-- The form is *modal*. In other words, no interaction with the rest of the page is possible until the user closes it.
-- When the form is shown, the focus should be inside the `<input>` for the user.
-- Keys `key:Tab`/`key:Shift+Tab` should shift the focus between form fields, don't allow it to leave for other page elements.
+- Le formulaire doit être au centre de la fenêtre.
+- Le formulaire est *modal*. En d'autres termes, aucune interaction avec le reste de la page n'est possible tant que l'utilisateur ne la ferme pas.
+- Lorsque le formulaire est affiché, le focus doit être à l'intérieur de `<input>` pour l'utilisateur.
+- Les touches `key:Tab`/`key:Shift+Tab` devraient déplacer le focus entre les champs du formulaire, ne pas lui permettre de partir pour d'autres éléments de la page.
 
-Usage example:
+Exemple d'utilisation:
 
 ```js
 showPrompt("Enter something<br>...smart :)", function(value) {
@@ -26,8 +26,8 @@ showPrompt("Enter something<br>...smart :)", function(value) {
 });
 ```
 
-A demo in the iframe:
+Une démo dans l'iframe:
 
 [iframe src="solution" height=160 border=1]
 
-P.S. The source document has HTML/CSS for the form with fixed positioning, but it's up to you to make it modal.
+P.S. Le document source contient HTML/CSS pour le formulaire avec un positionnement fixe, mais c'est à vous de le rendre modal.

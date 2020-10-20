@@ -2,7 +2,7 @@
 
 Comment trouver la largeur et la hauteur de la fenêtre du navigateur ? Comment obtenir la largeur et la hauteur complètes du document, y compris la partie déroulante ? Comment faire défiler la page en utilisant JavaScript ?
 
-Pour la plupart de ces requêtes, nous pouvons utiliser l'élément de document racine `document.documentElement`, qui correspond à la balise `<html>`. Mais il existe des méthodes et des particularités supplémentaires suffisamment importantes pour être prises en compte.
+Pour ce type d'informations, nous pouvons utiliser l'élément de document racine `document.documentElement`, qui correspond à la balise `<html>`. Mais il existe des méthodes et des particularités supplémentaires suffisamment importantes pour être prises en compte.
 
 ## Largeur/hauteur de la fenêtre
 
@@ -17,7 +17,7 @@ Par exemple, ce bouton affiche la hauteur de votre fenêtre :
 ```
 
 ````warn header="Pas `window.innerWidth/Height`"
-Les navigateurs prennent également en charge les propriétés `window.innerWidth/innerHeight`. Ils ressemblent à ce que nous voulons. Alors pourquoi ne pas les utiliser à la place ?
+Les navigateurs prennent également en charge les propriétés `window.innerWidth/innerHeight`. Ils ressemblent à ce que nous voulons, alors pourquoi ne pas les utiliser à la place ?
 
 S'il existe une barre de défilement et qu'elle occupe de l'espace, `clientWidth/clientHeight` fournit la largeur/hauteur sans elle (cela la soustrait). En d'autres termes, elles renvoient la largeur/hauteur de la partie visible du document, disponible pour le contenu.
 
@@ -60,7 +60,7 @@ Pourquoi ? Mieux vaut ne pas demander. Ces incohérences viennent des temps anci
 
 ## Obtenez le défilement actuel [#page-scroll]
 
-Les éléments DOM ont leur état de défilement actuel dans `elem.scrollLeft/scrollTop`.
+Les éléments DOM ont leur état de défilement actuel dans leurs propriétés `scrollLeft/scrollTop`.
 
 Pour le défilement de document, `document.documentElement.scrollLeft/Top` fonctionne dans la plupart des navigateurs, à l'exception des plus anciens basés sur WebKit, comme Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), où nous devrions utiliser `document.body` au lieu de `document.documentElement`.
 
@@ -76,7 +76,7 @@ Ces propriétés sont en lecture seule.
 ## Défilement : scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
 ```warn
-Pour faire défiler la page à partir de JavaScript, son DOM doit être entièrement construit.
+Pour faire défiler la page avec JavaScript, son DOM doit être entièrement construit.
 
 Par exemple, si nous essayons de faire défiler la page à partir du script dans `<head>`, cela ne fonctionnera pas.
 ```
@@ -110,8 +110,8 @@ Pour être complet, couvrons une autre méthode : [elem.scrollIntoView(top)](mdn
 
 L'appel à `elem.scrollIntoView(top)` fait défiler la page pour rendre `elem` visible. Il a un argument :
 
-- si `top=true` (c'est la valeur par défaut), alors la page défilera pour faire apparaître `elem` en haut de la fenêtre. Le bord supérieur de l'élément est aligné avec le haut de la fenêtre.
-- si `top=false`, alors la page défile pour faire apparaître `elem` en bas. Le bord inférieur de l'élément est aligné avec le bas de la fenêtre.
+- Si `top=true` (c'est la valeur par défaut), alors la page défilera pour faire apparaître `elem` en haut de la fenêtre. Le bord supérieur de l'élément est aligné avec le haut de la fenêtre.
+- Si `top=false`, alors la page défile pour faire apparaître `elem` en bas. Le bord inférieur de l'élément est aligné avec le bas de la fenêtre.
 
 ```online
 Le bouton ci-dessous fait défiler la page pour aligner l'élément en haut de la fenêtre :

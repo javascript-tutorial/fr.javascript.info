@@ -208,7 +208,7 @@ Les méthodes nous permettent de copier des tableaux typés, de les mélanger, d
 
 ## DataView
 
-[DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) est une vue spéciale non typée par dessus `ArrayBuffer`. Elle permet d'accéder aux données avec n'importe quel décalage et avec n'importe quel format.
+[DataView](mdn:/JavaScript/Reference/Global_Objects/DataView) est une vue spéciale "non typée" super flexible sur ʻArrayBuffer`. Il permet d'accéder aux données sur n'importe quel offset dans tous les formats.
 
 - Pour les tableaux typés, le constructeur détermine le format. Le tableau entier est supposé être uniforme. Le i-ème nombre est noté `arr[i]`.
 - Avec `DataView` nous accédons aux données avec des méthodes comme `.getUint8(i)` ou `.getUint16(i)`. Nous choisissons le format au moment de l'utilisation de la méthode au lieu du moment de la création.

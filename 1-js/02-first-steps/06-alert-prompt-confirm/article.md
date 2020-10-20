@@ -31,7 +31,7 @@ Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour 
 : Un deuxième paramètre facultatif, la valeur initiale du champ d'entrée.
 
 ```smart header="Les crochets dans la syntaxe `[...]`"
-Les crochets autour de `default` dans la syntaxe ci-dessus indiquent que le paramètre est facultatif, non obligatoire.
+Les crochets autour de `default` dans la syntaxe ci-dessus indiquent que le paramètre est facultatif, non requis.
 ```
 
 Le visiteur peut taper quelque chose dans le champ de saisie d'invite et appuyer sur OK. Ensuite, nous obtenons ce texte dans le `result`. Ou ils peuvent annuler l'entrée en appuyant sur Annuler ou en appuyant sur la touche `key:Esc`, puis nous obtenons `null` comme `result`.

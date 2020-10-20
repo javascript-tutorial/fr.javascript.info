@@ -218,7 +218,7 @@ Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau ass
 Elle a quelques limitations :
 
 - Nous ne pouvons pas envoyer de mégaoctets: la limite de corps pour les requêtes `keepalive` est de 64kb.
-    - Si vous collectez plus de données, nous pouvons les envoyer régulièrement par paquets, de sorte qu'il ne restera pas grand-chose pour la dernière requête `onunload`.
-    - La limite concerne toutes les demandes en cours. Nous ne pouvons donc pas le tromper en créant 100 requêtes, chacune de 64 Ko.
-- Nous ne pouvons pas gérer la réponse du serveur si la demande est faite dans `onunload`, car le document est déjà déchargé à ce moment là, les fonctions ne fonctionneront pas.
-    - Habituellement, le serveur envoie une réponse vide à de telles demandes, ce n'est donc pas un problème.
+    - Si nous avons besoin de rassembler beaucoup de statistiques sur la visite, nous devons les envoyer régulièrement par paquets, afin qu'il ne reste plus grand-chose pour la dernière requête `onunload`.
+    - Cette limite s'applique à toutes les demandes `keepalive` ensemble. En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
+- Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé. Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
+    - Dans la plupart des cas, comme l'envoi de statistiques, ce n'est pas un problème, car le serveur accepte simplement les données et envoie généralement une réponse vide à de telles demandes.

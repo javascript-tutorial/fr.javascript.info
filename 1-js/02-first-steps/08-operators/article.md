@@ -180,7 +180,7 @@ Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisf
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
-Un extrait du [tableau de précédence](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Pr%C3%A9c%C3%A9dence_des_op%C3%A9rateurs#Tableau) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
+Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
 
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
@@ -428,7 +428,8 @@ La liste des opérateurs :
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
-Ces opérateurs sont très rarement utilisés. Pour les comprendre, nous devrions nous intéresser à la représentation numérique de bas niveau, et il ne serait pas optimal de le faire dès maintenant. Surtout parce que nous n’en aurons pas besoin de sitôt. Si vous êtes curieux, vous pouvez lire l'article [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires) sur MDN. Il serait plus pratique de le faire quand un besoin réel se fait sentir.
+Ces opérateurs sont très rarement utilisés, lorsque nous devons jouer avec des nombres au niveau le plus bas (bit à bit). Nous n'aurons pas besoin de ces opérateurs de si tôt, car le développement Web les utilise peu, mais dans certains domaines particuliers, comme la cryptographie, ils sont utiles. Vous pouvez lire le chapitre [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs#Op%C3%A9rateurs_binaires) sur MDN en cas de besoin.
+
 
 ## Virgule
 

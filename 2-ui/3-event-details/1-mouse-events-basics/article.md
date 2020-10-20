@@ -66,7 +66,7 @@ Les valeurs possibles de `event.button` sont :
 
 La plupart des souris n'ont que les boutons gauche et droit, donc les valeurs possibles sont `0` ou `2`. Les appareils tactiles génèrent également des événements similaires lorsque l'on appuie dessus.
 
-Il existe également la propriété `event.buttons` qui a tous les boutons actuellement pressés sous forme d'entier, un bit par bouton. En pratique cette propriété est très rarement utilisée, vous pouvez trouver des détails sur [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons) si jamais vous en avez besoin.
+Il existe également la propriété `event.buttons` qui a tous les boutons actuellement pressés sous forme d'entier, un bit par bouton. En pratique cette propriété est très rarement utilisée, vous pouvez trouver des détails sur [MDN](mdn:/api/MouseEvent/buttons) si jamais vous en avez besoin.
 
 ```warn header="Le `event.which` obsolète"
 L'ancien code peut utiliser la propriété `event.which` qui est une ancienne manière non standard d'obtenir un bouton, avec des valeurs possibles :
@@ -156,6 +156,7 @@ Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir
 
 Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
 
+par exemple, double-cliquer sur le texte ci-dessous le sélectionne en plus de notre gestionnaire :
 
 ```html autorun height=50
 <span ondblclick="alert('dblclick')">Double-click me</span>

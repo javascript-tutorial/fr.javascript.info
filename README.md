@@ -1,6 +1,6 @@
 # Le tutoriel JavaScript moderne
 
-Ce repository héberge la traduction de <https://javascript.info> en français.
+Ce dépôt héberge le contenu français du tutoriel JavaScript moderne, publié à l'adresse [https://javascript.info](https://javascript.info).
 
 Aidez-nous à améliorer la traduction.
 
@@ -104,7 +104,9 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 
 ## Exécuter une version locale
 
-Vous pouvez exécuter le tutoriel localement pour voir immédiatement les modifications sur site.
+  - `index.md` représente un chapitre
+  - `article.md` représente un article
+  - `task.md` représente un exercice (la solution doit également être fournie dans le fichier `solution.md`)
 
 Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
 Chacun de ces fichiers commence à partir du `# titre principal`.

@@ -1,6 +1,5 @@
 # Le Défilement
 
-
 L'événement `scroll` permet de réagir sur le défilement d'une page ou d'un élément. Il y a pas mal de bonnes choses que nous pouvons faire ici.
 
 

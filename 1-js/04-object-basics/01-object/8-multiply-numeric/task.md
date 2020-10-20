@@ -2,9 +2,9 @@ importance: 3
 
 ---
 
-# Multipliez les propriétés numériques par 2
+# Multipliez les valeurs de propriétés numériques par 2
 
-Créez une fonction `multiplyNumeric(obj)` qui multiplie toutes les propriétés numériques de `obj` par `2`.
+Créez une fonction `multiplyNumeric(obj)` qui multiplie toutes les valeurs de propriétés numériques de `obj` par `2`.
 
 Par exemple :
 

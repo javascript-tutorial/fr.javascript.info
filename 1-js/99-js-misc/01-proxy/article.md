@@ -1012,7 +1012,7 @@ let proxy = new Proxy(target, {
 
 ... Ensuite, nous devrions utiliser le `proxy` partout au lieu de `target`. Un proxy n'a pas ses propres propriétés ou méthodes. Il intercepte une opération si l'interruption est fournie, sinon la transmet à `target`.
 
-Nous pouvons piéger:
+Nous pouvons piéger :
 - Lecture (`get`), écriture (`set`), suppression (`deleteProperty`) d'une propriété (même inexistante).
 - Appeler une fonction (piège `apply`).
 - L'opérateur `new` (piège `construct`).
