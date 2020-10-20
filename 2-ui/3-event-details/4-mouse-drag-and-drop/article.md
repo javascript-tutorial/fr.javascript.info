@@ -273,7 +273,7 @@ function onMouseMove(event) {
 }
 ```
 
-Dans l’exemple en bas quand la balle est glissée sur le camp du gardien de but, ce dernier est mis en valeur.
+Dans l’exemple ci-dessous quand la balle est glissée sur le camp du gardien de but, ce dernier est mis en valeur.
 
 [codetabs height=250 src="ball4"]
 
@@ -294,4 +294,4 @@ Les composantes clés sont:
 - Nous pouvons utiliser la délégation d’évènements avec  `mousedown/up`.  Un gestionnaire d’évènement sur une grande surface qui contrôle la propriété `event.target` peut gérer  le Glisser-déposer pour des centaines d’éléments.
 - Ainsi de suite.
 
-Il existe des frameworks qui fondent leur architecture sur cela : `DragZone`, `Droppable`, `Draggable` et d'autres classes. La plupart d’entre elles font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Ou bien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et comme vous le voyez cela pourrait être plus flexible que d’adapter une solution tierce.
+Il existe des frameworks qui fondent leur architecture sur cela : `DragZone`, `Droppable`, `Draggable` et d'autres classes. La plupart d’entre eux font des choses similaires à celles décrites au-dessus, donc cela devrait être facile pour vous de les comprendre maintenant. Ou bien même déployer le vôtre, parce que vous savez déjà comment gérer le processus, et comme vous le voyez cela pourrait être plus flexible que d’adapter une solution tierce.

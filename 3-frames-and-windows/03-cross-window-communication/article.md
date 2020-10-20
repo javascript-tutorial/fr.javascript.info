@@ -265,6 +265,7 @@ Arguments:
 `data`
 : Les données à envoyer. Peut être n'importe quel objet, les données sont clonées à l'aide de l'"algorithme de clonage structuré". IE ne supporte que les chaînes de caractères, nous devrions donc `JSON.stringify` des objets complexes pour ce navigateur.
 
+
 `targetOrigin`
 : Spécifie l'origine de la fenêtre cible, de sorte que seule une fenêtre de l'origine donnée recevra le message.
 

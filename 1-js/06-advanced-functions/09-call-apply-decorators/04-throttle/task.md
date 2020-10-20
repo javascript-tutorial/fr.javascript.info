@@ -12,6 +12,8 @@ La différence avec debounce est que c'est un décorateur complètement différe
 - `debounce` exécute la fonction une fois après la période de "cooldown". Bon pour traiter le résultat final.
 - `throttle` ne l'exécute pas plus souvent que le temps donné en `ms`. Bon pour les mises à jour régulières qui ne devraient pas être très fréquentes.
 
+En d'autres termes, `throttle` est comme une secrétaire qui accepte les appels téléphoniques, mais qui dérange le patron (appellez le `f` réel) pas plus d'une fois par `ms` millisecondes.
+
 Examinons l'application réelle pour mieux comprendre cette exigence et voir d'où elle vient.
 
 **Par exemple, nous voulons suivre les mouvements de la souris.**

@@ -7,9 +7,13 @@ Il y a de nombreux opérateurs de comparaison que nous connaissons des mathémat
 - Le contrôle d'égalité est écrit en tant que `a == b` (veuillez noter le signe de la double équation `=`. Un seul symbole `a = b` signifierait une affectation).
 - Pas égal. En maths, la notation est `≠`, en JavaScript, elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
 
+Dans cet article, nous en apprendrons plus sur les différents types de comparaisons, sur la façon dont JavaScript les fait, y compris sur les particularités importantes.
+
+À la fin, vous trouverez une bonne recette pour éviter les problèmes liés aux "bizarreries JavaScript".
+
 ## Booléen est le résultat
 
-Tout comme tous les autres opérateurs, une comparaison renvoie une valeur. Cette valeur est du type booléen.
+Tout comme tous les autres opérateurs, une comparaison renvoie une valeur de type booléenne.
 
 - `true` -- signifie "oui", "correct" ou "vrai".
 - `false` -- signifie "non", "incorrect" ou "faux".
@@ -53,7 +57,7 @@ L'algorithme pour comparer deux chaînes  de caractères est simple :
 
 Dans l'exemple ci-dessus, la comparaison `'Z' > 'A'` obtient le résultat à la première étape.
 
-Les chaînes de caractères `"Glow"` et `"Glee"` sont comparées caractère par caractère :
+La deuxième comparaison `'Glow'` et `'Glee'` nécessite plus d'étapes car les chaînes de caractères sont comparées caractère par caractère :
 
 1. `G` est identique à `G`.
 2. `l` est identique à `l`.

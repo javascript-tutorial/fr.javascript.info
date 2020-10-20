@@ -314,7 +314,7 @@ Lors d'un entretien d'embauche, un développeur frontend reçoit assez souvent u
 
 Habituellement, un environnement lexical est supprimé de la mémoire avec toutes les variables une fois l'appel de fonction terminé. C'est parce qu'il n'y a plus aucune référence à cela. Comme tout objet JavaScript, il n'est conservé en mémoire que lorsqu'il est accessible.
 
-… Mais s'il y a une fonction imbriquée qui est toujours accessible après la fin d'une fonction, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical.
+Cependant, s'il y a une fonction imbriquée qui est toujours accessible après la fin d'une fonction, alors elle a la propriété `[[Environment]]` qui fait référence à l'environnement lexical.
 
 Dans ce cas, l'environnement lexical est toujours accessible même après la fin de la fonction, il reste donc en vie.
 
@@ -371,7 +371,7 @@ Comme nous l'avons vu, en théorie, lorsqu'une fonction est vivante, toutes les 
 
 Mais dans la pratique, les moteurs JavaScript tentent d'optimiser cela. Ils analysent l'utilisation des variables et s'il est évident d'après le code qu'une variable externe n'est pas utilisée -- elle est supprimée.
 
-**Un effet secondaire important de V8 (Chrome, Opera) est qu’une telle variable ne sera plus disponible lors du débogage.**
+**Un effet secondaire important dans V8 (Chrome, Edge, Opera) est qu’une telle variable ne sera plus disponible lors du débogage.**
 
 Essayez d'exécuter l'exemple ci-dessous sous Chrome avec les outils de développement ouverts.
 
@@ -413,6 +413,6 @@ let g = f();
 g();
 ```
 
-Cette fonctionnalité du V8 est bonne à savoir. Si vous déboguez avec Chrome/Opera, tôt ou tard vous la rencontrerez.
+Cette fonctionnalité du V8 est bonne à savoir. Si vous déboguez avec Chrome/Edge/Opera, tôt ou tard vous la rencontrerez.
 
 Ce n'est pas un bogue dans le débogueur, mais plutôt une caractéristique spéciale de V8. Peut-être que cela sera changé un jour. Vous pouvez toujours le vérifier en exécutant les exemples sur cette page.

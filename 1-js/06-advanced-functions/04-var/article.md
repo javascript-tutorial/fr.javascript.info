@@ -28,7 +28,7 @@ D'un autre côté, il est important de comprendre les différences lors de la mi
 
 ## "var" n'a pas de portée limitée aux blocs
 
-Les variables, déclarées avec `var`, sont globales ou à l'échelle de la fonction. Elles sont visibles à travers les blocs.
+Les variables, déclarées avec `var`, ont une portée fonction ou globale. Ils sont visibles à travers des blocs.
 
 Par exemple:
 
@@ -60,11 +60,13 @@ Même principe pour les boucles: `var` ne peut pas être locale pour les blocs n
 
 ```js
 for (var i = 0; i < 10; i++) {
+  var one = 1;
   // ...
 }
 
 *!*
 alert(i); // 10, "i" est visible après la boucle, c'est une variable globale
+alert(one); // 1, "one" est visible après la boucle, c'est une variable globale
 */!*
 ```
 
@@ -83,7 +85,7 @@ sayHi();
 alert(phrase); // Erreur : phrase n'est pas définie (vérifiez la console développeur)
 ```
 
-Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux. Et `var` est un vestige de ce dernier.
+Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou les autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux, et `var` est un vestige de ce dernier.
 
 ## "var" tolère les redéclarations
 
@@ -205,7 +207,7 @@ Parce que toutes les déclarations `var` sont traitées au début de la fonction
 
 Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
 
-### IIFE
+## IIFE
 
 Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter. Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
 
@@ -216,7 +218,7 @@ Un IIFE ressemble à ceci :
 ```js run
 (function() {
 
-  let message = "Hello";
+  var message = "Hello";
 
   alert(message); // Hello
 
@@ -225,13 +227,13 @@ Un IIFE ressemble à ceci :
 
 Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
 
-La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"fonction"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
+La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"function"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
 // Essayons de déclarer et d'appeler immédiatement une fonction
 function() { // <-- Erreur : Les instructions de fonction nécessitent un nom de fonction
 
-  let message = "Hello";
+  var message = "Hello";
 
   alert(message); // Hello
 
@@ -277,7 +279,7 @@ Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécu
 
 Il y a deux différences majeures entre `var` et `let/const`:
 
-1. Les variables `var` n'ont pas de portée limitée aux blocs. Elles sont, au minimum, visibles au niveau de la fonction.
+1. Les variables `var` n'ont pas de portée de bloc ; leur visibilité est étendue à la fonction actuelle, ou globale, si elle est déclarée hors fonction.
 2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
 
 Il y a une autre différence mineure associée à l'objet global, mais nous traiterons ce point dans le prochain chapitre.

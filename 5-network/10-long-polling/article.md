@@ -70,11 +70,13 @@ Comme vous pouvez le voir, la fonction `subscribe` effectue une extraction, puis
 ```warn header="Le serveur devrait être ok avec de nombreuses connexions en attente"
 L'architecture du serveur doit pouvoir fonctionner avec de nombreuses connexions en attente.
 
-Certaines architectures de serveur exécutent un processus par connexion. Pour de nombreuses connexions, il y aura autant de processus, et chaque processus prend beaucoup de mémoire. Autant de connexions risquent de consommer toutes ressources.
+Certaines architectures de serveur exécutent un processus par connexion ; résultant en autant de processus que de connexions, alors que chaque processus consomme pas mal de mémoire. Donc, trop de connexions consommeront tout.
 
-C'est souvent le cas pour les backends écrits en PHP, en Ruby, mais techniquement ce n'est pas un problème de langage, mais plutôt d'implémentation. La plupart des langages modernes permettent d'implémenter un backend approprié, mais certains le rendent plus facile que l'autre.
+C'est souvent le cas pour les backends écrits dans des langages comme PHP et Ruby.
 
-Les backends écrits en utilisant Node.js n'ont généralement pas ce genre de problèmes.
+Les serveurs écrits avec Node.js n'ont généralement pas ce genres de problèmes.
+
+Cela dit, ce n'est pas un problème de langage de programmation. La plupart des langages modernes, y compris PHP et Ruby, permettent d'implémenter un backend approprié. Assurez-vous simplement que l'architecture de votre serveur fonctionne correctement avec de nombreuses connexions simultanées.
 ```
 
 ## Démo: un tchat

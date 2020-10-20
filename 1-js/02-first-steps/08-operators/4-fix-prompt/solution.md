@@ -9,7 +9,7 @@ let b = "2"; // prompt("Second number?", 2);
 alert(a + b); // 12
 ```
 
-Ce que nous devons faire est de convertir les chaînes de caractères en nombres avant `+`. Par exemple, en utilisant `Number()` ou en les ajoutant au début avec `+`.
+Ce que nous devons faire est de convertir les chaînes de caractères en nombres avant `+`. Par exemple, en utilisant `Number()` ou en les préfixant avec `+`.
 
 Par exemple, juste avant `prompt` :
 

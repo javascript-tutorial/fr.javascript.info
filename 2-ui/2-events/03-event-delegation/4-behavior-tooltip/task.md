@@ -2,37 +2,38 @@ importance: 5
 
 ---
 
-# Tooltip behavior
+# Comportement info-bulle
 
-Create JS-code for the tooltip behavior.
+Créez du code JS pour le comportement de l'info-bulle.
 
-When a mouse comes over an element with `data-tooltip`, the tooltip should appear over it, and when it's gone then hide.
+Lorsqu'une souris survole un élément avec `data-tooltip`, l'info-bulle devrait apparaître dessus, et quand elle est partie, se cacher.
 
-An example of annotated HTML:
+Un exemple de HTML annoté:
+
 ```html
 <button data-tooltip="the tooltip is longer than the element">Short button</button>
 <button data-tooltip="HTML<br>tooltip">One more button</button>
 ```
 
-Should work like this:
+Devrait fonctionner comme ceci:
 
 [iframe src="solution" height=200 border=1]
 
-In this task we assume that all elements with `data-tooltip` have only text inside. No nested tags (yet).
+Dans cette tâche, nous supposons que tous les éléments avec `data-tooltip` ne contiennent que du texte. Aucune balise imbriquée (pour le moment).
 
-Details:
+Détails:
 
-- The distance between the element and the tooltip should be `5px`.
-- The tooltip should be centered relative to the element, if possible.
-- The tooltip should not cross window edges. Normally it should be above the element, but if the element is at the page top and there's no space for the tooltip, then below it.
-- The tooltip content is given in the `data-tooltip` attribute. It can be arbitrary HTML.
+- La distance entre l'élément et l'info-bulle doit être de `5px`.
+- L'info-bulle doit être centrée par rapport à l'élément, si possible.
+- L'info-bulle ne doit pas traverser les bords de la fenêtre. Normalement, il devrait être au-dessus de l'élément, mais si l'élément est en haut de la page et qu'il n'y a pas d'espace pour l'info-bulle, alors en dessous.
+- Le contenu de l'info-bulle est donné dans l'attribut `data-tooltip`. Cela peut être du HTML arbitraire.
 
-You'll need two events here:
-- `mouseover` triggers when a pointer comes over an element.
-- `mouseout` triggers when a pointer leaves an element.
+Vous aurez besoin de deux événements ici:
+- `mouseover` se déclenche lorsqu'un pointeur survole un élément.
+- `mouseout` se déclenche lorsqu'un pointeur quitte un élément.
 
-Please use event delegation: set up two handlers on `document` to track all "overs" and "outs" from elements with `data-tooltip` and manage tooltips from there.
+Veuillez utiliser la délégation d'événements: configurez deux gestionnaires sur `document` pour suivre tous les "survolage" et "sorties" des éléments avec `data-tooltip` et gérer les info-bulles à partir de là.
 
-After the behavior is implemented, even people unfamiliar with JavaScript can add annotated elements.
+Une fois le comportement implémenté, même les personnes non familiarisées avec JavaScript peuvent ajouter des éléments annotés.
 
-P.S. Only one tooltip may show up at a time.
+P.S. Une seule info-bulle peut apparaître à la fois.

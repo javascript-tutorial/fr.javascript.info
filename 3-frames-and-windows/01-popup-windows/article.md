@@ -7,18 +7,22 @@ Le code suivant:
 window.open('https://javascript.info/')
 ```
 
-...Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
+... Et cela Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
 
 Les pop-up existent depuis longtemps. L'idée initiale était de montrer du contenu supplémentaire sans fermer la fenêtre principale. Désormais, il y a d'autres manières de faire ça : on peut charger du contenu dynamiquement avec [fetch](info:fetch) et l'afficher dans une `<div>` générée dynamiquement. Les pop-up ne sont donc plus des choses utilisées de nos jours. 
 
 Les pop-up sont également délicate sur les appareils mobiles puis que ces derniers ne peuvent pas afficher plusieurs fenêtres simultanément.
 
-Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes:
-1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé.
+
+Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes :
+
+1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé. 
 2. Il est très facile d'ouvrir une pop-up.
 3. Une pop-up peut naviguer, changer d'url et envoyer des messages à la fenêtre qui l'a ouverte.
 
+
 ## Bloquage de pop-up
+
 
 Dans le passé, des sites malveillant usaient des pop-up à outrance. Une mauvaise page pouvait ouvrir beaucoup de fenêtre pop-up avec des pubs. Désormais, la plupart des navigateurs essaient de bloquer les pop-up et de protéger les utilisateurs.
 
@@ -68,7 +72,9 @@ name
 : Le nom de la nouvelle fenêtre. Chaque fenêtre possède un `window.name`, et ici nous pouvons spécifier quelle fenêtre va être utilisée pour le pop-up. S'il existe déjà une fenêtre avec le même nom -- l'URL donnée s'ouvrira dedans, sinon une nouvelle fenêtre est ouverte.
 
 params
-: La chaîne de caractères de la configuration de la nouvelle fenêtre. Elle peut contenir des paramètres séparés par une virgule. Il ne peut pas y avoir d'espace dans les paramètres, par exemple : `width:200,height=100`.
+
+: La chaîne de caractères de la configuration pour la nouvelle fenêtre. Elle peut contenir des paramètres séparés par une virgule. Il ne peut pas y avoir d'espace dans les paramètres, par exemple : `width:200,height=100`.
+
 
 Paramètres de `params`:
 
@@ -88,7 +94,7 @@ Il existe également certains paramètres spécifiques aux navigateurs qui sont 
 
 ## Exemple: une fenêtre minimaliste  
 
-Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver: 
+Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver : 
 
 ```js run
 let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -238,21 +244,26 @@ Il existe un évènement `window.onscroll`.
 
 ## Mettre ou enlever le focus sur une fenêtre
 
-Théoriquement, il existe des méthodes `window.focus()` et `window.blur()` pour faire le focus/défaire le focus sur une fenêtre.  Il existe également des événements `focus/blur` qui permettent de focaliser une fenêtre et de saisir le moment où le visiteur passe ailleurs.
 
-Dans le passé, les pages malveillantes en abusaient. Par exemple, avec ce code :
+Théoriquement, il existe des méthodes `window.focus()` et `window.blur()` pour faire/défaire le focus sur une fenêtre.  Il existe également des événements `focus/blur` qui permettent de saisir le moment où le visiteur focus une fenêtre et passe ailleurs.
+
+Bien que, dans la pratique, ils soient sévèrement limités, car dans le passé, des pages malveillantes en abusaient.
+
+Par exemple, regardez ce code :
+
 
 ```js run
 window.onblur = () => window.focus();
 ```
 
-Lorsqu'un utilisateur tente de sortir de la fenêtre (`blur`), le focus va revenir dessus. L'intention est de "verrouiller" l'utilisateur dans la `window`.
 
-Il y a donc des limitations qui interdisent ce genre de code. Il y a de nombreuses limitations pour protéger l'utilisateur des publicités et des pages malveillantes. Elles dépendent du navigateur.
+Lorsqu'un utilisateur tente de sortir de la fenêtre (`window.onblur`), le focus va revenir dessus. L'intention est de "verrouiller" l'utilisateur dans la `window`.
 
-Par exemple, un navigateur mobile ignore généralement complètement cet appel. De même, la mise au point ne fonctionne pas lorsqu'une fenêtre contextuelle s'ouvre dans un onglet séparé plutôt que dans une nouvelle fenêtre.
+Les navigateurs ont donc dû introduire de nombreuses limitations pour interdire ce code et protéger l'utilisateur des publicités et des pages maléfiques. Elles dépendent du navigateur.
 
-Cependant, certaines choses peuvent être faites.
+Par exemple, un navigateur mobile ignore généralement complètement `window.focus()`. De même, le focus ne fonctionne pas lorsqu'une fenêtre contextuelle s'ouvre dans un onglet séparé plutôt que dans une nouvelle fenêtre.
+
+Pourtant, il existe des cas d'utilisation où de tels appels fonctionnent et peuvent être utiles.
 
 Par exemple:
 

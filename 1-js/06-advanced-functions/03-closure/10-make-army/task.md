@@ -14,21 +14,27 @@ function makeArmy() {
 
   let i = 0;
   while (i < 10) {
-    let shooter = function() { // shooter function
-      alert( i ); // devrait afficher son numéro
+    let shooter = function() { // créer une fonction shooter
+      alert( i ); // qui devrait afficher son numéro
     };
-    shooters.push(shooter);
+    shooters.push(shooter); // and add it to the array
     i++;
   }
 
+  // ...and return the array of shooters
   return shooters;
 }
 
 let army = makeArmy();
 
-army[0](); // the shooter numéro 0 affiche 10
-army[5](); // et le numéro 5 affiche aussi 10...
-// ... tous les shooters affichent 10 au lieu de 0, 1, 2, 3 …
+*!*
+// tous les shooters affichent 10 au lieu de leurs numéros 0, 1, 2, 3 ...
+army[0](); // 10 du shooter numéro 0
+army[1](); // 10 du shooter numéro 1
+army[2](); // 10 ...etc.
+*/!*
 ```
 
-Pourquoi tous les shooters affichent la même valeur ? Corrigez le code pour qu’ils fonctionnent comme prévu.
+Pourquoi tous les shooters affichent-ils la même valeur ?
+
+Corrigez le code pour qu'il fonctionne comme prévu.

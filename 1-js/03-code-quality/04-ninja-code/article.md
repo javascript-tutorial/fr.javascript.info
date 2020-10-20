@@ -1,7 +1,7 @@
 # Ninja code
 
 
-```quote author="Confucius"
+```quote author="Confucius (Entretiens)"
 Apprendre sans réfléchir est vain. Réfléchir sans apprendre est dangereux.
 ```
 

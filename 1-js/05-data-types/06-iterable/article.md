@@ -293,8 +293,8 @@ alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution dif
 Les objets pouvant être utilisés dans `for..of` s'appellent *iterable*.
 
 - Techniquement, les iterables doivent implémenter la méthode nommée `Symbol.iterator`.
-    - Le résultat de `obj[Symbol.iterator]` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
-    - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, value: any}`, ici `done: true` dénote la fin du processus de l'itération, sinon la `value` est la valeur suivante.
+    - Le résultat de `obj[Symbol.iterator]()` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
+    - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, value: any}`, ici `done: true` dénote la fin du processus de l'itération, sinon `value` est la valeur suivante.
 - La méthode `Symbol.iterator` est appelée automatiquement par `for..of`, mais nous pouvons aussi le faire directement.
 - Les iterables intégrés tels que des chaînes de caractères ou des tableaux implémentent également `Symbol.iterator`.
 - L'itérateur de chaîne de caractères connaît les paires de substitution.
@@ -304,4 +304,4 @@ Les objets qui ont des propriétés indexées et des `length` sont appelés *arr
 
 Si nous regardons à l'intérieur de la spécification -- nous verrons que la plupart des méthodes intégrées supposent qu'elles fonctionnent avec des éléments iterables ou des array-like (comme-un-tableau) au lieu de "vrais" tableaux, car c'est plus abstrait.
 
-`Array.from(obj[, mapFn, thisArg])` fait un véritable `Array` d'un `obj` itérable ou array-like (comme-un-tableau), et nous pouvons ensuite utiliser des méthodes de tableau sur celui-ci. Les arguments optionnels `mapFn` et `thisArg` nous permettent d'appliquer une fonction à chaque élément.
+`Array.from(obj[, mapFn, thisArg])` créer un véritable `Array` à partir d'un `obj` itérable ou array-like (comme-un-tableau), et nous pouvons ensuite utiliser des méthodes de tableau sur celui-ci. Les arguments optionnels `mapFn` et `thisArg` nous permettent d'appliquer une fonction à chaque élément.

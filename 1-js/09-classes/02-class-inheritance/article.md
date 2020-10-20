@@ -544,7 +544,7 @@ Voici la démo d'un mauvais résultat de `super` après la copie:
 ```js run
 let animal = {
   sayHi() {
-    console.log(`I'm an animal`);
+    alert(`I'm an animal`);
   }
 };
 
@@ -558,7 +558,7 @@ let rabbit = {
 
 let plant = {
   sayHi() {
-    console.log("I'm a plant");
+    alert("I'm a plant");
   }
 };
 

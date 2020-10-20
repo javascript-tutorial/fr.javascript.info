@@ -84,7 +84,7 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
-En d'autres termes, une chaîne de OR `"||"` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
+En d'autres termes, une chaîne de OR `||` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
 
 Par exemple :
 
@@ -101,9 +101,9 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
 1. **Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
 
-    Par exemple, nous avons les variables `firstName`, `lastName` et `nickName`, toutes optionnelles.
+    Par exemple, nous avons les variables `firstName`, `lastName` et `nickName`, toutes optionnelles (c'est-à-dire peut être indéfini ou avoir des valeurs fausses).
 
-    Utilisons OR `||` pour choisir celui qui contient les données et l'afficher (ou `anonyme` si rien n'est défini) :
+    Utilisons OR `||` pour choisir celui qui contient les données et l'afficher (ou `Anonymous` si rien n'est défini) :
 
     ```js run
     let firstName = "";
@@ -115,7 +115,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     */!*
     ```
 
-    If all variables were falsy, `Anonymous` would show up.
+    If all variables were falsy, `"Anonymous"` would show up.
 
 2. **Évaluation des courts-circuits.**
 
@@ -223,7 +223,7 @@ La priorité de l'opérateur AND `&&` est supérieure à OR `||`.
 Donc, le code `a && b || c && d` est essentiellement le même que si `&&` était entre parenthèses: `(a && b) || (c && d)`.
 ````
 
-````warn header="Ne remplacez pas `if` par || ou &&"
+````warn header="Ne remplacez pas `if` par `||` ou `&&`"
 Parfois, les gens utilisent l'opérateur AND `&&` comme "plus court pour écrire `if`".
 
 Par exemple :
@@ -244,7 +244,7 @@ let x = 1;
 if (x > 0) alert( 'Greater than zero!' );
 ```
 
-La variante avec `&&` semble être plus courte. Mais `if` est plus évident et a tendance à être un peu plus lisible. Il est donc recommandé d'utiliser chaque construction pour sa finalité. Utilisez `if` si nous voulons `if`. Et utilisez `&&` si nous voulons AND.
+Bien que la variante avec `&&` semble plus courte, `if` est plus évidente et a tendance à être un peu plus lisible. Nous recommandons donc d'utiliser chaque construction dans son but : utilisez `if` si nous voulons `if` et utilisez `&&` si nous voulons ET.
 ````
 
 

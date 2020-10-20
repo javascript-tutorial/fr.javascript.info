@@ -83,8 +83,10 @@ const bigInt = 1234567890123456789012345678901234567890n;
 Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>. Lisez-le lorsque vous avez besoin d'aussi gros chiffres.
 
 ```smart header="Problèmes de compatibilité"
-À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge, mais pas dans Safari/IE.
+À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge/Safari, mais pas dans IE.
 ```
+
+You can check [*MDN* BigInt compatibility table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility) to know which versions of a browser are supported.
 
 ## String
 
@@ -128,7 +130,7 @@ Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <i
 ```smart header="Il n'y a pas de type *character*."
 Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
-En JavaScript, il n'y a pas un tel type. Il n’ya qu’un seul type : `string`. Une chaîne de caractères ne peut comporter qu'un seul caractère ou plusieurs. 
+En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type: `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs d'entre eux.
 ```
 
 ## Boolean (type logique)
@@ -257,9 +259,9 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 
 Il existe 8 types de données de base en JavaScript.
 
-- `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à ±2<sup>53</sup>.
+- `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à <code>±(2<sup>53</sup>-1)</code>.
 - `bigint` pour des nombres entiers de longueur arbitraire.
-- `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir un ou plusieurs caractères, il n’existe pas de type à caractère unique distinct.
+- `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir zéro ou plusieurs caractères, il n'y a pas de type à caractère unique distinct.
 - `boolean` pour `true`/`false` (vrai/faux).
 - `null` pour les valeurs inconnues - un type autonome qui a une seule valeur `null`.
 - `undefined` pour les valeurs non attribuées - un type autonome avec une valeur unique `undefined`.

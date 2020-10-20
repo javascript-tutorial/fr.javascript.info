@@ -1,62 +1,68 @@
 
 # Custom elements
 
-We can create custom HTML elements, described by our class, with its own methods and properties, events and so on.
+Nous pouvons créer des éléments HTML personnalisés, définis par nos classes, avec leur propres méthodes et propriétés, gestionnaires d'événement, etc. 
 
-Once a custom element is defined, we can use it on par with built-in HTML elements.
+Une fois qu'un élément personnalisé est définit, nous pouvons l'utiliser au même titre qu'un élément HTML classique.
 
-That's great, as HTML dictionary is rich, but not infinite. There are no `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`... Just think of any other tag we might need.
+C'est parfait, sachant que le dictionnaire HTML est riche, mais pas infini. Il n'y a pas de `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`... Pensez un instant à toute les balises dont nous pourrions avoir besoin.
 
-We can define them with a special class, and then use as if they were always a part of HTML.
+Nous pouvons les définir avec une classe spéciale, et les utiliser comme des balises HTML classique.
 
-There are two kinds of custom elements:
+Il y a deux sortes d'éléments personnalisés :
 
-1. **Autonomous custom elements** -- "all-new" elements, extending the abstract `HTMLElement` class.
-2. **Customized built-in elements** -- extending built-in elements, like a customized button, based on `HTMLButtonElement` etc.
+2. **Éléments personnalisés autonome** -- les nouveaux éléments, qui étendent la classe abstraite `HTMLElement`.
+<!-- 2. **Customized built-in elements** -- extending built-in elements, like a customized button, based on `HTMLButtonElement` etc. -->
+**Éléments personnalisés intégrés** -- ils étendent les éléments déjà intégrés au navigateur, comme un bouton personnalisé, basé sur `HTMLButtonElement`.
 
-First we'll cover autonomous elements, and then move to customized built-in ones.
+<!-- First we'll cover autonomous elements, and then move to customized built-in ones. -->
+Nous allons voir les éléments personnalisés autonome dans un premier temps, puis nous passerons aux éléments personnalisés déjà intégrés au navigateur.
 
-To create a custom element, we need to tell the browser several details about it: how to show it, what to do when the element is added or removed to page, etc.
+<!-- To create a custom element, we need to tell the browser several details about it: how to show it, what to do when the element is added or removed to page, etc. -->
+Pour créer un élément personnalisé, nous allons devoir donner quelques détails au navigateur : Comment le montrer, que faire lorsque cet élément est chargé dans le DOM, ect...
 
-That's done by making a class with special methods. That's easy, as there are only few methods, and all of them are optional.
+<!-- That's done by making a class with special methods. That's easy, as there are only few methods, and all of them are optional. -->
+C'est  possible en créant une classe avec des méthodes spéciales. C'est facile, sachant qu'il n'y seulement que quelques méthodes, et elles sont toutes optionnelles.
 
-Here's a sketch with the full list:
+<!-- Here's a sketch with the full list: -->
+Voici la classe et toute ses méthodes :
 
 ```js
 class MyElement extends HTMLElement {
   constructor() {
     super();
-    // element created
+    // créer l'élément
   }
 
   connectedCallback() {
-    // browser calls this method when the element is added to the document
-    // (can be called many times if an element is repeatedly added/removed)
+    // le navigateur appelle cette méthode lorsque l'élément est ajouté au document
+    // elle peut-être appelé autant de fois que lélément est ajouté ou supprimé)
   }
 
   disconnectedCallback() {
-    // browser calls this method when the element is removed from the document
-    // (can be called many times if an element is repeatedly added/removed)
+    // le navigateur appelle cette méthode lorsque l'élément est supprimé du document
+    // elle peut-être appelé autant de fois que lélément est ajouté ou supprimé)
   }
 
   static get observedAttributes() {
-    return [/* array of attribute names to monitor for changes */];
+    return [/* tableau listant les attributs dont les changements sont à surveiller */];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // called when one of attributes listed above is modified
+    // appelé lorsque l'un des attributs listé par la méthode ci-dessus est modifié
   }
 
   adoptedCallback() {
-    // called when the element is moved to a new document
-    // (happens in document.adoptNode, very rarely used)
+    // méthode appelé lorsque l'élément est envoyé vers un nouveau document
+    // (utilisé très rarement avec document.adoptNode)
   }
 
-  // there can be other element methods and properties
+  // vous pouvez ajouter d'autres méthodes ou propriétées
 }
 ```
 
-After that, we need to register the element:
+<!-- After that, we need to register the element: -->
+Après ça, nous devons enregistrer cet élément :
 
 ```js
 // let the browser know that <my-element> is served by our new class
@@ -115,7 +121,7 @@ customElements.define("time-formatted", TimeFormatted); // (2)
 ></time-formatted>
 ```
 
-1. The class has only one method `connectedCallback()` -- the browser calls it when `<time-formatted>` element is added to page (or when HTML parser detects it), and it uses the built-in [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) data formatter, well-supported across the browsers, to show a nicely formatted time.
+1. The class has only one method `connectedCallback()` -- the browser calls it when `<time-formatted>` element is added to page (or when HTML parser detects it), and it uses the built-in [Intl.DateTimeFormat](mdn:/JavaScript/Reference/Global_Objects/DateTimeFormat) data formatter, well-supported across the browsers, to show a nicely formatted time.
 2. We need to register our new element by `customElements.define(tag, class)`.
 3. And then we can use it everywhere.
 
