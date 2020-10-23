@@ -1,15 +1,15 @@
 
-# Reference Type
+# Type référence
 
-```warn header="In-depth language feature"
-This article covers an advanced topic, to understand certain edge-cases better.
+```warn header="Sujet avancé"
+Cet article couvre un sujet avancé pour mieux comprendre certains cas limites.
 
-It's not important. Many experienced developers live fine without knowing it. Read on if you're  want to know how things work under the hood.
+Ce n'est pas important. Beaucoup de développeurs expérimentés s'en sortent très bien sans. Lisez cet article si vous voulez en savoir plus du fonctionemment sous le capot.
 ```
 
-A dynamically evaluated method call can lose `this`.
+Un appel de méthode évalué dynamiquement peut perdre `this`.
 
-For instance:
+Par exemple:
 
 ```js run
 let user = {
@@ -18,42 +18,42 @@ let user = {
   bye() { alert("Bye"); }
 };
 
-user.hi(); // works
+user.hi(); // fonctionne
 
-// now let's call user.hi or user.bye depending on the name
+// essayons maintenant d'appeler user.hi ou user.by selon name
 *!*
-(user.name == "John" ? user.hi : user.bye)(); // Error!
+(user.name == "John" ? user.hi : user.bye)(); // Error !
 */!*
 ```
 
-On the last line there is a conditional operator that chooses either `user.hi` or `user.bye`. In this case the result is `user.hi`.
+Sur la dernière ligne il y a un opérateur conditionnel qui choisit entre `user.hi` ou `user.bye`. Ici le résultat est `user.hi`.
 
-Then the method is immediately called with parentheses `()`. But it doesn't work correctly!
+Ensuite la méthode est immédiatement appelée avec les parenthèses `()`. Mais cela ne fonctionne pas !
 
-As you can see, the call results in an error, because the value of `"this"` inside the call becomes `undefined`.
+Comme vous pouvez le voir, l'appel se résout avec une erreur car la valeur de `"this"` dans l'appel devient `undefined`.
 
-This works (object dot method):
+Cet appel fonctionne (syntaxe de notation par points):
 ```js
 user.hi();
 ```
 
-This doesn't (evaluated method):
+Celui-là non (méthode évaluée):
 ```js
-(user.name == "John" ? user.hi : user.bye)(); // Error!
+(user.name == "John" ? user.hi : user.bye)(); // Error !
 ```
 
-Why? If we want to understand why it happens, let's get under the hood of how `obj.method()` call works.
+Pourquoi ? Si nous voulons comprendre pourquoi cela arrive, regardons comment l'appel de `obj.method()` fonctionne sous le capot.
 
-## Reference type explained
+## Le type référence expliqué
 
-Looking closely, we may notice two operations in `obj.method()` statement:
+En y regardant plus précisement, on peut remarquer 2 opérations dans la déclaration de `obj.method()`:
 
-1. First, the dot `'.'` retrieves the property `obj.method`.
-2. Then parentheses `()` execute it.
+1. En premier, le point `'.'` récupère la propriété `obj.method`.
+2. Puis les parenthèses `()` l'éxécute.
 
-So, how does the information about `this` get passed from the first part to the second one?
+Mais comment l'information du `this` est passée de la première opération à la deuxième ?
 
-If we put these operations on separate lines, then `this` will be lost for sure:
+Si on sépare ces opération sur 2 lignes, alors `this` sera perdu :
 
 ```js run
 let user = {
@@ -62,47 +62,48 @@ let user = {
 }
 
 *!*
-// split getting and calling the method in two lines
+// On sépare l'accès à la méthode et son appel en deux lignes
 let hi = user.hi;
-hi(); // Error, because this is undefined
+hi(); // Error, car this n'est pas définit
 */!*
 ```
 
-Here `hi = user.hi` puts the function into the variable, and then on the last line it is completely standalone, and so there's no `this`.
+Ici `hi = user.hi` assigne la fonction à la variable, ensuite sur la dernière ligne `this` est complétement autonome et donc il n'y a pas de `this`.
 
-**To make `user.hi()` calls work, JavaScript uses a trick -- the dot `'.'` returns not a function, but a value of the special [Reference Type](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
+**Pour faire que `user.hi()` fonctionne, JavaScript utilise une astuce -- le point `'.'` ne retourne pas une fonction, mais une valeur  de [type référence](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
 
-The Reference Type is a "specification type". We can't explicitly use it, but it is used internally by the language.
+Le type référence n'est pas un "type de spécifiation". On ne peut l'utiliser explicitement, mais il est utilisé en interne par le langage.
 
-The value of Reference Type is a three-value combination `(base, name, strict)`, where:
+La valeur de Type Référence est une combinaison de 3 valeurs `(base, name, strict)`, où :
 
-- `base` is the object.
-- `name` is the property name.
-- `strict` is true if `use strict` is in effect.
+- `base` est l'objet.
+- `name` est le nom de la propriété.
+- `strict` est vrai si `use strict` est en vigueur.
 
-The result of a property access `user.hi` is not a function, but a value of Reference Type. For `user.hi` in strict mode it is:
+Le résultat de l'accès à la propriété `user.hi` n'est pas une fonction, mais une valeur de Type Référence. Pour `user.hi` en mode strict cela est :
 
 ```js
-// Reference Type value
+// Valeur de type référence
 (user, "hi", true)
 ```
 
-When parentheses `()` are called on the Reference Type, they receive the full information about the object and its method, and can set the right `this` (`=user` in this case).
+Quand les parenthèses `()` sont appelées, elles reçoivent les informations sur l'objet et ses méthodes et peut assigné le `this` correct (`=user` dans ce cas).
 
-Reference type is a special "intermediary" internal type, with the purpose to pass information from dot `.` to calling parentheses `()`.
+Le type référence est un type interne "intermédiaire", avec comme but de passer l'information du point `.`  aux parenthèses `()`.
 
-Any other operation like assignment `hi = user.hi` discards the reference type as a whole, takes the value of `user.hi` (a function) and passes it on. So any further operation "loses" `this`.
+N'importe quelle autre opération d'assignement comme `hi = user.hi` rejette le type référence, prends la valeur de `user.hi` (une fonction) et la passe. Ainsi n'importe quelle opération suivante "perd" `this`.
 
-So, as the result, the value of `this` is only passed the right way if the function is called directly using a dot `obj.method()` or square brackets `obj['method']()` syntax (they do the same here). Later in this tutorial, we will learn various ways to solve this problem such as [func.bind()](/bind#solution-2-bind).
+Il en résulte que la valeur de `this` n'est passée correctement seulement lorsque la fonction est appelée directement en utilisant la notation par points `obj.method()` ou la notation par crochet `obj['method']()` (c'est la même chose). Plus tard dans ce tutoriel on apprendra plusieurs manières de régler ce problème. Par exemple avef [func.bind()](/bind#solution-2-bind).
 
-## Summary
+## Résumé
 
-Reference Type is an internal type of the language.
+Le type référence est un type interne au langage.
 
-Reading a property, such as with dot `.` in `obj.method()` returns not exactly the property value, but a special "reference type" value that stores both the property value and the object it was taken from.
+En lisant une propriété, comme avec le point `.` dans `obj.method()`, qui ne retourne pas la valeur de la propriété mais la valeur spéciale de "type référence", qui garde le nom de la propriété et l'objet relié à la propriété.
 
 That's for the subsequent method call `()` to get the object and set `this` to it.
+Cela est fait pour que l'éxécution suivante, l'appel à la méthode  `()`, reçoive l'objet et lui assigne `this`.
 
-For all other operations, the reference type automatically becomes the property value (a function in our case).
+Pour toutes les autres opérations, le type référence sera automatiquement la valeur de la propriété (une fonction dans notre cas).
 
-The whole mechanics is hidden from our eyes. It only matters in subtle cases, such as when a method is obtained dynamically from the object, using an expression.
+Le fonctionnement est caché de notre vision. Cela n'a d'importance que dans certains cas, comme lorsqu'une méthode est obtenue dynamiquement de l'object en utilisant une expression.
