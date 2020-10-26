@@ -128,7 +128,11 @@ setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000);
 ```smart header="Le temps continue de s'écouler pendant que `alert` est affiché"
 Dans la majorité des navigateurs, dont Chrome et Firefox, le timer interne continue à s'incrémenter pendant qu'un message est affiché (via `alert`, `confirm` ou `prompt`).
 
+<<<<<<< HEAD
 Donc, si vous exécutez le code ci-dessus et ne fermez pas la fenêtre `alert` pendant un certain temps, alors, dans la prochaine` alert`, s'affichera immédiatement au fur et à mesure que vous le ferez. L'intervalle réel entre les alertes sera inférieur à 2 secondes.
+=======
+So if you run the code above and don't dismiss the `alert` window for some time, then the next `alert` will be shown immediately as you do it. The actual interval between alerts will be shorter than 2 seconds.
+>>>>>>> 2d5be7b7307b0a4a85e872d229e0cebd2d8563b5
 ```
 
 ## setTimeout imbriqué
@@ -281,16 +285,28 @@ Cette même limitation s'applique si on utilise `setInterval` au lieu de `setTim
 
 Cette limitation est l'héritage d'un lointain passé et beaucoup de scripts se basent dessus, d'où la nécessité de cette limitation pour des raisons historiques.
 
+<<<<<<< HEAD
 Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d'autres façon de planifier immédiatement des tâches asynchrones, notamment [setImmediate](https://nodejs.org/api/timers.html) pour Node.js. Il faut donc garder à l'esprit que ce nota bene est spécifique aux navigateurs web.
+=======
+For server-side JavaScript, that limitation does not exist, and there exist other ways to schedule an immediate asynchronous job, like [setImmediate](https://nodejs.org/api/timers.html#timers_setimmediate_callback_args) for Node.js. So this note is browser-specific.
+>>>>>>> 2d5be7b7307b0a4a85e872d229e0cebd2d8563b5
 ````
 
 ## Résumé
 
+<<<<<<< HEAD
 - Les méthodes `setInterval(func, delay, ...args)` et `setTimeout(func, delay, ...args)` permettent d'exécuter `func` respectivement périodiquement et une seule fois après `delay` millisecondes.
 - Pour annuler l'exécution, nous devons appeler `clearInterval/clearTimeout` avec la valeur renvoyée par `setInterval/setTimeout`.
 - Les appels de `setTimeout` imbriqués sont une alternative plus flexible à `setInterval`, ils permettent de configurer le temps *entre* les exécution plus précisément.
 - L'ordonnancement à délai nul avec `setTimeout(func, 0)` (le même que `setTimeout(func)`) permet de planifier l'exécution "dès que possible, mais seulement une fois que le bloc de code courant a été exécuté".
 - Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour` setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
+=======
+- Methods `setTimeout(func, delay, ...args)` and `setInterval(func, delay, ...args)` allow us to run the `func` once/regularly after `delay` milliseconds.
+- To cancel the execution, we should call `clearTimeout/clearInterval` with the value returned by `setTimeout/setInterval`.
+- Nested `setTimeout` calls are a more flexible alternative to `setInterval`, allowing us to set the time *between* executions more precisely.
+- Zero delay scheduling with `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current script is complete".
+- The browser limits the minimal delay for five or more nested calls of `setTimeout` or for `setInterval` (after 5th call) to 4ms. That's for historical reasons.
+>>>>>>> 2d5be7b7307b0a4a85e872d229e0cebd2d8563b5
 
 Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 

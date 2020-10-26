@@ -5,7 +5,11 @@ La capture et le bouillonement ("bubbling") nous permettent d'implémenter l'un 
 
 L'idée est que si nous avons beaucoup d'éléments traités de la même manière, au lieu d'assigner un gestionnaire à chacun d'eux -- nous mettons un seul gestionnaire sur leur ancêtre commun.
 
+<<<<<<< HEAD
 Dans le gestionnaire, nous obtenons `event.target`, voyons où l'événement s'est réellement produit et traitons le.
+=======
+In the handler we get `event.target` to see where the event actually happened and handle it.
+>>>>>>> 2d5be7b7307b0a4a85e872d229e0cebd2d8563b5
 
 Voyons un exemple -- le [diagramme Ba-Gua](http://en.wikipedia.org/wiki/Ba_gua) reflétant l'ancienne philosophie chinoise.
 

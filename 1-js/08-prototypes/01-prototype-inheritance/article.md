@@ -198,8 +198,8 @@ alert(admin.fullName); // John Smith (*)
 // le mutateur se déclanche!
 admin.fullName = "Alice Cooper"; // (**)
 
-alert(admin.fullName); // Alice Cooper , state of admin modified
-alert(user.fullName); // John Smith , state of user protected
+alert(admin.fullName); // Alice Cooper, state of admin modified
+alert(user.fullName); // John Smith, state of user protected
 ```
 
 Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le prototype `user`, donc c'est appelé. Et dans la ligne `(**)` la propriété a un mutateur dans le prototype, donc c'est appelé.
