@@ -23,7 +23,12 @@ Actuellement, Babel comporte deux parties :
 
 2. Ensuite, le polyfill.
 
+<<<<<<< HEAD
 Les nouvelles fonctionnalités du langage peuvent inclure de nouvelles fonctions intégrées et de nouvelles constructions de syntaxe. Le transpiler réécrit le code en transformant les nouvelles constructions de syntaxe en anciennes. Mais en ce qui concerne les nouvelles fonctions intégrées, nous devons les implémenter. JavaScript est un langage très dynamique, les scripts peuvent ajouter / modifier n’importe quelle fonction, afin qu’ils se comportent conformément au standard moderne.
+=======
+    New language features may include not only syntax constructs, but also built-in functions.
+    The transpiler rewrites the code, transforming syntax constructs into older ones. But as for new built-in functions, we need to implement them. JavaScript is a highly dynamic language, scripts may add/modify any functions, so that they behave according to the modern standard.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
   Un script qui met à jour / ajoute de nouvelles fonctions s'appelle "polyfill". Il "comble" le vide et ajoute les implémentations manquantes.
 

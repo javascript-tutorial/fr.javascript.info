@@ -12,7 +12,11 @@ En JavaScript, les objets ont une propriété cachée spéciale `[[Prototype]]` 
 
 ![prototype](object-prototype-empty.svg)
 
+<<<<<<< HEAD
 Le prototype est un peu "magique". Lorsque nous voulons lire une propriété de `object`, et qu'elle en manque, JavaScript la prend automatiquement à partir du prototype. En programmation, cela s'appelle "l'héritage prototypal". De nombreuses fonctionnalités et techniques de programmation intéressantes sont basées sur elle.
+=======
+When we  read a property from `object`, and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called "prototypal inheritance". And soon we'll study many examples of such inheritance, as well as cooler language features built upon it.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 La propriété `[[Prototype]]` est interne et cachée, mais il y a plusieurs façons de la définir.
 
@@ -27,10 +31,11 @@ let rabbit = {
 };
 
 *!*
-rabbit.__proto__ = animal;
+rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
 */!*
 ```
 
+<<<<<<< HEAD
 ```smart header="`__proto__` est un accesseur/mutateur historique pour `[[Prototype]]`"
 Veuillez noter que `__proto__` n'est *pas le même* que `[[Prototype]]`. C'est un accesseur/mutateur pour cela.
 
@@ -40,6 +45,9 @@ Selon la spécification, `__proto__` ne doit être pris en charge que par les na
 ```
 
 Si nous recherchons une propriété dans `rabbit`, et qu'elle en manque, JavaScript la prend automatiquement à partir de `animal`.
+=======
+Now if we read a property from `rabbit`, and it's missing, JavaScript will automatically take it from `animal`.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 Par exemple:
 
@@ -130,14 +138,37 @@ alert(longEar.jumps); // true (de rabbit)
 
 ![](proto-animal-rabbit-chain.svg)
 
+<<<<<<< HEAD
 Il n'y a que deux limitations :
+=======
+Now if we read something from `longEar`, and it's missing, JavaScript will look for it in `rabbit`, and then in `animal`.
+
+There are only two limitations:
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 1. Les références ne peuvent pas tourner en rond. JavaScript va générer une erreur si nous essayons d'assigner `__proto__` dans un cercle.
 2. La valeur de `__proto__` peut être un objet ou `null`. Les autres types sont ignorés.
 
 Cela peut aussi être évident, mais quand même: il ne peut y avoir qu'un seul `[[Prototype]]`. Un objet ne peut pas hériter de deux autres.
 
+<<<<<<< HEAD
 ## L'écriture n'utilise pas de prototype
+=======
+
+```smart header="`__proto__` is a historical getter/setter for `[[Prototype]]`"
+It's a common mistake of novice developers not to know the difference between these two. 
+
+Please note that `__proto__` is *not the same* as the internal `[[Prototype]]` property. It's a getter/setter for `[[Prototype]]`. Later we'll see situations where it matters,  for now let's just keep it in mind, as we build our understanding of JavaScript language.
+
+The `__proto__` property is a bit outdated. It exists for historical reasons, modern JavaScript suggests that we should use `Object.getPrototypeOf/Object.setPrototypeOf` functions instead that get/set the prototype. We'll also cover these functions later. 
+
+By the specification, `__proto__` must only be supported by browsers. In fact though, all environments including server-side support `__proto__`, so we're quite safe using it.
+
+As the `__proto__` notation is a bit more intuitively obvious, we use it in the examples.
+```
+
+## Writing doesn't use prototype
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 Le prototype n'est utilisé que pour la lecture des propriétés.
 
@@ -198,8 +229,8 @@ alert(admin.fullName); // John Smith (*)
 // le mutateur se déclanche!
 admin.fullName = "Alice Cooper"; // (**)
 
-alert(admin.fullName); // Alice Cooper , state of admin modified
-alert(user.fullName); // John Smith , state of user protected
+alert(admin.fullName); // Alice Cooper, state of admin modified
+alert(user.fullName); // John Smith, state of user protected
 ```
 
 Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le prototype `user`, donc c'est appelé. Et dans la ligne `(**)` la propriété a un mutateur dans le prototype, donc c'est appelé.

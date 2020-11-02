@@ -320,7 +320,11 @@ export {default as User} from './user.js'; // réexportez default
 
 Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
+<<<<<<< HEAD
 Imaginons, nous écrivons un "package" : un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides" pour une utilisation interne dans d'autres modules.
+=======
+Imagine, we're writing a "package": a folder with a lot of modules, with some of the functionality exported outside (tools like NPM allow us to publish and distribute such packages, but we don't have to use them), and many modules are just "helpers", for internal use in other package modules.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 La structure de fichier pourrait être comme ceci :
 ```
@@ -377,7 +381,11 @@ export {default as User} from './user.js';
 
 L'exportation par défaut nécessite un traitement séparé lors de la réexportation.
 
+<<<<<<< HEAD
 Disons que nous avons `user.js` et que nous aimerions réexporter la classe `User` à partir de celle-ci:
+=======
+Let's say we have `user.js` with the `export default class User` and would like to re-export it:
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 ```js
 // 📁 user.js
@@ -386,7 +394,13 @@ export default class User {
 }
 ```
 
+<<<<<<< HEAD
 1. `export User from './user.js'` çe ne fonctionnera pas... C'est une erreur de syntaxe!
+=======
+We can come across two problems with it:
+
+1. `export User from './user.js'` won't work. That would lead to a syntax error.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
 
@@ -398,7 +412,11 @@ export default class User {
     export {default} from './user.js'; // réexporter l'exportation par défaut
     ```
 
+<<<<<<< HEAD
 Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne les aiment pas.
+=======
+Such oddities of re-exporting a default export are one of the reasons why some developers don't like default exports and prefer named ones.
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 ## Sommaire
 

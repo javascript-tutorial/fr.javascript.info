@@ -175,9 +175,15 @@ alert(Object.keys(chineseDictionary)); // hello,bye
 
 Les méthodes modernes pour configurer et accéder directement au prototype sont les suivantes :
 
+<<<<<<< HEAD
 - [Object.create(proto, [descriptors])](mdn:js/Object/create) -- crée un objet vide avec un `proto` donné en tant que `[[Prototype]]` (peut être `null`) et des descripteurs de propriété facultatifs.
 - [Object.getPrototypeOf(obj)](mdn:js/Object.getPrototypeOf) -- retourne le `[[Prototype]]` de `obj` (identique au getter `__proto__`).
 - [Object.setPrototypeOf(obj, proto)](mdn:js/Object.setPrototypeOf) -- configure le `[[Prototype]]` de `obj` à `proto` (identique au setter `__proto__`).
+=======
+- [Object.create(proto, [descriptors])](mdn:js/Object/create) -- creates an empty object with a given `proto` as `[[Prototype]]` (can be `null`) and optional property descriptors.
+- [Object.getPrototypeOf(obj)](mdn:js/Object/getPrototypeOf) -- returns the `[[Prototype]]` of `obj` (same as `__proto__` getter).
+- [Object.setPrototypeOf(obj, proto)](mdn:js/Object/setPrototypeOf) -- sets the `[[Prototype]]` of `obj` to `proto` (same as `__proto__` setter).
+>>>>>>> dccca58f268ad6d5a6f2160613a8ea3c5cd53a2d
 
 Le getter/setter `__proto__` intégré est dangereux si nous souhaitons placer les clés générées par l'utilisateur dans un objet. Tout simplement parce qu'un utilisateur peut entrer `"__proto __"` comme clé, et il y aura une erreur, avec des conséquences légères, espérons-le, mais généralement imprévisibles.
 
