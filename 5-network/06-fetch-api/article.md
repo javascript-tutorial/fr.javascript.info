@@ -215,20 +215,10 @@ window.onunload = function() {
 
 Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau associées sont abandonnées. Mais l'option `keepalive` indique au navigateur d'exécuter la requête en arrière-plan, même après avoir quitté la page. Cette option est donc essentielle à la réussite de notre demande.
 
-<<<<<<< HEAD
 Elle a quelques limitations :
 
 - Nous ne pouvons pas envoyer de mégaoctets: la limite de corps pour les requêtes `keepalive` est de 64kb.
-    - Si vous collectez plus de données, nous pouvons les envoyer régulièrement par paquets, de sorte qu'il ne restera pas grand-chose pour la dernière requête `onunload`.
-    - La limite concerne toutes les demandes en cours. Nous ne pouvons donc pas le tromper en créant 100 requêtes, chacune de 64 Ko.
-- Nous ne pouvons pas gérer la réponse du serveur si la demande est faite dans `onunload`, car le document est déjà déchargé à ce moment là, les fonctions ne fonctionneront pas.
-    - Habituellement, le serveur envoie une réponse vide à de telles demandes, ce n'est donc pas un problème.
-=======
-It has a few limitations:
-
-- We can't send megabytes: the body limit for `keepalive` requests is 64kb.
-    - If we need to gather a lot of statistics about the visit, we should send it out regularly in packets, so that there won't be a lot left for the last `onunload` request.
-    - This limit applies to all `keepalive` requests together. In other words, we can perform multiple `keepalive` requests in parallel, but the sum of their body lengths should not exceed 64kb.
-- We can't handle the server response if the document is unloaded. So in our example `fetch` will succeed due to `keepalive`, but subsequent functions  won't work.
-    - In most cases, such as sending out statistics, it's not a problem, as server just accepts the data and usually sends an empty response to such requests.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+    - Si nous avons besoin de rassembler beaucoup de statistiques sur la visite, nous devons les envoyer régulièrement par paquets, afin qu'il ne reste plus grand-chose pour la dernière requête `onunload`.
+    - Cette limite s'applique à toutes les demandes `keepalive` ensemble. En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
+- Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé. Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
+    - Dans la plupart des cas, comme l'envoi de statistiques, ce n'est pas un problème, car le serveur accepte simplement les données et envoie généralement une réponse vide à de telles demandes.

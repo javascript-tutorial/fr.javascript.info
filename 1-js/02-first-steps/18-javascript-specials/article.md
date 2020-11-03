@@ -144,7 +144,7 @@ Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
 Bitwise
-: Les opérateurs au niveau des bits fonctionnent avec des entiers de niveau binaire : voir la [doc](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) quand ils sont nécessaires.
+: Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise)) quand ils sont nécessaires.
 
 Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.

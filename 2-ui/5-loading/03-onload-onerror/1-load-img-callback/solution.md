@@ -1,6 +1,6 @@
 
-The algorithm:
-1. Make `img` for every source.
-2. Add `onload/onerror` for every image.
-3. Increase the counter when either `onload` or `onerror` triggers.
-4. When the counter value equals to the sources count -- we're done: `callback()`.
+L'algorithme:
+1. Créez `img` pour chaque source.
+2. Ajoutez `onload/onerror` pour chaque image.
+3. Augmentez le compteur lorsque `onload` ou `onerror` se déclenchent.
+4. Lorsque la valeur du compteur est égale au nombre de sources -- nous avons terminé: `callback()`.

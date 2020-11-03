@@ -88,13 +88,8 @@ Comme vous pouvez le voir, `left/top` n'est pas égal à `x/y` dans ce cas.
 En pratique cependant, `elem.getBoundingClientRect()` retourne toujours une largeur/hauteur positive, ici nous mentionnons une largeur/hauteur négative uniquement pour que vous compreniez pourquoi ces propriétés apparemment en double ne sont pas en fait des doublons.
 ```
 
-<<<<<<< HEAD
-```warn header="Internet Explorer et Edge : pas de support pour `x/y`"
-Internet Explorer et Edge ne prennent pas en charge les propriétés `x/y` pour des raisons historiques.
-=======
-```warn header="Internet Explorer: no support for `x/y`"
-Internet Explorer doesn't support `x/y` properties for historical reasons.
->>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
+```warn header="Internet Explorer : pas de support pour `x/y`"
+Internet Explorer ne prend pas en charge les propriétés `x/y` pour des raisons historiques.
 
 Nous pouvons donc soit faire un polyfill (ajouter des getters dans `DomRect.prototype`), soit simplement utiliser `top/left`, car ils sont toujours les mêmes que `x/y` pour un 
 `width/height` positif, en particulier dans le résultat de `elem.getBoundingClientRect()`.

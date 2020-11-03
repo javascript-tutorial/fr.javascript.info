@@ -7,11 +7,12 @@ Le code suivant:
 window.open('https://javascript.info/')
 ```
 
-...Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
+... Et cela Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
 
 Les pop-up existent depuis longtemps. L'idée initiale était de montrer du contenu supplémentaire sans fermer la fenêtre principale. Désormais, il y a d'autres manières de faire ça : on peut charger du contenu dynamiquement avec [fetch](info:fetch) et l'afficher dans une `<div>` générée dynamiquement. Les pop-up ne sont donc plus des choses utilisées de nos jours. 
 
 Les pop-up sont également délicate sur les appareils mobiles puis que ces derniers ne peuvent pas afficher plusieurs fenêtres simultanément.
+
 
 Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes :
 
@@ -93,7 +94,7 @@ Il existe également certains paramètres spécifiques aux navigateurs qui sont 
 
 ## Exemple: une fenêtre minimaliste  
 
-Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver: 
+Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver : 
 
 ```js run
 let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
