@@ -314,9 +314,9 @@ if (str.indexOf("Widget") != -1) {
 ```
 
 #### L'astuce du NON binaire
+
 L’un des vieux trucs utilisés ici est l'opérateur [NON binaire](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires#(NON_binaire)) `~`. Il convertit le nombre en un entier de 32 bits (supprime la partie décimale, s'elle existe), puis inverse tous les bits de sa représentation binaire.
 
-Pour les entiers 32 bits, l'appel `~n` signifie exactement la même chose que `-(n+1)` (en raison du format IEEE-754).
 
 En pratique, cela signifie une chose simple: pour les entiers 32 bits, `~n` est égal à `-(n + 1)`.
 
@@ -349,7 +349,7 @@ Il n'est généralement pas recommandé d'utiliser les fonctionnalités du langa
 
 Rappelez-vous juste que : `if (~str.indexOf(...))` se lit "si trouvé".
 
-Pour être précis cependant, les grands nombres sont tronqués à 32 bits par l'opérateur `~`. Il existe donc d'autres gros nombres qui donnent `0`, le plus petit correspondant à `~4294967295 = 0`. Cela rend cette vérification est correcte que si une chaîne n'est pas si longue.
+Pour être précis cependant, les grands nombres sont tronqués à 32 bits par l'opérateur `~`. Il existe donc d'autres gros nombres qui donnent `0`, le plus petit correspondant à `~4294967295=0`. Cela fait que cette vérification est correcte que si une chaîne de caractères n'est pas aussi longue.
 
 Pour le moment, nous ne voyons cette astuce que dans l'ancien code, car JavaScript fournit une méthode `.includes` (voir ci-dessous).
 

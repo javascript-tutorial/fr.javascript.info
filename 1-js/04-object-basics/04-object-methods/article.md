@@ -32,9 +32,9 @@ user.sayHi = function() {
 user.sayHi(); // Hello!
 ```
 
-Ici, nous venons d'utiliser une expression de fonction pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
+Ici, nous venons d'utiliser une fonction expression pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
 
-Ensuite, nous pouvons l'appeler. L'utilisateur peut maintenant parler!
+Ensuite, nous pouvons l'appeler comme `user.sayHi()`. L'utilisateur peut maintenant parler!
 
 Une fonction qui est la propriété d'un objet s'appelle sa *méthode*.
 
@@ -160,14 +160,16 @@ let user = {
 let admin = user;
 user = null; // écraser pour rendre les choses évidentes
 
-admin.sayHi(); // Oups ! Dans sayHi(), l'ancien nom est utilisé ! Erreur !
+*!*
+admin.sayHi(); // TypeError: Cannot read property 'name' of null
+*/!*
 ```
 
 Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fonctionnerait.
 
 ## "this" n'est pas lié
 
-En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction.
+En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction, même si ce n'est pas une méthode d'un objet.
 
 Il n’y a pas d’erreur de syntaxe dans le code suivant :
 
