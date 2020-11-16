@@ -8,7 +8,11 @@ Pour voir les erreurs et obtenir beaucoup d’informations utiles sur les script
 
 Le plus souvent, les développeurs se tournent vers Chrome ou Firefox pour le développement, car ces navigateurs disposent des meilleurs outils de développement. D'autres navigateurs fournissent également des outils de développement, parfois dotés de fonctions spéciales, mais jouent généralement le rôle de "rattrapage" pour Chrome ou Firefox. Donc, la plupart des gens ont un navigateur "favori" et passent à d'autres si un problème est spécifique au navigateur.
 
+<<<<<<< HEAD
 Les outils de développement sont très puissants, il existe de nombreuses fonctionnalités. Pour commencer, nous allons apprendre à les ouvrir, à examiner les erreurs et à exécuter des commandes JavaScript.
+=======
+Developer tools are potent, they have many features. To start, we'll learn how to open them, look at errors, and run JavaScript commands.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ## Google Chrome
 

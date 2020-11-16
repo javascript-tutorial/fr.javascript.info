@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Par définition, une factorielle est `n!` peut être écrit `n * (n-1)!`.
+=======
+By definition, a factorial `n!` can be written as `n * (n-1)!`.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 En d'autres termes, le résultat de `factorial(n)` peut être calculé comme `n` multiplié par le résultat de `factorial(n-1)`. Et l'appel de `n-1` peut récursivement descendre plus bas, et plus bas, jusqu'à `1`.
 

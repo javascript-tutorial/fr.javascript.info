@@ -132,7 +132,11 @@ Nous pouvons l'esquisser comme:
   </li>
 </ul>
 
+<<<<<<< HEAD
 C'est à ce moment que la fonction commence à s'exécuter. La condition`n == 1` est faux, donc le flux continue dans la deuxième branche de `if`:
+=======
+That's when the function starts to execute. The condition `n == 1` is falsy, so the flow continues into the second branch of `if`:
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ```js run
 function pow(x, n) {
@@ -188,7 +192,11 @@ Le nouveau contexte d'exécution actuel est en haut (et en gras) et les contexte
 Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté. 
 
 ```smart
+<<<<<<< HEAD
 Ici, dans l'image, nous utilisons le mot "ligne", comme dans notre exemple, il n'y a qu'un seul sous-appel en ligne, mais généralement une seule ligne de code peut contenir plusieurs sous-appels, comme `pow(…) + pow(…) + somethingElse(…)`.
+=======
+Here in the picture we use the word "line", as in our example there's only one subcall in line, but generally a single line of code may contain multiple subcalls, like `pow(…) + pow(…) + somethingElse(…)`.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Il serait donc plus précis de dire que l'exécution reprend "immédiatement après le sous-appel".
 ```

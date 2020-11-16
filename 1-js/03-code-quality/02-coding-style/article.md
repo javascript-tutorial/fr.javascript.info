@@ -334,7 +334,7 @@ Voici un exemple de `.eslintrc`:
   },
   "rules": {
     "no-console": 0,
-    "indent": ["warning", 2]
+    "indent": 2
   }
 }
 ```

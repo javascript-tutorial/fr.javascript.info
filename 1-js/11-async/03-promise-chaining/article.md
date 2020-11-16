@@ -265,7 +265,11 @@ fetch('/article/promise-chaining/user.json')
 
 Maintenant faisons quelque chose avec l'utilisateur chargé.
 
+<<<<<<< HEAD
 Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'utilisateur et afficher l'avatar:
+=======
+For instance, we can make one more request to GitHub, load the user profile and show the avatar:
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ```js run
 // Faire une demande pour user.json
