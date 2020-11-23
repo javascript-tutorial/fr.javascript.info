@@ -43,6 +43,7 @@ document.head.append(script);
 script.onload = function() {
   // le script crée une variable "_"
   alert( _.VERSION ); // affiche la version de la bibliothèque
+
 };
 */!*
 ```

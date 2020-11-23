@@ -187,6 +187,9 @@ Mais il existe également des différences essentielles entre eux:
 | `async` | *Load-first*. Leur ordre dans le document n'a pas d'importance -- premier chargé, premier exécuté |  Sans importance. Peut se charger et s'exécuter alors que le document n'a pas encore été entièrement téléchargé. Cela se produit si les scripts sont petits ou mis en cache et que le document est suffisamment long. |
 | `defer` | *L'ordre du Document*. |  Exécute après le chargement et l'analyse du document (ils attendent si nécessaire), juste avant `DOMContentLoaded`. |
 
+En pratique, `defer` est utilisé pour les scripts qui ont besoin de tout le DOM et/ou leur ordre d'exécution relatif est important.
+Et `async` est utilisé pour des scripts indépendants, comme des compteurs ou des publicités. Et leur ordre d'exécution relatif n'a pas d'importance.
+
 ```warn header="La page sans scripts devrait être utilisable"
 Veuillez noter que si vous utilisez `defer`, la page est visible *avant* le chargement du script.
 
@@ -194,5 +197,3 @@ L'utilisateur peut donc lire la page, mais certains composants graphiques ne son
 
 Il devrait y avoir des indications de "chargement" aux bons endroits et les boutons désactivés devraient s'afficher comme tels, afin que l'utilisateur puisse voir clairement ce qui est prêt et ce qui ne l'est pas.
 ```
-
-En pratique, `defer` est utilisé pour les scripts qui ont besoin de tout le DOM et/ou leur ordre d'exécution relatif est important. Et `async` est utilisé pour des scripts indépendants, comme des compteurs ou des publicités. Et leur ordre d'exécution relatif n'a pas d'importance.

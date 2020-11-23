@@ -9,7 +9,7 @@ La [curryfication](https://fr.wikipedia.org/wiki/Curryfication) est une techniqu
 
 La curryfication est la transformation de fonctions qui traduit une fonction de la forme `f(a, b, c)` en une fonction de la forme `f(a)(b)(c)`.
 
-La curryfication n'est pas une fonction. Elle la transforme simplement.
+La curryfication n'appelle pas une fonction. Elle la transforme simplement.
 
 Voyons d'abord un exemple, pour mieux comprendre de quoi nous parlons, et ensuite mettons en pratique.
 
