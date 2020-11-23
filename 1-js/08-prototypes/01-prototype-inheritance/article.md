@@ -12,11 +12,7 @@ En JavaScript, les objets ont une propriété cachée spéciale `[[Prototype]]` 
 
 ![prototype](object-prototype-empty.svg)
 
-<<<<<<< HEAD
-Le prototype est un peu "magique". Lorsque nous voulons lire une propriété de `object`, et qu'elle en manque, JavaScript la prend automatiquement à partir du prototype. En programmation, cela s'appelle "l'héritage prototypal". De nombreuses fonctionnalités et techniques de programmation intéressantes sont basées sur elle.
-=======
-When we  read a property from `object`, and it's missing, JavaScript automatically takes it from the prototype. In programming, such thing is called "prototypal inheritance". And soon we'll study many examples of such inheritance, as well as cooler language features built upon it.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Lorsque nous lisons une propriété depuis `object`, et qu'elle est manquante, JavaScript la prend automatiquement du prototype. En programmation, une telle chose est appelée "héritage prototypal". Et bientôt, nous étudierons de nombreux exemples d'un tel héritage, ainsi que des fonctionnalités de langage plus cool qui en découlent.
 
 La propriété `[[Prototype]]` est interne et cachée, mais il y a plusieurs façons de la définir.
 
@@ -35,19 +31,7 @@ rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
 */!*
 ```
 
-<<<<<<< HEAD
-```smart header="`__proto__` est un accesseur/mutateur historique pour `[[Prototype]]`"
-Veuillez noter que `__proto__` n'est *pas le même* que `[[Prototype]]`. C'est un accesseur/mutateur pour cela.
-
-Il existe pour des raisons historiques. Dans le langage moderne, il est remplacé par les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` qui obtiennent/mute également le prototype. Nous étudierons les raisons pour cela et ces fonctions plus tard.
-
-Selon la spécification, `__proto__` ne doit être pris en charge que par les navigateurs. Cependant, tous les environnements, y compris côté serveur, le prennent en charge. Pour l'instant, comme la notation `__proto__` est un peu plus intuitive, nous l'utilisons dans les exemples.
-```
-
 Si nous recherchons une propriété dans `rabbit`, et qu'elle en manque, JavaScript la prend automatiquement à partir de `animal`.
-=======
-Now if we read a property from `rabbit`, and it's missing, JavaScript will automatically take it from `animal`.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Par exemple:
 
@@ -138,37 +122,29 @@ alert(longEar.jumps); // true (de rabbit)
 
 ![](proto-animal-rabbit-chain.svg)
 
-<<<<<<< HEAD
-Il n'y a que deux limitations :
-=======
-Now if we read something from `longEar`, and it's missing, JavaScript will look for it in `rabbit`, and then in `animal`.
+Maintenant, si nous lisons quelque chose de `longEar`, et qu'il est manquant, JavaScript le recherchera dans `rabbit`, puis dans `animal`.
 
-There are only two limitations:
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Il n'y a que deux limitations :
 
 1. Les références ne peuvent pas tourner en rond. JavaScript va générer une erreur si nous essayons d'assigner `__proto__` dans un cercle.
 2. La valeur de `__proto__` peut être un objet ou `null`. Les autres types sont ignorés.
 
 Cela peut aussi être évident, mais quand même: il ne peut y avoir qu'un seul `[[Prototype]]`. Un objet ne peut pas hériter de deux autres.
 
-<<<<<<< HEAD
-## L'écriture n'utilise pas de prototype
-=======
 
-```smart header="`__proto__` is a historical getter/setter for `[[Prototype]]`"
-It's a common mistake of novice developers not to know the difference between these two. 
+```smart header="`__proto__` est un getter/setter historique pour [[Prototype]]`"
+C'est une erreur courante des développeurs novices de ne pas connaître la différence entre les deux.
 
-Please note that `__proto__` is *not the same* as the internal `[[Prototype]]` property. It's a getter/setter for `[[Prototype]]`. Later we'll see situations where it matters,  for now let's just keep it in mind, as we build our understanding of JavaScript language.
+Veuillez noter que `__proto__` n'est *pas la même* que la propriété interne `[[Prototype]]`. C'est un getter/setter pour `[[Prototype]]`. Plus tard, nous verrons des situations où cela compte, pour l'instant gardons cela à l'esprit, alors que nous construisons notre compréhension du langage JavaScript.
 
-The `__proto__` property is a bit outdated. It exists for historical reasons, modern JavaScript suggests that we should use `Object.getPrototypeOf/Object.setPrototypeOf` functions instead that get/set the prototype. We'll also cover these functions later. 
+La propriété `__proto__` est un peu obsolète. Il existe pour des raisons historiques, le JavaScript moderne suggère que nous devrions utiliser les fonctions `Object.getPrototypeOf/Object.setPrototypeOf` à la place pour obtenir/définir le prototype. Nous aborderons également ces fonctions plus tard.
 
-By the specification, `__proto__` must only be supported by browsers. In fact though, all environments including server-side support `__proto__`, so we're quite safe using it.
+Selon la spécification, `__proto__` ne doit être pris en charge que par les navigateurs. En fait cependant, tous les environnements, y compris côté serveur, prennent en charge `__proto__`, donc nous sommes assez sûrs de l'utiliser.
 
-As the `__proto__` notation is a bit more intuitively obvious, we use it in the examples.
+Comme la notation `__proto__` est un peu plus évidente, nous l'utilisons dans les exemples.
 ```
 
-## Writing doesn't use prototype
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+## L'écriture n'utilise pas de prototype
 
 Le prototype n'est utilisé que pour la lecture des propriétés.
 
