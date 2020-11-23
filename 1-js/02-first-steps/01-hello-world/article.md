@@ -9,11 +9,7 @@ Alors, voyons d'abord comment intégrer un script à une page Web. Pour les envi
 
 ## La balise "script" 
 
-<<<<<<< HEAD
 Les programmes JavaScript peuvent être insérés dans n'importe quelle partie d'un document HTML à l'aide de la balise `<script>`.
-=======
-JavaScript programs can be inserted almost anywhere into an HTML document using the `<script>` tag.
->>>>>>> 23da191b58643387783f38e999f5b05be87d3d93
 
 Par exemple :
 
