@@ -2,11 +2,7 @@
 
 L'opérateur `instanceof` permet de vérifier si un objet appartient à une certaine classe. Il prend également en compte l'héritage.
 
-<<<<<<< HEAD
 Une telle vérification peut être nécessaire dans de nombreux cas. Nous l'utilisons ici pour construire une fonction *polymorphique*, celle qui traite les arguments différemment en fonction de leur type.
-=======
-Such a check may be necessary in many cases. For example, it can be used for building a *polymorphic* function, the one that treats arguments differently depending on their type.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ## L'opérateur instanceof [#ref-instanceof]
 
