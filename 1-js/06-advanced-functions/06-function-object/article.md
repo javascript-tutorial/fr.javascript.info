@@ -345,11 +345,6 @@ Ici nous avons couvert leurs propriétés:
 
 Si la fonction est déclarée en tant qu'expression de fonction (et non dans le flux du code principal) et qu'elle porte `name`, elle est appelée expression de fonction nommée. Le nom peut être utilisé à l'intérieur pour se référencer, pour des appels récursifs ou autres.
 
-<<<<<<< HEAD
-De plus, les fonctions peuvent avoir des propriétés supplémentaires. De nombreuses bibliothèques JavaScript bien connues font bon usage de cette fonctionnalité.
-=======
-They create a "main" function and attach many other "helper" functions to it. For instance, the [jQuery](https://jquery.com) library creates a function named `$`. The [lodash](https://lodash.com) library creates a function `_`, and then adds `_.clone`, `_.keyBy` and other properties to it (see the [docs](https://lodash.com/docs) when you want to learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Ils créent une fonction "principale" et y attachent de nombreuses autres fonctions "d'assistance". Par exemple, la bibliothèque [jquery](https://jquery.com) crée une fonction nommée `$`. La bibliothèque [lodash](https://lodash.com) crée une fonction `_`. Et ajoute ensuite `_.clone`,` _.keyBy` et d'autres propriétés (voir la [doc](https://lodash.com/docs) lorsque vous souhaitez en savoir plus à leur sujet). En fait, elles le font pour réduire leur pollution de l'espace global, de sorte qu'une seule bibliothèque ne donne qu'une seule variable globale. Cela réduit la possibilité de conflits de noms.
 

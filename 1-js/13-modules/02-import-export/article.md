@@ -320,11 +320,7 @@ export {default as User} from './user.js'; // réexportez default
 
 Pourquoi cela peut être nécessaire ? Voyons un cas d'utilisation pratique.
 
-<<<<<<< HEAD
-Imaginons, nous écrivons un "package" : un dossier contenant de nombreux modules, avec certaines des fonctionnalités exportées à l'extérieur (des outils tels que NPM permettent de publier et de distribuer de tels packages), et de nombreux modules ne sont que des "aides" pour une utilisation interne dans d'autres modules.
-=======
-Imagine, we're writing a "package": a folder with a lot of modules, with some of the functionality exported outside (tools like NPM allow us to publish and distribute such packages, but we don't have to use them), and many modules are just "helpers", for internal use in other package modules.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Imaginez, nous écrivons un "package": un dossier avec beaucoup de modules, avec une partie des fonctionnalités exportées à l'extérieur (des outils comme NPM nous permettent de publier et de distribuer de tels packages, mais nous n'avons pas à les utiliser), et de nombreux modules ne sont que des "helpers", destinés à une utilisation interne dans d'autres modules de package.
 
 La structure de fichier pourrait être comme ceci :
 ```
@@ -381,11 +377,7 @@ export {default as User} from './user.js';
 
 L'exportation par défaut nécessite un traitement séparé lors de la réexportation.
 
-<<<<<<< HEAD
-Disons que nous avons `user.js` et que nous aimerions réexporter la classe `User` à partir de celle-ci:
-=======
-Let's say we have `user.js` with the `export default class User` and would like to re-export it:
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Supposons que nous ayons `user.js` avec le `export default class User` et que nous souhaitons le réexporter :
 
 ```js
 // 📁 user.js
@@ -394,13 +386,9 @@ export default class User {
 }
 ```
 
-<<<<<<< HEAD
-1. `export User from './user.js'` çe ne fonctionnera pas... C'est une erreur de syntaxe!
-=======
-We can come across two problems with it:
+On peut y rencontrer deux problèmes :
 
-1. `export User from './user.js'` won't work. That would lead to a syntax error.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+1. `export User from './user.js'` çe ne fonctionnera pas... Cela conduirait à une erreur de syntaxe.
 
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
 
@@ -412,11 +400,7 @@ We can come across two problems with it:
     export {default} from './user.js'; // réexporter l'exportation par défaut
     ```
 
-<<<<<<< HEAD
-Cette bizarrerie de réexporter l'exportation par défaut est l'une des raisons pour lesquelles certains développeurs ne les aiment pas.
-=======
-Such oddities of re-exporting a default export are one of the reasons why some developers don't like default exports and prefer named ones.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Ces bizarreries de réexporter une exportation par défaut sont l'une des raisons pour lesquelles certains développeurs n'aiment pas les exportations par défaut et préfèrent les exportations nommées.
 
 ## Sommaire
 

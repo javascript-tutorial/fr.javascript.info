@@ -260,11 +260,7 @@ Comparez au script habituel ci-dessous:
 
 <script>
 *!*
-<<<<<<< HEAD
-  alert(typeof button); // Error: button is undefined, le script ne peut pas voir les éléments ci-dessous
-=======
-  alert(typeof button); // button is undefined, the script can't see elements below
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+  alert(typeof button); // button est undefined, le script ne peut pas voir les éléments ci-dessous
 */!*
   // les scripts normaux sont exécutés immédiatement, avant que le reste de la page ne soit traité
 </script>

@@ -298,11 +298,7 @@ Par exemple, ici pour la commande de l'état de l'attribut, `order-state` est ut
 </div>
 ```
 
-<<<<<<< HEAD
 Pourquoi l'utilisation d'un attribut serait-elle préférable à des classes comme `.order-state-new`, `.order-state-pending`, `order-state-canceled` ?
-=======
-Why would using an attribute be preferable to having classes like `.order-state-new`, `.order-state-pending`, `.order-state-canceled`?
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Parce qu'un attribut est plus pratique à gérer. L'état peut être changé aussi facilement que :
 

@@ -92,11 +92,7 @@ Et si il pouvait accéder aux variables externes?
 
 Le problème est qu'avant la publication de JavaScript en production, JavaScript est compressé à l'aide d'un *minifier*, un programme spécial qui rétrécit le code en supprimant les commentaires, espaces supplémentaires et, plus particuliarement, renomme les variables locales pour quelles soient plus courtes.
 
-<<<<<<< HEAD
-Par exemple, si une fonction a `let userName`, *minifier* la remplace par `let a` (ou une autre lettre si celle-ci est deja prise), et le fait partout. C’est généralement une chose sûre à faire, car la variable est locale, rien en dehors de la fonction ne peut y accéder. Et à l'intérieur de la fonction, *minifier* remplace chaque mention. Les minifiers sont intelligents, ils analysent la structure du code pour ne rien casser. Ils ne sont pas juste une simple fonction de trouvaille et remplacement.
-=======
-For instance, if a function has `let userName`, minifier replaces it with `let a` (or another letter if this one is occupied), and does it everywhere. That's usually a safe thing to do, because the variable is local, nothing outside the function can access it. And inside the function, minifier replaces every mention of it. Minifiers are smart, they analyze the code structure, so they don't break anything. They're not just a dumb find-and-replace.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Par exemple, si une fonction a `let userName`, le minifier la remplace par `let a` (ou une autre lettre si celle-ci est deja prise), et le fait partout. C’est généralement une chose sûre à faire, car la variable est locale, rien en dehors de la fonction ne peut y accéder. Et à l'intérieur de la fonction, le minifier remplace chaque mention. Les minifiers sont intelligents, ils analysent la structure du code pour ne rien casser. Ils ne sont pas juste une simple fonction de trouvaille et remplacement.
 
 Donc, si `new Function` avait accès aux variables externes, il serait impossible de trouver le nom d'utilisateur `userName` renommé.
 

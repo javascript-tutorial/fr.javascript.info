@@ -4,11 +4,7 @@ importance: 4
 
 # Filter range
 
-<<<<<<< HEAD
-Ecrivez une fonction `filterRange(arr, a, b)` qui obtient un tableau `arr`, recherche les éléments compris entre `a` et `b` et retourne un tableau. 
-=======
-Write a function `filterRange(arr, a, b)` that gets an array `arr`, looks for elements with values higher or equal to `a` and lower or equal to `b` and return a result as an array.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Ecrivez une fonction `filterRange(arr,a,b)` qui obtient un tableau `arr`, recherche les éléments avec des valeurs supérieures ou égales à `a` et inférieures ou égales à `b` et retourne un résultat sous forme de tableau.
 
 La fonction ne doit pas modifier le tableau. Elle doit juste retourner le nouveau tableau.
 

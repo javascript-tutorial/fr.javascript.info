@@ -30,14 +30,9 @@ let array = [ john ];
 john = null; // écraser la référence
 
 *!*
-<<<<<<< HEAD
-// John est stocké à l'intérieur du tableau, donc il ne sera pas nettoyé (garbage-collected)
-// nous pouvons l'atteindre avec array[0]
-=======
-// the object previously referenced by john is stored inside the array 
-// therefore it won't be garbage-collected
-// we can get it as array[0]
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+// l'objet précédemment référencé par john est stocké dans le tableau
+// donc il ne sera pas nettoyé
+// nous pouvons l'obtenir sous forme de array[0]
 */!*
 ```
 
