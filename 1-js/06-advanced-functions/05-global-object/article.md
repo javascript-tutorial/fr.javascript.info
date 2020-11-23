@@ -5,11 +5,7 @@ L'objet global fournit des variables et des fonctions qui sont disponibles parto
 
 Dans un navigateur, c'est appelé `window`, pour Node.js c'est `global`, et pour les autres environnements, il peut porter un autre nom.
 
-<<<<<<< HEAD
 Récemment, `globalThis` a été ajouté au langage comme un nom standardisé pour l'objet global et devrait être supporté à travers tous les environnements. Il est pris en charge dans tous les principaux navigateurs.
-=======
-Recently, `globalThis` was added to the language, as a standardized name for a global object, that should be supported across all environments. It's supported in all major browsers.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Nous allons utiliser `window` ici, en supposant que notre environnement est un navigateur. Si votre script peut s'exécuter dans d'autres environnements, il est préférable d'utiliser `globalThis` à la place.
 
@@ -29,13 +25,9 @@ var gVar = 5;
 alert(window.gVar); // 5 (var est devenue une propriété de l'objet global)
 ```
 
-<<<<<<< HEAD
-S'il vous plaît ne comptez pas sur cela! Ce comportement existe pour des raisons de compatibilité. Les scripts modernes utilisent les [modules JavaScript](info:modules) où une telle chose ne se produit pas.
-=======
-The same effect have function declarations (statements with `function` keyword in the main code flow, not function expressions).
+Le même effet a des déclarations de fonction (instructions avec le mot-clé `function` dans le flux de code principal, pas des expressions de fonction).
 
-Please don't rely on that! This behavior exists for compatibility reasons. Modern scripts use [JavaScript modules](info:modules) where such thing doesn't happen.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Ne comptez pas là-dessus! Ce comportement existe pour des raisons de compatibilité. Les scripts modernes utilisent les [modules JavaScript](info:modules) où une telle chose ne se produit pas.
 
 Si nous utilisions `let` la place, une telle chose ne se produirait pas :
 
