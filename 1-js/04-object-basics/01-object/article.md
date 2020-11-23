@@ -92,35 +92,7 @@ let user = {
 ```
 Cela s'appelle une virgule  "trailing" ou "hanging". Elle facilite l'ajout/suppression/déplacement des propriétés, car toutes les lignes se ressemblent.
 
-<<<<<<< HEAD
-````smart header="L'objet avec const peut être modifié"
-Remarque: un objet déclaré comme `const` *peut* être modifié.
-
-Par exemple :
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-user.name = "Pete"; // (*)
-*/!*
-
-alert(user.name); // Pete
-```
-
-Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. Le `const` fixe la valeur de `user`, mais pas son contenu.
-
-Le `const` donnerait une erreur seulement si nous essayons de définir `user = ...` dans son ensemble.
-
-Il existe une autre façon de créer des propriétés d'objet constantes, nous le couvrirons plus tard dans le chapitre <info:property-descriptors>.
-````
-
 ## Crochets
-=======
-## Square brackets
->>>>>>> 23da191b58643387783f38e999f5b05be87d3d93
 
 Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 

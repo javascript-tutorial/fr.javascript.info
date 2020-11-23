@@ -73,13 +73,9 @@ admin.name = 'Pete'; // changé par la référence "admin"
 alert(*!*user.name*/!*); // 'Pete', les changements sont visibles sur la référence "user"
 ```
 
-<<<<<<< HEAD
-C'est comme si l'on avait un cabinet avec deux clés et que on l'on utilisait l'un d'elles (`admin`) pour y accéder. Puis, si l'on utilise plus tard la clé (`user`) on peut voir les changements.
+C'est comme si l'on avait un cabinet avec deux clés et que on l'on utilisait l'une d'elles (`admin`) pour y accéder. Puis, si l'on utilise plus tard la clé (`user`) on peut voir les changements.
 
 ## Comparaison par référence
-=======
-It's just as if we had a cabinet with two keys and used one of them (`admin`) to get into it. Then, if we later use another key (`user`) we can see changes.
->>>>>>> 23da191b58643387783f38e999f5b05be87d3d93
 
 Deux objets sont egaux seulement s'ils sont le même objet.
 
@@ -234,13 +230,10 @@ Pour régler ça, on doit utiliser la boucle de clonage qui examine chaque valeu
 
 On peut utiliser la récursion pour l'implémenter. Ou, pour ne pas réinventer la roue, prendre un implémentation existante. par exemple [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) de la librairie [lodash](https://lodash.com).
 
-<<<<<<< HEAD
-## Résumé
-=======
-```smart header="Const objects can be modified"
-An important "side effect" of storing objects as references is that an object declared as `const` *can* be modified.
+```smart header="Les objets Const peuvent être modifiés"
+Un "effet secondaire" important du stockage d'objets en tant que références est qu'un objet déclaré comme `const` *peut* être modifié.
 
-For instance:
+Par exemple :
 
 ```js run
 const user = {
@@ -254,15 +247,14 @@ user.name = "Pete"; // (*)
 alert(user.name); // Pete
 ```
 
-It might seem that the line `(*)` would cause an error, but no. The value of `user` is constant, it must always reference the same object. But properties of that object are free to change.
+Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. La valeur de `user` est constante, elle doit toujours référencer le même objet. Mais les propriétés de cet objet sont libres de changer.
 
-In other words, the `const user` gives an error only if we try to set `user=...` as a whole, and that's all.
+En d'autres termes, le `const user` ne donne une erreur que si nous essayons de définir `user = ...` dans son ensemble, et c'est tout.
 
-That said, if we really need to make constant object properties, it's also possible, but using totally different methods, we'll mention that in the chapter <info:property-descriptors>.
+Cela dit, si nous avons vraiment besoin de créer des propriétés d'objet constantes, c'est également possible, mais en utilisant des méthodes totalement différentes, nous le mentionnerons dans le chapitre <info:property-descriptors>.
 ```
 
-## Summary
->>>>>>> 23da191b58643387783f38e999f5b05be87d3d93
+## Résumé
 
 Les objets sont assignés et copiés par référence. En d'autres mots, une variable ne stocke pas la "valeur de l'objet" mais la "référence" (l'adresse en mémoire) de la valeur. Donc copier cette variable, ou la passer en argument d'une fonction, copie la référence, pas l'objet.
 
