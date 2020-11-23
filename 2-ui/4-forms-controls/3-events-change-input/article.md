@@ -77,11 +77,21 @@ Par exemple, le code ci-dessous empêche tous ces événements et montre ce que 
 
 Veuillez noter qu'il est possible de copier/coller non seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
+<<<<<<< HEAD
 Il y a une liste de méthodes [dans la spécification](https://www.w3.org/TR/clipboard-apis/#dfn-datatransfer) qui peuvent fonctionner avec différents types de données, y compris des fichiers, en lecture/écriture dans le presse-papiers.
 
 Mais veuillez noter que le presse-papiers est une chose "globale" au niveau du système d'exploitation. La plupart des navigateurs n'autorisent l'accès en lecture/écriture au presse-papiers que dans le cadre de certaines actions de l'utilisateur pour raison de sécurité, par ex: dans les gestionnaires d'événements `onclick`.
 
 Il est également interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs, à l'exception de Firefox.
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's bit beyound our scope now, but you can find its methods [in the specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+
+```warn header="ClipboardAPI: user safety restrictions"
+The clipboard is a "global" OS-level thing. So most browsers allow read/write access to the clipboard only in the scope of certain user actions for the safety, e.g. in `onclick` event handlers.
+
+Also it's forbidden to generate "custom" clipboard events with `dispatchEvent` in all browsers except Firefox.
+```
+>>>>>>> 23da191b58643387783f38e999f5b05be87d3d93
 
 ## Récapitulatif
 
