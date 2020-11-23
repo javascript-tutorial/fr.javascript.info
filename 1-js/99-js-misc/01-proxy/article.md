@@ -39,7 +39,7 @@ Comme il n'y a pas de pièges, toutes les opérations sur le `proxy` sont transm
 
 Comme nous pouvons le voir, sans aucun piège, le `proxy` est un "wrapper transparent" autour de `target`.
 
-![](proxy.svg)  
+![](proxy.svg)
 
 Le `proxy` est un "objet exotique" spécial. Il n'a pas de propriétés propres. Avec un `handler` vide, il transfère de manière transparente les opérations vers `target`.
 
@@ -335,7 +335,7 @@ let user = {
   _password: "secret"
 };
 
-alert(user._password); // secret  
+alert(user._password); // secret
 ```
 
 Utilisons des proxys pour empêcher tout accès aux propriétés commençant par `_`.
@@ -375,8 +375,13 @@ user = new Proxy(user, {
     }
   },
 *!*
+<<<<<<< HEAD
   deleteProperty(target, prop) { // intercepter la suppression de propriété
 */!*  
+=======
+  deleteProperty(target, prop) { // to intercept property deletion
+*/!*
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
     if (prop.startsWith('_')) {
       throw new Error("Access denied");
     } else {
@@ -437,7 +442,11 @@ user = {
 ```
 
 
+<<<<<<< HEAD
 L'appel `user.checkPassword()` obtient l'`user` proxy comme `this` (l'objet avant le point devient `this`), donc quand il essaie d'accéder à `this._password`, le piège `get` s'active (il se déclenche sur n'importe quelle propriété lue) et génère une erreur.
+=======
+A call to `user.checkPassword()` gets proxied `user` as `this` (the object before dot becomes `this`), so when it tries to access `this._password`, the `get` trap activates (it triggers on any property read) and throws an error.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Nous lions donc le contexte des méthodes objet à l'objet d'origine, `target`, dans la ligne `(*)`. Ensuite, leurs futurs appels utiliseront `target` comme `this`, sans aucun piège.
 

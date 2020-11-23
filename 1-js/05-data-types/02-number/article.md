@@ -408,9 +408,13 @@ Quelques exemples:
     alert( Math.pow(2, 10) ); // 2 puissance 10 = 1024
     ```
 
+<<<<<<< HEAD
 Il y a plus de fonctions et de constantes dans l'objet Math, y compris la trigonométrie, que vous pouvez trouver dans la [documentation de l'objet Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math).
 
 ## Résumé
+=======
+There are more functions and constants in `Math` object, including trigonometry, which you can find in the [docs for the Math object](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Pour écrire de nombres avec beaucoup de zéros :
 

@@ -149,7 +149,7 @@ let analyticsData = { /* objet avec des données collectées */ };
 
 window.addEventListener("unload", function() {
   navigator.sendBeacon("/analytics", JSON.stringify(analyticsData));
-};
+});
 ```
 
 Lorsque la demande `sendBeacon` est terminée, le navigateur a probablement déjà quitté le document, donc il n'y a aucun moyen d'obtenir une réponse du serveur (qui est vide habituellement pour l'analyse).

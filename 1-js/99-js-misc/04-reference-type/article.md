@@ -93,7 +93,11 @@ Le type référence est un type interne "intermédiaire", avec comme but de pass
 
 N'importe quelle autre opération d'assignement comme `hi = user.hi` rejette le type référence, prends la valeur de `user.hi` (une fonction) et la passe. Ainsi n'importe quelle opération suivante "perd" `this`.
 
+<<<<<<< HEAD
 Il en résulte que la valeur de `this` n'est passée correctement seulement lorsque la fonction est appelée directement en utilisant la notation par points `obj.method()` ou la notation par crochet `obj['method']()` (c'est la même chose). Plus tard dans ce tutoriel on apprendra plusieurs manières de régler ce problème. Par exemple avef [func.bind()](/bind#solution-2-bind).
+=======
+So, as the result, the value of `this` is only passed the right way if the function is called directly using a dot `obj.method()` or square brackets `obj['method']()` syntax (they do the same here). There are various ways to solve this problem such as [func.bind()](/bind#solution-2-bind).
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ## Résumé
 

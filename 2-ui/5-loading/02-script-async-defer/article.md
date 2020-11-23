@@ -38,7 +38,8 @@ Heureusement, il y a deux attributs de `<script>` qui résolvent le problème po
 
 ## defer
 
-L'attribut `defer` indique au navigateur qu'il doit continuer à travailler avec la page, charger le script "en arrière-plan", puis exécuter le script lors de son chargement.
+L'attribut `defer` indique au navigateur de ne pas attendre le script. Au lieu de cela, le navigateur continuera à traiter le HTML, à construire le DOM. Le script se charge "en arrière-plan", puis s'exécute lorsque le DOM est entièrement construit.
+
 
 Voici le même exemple que ci-dessus, mais avec `defer`:
 
@@ -80,9 +81,10 @@ Donc, si nous avons d'abord un long script, puis un plus petit, alors ce dernier
 <script defer src="https://javascript.info/article/script-async-defer/small.js"></script>
 ```
 
-```smart header="Le petit script télécharge en premier, s'exécute en dernier"
-Les navigateurs analysent la page à la recherche de scripts et les téléchargent en parallèle pour améliorer les performances. Ainsi, dans l'exemple ci-dessus, les deux scripts se téléchargent en parallèle. Le `small.js` est probablement le premier.
 
+Les navigateurs analysent la page à la recherche de scripts et les téléchargent en parallèle pour améliorer les performances. Ainsi, dans l'exemple ci-dessus, les deux scripts se téléchargent en parallèle. Le `small.js` se termine probablement en premier.
+
+... Mais l'attribut `defer`, en plus de dire au navigateur "de ne pas bloquer", garantit que l'ordre relatif est conservé. Ainsi, même si `small.js` se charge en premier, il attend et s'exécute toujours après l'exécution de` long.js`.
 Mais la spécification exige que les scripts s'exécutent dans l'ordre des documents, donc elle attend que `long.js` s'exécute.
 ```
 
@@ -93,13 +95,14 @@ L'attribut `defer` est ignoré si la balise `<script>` n'a pas de `src`.
 
 ## async
 
-L'attribut `async` signifie qu'un script est complètement indépendant:
 
-- La page n'attend pas les scripts asynchrones, le contenu est traité et affiché.
-- Les scripts `DOMContentLoaded` et async ne s'attendent pas:
-     - `DOMContentLoaded` peut se produire à la fois avant un script async (si un script async termine le chargement une fois la page terminée)
-     - ... ou après un script async (si un script async est court ou était en cache HTTP)
-- Les autres scripts n'attendent pas les scripts `async`, et les scripts `async` ne les attendent pas.
+- Le navigateur ne bloque pas les scripts `async` (comme `defer`).
+- D'autres scripts n'attendent pas les scripts `async`, et les scripts `async` ne les attendent pas.
+- `DOMContentLoaded` et les scripts asynchrones ne s’attendent pas :
+    - `DOMContentLoaded` peut se produire à la fois avant un script asynchrone (si un script async termine le chargement une fois la page terminée)
+    - ... ou après un script async (si un script async est court ou était dans le cache HTTP)
+
+En d'autres termes, les scripts `async` se chargent en arrière-plan et s'exécutent lorsqu'ils sont prêts. Le DOM et les autres scripts ne les attendent pas, et ils n'attendent rien. Un script entièrement indépendant qui s'exécute lorsqu'il est chargé. Aussi simple que cela puisse être, non ?
 
 
 Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'importe quel ordre. Premier chargé -- premier exécuté:

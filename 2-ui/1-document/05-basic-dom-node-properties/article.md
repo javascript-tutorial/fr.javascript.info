@@ -198,7 +198,11 @@ En mode XML, la casse est conservée "en l'état". De nos jours, le mode XML est
 
 ## innerHTML: les contenus
 
+<<<<<<< HEAD
 La propriété [innerHTML](https://w3c.github.io/DOM-Parsing/#widl-Element-innerHTML) permet d'obtenir le HTML à l'intérieur de l'élément sous forme de chaîne de caractères.
+=======
+The [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) property allows to get the HTML inside the element as a string.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Nous pouvons également le modifier. C'est donc l'un des moyens les plus puissants de modifier la page.
 
@@ -397,15 +401,20 @@ Comparez les deux :
 <div id="elem2"></div>
 
 <script>
-  let name = prompt("What's your name?", "<b>Winnie-the-pooh!</b>");
+  let name = prompt("What's your name?", "<b>Winnie-the-Pooh!</b>");
 
   elem1.innerHTML = name;
   elem2.textContent = name;
 </script>
 ```
 
+<<<<<<< HEAD
 1. La première `<div>` obtient le nom "en HTML" : toutes les balises deviennent des balises, nous voyons donc le nom en gras.
 2. La seconde `<div>` obtient le nom "sous forme de texte", donc nous voyons littéralement `<b>Winnie-the-pooh!</b>`.
+=======
+1. The first `<div>` gets the name "as HTML": all tags become tags, so we see the bold name.
+2. The second `<div>` gets the name "as text", so we literally see `<b>Winnie-the-Pooh!</b>`.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Dans la plupart des cas, nous attendons le texte d'un utilisateur et souhaitons le traiter comme du texte. Nous ne voulons pas de HTML inattendu sur notre site. Une affectation à `textContent` fait exactement cela.
 
@@ -413,7 +422,11 @@ Dans la plupart des cas, nous attendons le texte d'un utilisateur et souhaitons 
 
 L'attribut "hidden" (caché) et la propriété DOM spécifient si l'élément est visible ou non.
 
+<<<<<<< HEAD
 Nous pouvons l'utiliser dans le HTML ou l'attribuer en utilisant JavaScript, comme ceci :
+=======
+We can use it in HTML or assign it using JavaScript, like this:
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ```html run height="80"
 <div>Both divs below are hidden</div>
