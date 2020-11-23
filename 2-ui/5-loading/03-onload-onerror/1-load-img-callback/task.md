@@ -2,22 +2,22 @@ importance: 4
 
 ---
 
-# Load images with a callback
+# Charger des images avec une fonction de rappel
 
-Normally, images are loaded when they are created. So when we add `<img>` to the page, the user does not see the picture immediately. The browser needs to load it first.
+Normalement, les images sont chargées lors de leur création. Ainsi, lorsque nous ajoutons `<img>` à la page, l'utilisateur ne voit pas l'image immédiatement. Le navigateur doit d'abord le charger.
 
-To show an image immediately, we can create it "in advance", like this:
+Pour afficher une image immédiatement, nous pouvons la créer "à l'avance", comme ceci:
 
 ```js
 let img = document.createElement('img');
 img.src = 'my.jpg';
 ```
 
-The browser starts loading the image and remembers it in the cache. Later, when the same image appears in the document (no matter how), it shows up immediately.
+Le navigateur commence à charger l'image et s'en souvient dans le cache. Plus tard, lorsque la même image apparaît dans le document (peu importe comment), elle apparaît immédiatement.
 
-**Create a function `preloadImages(sources, callback)` that loads all images from the array `sources` and, when ready, runs `callback`.**
+**Créez une fonction `preloadImages(sources, callback)` qui charge toutes les images du tableau `sources` et, une fois prête, exécute `callback`.**
 
-For instance, this will show an `alert` after the images are loaded:
+Par exemple, cela affichera `alert` après le chargement des images:
 
 ```js
 function loaded() {
@@ -27,10 +27,10 @@ function loaded() {
 preloadImages(["1.jpg", "2.jpg", "3.jpg"], loaded);
 ```
 
-In case of an error, the function should still assume the picture "loaded".
+En cas d'erreur, la fonction doit toujours supposer que l'image est "chargée".
 
-In other words, the `callback` is executed when all images are either loaded or errored out.
+En d'autres termes, le `callback` est exécuté lorsque toutes les images sont chargées ou en erreur.
 
-The function is useful, for instance, when we plan to show a gallery with many scrollable images, and want to be sure that all images are loaded.
+La fonction est utile, par exemple, lorsque nous prévoyons d'afficher une galerie avec de nombreuses images déroulantes et que nous voulons être sûrs que toutes les images sont chargées.
 
-In the source document you can find links to test images, and also the code to check whether they are loaded or not. It should output `300`.
+Dans le document source, vous pouvez trouver des liens vers des images de test, ainsi que le code pour vérifier si elles sont chargées ou non. Il devrait afficher `300`.

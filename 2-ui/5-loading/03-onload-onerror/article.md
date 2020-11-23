@@ -1,17 +1,17 @@
-# Resource loading: onload and onerror
+# Chargement des ressources: onload et onerror
 
-The browser allows us to track the loading of external resources -- scripts, iframes, pictures and so on.
+Le navigateur nous permet de suivre le chargement des ressources externes - scripts, iframes, images, etc.
 
-There are two events for it:
+Il y a deux événements pour cela:
 
-- `onload` -- successful load,
-- `onerror` -- an error occurred.
+- `onload` - chargement réussi,
+- `onerror` - une erreur s'est produite.
 
-## Loading a script
+## Chargement d'un script
 
-Let's say we need to load a third-party script and call a function that resides there.
+Disons que nous devons charger un script tiers et appeler une fonction qui y réside.
 
-We can load it dynamically, like this:
+Nous pouvons le charger dynamiquement, comme ceci:
 
 ```js
 let script = document.createElement('script');
@@ -20,68 +20,69 @@ script.src = "my.js";
 document.head.append(script);
 ```
 
-...But how to run the function that is declared inside that script? We need to wait until the script loads, and only then we can call it.
+...Mais comment exécuter la fonction déclarée dans ce script? Nous devons attendre que le script se charge pour l'appeler.
 
 ```smart
-For our own scripts we could use [JavaScript modules](info:modules) here, but they are not widely adopted by third-party libraries.
+Pour nos propres scripts, nous pourrions utiliser des [modules JavaScript] (info:modules) ici, mais ils ne sont pas largement adoptés par les bibliothèques tierces.
 ```
 
 ### script.onload
 
-The main helper is the `load` event. It triggers after the script was loaded and executed.
+L'assistant principal est l'événement `load`. Il se déclenche après le chargement et l'exécution du script.
 
-For instance:
+Par exemple:
 
 ```js run untrusted
 let script = document.createElement('script');
 
-// can load any script, from any domain
+// peut charger n'importe quel script, depuis n'importe quel domaine
 script.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"
 document.head.append(script);
 
 *!*
 script.onload = function() {
-  // the script creates a variable "_"
-  alert( _.VERSION ); // shows library version
+  // le script crée une variable "_"
+  alert( _.VERSION ); // affiche la version de la bibliothèque
+
 };
 */!*
 ```
 
-So in `onload` we can use script variables, run functions etc.
+Donc, dans `onload`, nous pouvons utiliser des variables de script, exécuter des fonctions, etc.
 
-...And what if the loading failed? For instance, there's no such script (error 404) or the server is down (unavailable).
+...Et si le chargement échouait? Par exemple, il n'y a pas de tel script (erreur 404) ou le serveur est en panne (indisponible).
 
 ### script.onerror
 
-Errors that occur during the loading of the script can be tracked in an `error` event.
+Les erreurs qui se produisent pendant le chargement du script peuvent être suivies dans un événement `error`.
 
-For instance, let's request a script that doesn't exist:
+Par exemple, demandons un script qui n'existe pas:
 
 ```js run
 let script = document.createElement('script');
-script.src = "https://example.com/404.js"; // no such script
+script.src = "https://example.com/404.js"; // pas de tel script
 document.head.append(script);
 
 *!*
 script.onerror = function() {
-  alert("Error loading " + this.src); // Error loading https://example.com/404.js
+  alert("Error loading " + this.src); // Erreur de chargement de https://example.com/404.js
 };
 */!*
 ```
 
-Please note that we can't get HTTP error details here. We don't know if it was an error 404 or 500 or something else. Just that the loading failed.
+Veuillez noter que nous ne pouvons pas obtenir les détails des erreurs HTTP ici. Nous ne savons pas si c'était une erreur 404 ou 500 ou autre chose. Juste que le chargement a échoué.
 
 ```warn
-Events `onload`/`onerror` track only the loading itself.
+Les événements `onload`/`onerror` ne suivent que le chargement lui-même.
 
-Errors that may occur during script processing and execution are out of scope for these events. That is: if a script loaded successfully, then `onload` triggers, even if it has programming errors in it. To track script errors, one can use `window.onerror` global handler.
+Les erreurs qui peuvent survenir lors du traitement et de l'exécution du script sont hors de portée de ces événements. C'est-à-dire: si un script s'est chargé avec succès, alors `onload` se déclenche, même s'il contient des erreurs de programmation. Pour suivre les erreurs de script, on peut utiliser le gestionnaire global `window.onerror`.
 ```
 
-## Other resources
+## Autres ressources
 
-The `load` and `error` events also work for other resources, basically for any resource that has an external `src`.
+Les événements `load` et `error` fonctionnent aussi pour d'autres ressources, essentiellement pour toute ressource qui a un `src` externe.
 
-For example:
+Par exemple:
 
 ```js run
 let img = document.createElement('img');
@@ -96,30 +97,31 @@ img.onerror = function() {
 };
 ```
 
-There are some notes though:
+Il y a quelques notes cependant:
 
-- Most resources start loading when they are added to the document. But `<img>` is an exception. It starts loading when it gets a src `(*)`.
-- For `<iframe>`, the `iframe.onload` event triggers when the iframe loading finished, both for successful load and in case of an error.
+- La plupart des ressources commencent à se charger lorsqu'elles sont ajoutées au document. Mais `<img>` est une exception. Elle commence à se charger lorsqu'elle obtient un src `(*)`.
+- Pour `<iframe>`, l'événement `iframe.onload` se déclenche lorsque le chargement de l'iframe est terminé, à la fois pour un chargement réussi et en cas d'erreur.
 
-That's for historical reasons.
+C'est pour des raisons historiques.
 
-## Crossorigin policy
+## Politique de crossorigin
 
-There's a rule: scripts from one site can't access contents of the other site. So, e.g. a script at `https://facebook.com` can't read the user's mailbox at `https://gmail.com`.
+Il y a une règle: les scripts d'un site ne peuvent pas accéder au contenu de l'autre site. Donc, par exemple un script sur `https://facebook.com` ne peut pas lire la boîte aux lettres de l'utilisateur sur `https://gmail.com`.
 
-Or, to be more precise, one origin (domain/port/protocol triplet) can't access the content from another one. So even if we have a subdomain, or just another port, these are different origins with no access to each other.
+Ou, pour être plus précis, une origine (triplet domaine/port/protocole) ne peut pas accéder au contenu à partir d'une autre. Donc, même si nous avons un sous-domaine, ou juste un autre port, ce sont des origines différentes sans accès les uns aux autres.
 
-This rule also affects resources from other domains.
+Cette règle affecte également les ressources d'autres domaines.
 
-If we're using a script from another domain, and there's an error in it, we can't get error details.
+Si nous utilisons un script d'un autre domaine et qu'il contient une erreur, nous ne pouvons pas obtenir les détails de l'erreur.
 
-For example, let's take a script `error.js` that consists of a single (bad) function call:
+Par exemple, prenons un script `error.js` qui consiste en un seul (mauvais) appel de fonction:
+
 ```js
 // 📁 error.js
 noSuchFunction();
 ```
 
-Now load it from the same site where it's located:
+Maintenant, chargez-le depuis le même site où il se trouve:
 
 ```html run height=0
 <script>
@@ -130,14 +132,14 @@ window.onerror = function(message, url, line, col, errorObj) {
 <script src="/article/onload-onerror/crossorigin/error.js"></script>
 ```
 
-We can see a good error report, like this:
+Nous pouvons voir un bon rapport d'erreur, comme ceci:
 
 ```
 Uncaught ReferenceError: noSuchFunction is not defined
 https://javascript.info/article/onload-onerror/crossorigin/error.js, 1:1
 ```
 
-Now let's load the same script from another domain:
+Maintenant, chargeons le même script à partir d'un autre domaine:
 
 ```html run height=0
 <script>
@@ -148,40 +150,40 @@ window.onerror = function(message, url, line, col, errorObj) {
 <script src="https://cors.javascript.info/article/onload-onerror/crossorigin/error.js"></script>
 ```
 
-The report is different, like this:
+Le rapport est différent, comme ceci:
 
 ```
 Script error.
 , 0:0
 ```
 
-Details may vary depending on the browser, but the idea is the same: any information about the internals of a script, including error stack traces, is hidden. Exactly because it's from another domain.
+Les détails peuvent varier en fonction du navigateur, mais l'idée est la même: toute information sur les éléments internes d'un script, y compris les traces de pile d'erreurs, est masquée. Exactement parce que c'est d'un autre domaine.
 
-Why do we need error details?
+Pourquoi avons-nous besoin de détails d'erreur?
 
-There are many services (and we can build our own) that listen for global errors using `window.onerror`, save errors and provide an interface to access and analyze them. That's great, as we can see real errors, triggered by our users. But if a script comes from another origin, then there's not much information about errors in it, as we've just seen.
+Il existe de nombreux services (et nous pouvons créer le nôtre) qui écoutent les erreurs globales en utilisant `window.onerror`, enregistrent les erreurs et fournissent une interface pour y accéder et les analyser. C'est génial, car nous pouvons voir de vraies erreurs, déclenchées par nos utilisateurs. Mais si un script vient d'une autre origine, alors il n'y a pas beaucoup d'informations sur les erreurs, comme nous venons de le voir.
 
-Similar cross-origin policy (CORS) is enforced for other types of resources as well.
+Une politique d’origine croisée similaire (CORS) est également appliquée pour d’autres types de ressources.
 
-**To allow cross-origin access, the `<script>` tag needs to have the `crossorigin` attribute, plus the remote server must provide special headers.**
+**Pour permettre l'accès cross-origin, la balise `<script>` doit avoir l'attribut `crossorigin`, et le serveur distant doit fournir des en-têtes spéciaux.**
 
-There are three levels of cross-origin access:
+Il existe trois niveaux d'accès cross-origin:
 
-1. **No `crossorigin` attribute** -- access prohibited.
-2. **`crossorigin="anonymous"`** -- access allowed if the server responds with the header `Access-Control-Allow-Origin` with `*` or our origin. Browser does not send authorization information and cookies to remote server.
-3. **`crossorigin="use-credentials"`** -- access allowed if the server sends back the header `Access-Control-Allow-Origin` with our origin and `Access-Control-Allow-Credentials: true`. Browser sends authorization information and cookies to remote server.
+1. **Aucun attribut `crossorigin`** -- accès interdit.
+2. **`crossorigin="anonymous"`** -- accès autorisé si le serveur répond avec l'en-tête `Access-Control-Allow-Origin` avec `*` ou notre origine. Le navigateur n'envoie pas d'autorisationinformation and cookies to remote server.
+3. **`crossorigin="use-credentials"`** -- accès autorisé si le serveur renvoie l'en-tête `Access-Control-Allow-Origin` avec notre origine et `Access-Control-Allow-Credentials:true`. Le navigateur envoie des informations d'autorisation et des cookies au serveur distant.
 
 ```smart
-You can read more about cross-origin access in the chapter <info:fetch-crossorigin>. It describes the `fetch` method for network requests, but the policy is exactly the same.
+Vous pouvez en savoir plus sur l'accès cross-origin dans le chapitre <info:fetch-crossorigin>. Il décrit la méthode `fetch` pour les requêtes réseau, mais la politique est exactement la même.
 
-Such thing as "cookies" is out of our current scope, but you can read about them in the chapter <info:cookie>.
+Les "cookies" sont hors de notre portée actuelle, mais vous pouvez les lire dans le chapitre <info:cookie>.
 ```
 
-In our case, we didn't have any crossorigin attribute. So the cross-origin access was prohibited. Let's add it.
+Dans notre cas, nous n'avions aucun attribut crossorigin. L'accès cross-origin était donc interdit. Ajoutons-le.
 
-We can choose between `"anonymous"` (no cookies sent, one server-side header needed) and `"use-credentials"` (sends cookies too, two server-side headers needed).
+Nous pouvons choisir entre `"anonymous"` (aucun cookie envoyé, un en-tête côté serveur nécessaire) et `"use-credentials"` (envoie également des cookies, deux en-têtes côté serveur nécessaires).
 
-If we don't care about cookies, then `"anonymous"` is the way to go:
+Si nous ne nous soucions pas des cookies, alors `"anonymous"` est la voie à suivre:
 
 ```html run height=0
 <script>
@@ -192,15 +194,15 @@ window.onerror = function(message, url, line, col, errorObj) {
 <script *!*crossorigin="anonymous"*/!* src="https://cors.javascript.info/article/onload-onerror/crossorigin/error.js"></script>
 ```
 
-Now, assuming that the server provides an `Access-Control-Allow-Origin` header, everything's fine. We have the full error report.
+Maintenant, en supposant que le serveur fournit un en-tête `Access-Control-Allow-Origin`, tout va bien. Nous avons le rapport d'erreur complet.
 
-## Summary
+## Résumé
 
-Images `<img>`, external styles, scripts and other resources provide `load` and `error` events to track their loading:
+Les images `<img>`, les styles externes, les scripts et autres ressources fournissent des événements `load` et `error` pour suivre leur chargement:
 
-- `load` triggers on a successful load,
-- `error` triggers on a failed load.
+- `load` se déclenche en cas de chargement réussi.
+- `error` se déclenche en cas d'échec du chargement.
 
-The only exception is `<iframe>`: for historical reasons it always triggers `load`, for any load completion, even if the page is not found.
+La seule exception est `<iframe>`: pour des raisons historiques, il déclenche toujours `load`, pour tout achèvement de chargement, même si la page n'est pas trouvée.
 
-The `readystatechange` event also works for resources, but is rarely used, because `load/error` events are simpler.
+L'événement `readystatechange` fonctionne également pour les ressources, mais est rarement utilisé, car les événements `load/error` sont plus simples.
