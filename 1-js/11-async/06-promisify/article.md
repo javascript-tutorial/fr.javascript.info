@@ -4,13 +4,9 @@
 
 De telles transformations sont souvent nécessaires dans la vie réelle, car de nombreuses fonctions et bibliothèques sont basées sur des callback. Mais les promesses sont plus pratiques. Il est donc logique de les transformer.
 
-<<<<<<< HEAD
-Par exemple, nous avons `loadScript(src, callback)` du chapitre <info:callbacks>.
-=======
-For better understanding, let's see an example.
+Pour une meilleure compréhension, voyons un exemple.
 
-For instance, we have `loadScript(src, callback)` from the chapter <info:callbacks>.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Par exemple, nous avons `loadScript(src, callback)` du chapitre <info:callbacks>.
 
 ```js run
 function loadScript(src, callback) {
@@ -27,17 +23,13 @@ function loadScript(src, callback) {
 // loadScript('path/script.js', (err, script) => {...})
 ```
 
-<<<<<<< HEAD
-Transformons-le. La nouvelle fonction `loadScriptPromise(src)` fera de même, mais acceptera seulement `src` (pas de `callback`) et renverra une promesse.
-=======
-The function loads a script with the given `src`, and then calls `callback(err)` in case of an error, or `callback(null, script)` in case of successful loading. That's a widespread agreement for using callbacks, we saw it before.
+La fonction charge un script avec le `src` donné, puis appelle `callback(err)` en cas d'erreur, ou `callback (null, script) `en cas de chargement réussi. C'est un accord répandu pour l'utilisation des rappels, nous l'avons vu auparavant.
 
-Let's promisify it. 
+Promisifions le.
 
-We'll make a new function `loadScriptPromise(src)`, that does the same (loads the script), but returns a promise instead of using callbacks.
+Nous allons créer une nouvelle fonction `loadScriptPromise(src)`, qui fait la même chose (charge le script), mais retourne une promesse au lieu d'utiliser des rappels.
 
-In other words, we pass it only `src` (no `callback`) and get a promise in return, that resolves with `script` when the load is successful, and rejects with the error otherwise.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+En d'autres termes, nous le transmettons uniquement `src` (pas de `callback`) et obtenons une promesse en retour, qui se résout avec `script` lorsque le chargement est réussi, et sinon rejette avec l'erreur.
 
 Here it is:
 ```js
@@ -54,35 +46,19 @@ let loadScriptPromise = function(src) {
 // loadScriptPromise('path/script.js').then(...)
 ```
 
-<<<<<<< HEAD
-Maintenant, `loadScriptPromise` s'intègre bien dans du code basé sur des promesses.
+Comme nous pouvons le voir, la nouvelle fonction est un wrapper autour de la fonction originale `loadScript`. Il l'appelle en fournissant son propre rappel qui se traduit par la promesse de `resolve/reject`.
 
-Comme nous pouvons le constater, elle délègue tout le travail au `loadScript` d'origine, en fournissant son propre rappel qui se traduit par la promesse de "résoudre/rejeter".
+Dorénavant `loadScriptPromise` s'intègre bien dans le code basé sur la promesse. Si nous aimons les promesses plus que les rappels (et bientôt nous verrons plus de raisons à cela), alors nous les utiliserons à la place.
 
-En pratique, nous aurons probablement besoin de promettre de nombreuses fonctions. Il est donc logique d'utiliser une fonction assistante. Nous l'appellerons `promisify(f)` : elle accepte une fonction à transformer `f` et renvoie une fonction wrapper.
+Dans la pratique, nous pouvons avoir besoin de promettre plus d'une fonction, il est donc logique d'utiliser un assistant.
 
-Ce wrapper fait la même chose que dans le code ci-dessus: renvoie une promesse et passe l'appel au `f` d'origine, en suivant le résultat dans un rappel personnalisé:
-
-```js
-function promisify(f) {
-  return function (...args) { // renvoie une fonction wrapper
-    return new Promise((resolve, reject) => {
-      function callback(err, result) { // notre rappel personnalisé pour f
-=======
-As we can see, the new function is a wrapper around the original `loadScript` function. It calls it providing its own callback that translates to promise `resolve/reject`.
-
-Now `loadScriptPromise` fits well in promise-based code. If we like promises more than callbacks (and soon we'll see more reasons for that), then we will use it instead.
-
-In practice we may need to promisify more than one function, so it makes sense to use a helper. 
-
-We'll call it `promisify(f)`: it accepts a to-promisify function `f` and returns a wrapper function.
+Nous l'appellerons `promisify (f)` : il accepte une fonction à promettre `f` et renvoie une fonction wrapper.
 
 ```js
 function promisify(f) {
   return function (...args) { // return a wrapper-function (*)
     return new Promise((resolve, reject) => {
       function callback(err, result) { // our custom callback for f (**)
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
         if (err) {
           reject(err);
         } else {
@@ -102,26 +78,18 @@ let loadScriptPromise = promisify(loadScript);
 loadScriptPromise(...).then(...);
 ```
 
-<<<<<<< HEAD
-Nous supposons ici que la fonction d'origine attend un rappel avec deux arguments `(err, result)`. C'est ce que nous rencontrons le plus souvent. Ensuite, notre rappel personnalisé est exactement au bon format et `promisify` convient parfaitement à un tel cas.
-=======
-The code may look a bit complex, but it's essentially the same that we wrote above, while promisifying `loadScript` function.
+Le code peut sembler un peu complexe, mais c'est essentiellement le même que celui que nous avons écrit ci-dessus, tout en promettant la fonction `loadScript`.
 
-A call to `promisify(f)` returns a wrapper around `f` `(*)`. That wrapper returns a promise and forwards the call to the original `f`, tracking the result in the custom callback `(**)`.
+Un appel à `promisify(f)` retourne un wrapper autour de `f` `(*)`. Ce wrapper renvoie une promesse et transmet l'appel au `f` d'origine, en suivant le résultat dans le rappel personnalisé `(**)`.
 
-Here, `promisify` assumes that the original function expects a callback with exactly two arguments `(err, result)`. That's what we encounter most often. Then our custom callback is in exactly the right format, and `promisify` works great for such a case.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Ici, `promisify` suppose que la fonction d'origine attend un rappel avec exactement deux arguments `(err, result) `. C'est ce que nous rencontrons le plus souvent. Ensuite, notre rappel personnalisé est exactement dans le bon format, et `promisify` fonctionne très bien dans un tel cas.
 
 Mais que se passe-t-il si le `f` original attend un rappel avec plus d'arguments `callback(err, res1, res2, ...)`?
 
-<<<<<<< HEAD
-Voici une version plus avancée de `promisify`: si elle est appelée par `promisify(f, true)`, le résultat de la promesse sera un tableau de résultats de rappel `[res1, res2, ...]`:
-=======
-We can improve our helper. Let's make a more advanced version of `promisify`.
+Nous pouvons améliorer notre helper. Faisons une version plus avancée de `promisify`.
 
-- When called as `promisify(f)` it should work similar to the version above.
-- When called as `promisify(f, true)`, it should return the promise that resolves with the array of callback results. That's exactly for callbacks with many arguments.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+- Lorsqu'il est appelé en tant que `promisify(f)`, il devrait fonctionner de la même manière que la version ci-dessus.
+- Lorsqu'il est appelé en tant que `promisify(f, true)`, il doit retourner la promesse qui se résout avec le tableau des résultats de rappel. C'est exactement pour les rappels avec de nombreux arguments.
 
 ```js
 // promisify(f, true) pour obtenir un tableau de résultats
@@ -149,13 +117,9 @@ f = promisify(f, true);
 f(...).then(arrayOfResults => ..., err => ...);
 ```
 
-<<<<<<< HEAD
-Pour des formats de rappel plus exotiques, comme ceux sans `err` : `callback(result)`, nous pouvons transformer de telles fonctions manuellement, sans utiliser la fonction assistante.
-=======
-As you can see it's essentially the same as above, but `resolve` is called with only one or all arguments depending on whether `manyArgs` is truthy.
+Comme vous pouvez le voir, c'est essentiellement la même chose que ci-dessus, mais `resolve` est appelé avec un seul ou tous les arguments selon que `manyArgs` est vrai.
 
-For more exotic callback formats, like those without `err` at all: `callback(result)`, we can promisify such functions manually without using the helper.
->>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
+Pour des formats de rappel plus exotiques, comme ceux sans `err` : `callback(result)`, nous pouvons promettre de telles fonctions manuellement sans utiliser l'assistant.
 
 Il existe également des modules avec des fonctions de promisification un peu plus flexibles, e.g. [es6-promisify](https://github.com/digitaldesignlabs/es6-promisify). Dans Node.js, il existe une fonction intégrée `util.promisify` pour cela.
 
