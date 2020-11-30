@@ -272,11 +272,15 @@ Alors, nous pouvons soit mettre le `dispatchEvent` (ou un autre appel déclenche
 </script>
 ```
 
+<<<<<<< HEAD
 Désormais, `dispatchEvent` s'exécute de manière asynchrone une fois l'exécution du code en cours terminée, y compris `mouse.onclick`, les gestionnaires d'événements sont donc totalement séparés.
 
 L'ordre de sortie devient: 1 -> 2 -> imbriqué.
 
 ## Résumé
+=======
+Now `dispatchEvent` runs asynchronously after the current code execution is finished, including `menu.onclick`, so event handlers are totally separate.
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 Pour générer un événement à partir du code, nous devons d'abord créer un objet événement.
 

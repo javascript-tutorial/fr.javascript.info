@@ -963,9 +963,19 @@ revoke();
 alert(proxy.data); // Erreur
 ```
 
+<<<<<<< HEAD
 Un appel à `revoke()` supprime toutes les références internes à l'objet cible du proxy, afin qu'elles ne soient plus connectées. L'objet cible peut être nettoyé (garbage-collected) après cela.
 
 Nous pouvons également stocker `revoke` dans un `WeakMap`, pour pouvoir le retrouver facilement par un objet proxy:
+=======
+A call to `revoke()` removes all internal references to the target object from the proxy, so they are no longer connected. 
+
+Initially, `revoke` is separate from `proxy`, so that we can pass `proxy` around while leaving `revoke` in the current scope.
+
+We can also bind `revoke` method to proxy by setting `proxy.revoke = revoke`.
+
+Another option is to create a `WeakMap` that has `proxy` as the key the corresponding `revoke` as the value, that allows to easily find `revoke` for a proxy:
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 ```js run
 *!*
@@ -980,16 +990,24 @@ let {proxy, revoke} = Proxy.revocable(object, {});
 
 revokes.set(proxy, revoke);
 
+<<<<<<< HEAD
 // ..plus tard dans le code..
+=======
+// ..somewhere else in our code..
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 revoke = revokes.get(proxy);
 revoke();
 
 alert(proxy.data); // Erreur (révoqué)
 ```
 
+<<<<<<< HEAD
 L'avantage d'une telle approche est que nous n'avons pas à nous préoccuper du `revoke`. Nous pouvons l'obtenir par `proxy` à partir du `map` si nécessaire.
 
 Nous utilisons ici `WeakMap` au lieu de `Map` car cela ne bloquera pas le "garbage collection". Si un objet proxy devient "inaccessible" (par exemple si plus aucune variable ne le référence), `WeakMap` permet de l'effacer de la mémoire en même temps que `revoke` dont nous n'aurons plus besoin.
+=======
+We use `WeakMap` instead of `Map` here because it won't block garbage collection. If a proxy object becomes "unreachable" (e.g. no variable references it any more), `WeakMap` allows it to be wiped from memory together with its `revoke` that we won't need any more.
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 ## Références
 

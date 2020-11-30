@@ -21,10 +21,15 @@ Voici le code pour cela (utilise le décorateur debounce de la [librairie Lodash
 ```js
 let f = _.debounce(alert, 1000);
 
-f("a"); 
+f("a");
 setTimeout( () => f("b"), 200);
+<<<<<<< HEAD
 setTimeout( () => f("c"), 500); 
 // la fonction debounce attend 1000ms après le dernier appel puis exécute : alert("c")
+=======
+setTimeout( () => f("c"), 500);
+// debounced function waits 1000ms after the last call and then runs: alert("c")
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 ```
 
 

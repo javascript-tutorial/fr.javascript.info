@@ -70,7 +70,11 @@ Comme vous pouvez le voir, la fonction `subscribe` effectue une extraction, puis
 ```warn header="Le serveur devrait être ok avec de nombreuses connexions en attente"
 L'architecture du serveur doit pouvoir fonctionner avec de nombreuses connexions en attente.
 
+<<<<<<< HEAD
 Certaines architectures de serveur exécutent un processus par connexion ; résultant en autant de processus que de connexions, alors que chaque processus consomme pas mal de mémoire. Donc, trop de connexions consommeront tout.
+=======
+Certain server architectures run one process per connection, resulting in there being as many processes as there are connections, while each process consumes quite a bit of memory. So, too many connections will just consume it all.
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 C'est souvent le cas pour les backends écrits dans des langages comme PHP et Ruby.
 
