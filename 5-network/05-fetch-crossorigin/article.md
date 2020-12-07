@@ -97,10 +97,15 @@ Après un certain temps, les méthodes de mise en réseau en JavaScript sont app
 
 Au début, les requêtes cross-origin étaient interdites. Mais à la suite de longues discussions, les requêtes cross-origin ont été autorisées, mais avec de nouvelles capacités nécessitant une autorisation explicite du serveur, exprimées en en-têtes spéciaux.
 
+<<<<<<< HEAD
 ## Requêtes simples
+=======
+## Safe requests
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Il existe deux types de requêtes cross-origin :
 
+<<<<<<< HEAD
 1. Les requêtes simples
 2. Toutes les autres.
 
@@ -110,26 +115,55 @@ Une [requête simple](http://www.w3.org/TR/cors/#terminology) est une requête q
 
 1. [Méthode simple](http://www.w3.org/TR/cors/#simple-method): GET, POST ou HEAD
 2. [En-têtes simples](http://www.w3.org/TR/cors/#simple-header) -- les seuls en-têtes personnalisés autorisés sont :
+=======
+1. Safe requests.
+2. All the others.
+
+Safe Requests are simpler to make, so let's start with them.
+
+A request is safe if it satisfies two conditions:
+
+1. [Safe method](https://fetch.spec.whatwg.org/#cors-safelisted-method): GET, POST or HEAD
+2. [Safe headers](https://fetch.spec.whatwg.org/#cors-safelisted-request-header) -- the only allowed custom headers are:
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
     - `Accept`,
     - `Accept-Language`,
     - `Content-Language`,
     - `Content-Type` avec la valeur `application/x-www-form-urlencoded`, `multipart/form-data` ou `text/plain`.
 
+<<<<<<< HEAD
 Toute autre demande est considérée comme "non simple". Par exemple, une demande avec la méthode `PUT` ou avec un en-tête `API-Key` ne correspond pas aux limitations.
 
 **La différence essentielle est qu’une "simple requête" peut être faite avec un `<form>` ou un `<script>`, sans méthodes spéciales.**
 
 Ainsi, même un très ancien serveur doit être prêt à accepter une simple demande.
+=======
+Any other request is considered "unsafe". For instance, a request with `PUT` method or with an `API-Key` HTTP-header does not fit the limitations.
+
+**The essential difference is that a safe request can be made with a `<form>` or a `<script>`, without any special methods.**
+
+So, even a very old server should be ready to accept a safe request.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Contrairement à cela, les requêtes avec des en-têtes non standard ou par exemple la méthode `DELETE` ne peut pas être créée de cette façon. Pendant longtemps, JavaScript n'a pas pu faire de telles requêtes. Un ancien serveur peut donc supposer que de telles requêtes proviennent d'une source privilégiée, "car une page Web ne peut pas les envoyer".
 
+<<<<<<< HEAD
 Lorsque nous essayons de faire une requête non simple, le navigateur envoie une demande spéciale de "contrôle en amont" qui demande au serveur -- accepte-t-il ou non ces requêtes cross-origin ?
 
 Et, à moins que le serveur ne confirme explicitement cela avec ces en-têtes, une demande non simple n'est pas envoyée.
+=======
+When we try to make a unsafe request, the browser sends a special "preflight" request that asks the server -- does it agree to accept such cross-origin requests, or not?
+
+And, unless the server explicitly confirms that with headers, a unsafe request is not sent.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Nous allons maintenant entrer dans les détails.
 
+<<<<<<< HEAD
 ## CORS pour des requêtes simples
+=======
+## CORS for safe requests
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Si une requête est une cross-origin, le navigateur lui ajoute toujours l'en-tête `Origin`.
 
@@ -165,7 +199,11 @@ Access-Control-Allow-Origin: https://javascript.info
 
 ## En-têtes de réponse
 
+<<<<<<< HEAD
 Pour les requêtes cross-origin, par défaut, JavaScript ne peut accéder qu'aux en-têtes de réponse dits "simples" :
+=======
+For cross-origin request, by default JavaScript may only access so-called "safe" response headers:
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 - `Cache-Control`
 - `Content-Language`
@@ -182,7 +220,11 @@ Il n'y a pas d'en-tête `Content-Length` dans la liste !
 Cet en-tête contient la longueur de réponse complète. Donc, si nous téléchargeons quelque chose et que nous souhaitons suivre le pourcentage de progression, une autorisation supplémentaire est requise pour accéder à cet en-tête (voir ci-dessous).
 ```
 
+<<<<<<< HEAD
 Pour accorder un accès JavaScript à tout autre en-tête de réponse, le serveur doit envoyer l'en-tête `Access-Control-Expose-Headers`. Il contient une liste séparée par des virgules de noms d'en-tête non simples qui doivent être rendus accessibles.
+=======
+To grant JavaScript access to any other response header, the server must send  `Access-Control-Expose-Headers` header. It contains a comma-separated list of unsafe header names that should be made accessible.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Par exemple :
 
@@ -200,18 +242,31 @@ Avec cet en-tête `Access-Control-Expose-Headers`, le script est autorisé à li
 
 ## Requêtes "Non-simples" 
 
+<<<<<<< HEAD
 Nous pouvons utiliser n'importe quelle méthode HTTP : pas seulement `GET/POST`, mais aussi `PATCH`, `DELETE` et d'autres.
+=======
+## "Unsafe" requests
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Il y a quelque temps, personne ne pouvait même imaginer qu'une page Web puisse faire de telles demandes. Il peut donc toujours exister des services web qui traitent une méthode non standard comme un signal : "Ce n'est pas un navigateur". Ils peuvent en tenir compte lors de la vérification des droits d'accès.
 
 Donc, pour éviter les malentendus, toute demande "non simple" - qui ne pouvait pas être faite dans les temps anciens, le navigateur ne fait pas de telles requêtes tout de suite. Avant il envoie une requête préliminaire, dite de "contrôle en amont", demandant la permission.
 
+<<<<<<< HEAD
 Une requête de contrôle en amont utilise la méthode `OPTIONS`, aucun corps et deux en-têtes :
+=======
+So, to avoid misunderstandings, any "unsafe" request -- that couldn't be done in the old times, the browser does not make such requests right away. Before it sends a preliminary, so-called "preflight" request, asking for permission.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 - l'en-tête `Access-Control-Request-Method` a la méthode de la requête non simple.
 - l'en-tête `Access-Control-Request-Headers` fournit une liste séparée par des virgules de ses en-têtes HTTP non simples.
 
+<<<<<<< HEAD
 Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
+=======
+- `Access-Control-Request-Method` header has the method of the unsafe request.
+- `Access-Control-Request-Headers` header provides a comma-separated list of its unsafe HTTP-headers.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 - `Access-Control-Allow-Origin` doit être soit `*` soit l'origine de la demande, telle que `https://javascript.info`, pour l'autoriser.
 - `Access-Control-Allow-Methods` doit avoir la méthode autorisée.
@@ -232,10 +287,17 @@ let response = await fetch('https://site.com/service.json', {
 });
 ```
 
+<<<<<<< HEAD
 Il y a trois raisons pour lesquelles la demande n'est pas simple (une suffit) :
 - La méthode `PATCH`
 - `Content-Type` ne fait pas partie de : `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`.
   - Entête "Non-simple" `API-Key`.
+=======
+There are three reasons why the request is unsafe (one is enough):
+- Method `PATCH`
+- `Content-Type` is not one of: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`.
+- "Unsafe" `API-Key` header.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ### Étape 1 (requête de contrôle en amont)
 
@@ -249,12 +311,21 @@ Access-Control-Request-Method: PATCH
 Access-Control-Request-Headers: Content-Type,API-Key
 ```
 
+<<<<<<< HEAD
 - La méthode : `OPTIONS`.
 - Le chemin -- exactement le même que la requête principale : `/service.json`.
 - En-têtes Cross-origin spéciaux :
     - `Origin` -- l'origine de la source.
     - `Access-Control-Request-Method` -- méthode demandée.
     - `Access-Control-Request-Headers` -- une liste d'en-têtes "non simples" séparés par des virgules.
+=======
+- Method: `OPTIONS`.
+- The path -- exactly the same as the main request: `/service.json`.
+- Cross-origin special headers:
+    - `Origin` -- the source origin.
+    - `Access-Control-Request-Method` -- requested method.
+    - `Access-Control-Request-Headers` -- a comma-separated list of "unsafe" headers.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ### Étape 2 (réponse en amont)
 
@@ -283,7 +354,11 @@ S'il y a un en-tête `Access-Control-Max-Age` avec un certain nombre de secondes
 
 ### Étape 3 (requête réelle)
 
+<<<<<<< HEAD
 Lorsque le contrôle en amont réussit, le navigateur fait maintenant la requête principale. Ici, l'algorithme est le même que pour les requêtes simples.
+=======
+When the preflight is successful, the browser now makes the main request. The algorithm here is the same as for safe requests.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 La requête principale a un en-tête `Origin` (car il s'agit d'une cross-origin) :
 
@@ -349,21 +424,37 @@ Veuillez noter : `Access-Control-Allow-Origin` est interdit d'utiliser une étoi
 
 ## Résumé
 
+<<<<<<< HEAD
 Du point de vue du navigateur, il existe deux types de requêtes cross-origin : "simple" et toutes les autres.
 
 [Les requêtes simples](http://www.w3.org/TR/cors/#terminology) doivent satisfaire aux conditions suivantes :
 - Méthodes : GET, POST ou HEAD.
 - En-têtes - nous ne pouvons définir que :
+=======
+From the browser point of view, there are two kinds of cross-origin requests: "safe" and all the others.
+
+"Safe" requests must satisfy the following conditions:
+- Method: GET, POST or HEAD.
+- Headers -- we can set only:
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
     - `Accept`
     - `Accept-Language`
     - `Content-Language`
     - `Content-Type` pour la valeur `application/x-www-form-urlencoded`, `multipart/form-data` ou `text/plain`.
 
+<<<<<<< HEAD
 La différence essentielle est que les requêtes simples étaient réalisables depuis très longtemps en utilisant des balises `<form>` ou `<script>`, alors que les requêtes non simples étaient impossibles pour les navigateurs pendant longtemps.
 
 Ainsi, la différence pratique est que les demandes simples sont envoyées immédiatement, avec l'en-tête `Origin`, tandis que pour les autres, le navigateur fait une requête préliminaire de "contrôle en amont", demandant la permission.
 
 **Pour les requêtes simples :**
+=======
+The essential difference is that safe requests were doable since ancient times using `<form>` or `<script>` tags, while unsafe were impossible for browsers for a long time.
+
+So, the practical difference is that safe requests are sent right away, with `Origin` header, while for the other ones the browser makes a preliminary "preflight" request, asking for permission.
+
+**For safe requests:**
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 - → Le navigateur envoie l'en-tête `Origin` avec l'origine.
 - ← Pour les requêtes sans informations d'identification (non envoyées par défaut), le serveur doit définir :
@@ -374,6 +465,7 @@ Ainsi, la différence pratique est que les demandes simples sont envoyées immé
 
 En outre, pour accorder un accès JavaScript à tous les en-têtes de réponse, sauf `Cache-Control`,  `Content-Language`, `Content-Type`, `Expires`, `Last-Modified` ou `Pragma`, le serveur doit répertorier ceux autorisés dans l'en-tête `Access-Control-Expose-Headers`.
 
+<<<<<<< HEAD
 **Pour les requêtes non simples, une demande préalable de "contrôle en amont" est émise avant celle demandée :**
 
 - → Le navigateur envoie la requête `OPTIONS` à la même URL, avec en-têtes :
@@ -384,3 +476,15 @@ En outre, pour accorder un accès JavaScript à tous les en-têtes de réponse, 
     - `Access-Control-Allow-Headers` avec une liste des en-têtes autorisés,
     - `Access-Control-Max-Age` avec un certain nombre de secondes pour mettre en cache les autorisations.
 - Ensuite, la requête réelle est envoyée, le schéma "simple" précédent est appliqué.
+=======
+**For unsafe requests, a preliminary "preflight" request is issued before the requested one:**
+
+- → The browser sends `OPTIONS` request to the same URL, with headers:
+    - `Access-Control-Request-Method` has requested method.
+    - `Access-Control-Request-Headers` lists unsafe requested headers.
+- ← The server should respond with status 200 and headers:
+    - `Access-Control-Allow-Methods` with a list of allowed methods,
+    - `Access-Control-Allow-Headers` with a list of allowed headers,
+    - `Access-Control-Max-Age` with a number of seconds to cache permissions.
+- Then the actual request is sent, the previous "safe" scheme is applied.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b

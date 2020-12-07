@@ -1,8 +1,14 @@
 # Les références d'objet et leur copie
 
+<<<<<<< HEAD
 Une des différences fondamentale des objets avec les primitives est que ceux-ci sont stockés et copiés "par référence", en opposition des valeurs primitives : strings, numbers, booleans, etc. -- qui sont toujours copiés comme "valeur entière".
 
 On comprendra plus facilement en regardant "sous le capot" le fonctionnement de la copie d'une valeur.
+=======
+One of the fundamental differences of objects versus primitives is that objects are stored and copied "by reference", whereas primitive values: strings, numbers, booleans, etc -- are always copied "as a whole value".
+
+That's easy to understand if we look a bit under the hood of what happens when we copy a value.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Commençons avec une primitive, comme une chaîne de caractères.
 
@@ -13,7 +19,11 @@ let message = "Hello!";
 let phrase = message;
 ```
 
+<<<<<<< HEAD
 Il en résulte deux variables indépendantes, chacune stockant la chaîne de caractères `"Hello!"`.
+=======
+As a result we have two independent variables, each one storing the string `"Hello!"`.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ![](variable-copy-value.svg)
 
@@ -21,9 +31,15 @@ Un résultat plutôt évident n'est-ce pas ?
 
 Les objets ne fonctionnent pas comme cela.
 
+<<<<<<< HEAD
 **Une variable assignée à un objet ne stocke pas l'objet lui-même, mais son "adresse mémoire", en d'autres termes "une référence" à celui-ci.**
 
 Prenons un exemple d'une telle variable :
+=======
+**A variable assigned to an object stores not the object itself, but its "address in memory" -- in other words "a reference" to it.**
+
+Let's look at an example of such a variable:
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ```js
 let user = {
@@ -37,13 +53,23 @@ Et ici comment elle est stockée en mémmoire :
 
 L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), tandis que la varaible `user` (du coté gauche) a une référence à celui-ci.
 
+<<<<<<< HEAD
 On peut voir la variable d'objet, ici `user`, comme une feuille de papier avec l'adresse.
 
 Lorque l'on réalise une action avec l'objet, par exemple récupérer la propriété `user.name`, le moteur de Javascript regarde à l'adresse et réalise l'opération sur l'objet.
+=======
+We may think of an object variable, such as `user`, as like a sheet of paper with the address of the object on it.
+
+When we perform actions with the object, e.g. take a property `user.name`, the JavaScript engine looks at what's at that address and performs the operation on the actual object.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Et voilà pourquoi cela est important.
 
+<<<<<<< HEAD
 **Lorsqu'une la variable d'objet est copiée -- la référence est copiée, l'objet n'est pas dupliqué.**
+=======
+**When an object variable is copied, the reference is copied, but the object itself is not duplicated.**
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Par exemple:
 
@@ -53,6 +79,7 @@ let user = { name: "John" };
 let admin = user; // copie la référence
 ```
 
+<<<<<<< HEAD
 Maintenant nous avons deux variables, chacune avec la référence vers le même objet :
 
 ![](variable-copy-reference.svg)
@@ -60,6 +87,15 @@ Maintenant nous avons deux variables, chacune avec la référence vers le même 
 Comme vous pouvez le voir, il y a toujours qu'un seul objet, avec deux variables qui le référence.
 
 On peut utiliser n'importe quelle variable pour accéder à l'objet et modifier le contenu :
+=======
+Now we have two variables, each storing a reference to the same object:
+
+![](variable-copy-reference.svg)
+
+As you can see, there's still one object, but now with two variables that reference it.
+
+We can use either variable to access the object and modify its contents:
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ```js run
 let user = { name: 'John' };
@@ -73,7 +109,11 @@ admin.name = 'Pete'; // changé par la référence "admin"
 alert(*!*user.name*/!*); // 'Pete', les changements sont visibles sur la référence "user"
 ```
 
+<<<<<<< HEAD
 C'est comme si l'on avait un cabinet avec deux clés et que on l'on utilisait l'une d'elles (`admin`) pour y accéder. Puis, si l'on utilise plus tard la clé (`user`) on peut voir les changements.
+=======
+It's as if we had a cabinet with two keys and used one of them (`admin`) to get into it and make changes. Then, if we later use another key (`user`), we are still opening the same cabinet and can access the changed contents.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ## Comparaison par référence
 
@@ -98,7 +138,11 @@ let b = {}; // 2 objets indépendants
 alert( a == b ); // false
 ```
 
+<<<<<<< HEAD
 Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive `obj == 5`, les objets sont convertis en primitive. Nous étudierons comment les conversions d'objets fonctionnent bientôt, mais pour dire la vérité, de telles comparaisons sont rarement nécessaires, en général elles sont le résultat d'une erreur de programmation.
+=======
+For comparisons like `obj1 > obj2` or for a comparison against a primitive `obj == 5`, objects are converted to primitives. We'll study how object conversions work very soon, but to tell the truth, such comparisons are needed very rarely -- usually they appear as a result of a programming mistake.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ## Clonage et fusionage, Object.assign
 
@@ -106,7 +150,11 @@ Copier une variable object créé une référence en plus vers le même objet.
 
 Mais quid si nous voulons dupliquer un objet ? Créer une copie indépendante, un clone ?
 
+<<<<<<< HEAD
 C'est aussi faisable, mais un peu plus compliqué, car en Javascript il n'y pas de méthode intégrée pour cela. En fait c'est rarement utile. Copier par référence fonctionne la plupart du temps.
+=======
+That's also doable, but a little bit more difficult, because there's no built-in method for that in JavaScript. But there is rarely a need -- copying by reference is good most of the time.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Mais si nous le voulons, alors nous devons créer un nouvel objet et répliquer sa structure en itérant ses propriétés et en les copiant au niveau primitive.
 
@@ -226,12 +274,21 @@ user.sizes.width++;       // on modifie la propriété à un endroit
 alert(clone.sizes.width); // 51, on peut voir la modification dans un autre endroit
 ```
 
+<<<<<<< HEAD
 Pour régler ça, on doit utiliser la boucle de clonage qui examine chaque valeur de `user[key]` et, si c'est un objet, répliquer sa structure aussi. On appelle cela un "clone réél" (deep clone).
 
 On peut utiliser la récursion pour l'implémenter. Ou, pour ne pas réinventer la roue, prendre un implémentation existante. par exemple [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) de la librairie [lodash](https://lodash.com).
 
 ```smart header="Les objets Const peuvent être modifiés"
 Un "effet secondaire" important du stockage d'objets en tant que références est qu'un objet déclaré comme `const` *peut* être modifié.
+=======
+To fix that, we should use a cloning loop that examines each value of `user[key]` and, if it's an object, then replicate its structure as well. That is called a "deep cloning".
+
+We can use recursion to implement it. Or, to not reinvent the wheel, take an existing implementation, for instance [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) from the JavaScript library [lodash](https://lodash.com).
+
+````smart header="Const objects can be modified"
+An important side effect of storing objects as references is that an object declared as `const` *can* be modified.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Par exemple :
 
@@ -247,16 +304,29 @@ user.name = "Pete"; // (*)
 alert(user.name); // Pete
 ```
 
+<<<<<<< HEAD
 Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. La valeur de `user` est constante, elle doit toujours référencer le même objet. Mais les propriétés de cet objet sont libres de changer.
 
 En d'autres termes, le `const user` ne donne une erreur que si nous essayons de définir `user = ...` dans son ensemble, et c'est tout.
 
 Cela dit, si nous avons vraiment besoin de créer des propriétés d'objet constantes, c'est également possible, mais en utilisant des méthodes totalement différentes, nous le mentionnerons dans le chapitre <info:property-descriptors>.
 ```
+=======
+It might seem that the line `(*)` would cause an error, but it does not. The value of `user` is constant, it must always reference the same object, but properties of that object are free to change.
+
+In other words, the `const user` gives an error only if we try to set `user=...` as a whole.
+
+That said, if we really need to make constant object properties, it's also possible, but using totally different methods. We'll mention that in the chapter <info:property-descriptors>.
+````
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ## Résumé
 
+<<<<<<< HEAD
 Les objets sont assignés et copiés par référence. En d'autres mots, une variable ne stocke pas la "valeur de l'objet" mais la "référence" (l'adresse en mémoire) de la valeur. Donc copier cette variable, ou la passer en argument d'une fonction, copie la référence, pas l'objet.
+=======
+Objects are assigned and copied by reference. In other words, a variable stores not the "object value", but a "reference" (address in memory) for the value. So copying such a variable or passing it as a function argument copies that reference, not the object itself.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Toutes les opérations faites par une copie de la référence (comme ajouter/supprimer une propriété) sont faites sur le même objet.
 

@@ -35,10 +35,17 @@ Un objet de "vue" ne stocke rien tout seul. Ce sont les lunettes qui donnent une
 
 Par exemple:
 
+<<<<<<< HEAD
 - **`Uint8Array`** -- Traite chaque octet dans l'`ArrayBuffer` comme un nombre unique, avec des valeurs possibles entre 0 jusqu'à 255 (Un octet est sur 8 bits). On appelle ces valeurs des "entiers non signés sur 8 bits".
 - **`Uint16Array`** -- Traite par paquet de 2 octets en tant qu'entier, avec des valeurs possibles entre 0 jusqu'à 65535. On appelle ces valeurs des "entiers non signés sur 16 bits".
 - **`Uint32Array`** -- Traite par paquet de 4 octets en tant qu'entier, avec des valeurs possibles entre 0 jusqu'à 4294967295. On appelle ces valeurs des "entiers non signés sur 32bits".
 - **`Float64Array`** -- Traite par paquet de 8 octets en tant que nombre flottant avec des valeurs possibles entre <code>5.0x10<sup>-324</sup></code> et <code>1.8x10<sup>308</sup></code>.
+=======
+- **`Uint8Array`** -- treats each byte in `ArrayBuffer` as a separate number, with possible values from 0 to 255 (a byte is 8-bit, so it can hold only that much). Such value is called a "8-bit unsigned integer".
+- **`Uint16Array`** -- treats every 2 bytes as an integer, with possible values from 0 to 65535. That's called a "16-bit unsigned integer".
+- **`Uint32Array`** -- treats every 4 bytes as an integer, with possible values from 0 to 4294967295. That's called a "32-bit unsigned integer".
+- **`Float64Array`** -- treats every 8 bytes as a floating point number with possible values from <code>5.0x10<sup>-324</sup></code> to <code>1.8x10<sup>308</sup></code>.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Donc, les données binaires dans un `ArrayBuffer` de 16 octets peuvent être interprétées comme 16 "petits nombres" , ou 8 grands nombres (2 octets chacun), ou 4 encore plus grands (4 octets chacun), ou 2 valeurs flottantes avec une haute précision (8 octets chacun).
 
@@ -78,7 +85,11 @@ Il faut noter qu'il n'y a pas de construteur appelé `TypedArray`, Il s'agit d'u
 
 Lorsque vous voyez quelque chose comme `new TypedArray`, Il s'agit de n'importe quoi parmi `new Int8Array`, `new Uint8Array`, etc.
 
+<<<<<<< HEAD
 Les tableaux typés ressemblent à des tableaux classiques: ils ont des indexs et sont itérables.
+=======
+Typed arrays behave like regular arrays: have indexes and are iterable.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Un constructeur `TypedArray` (soit `Int8Array` ou `Float64Array`, peut importe) se comporte différement en fonction du type des arguments.
 
@@ -258,7 +269,11 @@ Pour faire presque n'importe quelle opération sur un `ArrayBuffer`, nous avons 
     - `Float32Array`, `Float64Array` -- pour les nombres flottants signés de 32 et 64 bits.
 - Ou d'un `DataView` -- la vue qui utilise des méthodes pour spécifier un format, e.g. `getUint8(offset)`.
 
+<<<<<<< HEAD
 Dans la majorité des cas, on crée et on opère directement sur les tableaux typés, laissant `ArrayBuffer` en arrière. On peut toujours y accéder avec `.buffer` et faire une nouvelle vue si besoin.
+=======
+In most cases we create and operate directly on typed arrays, leaving `ArrayBuffer` under cover, as a "common denominator". We can access it as `.buffer` and make another view if needed.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Il y a également 2 termes supplémentaires, qui sont utilisés dans les descriptions des méthodes pour travailler sur les données binaires:
 - `ArrayBufferView` qui est le terme pour tous les types de vues.

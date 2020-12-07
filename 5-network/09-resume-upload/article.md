@@ -24,7 +24,7 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
 
 1. Créer d'abord un identifiant de fichier pour identifier de manière unique le fichier que nous allons uploader :
     ```js
-    let fileId = file.name + '-' + file.size + '-' + +file.lastModifiedDate;
+    let fileId = file.name + '-' + file.size + '-' + file.lastModified;
     ```
     Cela est nécessaire pour reprendre l'upload, pour indiquer au serveur ce que nous reprenons.
 

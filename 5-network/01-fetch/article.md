@@ -27,7 +27,11 @@ let promise = fetch(url, [options])
 - **`url`** -- l'URL cible.
 - **`options`** -- paramètres facultatifs : méthode, en-têtes, etc...
 
+<<<<<<< HEAD
 Sans `options`, c'est une simple requête GET, téléchargeant le contenu de l'`url`.
+=======
+Without `options`, this is a simple GET request, downloading the contents of the `url`.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 Le navigateur démarre la requête immédiatement et renvoie une promesse que le code appelant devrait utiliser pour obtenir le résultat.
 

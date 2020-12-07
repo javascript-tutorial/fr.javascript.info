@@ -41,13 +41,21 @@ Nous pouvons rechercher des caractères avec une propriété, écrite sous la fo
 
 Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgien et Coréen.
+=======
+In the example below three kinds of letters will be found: English, Georgian and Korean.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 
 ```js run
 let str = "A ბ ㄱ";
 
 alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
+<<<<<<< HEAD
 alert( str.match(/\p{L}/g) ); // null (aucune correspondance, puisqu'il n'y a pas l'indicateur "u")
+=======
+alert( str.match(/\p{L}/g) ); // null (no matches, \p doesn't work without the flag "u")
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 ```
 
 Voici les principales catégories de caractères et leurs sous-catégories :

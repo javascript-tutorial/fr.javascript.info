@@ -39,15 +39,28 @@ Les fonctions de gestion d'horloge :
 ```js
 let timerId;
 
+<<<<<<< HEAD
 function clockStart() { // exécute l'horloge
   timerId = setInterval(update, 1000);
+=======
+function clockStart() { // run the clock  
+  if (!timerId) { // only set a new interval if the clock is not running
+    timerId = setInterval(update, 1000);
+  }
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
   update(); // (*)
 }
 
 function clockStop() {
   clearInterval(timerId);
-  timerId = null;
+  timerId = null; // (**)
 }
 ```
 
+<<<<<<< HEAD
 Veuillez noter que l'appel à `update()` est non seulement planifié dans `clockStart()`, mais s'exécute immédiatement dans la ligne `(*)`. Sinon, le visiteur devra attendre la première exécution de `setInterval`. Et l'horloge serait vide jusque-là.
+=======
+Please note that the call to `update()` is not only scheduled in `clockStart()`, but immediately run in the line `(*)`. Otherwise the visitor would have to wait till the first execution of `setInterval`. And the clock would be empty till then.
+
+Also it is important to set a new interval in `clockStart()` only when the clock is not running. Otherways clicking the start button several times would set multiple concurrent intervals. Even worse - we would only keep the `timerID` of the last interval, losing references to all others. Then we wouldn't be able to stop the clock ever again! Note that we need to clear the `timerID` when the clock is stopped in the line `(**)`, so that it can be started again by running `clockStart()`.
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
