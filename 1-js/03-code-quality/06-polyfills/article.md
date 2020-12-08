@@ -1,58 +1,91 @@
 
-# Polyfills
+# Polyfills et transposeurs
 
-Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [specification officielle](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers le [cahier des charge officiel](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
-Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre. Elles peuvent décider de mettre en œuvre des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
+Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre. Elles peuvent décider de réaliser des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
 
 Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie de la norme.
 
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
 
-## Babel
+En tant que programmers, nous souhaiterions utiliser les fonctionalités les plus récentes. we'd like to use most recent features. Plus il y a de bonnes choses, mieux c'est !
 
-Lorsque nous utilisons des fonctionnalités modernes du langage, certains moteurs peuvent ne pas supporter un tel code. Comme indiqué, toutes les fonctionnalités ne sont pas implémentées partout.
+D'un autre côté, comment faire pour qu'un code moderne fonctionne avec les plus vieux moteurs qui ne supportent pas encore ces fonctionnalités récentes ?
 
-C'est là que Babel vient à la rescousse.
+Il existe deux outils pour ça :
 
-[Babel](https://babeljs.io) est un [transpileur](https://fr.wikipedia.org/wiki/Compilateur_source_%C3%A0_source). Il réécrit le code JavaScript moderne dans le standard précédent.
+1. Les transposeurs.
+2. Les polyfills.
 
-Actuellement, Babel comporte deux parties :
+Ici dans ce chapitre, notre but est de comprendre l'essentiel de leur fonctionnement et leur place dans le développement web.
 
-1. Tout d’abord, le programme transpileur, qui réécrit le code. Le développeur l'exécute sur son propre ordinateur. Il réécrit le code dans l'ancien standard. Et ensuite, le code est transmis au site Web pour les utilisateurs. Des systèmes de construction de projet moderne comme [webpack](http://webpack.github.io/) qui permet de fournir des moyens d’exécuter automatiquement un transpileur à chaque changement de code, de sorte que cela devient très facile à intégrer dans le processus de développement.
+## Les transposeurs
 
-2. Ensuite, le polyfill.
+Un [transposeur](https://en.wikipedia.org/wiki/Source-to-source_compiler) est une partie spéciale d'un logiciel qui peut analyser ("lire et comprendre") un code moderne et le réécrire en utilisant des constructions syntaxiques plus anciennes afin que le résultat soit le même.
 
-  Les nouvelles fonctionnalités du langage peuvent inclure de nouvelles fonctions intégrées et de nouvelles constructions de syntaxe. 
-  Le transpiler réécrit le code en transformant les nouvelles constructions de syntaxe en anciennes. Mais en ce qui concerne les nouvelles fonctions intégrées, nous devons les implémenter. JavaScript est un langage très dynamique, les scripts peuvent ajouter / modifier n’importe quelle fonction, afin qu’ils se comportent conformément au standard moderne.
+Par exemple, JavaScript avant l'année 2020 ne possédait pas "l'opérateur de coalescence nul" `??`. Ainsi, si un visiteur utilise un navigateur obsolète, il peut échouer dans la compréhension du code `height = height ?? 100`.
 
-  Un script qui met à jour / ajoute de nouvelles fonctions s'appelle "polyfill". Il "comble" le vide et ajoute les implémentations manquantes.
+Un transposeur devrait analyser notre code et réécrire `height ?? 100` en `(height !== undefined && height !== null) ? height : 100`.
 
-Deux polyfill intéressants sont :
-    - [core js](https://github.com/zloirock/core-js) qui prend beaucoup en charge, permet d’inclure uniquement les fonctionnalités nécessaires.
-    - [polyfill.io](http://polyfill.io) service qui fournit un script avec des polyfill, en fonction des fonctionnalités et du navigateur de l'utilisateur.
+```js
+// avant de lancer le transposeur
+height = height ?? 100;
 
-Nous devons donc configurer le transpileur et ajouter le polyfill pour les anciens moteurs afin de prendre en charge les fonctionnalités modernes.
-
-Donc, si nous allons utiliser les fonctionnalités du langage moderne, un transpiler et un polyfill sont nécessaires.
-
-## Exemples dans le tutoriel
-
-
-````online
-La plupart des exemples sont exécutables sur place, comme ceci :
-
-```js run
-alert('Press the "Play" button in the upper-right corner to run');
+// après avoir lancé le transposeur
+height = (height !== undefined && height !== null) ? height : 100;
 ```
 
-Les exemples qui utilisent le JS moderne ne fonctionneront que si votre navigateur le prend en charge.
-````
+Maintenant, le code réécrit est compatible avec les moteurs anciens de JavaScript.
 
-```offline
-Pendant que vous lisez la version hors connexion, les exemples ne sont pas exécutables. Dans EPUB, certains peuvent fonctionner.
+Habituellement, un développeur lance un transposeur sur son ordinateur et déploie le code transposé sur le serveur.
+
+Pour donner un nom, [Babel](https://babeljs.io) est l'un des plus éminents prominents actuellement. 
+
+Les systèmes modernes de construction de projets, tels que [webpack](http://webpack.github.io/), permettent d'exécuter automatiquement le transposeur à chaque modification du code, ce qui le rend très facile à intégrer dans le processus de développement.
+
+## Polyfills
+
+Les nouvelles fonctionnalités de langage devraient inclure non seulement la syntaxe des constructeurs et des opérateurs mais aussi les fonctions intégrées.
+
+Par example, `Math.trunc(n)` est une fonction qui "coupe" la partie décimale d'un nombre, par exemple `Math.trunc(1.23) = 1`.
+
+Dans certains (très obsolètes) moteurs de JavaScript, `Math.trunc` n'existe pas, ce qui entraîne un échec du code.
+
+Comme nous parlons de nouvelles fonctions, il n'y a aucune modification syntaxique et donc aucune transposition à faire. Il faut juste déclarer la fonction manquante.
+
+Un script qui met à jour/ajoute de nouvelles fonctions est appelé "polyfill". Cela "remplit"le vide et ajoute les fonctionnalités manquantes.
+
+Dans ce cas particulier, le polyfill pour `Math.trunc` est un script qui la met en œuvre de la manière suivante :
+
+```js
+if (!Math.trunc) { // s'il n'y a pas une fonction de ce type
+  // on la met en œuvre
+  Math.trunc = function(number) {
+    // Math.ceil et Math.floor existent même pour les anciens moteurs JavaScript
+    // elles seront vues plus tard dans ce tutoriel
+    return number < 0 ? Math.ceil(number) : Math.floor(number);
+  };
+}
 ```
 
-Google Chrome est généralement la version la plus récente des fonctionnalités du langage, il accepte de lancer des démos ultra-sophistiquées sans transpilers, mais les autres navigateurs modernes fonctionnent également très bien.
+JavaScript est une langage très dynamique, les scripts peuvent ajouter/modifier n'importe quelle function, même celles intégrées par défaut.
+
+Deux bibliothèques de polyfills intéressantes sont :
+- [core js](https://github.com/zloirock/core-js) qui supporte un nombre important de nouvelles fonctionnalités, et qui permet de n'inclure que celles nécessaires.
+- [polyfill.io](http://polyfill.io) qui est un service qui fournit un script de polyfills selon les caractéristiques et le navigateur de l'utilisateur.
 
 
+## Résumé
+
+Dans ce chapitre, nous avons souhaité vous motiver à étudier les caractéristiques modernes et "encore fraiches" du langage, même si elles ne sont pas encore bien supportées par les moteurs de JavaScript.
+
+N'oubliez pas d'utiliser un transposeur (si vous utilisez la syntaxe moderne ou les opérateurs) et les polyfills (pour ajouter des fonctions qui pourraient manquer). Et ils vous assurerons que le code fonctionnera.
+
+Par exemple, plus tard quand vous serez familier avec JavaScript, vous pourrez mettre en place un système de construction de code basé sur [webpack](http://webpack.github.io/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
+
+De bonnes resources qui montrent l'état actuel du support des différentes fonctionnalités :
+- <https://kangax.github.io/compat-table/es6/> - pour du JavaScript pur.
+- <https://caniuse.com/> - pour des fonctions supportées par les navigateurs.
+
+P.S. Google Chrome est généralement le plus à jour en ce qui concerne les caractéristiques du langage, essayez le en cas d'échec d'une démo de ce tutoriel. La plupart des tutoriels de démonstration devraient fonctioner cependant avec n'importe quel navigateur moderne.
