@@ -18,7 +18,7 @@ Et dans de telles fonctions, nous ne voulons généralement pas quitter le conte
 
 ## Les fonctions fléchées n'ont pas de "this"
 
-Comme nous nous en souvenons du chapitre <info:object-methods>, les fonctions fléchées n'ont pas de `this`. Si `this` est utilisé, il est pris de l'extérieur.
+Comme rappelé dans le chapitre <info:object-methods>, les fonctions fléchées n'ont pas de `this`. Si `this` est utilisé, il arrive de l'extérieur.
 
 Par exemple, nous pouvons l'utiliser pour itérer à l'intérieur d'une méthode d'objet :
 
@@ -41,7 +41,7 @@ group.showList();
 
 Ici, dans `forEach`, la fonction fléchée est utilisée, donc `this.title` est exactement la même chose que dans la méthode externe `showList`. C'est-à-dire `group.title`.
 
-Si nous utilisions une fonction "régulière", il y aurait une erreur :
+Si nous avions utiliser une fonction "régulière", il y aurait eu une erreur :
 
 ```js run
 let group = {
@@ -61,12 +61,12 @@ let group = {
 group.showList();
 ```
 
-L'erreur se produit parce que `forEach` exécute des fonctions avec `this = undefined` par défaut. La tentative d'accès à `undefined.title` est faite.
+L'erreur se produit parce que `forEach` exécute des fonctions avec `this = undefined` par défaut. Il y a alors une tentative d'accès à `undefined.title`.
 
 Cela n’affecte pas les fonctions fléchées, car elles n’ont tout simplement pas de `this`.
 
 ```warn header="Les fonctions fléchées ne peuvent pas fonctionner avec `new`"
-Ne pas avoir de `this` signifie naturellement une autre limitation : les fonctions fléchées ne peuvent pas être utilisées en tant que constructeurs. Elles ne peuvent pas être appelées avec `new`.
+Ne pas avoir de `this` signifie naturellement une autre limitation : les fonctions fléchées ne peuvent pas être utilisées en tant que constructeur. Elles ne peuvent pas être appelées avec `new`.
 ```
 
 ```smart header="Les fonctions fléchées VS bind"
