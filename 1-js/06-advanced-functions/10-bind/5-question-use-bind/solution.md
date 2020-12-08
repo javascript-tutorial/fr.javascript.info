@@ -1,9 +1,9 @@
 
-The error occurs because `ask` gets functions `loginOk/loginFail` without the object.
+L'erreur arrive car `ask` a les fonctions `loginOk/loginFail` sans l'objet.
 
-When it calls them, they naturally assume `this=undefined`.
+Quand elle les appelle, ils supposent naturellement que `this=undefined`.
 
-Let's `bind` the context:
+Lions le contexte :
 
 ```js run
 function askPassword(ok, fail) {
@@ -30,14 +30,14 @@ askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
 */!*
 ```
 
-Now it works.
+Maintenant, ça fonctionne.
 
-An alternative solution could be:
+Une solution alternative aurait pu être :
 ```js
 //...
 askPassword(() => user.loginOk(), () => user.loginFail());
 ```
 
-Usually that also works and looks good.
+Habituellement, ça fonctionne également et semble bon.
 
-It's a bit less reliable though in more complex situations where `user` variable might change *after* `askPassword` is called, but *before* the visitor answers and calls `() => user.loginOk()`. 
+Elle est cependant un peu moins fiable dans les situations plus complexes où la variable `user` pourrait changer *après* l'appel de `askPassword`, mais *avant* la réponse du visiteur et l'appel `() => user.loginOk()`.
