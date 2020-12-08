@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Bound function as a method
+# Fonction contrainte comme méthode
 
-What will be the output?
+Qu'arrivera-t-il en sortie ?
 
 ```js
 function f() {
