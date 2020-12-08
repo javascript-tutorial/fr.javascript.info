@@ -6,9 +6,9 @@ importance: 5
 
 La tâche est une variante un peu plus complexe de <info:task/question-use-bind>. 
 
-L'objet `user` a été modifié. Maintenant, au lieu de deux fonctions `loginOk/loginFail`, il a une seule fonction `user.login(true/false)`.
+L'objet `user` a été modifié. Maintenant, au lieu de deux fonctions `loginOk/loginFail`, il y a une seule fonction `user.login(true/false)`.
 
-Que faire passer à `askPassword` dans le code ci-dessous, de sorte qu'il appelle `user.login(true)` comme `ok` et `user.login(false)` comme `fail` ?
+Que faire passer à `askPassword` dans le code ci-dessous, de sorte que son utilisation de `user.login(true)` donne `ok` et celle de `user.login(false)` donne `fail` ?
 
 ```js
 function askPassword(ok, fail) {
@@ -30,5 +30,5 @@ askPassword(?, ?); // ?
 */!*
 ```
 
-Vos modifications doivent uniquement modifier le fragment surligné.
+Vos modifications doivent uniquement porter sur le fragment surligné.
 
