@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Second bind
+# Seconde contrainte (bind)
 
 Peut-on changer `this` en ajoutant une contrainte ?
 
