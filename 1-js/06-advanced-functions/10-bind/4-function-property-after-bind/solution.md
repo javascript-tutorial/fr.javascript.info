@@ -1,4 +1,4 @@
-The answer: `undefined`.
+La réponse : `undefined`.
 
-The result of `bind` is another object. It does not have the `test` property.
+Le résultat de `bind` est un autre objet. Il n'a pas la propriété `test`.
 
