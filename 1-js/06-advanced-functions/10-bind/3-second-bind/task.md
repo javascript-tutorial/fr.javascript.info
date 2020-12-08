@@ -4,9 +4,9 @@ importance: 5
 
 # Second bind
 
-Can we change `this` by additional binding?
+Peut-on changer `this` en ajoutant une contrainte ?
 
-What will be the output?
+Quelle sera la sortie ?
 
 ```js no-beautify
 function f() {
