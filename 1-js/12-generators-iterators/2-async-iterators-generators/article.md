@@ -57,11 +57,11 @@ for(let value of range) {
 }
 ```
 
-Si quelque chose n'est pas clair, veuillez consulter le chapitre [](info:iterable), il donne tous les détails sur les itérables réguliers.
+Si quelque chose n'est pas clair, veuillez consulter le [chapitre](info:iterable), il donne tous les détails sur les itérables réguliers.
 
 ## Itérables asynchrones
 
-Une itération asynchrone est nécessaire lorsque les valeurs arrivent de manière asynchrone: après `setTimeout` ou un autre type de retard.
+Une itération asynchrone est nécessaire lorsque les valeurs arrivent de manière asynchrone : après `setTimeout` ou un autre type de délai.
 
 Le cas le plus courant est que l'objet doit faire une requête réseau pour fournir la valeur suivante, nous en verrons un exemple réel un peu plus tard.
 
@@ -69,11 +69,11 @@ Pour rendre un objet itérable de manière asynchrone :
 
 1. Utiliser `Symbol.asyncIterator` au lieu de `Symbol.iterator`.
 2. La méthode `next()` devrait retourner une promesse (à remplir avec la valeur suivante).
-    - Le mot-clé `async` le gère, nous pouvons simplement faire `async next()`.
+    - Le mot-clé `async` la gère, nous pouvons simplement faire `async next()`.
 3. Pour itérer sur un tel objet, nous devrions utiliser une boucle `for await (let item of iterable)`.
     - Notez le mot `await`.
 
-Comme exemple de départ, créons un objet `range` itérable, similaire à celui d'avant, mais maintenant il retournera des valeurs de manière asynchrone, une par seconde.
+Comme exemple de départ, créons un objet `range` itérable, similaire à celui d'avant mais maintenant il retournera des valeurs de manière asynchrone, une par seconde.
 
 Tout ce que nous devons faire est d'effectuer quelques remplacements dans le code ci-dessus :
 
@@ -94,7 +94,7 @@ let range = {
 */!*
 
 *!*
-        // note: nous pouvons utiliser "await" dans l'async suivant :
+        // note: nous pouvons utiliser "await" dans l async suivant :
         await new Promise(resolve => setTimeout(resolve, 1000)); // (3)
 */!*
 
@@ -131,18 +131,18 @@ Voici un petit tableau avec les différences :
 |       | itérateurs | itérateurs asynchrones |
 |-------|------------|------------------------|
 | Méthode de l'objet qui fournit un itérateur | `Symbol.iterator` | `Symbol.asyncIterator` |
-| valeur de retour de la fonction `next()`    | peu importe       | `Promise`  |
-| pour boucler, utilisez                      | `for..of`         | `for await..of` |
+| Valeur de retour de la fonction `next()`    | n'importe quelle valeur       | `Promise`  |
+| Pour boucler, utiliser                      | `for..of`         | `for await..of` |
 
-````warn header="la 'spread syntax' `...` ne fonctionne pas de manière asynchrone"
-Les fonctionnalités qui nécessitent des itérateurs réguliers et synchrones ne fonctionnent pas avec les asynchrones.
+````warn header="la syntaxe de diffusion `...` ne fonctionne pas de manière asynchrone"
+Les fonctionnalités qui nécessitent des itérateurs réguliers et synchrones ne fonctionnent pas avec ceux qui sont asynchrones.
 
-Par exemple, la 'spread syntax' ne fonctionnera pas :
+Par exemple, la syntaxe de diffusion ne fonctionnera pas :
 ```js
 alert( [...range] ); // Erreur, pas de Symbol.iterator
 ```
 
-C'est naturel, comme il s'attend à trouver `Symbol.iterator`, pas `Symbol.asyncIterator`.
+C'est naturel, car on s'attend à trouver `Symbol.iterator` et pas `Symbol.asyncIterator`.
 
 C'est aussi le cas pour `for..of` : la syntaxe sans `await` a besoin de `Symbol.iterator`.
 ````
@@ -208,7 +208,7 @@ Veuillez consulter le chapitre [](info:generators) si vous souhaitez plus de dé
 
 Dans les générateurs standards, nous ne pouvons pas utiliser `await`. Toutes les valeurs doivent être synchronisées, comme l'exige la construction `for..of`.
 
-Et si nous souhaitons générer des valeurs de manière asynchrone ? À partir de requêtes réseau, par exemple.
+Et si nous souhaitions générer des valeurs de manière asynchrone ? À partir de requêtes réseau, par exemple.
 
 Passons aux générateurs asynchrones pour rendre cela possible.
 
@@ -264,7 +264,7 @@ C'est pourquoi les générateurs asynchrones fonctionnent avec `for await...of`.
 
 Les générateurs réguliers peuvent être utilisés comme `Symbol.iterator` pour raccourcir le code d'itération.
 
-Similaire à cela, les générateurs asynchrones peuvent être utilisés comme `Symbol.asyncIterator` pour implémenter l'itération asynchrone.
+De la même façon, les générateurs asynchrones peuvent être utilisés comme `Symbol.asyncIterator` pour réaliser l'itération asynchrone.
 
 Par exemple, nous pouvons faire en sorte que l'objet `range` génère des valeurs de manière asynchrone, une fois par seconde, en remplaçant` Symbol.iterator` synchrone par `Symbol.asyncIterator` asynchrone :
 
@@ -308,14 +308,15 @@ En pratique cependant, ce serait une chose étrange à faire.
 
 Jusqu'à présent, nous avons vu des exemples de base pour mieux comprendre. Passons maintenant en revue un cas d'utilisation réel.
 
+Il y a une multitude de services en ligne qui délivrent des données paginées. Par exemple, quand nous avons besoin d'une liste d'utilisateurs, une requête en retourne un nombre prédéfini (e.g. 100 utilisateurs) - "une page", et fournit une URL vers la page suivante.
 
-Ce modèle est très courant. Il ne s'agit pas d'utilisateurs, mais de n'importe quoi.
+Ce modèle est très courant. Il ne s'agit pas seulement d'utilisateurs, et ça peut être n'importe quoi.
 
-Par exemple, GitHub nous permet de récupérer les commits de la même manière paginée :
+Par exemple, GitHub nous permet de récupérer les commits de la même manière, paginés :
 
-- Nous devrions faire une demande avec `fetch` sous la forme `https://api.github.com/repos/<repo>/commits`.
-- Il répond avec un JSON de 30 commits et fournit également un lien vers la page suivante dans l'en-tête `Link`.
-- Ensuite, nous pouvons utiliser ce lien pour la prochaine demande, pour obtenir plus de commits, etc.
+- Il faut faire une demande avec `fetch` sous la forme `https://api.github.com/repos/<repo>/commits`.
+- La réponse est un JSON de 30 commits avec un lien vers la page suivante dans l'en-tête `Link`.
+- Ensuite, ce lien peut être utilisé pour la prochaine demande, pour obtenir plus de commits, etc.
 
 Pour notre code, nous aimerions avoir un moyen plus simple d'obtenir des commits.
 
@@ -362,8 +363,8 @@ Plus d'explications sur son fonctionnement :
     - L'URL initiale est `https://api.github.com/repos/<repo>/commits`, et la page suivante sera dans l'en-tête `Link` de la réponse.
     - La méthode `fetch` nous permet de fournir une autorisation et d'autres en-têtes si nécessaire - ici GitHub nécessite `User-Agent`.
 2. Les commits sont renvoyés au format JSON.
-3. Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse. Il a un format spécial, nous utilisons donc une [expression régulière](info:regular-expressions)).
-pour cela.
+3. Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse. Il a un format spécial, nous utilisons donc une expression régulière pour cela (nous apprendrons cette fonctionnalité dans le chapitre [expressions régulières](info:regular-expressions)).
+.
     - L'URL de la page suivante peut ressembler à `https://api.github.com/repositories/93253246/commits?page=2`. Elle est générée par GitHub lui-même.
 4. Ensuite, nous donnons les commits reçus un par un, et quand ils se terminent, la prochaine itération `while(url)` se déclenchera, faisant une demande de plus.
 
