@@ -1,32 +1,26 @@
-# Evenements de la souris
+# Événements de la souris
 
 Dans ce chapitre, nous verrons plus en détails les événements de la souris et leurs propriétés.
 
-Remarque: Ces événements peuvent provenir non seulement de "périphériques de souris", mais également de périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
+Remarque : ces événements peuvent provenir non seulement "de souris connectées", mais également d'autres périphériques, tels que les téléphones et les tablettes, qui sont émulés pour des raisons de compatibilité.
 
-## Les types d'évènements de Souris 
+## Les types d'événements de Souris 
 
 Nous avons déjà vu certains de ces événements :
 
-`mousedown/mouseup`
-: Le bouton de la souris est appuyé puis relâché sur un élément.
+`mousedown/mouseup` : Le bouton de la souris est appuyé puis relâché sur un élément.
 
-`mouseover/mouseout`
-: Le pointeur de la souris entre  ou sort d'un élément.
+`mouseover/mouseout` : Le pointeur de la souris entre ou sort d'un élément.
 
-`mousemove`
-: Chaque déplacement de la souris sur un élément déclenche cet évènement.
+`mousemove` : Chaque déplacement de la souris sur un élément déclenche cet évènement.
 
-`click`
-: est déclenché après un évènement `mousedown` et suite à un  `mouseup`  sur le même élément, si le bouton gauche de la souris a été utilisé
+`click` : est déclenché après un évènement `mousedown` et suite à un `mouseup` sur le même élément, si le bouton gauche de la souris a été utilisé
 
-`dblclick`
-: Se déclenche après deux clics sur le même élément dans un court laps de temps. Rarement utilisé de nos jours.
+`dblclick` : Se déclenche après deux clics sur le même élément dans un court laps de temps. Rarement utilisé de nos jours.
 
-`contextmenu`
-: Se déclenche lorsque le bouton droit de la souris est enfoncé. Il existe d'autres façons d'ouvrir un menu contextuel, par ex. en utilisant une touche spéciale du clavier, il se déclenche dans ce cas également, donc ce n'est pas exactement l'événement de la souris.
+`contextmenu` : Se déclenche lorsque le bouton droit de la souris est enfoncé. Il existe d'autres façons d'ouvrir un menu contextuel, par ex. en utilisant une touche spéciale du clavier, ce qui le déclenche également. Ce n'est donc pas exactement un événement de souris.
 
-... Il y a aussi plusieurs autres événements, nous les couvrirons plus tard.
+... Il y a aussi plusieurs autres événements, nous les verrons plus tard.
 
 ## Ordre des événements
 
@@ -37,13 +31,13 @@ Par exemple, un clic gauche déclenche d'abord `mousedown`, lorsque le bouton es
 Au cas où une action unique initialise plusieurs évènements, leur ordre est fixé. C'est-à-dire que les gestionnaires sont appelés dans l'ordre `mousedown` -> `mouseup` -> `click`.
 
 ```online
-Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double clic aussi. Dans TestStand en bas tous les évènements de la souris sont enregistrés, et si il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
+En cliquant sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double-clic également. 
 
-Sur le banc de test ci-dessous, tous les événements de souris sont enregistrés et s'il y a un délai de plus d'une seconde entre eux, ils sont séparés par une règle horizontale.
+Dans le bac à sable ci-dessous, tous les évènements de la souris sont enregistrés et s'il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
 
 Nous pouvons également voir la propriété `button` qui permet de détecter le bouton de la souris, c'est expliqué ci-dessous.
 
-<input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Click me with the right or the left mouse button" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
+<input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Cliquez sur moi avec le bouton droit ou gauche de la souris" type="button"> <input onclick="logClear('test')" value="Nettoyer" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```
 
 ## Bouton de la souris
@@ -85,11 +79,11 @@ Tous les évènements de la souris contiennent des informations à propos des to
 Propriétés d'événement :
 
 - `shiftKey`: `key:Shift`
-- `altKey`: `key:Alt` (or `key:Opt` for Mac)
+- `altKey`: `key:Alt` (ou `key:Opt` pour Mac)
 - `ctrlKey`: `key:Ctrl`
-- `metaKey`: `key:Cmd` for Mac
+- `metaKey`: `key:Cmd` pour Mac
 
-Ils sont `true` si la touche correspondante fut appuyée durant l'évènement.
+Ils sont à `true` si la touche correspondante a été appuyée durant l'évènement.
 
 Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
 
@@ -116,53 +110,54 @@ C'est-à-dire : lorsqu'un utilisateur Windows appuie sur `key:Ctrl+Enter` ou `ke
 
 Donc, si nous voulons supporter des combinaisons comme `key:Ctrl`+click, alors pour Mac, il est logique d'utiliser `key:Cmd`+click. C'est plus confortable pour les utilisateurs de Mac.
 
-Même si nous aimerions forcer les utilisateurs de Mac à `key:Ctrl`+click -- c'est un peu difficile. Le problème est: un clic gauche avec `key:Ctrl` est interprété comme un *clic droit* sur MacOS, et il génère l'évènement `menu contextuel`, et non un `click` comme sur Windows/Linux.
+Même si nous aimerions forcer les utilisateurs de Mac à `key:Ctrl`+click -- c'est un peu difficile. Le problème est : un clic gauche avec `key:Ctrl` est interprété comme un *clic droit* sur MacOS, et il génère l'évènement `menu contextuel`, et non un `click` comme sur Windows/Linux.
 
 Donc, si nous voulons que les utilisateurs de tous les systèmes d'exploitation se sentent à l'aise, alors avec `ctrlKey` nous devrions vérifier la `metaKey`.
 
-Pour JS-code cela signifie que nous devons contrôler si `if (event.ctrlKey || event.metaKey)`.
+Pour JS-code cela signifie que nous devons contrôler `if (event.ctrlKey || event.metaKey)`.
 ```
 
 ```warn header="Il y a aussi les appareils mobiles"
 
-Les combinaisons de clavier sont un bon complément au flux de travail. Donc, si le visiteur utilise un clavier -- ils fonctionnent.
+Les combinaisons de clavier sont un bon complément au déroulement des opérations. Donc, si le visiteur utilise un clavier -- elles fonctionnent.
 
-Mais si leur appareil n'en a pas, il devrait y avoir un moyen de vivre sans touches de modification.
+Mais si son appareil n'en a pas, il devrait y avoir un moyen de faire sans touche de modification.
 ```
 
 ## Cordonnées: clientX/Y, pageX/Y
 
 Tous les événements de souris fournissent des coordonnées de deux manières :
 
+1. Relatives à la fenêtre en cours d'utilisation : `clientX` et `clientY`.
+2. Relatives au document : `pageX` et `pageY`.
 
 Nous avons déjà couvert la différence entre eux dans le chapitre <info:coordinates>.
 
-En résumé, les coordonnées relatives au document `pageX/Y` sont comptées à partir du coin supérieur gauche du document, et ne changent pas lorsque la page défile, tandis que` clientX/Y` sont comptées à partir du coin supérieur gauche de la fenêtre actuelle . Lorsque la page défile, ils changent.
+En résumé, les coordonnées relatives au document `pageX/Y` sont comptées à partir du coin supérieur gauche du document, et ne changent pas lorsque la page défile, tandis que` clientX/Y` sont comptées à partir du coin supérieur gauche de la fenêtre en cours d'utilisation. Lorsque la page défile, ils changent.
 
 Par exemple, si nous avons une fenêtre de taille 500x500 et que la souris est dans le coin supérieur gauche, alors `clientX` et `clientY` sont `0`, peu importe comment la page est défilée.
 
-Et si la souris est au centre, alors `clientX` et `clientY` sont `250`, quelle que soit la place dans le document. Ils sont similaires à `position:fixed` dans cet aspect.
+Et si la souris est au centre, alors `clientX` et `clientY` sont à `250`, quelle que soit sa place dans le document. Ils sont équivalents à `position:fixed` dans cet état.
 
 ````online
-Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exemple est dans l `iframe`, ainsi les cordonnées sont relatives à cet `iframe`) :
+Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exemple est dans l`iframe`, ainsi les cordonnées sont relatives à cet `iframe`) :
 
 ```html autorun height=50
-<input onmousemove="this.value=event.clientX+':'+event.clientY" value="Mouse over me">
+<input onmousemove="this.value=event.clientX+':'+event.clientY" value="Passez la souris au dessus de moi">
 ```
 ````
-Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir du coin supérieur gauche du document, pas de la fenêtre. Vous pouvez en savoir plus sur les coordonnées dans le chapitre <info:coordinates>.
 
 ## Empêcher la sélection sur le mousedown
 
-Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
+Le double-clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces : il sélectionne du texte.
 
-par exemple, double-cliquer sur le texte ci-dessous le sélectionne en plus de notre gestionnaire :
+Par exemple, double-cliquer sur le texte ci-dessous le sélectionne en plus de notre gestionnaire :
 
 ```html autorun height=50
-<span ondblclick="alert('dblclick')">Double-click me</span>
+<span ondblclick="alert('dblclick')">Double-clic sur moi</span>
 ```
 
-Si on appuie sur le bouton gauche de la souris et, sans le relâcher, on déplace la souris, la sélection devient alors souvent indésirable.
+Si on appuie sur le bouton gauche de la souris et, sans le relâcher, si on déplace la souris, on réalise également une sélection, ce qui n'est pas souvent souhaité.
 
 Il existe plusieurs façons d’empêcher la sélection, que vous pouvez lire dans le chapitre <info:selection-range>.
 
@@ -171,14 +166,14 @@ Dans ce cas particulier, le moyen le plus raisonnable consiste à empêcher l'ac
 ```html autorun height=50
 Avant...
 <b ondblclick="alert('Click!')" *!*onmousedown="return false"*/!*>
-   Double-click sur moi
+   Double-clic sur moi
 </b>
-...Apres
+...Après
 ```
 
 Désormais, l'élément en gras n'est pas sélectionné lors d'un double-clic, et si vous appuyez sur le bouton gauche de la souris, la sélection ne sera pas lancée.
 
-Remarque: le texte à l'intérieur est toujours sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après. Cela convient généralement aux utilisateurs.
+Remarque : le texte à l'intérieur est toujours sélectionnable. Cependant, la sélection ne doit pas commencer sur le texte lui-même, mais avant ou après. Cela convient généralement aux utilisateurs.
 
 ````smart header="Prévenir la copie"
 Si nous voulons désactiver la sélection pour protéger le contenu de notre page du copier-coller, nous pouvons utiliser un autre événement : `oncopy`.
@@ -188,10 +183,10 @@ Si nous voulons désactiver la sélection pour protéger le contenu de notre pag
 
 Cher Utilisateur
   Il vous est interdit de faire du copier-coller.
-Si vous connaissez JS ou HTML, alors vous pouvez tout obtenir à partir de la page source néanmoins.
+  Si vous connaissez JS ou HTML, vous pouvez néanmoins tout obtenir à partir du code source de la page.
 </div>
 ```
-Si vous essayer de copier une partie de texte dans un `<div>`, cela ne va pas fonctionner, parce que l’action par défaut `oncopy`  est empêchée.
+Si vous essayer de copier une partie de texte dans un `<div>`, cela ne va pas fonctionner parce que l’action par défaut `oncopy` est empêchée.
 
 Certes, l'utilisateur a accès à la source HTML de la page et peut en extraire le contenu, mais tout le monde ne sait pas comment le faire.
 ````
@@ -202,11 +197,11 @@ Les évènements de souris ont les propriétés suivantes :
 
 - Bouton: `button`.
 - Touches de modification (`true` si pressées): `altKey`, `ctrlKey`, `shiftKey` et `metaKey` (Mac).
-  - Si vous voulez gérer `key:Ctrl`, alors n'oubliez pas les utilisateurs de Mac, ils utilisent généralement `key:Cmd`, il est donc préférable de vérifier `if (e.metaKey || e.ctrlKey)`.
+  - Si vous voulez gérer `key:Ctrl`, alors n'oubliez pas les utilisateurs de Mac, ils utilisent généralement `key:Cmd`. Il est donc préférable de vérifier `if (e.metaKey || e.ctrlKey)`.
 
 - Coordonnées relatives à la fenêtre : `clientX/clientY`.
 - Coordonnées relatives au document : `pageX/pageY`.
 
 L'action par défaut du navigateur de `mousedown` est la sélection de texte. Si ce n'est pas bon pour l'interface, alors il faut l'empêcher.
 
-Dans le chapitre suivant, nous verrons plus en détails les événements qui suivent le mouvement du pointeur et  comment suivre les changements d’élément sous ce dernier.
+Dans le chapitre suivant, nous verrons plus en détails les événements qui suivent le mouvement du pointeur et comment suivre les changements d’élément sous ce dernier.
