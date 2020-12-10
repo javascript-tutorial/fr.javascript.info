@@ -1,13 +1,18 @@
 # Methods of RegExp and String
 
 In this article we'll cover various methods that work with regexps in-depth.
+Dans cet article, nous aborderons différentes méthodes qui fonctionnent en profondeur avec des expressions regulieres (regexps).  
 
 ## str.match(regexp)
 
 The method `str.match(regexp)` finds matches for `regexp` in the string `str`.
+La méthode `str.match(regexp)` trouve les correspondances de l'expression reguliere `regexp` dans le texte `str`. 
 
+Elle a 3 modes:
 It has 3 modes:
 
+1. si la `regexp`n'à pas de marqueur `pattern:g`, alors seul la première correspondance est retournée sous la forme d'un tableau avec le groupe capturé et ses propriétés `index` (position de la correspondance), `input` (chaîne d'entrée équivalent à `str`):
+   
 1. If the `regexp` doesn't have flag `pattern:g`, then it returns the first match as an array with capturing groups and properties `index` (position of the match), `input` (input string, equals `str`):
 
     ```js run
