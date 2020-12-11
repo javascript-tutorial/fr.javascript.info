@@ -1,14 +1,16 @@
-# Methods of RegExp and String
+# Methodes des Expressions Regulières et des chaînes de caractères
 
-In this article we'll cover various methods that work with regexps in-depth.
+Dans cet article, nous aborderons différentes méthodes qui fonctionnent en profondeur avec des expressions regulieres (regexps).
+
 
 ## str.match(regexp)
 
-The method `str.match(regexp)` finds matches for `regexp` in the string `str`.
+La méthode `str.match(regexp)` trouve les correspondances de l'expression reguliere `regexp` dans le texte `str`.
 
-It has 3 modes:
 
-1. If the `regexp` doesn't have flag `pattern:g`, then it returns the first match as an array with capturing groups and properties `index` (position of the match), `input` (input string, equals `str`):
+Elle dispose de 3 modes :
+
+1. si la regexpn'à pas de marqueur pattern:g, alors seul la première correspondance est retournée sous la forme d'un tableau avec le groupe capturé et ses propriétés index (position de la correspondance), et input (chaîne d'entrée équivalent à str):
 
     ```js run
     let str = "I love JavaScript";
@@ -24,7 +26,8 @@ It has 3 modes:
     alert( result.input );  // I love JavaScript (source string)
     ```
 
-2. If the `regexp` has flag `pattern:g`, then it returns an array of all matches as strings, without capturing groups and other details.
+2. Si la `regexp` dispose d'un marqueur `pattern:g`, alors elle retourne un tableau de toutes les correspondances de texte, sans capturer les groupes ou les autres propriétés.    
+    
     ```js run
     let str = "I love JavaScript";
 
@@ -34,9 +37,9 @@ It has 3 modes:
     alert( result.length ); // 1
     ```
 
-3. If there are no matches, no matter if there's flag `pattern:g` or not, `null` is returned.
+3. S'il n'y a pas de correspondance, qu'il y ait un marqueur `pattern:g` ou non, `null` est retourné.
 
-    That's an important nuance. If there are no matches, we don't get an empty array, but `null`. It's easy to make a mistake forgetting about it, e.g.:
+    C'est une nuance importante. Si il n'y a pas de correspondance, nous ne récupérons pas un tableau vide, mais `null`. Il n'est pas rare de faire une erreur en oubliant ce détail, e.g.:
 
     ```js run
     let str = "I love JavaScript";
@@ -47,7 +50,7 @@ It has 3 modes:
     alert(result.length); // Error: Cannot read property 'length' of null
     ```
 
-    If we want the result to be an array, we can write like this:
+    Si nous voulons que le résultat soit un tableau, nous pouvons écrire de cette façon:
 
     ```js
     let result = str.match(regexp) || [];
