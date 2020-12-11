@@ -10,7 +10,7 @@ La méthode `str.match(regexp)` trouve les correspondances de l'expression regul
 
 Elle dispose de 3 modes :
 
-1. si la regexpn'à pas de marqueur pattern:g, alors seul la première correspondance est retournée sous la forme d'un tableau avec le groupe capturé et ses propriétés index (position de la correspondance), et input (chaîne d'entrée équivalent à str):
+1. si la regexp n'à pas de marqueur `pattern:g`, alors seul la première correspondance est retournée sous la forme d'un tableau avec le groupe capturé et ses propriétés : index (position de la correspondance), et input (chaîne d'entrée équivalent à str):
 
     ```js run
     let str = "I love JavaScript";
@@ -60,17 +60,18 @@ Elle dispose de 3 modes :
 
 [recent browser="new"]
 
-The method `str.matchAll(regexp)` is a "newer, improved" variant of `str.match`.
+La méthode `str.matchAll(regexp)` est une variante "améliorée" de `str.match`. 
 
+Elle est principalement utilisée pour rechercher toutes les correspondances au sein de tous les groupes.
 It's used mainly to search for all matches with all groups.
 
-There are 3 differences from `match`:
+Il y a 3 différences avec `match`:
 
-1. It returns an iterable object with matches instead of an array. We can make a regular array from it using `Array.from`.
-2. Every match is returned as an array with capturing groups (the same format as `str.match` without flag `pattern:g`).
-3. If there are no results, it returns not `null`, but an empty iterable object.
+1. Elle retourne un objet iterable avec les correspondances au lieu d'un tableau. Nous pouvons le transformer en un tableau en utilisant la méthode `Array.from`.
+2. Toutes les correspondances sont retournées dans un tableau incluant les groupes capturants (sous le même format que `str.match` sans le marqueur `pattern:g`).
+3. Si aucun résultat, `null` n'est pas retourné, mais un objet itérable vide. 
 
-Usage example:
+Exemple d'utilisation:
 
 ```js run
 let str = '<h1>Hello, world!</h1>';
@@ -78,9 +79,9 @@ let regexp = /<(.*?)>/g;
 
 let matchAll = str.matchAll(regexp);
 
-alert(matchAll); // [object RegExp String Iterator], not array, but an iterable
+alert(matchAll); // [object RegExp String Iterator], pas un tableau, mais un itérateur
 
-matchAll = Array.from(matchAll); // array now
+matchAll = Array.from(matchAll); // maintenant un tableau
 
 let firstMatch = matchAll[0];
 alert( firstMatch[0] );  // <h1>
@@ -89,19 +90,19 @@ alert( firstMatch.index );  // 0
 alert( firstMatch.input );  // <h1>Hello, world!</h1>
 ```
 
-If we use `for..of` to loop over `matchAll` matches, then we don't need `Array.from` any more.
+Si nous utilisons `for..of` pour boucler sur les résultats de `matchAll`, alors `Array.from` n'est plus utile.
 
 ## str.split(regexp|substr, limit)
 
-Splits the string using the regexp (or a substring) as a delimiter.
+Diviser la chaîne de caractères en utilisant la regexp (ou une sous-chaîne de caractères) comme délimiteur.
 
-We can use `split` with strings, like this:
+Nous pouvons utiliser `split` avec un chaîne de caractères comme ceci :
 
 ```js run
 alert('12-34-56'.split('-')) // array of [12, 34, 56]
 ```
 
-But we can split by a regular expression, the same way:
+Mais nous pouvons aussi diviser une chaîne de texte en utilisant une expression regulière:
 
 ```js run
 alert('12, 34, 56'.split(/,\s*/)) // array of [12, 34, 56]
@@ -109,17 +110,17 @@ alert('12, 34, 56'.split(/,\s*/)) // array of [12, 34, 56]
 
 ## str.search(regexp)
 
-The method `str.search(regexp)` returns the position of the first match or `-1` if none found:
+La méthode `str.search(regexp)` renvoie la position du premier motif correspondant, ou `-1` si aucune correspondance n'est trouvée: 
 
 ```js run
 let str = "A drop of ink may make a million think";
 
-alert( str.search( /ink/i ) ); // 10 (first match position)
+alert( str.search( /ink/i ) ); // 10 (position du premier motif correspondant)
 ```
 
-**The important limitation: `search` only finds the first match.**
+**Limitation importante: `search` renvoie uniquement la première correspondance.**
 
-If we need positions of further matches, we should use other means, such as finding them all with `str.matchAll(regexp)`.
+Si nous avons besoin de la position ou de plus de correspondances, nous devrions utiliser d'autres méthodes, comme les trouver tous avec `str.matchAll(regexp)`. 
 
 ## str.replace(str|regexp, str|func)
 
