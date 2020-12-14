@@ -29,7 +29,11 @@ Dans les deux cas `regexp` devient un objet de la classe intégrée `RegExp`.
 
 La différence principale entre ces deux syntaxes réside dans le fait que les pattern utilisants des slashes `/.../` ne permettent pas d'insérer des expressions (comme les modèles littéraux de chaîne de caractères `$ {...}`). Ils sont complètement statiques.
 
+<<<<<<< HEAD
 Les slashes sont utilisés lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante. Alors que `new RegExp` est plus utilisé lorsque nous devons créer une expression régulière "à la volée" à partir d'une chaîne de caractères générée dynamiquement, par exemple :
+=======
+Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp` is more often used when we need to create a regexp "on the fly" from a dynamically generated string. For instance:
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 ```js
 let tag = prompt("What tag do you want to find?", "h2");
@@ -56,7 +60,11 @@ Il n'y en a que 6 en JavaScript :
 : Active le mode "dotall", qui permet à un `pattern : .` de correspondre au caractère de nouvelle ligne `\n` (traité dans le chapitre <info:regexp-character-classes>).
 
 `pattern:u`
+<<<<<<< HEAD
 : Active le support complet Unicode. Le flag permet le traitement correct des paires de substitution. Plus à ce sujet dans le chapitre <info:regexp-unicode>.
+=======
+: Enables full Unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 `pattern:y`
 : mode "Sticky" : chercher à la position exacte dans le texte (couvert dans le chapitre <info:regexp-sticky>)

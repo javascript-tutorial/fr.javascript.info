@@ -26,7 +26,7 @@ Quand `abort()` est appelé :
 
 Generally, we have two parties in the process: 
 1. The one that performs an cancelable operation, it sets a listener on `controller.signal`.
-2. The one one that cancels: it calls `controller.abort()` when needed.
+2. The one that cancels: it calls `controller.abort()` when needed.
 
 Voici l'exemple complet (sans `fetch` encore) :
 
@@ -50,7 +50,11 @@ As we can see, `AbortController` is just a means to pass `abort` events when `ab
 
 Nous pourrions implémenter le même type d'écoute d'événement dans notre code par nous-mêmes, sans objet `AbortController` du tout.
 
+<<<<<<< HEAD
 Mais ce qui est précieux, c'est que `fetch` sait comment travailler avec l'objet `AbortController`, il est intégré avec lui.
+=======
+But what's valuable is that `fetch` knows how to work with `AbortController` object, it's integrated with it.
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 ## Using with fetch
 

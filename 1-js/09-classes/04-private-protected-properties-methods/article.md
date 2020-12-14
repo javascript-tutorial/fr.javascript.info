@@ -98,7 +98,9 @@ class CoffeeMachine {
   _waterAmount = 0;
 
   set waterAmount(value) {
-    if (value < 0) throw new Error("Negative water");
+    if (value < 0) {
+      value = 0;
+    }
     this._waterAmount = value;
   }
 
@@ -119,7 +121,11 @@ let coffeeMachine = new CoffeeMachine(100);
 coffeeMachine.waterAmount = -10; // Error: Negative water
 ```
 
+<<<<<<< HEAD
 Maintenant, l'accès est sous contrôle, donc le réglage de l'eau en dessous de zéro échoue.
+=======
+Now the access is under control, so setting the water amount below zero becomes impossible.
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 ## "power" en lecture seule
 
@@ -161,7 +167,7 @@ class CoffeeMachine {
   _waterAmount = 0;
 
   *!*setWaterAmount(value)*/!* {
-    if (value < 0) throw new Error("Negative water");
+    if (value < 0) value = 0;
     this._waterAmount = value;
   }
 
@@ -201,19 +207,28 @@ class CoffeeMachine {
 */!*
 
 *!*
-  #checkWater(value) {
-    if (value < 0) throw new Error("Negative water");
-    if (value > this.#waterLimit) throw new Error("Too much water");
+  #fixWaterAmount(value) {
+    if (value < 0) return 0;
+    if (value > this.#waterLimit) return this.#waterLimit;
   }
 */!*
+
+  setWaterAmount(value) {
+    this.#waterLimit = this.#fixWaterAmount(value);
+  }
 
 }
 
 let coffeeMachine = new CoffeeMachine();
 
 *!*
+<<<<<<< HEAD
 // ne peut pas accéder aux propriétés privées de l'extérieur de la classe
 coffeeMachine.#checkWater(); // Error
+=======
+// can't access privates from outside of the class
+coffeeMachine.#fixWaterAmount(123); // Error
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 coffeeMachine.#waterLimit = 1000; // Error
 */!*
 ```
@@ -233,7 +248,7 @@ class CoffeeMachine {
   }
 
   set waterAmount(value) {
-    if (value < 0) throw new Error("Negative water");
+    if (value < 0) value = 0;
     this.#waterAmount = value;
   }
 }
