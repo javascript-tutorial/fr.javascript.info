@@ -5,12 +5,12 @@ Dans cet article, nous aborderons différentes méthodes qui fonctionnent en pro
 
 ## str.match(regexp)
 
-La méthode `str.match(regexp)` trouve les correspondances de l'expression rationnelle `regexp` dans le texte `str`.
+La méthode `str.match(regexp)` trouve les correspondances de l'expression rationnelle `regexp` dans la chaîne de texte `str`.
 
 
 Elle dispose de 3 options :
 
-1. si la regexp n'à pas de marqueur `pattern:g`, alors seul la première correspondance est retournée sous la forme d'un tableau avec le groupe capturé et ses propriétés : index (indice de la correspondance), et input (chaîne d'entrée équivalent à str):
+1. si l'expression rationnelle n'à pas de marqueur `pattern:g`, alors seul la première correspondance est renvoyée sous la forme d'un tableau avec le groupe capturé et ses propriétés : index (indice de la correspondance), et input (chaîne d'entrée équivalent à str):
 
     ```js run
     let str = "I love JavaScript";
@@ -22,7 +22,7 @@ Elle dispose de 3 options :
     alert( result.length ); // 2
 
     // Additional information:
-    alert( result.index );  // 7 (indice de la chaîne de caractère ou à été trouvée la correspondance)
+    alert( result.index );  // 7 (indice de la chaîne de caractère où à été trouvée la correspondance)
     alert( result.input );  // I love JavaScript (chaîne sur laquelle a été effectuée la recherche)
     ```
 
@@ -37,9 +37,9 @@ Elle dispose de 3 options :
     alert( result.length ); // 1
     ```
 
-3. S'il n'y a pas de correspondance, qu'il y ait un marqueur `pattern:g` ou non, `null` est retourné.
+3. S'il n'y a pas de correspondance, qu'il y ait un marqueur `pattern:g` ou non, `null` est renvoyé.
 
-    C'est une nuance importante. Si il n'y a pas de correspondance, nous ne récupérons pas un tableau vide, mais `null`. Il n'est pas rare de faire une erreur en oubliant ce détail, e.g.:
+    C'est une nuance importante. Si il n'y a pas de correspondance, nous ne récupérons pas de tableau vide, mais `null`. Il n'est pas rare de faire une erreur en oubliant ce détail, e.g.:
 
     ```js run
     let str = "I love JavaScript";
@@ -62,14 +62,13 @@ Elle dispose de 3 options :
 
 La méthode `str.matchAll(regexp)` est une variante "améliorée" de `str.match`. 
 
-Elle est principalement utilisée pour rechercher toutes les correspondances au sein de tous les groupes.
-It's used mainly to search for all matches with all groups.
+Elle est principalement utilisée pour rechercher toutes les correspondances au sein de chaque groupe.
 
 Il y a 3 différences avec `match`:
 
 1. Elle retourne un objet iterable avec les correspondances au lieu d'un tableau. Nous pouvons le transformer en un tableau en utilisant la méthode `Array.from`.
 2. Toutes les correspondances sont retournées dans un tableau incluant les groupes capturants (sous le même format que `str.match` sans le marqueur `pattern:g`).
-3. Si aucun résultat, `null` n'est pas retourné, mais un objet itérable vide. 
+3. Si aucun résultat, `null` n'est pas renvoyé, mais un objet itérable vide. 
 
 Exemple d'utilisation:
 
@@ -90,11 +89,11 @@ alert( firstMatch.index );  // 0
 alert( firstMatch.input );  // <h1>Hello, world!</h1>
 ```
 
-Si nous utilisons `for..of` pour boucler sur les résultats de `matchAll`, alors `Array.from` n'est plus utile.
+Si nous utilisons `for..of` pour boucler sur les résultats de `matchAll`, alors il n'est pas nécessaire d'utiliser `Array.from`.
 
 ## str.split(regexp|substr, limit)
 
-Diviser la chaîne de caractères en utilisant la regexp (ou une sous-chaîne de caractères) comme délimiteur.
+Divise la chaîne de caractères en utilisant la regexp (ou une sous-chaîne de caractères) comme délimiteur.
 
 Nous pouvons utiliser `split` avec une chaîne de caractères comme ceci :
 
