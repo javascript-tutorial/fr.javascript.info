@@ -150,12 +150,12 @@ Le second argument correspond au texte de remplacement. Il est possible d'utilis
 
 | Symbols | Action in the replacement string |
 |--------|--------|
-|`$&`|inserts the whole match|
-|<code>$&#096;</code>|inserts a part of the string before the match|
-|`$'`|inserts a part of the string after the match|
-|`$n`|if `n` is a 1-2 digit number, inserts the contents of n-th capturing group, for details see [](info:regexp-groups)|
-|`$<name>`|inserts the contents of the parentheses with the given `name`, for details see [](info:regexp-groups)|
-|`$$`|inserts character `$` |
+|`$&`|insère la chaine de caractère en correspondance|
+|<code>$&#096;</code>|Insère la partie de la chaîne de caractère qui précède la sous-chaîne en correspondance|
+|`$'`|insère la partie de la chaîne de caractère qui suit la sous-chaîne en correspondance|
+|`$n`|si `n` est un nombre à 1 ou 2 chiffres, insère la n-ième chaîne de sous-correspondance entre parenthèses, pour plus de détails voir [](info:regexp-groups)|
+|`$<name>`|insère la chaîne de caractère du `name` correspondant à celui entre parenthèse, pour plus de détails voir [](info:regexp-groups)|
+|`$$`|insère un caractère `$` |
 
 Par exemple:
 
@@ -317,33 +317,33 @@ alert( *!*/love/i*/!*.test(str) ); // false
 alert( str.search(*!*/love/i*/!*) != -1 ); // false
 ```
 
-If the regexp has flag `pattern:g`, then `regexp.test` looks from `regexp.lastIndex` property and updates this property, just like `regexp.exec`.
+Si la regexp à le marqueur `pattern:g`, alors `regexp.test` verifiera la propriété `regexp.lastIndex` et mettra à jours cette propriété, tout comme `regexp.exec`.    
 
-So we can use it to search from a given position:
+On peut donc l'utiliser pour effectuer une recherche à partir d'un indice donnée:
 
 ```js run
 let regexp = /love/gi;
 
 let str = "I love JavaScript";
 
-// start the search from position 10:
+// commence la recherche à partir de l'indice 10:
 regexp.lastIndex = 10;
-alert( regexp.test(str) ); // false (no match)
+alert( regexp.test(str) ); // false (pas de correspondance)
 ```
 
-````warn header="Same global regexp tested repeatedly on different sources may fail"
-If we apply the same global regexp to different inputs, it may lead to wrong result, because `regexp.test` call advances `regexp.lastIndex` property, so the search in another string may start from non-zero position.
+````warn header="Une même expression rationnelle testée de manière répétée sur différentes sources peut échouer"
+Appliquer la même expression rationnelle globale sur différentes entrées peut conduire à de mauvais résultats, car l'appel à `regexp.test` modifie la propriété `regexp.lastIndex`, par conséquent la recherche sur une autre chaîne de caractères risque d'être lancer à partir d'un autre indice que `0`.
 
-For instance, here we call `regexp.test` twice on the same text, and the second time fails:
+Par exemple, nous appelons ici `regexp.test` à deux reprises sur la même chaîne de texte, and le second appel échoue: 
 
 ```js run
-let regexp = /javascript/g;  // (regexp just created: regexp.lastIndex=0)
+let regexp = /javascript/g;  // (création d'une nouvelle regexp: regexp.lastIndex=0)
 
-alert( regexp.test("javascript") ); // true (regexp.lastIndex=10 now)
+alert( regexp.test("javascript") ); // true (maintenant regexp.lastIndex=10)
 alert( regexp.test("javascript") ); // false
 ```
 
-That's exactly because `regexp.lastIndex` is non-zero in the second test.
+C'est exactement parce que `regexp.lastIndex` n'est pas `0` lors du second test.  
 
-To work around that, we can set `regexp.lastIndex = 0` before each search. Or instead of calling methods on regexp, use string methods `str.match/search/...`, they don't use `lastIndex`.
+Afin de contourner cela, nous pouvons réinitialiser `regexp.lastIndex = 0` avant chaque recherche. Ou, au lieu d'appeler la méthode sur une regexp, nous pouvons utiliser les méthodes de l'objet String `str.match/search/...`, qui n'utilisent pas `lastIndex`. 
 ````
