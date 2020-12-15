@@ -248,7 +248,6 @@ Mais si `pattern:g` est utilisé, alors:
 Donc, un appel répété à cette fonction renvoie toutes les correspondances l'une après l'autre, utilisant la propriété `regexp.lastIndex` pour se souvenir de l'indice courant à partir duquel la recherche est effectuée.
 
 Avant que la méthode `str.matchAll` ait été ajoutée à Javascript, des appels à `regexp.exec` étaient utilisés dans une boucle afin d'obtenir toutes les correspondances:  
-In the past, before the method `str.matchAll` was added to JavaScript, calls of `regexp.exec` were used in the loop to get all matches with groups:
 
 ```js run
 let str = 'More about JavaScript at https://javascript.info';
