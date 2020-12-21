@@ -749,9 +749,15 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
   La fonction `fn` est appelée sur chaque élément du tableau comme pour `map`. Si n'importe quel/tous les résultats sont `true`, il retourne vrai, sinon il retourne `false`.
 
+<<<<<<< HEAD
   La fonction `fn` est appelée sur chaque élément du tableau similaire à `map`. Si un/tous les résultats sont `true`, renvoie `true`, sinon `false`.
   
   Ces méthodes se comportent en quelque sorte comme les opérateurs `||` et `&&` : si `fn` renvoie une valeur de vérité, `arr.some()` renvoie immédiatement `true` et arrête de parcourir les autres éléments ; si `fn` renvoie une valeur falsifiée, `arr.every()`retourne immédiatement `false` et arrête également d'itérer sur les autres éléments.
+=======
+  The function `fn` is called on each element of the array similar to `map`. If any/all results are `true`, returns `true`, otherwise `false`.
+
+  These methods behave sort of like `||` and `&&` operators: if `fn` returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest of items; if `fn` returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest of items as well.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
   On peut utiliser `every` pour compaere les tableaux :
   ```js run

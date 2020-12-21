@@ -8,7 +8,11 @@ Nous pouvons générer non seulement des événements complètement nouveaux, qu
 
 ## Constructeur d'événements
 
+<<<<<<< HEAD
 Les classes d'événements intégrées forment une hiérarchie, similaire aux classes d'éléments DOM. La racine est la classe intégrée [Event](http://www.w3.org/TR/dom/#event).
+=======
+Built-in event classes form a hierarchy, similar to DOM element classes. The root is the built-in [Event](http://www.w3.org/TR/dom/#event) class.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Nous pouvons créer des objets `Event` comme ceci:
 
@@ -272,11 +276,15 @@ Alors, nous pouvons soit mettre le `dispatchEvent` (ou un autre appel déclenche
 </script>
 ```
 
+<<<<<<< HEAD
 Désormais, `dispatchEvent` s'exécute de manière asynchrone une fois l'exécution du code en cours terminée, y compris `mouse.onclick`, les gestionnaires d'événements sont donc totalement séparés.
 
 L'ordre de sortie devient: 1 -> 2 -> imbriqué.
 
 ## Résumé
+=======
+Now `dispatchEvent` runs asynchronously after the current code execution is finished, including `menu.onclick`, so event handlers are totally separate.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Pour générer un événement à partir du code, nous devons d'abord créer un objet événement.
 

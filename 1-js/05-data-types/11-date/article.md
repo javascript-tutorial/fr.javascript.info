@@ -390,10 +390,17 @@ La methode [Date.parse(str)](https://developer.mozilla.org/fr/docs/Web/JavaScrip
 
 Le format de la chaîne de caractères doit être: `YYYY-MM-DDTHH:mm:ss.sssZ`, où:
 
+<<<<<<< HEAD
 - `YYYY-MM-DD` -- est la date: année-mois-jour.
 - Le caractère `T` est utilisé comme délimiteur.
 - `HH:mm:ss.sss` - correspond à l'heure: heures, minutes, secondes et millisecondes.
 - La partie optionnelle `Z` indique le fuseau horaire au format `+-hh:mm`. Une seule lettre `Z` qui signifierait UTC + 0.
+=======
+- `YYYY-MM-DD` -- is the date: year-month-day.
+- The character `"T"` is used as the delimiter.
+- `HH:mm:ss.sss` -- is the time: hours, minutes, seconds and milliseconds.
+- The optional `'Z'` part denotes the time zone in the format `+-hh:mm`. A single letter `Z` would mean UTC+0.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Des variantes plus courtes sont également possibles, telles que `AAAA-MM-JJ` ou `AAAA-MM` ou même `AAAA`.
 
@@ -431,10 +438,16 @@ De plus, nous avons parfois besoin de mesures de temps plus précises. JavaScrip
 
 ```js run
 alert(`Loading started ${performance.now()}ms ago`);
+<<<<<<< HEAD
 // Quelque chose comme: "Le chargement a commencé il y a 34731.26000000001ms"
 // .26 est en microsecondes (260 microsecondes)
 // plus de 3 chiffres après le point décimal sont des erreurs de précision, seuls les 3 premiers sont corrects
 
+=======
+// Something like: "Loading started 34731.26000000001ms ago"
+// .26 is microseconds (260 microseconds)
+// more than 3 digits after the decimal point are precision errors, only the first 3 are correct
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 ```
 
 Node.js a un module microtime. Techniquement, tout appareil ou environnement permet d’obtenir plus de précision, il n’est tout simplement pas dans Date.

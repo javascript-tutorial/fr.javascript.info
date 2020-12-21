@@ -105,7 +105,18 @@ Cependant, notez que les opérations se déroulent de gauche à droite. S'il y a
 alert(2 + 2 + '1' ); // "41" et non "221"
 ```
 
+<<<<<<< HEAD
 Ici, les opérateurs travaillent les uns après les autres. Le premier `+` additionne deux nombres, donc il renvoie `4`, puis le `+` suivant ajoute la chaîne `1`, donc c'est comme `4 + '1' = 41`.
+=======
+Here, operators work one after another. The first `+` sums two numbers, so it returns `4`, then the next `+` adds the string `1` to it, so it's like `4 + '1' = 41`.
+
+```js run
+alert('1' + 2 + 2); // "122" and not "14"
+```
+Here, the first operand is a string, the compiler treats the other two operands as strings too. The `2` gets concatenated to `'1'`, so it's like `'1' + 2 = "12"` and `"12" + 2 = "122"`.
+
+The binary `+` is the only operator that supports strings in such a way. Other arithmetic operators work only with numbers and always convert their operands to numbers.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Le binaire `+` est le seul opérateur qui prend en charge les chaînes de cette manière. D'autres opérateurs arithmétiques ne fonctionnent qu'avec des nombres et convertissent toujours leurs opérandes en nombres.
 

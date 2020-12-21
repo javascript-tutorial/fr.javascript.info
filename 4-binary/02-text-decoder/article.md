@@ -9,10 +9,17 @@ Nous devons d'abord le créer:
 let decoder = new TextDecoder([label], [options]);
 ```
 
+<<<<<<< HEAD
 - **`label`** -- l'encodage, `utf-8` par défaut, mais `big5`, `windows-1251` et bien d'autres sont également pris en charge.
 - **`options`** -- objet optionnel:
   - **`fatal`** -- boolean, si `true` une exception pour les caractères invalides (non décodables) est lancé, sinon (par défaut) remplacez-les par un caractère `\uFFFD`.
   - **`ignoreBOM`** -- boolean, si `true` ignore la BOM (une marque unicode facultative d'ordre des octets), rarement nécessaire.
+=======
+- **`label`** -- the encoding, `utf-8` by default, but `big5`, `windows-1251` and many other are also supported.
+- **`options`** -- optional object:
+  - **`fatal`** -- boolean, if `true` then throw an exception for invalid (non-decodable) characters, otherwise (default) replace them with character `\uFFFD`.
+  - **`ignoreBOM`** -- boolean, if `true` then ignore BOM (an optional byte-order Unicode mark), rarely needed.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 ...Et puis décoder:
 

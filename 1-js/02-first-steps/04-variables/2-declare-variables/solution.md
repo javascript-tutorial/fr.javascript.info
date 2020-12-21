@@ -6,7 +6,11 @@ C’est simple :
 let notrePlanete = "Terre";
 ```
 
+<<<<<<< HEAD
 Notez que nous pourrions utiliser un nom `planète` plus court, mais la planète à laquelle il fait référence pourrait ne pas être évidente. C’est bien d’être plus verbeux. Au moins jusqu'à ce que la variable n'estPasTropLongue.
+=======
+Note, we could use a shorter name `planet`, but it might not be obvious what planet it refers to. It's nice to be more verbose. At least until the variable isNotTooLong.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 ## le nom du visiteur actuel
 

@@ -1,5 +1,5 @@
 
-# Polyfills
+# Polyfills and transpilers
 
 Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [specification officielle](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
@@ -9,8 +9,9 @@ Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie de
 
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
 
-## Babel
+As programmers, we'd like to use most recent features. The more good stuff - the better!
 
+<<<<<<< HEAD
 Lorsque nous utilisons des fonctionnalités modernes du langage, certains moteurs peuvent ne pas supporter un tel code. Comme indiqué, toutes les fonctionnalités ne sont pas implémentées partout.
 
 C'est là que Babel vient à la rescousse.
@@ -37,15 +38,53 @@ Nous devons donc configurer le transpileur et ajouter le polyfill pour les ancie
 Donc, si nous allons utiliser les fonctionnalités du langage moderne, un transpiler et un polyfill sont nécessaires.
 
 ## Exemples dans le tutoriel
+=======
+From the other hand, how to make out modern code work on older engines that don't understand recent features yet?
 
+There are two tools for that:
 
-````online
-La plupart des exemples sont exécutables sur place, comme ceci :
+1. Transpilers.
+2. Polyfills.
 
-```js run
-alert('Press the "Play" button in the upper-right corner to run');
+Here, in this chapter, our purpose is to get the gist of how they work, and their place in web development.
+
+## Transpilers
+
+A [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) is a special piece of software that can parse ("read and understand") modern code, and rewrite it using older syntax constructs, so that the result would be the same.
+
+E.g. JavaScript before year 2020 didn't have the "nullish coalescing operator" `??`. So, if a visitor uses an outdated browser, it may fail to understand the code like `height = height ?? 100`.
+
+A transpiler would analyze our code and rewrite `height ?? 100` into `(height !== undefined && height !== null) ? height : 100`.
+
+```js
+// before running the transpiler
+height = height ?? 100;
+
+// after running the transpiler
+height = (height !== undefined && height !== null) ? height : 100;
 ```
 
+Now the rewritten code is suitable for older JavaScript engines.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
+
+Usually, a developer runs the transpiler on their own computer, and then deploys the transpiled code to the server.
+
+<<<<<<< HEAD
+````online
+La plupart des exemples sont exécutables sur place, comme ceci :
+=======
+Speaking of names, [Babel](https://babeljs.io) is one of the most prominent transpilers out there. 
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
+
+Modern project build systems, such as [webpack](http://webpack.github.io/), provide means to run transpiler automatically on every code change, so it's very easy to integrate into development process.
+
+## Polyfills
+
+New language features may include not only syntax constructs and operators, but also built-in functions.
+
+For example, `Math.trunc(n)` is a function that "cuts off" the decimal part of a number, e.g `Math.trunc(1.23) = 1`.
+
+<<<<<<< HEAD
 Les exemples qui utilisent le JS moderne ne fonctionneront que si votre navigateur le prend en charge.
 ````
 
@@ -55,4 +94,45 @@ Pendant que vous lisez la version hors connexion, les exemples ne sont pas exéc
 
 Google Chrome est généralement la version la plus récente des fonctionnalités du langage, il accepte de lancer des démos ultra-sophistiquées sans transpilers, mais les autres navigateurs modernes fonctionnent également très bien.
 
+=======
+In some (very outdated) JavaScript engines, there's no `Math.trunc`, so such code will fail.
+
+As we're talking about new functions, not syntax changes, there's no need to transpile anything here. We just need to declare the missing function.
+
+A script that updates/adds new functions is called "polyfill". It "fills in" the gap and adds missing implementations.
+
+For this particular case, the polyfill for `Math.trunc` is a script that implements it, like this:
+
+```js
+if (!Math.trunc) { // if no such function
+  // implement it
+  Math.trunc = function(number) {
+    // Math.ceil and Math.floor exist even in ancient JavaScript engines
+    // they are covered later in the tutorial
+    return number < 0 ? Math.ceil(number) : Math.floor(number);
+  };
+}
+```
+
+JavaScript is a highly dynamic language, scripts may add/modify any functions, even including built-in ones. 
+
+Two interesting libraries of polyfills are:
+- [core js](https://github.com/zloirock/core-js) that supports a lot, allows to include only needed features.
+- [polyfill.io](http://polyfill.io) service that provides a script with polyfills, depending on the features and user's browser.
+
+
+## Summary
+
+In this chapter we'd like to motivate you to study modern and even "bleeding-edge" language features, even if they aren't yet well-supported by JavaScript engines.
+
+Just don't forget to use transpiler (if using modern syntax or operators) and polyfills (to add functions that may be missing). And they'll ensure that the code works.
+
+For example, later when you're familiar with JavaScript, you can setup a code build system based on [webpack](http://webpack.github.io/) with [babel-loader](https://github.com/babel/babel-loader) plugin.
+
+Good resources that show the current state of support for various features:
+- <https://kangax.github.io/compat-table/es6/> - for pure JavaScript.
+- <https://caniuse.com/> - for browser-related functions.
+
+P.S. Google Chrome is usually the most up-to-date with language features, try it if a tutorial demo fails. Most tutorial demos work with any modern browser though.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
