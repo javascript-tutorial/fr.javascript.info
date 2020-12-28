@@ -109,4 +109,10 @@ Expliquons cela étape par étape :
 
 À la fin, nous avons le résultat (sous forme de chaîne de caractères ou d'objet blob, selon ce qui est pratique) et le suivi des progrès dans le processus.
 
+<<<<<<< HEAD
 Encore une fois, veuillez noter que ce n'est pas pour la progression en *upload* (pas de possibilité actuellement avec `fetch`), seulement pour la progression en *download*.
+=======
+Once again, please note, that's not for *upload* progress (no way now with `fetch`), only for *download* progress.
+
+Also, if the size is unknown, we should check `receivedLength` in the loop and break it once it reaches a certain limit. So that the `chunks` won't overflow the memory. 
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293

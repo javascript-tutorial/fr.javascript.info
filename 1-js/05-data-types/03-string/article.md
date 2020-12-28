@@ -50,7 +50,11 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Les guillemets simples et doubles proviennent d'anciens temps de la création linguistique lorsque la nécessité de chaînes multilignes n'était pas prise en compte. Les backticks sont apparus beaucoup plus tard et sont donc plus polyvalents.
 
+<<<<<<< HEAD
 Les Backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Vous pouvez en savoir plus à ce sujet dans la [doc](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Litt%C3%A9raux_gabarits#Gabarits_%C3%A9tiquet%C3%A9s_2). Cela s'appelle des "tagged templates" (Gabarits étiquetés). Cette fonctionnalité facilite l'intégration de chaînes de caractères dans des modèles personnalisés ou d'autres fonctionnalités, mais elle est rarement utilisée.
+=======
+Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates).
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 
 ## Caractères spéciaux
@@ -79,6 +83,7 @@ Il existe d'autres caractères "spéciaux" moins courants.
 
 Voici la liste complète :
 
+<<<<<<< HEAD
 | Caractère                                          | Description                                                                                                                                                                                      |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `\n`                                               | Nouvelle ligne                                                                                                                                                                                   |
@@ -97,6 +102,26 @@ Exemples avec unicode :
 alert( "\u00A9" ); // ©
 alert( "\u{20331}" ); // 佫, un rare hiéroglyphe chinois (long unicode)
 alert( "\u{1F60D}" ); // 😍, un symbole de visage souriant (un autre long unicode)
+=======
+| Character | Description |
+|-----------|-------------|
+|`\n`|New line|
+|`\r`|Carriage return: not used alone. Windows text files use a combination of two characters `\r\n` to represent a line break. |
+|`\'`, `\"`|Quotes|
+|`\\`|Backslash|
+|`\t`|Tab|
+|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- kept for compatibility, not used nowadays. |
+|`\xXX`|Unicode character with the given hexadecimal Unicode `XX`, e.g. `'\x7A'` is the same as `'z'`.|
+|`\uXXXX`|A Unicode symbol with the hex code `XXXX` in UTF-16 encoding, for instance `\u00A9` -- is a Unicode for the copyright symbol `©`. It must be exactly 4 hex digits. |
+|`\u{X…XXXXXX}` (1 to 6 hex characters)|A Unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two Unicode symbols, taking 4 bytes. This way we can insert long codes. |
+
+Examples with Unicode:
+
+```js run
+alert( "\u00A9" ); // ©
+alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long Unicode)
+alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long Unicode)
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 ```
 
 Tous les caractères spéciaux commencent par un backslash (barre oblique inversée) `\`. On l'appelle aussi "caractère d'échappement".
@@ -241,7 +266,11 @@ alert( str.indexOf('widget') ); // -1, pas trouvé, la recherche est sensible à
 alert( str.indexOf("id") ); // 1, "id" est trouvé à la position 1 (..idget avec id)
 ```
 
+<<<<<<< HEAD
 Le second paramètre optionnel nous permet de rechercher à partir de la position donnée.
+=======
+The optional second parameter allows us to start searching from a given position.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple, la première occurrence de `"id"` est à la position `1`. Pour rechercher l’occurrence suivante, commençons la recherche à partir de la position `2` :
 
@@ -505,7 +534,11 @@ Toutes les chaînes de caractères sont encodées en utilisant [UTF-16](https://
     alert( String.fromCodePoint(90) ); // Z
     ```
 
+<<<<<<< HEAD
     Nous pouvons également ajouter des caractères Unicode par leurs codes en utilisant `\u` suivi du code hexadécimal :
+=======
+    We can also add Unicode characters by their codes using `\u` followed by the hex code:
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
     ```js run
     // 90 is 5a en système hexadécimal
@@ -616,7 +649,11 @@ Dans de nombreuses langues, il existe des symboles composés du caractère de ba
 
 Par exemple, la lettre `a` peut être le caractère de base pour : `àáâäãåā`. Les caractères “composites” les plus courants ont leur propre code dans la table UTF-16. Mais pas tous, car il y a trop de combinaisons possibles.
 
+<<<<<<< HEAD
 Pour prendre en charge des compositions arbitraires, UTF-16 nous permet d’utiliser plusieurs caractères unicode : le caractère de base suivi d’un ou de plusieurs caractères de "marque" qui le "décorent".
+=======
+To support arbitrary compositions, UTF-16 allows us to use several Unicode characters: the base character followed by one or many "mark" characters that "decorate" it.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple, si nous avons un `S` suivi du caractère spécial "point au-dessus" (code `\u0307`), il est affiché comme `Ṡ`.
 
@@ -634,7 +671,11 @@ Par exemple :
 alert( 'S\u0307\u0323' ); // Ṩ
 ```
 
+<<<<<<< HEAD
 Cela offre une grande flexibilité, mais aussi un problème intéressant: deux caractères peuvent se ressembler visuellement mais être représentés avec des compositions unicode différentes.
+=======
+This provides great flexibility, but also an interesting problem: two characters may visually look the same, but be represented with different Unicode compositions.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple :
 
@@ -647,7 +688,11 @@ alert( `s1: ${s1}, s2: ${s2}` );
 alert( s1 == s2 ); // false bien que les caractères soient identiques (?!)
 ```
 
+<<<<<<< HEAD
 Pour résoudre ce problème, il existe un algorithme de "normalisation unicode" qui amène chaque chaîne de caractères à une seule forme "normale".
+=======
+To solve this, there exists a "Unicode normalization" algorithm that brings each string to the single "normal" form.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Il est traité par [str.normalize()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/normalize).
 
@@ -670,6 +715,7 @@ Si vous souhaitez en savoir plus sur les règles de normalisation et leurs varia
 
 ## Résumé
 
+<<<<<<< HEAD
 - Il existe 3 types de quotes. Les Backticks permettent à une chaîne de s'étendre sur plusieurs lignes et d'intégrer des expressions `${…}`.
 - Les chaînes de caracètres en JavaScript sont encodées en UTF-16.
 - Nous pouvons utiliser des caractères spéciaux comme `\n` et insérer des lettres par leur unicode en utilisant `\u...`.
@@ -678,6 +724,16 @@ Si vous souhaitez en savoir plus sur les règles de normalisation et leurs varia
 - Pour mettre une chaîne de caractères en minuscule ou en majuscule, utilisez : `toLowerCase/toUpperCase`.
 - Pour rechercher un substring utilisez : `indexOf`, ou `includes/startsWith/endsWith` pour de simple vérifications.
 - Pour comparer les chaînes de caractères en fonction de la langue, utilisez : `localeCompare`, sinon, ils sont comparés par les codes de caractères.
+=======
+- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
+- Strings in JavaScript are encoded using UTF-16.
+- We can use special characters like `\n` and insert letters by their Unicode using `\u...`.
+- To get a character, use: `[]`.
+- To get a substring, use: `slice` or `substring`.
+- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
+- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
+- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Il existe plusieurs autres méthodes utiles dans les strings :
 

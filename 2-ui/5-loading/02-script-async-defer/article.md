@@ -102,7 +102,11 @@ L'attribut `defer` est ignoré si la balise `<script>` n'a pas de `src`.
     - `DOMContentLoaded` peut se produire à la fois avant un script asynchrone (si un script async termine le chargement une fois la page terminée)
     - ... ou après un script async (si un script async est court ou était dans le cache HTTP)
 
+<<<<<<< HEAD
 En d'autres termes, les scripts `async` se chargent en arrière-plan et s'exécutent lorsqu'ils sont prêts. Le DOM et les autres scripts ne les attendent pas, et ils n'attendent rien. Un script entièrement indépendant qui s'exécute lorsqu'il est chargé. Aussi simple que cela puisse être, non ?
+=======
+In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, as it can get, right?
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 
 Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'importe quel ordre. Premier chargé -- premier exécuté:

@@ -12,6 +12,10 @@ Le chaînage optionnel `?.` Est un moyen sécurisé d'accéder aux propriétés 
 
 Si vous venez de commencer à lire le tutoriel et à apprendre JavaScript, peut-être que le problème ne vous a pas encore touché, mais c'est assez courant.
 
+<<<<<<< HEAD
+=======
+As an example, let's say we have `user` objects that hold the information about our users.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 À titre d'exemple, disons que nous avons des objets `user` qui contiennent les informations sur nos utilisateurs.
 
@@ -26,7 +30,11 @@ let user = {}; // un utilisateur sans propriété "address"
 alert(user.address.street); // Error!
 ```
 
+<<<<<<< HEAD
 C'est le résultat attendu. JavaScript fonctionne comme ça. Comme `user.address` est `undefined`, une tentative d'obtention de `user.address.street` échoue avec une erreur.
+=======
+That's the expected result. JavaScript works like this. As `user.address` is `undefined`, an attempt to get `user.address.street` fails with an error.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Dans de nombreux cas pratiques, nous préférerions obtenir `undefined` au lieu d'une erreur ici (signifiant "pas de rue").
 
@@ -61,7 +69,11 @@ let user = {}; // l'utilisateur n'a pas d'adresse
 alert(user.address ? user.address.street ? user.address.street.name : null : null);
 ```
 
+<<<<<<< HEAD
 C'est juste horrible, on peut même avoir des problèmes pour comprendre un tel code.
+=======
+That's just awful, one may even have problems understanding such code.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Ne vous en souciez même pas, car il existe une meilleure façon de l'écrire, en utilisant l'opérateur `&&` :
 

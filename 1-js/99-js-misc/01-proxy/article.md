@@ -55,6 +55,7 @@ Pour chaque méthode interne, il y a un piège dans ce tableau: le nom de la mé
 
 | Méthode interne | Méthode d'handler | Se déclenche lorsque... |
 |-----------------|----------------|-------------|
+<<<<<<< HEAD
 | `[[Get]]` | `get` | lit une propriété |
 | `[[Set]]` | `set` | écrit une propriété |
 | `[[HasProperty]]` | `has` | utilise l'opérateur `in` |
@@ -68,6 +69,21 @@ Pour chaque méthode interne, il y a un piège dans ce tableau: le nom de la mé
 | `[[DefineOwnProperty]]` | `defineProperty` | [Object.defineProperty](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperty), [Object.defineProperties](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperties) |
 | `[[GetOwnProperty]]` | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries` |
 | `[[OwnPropertyKeys]]` | `ownKeys` | [Object.getOwnPropertyNames](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertySymbols), `for..in`, `Object/keys/values/entries` |
+=======
+| `[[Get]]` | `get` | reading a property |
+| `[[Set]]` | `set` | writing to a property |
+| `[[HasProperty]]` | `has` | `in` operator |
+| `[[Delete]]` | `deleteProperty` | `delete` operator |
+| `[[Call]]` | `apply` | function call |
+| `[[Construct]]` | `construct` | `new` operator |
+| `[[GetPrototypeOf]]` | `getPrototypeOf` | [Object.getPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) |
+| `[[SetPrototypeOf]]` | `setPrototypeOf` | [Object.setPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/setPrototypeOf) |
+| `[[IsExtensible]]` | `isExtensible` | [Object.isExtensible](mdn:/JavaScript/Reference/Global_Objects/Object/isExtensible) |
+| `[[PreventExtensions]]` | `preventExtensions` | [Object.preventExtensions](mdn:/JavaScript/Reference/Global_Objects/Object/preventExtensions) |
+| `[[DefineOwnProperty]]` | `defineProperty` | [Object.defineProperty](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperty), [Object.defineProperties](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperties) |
+| `[[GetOwnProperty]]` | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries` |
+| `[[OwnPropertyKeys]]` | `ownKeys` | [Object.getOwnPropertyNames](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols), `for..in`, `Object.keys/values/entries` |
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ```warn header="Invariants"
 JavaScript applique certains invariants -- conditions qui doivent être remplies par des méthodes et des pièges internes.
@@ -963,9 +979,19 @@ revoke();
 alert(proxy.data); // Erreur
 ```
 
+<<<<<<< HEAD
 Un appel à `revoke()` supprime toutes les références internes à l'objet cible du proxy, afin qu'elles ne soient plus connectées. L'objet cible peut être nettoyé (garbage-collected) après cela.
 
 Nous pouvons également stocker `revoke` dans un `WeakMap`, pour pouvoir le retrouver facilement par un objet proxy:
+=======
+A call to `revoke()` removes all internal references to the target object from the proxy, so they are no longer connected. 
+
+Initially, `revoke` is separate from `proxy`, so that we can pass `proxy` around while leaving `revoke` in the current scope.
+
+We can also bind `revoke` method to proxy by setting `proxy.revoke = revoke`.
+
+Another option is to create a `WeakMap` that has `proxy` as the key and the corresponding `revoke` as the value, that allows to easily find `revoke` for a proxy:
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ```js run
 *!*
@@ -980,16 +1006,24 @@ let {proxy, revoke} = Proxy.revocable(object, {});
 
 revokes.set(proxy, revoke);
 
+<<<<<<< HEAD
 // ..plus tard dans le code..
+=======
+// ..somewhere else in our code..
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 revoke = revokes.get(proxy);
 revoke();
 
 alert(proxy.data); // Erreur (révoqué)
 ```
 
+<<<<<<< HEAD
 L'avantage d'une telle approche est que nous n'avons pas à nous préoccuper du `revoke`. Nous pouvons l'obtenir par `proxy` à partir du `map` si nécessaire.
 
 Nous utilisons ici `WeakMap` au lieu de `Map` car cela ne bloquera pas le "garbage collection". Si un objet proxy devient "inaccessible" (par exemple si plus aucune variable ne le référence), `WeakMap` permet de l'effacer de la mémoire en même temps que `revoke` dont nous n'aurons plus besoin.
+=======
+We use `WeakMap` instead of `Map` here because it won't block garbage collection. If a proxy object becomes "unreachable" (e.g. no variable references it any more), `WeakMap` allows it to be wiped from memory together with its `revoke` that we won't need any more.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ## Références
 
