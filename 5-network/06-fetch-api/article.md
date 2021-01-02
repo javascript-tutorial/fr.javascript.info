@@ -50,11 +50,7 @@ Ces options régissent la façon dont `fetch` définit l'en-tête HTTP `Referer`
 
 Habituellement, cet en-tête est défini automatiquement et contient l'url de la page à l'origine de la requête. Dans la plupart des scénarios, ce n'est pas important du tout, parfois, pour des raisons de sécurité, il est logique de le supprimer ou de le raccourcir.
 
-<<<<<<< HEAD
 **L'option `referer` permet de définir n'importe quel `Referer` dans l'origine actuelle) ou de le supprimer.**
-=======
-**The `referrer` option allows to set any `Referer` (within the current origin) or remove it.**
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Pour n'envoyer aucun referer, définissez une chaîne de caractères vide :
 ```js
@@ -140,15 +136,9 @@ Plus particulièrement, il est possible de définir la politique par défaut pou
 
 L'option `mode` est un garde-fou qui empêche les requêtes cross-origin occasionnelles :
 
-<<<<<<< HEAD
 - **`"cors"`** -- par défaut, les requêtes cross-origin sont autorisées, comme décrit dans <info:fetch-crossorigin>,
 - **`"same-origin"`** -- les requêtes cross-origin requests sont interdites,
-- **`"no-cors"`** -- seules les simples requêtes cross-origin sont autorisées.
-=======
-- **`"cors"`** -- the default, cross-origin requests are allowed, as described in <info:fetch-crossorigin>,
-- **`"same-origin"`** -- cross-origin requests are forbidden,
-- **`"no-cors"`** -- only safe cross-origin requests are allowed.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+- **`"no-cors"`** -- seules les requêtes cross-origin sécurisées sont autorisées.
 
 Cette option peut être utile lorsque l'URL de `fetch` provient d'un tiers, et nous voulons un "interrupteur de mise hors tension" pour limiter les capacités de cross-origin.
 
@@ -227,16 +217,8 @@ Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau ass
 
 Elle a quelques limitations :
 
-<<<<<<< HEAD
-- Nous ne pouvons pas envoyer de mégaoctets: la limite de corps pour les requêtes `keepalive` est de 64kb.
+- Nous ne pouvons pas envoyer des mégaoctets : la limite de corps pour les requêtes `keepalive` est de 64kb.
     - Si nous avons besoin de rassembler beaucoup de statistiques sur la visite, nous devons les envoyer régulièrement par paquets, afin qu'il ne reste plus grand-chose pour la dernière requête `onunload`.
     - Cette limite s'applique à toutes les demandes `keepalive` ensemble. En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
 - Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé. Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
     - Dans la plupart des cas, comme l'envoi de statistiques, ce n'est pas un problème, car le serveur accepte simplement les données et envoie généralement une réponse vide à de telles demandes.
-=======
-- We can't send megabytes: the body limit for `keepalive` requests is 64KB.
-    - If we need to gather a lot of statistics about the visit, we should send it out regularly in packets, so that there won't be a lot left for the last `onunload` request.
-    - This limit applies to all `keepalive` requests together. In other words, we can perform multiple `keepalive` requests in parallel, but the sum of their body lengths should not exceed 64KB.
-- We can't handle the server response if the document is unloaded. So in our example `fetch` will succeed due to `keepalive`, but subsequent functions won't work.
-    - In most cases, such as sending out statistics, it's not a problem, as server just accepts the data and usually sends an empty response to such requests.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
