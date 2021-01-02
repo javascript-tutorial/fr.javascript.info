@@ -93,11 +93,7 @@ xhr.onload = function() {
   if (xhr.status != 200) { // analyse l'état HTTP de la réponse
     alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
   } else { // show the result
-<<<<<<< HEAD
-    alert(`Done, got ${xhr.response.length} bytes`); // response est le serveur
-=======
-    alert(`Done, got ${xhr.response.length} bytes`); // response is the server response
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+    alert(`Done, got ${xhr.response.length} bytes`); // response est la réponse du serveur
   }
 };
 
@@ -151,21 +147,12 @@ xhr.open('GET', url); // https://google.com/search?q=test+me%21
 
 Nous pouvons utiliser la propriété `xhr.responseType` pour définir le format de réponse :
 
-<<<<<<< HEAD
 - `""` (default) -- obtenir en tant que chaîne de caractères,
 - `"text"` -- obtenir en tant que chaîne de caractères,
 - `"arraybuffer"` -- obtenir en tant que `ArrayBuffer` (pour les données binaires, voir le chapitre <info:arraybuffer-binary-arrays>),
 - `"blob"` -- obtenir en tant que `Blob` (pour les données binaires, voir le chapitre <info:blob>),
-- `"document"` -- obtenir en tant que document XML (peut utiliser XPath et d'autres méthodes XML),
+- `"document"` -- obtenir en tant que document XML (peut utiliser XPath et d'autres méthodes XML) ou document HTML (basé sur le type MIME des données reçues),
 - `"json"` -- obtenir en tant que JSON (analysé automatiquement).
-=======
-- `""` (default) -- get as string,
-- `"text"` -- get as string,
-- `"arraybuffer"` -- get as `ArrayBuffer` (for binary data, see chapter <info:arraybuffer-binary-arrays>),
-- `"blob"` -- get as `Blob` (for binary data, see chapter <info:blob>),
-- `"document"` -- get as XML document (can use XPath and other XML methods) or HTML document (based on the MIME type of the received data),
-- `"json"` -- get as JSON (parsed automatically).
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple, obtenons la réponse en JSON :
 
@@ -200,19 +187,11 @@ Ils existent pour des raisons historiques, pour obtenir une chaîne de caractèr
 Tous les États, comme dans [la spécification](https://xhr.spec.whatwg.org/#states):
 
 ```js
-<<<<<<< HEAD
 UNSENT = 0; // état initial
 OPENED = 1; // open appelé
 HEADERS_RECEIVED = 2; // en-têtes de réponse reçus
 LOADING = 3; // la réponse est en cours de chargement (une donnée empaquetée est reçue)
 DONE = 4; // requête terminée
-=======
-UNSENT = 0; // initial state
-OPENED = 1; // open called
-HEADERS_RECEIVED = 2; // response headers received
-LOADING = 3; // response is loading (a data packet is received)
-DONE = 4; // request complete
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 ```
 
 Un objet `XMLHttpRequest` voyagent dans l'ordre `0` -> `1` -> `2` -> `3` -> ... -> `3` -> `4`. L'état `3` se répète chaque fois qu'un paquet de données est reçu sur le réseau.
@@ -288,15 +267,9 @@ Il existe 3 méthodes pour les en-têtes HTTP :
     xhr.setRequestHeader('Content-Type', 'application/json');
     ```
 
-<<<<<<< HEAD
     ```warn header="Limites des en-têtes"
     Plusieurs en-têtes sont gérés exclusivement par le navigateur, par exemple `Referer` et `Host`.
-    La liste complète est [dans la spécification](http://www.w3.org/TR/XMLHttpRequest/#the-setrequestheader-method).
-=======
-    ```warn header="Headers limitations"
-    Several headers are managed exclusively by the browser, e.g. `Referer` and `Host`.
-    The full list is [in the specification](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+    La liste complète est [dans la spécification](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
 
     `XMLHttpRequest` n'est pas autorisé à les modifier, pour la sécurité des utilisateurs et l'exactitude de la requête.
     ```
@@ -536,11 +509,7 @@ xhr.onerror = function() {
 };
 ```
 
-<<<<<<< HEAD
-Il y a en fait plus d'événements, la [spécification moderne](http://www.w3.org/TR/XMLHttpRequest/#events) les répertorie (dans l'ordre du cycle de vie) :
-=======
-There are actually more events, the [modern specification](https://xhr.spec.whatwg.org/#events) lists them (in the lifecycle order):
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+Il y a en fait plus d'événements, la [spécification moderne](https://xhr.spec.whatwg.org/#events) les répertorie (dans l'ordre du cycle de vie) :
 
 - `loadstart` -- la requête a commencé.
 - `progress` -- un paquet de données de la réponse est arrivé, tout le corps de la réponse est actuellement dans `response`.
