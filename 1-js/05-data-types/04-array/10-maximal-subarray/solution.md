@@ -57,11 +57,7 @@ alert( getMaxSubSum([1, 2, 3]) ); // 6
 alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
 ```
 
-<<<<<<< HEAD
 La solution a une complexité temporelle de [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). En d'autres termes, si nous augmentons la taille du tableau 2 fois, l'algorithme fonctionnera 4 fois plus longtemps.
-=======
-The solution has a time complexity of [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). In other words, if we increase the array size 2 times, the algorithm will work 4 times longer.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Pour les grands tableaux (1000, 10000 ou plus), de tels algorithmes peuvent conduire à une grande lenteur.
 
