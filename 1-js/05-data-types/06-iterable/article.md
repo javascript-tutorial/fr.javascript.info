@@ -1,7 +1,11 @@
 
 # Iterables
 
+<<<<<<< HEAD
 Les objets *Iterable* sont une généralisation des tableaux. C'est un concept qui permet de rendre n'importe quel objet utilisable dans une boucle `for..of`.
+=======
+*Iterable* objects are a generalization of arrays. That's a concept that allows us to make any object useable in a `for..of` loop.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Bien sûr, les tableaux sont itérables. Mais il existe de nombreux autres objets intégrés, qui sont également itérables. Par exemple, les chaînes de caractères sont également itérables.
 
@@ -26,7 +30,11 @@ let range = {
 // for(let num of range) ... num=1,2,3,4,5
 ```
 
+<<<<<<< HEAD
 Pour rendre la `range` itérable (et donc laisser `for..of` faire sont travail), nous devons ajouter une méthode à l'objet nommé `Symbol.iterator` (un symbole intégré spécial que pour cela).
+=======
+To make the `range` object iterable (and thus let `for..of` work) we need to add a method to the object named `Symbol.iterator` (a special built-in symbol just for that).
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 1. Lorsque `for..of` démarre, il appelle cette méthode une fois (ou des erreurs si il n'est pas trouvé). La méthode doit retourner un *iterator* -- un objet avec la méthode `next`.
 2. À partir de là, `for..of` ne fonctionne *qu'avec cet objet retourné*.
@@ -140,7 +148,11 @@ for (let char of str) {
 
 ## Appeler explicitement un itérateur
 
+<<<<<<< HEAD
 Pour mieux comprendre, voyons comment utiliser explicitement un itérateur.
+=======
+For deeper understanding, let's see how to use an iterator explicitly.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Nous allons parcourir une chaîne de caractères de la même manière que `for..of`, mais avec des appels directs. Ce code crée un itérateur de chaîne de caractères et en récupère la valeur "manuellement":
 
@@ -165,16 +177,28 @@ Cela est rarement nécessaire, mais nous donne plus de contrôle sur le processu
 
 ## Iterables et array-likes [#array-like] 
 
+<<<<<<< HEAD
 Il existe deux termes officiels qui se ressemblent mais qui sont très différents. Assurez-vous de bien les comprendre pour éviter la confusion.
+=======
+Two official terms look similar, but are very different. Please make sure you understand them well to avoid the confusion.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 - *Iterables* sont des objets qui implémentent la méthode `Symbol.iterator`, comme décrit ci-dessus.
 - *Array-likes* sont des objets qui ont des index et des `length`, ils ressemblent donc à des tableaux.
 
+<<<<<<< HEAD
 Lorsque nous utilisons JavaScript pour des tâches pratiques dans un navigateur ou d'autres environnements, il est possible que nous rencontrions des objets qui sont iterables ou des array-like, ou les deux.
+=======
+When we use JavaScript for practical tasks in a browser or any other environment, we may meet objects that are iterables or array-likes, or both.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple, les chaînes de caractères sont à la fois iterables (`for..of` fonctionne dessus) et des array-likes (elles ont des index numériques et une longueur).
 
+<<<<<<< HEAD
 Mais un itérable peut ne pas ressembler à un tableau. Et inversement, un tableau peut ne pas être itérable.
+=======
+But an iterable may not be array-like. And vice versa an array-like may not be iterable.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Par exemple, la `range` dans l'exemple ci-dessus est itérable, mais pas comme un array-like (comme-un-tableau), car elle n'a pas de propriétés indexées et de `length`.
 
@@ -292,12 +316,21 @@ alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution dif
 
 Les objets pouvant être utilisés dans `for..of` s'appellent *iterable*.
 
+<<<<<<< HEAD
 - Techniquement, les iterables doivent implémenter la méthode nommée `Symbol.iterator`.
     - Le résultat de `obj[Symbol.iterator]()` s'appelle un *itérateur*. Il gère le processus d'itération ultérieur.
     - Un itérateur doit avoir la méthode nommée `next()` qui retourne un objet `{done: Boolean, value: any}`, ici `done: true` dénote la fin du processus de l'itération, sinon `value` est la valeur suivante.
 - La méthode `Symbol.iterator` est appelée automatiquement par `for..of`, mais nous pouvons aussi le faire directement.
 - Les iterables intégrés tels que des chaînes de caractères ou des tableaux implémentent également `Symbol.iterator`.
 - L'itérateur de chaîne de caractères connaît les paires de substitution.
+=======
+- Technically, iterables must implement the method named `Symbol.iterator`.
+    - The result of `obj[Symbol.iterator]()` is called an *iterator*. It handles further iteration process.
+    - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
+- The `Symbol.iterator` method is called automatically by `for..of`, but we also can do it directly.
+- Built-in iterables like strings or arrays, also implement `Symbol.iterator`.
+- String iterator knows about surrogate pairs.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 
 Les objets qui ont des propriétés indexées et des `length` sont appelés *array-like (comme-un-tableau)*. De tels objets peuvent également avoir d'autres propriétés et méthodes, mais ne possèdent pas les méthodes intégrées des tableaux.

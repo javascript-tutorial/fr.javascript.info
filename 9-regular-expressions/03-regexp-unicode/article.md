@@ -4,6 +4,7 @@ JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) p
 
 Cette plage n'est pas assez grande pour encoder tous les caractères possibles, c'est pourquoi certains caractères rares sont encodés sur 4 octets, par exemple comme `𝒳` (X mathématique) ou `😄` (un sourire), certains hiéroglyphes et ainsi de suite.
 
+<<<<<<< HEAD
 Voici les valeurs unicode de certains caractères :
 
 | Caractère | Unicode | Nombre d'octets en unicode |
@@ -13,6 +14,17 @@ Voici les valeurs unicode de certains caractères :
 | 𝒳 | `0x1d4b3` | 4 |
 | 𝒴 | `0x1d4b4` | 4 |
 | 😄 | `0x1f604` | 4 |
+=======
+Here are the Unicode values of some characters:
+
+| Character  | Unicode | Bytes count in Unicode  |
+|------------|---------|--------|
+| a | `0x0061` |  2 |
+| ≈ | `0x2248` |  2 |
+|𝒳| `0x1d4b3` | 4 |
+|𝒴| `0x1d4b4` | 4 |
+|😄| `0x1f604` | 4 |
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les codes pour `𝒳`, `𝒴` et `😄` sont plus longs, ils ont 4 octets.
 
@@ -39,15 +51,25 @@ Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie 
 
 Nous pouvons rechercher des caractères avec une propriété, écrite sous la forme `pattern:\p{…}`. Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
 
+<<<<<<< HEAD
 Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
 
 Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgien et Coréen.
+=======
+For instance, `\p{Letter}` denotes a letter in any language. We can also use `\p{L}`, as `L` is an alias of `Letter`. There are shorter aliases for almost every property.
+
+In the example below three kinds of letters will be found: English, Georgian and Korean.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ```js run
 let str = "A ბ ㄱ";
 
 alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
+<<<<<<< HEAD
 alert( str.match(/\p{L}/g) ); // null (aucune correspondance, puisqu'il n'y a pas l'indicateur "u")
+=======
+alert( str.match(/\p{L}/g) ); // null (no matches, \p doesn't work without the flag "u")
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 ```
 
 Voici les principales catégories de caractères et leurs sous-catégories :
@@ -121,7 +143,11 @@ alert("number: xAF".match(regexp)); // xAF
 
 Cherchons des hiéroglyphes Chinois.
 
+<<<<<<< HEAD
 Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
+=======
+There's a Unicode property `Script` (a writing system), that may have a value: `Cyrillic`, `Greek`, `Arabic`, `Han` (Chinese) and so on, [here's the full list](https://en.wikipedia.org/wiki/Script_(Unicode)).
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques : `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois : `pattern:\p{sc=Han}`, et ainsi de suite :
 
@@ -135,7 +161,11 @@ alert( str.match(regexp) ); // 你,好
 
 ### Exemple: devise
 
+<<<<<<< HEAD
 Les caractères qui désignent une devise, tels que `$`, `€`, `¥`, ont la propriété unicode `pattern:\p{Currency_Symbol}`, l'alias court : `pattern:\p{Sc}`.
+=======
+Characters that denote a currency, such as `$`, `€`, `¥`, have Unicode property  `pattern:\p{Currency_Symbol}`, the short alias: `pattern:\p{Sc}`.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Utilisons-le pour rechercher des prix au format "devise, suivi d'un chiffre" :
 

@@ -145,7 +145,9 @@ Pour trouver tous les traits d'unions, nous devons utiliser non pas le caractèr
 alert( '12-34-56'.replace( *!*/-/g*/!*, ":" ) )  // 12:34:56
 ```
 
-Le second argument correspond au texte de remplacement. Il est possible d'utiliser des modèles de remplacement spéciaux:
+
+Le second argument est une chaîne de caractères de remplacement. Nous pouvons utiliser des caractères spéciaux dedans :
+
 
 | Symbols | Action in the replacement string |
 |--------|--------|
@@ -230,6 +232,23 @@ alert(result); // Smith, John
 ```
 
 Les fonctions représentent le pouvoir ultime pour effectuer un remplacement. Elles recupèrent toutes les informations des correspondances, ont accès aux variables externes et sont capable de tout faire.
+
+## str.replaceAll(str|regexp, str|func)
+
+This method is essentially the same as `str.replace`, with two major differences:
+
+1. If the first argument is a string, it replaces *all occurences* of the string, while `replace` replaces only the *first occurence*.
+2. If the first argument is a regular expression without the `g` flag, there'll be an error. With `g` flag, it works the same as `replace`.
+
+The main use case for `replaceAll` is replacing all occurences of a string.
+
+Like this:
+
+```js run
+// replace all dashes by a colon
+alert('12-34-56'.replaceAll("-", ":")) // 12:34:56
+```
+
 
 ## regexp.exec(str)
 
