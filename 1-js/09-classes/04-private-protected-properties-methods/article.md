@@ -121,11 +121,7 @@ let coffeeMachine = new CoffeeMachine(100);
 coffeeMachine.waterAmount = -10; // Error: Negative water
 ```
 
-<<<<<<< HEAD
 Maintenant, l'accès est sous contrôle, donc le réglage de l'eau en dessous de zéro échoue.
-=======
-Now the access is under control, so setting the water amount below zero becomes impossible.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ## "power" en lecture seule
 
@@ -222,13 +218,8 @@ class CoffeeMachine {
 let coffeeMachine = new CoffeeMachine();
 
 *!*
-<<<<<<< HEAD
 // ne peut pas accéder aux propriétés privées de l'extérieur de la classe
-coffeeMachine.#checkWater(); // Error
-=======
-// can't access privates from outside of the class
 coffeeMachine.#fixWaterAmount(123); // Error
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 coffeeMachine.#waterLimit = 1000; // Error
 */!*
 ```
