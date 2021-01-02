@@ -1,19 +1,10 @@
 
 # Map and Set
 
-<<<<<<< HEAD
-Nous avons découvert les structures de données complexes suivantes :
+Jusqu'à présent, nous avons découvert les structures de données complexes suivantes :
 
-- Objects (les objets) pour stocker des valeurs par clés.
-- Arrays (les tableaux) pour stocker des valeurs en conservant l'ordre d'insertion.
-
-Il existe aussi `Map` (les dictionnaires de données) et `Set` (les ensembles) qui sont très utiles dans notre quotidien de développeur.
-=======
-Till now, we've learned about the following complex data structures:
-
-- Objects are used for storing keyed collections.
-- Arrays are used for storing ordered collections.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+- Les objets sont utilisés pour stocker des collections de clés.
+- Les tableaux sont utilisés pour stocker des collections ordonnées.
 
 
 ## Map
@@ -52,13 +43,8 @@ alert( map.size ); // 3
 Au travers de cet exemple nous pouvons voir, qu'à la différence des `Objects`, les clés ne sont pas converties en chaîne de caractère.
 Il est donc possible d'utiliser n'importe quel type.
 
-<<<<<<< HEAD
 ```smart header="`map[key]` n'est pas la bonne façon d'utiliser un `Map`"
-Bien que `map[key]` fonctionne également, par exemple nous pouvons définir `map[key] = 2`, cela traite `map` comme un objet JavaScript simple, ce qui implique toutes les limitations correspondantes (pas de clés d'objet, etc.).
-=======
-```smart header="`map[key]` isn't the right way to use a `Map`"
-Although `map[key]` also works, e.g. we can set `map[key] = 2`, this is treating `map` as a plain JavaScript object, so it implies all corresponding limitations (only string/symbol keys and so on).
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+Bien que `map[key]` fonctionne également, par exemple nous pouvons définir `map[key] = 2`, cela traite `map` comme un objet JavaScript simple, ce qui implique toutes les limitations correspondantes (uniquement des clés chaîne de caractères/symbol etc...).
 
 Nous devons donc utiliser les méthodes `map`: `set`, `get` et ainsi de suite.
 ```
@@ -79,12 +65,7 @@ visitsCountMap.set(john, 123);
 alert( visitsCountMap.get(john) ); // 123
 ```
 
-<<<<<<< HEAD
-Pourvoir utiliser un `Object` comme une clé est l'une des raisons principales d'utiliser une `Map`.
-`Map` est à privilégier à `Object` lorsque que l'on utilise autre chose que des chaînes de caractères comme clé.
-=======
-Using objects as keys is one of the most notable and important `Map` features. The same does not count for `Object`. String as a key in `Object` is fine, but we can't use another `Object` as a key in `Object`.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+Utiliser des objets comme clés est l'une des fonctionnalités les plus notables et les plus importantes de `Map`. La même chose ne compte pas pour `Object`. Une chaîne de caractères comme clé dans `Object` est très bien, mais nous ne pouvons pas utiliser un autre `Object` comme clé dans `Object`.
 
 Essayons de faire comme l'exemple précédent directement avec un `Object`:
 
@@ -94,30 +75,17 @@ let ben = { name: "Ben" };
 
 let visitsCountObj = {}; // on créé notre object
 
-<<<<<<< HEAD
-visitsCountObj[john] = 123; // on souhaite utiliser john comme clé
+visitsCountObj[ben] = 234; // essayez d'utiliser l'objet ben comme clé
+visitsCountObj[john] = 123; // essayez d'utiliser l'objet john comme clé, l'objet ben sera remplacé
 
 *!*
-// Et voilà ce que l'on obtient !
-alert( visitsCountObj["[object Object]"] ); // 123
-=======
-visitsCountObj[ben] = 234; // try to use ben object as the key
-visitsCountObj[john] = 123; // try to use john object as the key, ben object will get replaced
-
-*!*
-// That's what got written!
+// C'est ce qui a été écrit!
 alert( visitsCountObj["[object Object]"] ); // 123 
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 */!*
 ```
-`visitsCountObj` est un objet, de ce fait, toutes les clés, comme `john`, sont transformées en chaîne de caractères. 
-C'est pourquoi nous obtenons comme valeur de clé `"[object Object]"`. Ce n'est clairement pas ce que l'on souhaite.
+Comme `visitesCountObj` est un objet, il convertit toutes les clés `Object`, telles que `john` et `ben` ci-dessus, en la même chaîne de caractères `"[object Object]"`. Certainement pas ce que nous voulons.
 
-<<<<<<< HEAD
 ```smart header="Comment `Map` compare les clés"
-=======
-As `visitsCountObj` is an object, it converts all `Object` keys, such as `john` and `ben` above, to same string `"[object Object]"`. Definitely not what we want.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Pour tester l'égalité entre les clés, `Map` se base sur l'algorithme [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). 
 C'est grosso modo la même chose que l'opérateur de stricte égalité `===`, à la différence que `NaN` est considéré comme étant égal à `NaN`. 
@@ -348,23 +316,13 @@ Les méthodes pour parcourir les éléments d'une `Map` peuvent être utilisées
 
 Méthodes et propriétés:
 
-<<<<<<< HEAD
 - `new Map([iterable])` -- créé une map, potentiellement initialisée avec un `iterable` (ex: un array) de couple clé valeur `[key, value]`.
-- `map.set(key, value)` -- définie la valeur `value` pour la clé `key`.
+- `map.set(key, value)` -- stocke la valeur par la clé, renvoie la carte elle-même.
 - `map.get(key)` -- retourne la valeur associée à `key`, `undefined` si `key` n'existe pas.
 - `map.has(key)` -- retourne `true` si `key` existe sinon `false`.
-- `map.delete(key)` -- supprime la valeur associé à `key` dans la map.
+- `map.delete(key)` -- supprime la valeur par la clé, retourne `true` si `key` existait au moment de l'appel, sinon `false`.
 - `map.clear()` -- supprime tous les éléments dans la map.
 - `map.size` -- retourne le nombre d'éléments.
-=======
-- `new Map([iterable])` -- creates the map, with optional `iterable` (e.g. array) of `[key,value]` pairs for initialization.
-- `map.set(key, value)` -- stores the value by the key, returns the map itself.
-- `map.get(key)` -- returns the value by the key, `undefined` if `key` doesn't exist in map.
-- `map.has(key)` -- returns `true` if the `key` exists, `false` otherwise.
-- `map.delete(key)` -- removes the value by the key, returns `true` if `key` existed at the moment of the call, otherwise `false`.
-- `map.clear()` -- removes everything from the map.
-- `map.size` -- returns the current element count.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 La différence entre `Map` avec un objet traditionel :
 

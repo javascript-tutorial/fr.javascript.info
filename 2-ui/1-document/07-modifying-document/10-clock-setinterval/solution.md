@@ -39,15 +39,10 @@ Les fonctions de gestion d'horloge :
 ```js
 let timerId;
 
-<<<<<<< HEAD
 function clockStart() { // exécute l'horloge
-  timerId = setInterval(update, 1000);
-=======
-function clockStart() { // run the clock  
-  if (!timerId) { // only set a new interval if the clock is not running
+  if (!timerId) { // défini un nouvel intervalle uniquement si l'horloge ne fonctionne pas
     timerId = setInterval(update, 1000);
   }
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
   update(); // (*)
 }
 
@@ -57,10 +52,6 @@ function clockStop() {
 }
 ```
 
-<<<<<<< HEAD
 Veuillez noter que l'appel à `update()` est non seulement planifié dans `clockStart()`, mais s'exécute immédiatement dans la ligne `(*)`. Sinon, le visiteur devra attendre la première exécution de `setInterval`. Et l'horloge serait vide jusque-là.
-=======
-Please note that the call to `update()` is not only scheduled in `clockStart()`, but immediately run in the line `(*)`. Otherwise the visitor would have to wait till the first execution of `setInterval`. And the clock would be empty till then.
 
-Also it is important to set a new interval in `clockStart()` only when the clock is not running. Otherways clicking the start button several times would set multiple concurrent intervals. Even worse - we would only keep the `timerID` of the last interval, losing references to all others. Then we wouldn't be able to stop the clock ever again! Note that we need to clear the `timerID` when the clock is stopped in the line `(**)`, so that it can be started again by running `clockStart()`.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+Il est également important de définir un nouvel intervalle dans `clockStart()` uniquement lorsque l'horloge ne fonctionne pas. Sinon, cliquer plusieurs fois sur le bouton de démarrage définirait plusieurs intervalles simultanés. Pire encore, nous ne garderions que le `timerID` du dernier intervalle, perdant ainsi les références à tous les autres. Alors nous ne pourrions plus jamais arrêter le chronomètre! Notez que nous devons effacer le `timerID` lorsque l'horloge est arrêtée dans la ligne `(**)`, afin qu'elle puisse être redémarrée en exécutant `clockStart()`.

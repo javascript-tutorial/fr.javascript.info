@@ -104,15 +104,9 @@ JSON est une spécification indépendante du langage et ne contenant que des don
 
 À savoir:
 
-<<<<<<< HEAD
 - Propriétés de fonction (méthodes).
-- Propriétés symboliques.
+- Clés et valeurs symboliques.
 - Propriétés qui stockent `undefined`.
-=======
-- Function properties (methods).
-- Symbolic keys and values.
-- Properties that store `undefined`.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 ```js run
 let user = {
@@ -335,13 +329,9 @@ alert(JSON.stringify(user, null, 2));
 */
 ```
 
-<<<<<<< HEAD
-Le paramètre `space` est utilisé uniquement à des fins de journalisation et de fins de belles sorties.
-=======
-The third argument can also be a string. In this case, the string is used for indentation instead of a number of spaces.
+Le troisième argument peut également être une chaîne de caractères. Dans ce cas, la chaîne de caractères est utilisée pour l'indentation au lieu d'un certain nombre d'espaces.
 
-The `space` parameter is used solely for logging and nice-output purposes.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+Le paramètre `space` est utilisé uniquement à des fins de journalisation et de sortie agréable.
 
 ## "toJSON" Personnalisé
 

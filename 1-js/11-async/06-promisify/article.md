@@ -50,11 +50,7 @@ Comme nous pouvons le voir, la nouvelle fonction est un wrapper autour de la fon
 
 Dorénavant `loadScriptPromise` s'intègre bien dans le code basé sur la promesse. Si nous aimons les promesses plus que les rappels (et bientôt nous verrons plus de raisons à cela), alors nous les utiliserons à la place.
 
-<<<<<<< HEAD
 Dans la pratique, nous pouvons avoir besoin de promettre plus d'une fonction, il est donc logique d'utiliser un assistant.
-=======
-In practice we may need to promisify more than one function, so it makes sense to use a helper.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Nous l'appellerons `promisify (f)` : il accepte une fonction à promettre `f` et renvoie une fonction wrapper.
 

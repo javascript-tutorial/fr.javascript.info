@@ -29,11 +29,7 @@ Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
 Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
-<<<<<<< HEAD
 **Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.  
-=======
-**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
 

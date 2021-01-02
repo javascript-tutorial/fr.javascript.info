@@ -198,11 +198,7 @@ newWindow.onload = function() {
 ```
 
 
-<<<<<<< HEAD
-## Scroller et redimensionner
-=======
-## Moving and resizing
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
+## Se déplacer et redimensionner
 
 Il existe des méthodes pour bouger/redimensionner une fenêtre:
 
