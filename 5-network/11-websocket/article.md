@@ -117,11 +117,7 @@ Il peut y avoir des en-têtes supplémentaires `Sec-WebSocket-Extensions` et `Se
 
 Par exemple :
 
-<<<<<<< HEAD
 - `Sec-WebSocket-Extensions: deflate-frame` signifie que le navigateur prend en charge la compression des données. Une extension est liée au transfert des données, c'est une fonctionnalité qui étend le protocole WebSocket. L'en-tête `Sec-WebSocket-Extensions` est envoyé automatiquement par le navigateur, avec la liste de toutes les extensions qu'il prend en charge.
-=======
-- `Sec-WebSocket-Extensions: deflate-frame` means that the browser supports data compression. An extension is something related to transferring the data, functionality that extends WebSocket protocol. The header `Sec-WebSocket-Extensions` is sent automatically by the browser, with the list of all extensions it supports.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 - `Sec-WebSocket-Protocol: soap, wamp` signifie que nous aimerions transférer non seulement toutes les données, mais les données [SOAP](http://en.wikipedia.org/wiki/SOAP) ou les protocoles WAMP ("The WebSocket Application Messaging Protocol"). Les sous-protocoles WebSocket sont enregistrés dans le [catalogue IANA](http://www.iana.org/assignments/websocket/websocket.xml). Donc, cet en-tête décrit les formats de données que nous allons utiliser.
 
@@ -198,11 +194,7 @@ Imaginez, notre application génère beaucoup de données à envoyer. Mais l'uti
 
 Nous pouvons appeler `socket.send (data)` encore et encore. Mais les données seront mises en mémoire tampon (stockées) en mémoire et envoyées uniquement aussi rapidement que la vitesse du réseau le permet.
 
-<<<<<<< HEAD
 La propriété `socket.bufferedAmount` stocke le nombre d'octets qui sont mis en mémoire tampon à ce moment, en attente d'être envoyés sur le réseau.
-=======
-The `socket.bufferedAmount` property stores how many bytes remain buffered at this moment, waiting to be sent over the network.
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Nous pouvons l'examiner pour voir si le socket est réellement disponible pour la transmission.
 
@@ -245,13 +237,8 @@ socket.onclose = event => {
 
 Valeurs de code les plus courantes :
 
-<<<<<<< HEAD
-- `1000` -- la fermeture normale par défaut (utilisée si aucun `code` n'est fourni),
+- `1000` -- la closure normale par défaut (utilisée si aucun `code` n'est fourni),
 - `1006` -- aucun moyen pour utiliser ce code manuellement, indique que la connexion a été perdue (pas de frame de fermeture).
-=======
-- `1000` -- the default, normal closure (used if no `code` supplied),
-- `1006` -- no way to set such code manually, indicates that the connection was lost (no close frame).
->>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 Il existe d'autres codes comme :
 
