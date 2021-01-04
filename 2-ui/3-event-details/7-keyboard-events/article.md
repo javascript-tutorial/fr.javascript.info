@@ -188,7 +188,17 @@ Dans le passé, il y'avait un évènement `keypress`, et aussi les propriétés 
 Il y avait tellement d'incompatibilités au niveau des navigateurs en travaillant avec eux que les développeurs de la spécification n'avaient autre moyen que de les déprécier tous et d’en créer de  nouveaux et plus modernes (tels que ceux décrits en haut dans ce chapitre). L'ancien code marche encore, étant donné que les navigateurs continuent de les supporter, mais nous n'avons nullement besoin de les utiliser maintenant.
 
 
+<<<<<<< HEAD
 ## Résumé
+=======
+## Mobile Keyboards
+
+When using virtual/mobile keyboards, formally known as IME (Input-Method Editor), the W3C standard states that a KeyboardEvent's [`e.keyCode` should be `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) and [`e.key` should be `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
+
+While some of these keyboards might still use the right values for `e.key`, `e.code`, `e.keyCode`... when pressing certain keys such as arrows or backspace, there's no guarantee, so your keyboard logic might not always work on mobile devices.
+
+## Summary
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Le fait d'appuyer sur une touche génère toujours un évènement du clavier, que cela soit une touche de symbole ou des touches spéciales telles que `key:Shift` oubien `key:Ctrl` et ainsi de suite. La seule exception est la touche `key:Fn` qui est dès fois présente  sur un clavier d’ordinateur portable. Il n’y a pas d'évènement de clavier pour cela, parce que cela est implémenté à un niveau plus bas que celui du system d'exploitation.
 

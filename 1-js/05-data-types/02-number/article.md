@@ -385,7 +385,11 @@ JavaScript a un objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScrip
 Quelques exemples:
 
 `Math.random()`
+<<<<<<< HEAD
 : Retourne un nombre aléatoire de 0 à 1 (1 non compris)
+=======
+: Returns a random number from 0 to 1 (not including 1).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     ```js run
     alert( Math.random() ); // 0.1234567894322
@@ -401,8 +405,13 @@ Quelques exemples:
     alert( Math.min(1, 2) ); // 1
     ```
 
+<<<<<<< HEAD
 `Math.pow(n, puissance)`
 : Retourne `n` par la puissance donnée
+=======
+`Math.pow(n, power)`
+: Returns `n` raised to the given power.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     ```js run
     alert( Math.pow(2, 10) ); // 2 puissance 10 = 1024
