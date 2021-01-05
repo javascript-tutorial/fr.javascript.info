@@ -1,52 +1,52 @@
-# Word boundary: \b
+# Limite de mot : \b
 
-A word boundary `pattern:\b` is a test, just like `pattern:^` and `pattern:$`.
+Une limite de mot `pattern:\b` teste une position comme les ancres, `pattern:^` et `pattern:$`.
 
-When the regexp engine (program module that implements searching for regexps) comes across `pattern:\b`, it checks that the position in the string is a word boundary.
+Quand le moteur d'expressions rationnelles (module qui implémente la recherche d'expressions rationnelles) trouve le paterne `pattern:\b`, il vérifie si la position dans la chaine de caractères est une limite de mot.
 
-There are three different positions that qualify as word boundaries:
+Il y a trois positions possibles pour une limite de mot :
 
-- At string start, if the first string character is a word character `pattern:\w`.
-- Between two characters in the string, where one is a word character `pattern:\w` and the other is not.
-- At string end, if the last string character is a word character `pattern:\w`.
+- Au début de la chaîne de caractères, si le premier caractère est alphanumérique (ou un trait de soulignement) `pattern:\w`.
+- Entre deux caractères d'une chaîne, si un des caractères est alphanumérique (ou un trait de soulignement) `pattern:\w` et l'autre ne l'est pas.
+- À la fin de la chaîne de caractères, si le dernier caractère est alphanumérique (ou un trait de soulignement) `pattern:\w`.
 
-For instance, regexp `pattern:\bJava\b` will be found in `subject:Hello, Java!`, where `subject:Java` is a standalone word, but not in `subject:Hello, JavaScript!`.
+Par exemple l'expression régulière `pattern:\bJava\b` sera trouvé dans `subject:Hello, Java!`, où `subject:Java` est un mot isolé, mais pas dans `subject:Hello, JavaScript!`.
 
 ```js run
 alert( "Hello, Java!".match(/\bJava\b/) ); // Java
 alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
 ```
 
-In the string `subject:Hello, Java!` following positions correspond to `pattern:\b`:
+Dans la chaîne `subject:Hello, Java!` les positions suivantes correspondent au paterne `pattern:\b`:
 
 ![](hello-java-boundaries.svg)
 
-So, it matches the pattern `pattern:\bHello\b`, because:
+Cette chaîne passe le test du paterne `pattern:\bHello\b`, car :
 
-1. At the beginning of the string matches the first test `pattern:\b`.
-2. Then matches the word `pattern:Hello`.
-3. Then the test `pattern:\b` matches again, as we're between `subject:o` and a comma.
+1. Le début de la chaîne passe le premier test `pattern:\b`.
+2. Puis trouve le mot `pattern:Hello`.
+3. Enfin le test `pattern:\b` est encore valide, comme nous sommes entre `subject:o` et une virgule.
 
-So the pattern `pattern:\bHello\b` would match, but not `pattern:\bHell\b` (because there's no word boundary after `l`) and not `Java!\b` (because the exclamation sign is not a wordly character `pattern:\w`, so there's no word boundary after it).
+Donc le paterne `pattern:\bHello\b` sera trouvé, mais pas `pattern:\bHell\b` (car il n'y a pas de limite de mot après `l`) ni `Java!\b` (car le point d'exclamation n'est pas alphanumérique (ou trait de soulignement) `pattern:\w`, il n'est donc pas suivi par une limite de mot).
 
 ```js run
 alert( "Hello, Java!".match(/\bHello\b/) ); // Hello
 alert( "Hello, Java!".match(/\bJava\b/) );  // Java
-alert( "Hello, Java!".match(/\bHell\b/) );  // null (no match)
-alert( "Hello, Java!".match(/\bJava!\b/) ); // null (no match)
+alert( "Hello, Java!".match(/\bHell\b/) );  // null (aucune correspondance)
+alert( "Hello, Java!".match(/\bJava!\b/) ); // null (aucune correspondance)
 ```
 
-We can use `pattern:\b` not only with words, but with digits as well.
+Le paterne `pattern:\b` ne s'utilise pas uniquement sur les mots, mais aussi pour les nombres.
 
-For example, the pattern `pattern:\b\d\d\b` looks for standalone 2-digit numbers. In other words, it looks for 2-digit numbers that are surrounded by characters different from `pattern:\w`, such as spaces or punctuation (or text start/end).
+Par exemple, le paterne `pattern:\b\d\d\b` recherche un nombre isolé à deux chiffres. C'est à dire, qu'il cherche un nombre à deux chiffres entouré par des caractères qui ne sont pas alphanumériques (ou traits de soulignement) `pattern:\w`, comme des espaces, une ponctuation, un début ou une fin de chaîne.
 
 ```js run
 alert( "1 23 456 78".match(/\b\d\d\b/g) ); // 23,78
 alert( "12,34,56".match(/\b\d\d\b/g) ); // 12,34,56
 ```
 
-```warn header="Word boundary `pattern:\b` doesn't work for non-latin alphabets"
-The word boundary test `pattern:\b` checks that there should be `pattern:\w` on the one side from the position and "not `pattern:\w`" - on the other side.
+```warn header="La limite de mot `pattern:\b` ne fonctionne pas pour des alphabets non latin"
+Le test de limite de mot `pattern:\b` vérifie qu'il doit y avoir `pattern:\w` d'un côté de la position et "not `pattern:\w`" - de l'autre côté.
 
-But `pattern:\w` means a latin letter `a-z` (or a digit or an underscore), so the test doesn't work for other characters, e.g. cyrillic letters or hieroglyphs.
+Comme `pattern:\w` signifie `a-z`(en minuscule ou majuscule), un chiffre ou un trait de soulignement, donc le test ne fonctionne pas pour d'autres caractères, e.g. lettre cyrillique ou hiéroglyphe.
 ```
