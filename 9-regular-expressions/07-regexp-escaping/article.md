@@ -1,7 +1,7 @@
 
 # Échappement, caractères spéciaux
 
-Comme nous l'avons vu, la barre oblique inversée (ou backslash) `pattern:\` est utilisé pour désigner une classe de caractères, e.g. `pattern:\d`. C'est donc un caractère spécial dans les expressions régulières (comme dans les chaînes de caractères classiques).
+Comme nous l'avons vu, la barre oblique inversée (ou backslash) `pattern:\` est utilisée pour désigner une classe de caractères, e.g. `pattern:\d`. C'est donc un caractère spécial dans les expressions régulières (comme dans les chaînes de caractères classiques).
 
 Il y a d'autres caractères spéciaux, qui ont un sens particulier dans une expression rationnelle. Ils sont utilisés pour effectuer des recherches avancées. En voici la liste complète : `pattern:[ \ ^ $ . | ? * + ( )`.
 
@@ -43,7 +43,7 @@ Voici à quoi ressemble une recherche d'un slash `'/'` :
 alert( "/".match(/\//) ); // '/'
 ```
 
-Par contre si nous n'utilisons pas l'écriture `pattern:/.../`, mais si nous créons l'expression rationnelle avec `new RegExp`, alors nous n'avons plus besoin de l'échapper :
+Par contre si nous n'utilisons pas l'écriture `pattern:/.../`, mais créons l'expression rationnelle avec `new RegExp`, alors nous n'avons plus besoin de l'échapper :
 
 ```js run
 alert( "/".match(new RegExp("/")) ); // trouve /
@@ -51,7 +51,7 @@ alert( "/".match(new RegExp("/")) ); // trouve /
 
 ## new RegExp
 
-Si nous construisons une expression rationnelle avec `new RegExp`, alors nous n'avons pas besoin d'échapper les `/`, mais nous avons besoin d'autres échappements.
+Si nous construisons une expression rationnelle avec `new RegExp`, nous n'avons pas besoin d'échapper les `/`, mais nous aurons besoin d'autres échappements.
 
 Par exemple, considérons :
 
@@ -61,9 +61,9 @@ let regexp = new RegExp("\d\.\d");
 alert( "Chapter 5.1".match(regexp) ); // null
 ```
 
-Une recherche pourtant similaire à un exemple précédent, qui fonctionne avec `pattern:/\d\.\d/`, ne fonctionne pas ici avec `new RegExp("\d\.\d")`. Pourquoi ?
+C'est une recherche pourtant similaire à un exemple précédent, qui fonctionnait avec `pattern:/\d\.\d/`, mais pas ici avec `new RegExp("\d\.\d")`. Pourquoi ?
 
-Les backslashes sont en fait "consommés" par la chaîne de caractères. On peut se souvenir, que les chaîne de caractères ont leurs propres caractères spéciaux, comme `\n`, et le backslash est utilisé pour l'échappement.
+Les backslashes sont en fait "consommés" par la chaîne de caractères. On peut se souvenir, que les chaîne de caractères ont leurs propres caractères spéciaux, comme `\n`, et le backslash est aussi utilisé pour l'échappement.
 
 Voici comment "\d\.\d" est perçu :
 
@@ -77,9 +77,9 @@ Les guillemets "consomment" les backslashes et les interprètent pour la chaîne
 - `\u1234` -- devient le caractère unicode de ce code,
 - ... Et lorsqu'il n'y a pas de sens particulier : comme `pattern:\d` ou `\z`, alors le backslash est simplement retiré.
 
-Donc `new RegExp` reçoit une chaîne de caractère sans backslash. C'est pour ça que la recherche ne fonctionnait pas !
+Donc `new RegExp` reçoit une chaîne de caractères sans backslash. C'est pour ça que la recherche ne fonctionnait pas !
 
-Pour résoudre ça, nous devons doubler les backslashes, parce que la chaine de caractère transforme les `\\` en `\`:
+Pour résoudre ça, nous devons doubler les backslashes, parce que la chaine de caractères transforme les `\\` en `\`:
 
 ```js run
 *!*
