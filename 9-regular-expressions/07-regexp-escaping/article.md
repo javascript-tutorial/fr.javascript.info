@@ -51,7 +51,7 @@ alert( "/".match(new RegExp("/")) ); // trouve /
 
 ## new RegExp
 
-Si nous construisons une expression rationnelle par `new RegExp`, alors nous n'avons pas besoin d'échapper `/`, mais nous avons besoin d'autres échappements.
+Si nous construisons une expression rationnelle avec `new RegExp`, alors nous n'avons pas besoin d'échapper les `/`, mais nous avons besoin d'autres échappements.
 
 Par exemple, considérons :
 
@@ -61,7 +61,7 @@ let regexp = new RegExp("\d\.\d");
 alert( "Chapter 5.1".match(regexp) ); // null
 ```
 
-Une recherche similaire à un exemple précédent qui fonctionne avec `pattern:/\d\.\d/`, mais pas avec `new RegExp("\d\.\d")`. Pourquoi ?
+Une recherche pourtant similaire à un exemple précédent, qui fonctionne avec `pattern:/\d\.\d/`, ne fonctionne pas ici avec `new RegExp("\d\.\d")`. Pourquoi ?
 
 Les backslashes sont en fait "consommés" par la chaîne de caractères. On peut se souvenir, que les chaîne de caractères ont leurs propres caractères spéciaux, comme `\n`, et le backslash est utilisé pour l'échappement.
 
@@ -79,7 +79,7 @@ Les guillemets "consomment" les backslashes et les interprètent pour la chaîne
 
 Donc `new RegExp` reçoit une chaîne de caractère sans backslash. C'est pour ça que la recherche ne fonctionnait pas !
 
-Pour résoudre ça, nous devons doubler les backslashes, parce que la chaine de caractère transforme `\\` en `\`:
+Pour résoudre ça, nous devons doubler les backslashes, parce que la chaine de caractère transforme les `\\` en `\`:
 
 ```js run
 *!*
@@ -94,6 +94,6 @@ alert( "Chapter 5.1".match(regexp) ); // 5.1
 
 ## Résumé
 
-- Pour rechercher exactement un caractère spécial `pattern:[ \ ^ $ . | ? * + ( )`, nous devons le précéder d'un backslash `\` ("échappez les").
-- Nous devons aussi échapper `/` si nous sommes dans un modèle `pattern:/.../` (mais pas en utilisant `new RegExp`).
-- Lorsque l'on passe une chaîne de caractère à `new RegExp`, nous devons doubler les backslashes `\\`, car la chaîne en consomme un.
+- Pour rechercher exactement un caractère spécial `pattern:[ \ ^ $ . | ? * + ( )`, nous devons le précéder d'un backslash `\` ("nous l'échappons").
+- Nous devons aussi échapper un `/` si nous sommes dans un modèle `pattern:/.../` (mais pas en utilisant `new RegExp`).
+- Lorsque l'on passe une chaîne de caractères à `new RegExp`, nous devons doubler les backslashes `\\`, car la chaîne en consomme un.
