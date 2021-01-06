@@ -93,9 +93,9 @@ Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si
 Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, e.g.  `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
-## Intervalles excluant
+## Intervalles d'exclusion
 
-En plus de ces intervalles classiques, existent les intervalles "excluant" qui ressemblent à `pattern:[^…]`.
+En plus des intervalles classiques, existent les intervalles d'exclusion qui ressemblent à `pattern:[^…]`.
 
 Ils se distinguent par un premier accent circonflexe `^` et correspond à n'importe quel caractère *à l'exception des caractères qui le suivent*.
 
@@ -111,37 +111,37 @@ L'exemple ci-dessous cherche n'importe quel caractère n'étant pas une lettre, 
 alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ et .
 ```
 
-## Escaping in […]
+## L'échappement entre […]
 
-Usually when we want to find exactly a special character, we need to escape it like `pattern:\.`. And if we need a backslash, then we use `pattern:\\`, and so on.
+Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`. Et si nous cherchons un backslash, nous utilisons `pattern:\\`, et ainsi de suite.
 
-In square brackets we can use the vast majority of special characters without escaping:
+À l'intérieur de crochets nous pouvons utiliser une grande majorité des caractères spéciaux sans échappement :
 
-- Symbols `pattern:. + ( )` never need escaping.
-- A hyphen `pattern:-` is not escaped in the beginning or the end (where it does not define a range).
-- A caret `pattern:^` is only escaped in the beginning (where it means exclusion).
-- The closing square bracket `pattern:]` is always escaped (if we need to look for that symbol).
+- Les symbols `pattern:. + ( )` ne sont jamais échappés.
+- Un tiret `pattern:-` n'est pas échappé en début ou fin d'ensemble (là où il ne peut pas définir d'intervalle).
+- Un accent circonflexe `pattern:^` est échappé uniquement s'il débute l'ensemble (sinon il signifie l'exclusion).
+- Le crochet fermant `pattern:]` est toujours échappé (si nous le cherchons précisément).
 
-In other words, all special characters are allowed without escaping, except when they mean something for square brackets.
+En d'autres termes, tous les caractères spéciaux ne sont pas échappés, sauf s'ils ont un sens particulier pour un ensemble.
 
-A dot `.` inside square brackets means just a dot. The pattern `pattern:[.,]` would look for one of characters: either a dot or a comma.
+Un point `.` à l'intérieur de crochets signifie juste un point. Le modèle `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
 
-In the example below the regexp `pattern:[-().^+]` looks for one of the characters `-().^+`:
+Dans l'exemple ci-dessous l'expression rationnelle `pattern:[-().^+]` cherche un des caractères `-().^+`:
 
 ```js run
-// No need to escape
+// Pas besoin d'échapper
 let regexp = /[-().^+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // Matches +, -
+alert( "1 + 2 - 3".match(regexp) ); // trouve +, -
 ```
 
-...But if you decide to escape them "just in case", then there would be no harm:
+... Si vous décidez par contre de les échapper "au cas où", il n'y aura pas d'impact :
 
 ```js run
-// Escaped everything
+// Tout échappé
 let regexp = /[\-\(\)\.\^\+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // also works: +, -
+alert( "1 + 2 - 3".match(regexp) ); // fonctionne aussi: +, -
 ```
 
 ## Ranges and flag "u"
