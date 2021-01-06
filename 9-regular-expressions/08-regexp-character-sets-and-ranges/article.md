@@ -93,22 +93,22 @@ Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si
 Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, e.g.  `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
-## Excluding ranges
+## Intervalles excluant
 
-Besides normal ranges, there are "excluding" ranges that look like `pattern:[^…]`.
+En plus de ces intervalles classiques, existent les intervalles "excluant" qui ressemblent à `pattern:[^…]`.
 
-They are denoted by a caret character `^` at the start and match any character *except the given ones*.
+Ils se distinguent par un premier accent circonflexe `^` et correspond à n'importe quel caractère *à l'exception des caractères qui le suivent*.
 
-For instance:
+Par exemple:
 
-- `pattern:[^aeyo]` -- any character except  `'a'`, `'e'`, `'y'` or `'o'`.
-- `pattern:[^0-9]` -- any character except a digit, the same as `pattern:\D`.
-- `pattern:[^\s]` -- any non-space character, same as `\S`.
+- `pattern:[^aeyo]` -- n'importe quel caractère sauf  `'a'`, `'e'`, `'y'` ou `'o'`.
+- `pattern:[^0-9]` -- n'importe quel caractère à l'exception des chiffres, équivalent à `pattern:\D`.
+- `pattern:[^\s]` -- n'importe quel caractère qui n'est pas un espacement, équivalent à `\S`.
 
-The example below looks for any characters except letters, digits and spaces:
+L'exemple ci-dessous cherche n'importe quel caractère n'étant pas une lettre, un chiffre ou un espace :
 
 ```js run
-alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ and .
+alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ et .
 ```
 
 ## Escaping in […]
