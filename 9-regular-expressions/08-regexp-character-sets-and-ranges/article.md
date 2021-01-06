@@ -1,96 +1,96 @@
-# Sets and ranges [...]
+# Ensembles et intervalles [...]
 
-Several characters or character classes inside square brackets `[…]` mean to "search for any character among given".
+Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` signifie "chercher un caractère parmi ceux-là".
 
-## Sets
+## Ensembles
 
-For instance, `pattern:[eao]` means any of the 3 characters: `'a'`, `'e'`, or `'o'`.
+Par exemple, `pattern:[eao]` signifie un caractère qui est soit `'a'`, `'e'`, ou `'o'`.
 
-That's called a *set*. Sets can be used in a regexp along with regular characters:
+Ceci est appelé un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une expression rationnelle :
 
 ```js run
-// find [t or m], and then "op"
+// trouve [t ou m], puis "op"
 alert( "Mop top".match(/[tm]op/gi) ); // "Mop", "top"
 ```
 
-Please note that although there are multiple characters in the set, they correspond to exactly one character in the match.
+Bien qu'il y ait plusieurs caractères dans un ensemble, vous remarquez que l'on ne cherche la correspondance que d'un seul de ces caractères.
 
-So the example below gives no matches:
+L'exemple suivant ne donne donc aucun résultat :
 
 ```js run
-// find "V", then [o or i], then "la"
-alert( "Voila".match(/V[oi]la/) ); // null, no matches
+// trouve "V", puis [o ou i], puis "la"
+alert( "Voila".match(/V[oi]la/) ); // null, pas de correspondance
 ```
 
-The pattern searches for:
+Le modèle recherche :
 
 - `pattern:V`,
-- then *one* of the letters `pattern:[oi]`,
-- then `pattern:la`.
+- puis *une* des lettres `pattern:[oi]`,
+- enfin `pattern:la`.
 
-So there would be a match for `match:Vola` or `match:Vila`.
+Ce qui correspondrait à `match:Vola` ou `match:Vila`.
 
-## Ranges
+## Intervalles
 
-Square brackets may also contain *character ranges*.
+Les crochets peuvent aussi contenir de *intervalles de caractères*.
 
-For instance, `pattern:[a-z]` is a character in range from `a` to `z`, and `pattern:[0-5]` is a digit from `0` to `5`.
+Par exemple, `pattern:[a-z]` est un caractère pouvant aller de `a` à `z`, et `pattern:[0-5]` est un nombre pouvant valoir de `0` jusqu'à `5`.
 
-In the example below we're searching for `"x"` followed by two digits or letters from `A` to `F`:
+Dans l'exemple ci-dessous nous recherchons un `"x"` suivi par deux chiffres ou lettres de `A` à `F`:
 
 ```js run
 alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
 ```
 
-Here `pattern:[0-9A-F]` has two ranges: it searches for a character that is either a digit from `0` to `9` or a letter from `A` to `F`.
+Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` compris.
 
-If we'd like to look for lowercase letters as well, we can add the range `a-f`: `pattern:[0-9A-Fa-f]`. Or add the flag `pattern:i`.
+Si nous voulons y inclure les lettres minuscules, nous pouvons ajouter l'intervalle `a-f`: `pattern:[0-9A-Fa-f]`. Ou bien ajouter le marqueur `pattern:i`.
 
-We can also use character classes inside `[…]`.
+Nous pouvons aussi utiliser les classes de caractères entre `[…]`.
 
-For instance, if we'd like to look for a wordly character `pattern:\w` or a hyphen `pattern:-`, then the set is `pattern:[\w-]`.
+Par exemple, si nous voulons chercher un caractère alphanumérique, un trait de soulignement `pattern:\w` ou un tiret `pattern:-`, alors l'ensemble s'écrit `pattern:[\w-]`.
 
-Combining multiple classes is also possible, e.g. `pattern:[\s\d]` means "a space character or a digit".
+Il est aussi possible de combiner plusieurs classes, e.g. `pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
 
-```smart header="Character classes are shorthands for certain character sets"
-For instance:
+```smart header="Les classes de caractères sont en fait des racourcis pour des intervalles de caractères particuliers"
+Par exemple:
 
-- **\d** -- is the same as `pattern:[0-9]`,
-- **\w** -- is the same as `pattern:[a-zA-Z0-9_]`,
-- **\s** -- is the same as `pattern:[\t\n\v\f\r ]`, plus few other rare Unicode space characters.
+- **\d** -- équivaut à `pattern:[0-9]`,
+- **\w** -- équivaut à `pattern:[a-zA-Z0-9_]`,
+- **\s** -- équivaut à `pattern:[\t\n\v\f\r ]`, plus quelques autres rares caractères unicodes d'espacement.
 ```
 
-### Example: multi-language \w
+### Exemple : \w multi-langue
 
-As the character class `pattern:\w` is a shorthand for `pattern:[a-zA-Z0-9_]`, it can't find Chinese hieroglyphs, Cyrillic letters, etc.
+Comme la classe de caractères `pattern:\w` est un raccourcis pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
 
-We can write a more universal pattern, that looks for wordly characters in any language. That's easy with Unicode properties: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Nous pouvons écrire un modèle plus universel, qui cherche le caractère d'un mot quelle que soit la langue. On obtient facilement grâce aux propriétés Unicode : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
-Let's decipher it. Similar to `pattern:\w`, we're making a set of our own that includes characters with following Unicode properties:
+Déchiffrons cela. De la même manière que `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
 
-- `Alphabetic` (`Alpha`) - for letters,
-- `Mark` (`M`) - for accents,
-- `Decimal_Number` (`Nd`) - for digits,
-- `Connector_Punctuation` (`Pc`) - for the underscore `'_'` and similar characters,
-- `Join_Control` (`Join_C`) - two special codes `200c` and `200d`, used in ligatures, e.g. in Arabic.
+- `Alphabetic` (`Alpha`) - pour les lettres,
+- `Mark` (`M`) - pour les accents,
+- `Decimal_Number` (`Nd`) - pour les nombres,
+- `Connector_Punctuation` (`Pc`) - pour le trait de soulignement `'_'` et autres caractères similaires,
+- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, e.g. en arabe.
 
-An example of use:
+Exemple d'usage :
 
 ```js run
 let regexp = /[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]/gu;
 
 let str = `Hi 你好 12`;
 
-// finds all letters and digits:
+// trouve toutes les lettres et chiffres:
 alert( str.match(regexp) ); // H,i,你,好,1,2
 ```
 
-Of course, we can edit this pattern: add Unicode properties or remove them. Unicode properties are covered in more details in the article <info:regexp-unicode>.
+Bien sûr, nous pouvons modifier cet ensemble : ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
 
-```warn header="Unicode properties aren't supported in IE"
-Unicode properties `pattern:p{…}` are not implemented in IE. If we really need them, we can use library [XRegExp](http://xregexp.com/).
+```warn header="Les propriétés Unicode ne sont pas supportées par IE"
+Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](http://xregexp.com/).
 
-Or just use ranges of characters in a language that interests us, e.g.  `pattern:[а-я]` for Cyrillic letters.
+Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, e.g.  `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
 ## Excluding ranges
