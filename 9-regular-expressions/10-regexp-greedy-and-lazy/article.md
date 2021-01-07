@@ -1,20 +1,20 @@
 # Greedy and lazy quantifiers
 
-Quantifiers are very simple from the first sight, but in fact they can be tricky.
+Les quantificateurs sont, à première vue, très simples, mais peuvent parfois être retors.
 
-We should understand how the search works very well if we plan to look for something more complex than `pattern:/\d+/`.
+Nous devons mieux comprendre comment marche une recherche pour arriver à trouver des modèles plus complexes que `pattern:/\d+/`.
 
-Let's take the following task as an example.
+Prenons comme exemple la tâche suivante.
 
-We have a text and need to replace all quotes `"..."` with guillemet marks: `«...»`. They are preferred for typography in many countries.
+Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, qui sont préférés en typographie dans de nombreux pays.
 
-For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witam, świat!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
+Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe d'autre guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
 
-The first thing to do is to locate quoted strings, and then we can replace them.
+La première chose à faire est de trouver ces guillemets droits, et nous pourrons alors les remplacer.
 
-A regular expression like `pattern:/".+"/g` (a quote, then something, then the other quote) may seem like a good fit, but it isn't!
+Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche, mais pas exactement !
 
-Let's try it:
+Essayons ça:
 
 ```js run
 let regexp = /".+"/g;
@@ -24,11 +24,11 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch" and her "broom"
 ```
 
-...We can see that it works not as intended!
+... Nous pouvons voir que ça ne marche exactement comme prévu !
 
-Instead of finding two matches `match:"witch"` and `match:"broom"`, it finds one: `match:"witch" and her "broom"`.
+Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
-That can be described as "greediness is the cause of all evil".
+Qui peut être vu comme "l'avidité est la cause de tout mal".
 
 ## Greedy search
 
