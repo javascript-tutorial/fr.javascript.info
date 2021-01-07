@@ -1,11 +1,11 @@
-Answers: **no, yes**.
+Réponses : **non, oui**.
 
-- In the script `subject:Java` it doesn't match anything, because `pattern:[^script]` means "any character except given ones". So the regexp looks for `"Java"` followed by one such symbol, but there's a string end, no symbols after it.
+- Dans la chaîne de caractères `subject:Java`, elle ne trouve aucune correspondance, parce que `pattern:[^script]` signifie "n'importe quel caractère sauf ceux cités". L'expression rationnelle cherche donc `"Java"` suivi d'un autre symbole, mais arrivant en fin de chaîne, elle n'en trouve aucun.
 
     ```js run
     alert( "Java".match(/Java[^script]/) ); // null
     ```
-- Yes, because the `pattern:[^script]` part matches the character `"S"`. It's not one of `pattern:script`. As the regexp is case-sensitive (no `pattern:i` flag), it treats `"S"` as a different character from `"s"`.
+- Oui, car la partie `pattern:[^script]` correspond au caractère `"S"`. Qui n'est pas l'un des caractères de  `pattern:script`. Comme l'expression rationnelle est sensible à la casse (pas de marqueur `pattern:i`), elle considère bien `"S"` différemment de `"s"`.
 
     ```js run
     alert( "JavaScript".match(/Java[^script]/) ); // "JavaS"
