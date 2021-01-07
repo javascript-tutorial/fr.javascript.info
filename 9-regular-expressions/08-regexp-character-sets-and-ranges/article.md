@@ -146,7 +146,7 @@ alert( "1 + 2 - 3".match(regexp) ); // fonctionne aussi: +, -
 
 ## Intervalles et marqueur "u"
 
-S'il y a une paire de substitution dans l'ensemble, le marqueur `pattern:u` est requis pour qu'il fonctionne correctement.
+S'il y a une paire de seizets d'indirection([surrogate pair](https://fr.wikipedia.org/wiki/Table_des_caract%C3%A8res_Unicode_(D000-DFFF))) dans l'ensemble, le marqueur `pattern:u` est requis pour qu'elle soit interprétée correctement.
 
 Par exemple, cherchons `pattern:[𝒳𝒴]` dans la chaîne `subject:𝒳`:
 
@@ -155,9 +155,9 @@ alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui resse
 // (la recherche n'a pas fonctionné correctement, seulement la moitié du caractère est retourné)
 ```
 
-Le résultat est erroné, car par défaut les expressions rationnelles "ne connaisse pas" les paires de substitutions.
+Le résultat est erroné, car par défaut une expression rationnelle ne reconnait pas une telle paire.
 
-Le moteur d'expression rationnelle pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères:
+Le moteur d'expression rationnelle pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
 1. la moitié gauche de `𝒳` `(1)`,
 2. la moitié droite de `𝒳` `(2)`,
 3. la moitié gauche de `𝒴` `(3)`,
@@ -179,7 +179,7 @@ Mais si nous ajoutons le marqueur `pattern:u`, on aura alors le comportement att
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 ```
 
-On retrouve ce même fonctionnement pour un intervalle, comme `[𝒳-𝒴]`.
+On retrouve ce même fonctionnement dans un intervalle, comme `[𝒳-𝒴]`.
 
 Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 
@@ -187,11 +187,11 @@ Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 '𝒳'.match(/[𝒳-𝒴]/); // Error: Invalid regular expression
 ```
 
-En effet sans le marqueur `pattern:u` les paires de substitutions sont perçues comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chaque paire de substitution est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que la fin `55349`. Voilà la logique de l'erreur.
+En effet sans le marqueur `pattern:u` les paires de seizets sont perçues comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que la fin `55349`. Voilà la logique de cette erreur.
 
 Avec le marqueur `pattern:u` le modèle est interprété correctement :
 
 ```js run
-// cherche un caractère entre 𝒳 et 𝒵 compris
+// Cherche un caractère entre 𝒳 et 𝒵 compris
 alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
 ```
