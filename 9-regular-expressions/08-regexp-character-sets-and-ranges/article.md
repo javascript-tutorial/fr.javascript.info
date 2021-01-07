@@ -144,26 +144,26 @@ let regexp = /[\-\(\)\.\^\+]/g;
 alert( "1 + 2 - 3".match(regexp) ); // fonctionne aussi: +, -
 ```
 
-## Ranges and flag "u"
+## Intervalles et marqueur "u"
 
-If there are surrogate pairs in the set, flag `pattern:u` is required for them to work correctly.
+S'il y a une paire de substitution dans l'ensemble, le marqueur `pattern:u` est requis pour qu'il fonctionne correctement.
 
-For instance, let's look for `pattern:[𝒳𝒴]` in the string `subject:𝒳`:
+Par exemple, cherchons `pattern:[𝒳𝒴]` dans la chaîne `subject:𝒳`:
 
 ```js run
-alert( '𝒳'.match(/[𝒳𝒴]/) ); // shows a strange character, like [?]
-// (the search was performed incorrectly, half-character returned)
+alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui ressemble à [?]
+// (la recherche n'a pas fonctionné correctement, seulement la moitié du caractère est retourné)
 ```
 
-The result is incorrect, because by default regular expressions "don't know" about surrogate pairs.
+Le résultat est erroné, car par défaut les expressions rationnelles "ne connaisse pas" les paires de substitutions.
 
-The regular expression engine thinks that `[𝒳𝒴]` -- are not two, but four characters:
-1. left half of `𝒳` `(1)`,
-2. right half of `𝒳` `(2)`,
-3. left half of `𝒴` `(3)`,
-4. right half of `𝒴` `(4)`.
+Le moteur d'expression rationnelle pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères:
+1. la moitié gauche de `𝒳` `(1)`,
+2. la moitié droite de `𝒳` `(2)`,
+3. la moitié gauche de `𝒴` `(3)`,
+4. la moitié droite de `𝒴` `(4)`.
 
-We can see their codes like this:
+On peut voir le code de ces caractères ainsi :
 
 ```js run
 for(let i=0; i<'𝒳𝒴'.length; i++) {
@@ -171,27 +171,27 @@ for(let i=0; i<'𝒳𝒴'.length; i++) {
 };
 ```
 
-So, the example above finds and shows the left half of `𝒳`.
+Donc, le premier exemple trouve et affiche la première moitié de `𝒳`.
 
-If we add flag `pattern:u`, then the behavior will be correct:
+Mais si nous ajoutons le marqueur `pattern:u`, on aura alors le comportement attendu :
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 ```
 
-The similar situation occurs when looking for a range, such as `[𝒳-𝒴]`.
+On retrouve ce même fonctionnement pour un intervalle, comme `[𝒳-𝒴]`.
 
-If we forget to add flag `pattern:u`, there will be an error:
+Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 
 ```js run
 '𝒳'.match(/[𝒳-𝒴]/); // Error: Invalid regular expression
 ```
 
-The reason is that without flag `pattern:u` surrogate pairs are perceived as two characters, so `[𝒳-𝒴]` is interpreted as `[<55349><56499>-<55349><56500>]` (every surrogate pair is replaced with its codes). Now it's easy to see that the range `56499-55349` is invalid: its starting code `56499` is greater than the end `55349`. That's the formal reason for the error.
+En effet sans le marqueur `pattern:u` les paires de substitutions sont perçues comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chaque paire de substitution est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que la fin `55349`. Voilà la logique de l'erreur.
 
-With the flag `pattern:u` the pattern works correctly:
+Avec le marqueur `pattern:u` le modèle est interprété correctement :
 
 ```js run
-// look for characters from 𝒳 to 𝒵
+// cherche un caractère entre 𝒳 et 𝒵 compris
 alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
 ```
