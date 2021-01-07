@@ -1,12 +1,12 @@
 # Ensembles et intervalles [...]
 
-Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` signifie "chercher un caractère parmi ceux-là".
+Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` signifient "chercher un caractère parmi ceux-là".
 
 ## Ensembles
 
 Par exemple, `pattern:[eao]` signifie un caractère qui est soit `'a'`, `'e'`, ou `'o'`.
 
-Ceci est appelé un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une expression rationnelle :
+On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une même expression rationnelle :
 
 ```js run
 // trouve [t ou m], puis "op"
@@ -22,7 +22,7 @@ L'exemple suivant ne donne donc aucun résultat :
 alert( "Voila".match(/V[oi]la/) ); // null, pas de correspondance
 ```
 
-Le modèle recherche :
+L'expression rationnelle recherche :
 
 - `pattern:V`,
 - puis *une* des lettres `pattern:[oi]`,
@@ -32,9 +32,9 @@ Ce qui correspondrait à `match:Vola` ou `match:Vila`.
 
 ## Intervalles
 
-Les crochets peuvent aussi contenir de *intervalles de caractères*.
+Les crochets peuvent aussi contenir des *intervalles de caractères*.
 
-Par exemple, `pattern:[a-z]` est un caractère pouvant aller de `a` à `z`, et `pattern:[0-5]` est un nombre pouvant valoir de `0` jusqu'à `5`.
+Par exemple, `pattern:[a-z]` est un caractère pouvant aller de `a` à `z`, et `pattern:[0-5]` est un chiffre allant de `0` à `5`.
 
 Dans l'exemple ci-dessous nous recherchons un `"x"` suivi par deux chiffres ou lettres de `A` à `F`:
 
@@ -42,7 +42,7 @@ Dans l'exemple ci-dessous nous recherchons un `"x"` suivi par deux chiffres ou l
 alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
 ```
 
-Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` compris.
+Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` comprise.
 
 Si nous voulons y inclure les lettres minuscules, nous pouvons ajouter l'intervalle `a-f`: `pattern:[0-9A-Fa-f]`. Ou bien ajouter le marqueur `pattern:i`.
 
@@ -64,9 +64,9 @@ Par exemple:
 
 Comme la classe de caractères `pattern:\w` est un raccourcis pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
 
-Nous pouvons écrire un modèle plus universel, qui cherche le caractère d'un mot quelle que soit la langue. On obtient facilement grâce aux propriétés Unicode : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Nous pouvons écrire un modèle plus universel, pour rechercher le caractère d'un mot quelle que soit la langue. Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
-Déchiffrons cela. De la même manière que `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
+Déchiffrons cela. Tout comme `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
 
 - `Alphabetic` (`Alpha`) - pour les lettres,
 - `Mark` (`M`) - pour les accents,
@@ -85,7 +85,7 @@ let str = `Hi 你好 12`;
 alert( str.match(regexp) ); // H,i,你,好,1,2
 ```
 
-Bien sûr, nous pouvons modifier cet ensemble : ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
+Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
 
 ```warn header="Les propriétés Unicode ne sont pas supportées par IE"
 Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](http://xregexp.com/).
@@ -95,15 +95,15 @@ Ou simplement utiliser des intervalles de caractères dans la langue qui nous in
 
 ## Intervalles d'exclusion
 
-En plus des intervalles classiques, existent les intervalles d'exclusion qui ressemblent à `pattern:[^…]`.
+En plus des intervalles classiques, il existe des intervalles d'exclusion de la forme `pattern:[^…]`.
 
-Ils se distinguent par un premier accent circonflexe `^` et correspond à n'importe quel caractère *à l'exception des caractères qui le suivent*.
+Ils se distinguent par un premier accent circonflexe `^` et correspond à n'importe quel caractère *à l'exception de ceux contenus dans ces crochets*.
 
-Par exemple:
+Par exemple :
 
 - `pattern:[^aeyo]` -- n'importe quel caractère sauf  `'a'`, `'e'`, `'y'` ou `'o'`.
 - `pattern:[^0-9]` -- n'importe quel caractère à l'exception des chiffres, équivalent à `pattern:\D`.
-- `pattern:[^\s]` -- n'importe quel caractère qui n'est pas un espacement, équivalent à `\S`.
+- `pattern:[^\s]` -- tout caractère qui n'est pas un espacement, équivalent à `\S`.
 
 L'exemple ci-dessous cherche n'importe quel caractère n'étant pas une lettre, un chiffre ou un espace :
 
@@ -113,7 +113,7 @@ alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ et .
 
 ## L'échappement entre […]
 
-Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`. Et si nous cherchons un backslash, nous utilisons `pattern:\\`, et ainsi de suite.
+Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`. Et si nous cherchons un backslash, nous utilisons `pattern:\\`, etc.
 
 À l'intérieur de crochets nous pouvons utiliser une grande majorité des caractères spéciaux sans échappement :
 
@@ -135,7 +135,7 @@ let regexp = /[-().^+]/g;
 alert( "1 + 2 - 3".match(regexp) ); // trouve +, -
 ```
 
-... Si vous décidez par contre de les échapper "au cas où", il n'y aura pas d'impact :
+... Si vous décidez de les échapper, "au cas où", il n'y aura de toute façon aucun d'impact :
 
 ```js run
 // Tout échappé
@@ -152,10 +152,10 @@ Par exemple, cherchons `pattern:[𝒳𝒴]` dans la chaîne `subject:𝒳`:
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui ressemble à [?]
-// (la recherche n'a pas fonctionné correctement, seulement la moitié du caractère est retourné)
+// (la recherche n'a pas fonctionné correctement, seule une moitié du caractère est retournée)
 ```
 
-Le résultat est erroné, car par défaut une expression rationnelle ne reconnait pas une telle paire.
+Le résultat n'est pas celui attendu, car par défaut une expression rationnelle ne reconnait pas une telle paire.
 
 Le moteur d'expression rationnelle pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
 1. la moitié gauche de `𝒳` `(1)`,
@@ -179,7 +179,7 @@ Mais si nous ajoutons le marqueur `pattern:u`, on aura alors le comportement att
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 ```
 
-On retrouve ce même fonctionnement dans un intervalle, comme `[𝒳-𝒴]`.
+On retrouve un mécanisme similaire dans les intervalles, comme `[𝒳-𝒴]`.
 
 Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 
@@ -187,7 +187,7 @@ Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 '𝒳'.match(/[𝒳-𝒴]/); // Error: Invalid regular expression
 ```
 
-En effet sans le marqueur `pattern:u` les paires de seizets sont perçues comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que la fin `55349`. Voilà la logique de cette erreur.
+En effet sans le marqueur `pattern:u` une paire de seizets est perçue comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que le dernier `55349`. Ce qui explique l'erreur précédente.
 
 Avec le marqueur `pattern:u` le modèle est interprété correctement :
 
