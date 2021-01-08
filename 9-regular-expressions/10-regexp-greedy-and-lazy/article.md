@@ -1,12 +1,12 @@
-# Greedy and lazy quantifiers
+# Quantificateur glouton ou paresseux
 
-Les quantificateurs sont, à première vue, très simples, mais peuvent parfois être retors.
+Les quantificateurs, à première vue, très simples, peuvent parfois être retors.
 
 Nous devons mieux comprendre comment marche une recherche pour arriver à trouver des modèles plus complexes que `pattern:/\d+/`.
 
 Prenons comme exemple la tâche suivante.
 
-Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, qui sont préférés en typographie dans de nombreux pays.
+Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, qui sont préférés comme typographie dans de nombreux pays.
 
 Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe d'autre guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
 
@@ -28,71 +28,71 @@ alert( str.match(regexp) ); // "witch" and her "broom"
 
 Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
-Qui peut être vu comme "l'avidité est la cause de tout mal".
+Qui peut être vu comme "La cupidité est à la racine de tous les ennuis".
 
-## Greedy search
+## Recherche gloutonne
 
-To find a match, the regular expression engine uses the following algorithm:
+Pour trouver une correspondance, le moteur d'expression rationnelle utilise l'algorithme suivant :
 
-- For every position in the string
-    - Try to match the pattern at that position.
-    - If there's no match, go to the next position.
+- Pour chacune des positions de la chaîne de caractère
+    - Essaye de trouver le modèle à cette position.
+    - S'il n'y a pas de correspondance, va à la prochaine position.
 
-These common words do not make it obvious why the regexp fails, so let's elaborate how the search works for the pattern `pattern:".+"`.
+Cette description succincte ne vous éclaire peut être pas plus sur la raison de l'échec de la recherche précédente, alors voyons plus en détail comment se déroule la recherche du modèle `pattern:".+"`.
 
-1. The first pattern character is a quote `pattern:"`.
+1. le premier caractère du modèle sont des guillemets droits `pattern:"`.
 
-    The regular expression engine tries to find it at the zero position of the source string `subject:a "witch" and her "broom" is one`, but there's `subject:a` there, so there's immediately no match.
+    le moteur d'expressions rationnelles essaye de les trouver à la position zéro de la chaîne originale `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
 
-    Then it advances: goes to the next positions in the source string and tries to find the first character of the pattern there, fails again, and finally finds the quote at the 3rd position:
+    Puis il avance : va aux positions suivantes dans la chaîne source et essaye d'y trouver le premier caractère du modèle, il échoue une nouvelle fois, avant de trouver les guillemets en troisième position :
 
     ![](witch_greedy1.svg)
 
-2. The quote is detected, and then the engine tries to find a match for the rest of the pattern. It tries to see if the rest of the subject string conforms to `pattern:.+"`.
+2. Les premiers guillemets trouvé, le moteur essaye de trouver la correspondance pour la suite du modèle. Il essaye de voir si le reste de la chaîne suit le modèle `pattern:.+"`.
 
-    In our case the next pattern character is `pattern:.` (a dot). It denotes "any character except a newline", so the next string letter `match:'w'` fits:
+    Dans notre cas le caractère suivant dans le modèle est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` marche :
 
     ![](witch_greedy2.svg)
 
-3. Then the dot repeats because of the quantifier `pattern:.+`. The regular expression engine adds to the match one character after another.
+3. Le point est alors répété avec le quantificateur `pattern:.+`. le moteur d'expression rationnelle ajoute à la correspondance, les caractères les uns à la suite des autres.
 
-    ...Until when? All characters match the dot, so it only stops when it reaches the end of the string:
+    ... Jusqu'à quand ? Tout caractère correspond au point, il ne s'arrête qu'une fois arrivé à la fin de chaîne :
 
     ![](witch_greedy3.svg)
 
-4. Now the engine finished repeating `pattern:.+` and tries to find the next character of the pattern. It's the quote `pattern:"`. But there's a problem: the string has finished, there are no more characters!
+4. La répétition du modèle `pattern:.+` maintenant finie, il essaye de trouver le caractère suivant. Ce sont des guillemets droits `pattern:"`. Mais problème : arrivé en bout de chaîne, il n'y a plus de caractère !
 
-    The regular expression engine understands that it took too many `pattern:.+` and starts to *backtrack*.
+    Le moteur d'expressions rationnelles comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
 
-    In other words, it shortens the match for the quantifier by one character:
+    En d'autres termes, il réduit la correspondance avec le quantificateur d'un caractère :
 
     ![](witch_greedy4.svg)
 
-    Now it assumes that `pattern:.+` ends one character before the string end and tries to match the rest of the pattern from that position.
+    Il considère maintenant que `pattern:.+` finit un caractère avant la fin de chaîne et essaye de la trouver la fin du modèle à partir de cette position.
 
-    If there were a quote there, then the search would end, but the last character is `subject:'e'`, so there's no match.
+    Et s'il y avait des guillemets ici, alors la recherche serait fini, mais le dernier caractère est `subject:'e'`, il n'y a donc toujours pas de correspondance.
 
-5. ...So the engine decreases the number of repetitions of `pattern:.+` by one more character:
+5. ... Le moteur d'expression rationnelle diminue encore le nombre de répétitions de `pattern:.+` d'un autre caractère :
 
     ![](witch_greedy5.svg)
 
-    The quote `pattern:'"'` does not match `subject:'n'`.
+    les guillemets `pattern:'"'` ne correspondent pas à `subject:'n'`.
 
-6. The engine keep backtracking: it decreases the count of repetition for `pattern:'.'` until the rest of the pattern (in our case `pattern:'"'`) matches:
+6. Le moteur continue sa marche arrière : il réduit le nombre de répétitions de `pattern:'.'` jusqu'à trouver une correspondance pour la suite du modèle (dans notre cas `pattern:'"'`) :
 
     ![](witch_greedy6.svg)
 
-7. The match is complete.
+7. La correspondance avec modèle est complète.
 
-8. So the first match is `match:"witch" and her "broom"`. If the regular expression has flag `pattern:g`, then the search will continue from where the first match ends. There are no more quotes in the rest of the string `subject:is one`, so no more results.
+8. La première correspondance est donc `match:"witch" and her "broom"`. Si l'expression régulière porte le marqueur `pattern:g`, alors la recherche continuera à partir de la fin de la première correspondance. Comme il n'y a plus de guillemets dans la suite de la chaîne `subject:is one`, il n'y pas d'autres correspondance.
 
-That's probably not what we expected, but that's how it works.
+Ce n'est peut-être pas ce que nous attendions, mais c'est ainsi que sa fonctionne.
 
-**In the greedy mode (by default) a quantified character is repeated as many times as possible.**
+**En mode glouton (mode par défaut) un caractère avec quantificateur est répété autant de fois que possible.**
 
-The regexp engine adds to the match as many characters as it can for `pattern:.+`, and then shortens that one by one, if the rest of the pattern doesn't match.
+Le moteur d'expression rationnelle ajoute autant de caractères que possible pour le modèle `pattern:.+`, puis réduit la correspondance caractère par caractère, si la suite du modèle ne trouve pas de correspondance.
 
-For our task we want another thing. That's where a lazy mode can help.
+Nous avons besoin d'autre chose pour mener à bien notre tâche. Et le mode paresseux va pouvoir nous aider.
 
 ## Lazy mode
 
