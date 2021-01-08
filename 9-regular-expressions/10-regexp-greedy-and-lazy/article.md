@@ -2,15 +2,15 @@
 
 Les quantificateurs, à première vue, très simples, peuvent parfois être retors.
 
-Nous devons mieux comprendre comment marche une recherche pour arriver à trouver des modèles plus complexes que `pattern:/\d+/`.
+Pour réussir à trouver des motifs plus complexes que `pattern:/\d+/`, nous devons voir plus en détail comment se déroule une recherche.
 
 Prenons comme exemple la tâche suivante.
 
-Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, qui sont préférés comme typographie dans de nombreux pays.
+Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, souvent préférés comme typographie dans de nombreux pays.
 
 Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe d'autre guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
 
-La première chose à faire est de trouver ces guillemets droits, et nous pourrons alors les remplacer.
+La première chose à faire est de trouver ces guillemets droits, et nous pourrons ensuite les remplacer.
 
 Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche, mais pas exactement !
 
@@ -24,7 +24,7 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch" and her "broom"
 ```
 
-... Nous pouvons voir que ça ne marche exactement comme prévu !
+... Nous pouvons voir que ça ne marche pas exactement comme prévu !
 
 Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
@@ -32,65 +32,65 @@ Qui peut être vu comme "La cupidité est à la racine de tous les ennuis".
 
 ## Recherche gloutonne
 
-Pour trouver une correspondance, le moteur d'expression rationnelle utilise l'algorithme suivant :
+Pour trouver une correspondance, le moteur d'expression régulière utilise l'algorithme suivant :
 
 - Pour chacune des positions de la chaîne de caractère
-    - Essaye de trouver le modèle à cette position.
+    - Essaye de trouver le motif à cette position.
     - S'il n'y a pas de correspondance, va à la prochaine position.
 
-Cette description succincte ne vous éclaire peut être pas plus sur la raison de l'échec de la recherche précédente, alors voyons plus en détail comment se déroule la recherche du modèle `pattern:".+"`.
+Cette description succincte ne vous éclaire peut être pas plus sur la raison de l'échec de la recherche précédente, alors voyons plus en détail comment se déroule la recherche du motif `pattern:".+"`.
 
-1. le premier caractère du modèle sont des guillemets droits `pattern:"`.
+1. le premier caractère du motif sont des guillemets droits `pattern:"`.
 
-    le moteur d'expressions rationnelles essaye de les trouver à la position zéro de la chaîne originale `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
+    le moteur d'expressions régulières essaye de les trouver à la position zéro de la chaîne originale `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
 
-    Puis il avance : va aux positions suivantes dans la chaîne source et essaye d'y trouver le premier caractère du modèle, il échoue une nouvelle fois, avant de trouver les guillemets en troisième position :
+    Puis il avance : va aux positions suivantes dans la chaîne source et essaye d'y trouver le premier caractère du motif, il échoue une nouvelle fois, avant de trouver les guillemets en troisième position :
 
     ![](witch_greedy1.svg)
 
-2. Les premiers guillemets trouvé, le moteur essaye de trouver la correspondance pour la suite du modèle. Il essaye de voir si le reste de la chaîne suit le modèle `pattern:.+"`.
+2. Les premiers guillemets trouvé, le moteur essaye de trouver la correspondance pour la suite du motif. Il essaye de voir si le reste de la chaîne suit le motif `pattern:.+"`.
 
-    Dans notre cas le caractère suivant dans le modèle est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` marche :
+    Dans notre cas le caractère suivant dans le motif est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` marche :
 
     ![](witch_greedy2.svg)
 
-3. Le point est alors répété avec le quantificateur `pattern:.+`. le moteur d'expression rationnelle ajoute à la correspondance, les caractères les uns à la suite des autres.
+3. Le point est alors répété avec le quantificateur `pattern:.+`. le moteur d'expression régulière ajoute à la correspondance, les caractères les uns à la suite des autres.
 
     ... Jusqu'à quand ? Tout caractère correspond au point, il ne s'arrête qu'une fois arrivé à la fin de chaîne :
 
     ![](witch_greedy3.svg)
 
-4. La répétition du modèle `pattern:.+` maintenant finie, il essaye de trouver le caractère suivant. Ce sont des guillemets droits `pattern:"`. Mais problème : arrivé en bout de chaîne, il n'y a plus de caractère !
+4. La répétition du motif `pattern:.+` maintenant finie, il essaye de trouver le caractère suivant. Ce sont des guillemets droits `pattern:"`. Mais problème : arrivé en bout de chaîne, il n'y a plus de caractère !
 
-    Le moteur d'expressions rationnelles comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
+    Le moteur d'expressions régulières comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
 
     En d'autres termes, il réduit la correspondance avec le quantificateur d'un caractère :
 
     ![](witch_greedy4.svg)
 
-    Il considère maintenant que `pattern:.+` finit un caractère avant la fin de chaîne et essaye de la trouver la fin du modèle à partir de cette position.
+    Il considère maintenant que `pattern:.+` finit un caractère avant la fin de chaîne et essaye de la trouver la fin du motif à partir de cette position.
 
     Et s'il y avait des guillemets ici, alors la recherche serait fini, mais le dernier caractère est `subject:'e'`, il n'y a donc toujours pas de correspondance.
 
-5. ... Le moteur d'expression rationnelle diminue encore le nombre de répétitions de `pattern:.+` d'un autre caractère :
+5. ... Le moteur d'expression régulière diminue encore le nombre de répétitions de `pattern:.+` d'un autre caractère :
 
     ![](witch_greedy5.svg)
 
     les guillemets `pattern:'"'` ne correspondent pas à `subject:'n'`.
 
-6. Le moteur continue sa marche arrière : il réduit le nombre de répétitions de `pattern:'.'` jusqu'à trouver une correspondance pour la suite du modèle (dans notre cas `pattern:'"'`) :
+6. Le moteur continue sa marche arrière : il réduit le nombre de répétitions de `pattern:'.'` jusqu'à trouver une correspondance pour la suite du motif (dans notre cas `pattern:'"'`) :
 
     ![](witch_greedy6.svg)
 
-7. La correspondance avec modèle est complète.
+7. La correspondance avec motif est complète.
 
 8. La première correspondance est donc `match:"witch" and her "broom"`. Si l'expression régulière porte le marqueur `pattern:g`, alors la recherche continuera à partir de la fin de la première correspondance. Comme il n'y a plus de guillemets dans la suite de la chaîne `subject:is one`, il n'y pas d'autres correspondance.
 
-Ce n'est peut-être pas ce que nous attendions, mais c'est ainsi que sa fonctionne.
+Ce n'est peut-être pas ce que nous attendions, mais c'est ainsi que cela fonctionne.
 
-**En mode glouton (mode par défaut) un caractère avec quantificateur est répété autant de fois que possible.**
+**En mode glouton (mode par défaut) un caractère suivi d'un quantificateur est répété autant de fois que possible.**
 
-Le moteur d'expression rationnelle ajoute autant de caractères que possible pour le modèle `pattern:.+`, puis réduit la correspondance caractère par caractère, si la suite du modèle ne trouve pas de correspondance.
+Le moteur d'expression régulière ajoute autant de caractères que possible pour le motif `pattern:.+`, puis réduit la correspondance caractère par caractère, si la suite du motif ne trouve pas de correspondance.
 
 Nous avons besoin d'autre chose pour mener à bien notre tâche. Et le mode paresseux va pouvoir nous aider.
 
