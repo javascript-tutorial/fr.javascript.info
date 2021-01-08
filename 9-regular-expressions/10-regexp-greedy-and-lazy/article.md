@@ -94,15 +94,15 @@ Le moteur d'expression régulière ajoute autant de caractères que possible pou
 
 Nous avons besoin d'autre chose pour mener à bien notre tâche. Et le mode paresseux va pouvoir nous aider.
 
-## Lazy mode
+## Mode paresseux
 
-The lazy mode of quantifiers is an opposite to the greedy mode. It means: "repeat minimal number of times".
+Le mode paresseux des quantificateurs est l'opposé du mode glouton. Il signifie : "répète le motif le moins de fois possible".
 
-We can enable it by putting a question mark `pattern:'?'` after the quantifier, so that it becomes  `pattern:*?` or `pattern:+?` or even `pattern:??` for `pattern:'?'`.
+Nous pouvons l'activer en ajoutant un `pattern:'?'` après le quantificateur, il devient alors  `pattern:*?` ou `pattern:+?` ou encore `pattern:??` pour le `pattern:'?'`.
 
-To make things clear: usually a question mark `pattern:?` is a quantifier by itself (zero or one), but if added *after another quantifier (or even itself)* it gets another meaning -- it switches the matching mode from greedy to lazy.
+Pour clarifier les choses : le point d'interrogation `pattern:?` est en général un quantificateur (zero ou un), mais si nous l'ajoutons *à la suite d'un autre quantificateur (ou bien lui même)* il prend une autre signification -- il change le mode de correspondance de glouton à paresseux.
 
-The regexp `pattern:/".+?"/g` works as intended: it finds `match:"witch"` and `match:"broom"`:
+La regexp `pattern:/".+?"/g` fonctionne alors comme prévu : elle trouve `match:"witch"` et `match:"broom"`:
 
 ```js run
 let regexp = /".+?"/g;
@@ -112,60 +112,60 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch", "broom"
 ```
 
-To clearly understand the change, let's trace the search step by step.
+Pour bien comprendre la différence, suivons cette recherche pas à pas.
 
-1. The first step is the same: it finds the pattern start `pattern:'"'` at the 3rd position:
+1. La première étape est la même : elle trouve le premier motif `pattern:'"'` en 3e position :
 
     ![](witch_greedy1.svg)
 
-2. The next step is also similar: the engine finds a match for the dot `pattern:'.'`:
+2. L'étape suivante est aussi semblable : le moteur trouve une correspondance pour le point `pattern:'.'`:
 
     ![](witch_greedy2.svg)
 
-3. And now the search goes differently. Because we have a lazy mode for `pattern:+?`, the engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern  `pattern:'"'` right now:
+3. La recherche prend ensuite un chemin different. Comme nous somme en mode paresseux pour `pattern:+?`, le moteur n'essaye pas de faire correspondre à nouveau un point, mais s'arrête et essaye immédiatement de trouver une correspondance à la suite du motif `pattern:'"'` :
 
     ![](witch_lazy3.svg)
 
-    If there were a quote there, then the search would end, but there's `'i'`, so there's no match.
-4. Then the regular expression engine increases the number of repetitions for the dot and tries one more time:
+    S'il y avait des guillemets ici, alors la recherche s'arrêterait, mais il y a un `'i'`, donc pas de correspondance.
+4. Le moteur d'expressions régulières augmente alors le nombre de répétitions pour le point et essaye à nouveau :
 
     ![](witch_lazy4.svg)
 
-    Failure again. Then the number of repetitions is increased again and again...
-5. ...Till the match for the rest of the pattern is found:
+    Nouvel échec. Le nombre de répétitions augmente alors encore et encore ...
+5. ... Jusqu'à trouver une correspondance à la suite du motif :
 
     ![](witch_lazy5.svg)
 
-6. The next search starts from the end of the current match and yield one more result:
+6. La recherche suivant commence alors depuis la fin de la correspondance et ressort une autre résultat :
 
     ![](witch_lazy6.svg)
 
-In this example we saw how the lazy mode works for `pattern:+?`. Quantifiers `pattern:*?` and `pattern:??` work the similar way -- the regexp engine increases the number of repetitions only if the rest of the pattern can't match on the given position.
+Dans cet exemple nous avons vu comment le mode paresseux fonctionne pour `pattern:+?`. Les quantificateurs `pattern:*?` et `pattern:??` fonctionne de la même manière -- le moteur de regexp augmente le nombre de répétitions seulement si le reste du motif ne trouve pas de correspondance à cette position.
 
-**Laziness is only enabled for the quantifier with `?`.**
+**La paresse n'est active que pour le quantificateur suivi de `?`.**
 
-Other quantifiers remain greedy.
+Les autres quantificateurs restent glouton.
 
-For instance:
+Par exemple :
 
 ```js run
 alert( "123 456".match(/\d+ \d+?/) ); // 123 4
 ```
 
-1. The pattern `pattern:\d+` tries to match as many digits as it can (greedy mode), so it finds  `match:123` and stops, because the next character is a space `pattern:' '`.
-2. Then there's a space in the pattern, it matches.
-3. Then there's `pattern:\d+?`. The quantifier is in lazy mode, so it finds one digit `match:4` and tries to check if the rest of the pattern matches from there.
+1. Le motif `pattern:\d+` essaye de trouver autant de chiffres que possible (mode glouton), il trouve donc  `match:123` et s'arrête, car le caractère suivant est un `pattern:' '`.
+2. Il y a ensuite un espace dans le motif, il y bien correspondance.
+3. Enfin il y a `pattern:\d+?`. Le quantificateur est en mode paresseux, il trouve donc un chiffre `match:4` et vérifie si la suite du motif trouve une correspondance à partir d'ici.
 
-    ...But there's nothing in the pattern after `pattern:\d+?`.
+    ... Mais il n'y a plus rien dans le motif après `pattern:\d+?`.
 
-    The lazy mode doesn't repeat anything without a need. The pattern finished, so we're done. We have a match `match:123 4`.
+    Le mode paresseux ne répète rien sans en avoir besoin. Le motif est terminé, donc la recherche aussi. Nous avons une correspondance `match:123 4`.
 
-```smart header="Optimizations"
-Modern regular expression engines can optimize internal algorithms to work faster. So they may work a bit differently from the described algorithm.
+```smart header="Optimisations"
+Les moteurs d'expressions régulières récents arrive à optimiser leurs algorithmes internes. Ils fonctionnent donc un peu différemment.
 
-But to understand how regular expressions work and to build regular expressions, we don't need to know about that. They are only used internally to optimize things.
+Mais pour comprendre comment fonctionne les expression régulières et contruire des expressions régulière, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisé en interne pour optimiser les choses.
 
-Complex regular expressions are hard to optimize, so the search may work exactly as described as well.
+Comme les expressions régulières complexes sont sont difficiles à optimiser, la recherche peut se dérouler exactement comme nous l'avons décri.
 ```
 
 ## Alternative approach
