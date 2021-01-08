@@ -1,9 +1,9 @@
 
 # Échappement, caractères spéciaux
 
-Comme nous l'avons vu, la barre oblique inversée (ou backslash) `pattern:\` est utilisée pour désigner une classe de caractères, e.g. `pattern:\d`. C'est donc un caractère spécial dans les expressions régulières (comme dans les chaînes de caractères classiques).
+Comme nous l'avons vu, la barre oblique inversée (ou backslash) `pattern:\` est utilisée pour désigner une classe de caractères, p. ex. `pattern:\d`. C'est donc un caractère spécial dans les expressions régulières (comme dans les chaînes de caractères classiques).
 
-Il y a d'autres caractères spéciaux, qui ont un sens particulier dans une expression rationnelle. Ils sont utilisés pour effectuer des recherches avancées. En voici la liste complète : `pattern:[ \ ^ $ . | ? * + ( )`.
+Il y a d'autres caractères spéciaux, qui ont un sens particulier dans une expression régulière. Ils sont utilisés pour effectuer des recherches avancées. En voici la liste complète : `pattern:[ \ ^ $ . | ? * + ( )`.
 
 Inutile de mémoriser maintenant cette liste -- nous verrons chacun d'entre eux en détail, et vous les connaîtrez bientôt tous par cœur.
 
@@ -27,7 +27,7 @@ Les parenthèses sont aussi des caractères spéciaux, donc pour en rechercher u
 alert( "function g()".match(/g\(\)/) ); // "g()"
 ```
 
-Si nous recherchons un backslash `\`, comme c'est un caractère spécial aussi bien pour une expression rationnelle que pour une chaîne de caractère classique, nous devons donc le doubler.
+Si nous recherchons un backslash `\`, comme c'est un caractère spécial aussi bien pour une expression régulière que pour une chaîne de caractère classique, nous devons donc le doubler.
 
 ```js run
 alert( "1\\2".match(/\\/) ); // '\'
@@ -35,7 +35,7 @@ alert( "1\\2".match(/\\/) ); // '\'
 
 ## La barre oblique ou slash
 
-Un slash `'/'` n'est pas un caractère spécial, mais en javascript, il est utilisé pour ouvrir et fermer l'expression rationnelle : `pattern:/...pattern.../`, nous devons donc aussi l'échapper.
+Un slash `'/'` n'est pas un caractère spécial, mais en javascript, il est utilisé pour ouvrir et fermer l'expression régulière : `pattern:/...pattern.../`, nous devons donc aussi l'échapper.
 
 Voici à quoi ressemble une recherche d'un slash `'/'` :
 
@@ -43,7 +43,7 @@ Voici à quoi ressemble une recherche d'un slash `'/'` :
 alert( "/".match(/\//) ); // '/'
 ```
 
-Par contre si nous n'utilisons pas l'écriture `pattern:/.../`, mais créons l'expression rationnelle avec `new RegExp`, alors nous n'avons plus besoin de l'échapper :
+Par contre si nous n'utilisons pas l'écriture `pattern:/.../`, mais créons l'expression régulière avec `new RegExp`, alors nous n'avons plus besoin de l'échapper :
 
 ```js run
 alert( "/".match(new RegExp("/")) ); // trouve /
@@ -51,7 +51,7 @@ alert( "/".match(new RegExp("/")) ); // trouve /
 
 ## new RegExp
 
-Si nous construisons une expression rationnelle avec `new RegExp`, nous n'avons pas besoin d'échapper les `/`, mais nous aurons besoin d'autres échappements.
+Si nous construisons une expression régulière avec `new RegExp`, nous n'avons pas besoin d'échapper les `/`, mais nous aurons besoin d'autres échappements.
 
 Par exemple, considérons :
 
@@ -95,5 +95,5 @@ alert( "Chapter 5.1".match(regexp) ); // 5.1
 ## Résumé
 
 - Pour rechercher exactement un caractère spécial `pattern:[ \ ^ $ . | ? * + ( )`, nous devons le précéder d'un backslash `\` ("nous l'échappons").
-- Nous devons aussi échapper un `/` si nous sommes dans un modèle `pattern:/.../` (mais pas en utilisant `new RegExp`).
+- Nous devons aussi échapper un `/` si nous sommes dans une expression régulière `pattern:/.../` (mais pas en utilisant `new RegExp`).
 - Lorsque l'on passe une chaîne de caractères à `new RegExp`, nous devons doubler les backslashes `\\`, car la chaîne en consomme un.
