@@ -6,7 +6,7 @@ Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` s
 
 Par exemple, `pattern:[eao]` signifie un caractère qui est soit `'a'`, `'e'`, ou `'o'`.
 
-On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une même expression rationnelle :
+On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une même expression régulière :
 
 ```js run
 // trouve [t ou m], puis "op"
@@ -22,7 +22,7 @@ L'exemple suivant ne donne donc aucun résultat :
 alert( "Voila".match(/V[oi]la/) ); // null, pas de correspondance
 ```
 
-L'expression rationnelle recherche :
+L'expression régulière recherche :
 
 - `pattern:V`,
 - puis *une* des lettres `pattern:[oi]`,
@@ -50,7 +50,7 @@ Nous pouvons aussi utiliser les classes de caractères entre `[…]`.
 
 Par exemple, si nous voulons chercher un caractère alphanumérique, un trait de soulignement `pattern:\w` ou un tiret `pattern:-`, alors l'ensemble s'écrit `pattern:[\w-]`.
 
-Il est aussi possible de combiner plusieurs classes, e.g. `pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
+Il est aussi possible de combiner plusieurs classes, p. ex. `pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
 
 ```smart header="Les classes de caractères sont en fait des racourcis pour des intervalles de caractères particuliers"
 Par exemple:
@@ -62,9 +62,9 @@ Par exemple:
 
 ### Exemple : \w multi-langue
 
-Comme la classe de caractères `pattern:\w` est un raccourcis pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
+Comme la classe de caractères `pattern:\w` est un raccourci pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
 
-Nous pouvons écrire un modèle plus universel, pour rechercher le caractère d'un mot quelle que soit la langue. Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Nous pouvons écrire un motif plus universel, pour rechercher le caractère d'un mot quelle que soit la langue. Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
 Déchiffrons cela. Tout comme `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
 
@@ -72,7 +72,7 @@ Déchiffrons cela. Tout comme `pattern:\w`, nous construisons notre propre ensem
 - `Mark` (`M`) - pour les accents,
 - `Decimal_Number` (`Nd`) - pour les nombres,
 - `Connector_Punctuation` (`Pc`) - pour le trait de soulignement `'_'` et autres caractères similaires,
-- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, e.g. en arabe.
+- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, p. ex. en arabe.
 
 Exemple d'usage :
 
@@ -90,7 +90,7 @@ Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des 
 ```warn header="Les propriétés Unicode ne sont pas supportées par IE"
 Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](http://xregexp.com/).
 
-Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, e.g.  `pattern:[а-я]` pour les lettres cyrilliques.
+Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, p. ex.  `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
 ## Intervalles d'exclusion
@@ -124,9 +124,9 @@ Habituellement, lorsque nous cherchons précisément un caractère spécial, nou
 
 En d'autres termes, tous les caractères spéciaux ne sont pas échappés, sauf s'ils ont un sens particulier pour un ensemble.
 
-Un point `.` à l'intérieur de crochets signifie juste un point. Le modèle `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
+Un point `.` à l'intérieur de crochets signifie juste un point. Le motif `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
 
-Dans l'exemple ci-dessous l'expression rationnelle `pattern:[-().^+]` cherche un des caractères `-().^+`:
+Dans l'exemple ci-dessous l'expression régulière `pattern:[-().^+]` cherche un des caractères `-().^+`:
 
 ```js run
 // Pas besoin d'échapper
@@ -155,9 +155,9 @@ alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui resse
 // (la recherche n'a pas fonctionné correctement, seule une moitié du caractère est retournée)
 ```
 
-Le résultat n'est pas celui attendu, car par défaut une expression rationnelle ne reconnait pas une telle paire.
+Le résultat n'est pas celui attendu, car par défaut une expression régulière ne reconnait pas une telle paire.
 
-Le moteur d'expression rationnelle pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
+Le moteur d'expression régulière pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
 1. la moitié gauche de `𝒳` `(1)`,
 2. la moitié droite de `𝒳` `(2)`,
 3. la moitié gauche de `𝒴` `(3)`,
@@ -189,7 +189,7 @@ Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 
 En effet sans le marqueur `pattern:u` une paire de seizets est perçue comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que le dernier `55349`. Ce qui explique l'erreur précédente.
 
-Avec le marqueur `pattern:u` le modèle est interprété correctement :
+Avec le marqueur `pattern:u` le motif est interprété correctement :
 
 ```js run
 // Cherche un caractère entre 𝒳 et 𝒵 compris
