@@ -1,6 +1,6 @@
-# Find HTML comments
+# Trouver des commentaires HTML
 
-Find all HTML comments in the text:
+Trouver tous les commentaires HTML dans le texte :
 
 ```js
 let regexp = /your regexp/g;
