@@ -42,11 +42,19 @@ Nous avons entièrement couvert `method`, `headers` et `body` dans le chapitre <
 
 L'option `signal` est couverte dans <info:fetch-abort>.
 
+<<<<<<< HEAD
 Explorons maintenant le reste des capacités.
 
 ## referrer, referrerPolicy
 
 Ces options régissent la façon dont `fetch` définit l'en-tête HTTP `Referer`.
+=======
+Now let's explore the remaining capabilities.
+
+## referrer, referrerPolicy
+
+These options govern how `fetch` sets the HTTP `Referer` header.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Habituellement, cet en-tête est défini automatiquement et contient l'url de la page à l'origine de la requête. Dans la plupart des scénarios, ce n'est pas important du tout, parfois, pour des raisons de sécurité, il est logique de le supprimer ou de le raccourcir.
 
@@ -81,10 +89,15 @@ Les requêtes sont divisées en 3 types :
 2. Requête à une autre origine.
 3. Requête de HTTPS à HTTP (du protocole sûr au protocole non sécurisé).
 
+<<<<<<< HEAD
 Contrairement à l'option `referrer` qui permet de définir la valeur exacte de `Referer`, `referrerPolicy` indique les règles générales du navigateur pour chaque type de requête.
+=======
+Unlike the `referrer` option that allows to set the exact `Referer` value, `referrerPolicy` tells the browser general rules for each request type.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Les valeurs possibles sont décrites dans la [spécification Referrer Policy](https://w3c.github.io/webappsec-referrer-policy/):
 
+<<<<<<< HEAD
 - **`"no-referrer-when-downgrade"`** -- la valeur par défaut : le `Referer` complet est toujours envoyé, sauf si nous envoyons une requête de HTTPS à HTTP (vers un protocole moins sécurisé).
 - **`"no-referrer"`** -- ne jamais envoyer de `Referer`.
 - **`"origin"`** -- envoyer uniquement l'origine dans `Referer`, pas l'URL de la page complète, par exemple uniquement `http://site.com` au lieu de` http://site.com/path`.
@@ -93,6 +106,16 @@ Les valeurs possibles sont décrites dans la [spécification Referrer Policy](ht
 - **`"strict-origin"`** -- envoyer uniquement l'origine, ne pas envoyer de `Referer` pour les requêtes HTTPS → HTTP.
 - **`"strict-origin-when-cross-origin"`** -- pour la même origine envoyer un `Referer` complet, pour une cross-origin, envoyer uniquement l'origine, à moins que ce ne soit HTTPS → requête HTTP, puis ne rien envoyer.
 - **`"unsafe-url"`** -- toujours envoyer l'url complète dans `Referer`, même pour les requêtes HTTPS → HTTP
+=======
+- **`"no-referrer-when-downgrade"`** -- the default value: full `Referer` is always sent, unless we send a request from HTTPS to HTTP (to the less secure protocol).
+- **`"no-referrer"`** -- never send `Referer`.
+- **`"origin"`** -- only send the origin in `Referer`, not the full page URL, e.g. only `http://site.com` instead of `http://site.com/path`.
+- **`"origin-when-cross-origin"`** -- send the full `Referer` to the same origin, but only the origin part for cross-origin requests (as above).
+- **`"same-origin"`** -- send the full `Referer` to the same origin, but no `Referer` for cross-origin requests.
+- **`"strict-origin"`** -- send only the origin, not the `Referer` for HTTPS→HTTP requests.
+- **`"strict-origin-when-cross-origin"`** -- for same-origin send the full `Referer`, for cross-origin send only the origin, unless it's HTTPS→HTTP request, then send nothing.
+- **`"unsafe-url"`** -- always send the full url in `Referer`, even for HTTPS→HTTP requests.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Voici un tableau avec toutes les combinaisons :
 
@@ -107,13 +130,21 @@ Voici un tableau avec toutes les combinaisons :
 | `"strict-origin-when-cross-origin"`              | full                 | origin                 | -          |
 | `"unsafe-url"`                                   | full                 | full                   | full       |
 
+<<<<<<< HEAD
 Disons que nous avons une zone d'administration avec une structure d'URL qui ne devrait pas être connue de l'extérieur du site.
+=======
+Let's say we have an admin zone with a URL structure that shouldn't be known from outside of the site.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Si nous envoyons un `fetch`, alors par défaut, il envoie toujours l'en-tête `Referer` avec l'url complète de notre page (sauf lorsque nous demandons de HTTPS à HTTP, alors pas de `Referer`).
 
 Par exemple : `Referer: https://javascript.info/admin/secret/paths`.
 
+<<<<<<< HEAD
 Si nous souhaitons que d'autres sites Web connaissent uniquement la partie origin, pas le chemin URL, nous pouvons définir l'option :
+=======
+If we'd like other websites know only the origin part, not the URL-path, we can set the option:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js
 fetch('https://another.com/page', {
@@ -129,7 +160,11 @@ Sa seule différence par rapport au comportement par défaut est que pour les re
 ```smart header="La Referrer policy n'est pas seulement pour `fetch`"
 La Referrer policy, décrite dans la [spécification](https://w3c.github.io/webappsec-referrer-policy/), n'est pas seulement pour `fetch`, mais plus globale.
 
+<<<<<<< HEAD
 Plus particulièrement, il est possible de définir la politique par défaut pour toute la page en utilisant l'en-tête HTTP `Referrer-Policy`, ou par lien, avec `<a rel="noreferrer">`.
+=======
+In particular, it's possible to set the default policy for the whole page using the `Referrer-Policy` HTTP header, or per-link, with `<a rel="noreferrer">`.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 ```
 
 ## mode
@@ -152,16 +187,29 @@ L'option `credentials` spécifie si `fetch` doit envoyer des cookies et des en-t
 
 ## cache
 
+<<<<<<< HEAD
 Par défaut, les requêtes `fetch` utilisent la mise en cache HTTP standard. Autrement dit, il honore les en-têtes `Expires`,`Cache-Control`, envoie `If-Modified-Since`, et ainsi de suite. Tout comme les requêtes HTTP régulières.
+=======
+By default, `fetch` requests make use of standard HTTP-caching. That is, it respects the `Expires` and `Cache-Control` headers, sends `If-Modified-Since` and so on. Just like regular HTTP-requests do.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Les options `cache` permettent d'ignorer le cache HTTP ou d'affiner son utilisation :
 
+<<<<<<< HEAD
 - **`"default"`** -- `fetch` utilise des règles et des en-têtes de cache HTTP standard,
 - **`"no-store"`** -- ignore totalement le cache HTTP, ce mode devient la valeur par défaut si nous définissons un en-tête `If-Modified-Since`, `If-None-Match`, `If-Unmodified-Since`, `If-Match`, ou `If-Range`,
 - **`"reload"`** -- ne prenez pas le résultat du cache HTTP (le cas échéant), mais remplissez le cache avec la réponse (si les en-têtes de réponse le permettent),
 - **`"no-cache"`** -- créer une requête conditionnelle s'il y a une réponse mise en cache, et sinon une requête normale. Remplissez le cache HTTP avec la réponse,
 - **`"force-cache"`** -- utilise une réponse du cache HTTP, même si elle est périmée. S'il n'y a pas de réponse dans le cache HTTP, fait une requête HTTP régulière, se comporte normalement,
 - **`"only-if-cached"`** -- utilise une réponse du cache HTTP, même si elle est périmée. S'il n'y a pas de réponse dans le cache HTTP, alors erreur. Fonctionne uniquement lorsque le `mode` est sur `"same-origin"`.
+=======
+- **`"default"`** -- `fetch` uses standard HTTP-cache rules and headers,
+- **`"no-store"`** -- totally ignore HTTP-cache, this mode becomes the default if we set a header `If-Modified-Since`, `If-None-Match`, `If-Unmodified-Since`, `If-Match`, or `If-Range`,
+- **`"reload"`** -- don't take the result from HTTP-cache (if any), but populate the cache with the response (if the response headers permit this action),
+- **`"no-cache"`** -- create a conditional request if there is a cached response, and a normal request otherwise. Populate HTTP-cache with the response,
+- **`"force-cache"`** -- use a response from HTTP-cache, even if it's stale. If there's no response in HTTP-cache, make a regular HTTP-request, behave normally,
+- **`"only-if-cached"`** -- use a response from HTTP-cache, even if it's stale. If there's no response in HTTP-cache, then error. Only works when `mode` is `"same-origin"`.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ## redirect
 
@@ -177,7 +225,11 @@ L'option `redirect` permet de changer cela :
 
 L'option `intégrité` permet de vérifier si la réponse correspond à la somme de contrôle connue à l'avance.
 
+<<<<<<< HEAD
 Comme décrit dans la [spécification](https://w3c.github.io/webappsec-subresource-integrity/), les fonctions de hachage prises en charge sont SHA-256, SHA-384 et SHA-512, il peut y en avoir d'autres en fonction du navigateur.
+=======
+As described in the [specification](https://w3c.github.io/webappsec-subresource-integrity/), supported hash-functions are SHA-256, SHA-384, and SHA-512, there might be others depending on the browser.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Par exemple, nous téléchargeons un fichier et nous savons que sa somme de contrôle SHA-256 est "abcdef" (une vraie somme de contrôle est plus longue, bien sûr).
 
@@ -195,11 +247,19 @@ Ensuite, `fetch` calculera SHA-256 seul et le comparera avec notre chaîne de ca
 
 L'option `keepalive` indique que la demande peut "survivre" à la page Web qui l'a initiée.
 
+<<<<<<< HEAD
 Par exemple, nous recueillons des statistiques sur la façon dont le visiteur actuel utilise notre page (clics de souris, fragments de page qu'il consulte), pour analyser et améliorer l'expérience utilisateur.
 
 Lorsque le visiteur quitte notre page -- nous aimerions enregistrer les données sur notre serveur.
 
 Nous pouvons utiliser l'événement `window.onunload` pour cela :
+=======
+For example, we gather statistics on how the current visitor uses our page (mouse clicks, page fragments he views), to analyze and improve the user experience.
+
+When the visitor leaves our page -- we'd like to save the data to our server.
+
+We can use the `window.onunload` event for that:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 window.onunload = function() {
@@ -213,12 +273,24 @@ window.onunload = function() {
 };
 ```
 
+<<<<<<< HEAD
 Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau associées sont abandonnées. Mais l'option `keepalive` indique au navigateur d'exécuter la requête en arrière-plan, même après avoir quitté la page. Cette option est donc essentielle à la réussite de notre demande.
+=======
+Normally, when a document is unloaded, all associated network requests are aborted. But the `keepalive` option tells the browser to perform the request in the background, even after it leaves the page. So this option is essential for our request to succeed.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Elle a quelques limitations :
 
+<<<<<<< HEAD
 - Nous ne pouvons pas envoyer des mégaoctets : la limite de corps pour les requêtes `keepalive` est de 64kb.
     - Si nous avons besoin de rassembler beaucoup de statistiques sur la visite, nous devons les envoyer régulièrement par paquets, afin qu'il ne reste plus grand-chose pour la dernière requête `onunload`.
     - Cette limite s'applique à toutes les demandes `keepalive` ensemble. En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
 - Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé. Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
     - Dans la plupart des cas, comme l'envoi de statistiques, ce n'est pas un problème, car le serveur accepte simplement les données et envoie généralement une réponse vide à de telles demandes.
+=======
+- We can't send megabytes: the body limit for `keepalive` requests is 64KB.
+    - If we need to gather a lot of statistics about the visit, we should send it out regularly in packets, so that there won't be a lot left for the last `onunload` request.
+    - This limit applies to all `keepalive` requests together. In other words, we can perform multiple `keepalive` requests in parallel, but the sum of their body lengths should not exceed 64KB.
+- We can't handle the server response if the document is unloaded. So in our example `fetch` will succeed due to `keepalive`, but subsequent functions won't work.
+    - In most cases, such as sending out statistics, it's not a problem, as the server just accepts the data and usually sends an empty response to such requests.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f

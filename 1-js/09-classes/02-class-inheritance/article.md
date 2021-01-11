@@ -150,8 +150,13 @@ class Rabbit extends Animal {
 
 let rabbit = new Rabbit("White Rabbit");
 
+<<<<<<< HEAD
 rabbit.run(5); // White Rabbit court à la vitesse 5.
 rabbit.stop(); // White Rabbit reste immobile. White Rabbit se cache!
+=======
+rabbit.run(5); // White Rabbit runs with speed 5.
+rabbit.stop(); // White Rabbit stands still. White Rabbit hides!
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 ```
 
 Maintenant, `Rabbit` a la méthode `stop` qui appelle le `super.stop()` du parent dans le processus.

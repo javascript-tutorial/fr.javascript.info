@@ -98,13 +98,13 @@ Divise la chaîne de caractères en utilisant la regexp (ou une sous-chaîne de 
 Nous pouvons utiliser `split` avec une chaîne de caractères comme ceci :
 
 ```js run
-alert('12-34-56'.split('-')) // array of [12, 34, 56]
+alert('12-34-56'.split('-')) // array of ['12', '34', '56']
 ```
 
 Mais nous pouvons aussi diviser une chaîne de texte en utilisant une expression rationnelle:
 
 ```js run
-alert('12, 34, 56'.split(/,\s*/)) // array of [12, 34, 56]
+alert('12, 34, 56'.split(/,\s*/)) // array of ['12', '34', '56']
 ```
 
 ## str.search(regexp)

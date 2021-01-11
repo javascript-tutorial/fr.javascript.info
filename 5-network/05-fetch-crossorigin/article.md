@@ -28,7 +28,11 @@ Plus sérieusement, faisons une très brève digression historique.
 
 **Pendant de nombreuses années, un script d'un site n'a pas pu accéder au contenu d'un autre site.**
 
+<<<<<<< HEAD
 Cette règle simple mais puissante a été le fondement de la sécurité Internet. Par exemple. un script malveillant du site Web `hacker.com` ne pouvait pas accéder à la boîte aux lettres de l'utilisateur sur le site Web `gmail.com`. Les gens se sentaient en sécurité.
+=======
+That simple, yet powerful rule was a foundation of the internet security. E.g. an evil script from website `hacker.com` could not access the user's mailbox at website `gmail.com`. People felt safe.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 JavaScript n'avait pas non plus de méthodes spéciales pour effectuer des requêtes réseau à l'époque. C'était un langage pour s'amuser à décorer une page Web.
 
@@ -125,15 +129,25 @@ Contrairement à cela, les requêtes avec des en-têtes non standard ou par exem
 
 Lorsque nous essayons de faire une requête non sécurisée, le navigateur envoie une demande spéciale de "contrôle en amont" qui demande au serveur -- accepte-t-il ou non ces requêtes cross-origin ?
 
+<<<<<<< HEAD
 Et, à moins que le serveur ne confirme explicitement cela avec ces en-têtes, une demande non sécurisée n'est pas envoyée.
+=======
+And, unless the server explicitly confirms that with headers, an unsafe request is not sent.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Nous allons maintenant entrer dans les détails.
 
 ## CORS pour des requêtes sécurisées
 
+<<<<<<< HEAD
 Si une requête est une cross-origin, le navigateur lui ajoute toujours l'en-tête `Origin`.
 
 Par exemple, si nous requêtons `https://anywhere.com/request` depuis `https://javascript.info/page`, les en-têtes ressembleront à cela :
+=======
+If a request is cross-origin, the browser always adds the `Origin` header to it.
+
+For instance, if we request `https://anywhere.com/request` from `https://javascript.info/page`, the headers will look like:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```http
 GET /request
@@ -144,9 +158,15 @@ Origin: https://javascript.info
 ...
 ```
 
+<<<<<<< HEAD
 Comme vous pouvez le voir, l'en-tête `Origin` contient exactement l'origine (domaine/protocole/port), sans chemin.
 
 Le serveur peut inspecter le `Origin` et, s'il est convenu d'accepter une telle demande, ajoute un en-tête spécial `Access-Control-Allow-Origin` à la réponse. Cet en-tête doit contenir l'origine autorisée (dans notre cas `https://javascript.info`), ou une étoile `*`. Ensuite, la réponse est réussie, sinon une erreur.
+=======
+As you can see, the `Origin` header contains exactly the origin (domain/protocol/port), without a path.
+
+The server can inspect the `Origin` and, if it agrees to accept such a request, add a special header `Access-Control-Allow-Origin` to the response. That header should contain the allowed origin (in our case `https://javascript.info`), or a star `*`. Then the response is successful, otherwise it's an error.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Le navigateur joue ici le rôle d'un médiateur de confiance :
 1. Il garantit que l'`Origin` correcte est envoyée avec une requête cross-origin.
@@ -182,7 +202,11 @@ Il n'y a pas d'en-tête `Content-Length` dans la liste !
 Cet en-tête contient la longueur de réponse complète. Donc, si nous téléchargeons quelque chose et que nous souhaitons suivre le pourcentage de progression, une autorisation supplémentaire est requise pour accéder à cet en-tête (voir ci-dessous).
 ```
 
+<<<<<<< HEAD
 Pour accorder un accès JavaScript à tout autre en-tête de réponse, le serveur doit envoyer l'en-tête `Access-Control-Expose-Headers`. Il contient une liste séparée par des virgules de noms d'en-tête non sécurisés qui doivent être rendus accessibles.
+=======
+To grant JavaScript access to any other response header, the server must send the `Access-Control-Expose-Headers` header. It contains a comma-separated list of unsafe header names that should be made accessible.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Par exemple :
 
@@ -198,7 +222,11 @@ Access-Control-Expose-Headers: Content-Length,API-Key
 ```
 Avec cet en-tête `Access-Control-Expose-Headers`, le script est autorisé à lire les en-têtes `Content-Length` et `API-Key` de la réponse.
 
+<<<<<<< HEAD
 ## Requêtes "Non-sécurisées" 
+=======
+With such an `Access-Control-Expose-Headers` header, the script is allowed to read the `Content-Length` and `API-Key` headers of the response.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Nous pouvons utiliser n'importe quelle méthode HTTP : pas seulement `GET/POST`, mais aussi `PATCH`, `DELETE` et d'autres.
 
@@ -206,10 +234,16 @@ Il y a quelque temps, personne ne pouvait même imaginer qu'une page Web puisse 
 
 Ainsi, pour éviter les malentendus, toute demande "non sûre" - qui ne pouvait pas être faite par le passé, le navigateur ne fait pas de telles demandes tout de suite. Avant d'envoyer une demande préliminaire, dite de "contrôle en amont", demandant l'autorisation.
 
+<<<<<<< HEAD
 Une requête de contrôle en amont utilise la méthode `OPTIONS`, aucun corps et deux en-têtes :
 
 - l'en-tête `Access-Control-Request-Method` a la méthode de la requête non sécurisée.
 - l'en-tête `Access-Control-Request-Headers` fournit une liste séparée par des virgules de ses en-têtes HTTP non sécurisés.
+=======
+So, to avoid misunderstandings, any "unsafe" request -- that couldn't be done in the old times, the browser does not make such requests right away. First, it sends a preliminary, so-called "preflight" request, to ask for permission.
+
+A preflight request uses the method `OPTIONS`, no body and two headers:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
 
@@ -220,7 +254,11 @@ Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corp
 
 ![](xhr-preflight.svg)
 
+<<<<<<< HEAD
 Voyons comment cela fonctionne étape par étape, par exemple, pour une requête cross-origin `PATCH` (cette méthode est souvent utilisée pour mettre à jour les données) :
+=======
+Let's see how it works step-by-step on the example of a cross-origin `PATCH` request (this method is often used to update data):
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js
 let response = await fetch('https://site.com/service.json', {
@@ -239,7 +277,11 @@ Il y a trois raisons pour lesquelles la demande n'est pas sécurisée (une suffi
 
 ### Étape 1 (requête de contrôle en amont)
 
+<<<<<<< HEAD
 Avant d'envoyer une telle requête, le navigateur envoie lui-même une requête de contrôle en amont qui ressemble à ceci :
+=======
+Prior to sending such a request, the browser, on its own, sends a preflight request that looks like this:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```http
 OPTIONS /service.json
@@ -258,14 +300,22 @@ Access-Control-Request-Headers: Content-Type,API-Key
 
 ### Étape 2 (réponse en amont)
 
+<<<<<<< HEAD
 Le serveur doit répondre avec le statut 200 et les en-têtes :
+=======
+The server should respond with status 200 and the headers:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 - `Access-Control-Allow-Origin: https://javascript.info`
 - `Access-Control-Allow-Methods: PATCH`
 - `Access-Control-Allow-Headers: Content-Type,API-Key`.
 
 Cela permet une communication future, sinon une erreur est déclenchée.
 
+<<<<<<< HEAD
 Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en ajoutant à la liste. 
+=======
+If the server expects other methods and headers in the future, it makes sense to allow them in advance by adding them to the list.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Par exemple, cette réponse autorise également `PUT`, `DELETE` et des en-têtes supplémentaires :
 
@@ -279,13 +329,23 @@ Access-Control-Max-Age: 86400
 
 Maintenant, le navigateur peut voir que `PATCH` est dans `Access-Control-Allow-Methods` et `Content-Type,API-Key` sont dans la liste `Access-Control-Allow-Headers`, il envoie donc la requête principale.
 
+<<<<<<< HEAD
 S'il y a un en-tête `Access-Control-Max-Age` avec un certain nombre de secondes, alors les autorisations de contrôle en amont sont mises en cache pour le temps donné. La réponse ci-dessus sera mise en cache pendant 86 400 secondes (un jour). Dans ce délai, les demandes ultérieures n'entraîneront pas de contrôle en amont. En supposant qu'ils correspondent aux quotas mis en cache, ils seront envoyés directement.
+=======
+If there's the header `Access-Control-Max-Age` with a number of seconds, then the preflight permissions are cached for the given time. The response above will be cached for 86400 seconds (one day). Within this timeframe, subsequent requests will not cause a preflight. Assuming that they fit the cached allowances, they will be sent directly.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ### Étape 3 (requête réelle)
 
+<<<<<<< HEAD
 Lorsque le contrôle en amont réussit, le navigateur fait maintenant la requête principale. Ici, l'algorithme est le même que pour les requêtes sécurisées.
 
 La requête principale a un en-tête `Origin` (car il s'agit d'une cross-origin) :
+=======
+When the preflight is successful, the browser now makes the main request. The process here is the same as for safe requests.
+
+The main request has the `Origin` header (because it's cross-origin):
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```http
 PATCH /service.json
@@ -315,7 +375,11 @@ JavaScript n'obtient la réponse à la requête principale ou une erreur que s'i
 
 Une requête cross-origin initiée par du code JavaScript par défaut n'apporte pas d'informations d'identification (cookies ou authentification HTTP).
 
+<<<<<<< HEAD
 C'est rare pour les requêtes HTTP. Habituellement, une requête de `http://site.com` est accompagnée de tous les cookies de ce domaine. Mais les requêtes cross-origin faites par des méthodes JavaScript sont une exception.
+=======
+That's uncommon for HTTP-requests. Usually, a request to `http://site.com` is accompanied by all cookies from that domain. Cross-origin requests made by JavaScript methods on the other hand are an exception.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Par exemple, `fetch('http://another.com')` n'envoie aucun cookie, même ceux(!) qui appartiennent au domaine `another.com`.
 
@@ -361,21 +425,35 @@ Les requêtes simples doivent satisfaire aux conditions suivantes :
 
 La différence essentielle est que les requêtes sécurisées étaient réalisables depuis très longtemps en utilisant des balises `<form>` ou `<script>`, alors que les requêtes non sécurisées étaient impossibles pour les navigateurs pendant longtemps.
 
+<<<<<<< HEAD
 Ainsi, la différence pratique est que les demandes sécurisées sont envoyées immédiatement, avec l'en-tête `Origin`, tandis que pour les autres, le navigateur fait une requête préliminaire de "contrôle en amont", demandant la permission.
+=======
+So, the practical difference is that safe requests are sent right away, with the `Origin` header, while for the other ones the browser makes a preliminary "preflight" request, asking for permission.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 **Pour les requêtes sécurisées :**
 
+<<<<<<< HEAD
 - → Le navigateur envoie l'en-tête `Origin` avec l'origine.
 - ← Pour les requêtes sans informations d'identification (non envoyées par défaut), le serveur doit définir :
     - `Access-Control-Allow-Origin` avec `*` ou la même valeur que `Origin`
 - ← Pour les requêtes avec informations d'identification, le serveur doit définir :
     - `Access-Control-Allow-Origin` avec la même valeur que `Origin`
     - `Access-Control-Allow-Credentials` à `true`
+=======
+- → The browser sends the `Origin` header with the origin.
+- ← For requests without credentials (not sent by default), the server should set:
+    - `Access-Control-Allow-Origin` to `*` or same value as `Origin`
+- ← For requests with credentials, the server should set:
+    - `Access-Control-Allow-Origin` to same value as `Origin`
+    - `Access-Control-Allow-Credentials` to `true`
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 En outre, pour accorder un accès JavaScript à tous les en-têtes de réponse, sauf `Cache-Control`,  `Content-Language`, `Content-Type`, `Expires`, `Last-Modified` ou `Pragma`, le serveur doit répertorier ceux autorisés dans l'en-tête `Access-Control-Expose-Headers`.
 
 **Pour les requêtes non sécurisées, une demande préalable de "contrôle en amont" est émise avant celle demandée :**
 
+<<<<<<< HEAD
 - → Le navigateur envoie la requête `OPTIONS` à la même URL, avec en-têtes :
     - `Access-Control-Request-Method` a demandé la méthode.
     - `Access-Control-Request-Headers` répertorie les en-têtes non sécurisés demandés.
@@ -384,3 +462,13 @@ En outre, pour accorder un accès JavaScript à tous les en-têtes de réponse, 
     - `Access-Control-Allow-Headers` avec une liste des en-têtes autorisés,
     - `Access-Control-Max-Age` avec un certain nombre de secondes pour mettre en cache les autorisations.
 - Ensuite, la requête réelle est envoyée, le schéma "sécurisé" précédent est appliqué.
+=======
+- → The browser sends an `OPTIONS` request to the same URL, with the headers:
+    - `Access-Control-Request-Method` has requested method.
+    - `Access-Control-Request-Headers` lists unsafe requested headers.
+- ← The server should respond with status 200 and the headers:
+    - `Access-Control-Allow-Methods` with a list of allowed methods,
+    - `Access-Control-Allow-Headers` with a list of allowed headers,
+    - `Access-Control-Max-Age` with a number of seconds to cache the permissions.
+- Then the actual request is sent, and the previous "safe" scheme is applied.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
