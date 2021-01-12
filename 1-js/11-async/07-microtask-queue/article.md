@@ -23,11 +23,7 @@ Pourquoi le `.then` se déclenche par la suite? Que se passe-t-il?
 
 ## File d'attente pour microtaches
 
-<<<<<<< HEAD
-Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme ES8).
-=======
-Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue `PromiseJobs`, more often referred to as the "microtask queue" (V8 term).
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme V8).
 
 Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
 
@@ -107,11 +103,7 @@ Dans l'exemple ci-dessus, `.catch` ajouté par `setTimeout` se déclenche égale
 
 ## Résumé
 
-<<<<<<< HEAD
-Le traitement des promesses est toujours asynchrone, car toutes les actions de promesse passent par la file d'attente interne "promise jobs", également appelée "file d'attente pour microtaches" (terme ES8).
-=======
-Promise handling is always asynchronous, as all promise actions pass through the internal "promise jobs" queue, also called "microtask queue" (V8 term).
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Le traitement des promesses est toujours asynchrone, car toutes les actions de promesse passent par la file d'attente interne "promise jobs", également appelée "microtask queue" (terme V8).
 
 Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois le code actuel terminé.
 

@@ -164,25 +164,10 @@ function curried(...args) {
 
 Quand on la lance, il y a deux branches `if` :
 
-<<<<<<< HEAD
-1. Appeler maintenant : si la longueur du `args` donné est supérieure ou égale à la fonction originelle a dans sa déclaration (`func.length`), alors simplement appeler la fonction avec.
-2. Obtenir une partielle : sinon, `func` n'est pas encore appelée. À la place, une autre enveloppe `pass` est retournée, qui réappliquera `curried` sur les anciens arguments avec les nouveaux. Enfin sur un nouvel appel, encore, nous obtiendrons une nouvelle partielle (s'il n'y a pas assez d'arguments) ou, enfin, le résultat.
+1. Si le nombre d'`args` passé est égal ou supérieur à celui de la fonction d'origine dans sa définition (`func.length`), alors passez-lui simplement l'appel en utilisant `func.apply`.
+2. Sinon, obtenez un partiel : nous n'appelons pas encore `func`. Au lieu de cela, un autre wrapper est retourné, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux.
 
-Par exemple, voyons ce qu'il se passe dans le cas de `sum(a, b, c)`. Trois arguments, donc `sum.length = 3`.
-
-Pour l'appel `curried(1)(2)(3)` :
-
-1. Le premier appel `curried(1)` retient `1` dans son environnement lexical, et retourne une enveloppe `pass`.
-2. L'enveloppe `pass` est appelée avec `(2)` : elle prend les arguments précédents (`1`), les concatène avec ce qu'elle a (`2`) et appelle `curried(1, 2)` avec lesdits arguments. Comme le nombre d'arguments est toujours inférieur à 3, `curry` retourne `pass`.
-3. L'enveloppe `pass` est de nouveau appelée avec `(3)`,  cet appel `pass(3)` prend les anciens arguments (`1`, `2`) et y ajoute `3`, créant l'appel `curried(1, 2, 3)` -- il y a au moins `3` arguments, ils sont donnés à la fonction originelle.
-
-Si ce n'est toujours pas évident, tracez les appels dans votre esprit ou sur un papier.
-=======
-1. If passed `args` count is the same or more than the original function has in its definition (`func.length`) , then just pass the call to it using `func.apply`. 
-2. Otherwise, get a partial: we don't call `func` just yet. Instead, another wrapper is returned, that will re-apply `curried` providing previous arguments together with the new ones. 
-
-Then, if we call it, again, we'll get either a new partial (if not enough arguments) or, finally, the result.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Ensuite, si nous l'appelons, encore une fois, nous obtiendrons soit un nouveau partiel (si pas assez d'arguments) ou, finalement, le résultat.
 
 ```smart header="Fonctions à nombre d'arguments fixe seulement"
 La curryfaction requiert que la fonction ait un nombre d'arguments fixe.

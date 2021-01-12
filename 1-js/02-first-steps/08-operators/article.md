@@ -220,11 +220,7 @@ alert( x ); // 5
 
 Le fait que `=` soit un opérateur, pas une construction de langage "magique" a une implication intéressante.
 
-<<<<<<< HEAD
-La plupart des opérateurs en JavaScript renvoient une valeur. C'est évident pour `+` et `-`, mais aussi vrai pour `=`.
-=======
-All operators in JavaScript return a value. That's obvious for `+` and `-`, but also true for `=`.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Tous les opérateurs en JavaScript renvoient une valeur. C'est évident pour `+` et `-`, mais aussi vrai pour `=`.
 
 L'appel `x = valeur` écrit la` valeur` dans `x` *puis la renvoie*.
 
