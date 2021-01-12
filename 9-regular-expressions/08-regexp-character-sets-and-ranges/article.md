@@ -1,169 +1,169 @@
-# Sets and ranges [...]
+# Ensembles et intervalles [...]
 
-Several characters or character classes inside square brackets `[…]` mean to "search for any character among given".
+Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` signifient "chercher un caractère parmi ceux-là".
 
-## Sets
+## Ensembles
 
-For instance, `pattern:[eao]` means any of the 3 characters: `'a'`, `'e'`, or `'o'`.
+Par exemple, `pattern:[eao]` signifie un caractère qui est soit `'a'`, `'e'`, ou `'o'`.
 
-That's called a *set*. Sets can be used in a regexp along with regular characters:
+On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une même expression régulière :
 
 ```js run
-// find [t or m], and then "op"
+// trouve [t ou m], puis "op"
 alert( "Mop top".match(/[tm]op/gi) ); // "Mop", "top"
 ```
 
-Please note that although there are multiple characters in the set, they correspond to exactly one character in the match.
+Bien qu'il y ait plusieurs caractères dans un ensemble, vous remarquez que l'on ne cherche la correspondance que d'un seul de ces caractères.
 
-So the example below gives no matches:
+L'exemple suivant ne donne donc aucun résultat :
 
 ```js run
-// find "V", then [o or i], then "la"
-alert( "Voila".match(/V[oi]la/) ); // null, no matches
+// trouve "V", puis [o ou i], puis "la"
+alert( "Voila".match(/V[oi]la/) ); // null, pas de correspondance
 ```
 
-The pattern searches for:
+L'expression régulière recherche :
 
 - `pattern:V`,
-- then *one* of the letters `pattern:[oi]`,
-- then `pattern:la`.
+- puis *une* des lettres `pattern:[oi]`,
+- enfin `pattern:la`.
 
-So there would be a match for `match:Vola` or `match:Vila`.
+Ce qui correspondrait à `match:Vola` ou `match:Vila`.
 
-## Ranges
+## Intervalles
 
-Square brackets may also contain *character ranges*.
+Les crochets peuvent aussi contenir des *intervalles de caractères*.
 
-For instance, `pattern:[a-z]` is a character in range from `a` to `z`, and `pattern:[0-5]` is a digit from `0` to `5`.
+Par exemple, `pattern:[a-z]` est un caractère pouvant aller de `a` à `z`, et `pattern:[0-5]` est un chiffre allant de `0` à `5`.
 
-In the example below we're searching for `"x"` followed by two digits or letters from `A` to `F`:
+Dans l'exemple ci-dessous nous recherchons un `"x"` suivi par deux chiffres ou lettres de `A` à `F`:
 
 ```js run
 alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
 ```
 
-Here `pattern:[0-9A-F]` has two ranges: it searches for a character that is either a digit from `0` to `9` or a letter from `A` to `F`.
+Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` comprise.
 
-If we'd like to look for lowercase letters as well, we can add the range `a-f`: `pattern:[0-9A-Fa-f]`. Or add the flag `pattern:i`.
+Si nous voulons y inclure les lettres minuscules, nous pouvons ajouter l'intervalle `a-f`: `pattern:[0-9A-Fa-f]`. Ou bien ajouter le marqueur `pattern:i`.
 
-We can also use character classes inside `[…]`.
+Nous pouvons aussi utiliser les classes de caractères entre `[…]`.
 
-For instance, if we'd like to look for a wordly character `pattern:\w` or a hyphen `pattern:-`, then the set is `pattern:[\w-]`.
+Par exemple, si nous voulons chercher un caractère alphanumérique, un trait de soulignement `pattern:\w` ou un tiret `pattern:-`, alors l'ensemble s'écrit `pattern:[\w-]`.
 
-Combining multiple classes is also possible, e.g. `pattern:[\s\d]` means "a space character or a digit".
+Il est aussi possible de combiner plusieurs classes, p. ex. `pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
 
-```smart header="Character classes are shorthands for certain character sets"
-For instance:
+```smart header="Les classes de caractères sont en fait des racourcis pour des intervalles de caractères particuliers"
+Par exemple:
 
-- **\d** -- is the same as `pattern:[0-9]`,
-- **\w** -- is the same as `pattern:[a-zA-Z0-9_]`,
-- **\s** -- is the same as `pattern:[\t\n\v\f\r ]`, plus few other rare Unicode space characters.
+- **\d** -- équivaut à `pattern:[0-9]`,
+- **\w** -- équivaut à `pattern:[a-zA-Z0-9_]`,
+- **\s** -- équivaut à `pattern:[\t\n\v\f\r ]`, plus quelques autres rares caractères unicodes d'espacement.
 ```
 
-### Example: multi-language \w
+### Exemple : \w multi-langue
 
-As the character class `pattern:\w` is a shorthand for `pattern:[a-zA-Z0-9_]`, it can't find Chinese hieroglyphs, Cyrillic letters, etc.
+Comme la classe de caractères `pattern:\w` est un raccourci pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
 
-We can write a more universal pattern, that looks for wordly characters in any language. That's easy with Unicode properties: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Nous pouvons écrire un motif plus universel, pour rechercher le caractère d'un mot quelle que soit la langue. Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
-Let's decipher it. Similar to `pattern:\w`, we're making a set of our own that includes characters with following Unicode properties:
+Déchiffrons cela. Tout comme `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
 
-- `Alphabetic` (`Alpha`) - for letters,
-- `Mark` (`M`) - for accents,
-- `Decimal_Number` (`Nd`) - for digits,
-- `Connector_Punctuation` (`Pc`) - for the underscore `'_'` and similar characters,
-- `Join_Control` (`Join_C`) - two special codes `200c` and `200d`, used in ligatures, e.g. in Arabic.
+- `Alphabetic` (`Alpha`) - pour les lettres,
+- `Mark` (`M`) - pour les accents,
+- `Decimal_Number` (`Nd`) - pour les nombres,
+- `Connector_Punctuation` (`Pc`) - pour le trait de soulignement `'_'` et autres caractères similaires,
+- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, p. ex. en arabe.
 
-An example of use:
+Exemple d'usage :
 
 ```js run
 let regexp = /[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]/gu;
 
 let str = `Hi 你好 12`;
 
-// finds all letters and digits:
+// trouve toutes les lettres et chiffres:
 alert( str.match(regexp) ); // H,i,你,好,1,2
 ```
 
-Of course, we can edit this pattern: add Unicode properties or remove them. Unicode properties are covered in more details in the article <info:regexp-unicode>.
+Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
 
-```warn header="Unicode properties aren't supported in IE"
-Unicode properties `pattern:p{…}` are not implemented in IE. If we really need them, we can use library [XRegExp](http://xregexp.com/).
+```warn header="Les propriétés Unicode ne sont pas supportées par IE"
+Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](http://xregexp.com/).
 
-Or just use ranges of characters in a language that interests us, e.g.  `pattern:[а-я]` for Cyrillic letters.
+Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, p. ex.  `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
-## Excluding ranges
+## Intervalles d'exclusion
 
-Besides normal ranges, there are "excluding" ranges that look like `pattern:[^…]`.
+En plus des intervalles classiques, il existe des intervalles d'exclusion de la forme `pattern:[^…]`.
 
-They are denoted by a caret character `^` at the start and match any character *except the given ones*.
+Ils se distinguent par un premier accent circonflexe `^` et correspond à n'importe quel caractère *à l'exception de ceux contenus dans ces crochets*.
 
-For instance:
+Par exemple :
 
-- `pattern:[^aeyo]` -- any character except  `'a'`, `'e'`, `'y'` or `'o'`.
-- `pattern:[^0-9]` -- any character except a digit, the same as `pattern:\D`.
-- `pattern:[^\s]` -- any non-space character, same as `\S`.
+- `pattern:[^aeyo]` -- n'importe quel caractère sauf  `'a'`, `'e'`, `'y'` ou `'o'`.
+- `pattern:[^0-9]` -- n'importe quel caractère à l'exception des chiffres, équivalent à `pattern:\D`.
+- `pattern:[^\s]` -- tout caractère qui n'est pas un espacement, équivalent à `\S`.
 
-The example below looks for any characters except letters, digits and spaces:
+L'exemple ci-dessous cherche n'importe quel caractère n'étant pas une lettre, un chiffre ou un espace :
 
 ```js run
-alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ and .
+alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ et .
 ```
 
-## Escaping in […]
+## L'échappement entre […]
 
-Usually when we want to find exactly a special character, we need to escape it like `pattern:\.`. And if we need a backslash, then we use `pattern:\\`, and so on.
+Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`. Et si nous cherchons un backslash, nous utilisons `pattern:\\`, etc.
 
-In square brackets we can use the vast majority of special characters without escaping:
+À l'intérieur de crochets nous pouvons utiliser une grande majorité des caractères spéciaux sans échappement :
 
-- Symbols `pattern:. + ( )` never need escaping.
-- A hyphen `pattern:-` is not escaped in the beginning or the end (where it does not define a range).
-- A caret `pattern:^` is only escaped in the beginning (where it means exclusion).
-- The closing square bracket `pattern:]` is always escaped (if we need to look for that symbol).
+- Les symbols `pattern:. + ( )` ne sont jamais échappés.
+- Un tiret `pattern:-` n'est pas échappé en début ou fin d'ensemble (là où il ne peut pas définir d'intervalle).
+- Un accent circonflexe `pattern:^` est échappé uniquement s'il débute l'ensemble (sinon il signifie l'exclusion).
+- Le crochet fermant `pattern:]` est toujours échappé (si nous le cherchons précisément).
 
-In other words, all special characters are allowed without escaping, except when they mean something for square brackets.
+En d'autres termes, tous les caractères spéciaux ne sont pas échappés, sauf s'ils ont un sens particulier pour un ensemble.
 
-A dot `.` inside square brackets means just a dot. The pattern `pattern:[.,]` would look for one of characters: either a dot or a comma.
+Un point `.` à l'intérieur de crochets signifie juste un point. Le motif `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
 
-In the example below the regexp `pattern:[-().^+]` looks for one of the characters `-().^+`:
+Dans l'exemple ci-dessous l'expression régulière `pattern:[-().^+]` cherche un des caractères `-().^+`:
 
 ```js run
-// No need to escape
+// Pas besoin d'échapper
 let regexp = /[-().^+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // Matches +, -
+alert( "1 + 2 - 3".match(regexp) ); // trouve +, -
 ```
 
-...But if you decide to escape them "just in case", then there would be no harm:
+... Si vous décidez de les échapper, "au cas où", il n'y aura de toute façon aucun d'impact :
 
 ```js run
-// Escaped everything
+// Tout échappé
 let regexp = /[\-\(\)\.\^\+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // also works: +, -
+alert( "1 + 2 - 3".match(regexp) ); // fonctionne aussi: +, -
 ```
 
-## Ranges and flag "u"
+## Intervalles et marqueur "u"
 
-If there are surrogate pairs in the set, flag `pattern:u` is required for them to work correctly.
+S'il y a une paire de seizets d'indirection([surrogate pair](https://fr.wikipedia.org/wiki/Table_des_caract%C3%A8res_Unicode_(D000-DFFF))) dans l'ensemble, le marqueur `pattern:u` est requis pour qu'elle soit interprétée correctement.
 
-For instance, let's look for `pattern:[𝒳𝒴]` in the string `subject:𝒳`:
+Par exemple, cherchons `pattern:[𝒳𝒴]` dans la chaîne `subject:𝒳`:
 
 ```js run
-alert( '𝒳'.match(/[𝒳𝒴]/) ); // shows a strange character, like [?]
-// (the search was performed incorrectly, half-character returned)
+alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui ressemble à [?]
+// (la recherche n'a pas fonctionné correctement, seule une moitié du caractère est retournée)
 ```
 
-The result is incorrect, because by default regular expressions "don't know" about surrogate pairs.
+Le résultat n'est pas celui attendu, car par défaut une expression régulière ne reconnait pas une telle paire.
 
-The regular expression engine thinks that `[𝒳𝒴]` -- are not two, but four characters:
-1. left half of `𝒳` `(1)`,
-2. right half of `𝒳` `(2)`,
-3. left half of `𝒴` `(3)`,
-4. right half of `𝒴` `(4)`.
+Le moteur d'expression régulière pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
+1. la moitié gauche de `𝒳` `(1)`,
+2. la moitié droite de `𝒳` `(2)`,
+3. la moitié gauche de `𝒴` `(3)`,
+4. la moitié droite de `𝒴` `(4)`.
 
-We can see their codes like this:
+On peut voir le code de ces caractères ainsi :
 
 ```js run
 for(let i=0; i<'𝒳𝒴'.length; i++) {
@@ -171,27 +171,27 @@ for(let i=0; i<'𝒳𝒴'.length; i++) {
 };
 ```
 
-So, the example above finds and shows the left half of `𝒳`.
+Donc, le premier exemple trouve et affiche la première moitié de `𝒳`.
 
-If we add flag `pattern:u`, then the behavior will be correct:
+Mais si nous ajoutons le marqueur `pattern:u`, on aura alors le comportement attendu :
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 ```
 
-The similar situation occurs when looking for a range, such as `[𝒳-𝒴]`.
+On retrouve un mécanisme similaire dans les intervalles, comme `[𝒳-𝒴]`.
 
-If we forget to add flag `pattern:u`, there will be an error:
+Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 
 ```js run
 '𝒳'.match(/[𝒳-𝒴]/); // Error: Invalid regular expression
 ```
 
-The reason is that without flag `pattern:u` surrogate pairs are perceived as two characters, so `[𝒳-𝒴]` is interpreted as `[<55349><56499>-<55349><56500>]` (every surrogate pair is replaced with its codes). Now it's easy to see that the range `56499-55349` is invalid: its starting code `56499` is greater than the end `55349`. That's the formal reason for the error.
+En effet sans le marqueur `pattern:u` une paire de seizets est perçue comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que le dernier `55349`. Ce qui explique l'erreur précédente.
 
-With the flag `pattern:u` the pattern works correctly:
+Avec le marqueur `pattern:u` le motif est interprété correctement :
 
 ```js run
-// look for characters from 𝒳 to 𝒵
+// Cherche un caractère entre 𝒳 et 𝒵 compris
 alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
 ```

@@ -1,5 +1,5 @@
 # Java[^script]
 
-We have a regexp `pattern:/Java[^script]/`.
+Considérons l'expression rationnelle `pattern:/Java[^script]/`.
 
-Does it match anything in the string `subject:Java`? In the string `subject:JavaScript`?
+Trouve-t-elle quelque chose dans la chaîne de caractères `subject:Java`? Dans la chaîne `subject:JavaScript`?
