@@ -2,38 +2,22 @@
 
 Les deux structures de données les plus utilisées en JavaScript sont `Object` et `Array`.
 
-<<<<<<< HEAD
-Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé, et les tableaux nous permettent de rassembler des éléments de données dans une collection ordonnée.
+- Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé.
+- Les tableaux nous permettent de rassembler des éléments de données dans une liste ordonnée.
 
 Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
 
-*L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
-=======
-- Objects allow us to create a single entity that stores data items by key. 
-- Arrays allow us to gather data items into an ordered list.
+*L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. 
 
-Although, when we pass those to a function, it may need not an object/array as a whole. It may need individual pieces.
-
-*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient. 
-
-Destructuring also works great with complex functions that have a lot of parameters, default values, and so on. Soon we'll see that.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
 
 ## Décomposition d'un tableau
 
-<<<<<<< HEAD
-Un exemple de la façon dont un tableau est décomposé en variables :
+Voici un exemple de la façon dont un tableau est décomposé en variables :
 
 ```js
-// nous avons un tableau avec le nom et le prénom
-let arr = ["Ilya", "Kantor"]
-=======
-Here's an example of how an array is destructured into variables:
-
-```js
-// we have an array with the name and surname
+// nous avons un tableau avec le prénom et le nom
 let arr = ["John", "Smith"]
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 *!*
 // l'affectation par décomposition
@@ -56,15 +40,10 @@ alert(firstName); // John
 alert(surname);  // Smith
 ```
 
-<<<<<<< HEAD
-````smart header="\"Décomposition\" ne veut pas dire \"destruction\"."
-Cette manipulation est appelée "affectation par décomposition"", car elle "se décompose"" en copiant ses éléments dans des variables. Mais le tableau lui-même n'est pas modifié.
-=======
-As you can see, the syntax is simple. There are several peculiar details though. Let's see more examples, to better understand it.
+Comme vous pouvez le voir, la syntaxe est simple. Il y a cependant plusieurs détails particuliers. Voyons plus d'exemples, pour mieux le comprendre.
 
-````smart header="\"Destructuring\" does not mean \"destructive\"."
-It's called "destructuring assignment," because it "destructurizes" by copying items into variables. But the array itself is not modified.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+````smart header="\"Décomposition\" ne veut pas dire \"destruction\"."
+Cette manipulation est appelée "affectation par décomposition", car elle "se décompose" en copiant ses éléments dans des variables. Mais le tableau lui-même n'est pas modifié.
 
 C’est juste une façon plus courte d’écrire :
 ```js
@@ -101,14 +80,9 @@ That works, because internally a destructuring assignment works by iterating ove
 ````
 
 
-<<<<<<< HEAD
-````smart header="Attribuer à n'importe quoi à gauche"
+````smart header="Attribuer à n'importe quoi à la partie gauche"
 
 Nous pouvons utiliser n'importe quel "assignable" à gauche.
-=======
-````smart header="Assign to anything at the left-side"
-We can use any "assignables" at the left side.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Par exemple, une propriété d'objet :
 ```js run
@@ -121,14 +95,9 @@ alert(user.surname); // Smith
 
 ````
 
-<<<<<<< HEAD
 ````smart header="Boucler avec .entries()"
 
-Dans le chapitre précédent, nous avons vu les méthodes [Object.entries(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/entries).
-=======
-````smart header="Looping with .entries()"
-In the previous chapter we saw the [Object.entries(obj)](mdn:js/Object/entries) method.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Dans le chapitre précédent, nous avons vu la méthode [Object.entries(obj)](mdn:js/Object/entries).
 
 Nous pouvons l'utiliser avec la décomposition pour boucler sur les clés et valeurs d'un objet :
 
@@ -146,11 +115,7 @@ for (let [key, value] of Object.entries(user)) {
 }
 ```
 
-<<<<<<< HEAD
-...Et la même chose pour un map :
-=======
-The similar code for a `Map` is simpler, as it's iterable:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Le code similaire pour un `Map` est plus simple, car il est itérable :
 
 ```js run
 let user = new Map();
@@ -166,22 +131,14 @@ for (let [key, value] of user) {
 ```
 ````
 
-<<<<<<< HEAD
 ```smart header="Astuce d'échange de variables"
-Une astuce bien connue pour permuter les valeurs de deux variables :
-=======
-````smart header="Swap variables trick"
-There's a well-known trick for swapping values of two variables using a destructuring assignment:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Il existe une astuce bien connue pour permuter les valeurs de deux variables à l'aide d'une affectation de déstructuration :
 
 ```js run
 let guest = "Jane";
 let admin = "Pete";
 
-<<<<<<< HEAD
-// Permuter les valeurs : faire guest=Pete, admin=Jane
-=======
-// Let's swap the values: make guest=Pete, admin=Jane
+// Permutons les valeurs : make guest=Pete, admin=Jane
 *!*
 >>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 [guest, admin] = [admin, guest];
@@ -192,23 +149,15 @@ alert(`${guest} ${admin}`); // Pete Jane (échangé avec succès !)
 
 Ici, nous créons un tableau temporaire de deux variables et le déstructurons immédiatement dans l'ordre permuté.
 
-<<<<<<< HEAD
 Nous pouvons échanger plus de deux variables de cette façon.
 
-=======
-We can swap more than two variables this way.
 ````
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ### Le rest '...'
 
-<<<<<<< HEAD
-Si nous voulons non seulement obtenir les premières valeurs, mais aussi rassembler tout ce qui suit, nous pouvons ajouter un paramètre supplémentaire qui obtient "le reste" à l'aide de trois points `"..."`:
-=======
-Usually, if the array is longer when the list at the left, the "extra" items are omitted.
+Habituellement, si le tableau est plus long lorsque la liste est à gauche, les éléments "supplémentaires" sont omis.
 
-For example, here only two items are taken, and the rest is just ignored:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Par exemple, ici, seuls deux éléments sont pris et le reste est simplement ignoré :
 
 ```js run
 let [name1, name2] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
@@ -231,26 +180,18 @@ alert(rest.length); // 2
 */!*
 ```
 
-<<<<<<< HEAD
-La valeur de `rest` est le tableau des éléments du tableau restants. Nous pouvons utiliser n’importe quel autre nom de variable à la place de `rest`, assurez-vous simplement qu’il a trois points devant lui et soit placé en dernier dans l’affectation par décomposition.
-=======
-The value of `rest` is the array of the remaining array elements. 
+La valeur de `rest` est le tableau des éléments du tableau restants. 
 
-We can use any other variable name in place of `rest`, just make sure it has three dots before it and goes last in the destructuring assignment.
+Nous pouvons utiliser n’importe quel autre nom de variable à la place de `rest`, assurez-vous simplement qu’il a trois points devant lui et soit placé en dernier dans l’affectation par décomposition.
 
 ```js run
 let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 // now titles = ["Consul", "of the Roman Republic"]
 ```
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ### Les valeurs par défaut
 
-<<<<<<< HEAD
-S'il y a moins de valeurs dans le tableau que de variables dans l'affectation, il n'y aura pas d'erreur. Les valeurs absentes sont considérées comme non définies :
-=======
-If the array is shorter than the list of variables at the left, there'll be no errors. Absent values are considered undefined:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Si le tableau est plus court que la liste des variables à gauche, il n'y aura aucune erreur. Les valeurs absentes sont considérées comme non définies :
 
 ```js run
 *!*
@@ -275,11 +216,7 @@ alert(surname); // Anonymous (default used)
 
 Les valeurs par défaut peuvent être des expressions plus complexes ou même des appels de fonction. Ils ne sont évalués que si la valeur n'est pas fournie.
 
-<<<<<<< HEAD
-Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut. Mais cela ne fonctionnera que pour celle qui manque :
-=======
-For instance, here we use the `prompt` function for two defaults:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut : 
 
 ```js run
 // runs only prompt for surname
@@ -301,11 +238,7 @@ La syntaxe de base est la suivante :
 let {var1, var2} = {var1:…, var2:…}
 ```
 
-<<<<<<< HEAD
-Nous avons un objet existant à droite que nous souhaitons scinder en variables. Le côté gauche contient un "pattern" pour les propriétés correspondantes. Dans ce cas simple, c’est une liste de noms de variables dans `{...}`.
-=======
-We should have an existing object at the right side, that we want to split into variables. The left side contains an object-like "pattern" for corresponding properties. In the simplest case, that's a list of variable names in `{...}`.
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+Nous devrions avoir un objet existant sur le côté droit, que nous voulons diviser en variables. La partie gauche contient un "modèle" de type objet pour les propriétés correspondantes. Dans le cas le plus simple, c'est une liste de noms de variables dans `{...}`.
 
 Par exemple :
 
@@ -325,13 +258,9 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-<<<<<<< HEAD
-Les propriétés `options.title`, `options.width` et `options.height` sont affectés aux variables correspondantes. L'ordre n'a pas d'importance. Cela fonctionne aussi :
-=======
-Properties `options.title`, `options.width` and `options.height` are assigned to the corresponding variables. 
+Les propriétés `options.title`, `options.width` et `options.height` sont affectées aux variables correspondantes. 
 
-The order does not matter. This works too:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+L'ordre n'a pas d'importance. Cela fonctionne aussi :
 
 ```js
 // changé l'ordre dans let {...}
@@ -340,11 +269,7 @@ let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 
 Le pattern à gauche peut être plus complexe et spécifier le mapping entre propriétés et variables.
 
-<<<<<<< HEAD
 Si nous voulons affecter une propriété à une variable portant un autre nom, par exemple, `options.width` pour aller dans la variable nommée `w`, alors nous pouvons la définir en utilisant deux points :
-=======
-If we want to assign a property to a variable with another name, for instance, make `options.width` go into the variable named `w`, then we can set the variable name using a colon:
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 let options = {
