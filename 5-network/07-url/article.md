@@ -65,7 +65,11 @@ Voici le cheatsheet pour les composants URL :
 ```smart header="Nous pouvons passer des objets `URL` aux méthodes de mise en réseau (et à la plupart des autres) au lieu d'une chaîne de caractères"
 Nous pouvons utiliser un objet `URL` dans `fetch` ou `XMLHttpRequest`, presque partout où une chaîne de caractères URL est attendue.
 
+<<<<<<< HEAD
 Généralement, l'objet `URL` peut être passé à n'importe quelle méthode au lieu d'une chaîne de caractères, car la plupart des méthodes effectueront la conversion de chaîne de caractères, qui transforme un objet `URL` en une chaîne de caractères avec une URL complète.
+=======
+Generally, the `URL` object can be passed to any method instead of a string, as most methods will perform the string conversion, that turns a `URL` object into a string with full URL.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 ```
 
 ## SearchParams "?..."
@@ -80,7 +84,11 @@ new URL('https://google.com/search?query=JavaScript')
 
 … Mais les paramètres doivent être encodés s'ils contiennent des espaces, des lettres non latines, etc. (plus à ce sujet ci-dessous).
 
+<<<<<<< HEAD
 Il y a donc une propriété URL pour cela : `url.searchParams`, un objet de type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
+=======
+So there's a URL property for that: `url.searchParams`, an object of type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Elle fournit des méthodes pratiques pour les paramètres de recherche :
 
@@ -201,7 +209,11 @@ Nous devons donc utiliser uniquement `encodeURIComponent` pour chaque paramètre
 ````smart header="Différence d'encodage par rapport à `URL`"
 Les classes [URL](https://url.spec.whatwg.org/#url-class) et [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) sont basés sur la dernière spécification d'URI : [RFC3986](https://tools.ietf.org/html/rfc3986), tandis que les fonctions `encode*` sont basées sur la version obsolète [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).
 
+<<<<<<< HEAD
 Il y a peu de différences, par exemple, Les adresses IPv6 sont encodées différemment :
+=======
+There are a few differences, e.g. IPv6 addresses are encoded differently:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 // URL valide avec adresse IPv6

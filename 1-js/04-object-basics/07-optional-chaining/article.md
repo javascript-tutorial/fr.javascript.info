@@ -236,3 +236,7 @@ Une chaîne de `?.` permet d'accéder en toute sécurité aux propriétés imbri
 
 Néanmoins, nous devons appliquer «?.» Avec soin, uniquement s'il est acceptable que la partie gauche n'existe pas. Pour ne pas nous cacher les erreurs de programmation, si elles se produisent.
 
+<<<<<<< HEAD
+=======
+Still, we should apply `?.` carefully, only where it's acceptable that the left part doesn't exist. So that it won't hide programming errors from us, if they occur.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
