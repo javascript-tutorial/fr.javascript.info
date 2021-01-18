@@ -1,4 +1,4 @@
-# Quantificateur glouton ou paresseux
+# Quantificateurs gloutons ou paresseux
 
 Les quantificateurs, à première vue, très simples, peuvent parfois être retors.
 
@@ -14,7 +14,7 @@ La première chose à faire est de trouver ces guillemets droits, et nous pourro
 
 Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche, mais pas exactement !
 
-Essayons ça:
+Testons cela :
 
 ```js run
 let regexp = /".+"/g;
@@ -28,7 +28,7 @@ alert( str.match(regexp) ); // "witch" and her "broom"
 
 Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
-Qui peut être vu comme "La cupidité est à la racine de tous les ennuis".
+Ce qui peut être vu comme "La gourmandise est un défaut qui cause beaucoup de torts à ceux qui s’y livrent".
 
 ## Recherche gloutonne
 
@@ -36,41 +36,41 @@ Pour trouver une correspondance, le moteur d'expression régulière utilise l'al
 
 - Pour chacune des positions de la chaîne de caractère
     - Essaye de trouver le motif à cette position.
-    - S'il n'y a pas de correspondance, va à la prochaine position.
+    - Si aucune correspondance, va à la prochaine position.
 
-Cette description succincte ne vous éclaire peut être pas plus sur la raison de l'échec de la recherche précédente, alors voyons plus en détail comment se déroule la recherche du motif `pattern:".+"`.
+Cette description succincte ne suffit peut-être pas à mettre en évidence l'échec précédent, alors voyons plus en détail comment se déroule la recherche du motif `pattern:".+"`.
 
-1. le premier caractère du motif sont des guillemets droits `pattern:"`.
+1. Le premier caractère du motif sont des guillemets droits `pattern:"`.
 
-    le moteur d'expressions régulières essaye de les trouver à la position zéro de la chaîne originale `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
+    Le moteur d'expression régulière essaye de les trouver à la position zéro de la chaîne source `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
 
     Puis il avance : va aux positions suivantes dans la chaîne source et essaye d'y trouver le premier caractère du motif, il échoue une nouvelle fois, avant de trouver les guillemets en troisième position :
 
     ![](witch_greedy1.svg)
 
-2. Les premiers guillemets trouvé, le moteur essaye de trouver la correspondance pour la suite du motif. Il essaye de voir si le reste de la chaîne suit le motif `pattern:.+"`.
+2. Les premiers guillemets trouvés, le moteur essaye de trouver la correspondance pour la suite du motif. Il essaye de voir si le reste de la chaîne suit le motif `pattern:.+"`.
 
-    Dans notre cas le caractère suivant dans le motif est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` marche :
+    Dans notre cas le caractère suivant dans le motif est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` correspond bien :
 
     ![](witch_greedy2.svg)
 
 3. Le point est alors répété avec le quantificateur `pattern:.+`. le moteur d'expression régulière ajoute à la correspondance, les caractères les uns à la suite des autres.
 
-    ... Jusqu'à quand ? Tout caractère correspond au point, il ne s'arrête qu'une fois arrivé à la fin de chaîne :
+    ... Jusqu'à quand ? Comme tout caractère correspond au point, il ne s'arrête qu'une fois arrivé à la fin de chaîne :
 
     ![](witch_greedy3.svg)
 
 4. La répétition du motif `pattern:.+` maintenant finie, il essaye de trouver le caractère suivant. Ce sont des guillemets droits `pattern:"`. Mais problème : arrivé en bout de chaîne, il n'y a plus de caractère !
 
-    Le moteur d'expressions régulières comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
+    Le moteur d'expression régulière comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
 
     En d'autres termes, il réduit la correspondance avec le quantificateur d'un caractère :
 
     ![](witch_greedy4.svg)
 
-    Il considère maintenant que `pattern:.+` finit un caractère avant la fin de chaîne et essaye de la trouver la fin du motif à partir de cette position.
+    Il considère maintenant que `pattern:.+` se termine un caractère avant la fin de la chaîne et essaye de la trouver la fin du motif à partir de cette position.
 
-    Et s'il y avait des guillemets ici, alors la recherche serait finie, mais le dernier caractère est `subject:'e'`, il n'y a donc toujours pas de correspondance.
+    Et s'il y avait des guillemets ici, alors la recherche s'arrêterait, mais le dernier caractère est `subject:'e'`, il n'y a donc toujours pas de correspondance.
 
 5. ... Le moteur d'expression régulière diminue encore le nombre de répétitions de `pattern:.+` d'un autre caractère :
 
@@ -82,11 +82,11 @@ Cette description succincte ne vous éclaire peut être pas plus sur la raison d
 
     ![](witch_greedy6.svg)
 
-7. La correspondance avec motif est complète.
+7. La correspondance au motif est complète.
 
-8. La première correspondance est donc `match:"witch" and her "broom"`. Si l'expression régulière porte le marqueur `pattern:g`, alors la recherche continuera à partir de la fin de la première correspondance. Comme il n'y a plus de guillemets dans la suite de la chaîne `subject:is one`, il n'y pas d'autres correspondance.
+8. La première correspondance est donc `match:"witch" and her "broom"`. Si l'expression régulière porte le marqueur `pattern:g`, alors la recherche continuera à partir de la fin de cette première correspondance. Comme il n'y a plus de guillemets dans la suite de la chaîne `subject:is one`, il n'y pas d'autres correspondances.
 
-Ce n'est peut-être pas ce que nous attendions, mais c'est ainsi que cela fonctionne.
+Ce n'est peut-être pas ce que nous attendions, mais c'est bien ainsi que cela fonctionne.
 
 **En mode glouton (mode par défaut) un caractère suivi d'un quantificateur est répété autant de fois que possible.**
 
@@ -100,7 +100,7 @@ Le mode paresseux des quantificateurs est l'opposé du mode glouton. Il signifie
 
 Nous pouvons l'activer en ajoutant un `pattern:'?'` après le quantificateur, il devient alors  `pattern:*?` ou `pattern:+?` ou encore `pattern:??` pour le `pattern:'?'`.
 
-Pour clarifier les choses : le point d'interrogation `pattern:?` est en général un quantificateur (zero ou un), mais si nous l'ajoutons *à la suite d'un autre quantificateur (ou bien lui-même)* il prend une autre signification -- il change le mode de correspondance de glouton à paresseux.
+Pour clarifier les choses : le point d'interrogation `pattern:?` est en général un quantificateur (zero ou un), mais si nous l'ajoutons *à la suite d'un autre quantificateur (ou bien de lui-même)* il prend une autre signification -- il change le mode de correspondance de glouton à paresseux.
 
 La regexp `pattern:/".+?"/g` fonctionne alors comme prévu : elle trouve `match:"witch"` et `match:"broom"`:
 
@@ -114,7 +114,7 @@ alert( str.match(regexp) ); // "witch", "broom"
 
 Pour bien comprendre la différence, suivons cette recherche pas à pas.
 
-1. La première étape est la même : elle trouve le premier motif `pattern:'"'` en 3e position :
+1. La première étape est la même : elle trouve le premier motif `pattern:'"'` en 3&#x1D49; position :
 
     ![](witch_greedy1.svg)
 
@@ -127,7 +127,7 @@ Pour bien comprendre la différence, suivons cette recherche pas à pas.
     ![](witch_lazy3.svg)
 
     S'il y avait des guillemets ici, alors la recherche s'arrêterait, mais il y a un `'i'`, donc pas de correspondance.
-4. Le moteur d'expressions régulières augmente alors le nombre de répétitions pour le point et essaye à nouveau :
+4. Le moteur d'expression régulière augmente alors le nombre de répétitions pour le point et essaye à nouveau :
 
     ![](witch_lazy4.svg)
 
@@ -136,7 +136,7 @@ Pour bien comprendre la différence, suivons cette recherche pas à pas.
 
     ![](witch_lazy5.svg)
 
-6. La recherche suivant commence alors depuis la fin de la correspondance et ressort une autre résultat :
+6. La recherche suivante commence alors depuis la fin de la correspondance et ressort une autre résultat :
 
     ![](witch_lazy6.svg)
 
@@ -161,18 +161,18 @@ alert( "123 456".match(/\d+ \d+?/) ); // 123 4
     Le mode paresseux ne répète rien sans en avoir besoin. Le motif est terminé, donc la recherche aussi. Nous avons une correspondance `match:123 4`.
 
 ```smart header="Optimisations"
-Les moteurs d'expressions régulières récents arrive à optimiser leurs algorithmes internes. Ils fonctionnent donc un peu différemment.
+Les moteurs d'expression régulière récents arrive à optimiser leurs algorithmes internes. Ils fonctionnent donc un peu différemment.
 
-Mais pour comprendre comment fonctionne les expression régulières et contruire des expressions régulière, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisé en interne pour optimiser les choses.
+Mais pour comprendre comment fonctionnent les expression régulières et pour en contruire, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisé en interne pour optimiser les choses.
 
-Comme les expressions régulières complexes sont sont difficiles à optimiser, la recherche peut se dérouler exactement comme nous l'avons décri.
+Comme les expressions régulières complexes sont difficiles à optimiser, la recherche peut se dérouler exactement comme nous l'avons décri.
 ```
 
 ## Approche alternative
 
 Avec les expressions régulières, Il y a souvent plusieurs façons pour arriver au même résultat.
 
-Dans notre cas, nous pouvons trouver des chaines de caractères entre guillemets sauf mode paresseux en utilisant la regexp `pattern:"[^"]+"`:
+Dans notre cas, nous pouvons trouver des chaines de caractères entre guillemets sans mode paresseux en utilisant la regexp `pattern:"[^"]+"`:
 
 ```js run
 let regexp = /"[^"]+"/g;
@@ -253,7 +253,7 @@ let regexp = /<a href=".*?" class="doc">/g;
 alert( str.match(regexp) ); // <a href="link1" class="wrong">... <p style="" class="doc">
 ```
 
-Et maintenant ça échoue. La correspondance inclue non seulement le lien, mais aussi beaucoup de text ensuite, incluant `<p...>`.
+Et maintenant ça échoue. La correspondance inclue non seulement le lien, mais aussi beaucoup du texte suivant, incluant `<p...>`.
 
 Pourquoi ?
 
@@ -272,7 +272,7 @@ Voici le schéma de la correspondance en alignant les caractères :
 <a href="link1" class="wrong">... <p style="" class="doc">
 ```
 
-Nous avons donc besoin que le motif recherche `<a href="...something..." class="doc">`, mais les modes, glouton ou paresseux, rencontre des problèmes.
+Nous avons donc besoin que le motif recherche `<a href="...something..." class="doc">`, mais les modes, glouton ou paresseux, rencontrent des problèmes.
 
 Une alternative fonctionnelle peut être : `pattern:href="[^"]*"`. Cela prendra tous les caractères à l'intérieur de l'attribut `href` jusqu'aux prochains guillemets, juste ce qu'il faut.
 
@@ -293,7 +293,7 @@ alert( str2.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" cl
 Les quantificateurs ont deux modes de travail :
 
 Glouton
-: Par défaut le moteur d'expressions régulières essaye de répéter le caractère quantifié autant de fois que possible. Par exemple, `pattern:\d+` consomme tous les chiffres possibles. Quand il devient impossible d'en consommer d'autre (plus de chiffre ou fin de chaîne), il continue alors pour trouver la fin du motif. S'il ne trouve pas de correspondance il réduit alors le nombre de répétitions effectuées (il revient sur ses pas) et essaye à nouveau.
+: Par défaut le moteur d'expression régulière essaye de répéter le caractère quantifié autant de fois que possible. Par exemple, `pattern:\d+` consomme tous les chiffres possibles. Quand il devient impossible d'en consommer d'autre (plus aucun chiffre ou fin de chaîne), il continue alors pour trouver la fin du motif. S'il ne trouve pas de correspondance, il réduit alors le nombre de répétitions effectuées (il revient sur ses pas) et essaye à nouveau.
 
 Paresseux
 : Activé par le point d'interrogation `pattern:?` après le quantificateur. Le moteur de regexp essaye de trouver une correspondance pour le reste du motif avant chaque répétition du caractère quantifié.
