@@ -14,10 +14,17 @@ En termes simples, les valeurs "accessibles" sont celles qui sont accessibles ou
 
     Par exemple :
 
+<<<<<<< HEAD
     - Variables locales et paramètres de la fonction en cours.
     - Variables et paramètres pour d'autres fonctions sur la chaîne d'appels imbriqués en cours.
     - Variables globales.
     - (il y en a d'autres, internes aussi)
+=======
+    - The currently executing function, its local variables and parameters.
+    - Other functions on the current chain of nested calls, their local variables and parameters.
+    - Global variables.
+    - (there are some other, internal ones as well)
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
     Ces valeurs s'appellent des racines (*roots*).
 

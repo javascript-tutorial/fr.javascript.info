@@ -121,7 +121,11 @@ Il existe deux types d'indentations :
 
     Un des avantages des espaces sur les tabulations est qu’ils permettent des configurations de retrait plus flexibles que le symbole tabulation.
 
+<<<<<<< HEAD
     Par exemple, nous pouvons aligner les arguments avec le crochet d’ouverture, comme ceci :
+=======
+    For instance, we can align the parameters with the opening bracket, like this:
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
     ```js no-beautify
     show(parameters,
