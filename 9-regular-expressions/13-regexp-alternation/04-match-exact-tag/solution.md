@@ -1,13 +1,13 @@
 
-The pattern start is obvious: `pattern:<style`.
+Le début du modèle est évident: `pattern:<style`.
 
-...But then we can't simply write `pattern:<style.*?>`, because `match:<styler>` would match it.
+...Mais nous ne pouvons pas juste écrire `pattern:<style.*?>` puisque `match:<styler>` y correspondrait.
 
-We need either a space after `match:<style` and then optionally something else or the ending `match:>`.
+Nous avons besoin soit d'un espace après `match:<style` et après optionellement quelque chose d'autre, ou bien la fin `match:>`.
 
-In the regexp language: `pattern:<style(>|\s.*?>)`.
+Dans le langage des regexp : `pattern:<style(>|\s.*?>)`.
 
-In action:
+En action :
 
 ```js run
 let regexp = /<style(>|\s.*?>)/g;
