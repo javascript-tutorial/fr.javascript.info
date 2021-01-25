@@ -49,9 +49,15 @@ let user = new User("John");
 user.sayHi();
 ```
 
+<<<<<<< HEAD
 Lorsque `new User("John")` est appelé:
 1. Un nouvel objet est créé.
 2. Le `constructor` s'exécute avec les arguments qui lui sont passés et assigne `this.name` a l'objet.
+=======
+When `new User("John")` is called:
+1. A new object is created.
+2. The `constructor` runs with the given argument and assigns it to `this.name`.
+>>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 ...ensuite nous pouvons appeler les méthodes de l'objet, tel que `user.sayHi()`.
 
