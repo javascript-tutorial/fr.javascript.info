@@ -437,15 +437,9 @@ Cet opérateur n'a pas de traitement spécial pour les tableaux, il fonctionne a
 
 Rappelons les règles :
 
-<<<<<<< HEAD
 - Deux objets sont égaux `==` uniquement s'ils font référence au même objet.
 - Si l'un des arguments de `==` est un objet, et l'autre est une primitive, alors l'objet est converti en primitif, comme expliqué dans le chapitre <info:object-toprimitive>.
 - ...À l'exception de `null` et `undefined ` qui s'égalent `==` l'un l'autre et rien d'autre.
-=======
-- Two objects are equal `==` only if they're references to the same object.
-- If one of the arguments of `==` is an object, and the other one is a primitive, then the object gets converted to primitive, as explained in the chapter <info:object-toprimitive>.
-- ...With an exception of `null` and `undefined` that equal `==` each other and nothing else.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 La comparaison stricte `===` est encore plus simple, car elle ne convertit pas les types.
 
