@@ -91,11 +91,7 @@ La syntaxe de cette section est rarement utilisée, sautez-la à moins de vouloi
 
 Dans une fonction, nous pouvons vérifier si elle a été appelée avec `new` ou sans, en utilisant la propriété spéciale `new.target`.
 
-<<<<<<< HEAD
-Elle est vide pour les appels normaux et égale à la fonction si elle est appelée avec `new`:
-=======
-It is undefined for regular calls and equals the function if called with `new`:
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+Elle n'est pas définie pour les appels réguliers et équivaut à la fonction si elle est appelée avec `new` :
 
 ```js run
 function User() {
