@@ -1,10 +1,10 @@
-# Find the full tag
+# Trouver la balise entière
 
-Write a regexp to find the tag `<style...>`. It should match the full tag: it may have no attributes  `<style>` or have several of them `<style type="..." id="...">`.
+Écrivez une regexp pour trouver la balise `<style...>`. Il devrait trouver la balise en entier: il pourrait ne pas avoir d'attributs `<style>` ou en avoir plusieurs `<style type="..." id="...">`.
 
-...But the regexp should not match `<styler>`!
+...Mais la regexp ne devrait pas trouver `<styler>`!
 
-For instance:
+Par exemple:
 
 ```js
 let regexp = /your regexp/g;

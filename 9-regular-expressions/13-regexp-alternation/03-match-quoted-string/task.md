@@ -1,28 +1,28 @@
-# Find quoted strings
+# Trouver les chaines de caractère
 
-Create a regexp to find strings in double quotes `subject:"..."`.
+Créer une regexp pour trouver les chaines de caractère entre guillemets doubles `subject:"..."`.
 
-The strings should support escaping, the same way as JavaScript strings do. For instance, quotes can be inserted as `subject:\"` a newline as `subject:\n`, and the slash itself as `subject:\\`.
+La chaine de caractère devrait supporter l'échappement, comme les chaines de caractère JavaScript. Par exemple, des guillemets peuvent être insérés comme ceci `subject:\"` une nouvelle ligne comme `subject:\n`, et un antislash comme `subject:\\`.
 
 ```js
 let str = "Just like \"here\".";
 ```
 
-Please note, in particular, that an escaped quote `subject:\"` does not end a string.
+Veuillez noter qu'une guillemet échapée `subject:\"` ne termine pas une chaine de caractère.
 
-So we should search from one quote to the other ignoring escaped quotes on the way.
+Nous devrions donc chercher une guillemet puis la suivante en ignorant celles échapées.
 
-That's the essential part of the task, otherwise it would be trivial.
+C'est la partie essentielle de la tâche, à part cela, cela devrait être simple.
 
-Examples of strings to match:
+Exemple de chaine de caractère valides :
 ```js
-.. *!*"test me"*/!* ..  
-.. *!*"Say \"Hello\"!"*/!* ... (escaped quotes inside)
-.. *!*"\\"*/!* ..  (double slash inside)
-.. *!*"\\ \""*/!* ..  (double slash and an escaped quote inside)
+.. *!*"test me"*/!* ..
+.. *!*"Say \"Hello\"!"*/!* ... (guillemets échapées à l'intérieur)
+.. *!*"\\"*/!* ..  (double slash à l'intérieur)
+.. *!*"\\ \""*/!* ..  (double slash et guillemets échapées à l'intérieur)
 ```
 
-In JavaScript we need to double the slashes to pass them right into the string, like this:
+En Javascript nous devons doubler les slash pour les placer dans la chaine de caractère, comme ceci :
 
 ```js run
 let str = ' .. "test me" .. "Say \\"Hello\\"!" .. "\\\\ \\"" .. ';
