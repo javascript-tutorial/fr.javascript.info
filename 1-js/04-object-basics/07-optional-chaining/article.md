@@ -77,22 +77,10 @@ Comme vous pouvez le voir, les noms de propriétés sont toujours dupliqués dan
 
 C'est pourquoi le chaînage facultatif `?.` A été ajouté au langage. Pour résoudre ce problème une fois pour toutes !
 
-ET l'ensemble du chemin d'accès à la propriété garantit que tous les composants existent (sinon, l'évaluation s'arrête), mais est difficile à écrire.
-
-<<<<<<< HEAD
-=======
-The optional chaining `?.` stops the evaluation if the value before `?.` is `undefined` or `null` and returns `undefined`.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 ## Chaînage optionnel
 
-<<<<<<< HEAD
-Le chaînage facultatif `?.` arrête l'évaluation et renvoie `undefined` si la partie avant `?.` est `undefined` ou `null` et renvoie cette partie.
-=======
-In other words, `value?.prop`:
-- works as `value.prop`, if `value` exists,
-- otherwise (when `value` is `undefined/null`) it returns `undefined`.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+Le chaînage optionnel `?.` arrête l'évaluation si la valeur avant `?.` est `undefined` ou `null` et renvoie `undefined`.
 
 **Plus loin dans cet article, par souci de brièveté, nous dirons que quelque chose "existe" si ce n'est pas "null" et non "undefined".**
 
@@ -121,11 +109,7 @@ alert( user?.address.street ); // undefined
 
 Remarque: la syntaxe `?.` Rend facultative la valeur qui la précède, mais pas plus.
 
-<<<<<<< HEAD
-Par exemple. dans `user?.address.street.name` le `?.` permet à `user` d'être `null/undefined`, mais c'est tout ce qu'il fait. D'autres propriétés sont accessibles de manière régulière. Si nous voulons que certains d'entre eux soient optionnels, alors nous devrons remplacer plus de `.` par `?.`.
-=======
-E.g. in `user?.address.street.name` the `?.` allows `user` to safely be `null/undefined` (and returns `undefined` in that case), but that's only for `user`. Further properties are accessed in a regular way. If we want some of them to be optional, then we'll need to replace more `.` with `?.`.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+Par exemple. dans `user?.address.street.name` le `?.` permet à `user` d'être en toute sécurité `null/undefined` (et renvoie `undefined` dans ce cas), mais ce n'est que pour `user`. D'autres propriétés sont accessibles de manière régulière. Si nous voulons que certaines d'entre elles soient optionnelles, alors nous devrons remplacer plus de `.` par `?.`.
 
 ```warn header="N'abusez pas du chaînage optionnel"
 Nous ne devrions utiliser `?.` que là où il est normal que quelque chose n'existe pas.
@@ -205,13 +189,7 @@ let user1 = {
   firstName: "John"
 };
 
-<<<<<<< HEAD
-let user2 = null; // Imaginez, nous ne pouvons pas autoriser l'utilisateur
-
-let key = "firstName";
-=======
 let user2 = null; 
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 alert( user1?.[key] ); // John
 alert( user2?.[key] ); // undefined
