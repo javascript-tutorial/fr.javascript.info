@@ -55,11 +55,7 @@ rabbit.run(5); // White Rabbit court à la vitesse 5.
 rabbit.hide(); // White Rabbit se cache!
 ```
 
-<<<<<<< HEAD
-Les objets de la classe `Rabbit` ont accès aux deux méthodes `Rabbit`, telles que `rabbit.hide()`, ainsi qu'aux méthodes `Animal`, telles que `rabbit.run()`.
-=======
-Object of `Rabbit` class have access both to `Rabbit` methods, such as `rabbit.hide()`, and also to `Animal` methods, such as `rabbit.run()`.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+L’objet de la classe `Rabbit` a accès aux deux méthodes `Rabbit`, telles que `rabbit.hide()`, ainsi qu'aux méthodes `Animal`, telles que `rabbit.run()`.
 
 En interne, le mot clé `extended` fonctionne en utilisant le bon vieux prototype. Il établit `Rabbit.prototype.[[Prototype]]` vers `Animal.prototype`. Donc, si une méthode n'est pas trouvée dans `Rabbit.prototype`, JavaScript le prend de `Animal.prototype`.
 
