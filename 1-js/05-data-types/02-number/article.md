@@ -16,46 +16,30 @@ Imaginez que nous ayons besoin d'écrire 1 milliard. Le moyen évident est:
 let milliard = 1000000000;
 ```
 
-<<<<<<< HEAD
-Mais dans la vie réelle, nous évitons généralement d'écrire une longue chaîne de caractères remplie de zéros car une erreur est si vite arrivée. De plus, nous sommes paresseux. Nous écrirons donc généralement quelque chose comme `"1bn"` pour un milliard ou `"7.3bn"` pour 7 milliards 300 millions. De même pour la plupart des grands nombres.
-
-En JavaScript, nous raccourcissons un nombre en ajoutant la lettre `"e"` au nombre et en précisant le nombre de zéros:
-=======
-We also can use underscore `_` as the separator:
+Nous pouvons également utiliser l’underscore `_` comme séparateur :
 
 ```js
 let billion = 1_000_000_000;
 ```
 
-Here the underscore `_` plays the role of the "syntactic sugar", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+Ici l’underscore `_` joue le rôle de "sucre syntaxique", il rend le nombre plus lisible. Le moteur JavaScript ignore simplement `_` entre les chiffres, donc c'est exactement le même milliard que ci-dessus.
 
-In real life though, we try to avoid writing long sequences of zeroes. We're too lazy for that. We'll try to write something like `"1bn"` for a billion or `"7.3bn"` for 7 billion 300 million. The same is true for most large numbers.
+Dans la vraie vie cependant, nous essayons d'éviter d'écrire de longues séquences de zéros. Nous sommes trop paresseux pour ça. Nous essaierons d'écrire quelque chose comme "1 milliard" pour un milliard ou "7,3 milliards" pour 7 milliards 300 millions. La même chose est vraie pour la plupart des grands nombres.
 
-In JavaScript, we can shorten a number by appending the letter `"e"` to it and specifying the zeroes count:
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+En JavaScript, nous pouvons raccourcir un nombre en y ajoutant la lettre `"e"` et en spécifiant le nombre de zéros :
 
 ```js run
 let milliards = 1e9;  // 1 milliard, littéralement: 1 et 9 zéros
 
-<<<<<<< HEAD
-alert( 7.3e9 );  // 7.3 milliards (7,300,000,000)
+alert( 7.3e9 );  // 7.3 milliards (pareil que 7,300,000,000 ou 7_300_000_000)
 ```
 
-En d'autres termes, `"e"` multiplie le nombre de `1` avec le nombre de zéros donné.
+En d'autres termes, `e` multiplie le nombre de `1` avec le nombre de zéros donné.
+
 
 ```js
-1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000 
-=======
-alert( 7.3e9 );  // 7.3 billions (same as 7300000000 or 7_300_000_000)
-```
-
-In other words, `e` multiplies the number by `1` with the given zeroes count.
-
-```js
-1e3 = 1 * 1000 // e3 means *1000
-1.23e6 = 1.23 * 1000000 // e6 means *1000000
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+1e3 = 1 * 1000 // e3 signifie *1000
+1.23e6 = 1.23 * 1000000 // e6 signifie *1000000
 ```
 
 Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde):
@@ -150,11 +134,7 @@ Il existe plusieurs fonctions intégrées pour arrondir:
 : Arrondis: `3.1` devient `4`, et `-1.1` devient `-1`.
 
 `Math.round`
-<<<<<<< HEAD
-: Arrondit à l'entier le plus proche: `3.1` devient `3`, `3.6` devient `4` et `-1.1` devient `-1`.
-=======
-: Rounds to the nearest integer: `3.1` becomes `3`, `3.6` becomes `4`, the middle case: `3.5` rounds up to `4` too.
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
+: Arrondit à l'entier le plus proche: `3,1` devient `3`, `3,6` devient `4`, le cas du milieu : `3,5` arrondit également à `4`.
 
 `Math.trunc` (non pris en charge par Internet Explorer)
 : Supprime tout ce qui suit le point décimal sans avoir arrondi: `3.1` devient `3`, `-1.1` devient `-1`.
