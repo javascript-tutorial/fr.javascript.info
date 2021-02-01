@@ -1,13 +1,15 @@
-The solution: `pattern:/"(\\.|[^"\\])*"/g`.
+La solution : `pattern:/"(\\.|[^"\\])*"/g`.
 
-Step by step:
+Etape par etape :
 
-- First we look for an opening quote `pattern:"`
-- Then if we have a backslash `pattern:\\` (we have to double it in the pattern because it is a special character), then any character is fine after it (a dot).
-- Otherwise we take any character except a quote (that would mean the end of the string) and a backslash (to prevent lonely backslashes, the backslash is only used with some other symbol after it): `pattern:[^"\\]`
-- ...And so on till the closing quote.
 
-In action:
+- D'abord nous recherchons une guillemet ouvrante `pattern:"`
+- Ensuite si nous avons un antislash `pattern:\\` (puisque c'est un caractère spécial nous devons le doubler, mais dans les faits c'est un unique antislash), alors n'importe quel caractère peut se trouver à sa suite (un point).
+- Sinon nous prenons n'importe quel caractère à part une guillemet (cela signifierait la fin de la chaine de caractère) et un antislash (pour empêcher les antislash solitaires, un antislash est seulement utilisé avec un autre symbole après lui): `pattern:[^"\\]`
+- ...Et on continue jusqu'à atteindre la guillemet fermante.
+
+
+En action :
 
 ```js run
 let regexp = /"(\\.|[^"\\])*"/g;
