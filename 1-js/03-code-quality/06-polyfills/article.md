@@ -11,11 +11,7 @@ Une bonne page pour voir l’état actuel de la prise en charge des fonctionnali
 
 As programmers, we'd like to use most recent features. The more good stuff - the better!
 
-<<<<<<< HEAD
 D'un autre côté, comment faire fonctionner le code moderne sur des moteurs plus anciens qui ne comprennent pas encore les fonctionnalités récentes ?
-=======
-On the other hand, how to make our modern code work on older engines that don't understand recent features yet?
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 Il existe deux outils pour cela :
 
