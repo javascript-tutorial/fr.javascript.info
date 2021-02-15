@@ -1,10 +1,18 @@
 # Promesse (promise)
 
+<<<<<<< HEAD
 Imaginez que vous êtes un grand chanteur et les fans vous demandent jour et nuit votre prochain single.
+=======
+Imagine that you're a top singer, and fans ask day and night for your upcoming song.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Pour avoir un peu de paix, vous promettez de leur envoyer dès que celui-ci est publié. Vous donnez à vos fans une liste d'abonnement. Ils peuvent y ajouter leur adresse mail, comme cela, quand le single est sorti, tous les emails reçoivent votre single. Et même si quelque chose arrive, comme un feu dans le studio, et que vous ne pouvez sortir le single, ils en seront aussi notifiés.
 
+<<<<<<< HEAD
 Tout le monde est content : vous, puisque l'on vous laisse plus tranquille, et vos fans parce qu'ils savent qu'ils ne rateront pas votre single.
+=======
+Everyone is happy: you, because the people don't crowd you anymore, and fans, because they won't miss the song.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 C'est une analogie réelle à un problème courant de programmation :
 
