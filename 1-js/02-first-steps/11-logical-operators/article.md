@@ -1,10 +1,6 @@
 # Opérateurs logiques
 
-<<<<<<< HEAD
-Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT).
-=======
-There are four logical operators in JavaScript: `||` (OR), `&&` (AND), `!` (NOT), `??` (Nullish Coalescing). Here we cover the first three, the `??` operator is in the next article.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT), `??` (Coalescence des nulles). Nous couvrons ici les trois premiers, l'opérateur `??` est dans l'article suivant.
 
 Bien qu'ils soient appelés "logiques", ils peuvent être appliqués à des valeurs de tout type, pas seulement booléennes. Le résultat peut également être de tout type.
 
