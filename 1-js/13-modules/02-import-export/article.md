@@ -336,13 +336,27 @@ auth/
         ...
 ```
 
+<<<<<<< HEAD
 Nous aimerions exposer les fonctionnalités du paquet via un seul point d’entrée, le "fichier principal" `auth / index.js`, à utiliser comme ceci:
+=======
+We'd like to expose the package functionality via a single entry point.
+
+In other words, a person who would like to use our package, should import only from the "main file" `auth/index.js`.
+
+Like this:
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ```js
 import {login, logout} from 'auth/index.js'
 ```
 
+<<<<<<< HEAD
 L'idée est que les tiers, les développeurs qui utilisent notre package, ne doivent pas se mêler de sa structure interne, rechercher des fichiers dans notre dossier de packages. Nous n'exportons que ce qui est nécessaire dans `auth / index.js` et gardons le reste caché des regards indiscrets.
+=======
+The "main file", `auth/index.js` exports all the functionality that we'd like to provide in our package.
+
+The idea is that outsiders, other programmers who use our package, should not meddle with its internal structure, search for files inside our package folder. We export only what's necessary in `auth/index.js` and keep the rest hidden from prying eyes.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 La fonctionnalité exportée étant dispersée dans le package, nous pouvons l'importer dans `auth / index.js` et l'exporter:
 
@@ -365,15 +379,28 @@ La syntaxe `export ... from ...` est juste une notation plus courte pour importe
 
 ```js
 // 📁 auth/index.js
+<<<<<<< HEAD
 // importer login / logout et les exporter immédiatement
 export {login, logout} from './helpers.js';
 
 // importer par défaut en tant qu'User et exporter immédiatement
+=======
+// re-export login/logout 
+export {login, logout} from './helpers.js';
+
+// re-export the default export as User
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 export {default as User} from './user.js';
 ...
 ```
 
+<<<<<<< HEAD
 ### Ré-exportation de l'exportation par défaut
+=======
+The notable difference of `export ... from` compared to `import/export` is that re-exported modules aren't available in the current file. So inside the above example of `auth/index.js` we can't use re-exported `login/logout` functions. 
+
+### Re-exporting the default export
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 L'exportation par défaut nécessite un traitement séparé lors de la réexportation.
 

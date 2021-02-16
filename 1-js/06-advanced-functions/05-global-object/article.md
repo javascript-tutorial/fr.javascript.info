@@ -27,7 +27,11 @@ alert(window.gVar); // 5 (var est devenue une propriété de l'objet global)
 
 Le même effet a des déclarations de fonction (instructions avec le mot-clé `function` dans le flux de code principal, pas des expressions de fonction).
 
+<<<<<<< HEAD
 Ne comptez pas là-dessus! Ce comportement existe pour des raisons de compatibilité. Les scripts modernes utilisent les [modules JavaScript](info:modules) où une telle chose ne se produit pas.
+=======
+Please don't rely on that! This behavior exists for compatibility reasons. Modern scripts use [JavaScript modules](info:modules) where such a thing doesn't happen.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Si nous utilisions `let` la place, une telle chose ne se produirait pas :
 

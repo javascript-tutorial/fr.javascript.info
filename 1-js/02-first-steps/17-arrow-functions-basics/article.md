@@ -5,7 +5,7 @@ Il existe une syntaxe plus simple et concise pour créer des fonctions, c'est so
 Les "fonctions fléchées" sont appelées ainsi pour leur syntaxe :
 
 ```js
-let func = (arg1, arg2, ...argN) => expression
+let func = (arg1, arg2, ..., argN) => expression
 ```
 
 ...Cela va créér une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
@@ -13,7 +13,7 @@ let func = (arg1, arg2, ...argN) => expression
 C'est donc la version raccourcie de :
 
 ```js
-let func = function(arg1, arg2, ...argN) {
+let func = function(arg1, arg2, ..., argN) {
   return expression;
 };
 ```
