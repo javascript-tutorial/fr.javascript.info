@@ -224,11 +224,7 @@ Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
 
-<<<<<<< HEAD
-## Obtenez une nouvelle copie d'un tableau/objet
-=======
-## Copy an array/object
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+## Copier un tableau/objet
 
 Souvenez-vous quand nous avons parlé de `Object.assign()` [par le passé](info:object-copy#cloning-and-merging-object-assign) ?
 
@@ -236,16 +232,11 @@ Il est possible de faire la même chose avec la syntaxe spread !
 
 ```js run
 let arr = [1, 2, 3];
-<<<<<<< HEAD
-let arrCopy = [...arr]; // répartir le tableau dans une liste de paramètres
-                        // puis mettre le résultat dans un nouveau tableau
-=======
 
 *!*
-let arrCopy = [...arr]; // spread the array into a list of parameters
-                        // then put the result into a new array
+let arrCopy = [...arr]; // répartir le tableau dans une liste de paramètres
+                        // puis mettre le résultat dans un nouveau tableau
 */!*
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 // les tableaux ont-ils le même contenu ?
 alert(JSON.stringify(arr) === JSON.stringify(arrCopy)); // true
@@ -263,16 +254,11 @@ Notez qu'il est possible de faire la même chose pour faire une copie d'un objet
 
 ```js run
 let obj = { a: 1, b: 2, c: 3 };
-<<<<<<< HEAD
-let objCopy = { ...obj }; // répartir l'objet dans une liste de paramètres
-                          // puis retourne le résultat dans un nouvel objet
-=======
 
 *!*
-let objCopy = { ...obj }; // spread the object into a list of parameters
-                          // then return the result in a new object
+let objCopy = { ...obj }; // répartir l'objet dans une liste de paramètres
+                          // puis retourne le résultat dans un nouvel objet
 */!*
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 // les objets ont-ils le même contenu ?
 alert(JSON.stringify(obj) === JSON.stringify(objCopy)); // true
@@ -286,11 +272,7 @@ alert(JSON.stringify(obj)); // {"a":1,"b":2,"c":3,"d":4}
 alert(JSON.stringify(objCopy)); // {"a":1,"b":2,"c":3}
 ```
 
-<<<<<<< HEAD
-Cette façon de copier un objet est beaucoup plus courte que `let objCopy = Object.assign({}, obj);` ou pous un tableau `let arrCopy = Object.assign([], arr);` nous préférons donc l'utiliser chaque fois que nous le pouvons.
-=======
-This way of copying an object is much shorter than `let objCopy = Object.assign({}, obj)` or for an array `let arrCopy = Object.assign([], arr)` so we prefer to use it whenever we can.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+Cette façon de copier un objet est beaucoup plus courte que `let objCopy = Object.assign({}, obj)` ou pour un tableau `let arrCopy = Object.assign([], arr);` nous préférons donc l'utiliser chaque fois que nous le pouvons.
 
 
 ## Résumé

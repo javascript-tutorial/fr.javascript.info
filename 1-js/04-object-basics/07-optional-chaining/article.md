@@ -175,15 +175,10 @@ userGuest.admin?.(); // nothing (no such method)
 */!*
 ```
 
-<<<<<<< HEAD
 
-Ici, dans les deux lignes, nous utilisons d'abord le point (`user1.admin`) pour obtenir la propriété `admin`, car l'objet utilisateur doit exister, donc il peut être lu en toute sécurité.
-Puis `?.()` Vérifie la partie gauche : si la fonction admin existe, alors elle s'exécute (c'est le cas pour `user1`). Sinon (pour `user2`) l'évaluation s'arrête sans erreur.
-=======
-Here, in both lines we first use the dot (`userAdmin.admin`) to get `admin` property, because we assume that the user object exists, so it's safe read from it.
+Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) pour obtenir la propriété `admin`, car l'objet utilisateur doit exister, donc il peut être lu en toute sécurité.
 
-Then `?.()` checks the left part: if the admin function exists, then it runs (that's so for `userAdmin`). Otherwise (for `userGuest`) the evaluation stops without errors.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+Puis `?.()` Vérifie la partie gauche : si la fonction admin existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
 
 
 La syntaxe `?.[]` Fonctionne également, si nous voulons utiliser des crochets `[]` pour accéder aux propriétés au lieu du point `.`. Similaire aux cas précédents, il permet de lire en toute sécurité une propriété à partir d'un objet qui peut ne pas exister.

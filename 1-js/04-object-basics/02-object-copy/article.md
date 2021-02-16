@@ -187,13 +187,9 @@ let clone = Object.assign({}, user);
 
 Cela copie toutes les propriétés de `user` dans l'objet vide et le retourne.
 
-<<<<<<< HEAD
-## Clonage imbriqué
-=======
-There are also other methods of cloning an object, e.g. using the [spread operator](info:rest-parameters-spread) `clone = {...user}`, covered later in the tutorial.
+Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilisant la [syntaxe spread](info:rest-parameters-spread) `clone = {...user}`, abordé plus loin dans le tutoriel.
 
-## Nested cloning
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+## Clonage imbriqué
 
 Jusqu'à maintenat on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
 

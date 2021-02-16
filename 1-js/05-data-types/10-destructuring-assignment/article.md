@@ -155,11 +155,7 @@ Nous pouvons échanger plus de deux variables de cette façon.
 
 ### Le rest '...'
 
-<<<<<<< HEAD
-Habituellement, si le tableau est plus long lorsque la liste est à gauche, les éléments "supplémentaires" sont omis.
-=======
-Usually, if the array is longer than the list at the left, the "extra" items are omitted.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+Habituellement, si le tableau est plus long que la liste à gauche, les éléments "supplémentaires" sont omis.
 
 Par exemple, ici, seuls deux éléments sont pris et le reste est simplement ignoré :
 
