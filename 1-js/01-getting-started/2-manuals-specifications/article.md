@@ -12,11 +12,7 @@ Une nouvelle version de la spécification est publiée chaque année. La derniè
 
 Pour en savoir plus sur les fonctionnalités à venir, y compris celles qui sont "presque standards" (appelées aussi "stage 3"), vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
 
-<<<<<<< HEAD
-Si vous développez spécifiquement pour le navigateur, il existe d’autres spécifications couvertes dans la [seconde partie](info:browser-environment) du tutoriel.
-=======
-Also, if you're developing for the browser, then there are other specifications covered in the [second part](info:browser-environment) of the tutorial.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+De plus, si vous développez pour le navigateur, d'autres spécifications sont couvertes dans la [seconde partie](info:browser-environment) du tutoriel.
 
 ## Manuels
 
