@@ -36,19 +36,11 @@ function cachingDecorator(func) {
 
 slow = cachingDecorator(slow);
 
-<<<<<<< HEAD
-alert( slow(1) ); // slow(1) est mise en cache
-alert( "Again: " + slow(1) ); // pareil
+alert( slow(1) ); // slow(1) est mis en cache et le résultat est renvoyé
+alert( "Again: " + slow(1) ); // le résultat slow(1) est retourné à partir du cache
 
-alert( slow(2) ); // slow(2) est mise en cache
-alert( "Again: " + slow(2) ); // pareil que la ligne précédente
-=======
-alert( slow(1) ); // slow(1) is cached and the result returned
-alert( "Again: " + slow(1) ); // slow(1) result returned from cache
-
-alert( slow(2) ); // slow(2) is cached and the result returned
-alert( "Again: " + slow(2) ); // slow(2) result returned from cache
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
+alert( slow(2) ); // slow(2) est mis en cache et le résultat est renvoyé
+alert( "Again: " + slow(2) ); // le résultat slow(2) est retourné à partir du cache
 ```
 
 Dans le code ci-dessus, `cachingDecorator` est un *décorateur*: une fonction spéciale qui prend une autre fonction et modifie son comportement.
