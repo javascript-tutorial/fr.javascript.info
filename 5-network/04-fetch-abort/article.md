@@ -17,13 +17,8 @@ let controller = new AbortController();
 
 Un contrôleur est un objet extrêmement simple.
 
-<<<<<<< HEAD
 - Il a une seule méthode `abort()`,
 - Et une seule propriété `signal` qui permet de définir des écouteurs d'événements dessus.
-=======
-- It has a single method `abort()`,
-- And a single property `signal` that allows to set event listeners on it.
->>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Quand `abort()` est appelé :
 - `controller.signal` émet l'événement `"abort"`.
