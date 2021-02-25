@@ -1,6 +1,6 @@
 # Quantificateurs gloutons ou paresseux
 
-Les quantificateurs, à première vue, très simples, peuvent parfois être retors.
+Les quantificateurs, à première vue très simples, peuvent parfois être retors.
 
 Pour réussir à trouver des motifs plus complexes que `pattern:/\d+/`, nous devons voir plus en détail comment se déroule une recherche.
 
@@ -8,13 +8,13 @@ Prenons comme exemple la tâche suivante.
 
 Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, souvent préférés comme typographie dans de nombreux pays.
 
-Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe d'autre guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
+Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe aussi d'autres guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
 
 La première chose à faire est de trouver ces guillemets droits, et nous pourrons ensuite les remplacer.
 
-Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche, mais pas exactement !
+Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche...
 
-Testons cela :
+Pas exactement, voyons cela :
 
 ```js run
 let regexp = /".+"/g;
@@ -24,11 +24,11 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch" and her "broom"
 ```
 
-... Nous pouvons voir que ça ne marche pas exactement comme prévu !
+... Nous pouvons voir que cela ne marche pas vraiment comme prévu !
 
 Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
-Ce qui peut être vu comme "La gourmandise est un défaut qui cause beaucoup de torts à ceux qui s’y livrent".
+Voyons cela comme "La gourmandise est un défaut qui cause beaucoup de torts à ceux qui s’y livrent".
 
 ## Recherche gloutonne
 
@@ -163,7 +163,7 @@ alert( "123 456".match(/\d+ \d+?/) ); // 123 4
 ```smart header="Optimisations"
 Les moteurs d'expression régulière récents arrive à optimiser leurs algorithmes internes. Ils fonctionnent donc un peu différemment.
 
-Mais pour comprendre comment fonctionnent les expression régulières et pour en contruire, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisé en interne pour optimiser les choses.
+Mais pour comprendre comment fonctionnent les expression régulières et pour en construire, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisés en interne pour optimiser les choses.
 
 Comme les expressions régulières complexes sont difficiles à optimiser, la recherche peut se dérouler exactement comme nous l'avons décri.
 ```

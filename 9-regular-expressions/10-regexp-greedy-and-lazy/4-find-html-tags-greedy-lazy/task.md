@@ -1,6 +1,6 @@
 # Trouver des balises HTML
 
-Écrire une expression régulière pour trouver toute balise HTML (ouvrante ou fermante) avec leurs attributs.
+Écrire une expression régulière pour trouver toutes les balises HTML (ouvrantes et fermantes) avec leurs attributs.
 
 Exemple d'usage :
 
