@@ -1,6 +1,6 @@
-# A match for /d+? d+?/
+# Correspondance pour /d+? d+?/
 
-What's the match here?
+Quel est la correspondance trouvée ici ?
 
 ```js
 alert( "123 456".match(/\d+? \d+?/g) ); // ?

@@ -1,8 +1,8 @@
-# Find HTML tags
+# Trouver des balises HTML
 
-Create a regular expression to find all (opening and closing) HTML tags with their attributes.
+Écrire une expression régulière pour trouver toutes les balises HTML (ouvrantes et fermantes) avec leurs attributs.
 
-An example of use:
+Exemple d'usage :
 
 ```js run
 let regexp = /your regexp/g;
@@ -12,4 +12,4 @@ let str = '<> <a href="/"> <input type="radio" checked> <b>';
 alert( str.match(regexp) ); // '<a href="/">', '<input type="radio" checked>', '<b>'
 ```
 
-Here we assume that tag attributes may not contain `<` and `>` (inside quotes too), that simplifies things a bit.
+Pour simplifier un peu, nous considérons ici qu'une balise ne peut pas contenir de `<` ou `>` (même à l'intérieur de guillemets).

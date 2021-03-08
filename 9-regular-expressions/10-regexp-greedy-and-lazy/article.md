@@ -1,20 +1,20 @@
-# Greedy and lazy quantifiers
+# Quantificateurs gloutons ou paresseux
 
-Quantifiers are very simple from the first sight, but in fact they can be tricky.
+Les quantificateurs, à première vue très simples, peuvent parfois être retors.
 
-We should understand how the search works very well if we plan to look for something more complex than `pattern:/\d+/`.
+Pour réussir à trouver des motifs plus complexes que `pattern:/\d+/`, nous devons voir plus en détail comment se déroule une recherche.
 
-Let's take the following task as an example.
+Prenons comme exemple la tâche suivante.
 
-We have a text and need to replace all quotes `"..."` with guillemet marks: `«...»`. They are preferred for typography in many countries.
+Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, souvent préférés comme typographie dans de nombreux pays.
 
-For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witam, świat!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
+Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe aussi d'autres guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
 
-The first thing to do is to locate quoted strings, and then we can replace them.
+La première chose à faire est de trouver ces guillemets droits, et nous pourrons ensuite les remplacer.
 
-A regular expression like `pattern:/".+"/g` (a quote, then something, then the other quote) may seem like a good fit, but it isn't!
+Une expression régulière comme `pattern:/".+"/g` (des guillemets, puis quelque chose, puis d'autres guillemets) semble être une bonne approche...
 
-Let's try it:
+Pas exactement, voyons cela :
 
 ```js run
 let regexp = /".+"/g;
@@ -24,85 +24,85 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch" and her "broom"
 ```
 
-...We can see that it works not as intended!
+... Nous pouvons voir que cela ne marche pas vraiment comme prévu !
 
-Instead of finding two matches `match:"witch"` and `match:"broom"`, it finds one: `match:"witch" and her "broom"`.
+Au lieu de trouver deux correspondances `match:"witch"` et `match:"broom"`, il n'en trouve qu'une : `match:"witch" and her "broom"`.
 
-That can be described as "greediness is the cause of all evil".
+Voyons cela comme "La gourmandise est un défaut qui cause beaucoup de torts à ceux qui s’y livrent".
 
-## Greedy search
+## Recherche gloutonne
 
-To find a match, the regular expression engine uses the following algorithm:
+Pour trouver une correspondance, le moteur d'expression régulière utilise l'algorithme suivant :
 
-- For every position in the string
-    - Try to match the pattern at that position.
-    - If there's no match, go to the next position.
+- Pour chacune des positions de la chaîne de caractère
+    - Essaye de trouver le motif à cette position.
+    - Si aucune correspondance, va à la prochaine position.
 
-These common words do not make it obvious why the regexp fails, so let's elaborate how the search works for the pattern `pattern:".+"`.
+Cette description succincte ne suffit peut-être pas à mettre en évidence l'échec précédent, alors voyons plus en détail comment se déroule la recherche du motif `pattern:".+"`.
 
-1. The first pattern character is a quote `pattern:"`.
+1. Le premier caractère du motif sont des guillemets droits `pattern:"`.
 
-    The regular expression engine tries to find it at the zero position of the source string `subject:a "witch" and her "broom" is one`, but there's `subject:a` there, so there's immediately no match.
+    Le moteur d'expression régulière essaye de les trouver à la position zéro de la chaîne source `subject:a "witch" and her "broom" is one`, mais comme il y a un `subject:a` à cette place, il n'y a pas de correspondance possible.
 
-    Then it advances: goes to the next positions in the source string and tries to find the first character of the pattern there, fails again, and finally finds the quote at the 3rd position:
+    Puis il avance : va aux positions suivantes dans la chaîne source et essaye d'y trouver le premier caractère du motif, il échoue une nouvelle fois, avant de trouver les guillemets en troisième position :
 
     ![](witch_greedy1.svg)
 
-2. The quote is detected, and then the engine tries to find a match for the rest of the pattern. It tries to see if the rest of the subject string conforms to `pattern:.+"`.
+2. Les premiers guillemets trouvés, le moteur essaye de trouver la correspondance pour la suite du motif. Il essaye de voir si le reste de la chaîne suit le motif `pattern:.+"`.
 
-    In our case the next pattern character is `pattern:.` (a dot). It denotes "any character except a newline", so the next string letter `match:'w'` fits:
+    Dans notre cas le caractère suivant dans le motif est `pattern:.` (un point). Il signifie "tout caractère, nouvelle ligne exceptée", la lettre suivante de la chaîne `match:'w'` correspond bien :
 
     ![](witch_greedy2.svg)
 
-3. Then the dot repeats because of the quantifier `pattern:.+`. The regular expression engine adds to the match one character after another.
+3. Le point est alors répété avec le quantificateur `pattern:.+`. le moteur d'expression régulière ajoute à la correspondance, les caractères les uns à la suite des autres.
 
-    ...Until when? All characters match the dot, so it only stops when it reaches the end of the string:
+    ... Jusqu'à quand ? Comme tout caractère correspond au point, il ne s'arrête qu'une fois arrivé à la fin de chaîne :
 
     ![](witch_greedy3.svg)
 
-4. Now the engine finished repeating `pattern:.+` and tries to find the next character of the pattern. It's the quote `pattern:"`. But there's a problem: the string has finished, there are no more characters!
+4. La répétition du motif `pattern:.+` maintenant finie, il essaye de trouver le caractère suivant. Ce sont des guillemets droits `pattern:"`. Mais problème : arrivé en bout de chaîne, il n'y a plus de caractère !
 
-    The regular expression engine understands that it took too many `pattern:.+` and starts to *backtrack*.
+    Le moteur d'expression régulière comprend qu'il a pris trop de `pattern:.+` et commence à revenir sur ses pas.
 
-    In other words, it shortens the match for the quantifier by one character:
+    En d'autres termes, il réduit la correspondance avec le quantificateur d'un caractère :
 
     ![](witch_greedy4.svg)
 
-    Now it assumes that `pattern:.+` ends one character before the string end and tries to match the rest of the pattern from that position.
+    Il considère maintenant que `pattern:.+` se termine un caractère avant la fin de la chaîne et essaye de la trouver la fin du motif à partir de cette position.
 
-    If there were a quote there, then the search would end, but the last character is `subject:'e'`, so there's no match.
+    Et s'il y avait des guillemets ici, alors la recherche s'arrêterait, mais le dernier caractère est `subject:'e'`, il n'y a donc toujours pas de correspondance.
 
-5. ...So the engine decreases the number of repetitions of `pattern:.+` by one more character:
+5. ... Le moteur d'expression régulière diminue encore le nombre de répétitions de `pattern:.+` d'un autre caractère :
 
     ![](witch_greedy5.svg)
 
-    The quote `pattern:'"'` does not match `subject:'n'`.
+    les guillemets `pattern:'"'` ne correspondent pas à `subject:'n'`.
 
-6. The engine keep backtracking: it decreases the count of repetition for `pattern:'.'` until the rest of the pattern (in our case `pattern:'"'`) matches:
+6. Le moteur continue sa marche arrière : il réduit le nombre de répétitions de `pattern:'.'` jusqu'à trouver une correspondance pour la suite du motif (dans notre cas `pattern:'"'`) :
 
     ![](witch_greedy6.svg)
 
-7. The match is complete.
+7. La correspondance au motif est complète.
 
-8. So the first match is `match:"witch" and her "broom"`. If the regular expression has flag `pattern:g`, then the search will continue from where the first match ends. There are no more quotes in the rest of the string `subject:is one`, so no more results.
+8. La première correspondance est donc `match:"witch" and her "broom"`. Si l'expression régulière porte le marqueur `pattern:g`, alors la recherche continuera à partir de la fin de cette première correspondance. Comme il n'y a plus de guillemets dans la suite de la chaîne `subject:is one`, il n'y pas d'autres correspondances.
 
-That's probably not what we expected, but that's how it works.
+Ce n'est peut-être pas ce que nous attendions, mais c'est bien ainsi que cela fonctionne.
 
-**In the greedy mode (by default) a quantified character is repeated as many times as possible.**
+**En mode glouton (mode par défaut) un caractère suivi d'un quantificateur est répété autant de fois que possible.**
 
-The regexp engine adds to the match as many characters as it can for `pattern:.+`, and then shortens that one by one, if the rest of the pattern doesn't match.
+Le moteur d'expression régulière ajoute autant de caractères que possible pour le motif `pattern:.+`, puis réduit la correspondance caractère par caractère, si la suite du motif ne trouve pas de correspondance.
 
-For our task we want another thing. That's where a lazy mode can help.
+Nous avons besoin d'autre chose pour mener à bien notre tâche. Et le mode paresseux va pouvoir nous aider.
 
-## Lazy mode
+## Mode paresseux
 
-The lazy mode of quantifiers is an opposite to the greedy mode. It means: "repeat minimal number of times".
+Le mode paresseux des quantificateurs est l'opposé du mode glouton. Il signifie : "répète le motif le moins de fois possible".
 
-We can enable it by putting a question mark `pattern:'?'` after the quantifier, so that it becomes  `pattern:*?` or `pattern:+?` or even `pattern:??` for `pattern:'?'`.
+Nous pouvons l'activer en ajoutant un `pattern:'?'` après le quantificateur, il devient alors  `pattern:*?` ou `pattern:+?` ou encore `pattern:??` pour le `pattern:'?'`.
 
-To make things clear: usually a question mark `pattern:?` is a quantifier by itself (zero or one), but if added *after another quantifier (or even itself)* it gets another meaning -- it switches the matching mode from greedy to lazy.
+Pour clarifier les choses : le point d'interrogation `pattern:?` est en général un quantificateur (zero ou un), mais si nous l'ajoutons *à la suite d'un autre quantificateur (ou bien de lui-même)* il prend une autre signification -- il change le mode de correspondance de glouton à paresseux.
 
-The regexp `pattern:/".+?"/g` works as intended: it finds `match:"witch"` and `match:"broom"`:
+La regexp `pattern:/".+?"/g` fonctionne alors comme prévu : elle trouve `match:"witch"` et `match:"broom"`:
 
 ```js run
 let regexp = /".+?"/g;
@@ -112,67 +112,67 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch", "broom"
 ```
 
-To clearly understand the change, let's trace the search step by step.
+Pour bien comprendre la différence, suivons cette recherche pas à pas.
 
-1. The first step is the same: it finds the pattern start `pattern:'"'` at the 3rd position:
+1. La première étape est la même : elle trouve le premier motif `pattern:'"'` en 3&#x1D49; position :
 
     ![](witch_greedy1.svg)
 
-2. The next step is also similar: the engine finds a match for the dot `pattern:'.'`:
+2. L'étape suivante est aussi semblable : le moteur trouve une correspondance pour le point `pattern:'.'`:
 
     ![](witch_greedy2.svg)
 
-3. And now the search goes differently. Because we have a lazy mode for `pattern:+?`, the engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern  `pattern:'"'` right now:
+3. La recherche prend ensuite un chemin different. Comme nous somme en mode paresseux pour `pattern:+?`, le moteur n'essaye pas de faire correspondre à nouveau un point, mais s'arrête et essaye immédiatement de trouver une correspondance à la suite du motif `pattern:'"'` :
 
     ![](witch_lazy3.svg)
 
-    If there were a quote there, then the search would end, but there's `'i'`, so there's no match.
-4. Then the regular expression engine increases the number of repetitions for the dot and tries one more time:
+    S'il y avait des guillemets ici, alors la recherche s'arrêterait, mais il y a un `'i'`, donc pas de correspondance.
+4. Le moteur d'expression régulière augmente alors le nombre de répétitions pour le point et essaye à nouveau :
 
     ![](witch_lazy4.svg)
 
-    Failure again. Then the number of repetitions is increased again and again...
-5. ...Till the match for the rest of the pattern is found:
+    Nouvel échec. Le nombre de répétitions augmente alors encore et encore ...
+5. ... Jusqu'à trouver une correspondance à la suite du motif :
 
     ![](witch_lazy5.svg)
 
-6. The next search starts from the end of the current match and yield one more result:
+6. La recherche suivante commence alors depuis la fin de la correspondance et ressort une autre résultat :
 
     ![](witch_lazy6.svg)
 
-In this example we saw how the lazy mode works for `pattern:+?`. Quantifiers `pattern:*?` and `pattern:??` work the similar way -- the regexp engine increases the number of repetitions only if the rest of the pattern can't match on the given position.
+Dans cet exemple nous avons vu comment le mode paresseux fonctionne pour `pattern:+?`. Les quantificateurs `pattern:*?` et `pattern:??` fonctionne de la même manière -- le moteur de regexp augmente le nombre de répétitions seulement si le reste du motif ne trouve pas de correspondance à cette position.
 
-**Laziness is only enabled for the quantifier with `?`.**
+**La paresse n'est active que pour le quantificateur suivi de `?`.**
 
-Other quantifiers remain greedy.
+Les autres quantificateurs restent gloutons.
 
-For instance:
+Par exemple :
 
 ```js run
 alert( "123 456".match(/\d+ \d+?/) ); // 123 4
 ```
 
-1. The pattern `pattern:\d+` tries to match as many digits as it can (greedy mode), so it finds  `match:123` and stops, because the next character is a space `pattern:' '`.
-2. Then there's a space in the pattern, it matches.
-3. Then there's `pattern:\d+?`. The quantifier is in lazy mode, so it finds one digit `match:4` and tries to check if the rest of the pattern matches from there.
+1. Le motif `pattern:\d+` essaye de trouver autant de chiffres que possible (mode glouton), il trouve donc  `match:123` et s'arrête, car le caractère suivant est un `pattern:' '`.
+2. Il y a ensuite un espace dans le motif, il y bien correspondance.
+3. Enfin il y a `pattern:\d+?`. Le quantificateur est en mode paresseux, il trouve donc un chiffre `match:4` et vérifie si la suite du motif trouve une correspondance à partir d'ici.
 
-    ...But there's nothing in the pattern after `pattern:\d+?`.
+    ... Mais il n'y a plus rien dans le motif après `pattern:\d+?`.
 
-    The lazy mode doesn't repeat anything without a need. The pattern finished, so we're done. We have a match `match:123 4`.
+    Le mode paresseux ne répète rien sans en avoir besoin. Le motif est terminé, donc la recherche aussi. Nous avons une correspondance `match:123 4`.
 
-```smart header="Optimizations"
-Modern regular expression engines can optimize internal algorithms to work faster. So they may work a bit differently from the described algorithm.
+```smart header="Optimisations"
+Les moteurs d'expression régulière récents arrive à optimiser leurs algorithmes internes. Ils fonctionnent donc un peu différemment.
 
-But to understand how regular expressions work and to build regular expressions, we don't need to know about that. They are only used internally to optimize things.
+Mais pour comprendre comment fonctionnent les expression régulières et pour en construire, nous n'avons pas besoin d'en savoir plus. Ils sont seulement utilisés en interne pour optimiser les choses.
 
-Complex regular expressions are hard to optimize, so the search may work exactly as described as well.
+Comme les expressions régulières complexes sont difficiles à optimiser, la recherche peut se dérouler exactement comme nous l'avons décri.
 ```
 
-## Alternative approach
+## Approche alternative
 
-With regexps, there's often more than one way to do the same thing.
+Avec les expressions régulières, Il y a souvent plusieurs façons pour arriver au même résultat.
 
-In our case we can find quoted strings without lazy mode using the regexp `pattern:"[^"]+"`:
+Dans notre cas, nous pouvons trouver des chaines de caractères entre guillemets sans mode paresseux en utilisant la regexp `pattern:"[^"]+"`:
 
 ```js run
 let regexp = /"[^"]+"/g;
@@ -182,120 +182,120 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch", "broom"
 ```
 
-The regexp `pattern:"[^"]+"` gives correct results, because it looks for a quote `pattern:'"'` followed by one or more non-quotes `pattern:[^"]`, and then the closing quote.
+La regexp `pattern:"[^"]+"` donne le bon résultat, parce qu'il cherche des guillemets `pattern:'"'` suivis par un ou plusieurs "non-guillemets"  `pattern:[^"]`, et ensuite les guillemets de fin.
 
-When the regexp engine looks for `pattern:[^"]+` it stops the repetitions when it meets the closing quote, and we're done.
+Quand le moteur de regexp cherche le motif `pattern:[^"]+` il arrête ses répétitions en rencontrant les guillemets suivant, et renvoie la correspondance.
 
-Please note, that this logic does not replace lazy quantifiers!
+Mais notez que, que cette logique ne remplace pas les quantificateurs paresseux !
 
-It is just different. There are times when we need one or another.
+C'est juste différent. Suivant les cas, nous pourrons avoir besoin de l'un comme de l'autre.
 
-**Let's see an example where lazy quantifiers fail and this variant works right.**
+**Examinons un exemple où les quantificateurs paresseux échouent mais cette variante fonctionne.**
 
-For instance, we want to find links of the form `<a href="..." class="doc">`, with any `href`.
+Par exemple, nous souhaitons trouver des liens de la forme `<a href="..." class="doc">`, quel que soit le `href`.
 
-Which regular expression to use?
+Quelle expression régulière utiliser ?
 
-The first idea might be: `pattern:/<a href=".*" class="doc">/g`.
+Une première idée pourrait donner : `pattern:/<a href=".*" class="doc">/g`.
 
-Let's check it:
+Voyons cela :
 ```js run
 let str = '...<a href="link" class="doc">...';
 let regexp = /<a href=".*" class="doc">/g;
 
-// Works!
+// Ça fonctionne !
 alert( str.match(regexp) ); // <a href="link" class="doc">
 ```
 
-It worked. But let's see what happens if there are many links in the text?
+Cela a fonctionné. Mais voyons ce qu'il se passe s'il y a plusieurs liens dans le texte ?
 
 ```js run
 let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href=".*" class="doc">/g;
 
-// Whoops! Two links in one match!
+// Oups! Les deux liens dans la même correspondance!
 alert( str.match(regexp) ); // <a href="link1" class="doc">... <a href="link2" class="doc">
 ```
 
-Now the result is wrong for the same reason as our "witches" example. The quantifier `pattern:.*` took too many characters.
+Cette fois le résultat n'est pas le bon, pour la même raison que l'exemple avec "witches". Le quantificateur `pattern:.*` a pris trop de caractères.
 
-The match looks like this:
+La correspondance ressemble à cela :
 
 ```html
 <a href="....................................." class="doc">
 <a href="link1" class="doc">... <a href="link2" class="doc">
 ```
 
-Let's modify the pattern by making the quantifier `pattern:.*?` lazy:
+Modifions le motif en rendant le quantificateur `pattern:.*?` paresseux :
 
 ```js run
 let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href=".*?" class="doc">/g;
 
-// Works!
+// Ça fonctionne !
 alert( str.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
-Now it seems to work, there are two matches:
+L'expression régulière semble fonctionner à présent, il y a bien deux correspondances :
 
 ```html
 <a href="....." class="doc">    <a href="....." class="doc">
 <a href="link1" class="doc">... <a href="link2" class="doc">
 ```
 
-...But let's test it on one more text input:
+... Mais testons-la sur un autre texte :
 
 ```js run
 let str = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
 let regexp = /<a href=".*?" class="doc">/g;
 
-// Wrong match!
+// Mauvaise correspondance !
 alert( str.match(regexp) ); // <a href="link1" class="wrong">... <p style="" class="doc">
 ```
 
-Now it fails. The match includes not just a link, but also a lot of text after it, including `<p...>`.
+Et maintenant ça échoue. La correspondance inclue non seulement le lien, mais aussi beaucoup du texte suivant, incluant `<p...>`.
 
-Why?
+Pourquoi ?
 
-That's what's going on:
+Voici ce qu'il se passe:
 
-1. First the regexp finds a link start `match:<a href="`.
-2. Then it looks for `pattern:.*?`: takes one character (lazily!), check if there's a match for `pattern:" class="doc">` (none).
-3. Then takes another character into `pattern:.*?`, and so on... until it finally reaches `match:" class="doc">`.
+1. Pour commencer la regexp trouve un début de lien `match:<a href="`.
+2. Il cherche ensuite le motif `pattern:.*?`: prend un caractère (mode paresseux !), vérifie s'il a une correspondance pour `pattern:" class="doc">` (aucune).
+3. Puis prend un caractère supplémentaire dans `pattern:.*?`, et ainsi de suite... jusqu'à atteindre finalement `match:" class="doc">`.
 
-But the problem is: that's already beyond the link `<a...>`, in another tag `<p>`. Not what we want.
+Mais voilà le problème : c'est déjà au-delà du lien `<a...>`, dans un autre balise `<p>`. Pas vraiment ce que nous souhaitons.
 
-Here's the picture of the match aligned with the text:
+Voici le schéma de la correspondance en alignant les caractères :
 
 ```html
 <a href="..................................." class="doc">
 <a href="link1" class="wrong">... <p style="" class="doc">
 ```
 
-So, we need the pattern to look for `<a href="...something..." class="doc">`, but both greedy and lazy variants have problems.
+Nous avons donc besoin que le motif recherche `<a href="...something..." class="doc">`, mais les modes, glouton ou paresseux, rencontrent des problèmes.
 
-The correct variant can be: `pattern:href="[^"]*"`. It will take all characters inside the `href` attribute till the nearest quote, just what we need.
+Une alternative fonctionnelle peut être : `pattern:href="[^"]*"`. Cela prendra tous les caractères à l'intérieur de l'attribut `href` jusqu'aux prochains guillemets, juste ce qu'il faut.
 
-A working example:
+Un exemple fonctionnel :
 
 ```js run
 let str1 = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
 let str2 = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href="[^"]*" class="doc">/g;
 
-// Works!
-alert( str1.match(regexp) ); // null, no matches, that's correct
+// Ça marche !
+alert( str1.match(regexp) ); // null, aucune corespondance, c'est bien le résultat attendu
 alert( str2.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
-## Summary
+## Résumé
 
-Quantifiers have two modes of work:
+Les quantificateurs ont deux modes de travail :
 
-Greedy
-: By default the regular expression engine tries to repeat the quantified character as many times as possible. For instance, `pattern:\d+` consumes all possible digits. When it becomes impossible to consume more (no more digits or string end), then it continues to match the rest of the pattern. If there's no match then it decreases the number of repetitions (backtracks) and tries again.
+Glouton
+: Par défaut le moteur d'expression régulière essaye de répéter le caractère quantifié autant de fois que possible. Par exemple, `pattern:\d+` consomme tous les chiffres possibles. Quand il devient impossible d'en consommer d'autre (plus aucun chiffre ou fin de chaîne), il continue alors pour trouver la fin du motif. S'il ne trouve pas de correspondance, il réduit alors le nombre de répétitions effectuées (il revient sur ses pas) et essaye à nouveau.
 
-Lazy
-: Enabled by the question mark `pattern:?` after the quantifier. The regexp engine tries to match the rest of the pattern before each repetition of the quantified character.
+Paresseux
+: Activé par le point d'interrogation `pattern:?` après le quantificateur. Le moteur de regexp essaye de trouver une correspondance pour le reste du motif avant chaque répétition du caractère quantifié.
 
-As we've seen, the lazy mode is not a "panacea" from the greedy search. An alternative is a "fine-tuned" greedy search, with exclusions, as in the pattern `pattern:"[^"]+"`.
+Comme nous l'avons vu, Le mode paresseux n'est pas la "panacée" de la recherche gloutonne. Une alternative est une recherche gloutonne bien dosé, avec des exclusions, comme dans le motif `pattern:"[^"]+"`.
