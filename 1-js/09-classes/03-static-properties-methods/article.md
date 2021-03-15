@@ -125,7 +125,11 @@ C’est la même chose qu’une assignation directe à `Article`:
 Article.publisher = "Ilya Kantor";
 ```
 
+<<<<<<< HEAD
 ## Héritage de méthodes et de propriétés statiques
+=======
+## Inheritance of static properties and methods [#statics-and-inheritance]
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Les propriétés et méthodes statiques sont héritées.
 

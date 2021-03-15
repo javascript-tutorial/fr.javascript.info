@@ -427,6 +427,7 @@ Vous pouvez vérifier vous-même en les lisant et en vous rappelant leur signifi
 
 Import:
 
+<<<<<<< HEAD
 - Exportations nommées du module:
   - `import {x [as y], ...} from "module"`
 - Export par défaut: 
@@ -435,6 +436,16 @@ Import:
 - Tout:
   - `import * as obj from "module"`
 - Import le module (son code s'exécute), mais ne l'affecte pas à une variable:
+=======
+- Importing named exports:
+  - `import {x [as y], ...} from "module"`
+- Importing the default export:  
+  - `import x from "module"`
+  - `import {default as x} from "module"`
+- Import all:
+  - `import * as obj from "module"`
+- Import the module (its code runs), but do not assign any of its exports to variables:
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
   - `import "module"`
 
 Nous pouvons mettre des déclarations `import/export` en haut ou en bas d'un script, cela n'a pas d'importance.
