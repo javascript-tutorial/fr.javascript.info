@@ -6,11 +6,7 @@ importance: 5
 
 Comparez les deux fragments de code.
 
-<<<<<<< HEAD
-1. Le premier utilise `finally` pour exécuter le code après `try..catch`:
-=======
-1. The first one uses `finally` to execute the code after `try...catch`:
->>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
+1. Le premier utilise `finally` pour exécuter le code après `try..catch` :
 
     ```js
     try {
@@ -23,11 +19,7 @@ Comparez les deux fragments de code.
     */!*
     }
     ```
-<<<<<<< HEAD
-2. Le deuxième fragment met le "cleanup" juste après `try..catch`:
-=======
-2. The second fragment puts the cleaning right after `try...catch`:
->>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
+2. Le deuxième fragment fait le nettoyage juste après `try..catch` :
 
     ```js
     try {
