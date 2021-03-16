@@ -535,7 +535,11 @@ Les caractères sont comparés par leur code numérique. Le plus grand code sign
 - Certaines lettres comme `Ö` se distinguent de l'alphabet principal. Ici, le code est supérieur à tout ce qui va de `a` à `z`.
 
 
+<<<<<<< HEAD
 ### Les comparaisons correctes
+=======
+### Correct comparisons [#correct-comparisons]
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 L'algorithme "approprié" pour effectuer des comparaisons de chaînes est plus complexe qu'il n'y paraît, car les alphabets diffèrent d'une langue à l'autre.
 

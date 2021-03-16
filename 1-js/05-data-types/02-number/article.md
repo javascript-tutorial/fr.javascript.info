@@ -161,7 +161,7 @@ Il y a deux façons de le faire:
     ```js run
     let num = 1.23456;
 
-    alert( Math.floor(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
+    alert( Math.round(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
     ```
 
 2. La méthode [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed) arrondit le nombre à `n` chiffres après le point et renvoie unechaîne de caractères du résultat.
