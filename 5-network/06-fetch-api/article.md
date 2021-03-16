@@ -169,15 +169,9 @@ Normalement, `fetch` suit de manière transparente les redirections HTTP, comme 
 
 L'option `redirect` permet de changer cela :
 
-<<<<<<< HEAD
 - **`"follow"`** -- par défaut, suit les redirections HTTP,
 - **`"error"`** -- erreur en cas de redirection HTTP,
-- **`"manual"`** -- ne suit pas la redirection HTTP, mais `response.url` sera la nouvelle URL, et `response.redirected` sera `true`, afin que nous puissions effectuer la redirection manuellement vers la nouvelle URL (si nécessaire).
-=======
-- **`"follow"`** -- the default, follow HTTP-redirects,
-- **`"error"`** -- error in case of HTTP-redirect,
-- **`"manual"`** -- allows to process HTTP-redirects manually. In case of redirect, we'll get a special response object, with `response.type="opaqueredirect"` and and zeroed/empty status and most other properies.
->>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
+- **`"manual"`** -- permet de traiter manuellement les redirections HTTP. En cas de redirection, nous obtiendrons un objet de réponse spécial, avec `response.type="opaqueredirect"` et un statut zéro/vide ainsi que la plupart des autres propriétés.
 
 ## integrity
 
