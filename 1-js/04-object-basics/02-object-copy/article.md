@@ -100,11 +100,7 @@ alert( a == b ); // false
 
 Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive `obj == 5`, les objets sont convertis en primitive. Nous étudierons comment les conversions d'objets fonctionnent très bientôt, mais pour dire la vérité, de telles comparaisons sont rarement nécessaires, en général elles sont le résultat d'une erreur de programmation.
 
-<<<<<<< HEAD
-## Clonage et fusionage, Object.assign
-=======
-## Cloning and merging, Object.assign [#cloning-and-merging-object-assign]
->>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
+## Clonage et fusion, Object.assign [#clonage-et-fusion-object-assign]
 
 Copier une variable object créé une référence en plus vers le même objet.
 
@@ -191,11 +187,7 @@ let clone = Object.assign({}, user);
 
 Cela copie toutes les propriétés de `user` dans l'objet vide et le retourne.
 
-<<<<<<< HEAD
 Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilisant la [syntaxe spread](info:rest-parameters-spread) `clone = {...user}`, abordé plus loin dans le tutoriel.
-=======
-There are also other methods of cloning an object, e.g. using the [spread syntax](info:rest-parameters-spread) `clone = {...user}`, covered later in the tutorial.
->>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ## Clonage imbriqué
 
