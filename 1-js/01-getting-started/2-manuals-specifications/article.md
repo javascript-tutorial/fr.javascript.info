@@ -3,6 +3,7 @@
 
 Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement le langage. Mais une fois que vous maîtriserez les bases, vous aurez besoin d’autres ressources.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TqQs_MKMqwU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Spécification
 
