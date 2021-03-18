@@ -2,6 +2,9 @@
 
 Voyons ce qui est spécial à propos de JavaScript, ce qu'il nous permet de faire et avec quelles autres technologies il s'accorde bien.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-eEx3yRZ-sE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Qu'est-ce que JavaScript?
 
 *JavaScript* a été initiallement créé pour "rendre les pages web vivantes".
