@@ -252,13 +252,13 @@ Ne seront donc trouvés qu'autant de résultats que besoin, pas plus.
 Par ex. il y a 100 correspondances potentielles dans un texte, mais dans une boucle `for..of` nous en trouvons 5, et décidons alors que c'est suffisant et faisons un `break`. Le moteur de recherche ne perdra pas son temps à rechercher les 95 autres correspondances.
 ```
 
-## Named groups
+## Groupes nommés
 
-Remembering groups by their numbers is hard. For simple patterns it's doable, but for more complex ones counting parentheses is inconvenient. We have a much better option: give names to parentheses.
+Il est difficile de se souvenir de groupes par leur numéro. Bien que faisable pour des motifs simples, cela devient ardu dans des motifs plus complexes. Nous avons une bien meilleure option : nommer les parenthèses.
 
-That's done by putting `pattern:?<name>` immediately after the opening paren.
+Cela se fait en mettant `pattern:?<name>` immédiatement après la parenthèse ouvrante.
 
-For example, let's look for a date in the format "year-month-day":
+Par exemple, recherchons une date au format "year-month-day":
 
 ```js run
 *!*
@@ -273,11 +273,11 @@ alert(groups.month); // 04
 alert(groups.day); // 30
 ```
 
-As you can see, the groups reside in the `.groups` property of the match.
+Comme vous pouvez le voir, les groupes figurent dans la propriété `.groups` de la correspondance.
 
-To look for all dates, we can add flag `pattern:g`.
+Pour chercher toutes les dates, nous pouvons ajouter le marqueur `pattern:g`.
 
-We'll also need `matchAll` to obtain full matches, together with groups:
+Nous aurons aussi besoin de `matchAll` pour obtenir des correspondances complètes, avec les groupes :
 
 ```js run
 let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
@@ -290,16 +290,16 @@ for(let result of results) {
   let {year, month, day} = result.groups;
 
   alert(`${day}.${month}.${year}`);
-  // first alert: 30.10.2019
+  // premier alert: 30.10.2019
   // second: 01.01.2020
 }
 ```
 
-## Capturing groups in replacement
+## Groupes capturant dans un remplacement
 
-Method `str.replace(regexp, replacement)` that replaces all matches with `regexp` in `str` allows to use parentheses contents in the `replacement` string. That's done using `pattern:$n`, where `pattern:n` is the group number.
+La méthode `str.replace(regexp, replacement)` qui remplace dans `str` toutes les correspondances de `regexp`, nous permet d'utiliser le contenu des parenthèses dans la chaîne de `replacement`. Nous utiliserons alors `pattern:$n`, où `pattern:n` correspond au numéro de groupe.
 
-For example,
+Par exemple,
 
 ```js run
 let str = "John Bull";
@@ -308,9 +308,9 @@ let regexp = /(\w+) (\w+)/;
 alert( str.replace(regexp, '$2, $1') ); // Bull, John
 ```
 
-For named parentheses the reference will be `pattern:$<name>`.
+Pour les parenthèses nommées la référence au groupe se fera avec `pattern:$<name>`.
 
-For example, let's reformat dates from "year-month-day" to "day.month.year":
+Par exemple, reformatons les dates depuis le format "year-month-day" vers "day.month.year":
 
 ```js run
 let regexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
@@ -321,44 +321,44 @@ alert( str.replace(regexp, '$<day>.$<month>.$<year>') );
 // 30.10.2019, 01.01.2020
 ```
 
-## Non-capturing groups with ?:
+## Groupe non capturant avec ?:
 
-Sometimes we need parentheses to correctly apply a quantifier, but we don't want their contents in results.
+Nous avons parfois besoin de parenthèses pour appliquer correctement un quantificateur, sans avoir besoin de leurs contenu dans les résultats.
 
-A group may be excluded by adding `pattern:?:` in the beginning.
+Un groupe peut en être exclu en ajoutant `pattern:?:` au début.
 
-For instance, if we want to find `pattern:(go)+`, but don't want the parentheses contents (`go`) as a separate array item, we can write: `pattern:(?:go)+`.
+Par exemple, si nous voulons trouver `pattern:(go)+`, sans avoir les contenus des parenthèses (`go`) comme élément du tableau de correspondance, nous pouvons écrire : `pattern:(?:go)+`.
 
-In the example below we only get the name `match:John` as a separate member of the match:
+Dans l'exemple suivant nous obtenons seulement `match:John` comme élément supplémentaire de la correspondance.:
 
 ```js run
 let str = "Gogogo John!";
 
 *!*
-// ?: excludes 'go' from capturing
+// ?: exclu 'go' d'une capture
 let regexp = /(?:go)+ (\w+)/i;
 */!*
 
 let result = str.match(regexp);
 
-alert( result[0] ); // Gogogo John (full match)
+alert( result[0] ); // Gogogo John (correspondance entière)
 alert( result[1] ); // John
-alert( result.length ); // 2 (no more items in the array)
+alert( result.length ); // 2 (pas d'autres éléments dans le tableau)
 ```
 
-## Summary
+## Résumé
 
-Parentheses group together a part of the regular expression, so that the quantifier applies to it as a whole.
+Les parenthèses regroupent ensemble une partie de l'expression régulière, de telle sorte qu'un quantificateur s'applique à tout cet ensemble.
 
-Parentheses groups are numbered left-to-right, and can optionally be named with  `(?<name>...)`.
+Les groupes de parenthèses son numérotés de gauche à droite, et peuvent éventuellement être nommés avec  `(?<name>...)`.
 
-The content, matched by a group, can be obtained in the results:
+Le contenu correspondant à un groupe, peut être obtenu dans les résultats :
 
-- The method `str.match` returns capturing groups only without flag `pattern:g`.
-- The method `str.matchAll` always returns capturing groups.
+- La méthode `str.match` retourne les groupes capturant seulement sans le marqueur `pattern:g`.
+- La méthode `str.matchAll` retourne toujours les groupes capturant.
 
-If the parentheses have no name, then their contents is available in the match array by its number. Named parentheses are also available in the property `groups`.
+Si les parenthèses n'ont pas de nom, alors leur contenu est dans le tableau de correspondances par son numéro. Les parenthèses nommées sont disponibles aussi par la propriété `groups`.
 
-We can also use parentheses contents in the replacement string in `str.replace`: by the number `$n` or the name `$<name>`.
+Nous pouvons aussi utiliser les contenus des parenthèses dans la chaine de remplacement de `str.replace`: par leur numéro `$n` ou leur nom `$<name>`.
 
-A group may be excluded from numbering by adding `pattern:?:` in its start. That's used when we need to apply a quantifier to the whole group, but don't want it as a separate item in the results array. We also can't reference such parentheses in the replacement string.
+Un groupe pour être exclu de la numérotation en ajoutant `pattern:?:` à son début. Pour appliquer un quantificateur à groupe entier, sans avoir besoin de cet élément dans les résultats. Nous ne pourrons pas alors y faire référence dans la chaine de remplacement.
