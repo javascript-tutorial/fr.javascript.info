@@ -1,5 +1,7 @@
 # Les éditeurs de code 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KNs-GfVmt3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Un éditeur de code est l'endroit où les programmeurs passent le plus clair de leur temps.
 
 Il existe deux archétypes: IDE et les éditeurs légers. Beaucoup de personnes se sentent à l'aise pour choisir un outil de chaque type.
