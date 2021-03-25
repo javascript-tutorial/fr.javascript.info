@@ -1,2 +1,1 @@
-
-## Générateurs, itération avancée
+# Générateurs, itération avancée
