@@ -88,11 +88,19 @@ Examinons exactement ce qui se fait à l'intérieur de `makeArmy`, et la solutio
     
     Ici, `let j = i` déclare une variable "itération-locale" `j` et y copie `i`. Les primitives sont copiées "par valeur", donc nous obtenons en fait une copie indépendante de `i`, appartenant à l'itération de boucle courante.
     
+<<<<<<< HEAD
     Les shooters fonctionnent correctement, car la valeur de `i` vit maintenant un peu plus près. Pas dans l'environnement lexical `makeArmy()`, mais dans l'environnement lexical qui correspond à l'itération de la boucle actuelle :
     
     ![](lexenv-makearmy-while-fixed.svg)
     
     Un tel problème pourrait également être évité si nous utilisions `for` au début, comme ceci :
+=======
+    The shooters work correctly, because the value of `i` now lives a little bit closer. Not in `makeArmy()` Lexical Environment, but in the Lexical Environment that corresponds to the current loop iteration:
+    
+    ![](lexenv-makearmy-while-fixed.svg)
+    
+    Such a problem could also be avoided if we used `for` in the beginning, like this:
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
     
     ```js run demo
     function makeArmy() {

@@ -121,7 +121,11 @@ Par exemple, si nous commençons le glissement par le rebord de la balle, alors 
 
     ```js
     // onmousemove
+<<<<<<< HEAD
     // la balle a une position: absolue
+=======
+    // ball has position:absolute
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
     ball.style.left = event.pageX - *!*shiftX*/!* + 'px';
     ball.style.top = event.pageY - *!*shiftY*/!* + 'px';
     ```

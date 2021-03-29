@@ -353,7 +353,11 @@ let time1 = 0;
 let time2 = 0;
 
 *!*
+<<<<<<< HEAD
 // lance le test(upperSlice) et le test(upperLoop) toutes les 10 fois en alternance
+=======
+// run bench(diffSubtract) and bench(diffGetTime) each 10 times alternating
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 for (let i = 0; i < 10; i++) {
   time1 += bench(diffSubtract);
   time2 += bench(diffGetTime);
