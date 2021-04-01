@@ -110,8 +110,13 @@ alert(typeof User); // function
 // ...ou, plus précisément, le constructeur de la méthode
 alert(User === User.prototype.constructor); // true
 
+<<<<<<< HEAD
 // Les méthodes sont dans  User.prototype, e.g:
 alert(User.prototype.sayHi); // alert(this.name);
+=======
+// The methods are in User.prototype, e.g:
+alert(User.prototype.sayHi); // the code of the sayHi method
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 // Il y a exactement deux méthodes dans le prototype
 alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi

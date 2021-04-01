@@ -5,7 +5,7 @@ Remplacez les expressions de fonction par des fonctions fléchées dans le code 
 
 ```js run
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 

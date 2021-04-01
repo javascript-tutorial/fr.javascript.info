@@ -371,9 +371,24 @@ break label;  // saute au label ci-dessous (ne fonctionne pas)
 label: for (...)
 ```
 
+<<<<<<< HEAD
 L'appel d'un `continue` n'est possible qu'à partir de l'intérieur de la boucle 
 
 La directive `break` peut aussi être placée avant les blocs de code, comme` label: {...} `, mais elle n'est presque jamais utilisée comme ça. Et cela ne fonctionne qu’à l'envers.
+=======
+A `break` directive must be inside a code block. Technically, any labelled code block will do, e.g.:
+```js
+label: {
+  // ...
+  break label; // works
+  // ...
+}
+```
+
+...Although, 99.9% of the time `break` used is inside loops, as we've seen in the examples above.
+
+A `continue` is only possible from inside a loop.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 ````
 
 ## Résumé

@@ -56,17 +56,34 @@ alert( 8 % 3 ); // 2, le reste de 8 divisé par 3
 
 ### Exponentiation **
 
+<<<<<<< HEAD
 L'opérateur d'exponentiation `a ** b` multiplie `a` par lui-même `b` fois.
+=======
+The exponentiation operator `a ** b` raises `a` to the power of `b`.
+
+In school maths, we write that as a<sup>b</sup>.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 Par exemple:
 
 ```js run
+<<<<<<< HEAD
 alert( 2 ** 2 ); // 4  (2 multiplié par lui-même 2 fois)
 alert( 2 ** 3 ); // 8  (2 * 2 * 2, 3 fois)
 alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2, 4 fois)
 ```
 
 Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. Par exemple, une racine carrée est une exponentiation de `1/2`:
+=======
+alert( 2 ** 2 ); // 2² = 4  
+alert( 2 ** 3 ); // 2³ = 8 
+alert( 2 ** 4 ); // 2⁴ = 16
+```
+
+Just like in maths, the exponentiation operator is defined for non-integer numbers as well. 
+
+For example, a square root is an exponentiation by ½:
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 ```js run
 alert( 4 ** (1/2) ); // 2 (la puissance de 1/2 équivaut à une racine carrée)
