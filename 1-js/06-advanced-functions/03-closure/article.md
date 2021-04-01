@@ -146,11 +146,7 @@ Bien que simples, des variantes légèrement modifiées de ce code ont des utili
 
 Comment cela marche-t-il ? Si nous créons plusieurs compteurs, seront-ils indépendants ? Que se passe-t-il avec les variables ici ?
 
-<<<<<<< HEAD
 La compréhension de ce genre de choses est excellente pour la connaissance globale de JavaScript et bénéfique pour les scénarios plus complexes. Allons donc un peu en profondeur.
-=======
-Understanding such things is great for the overall knowledge of JavaScript and beneficial for more complex scenarios. So let's go a bit in-depth.
->>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 ## Lexical Environment
 

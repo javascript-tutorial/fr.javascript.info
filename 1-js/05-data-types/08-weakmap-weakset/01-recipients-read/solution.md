@@ -25,11 +25,7 @@ messages.shift();
 // maintenant readMessages a 1 élément (techniquement, la mémoire peut être nettoyée plus tard)
 ```
 
-<<<<<<< HEAD
-Le `WeakSet` permet de stocker un ensemble de messages et de vérifier facilement l’existence d’un message.
-=======
-The `WeakSet` allows to store a set of messages and easily check for the existence of a message in it.
->>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
+Le `WeakSet` permet de stocker un ensemble de messages et de vérifier facilement l’existence d’un message dedans.
 
 Il se nettoie automatiquement. Le compromis est que nous ne pouvons pas le parcourir, nous ne pouvons pas obtenir "tous les messages lus" directement. Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
 
