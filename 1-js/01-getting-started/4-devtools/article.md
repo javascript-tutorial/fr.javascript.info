@@ -1,5 +1,7 @@
 # La console de développement
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OFj8hFVS1KY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Le code est sujet aux erreurs. Vous êtes susceptible de faire des erreurs … Oh, de quoi je parle ? Vous allez absolument faire des erreurs, du moins si vous êtes un humain, pas un [robot](https://fr.wikipedia.org/wiki/Bender_Tordeur_Rodr%C3%ADguez).
 
 Mais dans le navigateur, un utilisateur ne voit pas les erreurs par défaut. Ainsi, si quelque chose ne va pas dans le script, nous ne verrons pas ce qui ne va pas et nous ne pourrons pas le réparer.
