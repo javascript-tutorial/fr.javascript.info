@@ -6,7 +6,7 @@ La première chose à apprendre est de construire des blocs de code.
 
 Les instructions sont des constructions de syntaxe et des commandes qui effectuent des actions.
 
-Nous avons déjà vu une instruction `alert ("Hello World!")` Qui affiche le message.
+Nous avons déjà vu une instruction `alert("Hello World!")` qui affiche le message.
 
 Nous pouvons avoir autant d'instructions dans le code que nous le souhaitons. Une autre instruction peut être séparée par un point-virgule.
 
