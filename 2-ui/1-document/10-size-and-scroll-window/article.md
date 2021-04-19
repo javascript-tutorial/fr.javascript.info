@@ -73,7 +73,17 @@ alert('Current scroll from the left: ' + window.pageXOffset);
 
 Ces propriétés sont en lecture seule.
 
+<<<<<<< HEAD
 ## Défilement : scrollTo, scrollBy, scrollIntoView [#window-scroll]
+=======
+```smart header="Also available as `window` properties `scrollX` and `scrollY`"
+For historical reasons, both properties exist, but they are the same:
+- `window.pageXOffset` is an alias of `window.scrollX`.
+- `window.pageYOffset` is an alias of `window.scrollY`.
+```
+
+## Scrolling: scrollTo, scrollBy, scrollIntoView [#window-scroll]
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ```warn
 Pour faire défiler la page avec JavaScript, son DOM doit être entièrement construit.

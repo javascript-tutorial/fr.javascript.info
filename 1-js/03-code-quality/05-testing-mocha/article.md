@@ -2,6 +2,10 @@
 
 Les tests automatisés seront utilisés dans d'autres tâches. Ils sont également largement utilisés dans des projets réels.
 
+<<<<<<< HEAD
+=======
+## Why do we need tests?
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ## Pourquoi avons-nous besoin de tests ?
 

@@ -28,10 +28,17 @@ Ses arguments `resolve` (tenir) et `reject` (rompre) sont les fonctions de retou
 
 Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas, cela n'a pas d'importance, il appellera une des deux fonctions callbacks :
 
+<<<<<<< HEAD
 - `resolve(value)` -  si la tâche s'est terminée avec succés, avec le résultat `value`.
 - `reject(error)` - si une erreur est survenue, `error` est l'object erreur.
 
 Donc, pour résumer : l'exécuteur s'exécute automatiquement et effectue un travail. Ensuite, il devrait appeler `resolve` s'il a réussi ou `reject` s'il y avait une erreur.
+=======
+- `resolve(value)` — if the job is finished successfully, with result `value`.
+- `reject(error)` — if an error has occurred, `error` is the error object.
+
+So to summarize: the executor runs automatically and attempts to perform a job. When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 L'objet `promise` retourné par le constructeur `new Promise` a des propriétés internes :
 

@@ -384,6 +384,8 @@ Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
   }
 
 })();
+
+// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above 
 ```
 
 C'est exactement ce que nous voulions. 

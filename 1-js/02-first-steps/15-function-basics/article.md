@@ -412,7 +412,11 @@ Les fonctions utilisées *très souvent* portent parfois des noms ultra-courts.
 
 Par exemple le framework [jQuery](http://jquery.com) définit une fonction avec `$`. La librairie [LoDash](http://lodash.com/) a nommé sa fonction principale `_`.
 
+<<<<<<< HEAD
 Ce sont des exceptions. En règle générale, les noms de fonctions doivent être concis, mais descriptifs.
+=======
+These are exceptions. Generally function names should be concise and descriptive.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 ```
 
 ## Fonctions == Commentaires
