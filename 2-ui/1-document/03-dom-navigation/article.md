@@ -214,11 +214,7 @@ alert( document.body.previousSibling ); // HTMLHeadElement
 
 ## Navigation par élément uniquement
 
-<<<<<<< HEAD
 Les propriétés de navigation répertoriées ci-dessus font référence à *tous* les nœuds. Par exemple, dans `childNodes`, nous pouvons voir à la fois les nœuds texte, les nœuds élément et même les nœuds commentaire s'il en existe.
-=======
-Navigation properties listed above refer to *all* nodes. For instance, in `childNodes` we can see both text nodes, element nodes, and even comment nodes if they exist.
->>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 Mais pour de nombreuses tâches, nous ne voulons pas de nœuds texte ou commentaire. Nous voulons manipuler des nœuds élément qui représentent des balises et forment la structure de la page.
 

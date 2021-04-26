@@ -9,11 +9,7 @@ Pour suivre la progression du téléchargement, nous pouvons utiliser la propri�
 
 Contrairement à `response.text()`, `response.json()` et à d'autres méthodes, `response.body` donne un contrôle total sur le processus de lecture, et nous pouvons compter la quantité consommée à tout moment.
 
-<<<<<<< HEAD
 Voici l'esquisse de code qui lit la réponse de `response.body` :
-=======
-Here's the sketch of code that reads the response from `response.body`:
->>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ```js
 // au lieu de response.json() et d'autres méthodes
