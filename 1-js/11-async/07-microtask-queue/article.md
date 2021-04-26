@@ -30,7 +30,11 @@ Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs
 - La file d'attente est premier entré, premier sorti: les tâches mises en file d'attente en premier sont exécutées en premier.
 - L'exécution d'une tâche est lancée uniquement lorsque rien d'autre n'est en cours d'exécution.
 
+<<<<<<< HEAD
 Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente ; ils ne sont pas encore exécutés. Lorsque le moteur JavaScript est libéré du code actuel, il extrait une tâche de la file d'attente et l'exécute.
+=======
+Or, to put it more simply, when a promise is ready, its `.then/catch/finally` handlers are put into the queue; they are not executed yet. When the JavaScript engine becomes free from the current code, it takes a task from the queue and executes it.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 C'est pourquoi "code finished" dans l'exemple ci-dessus s'affiche en premier.
 
@@ -40,7 +44,11 @@ Les gestionnaires de promesses passent toujours par cette file d'attente interne
 
 S'il existe une chaîne avec plusieurs `.then/catch/finally`, chacun d'entre eux est exécuté de manière asynchrone. C'est-à-dire qu'il est d'abord mis en file d'attente et exécuté lorsque le code actuel est terminé et que les gestionnaires précédemment placés en file d'attente sont terminés.
 
+<<<<<<< HEAD
 **Et si l'order importait pour nous ? Comment pouvons-nous faire en sorte que `code finished` s'exécute après `promise done` ?**
+=======
+**What if the order matters for us? How can we make `code finished` appear after `promise done`?**
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 Facile, il suffit de le mettre dans la file d'attente avec `.then`:
 

@@ -1,6 +1,10 @@
 # WeakMap et WeakSet
 
+<<<<<<< HEAD
 Comme nous le savons du chapitre <info:garbage-collection>, le moteur JavaScript stocke une valeur en mémoire pendant qu'elle est accessible (et peut potentiellement être utilisée).
+=======
+As we know from the chapter <info:garbage-collection>, JavaScript engine keeps a value in memory while it is "reachable" and can potentially be used.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 Par exemple :
 ```js
