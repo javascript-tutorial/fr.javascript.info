@@ -48,11 +48,7 @@ Les systèmes de construction de projets modernes, tels que [webpack](http://web
 
 Les nouvelles fonctionnalités du langage peuvent inclure non seulement des constructions de syntaxe et des opérateurs, mais également des fonctions intégrées.
 
-<<<<<<< HEAD
-Par exemple, `Math.trunc(n)` est une fonction qui "coupe" la partie décimale d'un nombre, par exemple `Math.trunc(1.23) = 1`.
-=======
-For example, `Math.trunc(n)` is a function that "cuts off" the decimal part of a number, e.g `Math.trunc(1.23)` returns `1`.
->>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
+Par exemple, `Math.trunc(n)` est une fonction qui "coupe" la partie décimale d'un nombre, par exemple `Math.trunc(1.23)` retourne `1`.
 
 Dans certains moteurs JavaScript (très obsolètes), il n'y a pas de `Math.trunc`, donc un tel code échouera.
 
