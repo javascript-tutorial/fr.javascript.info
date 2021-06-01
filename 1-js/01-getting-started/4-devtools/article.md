@@ -36,12 +36,12 @@ Sous le message d'erreur, il y a un symbole bleu `>`. Il marque une "ligne de co
 Nous pouvons maintenant voir les erreurs et c’est suffisant pour le début. Nous reviendrons plus tard sur les outils de développement et approfondirons le débogage plus loin dans le chapitre <info:debugging-chrome>.
 
 ```smart header="Multi-line input"
-Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+Habituellement, quand on met une ligne de code dans la console, puis qu'on appuie sur `key:Enter`, elle s'exécute.
 
-To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+Pour insérer plusieurs lignes, appuyez sur `key:Shift+Enter`. De cette façon, on peut saisir de longs fragments de code JavaScript.
 ```
 
-## Firefox, Edge and others
+## Firefox, Edge et autres
 
 La plupart des autres navigateurs utilisent `key:F12` pour ouvrir les outils de développement.
 
