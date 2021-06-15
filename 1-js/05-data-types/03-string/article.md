@@ -534,6 +534,11 @@ Les caractères sont comparés par leur code numérique. Le plus grand code sign
 - Toutes les lettres minuscules vont après les lettres majuscules car leurs codes sont plus grands.
 - Certaines lettres comme `Ö` se distinguent de l'alphabet principal. Ici, le code est supérieur à tout ce qui va de `a` à `z`.
 
+<<<<<<< HEAD
+=======
+- All lowercase letters go after uppercase letters because their codes are greater.
+- Some letters like `Ö` stand apart from the main alphabet. Here, its code is greater than anything from `a` to `z`.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ### Les comparaisons correctes [#comparaisons-correctes]
 

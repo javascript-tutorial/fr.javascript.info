@@ -62,8 +62,8 @@ En mathématiques à l'école, nous écrivons cela a<sup>b</sup>.
 Par exemple:
 
 ```js run
-alert( 2 ** 2 ); // 2² = 4  
-alert( 2 ** 3 ); // 2³ = 8 
+alert( 2 ** 2 ); // 2² = 4
+alert( 2 ** 3 ); // 2³ = 8
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 

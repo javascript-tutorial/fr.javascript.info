@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Débogage dans Chrome
+=======
+# Debugging in the browser
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Avant d’écrire un code plus complexe, parlons de débogage.
 

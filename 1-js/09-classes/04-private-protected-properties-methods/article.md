@@ -194,7 +194,11 @@ Il existe une proposition JavaScript finie, presque dans la norme, qui fournit u
 
 Les propriétés privées devraient commencer par `#`. Ils ne sont accessibles que de l'intérieur de la classe.
 
+<<<<<<< HEAD
 Par exemple, voici une propriété privée `#waterLimit` et la méthode privée de vérification de l'eau` #checkWater`:
+=======
+For instance, here's a private `#waterLimit` property and the water-checking private method `#fixWaterAmount`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run
 class CoffeeMachine {

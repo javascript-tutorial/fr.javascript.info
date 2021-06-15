@@ -4,7 +4,11 @@
 ```warn header="Sujet avancé"
 Cet article couvre un sujet avancé pour mieux comprendre certains cas limites.
 
+<<<<<<< HEAD
 Ce n'est pas important. Beaucoup de développeurs expérimentés s'en sortent très bien sans. Lisez cet article si vous voulez en savoir plus du fonctionemment sous le capot.
+=======
+It's not important. Many experienced developers live fine without knowing it. Read on if you want to know how things work under the hood.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 ```
 
 Un appel de méthode évalué dynamiquement peut perdre `this`.
