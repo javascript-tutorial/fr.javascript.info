@@ -38,8 +38,13 @@ En d'autres termes, `e` multiplie le nombre de `1` avec le nombre de zéros donn
 
 
 ```js
+<<<<<<< HEAD
 1e3 = 1 * 1000 // e3 signifie *1000
 1.23e6 = 1.23 * 1000000 // e6 signifie *1000000
+=======
+1e3 === 1 * 1000; // e3 means *1000
+1.23e6 === 1.23 * 1000000; // e6 means *1000000
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 ```
 
 Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde):
@@ -59,11 +64,19 @@ Si nous comptons les zéros dans `0.000001`, il y en a 6. Alors, logiquement, c'
 En d'autres termes, un nombre négatif après `"e"` signifie une division par 1 avec le nombre donné de zéros:
 
 ```js
+<<<<<<< HEAD
 // -3 divise par 1 avec 3 zéros
 1e-3 = 1 / 1000 (=0.001)
 
 // -6 divise par 1 avec 6 zéros
 1.23e-6 = 1.23 / 1000000 (=0.00000123)
+=======
+// -3 divides by 1 with 3 zeroes
+1e-3 === 1 / 1000; // 0.001
+
+// -6 divides by 1 with 6 zeroes
+1.23e-6 === 1.23 / 1000000; // 0.00000123
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 ```
 
 ### Nombres hexadécimaux, binaires et octaux
@@ -118,7 +131,12 @@ Veuillez noter que deux points sur `123456..toString(36)` n'est pas une faute de
 
 Si nous plaçions un seul point: `123456.toString(36)`, il y aurait une erreur, car la syntaxe JavaScript applique la partie décimale après le premier point et il lirait toString(36) comme étant la partie décimale de 123456 ce qui n'est pas le cas. Si nous plaçons un point de plus, alors JavaScript sait que la partie décimale est vide et peut maintenant appliquer la méthode.
 
+<<<<<<< HEAD
 Il est aussi possible d'écrire `(123456).toString(36)`.
+=======
+Also could write `(123456).toString(36)`.
+
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 ```
 
 ## Arrondir

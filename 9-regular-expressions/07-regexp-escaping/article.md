@@ -65,7 +65,11 @@ C'est une recherche pourtant similaire à un exemple précédent, qui fonctionna
 
 Les backslashes sont en fait "consommés" par la chaîne de caractères. On peut se souvenir, que les chaîne de caractères ont leurs propres caractères spéciaux, comme `\n`, et le backslash est aussi utilisé pour l'échappement.
 
+<<<<<<< HEAD
 Voici comment "\d\.\d" est perçu :
+=======
+Here's how "\d\.\d" is perceived:
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```js run
 alert("\d\.\d"); // d.d

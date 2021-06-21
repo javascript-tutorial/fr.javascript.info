@@ -66,9 +66,15 @@ Elle est principalement utilisée pour rechercher toutes les correspondances au 
 
 Il y a 3 différences avec `match`:
 
+<<<<<<< HEAD
 1. Elle retourne un objet iterable avec les correspondances au lieu d'un tableau. Nous pouvons le transformer en un tableau en utilisant la méthode `Array.from`.
 2. Toutes les correspondances sont retournées dans un tableau incluant les groupes capturants (sous le même format que `str.match` sans le marqueur `pattern:g`).
 3. Si aucun résultat, `null` n'est pas renvoyé, mais un objet itérable vide. 
+=======
+1. It returns an iterable object with matches instead of an array. We can make a regular array from it using `Array.from`.
+2. Every match is returned as an array with capturing groups (the same format as `str.match` without flag `pattern:g`).
+3. If there are no results, it returns an empty iterable object instead of `null`.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Exemple d'utilisation:
 
@@ -252,7 +258,11 @@ alert('12-34-56'.replaceAll("-", ":")) // 12:34:56
 
 ## regexp.exec(str)
 
+<<<<<<< HEAD
 La méthode `regexp.exec(str)` renvoie une correspondance for `regexp` dans la chaîne de caractères `str`. À l'inverse de la méthode précédente, elle est appelée sur une expression rationnelle et non une châine de caractères.
+=======
+The `regexp.exec(str)` method returns a match for `regexp` in the string `str`.  Unlike previous methods, it's called on a regexp, not on a string.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Elle se comporte différement selon que la regexp dispose d'un marqueur `pattern:g` ou non.
 
