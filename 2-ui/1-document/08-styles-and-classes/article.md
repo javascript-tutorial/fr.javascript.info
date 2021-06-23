@@ -84,7 +84,7 @@ En outre, `classList` est itérable, alors nous pouvons lister toutes les classe
 
 ## Style de l'élément
 
-La propriété `elem.style` est un objet qui correspond à ce qui est écrit cans l'attribut `"style"`. Attribuant `elem.style.width="100px"` fonctionne de la même façon qu'un attribut `style` ayant une chaîne `width:100px`.
+La propriété `elem.style` est un objet qui correspond à ce qui est écrit dans l'attribut `"style"`. Attribuant `elem.style.width="100px"` fonctionne de la même façon qu'un attribut `style` ayant une chaîne `width:100px`.
 
 Pour une propriété ayant plusieurs mots, camelCase est utilisé:
 
