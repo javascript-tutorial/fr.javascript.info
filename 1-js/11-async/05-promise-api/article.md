@@ -18,11 +18,7 @@ let promise = Promise.all([...promises...]);
 
 `Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.
 
-<<<<<<< HEAD
-La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont réglées et que le tableau de leurs résultats devient son résultat.
-=======
-The new promise resolves when all listed promises are resolved, and the array of their results becomes its result.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont résolues et que le tableau de leurs résultats devient son résultat.
 
 Par exemple, le `Promise.all` ci-dessous se règle après 3 secondes, et ensuite son résultat est un tableau `[1, 2, 3]`:
 
