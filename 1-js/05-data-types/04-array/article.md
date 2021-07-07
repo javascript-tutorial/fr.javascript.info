@@ -379,13 +379,7 @@ alert( arr[0] ); // undefined! pas d'éléments.
 alert( arr.length ); // length 2
 ```
 
-<<<<<<< HEAD
-Dans le code ci-dessus, `new Array(number)` a tous les éléments `undefined`.
-
 Pour éviter de telles surprises, nous utilisons généralement des crochets, sauf si nous savons vraiment ce que nous faisons.
-=======
-To avoid such surprises, we usually use square brackets, unless we really know what we're doing.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ## Tableaux multidimensionnels
 
