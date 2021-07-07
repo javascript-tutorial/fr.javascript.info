@@ -145,11 +145,7 @@ Le résultat de cette définition est à peu près la même chose. Donc, il y a 
 
 Cependant, il existe des différences importantes.
 
-<<<<<<< HEAD
-1. Tout d'abord, une fonction crée par une `classe` est labélisé par une propriété interne spéciale nommée `[[FunctionKind]]:"classConstructor"`. Donc ce n'est pas tout à fait la même chose que de la créer manuellement.
-=======
-1. First, a function created by `class` is labelled by a special internal property `[[IsClassConstructor]]: true`. So it's not entirely the same as creating it manually.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+1. Premièrement, une fonction créée par `class` est labellisée par une propriété interne spéciale `[[IsClassConstructor]]: true`. Ce n'est donc pas tout à fait la même chose que de le créer manuellement.
 
     Le langage vérifie cette propriété à divers endroits. Par exemple, contrairement à une fonction régulière, elle doit être appelée avec `new` :
 
