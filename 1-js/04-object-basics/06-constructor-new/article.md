@@ -64,17 +64,10 @@ Maintenant, si nous voulons créer d'autres utilisateurs, nous pouvons appeler `
 
 C’est l’objectif principal des constructeurs -- implémenter du code de création d’objet réutilisable.
 
-<<<<<<< HEAD
-Notons encore une fois - techniquement, toute fonction peut être utilisée en tant que constructeur. Autrement dit, toute fonction peut être exécutée avec `new`, et il exécutera l'algorithme ci-dessus. La "lettre majuscule d’abord" est une convention pour préciser qu’une fonction doit être exécutée avec `new`.
+Notons encore une fois -- techniquement, n'importe quelle fonction (à l'exception des fonctions fléchées, car elles n'ont pas de `this`) peut être utilisée comme constructeur. Elle peut être exécutée avec `new`, et elle exécutera l'algorithme ci-dessus. La "première lettre majuscule" est une convention, pour indiquer clairement qu'une fonction doit être exécutée avec `new`.
 
 ````smart header="new function() { ... }"
 Si nous avons beaucoup de lignes de code concernant la création d'un seul objet complexe, nous pouvons les envelopper dans une fonction constructeur, comme ceci :
-=======
-Let's note once again -- technically, any function (except arrow functions, as they don't have `this`) can be used as a constructor. It can be run with `new`, and it will execute the algorithm above. The "capital letter first" is a common agreement, to make it clear that a function is to be run with `new`.
-
-````smart header="new function() { ... }"
-If we have many lines of code all about creation of a single complex object, we can wrap them in an immediately called constructor function, like this:
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```js
 // create a function and immediately call it with new
@@ -88,11 +81,7 @@ let user = new function() {
 };
 ```
 
-<<<<<<< HEAD
-Le constructeur ne peut plus être appelé car il n’est sauvegardé nulle part, il est simplement créé et appelé. Donc, cette astuce vise à encapsuler le code qui construit l'objet unique, sans réutilisation ultérieure.
-=======
-This constructor can't be called again, because it is not saved anywhere, just created and called. So this trick aims to encapsulate the code that constructs the single object, without future reuse.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Ce constructeur ne peut pas être appelé à nouveau, car il n'est enregistré nulle part, juste créé et appelé. Cette astuce vise donc à encapsuler le code qui construit l'objet unique, sans réutilisation future.
 ````
 
 ## Constructeur mode test : new.target
