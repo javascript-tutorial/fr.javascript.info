@@ -37,21 +37,13 @@ Pourquoi `user2.name` est `undefined`?
 
 Voici comment `new user.constructor('Pete')` fonctionne:
 
-<<<<<<< HEAD
 1. Tout d'abord, il cherche `constructor` dans `user`. Rien.
-2. Ensuite, il suit la chaîne de prototype. Le prototype de `user` est `User.prototype` et il n'a également rien.
-3. La valeur de `User.prototype` est un objet simple `{}`, son prototype est `Object.prototype`. Et il y a `Object.prototype.constructor == Object`. Alors c'est utilisé.
+2. Ensuite, il suit la chaîne de prototypes. Le prototype de `user` est `User.prototype`, et il n'a pas non plus de `constructor` (parce que nous avons "oublié" de le régler correctement !).
+3. En remontant la chaîne, `User.prototype` est un objet simple, son prototype est le `Object.prototype` intégré.
+4. Enfin, pour le `Object.prototype` intégré, il existe un `Object.prototype.constructor == Object` intégré. Il est donc utilisé.
 
-À la fin, nous avons `let user2 = new Object ('Pete')`. Le constructeur `Object` intégré ignore les arguments, il crée toujours un objet vide, similaire à `let user2 = {}`, c'est ce que nous avons dans `user2` après tout.
-=======
-1. First, it looks for `constructor` in `user`. Nothing.
-2. Then it follows the prototype chain. The prototype of `user` is `User.prototype`, and it also has no `constructor` (because we "forgot" to set it right!).
-3. Going further up the chain, `User.prototype` is a plain object, its prototype is the built-in `Object.prototype`. 
-4. Finally, for the built-in `Object.prototype`, there's a built-in `Object.prototype.constructor == Object`. So it is used.
+En fin de compte, nous avons `let user2 = new Object('Pete')`.
 
-Finally, at the end, we have `let user2 = new Object('Pete')`. 
+Ce n'est probablement pas ce que nous voulons. Nous aimerions créer un `new user`, pas un `new Object`. C'est le résultat du `constructor` manquant.
 
-Probably, that's not what we want. We'd like to create `new User`, not `new Object`. That's the outcome of the missing `constructor`.
-
-(Just in case you're curious, the `new Object(...)` call converts its argument to an object. That's a theoretical thing, in practice no one calls `new Object` with a value, and generally we don't use `new Object` to make objects at all).
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+(Juste au cas où vous seriez curieux, l'appel `new Object(...)` convertit son argument en un objet. C'est une chose théorique, en pratique personne n'appelle `new Object` avec une valeur, et généralement nous n’utilisons pas `new Object` pour créer des objets).
