@@ -57,8 +57,13 @@ Comme ça:
 
 Le navigateur extrait et évalue automatiquement le module importé (et, le cas échéant, ses importations), puis exécute le script.
 
+<<<<<<< HEAD
 ```warn header="Les modules fonctionnent uniquement via HTTP(s), pas dans des fichiers locaux"
 Si vous essayez d'ouvrir une page Web localement, via le protocole `file: //`, vous verrez que les directives `import / export` ne fonctionnent pas. Utilisez un serveur Web local, tel que [static-server](https://www.npmjs.com/package/static-server#getting-started) ou utilisez la fonctionnalité "live server" de votre éditeur, telle que VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) pour tester les modules.
+=======
+```warn header="Modules work only via HTTP(s), not locally"
+If you try to open a web-page locally, via `file://` protocol, you'll find that `import/export` directives don't work. Use a local web-server, such as [static-server](https://www.npmjs.com/package/static-server#getting-started) or use the "live server" capability of your editor, such as VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to test modules.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 ```
 
 ## Caractéristiques du module de base
@@ -69,7 +74,11 @@ Il existe des fonctionnalités de base, valables à la fois pour le navigateur e
 
 ### Toujours en mode "use strict"
 
+<<<<<<< HEAD
 Les modules utilisent `use strict`, par défaut. Par exemple. assigner à une variable non déclarée donnera une erreur.
+=======
+Modules always work in strict mode. E.g. assigning to an undeclared variable will give an error.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```html run
 <script type="module">
@@ -81,6 +90,7 @@ Les modules utilisent `use strict`, par défaut. Par exemple. assigner à une va
 
 Chaque module a sa propre portée globale. En d'autres termes, les variables et les fonctions globales d'un module ne sont pas visibles dans les autres scripts.
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessous, deux scripts sont importés et `hello.js` essaie d'utiliser la variable `user` déclarée dans `user.js` et échoue:
 
 [codetabs src="scopes" height="140" current="index.html"]
@@ -88,12 +98,30 @@ Dans l'exemple ci-dessous, deux scripts sont importés et `hello.js` essaie d'ut
 Les modules sont censés `export` ce qui doit être accessible de l'extérieur et `import` ce dont ils ont besoin.
 
 Nous devons donc importer `user.js` dans `hello.js` et en tirer les fonctionnalités requises au lieu de nous fier à des variables globales.
+=======
+In the example below, two scripts are imported, and `hello.js` tries to use `user` variable declared in `user.js`. It fails, because it's a separate module (you'll see the error in the console):
+
+[codetabs src="scopes" height="140" current="index.html"]
+
+Modules should `export` what they want to be accessible from outside and `import` what they need.
+
+- `user.js` should export the `user` variable.
+- `hello.js` should import it from `user.js` module.
+
+In other words, with modules we use import/export instead of relying on global variables.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Ceci est la bonne variante :
 
 [codetabs src="scopes-working" height="140" current="hello.js"]
 
+<<<<<<< HEAD
 Dans le navigateur, un environnement indépendant existe également pour chaque `<script type ="module">`:
+=======
+In the browser, if we talk about HTML pages, independent top-level scope also exists for each `<script type="module">`.
+
+Here are two scripts on the same page, both `type="module"`. They don't see each other's top-level variables:
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```html run
 <script type="module">
@@ -108,13 +136,31 @@ Dans le navigateur, un environnement indépendant existe également pour chaque 
 </script>
 ```
 
+<<<<<<< HEAD
 Si nous devons réellement créer une variable globale, nous pouvons l’affecter explicitement à `window` et y accéder en tant que `window.user`. Mais c’est une exception qui nécessite une bonne raison.
+=======
+```smart
+In the browser, we can make a variable window-level global by explicitly assigning it to a `window` property, e.g. `window.user = "John"`. 
+
+Then all scripts will see it, both with `type="module"` and without it. 
+
+That said, making such global variables is frowned upon. Please try to avoid them.
+```
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ### Un code de module est chargé la première fois lorsqu'il est importé
 
+<<<<<<< HEAD
 Si le même module est importé dans plusieurs autres emplacements, son code n'est exécuté que la première fois, puis les exportations sont données à tous les importateurs.
 
 Cela a des conséquences importantes. Voyons cela sur des exemples.
+=======
+If the same module is imported into multiple other modules, its code is executed only once, upon the first import. Then its exports are given to all further importers.
+
+The one-time evaluation has important consequences, that we should be aware of. 
+
+Let's see a couple of examples.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Premièrement, si exécuter un code de module entraîne des effets secondaires, comme afficher un message, l'importer plusieurs fois ne le déclenchera qu'une seule fois - la première fois:
 
@@ -133,9 +179,17 @@ import `./alert.js`; // le module est chargé
 import `./alert.js`; // (n'affiche rien)
 ```
 
+<<<<<<< HEAD
 En pratique, le code dans l'environnement global du module est principalement utilisé pour l'initialisation, la création de structures de données internes mais, si nous voulons que quelque chose soit réutilisable, exportez-le.
 
 Maintenant, un exemple plus avancé.
+=======
+The second import shows nothing, because the module has already been evaluated.
+
+There's a rule: top-level module code should be used for initialization, creation of module-specific internal data structures. If we need to make something callable multiple times - we should export it as a function, like we did with `sayHi` above.
+
+Now, let's consider a deeper example.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Disons qu'un module exporte un objet:
 
@@ -160,6 +214,7 @@ import {admin} from './admin.js';
 alert(admin.name); // Pete
 
 *!*
+<<<<<<< HEAD
 // 1.js et 2.js ont importé le même objet
 // Les modifications apportées dans 1.js sont visibles dans 2.js
 */!*
@@ -170,44 +225,85 @@ Donc, répétons-le, le module n’est exécuté qu’une fois. Les exportations
 Un tel comportement permet de configurer des modules lors de la première importation. Nous pouvons configurer ses propriétés une fois, puis dans les importations ultérieures, il est prêt.
 
 Par exemple, le module `admin.js` peut fournir certaines fonctionnalités, mais attendez-vous à ce que les informations d'identification entrent dans l'objet `admin` de l'extérieur:
+=======
+// Both 1.js and 2.js reference the same admin object
+// Changes made in 1.js are visible in 2.js
+*/!*
+```
+
+As you can see, when `1.js` changes the `name` property in the imported `admin`, then `2.js` can see the new `admin.name`.
+
+That's exactly because the module is executed only once. Exports are generated, and then they are shared between importers, so if something changes the `admin` object, other modules will see that.
+
+**Such behavior is actually very convenient, because it allows us to *configure* modules.**
+
+In other words, a module can provide a generic functionality that needs a setup. E.g. authentication needs credentials. Then it can export a configuration object expecting the outer code to assign to it.
+
+Here's the classical pattern:
+1. A module exports some means of configuration, e.g. a configuration object.
+2. On the first import we initialize it, write to its properties. The top-level application script may do that.
+3. Further imports use the module.
+
+For instance, the `admin.js` module may provide certain functionality (e.g. authentication), but expect the credentials to come into the `config` object from outside:
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```js
 // 📁 admin.js
-export let admin = { };
+export let config = { };
 
 export function sayHi() {
-  alert(`Ready to serve, ${admin.name}!`);
+  alert(`Ready to serve, ${config.user}!`);
 }
 ```
 
+<<<<<<< HEAD
 Dans `init.js`, le premier script de notre application, nous définissons `admin.name`. Ensuite, tout le monde le verra, y compris les appels passés depuis `admin.js` lui-même:
+=======
+Here, `admin.js` exports the `config` object (initially empty, but may have default properties too).
+
+Then in `init.js`, the first script of our app, we import `config` from it and set `config.user`:
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 ```js
 // 📁 init.js
-import {admin} from './admin.js';
-admin.name = "Pete";
+import {config} from './admin.js';
+config.user = "Pete";
 ```
 
+<<<<<<< HEAD
 Un autre module peut aussi voir `admin.name`:
+=======
+...Now the module `admin.js` is configured. 
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+
+Further importers can call it, and it correctly shows the current user:
 
 ```js
-// 📁 other.js
-import {admin, sayHi} from './admin.js';
-
-alert(admin.name); // *!*Pete*/!*
+// 📁 another.js
+import {sayHi} from './admin.js';
 
 sayHi(); // Prêt à être utilisé, *!*Pete*/!*!
 ```
+
 
 ### import.meta
 
 L'objet `import.meta` contient les informations sur le module actuel.
 
+<<<<<<< HEAD
 Son contenu dépend de l'environnement. Dans le navigateur, il contient l'URL du script ou une URL de page Web actuelle si elle est en HTML:
 
 ```html run height=0
 <script type="module">
   alert(import.meta.url); // URL du script (URL de la page HTML)
+=======
+Its content depends on the environment. In the browser, it contains the URL of the script, or a current webpage URL if inside HTML:
+
+```html run height=0
+<script type="module">
+  alert(import.meta.url); // script URL
+  // for an inline script - the URL of the current HTML-page
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 </script>
 ```
 
