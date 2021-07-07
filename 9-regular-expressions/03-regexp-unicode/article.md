@@ -107,11 +107,7 @@ Unicode prend en charge de nombreuses propriétés différentes, leur liste comp
 
 ### Exemple : nombres hexadécimaux
 
-<<<<<<< HEAD
-Par exemple, recherchons des nombres hexadécimaux, écrits sous la forme `xFF`, où `F` est un chiffre hexadécimal (0..1 ou A..F).
-=======
-For instance, let's look for hexadecimal numbers, written as `xFF`, where `F` is a hex digit (0..9 or A..F).
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Par exemple, recherchons des nombres hexadécimaux, écrits sous la forme `xFF`, où `F` est un chiffre hexadécimal (0..9 ou A..F).
 
 Un chiffre hexadécimal peut être désigné par `pattern:\p{Hex_Digit}` :
 
