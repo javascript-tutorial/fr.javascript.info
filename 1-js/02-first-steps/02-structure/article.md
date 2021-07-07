@@ -1,4 +1,4 @@
-# Structure du code 
+# Structure du code
 
 La première chose à apprendre est de construire des blocs de code.
 
@@ -13,14 +13,14 @@ Nous pouvons avoir autant d'instructions dans le code que nous le souhaitons. Un
 Par exemple, ici nous divisons le message en deux :
 
 ```js run no-beautify
-alert('Hello'); alert('World');
+alert("Hello"); alert("World");
 ```
 
 Chaque instruction est généralement écrite sur une ligne distincte - le code devient donc plus lisible :
 
 ```js run no-beautify
-alert('Hello');
-alert('World');
+alert("Hello");
+alert("World");
 ```
 
 ## Les points-virgules [#semicolon]
@@ -30,8 +30,8 @@ Un point-virgule peut être omis dans la plupart des cas lorsqu'une rupture de l
 Cela fonctionnerait aussi :
 
 ```js run no-beautify
-alert('Hello')
-alert('World')
+alert("Hello")
+alert("World")
 ```
 
 Ici, JavaScript interprète le saut de ligne comme un point-virgule "implicite". Cela s'appelle également [une insertion automatique de point-virgule](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
@@ -46,11 +46,7 @@ alert(3 +
 + 2);
 ```
 
-<<<<<<< HEAD
-Le code génère `6`, car JavaScript n'insère pas de point-virgule ici. Il est intuitivement évident que si la ligne se termine par un plus `"+"`, alors c'est une "expression incomplète", aucun point-virgule requis. Et dans ce cas, cela fonctionne comme prévu.
-=======
-The code outputs `6` because JavaScript does not insert semicolons here. It is intuitively obvious that if the line ends with a plus `"+"`, then it is an "incomplete expression", so a semicolon there would be incorrect. And in this case, that works as intended.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Le code génère `6`, car JavaScript n'insère pas de point-virgule ici. Il est intuitivement évident que si la ligne se termine par un plus `"+"`, alors c'est une "expression incomplète", donc un point-virgule serait incorrect. Et dans ce cas, cela fonctionne comme prévu.
 
 **Mais il existe des situations où JavaScript "échoue" à prendre un point-virgule là où il est vraiment nécessaire.**
 
@@ -65,15 +61,9 @@ alert("Hello");
 [1, 2].forEach(alert);
 ```
 
-<<<<<<< HEAD
-Pas besoin de penser à la signification des crochets `[]` et `forEach` pour le moment. Nous les étudierons plus tard, pour l'instant, cela n'a pas d'importance. Retenons simplement le résultat: il affiche `1`, puis `2`.
+Pas besoin de penser à la signification des crochets `[]` et `forEach` pour le moment. Nous les étudierons plus tard, pour l'instant, retenons simplement le résultat de l’exécution du code : il affiche `Hello`, puis `1`, puis `2`.
 
-Maintenant, ajoutons une `alert` avant le code et **ne le terminons pas** par un point-virgule :
-=======
-No need to think about the meaning of the brackets `[]` and `forEach` yet. We'll study them later. For now, just remember the result of running the code: it shows `Hello`, then `1`, then `2`.
-
-Now let's remove the semicolon after the `alert`:
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Supprimons maintenant le point-virgule après l’`alert` :
 
 ```js run no-beautify
 alert("Hello")
@@ -81,50 +71,28 @@ alert("Hello")
 [1, 2].forEach(alert);
 ```
 
-<<<<<<< HEAD
-Maintenant, si nous l'exécutons, seul le premier `alert` est affiché, puis nous avons une erreur!
+La différence par rapport au code ci-dessus n'est qu'un caractère : le point-virgule à la fin de la première ligne a disparu.
 
-Mais tout va bien à nouveau si on ajoute un point-virgule après `alert` :
-```js run
-alert("All fine now");
-=======
-The difference compared to the code above is only one character: the semicolon at the end of the first line is gone.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Si nous exécutons ce code, seul le premier `Hello` s'affiche (et il y a une erreur, vous devrez peut-être ouvrir la console pour le voir). Il n'y a plus de chiffres.
 
-If we run this code, only the first `Hello` shows (and there's an error, you may need to open the console to see it). There are no numbers any more.
+C'est parce que JavaScript ne suppose pas de point-virgule avant les crochets `[...]`. Ainsi, le code du dernier exemple est traité comme une seule instruction.
 
-<<<<<<< HEAD
-Nous avons maintenant le message `"All fine now"`, puis `1` et `2`.
-
-
-L'erreur dans la variante sans point-virgule se produit car JavaScript n'implique pas de point-virgule avant les crochets `[...]`.
-
-Ainsi, le point-virgule n'étant pas inséré automatiquement, le code du premier exemple est traité comme une seule instruction. C'est comme ça que le moteur le voit :
-=======
-That's because JavaScript does not assume a semicolon before square brackets `[...]`. So, the code in the last example is treated as a single statement.
-
-Here's how the engine sees it:
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Voici comment le moteur le voit :
 
 ```js run no-beautify
 alert("Hello")[1, 2].forEach(alert);
 ```
 
-<<<<<<< HEAD
-Mais ce devrait être deux déclarations distinctes, pas une seule. Une telle fusion dans ce cas est tout simplement erronée, d'où l'erreur. Il y a d'autres situations où une telle chose peut se produire.
-=======
-Looks weird, right? Such merging in this case is just wrong. We need to put a semicolon after `alert` for the code to work correctly.
+Ça a l'air bizarre, non ? Une telle fusion dans ce cas est tout simplement une erreur. Nous devons mettre un point-virgule après l'`alert` pour que le code fonctionne correctement.
 
-This can happen in other situations also.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Cela peut arriver dans d'autres situations aussi.
 ````
 
-Il est recommandé de mettre les points-virgules entre les instructions, même si elles sont séparées par des nouvelles lignes. Cette règle est largement adoptée par la communauté. Notons encore une fois - *il est possible* de laisser de côté les points-virgules la plupart du temps. Mais il est plus sûr -- surtout pour un débutant -- de les utiliser.
+Il est recommandé de mettre les points-virgules entre les instructions, même si elles sont séparées par des nouvelles lignes. Cette règle est largement adoptée par la communauté. Notons encore une fois - _il est possible_ de laisser de côté les points-virgules la plupart du temps. Mais il est plus sûr -- surtout pour un débutant -- de les utiliser.
 
 ## Les Commentaires [#code-comments]
 
-
-Au fil du temps, le programme devient de plus en plus complexe. Il devient nécessaire d'ajouter des *commentaires* qui décrivent ce qui se passe et pourquoi.
+Au fil du temps, le programme devient de plus en plus complexe. Il devient nécessaire d'ajouter des _commentaires_ qui décrivent ce qui se passe et pourquoi.
 
 Les commentaires peuvent être placés à n'importe quel endroit du script. Ils n'affectent pas l'exécution, car le moteur les ignore simplement.
 
@@ -133,14 +101,15 @@ Les commentaires peuvent être placés à n'importe quel endroit du script. Ils 
 Le reste de la ligne est un commentaire. Il peut occuper une ligne complète ou suivre une déclaration.
 
 Comme ici :
+
 ```js run
 // Ce commentaire occupe une ligne à part
-alert('Hello');
+alert("Hello");
 
-alert('World'); // Ce commentaire suit l'instruction
+alert("World"); // Ce commentaire suit l'instruction
 ```
 
-**Les commentaires multilignes commencent par une barre oblique et un astérisque <code>/&#42;</code> et se termine par un astérisque et une barre oblique <code>&#42;/</code>.**
+**Les commentaires multilignes commencent par une barre oblique et un astérisque <code>/\*</code> et se termine par un astérisque et une barre oblique <code>\*/</code>.**
 
 Comme ceci :
 
@@ -148,11 +117,11 @@ Comme ceci :
 /* Un exemple avec deux messages.
 C'est un commentaire multiligne.
 */
-alert('Hello');
-alert('World');
+alert("Hello");
+alert("World");
 ```
 
-Le contenu des commentaires est ignoré, donc si nous mettons du code à l'intérieur <code>/&#42; ... &#42;/</code>  il ne s'exécutera pas.
+Le contenu des commentaires est ignoré, donc si nous mettons du code à l'intérieur <code>/\* ... \*/</code> il ne s'exécutera pas.
 
 Parfois, il est utile de désactiver temporairement une partie du code :
 
@@ -160,7 +129,7 @@ Parfois, il est utile de désactiver temporairement une partie du code :
 /* Commenter le code
 alert('Hello');
 */
-alert('World');
+alert("World");
 ```
 
 ```smart header="Utiliser les raccourcis !"
