@@ -80,8 +80,8 @@ let user = 'John'
 
 Techniquement, toutes ces variantes font la même chose. C'est donc une question de goût personnel et d'esthétique.
 
-````smart header="`var` instead of `let`"
-In older scripts you may also find another keyword: `var` instead of `let`:
+````smart header="`var` au lieu de `let`"
+Dans les anciens scripts, vous pouvez également trouver un autre mot-clé : `var` au lieu de `let` :
 
 ```js
 *!*var*/!* message = 'Hello';
