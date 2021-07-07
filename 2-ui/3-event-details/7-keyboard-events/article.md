@@ -160,21 +160,13 @@ function checkPhoneKey(key) {
 <input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Phone, please" type="tel">
 ```
 
-<<<<<<< HEAD
+Le gestionnaire `onkeydown` utilise ici `checkPhoneKey` pour vérifier la touche enfoncée. S'il est valide (de `0..9` ou l'un des `+-()`), alors il renvoie `true`, sinon `false`.
 
-Veuillez noter que les touches spéciales comme `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V` ne fonctionnent pas dans l'input. C'est un effet secondaire du filtre de restriction `checkPhoneKey`.
+Comme nous le savons, la valeur `false` renvoyée par le gestionnaire d'événements, attribuée à l'aide d'une propriété DOM ou d'un attribut, comme ci-dessus, empêche l'action par défaut, donc rien n'apparaît dans le `<input>` pour les clés qui ne passent pas le test. (La valeur 'true' renvoyée n'affecte rien, seul le renvoi de 'false' compte)
 
+Veuillez noter que les touches spéciales, telles que `key:Backspace`, `key:Left`, `key:Right`, ne fonctionnent pas dans l'input. C'est un effet secondaire du filtre strict `checkPhoneKey`. Ces clés lui font retourner `false`.
 
-Un peu de détente:
-=======
-The `onkeydown` handler here uses `checkPhoneKey` to check for the key pressed. If it's valid (from `0..9` or one of `+-()`), then it returns `true`, otherwise `false`.
-
-As we know, the `false` value returned from the event handler, assigned using a DOM property or an attribute, such as above, prevents the default action, so nothing appears in the `<input>` for keys that don't pass the test. (The `true` value returned doesn't affect anything, only returning `false` matters)
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
-
-Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, do not work in the input. That's a side-effect of the strict filter `checkPhoneKey`. These keys make it return `false`.
-
-Let's relax the filter a little bit by allowing arrow keys `key:Left`, `key:Right` and `key:Delete`, `key:Backspace`:
+Détendons un peu le filtre en autorisant les touches fléchées `key:Left`, `key:Right` et `key:Delete`, `key:Backspace` :
 
 ```html autorun height=60 run
 <script>
@@ -188,15 +180,11 @@ function checkPhoneKey(key) {
 
 maintenant les flèches et la suppression marchent bien.
 
-...Mais nous pouvons toujours entrer n'importe quoi en utilisant une souris et un clique-droit  + coller.  Donc le filtre n'est pas fiable à 100%. Nous pouvons le laisser tel quel, parce que la majeur partie du temps elle fonctionne. Oubien une approche alternative serait de contrôler l'évènement `input` -- elle se déclenche après toute modification. Là nous pouvons contrôler la nouvelle valeur et la mettre en exergue ou la modifier lorsqu'elle est invalide.
+Même si nous avons le filtre de clavier, on peut toujours entrer n'importe quoi à l'aide d'une souris et faire un clic droit + Coller. Les appareils mobiles offrent d'autres moyens de saisir des valeurs. Le filtre n'est donc pas fiable à 100%.
 
-<<<<<<< HEAD
-## Propriétés obsolètes
-=======
-Even though we have the key filter, one still can enter anything using a mouse and right-click + Paste. Mobile devices provide other means to enter values. So the filter is not 100% reliable.
+L'approche alternative serait de suivre l'événement `oninput` -- il se déclenche *après* toute modification. Là, nous pouvons vérifier le nouveau `input.value` et le modifier/mettre en surbrillance le `<input>` lorsqu'il est invalide. Ou nous pouvons utiliser les deux gestionnaires d'événements ensemble.
 
-The alternative approach would be to track the `oninput` event -- it triggers *after* any modification. There we can check the new `input.value` and modify it/highlight the `<input>` when it's invalid. Or we can use both event handlers together.
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+## Héritage
 
 Dans le passé, il y'avait un évènement `keypress`, et aussi les propriétés `keyCode`, `charCode`, `which` de l'objet évènement.
 
