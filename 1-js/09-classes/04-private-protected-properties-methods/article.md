@@ -117,13 +117,8 @@ class CoffeeMachine {
 // créer la machine à café
 let coffeeMachine = new CoffeeMachine(100);
 
-<<<<<<< HEAD
 // ajoutez de l'eau
-coffeeMachine.waterAmount = -10; // Error: Negative water
-=======
-// add water
-coffeeMachine.waterAmount = -10; // _waterAmount will become 0, not -10
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+coffeeMachine.waterAmount = -10; // _waterAmount va devenir 0, pas -10
 ```
 
 Maintenant, l'accès est sous contrôle, donc le réglage de l'eau en dessous de zéro échoue.
@@ -199,11 +194,7 @@ Il existe une proposition JavaScript finie, presque dans la norme, qui fournit u
 
 Les propriétés privées devraient commencer par `#`. Ils ne sont accessibles que de l'intérieur de la classe.
 
-<<<<<<< HEAD
-Par exemple, voici une propriété privée `#waterLimit` et la méthode privée de vérification de l'eau` #checkWater`:
-=======
-For instance, here's a private `#waterLimit` property and the water-checking private method `#fixWaterAmount`:
->>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
+Par exemple, voici une propriété privée `#waterLimit` et la méthode privée de vérification du niveau de l'eau `#fixWaterAmount` :
 
 ```js run
 class CoffeeMachine {
