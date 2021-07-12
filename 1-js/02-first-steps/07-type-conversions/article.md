@@ -145,4 +145,4 @@ La plupart de ces règles sont faciles à comprendre et à mémoriser. Les excep
 - `undefined` est `NaN` en tant que number, non `0`.
 - `"0"` et les espaces dans les chaines de caractères comme `"   "` sont "true" en booléen.
 
-Les objets ne sont pas couverts ici, nous y reviendrons plus tard dans le chapitre <info:object-toprimitive> qui est consacré exclusivement aux objets, après avoir appris plus de choses de basiques sur JavaScript.
+Les objets ne sont pas couverts ici, nous y reviendrons plus tard dans le chapitre <info:object-toprimitive> qui est consacré exclusivement aux objets, après avoir appris plus de choses basiques sur JavaScript.
