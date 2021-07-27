@@ -191,7 +191,7 @@ Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilis
 
 ## Clonage imbriqué
 
-Jusqu'à maintenat on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
+Jusqu'à maintenant on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
 
 Comme ceci :
 ```js run
@@ -234,6 +234,7 @@ On peut utiliser la récursion pour l'implémenter. Ou, pour ne pas réinventer 
 
 ```smart header="Les objets Const peuvent être modifiés"
 Un "effet secondaire" important du stockage d'objets en tant que références est qu'un objet déclaré comme `const` *peut* être modifié.
+```
 
 Par exemple :
 
@@ -254,7 +255,7 @@ Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. La valeur 
 En d'autres termes, le `const user` ne donne une erreur que si nous essayons de définir `user = ...` dans son ensemble, et c'est tout.
 
 Cela dit, si nous avons vraiment besoin de créer des propriétés d'objet constantes, c'est également possible, mais en utilisant des méthodes totalement différentes, nous le mentionnerons dans le chapitre <info:property-descriptors>.
-```
+
 
 ## Résumé
 
