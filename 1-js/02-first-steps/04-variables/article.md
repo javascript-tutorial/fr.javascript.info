@@ -24,7 +24,11 @@ Maintenant, nous pouvons y mettre des données en utilisant l'opérateur d'affec
 let message;
 
 *!*
+<<<<<<< HEAD
 message = 'Hello'; // stocke la chaîne de caractères
+=======
+message = 'Hello'; // store the string 'Hello' in the variable named message
+>>>>>>> ef8d576821ff28c69bfb7410dc79fd216b0a315b
 */!*
 ```
 
