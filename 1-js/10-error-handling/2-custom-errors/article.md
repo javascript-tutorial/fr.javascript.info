@@ -21,9 +21,15 @@ En interne, nous utiliserons `JSON.parse`. S'il reçoit un `json` malformé, il 
 
 Notre fonction `readUser(json)` va non seulement lire JSON, mais aussi vérifier ("valider") les données. S'il n'y a pas de champs obligatoires ou si le format est incorrect, c'est une erreur. Et ce n’est pas une `SyntaxError`, car les données sont syntaxiquement correctes, mais un autre type d’erreur. Nous l'appellerons `ValidationError` et créerons une classe pour cela. Une erreur de ce type devrait également comporter des informations sur le champ fautif.
 
+<<<<<<< HEAD
 Notre classe `ValidationError` devrait hériter de la classe `Error` intégrée.
 
 Cette classe est intégrée, voici le code approximatif, pour que nous comprenions ce que nous étendons:
+=======
+Our `ValidationError` class should inherit from the `Error` class.
+
+The `Error` class is built-in, but here's its approximate code so we can understand what we're extending:
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
 
 ```js
 // Le "pseudocode" pour la classe d'erreur intégrée définie par JavaScript lui-même
@@ -117,15 +123,23 @@ Nous pourrions aussi regarder `err.name`, comme ceci:
 // au lieu de (err instanceof SyntaxError)
 } else if (err.name == "SyntaxError") { // (*)
 // ...
-```  
+```
 
 La version `instanceof` est bien meilleure, car dans le futur nous allons étendre `ValidationError`, en créer des sous-types, comme `PropertyRequiredError`. Et `instanceof` check continuera à fonctionner pour les nouvelles classes héritées. Donc, c'est à l'épreuve du futur.
 
+<<<<<<< HEAD
 De plus, il est important que si `catch` rencontre une erreur inconnue, il la propage, comme à la ligne `(**)`. Le bloc `catch` ne sait que gérer les erreurs de validation et de syntaxe, d'autres types (dus à une faute de frappe dans le code ou à d'autres inconnus) devraient "tomber".
+=======
+Also it's important that if `catch` meets an unknown error, then it rethrows it in the line `(**)`. The `catch` block only knows how to handle validation and syntax errors, other kinds (caused by a typo in the code or other unknown reasons) should fall through.
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
 
 ## Héritage complémentaire
 
+<<<<<<< HEAD
 La classe `ValidationError` est très générique. Beaucoup de choses peuvent mal se passer. La propriété peut être absente ou dans un format incorrect (comme une valeur de chaîne pour `age`). Faisons une classe plus concrète `PropertyRequiredError`, exactement pour les propriétés absentes. Il contiendra des informations supplémentaires sur la propriété qui manque.
+=======
+The `ValidationError` class is very generic. Many things may go wrong. The property may be absent or it may be in a wrong format (like a string value for `age` instead of a number). Let's make a more concrete class `PropertyRequiredError`, exactly for absent properties. It will carry additional information about the property that's missing.
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
 
 ```js run
 class ValidationError extends Error {

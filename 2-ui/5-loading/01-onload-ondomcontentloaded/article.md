@@ -2,6 +2,12 @@
 
 Le cycle de vie d'une page HTML comporte trois événements importants:
 
+<<<<<<< HEAD
+=======
+- `DOMContentLoaded` -- the browser fully loaded HTML, and the DOM tree is built, but external resources like pictures `<img>` and stylesheets may not yet have loaded.
+- `load` -- not only HTML is loaded, but also all the external resources: images, styles etc.
+- `beforeunload/unload` -- the user is leaving the page.
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
 
 - `DOMContentLoaded` -- le navigateur a complètement chargé le HTML et l'arborescence DOM est construite, mais les ressources externes telles que les images `<img>` et les feuilles de style peuvent ne pas être encore chargées.
 - `load` -- non seulement le HTML est chargé, mais également toutes les ressources externes : images, styles, etc.
@@ -117,7 +123,11 @@ L'exemple ci-dessous montre correctement les tailles d'image, car `window.onload
 
 ```html run height=200 refresh
 <script>
+<<<<<<< HEAD
   window.onload = function() { // pareil que window.addEventListener('load', (event) => {
+=======
+  window.onload = function() { // can also use window.addEventListener('load', (event) => {
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
     alert('Page loaded');
 
     // l'image est chargée à ce moment
