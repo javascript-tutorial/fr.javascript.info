@@ -19,7 +19,11 @@ Nous ne les avons pas encore vues, car généralement elles ne se présentent pa
 
 Voyons d’abord comment obtenir ces "flags".
 
+<<<<<<< HEAD
 La methode [Object.getOwnPropertyDescriptor](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyDescriptor) permet d'interroger les informations *complètes* sur une propriété.
+=======
+The method [Object.getOwnPropertyDescriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor) allows to query the *full* information about a property.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 La syntaxe est la suivante:
 ```js
@@ -54,7 +58,11 @@ alert( JSON.stringify(descriptor, null, 2 ) );
 */
 ```
 
+<<<<<<< HEAD
 Pour changer les attributs, on peut utiliser [Object.defineProperty](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperty).
+=======
+To change the flags, we can use [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty).
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 La syntaxe est la suivante:
 
@@ -194,7 +202,11 @@ alert(Object.keys(user)); // name
 
 Le descripteur non configurable (`configurable: false`) est parfois prédéfini pour les objets et propriétés intégrés.
 
+<<<<<<< HEAD
 Une propriété non configurable ne peut pas être supprimée.
+=======
+A non-configurable property can't be deleted, its attributes can't be modified.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Par exemple, `Math.PI` est en lecture seule, non énumérable et non configurable :
 
@@ -214,11 +226,12 @@ alert( JSON.stringify(descriptor, null, 2 ) );
 Ainsi, un programmeur est incapable de changer la valeur de `Math.PI` ou de le remplacer.
 
 ```js run
-Math.PI = 3; // Error
+Math.PI = 3; // Error, because it has writable: false
 
 // supprimer Math.PI ne fonctionnera pas non plus
 ```
 
+<<<<<<< HEAD
 Rendre une propriété non configurable est une route à sens unique. Nous ne pouvons pas la rétablir avec  `defineProperty`. 
 
 Pour être précis, la non-configurabilité impose plusieurs restrictions à `defineProperty` :
@@ -228,6 +241,20 @@ Pour être précis, la non-configurabilité impose plusieurs restrictions à `de
 4. Impossible de changer `get/set` pour une propriété d'accesseur (mais peut les affecter en cas d'absence).
 
 **L'idée de "configurable : false" est d'empêcher les changements d'indicateurs de propriété et sa suppression, tout en permettant de changer sa valeur.**
+=======
+We also can't change `Math.PI` to be `writable` again:
+
+```js run
+// Error, because of configurable: false
+Object.defineProperty(Math, "PI", { writable: true });
+```
+
+There's absolutely nothing we can do with `Math.PI`.
+
+Making a property non-configurable is a one-way road. We cannot change it back with `defineProperty`.
+
+**Please note: `configurable: false` prevents changes of property flags and its deletion, while allowing to change its value.**
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Ici, `user.name` n'est pas configurable, mais nous pouvons toujours le changer (car il est accessible en écriture) :
 
@@ -244,7 +271,7 @@ user.name = "Pete"; // works fine
 delete user.name; // Error
 ```
 
-And here we make `user.name` a "forever sealed" constant:
+And here we make `user.name` a "forever sealed" constant, just like the built-in `Math.PI`:
 
 ```js run
 let user = {
@@ -263,10 +290,19 @@ delete user.name;
 Object.defineProperty(user, "name", { value: "Pete" });
 ```
 
+```smart header="The only attribute change possible: writable true -> false"
+There's a minor exception about changing flags.
+
+We can change `writable: true` to `false` for a non-configurable property, thus preventing its value modification (to add another layer of protection). Not the other way around though.
+```
 
 ## Object.defineProperties
 
+<<<<<<< HEAD
 Il y a une méthode [Object.defineProperties(obj, descriptors)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/defineProperties) qui permet de définir plusieurs propriétés à la fois.
+=======
+There's a method [Object.defineProperties(obj, descriptors)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties) that allows to define many properties at once.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 La syntaxe est la suivante:
 
@@ -292,7 +328,11 @@ Nous pouvons donc définir plusieurs propriétés à la fois.
 
 ## Object.getOwnPropertyDescriptors
 
+<<<<<<< HEAD
 Pour obtenir tous les descripteurs de propriété à la fois, nous pouvons utiliser la méthode [Object.getOwnPropertyDescriptors(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/getOwnPropertyDescriptors).
+=======
+To get all property descriptors at once, we can use the method [Object.getOwnPropertyDescriptors(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors).
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Avec `Object.defineProperties`, elle peut être utilisé comme moyen de cloner un objet conscient des attributs:
 
@@ -318,6 +358,7 @@ Les descripteurs de propriété fonctionnent au niveau des propriétés individu
 
 Il existe également des méthodes qui limitent l'accès à l'objet *entier*:
 
+<<<<<<< HEAD
 [Object.preventExtensions(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/preventExtensions)
 : Interdit l'ajout de nouvelles propriétés à l'objet.
 
@@ -326,9 +367,20 @@ Il existe également des méthodes qui limitent l'accès à l'objet *entier*:
 
 [Object.freeze(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/freeze)
 : Interdit l'ajout/la suppression/la modification de propriétés. Définit `configurable: false, writeable: false` pour toutes les propriétés existantes.
+=======
+[Object.preventExtensions(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
+: Forbids the addition of new properties to the object.
+
+[Object.seal(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
+: Forbids adding/removing of properties. Sets `configurable: false` for all existing properties.
+
+[Object.freeze(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+: Forbids adding/removing/changing of properties. Sets `configurable: false, writable: false` for all existing properties.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Et aussi il y a des tests pour eux:
 
+<<<<<<< HEAD
 [Object.isExtensible(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/isExtensible)
 : Retourne `false` si l'ajout de propriétés est interdit, sinon `true`.
 
@@ -337,5 +389,15 @@ Et aussi il y a des tests pour eux:
 
 [Object.isFrozen(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/isFrozen)
 : Retourne `true` si l'ajout/la suppression/la modification de propriétés est interdite et si toutes les propriétés actuelles sont `configurable: false, writable: false`.
+=======
+[Object.isExtensible(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible)
+: Returns `false` if adding properties is forbidden, otherwise `true`.
+
+[Object.isSealed(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed)
+: Returns `true` if adding/removing properties is forbidden, and all existing properties have `configurable: false`.
+
+[Object.isFrozen(obj)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen)
+: Returns `true` if adding/removing/changing properties is forbidden, and all current properties are `configurable: false, writable: false`.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Ces méthodes sont rarement utilisées dans la pratique.

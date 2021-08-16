@@ -4,7 +4,11 @@ En JavaScript moderne, il existe deux types de nombres :
 
 1. Les nombres normaux en JavaScript sont stockés au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), également connu sous le nom de "nombres à virgule flottante double précision". Ce sont des chiffres que nous utilisons le plus souvent, et nous en parlerons dans ce chapitre.
 
+<<<<<<< HEAD
 2. Les nombres BigInt pour représenter des entiers de longueur arbitraire. Ils sont parfois nécessaires, car un nombre régulier ne peut pas dépasser <code>2<sup>53</sup></code> ou être inférieur à <code>-2<sup>53</sup></code>. Comme les bigints sont utilisés dans quelques zones spéciales, nous leur consacrons un chapitre spécial <info:bigint>.
+=======
+2. BigInt numbers, to represent integers of arbitrary length. They are sometimes needed, because a regular number can't safely exceed <code>2<sup>53</sup></code> or be less than <code>-2<sup>53</sup></code>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Donc, ici, nous allons parler de chiffres réguliers. Augmentons nos connaissances à leur sujet.
 
@@ -54,7 +58,11 @@ Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'�
 let ms = 1e-6; // six zéros à gauche de 1
 ```
 
+<<<<<<< HEAD
 Si nous comptons les zéros dans `0.000001`, il y en a 6. Alors, logiquement, c'est `1e-6`.
+=======
+If we count the zeroes in `0.000001`, there are 6 of them. So naturally it's `1e-6`.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 En d'autres termes, un nombre négatif après `"e"` signifie une division par 1 avec le nombre donné de zéros:
 
@@ -331,7 +339,11 @@ let num = +prompt("Entrez un nombre", '');
 alert( isFinite(num) );
 ```
 
+<<<<<<< HEAD
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
+=======
+Please note that an empty or a space-only string is treated as `0` in all numeric functions including `isFinite`.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 ```smart header="Comparer avec Object.is"
 
