@@ -104,21 +104,12 @@ for (let i = 0; i < 3; i++) { // affiche 0, puis 1, puis 2
 
 Examinons la déclaration `for` partie par partie :
 
-<<<<<<< HEAD
 | partie    |            |                                                                                        |
 |-----------|------------|----------------------------------------------------------------------------------------|
-| début     | `i = 0`    | Exécute une fois en entrant dans la boucle.                                            |
+| début     | `let i = 0`    | Exécute une fois en entrant dans la boucle.                                            |
 | condition | `i < 3`    | Vérifié avant chaque itération de la boucle, en cas d'échec, la boucle s'arrête.       |
 | corps     | `alert(i)` | Exécute encore et encore tant que la condition est vraie                               |
-| étape     | `i++`      | Exécute après le corps à chaque itération, mais avant la vérification de la condition. |
-=======
-| part  |          |                                                                            |
-|-------|----------|----------------------------------------------------------------------------|
-| begin | `let i = 0`    | Executes once upon entering the loop.                                      |
-| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
-| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
-| step| `i++`      | Executes after the body on each iteration. |
->>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
+| étape     | `i++`      | Exécute après le corps à chaque itération |
 
 
 L'algorithme de boucle général fonctionne comme ceci :
@@ -390,11 +381,7 @@ label: {
 }
 ```
 
-<<<<<<< HEAD
 ... Bien que 99,9% du temps les `break` utilisés sont à l'intérieur de boucles, comme nous l'avons vu dans les exemples ci-dessus.
-=======
-...Although, 99.9% of the time `break` is used inside loops, as we've seen in the examples above.
->>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Un `continue` n'est possible que depuis l'intérieur d'une boucle.
 ````
