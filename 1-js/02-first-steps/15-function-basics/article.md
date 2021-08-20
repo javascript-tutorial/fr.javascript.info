@@ -182,7 +182,11 @@ En d'autres termes, pour mettre ces termes au clair :
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessus, on pourrait dire : "la fonction `sayMessage` est déclarée avec deux paramètres, puis appelée avec deux arguments : `from` et `"Hello"`".
+=======
+In the example above, one might say: "the function `showMessage` is declared with two parameters, then called with two arguments: `from` and `"Hello"`".
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 
 ## Les valeurs par défaut

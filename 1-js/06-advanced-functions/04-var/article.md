@@ -4,7 +4,11 @@
 ```smart header="Cet article est pour comprendre les anciens scripts"
 Les informations contenues dans cet article sont utiles pour comprendre les anciens scripts.
 
+<<<<<<< HEAD
 Ce n'est pas ainsi que nous écrivons un nouveau code.
+=======
+That's not how we write new code.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 ```
 
 Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable :

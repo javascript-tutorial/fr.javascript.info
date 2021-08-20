@@ -77,7 +77,11 @@ Par exemple, le code ci-dessous empêche tous ces événements et montre ce que 
 
 Veuillez noter qu'il est possible de copier/coller non seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
+<<<<<<< HEAD
 C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour glisser-déposer et copier/coller. C'est un peu au-delà de notre portée maintenant, mais vous pouvez trouver ses méthodes [dans la specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's bit beyond our scope now, but you can find its methods [in the specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 ```warn header="ClipboardAPI: restrictions de sécurité des utilisateurs"
 Le presse-papiers est une chose "globale" au niveau du système d'exploitation. Ainsi, la plupart des navigateurs autorisent l'accès en lecture/écriture au presse-papiers uniquement dans le cadre de certaines actions de l'utilisateur pour la sécurité, par ex. dans les gestionnaires d'événements `onclick`.

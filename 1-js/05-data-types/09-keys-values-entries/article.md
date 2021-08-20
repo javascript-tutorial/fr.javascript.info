@@ -75,9 +75,15 @@ Les objets manquent de nombreuses méthodes existantes pour les tableaux, par ex
 
 Si nous souhaitons leur appliquer ces méthodes, nous pouvons utiliser `Object.entries` suivis par `Object.fromEntries` :
 
+<<<<<<< HEAD
 1. Utilisons `Object.entries(obj)` pour obtenir un tableau de paires clé / valeur de `obj`.
 2. Utilisons des méthodes de tableau sur ce tableau, par exemple `map`.
 3. Utilisons `Object.fromEntries(array)` sur le tableau résultant pour le reconvertir en objet.
+=======
+1. Use `Object.entries(obj)` to get an array of key/value pairs from `obj`.
+2. Use array methods on that array, e.g. `map`, to transform these key/value pairs.
+3. Use `Object.fromEntries(array)` on the resulting array to turn it back into an object.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 Par exemple, nous avons un objet avec des prix et aimerions les doubler :
 
@@ -90,12 +96,22 @@ let prices = {
 
 *!*
 let doublePrices = Object.fromEntries(
+<<<<<<< HEAD
   // convertir en tableau, mapper, puis fromEntries restitue l'objet
   Object.entries(prices).map(([key, value]) => [key, value * 2])
+=======
+  // convert prices to array, map each key/value pair into another pair
+  // and then fromEntries gives back the object
+  Object.entries(prices).map(entry => [entry[0], entry[1] * 2])
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 );
 */!*
 
 alert(doublePrices.meat); // 8
-```   
+```
 
+<<<<<<< HEAD
 Cela peut sembler difficile au premier abord, mais il devient facile à comprendre après l’avoir utilisé une ou deux fois. Nous pouvons faire de puissantes chaînes de transformations de cette façon.
+=======
+It may look difficult at first sight, but becomes easy to understand after you use it once or twice. We can make powerful chains of transforms this way.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
