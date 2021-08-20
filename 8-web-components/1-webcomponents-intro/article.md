@@ -26,15 +26,9 @@ La Station Spatiale Internationale :
 
 ...Et ce machin vole, mieux encore : il garde des humains en vie dans l'espace !
 
-<<<<<<< HEAD
 Comment sont fabriqués des engins aussi complexes ?
 
-Quels principes pourrions-nous utiliser pour amener notre développement au même niveau de fiabilité et de flexibilité ? Ou au moins essayer de s'en rapprocher ?
-=======
-How are such complex devices created?
-
-Which principles could we borrow to make our development same-level reliable and scalable? Or, at least, close to it?
->>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
+Quels principes pourrions-nous emprunter pour rendre notre développement de même niveau fiable et évolutif ? Ou, du moins, à s’en rapprocher ?
 
 ## L'architecture des composants web
 

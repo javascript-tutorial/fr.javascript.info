@@ -448,12 +448,9 @@ try {
 
 Si nous n'attrapons pas l'erreur là, alors, comme d'habitude, elle passe au code d'appel externe (le cas échéant) et, s'il n'est pas détecté, tue le script.
 
-<<<<<<< HEAD
-## Résumé
-=======
 ## generator.return
 
-`generator.return(value)` finishes the generator execution and return the given `value`.
+`generator.return(value)` termine l'exécution du générateur et renvoie la `value` donnée.
 
 ```js
 function* gen() {
@@ -469,12 +466,11 @@ g.return('foo'); // { value: "foo", done: true }
 g.next();        // { value: undefined, done: true }
 ```
 
-If we again use `generator.return()` in a completed generator, it will return that value again ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/return)).
+Si nous utilisons à nouveau `generator.return()` dans un générateur terminé, il renverra à nouveau cette valeur ([MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Generator/return)).
 
-Often we don't use it, as most of time we want to get all returning values, but it can be useful when we want to stop generator in a specific condition.
+Souvent, nous ne l'utilisons pas, car la plupart du temps, nous voulons obtenir toutes les valeurs de retour, mais cela peut être utile lorsque nous voulons arrêter le générateur dans une condition spécifique.
 
-## Summary
->>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
+## Résumé
 
 - Les générateurs sont créés par des fonctions de générateur `function* f(…) {…}`.
 - À l'intérieur des générateurs (uniquement), il existe un operateur `yield`.

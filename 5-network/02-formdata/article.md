@@ -168,11 +168,7 @@ Le serveur lit les données du formulaire et le fichier, comme s'il s'agissait d
 
 Les objets [FormData](https://xhr.spec.whatwg.org/#interface-formdata) sont utilisés pour capturer le formulaire HTML et le soumettre en utilisant `fetch` ou une autre méthode réseau.
 
-<<<<<<< HEAD
 Nous pouvons soit créer un `new FormData(form)` à partir d'un formulaire HTML, soit créer un objet sans aucun formulaire, puis ajouter des champs avec des méthodes :
-=======
-We can either create `new FormData(form)` from an HTML form, or create an object without a form at all, and then append fields with methods:
->>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 - `formData.append(name, value)`
 - `formData.append(name, blob, fileName)`
