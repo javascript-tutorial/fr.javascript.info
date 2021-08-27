@@ -1,107 +1,107 @@
-# Lookahead and lookbehind
+# Éléments précédents et éléments suivants
 
-Sometimes we need to find only those matches for a pattern that are followed or preceded by another pattern.
+Parfois nous avons juste besoin de trouver les motifs précédents ou suivant un autre motif.
 
-There's a special syntax for that, called "lookahead" and "lookbehind", together referred to as "lookaround".
+Il existe pour cela des syntaxes spéciales, appelées  "lookahead" et "lookbehind", ensemble désignées par "lookaround".
 
-For the start, let's find the price from the string like `subject:1 turkey costs 30€`. That is: a number, followed by `subject:€` sign.
+Pour commencer, trouvons le prix  à partir d'une chaîne de caractères comme `sujet:1 dindes coûte 30€`.C'est un nombre suivi par le signe  `sujet:€`
 
 ## Lookahead
 
-The syntax is: `pattern:X(?=Y)`, it means "look for `pattern:X`, but match only if followed by `pattern:Y`". There may be any pattern instead of `pattern:X` and `pattern:Y`.
+La syntaxe est: `pattern:X(?=Y)`, cela veut dire "recherche  `pattern:X`, mais renvoie une correspondance seulement si il est suivi de `pattern:Y`". Tous les motifs peuvent être utilisés au lieu de `pattern:X` et `pattern:Y`.
 
-For an integer number followed by `subject:€`, the regexp will be `pattern:\d+(?=€)`:
+Pour un nombre entier suivi de `sujet:€`, l'expression régulière sera `pattern:\d+(?=€)`:
 
 ```js run
-let str = "1 turkey costs 30€";
+let str = "1 dinde coûte 30€";
 
-alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by €
+alert( str.match(/\d+(?=€)/) ); // 30, le nombre 1 est ignoré, vu qu'il n'est pas suivi de €
 ```
 
-Please note: the lookahead is merely a test, the contents of the parentheses `pattern:(?=...)` is not included in the result `match:30`.
+NB: Le lookahead est seulement un test, le contenu de la parenthèse `pattern:(?=...)` n'est pas include dans le resultat `match:30`.
 
-When we look for `pattern:X(?=Y)`, the regular expression engine finds `pattern:X` and then checks if there's `pattern:Y` immediately after it. If it's not so, then the potential match is skipped, and the search continues.
+Quand nous recherchons `pattern:X(?=Y)`, le moteur d'expressions régulières trouve `pattern:X` et verifie s'il y a `pattern:Y` immediatemment après. Si ce n'est pas le cas, la correspondqnce possible est ignoré, et la recherche continue.
 
-More complex tests are possible, e.g. `pattern:X(?=Y)(?=Z)` means:
+Des tests plus complexes sont possibles, ex: `pattern:X(?=Y)(?=Z)` signifie:
 
-1. Find `pattern:X`.
-2. Check if `pattern:Y` is immediately after `pattern:X` (skip if isn't).
-3. Check if `pattern:Z` is also immediately after `pattern:X` (skip if isn't).
-4. If both tests passed, then the `pattern:X` is a match, otherwise continue searching.
+1. Trouve`pattern:X`.
+2. Verifier si `pattern:Y` est immédiatement après `pattern:X` (ignorer sinon).
+3. Verifier si  `pattern:Z` se situe aussi immédiatement après `pattern:X` (ignorer sinon)..
+4. Si les deux tests sont réussis, alors le motif `pattern:X` correspond, sinon continuer à chercher.
 
-In other words, such pattern means that we're looking for `pattern:X` followed by `pattern:Y` and `pattern:Z` at the same time.
+En d'autres mots, ce genre de motif signifie que nous recherchons `pattern:X` suivi de `pattern:Y` et `pattern:Z` en meme temps
 
-That's only possible if patterns `pattern:Y` and `pattern:Z` aren't mutually exclusive.
+C'est possible seulement  si `pattern:Y` et `pattern:Z` ne s'excluent pas mututellement.
 
-For example, `pattern:\d+(?=\s)(?=.*30)` looks for `pattern:\d+` that is followed by a space `pattern:(?=\s)`, and there's `30` somewhere after it `pattern:(?=.*30)`:
+Par exemple, `pattern:\d+(?=\s)(?=.*30)` recherche `pattern:\d+` suivi du motif `pattern:(?=\s)`, et il y a `30` quelque part apres lui `pattern:(?=.*30)`:
 
 ```js run
-let str = "1 turkey costs 30€";
+let str = "1 dinde coute 30€";
 
 alert( str.match(/\d+(?=\s)(?=.*30)/) ); // 1
 ```
 
-In our string that exactly matches the number `1`.
+Dans notre chaîne de caractères cela correspond exactement au nombre `1`.
 
-## Negative lookahead
+## Lookahead negatif
 
-Let's say that we want a quantity instead, not a price from the same string. That's a number `pattern:\d+`, NOT followed by `subject:€`.
+Supposons que nous recherchons plutôt une quantité, non un prix, a partir de la même chaîne de caractères.
 
-For that, a negative lookahead can be applied.
+Pour cela, le loopahead negatif peut etre utilisé.
 
-The syntax is: `pattern:X(?!Y)`, it means "search `pattern:X`, but only if not followed by `pattern:Y`".
+La syntaxe est: `pattern:X(?!Y)`, cela veut dire `pattern:X`, mais seulement si il n'est pas suivi de  `pattern:Y`".
 
 ```js run
 let str = "2 turkeys cost 60€";
 
-alert( str.match(/\d+\b(?!€)/g) ); // 2 (the price is not matched)
+alert( str.match(/\d+\b(?!€)/g) ); // 2 (le prix ne correspond pas au motif)
 ```
 
 ## Lookbehind
 
-Lookahead allows to add a condition for "what follows".
+Lookahead permet d'ajouter une condition sur  "ce qui suit".
 
-Lookbehind is similar, but it looks behind. That is, it allows to match a pattern only if there's something before it.
+Lookbehind est similaire a loopahead, mais il regarde derrière.Ça veut dire qu'il établit une correspondance seulement si il y a quelquechose avant lui,
 
-The syntax is:
-- Positive lookbehind: `pattern:(?<=Y)X`, matches `pattern:X`, but only if there's  `pattern:Y` before it.
-- Negative lookbehind: `pattern:(?<!Y)X`, matches `pattern:X`, but only if there's no `pattern:Y` before it.
+La syntaxe est:
+- Lookbehind positif: `pattern:(?<=Y)X`, correspond à `pattern:X`, mais seulement si il y a `pattern:Y` avant lui.
+- Lookbehind negatif: `pattern:(?<=Y)X`, correspond à `pattern:X`, mais seulement si il n'y a pas `pattern:Y` avant lui.
 
-For example, let's change the price to US dollars. The dollar sign is usually before the number, so to look for `$30` we'll use `pattern:(?<=\$)\d+` -- an amount preceded by `subject:$`:
+Pqr exemple,changeons le prix en dollars US. Le signe dollar est généralement placé avant le chiffre,donc pour recupérer `$30`  nous utiliserons`pattern:(?<=\$)\d+` -- Une quantité précédé de `subject:$`:
 
 ```js run
 let str = "1 turkey costs $30";
 
-// the dollar sign is escaped \$
-alert( str.match(/(?<=\$)\d+/) ); // 30 (skipped the sole number)
+// le signe dollar est echappé \$
+alert( str.match(/(?<=\$)\d+/) ); // 30 (ignore le nombre sans dollar)
 ```
 
-And, if we need the quantity -- a number, not preceded by `subject:$`, then we can use a negative lookbehind `pattern:(?<!\$)\d+`:
+Et si nous avons besoin d'une quantité -- un nombre  non précédé de `subject:$`, alors nous pouvons utiliser un lookbehind négatif `pattern:(?<!\$)\d+`:
 
 ```js run
-let str = "2 turkeys cost $60";
+let str = "2 dndes coûte $60";
 
-alert( str.match(/(?<!\$)\b\d+/g) ); // 2 (the price is not matched)
+alert( str.match(/(?<!\$)\b\d+/g) ); // 2 (le prix ne correspond pas )
 ```
 
-## Capturing groups
+## Groupes capturants
 
-Generally, the contents inside lookaround parentheses does not become a part of the result.
+Généralement, le contenu d'une parenthese de lookaround ne fait partie des resultats.
 
-E.g. in the pattern `pattern:\d+(?=€)`, the `pattern:€` sign doesn't get captured as a part of the match. That's natural: we look for a number `pattern:\d+`, while `pattern:(?=€)` is just a test that it should be followed by `subject:€`.
+Par exmple dans le motif `pattern:\d+(?=€)`, le signe `pattern:€` n'est pas capture comme une partie de la corredpondance. C'est naturel: nous recherchons un nombre `pattern:\d+`, tandis que `pattern:(?=€)` iest juste un test qui doit etre suivi de `subject:€`.
 
-But in some situations we might want to capture the lookaround expression as well, or a part of it. That's possible. Just wrap that part into additional parentheses.
+Mais dans certains cas, nous voulons capturer l'expression du lookaround aussi, comme une partie de la correspondance.C'est possible.Il suffit juste de le l'entourer d'une parenthese supplementaire. 
 
-In the example below the currency sign `pattern:(€|kr)` is captured, along with the amount:
+Dans l'exemple suivant, le signe de la monnaie est capture, en meme temps aue la quqntite.
 
 ```js run
 let str = "1 turkey costs 30€";
-let regexp = /\d+(?=(€|kr))/; // extra parentheses around €|kr
+let regexp = /\d+(?=(€|kr))/; // parentheses supplemetaires autour de  €|kr
 
 alert( str.match(regexp) ); // 30, €
 ```
 
-And here's the same for lookbehind:
+Et voila le meme chose pour lookbehind:
 
 ```js run
 let str = "1 turkey costs $30";
@@ -112,19 +112,19 @@ alert( str.match(regexp) ); // 30, $
 
 ## Summary
 
-Lookahead and lookbehind (commonly referred to as "lookaround") are useful when we'd like to match something depending on the context before/after it.
+Lookahead et lookbehind (ensemble désignés sous le nom de looparound) sont utiles quand nous voulons identifier quelquechose selon le contexte avant/après lui.
 
-For simple regexps we can do the similar thing manually. That is: match everything, in any context, and then filter by context in the loop.
+Pour les expressions regulières simple, nous pouvons une chose similaire manuellement: considerer tous les elemets, dans tous les contextes et alors filtrer par contexte en boucle 
 
-Remember, `str.match` (without flag `pattern:g`) and `str.matchAll` (always) return matches as arrays with `index` property, so we know where exactly in the text it is, and can check the context.
+Vous vous souvenez que `str.match` (sans le drapeau `pattern:g`) et `str.matchAll` retournent (toujours) les correspondances comme des tableaux avec une propriete `index`, et donc nous connaissons où exactement il est et nous pouvons verifier le contexte
 
-But generally lookaround is more convenient.
+Mais generalement lookaround est plus adapté.
 
-Lookaround types:
+Types de lookaround:
 
-| Pattern            | type             | matches |
+| motif           | type             | correspondances |
 |--------------------|------------------|---------|
-| `X(?=Y)`   | Positive lookahead | `pattern:X` if followed by `pattern:Y` |
-| `X(?!Y)`   | Negative lookahead | `pattern:X` if not followed by `pattern:Y` |
-| `(?<=Y)X` |  Positive lookbehind | `pattern:X` if after `pattern:Y` |
-| `(?<!Y)X` | Negative lookbehind | `pattern:X` if not after `pattern:Y` |
+| `X(?=Y)`   | Lookahead positif | `pattern:X` si il est suivi de `pattern:Y` |
+| `X(?!Y)`   | Lookahead négatif | `pattern:X` si il n'est pas suivi de`pattern:Y` |
+| `(?<=Y)X` |  Lookbehind positif| `pattern:X` s'il suit `pattern:Y` |
+| `(?<!Y)X` | Lookbehind négatif| `pattern:X` s'il ne suit pas `pattern:Y` |
