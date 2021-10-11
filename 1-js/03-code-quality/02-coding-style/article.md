@@ -307,11 +307,19 @@ Ce qui est génial avec eux, c'est que la vérification du style trouve égaleme
 
 Voici quelques linters bien connus :
 
+<<<<<<< HEAD
 - [JSLint](http://www.jslint.com/) -- l'un des premiers linters.
 - [JSHint](http://www.jshint.com/) -- plus de paramètres que JSLint.
 - [ESLint](http://eslint.org/) -- probablement le plus récent.
 
 Tous peuvent faire le travail. L'auteur utilise [ESLint](http://eslint.org/).
+=======
+- [JSLint](https://www.jslint.com/) -- one of the first linters.
+- [JSHint](https://jshint.com/) -- more settings than JSLint.
+- [ESLint](https://eslint.org/) -- probably the newest one.
+
+All of them can do the job. The author uses [ESLint](https://eslint.org/).
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plug-in dans l'éditeur et de configurer le style.
 
@@ -345,7 +353,11 @@ Il est aussi possible de télécharger des ensembles de règles de style à part
 
 L'utilisation d'un linter a un effet secondaire formidable: les linters prennent les fautes de frappe. Par exemple, quand on accède à une variable non définie, un linter la détecte et (s'il est intégrée à un éditeur) la met en évidence. Dans la plupart des cas, il s’agit d’un mauvais type. Nous pouvons donc régler le problème tout de suite.
 
+<<<<<<< HEAD
 Pour cette raison, même si vous n’êtes pas préoccupé par les styles, il est vivement recommandé d’utiliser un linter.
+=======
+It is also possible to download style rule sets from the web and extend them instead. See <https://eslint.org/docs/user-guide/getting-started> for more details about installation.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 De plus, certains IDE prennent en charge le linting nativement, ce qui peut également être bien, mais pas aussi ajustables que ESLint.
 

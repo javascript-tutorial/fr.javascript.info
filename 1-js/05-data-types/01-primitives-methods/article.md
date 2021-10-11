@@ -48,7 +48,11 @@ La solution semble peu commode, mais la voici:
 2. Le langage permet d'accéder aux méthodes et aux propriétés des chaînes de caractères, des nombres, des booléens et des symboles.
 3. Pour que cela fonctionne, un "wrapper d'objet" (conteneur)  spécial est crée pour fournir la fonctionnalité supplémentaire, puis il est détruit.
 
+<<<<<<< HEAD
 Les "wrapper d'objets" (conteneurs) sont différents pour chaque type de primitive et sont appelés: `String`, `Number`, `Boolean` et `Symbol`. Ainsi, ils fournissent différents ensembles de méthodes.
+=======
+The "object wrappers" are different for each primitive type and are called: `String`, `Number`, `Boolean`, `Symbol` and `BigInt`. Thus, they provide different sets of methods.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 Par exemple, il existe une méthode de string [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) qui renvoie une chaîne de caractères `str` en majuscule. 
 

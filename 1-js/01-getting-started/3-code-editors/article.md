@@ -40,6 +40,13 @@ Les options suivantes méritent votre attention :
 - [Vim](http://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.
 
 
+<<<<<<< HEAD
+=======
+- [Atom](https://atom.io/) (cross-platform, free).
+- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 ## Ne discutons pas
 

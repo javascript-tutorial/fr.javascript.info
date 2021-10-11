@@ -123,7 +123,11 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
     Cela signifie que `||` traite ses arguments jusqu'à ce que la première valeur de vérité soit atteinte, puis la valeur est renvoyée immédiatement, sans même toucher l'autre argument.
 
+<<<<<<< HEAD
     L'importance de cette fonctionnalité devient évidente si un opérande n'est pas seulement une valeur, mais une expression avec un effet secondaire, comme une affectation de variable ou un appel de fonction.
+=======
+    The importance of this feature becomes obvious if an operand isn't just a value, but an expression with a side effect, such as a variable assignment or a function call.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
     Dans l'exemple ci-dessous, seul le deuxième message est imprimé :
 
