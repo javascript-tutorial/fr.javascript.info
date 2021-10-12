@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Animate the ball bouncing to the right
+# Animer la balle pour qu'elle rebondisse vers la droite.
 
-Make the ball bounce to the right. Like this:
+Faites rebondir la balle vers la droite. Comme ceci :
 
 [iframe height=250 src="solution"]
 
-Write the animation code. The distance to the left is `100px`.
+Écrivez le code d'animation. La distance à gauche est de `100px`.
 
-Take the solution of the previous task <info:task/animate-ball> as the source.
+Prenez la solution de la tâche précédente <info:task/animate-ball> comme source.

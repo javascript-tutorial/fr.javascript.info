@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Animate the bouncing ball
+# Animer la balle rebondissante
 
-Make a bouncing ball. Click to see how it should look:
+Créez une balle rebondissante. Cliquez pour voir à quoi elle doit ressembler :
 
 [iframe height=250 src="solution"]
