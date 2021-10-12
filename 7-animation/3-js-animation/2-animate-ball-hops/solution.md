@@ -1,18 +1,18 @@
-In the task <info:task/animate-ball> we had only one property to animate. Now we need one more: `elem.style.left`.
+Dans la tâche <info:task/animate-ball>, nous n'avions qu'une seule propriété à animer. Maintenant, nous avons besoin d'une supplémentaire : `elem.style.left`.
 
-The horizontal coordinate changes by another law: it does not "bounce", but gradually increases shifting the ball to the right.
+La coordonnée horizontale change selon une autre loi : elle ne "rebondit" pas, mais augmente progressivement en déplaçant la balle vers la droite.
 
-We can write one more `animate` for it.
+Nous pouvons écrire un autre `animate` pour elle.
 
-As the time function we could use `linear`, but something like `makeEaseOut(quad)` looks much better.
+Comme fonction de temporisation, nous pourrions utiliser `linear`, mais quelque chose comme `makeEaseOut(quad)` semble bien mieux.
 
-The code:
+Le code :
 
 ```js
 let height = field.clientHeight - ball.clientHeight;
 let width = 100;
 
-// animate top (bouncing)
+// animer top (rebondissement)
 animate({
   duration: 2000,
   timing: makeEaseOut(bounce),
@@ -21,7 +21,7 @@ animate({
   }
 });
 
-// animate left (moving to the right)
+// animer left (déplacement vers la droite)
 animate({
   duration: 2000,
   timing: makeEaseOut(quad),

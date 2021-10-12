@@ -1,10 +1,10 @@
-To bounce we can use CSS property `top` and `position:absolute` for the ball inside the field with `position:relative`.
+Pour rebondir, nous pouvons utiliser les propriétés CSS `top` et `position:absolute` pour la balle à l'intérieur du champ avec `position:relative`.
 
-The bottom coordinate of the field is `field.clientHeight`. The CSS `top` property refers to the upper edge of the ball. So it should go from `0` till `field.clientHeight - ball.clientHeight`, that's the final lowest position of the upper edge of the ball.
+La coordonnée du bas du champ est `field.clientHeight`. La propriété CSS `top` fait référence au bord supérieur de la balle. Elle doit donc aller de `0` à `field.clientHeight - ball.clientHeight`, c'est-à-dire la position finale la plus basse du bord supérieur de la balle.
 
-To get the "bouncing" effect we can use the timing function `bounce` in `easeOut` mode.
+Pour obtenir l'effet de "rebond", nous pouvons utiliser la fonction de timing `bounce` en mode `easeOut`.
 
-Here's the final code for the animation:
+Voici le code final de l'animation :
 
 ```js
 let to = field.clientHeight - ball.clientHeight;
