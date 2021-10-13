@@ -1,32 +1,32 @@
-# Shadow DOM
+# DOM fantôme
 
-Shadow DOM serves for encapsulation. It allows a component to have its very own "shadow" DOM tree, that can't be accidentally accessed from the main document, may have local style rules, and more.
+Le DOM fantôme (Shadow DOM) sert à l'encapsulation. Il permet à un composant d'avoir son propre arbre DOM "fantôme", qui ne peut pas être accidentellement accédé à partir du document principal, peut avoir des règles de style locales, et plus encore.
 
-## Built-in shadow DOM
+## DOM fantôme intégré
 
-Did you ever think how complex browser controls are created and styled?
+Avez-vous déjà pensé à la façon dont les contrôles complexes des navigateurs sont créés et stylisés ?
 
-Such as `<input type="range">`:
+Comme par exemple `<input type="range">` :
 
 <p>
 <input type="range">
 </p>
 
-The browser uses DOM/CSS internally to draw them. That DOM structure is normally hidden from us, but we can see it in developer tools. E.g. in Chrome, we need to enable in Dev Tools "Show user agent shadow DOM" option.
+Le navigateur utilise DOM/CSS en interne pour les dessiner. Cette structure DOM nous est normalement cachée, mais nous pouvons la voir dans les outils de développement. Par exemple, dans Chrome, nous devons activer dans Dev Tools l'option "Show user agent shadow DOM".
 
-Then `<input type="range">` looks like this:
+Ensuite, `<input type="range">` ressemble à ceci :
 
 ![](shadow-dom-range.png)
 
-What you see under `#shadow-root` is called "shadow DOM".
+Ce que vous voyez sous `#shadow-root` est appelé "shadow DOM" (le DOM fantôme).
 
-We can't get built-in shadow DOM elements by regular JavaScript calls or selectors. These are not regular children, but a powerful encapsulation technique.
+Nous ne pouvons pas obtenir d'éléments DOM fantôme intégrés par des appels JavaScript réguliers ou des sélecteurs. Ce ne sont pas des enfants réguliers, mais une technique d'encapsulation puissante.
 
-In the example above, we can see a useful attribute `pseudo`. It's non-standard, exists for historical reasons. We can use it style subelements with CSS, like this:
+Dans l'exemple ci-dessus, nous pouvons voir un attribut utile `pseudo`. Il n'est pas standard et existe pour des raisons historiques. Nous pouvons l'utiliser pour styliser les sous-éléments avec CSS, comme ceci :
 
 ```html run autorun
 <style>
-/* make the slider track red */
+/* rendre la piste du curseur rouge */
 input::-webkit-slider-runnable-track {
   background: red;
 }
@@ -35,22 +35,22 @@ input::-webkit-slider-runnable-track {
 <input type="range">
 ```
 
-Once again, `pseudo` is a non-standard attribute. Chronologically, browsers first started to experiment with internal DOM structures to implement controls, and then, after time, shadow DOM was standardized to allow us, developers, to do the similar thing.
+Encore une fois, `pseudo` est un attribut non standard. Chronologiquement, les navigateurs ont d'abord commencé à expérimenter avec des structures DOM internes pour implémenter des contrôles, puis, après un certain temps, le DOM fantôme a été standardisé pour nous permettre à nous, développeurs, de faire la même chose.
 
-Further on, we'll use the modern shadow DOM standard, covered by [DOM spec](https://dom.spec.whatwg.org/#shadow-trees) and other related specifications.
+Plus loin, nous utiliserons la norme moderne du DOM fantôme, couverte par [DOM spec](https://dom.spec.whatwg.org/#shadow-trees) et d'autres spécifications connexes.
 
-## Shadow tree
+## Arbre fantôme
 
-A DOM element can have two types of DOM subtrees:
+Un élément DOM peut avoir deux types de sous-arbres DOM :
 
-1. Light tree -- a regular DOM subtree, made of HTML children. All subtrees that we've seen in previous chapters were "light".
-2. Shadow tree -- a hidden DOM subtree, not reflected in HTML, hidden from prying eyes.
+1. Arbre standard - un sous-arbre DOM normal, composé d'enfants HTML. Tous les sous-arbres que nous avons vus dans les chapitres précédents étaient "standard".
+2. Arbre fantôme - un sous-arbre DOM caché, qui ne se reflète pas dans le HTML, caché des regards indiscrets.
 
-If an element has both, then the browser renders only the shadow tree. But we can setup a kind of composition between shadow and light trees as well. We'll see the details later in the chapter <info:slots-composition>.
+Si un élément possède les deux, le navigateur ne rendra que l'arbre fantôme. Mais nous pouvons également établir une sorte de composition entre les deux arbres. Nous verrons les détails plus tard dans le chapitre <info:slots-composition>.
 
-Shadow tree can be used in Custom Elements to hide component internals and apply component-local styles.
+L'arbre fantôme peut être utilisé dans les éléments personnalisés pour cacher les internes des composants et appliquer des styles locaux aux composants.
 
-For example, this `<show-hello>` element hides its internal DOM in shadow tree:
+Par exemple, cet élément `<show-hello>` cache son DOM interne dans l'arbre fantôme :
 
 ```html run autorun height=60
 <script>
@@ -67,46 +67,46 @@ customElements.define('show-hello', class extends HTMLElement {
 <show-hello name="John"></show-hello>
 ```
 
-That's how the resulting DOM looks in Chrome dev tools, all the content is under "#shadow-root":
+Voici à quoi ressemble le DOM résultant dans Chrome dev tools, tout le contenu est sous "#shadow-root" :
 
 ![](shadow-dom-say-hello.png)
 
-First, the call to `elem.attachShadow({mode: …})` creates a shadow tree.
+Premièrement, l'appel à `elem.attachShadow({mode : ...})` crée un arbre fantôme.
 
-There are two limitations:
-1. We can create only one shadow root per element.
-2. The `elem` must be either a custom element, or one of: "article", "aside", "blockquote", "body", "div", "footer", "h1..h6", "header", "main" "nav", "p", "section", or "span". Other elements, like `<img>`, can't host shadow tree.
+Il y a deux limitations :
+1. On ne peut créer qu'une seule racine fantôme par élément.
+2. Le `elem` doit être soit un élément personnalisé, soit un élément parmi : "article", "aside", "blockquote", "body", "div", "footer", "h1..h6", "header", "main" "nav", "p", "section", ou "span". D'autres éléments, comme `<img>`, ne peuvent pas héberger d'arbre fantôme.
 
-The `mode` option sets the encapsulation level. It must have any of two values:
-- `"open"` -- the shadow root is available as `elem.shadowRoot`.
+L'option `mode` définit le niveau d'encapsulation. Elle doit avoir l'une des deux valeurs suivantes :
+- `"open"` -- la racine fantôme est disponible comme `elem.shadowRoot`.
 
-    Any code is able to access the shadow tree of `elem`.   
-- `"closed"` -- `elem.shadowRoot` is always `null`.
+    N'importe quel code est capable d'accéder à l'arbre fantôme de `elem`.   
+- `"closed"` -- `elem.shadowRoot` est toujours `null`.
 
-    We can only access the shadow DOM by the reference returned by `attachShadow` (and probably hidden inside a class). Browser-native shadow trees, such as  `<input type="range">`, are closed. There's no way to access them.
+    On ne peut accéder le DOM fantôme que par la référence retournée par `attachShadow` (et probablement cachée dans une classe). Les arbres fantômes natifs des navigateurs, tels que `<input type="range">`, sont fermés. Il n'y a aucun moyen d'y accéder.
 
-The [shadow root](https://dom.spec.whatwg.org/#shadowroot), returned by `attachShadow`, is like an element: we can use `innerHTML` or DOM methods, such as `append`, to populate it.
+La [racine fantôme](https://dom.spec.whatwg.org/#shadowroot), renvoyée par `attachShadow`, est comme un élément : on peut utiliser `innerHTML` ou des méthodes DOM, comme `append`, pour la remplir.
 
-The element with a shadow root is called a "shadow tree host", and is available as the shadow root `host` property:
+L'élément avec une racine fantôme est appelé "hôte fantôme", et est disponible comme la propriété `host` de la racine fantôme :
 
 ```js
-// assuming {mode: "open"}, otherwise elem.shadowRoot is null
+// en supposant que {mode : "open"}, sinon elem.shadowRoot est null
 alert(elem.shadowRoot.host === elem); // true
 ```
 
 ## Encapsulation
 
-Shadow DOM is strongly delimited from the main document:
+Le DOM fantôme est fortement délimité du document principal :
 
-1. Shadow DOM elements are not visible to `querySelector` from the light DOM. In particular,  Shadow DOM elements may have ids that conflict with those in the light DOM. They must be unique only within the shadow tree.
-2. Shadow DOM has own stylesheets. Style rules from the outer DOM don't get applied.
+1. Les éléments du DOM fantôme ne sont pas visibles par `querySelector` depuis le DOM standard. En particulier, les éléments du DOM fantôme peuvent avoir des identifiants qui entrent en conflit avec ceux du DOM standard. Ils doivent être uniques seulement dans l'arbre d'ombre.
+2. Le DOM fantôme a ses propres feuilles de style. Les règles de style du DOM externe ne sont pas appliquées.
 
-For example:
+Par exemple :
 
 ```html run untrusted height=40
 <style>
 *!*
-  /* document style won't apply to the shadow tree inside #elem (1) */
+  /* le style du document ne s'appliquera pas à l'arbre fantôme à l'intérieur de #elem (1) */
 */!*
   p { color: red; }
 </style>
@@ -116,7 +116,7 @@ For example:
 <script>
   elem.attachShadow({mode: 'open'});
 *!*
-    // shadow tree has its own style (2)
+    // l'arbre fantôme a son propre style (2)
 */!*
   elem.shadowRoot.innerHTML = `
     <style> p { font-weight: bold; } </style>
@@ -124,34 +124,34 @@ For example:
   `;
 
 *!*
-  // <p> is only visible from queries inside the shadow tree (3)
+  // <p> est seulement visible depuis les requêtes à l'intérieur de l'arbre fantôme. (3)
 */!*
   alert(document.querySelectorAll('p').length); // 0
   alert(elem.shadowRoot.querySelectorAll('p').length); // 1
 </script>  
 ```
 
-1. The style from the document does not affect the shadow tree.
-2. ...But the style from the inside works.
-3. To get elements in shadow tree, we must query from inside the tree.
+1. Le style provenant du document n'affecte pas l'arbre fantôme.
+2. ...Mais le style provenant de l'intérieur fonctionne.
+3. Pour obtenir des éléments dans l'arbre fantôme, nous devons faire une requête depuis l'intérieur de l'arbre.
 
-## References
+## Références
 
 - DOM: <https://dom.spec.whatwg.org/#shadow-trees>
-- Compatibility: <https://caniuse.com/#feat=shadowdomv1>
-- Shadow DOM is mentioned in many other specifications, e.g. [DOM Parsing](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) specifies that shadow root has `innerHTML`.
+- Compatibilité: <https://caniuse.com/#feat=shadowdomv1>
+- Le DOM fantôme est mentionné dans de nombreuses autres spécifications, par exemple [DOM Parsing](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) spécifie que la racine fantôme a `innerHTML`.
 
 
-## Summary
+## Résumé
 
-Shadow DOM is a way to create a component-local DOM.
+Le DOM fantôme est un moyen de créer un DOM local pour les composants.
 
-1. `shadowRoot = elem.attachShadow({mode: open|closed})` -- creates shadow DOM for `elem`. If `mode="open"`, then it's accessible as `elem.shadowRoot` property.
-2. We can populate `shadowRoot` using `innerHTML` or other DOM methods.
+1. `shadowRoot = elem.attachShadow({mode : open|closed})` -- crée un DOM fantôme pour `elem`. Si `mode="open"`, alors il est accessible par la propriété `elem.shadowRoot`.
+2. Nous pouvons remplir `shadowRoot` en utilisant `innerHTML` ou d'autres méthodes DOM.
 
-Shadow DOM elements:
-- Have their own ids space,
-- Invisible to JavaScript selectors from the main document, such as `querySelector`,
-- Use styles only from the shadow tree, not from the main document.
+Les éléments du DOM fantôme :
+- Ont leur propre id,
+- Invisible aux sélecteurs JavaScript du document principal, comme `querySelector`,
+- N'utilisent les styles que de l'arbre fantôme, pas du document principal.
 
-Shadow DOM, if exists, is rendered by the browser instead of so-called "light DOM" (regular children). In the chapter <info:slots-composition> we'll see how to compose them.
+Le DOM fantôme, s'il existe, est rendu par le navigateur à la place du DOM standard (enfants réguliers). Dans le chapitre <info:slots-composition>, nous verrons comment les composer.
