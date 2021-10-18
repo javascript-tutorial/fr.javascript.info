@@ -7,7 +7,14 @@ Il y a de nombreux opérateurs de comparaison que nous connaissons des mathémat
 - Le contrôle d'égalité est écrit en tant que `a == b` (veuillez noter le signe de la double équation `=`. Un seul symbole `a = b` signifierait une affectation).
 - Pas égal. En maths, la notation est `≠`, en JavaScript, elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
 
+<<<<<<< HEAD
 Dans cet article, nous en apprendrons plus sur les différents types de comparaisons, sur la façon dont JavaScript les fait, y compris sur les particularités importantes.
+=======
+- Greater/less than: <code>a &gt; b</code>, <code>a &lt; b</code>.
+- Greater/less than or equals: <code>a &gt;= b</code>, <code>a &lt;= b</code>.
+- Equals: `a == b`, please note the double equality sign `==` means the equality test, while a single one `a = b` means an assignment.
+- Not equals: In maths the notation is <code>&ne;</code>, but in JavaScript it's written as <code>a != b</code>.
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 À la fin, vous trouverez une bonne recette pour éviter les problèmes liés aux "bizarreries JavaScript".
 

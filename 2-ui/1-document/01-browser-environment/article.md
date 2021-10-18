@@ -17,7 +17,7 @@ Il existe un objet "racine" appelé `window`. Il a 2 rôles :
 
 Par exemple, nous l'utilisons ici comme un objet global :
 
-```js run
+```js run global
 function sayHi() {
   alert("Hello");
 }
