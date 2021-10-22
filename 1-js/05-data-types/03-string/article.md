@@ -119,7 +119,7 @@ alert( `I'm the Walrus!` ); // I'm the Walrus!
 
 Veuillez noter que le backslash `\` sert à la lecture correcte de la chaîne de caractères par JavaScript, puis disparaît. La chaîne de caractères en mémoire ne contient pas `\`. Vous pouvez le voir clairement dans l'`alert` à partir des exemples ci-dessus.
 
-Mais que faire si nous devons afficher un réel backslash `\` à l'intérieur de la chaine de caractères ?
+Mais que faire si nous devons afficher un réel backslash `\` à l'intérieur de la chaîne de caractères ?
 
 C’est possible, mais nous devons le doubler comme ceci `\\` :
 
@@ -127,7 +127,7 @@ C’est possible, mais nous devons le doubler comme ceci `\\` :
 alert( `The backslash: \\` ); // The backslash: \
 ```
 
-## Longueur de chaine de caractères
+## Longueur de chaîne de caractères
 
 
 La propriété `length` a la longueur de la chaîne de caractères :
@@ -161,7 +161,7 @@ alert( str[str.length - 1] ); // o
 
 Les crochets sont un moyen moderne d’obtenir un caractère, tandis que `charAt` existe principalement pour des raisons historiques.
 
-La seule différence entre eux est que si aucun caractère  n'est trouvé, `[]` retourne `undefined`, et `charAt` retourne une chaine de caractères vide :
+La seule différence entre eux est que si aucun caractère  n'est trouvé, `[]` retourne `undefined`, et `charAt` retourne une chaîne de caractères vide :
 
 ```js run
 let str = `Hello`;
@@ -178,7 +178,7 @@ for (let char of "Hello") {
 }
 ```
 
-## Les chaines de caractères sont immuables 
+## Les chaînes de caractères sont immuables 
 
 Les chaînes de caractères ne peuvent pas être changées en JavaScript. Il est impossible de modifier un caractère.
 
@@ -198,7 +198,7 @@ Par exemple :
 ```js run
 let str = 'Hi';
 
-str = 'h' + str[1];  // remplace la chaine de caractères
+str = 'h' + str[1];  // remplace la haine de caractères
 
 alert( str ); // hi
 ```
@@ -220,7 +220,7 @@ Ou, si nous voulons un seul caractère minuscule :
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
-## Rechercher un substring (partie de la chaine de caractères)
+## Rechercher un substring (partie de la chaîne de caractères)
 
 Il existe plusieurs façons de rechercher une partie d'une chaîne de caractères.
 
@@ -379,7 +379,7 @@ alert( "Widget".startsWith("Wid") ); // true, "Widget" commence avec "Wid"
 alert( "Widget".endsWith("get") );   // true, "Widget" fini avec "get"
 ```
 
-## Obtenir un substring (sous-chaine de caractères)
+## Obtenir un substring (sous-chaîne de caractères)
 
 Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `substr` et `slice`.
 
@@ -426,7 +426,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
 
     // ...mais pas pour slice :
     alert( str.slice(2, 6) ); // "ring" (le même résultat)
-    alert( str.slice(6, 2) ); // "" (une chaine de caractères vide)
+    alert( str.slice(6, 2) ); // "" (une chaîne de caractères vide)
 
     ```
 
