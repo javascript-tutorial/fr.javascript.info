@@ -7,7 +7,7 @@ Aidez-nous à améliorer la traduction.
 - Consultez l'[issue](https://github.com/javascript-tutorial/fr.javascript.info/issues) nommée "Translate Progress".
 - Choisissez un article non coché que vous souhaitez traduire.
 - Répondez à l'issue avec uniquement le titre sans aucun autre ajout pour informer le bot et le mainteneur que vous le traduisez.
-- Forkez le repository, traduisez et envoyez un PR lorsque vous avez terminé.
+- Forkez le repository, traduisez et envoyez un PR (pull requests) lorsque vous avez terminé.
 
 🎉 Merci !
 
