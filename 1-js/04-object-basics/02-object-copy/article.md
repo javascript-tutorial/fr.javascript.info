@@ -77,9 +77,9 @@ C'est comme si nous avions une armoire avec deux clés et que nous en utilisions
 
 ## Comparaison par référence
 
-Deux objets sont egaux seulement s'ils sont le même objet.
+Deux objets sont égaux seulement s'ils sont le même objet.
 
-Par exemple, ici `a` et `b` référence le même objet, aussi sont-ils similaires :
+Par exemple, ici `a` et `b` référencent le même objet, aussi sont-ils similaires :
 
 ```js run
 let a = {};
@@ -98,7 +98,7 @@ let b = {}; // 2 objets indépendants
 alert( a == b ); // false
 ```
 
-Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive `obj == 5`, les objets sont convertis en primitive. Nous étudierons comment les conversions d'objets fonctionnent très bientôt, mais pour dire la vérité, de telles comparaisons sont rarement nécessaires, en général elles sont le résultat d'une erreur de programmation.
+Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive `obj == 5`, les objets sont convertis en primitives. Nous étudierons comment les conversions d'objets fonctionnent très bientôt, mais pour dire la vérité, de telles comparaisons sont rarement nécessaires, en général elles sont le résultat d'une erreur de programmation.
 
 ## Clonage et fusion, Object.assign [#clonage-et-fusion-object-assign]
 
@@ -133,7 +133,7 @@ clone.name = "Pete"; // On change les données de celui-ci
 alert( user.name ); // c'est toujour john dans l'objet copié
 ```
 
-On peu aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
+On peut aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
 
 La syntaxe est :
 
@@ -143,7 +143,7 @@ Object.assign(dest, [src1, src2, src3...])
 
 - Le premier argument `dest` est l'objet cible
 - Les arguments suivants `src1, ..., srcN` (cela peut-être tant que l'on veut) sont les objets à copier.
-- La méthode copie les propriétés de toutes les objets à copier `src1, ..., srcN` dans l'objet `dest`. En d'autres mots, les propriétés de tous les arguments à partir du deuxième sont copiés dans le premier argument.
+- La méthode copie les propriétés de tous les objets à copier `src1, ..., srcN` dans l'objet `dest`. En d'autres mots, les propriétés de tous les arguments à partir du deuxième sont copiés dans le premier argument.
 - L'appel retourne `dest`.
 
 Par exemple, on peut l'utiliser pour fusioner plusieurs objets en un seul :
@@ -172,7 +172,7 @@ Object.assign(user, { name: "Pete" });
 alert(user.name); // on a user = { name: "Pete" }
 ```
 
-On peut aussi utiliser `Object.assign` to replace `for..in` boucle pour un clonage simple.
+On peut aussi utiliser `Object.assign` pour remplacer la boucle `for..in` pour un clonage simple.
 
 ```js
 let user = {
@@ -228,7 +228,7 @@ user.sizes.width++;       // on modifie la propriété à un endroit
 alert(clone.sizes.width); // 51, on peut voir la modification dans un autre endroit
 ```
 
-Pour régler ça, on doit utiliser la boucle de clonage qui examine chaque valeur de `user[key]` et, si c'est un objet, répliquer sa structure aussi. On appelle cela un "clone réél" (deep clone).
+Pour régler ça, on doit utiliser la boucle de clonage qui examine chaque valeur de `user[key]` et, si c'est un objet, répliquer sa structure aussi. On appelle cela un "clone réel" (deep clone).
 
 On peut utiliser la récursion pour l'implémenter. Ou, pour ne pas réinventer la roue, prendre un implémentation existante. par exemple [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) de la librairie [lodash](https://lodash.com).
 
