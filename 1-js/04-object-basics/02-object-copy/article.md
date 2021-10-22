@@ -31,7 +31,7 @@ let user = {
 };
 ```
 
-Et ici comment elle est stockée en mémmoire :
+Et ici comment elle est stockée en mémoire :
 
 ![](variable-contains-reference.svg)
 
