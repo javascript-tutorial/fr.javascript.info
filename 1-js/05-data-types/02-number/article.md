@@ -276,7 +276,7 @@ Essayez de lancer ceci:
 alert( 9999999999999999 ); // affiche 10000000000000000
 ```
 
-La cause est encore une fois le manque de précision. Le nombre comporte 64 bits, dont 52 peuvent être utilisés pour stocker des chiffres, mais cela ne suffit pas. Alors, les cihffres les moins significatifs disparaissent.
+La cause est encore une fois le manque de précision. Le nombre comporte 64 bits, dont 52 peuvent être utilisés pour stocker des chiffres, mais cela ne suffit pas. Alors, les chiffres les moins significatifs disparaissent.
 
 JavaScript ne déclenche pas d'erreur dans de tels événements. il fait de son mieux pour adapter le nombre au format souhaité, mais malheureusement, ce format n'est pas assez grand.
 ````

@@ -178,7 +178,7 @@ for (let char of "Hello") {
 }
 ```
 
-## Les chaine de caractères sont immuables 
+## Les chaines de caractères sont immuables 
 
 Les chaînes de caractères ne peuvent pas être changées en JavaScript. Il est impossible de modifier un caractère.
 
