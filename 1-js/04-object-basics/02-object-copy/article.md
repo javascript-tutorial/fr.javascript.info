@@ -135,6 +135,7 @@ alert( user.name ); // c'est toujour john dans l'objet copié
 
 On peut aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
 
+
 La syntaxe est :
 
 ```js
