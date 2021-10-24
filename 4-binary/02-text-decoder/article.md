@@ -2,11 +2,7 @@
 
 Que faire si les données binaires sont en fait une chaîne de charactères ? Par exemple, nous avons reçu un fichier contenant des données textuelles.
 
-<<<<<<< HEAD
-L'object [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) permet de lire la valeur dans une chaîne de charactères, en donnant le Buffer et l'encodage.
-=======
-The built-in [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) object allows one to read the value into an actual JavaScript string, given the buffer and the encoding.
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
+L'object interne [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) permet de lire la valeur dans une chaîne JavaScript réelle, compte tenu du buffer et de l'encodage.
 
 Nous devons d'abord le créer:
 ```js
