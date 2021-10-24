@@ -60,27 +60,27 @@ Une construction sur une seule ligne, comme `if (condition) doSomething()`, est 
 
 Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
 
-1. 😠 Beginners sometimes do that. Bad! Curly braces are not needed:
+1. 😠 Les débutants font parfois cela. C'est une mauvaise pratique! Les accolades ne sont pas nécessaires :
     ```js
     if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
     ```
-2. 😠 Split to a separate line without braces. Never do that, easy to make an error when adding new lines:
+2. 😠 Lorsque vous n'utilisez pas d'accolades, évitez de passer pas à la ligne, il est facile de se tromper! :
     ```js
     if (n < 0)
       alert(`Power ${n} is not supported`);
     ```
-3. 😏 One line without braces - acceptable, if it's short:
+3. 😏 Ne pas utiliser d'accolade sur une seule ligne, est acceptable tant que cela reste court :
     ```js
     if (n < 0) alert(`Power ${n} is not supported`);
     ```
-4. 😃 The best variant:
+4. 😃 Voici une bonne manière de faire :
     ```js
     if (n < 0) {
       alert(`Power ${n} is not supported`);
     }
     ```
 
-For a very brief code, one line is allowed, e.g. `if (cond) return null`. But a code block (the last variant) is usually more readable.
+Pour un code tres court, une ligne est autorisée, par exemple. `if (cond) return null`. Mais la variante numéro 4 est généralement plus lisible.
 
 
 ### Longueur de la ligne

@@ -1,5 +1,5 @@
 
-# Les microtaches
+# Les micro-tâches
 
 Les gestionnaires de promesses `.then`/`.catch`/`.finally` sont toujours asynchrones.
 
@@ -21,7 +21,7 @@ C'est étrange, car la promesse est certainement résolue depuis le début.
 
 Pourquoi le `.then` se déclenche par la suite? Que se passe-t-il?
 
-## File d'attente pour microtaches
+## File d'attente pour micro-tâches
 
 Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme V8).
 
@@ -58,7 +58,7 @@ Souvenez-vous de l'événement `unhandledrejection` du chapitre <info:promise-er
 
 Maintenant, nous pouvons voir exactement comment JavaScript découvre qu'il y a eu un rejet non géré
 
-**Un "rejet non traité" se produit lorsqu'une erreur de promesse n'est pas traitée à la fin de la file d'attente des microtaches.**
+**Un "rejet non traité" se produit lorsqu'une erreur de promesse n'est pas traitée à la fin de la file d'attente des micro-tâches.**
 
 Normalement, si nous nous attendons à une erreur, nous ajoutons `.catch` dans la chaîne de promesse pour la gérer:
 
@@ -72,7 +72,7 @@ promise.catch(err => alert('caught'));
 window.addEventListener('unhandledrejection', event => alert(event.reason));
 ```
 
-… Mais si nous oublions d’ajouter `.catch`, dans ce cas le moteur déclenche l’événement une fois que la file d’attente de microtaches est vide :
+… Mais si nous oublions d’ajouter `.catch`, dans ce cas le moteur déclenche l’événement une fois que la file d’attente de micro-tâches est vide :
 
 ```js run
 let promise = Promise.reject(new Error("Promise Failed!"));
@@ -95,9 +95,9 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 Maintenant, si vous l'exécutez, nous verrons d'abord le message `Promise Failed!`, Puis `caught`.
 
-Si nous ne connaissions pas la file d'attente de microtaches, nous pourrions nous demander : "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté ? Nous avons capturé et géré l'erreur !".
+Si nous ne connaissions pas la file d'attente de micro-tâches, nous pourrions nous demander : "Pourquoi le gestionnaire `unhandledrejection` a-t-il été exécuté ? Nous avons capturé et géré l'erreur !".
 
-Mais nous comprenons maintenant que `unhandledrejection` est généré à la fin de la file d'attente des microtaches : le moteur examine les promesses et, si l'une d'entre elles est à l'état "rejected", l'événement se déclenche.
+Mais nous comprenons maintenant que `unhandledrejection` est généré à la fin de la file d'attente des micro-tâches : le moteur examine les promesses et, si l'une d'entre elles est à l'état "rejected", l'événement se déclenche.
 
 Dans l'exemple ci-dessus, `.catch` ajouté par `setTimeout` se déclenche également, mais plus tard, après que `unhandledrejection` se soit déjà produit, mais cela ne change rien.
 
@@ -109,4 +109,4 @@ Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois l
 
 Si nous devons garantir qu'un morceau de code est exécuté après `.then/catch/finally`, nous pouvons l'ajouter à un appel `.then` enchaîné.
 
-Dans la plupart des moteurs Javascript, y compris les navigateurs et Node.js, le concept de microtaches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.
+Dans la plupart des moteurs Javascript, y compris les navigateurs et Node.js, le concept de micro-tâches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.
