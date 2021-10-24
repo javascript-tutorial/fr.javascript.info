@@ -49,7 +49,7 @@ Si nous voulons gérer chaque modification d'un `<input>` alors cet événement 
 D'un autre coté, l'événement `input` ne se déclenche pas lors de la saisie au clavier et d'autres actions qui n'impliquent de changement de valeur, par ex. en appuyant sur les touches fléchées `touche:⇦` `touche:⇨` pendant la saisie.
 
 ```
-smart header="Can't prevent anything in `oninput`"
+smart header="Impossible d'empêcher quoi que ce soit dans `oninput`"
 L'événement `input` se produit après la modification de la valeur.
 
 Nous ne pouvons donc pas utiliser `event.preventDefault()` - c'est trop tard, il n'y aurait aucun effet.
@@ -59,19 +59,11 @@ Nous ne pouvons donc pas utiliser `event.preventDefault()` - c'est trop tard, il
 
 Ces événements se produisent lors de la coupe/copie/collage d'une valeur.
 
-<<<<<<< HEAD
-Ils appartiennent à la classe [ClipboardEvent](https://www.w3.org/TR/clipboard-apis/#clipboard-event-interfaces) et permettent d'accéder aux données copiées/collées.
-=======
-They belong to [ClipboardEvent](https://www.w3.org/TR/clipboard-apis/#clipboard-event-interfaces) class and provide access to the data that is cut/copied/pasted.
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
+Ils appartiennent à la classe [ClipboardEvent](https://www.w3.org/TR/clipboard-apis/#clipboard-event-interfaces) et permettent d'accéder aux données coupées/copiées/collées.
 
 Nous pouvons également utiliser `event.preventDefault()` pour interrompre l'action, puis rien n'est copié/collé.
 
-<<<<<<< HEAD
-Par exemple, le code ci-dessous empêche tous ces événements et montre ce que nous essayons de couper/copier/coller:
-=======
-For instance, the code below prevents all `cut/copy/paste` events and shows the text we're trying to cut/copy/paste:
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
+Par exemple, le code ci-dessous empêche tous ces événements `cut/copy/paste` et montre ce que nous essayons de couper/copier/coller:
 
 ```html autorun height=40 run
 <input type="text" id="input">
@@ -88,41 +80,29 @@ For instance, the code below prevents all `cut/copy/paste` events and shows the 
 </script>
 ```
 
-<<<<<<< HEAD
-Veuillez noter qu'il est possible de copier/coller non seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
+Remarque : à l'intérieur des gestionnaires d'événements `cut` et `copy`, un appel à `event.clipboardData.getData(...)` renvoie une chaîne vide. C'est parce que techniquement, les données ne sont pas encore dans le presse-papiers. Si nous utilisons `event.preventDefault()`, il ne sera pas du tout copié.
 
-C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour glisser-déposer et copier/coller. C'est un peu au-delà de notre portée maintenant, mais vous pouvez trouver ses méthodes [dans la specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+Ainsi, l'exemple ci-dessus utilise `document.getSelection()` pour obtenir le texte sélectionné. Vous pouvez trouver plus de détails sur la sélection de documents dans l'article <info:selection-range>.
 
-```warn header="ClipboardAPI: restrictions de sécurité des utilisateurs"
-Le presse-papiers est une chose "globale" au niveau du système d'exploitation. Ainsi, la plupart des navigateurs autorisent l'accès en lecture/écriture au presse-papiers uniquement dans le cadre de certaines actions de l'utilisateur pour la sécurité, par ex. dans les gestionnaires d'événements `onclick`.
+Il est possible de copier/coller pas seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
-Il est également interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs sauf Firefox.
-```
-=======
-Please note: inside `cut` and `copy` event handlers a call to  `event.clipboardData.getData(...)` returns an empty string. That's because technically the data isn't in the clipboard yet. If we use `event.preventDefault()` it won't be copied at all.
+C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour le glisser-déposer et le copier/coller. C'est un peu hors de notre portée maintenant, mais vous pouvez trouver ses méthodes dans la [spécification DataTransfer](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
 
-So the example above uses `document.getSelection()` to get the selected text. You can find more details about document selection in the article <info:selection-range>.
+En outre, il existe une API asynchrone supplémentaire pour accéder au presse-papiers : `navigator.clipboard`. Plus d'informations à ce sujet dans la spécification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [non pris en charge par Firefox](https://caniuse.com/async-clipboard).
 
-It's possible to copy/paste not just text, but everything. For instance, we can copy a file in the OS file manager, and paste it.
+### Restrictions de sécurité
 
-That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+Le presse-papiers est une chose "globale" au niveau du système d'exploitation. Un utilisateur peut basculer entre différentes applications, copier/coller différentes choses, et une page de navigateur ne devrait pas voir tout cela.
 
-Also, there's an additional asynchronous API of accessing the clipboard: `navigator.clipboard`. More about it in the specification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [not supported by Firefox](https://caniuse.com/async-clipboard).
+Ainsi, la plupart des navigateurs permettent un accès en lecture/écriture transparent au presse-papiers uniquement dans le cadre de certaines actions de l'utilisateur, telles que le copier/coller, etc.
 
-### Safety restrictions
+Il est interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs sauf Firefox. Et même si nous parvenons à envoyer un tel événement, la spécification indique clairement que de tels événements "synthétiques" ne doivent pas donner accès au presse-papiers.
 
-The clipboard is a "global" OS-level thing. A user may switch between various applications, copy/paste different things, and a browser page shouldn't see all that.
+Même si quelqu'un décide d'enregistrer `event.clipboardData` dans un gestionnaire d'événements, puis d'y accéder plus tard, cela ne fonctionnera pas.
 
-So most browsers allow seamless read/write access to the clipboard only in the scope of certain user actions, such as copying/pasting etc.
+Pour réitérer, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) fonctionne uniquement dans le contexte des gestionnaires d'événements initiés par l'utilisateur.
 
-It's forbidden to generate "custom" clipboard events with `dispatchEvent` in all browsers except Firefox. And even if we manage to dispatch such event, the specification clearly states that such "syntetic" events must not provide access to the clipboard.
-
-Even if someone decides to save `event.clipboardData` in an event handler, and then access it later -- it won't work.
-
-To reiterate, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) works solely in the context of user-initiated event handlers.
-
-On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) is the more recent API, meant for use in any context. It asks for user permission, if needed. Not supported in Firefox.
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
+D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte. Il demande l'autorisation de l'utilisateur, si nécessaire. Non pris en charge dans Firefox.
 
 ## Récapitulatif
 
@@ -130,12 +110,6 @@ On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h
 
 | Événement | Description | Specials |
 |---------|----------|-------------|
-<<<<<<< HEAD
-| `change`| Une valeur a été modifiée | Se déclenche à la perte du focus pour les champs textes. |
+| `change`| Une valeur a été modifiée | Pour les entrées de texte, les déclencheurs sont sur la perte de mise au point. |
 | `input` | Pour les champs textes à chaque modification. | Se déclenche immédiatement contrairement à `change`. |
-| `cut/copy/paste` | Les actions couper/copier/coller. | L'action peut être empêchée. La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers. |
-=======
-| `change`| A value was changed. | For text inputs triggers on focus loss. |
-| `input` | For text inputs on every change. | Triggers immediately unlike `change`. |
-| `cut/copy/paste` | Cut/copy/paste actions. | The action can be prevented. The `event.clipboardData` property gives access to the clipboard. All browsers except Firefox also support `navigator.clipboard`. |
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
+| `cut/copy/paste` | Les actions couper/copier/coller. | L'action peut être empêchée. La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers. Tous les navigateurs, à l'exception de Firefox, prennent également en charge `navigator.clipboard`. |
