@@ -307,19 +307,11 @@ Ce qui est génial avec eux, c'est que la vérification du style trouve égaleme
 
 Voici quelques linters bien connus :
 
-<<<<<<< HEAD
 - [JSLint](http://www.jslint.com/) -- l'un des premiers linters.
 - [JSHint](http://www.jshint.com/) -- plus de paramètres que JSLint.
 - [ESLint](http://eslint.org/) -- probablement le plus récent.
 
 Tous peuvent faire le travail. L'auteur utilise [ESLint](http://eslint.org/).
-=======
-- [JSLint](https://www.jslint.com/) -- one of the first linters.
-- [JSHint](https://jshint.com/) -- more settings than JSLint.
-- [ESLint](https://eslint.org/) -- probably the newest one.
-
-All of them can do the job. The author uses [ESLint](https://eslint.org/).
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plug-in dans l'éditeur et de configurer le style.
 
@@ -350,14 +342,6 @@ Voici un exemple de `.eslintrc`:
 Ici, la directive `"extends"` indique que nous nous basons sur l'ensemble de paramètres "eslint:recommended", puis nous spécifions les nôtres.
 
 Il est aussi possible de télécharger des ensembles de règles de style à partir du Web et de les étendre. Voir <http://eslint.org/docs/user-guide/getting-started> pour plus de détails sur l'installation.
-
-L'utilisation d'un linter a un effet secondaire formidable: les linters prennent les fautes de frappe. Par exemple, quand on accède à une variable non définie, un linter la détecte et (s'il est intégrée à un éditeur) la met en évidence. Dans la plupart des cas, il s’agit d’un mauvais type. Nous pouvons donc régler le problème tout de suite.
-
-<<<<<<< HEAD
-Pour cette raison, même si vous n’êtes pas préoccupé par les styles, il est vivement recommandé d’utiliser un linter.
-=======
-It is also possible to download style rule sets from the web and extend them instead. See <https://eslint.org/docs/user-guide/getting-started> for more details about installation.
->>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 De plus, certains IDE prennent en charge le linting nativement, ce qui peut également être bien, mais pas aussi ajustables que ESLint.
 
