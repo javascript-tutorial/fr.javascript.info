@@ -21,7 +21,7 @@ let user = {
 alert(user); // {name: "John", age: 30}
 ```
 
-... Mais au cours du développement, de nouvelles propriétés sont ajoutées, les anciennes propriétés sont renommées et supprimées. Mettre à jour un tel `toString` à chaque fois peut devenir pénible. Nous pourrions essayer de passer en boucle sur les propriétés qu'il contient, mais que se passe-t-il si l'objet est complexe et qu'il contient des objets imbriqués? Nous aurions également besoin de mettre en œuvre leur conversion.
+... Mais au cours du développement, de nouvelles propriétés sont ajoutées, les anciennes propriétés sont renommées et supprimées. Mettre à jour un tel `toString` à chaque fois peut devenir pénible. Nous pourrions essayer de passer en boucle sur les propriétés qu'il contient, mais que se passe-t-il si l'objet est complexe et qu'il contient des objets imbriqués ? Nous aurions également besoin de mettre en œuvre leur conversion.
 
 Heureusement, il n'est pas nécessaire d'écrire le code pour gérer tout cela. La tâche a déjà été résolue.
 
@@ -69,7 +69,7 @@ La méthode `JSON.stringify(student)` prend l'objet et le convertit en une chaî
 La chaine `json` résultante est appelé un objet *JSON-encoded* ou *serialized* ou *stringified* ou *marshalled*. Nous sommes prêts à l'envoyer par le câble ou à le placer dans un simple stockage de données.
 
 
-S'il vous plaît noter qu'un objet JSON-encoded a plusieurs différences importantes par rapport au objet littéral:
+Veuillez noter qu'un objet JSON-encoded a plusieurs différences importantes par rapport au objet littéral :
 
 - Les chaînes utilisent des guillemets doubles. Il n'y a pas de guillemets simples ni de backticks en JSON. Donc `'John'` deviendra `"John"`.
 - Les propriété d'objet sont également en guillemets doubles. C'est obligatoire. Donc `age:30` deviendra `"age":30`.
@@ -86,7 +86,7 @@ JSON prend en charge les types de données suivants :
     - valeurs booléennes `true/false`,
     - `null`.
 
-For instance:
+Par exemple :
 
 ```js run
 // un nombre en JSON est juste un nombre
