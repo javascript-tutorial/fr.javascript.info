@@ -1,9 +1,9 @@
 
-# Rewrite "rethrow" with async/await
+# Réécriture de "rethrow" avec async/await
 
-Below you can find the "rethrow" example. Rewrite it using `async/await` instead of `.then/catch`.
+Vous trouverez ci-dessous l'exemple "rethrow". Réécrivez-le en utilisant `async/await` au lieu de `.then/catch`.
 
-And get rid of the recursion in favour of a loop in `demoGithubUser`: with `async/await` that becomes easy to do.
+Et débarrassez-vous de la récursion en faveur d'une boucle dans `demoGithubUser` : avec `async/await`, cela devient facile à faire.
 
 ```js run
 class HttpError extends Error {
@@ -25,7 +25,7 @@ function loadJson(url) {
     });
 }
 
-// Ask for a user name until github returns a valid user
+// demander un nom d'utilisateur jusqu'à ce que github renvoie un utilisateur valide
 function demoGithubUser() {
   let name = prompt("Enter a name?", "iliakan");
 

@@ -1,7 +1,7 @@
 
-# Call async from non-async
+# Appeler l'asynchrone à partir du non-asynchrone
 
-We have a "regular" function called `f`. How can you call the `async` function `wait()` and use its result inside of `f`?
+Nous avons une fonction "normale" appelée `f`. Comment pouvez-vous appeler la fonction `async` `wait()` et utiliser son résultat à l'intérieur de `f` ?
 
 ```js
 async function wait() {
@@ -11,10 +11,10 @@ async function wait() {
 }
 
 function f() {
-  // ...what should you write here?
-  // we need to call async wait() and wait to get 10
-  // remember, we can't use "await"
+  // ...que devez-vous écrire ici?
+  // nous devons appeler async wait() et attendre pour obtenir 10
+  // Souvenez-vous, on ne peut pas utiliser "await".
 }
 ```
 
-P.S. The task is technically very simple, but the question is quite common for developers new to async/await.
+P.S. La tâche est techniquement très simple, mais la question est assez courante pour les développeurs novices en matière d'async/await.

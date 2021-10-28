@@ -1,5 +1,5 @@
 
-The notes are below the code:
+Les notes sont en dessous du code:
 
 ```js run
 async function loadJson(url) { // (1)
@@ -19,9 +19,9 @@ loadJson('no-such-user.json')
 
 Notes:
 
-1. The function `loadJson` becomes `async`.
-2. All `.then` inside are replaced with `await`.
-3. We can `return response.json()` instead of awaiting for it, like this:
+1. La fonction `loadJson` devient `async`.
+2. Tous les `.then` intérieurs sont remplacés par `await`..
+3. Nous pouvons `return response.json()` au lieu de l'attendre, comme ceci:
 
     ```js
     if (response.status == 200) {
@@ -29,5 +29,5 @@ Notes:
     }
     ```
 
-    Then the outer code would have to `await` for that promise to resolve. In our case it doesn't matter.
-4. The error thrown from `loadJson` is handled by `.catch`. We can't use `await loadJson(…)` there, because we're not in an `async` function.
+    Ensuite, le code externe devra "attendre" la résolution de cette promesse. Dans notre cas, cela n'a pas d'importance.
+4. L'erreur émise par `loadJson` est gérée par `.catch`. Nous ne pouvons pas utiliser `await loadJson(...)` ici, car nous ne sommes pas dans une fonction `async`..
