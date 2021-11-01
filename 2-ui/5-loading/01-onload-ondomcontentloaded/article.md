@@ -184,6 +184,26 @@ window.onbeforeunload = function() {
 
 Le comportement a été modifié, car certains webmasters ont abusé de ce gestionnaire d'événements en affichant des messages trompeurs et ennuyeux. Donc, à l'heure actuelle, les anciens navigateurs peuvent toujours l'afficher sous forme de message, mais à part cela -- il n'y a aucun moyen de personnaliser le message affiché à l'utilisateur.
 
+````warn header="The `event.preventDefault()` doesn't work from a `beforeunload` handler"
+That may sound weird, but most browsers ignore `event.preventDefault()`.
+
+Which means, following code may not work:
+```js run
+window.addEventListener("beforeunload", (event) => {
+  // doesn't work, so this event handler doesn't do anything
+	event.preventDefault();
+});
+```
+
+Instead, in such handlers one should set `event.returnValue` to a string to get the result similar to the code above:
+```js run
+window.addEventListener("beforeunload", (event) => {
+  // works, same as returning from window.onbeforeunload
+	event.returnValue = "There are unsaved changes. Leave now?";
+});
+```
+````
+
 ## readyState
 
 Que se passe-t-il si nous définissons le gestionnaire `DOMContentLoaded` après le chargement du document?

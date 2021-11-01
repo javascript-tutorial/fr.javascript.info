@@ -93,11 +93,19 @@ let rabbit = new Rabbit();
 alert(rabbit instanceof Animal); // true
 */!*
 
+<<<<<<< HEAD
 // rabbit.__proto__ === Rabbit.prototype
 *!*
 // rabbit.__proto__.__proto__ === Animal.prototype (match!)
 */!*
 ```
+=======
+    // rabbit.__proto__ === Animal.prototype (no match)
+    *!*
+    // rabbit.__proto__.__proto__ === Animal.prototype (match!)
+    */!*
+    ```
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Voici l'illustration de ce que `rabbit instanceof Animal` compare avec `Animal.prototype`:
 

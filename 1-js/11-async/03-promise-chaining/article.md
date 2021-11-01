@@ -34,11 +34,19 @@ new Promise(function(resolve, reject) {
 
 L'idée est que le résultat est transmis à travers la chaîne de gestionnaires `.then`.
 
+<<<<<<< HEAD
 Ici, le flux est :
 1. La promesse initiale est résolue en 1 seconde `(*)`,
 2. Ensuite, le gestionnaire `.then` est appelé `(**)`, qui à son tour crée une nouvelle promesse (résolue avec la valeur `2`).
 3. Le `then` suivant `(***)` obtient le résultat du précédent, le traite (double) et passe le gestionnaire suivant.
 4. ...et ainsi de suite.
+=======
+Here the flow is:
+1. The initial promise resolves in 1 second `(*)`,
+2. Then the `.then` handler is called `(**)`, which in turn creates a new promise (resolved with `2` value).
+3. The next `then` `(***)` gets the result of the previous one, processes it (doubles) and passes it to the next handler.
+4. ...and so on.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous pouvons voir une séquence d'appels `alert`: `1` -> `2` -> `4`.
 
