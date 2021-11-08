@@ -76,7 +76,11 @@ Le fichier de script est attaché à HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
+<<<<<<< HEAD
 Ici, `/chemin/vers/script.js` est un chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courrant.
+=======
+Here, `/path/to/script.js` is an absolute path to the script from the site root. One can also provide a relative path from the current page. For instance, `src="script.js"`, just like `src="./script.js"`, would mean a file `"script.js"` in the current folder.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Nous pouvons également donner une URL complète, par exemple :
 

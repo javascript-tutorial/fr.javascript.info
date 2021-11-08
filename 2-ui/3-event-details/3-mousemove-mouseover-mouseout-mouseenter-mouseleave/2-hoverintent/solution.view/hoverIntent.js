@@ -87,7 +87,7 @@ class HoverIntent {
     if (speed < this.sensitivity) {
       clearInterval(this.checkSpeedInterval);
       this.isHover = true;
-      this.over.call(this.elem, event);
+      this.over.call(this.elem);
     } else {
       // vitesse rapide, se rappeler des coordonnées comme celles précédentes
       this.prevX = this.lastX;
