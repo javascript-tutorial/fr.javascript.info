@@ -1,8 +1,8 @@
-# Find color in the format #abc or #abcdef
+# Trouver des couleurs au format #abc ou #abcdef
 
-Write a RegExp that matches colors in the format `#abc` or `#abcdef`. That is: `#` followed by 3 or 6 hexadecimal digits.
+Écrire une RegExp qui correspond à des couleurs au format `#abc` ou `#abcdef`. C'est à dire : `#` suivi par 3 ou 6 chiffres hexadécimaux.
 
-Usage example:
+Exemple d'utilisation :
 ```js
 let regexp = /your regexp/g;
 
@@ -11,4 +11,4 @@ let str = "color: #3f3; background-color: #AA00ef; and: #abcd";
 alert( str.match(regexp) ); // #3f3 #AA00ef
 ```
 
-P.S. This should be exactly 3 or 6 hex digits. Values with 4 digits, such as `#abcd`, should not match.
+P.S. Cela doit être exactement 3 ou 6 chiffres. Des valeurs avec 4 chiffres, comme `#abcd`, ne doivent pas ressortir.
