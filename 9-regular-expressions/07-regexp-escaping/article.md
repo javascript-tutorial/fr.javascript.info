@@ -3,15 +3,9 @@
 
 Comme nous l'avons vu, la barre oblique inversée (ou backslash) `pattern:\` est utilisée pour désigner une classe de caractères, p. ex. `pattern:\d`. C'est donc un caractère spécial dans les expressions régulières (comme dans les chaînes de caractères classiques).
 
-<<<<<<< HEAD
-Il y a d'autres caractères spéciaux, qui ont un sens particulier dans une expression régulière. Ils sont utilisés pour effectuer des recherches avancées. En voici la liste complète : `pattern:[ \ ^ $ . | ? * + ( )`.
+Il existe également d'autres caractères spéciaux qui ont une signification particulière dans une expression régulières, tels que `pattern:[ ] { } ( ) \ ^ $ . | ? * +`. Ils sont utilisés pour faire des recherches plus puissantes.
 
-Inutile de mémoriser maintenant cette liste -- nous verrons chacun d'entre eux en détail, et vous les connaîtrez bientôt tous par cœur.
-=======
-There are other special characters as well, that have special meaning in a regexp, such as `pattern:[ ] { } ( ) \ ^ $ . | ? * +`. They are used to do more powerful searches.
-
-Don't try to remember the list -- soon we'll deal with each of them, and you'll know them by heart automatically.
->>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
+Inutile de mémoriser maintenant cette liste -- nous verrons chacun d'entre eux en détail, et vous les connaîtrez bientôt tous par cœur automatiquement.
 
 ## Échappement
 

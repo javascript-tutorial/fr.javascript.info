@@ -79,11 +79,10 @@ Il existe d'autres caractères "spéciaux" moins courants.
 
 Voici la liste complète :
 
-<<<<<<< HEAD
 | Caractère                                          | Description                                                                                                                                                                                      |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `\n`                                               | Nouvelle ligne                                                                                                                                                                                   |
-| `\r`                                               | Retour chariot: non utilisé seul. Les fichiers texte Windows utilisent une combinaison de deux caractères `\r\n` pour représenter un saut de ligne.                                              |
+| `\r`                                               | Dans les fichiers texte Windows, une combinaison de deux caractères `\r\n` représente une nouvelle pause, tandis que sur un système d'exploitation non Windows, il s'agit simplement de `\n`. C'est pour des raisons historiques, la plupart des logiciels Windows comprennent également `\n`. |
 | `\'`, `\"`                                         | Quotes                                                                                                                                                                                           |
 | `\\`                                               | Backslash                                                                                                                                                                                        |
 | `\t`                                               | Tab                                                                                                                                                                                              |
@@ -91,19 +90,6 @@ Voici la liste complète :
 | `\xXX`                                             | Caractère Unicode avec l'unicode hexadécimal donné `XX`, par exemple `'\x7A'` est le même que `'z'`.                                                                                             |
 | `\uXXXX`                                           | Un symbole Unicode avec le code hexadécimal `XXXX` en encodage UTF-16, par exemple `\u00A9` -- est un unicode pour le symbole de copyright `©`. Ce doit être exactement 4 chiffres hexadécimaux. |
 | `\u{X…XXXXXX}` (de 1 à 6 caractères hexadécimaux ) | Un symbole Unicode avec l'encodage UTF-32. Certains caractères rares sont encodés avec deux symboles Unicode, prenant 4 octets. De cette façon, nous pouvons insérer des codes longs.           |
-=======
-| Character | Description |
-|-----------|-------------|
-|`\n`|New line|
-|`\r`|In Windows text files a combination of two characters `\r\n` represents a new break, while on non-Windows OS it's just `\n`. That's for historical reasons, most Windows software also understands `\n`. |
-|`\'`, `\"`|Quotes|
-|`\\`|Backslash|
-|`\t`|Tab|
-|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- kept for compatibility, not used nowadays. |
-|`\xXX`|Unicode character with the given hexadecimal Unicode `XX`, e.g. `'\x7A'` is the same as `'z'`.|
-|`\uXXXX`|A Unicode symbol with the hex code `XXXX` in UTF-16 encoding, for instance `\u00A9` -- is a Unicode for the copyright symbol `©`. It must be exactly 4 hex digits. |
-|`\u{X…XXXXXX}` (1 to 6 hex characters)|A Unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two Unicode symbols, taking 4 bytes. This way we can insert long codes. |
->>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Exemples avec unicode :
 
