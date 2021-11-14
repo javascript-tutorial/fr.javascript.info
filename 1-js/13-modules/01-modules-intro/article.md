@@ -261,11 +261,7 @@ Comparez-le à des scripts sans module, là où il est un object global:
 
 Il existe également plusieurs différences de scripts spécifiques au navigateur avec `type="module"` par rapport aux scripts classiques.
 
-<<<<<<< HEAD
 Vous devriez peut-être ignorer cette section pour l'instant si vous lisez pour la première fois ou si vous n'utilisez pas JavaScript dans un navigateur.
-=======
-You may want to skip this section for now if you're reading for the first time, or if you don't use JavaScript in a browser.
->>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 ### Les modules sont différés
 
