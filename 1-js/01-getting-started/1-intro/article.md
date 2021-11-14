@@ -63,7 +63,11 @@ Par exemple, JavaScript dans le navigateur est capable de :
 
 Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malfaisante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
+<<<<<<< HEAD
 Les exemples de telles restrictions sont:
+=======
+JavaScript's abilities in the browser are limited for the sake of a user's safety. The aim is to prevent an evil webpage from accessing private information or harming the user's data.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 - JavaScript sur une page Web ne peut pas lire/écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système d'exploitation.
 
@@ -88,9 +92,15 @@ De telles limites n'existent pas si JavaScript est utilisé en dehors du navigat
 Il y a au moins trois bonnes choses à propos de JavaScript:
 
 ```compare
+<<<<<<< HEAD
 + Intégration complète avec HTML / CSS.
 + Les choses simples sont faites simplement.
 + Pris en charge par tous les principaux navigateurs et activé par défaut.
+=======
++ Full integration with HTML/CSS.
++ Simple things are done simply.
++ Supported by all major browsers and enabled by default.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 ```
 
 JavaScript est la seule technologie de navigateur qui combine ces trois éléments.
@@ -122,6 +132,12 @@ Il en existe évidemment bien plus, cela dit, même si nous utilisons un de ces 
 
 ## Résumé
 
+<<<<<<< HEAD
 - JavaScript a été initialement créé en tant que langage de navigateur uniquement, mais il est désormais également utilisé dans de nombreux autres environnements.
 - En ce moment, JavaScript occupe une position unique en tant que langage de navigateur le plus largement adopté avec une intégration complète avec HTML/CSS.
 - De nombreux langages sont "transpilés" en JavaScript et fournissent certaines fonctionnalités. Il est recommandé d'y jeter un coup d'œil, au moins brièvement, après avoir maîtrisé JavaScript.
+=======
+- JavaScript was initially created as a browser-only language, but it is now used in many other environments as well.
+- Today, JavaScript has a unique position as the most widely-adopted browser language, fully integrated with HTML/CSS.
+- There are many languages that get "transpiled" to JavaScript and provide certain features. It is recommended to take a look at them, at least briefly, after mastering JavaScript.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6

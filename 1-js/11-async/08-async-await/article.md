@@ -303,8 +303,13 @@ Le mot-clé `async` devant une fonction a deux effets:
 
 Le mot-clé `await` devant une promesse fait en sorte que JavaScript attende jusqu'à ce que cette promesse se règle, puis:
 
+<<<<<<< HEAD
 1. Si c'est une erreur, l'exception est générée - comme si `throw error` était appelé à cet endroit précis.
 2. Sinon, il renvoie le résultat.
+=======
+1. If it's an error, an exception is generated — same as if `throw error` were called at that very place.
+2. Otherwise, it returns the result.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Ensemble, ils fournissent un cadre idéal pour écrire du code asynchrone facile à lire et à écrire.
 

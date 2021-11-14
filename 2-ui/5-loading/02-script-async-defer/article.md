@@ -131,6 +131,16 @@ Les scripts asynchrones sont parfaits lorsque nous intégrons un script tiers in
 <script async src="https://google-analytics.com/analytics.js"></script>
 ```
 
+<<<<<<< HEAD
+=======
+```smart header="The `async` attribute is only for external scripts"
+Just like `defer`, the `async` attribute is ignored if the `<script>` tag has no `src`.
+```
+
+## Dynamic scripts
+
+There's one more important way of adding a script to the page.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 ## Les scripts dynamiques
 
@@ -187,8 +197,15 @@ Mais il existe également des différences essentielles entre eux:
 
 |         | L'ordre | `DOMContentLoaded` |
 |---------|---------|---------|
+<<<<<<< HEAD
 | `async` | *Load-first*. Leur ordre dans le document n'a pas d'importance -- premier chargé, premier exécuté |  Sans importance. Peut se charger et s'exécuter alors que le document n'a pas encore été entièrement téléchargé. Cela se produit si les scripts sont petits ou mis en cache et que le document est suffisamment long. |
 | `defer` | *L'ordre du Document*. |  Exécute après le chargement et l'analyse du document (ils attendent si nécessaire), juste avant `DOMContentLoaded`. |
+=======
+| `async` | *Load-first order*. Their document order doesn't matter -- which loads first runs first |  Irrelevant. May load and execute while the document has not yet been fully downloaded. That happens if scripts are small or cached, and the document is long enough. |
+| `defer` | *Document order* (as they go in the document). |  Execute after the document is loaded and parsed (they wait if needed), right before `DOMContentLoaded`. |
+
+In practice, `defer` is used for scripts that need the whole DOM and/or their relative execution order is important.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 En pratique, `defer` est utilisé pour les scripts qui ont besoin de tout le DOM et/ou leur ordre d'exécution relatif est important.
 Et `async` est utilisé pour des scripts indépendants, comme des compteurs ou des publicités. Et leur ordre d'exécution relatif n'a pas d'importance.
