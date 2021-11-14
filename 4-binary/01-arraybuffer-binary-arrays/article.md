@@ -127,15 +127,9 @@ new TypedArray();
 
 Nous pouvons créer un tableau typé directement sans fournir un `ArrayBuffer`. Mais une vue ne peut pas exister sans, donc il sera créé automatiquement dans tous les cas, sauf le premier (quand il est passé en argument).
 
-<<<<<<< HEAD
-Pour accéder à l'`ArrayBuffer`, il y a plusieurs propriétés:
-- `arr.buffer` -- qui fait référence à l'`ArrayBuffer`.
-- `arr.byteLength` -- qui correspond à la taille de l'`ArrayBuffer`.
-=======
-To access the underlying `ArrayBuffer`, there are following properties in `TypedArray`:
-- `buffer` -- references the `ArrayBuffer`.
-- `byteLength` -- the length of the `ArrayBuffer`.
->>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
+Pour accéder au `ArrayBuffer` sous-jacent, il existe les propriétés suivantes dans `TypedArray` :
+- `buffer` -- qui fait référence à l'`ArrayBuffer`.
+- `byteLength` -- qui correspond à la taille de l'`ArrayBuffer`.
 
 Donc nous pouvons toujours passer d'une vue à l'autre:
 ```js
