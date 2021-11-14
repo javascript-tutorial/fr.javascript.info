@@ -61,8 +61,6 @@ Par exemple, JavaScript dans le navigateur est capable de :
 
 ## Qu'est-ce que JavaScript ne peut pas faire dans le navigateur ?
 
-Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malfaisante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
-
 Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malveillante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
 Les exemples de telles restrictions sont:
