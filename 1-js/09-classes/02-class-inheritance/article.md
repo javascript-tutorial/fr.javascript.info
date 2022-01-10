@@ -316,13 +316,21 @@ new Rabbit(); // animal
 */!*
 ```
 
+<<<<<<< HEAD
 Ici, la classe `Rabbit` étend `Animal` et remplace le champ `name` par sa propre valeur.
+=======
+Here, class `Rabbit` extends `Animal` and overrides the `name` field with its own value.
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 Il n'y a pas de constructeur propre dans `Rabbit`, donc le constructeur `Animal` est appelé.
 
 Ce qui est intéressant, c'est que dans les deux cas : `new Animal()` et `new Rabbit()`, l' `alert` dans la ligne `(*)` montre `animal`.
 
+<<<<<<< HEAD
 **En d'autres termes, le constructeur parent utilise toujours sa propre valeur de champ, pas celle remplacée.**
+=======
+**In other words, the parent constructor always uses its own field value, not the overridden one.**
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 Qu'est-ce qui est étrange à ce sujet ?
 
@@ -359,11 +367,19 @@ Et c'est ce à quoi nous nous attendons naturellement. Lorsque le constructeur p
 
 ... Mais ce n'est pas le cas pour les champs de classe. Comme dit, le constructeur parent utilise toujours le champ parent.
 
+<<<<<<< HEAD
 Pourquoi y a-t-il une différence ?
 
 Eh bien, la raison est dans l'ordre d'initialisation du champ. Le champ de classe est initialisé :
 - Avant le constructeur de la classe de base (qui n'étend rien),
 - Immédiatement après `super()` pour la classe dérivée.
+=======
+Why is there a difference?
+
+Well, the reason is the field initialization order. The class field is initialized:
+- Before constructor for the base class (that doesn't extend anything),
+- Immediately after `super()` for the derived class.
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 Dans notre cas, `Rabbit` est la classe dérivée. Il n'y a pas de `constructor()` dedans. Comme dit précédemment, c'est la même chose que s'il y avait un constructeur vide avec seulement `super(...args)`.
 

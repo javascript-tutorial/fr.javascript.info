@@ -208,9 +208,17 @@ Ainsi, pour éviter les malentendus, toute demande "non sûre" - qui ne pouvait 
 
 Ainsi, pour éviter les malentendus, toute demande "non sécurisée" - qui ne pouvait pas être faite par le passé, le navigateur ne fait pas de telles demandes tout de suite. Premièrement, il envoie une demande préliminaire, dite de "contrôle en amont", pour demander l'autorisation.
 
+<<<<<<< HEAD
 Une demande de contrôle en amont utilise la méthode `OPTIONS`, pas de corps et deux en-têtes :
 
 Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
+=======
+A preflight request uses the method `OPTIONS`, no body and three headers:
+
+- `Access-Control-Request-Method` header has the method of the unsafe request.
+- `Access-Control-Request-Headers` header provides a comma-separated list of its unsafe HTTP-headers.
+- `Origin` header tells from where the request came. (such as `https://javascript.info`)
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 - `Access-Control-Allow-Origin` doit être soit `*` soit l'origine de la demande, telle que `https://javascript.info`, pour l'autoriser.
 - `Access-Control-Allow-Methods` doit avoir la méthode autorisée.

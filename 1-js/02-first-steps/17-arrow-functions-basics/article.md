@@ -5,10 +5,14 @@ Il existe une syntaxe plus simple et concise pour créer des fonctions, c'est so
 Les "fonctions fléchées" sont appelées ainsi pour leur syntaxe :
 
 ```js
-let func = (arg1, arg2, ..., argN) => expression
+let func = (arg1, arg2, ..., argN) => expression;
 ```
 
+<<<<<<< HEAD
 ...Cela va créér une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
+=======
+This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 C'est donc la version raccourcie de :
 

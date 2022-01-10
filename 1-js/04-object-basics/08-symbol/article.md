@@ -162,7 +162,11 @@ for (let key in user) alert(key); // name, age (pas de symboles)
 alert( "Direct: " + user[id] );
 ```
 
+<<<<<<< HEAD
 `Object.keys(user)` les ignore également. Cela fait partie du principe général du "dissimulation des propriétés symboliques". Si un autre script ou une bibliothèque parcourt notre objet, il n’accédera pas de manière inattendue à une propriété symbolique.
+=======
+[Object.keys(user)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) also ignores them. That's a part of the general "hiding symbolic properties" principle. If another script or a library loops over our object, it won't unexpectedly access a symbolic property.
+>>>>>>> 246c600f11b4e6c52b4ae14f83e65319671f998f
 
 En revanche, [Object.assign](mdn:js/Object/assign) copie les propriétés de chaîne de caractères et de symbole :
 
