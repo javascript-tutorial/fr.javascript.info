@@ -168,7 +168,7 @@ Par exemple :
 ```js run
 let fruit = prompt("Which fruit to buy?", "apple");
 
-let sac = {
+let bag = {
 *!*
   [fruit]: 5, // le nom de la propriété est tiré de la variable fruit
 */!*
