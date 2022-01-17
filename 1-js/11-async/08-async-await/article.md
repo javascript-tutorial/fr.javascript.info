@@ -136,7 +136,11 @@ console.log(user);
 
 Si nous n'utilisons pas de modules, ou [des navigateurs plus anciens](https://caniuse.com/mdn-javascript_operators_await_top_level) doivent être supportés, il y a une recette universelle: enveloppement dans une fonction asynchrone anonyme.
 
+<<<<<<< HEAD
 Comme ceci:
+=======
+Like this:
+>>>>>>> a6fdfda09570a8ce47bb0b83cd7a32a33869cfad
 
 ```js
 (async () => {

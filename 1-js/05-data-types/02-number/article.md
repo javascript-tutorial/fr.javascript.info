@@ -45,13 +45,17 @@ En d'autres termes, `e` multiplie le nombre de `1` avec le nombre de zéros donn
 Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde):
 
 ```js
-let ms = 0.000001;
+let mсs = 0.000001;
 ```
 
 Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire la même chose avec :
 
 ```js
+<<<<<<< HEAD
 let ms = 1e-6; // six zéros à gauche de 1
+=======
+let mcs = 1e-6; // six zeroes to the left from 1
+>>>>>>> a6fdfda09570a8ce47bb0b83cd7a32a33869cfad
 ```
 
 Si nous comptons les zéros dans `0.000001`, il y en a 6. Donc logiquement, c'est `1e-6`.

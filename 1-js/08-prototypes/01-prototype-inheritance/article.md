@@ -54,7 +54,11 @@ alert( rabbit.eats ); // true (**)
 alert( rabbit.jumps ); // true
 ```
 
+<<<<<<< HEAD
 Ici, la ligne `(*)` définit `animal` pour être un prototype de` lapin`.
+=======
+Here the line `(*)` sets `animal` to be the prototype of `rabbit`.
+>>>>>>> a6fdfda09570a8ce47bb0b83cd7a32a33869cfad
 
 Ensuite, lorsque `alert` essaie de lire la propriété `rabbit.eats` `(**)`, ce n'est pas dans `rabbit`, donc JavaScript suit la référence `[[Prototype]]` et la trouve dans `animal` (regarde de bas en haut) :
 
@@ -287,7 +291,11 @@ for(let prop in rabbit) alert(prop); // jumps, puis eats
 */!*
 ```
 
+<<<<<<< HEAD
 Si ce n'est pas ce que nous voulons et que nous aimerions exclure les propriétés héritées, il existe une méthode intégrée [obj.hasOwnProperty(key)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/hasOwnProperty): il renvoie `true` si `obj` a sa propre propriété (non héritée) nommée `key`.
+=======
+If that's not what we want, and we'd like to exclude inherited properties, there's a built-in method [obj.hasOwnProperty(key)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty): it returns `true` if `obj` has its own (not inherited) property named `key`.
+>>>>>>> a6fdfda09570a8ce47bb0b83cd7a32a33869cfad
 
 Nous pouvons donc filtrer les propriétés héritées (ou faire autre chose avec elles) :
 
