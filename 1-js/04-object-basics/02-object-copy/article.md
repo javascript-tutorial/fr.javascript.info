@@ -147,7 +147,7 @@ Object.assign(dest, [src1, src2, src3...])
 - La méthode copie les propriétés de tous les objets à copier `src1, ..., srcN` dans l'objet `dest`. En d'autres mots, les propriétés de tous les arguments à partir du deuxième sont copiés dans le premier argument.
 - L'appel retourne `dest`.
 
-Par exemple, on peut l'utiliser pour fusioner plusieurs objets en un seul :
+Par exemple, on peut l'utiliser pour fusionner plusieurs objets en un seul :
 
 ```js
 let user = { name: "John" };
