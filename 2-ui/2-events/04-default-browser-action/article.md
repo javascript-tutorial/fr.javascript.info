@@ -17,7 +17,11 @@ Il y a deux manières de dire au navigateur que nous ne souhaitons pas qu'il agi
 - La manière principale est d'utiliser l'objet `event`. Il y a une méthode `event.preventDefault()`.
 - Si le gestionnaire d'évènement a été assigné en utilisant `on<event>` (pas par `addEventListener`), alors renvoyer `false` fonctionne de la même manière.
 
+<<<<<<< HEAD
 Dans cet HTML un clic sur un lien n'entraine pas une navigation, le navigateur ne fait rien:
+=======
+In this HTML, a click on a link doesn't lead to navigation; the browser doesn't do anything:
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 ```html autorun height=60 no-beautify
 <a href="/" onclick="return false">Cliquez ici</a>
@@ -96,7 +100,11 @@ C'est parce que l'action du navigateur est annulée lors de `mousedown`. Le focu
 
 L'option facultative `passive: true` de `addEventListener` signale au navigateur que ce gestionnaire n'appellera pas `preventDefault()`.
 
+<<<<<<< HEAD
 Pourquoi cela pourrait-il être nécessaire?
+=======
+Why might that be needed?
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 Il y a certains évènements comme `touchmove` sur les appareils mobile (lorsque l'utilisateur déplace ses doigts sur l'écran), qui entrainent un défilement par défaut, mais ce défilement peut être empêché en utilisant `preventDefault()` dans le gestionnaire.
 

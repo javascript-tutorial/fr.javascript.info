@@ -5,10 +5,14 @@ Il existe une syntaxe plus simple et concise pour créer des fonctions, c'est so
 Les "fonctions fléchées" sont appelées ainsi pour leur syntaxe :
 
 ```js
-let func = (arg1, arg2, ..., argN) => expression
+let func = (arg1, arg2, ..., argN) => expression;
 ```
 
+<<<<<<< HEAD
 ...Cela va créér une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
+=======
+This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 C'est donc la version raccourcie de :
 
@@ -33,7 +37,11 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
+<<<<<<< HEAD
 Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments nommés `a` et `b`. Lors de l'éxécution, elle évalue l'expression `a + b` et retourne le résultat.
+=======
+As you can see, `(a, b) => a + b` means a function that accepts two arguments named `a` and `b`. Upon the execution, it evaluates the expression `a + b` and returns the result.
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 - Pour un argument unique, alors les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
@@ -86,7 +94,11 @@ Comme cela :
 let sum = (a, b) => {  // Les accolades ouvre une fonction multiligne
   let result = a + b;
 *!*
+<<<<<<< HEAD
   return result; // Si nous utilisons des accolades le "return" est nécessaire
+=======
+  return result; // if we use curly braces, then we need an explicit "return"
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 */!*
 };
 

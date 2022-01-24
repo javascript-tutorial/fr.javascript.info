@@ -1,7 +1,11 @@
 
 # Délégation d'événement
 
+<<<<<<< HEAD
 La capture et le bouillonement ("bubbling") nous permettent d'implémenter l'un des modèles de gestion d'événements les plus puissants appelés *Délégation d'événement*.
+=======
+Capturing and bubbling allow us to implement one of the most powerful event handling patterns called *event delegation*.
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 L'idée est que si nous avons beaucoup d'éléments traités de la même manière, au lieu d'assigner un gestionnaire à chacun d'eux -- nous mettons un seul gestionnaire sur leur ancêtre commun.
 

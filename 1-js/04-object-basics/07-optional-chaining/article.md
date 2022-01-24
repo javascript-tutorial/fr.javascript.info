@@ -30,7 +30,11 @@ C'est le résultat attendu. JavaScript fonctionne comme cela. Comme `user.addres
 
 Dans de nombreux cas pratiques, nous préférerions obtenir `undefined` au lieu d'une erreur ici (signifiant "pas de rue").
 
+<<<<<<< HEAD
 ... Et un autre exemple. Dans le développement Web, nous pouvons obtenir un objet qui correspond à un élément de page Web à l'aide d'un appel de méthode spécial, tel que `document.querySelector('.elem')`, et il renvoie `null` lorsqu'il n'y a pas ce type d'élément.
+=======
+...and another example. In Web development, we can get an object that corresponds to a web page element using a special method call, such as `document.querySelector('.elem')`, and it returns `null` when there's no such element.
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 
 ```js run
 // document.querySelector('.elem') est nul s'il n'y a pas d'élément
