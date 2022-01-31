@@ -39,9 +39,15 @@ Au cas où une action unique initialise plusieurs évènements, leur ordre est f
 ```online
 Clique sur le bouton en bas et vous verrez les évènements. Essayez l’évènement double clic aussi. Dans TestStand en bas tous les évènements de la souris sont enregistrés, et si il y a plus d’une seconde de retard entre eux, ils sont alors séparés par une ligne horizontale.
 
+<<<<<<< HEAD
 Sur le banc de test ci-dessous, tous les événements de souris sont enregistrés et s'il y a un délai de plus d'une seconde entre eux, ils sont séparés par une règle horizontale.
 
 Nous pouvons également voir la propriété `button` qui permet de détecter le bouton de la souris, c'est expliqué ci-dessous.
+=======
+On the teststand below, all mouse events are logged, and if there is more than a 1 second delay between them, they are separated by a horizontal rule.
+
+Also, we can see the `button` property that allows us to detect the mouse button; it's explained below.
+>>>>>>> 0f748275e20a81700c8514f22a7cc80c4422d09c
 
 <input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Click me with the right or the left mouse button" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```

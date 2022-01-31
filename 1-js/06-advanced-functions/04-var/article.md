@@ -256,11 +256,11 @@ Il existe d'autres façons que les parenthèses pour dire à JavaScript que nous
 ```js run
 // Façons de créer une IIFE
 
-(function() {
+*!*(*/!*function() {
   alert("Parentheses around the function");
 }*!*)*/!*();
 
-(function() {
+*!*(*/!*function() {
   alert("Parentheses around the whole thing");
 }()*!*)*/!*;
 

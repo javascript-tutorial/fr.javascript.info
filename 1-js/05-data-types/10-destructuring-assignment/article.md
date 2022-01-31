@@ -5,7 +5,11 @@ Les deux structures de données les plus utilisées en JavaScript sont `Object` 
 - Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé.
 - Les tableaux nous permettent de rassembler des éléments de données dans une liste ordonnée.
 
+<<<<<<< HEAD
 Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
+=======
+Although, when we pass those to a function, it may need not be an object/array as a whole. It may need individual pieces.
+>>>>>>> 0f748275e20a81700c8514f22a7cc80c4422d09c
 
 *L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. 
 
