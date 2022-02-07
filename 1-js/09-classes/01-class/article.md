@@ -119,7 +119,11 @@ alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi
 
 ## Pas simplement un sucre syntaxique 
 
+<<<<<<< HEAD
 Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce que en réalité nous pouvons  déclarer la même chose sans aucunement utiliser le mot clé `classe` :
+=======
+Sometimes people say that `class` is a "syntactic sugar" (syntax that is designed to make things easier to read, but doesn't introduce anything new), because we could actually declare the same thing without using the `class` keyword at all:
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 ```js run
 // Réécriture de class User en fonctions pures

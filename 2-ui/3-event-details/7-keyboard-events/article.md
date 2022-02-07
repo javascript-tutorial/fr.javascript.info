@@ -121,7 +121,11 @@ Donc, `event.code` peut correspondre à un caractère incorrect pour une disposi
 
 Pour suivre de manière fiable les caractères dépendant de la disposition, `event.key` peut être un meilleur moyen.
 
+<<<<<<< HEAD
 En revanche, `event.code` a l'avantage de rester toujours identique, lié à l'emplacement de la clé physique, même si le visiteur change de langue. Les raccourcis clavier qui en dépendent fonctionnent bien, même en cas de changement de langue.
+=======
+On the other hand, `event.code` has the benefit of staying always the same, bound to the physical key location. So hotkeys that rely on it work well even in case of a language switch.
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Voulons-nous gérer des clés dépendantes de la disposition ? Alors `event.key` est la voie à suivre.
 

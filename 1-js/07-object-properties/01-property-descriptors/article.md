@@ -318,7 +318,11 @@ clone[key] = user[key]
 
 ...Mais cela ne copie pas les attributs. Donc, si nous voulons un "meilleur" clone, alors `Object.defineProperties` est préféré.
 
+<<<<<<< HEAD
 Une autre différence est que `for..in` ignore les propriétés symboliques, mais que `Object.getOwnPropertyDescriptors` renvoie *tous* les descripteurs de propriété, y compris les descripteurs symboliques.
+=======
+Another difference is that `for..in` ignores symbolic and non-enumerable properties, but `Object.getOwnPropertyDescriptors` returns *all* property descriptors including symbolic and non-enumerable ones.
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 ## Sceller un objet globalement
 
