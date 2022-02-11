@@ -53,7 +53,7 @@ JavaScript intégré au navigateur peut faire tout ce qui concerne la manipulati
 
 Par exemple, JavaScript dans le navigateur est capable de :
 
-- Ajoutez un nouveau code HTML à la page, modifiez le contenu existant, modifiez les styles.
+- Ajouter un nouveau code HTML à la page, modifiez le contenu existant, modifiez les styles.
 - Réagir aux actions de l'utilisateur, s'exécuter sur des clics de souris, des mouvements de pointeur, des appuis sur des touches.
 - Envoyer des requêtes sur le réseau à des serveurs distants, télécharger et envoyer des fichiers (technologies [AJAX](<https://fr.wikipedia.org/wiki/Ajax_(informatique)>) et [COMET](<https://fr.wikipedia.org/wiki/Comet_(informatique)>)).
 - Obtenir et définir des cookies, poser des questions au visiteur, afficher des messages.
