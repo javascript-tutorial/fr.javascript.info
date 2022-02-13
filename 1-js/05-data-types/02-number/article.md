@@ -51,11 +51,7 @@ let mсs = 0.000001;
 Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire la même chose avec :
 
 ```js
-<<<<<<< HEAD
-let ms = 1e-6; // six zéros à gauche de 1
-=======
-let mcs = 1e-6; // six zeroes to the left from 1
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+let mcs = 1e-6; // six zéros à gauche de 1
 ```
 
 Si nous comptons les zéros dans `0.000001`, il y en a 6. Donc logiquement, c'est `1e-6`.
