@@ -191,47 +191,25 @@ Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro corr
 
 Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
 
-<<<<<<< HEAD
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
 | ...        | ...             | ...     |
-| 17         | plus unaire     | `+`     |
-| 17         | négation unaire | `-`     |
-| 16         | exponentiation  | `**`    |
-| 15         | multiplication  | `*`     |
-| 15         | division        | `/`     |
-| 13         | addition        | `+`     |
-| 13         | soustraction    | `-`     |
+| 15         | plus unaire     | `+`     |
+| 15         | négation unaire | `-`     |
+| 14         | exponentiation  | `**`    |
+| 13         | multiplication  | `*`     |
+| 13         | division        | `/`     |
+| 12         | addition        | `+`     |
+| 12         | soustraction    | `-`     |
 | ...        | ...             | ...     |
-| 3          | affectation     | `=`     |
+| 2          | affectation     | `=`     |
 | ...        | ...             | ...     |
 
-Comme on peut le voir, le "plus unaire" a une priorité de `17`, ce qui est supérieur à `13` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+apples + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
-=======
-| Precedence | Name | Sign |
-|------------|------|------|
-| ... | ... | ... |
-| 15 | unary plus | `+` |
-| 15 | unary negation | `-` |
-| 14 | exponentiation | `**` |
-| 13 | multiplication | `*` |
-| 13 | division | `/` |
-| 12 | addition | `+` |
-| 12 | subtraction | `-` |
-| ... | ... | ... |
-| 2 | assignment | `=` |
-| ... | ... | ... |
-
-As we can see, the "unary plus" has a priority of `15` which is higher than the `13` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Comme on peut le voir, le "plus unaire" a une priorité de `15`, ce qui est supérieur à `12` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+apples + +oranges"`, les plus unaires fonctionnent en premier, puis l’addition.
 
 ## Affectation
 
-<<<<<<< HEAD
-Notons qu’une affectation `=` est aussi un opérateur. Il est répertorié dans le tableau de priorité des précédences avec la très faible priorité de `3`.
-=======
-Let's note that an assignment `=` is also an operator. It is listed in the precedence table with the very low priority of `2`.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Notons qu’une affectation `=` est aussi un opérateur. Il est répertorié dans le tableau des précédences avec la très faible priorité de `2`.
 
 C’est pourquoi lorsque nous assignons une variable, comme `x = 2 * 2 + 1`, les calculs sont effectués en premier, puis le `=` est évalué, stockant le résultat dans `x`.
 
