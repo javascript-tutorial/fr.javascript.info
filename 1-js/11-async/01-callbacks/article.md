@@ -196,15 +196,9 @@ Ainsi, la fonction unique `callback` est utilisée à la fois pour signaler les 
 
 ## Pyramide du malheur
 
-<<<<<<< HEAD
 À première vue, il s'agit d'un moyen viable de codage asynchrone. Et c'est effectivement le cas. Pour un ou peut-être deux appels imbriqués, cela semble correct.
 
 Mais pour de multiples actions asynchrones qui se succèdent, nous aurons un code comme celui-ci:
-=======
-At first glance, it looks like a viable approach to asynchronous coding. And indeed it is. For one or maybe two nested calls it looks fine.
-
-But for multiple asynchronous actions that follow one after another, we'll have code like this:
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 ```js
 loadScript('1.js', function(error, script) {
@@ -234,17 +228,10 @@ loadScript('1.js', function(error, script) {
 });
 ```
 
-<<<<<<< HEAD
 Dans le code ci-dessus:
-1. Nous chargeons `1.js`, puis s'il n'y a pas d'erreur.
-2. Nous chargeons `2.js`, puis s'il n'y a pas d'erreur.
+1. Nous chargeons `1.js`, puis s'il n'y a pas d'erreur …
+2. Nous chargeons `2.js`, puis s'il n'y a pas d'erreur …
 3. Nous chargeons `3.js`, puis s'il n'y a pas d'erreur -- fait autre chose `(*)`.
-=======
-In the code above:
-1. We load `1.js`, then if there's no error...
-2. We load `2.js`, then if there's no error...
-3. We load `3.js`, then if there's no error -- do something else `(*)`.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Au fur et à mesure que les appels deviennent plus imbriqués, le code devient plus profond et de plus en plus difficile à gérer, surtout si nous avons du vrai code au lieu de `...` qui peut inclure plus de boucles, des déclarations conditionnelles et ainsi de suite.
 
@@ -312,11 +299,7 @@ function step3(error, script) {
 }
 ```
 
-<<<<<<< HEAD
 Vous voyez ? Il fait la même chose, et il n'y a pas d'imbrication profonde maintenant parce que nous avons fait de chaque action une fonction séparée de haut niveau.
-=======
-See? It does the same thing, and there's no deep nesting now because we made every action a separate top-level function.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Cela fonctionne, mais le code ressemble à une feuille de calcul déchirée. Il est difficile à lire, et vous avez probablement remarqué qu'il faut passer d'un morceau à l'autre en le lisant. Ce n'est pas pratique, surtout si le lecteur n'est pas familier avec le code et ne sait pas où sauter du regard.
 
@@ -324,8 +307,4 @@ De plus, les fonctions nommées `step*` sont toutes à usage unique, elles sont 
 
 Nous aimerions avoir quelque chose de mieux.
 
-<<<<<<< HEAD
 Heureusement, il existe d'autres moyens d'éviter de telles pyramides. L'un des meilleurs moyens est d'utiliser des "promesses", décrites dans le chapitre suivant.
-=======
-Luckily, there are other ways to avoid such pyramids. One of the best ways is to use "promises", described in the next chapter.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
