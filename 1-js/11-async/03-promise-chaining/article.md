@@ -120,11 +120,7 @@ new Promise(function(resolve, reject) {
 });
 ```
 
-<<<<<<< HEAD
-Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`. Au bout d'une seconde, le problème est résolu et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`. Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
-=======
-Here the first `.then` shows `1` and returns `new Promise(…)` in the line `(*)`. After one second it resolves, and the result (the argument of `resolve`, here it's `result * 2`) is passed on to the handler of the second `.then`. That handler is in the line `(**)`, it shows `2` and does the same thing.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`. Au bout d'une seconde c'est résolu et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`. Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
 
 Le résultat est donc le même que dans l'exemple précédent: 1 -> 2 -> 4, mais maintenant avec un délai d'une seconde entre les appels `alert`.
 
