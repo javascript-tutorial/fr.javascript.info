@@ -27,11 +27,7 @@ Les classes sont :
     - [HTMLAnchorElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlanchorelement) -- la classe pour les éléments `<a>`,
     - ...et ainsi de suite.
 
-<<<<<<< HEAD
-Il existe de nombreuses autres balises avec leurs propres classes qui peuvent des propriétés et des méthodes spécifiques, tandis que certains éléments, tels que `<span>`, `<section>`, `<article>` n'ont pas de propriétés spécifiques, ce sont donc des instances de la classe `HTMLElement`.
-=======
-There are many other tags with their own classes that may have specific properties and methods, while some elements, such as `<span>`, `<section>`, `<article>` do not have any specific properties, so they are instances of `HTMLElement` class.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Il existe de nombreuses autres balises avec leurs propres classes qui peuvent avoir des propriétés et des méthodes spécifiques, tandis que certains éléments, tels que `<span>`, `<section>`, `<article>` n'ont pas de propriétés spécifiques, ce sont donc des instances de la classe `HTMLElement`.
 
 Ainsi, l'ensemble complet des propriétés et des méthodes d'un nœud donné est le résultat de l'héritage.
 
