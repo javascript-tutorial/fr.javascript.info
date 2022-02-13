@@ -274,11 +274,7 @@ Les événements de pointeur autorisent la gestion simultanée d'événements de
 
 Les événements de pointeur héritent des événements de souris. Nous pouvons remplacer `mouse` par `pointer` dans les noms d'événement et s'attendre à ce que le code continue de fonctionner pour les souris, avec une meilleure prise en charge d'autres types d'appareil.
 
-<<<<<<< HEAD
-Pour les interactions de glisser-déposer et tactile complexe que le navigateur pourrait choisir de détourner et de gérer lui-même - pensez à annuler l'action par défaut sur les événements et à définir `touch-events: none` dans le CSS pour les éléments impliqués.
-=======
-For drag'n'drops and complex touch interactions that the browser may decide to hijack and handle on its own - remember to cancel the default action on events and set `touch-action: none` in CSS for elements that we engage.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Pour les interactions de glisser-déposer et tactiles complexes que le navigateur pourrait choisir de détourner et de gérer lui-même - pensez à annuler l'action par défaut sur les événements et à définir `touch-action: none` dans le CSS pour les éléments impliqués.
 
 Les capacités additionnelles des événements de pointeur sont:
 
