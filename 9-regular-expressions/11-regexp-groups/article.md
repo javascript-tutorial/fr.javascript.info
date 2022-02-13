@@ -63,7 +63,7 @@ alert("my@mail.com @ his@site.com.uk".match(regexp)); // my@mail.com, his@site.c
 
 Cette regexp loin d'être parfaite, fonctionne dans une majorité de cas et aide à corriger d'éventuelles fautes de frappes. La seule vérification fiable à 100% pour un email est effectuée par l'envoi d'un courrier.
 
-## Contenus des parenthèses dans la correspondance
+## Les contenus de parenthèses dans la correspondance
 
 Les parenthèses sont numérotées de gauche à droite. Le moteur de recherche mémorise le contenu correspondant à chacune d'entre elles et permet d'y accéder dans le résultat.
 
@@ -93,19 +93,19 @@ alert( tag[1] ); // h1
 
 Les parenthèses peuvent être imbriquées. Dans ce cas la numérotation se fait aussi de gauche à droite.
 
-Par exemple, en effectuant une recherche dans la balise `subject:<span class="my">` nous pourrions est intéressé par :
+Par exemple, en effectuant une recherche dans la balise `subject:<span class="my">` nous pourrions être intéressé par :
 
 1. Son contenu complet : `match:span class="my"`.
 2. Son nom : `match:span`.
 3. Ses attributs : `match:class="my"`.
 
-Ajoutons-leur des parenthèses : `pattern:<(([a-z]+)\s*([^>]*))>`.
+Entourons-les de parenthèses : `pattern:<(([a-z]+)\s*([^>]*))>`.
 
-Voici comment ils sont numérotés (gauche à droite, par ordre d'ouverture) :
+Voici comment les groupes sont numérotés(de gauche à droite, par ordre d'ouverture des parenthèses) :
 
 ![](regexp-nested-groups-pattern.svg)
 
-En action:
+Ce qui donne :
 
 ```js run
 let str = '<span class="my">';
@@ -119,9 +119,9 @@ alert(result[2]); // span
 alert(result[3]); // class="my"
 ```
 
-L'index zero de `result` contient toujours l'entière correspondance.
+L'index zero de `result` contient toujours l'entière correspondance, puis les groupes, numérotés de gauche à droite par ordre d'ouverture des parenthèses.
 
-Puis les groupes, numérotés de gauche à droite par ordre d'ouverture des parenthèses. Le premier groupe est retourné comme `result[1]`. Il enferme ici tout le contenu de la balise.
+Le premier groupe est retourné par `result[1]`. Il contient ici tout l'intérieur de la balise.
 
 Puis dans `result[2]` se trouve le groupe de la deuxième parenthèse ouvrante `pattern:([a-z]+)` - le nom de balise, puis dans `result[3]` la suite de la balise : `pattern:([^>]*)`.
 
@@ -148,7 +148,7 @@ alert( match[2] ); // undefined
 
 Le tableau a une longueur de `3`, mais tous les groupes sont vides.
 
-Et voici une correspondance plus complexe pour la chaîne `subject:ac`:
+Et voici une correspondance plus complexe avec la chaîne `subject:ac`:
 
 ```js run
 let match = 'ac'.match(/a(z)?(c)?/)
@@ -164,7 +164,7 @@ La longueur du tableau fixe : `3`. Mais il n'y a rien pour le groupe `pattern:(z
 ## Rechercher toutes les correspondances avec des groupes : matchAll
 
 ```warn header="`matchAll` est une méthode récente, et peut nécessiter un polyfill"
-La méthode `matchAll` n'est pas supporté par d'anciens navigateurs.
+La méthode `matchAll` n'est pas supportée par d'anciens navigateurs.
 
 Un polyfill peut être requis, comme <https://github.com/ljharb/String.prototype.matchAll>.
 ```
@@ -190,7 +190,7 @@ Elle a été ajoutée au language JavaScript longtemps après `match`, comme ét
 Tout comme `match`, elle cherche des correspondances, mais avec 3 différences :
 
 1. Elle ne retourne pas de tableau, mais un itérateur.
-2. Si le marqueur `pattern:g` est present, elle retourne toutes les correspondances en tableau avec les groupes.
+2. Si le marqueur `pattern:g` est present, elle retourne toutes les correspondances dans des tableaux avec les groupes.
 3. S'il n'y a pas de correspondance, elle ne retourne pas `null`, mais un itérateur vide.
 
 Par exemple :
@@ -203,7 +203,7 @@ alert(results); // [object RegExp String Iterator]
 
 alert(results[0]); // undefined (*)
 
-results = Array.from(results); // let's turn it into array
+results = Array.from(results); // convertissons-le en tableau
 
 alert(results[0]); // <h1>,h1 (1st tag)
 alert(results[1]); // <h2>,h2 (2nd tag)
@@ -242,19 +242,19 @@ alert( tag1.index ); // 0
 alert( tag1.input ); // <h1> <h2>
 ```
 
-```smart header="Pourquoi le résultat d'un `matchAll` un itérateur, et pas un tableau ?"
+```smart header="Pourquoi le résultat d'un `matchAll` est un itérateur et pas un tableau ?"
 Pourquoi la méthode est-elle conçue comme cela ? La raison est simple - pour l'optimisation.
 
 L'appel à `matchAll` n'effectue pas la recherche. À la place, il retourne un itérateur, sans résultats préalables. La recherche est lancée à chaque fois que nous l'itérons, par ex. dans une boucle.
 
 Ne seront donc trouvés qu'autant de résultats que besoin, pas plus.
 
-Par ex. il y a 100 correspondances potentielles dans un texte, mais dans une boucle `for..of` nous en trouvons 5, et décidons alors que c'est suffisant et faisons un `break`. Le moteur de recherche ne perdra pas son temps à rechercher les 95 autres correspondances.
+Par ex. s'il y a 100 correspondances potentielles dans un texte, mais dans une boucle `for..of` nous en trouvons 5, et décidons alors que c'est suffisant en faisant un `break`. Le moteur de recherche ne perdra pas son temps à rechercher les 95 autres correspondances.
 ```
 
 ## Groupes nommés
 
-Il est difficile de se souvenir de groupes par leur numéro. Bien que faisable pour des motifs simples, cela devient ardu dans des motifs plus complexes. Nous avons une bien meilleure option : nommer les parenthèses.
+Il est difficile de se souvenir de groupes par leur numéro. Bien que faisable pour des motifs simples, cela devient ardu dans des motifs plus complexes. Il existe une meilleure option : nommer les parenthèses.
 
 Cela se fait en mettant `pattern:?<name>` immédiatement après la parenthèse ouvrante.
 
@@ -325,7 +325,7 @@ alert( str.replace(regexp, '$<day>.$<month>.$<year>') );
 
 Nous avons parfois besoin de parenthèses pour appliquer correctement un quantificateur, sans avoir besoin de leurs contenu dans les résultats.
 
-Un groupe peut en être exclu en ajoutant `pattern:?:` au début.
+Un groupe peut être exclu des résultats en ajoutant `pattern:?:` au début.
 
 Par exemple, si nous voulons trouver `pattern:(go)+`, sans avoir les contenus des parenthèses (`go`) comme élément du tableau de correspondance, nous pouvons écrire : `pattern:(?:go)+`.
 
@@ -348,17 +348,17 @@ alert( result.length ); // 2 (pas d'autres éléments dans le tableau)
 
 ## Résumé
 
-Les parenthèses regroupent ensemble une partie de l'expression régulière, de telle sorte qu'un quantificateur s'applique à tout cet ensemble.
+Les parenthèses regroupent ensemble une partie de l'expression régulière, de telle sorte qu'un quantificateur s'applique à toute cette partie.
 
-Les groupes de parenthèses son numérotés de gauche à droite, et peuvent éventuellement être nommés avec  `(?<name>...)`.
+Les groupes de parenthèses sont numérotés de gauche à droite et peuvent éventuellement être nommés avec  `(?<name>...)`.
 
 Le contenu correspondant à un groupe, peut être obtenu dans les résultats :
 
-- La méthode `str.match` retourne les groupes capturant seulement sans le marqueur `pattern:g`.
+- La méthode `str.match` retourne les groupes capturant uniquement en l'absence du marqueur `pattern:g`.
 - La méthode `str.matchAll` retourne toujours les groupes capturant.
 
-Si les parenthèses n'ont pas de nom, alors leur contenu est dans le tableau de correspondances par son numéro. Les parenthèses nommées sont disponibles aussi par la propriété `groups`.
+Si les parenthèses n'ont pas de nom, alors leur contenu est dans le tableau de correspondances indexé par leur ordre d'ouverture. Les parenthèses nommées sont disponibles aussi par la propriété `groups`.
 
-Nous pouvons aussi utiliser les contenus des parenthèses dans la chaine de remplacement de `str.replace`: par leur numéro `$n` ou leur nom `$<name>`.
+Nous pouvons aussi utiliser les contenus des parenthèses dans la chaîne de remplacement de `str.replace`: par leur numéro `$n` ou leur nom `$<name>`.
 
-Un groupe pour être exclu de la numérotation en ajoutant `pattern:?:` à son début. Pour appliquer un quantificateur à groupe entier, sans avoir besoin de cet élément dans les résultats. Nous ne pourrons pas alors y faire référence dans la chaine de remplacement.
+Un groupe peut être exclu de la numérotation en ajoutant `pattern:?:` à son début. C'est utile pour appliquer un quantificateur à groupe entier, sans avoir besoin de cet élément dans les résultats. Nous ne pourrons pas non plus y faire référence dans une chaîne de remplacement.
