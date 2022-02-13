@@ -1,10 +1,10 @@
-Un nombre hexadécimal a deux chiffres correspond `pattern:[0-9a-f]{2}` (avec le marqueur `pattern:i`).
+Un nombre hexadécimal à deux chiffres correspond à `pattern:[0-9a-f]{2}` (avec le marqueur `pattern:i`).
 
 Nous avons besoin de ce nombre `NN`, et ensuite `:NN` répété 5 fois (pour les autres nombres) ;
 
 L'expression régulière est : `pattern:[0-9a-f]{2}(:[0-9a-f]{2}){5}`
 
-Montrons maintenant que la correspondance se fait bien sur l'ensemble du texte : commence au début et termine à la fin. Cela se fait en entourant le motif de `pattern:^...$`.
+Montrons maintenant que la correspondance se fait bien sur l'ensemble du texte : commence dès le début de la chaîne testée et termine à la fin. Cela se fait en entourant le motif de `pattern:^...$`.
 
 Finalement :
 

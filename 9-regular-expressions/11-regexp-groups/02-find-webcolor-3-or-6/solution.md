@@ -16,7 +16,7 @@ let str = "color: #3f3; background-color: #AA00ef; and: #abcd";
 alert( str.match(regexp) ); // #3f3 #AA00ef #abc
 ```
 
-Il reste un petit problème ici : car ce schéma trouve `match:#abc` dans `subject:#abcd`. Pour éviter cela nous pouvons y ajouter `pattern:\b` à la fin :
+Il reste un petit problème ici : car ce schéma trouve `match:#abc` dans `subject:#abcd`. Pour éviter cela nous pouvons ajouter à la fin `pattern:\b` :
 
 ```js run
 let regexp = /#([a-f0-9]{3}){1,2}\b/gi;

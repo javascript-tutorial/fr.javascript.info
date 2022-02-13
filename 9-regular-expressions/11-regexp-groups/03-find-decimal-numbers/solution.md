@@ -1,6 +1,6 @@
 Un nombre positif avec une éventuelle partie décimale correspond à : `pattern:\d+(\.\d+)?`.
 
-Ajoutons-y l'option `pattern:-` au début :
+Ajoutons l'option `pattern:-` au début :
 
 ```js run
 let regexp = /-?\d+(\.\d+)?/g;

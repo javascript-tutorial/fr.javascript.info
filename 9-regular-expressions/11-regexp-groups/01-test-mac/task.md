@@ -1,6 +1,6 @@
 # Vérification d'adresse MAC
 
-L'[addresse MAC](https://fr.wikipedia.org/wiki/Adresse_MAC) d'une interface réseau est constitué de 6 paires de nombres hexadécimaux séparés par un double point.
+L'[addresse MAC](https://fr.wikipedia.org/wiki/Adresse_MAC) d'une interface réseau est constitué de 6 paires de nombres hexadécimaux séparées par un double point.
 
 Par exemple : `subject:'01:32:54:67:89:AB'`.
 
