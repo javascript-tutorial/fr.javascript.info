@@ -206,19 +206,14 @@ Il y a quelque temps, personne ne pouvait même imaginer qu'une page Web puisse 
 
 Ainsi, pour éviter les malentendus, toute demande "non sûre" - qui ne pouvait pas être faite par le passé, le navigateur ne fait pas de telles demandes tout de suite. Avant d'envoyer une demande préliminaire, dite de "contrôle en amont", demandant l'autorisation.
 
-Ainsi, pour éviter les malentendus, toute demande "non sécurisée" - qui ne pouvait pas être faite par le passé, le navigateur ne fait pas de telles demandes tout de suite. Premièrement, il envoie une demande préliminaire, dite de "contrôle en amont", pour demander l'autorisation.
-
-<<<<<<< HEAD
 Une demande de contrôle en amont utilise la méthode `OPTIONS`, pas de corps et deux en-têtes :
 
-Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
-=======
-A preflight request uses the method `OPTIONS`, no body and three headers:
 
-- `Access-Control-Request-Method` header has the method of the unsafe request.
-- `Access-Control-Request-Headers` header provides a comma-separated list of its unsafe HTTP-headers.
-- `Origin` header tells from where the request came. (such as `https://javascript.info`)
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+- L’en-tête `Access-Control-Request-Method` contient la méthode de la requête non sécurisée.
+- L’en-tête `Access-Control-Request-Headers` fournit une liste séparée par des virgules de ses en-têtes HTTP non sécurisés.
+- L’en-tête `Origin` indique d'où vient la demande. (comme `https://javascript.info`)
+
+Si le serveur accepte de répondre aux requêtes, il doit répondre avec un corps vide, le statut 200 et des en-têtes :
 
 - `Access-Control-Allow-Origin` doit être soit `*` soit l'origine de la demande, telle que `https://javascript.info`, pour l'autoriser.
 - `Access-Control-Allow-Methods` doit avoir la méthode autorisée.
