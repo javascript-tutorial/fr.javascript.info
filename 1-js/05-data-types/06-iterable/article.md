@@ -28,17 +28,10 @@ let range = {
 
 Pour rendre la `range` itérable (et donc laisser `for..of` faire sont travail), nous devons ajouter une méthode à l'objet nommé `Symbol.iterator` (un symbole intégré spécial que pour cela).
 
-<<<<<<< HEAD
 1. Lorsque `for..of` démarre, il appelle cette méthode une fois (ou des erreurs si il n'est pas trouvé). La méthode doit retourner un *iterator* -- un objet avec la méthode `next`.
 2. À partir de là, `for..of` ne fonctionne *qu'avec cet objet retourné*.
 3. Quand `for..of` veut la valeur suivante, il appelle `next()` sur cet objet.
-4. Le résultat de `next()` doit avoir la forme `{done: Boolean, valeur: any}`, où `done = true` signifie que l'itération est terminée, sinon `value` doit être la nouvelle valeur.
-=======
-1. When `for..of` starts, it calls that method once (or errors if not found). The method must return an *iterator* -- an object with the method `next`.
-2. Onward, `for..of` works *only with that returned object*.
-3. When `for..of` wants the next value, it calls `next()` on that object.
-4. The result of `next()` must have the form `{done: Boolean, value: any}`, where `done=true` means that the loop is finished, otherwise `value` is the next value.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+4. Le résultat de `next()` doit avoir la forme `{done: Boolean, value: any}`, où `done = true` signifie que l'itération est terminée, sinon `value` doit être la nouvelle valeur.
 
 Voici l'implémentation complète de `range` avec les remarques :
 
@@ -51,13 +44,8 @@ let range = {
 // 1. l'appel d'un for..of appelle initialement ceci
 range[Symbol.iterator] = function() {
 
-<<<<<<< HEAD
   // ...il retourne l'objet itérateur:
-  // 2. À partir de maintenant, for..of fonctionne uniquement avec cet itérateur, lui demandant les valeurs suivantes
-=======
-  // ...it returns the iterator object:
-  // 2. Onward, for..of works only with the iterator object below, asking it for next values
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+  // 2. À partir de là, for..of fonctionne uniquement avec cet itérateur, lui demandant les valeurs suivantes
   return {
     current: this.from,
     last: this.to,
@@ -282,11 +270,7 @@ for (let char of str) {
 alert(chars);
 ```
 
-<<<<<<< HEAD
 ...Mais c'est plus court.    
-=======
-...But it is shorter.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Nous pouvons même créer une substitution-consciente de `slice` sur elle:
 

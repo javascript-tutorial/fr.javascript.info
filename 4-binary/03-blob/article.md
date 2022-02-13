@@ -217,19 +217,11 @@ Pour faire une capture d'écran d'une page, nous pouvons utiliser une bibliothè
 
 Le constructeur `Blob` permet de créer un blob à partir de presque tout, y compris de n'importe quel `BufferSource`.
 
-<<<<<<< HEAD
-Mais si nous devons effectuer un traitement de bas niveau, nous pouvons obtenir des `ArrayBuffer` de plus bas niveau en utilisant `FileReader`:
+Mais si nous devons effectuer un traitement de bas niveau, nous pouvons obtenir le `ArrayBuffer` de plus bas niveau à partir de `blob.arrayBuffer()` :
 
 ```js
-// obtenir arrayBuffer à partir du blob
-let fileReader = new FileReader();
-=======
-But if we need to perform low-level processing, we can get the lowest-level `ArrayBuffer` from `blob.arrayBuffer()`:
-
-```js
-// get arrayBuffer from blob
+// obtenir arrayBuffer à partir de blob
 const bufferPromise = await blob.arrayBuffer();
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 // or
 blob.arrayBuffer().then(buffer => /* process the ArrayBuffer */);
@@ -274,12 +266,7 @@ Les méthodes qui effectuent des requêtes Web, telles que [XMLHttpRequest](info
 
 Nous pouvons facilement convertir les types de données binaires `Blob` et de bas niveau :
 
-<<<<<<< HEAD
-- Nous pouvons créer un Blob à partir d'un tableau typé en utilisant le constructeur `new Blob(...)`.
-- Nous pouvons récupérer un `ArrayBuffer` à partir d'un Blob en utilisant `FileReader`, puis créer une vue dessus pour un traitement binaire de bas niveau.
-=======
-- We can make a `Blob` from a typed array using `new Blob(...)` constructor.
-- We can get back `ArrayBuffer` from a Blob using `blob.arrayBuffer()`, and then create a view over it for low-level binary processing.
+- Nous pouvons créer un `Blob` à partir d'un tableau typé en utilisant le constructeur `new Blob(...)`.
+- Nous pouvons récupérer `ArrayBuffer` à partir d'un Blob en utilisant `blob.arrayBuffer()`, puis créer une vue dessus pour le traitement binaire de bas niveau.
 
-Conversion streams are very useful when we need to handle large blob. You can easily create a `ReadableStream` from a blob. The `Blob` interface's `stream()` method returns a `ReadableStream` which upon reading returns the data contained within the blob.
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Les flux de conversion sont très utiles lorsque nous devons gérer de gros blob. Vous pouvez facilement créer un `ReadableStream` à partir d'un blob. La méthode `stream()` de l'interface `Blob` renvoie un `ReadableStream` qui, lors de la lecture, renvoie les données contenues dans le blob.

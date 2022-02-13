@@ -1,4 +1,4 @@
-# Éléments précédents et éléments suivants
+# Lookahead et Lookbehind
 
 Parfois nous avons juste besoin de trouver les motifs précédents ou suivant un autre motif.
 
@@ -59,15 +59,11 @@ alert( str.match(/\d+\b(?!€)/g) ); // 2 (le prix ne correspond pas au motif)
 
 ## Lookbehind
 
-<<<<<<< HEAD
-Lookahead permet d'ajouter une condition sur  "ce qui suit".
-=======
-```warn header="Lookbehind browser compatibility"
-Please Note: Lookbehind is not supported in non-V8 browsers, such as Safari, Internet Explorer.
+```warn header="Compatibilité des navigateurs pour Lookbehind"
+Veuillez noter : Lookbehind n'est pas pris en charge dans les navigateurs non-V8, tels que Safari, Internet Explorer.
 ```
 
-Lookahead allows to add a condition for "what follows".
->>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
+Lookahead permet d'ajouter une condition sur  "ce qui suit".
 
 Lookbehind est similaire a loopahead, mais il regarde derrière.Ça veut dire qu'il établit une correspondance seulement si il y a quelquechose avant lui,
 
