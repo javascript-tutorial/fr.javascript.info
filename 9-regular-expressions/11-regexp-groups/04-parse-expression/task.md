@@ -1,23 +1,23 @@
-# Parse an expression
+# Parsez une expression
 
-An arithmetical expression consists of 2 numbers and an operator between them, for instance:
+Une expression arithmétique consiste en 2 nombres et un opérateur entre les deux, par exemple :
 
 - `1 + 2`
 - `1.2 * 3.4`
 - `-3 / -6`
 - `-2 - 2`
 
-The operator is one of: `"+"`, `"-"`, `"*"` or `"/"`.
+L'opérateur l'un des : `"+"`, `"-"`, `"*"` ou `"/"`.
 
-There may be extra spaces at the beginning, at the end or between the parts.
+Il peut y avoir des espaces supplémentaires au début, à la fin ou entre chaque partie.
 
-Create a function `parse(expr)` that takes an expression and returns an array of 3 items:
+Créez une fonction `parse(expr)` qui prend une expression et retourne un tableau de trois éléments :
 
-1. The first number.
-2. The operator.
-3. The second number.
+1. Le premier nombre.
+2. L'opérateur.
+3. Le second nombre.
 
-For example:
+Par exemple :
 
 ```js
 let [a, op, b] = parse("1.2 * 3.4");

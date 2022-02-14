@@ -1,6 +1,6 @@
-A positive number with an optional decimal part is: `pattern:\d+(\.\d+)?`.
+Un nombre positif avec une éventuelle partie décimale correspond à : `pattern:\d+(\.\d+)?`.
 
-Let's add the optional `pattern:-` in the beginning:
+Ajoutons l'option `pattern:-` au début :
 
 ```js run
 let regexp = /-?\d+(\.\d+)?/g;
