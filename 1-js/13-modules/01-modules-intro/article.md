@@ -182,7 +182,11 @@ alert(admin.name); // Pete
 
 Comme vous pouvez le voir, lorsque `1.js` modifie la propriété `name` dans le `admin` importé, alors `2.js` peut voir le nouveau `admin.name`.
 
+<<<<<<< HEAD
 C'est précisément parce que le module n'est exécuté qu'une seule fois. Les exportations sont générées, puis partagées entre les importateurs, donc si quelque chose change l'objet `admin`, les autres modules le verront.
+=======
+That's exactly because the module is executed only once. Exports are generated, and then they are shared between importers, so if something changes the `admin` object, other importers will see that.
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
 **Un tel comportement est en fait très pratique, car il nous permet de *configurer* des modules.**
 

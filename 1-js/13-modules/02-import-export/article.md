@@ -93,7 +93,11 @@ say.sayBye('John');
 
 Eh bien, il y a quelques raisons.
 
+<<<<<<< HEAD
 1. Les outils de construction modernes ([webpack](http://webpack.github.io) et autres) regroupent les modules et les optimisent pour accélérer le chargement et supprimer les éléments inutilisés.
+=======
+1. Modern build tools ([webpack](https://webpack.js.org/) and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
     Disons que nous avons ajouté à notre projet une bibliothèque tierce, say.js, avec de nombreuses fonctions:
     ```js
@@ -402,7 +406,11 @@ On peut y rencontrer deux problèmes :
 
 2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
+<<<<<<< HEAD
     Si nous souhaitons réexporter l'export nommé et l'export par défaut, deux instructions sont nécessaires:
+=======
+    If we'd like to re-export both named and default exports, then two statements are needed:
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
     ```js
     export * from './user.js'; // réexporter les exportations nommées
     export {default} from './user.js'; // réexporter l'exportation par défaut
