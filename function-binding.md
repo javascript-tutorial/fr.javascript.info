@@ -7,11 +7,11 @@ libs:
 
 Quand des méthodes d'objets sont passées comme appels de fonction, par exemple pour `setTimeout`, un problème connu existe: "la perte de `this`".
 
-Dans ce chapitre nous allons voir les moyens de l'arranger.
+Dans ce chapitre nous allons voir les moyens d'y remédier.
 
 ## La perte de "this"
 
-Nous avons déjà vu des exemples de perte de `this`. Une fois qu'une méthode est passée ailleurs et séparément de l'objet, -- `this` est perdu.
+Nous avons déjà vu des exemples de perte de `this`. Une fois qu'une méthode est passée ailleurs, séparément de l'objet, -- `this` est perdu.
 
 Voici comment cela peut survenir avec `setTimeout`:
 
@@ -60,7 +60,7 @@ setTimeout(function() {
 */!*
 ```
 
-Maintenant cela fonctionne car elle reçoit `user` à partir de l'environnement lexical externe et elle appelle ainsi la méthode normalement.
+Maintenant cela fonctionne car elle reçoit `user` à partir de l'environnement lexical externe; ainsi elle appelle la méthode normalement.
 
 Pareil, mais plus court :
 
@@ -91,7 +91,7 @@ user = {
 // Un autre user dans setTimeout!
 ```
 
-La solution suivante garantit qu'une telle chose n'arrivera pas.
+La solution suivante garantit que cela n'arrivera pas.
 
 ## Solution 2: bind
 
@@ -106,7 +106,7 @@ let boundFunc = func.bind(context);
 
 Le résultat de `func.bind(context)` ressemble à une fonction spéciale, un "objet exotique", qui peut s'appeler comme une fonction et en toute transparence relaie l'appel à `func` en définissant `this=context`.
 
-En d'autres termes, appeler `boundFunc` est comme `func` avec `this` arrangé.
+En d'autres termes, appeler `boundFunc` est comme `func` avec `this` rectifé.
 
 Par exemple, ici `funcUser` appelle `func` avec `this=user`:
 
@@ -125,7 +125,7 @@ funcUser(); // John
 */!*
 ```
 
-Ici `func.bind(user)` en tant que "variante liée" de `func`, avec `this=user` arrangé.
+Ici `func.bind(user)` en tant que "variante liée" de `func`, avec `this=user` rectifé.
 
 Tous les arguments sont passés de l'original `func` "tels quels", par exemple :
 
@@ -175,7 +175,7 @@ user = {
 
 A la ligne `(*)` nous prenons la méthode `user.sayHi` et la relions à `user`. `sayHi` est une fonction "liée" qui peut ŝ'appeler seule ou relayée à `setTimeout` -- aucune importance, le contexte sera bon.
 
-Ici nous pouvons voir que les arguments sont passés "tels quels", seul `this` est arrangé par `bind`:
+Ici nous pouvons voir que les arguments sont passés "tels quels", seul `this` est rectifé par `bind`:
 
 ```js run
 let user = {
@@ -202,12 +202,12 @@ for (let key in user) {
 }
 ```
 
-Les librairies JavaScript fournissent aussi des fonctions pour une liaison massive et pratique , par exemple [_.bindAll(object, methodNames)](http://lodash.com/docs#bindAll) in lodash.
+Les librairies JavaScript fournissent aussi des fonctions pour une liaison massive et pratique, par exemple [_.bindAll(object, methodNames)](http://lodash.com/docs#bindAll) in lodash.
 ````
 
 ## Fonctions partielles
 
-Jusqu'à présent nous n'avons parler que de la liaison de `this`. Allons plus loin.
+Jusqu'à présent nous n'avons parlé que de la liaison de `this`. Allons plus loin.
 
 Nous pouvons non seulement lier `this`, mais également des arguments. C'est plutôt rare mais parfois bien utile.
 
@@ -243,7 +243,7 @@ alert( double(4) ); // = mul(2, 4) = 8
 alert( double(5) ); // = mul(2, 5) = 10
 ```
 
-L'appel à `mul.bind(null, 2)` crée une nouvelle fonction `double` qui relaie l'appel à `mul`, corrigeant `null` comme contexte et `2` comme premier argument. D'autres arguments sont passés "tels quels".
+L'appel à `mul.bind(null, 2)` crée une nouvelle fonction `double` qui relaie l'appel à `mul`, modifiant `null` comme contexte et `2` comme premier argument. D'autres arguments sont passés "tels quels".
 
 Cela s'appelle [partial function application](https://en.wikipedia.org/wiki/Partial_application) -- nous créons une nouvelle fonction en rectifiant des paramètres de celle qui existe.
 
@@ -324,5 +324,3 @@ La méthode `func.bind(context, ...args)` retourne une "variante liée" de la fo
 Habituellement nous utilisons `bind` pour corriger `this` pour une méthode d'objet, afin de la passer quelque part. Par exemple, à `setTimeout`.
 
 Quand nous rectifions des arguments d'une fonction existante, la fonction qui en résulte (moins universelle) est appelée *appliquée partiellement* ou *partielle*.
-
-Les Parcielles sont pratiques quand nous ne voulons pas répéter le même argument encore et encore. Comme si nous avions une fonction `send(from, to)`, et `from` devrait toujours être le même pour notre tâche, nous pouvons utiliser une partielle et continuer avec.
