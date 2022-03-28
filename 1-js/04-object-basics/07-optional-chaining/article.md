@@ -114,8 +114,14 @@ Par exemple. dans `user?.address.street.name` le `?.` permet à `user` d'être e
 ```warn header="N'abusez pas du chaînage optionnel"
 Nous ne devrions utiliser `?.` que là où il est normal que quelque chose n'existe pas.
 
+<<<<<<< HEAD
 Par exemple, si selon notre logique de codage, l'objet `user` doit exister, mais que `address` est facultatif, alors nous devrions écrire `user.address?.street`, mais pas `user?.address?.street`.
 
+=======
+For example, if according to our code logic `user` object must exist, but `address` is optional, then we should write `user.address?.street`, but not `user?.address?.street`.
+
+Then, if `user` happens to be undefined, we'll see a programming error about it and fix it. Otherwise, if we overuse `?.`, coding errors can be silenced where not appropriate, and become more difficult to debug.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 ```
 
 ````warn header="La variable avant `?.` doit être déclarée"
@@ -133,7 +139,11 @@ La variable doit être déclarée (par exemple `let/const/var user` ou en tant q
 Comme il a été dit précédemment, le `?.` arrête immédiatement ("court-circuite") l'évaluation si la partie gauche n'existe pas.
 
 
+<<<<<<< HEAD
 Donc, s'il y a d'autres appels de fonction ou effets secondaires, ils ne se produisent pas :
+=======
+So, if there are any further function calls or operations to the right of `?.`, they won't be made.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 Par exemple :
 
@@ -141,6 +151,10 @@ Par exemple :
 let user = null;
 let x = 0;
 
+<<<<<<< HEAD
+=======
+user?.sayHi(x++); // no "user", so the execution doesn't reach sayHi call and x++
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 user?.sayHi(x++); // pas de "sayHi", donc l'exécution n'atteint pas x++
 
@@ -190,7 +204,7 @@ let user1 = {
   firstName: "John"
 };
 
-let user2 = null; 
+let user2 = null;
 
 alert( user1?.[key] ); // John
 alert( user2?.[key] ); // undefined
