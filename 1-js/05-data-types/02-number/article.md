@@ -48,7 +48,11 @@ Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un m
 let mсs = 0.000001;
 ```
 
+<<<<<<< HEAD
 Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire la même chose avec :
+=======
+Just like before, using `"e"` can help. If we'd like to avoid writing the zeroes explicitly, we could write the same as:
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 ```js
 let mcs = 1e-6; // six zéros à gauche de 1
@@ -157,7 +161,11 @@ Il y a deux façons de le faire:
 
 1. Multiplier et diviser.
 
+<<<<<<< HEAD
     Par exemple, pour arrondir le nombre au deuxième chiffre après la décimale, nous pouvons multiplier le nombre par `100` (ou une plus grande puissance de 10), appeler la fonction d'arrondi puis la diviser.
+=======
+    For example, to round the number to the 2nd digit after the decimal, we can multiply the number by `100`, call the rounding function and then divide it back.
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
     ```js run
     let num = 1.23456;
 
@@ -185,13 +193,21 @@ Il y a deux façons de le faire:
     alert( num.toFixed(5) ); // "12.34000", ajout de zéros pour faire exactement 5 chiffres
     ```
 
+<<<<<<< HEAD
     Nous pouvons le convertir en un nombre en utilisant le plus unaire `+` ou un appel `Number()`: `+num.toFixed(5)`.
+=======
+    We can convert it to a number using the unary plus or a `Number()` call, e.g write `+num.toFixed(5)`.
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 ## Calculs imprécis
 
 En interne, un nombre est représenté au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), il y a donc exactement 64 bits pour stocker un nombre : 52 d'entre eux sont utilisés pour stocker les chiffres, 11 d'entre eux stockent la position du point décimal(ils sont zéro pour les nombres entiers), et 1 bit est pour le signe.
 
+<<<<<<< HEAD
 Si un nombre est trop grand, le stockage 64 bits serait saturé, donnant potentiellement une infinité:
+=======
+If a number is really huge, it may overflow the 64-bit storage and become a special numeric value `Infinity`:
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 ```js run
 alert( 1e500 ); // infini 
@@ -199,7 +215,11 @@ alert( 1e500 ); // infini
 
 Ce qui est peut-être un peu moins évident, mais qui arrive souvent, est la perte de précision.
 
+<<<<<<< HEAD
 Voyons ce test (faux!)
+=======
+Consider this (falsy!) equality test:
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 ```js run
 alert( 0.1 + 0.2 == 0.3 ); // *!*faux*/!*
@@ -213,13 +233,21 @@ Si on vérifie si la somme de `0.1` et `0.2` est égale à `0.3` on obtient `fau
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
+<<<<<<< HEAD
 Aie! Il y a plus de conséquences qu'une comparaison incorrecte ici. Imaginez que vous créez un site d'ecommerce et que le visiteur ajoute `0.10$` et `0.20$` de marchandises dans son panier. Le montant total de la commande sera de `0.30000000000000004`. Cela surprendrait n'importe qui.
+=======
+Ouch! Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 Mais pourquoi cela se produit-il ?
 
 Un nombre est stocké en mémoire sous sa forme binaire, une séquence de uns et de zéros. Mais les fractions telles que `0.1`, `0.2`, qui semblent simples dans le système numérique décimal, sont en réalité des fractions sans fin dans leur forme binaire.
 
+<<<<<<< HEAD
 En d'autres termes, qu'est-ce que `0.1` ? C'est un divisé par dix `1/10`, un dixième. Dans le système numérique décimal, ces nombres sont facilement représentables. Comparez-le à un tiers: `1/3`. Cela devient une fraction sans fin `0.33333(3)`.
+=======
+What is `0.1`? It is one divided by ten `1/10`, one-tenth. In decimal numeral system such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+>>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 Ainsi, la division par puissances `10` est garantie de bien fonctionner dans le système décimal, mais la division par `3` ne l'est pas. Pour la même raison, dans le système de numération binaire, la division par des puissances de `2` est garantie, mais `1/10` devient une fraction binaire sans fin.
 
