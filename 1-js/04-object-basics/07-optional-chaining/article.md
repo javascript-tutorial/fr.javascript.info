@@ -37,11 +37,7 @@ Dans de nombreux cas pratiques, nous préférerions obtenir `undefined` au lieu 
 let html = document.querySelector('.elem').innerHTML; // error if it's null
 ```
 
-<<<<<<< HEAD
-Encore une fois, si l'élément n'existe pas, nous obtiendrons une erreur lors de l'accès à `.innerHTML` de` null`. Et dans certains cas, lorsque l'absence de l'élément est normale, nous aimerions éviter l'erreur et accepter simplement `html = null` comme résultat.
-=======
-Once again, if the element doesn't exist, we'll get an error accessing `.innerHTML` property of `null`. And in some cases, when the absence of the element is normal, we'd like to avoid the error and just accept `html = null` as the result.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Encore une fois, si l'élément n'existe pas, nous obtiendrons une erreur lors de l'accès à la propriété `.innerHTML` de` null`. Et dans certains cas, lorsque l'absence de l'élément est normale, nous aimerions éviter l'erreur et accepter simplement `html = null` comme résultat.
 
 Comment peut-on le faire ?
 
@@ -53,27 +49,20 @@ let user = {};
 alert(user.address ? user.address.street : undefined);
 ```
 
-<<<<<<< HEAD
-Cela fonctionne, il n'y a pas d'erreur ... Mais c'est assez inélégant. Comme vous pouvez le voir, `"user.address"` apparaît deux fois dans le code. Pour des propriétés plus profondément imbriquées, cela devient un problème car plus de répétitions sont nécessaires.
+Cela fonctionne, il n'y a pas d'erreur ... Mais c'est assez inélégant. Comme vous pouvez le voir, `"user.address"` apparaît deux fois dans le code. 
 
-Par exemple. essayons d'obtenir `user.address.street.name`.
 
-Nous devons vérifier à la fois `user.address` et `user.address.street` :
-=======
-It works, there's no error... But it's quite inelegant. As you can see, the `"user.address"` appears twice in the code.
-
-Here's how the same would look for `document.querySelector`:
+Voici à quoi ressemblerait la même chose pour `document.querySelector` :
 
 ```js run
 let html = document.querySelector('.elem') ? document.querySelector('.elem').innerHTML : null;
 ```
 
-We can see that the element search `document.querySelector('.elem')` is actually called twice here. Not good.
+Nous pouvons voir que l'élément de recherche `document.querySelector('.elem')` est en fait appelé deux fois ici. Pas bon.
 
-For more deeply nested properties, it becomes even uglier, as more repetitions are required.
+Pour les propriétés plus profondément imbriquées, cela devient encore plus laid, car davantage de répétitions sont nécessaires.
 
-E.g. let's get `user.address.street.name` in a similar fashion.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Par exemple. récupérons `user.address.street.name` de la même manière.
 
 ```js
 let user = {}; // l'utilisateur n'a pas d'adresse
@@ -83,11 +72,7 @@ alert(user.address ? user.address.street ? user.address.street.name : null : nul
 
 C'est juste horrible, on peut même avoir des problèmes pour comprendre un tel code.
 
-<<<<<<< HEAD
-Ne vous en souciez même pas, car il existe une meilleure façon de l'écrire, en utilisant l'opérateur `&&` :
-=======
-There's a little better way to write it, using the `&&` operator:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Il existe une meilleure façon de l'écrire, en utilisant l'opérateur `&&` :
 
 ```js run
 let user = {}; // l'utilisateur n'a pas d'adresse
@@ -122,17 +107,13 @@ alert( user?.address?.street ); // undefined (no error)
 
 Le code est court et propre, il n'y a aucune duplication.
 
-<<<<<<< HEAD
-La lecture de l'adresse avec `user?.address` fonctionne même si l'objet `user` n'existe pas :
-=======
-Here's an example with `document.querySelector`:
+Voici un exemple avec `document.querySelector` :
 
 ```js run
 let html = document.querySelector('.elem')?.innerHTML; // will be null, if there's no element
 ```
 
-Reading the address with `user?.address` works even if `user` object doesn't exist:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+La lecture de l'adresse avec `user?.address` fonctionne même si l'objet `user` n'existe pas :
 
 ```js run
 let user = null;
@@ -148,14 +129,9 @@ Par exemple. dans `user?.address.street.name` le `?.` permet à `user` d'être e
 ```warn header="N'abusez pas du chaînage optionnel"
 Nous ne devrions utiliser `?.` que là où il est normal que quelque chose n'existe pas.
 
-<<<<<<< HEAD
 Par exemple, si selon notre logique de codage, l'objet `user` doit exister, mais que `address` est facultatif, alors nous devrions écrire `user.address?.street`, mais pas `user?.address?.street`.
 
-=======
-For example, if according to our code logic `user` object must exist, but `address` is optional, then we should write `user.address?.street`, but not `user?.address?.street`.
-
-Then, if `user` happens to be undefined, we'll see a programming error about it and fix it. Otherwise, if we overuse `?.`, coding errors can be silenced where not appropriate, and become more difficult to debug.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Ensuite, si `user` n'est pas défini, nous verrons une erreur de programmation à ce sujet et nous la corrigerons. Sinon, si nous abusons de `?.`, les erreurs de codage peuvent être réduites au silence là où cela n'est pas approprié et devenir plus difficiles à déboguer.
 ```
 
 ````warn header="La variable avant `?.` doit être déclarée"
@@ -173,11 +149,7 @@ La variable doit être déclarée (par exemple `let/const/var user` ou en tant q
 Comme il a été dit précédemment, le `?.` arrête immédiatement ("court-circuite") l'évaluation si la partie gauche n'existe pas.
 
 
-<<<<<<< HEAD
-Donc, s'il y a d'autres appels de fonction ou effets secondaires, ils ne se produisent pas :
-=======
-So, if there are any further function calls or operations to the right of `?.`, they won't be made.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Ainsi, s'il y a d'autres appels de fonction ou opérations à droite de `?.`, elles ne seront pas effectuées.
 
 Par exemple :
 
@@ -185,12 +157,7 @@ Par exemple :
 let user = null;
 let x = 0;
 
-<<<<<<< HEAD
-=======
-user?.sayHi(x++); // no "user", so the execution doesn't reach sayHi call and x++
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
-
-user?.sayHi(x++); // pas de "sayHi", donc l'exécution n'atteint pas x++
+user?.sayHi(x++); // pas de "user", donc l'exécution n'atteint pas l'appel sayHi et x++
 
 
 alert(x); // 0, la valeur n'est pas incrémenté
@@ -223,12 +190,7 @@ userGuest.admin?.(); // nothing happens (no such method)
 */!*
 ```
 
-<<<<<<< HEAD
-=======
-Here, in both lines we first use the dot (`userAdmin.admin`) to get `admin` property, because we assume that the `user` object exists, so it's safe read from it.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
-
-Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) pour obtenir la propriété `admin`, car l'objet utilisateur doit exister, donc il peut être lu en toute sécurité.
+Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) pour obtenir la propriété `admin`, car nous supposons que l'objet `user` existe, il peut donc être lu en toute sécurité.
 
 Puis `?.()` Vérifie la partie gauche : si la fonction admin existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
 
@@ -264,23 +226,14 @@ For example:
 
 let user = null;
 
-<<<<<<< HEAD
 user?.name = "John"; // Erreur, ne fonctionne pas
-// car il évalue à undefined = "John"
-=======
-user?.name = "John"; // Error, doesn't work
-// because it evaluates to: undefined = "John"
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+// car il évalue : undefined = "John"
 ```
 Ce n'est tout simplement pas si intelligent.
 
-<<<<<<< HEAD
 ## Résumé
 
 Le chaînage optionnel '?.' A trois formes :
-=======
-````
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 
 1. `obj?.prop` -- retourne `obj.prop` si `obj` existe, sinon `undefined`.
 2. `obj?.[prop]` -- retourne `obj[prop]` si `obj` existe, sinon `undefined`.
@@ -292,8 +245,4 @@ Comme nous pouvons le voir, tous sont simples et simples à utiliser. Le `?.` v�
 Une chaîne de `?.` permet d'accéder en toute sécurité aux propriétés imbriquées.
 
 
-<<<<<<< HEAD
-Néanmoins, nous devons appliquer `?.` avec soin, uniquement s'il est acceptable que la partie gauche n'existe pas. Pour ne pas nous cacher les erreurs de programmation, si elles se produisent.
-=======
-Still, we should apply `?.` carefully, only where it's acceptable, according to our code logic, that the left part doesn't exist. So that it won't hide programming errors from us, if they occur.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Néanmoins, nous devons appliquer `?.` avec précaution, uniquement là où il est acceptable, selon la logique de notre code, que la partie gauche n'existe pas. Pour qu'il ne nous cache pas les erreurs de programmation, si elles se produisent.

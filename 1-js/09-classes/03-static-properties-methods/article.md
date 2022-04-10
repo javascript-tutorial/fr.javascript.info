@@ -1,15 +1,9 @@
 
 # Propriétés et méthodes statiques
 
-<<<<<<< HEAD
 Nous pouvons aussi assigner une méthode à la fonction de classe elle-même, pas à son `"prototype"`. De telles méthodes sont appelées *statique*.
 
-Dans une classe, ils sont précédés du mot clé `static`, comme ceci:
-=======
-We can also assign a method to the class as a whole. Such methods are called *static*.
-
-In a class declaration, they are prepended by `static` keyword, like this:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Dans une classe, elles sont précédées du mot clé `static`, comme ceci:
 
 ```js run
 class User {
@@ -37,17 +31,11 @@ User.staticMethod(); // true
 
 La valeur de `this` dans l'appel `User.staticMethod()` est le constructeur de la classe `User` lui-même (la règle "objet avant le point").
 
-<<<<<<< HEAD
 Généralement, les méthodes statiques sont utilisées pour implémenter des fonctions appartenant à la classe, mais pas à un objet particulier de celle-ci.
 
-Par exemple, nous avons des objets `Article` et avons besoin d'une fonction pour les comparer. Une solution naturelle serait d’ajouter la méthode `Article.compare`, comme ceci:
-=======
-Usually, static methods are used to implement functions that belong to the class as a whole, but not to any particular object of it.
+Par exemple, nous avons des objets `Article` et avons besoin d'une fonction pour les comparer. 
 
-For instance, we have `Article` objects and need a function to compare them.
-
-A natural solution would be to add `Article.compare` static method:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Une solution naturelle serait d’ajouter la méthode `Article.compare`, comme ceci :
 
 ```js run
 class Article {
@@ -77,17 +65,11 @@ articles.sort(Article.compare);
 alert( articles[0].title ); // CSS
 ```
 
-<<<<<<< HEAD
 Ici, `Article.compare` est "au dessus" des articles, comme un moyen de les comparer. Ce n'est pas une méthode d'article, mais plutôt de toute la classe.
 
-Un autre exemple serait une méthode dite "d'usine". Imaginez, nous avons besoin de peu de façons de créer un article:
-=======
-Here `Article.compare` method stands "above" articles, as a means to compare them. It's not a method of an article, but rather of the whole class.
+Un autre exemple serait une méthode dite "d'usine". 
 
-Another example would be a so-called "factory" method.
-
-Let's say, we need multiple ways to create an article:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Disons que nous avons besoin de plusieurs façons de créer un article :
 
 1. Créez avec des paramètres donnés (`title`, `date` etc.).
 2. Créez un article vide avec la date du jour.
@@ -95,11 +77,7 @@ Let's say, we need multiple ways to create an article:
 
 Le premier moyen peut être implémenté par le constructeur. Et pour le second, nous pouvons créer une méthode statique de la classe.
 
-<<<<<<< HEAD
-Comme `Article.createTodays()` ici:
-=======
-Such as `Article.createTodays()` here:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Comme `Article.createTodays()` ici :
 
 ```js run
 class Article {
@@ -126,13 +104,8 @@ Maintenant, chaque fois que nous avons besoin de créer le résumé d'aujourd'hu
 Les méthodes statiques sont également utilisées dans les classes liées à la base de données pour rechercher/enregistrer/supprimer des entrées dans la base de données, comme ceci:
 
 ```js
-<<<<<<< HEAD
 // en supposant que Article est une classe spéciale pour la gestion d'articles
 // méthode statique pour supprimer l'article:
-=======
-// assuming Article is a special class for managing articles
-// static method to remove the article by id:
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
 Article.remove({id: 12345});
 ```
 

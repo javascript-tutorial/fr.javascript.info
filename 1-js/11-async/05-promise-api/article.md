@@ -16,11 +16,7 @@ La syntaxe est:
 let promise = Promise.all(iterable);
 ```
 
-<<<<<<< HEAD
-`Promise.all` prend un tableau de promesses (techniquement, cela peut être n'importe quel itérable, mais est généralement un tableau) et retourne une nouvelle promesse.
-=======
-`Promise.all` takes an iterable (usually, an array of promises) and returns a new promise.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+`Promise.all` prend un itérable (généralement un tableau de promesses) et renvoie une nouvelle promesse.
 
 La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont résolues et que le tableau de leurs résultats devient son résultat.
 
