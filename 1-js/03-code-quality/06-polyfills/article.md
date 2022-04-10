@@ -1,5 +1,5 @@
 
-# Polyfills and transpilers
+# Polyfills et transpilers
 
 Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [specification officielle](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
@@ -9,7 +9,7 @@ Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie de
 
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
 
-As programmers, we'd like to use most recent features. The more good stuff - the better!
+En tant que programmeurs, nous aimerions utiliser les fonctionnalités les plus récentes. Plus il y a de bonnes choses, mieux c'est !
 
 D'un autre côté, comment faire fonctionner le code moderne sur des moteurs plus anciens qui ne comprennent pas encore les fonctionnalités récentes ?
 
@@ -42,11 +42,7 @@ Habituellement, un développeur exécute le transpiler sur son propre ordinateur
 
 En parlant de noms, [Babel](https://babeljs.io) est l'un des transpileurs les plus connus.
 
-<<<<<<< HEAD
-Les systèmes de construction de projets modernes, tels que [webpack](http://webpack.github.io/), fournissent des moyens pour exécuter un transpiler automatiquement à chaque changement de code, il est donc très facile à intégrer dans le processus de développement.
-=======
-Modern project build systems, such as [webpack](https://webpack.js.org/), provide means to run transpiler automatically on every code change, so it's very easy to integrate into development process.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Les systèmes de construction de projets modernes, tels que [webpack](http://webpack.js.org/), fournissent des moyens pour exécuter un transpiler automatiquement à chaque changement de code, il est donc très facile à intégrer dans le processus de développement.
 
 ## Les polyfills
 
@@ -86,11 +82,7 @@ Dans ce chapitre, nous aimerions vous motiver à étudier les fonctionnalités d
 
 N'oubliez pas d'utiliser un transpiler (si vous utilisez une syntaxe ou des opérateurs modernes) et des polyfills (pour ajouter des fonctions qui peuvent manquer). Et ils veilleront à ce que le code fonctionne.
 
-<<<<<<< HEAD
-Par exemple, plus tard, lorsque vous serez familiarisé avec JavaScript, vous pourrez configurer un système de création de code basé sur [webpack](http://webpack.github.io/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
-=======
-For example, later when you're familiar with JavaScript, you can setup a code build system based on [webpack](https://webpack.js.org/) with [babel-loader](https://github.com/babel/babel-loader) plugin.
->>>>>>> 45934debd9bb31376ea5da129e266df5b43e545f
+Par exemple, plus tard, lorsque vous serez familiarisé avec JavaScript, vous pourrez configurer un système de création de code basé sur [webpack](http://webpack.js.org/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
 
 De bonnes ressources qui montrent l'état actuel de la prise en charge de diverses fonctionnalités :
 - <https://kangax.github.io/compat-table/es6/> - pour du pur JavaScript.
