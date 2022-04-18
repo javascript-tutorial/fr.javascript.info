@@ -59,7 +59,7 @@ Si on sépare ces opération sur 2 lignes, alors `this` sera perdu :
 let user = {
   name: "John",
   hi() { alert(this.name); }
-}
+};
 
 *!*
 // On sépare l'accès à la méthode et son appel en deux lignes
