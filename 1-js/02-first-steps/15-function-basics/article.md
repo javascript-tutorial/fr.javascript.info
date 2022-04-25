@@ -177,8 +177,13 @@ Lorsqu'une valeur est passée en tant que paramètre de fonction, elle est égal
 
 En d'autres termes, pour mettre ces termes au clair :
 
+<<<<<<< HEAD
 - Un paramètre est la variable répertoriée entre parenthèses dans la fonction déclaration (c'est un terme du temps de la déclaration).
 - Un argument est la valeur qui est transmise à la fonction lorsqu'elle est appelée (c'est un terme du temps de l'appel).
+=======
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
@@ -226,7 +231,43 @@ Dans l'exemple ci-dessus, `anotherFunction()` n'est pas du tout appelé, si le p
 D'un autre côté, il est appelé indépendamment à chaque fois que `text` est manquant.
 ```
 
+<<<<<<< HEAD
 ### Paramètres par défaut alternatifs
+=======
+````smart header="Default parameters in old JavaScript code"
+Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+
+Nowadays, we can come across them in old scripts.
+
+For example, an explicit check for `undefined`:
+
+```js
+function showMessage(from, text) {
+*!*
+  if (text === undefined) {
+    text = 'no text given';
+  }
+*/!*
+
+  alert( from + ": " + text );
+}
+```
+
+...Or using the `||` operator:
+
+```js
+function showMessage(from, text) {
+  // If the value of text is falsy, assign the default value
+  // this assumes that text == "" is the same as no text at all
+  text = text || 'no text given';
+  ...
+}
+```
+````
+
+
+### Alternative default parameters
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Il est parfois judicieux de définir des valeurs par défaut pour les paramètres non pas dans la fonction déclaration, mais à un stade ultérieur, lors de son exécution.
 
