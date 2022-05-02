@@ -1,9 +1,22 @@
 
 # Type symbole
 
+<<<<<<< HEAD
 Par spécification, les clés de propriété d'objet peuvent être de type chaîne de caractères ou de type symbole. Pas des nombres, pas des booléens, uniquement des chaînes de caractères ou des symboles.
 
 Jusqu'à présent, nous n'avons vu que des chaînes de caractères. Voyons maintenant les avantages que les symboles peuvent nous apporter.
+=======
+By specification, only two primitive types may serve as object property keys:
+
+- string type, or
+- symbol type.
+
+Otherwise, if one uses another type, such as number, it's autoconverted to string. So that `obj[1]` is the same as `obj["1"]`, and `obj[true]` is the same as `obj["true"]`.
+
+Till now we've been using only strings.
+
+Now let's explore symbols, see what they can do for us.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 ## Symboles
 
@@ -12,7 +25,10 @@ Un “Symbol” représente un identifiant unique.
 Une valeur de ce type peut être créée en utilisant `Symbol()` :
 
 ```js
+<<<<<<< HEAD
 // id est un nouveau symbole
+=======
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 let id = Symbol();
 ```
 
@@ -38,8 +54,15 @@ alert(id1 == id2); // false
 
 Si vous connaissez Ruby ou un autre langage qui comporte également une sorte de "symboles", attention à ne pas vous tromper. Les symboles JavaScript sont différents.
 
+<<<<<<< HEAD
 ````warn header="Les symboles ne se convertissent pas automatiquement en chaîne de caractères"
 La plupart des valeurs de JavaScript prennent en charge la conversion implicite en chaîne de caractères. Par exemple, nous pouvons `alert` presque toutes les valeurs et cela fonctionnera. Les symboles sont spéciaux. Ils ne se convertissent pas automatiquement.
+=======
+So, to summarize, symbols are "primitive unique values" with optional description. Let's see where we can use them.
+
+````warn header="Symbols don't auto-convert to a string"
+Most values in JavaScript support implicit conversion to a string. For instance, we can `alert` almost any value, and it will work. Symbols are special. They don't auto-convert.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Par exemple, cette `alert` affichera une erreur :
 
@@ -51,14 +74,27 @@ alert(id); // TypeError: Impossible de convertir une valeur de symbole en chaîn
 ```
 C'est un "garde du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent accidentellement pas être convertis les uns en les autres. 
 
+<<<<<<< HEAD
 Si nous voulons vraiment afficher un symbole, nous devons appeler `.toString()` dessus, comme ici :
+=======
+That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not accidentally convert one into another.
+
+If we really want to show a symbol, we need to explicitly call `.toString()` on it, like here:
+
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 ```js run
 let id = Symbol("id");
 *!*
 alert(id.toString()); // Symbol(id), maintenant ça marche
 */!*
 ```
+<<<<<<< HEAD
 Ou récupérer la propriété  `symbol.description` pour afficher la description uniquement :
+=======
+
+Or get `symbol.description` property to show the description only:
+
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 ```js run
 let id = Symbol("id");
 *!*
@@ -70,7 +106,12 @@ alert(id.description); // id
 
 ## Propriétés "cachées"
 
+<<<<<<< HEAD
 Les symboles nous permettent de créer des propriétés "cachées" d'un objet, qu'aucune autre partie du code ne peut accéder accidentellement ou écraser.
+=======
+
+Symbols allow us to create "hidden" properties of an object, that no other part of code can accidentally access or overwrite.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Par exemple, si nous travaillons avec des objets `user` qui appartiennent à un code tiers, nous aimerions leur ajouter des identificateurs.
 
@@ -269,8 +310,14 @@ Les multiples appels de `Symbol.for` avec la même `key` renvoient exactement le
 
 Les symboles ont deux principaux cas d'utilisation :
 
+<<<<<<< HEAD
 1. Propriétés d'objet "masquées".
     Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée accidentellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation accidntelle ou un écrasement.
+=======
+1. "Hidden" object properties.
+
+    If we want to add a property into an object that "belongs" to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in `for..in`, so it won't be accidentally processed together with other properties. Also it won't be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
     Ainsi, nous pouvons "dissimuler" quelque chose dans des objets dont nous avons besoin, mais que les autres ne devraient pas voir, en utilisant des propriétés symboliques.
 

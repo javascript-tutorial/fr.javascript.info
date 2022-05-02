@@ -22,7 +22,11 @@ Nous pouvons également utiliser l’underscore `_` comme séparateur :
 let billion = 1_000_000_000;
 ```
 
+<<<<<<< HEAD
 Ici l’underscore `_` joue le rôle de "sucre syntaxique", il rend le nombre plus lisible. Le moteur JavaScript ignore simplement `_` entre les chiffres, donc c'est exactement le même milliard que ci-dessus.
+=======
+Here the underscore `_` plays the role of the "[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Dans la vraie vie cependant, nous essayons d'éviter d'écrire de longues séquences de zéros. Nous sommes trop paresseux pour ça. Nous essaierons d'écrire quelque chose comme "1 milliard" pour un milliard ou "7,3 milliards" pour 7 milliards 300 millions. La même chose est vraie pour la plupart des grands nombres.
 
@@ -333,9 +337,14 @@ alert( isFinite(num) );
 
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
+<<<<<<< HEAD
 ```smart header="Comparer avec Object.is"
 
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes :
+=======
+```smart header="Compare with `Object.is`"
+There is a special built-in method `Object.is` that compares values like `===`, but is more reliable for two edge cases:
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
 2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
