@@ -255,7 +255,11 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 3. Fonctions fléchées :
 
     ```js
+<<<<<<< HEAD
     // expression à droite
+=======
+    // expression on the right side
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
     let sum = (a, b) => a + b;
 
     // ou une syntaxe multiligne avec {...}, il faut return ici :

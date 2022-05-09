@@ -536,7 +536,11 @@ Lorsqu'une fonction s'appelle elle-même, cela s'appelle une *étape de récursi
     list = { value, next -> list }
     ```
 
+<<<<<<< HEAD
     Les arbres tels que l’arbre des éléments HTML ou l’arbre des départements de ce chapitre sont également naturellement récursifs: ils ont des branchent et chaque branche peut avoir d’autres branches.
+=======
+    Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they have branches and every branch can have other branches.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
     Des fonctions récursives peuvent être utilisées pour les parcourir, comme nous l'avons vu dans l'exemple `sumSalary`.
 

@@ -192,8 +192,13 @@ let 1a; // ne peut pas commencer avec un chiffre
 let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
 ```
 
+<<<<<<< HEAD
 ```smart header="La casse est importante"
 Des variables nommées `pomme` and `PomMe` -- sont deux variables différentes.
+=======
+```smart header="Case matters"
+Variables named `apple` and `APPLE` are two different variables.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 ```
 
 ````smart header="Les lettres non latines sont autorisées mais non recommandées"
@@ -300,7 +305,11 @@ const pageLoadTime = /* temps pris par une page Web pour charger */;
 
 La valeur de `pageLoadTime` n’est pas connue avant le chargement de la page, elle est donc nommée normalement. Mais cela reste une constante, car elle ne change pas après l’affectation.
 
+<<<<<<< HEAD
 En d'autres termes, les constantes nommées en majuscules ne sont utilisées que comme alias pour les valeurs "codées en dur".
+=======
+In other words, capital-named constants are only used as aliases for "hard-coded" values.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 ## Nommez les choses correctement
 

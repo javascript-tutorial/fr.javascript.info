@@ -179,7 +179,11 @@ L'option `intégrité` permet de vérifier si la réponse correspond à la somme
 
 Comme décrit dans la [spécification](https://w3c.github.io/webappsec-subresource-integrity/), les fonctions de hachage prises en charge sont SHA-256, SHA-384 et SHA-512, il peut y en avoir d'autres en fonction du navigateur.
 
+<<<<<<< HEAD
 Par exemple, nous téléchargeons un fichier et nous savons que sa somme de contrôle SHA-256 est "abcdef" (une vraie somme de contrôle est plus longue, bien sûr).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 Nous pouvons le mettre dans l'option `integrity`, comme ceci :
 

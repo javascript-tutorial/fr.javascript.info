@@ -268,7 +268,11 @@ for (let i = 0; i < 10; i++) {
 
 D'un point de vue technique, c'est identique à l'exemple du dessus. Certes, nous pouvons simplement envelopper le code dans un bloc `if` au lieu de `continue`.
 
+<<<<<<< HEAD
 Mais comme effet secondaire, nous avons obtenu un niveau d'imbrication supplémentaire (l'appel de l'`alert` à l'intérieur des accolades). Si le code à l'intérieur du `if` est plus long que quelques lignes, la lisibilité globale peut en être réduite.
+=======
+But as a side effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of `if` is longer than a few lines, that may decrease the overall readability.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 ````
 
 ````warn header="Pas de `break/continue` à droite de '?'"

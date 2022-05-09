@@ -232,7 +232,11 @@ setTimeout(function() {...}, 100);
 
 Pour `setInterval`, la fonction reste en mémoire jusqu'à ce qu'on appelle `clearInterval`.
 
+<<<<<<< HEAD
 Mais il y a un effet de bord, une fonction référence l'environement lexical extérieur, donc tant qu'elle existe, les variables extérieures existent aussi. Ces variables peuvent occuper autant d'espace mémoire que la fonction elle-même. De ce fait quand on n'a plus besoin d'une fonction planifiée, il est préférable de l'annuler, même si elle est courte.
+=======
+There's a side effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 ````
 
 ## setTimeout sans délai
