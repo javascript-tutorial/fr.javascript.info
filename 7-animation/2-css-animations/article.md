@@ -210,7 +210,6 @@ Other names are shorthands for the following `cubic-bezier`:
 
 So we could use `ease-out` for our slowing down train:
 
-
 ```css
 .train {
   left: 0;
@@ -226,6 +225,7 @@ But it looks a bit differently.
 The control points on the curve can have any `y` coordinates: even negative or huge ones. Then the Bezier curve would also extend very low or high, making the animation go beyond its normal range.
 
 In the example below the animation code is:
+
 ```css
 .train {
   left: 100px;
@@ -294,7 +294,7 @@ The process is progressing like this:
 - `0s` -- `-10%` (first change in the beginning of the 1st second, immediately)
 - `1s` -- `-20%`
 - ...
-- `8s` -- `-80%`
+- `8s` -- `-90%`
 - (the last second shows the final value).
 
 The alternative value `end` would mean that the change should be applied not in the beginning, but at the end of each second.

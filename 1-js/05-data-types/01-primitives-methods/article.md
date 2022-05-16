@@ -39,8 +39,13 @@ Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources s
 
 Voici le paradoxe auquel est confronté le créateur de JavaScript:
 
+<<<<<<< HEAD
 - Il y a beaucoup de choses que l'on voudrait faire avec une primitive telle qu'une chaîne de caractères ou un nombre. Ce serait génial d'y avoir accès avec des méthodes.
 - Les primitives doivent être aussi rapides et légères que possible.
+=======
+- There are many things one would want to do with a primitive, like a string or a number. It would be great to access them using methods.
+- Primitives must be as fast and lightweight as possible.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 La solution semble peu commode, mais la voici:
 

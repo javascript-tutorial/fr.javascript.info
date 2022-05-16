@@ -22,6 +22,7 @@ Ce sont les bases. Plus tard, nous verrons comment utiliser d'autres fonctionnal
 Voici la mise en œuvre de faire glisser une balle :
 
 ```js
+<<<<<<< HEAD
 ball.onmousedown = function(event) { 
   // (1) la préparer au déplacement :  réglé en absolute et en haut par z-index
   ball.style.position = 'absolute';
@@ -30,6 +31,16 @@ ball.onmousedown = function(event) {
   // déplacez-le de tout parent actuel directement dans body
   // pour le placer par rapport à body
   document.body.append(ball);  
+=======
+ball.onmousedown = function(event) {
+  // (1) prepare to moving: make absolute and on top by z-index
+  ball.style.position = 'absolute';
+  ball.style.zIndex = 1000;
+
+  // move it out of any current parents directly into body
+  // to make it positioned relative to the body
+  document.body.append(ball);
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
   // Centrer la balle aux coordonnées (pageX, pageY)
   function moveAt(pageX, pageY) {
@@ -92,14 +103,22 @@ Donc nous devons écouter le `document` pour le capturer.
 
 ## Positionnent correcte
 
+<<<<<<< HEAD
 Dans les exemples ci-dessus la balle est toujours déplacée ainsi, de sorte à ce que son centre soit au-dessous  du curseur:
+=======
+In the examples above the ball is always moved so that its center is under the pointer:
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 ```js
 ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
 ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
 ```
 
+<<<<<<< HEAD
 Pas mal,  mais il y a un  effet secondaire. Pour initier le Glissser-Deposer, nous pouvons appliquer un `mousedown` n’importe où sur la balle. Mais si nous le faisons sur le rebord, alors la balle "saute" soudainement  pour être centrée sous le curseur.
+=======
+Not bad, but there's a side effect. To initiate the drag'n'drop, we can `mousedown` anywhere on the ball. But if "take" it from its edge, then the ball suddenly "jumps" to become centered under the mouse pointer.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Ce serait mieux si nous gardions le  changement initial de l’élément relativement au curseur.
 
@@ -216,7 +235,11 @@ C’est pourquoi l’idée initiale de mettre les gestionnaires sur des potentie
 
 Alors, que faire?
 
+<<<<<<< HEAD
 Il existe une méthode appelée `document.elementFromPoint(clientX, clientY)`. Elle retourne l’élément le plus imbriqué sur les coordonnées données  relativement à une fenêtre (oubien `null` les coordonnées données sont hors de la fenêtre).
+=======
+There's a method called `document.elementFromPoint(clientX, clientY)`. It returns the most nested element on given window-relative coordinates (or `null` if given coordinates are out of the window). If there are multiple overlapping elements on the same coordinates, then the topmost one is returned.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Nous pouvons l’utiliser dans n’importe lequel de nos gestionnaires d’événements à la souris pour détecter le droppable potentiel sous le pointeur, comme ceci :
 

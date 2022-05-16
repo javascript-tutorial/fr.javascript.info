@@ -5,7 +5,11 @@ Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le
 
 Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre. Elles peuvent décider de mettre en œuvre des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
 
+<<<<<<< HEAD
 Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie de la norme.
+=======
+So it's quite common for an engine to implement only part of the standard.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
 
@@ -40,9 +44,15 @@ Désormais, le code réécrit convient aux anciens moteurs JavaScript.
 
 Habituellement, un développeur exécute le transpiler sur son propre ordinateur, puis déploie le code transpilé sur le serveur.
 
+<<<<<<< HEAD
 En parlant de noms, [Babel](https://babeljs.io) est l'un des transpileurs les plus connus.
 
 Les systèmes de construction de projets modernes, tels que [webpack](http://webpack.js.org/), fournissent des moyens pour exécuter un transpiler automatiquement à chaque changement de code, il est donc très facile à intégrer dans le processus de développement.
+=======
+Speaking of names, [Babel](https://babeljs.io) is one of the most prominent transpilers out there.
+
+Modern project build systems, such as [webpack](https://webpack.js.org/), provide a means to run a transpiler automatically on every code change, so it's very easy to integrate into the development process.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 ## Les polyfills
 
@@ -69,20 +79,34 @@ if (!Math.trunc) { // si une telle fonction n'existe pas
 }
 ```
 
+<<<<<<< HEAD
 JavaScript est un langage très dynamique, les scripts peuvent ajouter/modifier toutes les fonctions, y compris celles intégrées.
 
 Deux librairies intéressantes de polyfills sont :
 - [core js](https://github.com/zloirock/core-js) qui prend en charge beaucoup, permet d'inclure uniquement les fonctionnalités nécessaires.
 - [polyfill.io](http://polyfill.io) est un service qui fournit un script avec des polyfills, en fonction des fonctionnalités et du navigateur de l'utilisateur.
+=======
+JavaScript is a highly dynamic language. Scripts may add/modify any function, even built-in ones.
+
+Two interesting polyfill libraries are:
+- [core js](https://github.com/zloirock/core-js) that supports a lot, allows to include only needed features.
+- [polyfill.io](http://polyfill.io) service that provides a script with polyfills, depending on the features and user's browser.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 
 ## Résumé
 
 Dans ce chapitre, nous aimerions vous motiver à étudier les fonctionnalités du langage modernes et même "de pointe", même si elles ne sont pas encore bien prises en charge par les moteurs JavaScript.
 
+<<<<<<< HEAD
 N'oubliez pas d'utiliser un transpiler (si vous utilisez une syntaxe ou des opérateurs modernes) et des polyfills (pour ajouter des fonctions qui peuvent manquer). Et ils veilleront à ce que le code fonctionne.
 
 Par exemple, plus tard, lorsque vous serez familiarisé avec JavaScript, vous pourrez configurer un système de création de code basé sur [webpack](http://webpack.js.org/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
+=======
+Just don't forget to use a transpiler (if using modern syntax or operators) and polyfills (to add functions that may be missing). They'll ensure that the code works.
+
+For example, later when you're familiar with JavaScript, you can setup a code build system based on [webpack](https://webpack.js.org/) with the [babel-loader](https://github.com/babel/babel-loader) plugin.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 De bonnes ressources qui montrent l'état actuel de la prise en charge de diverses fonctionnalités :
 - <https://kangax.github.io/compat-table/es6/> - pour du pur JavaScript.

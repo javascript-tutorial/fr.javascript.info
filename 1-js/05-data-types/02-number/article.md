@@ -22,7 +22,11 @@ Nous pouvons également utiliser l’underscore `_` comme séparateur :
 let billion = 1_000_000_000;
 ```
 
+<<<<<<< HEAD
 Ici l’underscore `_` joue le rôle de "sucre syntaxique", il rend le nombre plus lisible. Le moteur JavaScript ignore simplement `_` entre les chiffres, donc c'est exactement le même milliard que ci-dessus.
+=======
+Here the underscore `_` plays the role of the "[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Dans la vraie vie cependant, nous essayons d'éviter d'écrire de longues séquences de zéros. Nous sommes trop paresseux pour ça. Nous essaierons d'écrire quelque chose comme "1 milliard" pour un milliard ou "7,3 milliards" pour 7 milliards 300 millions. La même chose est vraie pour la plupart des grands nombres.
 
@@ -178,7 +182,11 @@ Il y a deux façons de le faire:
     alert( num.toFixed(1) ); // "12.4"
     ```
 
+<<<<<<< HEAD
     Veuillez noter que le résultat de `toFixed` est une chaîne de caractères. Si la partie décimale est plus courte qu'indiquée, des zéros sont ajoutés à la fin:
+=======
+    Please note that the result of `toFixed` is a string. If the decimal part is shorter than required, zeroes are appended to the end:
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
     ```js run
     let num = 12.34;
@@ -244,7 +252,14 @@ PHP, Java, C, Perl, Ruby donnent exactement le même résultat, car ils sont bas
 
 Pouvons-nous contourner le problème? Bien sûr, il y a plusieurs façons:
 
+<<<<<<< HEAD
 1. Nous pouvons arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+=======
+```js run
+let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // "0.30"
+```
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
     ```js run
     let sum = 0.1 + 0.2;
@@ -333,9 +348,14 @@ alert( isFinite(num) );
 
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
+<<<<<<< HEAD
 ```smart header="Comparer avec Object.is"
 
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes :
+=======
+```smart header="Compare with `Object.is`"
+There is a special built-in method `Object.is` that compares values like `===`, but is more reliable for two edge cases:
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
 2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
