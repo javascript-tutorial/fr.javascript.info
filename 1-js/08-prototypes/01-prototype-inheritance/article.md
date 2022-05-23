@@ -131,9 +131,14 @@ Il n'y a que deux limitations :
 
 Cela peut aussi être évident, mais quand même: il ne peut y avoir qu'un seul `[[Prototype]]`. Un objet ne peut pas hériter de deux autres.
 
+<<<<<<< HEAD
 
 ```smart header="`__proto__` est un getter/setter historique pour [[Prototype]]`"
 C'est une erreur courante des développeurs novices de ne pas connaître la différence entre les deux.
+=======
+```smart header="`__proto__` is a historical getter/setter for `[[Prototype]]`"
+It's a common mistake of novice developers not to know the difference between these two.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Veuillez noter que `__proto__` n'est *pas la même* que la propriété interne `[[Prototype]]`. C'est un getter/setter pour `[[Prototype]]`. Plus tard, nous verrons des situations où cela compte, pour l'instant gardons cela à l'esprit, alors que nous construisons notre compréhension du langage JavaScript.
 

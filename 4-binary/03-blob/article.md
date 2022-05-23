@@ -100,6 +100,10 @@ blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`, `<a>`, essentiellement tout autre objet qui attend une URL.
 
+<<<<<<< HEAD
+=======
+There's a side effect though. While there's a mapping for a `Blob`, the `Blob` itself resides in the memory. The browser can't free it.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
 

@@ -16,7 +16,7 @@ Le paterne `pattern:^Mary` signifie : "le texte commence puis Mary".
 Similairement, nous pouvons vérifier si le texte termine par `snow` en utilisant `pattern:snow$`:
 
 ```js run
-let str1 = "it's fleece was white as snow";
+let str1 = "its fleece was white as snow";
 alert( /snow$/.test(str1) ); // true
 ```
 

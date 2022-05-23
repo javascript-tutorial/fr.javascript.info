@@ -154,7 +154,11 @@ Selon votre navigateur, le `iframe` ci-dessus est soit vide, soit vous avertit q
 
 ## Affichage de la fonctionnalité désactivée
 
+<<<<<<< HEAD
 L'en-tête `X-Frame-Options` a un effet secondaire. Les autres sites ne pourront pas afficher notre page dans un iframe, même s'ils ont de bonnes raisons de le faire.
+=======
+The `X-Frame-Options` header has a side effect. Other sites won't be able to show our page in a frame, even if they have good reasons to do so.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Il existe donc d'autres solutions... Par exemple, on peut "couvrir" la page avec une `<div>` avec les styles `height : 100% ; width : 100%;`, pour qu'elle intercepte tous les clics. Cette `<div>` doit être retirée si `window == top` ou si l'on s'aperçoit que l'on n'a pas besoin de cette protection.
 

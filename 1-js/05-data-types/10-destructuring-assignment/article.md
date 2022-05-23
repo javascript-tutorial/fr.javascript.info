@@ -2,12 +2,21 @@
 
 Les deux structures de données les plus utilisées en JavaScript sont `Object` et `Array`.
 
+<<<<<<< HEAD
 - Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé.
 - Les tableaux nous permettent de rassembler des éléments de données dans une liste ordonnée.
+=======
+- Objects allow us to create a single entity that stores data items by key.
+- Arrays allow us to gather data items into an ordered list.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
 
+<<<<<<< HEAD
 *L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. 
+=======
+*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
 
@@ -76,11 +85,16 @@ Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisi
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 ```
-That works, because internally a destructuring assignment works by iterating over the right value. It's kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
+That works, because internally a destructuring assignment works by iterating over the right value. It's a kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
 ````
 
 
+<<<<<<< HEAD
 ````smart header="Attribuer à n'importe quoi à la partie gauche"
+=======
+````smart header="Assign to anything at the left-side"
+We can use any "assignables" on the left side.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Nous pouvons utiliser n'importe quel "assignable" à gauche.
 
@@ -180,7 +194,11 @@ alert(rest.length); // 2
 */!*
 ```
 
+<<<<<<< HEAD
 La valeur de `rest` est le tableau des éléments du tableau restants. 
+=======
+The value of `rest` is the array of the remaining array elements.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Nous pouvons utiliser n’importe quel autre nom de variable à la place de `rest`, assurez-vous simplement qu’il a trois points devant lui et soit placé en dernier dans l’affectation par décomposition.
 
@@ -238,7 +256,11 @@ La syntaxe de base est la suivante :
 let {var1, var2} = {var1:…, var2:…}
 ```
 
+<<<<<<< HEAD
 Nous devrions avoir un objet existant sur le côté droit, que nous voulons diviser en variables. La partie gauche contient un "modèle" de type objet pour les propriétés correspondantes. Dans le cas le plus simple, c'est une liste de noms de variables dans `{...}`.
+=======
+We should have an existing object on the right side, that we want to split into variables. The left side contains an object-like "pattern" for corresponding properties. In the simplest case, that's a list of variable names in `{...}`.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 Par exemple :
 
@@ -258,7 +280,11 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
+<<<<<<< HEAD
 Les propriétés `options.title`, `options.width` et `options.height` sont affectées aux variables correspondantes. 
+=======
+Properties `options.title`, `options.width` and `options.height` are assigned to the corresponding variables.
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 L'ordre n'a pas d'importance. Cela fonctionne aussi :
 
@@ -424,7 +450,11 @@ alert( title ); // Menu
 
 Si un objet ou un tableau contient d'autres objets et tableaux imbriqués, nous pouvons utiliser des modèles à gauche plus complexes pour extraire des parties plus profondes.
 
+<<<<<<< HEAD
 Dans le code ci-dessous, `options` a un autre objet dans la propriété` size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
+=======
+In the code below `options` has another object in the property `size` and an array in the property `items`. The pattern on the left side of the assignment has the same structure to extract values from them:
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 ```js run
 let options = {
@@ -433,7 +463,11 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
+<<<<<<< HEAD
   extra: true    
+=======
+  extra: true
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 };
 
 // affectation par décomposition divisée sur plusieurs lignes pour la clarté

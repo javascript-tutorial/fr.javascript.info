@@ -86,7 +86,11 @@ Ainsi, l'exemple ci-dessus utilise `document.getSelection()` pour obtenir le tex
 
 Il est possible de copier/coller pas seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
+<<<<<<< HEAD
 C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour le glisser-déposer et le copier/coller. C'est un peu hors de notre portée maintenant, mais vous pouvez trouver ses méthodes dans la [spécification DataTransfer](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's a bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 En outre, il existe une API asynchrone supplémentaire pour accéder au presse-papiers : `navigator.clipboard`. Plus d'informations à ce sujet dans la spécification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [non pris en charge par Firefox](https://caniuse.com/async-clipboard).
 
