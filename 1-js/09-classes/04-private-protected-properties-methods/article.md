@@ -151,8 +151,8 @@ alert(`Power is: ${coffeeMachine.power}W`); // Power is: 100W
 coffeeMachine.power = 25; // Error (no setter)
 ```
 
-````smart header="Fonctions Accésseur/Mutateur"
-Ici, nous avons utilisé la syntaxe accésseur/mutateur.
+````smart header="Fonctions Accesseur/Mutateur"
+Ici, nous avons utilisé la syntaxe accesseur/mutateur.
 
 Mais la plupart du temps, les fonctions `get ... / set ...` sont préférées, comme ceci:
 
@@ -175,7 +175,7 @@ new CoffeeMachine().setWaterAmount(100);
 
 Cela semble un peu plus long, mais les fonctions sont plus flexibles. Elles peuvent accepter plusieurs arguments (même si nous n'en avons pas besoin maintenant).
 
-D'un autre côté, la syntaxe accésseur/mutateur est plus courte, donc il n'y a pas de règle stricte, c'est à vous de décider.
+D'un autre côté, la syntaxe accesseur/mutateur est plus courte, donc il n'y a pas de règle stricte, c'est à vous de décider.
 ````
 
 ```smart header="Les champs protégés sont hérités"
@@ -225,7 +225,7 @@ coffeeMachine.#waterLimit = 1000; // Error
 Au niveau de la langue, `#` est un signe spécial que le champ est privé. Nous ne pouvons pas y accéder de l'extérieur ou des classes héritées.
 
 Les champs privés n'entrent pas en conflit avec les champs publics. Nous pouvons avoir les champs privés `#waterAmount` et publics `waterAmount` en même temps.
-For instance, let's make `waterAmount` an accessor for `#waterAmount`:
+Pour l'exemple, faisons de `waterAmount` un accesseur pour `#waterAmount`:
 
 ```js run
 class CoffeeMachine {
@@ -250,7 +250,7 @@ alert(machine.#waterAmount); // Error
 
 Contrairement aux champs protégés, les champs privés sont imposés par le langage lui-même. C'est une bonne chose.
 
-Mais si nous héritons de `CoffeeMachine`, nous n’aurons aucun accès direct à `#waterAmount`. Nous aurons besoin de compter sur l'accéseur/mutateur `waterAmount`:
+Mais si nous héritons de `CoffeeMachine`, nous n’aurons aucun accès direct à `#waterAmount`. Nous aurons besoin de compter sur l'accesseur/mutateur `waterAmount`:
 
 ```js
 class MegaCoffeeMachine extends CoffeeMachine {
