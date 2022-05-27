@@ -35,7 +35,7 @@ Et ici comment elle est stockée en mémoire :
 
 ![](variable-contains-reference.svg)
 
-L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), tandis que la varaible `user` (du coté gauche) a une référence à celui-ci.
+L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), tandis que la variable `user` (du coté gauche) a une référence à celui-ci.
 
 On peut imaginer la variable d'objet, ici `user`, comme une feuille de papier avec l'adresse de l'objet écrit dessus.
 
