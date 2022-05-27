@@ -38,8 +38,6 @@ En programmation orientée objet, les propriétés et les méthodes sont divisé
 - *Interface interne* - méthodes et propriétés, accessibles à partir d'autres méthodes de la classe, mais pas de l'extérieur.
 - *Interface externe* - méthodes et propriétés, accessibles aussi de l'extérieur de la classe.
 
-If we continue the analogy with the coffee machine -- what's hidden inside: a boiler tube, heating element, and so on -- is its internal interface.
-
 Si nous continuons l'analogie avec la machine à café - ce qui est caché à l'intérieur: un tube de chaudière, un élément chauffant, etc. -, c'est son interface interne.
 
 Une interface interne est utilisée pour que l’objet fonctionne, ses détails s’utilisent les uns les autres. Par exemple, un tube de chaudière est attaché à l'élément chauffant.
