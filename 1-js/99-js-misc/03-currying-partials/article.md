@@ -7,11 +7,11 @@ libs:
 
 La [curryfication](https://fr.wikipedia.org/wiki/Curryfication) est une technique avancée de travail avec les fonctions. Ce n'est pas seulement utilisé avec JavaScript, mais dans d'autres langages également.
 
-La curryfication est la transformation de fonctions qui traduit une fonction de la forme `f(a, b, c)` en une fonction de la forme `f(a)(b)(c)`.
+La curryfication est la transformation de fonction qui traduit une fonction de la forme `f(a, b, c)` en une fonction de la forme `f(a)(b)(c)`.
 
-La curryfication n'appelle pas une fonction. Elle la transforme simplement.
+La curryfication n'appelle pas une fonction ; elle la transforme simplement.
 
-Voyons d'abord un exemple, pour mieux comprendre de quoi nous parlons, et ensuite mettons en pratique.
+Voyons d'abord un exemple pour mieux comprendre de quoi nous parlons, et mettons ensuite en pratique.
 
 Nous allons créer une fonction d'aide `curry(f)` qui curryfie une fonction `f` à deux arguments. En d'autres mots, `curry(f)` sur une fonction `f(a, b)` la traduit en une fonction qui s'appelle par `f(a)(b)` :
 
@@ -79,7 +79,7 @@ Après ça `log` fonctionne normalement:
 log(new Date(), "DEBUG", "some debug"); // log(a, b, c)
 ```
 
-...Mais aussi dans la forme curryfiée :
+... mais aussi dans la forme curryfiée :
 
 ```js
 log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
@@ -111,7 +111,7 @@ Donc :
 
 ## Implémentation avancée de la curryfication
 
-Au vas où vous souhaitiez entrer dans les détails, voici l'implémentation "avancée" de la curryfication pour les fonctions à plusieurs arguments que nous avons pu utiliser plus haut.
+Au cas où vous souhaiteriez entrer dans les détails, voici l'implémentation "avancée" de la curryfication pour les fonctions à plusieurs arguments que nous avons pu utiliser plus haut.
 
 C'est plutôt court :
 
@@ -164,8 +164,8 @@ function curried(...args) {
 
 Quand on la lance, il y a deux branches `if` :
 
-1. Si le nombre d'`args` passé est égal ou supérieur à celui de la fonction d'origine dans sa définition (`func.length`), alors passez-lui simplement l'appel en utilisant `func.apply`.
-2. Sinon, obtenez un partiel : nous n'appelons pas encore `func`. Au lieu de cela, un autre wrapper est retourné, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux.
+1. Si le nombre d'`args` passé est égal ou supérieur à celui de la fonction d'origine dans sa définition (`func.length`), alors on lui passe simplement l'appel en utilisant `func.apply`.
+2. Sinon, on obtient un partiel : nous n'appelons pas encore `func`. Au lieu de cela, un autre wrapper est retourné, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux.
 
 Ensuite, si nous l'appelons, encore une fois, nous obtiendrons soit un nouveau partiel (si pas assez d'arguments) ou, finalement, le résultat.
 
