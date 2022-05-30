@@ -92,6 +92,38 @@ let fruits = [
 Le style "virgule de fin" facilite l'insertion/la suppression d'éléments, car toutes les lignes se ressemblent.
 ````
 
+## Get last elements with "at"
+
+[recent browser="new"]
+
+Let's say we want a last element of the array.
+
+Some programming languages allow to use negative indexes for the same purpose, like `fruits[-1]`.
+
+Although, in JavaScript it won't work. The result will be `undefined`, because the index in square brackets is treated literally.
+
+We can explicitly calculate the last element index and then access it: `fruits[fruits.length - 1]`.
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+alert( fruits[fruits.length-1] ); // Plum
+```
+
+A bit cumbersome, isn't it? We need to write the variable name twice.
+
+Luckily, there's a shorter syntax: `fruits.at(-1)`:
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+// same as fruits[fruits.length-1]
+alert( fruits.at(-1) ); // Plum
+```
+
+In other words, `arr.at(i)`:
+- is exactly the same as `arr[i]`, if `i >= 0`.
+- for negative values of `i`, it steps back from the end of the array.
 
 ## Les méthodes pop/push, shift/unshift
 
@@ -137,6 +169,8 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 
     alert( fruits ); // Apple, Orange
     ```
+
+    Both `fruits.pop()` and `fruits.at(-1)` return the last element of the array, but `fruits.pop()` also modifies the array by removing it.
 
 `push`
 : Ajoute l'élément à la fin du tableau:
@@ -439,7 +473,11 @@ Rappelons les règles :
 - Si l'un des arguments de `==` est un objet, et l'autre est une primitive, alors l'objet est converti en primitif, comme expliqué dans le chapitre <info:object-toprimitive>.
 - ...À l'exception de `null` et `undefined ` qui s'égalent `==` l'un l'autre et rien d'autre.
 
+<<<<<<< HEAD
 La comparaison stricte `===` est encore plus simple, car elle ne convertit pas les types.
+=======
+The strict comparison `===` is even simpler, as it doesn't convert types.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 Donc, si nous comparons des tableaux avec `==`, ils ne sont jamais les mêmes, sauf si nous comparons deux variables qui référencent exactement le même tableau.
 
@@ -459,7 +497,11 @@ alert( 0 == [] ); // true
 alert('0' == [] ); // false
 ```
 
+<<<<<<< HEAD
 Ici, dans les deux cas, nous comparons une primitive à un objet tableau. Ainsi, le tableau `[]` est converti en primitive à des fins de comparaison et devient une chaîne vide `''`.
+=======
+Here, in both cases, we compare a primitive with an array object. So the array `[]` gets converted to primitive for the purpose of comparison and becomes an empty string `''`.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 Ensuite, le processus de comparaison se poursuit avec les primitives, comme décrit dans le chapitre <info:type-conversions> :
 
@@ -478,6 +520,7 @@ C'est simple: n'utilisez pas l'opérateur `==`. Au lieu de cela, comparez-les é
 
 Array est un type d’objet spécial, adapté au stockage et à la gestion des éléments de données ordonnées.
 
+<<<<<<< HEAD
 - La déclaration:
 
     ```js
@@ -489,11 +532,33 @@ Array est un type d’objet spécial, adapté au stockage et à la gestion des �
     ```
 
     L'appel de `new Array(number)` crée un tableau de longueur donnée, mais sans éléments.
+=======
+The declaration:
+
+```js
+// square brackets (usual)
+let arr = [item1, item2...];
+
+// new Array (exceptionally rare)
+let arr = new Array(item1, item2...);
+```
+
+The call to `new Array(number)` creates an array with the given length, but without elements.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 - La propriété `length` est la longueur du tableau ou, plus précisément, son dernier index numérique plus un. Il est auto-ajusté par les méthodes de tableau.
 - Si nous raccourcissons `length` manuellement, le tableau est tronqué.
 
+<<<<<<< HEAD
 Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
+=======
+Getting the elements:
+
+- we can get element by its index, like `arr[0]`
+- also we can use `at(i)` method to get negative-index elements, for negative values of `i`, it steps back from the end of the array. In the rest it works same as `arr[i]`, if `i >= 0`.
+
+We can use an array as a deque with the following operations:
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 - `push (...items)` ajoute `items` à la fin.
 - `pop()` supprime l'élément de la fin et le renvoie.

@@ -52,8 +52,12 @@ describe("pow", function() {
 Une spécification a trois blocs de construction principaux que vous pouvez voir ci-dessus :
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Quelle fonctionnalité nous décrivons. Utilisations pour grouper les "workers" - le bloc `it`. Dans notre cas, nous décrivons la fonction `pow`.
 Quelle fonctionnalité nous décrivons. Dans notre cas, nous décrivons la fonction `pow`. Utilisée pour grouper les "workers" - le bloc `it`.
+=======
+: What functionality we're describing? In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 `it("use case description", function() { ... })`
 : Dans le titre de `it`, nous décrivons d'une *manière lisible par l'homme* le cas particulier d'utilisation, et le deuxième argument est une fonction qui le teste.
