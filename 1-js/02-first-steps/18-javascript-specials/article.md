@@ -55,7 +55,11 @@ Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous 
 
 La directive doit être au sommet d'un script ou au début d'un corps de fonction.
 
+<<<<<<< HEAD
 Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible". Nous préférons généralement le comportement moderne.
+=======
+Without `"use strict"`, everything still works, but some features behave in the old-fashioned, "compatible" way. We'd generally prefer the modern behavior.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 Certaines fonctionnalités modernes du langage (telles que les classes que nous étudierons dans le futur) activent implicitement le mode strict.
 
@@ -255,7 +259,11 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 3. Fonctions fléchées :
 
     ```js
+<<<<<<< HEAD
     // expression à droite
+=======
+    // expression on the right side
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
     let sum = (a, b) => a + b;
 
     // ou une syntaxe multiligne avec {...}, il faut return ici :
