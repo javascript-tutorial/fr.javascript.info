@@ -106,7 +106,11 @@ class Rabbit extends Animal {
 }
 ```
 
+<<<<<<< HEAD
 ...Mais en général, nous ne voulons pas remplacer totalement une méthode parente, mais plutôt construire dessus, modifier ou étendre ses fonctionnalités. Nous faisons quelque chose dans notre méthode, mais appelons la méthode parente avant / après ou dans le processus.
+=======
+Usually, however, we don't want to totally replace a parent method, but rather to build on top of it to tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 Les classes fournissent le mot clé `"super"` pour cela.
 
@@ -159,7 +163,12 @@ Maintenant, `Rabbit` a la méthode `stop` qui appelle le `super.stop()` du paren
 ````smart header="Les fonctions fléchées n'ont pas de `super`"
 Comme mentionné dans le chapitre <info: arrow-functions>, les fonctions fléchées n'ont pas `super`.
 
+<<<<<<< HEAD
 Si on y accède, c'est tiré de la fonction externe. Par exemple:
+=======
+If accessed, it's taken from the outer function. For instance:
+
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 ```js
 class Rabbit extends Animal {
   stop() {
@@ -176,8 +185,12 @@ setTimeout(function() { super.stop() }, 1000);
 ```
 ````
 
+<<<<<<< HEAD
 
 ## Remplacement du constructeur
+=======
+## Overriding constructor
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 Avec les constructeurs, cela devient un peu délicat.
 
@@ -280,11 +293,15 @@ alert(rabbit.earLength); // 10
 */!*
 ```
 
+<<<<<<< HEAD
 
 ### Remplacer les champs de classe : une note délicate
 
 ```warn header="Note avancée"
 Cette note suppose que vous avez une certaine expérience avec les classes, peut-être dans d'autres langages de programmation.
+=======
+### Overriding class fields: a tricky note
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 Cela donne un meilleur aperçu du langage et explique également le comportement qui pourrait être une source de bogues (mais pas très souvent).
 
@@ -369,14 +386,22 @@ Dans notre cas, `Rabbit` est la classe dérivée. Il n'y a pas de `constructor()
 
 Ainsi, `new Rabbit()` appelle `super()`, exécutant ainsi le constructeur parent, et (selon la règle pour les classes dérivées) seulement après que ses champs de classe sont initialisés. Au moment de l'exécution du constructeur parent, il n'y a pas encore de champs de classe `Rabbit`, c'est pourquoi les champs `Animal` sont utilisés.
 
+<<<<<<< HEAD
 Cette subtile différence entre les champs et les méthodes est propre à JavaScript.
+=======
+This subtle difference between fields and methods is specific to JavaScript.
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 Heureusement, ce comportement ne se révèle que si un champ surchargé est utilisé dans le constructeur parent. Ensuite, il peut être difficile de comprendre ce qui se passe, alors nous l'expliquons ici.
 
 Si cela devient un problème, on peut le résoudre en utilisant des méthodes ou des getters / setters au lieu de champs.
 
+<<<<<<< HEAD
 
 ## Super: les internes, [[HomeObject]]
+=======
+## Super: internals, [[HomeObject]]
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 ```warn header="Informations avancées"
 Si vous lisez le tutoriel pour la première fois - cette section peut être ignorée.
