@@ -8,9 +8,15 @@ Créez un décorateur "d'accélération" `throttle(f, ms)` -- qui retourne un wr
 
 Lorsqu'il est appelé plusieurs fois, il passe l'appel à `f` au maximum une fois par `ms` millisecondes.
 
+<<<<<<< HEAD
 La différence avec debounce est que c'est un décorateur complètement différent :
 - `debounce` exécute la fonction une fois après la période de "cooldown". Bon pour traiter le résultat final.
 - `throttle` ne l'exécute pas plus souvent que le temps donné en `ms`. Bon pour les mises à jour régulières qui ne devraient pas être très fréquentes.
+=======
+Compared to the debounce decorator, the behavior is completely different:
+- `debounce` runs the function once after the "cooldown" period. Good for processing the final result.
+- `throttle` runs it not more often than given `ms` time. Good for regular updates that shouldn't be very often.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 En d'autres termes, `throttle` est comme une secrétaire qui accepte les appels téléphoniques, mais qui dérange le patron (appellez le `f` réel) pas plus d'une fois par `ms` millisecondes.
 

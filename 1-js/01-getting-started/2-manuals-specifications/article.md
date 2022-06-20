@@ -28,7 +28,12 @@ De plus, si vous développez pour le navigateur, d'autres spécifications sont c
 
 JavaScript est un langage en développement, de nouvelles fonctionnalités sont ajoutées régulièrement.
 
+<<<<<<< HEAD
 Pour voir si elles sont supportées dans les moteurs, au sein des navigateurs et autres, voir :
+=======
+- <https://caniuse.com> - per-feature tables of support, e.g. to see which engines support modern cryptography functions: <http://caniuse.com/#feat=cryptography>.
+- <https://kangax.github.io/compat-table> - a table with language features and engines that support those or don't support.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 - <http://caniuse.com> - tables de prise en charge par fonctionnalité, par exemple pour voir quels moteurs supportent les fonctions de cryptographie modernes : <http://caniuse.com/#feat=cryptography>.
 - <https://kangax.github.io/compat-table> - un tableau avec les fonctionnalités linguistiques et les moteurs qui les prennent en charge ou non.

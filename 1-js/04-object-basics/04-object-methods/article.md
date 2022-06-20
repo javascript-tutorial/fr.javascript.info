@@ -51,7 +51,7 @@ let user = {
 // d'abord, déclarer
 function sayHi() {
   alert("Hello!");
-};
+}
 
 // puis ajouter comme une méthode
 user.sayHi = sayHi;
@@ -90,7 +90,11 @@ user = {
 
 Comme démontré, nous pouvons omettre `"function"` et simplement écrire `sayHi()`.
 
+<<<<<<< HEAD
 A vrai dire, les notations ne sont pas totalement identiques. Il existe des différences subtiles liées à l'héritage d'objet (à couvrir plus tard), mais pour le moment, elles importent peu. Dans presque tous les cas, la syntaxe la plus courte est préférable.
+=======
+To tell the truth, the notations are not fully identical. There are subtle differences related to object inheritance (to be covered later), but for now they do not matter. In almost all cases, the shorter syntax is preferred.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 ## "this" dans les méthodes
 

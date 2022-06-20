@@ -164,7 +164,11 @@ Le gestionnaire `onkeydown` utilise ici `checkPhoneKey` pour vérifier la touche
 
 Comme nous le savons, la valeur `false` renvoyée par le gestionnaire d'événements, attribuée à l'aide d'une propriété DOM ou d'un attribut, comme ci-dessus, empêche l'action par défaut, donc rien n'apparaît dans le `<input>` pour les clés qui ne passent pas le test. (La valeur 'true' renvoyée n'affecte rien, seul le renvoi de 'false' compte)
 
+<<<<<<< HEAD
 Veuillez noter que les touches spéciales, telles que `key:Backspace`, `key:Left`, `key:Right`, ne fonctionnent pas dans l'input. C'est un effet secondaire du filtre strict `checkPhoneKey`. Ces clés lui font retourner `false`.
+=======
+Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, do not work in the input. That's a side effect of the strict filter `checkPhoneKey`. These keys make it return `false`.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Détendons un peu le filtre en autorisant les touches fléchées `key:Left`, `key:Right` et `key:Delete`, `key:Backspace` :
 

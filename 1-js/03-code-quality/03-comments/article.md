@@ -143,7 +143,11 @@ De tels commentaires nous permettent de comprendre le but de la fonction et de l
 
 À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peut aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
 
+<<<<<<< HEAD
 En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc3/jsdoc) qui peut générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
+=======
+Also, there are tools like [JSDoc 3](https://github.com/jsdoc/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <https://jsdoc.app>.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Pourquoi la tâche est-elle résolue de cette façon ?
 : Ce qui est écrit est important. Mais ce qui *n’est pas* écrit peut être encore plus important pour comprendre ce qui se passe. Pourquoi la tâche est-elle résolue exactement de cette façon ? Le code ne donne pas de réponse.
