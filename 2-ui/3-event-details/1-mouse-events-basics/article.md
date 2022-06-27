@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # Evenements de la souris
+=======
+
+# Mouse events
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 Dans ce chapitre, nous verrons plus en détails les événements de la souris et leurs propriétés.
 
@@ -52,7 +57,11 @@ Les événements liés aux clics ont toujours la propriété `button`, qui perme
 
 Nous ne l'utilisons généralement pas pour les événements `click` et `contextmenu`, car le premier se produit uniquement lors d'un clic gauche, et le second - uniquement lors d'un clic droit.
 
+<<<<<<< HEAD
 D'un autre côté, les gestionnaires `mousedown` et `mouseup` peuvent avoir besoin de `event.button`, car ces événements se déclenchent sur n'importe quel bouton, donc` button` permet de faire la distinction entre "right-mousedown" et "left-mousedown".
+=======
+On the other hand, `mousedown` and `mouseup` handlers may need `event.button`, because these events trigger on any button, so `button` allows to distinguish between "right-mousedown" and "left-mousedown".
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 Les valeurs possibles de `event.button` sont :
 
@@ -154,7 +163,11 @@ Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir
 
 ## Empêcher la sélection sur le mousedown
 
+<<<<<<< HEAD
 Le double clic de souris a un effet secondaire qui peut être dérangeant dans certaines interfaces: il sélectionne du texte.
+=======
+Double mouse click has a side effect that may be disturbing in some interfaces: it selects text.
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 par exemple, double-cliquer sur le texte ci-dessous le sélectionne en plus de notre gestionnaire :
 

@@ -6,8 +6,15 @@ Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caract
 
 Il y a aussi des cas où nous devons convertir explicitement une valeur pour corriger les choses.
 
+<<<<<<< HEAD
 ```smart header="On ne parle pas encore des objets"
 Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les primitives. Plus tard, après avoir appris les objets, nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
+=======
+```smart header="Not talking about objects yet"
+In this chapter, we won't cover objects. For now, we'll just be talking about primitives.
+
+Later, after we learn about objects, in the chapter <info:object-toprimitive> we'll see how objects fit in.
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 ```
 
 ## String Conversion

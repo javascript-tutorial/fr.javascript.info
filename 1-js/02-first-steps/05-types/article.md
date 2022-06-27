@@ -267,6 +267,7 @@ Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit
 
 Il existe 8 types de données de base en JavaScript.
 
+<<<<<<< HEAD
 - `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à <code>±(2<sup>53</sup>-1)</code>.
 - `bigint` pour des nombres entiers de longueur arbitraire.
 - `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir zéro ou plusieurs caractères, il n'y a pas de type à caractère unique distinct.
@@ -275,6 +276,18 @@ Il existe 8 types de données de base en JavaScript.
 - `undefined` pour les valeurs non attribuées - un type autonome avec une valeur unique `undefined`.
 - `object` pour des structures de données plus complexes.
 - `symbol` pour les identifiants uniques.
+=======
+- Seven primitive data types:
+    - `number` for numbers of any kind: integer or floating-point, integers are limited by <code>±(2<sup>53</sup>-1)</code>.
+    - `bigint` for integer numbers of arbitrary length.
+    - `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+    - `boolean` for `true`/`false`.
+    - `null` for unknown values -- a standalone type that has a single value `null`.
+    - `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+    - `symbol` for unique identifiers.
+- And one non-primitive data type:
+    - `object` for more complex data structures.
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable.
 

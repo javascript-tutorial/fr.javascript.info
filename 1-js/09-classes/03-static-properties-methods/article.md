@@ -109,7 +109,22 @@ Les méthodes statiques sont également utilisées dans les classes liées à la
 Article.remove({id: 12345});
 ```
 
+<<<<<<< HEAD
 ## Propriétés statiques
+=======
+````warn header="Static methods aren't available for individual objects"
+Static methods are callable on classes, not on individual objects.
+
+E.g. such code won't work:
+
+```js
+// ...
+article.createTodays(); /// Error: article.createTodays is not a function
+```
+````
+
+## Static properties
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 [recent browser=Chrome]
 

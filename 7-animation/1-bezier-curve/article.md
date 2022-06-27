@@ -4,7 +4,17 @@ Les courbes de Bézier sont utilisées en infographie pour dessiner des formes, 
 
 Ils sont très simples, il suffit de les étudier une fois pour se sentir à l'aise dans le monde des graphiques vectoriels et des animations avancées.
 
+<<<<<<< HEAD
 ## Points de contrôle
+=======
+```smart header="Some theory, please"
+This article provides a theoretical, but very needed insight into what Bezier curves are, while [the next one](info:css-animations#bezier-curve) shows how we can use them for CSS animations.
+
+Please take your time to read and understand the concept, it'll serve you well.
+```
+
+## Control points
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 Une [courbe de Bézier](https://fr.wikipedia.org/wiki/Courbe_de_B%C3%A9zier) est défini par des points de contrôle.
 

@@ -2,7 +2,11 @@
 
 `XMLHttpRequest` est un objet intégré du navigateur qui permet de faire des requêtes HTTP en JavaScript.
 
+<<<<<<< HEAD
 Bien qu'il ait le mot "XML" dans son nom, il peut fonctionner sur toutes les données, pas seulement au format XML. Nous pouvons upload/download des fichiers, suivre les progrès et bien plus encore.
+=======
+Despite having the word "XML" in its name, it can operate on any data, not only in XML format. We can upload/download files, track progress and much more.
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 
 À l'heure actuelle, il existe une autre méthode, plus moderne, `fetch`, qui déprécie quelque peu `XMLHttpRequest`.
 
