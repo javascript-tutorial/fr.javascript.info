@@ -217,7 +217,11 @@ L'objet range que nous avons créé dans l'exemple ci-dessus a les propriétés 
 
 ## Méthodes de sélection de plages
 
+<<<<<<< HEAD
 Il existe de nombreuses méthodes pratiques pour manipuler les plages.
+=======
+There are many convenient methods to manipulate ranges.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 Nous avons déjà vu `setStart` et `setEnd`, voici d'autres méthodes similaires.
 
@@ -439,7 +443,11 @@ As text: <span id="astext"></span>
 
 ## Méthodes de sélection
 
+<<<<<<< HEAD
 Nous pouvons travailler avec la sélection en ajoutant/supprimant (add/remove) des plages :
+=======
+We can work with the selection by adding/removing ranges:
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 - `getRangeAt(i)` -- obtient la i-ième plage, en commençant par `0`. Dans tous les navigateurs sauf Firefox, seul `0` est utilisé.
 - `addRange(range)` -- ajoute `range` à la sélection. Tous les navigateurs, à l'exception de Firefox, ignorent l'appel, si la sélection a déjà une plage associée.

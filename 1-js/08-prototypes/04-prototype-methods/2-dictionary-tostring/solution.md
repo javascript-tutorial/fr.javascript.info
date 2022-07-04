@@ -28,4 +28,8 @@ alert(dictionary); // "apple,__proto__"
 
 Lorsque nous créons une propriété à l'aide d'un descripteur, ses indicateurs sont `false` par défaut. Donc, dans le code ci-dessus, `dictionary.toString` est non énumérable.
 
+<<<<<<< HEAD
 Voir le chapitre [](info:property-descriptors) pour revoir.
+=======
+See the chapter [](info:property-descriptors) for review.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f

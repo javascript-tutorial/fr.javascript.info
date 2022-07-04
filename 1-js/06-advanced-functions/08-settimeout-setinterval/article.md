@@ -232,7 +232,11 @@ setTimeout(function() {...}, 100);
 
 Pour `setInterval`, la fonction reste en mémoire jusqu'à ce qu'on appelle `clearInterval`.
 
+<<<<<<< HEAD
 Mais il y a un effet de bord, une fonction référence l'environement lexical extérieur, donc tant qu'elle existe, les variables extérieures existent aussi. Ces variables peuvent occuper autant d'espace mémoire que la fonction elle-même. De ce fait quand on n'a plus besoin d'une fonction planifiée, il est préférable de l'annuler, même si elle est courte.
+=======
+There's a side effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 ````
 
 ## setTimeout sans délai
@@ -294,9 +298,16 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 
 Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 
+<<<<<<< HEAD
 Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
 - Le CPU est surchargé.
 - L'onglet du navigateur est en tâche de fond.
 - L'ordinateur est en mode économie d'énergie.
+=======
+For example, the in-browser timer may slow down for a lot of reasons:
+- The CPU is overloaded.
+- The browser tab is in the background mode.
+- The laptop is on battery saving mode.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 Tout ceci peut augmenter la résolution de l'horloge (le délai minimum) jusqu'à 300ms voire 1000ms en fonction du navigateur et des paramètres de performance au niveau du système d'exploitation.

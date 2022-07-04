@@ -91,7 +91,11 @@ Mais il y a une embûche. Si nous avons un script après le style, ce script doi
 ```html run
 <link type="text/css" rel="stylesheet" href="style.css">
 <script>
+<<<<<<< HEAD
   // le script ne s'exécute pas tant que la feuille de style n'est pas chargée
+=======
+  // the script doesn't execute until the stylesheet is loaded
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
   alert(getComputedStyle(document.body).marginTop);
 </script>
 ```

@@ -21,14 +21,22 @@ alert( rabbit.hasOwnProperty('name') ); // true
 
 Mais ce n'est pas tout.
 
+<<<<<<< HEAD
 Même après le correctif, il existe toujours une différence importante entre `"class Rabbit extends Object"` et `class Rabbit`.
+=======
+Even after the fix, there's still an important difference between `"class Rabbit extends Object"` and `class Rabbit`.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 Comme on le sait, la syntaxe "extend" configure deux prototypes:
 
 1. Entre le `"prototype"` des fonctions du constructeur (pour les méthodes).
 2. Entre les fonctions du constructeur elles-mêmes (pour les méthodes statiques).
 
+<<<<<<< HEAD
 Dans notre cas, pour `class Rabbit extends Object`, cela signifie:
+=======
+In the case of `class Rabbit extends Object` it means:
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 ```js run
 class Rabbit extends Object {}
@@ -37,7 +45,11 @@ alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
 alert( Rabbit.__proto__ === Object ); // (2) true
 ```
 
+<<<<<<< HEAD
 Donc `Rabbit` donne maintenant accès aux méthodes statiques de `Object` via `Rabbit`, comme ceci:
+=======
+So `Rabbit` now provides access to the static methods of `Object` via `Rabbit`, like this:
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 ```js run
 class Rabbit extends Object {}
@@ -67,7 +79,11 @@ alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error
 
 Donc, `Rabbit` ne donne pas accès aux méthodes statiques de `Object` dans ce cas.
 
+<<<<<<< HEAD
 En passant, `Function.prototype` a des méthodes de fonction  "génériques", comme `call`, `bind`, etc. Elles sont finalement disponibles dans les deux cas, car pour le constructeur `Object` intégré, `Object.__proto__ === Function.prototype`.
+=======
+By the way, `Function.prototype` also has "generic" function methods, like `call`, `bind` etc. They are ultimately available in both cases, because for the built-in `Object` constructor, `Object.__proto__ === Function.prototype`.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 Voici l'image:
 
