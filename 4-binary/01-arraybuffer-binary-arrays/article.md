@@ -31,7 +31,11 @@ Commençons par éliminer une possible source de confusion. `ArrayBuffer` n'a ri
 
 **Pour manipuler un `ArrayBuffer`, nous avons besoin d'utiliser un objet de "vue".**
 
+<<<<<<< HEAD
 Un objet de "vue" ne stocke rien tout seul. Ce sont les lunettes qui donnent une interprétation des octets stockés dans l'`ArrayBuffer`.
+=======
+A view object does not store anything on its own. It's the "eyeglasses" that give an interpretation of the bytes stored in the `ArrayBuffer`.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Par exemple:
 

@@ -139,7 +139,11 @@ switch (a) {
 
 Maintenant, les `3` et `5` affichent le même message.
 
+<<<<<<< HEAD
 La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans interruption. Ici, l’exécution du `case 3` commence à partir de la ligne `(*)` et passe par le `case 5`, car il n’ya pas de `break`.
+=======
+The ability to "group" cases is a side effect of how `switch/case` works without `break`. Here the execution of `case 3` starts from the line `(*)` and goes through `case 5`, because there's no `break`.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ## Le type compte
 

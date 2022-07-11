@@ -15,9 +15,13 @@ Un IDE charge le projet (peut contenir de nombreux fichiers), permet la navigati
 Si vous n'avez pas encore pensé à sélectionner un IDE, examinez les variantes suivantes :
 
 - [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+<<<<<<< HEAD
 - [WebStorm](http://www.jetbrains.com/webstorm/) pour le développement frontend et autres éditeurs de la même société si vous avez besoin de langues supplémentaires.
 
 Pour Windows, il existe également "Visual Studio", à ne pas confondre avec "Visual Studio Code ". "Visual Studio" est un éditeur payant et puissant, uniquement conçu pour Windows, bien adapté à la plate-forme .NET. C’est aussi bon en JavaScript. Il y a aussi une version gratuite [Visual Studio Community](https://www.visualstudio.com/vs/community/).
+=======
+- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, paid).
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 La plupart des IDE sont payants, mais ont une période d'essai. Leur coût est généralement négligeable par rapport au salaire d’un développeur qualifié, alors choisissez le meilleur pour vous.
 

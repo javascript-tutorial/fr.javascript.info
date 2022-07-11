@@ -70,9 +70,26 @@ Nous allons en voir plus sur le travail avec les nombres dans le chapitre <info:
 
 ## BigInt [#bigint-type]
 
+<<<<<<< HEAD
 En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>(2<sup>53</sup>-1)</code> (c'est `9007199254740991`), ou moins que <code>-(2<sup>53</sup>-1)</code> pour les chiffres négatifs. C'est une limitation technique causée par leur représentation interne.
 
 Dans la plupart des cas, cela suffit, mais parfois nous avons besoin de très gros nombres, par exemple pour la cryptographie ou les horodatages à la microseconde.
+=======
+In JavaScript, the "number" type cannot safely represent integer values larger than <code>(2<sup>53</sup>-1)</code> (that's `9007199254740991`), or less than <code>-(2<sup>53</sup>-1)</code> for negatives.
+
+To be really precise, the "number" type can store larger integers (up to <code>1.7976931348623157 * 10<sup>308</sup></code>), but outside of the safe integer range <code>±(2<sup>53</sup>-1)</code> there'll be a precision error, because not all digits fit into the fixed 64-bit storage. So an "approximate" value may be stored.
+
+For example, these two numbers (right above the safe range) are the same:
+
+```js
+console.log(9007199254740991 + 1); // 9007199254740992
+console.log(9007199254740991 + 2); // 9007199254740992
+```
+
+So to say, all odd integers greater than <code>(2<sup>53</sup>-1)</code> can't be stored at all in the "number" type.
+
+For most purposes <code>±(2<sup>53</sup>-1)</code> range is quite enough, but sometimes we need the entire range of really big integers, e.g. for cryptography or microsecond-precision timestamps.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 `BigInt` a récemment été ajouté au langage pour représenter des entiers de longueur arbitraire.
 
@@ -267,6 +284,7 @@ Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit
 
 Il existe 8 types de données de base en JavaScript.
 
+<<<<<<< HEAD
 - `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à <code>±(2<sup>53</sup>-1)</code>.
 - `bigint` pour des nombres entiers de longueur arbitraire.
 - `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir zéro ou plusieurs caractères, il n'y a pas de type à caractère unique distinct.
@@ -275,6 +293,18 @@ Il existe 8 types de données de base en JavaScript.
 - `undefined` pour les valeurs non attribuées - un type autonome avec une valeur unique `undefined`.
 - `object` pour des structures de données plus complexes.
 - `symbol` pour les identifiants uniques.
+=======
+- Seven primitive data types:
+    - `number` for numbers of any kind: integer or floating-point, integers are limited by <code>±(2<sup>53</sup>-1)</code>.
+    - `bigint` for integer numbers of arbitrary length.
+    - `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+    - `boolean` for `true`/`false`.
+    - `null` for unknown values -- a standalone type that has a single value `null`.
+    - `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+    - `symbol` for unique identifiers.
+- And one non-primitive data type:
+    - `object` for more complex data structures.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable.
 

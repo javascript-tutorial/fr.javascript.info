@@ -22,6 +22,10 @@ Pourquoi cela se produit-il ?
   alert(table); // la table, comme il se doit
 
   table.remove();
+<<<<<<< HEAD
   // pourquoi y a-t-il encore aaa dans le document ?
+=======
+  // why there's still "aaa" in the document?
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 </script>
 ```

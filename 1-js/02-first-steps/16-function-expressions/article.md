@@ -94,6 +94,11 @@ Tout fonctionnerait de la même manière.
 ````smart header="Pourquoi y a-t-il un point-virgule à la fin ?"
 Il peut y avoir une question, pourquoi la Fonction Expression a un point-virgule `;` à la fin, et la Fonction Déclaration non :
 
+<<<<<<< HEAD
+=======
+````smart header="Why is there a semicolon at the end?"
+You might wonder, why do Function Expressions have a semicolon `;` at the end, but Function Declarations do not:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ```js
 function sayHi() {
@@ -147,13 +152,21 @@ function showCancel() {
 ask("Do you agree?", showOk, showCancel);
 ```
 
+<<<<<<< HEAD
 En pratique, ces fonctions sont très utiles. La principale différence entre une demande réelle (`ask`) et l'exemple ci-dessus est que les fonctions réelles utilisent des moyens d'interagir avec l'utilisateur plus complexes que la simple confirmation (`confirm`). Dans le navigateur, une telle fonction dessine généralement une belle fenêtre de questions. Mais c'est une autre histoire.
+=======
+In practice, such functions are quite useful. The major difference between a real-life `ask` and the example above is that real-life functions use more complex ways to interact with the user than a simple `confirm`. In the browser, such functions usually draw a nice-looking question window. But that's another story.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 **Les arguments `showOk` et `showCancel` de `ask` s'appellent des *fonctions callback* (fonctions de rappel) ou simplement des *callbacks* (rappels).**
 
 L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la "non" réponse.
 
+<<<<<<< HEAD
 Nous pouvons utiliser les Expressions de Fonction pour écrire la même fonction mais plus courte :
+=======
+We can use Function Expressions to write an equivalent, shorter function:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ```js run no-beautify
 function ask(question, yes, no) {
@@ -189,7 +202,11 @@ Formulons les principales différences entre les déclarations de fonction et le
 
 Tout d'abord, la syntaxe : comment les différencier dans le code.
 
+<<<<<<< HEAD
 - *Déclaration de fonction:* une fonction déclarée séparément dans le flux de code principal.
+=======
+- *Function Declaration:* a function, declared as a separate statement, in the main code flow:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js
     // Function Declaration
@@ -197,7 +214,11 @@ Tout d'abord, la syntaxe : comment les différencier dans le code.
       return a + b;
     }
     ```
+<<<<<<< HEAD
 - *Fonction Expression :* une fonction créée dans une expression ou dans une autre construction de syntaxe. Ici, la fonction est créée à droite de "l'affectation de l'expression" `=` :
+=======
+- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created on the right side of the "assignment expression" `=`:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js
     // Function Expression
@@ -295,8 +316,13 @@ if (age < 18) {
 */!*
                            //  |
   function welcome() {     //  |
+<<<<<<< HEAD
     alert("Hello!");      //  |  La déclaration de fonction est disponible
   }                        //  |  partout dans le bloc où elle est déclarée
+=======
+    alert("Hello!");       //  |  Function Declaration is available
+  }                        //  |  everywhere in the block where it's declared
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
                            //  |
 *!*
   welcome();               // /   (exécution)

@@ -2,9 +2,15 @@
 
 En JavaScript moderne, il existe deux types de nombres :
 
+<<<<<<< HEAD
 1. Les nombres normaux en JavaScript sont stockés au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), également connu sous le nom de "nombres à virgule flottante double précision". Ce sont des chiffres que nous utilisons le plus souvent, et nous en parlerons dans ce chapitre.
 
 2. Les nombres BigInt pour représenter des entiers de longueur arbitraire. Ils sont parfois nécessaires, car un nombre régulier ne peut pas dépasser de manière précise <code>2<sup>53</sup></code> ou être inférieur à <code>-2<sup>53</sup></code>. Comme les bigints sont utilisés dans quelques zones spéciales, nous leur consacrons un chapitre spécial <info:bigint>.
+=======
+1. Regular numbers in JavaScript are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), also known as "double precision floating point numbers". These are numbers that we're using most of the time, and we'll talk about them in this chapter.
+
+2. BigInt numbers represent integers of arbitrary length. They are sometimes needed because a regular integer number can't safely exceed <code>(2<sup>53</sup>-1)</code> or be less than <code>-(2<sup>53</sup>-1)</code>, as we mentioned earlier in the chapter <info:types>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Donc, ici, nous allons parler de chiffres réguliers. Augmentons nos connaissances à leur sujet.
 
@@ -22,7 +28,11 @@ Nous pouvons également utiliser l’underscore `_` comme séparateur :
 let billion = 1_000_000_000;
 ```
 
+<<<<<<< HEAD
 Ici l’underscore `_` joue le rôle de "sucre syntaxique", il rend le nombre plus lisible. Le moteur JavaScript ignore simplement `_` entre les chiffres, donc c'est exactement le même milliard que ci-dessus.
+=======
+Here the underscore `_` plays the role of the "[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Dans la vraie vie cependant, nous essayons d'éviter d'écrire de longues séquences de zéros. Nous sommes trop paresseux pour ça. Nous essaierons d'écrire quelque chose comme "1 milliard" pour un milliard ou "7,3 milliards" pour 7 milliards 300 millions. La même chose est vraie pour la plupart des grands nombres.
 
@@ -51,7 +61,11 @@ let mсs = 0.000001;
 Comme avant, l'utilisation de `"e"` peut nous aider. Si nous voulons éviter d'écrire les zéros explicitement, nous pourrions dire la même chose comme :
 
 ```js
+<<<<<<< HEAD
 let mcs = 1e-6; // six zéros à gauche de 1
+=======
+let mcs = 1e-6; // five zeroes to the left from 1
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 ```
 
 Si nous comptons les zéros dans `0.000001`, il y en a 6. Donc logiquement, c'est `1e-6`.
@@ -64,6 +78,9 @@ En d'autres termes, un nombre négatif après `"e"` signifie une division par 1 
 
 // -6 divise par 1 avec 6 zéros
 1.23e-6 === 1.23 / 1000000; // 0.00000123
+
+// an example with a bigger number
+1234e-2 === 1234 / 100; // 12.34, decimal point moves 2 times
 ```
 
 ### Nombres hexadécimaux, binaires et octaux
@@ -178,7 +195,11 @@ Il y a deux façons de le faire:
     alert( num.toFixed(1) ); // "12.4"
     ```
 
+<<<<<<< HEAD
     Veuillez noter que le résultat de `toFixed` est une chaîne de caractères. Si la partie décimale est plus courte qu'indiquée, des zéros sont ajoutés à la fin:
+=======
+    Please note that the result of `toFixed` is a string. If the decimal part is shorter than required, zeroes are appended to the end:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js run
     let num = 12.34;
@@ -189,7 +210,11 @@ Il y a deux façons de le faire:
 
 ## Calculs imprécis
 
+<<<<<<< HEAD
 En interne, un nombre est représenté au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), il y a donc exactement 64 bits pour stocker un nombre : 52 d'entre eux sont utilisés pour stocker les chiffres, 11 d'entre eux stockent la position du point décimal(ils sont zéro pour les nombres entiers), et 1 bit est pour le signe.
+=======
+Internally, a number is represented in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point, and 1 bit is for the sign.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Si un nombre est vraiment énorme, il peut déborder du stockage 64 bits et devenir une valeur numérique spéciale `Infinity` :
 
@@ -244,7 +269,14 @@ PHP, Java, C, Perl, Ruby donnent exactement le même résultat, car ils sont bas
 
 Pouvons-nous contourner le problème? Bien sûr, il y a plusieurs façons:
 
+<<<<<<< HEAD
 1. Nous pouvons arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+=======
+```js run
+let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // "0.30"
+```
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js run
     let sum = 0.1 + 0.2;
@@ -307,7 +339,11 @@ Ils appartiennent au type `number`, mais ne sont pas des numéros "normaux". Il 
     alert( isNaN("str") ); // true
     ```
 
+<<<<<<< HEAD
     Mais avons-nous besoin de cette fonction? Ne pouvons-nous pas simplement utiliser la comparaison `=== NaN`? Désolé, mais la réponse est non. La valeur `NaN` est unique en ce sens qu'elle ne vaut rien, y compris elle-même:
+=======
+    But do we need this function? Can't we just use the comparison `=== NaN`? Unfortunately not. The value `NaN` is unique in that it does not equal anything, including itself:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js run
     alert( NaN === NaN ); // false
@@ -333,9 +369,14 @@ alert( isFinite(num) );
 
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
+<<<<<<< HEAD
 ```smart header="Comparer avec Object.is"
 
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes :
+=======
+```smart header="Compare with `Object.is`"
+There is a special built-in method `Object.is` that compares values like `===`, but is more reliable for two edge cases:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 1. Cela fonctionne avec `Nan`: `Object.is(NaN, NaN) === true`, c'est une bonne chose.
 2. Les valeurs `0` et `-0` sont différentes: `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
@@ -402,8 +443,13 @@ Quelques exemples:
     alert( Math.random() ); // ... (tout nombre aléatoire)
     ```
 
+<<<<<<< HEAD
 `Math.max(a, b, c...)` / `Math.min(a, b, c...)`
 : Retourne le plus grand / le plus petit des nombres indiqués en argument.
+=======
+`Math.max(a, b, c...)` and `Math.min(a, b, c...)`
+: Returns the greatest and smallest from the arbitrary number of arguments.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js run
     alert( Math.max(3, 5, -10, 0, 1) ); // 5
@@ -434,7 +480,16 @@ Pour différents systèmes de numération :
 
 Pour convertir des valeurs telles que `12pt` et `100px` en un nombre :
 
+<<<<<<< HEAD
 - Utiliser `parseInt/parseFloat` pour la conversion "soft", qui lit un nombre dans une chaîne de caractères, puis renvoie la valeur qu'ils pouvaient lire avant l'erreur.
+=======
+For regular number tests:
+
+- `isNaN(value)` converts its argument to a number and then tests it for being `NaN`
+- `isFinite(value)` converts its argument to a number and returns `true` if it's a regular number, not `NaN/Infinity/-Infinity`
+
+For converting values like `12pt` and `100px` to a number:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 
 Pour les fractions :
