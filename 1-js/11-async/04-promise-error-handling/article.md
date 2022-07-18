@@ -198,7 +198,15 @@ Dans les environnements sans navigateur comme Node.js, il existe d'autres moyens
 
 ## Résumé
 
+<<<<<<< HEAD
 - `.catch` gère les erreurs dans les promesses de toutes sortes : qu'il s'agisse d'un appel `reject()`, ou d'une erreur lancée dans un gestionnaire.
 - Nous devrions placer `.catch` exactement aux endroits où nous voulons traiter les erreurs et savoir comment les traiter. Le gestionnaire doit analyser les erreurs (les classes d'erreurs personnalisées aident) et relancer les erreurs inconnues (ce sont peut-être des erreurs de programmation).
 - C'est acceptable de ne pas utiliser `.catch` du tout, s'il n'y a aucun moyen de récupérer d'une erreur.
 - Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".
+=======
+- `.catch` handles errors in promises of all kinds: be it a `reject()` call, or an error thrown in a handler.
+- `.then` also catches errors in the same manner, if given the second argument (which is the error handler).
+- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones (maybe they are programming mistakes).
+- It's ok not to use `.catch` at all, if there's no way to recover from an error.
+- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments) to track unhandled errors and inform the user (and probably our server) about them, so that our app never "just dies".
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
