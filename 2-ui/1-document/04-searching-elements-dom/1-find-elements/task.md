@@ -2,17 +2,17 @@ importance: 4
 
 ---
 
-# Search for elements
+# Recherche d'éléments
 
-Here's the document with the table and form.
+Voici le document avec le tableau et formulaire
 
-How to find?...
+Comment trouver ?...
 
-1. The table with `id="age-table"`.
-2. All `label` elements inside that table (there should be 3 of them).
-3. The first `td` in that table (with the word "Age").
-4. The `form` with `name="search"`.
-5. The first `input` in that form.
-6. The last `input` in that form.
+1. Le tableau avec `id="age-table"`.
+2. Tous les éléments `label` dans ce tableau (il devrait y en avoir 3).
+3. Le premier `td` dans ce tableau (avec le mot "Age").
+4. Le `form` avec `name="search"`.
+5. Le premier `input` dans ce formulaire.
+6. Le dernier `input` dans ce formulaire.
 
-Open the page [table.html](table.html) in a separate window and make use of browser tools for that.
+Ouvrez la page [table.html](table.html) dans un onglet à part et utilisez les outils du navigateur pour cela. 
