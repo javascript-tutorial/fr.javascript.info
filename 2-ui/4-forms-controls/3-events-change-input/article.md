@@ -86,7 +86,11 @@ Ainsi, l'exemple ci-dessus utilise `document.getSelection()` pour obtenir le tex
 
 Il est possible de copier/coller pas seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
+<<<<<<< HEAD
 C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour le glisser-déposer et le copier/coller. C'est un peu hors de notre portée maintenant, mais vous pouvez trouver ses méthodes dans la [spécification DataTransfer](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's a bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 En outre, il existe une API asynchrone supplémentaire pour accéder au presse-papiers : `navigator.clipboard`. Plus d'informations à ce sujet dans la spécification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [non pris en charge par Firefox](https://caniuse.com/async-clipboard).
 
@@ -102,7 +106,11 @@ Même si quelqu'un décide d'enregistrer `event.clipboardData` dans un gestionna
 
 Pour réitérer, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) fonctionne uniquement dans le contexte des gestionnaires d'événements initiés par l'utilisateur.
 
+<<<<<<< HEAD
 D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte. Il demande l'autorisation de l'utilisateur, si nécessaire. Non pris en charge dans Firefox.
+=======
+On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) is the more recent API, meant for use in any context. It asks for user permission, if needed.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ## Récapitulatif
 
