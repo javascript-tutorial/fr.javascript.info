@@ -222,7 +222,7 @@ Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder 
 
 En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique qui corrige `"use strict"`.
 
-Cen genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
+Ce genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
 ````
 
 ```smart header="Les conséquences d'un `this` non lié"
