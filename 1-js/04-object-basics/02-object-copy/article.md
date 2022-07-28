@@ -2,7 +2,7 @@
 
 Une des différences fondamentale des objets avec les primitives est que ceux-ci sont stockés et copiés "par référence", en opposition des valeurs primitives : strings, numbers, booleans, etc. -- qui sont toujours copiés comme "valeur entière".
 
-On comprendra plus facilement en regardant "sous le capot" de ce qui se passe lorsque nous copions une valeure.
+On comprendra plus facilement en regardant "sous le capot" ce qui se passe lorsque nous copions une valeure.
 
 Commençons avec une primitive, comme une chaîne de caractères.
 
@@ -121,13 +121,13 @@ let user = {
 *!*
 let clone = {}; // le nouvel object vide
 
-// on copie toutes les propritété de user
+// on copie toutes les propritétés de user
 for (let key in user) {
   clone[key] = user[key];
 }
 */!*
 
-// maintenant clone est un objet complétemnet indépendant  avec le même contenu
+// maintenant clone est un objet complétemnet indépendant avec le même contenu
 clone.name = "Pete"; // On change les données de celui-ci
 
 alert( user.name ); // c'est toujour john dans l'objet copié
@@ -192,7 +192,7 @@ Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilis
 
 ## Clonage imbriqué
 
-Jusqu'à maintenant on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
+Jusqu'à maintenant on suppose que toutes les propriétés de `user` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
 
 Comme ceci :
 ```js run
