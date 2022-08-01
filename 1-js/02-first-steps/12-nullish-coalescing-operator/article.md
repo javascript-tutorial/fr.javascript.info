@@ -3,7 +3,11 @@
 [recent browser="new"]
 
 
+<<<<<<< HEAD
 L'opérateur de coalescence des nuls est écrit sous la forme de deux points d'interrogation `??`.
+=======
+As it treats `null` and `undefined` similarly, we'll use a special term here, in this article. For brevity, we'll say that a value is "defined" when it's neither `null` nor `undefined`.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Comme il traite `null` et `undefined` de la même manière, nous utiliserons un terme spécial ici, dans cet article. Nous dirons qu'une expression est "définie" lorsqu'elle n'est ni `null` ni `undefined`.
 
@@ -24,9 +28,15 @@ result = (a !== null && a !== undefined) ? a : b;
 
 Maintenant, il devrait être absolument clair ce que fait `??`. Voyons où cela aide.
 
+<<<<<<< HEAD
 Le cas d'utilisation courant de `??` est de fournir une valeur par défaut pour une variable potentiellement indéfinie.
 
 Par exemple, ici nous affichons `user` s'il est défini, sinon `Anonymous` :
+=======
+The common use case for `??` is to provide a default value.
+
+For example, here we show `user` if its value isn't `null/undefined`, otherwise `Anonymous`:
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ```js run
 let user;
@@ -44,9 +54,15 @@ alert(user ?? "Anonymous"); // John (user defined)
 
 Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur dans une liste qui n'est pas `null/undefined`.
 
+<<<<<<< HEAD
 Disons que nous avons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`. Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeur.
 
 Nous aimerions afficher le nom d'utilisateur en utilisant l'une de ces variables, ou afficher "Anonymous" si toutes ne sont pas définies.
+=======
+Let's say we have a user's data in variables `firstName`, `lastName` or `nickName`. All of them may be not defined, if the user decided not to fill in the corresponding values.
+
+We'd like to display the user name using one of these variables, or show "Anonymous" if all of them are `null/undefined`.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Utilisons l'opérateur `??` pour cela :
 
@@ -111,7 +127,11 @@ La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égal
 
 Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, Mais après la plupart des autres opérations, telles que `+`, `*`.
 
+<<<<<<< HEAD
 Donc, si nous voulons choisir une valeur avec `??` dans une expression avec d'autres opérateurs, pensez à ajouter des parenthèses :
+=======
+So we may need to add parentheses in expressions like this:
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ```js run
 let height = null;
@@ -129,7 +149,11 @@ Sinon, si nous omettons les parenthèses, alors que `*` a la priorité la plus �
 // sans parenthèses
 let area = height ?? 100 * width ?? 50;
 
+<<<<<<< HEAD
 // ...fonctionne de la même manière (probablement pas ce que nous voulons) :
+=======
+// ...works this way (not what we want):
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 let area = height ?? (100 * width) ?? 50;
 ```
 
