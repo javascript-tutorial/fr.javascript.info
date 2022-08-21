@@ -107,7 +107,7 @@ En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas êt
 
 ## Priorité
 
-La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `4` dans le [tableau MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
+La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
 
 Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, Mais après la plupart des autres opérations, telles que `+`, `*`.
 
