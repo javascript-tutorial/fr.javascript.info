@@ -272,7 +272,11 @@ En d'autres termes:
 - Les modules attendent que le document HTML soit complètement prêt (même s'ils sont minuscules et se chargent plus rapidement que le HTML), puis s'exécutent.
 - l'ordre relatif des scripts est maintenu : les scripts qui entrent en premier dans le document sont exécutés en premier.
 
+<<<<<<< HEAD
 Comme effet secondaire, les modules "voient" toujours la page HTML entièrement chargée, y compris les éléments HTML situés en dessous.
+=======
+As a side effect, module scripts always "see" the fully loaded HTML-page, including HTML elements below them.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Par exemple:
 

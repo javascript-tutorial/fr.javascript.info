@@ -24,7 +24,7 @@ Le mot-clé `function` commence en premier, puis le *nom de la fonction*, puis u
 
 ```js
 function name(parameter1, parameter2, ... parameterN) {
-  ...body...
+ // body
 }
 ```
 
@@ -177,8 +177,13 @@ Lorsqu'une valeur est passée en tant que paramètre de fonction, elle est égal
 
 En d'autres termes, pour mettre ces termes au clair :
 
+<<<<<<< HEAD
 - Un paramètre est la variable répertoriée entre parenthèses dans la fonction déclaration (c'est un terme du temps de la déclaration).
 - Un argument est la valeur qui est transmise à la fonction lorsqu'elle est appelée (c'est un terme du temps de l'appel).
+=======
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
@@ -207,7 +212,17 @@ function showMessage(from, *!*text = "no text given"*/!*) {
 showMessage("Ann"); // Ann: aucun texte fourni
 ```
 
+<<<<<<< HEAD
 Maintenant, si le paramètre `text` n'est pas passé, il obtiendra la valeur `"no text given"`.
+=======
+Now if the `text` parameter is not passed, it will get the value `"no text given"`.
+
+The default value also jumps in if the parameter exists, but strictly equals `undefined`, like this:
+
+```js
+showMessage("Ann", undefined); // Ann: no text given
+```
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant. Donc, cela est également possible :
 
@@ -226,7 +241,43 @@ Dans l'exemple ci-dessus, `anotherFunction()` n'est pas du tout appelé, si le p
 D'un autre côté, il est appelé indépendamment à chaque fois que `text` est manquant.
 ```
 
+<<<<<<< HEAD
 ### Paramètres par défaut alternatifs
+=======
+````smart header="Default parameters in old JavaScript code"
+Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+
+Nowadays, we can come across them in old scripts.
+
+For example, an explicit check for `undefined`:
+
+```js
+function showMessage(from, text) {
+*!*
+  if (text === undefined) {
+    text = 'no text given';
+  }
+*/!*
+
+  alert( from + ": " + text );
+}
+```
+
+...Or using the `||` operator:
+
+```js
+function showMessage(from, text) {
+  // If the value of text is falsy, assign the default value
+  // this assumes that text == "" is the same as no text at all
+  text = text || 'no text given';
+  ...
+}
+```
+````
+
+
+### Alternative default parameters
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Il est parfois judicieux de définir des valeurs par défaut pour les paramètres non pas dans la fonction déclaration, mais à un stade ultérieur, lors de son exécution.
 
@@ -491,7 +542,11 @@ function name(parameters, delimited, by, comma) {
 
 Pour rendre le code propre et facile à comprendre, il est recommandé d’utiliser principalement des variables et des paramètres locaux dans la fonction, et non des variables externes.
 
+<<<<<<< HEAD
 Il est toujours plus facile de comprendre une fonction qui possède des paramètres, fonctionne avec eux et renvoie un résultat, plutôt qu’une fonction qui ne comporte aucun paramètre, mais modifie des variables externes comme un effet secondaire.
+=======
+It is always easier to understand a function which gets parameters, works with them and returns a result than a function which gets no parameters, but modifies outer variables as a side effect.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Nommage de fonction :
 

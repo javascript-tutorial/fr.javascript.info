@@ -37,7 +37,11 @@ Et ici comment elle est stockée en mémoire :
 
 L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), tandis que la variable `user` (du coté gauche) a une référence à celui-ci.
 
+<<<<<<< HEAD
 On peut imaginer la variable d'objet, ici `user`, comme une feuille de papier avec l'adresse de l'objet écrit dessus.
+=======
+We may think of an object variable, such as `user`, like a sheet of paper with the address of the object on it.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Lorque l'on réalise une action avec l'objet, par exemple récupérer la propriété `user.name`, le moteur de Javascript regarde à l'adresse et réalise l'opération sur l'objet actuel.
 
@@ -104,11 +108,17 @@ Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive
 
 Copier une variable object créé une référence en plus vers le même objet.
 
+<<<<<<< HEAD
 Mais quid si nous voulons dupliquer un objet ? Créer une copie indépendante, un clone ?
 
 C'est aussi faisable, mais un peu plus compliqué, parce qu'en Javascript il n'y pas de méthode intégrée pour cela. En fait c'est rarement utile. Copier par référence fonctionne la plupart du temps.
 
 Mais si nous le voulons, alors nous devons créer un nouvel objet et répliquer sa structure en itérant ses propriétés et en les copiant au niveau primitive.
+=======
+But what if we need to duplicate an object?
+
+We can create a new object and replicate the structure of the existing one, by iterating over its properties and copying them on the primitive level.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Comme cela :
 
@@ -133,7 +143,11 @@ clone.name = "Pete"; // On change les données de celui-ci
 alert( user.name ); // c'est toujour john dans l'objet copié
 ```
 
+<<<<<<< HEAD
 On peut aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
+=======
+We can also use the method [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 
 La syntaxe est :
@@ -192,7 +206,11 @@ Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilis
 
 ## Clonage imbriqué
 
+<<<<<<< HEAD
 Jusqu'à maintenant on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
+=======
+Until now we assumed that all properties of `user` are primitive. But properties can be references to other objects.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Comme ceci :
 ```js run
@@ -207,9 +225,13 @@ let user = {
 alert( user.sizes.height ); // 182
 ```
 
+<<<<<<< HEAD
 Ce n'est plus suffisant de copier `clone.sizes = user.sizes`, car `user.sizes` est un objet, il sera copié par référence. Donc `clone` et `user` partageront le même objet `sizes` :
 
 Comme cela :
+=======
+Now it's not enough to copy `clone.sizes = user.sizes`, because `user.sizes` is an object, and will be copied by reference, so `clone` and `user` will share the same sizes:
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 ```js run
 let user = {
@@ -224,12 +246,21 @@ let clone = Object.assign({}, user);
 
 alert( user.sizes === clone.sizes ); // true, c'est le même objet
 
+<<<<<<< HEAD
 // user et clone partage l'objet sizes
 user.sizes.width++;       // on modifie la propriété à un endroit
 alert(clone.sizes.width); // 51, on peut voir la modification dans un autre endroit
 ```
 
 Pour régler ça, on doit utiliser la boucle de clonage qui examine chaque valeur de `user[key]` et, si c'est un objet, répliquer sa structure aussi. On appelle cela un "clone réel" (deep clone).
+=======
+// user and clone share sizes
+user.sizes.width++;       // change a property from one place
+alert(clone.sizes.width); // 51, get the result from the other one
+```
+
+To fix that and make `user` and `clone` truly separate objects, we should use a cloning loop that examines each value of `user[key]` and, if it's an object, then replicate its structure as well. That is called a "deep cloning".
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 On peut utiliser la récursion pour l'implémenter. Ou, pour ne pas réinventer la roue, prendre un implémentation existante. par exemple [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) de la librairie [lodash](https://lodash.com).
 

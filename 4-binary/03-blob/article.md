@@ -100,6 +100,10 @@ blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`, `<a>`, essentiellement tout autre objet qui attend une URL.
 
+<<<<<<< HEAD
+=======
+There's a side effect though. While there's a mapping for a `Blob`, the `Blob` itself resides in the memory. The browser can't free it.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
 
@@ -243,8 +247,8 @@ const readableStream = blob.stream();
 const stream = readableStream.getReader();
 
 while (true) {
-  // for each iteration: data is the next blob fragment
-  let { done, data } = await stream.read();
+  // for each iteration: value is the next blob fragment
+  let { done, value } = await stream.read();
   if (done) {
     // no more data in the stream
     console.log('all blob processed.');
@@ -252,7 +256,7 @@ while (true) {
   }
 
    // do something with the data portion we've just read from the blob
-  console.log(data);
+  console.log(value);
 }
 ```
 

@@ -63,7 +63,12 @@ let age = 25;
 let message = 'Hello';
 ```
 
+<<<<<<< HEAD
 Certaines personnes écrivent également de nombreuses variables comme celle-ci :
+=======
+Some people also define multiple variables in this multiline style:
+
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 ```js no-beautify
 let user = 'John',
   age = 25,
@@ -104,6 +109,11 @@ Nous pouvons mettre n'importe quelle valeur dans la boîte.
 
 Nous pouvons aussi la changer. La valeur peut être modifiée autant de fois que nécessaire :
 
+<<<<<<< HEAD
+=======
+We can also change it as many times as we want:
+
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 ```js run
 let message;
 
@@ -192,8 +202,13 @@ let 1a; // ne peut pas commencer avec un chiffre
 let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
 ```
 
+<<<<<<< HEAD
 ```smart header="La casse est importante"
 Des variables nommées `pomme` and `PomMe` -- sont deux variables différentes.
+=======
+```smart header="Case matters"
+Variables named `apple` and `APPLE` are two different variables.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 ```
 
 ````smart header="Les lettres non latines sont autorisées mais non recommandées"
@@ -263,8 +278,12 @@ myBirthday = '01.01.2001'; // erreur, ne peut pas réaffecter la constante !
 
 Lorsqu'un programmeur est certain que la variable ne doit jamais changer, il peut utiliser `const` pour le garantir et également le montrer clairement à tout le monde.
 
+<<<<<<< HEAD
 
 ### Les constantes en majuscules
+=======
+### Uppercase constants
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Il existe une pratique répandue d’utiliser des constantes comme alias pour des valeurs difficiles à mémoriser, qui sont connues avant leur exécution.
 
@@ -293,14 +312,23 @@ Quand devrions-nous utiliser les majuscules pour une constante et quand devrions
 
 Être une "constante" signifie simplement que la valeur ne change jamais. Mais il existe des constantes connues avant l'exécution (comme une valeur hexadécimale pour le rouge), et il y a celles qui sont *calculées* en temps réel, pendant l'exécution, mais ne changent pas après l'affectation.
 
+<<<<<<< HEAD
 Par exemple :
+=======
+For instance:
+
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 ```js
 const pageLoadTime = /* temps pris par une page Web pour charger */;
 ```
 
 La valeur de `pageLoadTime` n’est pas connue avant le chargement de la page, elle est donc nommée normalement. Mais cela reste une constante, car elle ne change pas après l’affectation.
 
+<<<<<<< HEAD
 En d'autres termes, les constantes nommées en majuscules ne sont utilisées que comme alias pour les valeurs "codées en dur".
+=======
+In other words, capital-named constants are only used as aliases for "hard-coded" values.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 ## Nommez les choses correctement
 

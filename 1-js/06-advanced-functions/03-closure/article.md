@@ -7,7 +7,11 @@ Nous savons déjà qu'une fonction peut accéder à des variables en dehors de c
 
 Mais que se passe-t-il si les variables externes changent depuis la création d'une fonction ? La fonction obtiendra-t-elle des valeurs plus récentes ou les anciennes ?
 
+<<<<<<< HEAD
 Et si une fonction est transmise en tant que paramètre et appelée depuis un autre endroit de code, aura-t-elle accès aux variables externes au nouvel endroit ?
+=======
+And what if a function is passed along as an argument and called from another place of code, will it get access to outer variables at the new place?
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 Développons maintenant nos connaissances pour inclure des scénarios plus complexes.
 
