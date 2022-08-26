@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# What will be the output of this code?
+# Quelle sera la sortie de ce code?
 
 ```js
 console.log(1);
