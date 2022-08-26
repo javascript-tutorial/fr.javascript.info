@@ -1,55 +1,55 @@
 
-# Sticky flag "y", searching at position
+# Sticky flag "y", recherche depuis une position
 
-The flag `pattern:y` allows to perform the search at the given position in the source string.
+Le marqueur `pattern:y` permet d'effectuer la recherche à partir d'une position donnée dans la chaîne de caractères source.
 
-To grasp the use case of `pattern:y` flag, and better understand the ways of regexps, let's explore a practical example.
+Pour appréhender le cas d'usage du marqueur `pattern:y`, et mieux comprendre le fonctionnement des regexp, regardons un exemple pratique.
 
-One of common tasks for regexps is "lexical analysis": we get a text, e.g. in a programming language, and need to find its structural elements. For instance, HTML has tags and attributes, JavaScript code has functions, variables, and so on.
+Prenons un usage courant des regexps, l'analyse lexicale : Nous avons un texte, p. ex. dans un langage de programmation, et nous avons besoin de trouver ses éléments de structure. Par exemple, l'HTML a des balises et des attributs, du code JavaScript a des fonctions, variables, etc.
 
-Writing lexical analyzers is a special area, with its own tools and algorithms, so we don't go deep in there, but there's a common task: to read something at the given position.
+L'écriture d'analyseurs lexicaux est un domaine spécifique, avec ses propres outils et algorithmes que nous n'explorerons pas ici, mais il y a une tâche courante : Lire quelque chose depuis une position donnée.
 
-E.g. we have a code string `subject:let varName = "value"`, and we need to read the variable name from it, that starts at position `4`.
+P. ex. prenons la chaîne de caractères `subject:let varName = "value"`, dans laquelle nous devons lire le nom de la variable, qui commence à la position `4`.
 
-We'll look for variable name using regexp `pattern:\w+`. Actually, JavaScript variable names need a bit more complex regexp for accurate matching, but here it doesn't matter.
+Nous chercherons un nom de variable en utilisant la regexp `pattern:\w+`. En fait, les noms de variable en JavaScript nécessitent une regexp un poil plus complexe pour un résultat exact, mais cela est sans importance ici.
 
-- A call to `str.match(/\w+/)` will find only the first word in the line (`let`). That's not it.
-- We can add the flag `pattern:g`. But then the call `str.match(/\w+/g)` will look for all words in the text, while we need one word at position `4`. Again, not what we need.
+- Un appel à `str.match(/\w+/)` trouvera seulement le premier mot de la ligne (`let`). Ça n'est pas ça.
+- Nous pouvons ajouter le marqueur `pattern:g`. Mais alors l'appel à `str.match(/\w+/g)` cherchera tous les mots du text, alors que nous avons besoin que d'un mot à partir de la position `4`. Ça n'est pas encore ça.
 
-**So, how to search for a regexp exactly at the given position?**
+**Alors comment rechercher un motif à partir d'une position donné ?**
 
-Let's try using method `regexp.exec(str)`.
+Essayons en utilisant la méthode `regexp.exec(str)`.
 
-For a `regexp` without flags `pattern:g` and `pattern:y`, this method looks only for the first match, it works exactly like `str.match(regexp)`.
+Pour une `regexp` sans marqueur `pattern:g` ni `pattern:y`, cette méthode cherche seulement la première occurrence, cela fonctionne exactement comme `str.match(regexp)`.
 
-...But if there's flag `pattern:g`, then it performs the search in `str`, starting from position stored in the `regexp.lastIndex` property. And, if it finds a match, then sets `regexp.lastIndex` to the index immediately after the match.
+...Mais s'il y a le marqueur `pattern:g`, il effectue alors une recherche dans `str`, à partir de la position stockée dans propriété `regexp.lastIndex`. Et s'il trouve une correspondance, il fixe `regexp.lastIndex` à l'index immédiatement après la correspondance.
 
-In other words, `regexp.lastIndex` serves as a starting point for the search, that each `regexp.exec(str)` call resets to the new value ("after the last match"). That's only if there's `pattern:g` flag, of course.
+En d'autres termes, `regexp.lastIndex` sert de point de départ pour la recherche, que chaque appel à `regexp.exec(str)` change en une nouvelle valeur ("après la dernière correspondance"). Cela, bien entendu, seulement avec le marquer `pattern:g`.
 
-So, successive calls to `regexp.exec(str)` return matches one after another.
+Donc chaque appel successif à `regexp.exec(str)` retourne une correspondance après l'autre.
 
-Here's an example of such calls:
+Voici un exemple de tels appels :
 
 ```js run
-let str = 'let varName'; // Let's find all words in this string
+let str = 'let varName'; // Cherchons tous les mots dans cette chaîne de caractères
 let regexp = /\w+/g;
 
-alert(regexp.lastIndex); // 0 (initially lastIndex=0)
+alert(regexp.lastIndex); // 0 (initialement lastIndex=0)
 
 let word1 = regexp.exec(str);
-alert(word1[0]); // let (1st word)
-alert(regexp.lastIndex); // 3 (position after the match)
+alert(word1[0]); // let (1er mot)
+alert(regexp.lastIndex); // 3 (position après la première correspondance)
 
 let word2 = regexp.exec(str);
-alert(word2[0]); // varName (2nd word)
-alert(regexp.lastIndex); // 11 (position after the match)
+alert(word2[0]); // varName (2e mot)
+alert(regexp.lastIndex); // 11 (position après la correspondance)
 
 let word3 = regexp.exec(str);
-alert(word3); // null (no more matches)
-alert(regexp.lastIndex); // 0 (resets at search end)
+alert(word3); // null (plus aucune correspondance)
+alert(regexp.lastIndex); // 0 (réinitialisé à la fin de la recherche)
 ```
 
-We can get all matches in the loop:
+Nous pouvons obtenir toutes les correspondances avec la boucle :
 
 ```js run
 let str = 'let varName';
@@ -59,23 +59,23 @@ let result;
 
 while (result = regexp.exec(str)) {
   alert( `Found ${result[0]} at position ${result.index}` );
-  // Found let at position 0, then
+  // Found let at position 0, puis
   // Found varName at position 4
 }
 ```
 
-Such use of `regexp.exec` is an alternative to method `str.matchAll`, with a bit more control over the process.
+Une telle utilisation de `regexp.exec` est une alternative à la méthode `str.matchAll`, avec un peu plus de contrôle sur le processus.
 
-Let's go back to our task.
+Retournons à notre objectif.
 
-We can manually set `lastIndex` to `4`, to start the search from the given position!
+Nous pouvons assigner à `lastIndex` la valeur `4`, pour commencer la recherche à partir de cette position !
 
-Like this:
+Comme ceci :
 
 ```js run
 let str = 'let varName = "value"';
 
-let regexp = /\w+/g; // without flag "g", property lastIndex is ignored
+let regexp = /\w+/g; // sans le marqueur "g", la propriété lastIndex est ignorée
 
 *!*
 regexp.lastIndex = 4;
@@ -85,15 +85,15 @@ let word = regexp.exec(str);
 alert(word); // varName
 ```
 
-Hooray! Problem solved! 
+Houra ! Problème résolu ! 
 
-We performed a search of `pattern:\w+`, starting from position `regexp.lastIndex = 4`.
+Nous avons recherché le motif `pattern:\w+`, à partir de la position `regexp.lastIndex = 4`.
 
-The result is correct.
+Le résultat est valide.
 
-...But wait, not so fast.
+...Mais attendez, pas si vite.
 
-Please note: the `regexp.exec` call starts searching at position `lastIndex` and then goes further. If there's no word at position `lastIndex`, but it's somewhere after it, then it will be found:
+Vous noterez : l'appel à `regexp.exec` commence la recherche à la position `lastIndex` et continue ensuite plus loin. S'il n'y a pas de mot à la position `lastIndex`, mais qu'il y en a un plus loin, il sera alors trouvé :
 
 ```js run
 let str = 'let varName = "value"';
@@ -101,21 +101,21 @@ let str = 'let varName = "value"';
 let regexp = /\w+/g;
 
 *!*
-// start the search from position 3
+// comme la recherche à la position 3
 regexp.lastIndex = 3;
 */!*
 
 let word = regexp.exec(str); 
-// found the match at position 4
+// trouve la correspondance à la position 4
 alert(word[0]); // varName
 alert(word.index); // 4
 ```
 
-For some tasks, including the lexical analysis, that's just wrong. We need to find a match exactly at the given position at the text, not somewhere after it. And that's what the flag `y` is for.
+Pour certaines tâches, et pour les analyses lexicales en particulier, c'est juste faux. Nous avons besoin de trouver la correspondance du motif à la position exacte, et non quelque part après. Et c'est justement ce que fait le marqueur `y`.
 
-**The flag `pattern:y` makes `regexp.exec` to search exactly at position `lastIndex`, not "starting from" it.**
+**Le marqueur `pattern:y` fait que `regexp.exec` recherche exactement à la position `lastIndex`, et non à partir de cette position.**
 
-Here's the same search with flag `pattern:y`:
+Voici la même recherche avec le marqueur `pattern:y`:
 
 ```js run
 let str = 'let varName = "value"';
@@ -123,16 +123,16 @@ let str = 'let varName = "value"';
 let regexp = /\w+/y;
 
 regexp.lastIndex = 3;
-alert( regexp.exec(str) ); // null (there's a space at position 3, not a word)
+alert( regexp.exec(str) ); // null (il n'y a pas de mot en position 3, mais un espace)
 
 regexp.lastIndex = 4;
-alert( regexp.exec(str) ); // varName (word at position 4)
+alert( regexp.exec(str) ); // varName (mot en position 4)
 ```
 
-As we can see, regexp `pattern:/\w+/y` doesn't match at position `3` (unlike the flag  `pattern:g`), but matches at position `4`.
+Comme nous pouvons le voir, la regexp `pattern:/\w+/y` ne trouve pas de correspondance en position `3` (contrairement au marqueur  `pattern:g`), mais trouve la correspondance en position `4`.
 
-Not only that's what we need, there's an important performance gain when using flag `pattern:y`.
+Et en plus d'obtenir ce que nous cherchions, mais il y a un gain significatif de performance avec le marqueur `pattern:y`.
 
-Imagine, we have a long text, and there are no matches in it, at all. Then a search with flag `pattern:g` will go till the end of the text and find nothing, and this will take significantly more time than the search with flag `pattern:y`, that checks only the exact position.
+Imaginez avec un long texte, et sans aucune correspondance dedans. Une recherche avec le marqueur `pattern:g` ira alors jusqu'à la fin du texte pour ne rien trouver, et cela prendra bien plus de temps qu'avec le marqueur `pattern:y`, qui vérifie seulement à la position exacte.
 
-In tasks like lexical analysis, there are usually many searches at an exact position, to check what we have there. Using flag `pattern:y` is the key for correct implementations and a good performance.
+Dans des tâches comme en analyse lexicale, il y a habituellement beaucoup de recherches sur des positions exactes, pour vérifier ce qu'il s'y trouve. L'utilisation du marqueur `pattern:y` est la clé pour des bonnes implémentations et de bonnes performances.
