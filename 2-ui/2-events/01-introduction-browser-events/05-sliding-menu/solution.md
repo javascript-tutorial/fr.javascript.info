@@ -3,7 +3,7 @@
 
 Premièrement créons un HTML/CSS.
 
-Un menu est un composant graphique distinct de la page, il est donc préférable de le place dans son propre DOM élément.
+Un menu est un composant graphique distinct de la page, il est donc préférable de le placer dans son propre DOM élément.
 
 Une liste d'éléments de menu peut être présentée sous la forme d'une liste "ul/li".
 

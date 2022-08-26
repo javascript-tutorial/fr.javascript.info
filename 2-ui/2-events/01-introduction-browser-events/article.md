@@ -1,8 +1,8 @@
 # Introduction aux évéments du navigateur
 
-*Un événement* est un signal que quelque chose s'est produit. Tous les nœuds DOM génèrent de tels signaux (mais les événements ne sont pas limités au DOM).
+*Un événement* est un signal que quelque chose s'est produit. Tous les nœuds du DOM génèrent de tels signaux (mais les événements ne sont pas limités au DOM).
 
-Voici une liste des événements DOM les plus utiles, juste pour jeter un coup d'œil :
+Voici une liste des événements du DOM les plus utiles, juste pour jeter un coup d'œil :
 
 **Événements de souris :**
 - `click` -- lorsque la souris clique sur un élément (les appareils à écran tactile le génèrent en un clic).

@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Se masquer soi-même 
+# S'auto-masquer
 
 Créez un bouton qui se masque soi-même lorsqu'il est cliqué.
 

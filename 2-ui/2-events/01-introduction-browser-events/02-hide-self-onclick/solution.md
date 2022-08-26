@@ -1,4 +1,4 @@
-On peut utiliser `this` dans le gestionnaire pour référencer "l'élément lui-même" ici :
+On peut utiliser `this` dans le gestionnaire pour référencer "l'élément même" ici :
 
 <!--
 Can use `this` in the handler to reference "the element itself" here:-->

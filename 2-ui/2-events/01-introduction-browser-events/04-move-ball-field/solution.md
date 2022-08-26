@@ -34,7 +34,6 @@ Then the ball will be positioned relatively to the field:-->
 Ensuite, nous devons attribuer le bon `ball.style.left/top`. Ils contiennent maintenant des coordonnées relatives au champ.
 
 Voici l'image :
-
 <!--
 
 Next we need to assign the correct `ball.style.left/top`. They contain field-relative coordinates now.
@@ -43,10 +42,9 @@ Here's the picture:-->
 
 ![](move-ball-coords.svg)
 
-Nous avons `event.clientX/clientY` -- coordonnées relatives à la fenêtre du clic.
+Nous avons `event.clientX/clientY` -- les coordonnées relatives à la fenêtre du clic.
 
 Pour obtenir la coordonnée "gauche" relative au champ du clic, nous pouvons soustraire le bord gauche du champ et la largeur de la bordure :
-
 <!--
 We have `event.clientX/clientY` -- window-relative coordinates of the click.
 
