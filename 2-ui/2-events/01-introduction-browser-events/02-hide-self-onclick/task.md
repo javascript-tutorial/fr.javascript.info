@@ -2,6 +2,15 @@ importance: 5
 
 ---
 
+# S'auto-masquer
+
+Créez un bouton qui se masque soi-même lorsqu'il est cliqué.
+
+```online
+Comme cela:
+<input type="button" onclick="this.hidden=true" value="Cliquer pour masquer">
+```
+<!--
 # Hide self
 
 Create a button that hides itself on click.
@@ -10,3 +19,4 @@ Create a button that hides itself on click.
 Like this:
 <input type="button" onclick="this.hidden=true" value="Click to hide">
 ```
+-->
