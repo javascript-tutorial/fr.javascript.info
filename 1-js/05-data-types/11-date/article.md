@@ -57,7 +57,14 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
 `new Date(année, mois, date, heures, minutes, secondes, ms)`
 : Crée la date avec les composants donnés dans le fuseau horaire local. Seul le premier argument est obligatoire.
 
+<<<<<<< HEAD
     Note:
+=======
+    - The `year` should have 4 digits. For compatibility, 2 digits are also accepted and considered `19xx`, e.g. `98` is the same as `1998` here, but always using 4 digits is strongly encouraged.
+    - The `month` count starts with `0` (Jan), up to `11` (Dec).
+    - The `date` parameter is actually the day of month, if absent then `1` is assumed.
+    - If `hours/minutes/seconds/ms` is absent, they are assumed to be equal `0`.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
     - l'`année` doit comporter 4 chiffres: `2013` c'est bon, `98` ne l'est pas.
     - le `mois` commence par `0` (Jan), jusqu'à `11` (Dec).
@@ -413,7 +420,7 @@ Nous pouvons créer instantanément un nouvel objet `Date` à partir de l'horoda
 ```js run
 let date = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
 
-alert(date);  
+alert(date);
 ```
 
 ## Sommaire
