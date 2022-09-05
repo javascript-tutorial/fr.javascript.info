@@ -64,7 +64,7 @@ Par exemple pour créer une fonction dynamiquement :
 let age = prompt("What is your age?", 18);
 
 let welcome = (age < 18) ?
-  () => alert('Hello') :
+  () => alert('Hello!') :
   () => alert("Greetings!");
 
 welcome(); // ok now

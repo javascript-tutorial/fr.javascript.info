@@ -237,10 +237,10 @@ Les fonctions représentent le pouvoir ultime pour effectuer un remplacement. El
 
 This method is essentially the same as `str.replace`, with two major differences:
 
-1. If the first argument is a string, it replaces *all occurences* of the string, while `replace` replaces only the *first occurence*.
+1. If the first argument is a string, it replaces *all occurrences* of the string, while `replace` replaces only the *first occurrence*.
 2. If the first argument is a regular expression without the `g` flag, there'll be an error. With `g` flag, it works the same as `replace`.
 
-The main use case for `replaceAll` is replacing all occurences of a string.
+The main use case for `replaceAll` is replacing all occurrences of a string.
 
 Like this:
 

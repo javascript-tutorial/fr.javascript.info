@@ -52,8 +52,12 @@ describe("pow", function() {
 Une spécification a trois blocs de construction principaux que vous pouvez voir ci-dessus :
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Quelle fonctionnalité nous décrivons. Utilisations pour grouper les "workers" - le bloc `it`. Dans notre cas, nous décrivons la fonction `pow`.
 Quelle fonctionnalité nous décrivons. Dans notre cas, nous décrivons la fonction `pow`. Utilisée pour grouper les "workers" - le bloc `it`.
+=======
+: What functionality we're describing? In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 `it("use case description", function() { ... })`
 : Dans le titre de `it`, nous décrivons d'une *manière lisible par l'homme* le cas particulier d'utilisation, et le deuxième argument est une fonction qui le teste.
@@ -81,7 +85,11 @@ Donc, le développement est *itératif*. Nous écrivons la spécification, la me
 
 Voyons ce flux de développement dans notre cas pratique.
 
+<<<<<<< HEAD
 La première étape est déjà terminée : nous avons une spécification initiale pour `pow`. Maintenant, avant de procéder à l’implémentation, utilisons quelques bibliothèques JavaScript pour exécuter les tests, histoire de voir qu’elles fonctionnent (elles échoueront toutes).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use a few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 ## La spec en action
 

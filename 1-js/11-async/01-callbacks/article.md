@@ -77,7 +77,13 @@ function loadScript(src, *!*callback*/!*) {
 }
 ```
 
+<<<<<<< HEAD
 Maintenant, si nous voulons appeler de nouvelles fonctions depuis le script, nous devons l'écrire dans le callback:
+=======
+The `onload` event is described in the article <info:onload-onerror#loading-a-script>, it basically executes a function after the script is loaded and executed.
+
+Now if we want to call new functions from the script, we should write that in the callback:
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 ```js
 loadScript('/my/script.js', function() {
@@ -102,7 +108,11 @@ function loadScript(src, callback) {
 *!*
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
   alert(`Cool, the script ${script.src} is loaded`);
+<<<<<<< HEAD
   alert( _ ); // fonction déclarée dans le script chargé
+=======
+  alert( _ ); // _ is a function declared in the loaded script
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 });
 */!*
 ```
