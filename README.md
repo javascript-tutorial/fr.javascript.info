@@ -1,6 +1,10 @@
 # Le tutoriel JavaScript moderne
 
+<<<<<<< HEAD
 Ce dépôt héberge le contenu français du tutoriel JavaScript moderne, publié à l'adresse [https://javascript.info](https://javascript.info).
+=======
+This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Aidez-nous à améliorer la traduction.
 
@@ -27,9 +31,15 @@ N'hésitez pas à consulter <https://javascript.info/translate> pour plus de dé
 
 Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
+<<<<<<< HEAD
 Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
 **Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.  
+=======
+Something's wrong? A topic is missing? Explain it to people, add it as PR 👏
+
+**You can edit the text in any editor.** The tutorial uses an enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
 
@@ -99,8 +109,14 @@ Exemple:
 
 Pour les liens vers MDN, qui ne sont que partiellement traduits, utilisez également la version spécifique à la langue.
 
+<<<<<<< HEAD
 Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
 
+=======
+Every chapter, article, or task has its folder.
+
+The folder is named like `N-url`, where `N` is a number for the sorting purposes and `URL` is the URL part with the title of the material.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 ## Exécuter une version locale
 

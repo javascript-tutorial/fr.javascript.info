@@ -13,7 +13,11 @@ Pour en nommer quelques-uns (pour des raisons historiques) :
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- le système de module créé pour Node.js
 - [UMD](https://github.com/umdjs/umd) -- un système de module supplémentaire, proposé comme universel, compatible avec AMD et CommonJS
 
+<<<<<<< HEAD
 Maintenant, tous ces éléments deviennent lentement du passé, mais nous pouvons toujours les trouver dans d’anciens scripts.
+=======
+Now these all slowly became a part of history, but we still can find them in old scripts.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Le système de modules au niveau du langage est apparu dans la norme en 2015, a progressivement évolué depuis, et est désormais pris en charge par tous les principaux navigateurs et dans Node.js. Nous allons donc étudier les modules JavaScript modernes à partir de maintenant.
 
@@ -272,7 +276,11 @@ En d'autres termes:
 - Les modules attendent que le document HTML soit complètement prêt (même s'ils sont minuscules et se chargent plus rapidement que le HTML), puis s'exécutent.
 - l'ordre relatif des scripts est maintenu : les scripts qui entrent en premier dans le document sont exécutés en premier.
 
+<<<<<<< HEAD
 Comme effet secondaire, les modules "voient" toujours la page HTML entièrement chargée, y compris les éléments HTML situés en dessous.
+=======
+As a side effect, module scripts always "see" the fully loaded HTML-page, including HTML elements below them.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Par exemple:
 
