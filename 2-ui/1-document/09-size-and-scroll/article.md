@@ -17,8 +17,8 @@ Comme exemple d'élément pour démontrer les propriétés, nous utiliserons cel
     width: 300px;
     height: 200px;
     border: 25px solid #E8C48F;
-    padding: 20px;              
-    overflow: auto;             
+    padding: 20px;
+    overflow: auto;
   }
 </style>
 ```
@@ -106,7 +106,11 @@ Les propriétés de géométrie sont calculées uniquement pour les éléments a
 
 Si un élément (ou l'un de ses ancêtres) a `display:none` ou n'est pas dans le document, alors toutes les propriétés géométriques sont zéro (ou `null` pour `offsetParent`).
 
+<<<<<<< HEAD
 Par exemple, `offsetParent` est` null`, et `offsetWidth`,` offsetHeight` sont `0` lorsque nous avons créé un élément, mais ne l'avons pas encore inséré dans le document, ou il (ou son ancêtre) a `display:none`.
+=======
+For example, `offsetParent` is `null`, and `offsetWidth`, `offsetHeight` are `0` when we created an element, but haven't inserted it into the document yet, or it (or its ancestor) has `display:none`.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Nous pouvons l'utiliser pour vérifier si un élément est caché, comme ceci :
 

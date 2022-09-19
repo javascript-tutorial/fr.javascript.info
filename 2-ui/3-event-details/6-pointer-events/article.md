@@ -111,7 +111,11 @@ De tels événements sont:
 
 Nous allons montrer le fonctionnement de `pointercancel` à l'aide d'un exemple pratique pour voir comment il nous impacte.
 
+<<<<<<< HEAD
 Supposons que nous mettions en place un glisser-déposer pour un ballon, comme au début de l'article <info:mouse-drag-and-drop>.
+=======
+Let's say we're implementing drag'n'drop for a ball, just as in the beginning of the article <info:mouse-drag-and-drop>.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Voici le flux d'actions de l'utilisateur et les événements correspondants:
 

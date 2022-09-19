@@ -191,6 +191,7 @@ Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro corr
 
 Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
 
+<<<<<<< HEAD
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
 | ...        | ...             | ...     |
@@ -206,6 +207,23 @@ Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs
 | ...        | ...             | ...     |
 
 Comme on peut le voir, le "plus unaire" a une priorité de `15`, ce qui est supérieur à `12` pour "l'addition" (plus binaire). C’est pourquoi, dans l’expression `"+apples + +oranges"`, les plus unaires fonctionnent avant l’addition.
+=======
+| Precedence | Name | Sign |
+|------------|------|------|
+| ... | ... | ... |
+| 14 | unary plus | `+` |
+| 14 | unary negation | `-` |
+| 13 | exponentiation | `**` |
+| 12 | multiplication | `*` |
+| 12 | division | `/` |
+| 11 | addition | `+` |
+| 11 | subtraction | `-` |
+| ... | ... | ... |
+| 2 | assignment | `=` |
+| ... | ... | ... |
+
+As we can see, the "unary plus" has a priority of `14` which is higher than the `11` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 ## Affectation
 
@@ -303,9 +321,13 @@ Ces opérateurs ont la même précédence qu'une affectation normale. Ils s'exé
 ```js run
 let n = 2;
 
-n *= 3 + 5;
+n *= 3 + 5; // right part evaluated first, same as n *= 8
 
+<<<<<<< HEAD
 alert( n ); // 16  (partie droite évaluée en premier, identique à n *= 8)
+=======
+alert( n ); // 16  
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 ```
 
 ## Incrémentation / décrémentation
@@ -437,8 +459,12 @@ La liste des opérateurs :
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
+<<<<<<< HEAD
 Ces opérateurs sont très rarement utilisés, lorsque nous devons jouer avec des nombres au niveau le plus bas (bit à bit). Nous n'aurons pas besoin de ces opérateurs de si tôt, car le développement Web les utilise peu, mais dans certains domaines particuliers, comme la cryptographie, ils sont utiles. Vous pouvez lire le chapitre [Opérateurs binaires](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs#Op%C3%A9rateurs_binaires) sur MDN en cas de besoin.
 
+=======
+These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won't need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) chapter on MDN when a need arises.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 ## Virgule
 

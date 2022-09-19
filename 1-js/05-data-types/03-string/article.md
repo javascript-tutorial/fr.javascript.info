@@ -48,7 +48,11 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
+<<<<<<< HEAD
 Les guillemets simples et doubles proviennent d'anciens temps de la création linguistique lorsque la nécessité de chaînes multilignes n'était pas prise en compte. Les backticks sont apparus beaucoup plus tard et sont donc plus polyvalents.
+=======
+Single and double quotes come from ancient times of language creation, when the need for multiline strings was not taken into account. Backticks appeared much later and thus are more versatile.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Les Backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Vous pouvez en savoir plus à ce sujet dans la [doc](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
 
@@ -216,7 +220,7 @@ alert( 'Interface'.toLowerCase() ); // interface
 
 Ou, si nous voulons un seul caractère minuscule :
 
-```js
+```js run
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
@@ -375,8 +379,13 @@ alert( "Widget".includes("id", 3) ); // false, à partir de la position 3, il n'
 Les méthodes [str.startsWith](mdn:js/String/startsWith) et [str.endsWith](mdn:js/String/endsWith) font exactement ce qu'elle disent :
 
 ```js run
+<<<<<<< HEAD
 alert( "Widget".startsWith("Wid") ); // true, "Widget" commence avec "Wid"
 alert( "Widget".endsWith("get") );   // true, "Widget" fini avec "get"
+=======
+alert( "*!*Wid*/!*get".startsWith("Wid") ); // true, "Widget" starts with "Wid"
+alert( "Wid*!*get*/!*".endsWith("get") ); // true, "Widget" ends with "get"
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 ```
 
 ## Obtenir un substring (sous-chaîne de caractères)
@@ -449,6 +458,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     alert( str.substr(-4, 2) ); // 'gi', à partir de la 4ème position on obtient 2 caractères
     ```
 
+<<<<<<< HEAD
 Récapitulons ces méthodes pour éviter toute confusion :
 
 | méthodes                | séléction ...                           | valeurs negatives                    |
@@ -456,6 +466,11 @@ Récapitulons ces méthodes pour éviter toute confusion :
 | `slice(start, end)`     | de `start` à `end` (n'inclue pas `end`) | permet les négatifs                  |
 | `substring(start, end)` | entre `start` et `end`                  | les valeurs négatives signifient `0` |
 | `substr(start, length)` | de `start` obtient `length` caractères  | permet un `start` negatif            |
+=======
+    This method resides in the [Annex B](https://tc39.es/ecma262/#sec-string.prototype.substr) of the language specification. It means that only browser-hosted Javascript engines should support it, and it's not recommended to use it. In practice, it's supported everywhere.
+
+Let's recap these methods to avoid any confusion:
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 
 ```smart header="Lequel choisir ?"
@@ -612,7 +627,11 @@ Vous trouverez plus de moyens de traiter les paires de substitution plus tard da
 
 ### Marques diacritiques et normalisation
 
+<<<<<<< HEAD
 Dans de nombreuses langues, il existe des symboles composés du caractère de base avec une marque au-dessus / au-dessous.
+=======
+In many languages, there are symbols that are composed of the base character with a mark above/under it.
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Par exemple, la lettre `a` peut être le caractère de base pour : `àáâäãåā`. Les caractères “composites” les plus courants ont leur propre code dans la table UTF-16. Mais pas tous, car il y a trop de combinaisons possibles.
 
