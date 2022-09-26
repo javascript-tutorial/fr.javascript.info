@@ -55,7 +55,11 @@ Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous 
 
 La directive doit être au sommet d'un script ou au début d'un corps de fonction.
 
+<<<<<<< HEAD
 Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible". Nous préférons généralement le comportement moderne.
+=======
+Without `"use strict"`, everything still works, but some features behave in the old-fashioned, "compatible" way. We'd generally prefer the modern behavior.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Certaines fonctionnalités modernes du langage (telles que les classes que nous étudierons dans le futur) activent implicitement le mode strict.
 
@@ -144,7 +148,11 @@ Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
 Bitwise
+<<<<<<< HEAD
 : Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise)) quand ils sont nécessaires.
+=======
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) when they are needed.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
@@ -255,7 +263,11 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
 3. Fonctions fléchées :
 
     ```js
+<<<<<<< HEAD
     // expression à droite
+=======
+    // expression on the right side
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
     let sum = (a, b) => a + b;
 
     // ou une syntaxe multiligne avec {...}, il faut return ici :

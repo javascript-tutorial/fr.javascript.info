@@ -37,7 +37,11 @@ Et ici comment elle est stockée en mémoire :
 
 L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), tandis que la variable `user` (du coté gauche) a une référence à celui-ci.
 
+<<<<<<< HEAD
 On peut imaginer la variable d'objet, ici `user`, comme une feuille de papier avec l'adresse de l'objet écrit dessus.
+=======
+We may think of an object variable, such as `user`, like a sheet of paper with the address of the object on it.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Lorque l'on réalise une action avec l'objet, par exemple récupérer la propriété `user.name`, le moteur de Javascript regarde à l'adresse et réalise l'opération sur l'objet actuel.
 
@@ -100,15 +104,49 @@ alert( a == b ); // false
 
 Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive `obj == 5`, les objets sont convertis en primitives. Nous étudierons comment les conversions d'objets fonctionnent très bientôt, mais pour dire la vérité, de telles comparaisons sont rarement nécessaires, en général elles sont le résultat d'une erreur de programmation.
 
+<<<<<<< HEAD
 ## Clonage et fusion, Object.assign [#clonage-et-fusion-object-assign]
+=======
+````smart header="Const objects can be modified"
+An important side effect of storing objects as references is that an object declared as `const` *can* be modified.
+
+For instance:
+
+```js run
+const user = {
+  name: "John"
+};
+
+*!*
+user.name = "Pete"; // (*)
+*/!*
+
+alert(user.name); // Pete
+```
+
+It might seem that the line `(*)` would cause an error, but it does not. The value of `user` is constant, it must always reference the same object, but properties of that object are free to change.
+
+In other words, the `const user` gives an error only if we try to set `user=...` as a whole.
+
+That said, if we really need to make constant object properties, it's also possible, but using totally different methods. We'll mention that in the chapter <info:property-descriptors>.
+````
+
+## Cloning and merging, Object.assign [#cloning-and-merging-object-assign]
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Copier une variable object créé une référence en plus vers le même objet.
 
+<<<<<<< HEAD
 Mais quid si nous voulons dupliquer un objet ? Créer une copie indépendante, un clone ?
 
 C'est aussi faisable, mais un peu plus compliqué, parce qu'en Javascript il n'y pas de méthode intégrée pour cela. En fait c'est rarement utile. Copier par référence fonctionne la plupart du temps.
 
 Mais si nous le voulons, alors nous devons créer un nouvel objet et répliquer sa structure en itérant ses propriétés et en les copiant au niveau primitive.
+=======
+But what if we need to duplicate an object?
+
+We can create a new object and replicate the structure of the existing one, by iterating over its properties and copying them on the primitive level.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Comme cela :
 
@@ -133,13 +171,17 @@ clone.name = "Pete"; // On change les données de celui-ci
 alert( user.name ); // c'est toujour john dans l'objet copié
 ```
 
+<<<<<<< HEAD
 On peut aussi utiliser la méthode [Object.assign](mdn:js/Object/assign) pour cela.
+=======
+We can also use the method [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 
 La syntaxe est :
 
 ```js
-Object.assign(dest, [src1, src2, src3...])
+Object.assign(dest, src1[, src2, src3...])
 ```
 
 - Le premier argument `dest` est l'objet cible
@@ -192,7 +234,11 @@ Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilis
 
 ## Clonage imbriqué
 
+<<<<<<< HEAD
 Jusqu'à maintenant on suppose que toutes les propriétés de `use` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
+=======
+Until now we assumed that all properties of `user` are primitive. But properties can be references to other objects.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Comme ceci :
 ```js run
@@ -207,9 +253,13 @@ let user = {
 alert( user.sizes.height ); // 182
 ```
 
+<<<<<<< HEAD
 Ce n'est plus suffisant de copier `clone.sizes = user.sizes`, car `user.sizes` est un objet, il sera copié par référence. Donc `clone` et `user` partageront le même objet `sizes` :
 
 Comme cela :
+=======
+Now it's not enough to copy `clone.sizes = user.sizes`, because `user.sizes` is an object, and will be copied by reference, so `clone` and `user` will share the same sizes:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ```js run
 let user = {
@@ -224,6 +274,7 @@ let clone = Object.assign({}, user);
 
 alert( user.sizes === clone.sizes ); // true, c'est le même objet
 
+<<<<<<< HEAD
 // user et clone partage l'objet sizes
 user.sizes.width++;       // on modifie la propriété à un endroit
 alert(clone.sizes.width); // 51, on peut voir la modification dans un autre endroit
@@ -238,25 +289,83 @@ Un "effet secondaire" important du stockage d'objets en tant que références es
 ```
 
 Par exemple :
+=======
+// user and clone share sizes
+user.sizes.width = 60;    // change a property from one place
+alert(clone.sizes.width); // 60, get the result from the other one
+```
+
+To fix that and make `user` and `clone` truly separate objects, we should use a cloning loop that examines each value of `user[key]` and, if it's an object, then replicate its structure as well. That is called a "deep cloning" or "structured cloning". There's [structuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) method that implements deep cloning.
+
+
+### structuredClone
+
+The call `structuredClone(object)` clones the `object` with all nested properties.
+
+Here's how we can use it in our example:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ```js run
-const user = {
-  name: "John"
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
 };
 
 *!*
-user.name = "Pete"; // (*)
+let clone = structuredClone(user);
 */!*
 
-alert(user.name); // Pete
+alert( user.sizes === clone.sizes ); // false, different objects
+
+// user and clone are totally unrelated now
+user.sizes.width = 60;    // change a property from one place
+alert(clone.sizes.width); // 50, not related
 ```
 
+<<<<<<< HEAD
 Il peut sembler que la ligne `(*)` provoquerait une erreur, mais non. La valeur de `user` est constante, elle doit toujours référencer le même objet. Mais les propriétés de cet objet sont libres de changer.
 
 En d'autres termes, le `const user` ne donne une erreur que si nous essayons de définir `user = ...` dans son ensemble, et c'est tout.
 
 Cela dit, si nous avons vraiment besoin de créer des propriétés d'objet constantes, c'est également possible, mais en utilisant des méthodes totalement différentes, nous le mentionnerons dans le chapitre <info:property-descriptors>.
 
+=======
+The `structuredClone` method can clone most data types, such as objects, arrays, primitive values.
+
+It also supports circular references, when an object property references the object itself (directly or via a chain or references).
+
+For instance:
+
+```js run
+let user = {};
+// let's create a circular reference:
+// user.me references the user itself
+user.me = user;
+
+let clone = structuredClone(user);
+alert(clone.me === clone); // true
+```
+
+As you can see, `clone.me` references the `clone`, not the `user`! So the circular reference was cloned correctly as well.
+
+Although, there are cases when `structuredClone` fails.
+
+For instance, when an object has a function property:
+
+```js run
+// error
+structuredClone({
+  f: function() {}
+});
+```
+
+Function properties aren't supported.
+
+To handle such complex cases we may need to use a combination of cloning methods, write custom code or, to not reinvent the wheel, take an existing implementation, for instance [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) from the JavaScript library [lodash](https://lodash.com).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ## Résumé
 
@@ -264,4 +373,8 @@ Les objets sont assignés et copiés par référence. En d'autres termes, une va
 
 Toutes les opérations faites par une copie de la référence (comme ajouter/supprimer une propriété) sont faites sur le même objet.
 
+<<<<<<< HEAD
 Pour réaliser une copie (un clone) on peut utiliser `Object.assign`, pour faire une "copie superficielle" (les objets imbriqués sont copiés par référence), ou pour une "copie réelle" une fonction comme [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+=======
+To make a "real copy" (a clone) we can use `Object.assign` for the so-called "shallow copy" (nested objects are copied by reference) or a "deep cloning" function `structuredClone` or use a custom cloning implementation, such as [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4

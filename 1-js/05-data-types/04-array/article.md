@@ -92,6 +92,38 @@ let fruits = [
 Le style "virgule de fin" facilite l'insertion/la suppression d'éléments, car toutes les lignes se ressemblent.
 ````
 
+## Get last elements with "at"
+
+[recent browser="new"]
+
+Let's say we want the last element of the array.
+
+Some programming languages allow to use negative indexes for the same purpose, like `fruits[-1]`.
+
+Although, in JavaScript it won't work. The result will be `undefined`, because the index in square brackets is treated literally.
+
+We can explicitly calculate the last element index and then access it: `fruits[fruits.length - 1]`.
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+alert( fruits[fruits.length-1] ); // Plum
+```
+
+A bit cumbersome, isn't it? We need to write the variable name twice.
+
+Luckily, there's a shorter syntax: `fruits.at(-1)`:
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+// same as fruits[fruits.length-1]
+alert( fruits.at(-1) ); // Plum
+```
+
+In other words, `arr.at(i)`:
+- is exactly the same as `arr[i]`, if `i >= 0`.
+- for negative values of `i`, it steps back from the end of the array.
 
 ## Les méthodes pop/push, shift/unshift
 
@@ -121,9 +153,15 @@ Un stack(pile) est généralement illustrée par un jeu de cartes: de nouvelles 
 
 Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out)(dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out)(premier entré, premier sorti).
 
+<<<<<<< HEAD
 Les tableaux en JavaScript peuvent fonctionner à la fois en queue et en stack. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
 
 En informatique, la structure de données qui permet cela s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue) (Double file d'attente).
+=======
+Arrays in JavaScript can work both as a queue and as a stack. They allow you to add/remove elements, both to/from the beginning or the end.
+
+In computer science, the data structure that allows this, is called [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 **Méthodes qui fonctionnent avec la fin du tableau:**
 
@@ -137,6 +175,8 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 
     alert( fruits ); // Apple, Orange
     ```
+
+    Both `fruits.pop()` and `fruits.at(-1)` return the last element of the array, but `fruits.pop()` also modifies the array by removing it.
 
 `push`
 : Ajoute l'élément à la fin du tableau:
@@ -247,7 +287,11 @@ Pourquoi est-il plus rapide de travailler avec la fin d'un tableau qu'avec son d
 fruits.shift(); // prends 1 élément du début
 ```
 
+<<<<<<< HEAD
 Il ne suffit pas de prendre l'élément avec le nombre `0`. D'autres éléments doivent également être renumérotés.
+=======
+It's not enough to take and remove the element with the index `0`. Other elements need to be renumbered as well.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 L'opération `shift` doit faire 3 choses:
 
@@ -365,11 +409,19 @@ Il y a une syntaxe supplémentaire pour créer un tableau:
 let arr = *!*new Array*/!*("Apple", "Pear", "etc");
 ```
 
+<<<<<<< HEAD
 Il est rarement utilisé, car les crochets `[]` sont plus courts. En outre, il comporte une caractéristique délicate.
+=======
+It's rarely used, because square brackets `[]` are shorter. Also, there's a tricky feature with it.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Si `new Array` est appelé avec un seul argument qui est un nombre, il crée un tableau *sans éléments, mais avec la longueur donnée*.
 
+<<<<<<< HEAD
 Voyons comment on peut se tirer une balle dans le pied:
+=======
+Let's see how one can shoot themselves in the foot:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ```js run
 let arr = new Array(2); // va-t-il créer un tableau de [2] ?
@@ -439,7 +491,11 @@ Rappelons les règles :
 - Si l'un des arguments de `==` est un objet, et l'autre est une primitive, alors l'objet est converti en primitif, comme expliqué dans le chapitre <info:object-toprimitive>.
 - ...À l'exception de `null` et `undefined ` qui s'égalent `==` l'un l'autre et rien d'autre.
 
+<<<<<<< HEAD
 La comparaison stricte `===` est encore plus simple, car elle ne convertit pas les types.
+=======
+The strict comparison `===` is even simpler, as it doesn't convert types.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Donc, si nous comparons des tableaux avec `==`, ils ne sont jamais les mêmes, sauf si nous comparons deux variables qui référencent exactement le même tableau.
 
@@ -459,7 +515,11 @@ alert( 0 == [] ); // true
 alert('0' == [] ); // false
 ```
 
+<<<<<<< HEAD
 Ici, dans les deux cas, nous comparons une primitive à un objet tableau. Ainsi, le tableau `[]` est converti en primitive à des fins de comparaison et devient une chaîne vide `''`.
+=======
+Here, in both cases, we compare a primitive with an array object. So the array `[]` gets converted to primitive for the purpose of comparison and becomes an empty string `''`.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ensuite, le processus de comparaison se poursuit avec les primitives, comme décrit dans le chapitre <info:type-conversions> :
 
@@ -478,6 +538,7 @@ C'est simple: n'utilisez pas l'opérateur `==`. Au lieu de cela, comparez-les é
 
 Array est un type d’objet spécial, adapté au stockage et à la gestion des éléments de données ordonnées.
 
+<<<<<<< HEAD
 - La déclaration:
 
     ```js
@@ -489,11 +550,33 @@ Array est un type d’objet spécial, adapté au stockage et à la gestion des �
     ```
 
     L'appel de `new Array(number)` crée un tableau de longueur donnée, mais sans éléments.
+=======
+The declaration:
+
+```js
+// square brackets (usual)
+let arr = [item1, item2...];
+
+// new Array (exceptionally rare)
+let arr = new Array(item1, item2...);
+```
+
+The call to `new Array(number)` creates an array with the given length, but without elements.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 - La propriété `length` est la longueur du tableau ou, plus précisément, son dernier index numérique plus un. Il est auto-ajusté par les méthodes de tableau.
 - Si nous raccourcissons `length` manuellement, le tableau est tronqué.
 
+<<<<<<< HEAD
 Nous pouvons utiliser un tableau comme un deque avec les opérations suivantes:
+=======
+Getting the elements:
+
+- we can get element by its index, like `arr[0]`
+- also we can use `at(i)` method that allows negative indexes. For negative values of `i`, it steps back from the end of the array. If `i >= 0`, it works same as `arr[i]`.
+
+We can use an array as a deque with the following operations:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 - `push (...items)` ajoute `items` à la fin.
 - `pop()` supprime l'élément de la fin et le renvoie.

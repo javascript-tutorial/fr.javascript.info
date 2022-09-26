@@ -39,8 +39,13 @@ Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources s
 
 Voici le paradoxe auquel est confronté le créateur de JavaScript:
 
+<<<<<<< HEAD
 - Il y a beaucoup de choses que l'on voudrait faire avec une primitive telle qu'une chaîne de caractères ou un nombre. Ce serait génial d'y avoir accès avec des méthodes.
 - Les primitives doivent être aussi rapides et légères que possible.
+=======
+- There are many things one would want to do with a primitive, like a string or a number. It would be great to access them using methods.
+- Primitives must be as fast and lightweight as possible.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 La solution semble peu commode, mais la voici:
 
@@ -104,9 +109,16 @@ if (zero) { // zéro est vrai, parce que c'est un objet
 }
 ```
 
+<<<<<<< HEAD
 Par ailleurs, utiliser les mêmes fonctions `Chaîne / Nombre / Booléen` sans `new` est une chose totalement valide et même recommandée. Ils convertissent une valeur dans le type correspondant: une chaîne de caractères, un nombre ou un booléen (primitive).
 
 Par exemple, ceci est entièrement valide:
+=======
+On the other hand, using the same functions `String/Number/Boolean` without `new` is totally fine and useful thing. They convert a value to the corresponding type: to a string, a number, or a boolean (primitive).
+
+For example, this is entirely valid:
+
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ```js
 let num = Number("123"); // convertir une chaîne de caractères en nombre
 ```

@@ -59,7 +59,7 @@ Si on sépare ces opération sur 2 lignes, alors `this` sera perdu :
 let user = {
   name: "John",
   hi() { alert(this.name); }
-}
+};
 
 *!*
 // On sépare l'accès à la méthode et son appel en deux lignes
@@ -87,7 +87,11 @@ Le résultat de l'accès à la propriété `user.hi` n'est pas une fonction, mai
 (user, "hi", true)
 ```
 
+<<<<<<< HEAD
 Quand les parenthèses `()` sont appelées, elles reçoivent les informations sur l'objet et ses méthodes et peut assigné le `this` correct (`=user` dans ce cas).
+=======
+When parentheses `()` are called on the Reference Type, they receive the full information about the object and its method, and can set the right `this` (`user` in this case).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Le type référence est un type interne "intermédiaire", avec comme but de passer l'information du point `.`  aux parenthèses `()`.
 
