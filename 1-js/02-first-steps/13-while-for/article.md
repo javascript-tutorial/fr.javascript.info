@@ -6,7 +6,24 @@ Par exemple, lorsque nous devons extraire des marchandises d'une liste les unes 
 
 *Les boucles* permettent de répéter plusieurs fois la même partie du code.
 
+<<<<<<< HEAD
 ## La boucle "while"
+=======
+```smart header="The for..of and for..in loops"
+A small announcement for advanced readers.
+
+This article covers only basic loops: `while`, `do..while` and `for(..;..;..)`.
+
+If you came to this article searching for other types of loops, here are the pointers:
+
+- See [for..in](info:object#forin) to loop over object properties.
+- See [for..of](info:array#loops) and [iterables](info:iterable) for looping over arrays and iterable objects.
+
+Otherwise, please read on.
+```
+
+## The "while" loop
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 La boucle `while` a la syntaxe suivante :
 
@@ -162,11 +179,14 @@ for (i = 0; i < 3; i++) { // utiliser une variable existante
 
 alert(i); // 3, visible, car déclaré en dehors de la boucle
 ```
-
 ````
 
+<<<<<<< HEAD
 
 ### Sauter des parties
+=======
+### Skipping parts
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Toute partie de `for` peut être ignorée.
 
@@ -268,7 +288,11 @@ for (let i = 0; i < 10; i++) {
 
 D'un point de vue technique, c'est identique à l'exemple du dessus. Certes, nous pouvons simplement envelopper le code dans un bloc `if` au lieu de `continue`.
 
+<<<<<<< HEAD
 Mais comme effet secondaire, nous avons obtenu un niveau d'imbrication supplémentaire (l'appel de l'`alert` à l'intérieur des accolades). Si le code à l'intérieur du `if` est plus long que quelques lignes, la lisibilité globale peut en être réduite.
+=======
+But as a side effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of `if` is longer than a few lines, that may decrease the overall readability.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ````
 
 ````warn header="Pas de `break/continue` à droite de '?'"
@@ -285,7 +309,6 @@ if (i > 5) {
 ```
 
 … Et le réécrivons à l'aide d'un point d'interrogation :
-
 
 ```js no-beautify
 (i > 5) ? alert(i) : *!*continue*/!*; // continue n'est pas autorisé ici
@@ -321,7 +344,12 @@ Nous avons besoin d'un moyen d'arrêter le processus si l'utilisateur annule la 
 
 Le `break` ordinaire après `input` ne ferait que briser la boucle intérieure. Ce n’est pas suffisant -- les *labels* viennent à la rescousse.
 
+<<<<<<< HEAD
 Une *label* est un identifiant avec deux points avant une boucle :
+=======
+A *label* is an identifier with a colon before a loop:
+
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ```js
 labelName: for (...) {
   ...
@@ -345,6 +373,7 @@ Comme ici :
     // faire quelque chose avec la valeur …
   }
 }
+
 alert('Done!');
 ```
 
@@ -364,14 +393,23 @@ La directive `continue` peut également être utilisée avec un label. Dans ce c
 ````warn header="Les labels ne permettent pas de \"sauter\" n'importe où"
 Les labels ne nous permettent pas de sauter dans un endroit arbitraire du code.
 
+<<<<<<< HEAD
 Par exemple, il est impossible de faire ceci :
+=======
+For example, it is impossible to do this:
+
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ```js
 break label;  // saute au label ci-dessous (ne fonctionne pas)
 
 label: for (...)
 ```
 
+<<<<<<< HEAD
 Une directive `break` doit être à l'intérieur d'un bloc de code. Techniquement, tout bloc de code étiqueté fera l'affaire, par exemple :
+=======
+A `break` directive must be inside a code block. Technically, any labelled code block will do, e.g.:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ```js
 label: {

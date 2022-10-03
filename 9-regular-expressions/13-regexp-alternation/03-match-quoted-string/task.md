@@ -2,7 +2,11 @@
 
 Créer une regexp pour trouver les chaines de caractère entre guillemets doubles `subject:"..."`.
 
+<<<<<<< HEAD
 La chaine de caractère devrait supporter l'échappement, comme les chaines de caractère JavaScript. Par exemple, des guillemets peuvent être insérés comme ceci `subject:\"` une nouvelle ligne comme `subject:\n`, et un antislash comme `subject:\\`.
+=======
+The strings should support escaping, the same way as JavaScript strings do. For instance, quotes can be inserted as `subject:\"` a newline as `subject:\n`, and the backslash itself as `subject:\\`.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ```js
 let str = "Just like \"here\".";
@@ -16,6 +20,7 @@ C'est la partie essentielle de la tâche, à part cela, cela devrait être simpl
 
 Exemple de chaine de caractère valides :
 ```js
+<<<<<<< HEAD
 .. *!*"test me"*/!* ..
 .. *!*"Say \"Hello\"!"*/!* ... (guillemets échapées à l'intérieur)
 .. *!*"\\"*/!* ..  (double slash à l'intérieur)
@@ -23,6 +28,15 @@ Exemple de chaine de caractère valides :
 ```
 
 En Javascript nous devons doubler les slash pour les placer dans la chaine de caractère, comme ceci :
+=======
+.. *!*"test me"*/!* ..  
+.. *!*"Say \"Hello\"!"*/!* ... (escaped quotes inside)
+.. *!*"\\"*/!* ..  (double backslash inside)
+.. *!*"\\ \""*/!* ..  (double backslash and an escaped quote inside)
+```
+
+In JavaScript we need to double the backslashes to pass them right into the string, like this:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ```js run
 let str = ' .. "test me" .. "Say \\"Hello\\"!" .. "\\\\ \\"" .. ';

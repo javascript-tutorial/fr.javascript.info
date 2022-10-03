@@ -96,7 +96,11 @@ La valeur retournée `requestId` peut être utilisée pour annuler l'appel :
 cancelAnimationFrame(requestId);
 ```
 
+<<<<<<< HEAD
 Le `callback` reçoit un argument -- le temps écoulé depuis le début du chargement de la page en microsecondes. Ce temps peut aussi être obtenu en appelant [performance.now()](https://developer.mozilla.org/fr/docs/Web/API/Performance/now).
+=======
+The `callback` gets one argument -- the time passed from the beginning of the page load in milliseconds. This time can also be obtained by calling [performance.now()](mdn:api/Performance/now).
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Habituellement, `callback` s'exécute très rapidement, à moins que le CPU soit surchargé ou que la batterie de l'ordinateur portable soit presque déchargée, ou qu'il y ait une autre raison.
 
@@ -159,7 +163,11 @@ La fonction `animate` accepte 3 paramètres qui décrivent essentiellement l'ani
     }
     ```
 
+<<<<<<< HEAD
     Le graph :
+=======
+    Its graph:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
     ![](linear.svg)
 
     C'est comme `transition-timing-function : linear`. Il existe d'autres variantes intéressantes présentées ci-dessous.

@@ -218,8 +218,13 @@ alert(arr.pop()); // World (la méthode fonctionne)
 
 La même chose se passe pour un itérable:
 
+<<<<<<< HEAD
 ```js
 // en supposant que cette "range" est tirée de l'exemple ci-dessus
+=======
+```js run
+// assuming that range is taken from the example above
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 let arr = Array.from(range);
 alert(arr); // 1,2,3,4,5 (array toString conversion fonctionne)
 ```
@@ -233,8 +238,13 @@ Le second argument `mapFn` peut être une fonction à appliquer à chaque élém
 
 Par exemple:
 
+<<<<<<< HEAD
 ```js
 // en supposant que cette "range" est tirée de l'exemple ci-dessus
+=======
+```js run
+// assuming that range is taken from the example above
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 // met au carré chaque nombre
 let arr = Array.from(range, num => num * num);
