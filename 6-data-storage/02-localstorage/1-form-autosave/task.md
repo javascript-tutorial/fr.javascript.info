@@ -1,10 +1,9 @@
+# Enregistrer automatiquement un champ de formulaire
 
-# Autosave a form field
+Créez un champ `textarea` qui "enregistre automatiquement" sa valeur à chaque modification.
 
-Create a `textarea` field that "autosaves" its value on every change.
+Ainsi, si l'utilisateur ferme accidentellement la page et l'ouvre à nouveau, il retrouvera sa saisie inachevée à la place.
 
-So, if the user accidentally closes the page, and opens it again, he'll find his unfinished input at place.
-
-Like this:
+Comme ceci :
 
 [iframe src="solution" height=120]
