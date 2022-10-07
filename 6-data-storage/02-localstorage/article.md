@@ -103,7 +103,7 @@ for(let key in localStorage) {
 ```js run
 for(let key in localStorage) {
   if (!localStorage.hasOwnProperty(key)) {
-    continue; // skip keys like "setItem", "getItem" etc
+    continue; // sauter des clés comme "setItem", "getItem" etc.
   }
   alert(`${key}: ${localStorage.getItem(key)}`);
 }
@@ -212,7 +212,7 @@ localStorage.setItem('now', Date.now());
 
 Veuillez noter que l'événement contient également : `event.url` -- l'url du document où les données ont été mises à jour.
 
-De plus, `event.storageArea` contient l'objet de stockage -- l'événement est le même pour `sessionStorage` et `localStorage`, donc `event.storageArea` fait référence à celui qui a été modifié. On peut même vouloir y remettre quelque chose, « répondre » à un changement.
+De plus, `event.storageArea` contient l'objet de stockage -- l'événement est le même pour `sessionStorage` et `localStorage`, donc `event.storageArea` fait référence à celui qui a été modifié. On peut même vouloir y remettre quelque chose, "répondre" à un changement.
 
 **Cela permet à différentes fenêtres d'une même origine d'échanger des messages.**
 
