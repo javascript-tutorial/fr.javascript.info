@@ -128,8 +128,21 @@ setTimeout(() => document.body.style.display = "", 1000); // retour à la normal
 
 Si nous attribuons `style.display` à une chaîne vide, le navigateur applique les classes CSS et ses styles intégrés normalement, comme s'il n'y avait pas de propriété `style.display`.
 
+<<<<<<< HEAD
 ````smart header="Réécriture complète avec `style.cssText`"
 Normalement, nous utilisons `style.*` pour attribuer des propriétés de style individuelles. Nous ne pouvons pas attribuer le style complet comme `div.style="color: red; width: 100px"`, parce que `div.style` est un object, et il est en lecture seulement.
+=======
+Also there is a special method for that, `elem.style.removeProperty('style property')`. So, We can remove a property like this:
+
+```js run
+document.body.style.background = 'red'; //set background to red
+
+setTimeout(() => document.body.style.removeProperty('background'), 1000); // remove background after 1 second
+```
+
+````smart header="Full rewrite with `style.cssText`"
+Normally, we use `style.*` to assign individual style properties. We can't set the full style like `div.style="color: red; width: 100px"`, because `div.style` is an object, and it's read-only.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Pour définir un style complet comme une chaîne, il y a une propriété spéciale `style.cssText`:
 
@@ -260,6 +273,7 @@ Maintenant, `getComputedStyle` renvoie la valeur résolue de la propriété, hab
 ````warn header="`getComputedStyle` exige le nom complet de la propriété"
 Nous devons toujours demander pour la propriété exacte requise, comme `paddingLeft` ou `marginTop` ou `borderTopWidth`. Sinon, recevoir le bon résultat n'est pas garanti.
 
+<<<<<<< HEAD
 Par exemple, s'il y a les propriétés `paddingLeft/paddingTop`, qu'est-ce que nous recevrons de `getComputedStyle(elem).padding`? Rien, ou peut-être une valeur générée des écarts de remplissage connus? Il n'y a pas de règle standard ici.
 
 Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrome) indique `10px` dans le document ci-dessous, et certains (Firefox) -- n'en indique pas:
@@ -275,6 +289,9 @@ Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrom
   alert(style.margin); // chaîne vide dans Firefox
 </script>
 ```
+=======
+For instance, if there are properties `paddingLeft/paddingTop`, then what should we get for `getComputedStyle(elem).padding`? Nothing, or maybe a "generated" value from known paddings? There's no standard rule here.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ````
 
 ```smart header="Styles appliqués aux liens `:visited` sont cachés!"

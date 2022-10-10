@@ -28,6 +28,10 @@ Notez que `63.5` n'a aucune perte de précision. C'est parce que la partie déci
 
 
 ```js run
+<<<<<<< HEAD
 alert( Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64(arrondi) -> 6.4
+=======
+alert( Math.round(6.35 * 10) / 10 ); // 6.35 -> 63.5 -> 64(rounded) -> 6.4
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ```
 

@@ -74,7 +74,11 @@ Maintenant si nous faisons la même chose :
 user = null;
 ```
 
+<<<<<<< HEAD
 … Ensuite, l’objet est toujours accessible via la variable globale `admin`, il est donc encore en mémoire. Si nous écrasons également `admin`, alors il sera supprimé.
+=======
+...Then the object is still reachable via `admin` global variable, so it must stay in memory. If we overwrite `admin` too, then it can be removed.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ## Objets liés
 
@@ -169,11 +173,19 @@ La première étape marque les racines :
 
 ![](garbage-collection-2.svg)
 
+<<<<<<< HEAD
 Ensuite, leurs références sont marquées :
 
 ![](garbage-collection-3.svg)
 
 … Et leurs références, autant que possible :
+=======
+Then we follow their references and mark referenced objects:
+
+![](garbage-collection-3.svg)
+
+...And continue to follow further references, while possible:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ![](garbage-collection-4.svg)
 
@@ -183,13 +195,23 @@ Désormais, les objets qui n'ont pas pu être visités sont considérés comme i
 
 Nous pouvons également imaginer que le processus consiste à renverser un énorme seau de peinture à la racine, qui traverse toutes les références et marque tous les objets accessibles. Les non marqués sont ensuite supprimés.
 
+<<<<<<< HEAD
 C'est le concept de la façon dont la garbage collection fonctionne. Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
+=======
+That's the concept of how garbage collection works. JavaScript engines apply many optimizations to make it run faster and not introduce any delays into the code execution.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Certaines des optimisations :
 
+<<<<<<< HEAD
 - **Collection générationnelle** -- les objets sont divisés en deux ensembles : les "nouveaux" et les "anciens". De nombreux objets apparaissent, font leur travail et meurent rapidement, ils peuvent être nettoyés de manière agressive. Ceux qui survivent assez longtemps deviennent "vieux" et sont examinés moins souvent.
 - **Collection incrémentale** -- s'il y a beaucoup d'objets et que nous essayons de circuler et de marquer le jeu d'objets entier en même temps, cela peut prendre un certain temps et introduire des retards visibles dans l'exécution. Le moteur essaie donc de scinder le garbage collection (ramassage de miettes) en morceaux. Ensuite, ces parties sont exécutées une par une, séparément. Cela nécessite une comptabilité supplémentaire entre elles pour suivre les changements, mais nous avons beaucoup de petits retards au lieu d'un gros.
 - **Collection par inactivité** -- le garbage collector tente de s'exécuter uniquement lorsque le processeur (CPU) est inactif, afin de réduire les conséquences sur l'exécution.
+=======
+- **Generational collection** -- objects are split into two sets: "new ones" and "old ones". In typical code, many objects have a short life span: they appear, do their job and die fast, so it makes sense to track new objects and clear the memory from them if that's the case. Those that survive for long enough, become "old" and are examined less often.
+- **Incremental collection** -- if there are many objects, and we try to walk and mark the whole object set at once, it may take some time and introduce visible delays in the execution. So the engine splits the whole set of existing objects into multiple parts. And then clear these parts one after another. There are many small garbage collections instead of a total one. That requires some extra bookkeeping between them to track changes, but we get many tiny delays instead of a big one.
+- **Idle-time collection** -- the garbage collector tries to run only while the CPU is idle, to reduce the possible effect on the execution.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Il existe d'autres optimisations et variantes d'algorithmes de récupération de place. Même si je souhaite les décrire ici, je dois m'abstenir, car différents moteurs implémentent différentes techniques et ajustements. Et, ce qui est encore plus important, les choses changent à mesure que les moteurs se développent. Donc aller plus loin de manière plus poussée, sans réel besoin, n’en vaut probablement pas la peine. À moins, bien sûr, que ce soit une question qui vous intéresse vraiment, vous trouverez quelques liens pour vous ci-dessous.
 
@@ -197,16 +219,30 @@ Il existe d'autres optimisations et variantes d'algorithmes de récupération de
 
 Les principales choses à savoir :
 
+<<<<<<< HEAD
 - La garbage collection est effectuée automatiquement. Nous ne pouvons ni forcer ni empêcher cela.
 - Les objets sont conservés en mémoire tant qu'ils sont accessibles.
 - Être référencé n'est pas la même chose qu'être accessible (depuis une racine): un groupe d'objets liés entre eux peut devenir inaccessible dans son ensemble.
+=======
+- Garbage collection is performed automatically. We cannot force or prevent it.
+- Objects are retained in memory while they are reachable.
+- Being referenced is not the same as being reachable (from a root): a pack of interlinked objects can become unreachable as a whole, as we've seen in the example above.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Les moteurs modernes implémentent des algorithmes avancés de récupération de place.
 
 Un livre général intitulé "The Garbage Collection Handbook: The Art of Automatic Memory Management" (R. Jones et al.) En parle.
 
+<<<<<<< HEAD
 Si vous êtes familiarisé avec la programmation de bas niveau, les informations plus détaillées sur le garbage collecor V8 se trouvent dans l'article [A tour of V8: Garbage Collection](http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
 
 [V8 blog](https://v8.dev) publie également des articles sur les modifications de la gestion de la mémoire de temps à autre. Naturellement, pour apprendre la récupération de place, vous feriez mieux de vous préparer en vous renseignant sur les éléments internes de V8 en général et en lisant le blog de [Vyacheslav Egorov](http://mrale.ph) qui a travaillé comme l'un des ingénieurs V8. Je dis: «V8», car c'est le plus couvert d'articles sur Internet. Pour d'autres moteurs, de nombreuses approches sont similaires, mais la récupération de place diffère à de nombreux égards.
 
 Une connaissance approfondie des moteurs est utile lorsque vous avez besoin d'optimisations de bas niveau. Il serait sage de planifier cela comme prochaine étape après la connaissance du langage.
+=======
+If you are familiar with low-level programming, more detailed information about V8's garbage collector is in the article [A tour of V8: Garbage Collection](http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
+
+The [V8 blog](https://v8.dev/) also publishes articles about changes in memory management from time to time. Naturally, to learn more about garbage collection, you'd better prepare by learning about V8 internals in general and read the blog of [Vyacheslav Egorov](http://mrale.ph) who worked as one of the V8 engineers. I'm saying: "V8", because it is best covered by articles on the internet. For other engines, many approaches are similar, but garbage collection differs in many aspects.
+
+In-depth knowledge of engines is good when you need low-level optimizations. It would be wise to plan that as the next step after you're familiar with the language.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e

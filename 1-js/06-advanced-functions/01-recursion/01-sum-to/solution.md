@@ -37,4 +37,8 @@ P.S. Naturellement, la formule est la solution la plus rapide. Elle n’utilise 
 
 La variante de boucle est la seconde en termes de vitesse. Dans la variante récursive et la variante de boucle, nous additionnons les mêmes nombres. Mais la récursion implique des appels imbriqués et la gestion de la pile d'exécution. Donc, cela prend des ressources, donc c'est plus lent.
 
+<<<<<<< HEAD
 P.P.S. Certains moteurs prennent en charge l'optimisation du "tail call (dernier appel)": si un appel récursif est le dernier de la fonction (comme dans la somme ci-dessus), le moteur n'a pas besoin de reprendre son contexte d'exécution. Cela supprime la charge en mémoire, donc compter `sumTo (100000)` devient possible. Toutefois, si le moteur JavaScript ne prend pas en charge l'optimisation des appels en bout de ligne, il y aura une erreur: maximum stack size exceeded (la taille maximale de la pile est dépassée), car la taille totale de la pile est généralement limitée.
+=======
+P.P.S. Some engines support the "tail call" optimization: if a recursive call is the very last one in the function, with no other calculations performed, then the outer function will not need to resume the execution, so the engine doesn't need to remember its execution context. That removes the burden on memory. But if the JavaScript engine does not support tail call optimization (most of them don't), there will be an error: maximum stack size exceeded, because there's usually a limitation on the total stack size.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
