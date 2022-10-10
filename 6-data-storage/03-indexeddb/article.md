@@ -203,7 +203,7 @@ Mais nous devons d'abord créer un magasin d'objets.
 La syntaxe pour créer un magasin d'objets :
 
 ```js
-db.createObjectStore(name, [keyOptions]);
+db.createObjectStore(name, keyOptions);
 ```
 
 Veuillez noter que l'opération est synchrone, `await` n'est nécessaire.
@@ -273,7 +273,7 @@ Les transactions peuvent le garantir.
 Pour démarrer une transaction :
 
 ```js
-db.transaction(store, [type]);
+db.transaction(store, type);
 ```
 
 - `store` est un nom de magasin auquel la transaction va accéder, par ex. `"books"`. Peut être un tableau de noms de magasins si nous allons accéder à plusieurs magasins.
