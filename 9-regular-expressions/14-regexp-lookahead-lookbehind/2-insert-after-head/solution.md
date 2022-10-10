@@ -1,8 +1,8 @@
-In order to insert after the `<body>` tag, we must first find it. We can use the regular expression pattern `pattern:<body.*?>` for that.
+Pour insérer après la balise `<body>`, nous devons d'abord la trouver. Nous pouvons utiliser le modèle d'expression régulière `pattern:<body.*?>` pour cela.
 
-In this task we don't need to modify the `<body>` tag. We only need to add the text after it.
+Dans cette tâche, nous n'avons pas besoin de modifier la balise `<body>`. Nous n'avons qu'à ajouter le texte après.
 
-Here's how we can do it:
+Voici comment nous pouvons le faire :
 
 ```js run
 let str = '...<body style="...">...';
@@ -11,9 +11,9 @@ str = str.replace(/<body.*?>/, '$&<h1>Hello</h1>');
 alert(str); // ...<body style="..."><h1>Hello</h1>...
 ```
 
-In the replacement string `$&` means the match itself, that is, the part of the source text that corresponds to `pattern:<body.*?>`. It gets replaced by itself plus `<h1>Hello</h1>`.
+Dans la chaîne de remplacement, `$&` signifie la correspondance elle-même, c'est-à-dire la partie du texte source qui correspond à `pattern:<body.*?>`. Il est remplacé par lui-même suivi de `<h1>Hello</h1>`.
 
-An alternative is to use lookbehind:
+Une alternative consiste à utiliser lookbehind :
 
 ```js run
 let str = '...<body style="...">...';
@@ -22,15 +22,15 @@ str = str.replace(/(?<=<body.*?>)/, `<h1>Hello</h1>`);
 alert(str); // ...<body style="..."><h1>Hello</h1>...
 ```
 
-As you can see, there's only lookbehind part in this regexp.
+Comme vous pouvez le voir, il n'y a qu'une partie lookbehind dans cette expression régulière.
 
-It works like this:
-- At every position in the text.
-- Check if it's preceeded by `pattern:<body.*?>`.
-- If it's so then we have the match.
+Cela fonctionne comme ceci :
+- À chaque position dans le texte.
+- Vérifiez s'il est précédé de `pattern:<body.*?>`.
+- Si c'est le cas, nous avons le match.
 
-The tag `pattern:<body.*?>` won't be returned. The result of this regexp is literally an empty string, but it matches only at positions preceeded by `pattern:<body.*?>`.
+La balise `pattern:<body.*?>` ne sera pas renvoyée. Le résultat de cette expression régulière est littéralement une chaîne vide, mais elle ne correspond qu'aux positions précédées de `pattern:<body.*?>`.
 
-So it replaces the "empty line", preceeded by `pattern:<body.*?>`, with `<h1>Hello</h1>`. That's the insertion after `<body>`.
+Il remplace donc la "ligne vide", précédée de `pattern:<body.*?>`, par `<h1>Hello</h1>`. C'est l'insertion après `<body>`.
 
-P.S. Regexp flags, such as `pattern:s` and `pattern:i` can also be useful: `pattern:/<body.*?>/si`. The `pattern:s` flag makes the dot `pattern:.` match a newline character, and `pattern:i` flag makes `pattern:<body>` also match `match:<BODY>` case-insensitively.
+PS Les drapeaux d'expression régulière, tels que `pattern:s` et `pattern:i` peuvent également être utiles : `pattern:/<body.*?>/si`. Le drapeau `pattern:s` fait correspondre le point `pattern:.` à un caractère de retour à la ligne, et le drapeau `pattern:i` fait que `pattern:<body>` correspond également à `match:<BODY>` insensible à la casse.

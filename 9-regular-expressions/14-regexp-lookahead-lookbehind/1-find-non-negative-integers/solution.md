@@ -1,9 +1,9 @@
 
-The regexp for an integer number is `pattern:\d+`.
+L'expression régulière pour un nombre entier est `pattern:\d+`.
 
-We can exclude negatives by prepending it with the negative lookbehind: `pattern:(?<!-)\d+`.
+Nous pouvons exclure les négatifs en les faisant précéder du lookbehind négatif : `pattern:(?<!-)\d+`.
 
-Although, if we try it now, we may notice one more "extra" result:
+Bien que, si nous l'essayons maintenant, nous remarquerons peut-être un autre résultat "supplémentaire":
 
 ```js run
 let regexp = /(?<!-)\d+/g;
@@ -13,11 +13,11 @@ let str = "0 12 -5 123 -18";
 console.log( str.match(regexp) ); // 0, 12, 123, *!*8*/!*
 ```
 
-As you can see, it matches `match:8`, from `subject:-18`. To exclude it, we need to ensure that the regexp starts matching a number not from the middle of another (non-matching) number.
+Comme vous pouvez le voir, il correspond à `match:8`, à partir de `subject:-18`. Pour l'exclure, nous devons nous assurer que l'expression régulière commence à correspondre à un nombre qui ne se trouve pas au milieu d'un autre nombre (non correspondant).
 
-We can do it by specifying another negative lookbehind: `pattern:(?<!-)(?<!\d)\d+`. Now `pattern:(?<!\d)` ensures that a match does not start after another digit, just what we need.
+Nous pouvons le faire en spécifiant un autre lookbehind négatif : `pattern:(?<!-)(?<!\d)\d+`. Maintenant, `pattern:(?<!\d)` garantit qu'une correspondance ne commence pas après un autre chiffre, juste ce dont nous avons besoin.
 
-We can also join them into a single lookbehind here:
+Nous pouvons également les joindre en un seul lookbehind ici:
 
 ```js run
 let regexp = /(?<![-\d])\d+/g;

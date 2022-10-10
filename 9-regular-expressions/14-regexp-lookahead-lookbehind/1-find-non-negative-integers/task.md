@@ -1,14 +1,15 @@
-# Find non-negative integers
+# Trouver des nombres entiers non négatifs
 
-There's a string of integer numbers.
+Il y a une chaîne de nombres entiers.
 
-Create a regexp that looks for only non-negative ones (zero is allowed).
+Créez une expression régulière qui ne recherche que les expressions non négatives (zéro est autorisé).
 
-An example of use:
+Un exemple d'utilisation :
+
 ```js
 let regexp = /your regexp/g;
 
 let str = "0 12 -5 123 -18";
 
-alert( str.match(regexp) ); // 0, 12, 123
+alert(str.match(regexp)); // 0, 12, 123
 ```
