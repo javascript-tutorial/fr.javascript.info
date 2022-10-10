@@ -1,2 +1,1 @@
-
-# Storing data in the browser
+# Stockage des données dans le navigateur
