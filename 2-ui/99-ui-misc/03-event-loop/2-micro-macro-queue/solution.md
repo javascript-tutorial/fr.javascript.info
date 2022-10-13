@@ -1,50 +1,50 @@
-The console output is: 1 7 3 5 2 6 4.
+La sortie console est : 1 7 3 5 2 6 4.
 
-The task is quite simple, we just need to know how microtask and macrotask queues work.
+La tâche est assez simple, nous avons juste besoin de savoir comment fonctionnent les files d'attente pour microtâches et macrotâches.
 
-Let's see what's going on, step by step.
+Voyons ce qui se passe, étape par étape.
 
 ```js
 console.log(1);
-// The first line executes immediately, it outputs `1`.
-// Macrotask and microtask queues are empty, as of now.
+// La première ligne s'exécute immédiatement, elle sort `1`.
+// Les files d'attente Macrotask et Microtask sont vides, pour l'instant.
 
 setTimeout(() => console.log(2));
-// `setTimeout` appends the callback to the macrotask queue.
-// - macrotask queue content:
+// `setTimeout` ajoute la callback à la file d'attente macrotask.
+// - la file d'attente macrotask contient:
 //   `console.log(2)`
 
 Promise.resolve().then(() => console.log(3));
-// The callback is appended to the microtask queue.
-// - microtask queue content:
+// La callback est ajoutée à la file d'attente des microtâches.
+// - contenu de la file d'attente des microtâches:
 //   `console.log(3)`
 
 Promise.resolve().then(() => setTimeout(() => console.log(4)));
-// The callback with `setTimeout(...4)` is appended to microtasks
-// - microtask queue content:
+// La callback avec `setTimeout (...4) `est ajoutée aux microtâche
+// - contenu de la file d'attente des microtâches:
 //   `console.log(3); setTimeout(...4)`
 
 Promise.resolve().then(() => console.log(5));
-// The callback is appended to the microtask queue
-// - microtask queue content:
+// La callback est ajoutée à la file d'attente des microtâches
+// - contenu de la file d'attente des microtâches:
 //   `console.log(3); setTimeout(...4); console.log(5)`
 
 setTimeout(() => console.log(6));
-// `setTimeout` appends the callback to macrotasks
-// - macrotask queue content:
+// `setTimeout` ajoute la callback aux macrotasks
+// - contenu de la file d'attente macrotask:
 //   `console.log(2); console.log(6)`
 
 console.log(7);
-// Outputs 7 immediately.
+// Affiche 7 immédiatement.
 ```
 
-To summarize,
+Pour résumer,
 
-1. Numbers `1` и `7` show up immediately, because simple `console.log` calls don't use any queues.
-2. Then, after the main code flow is finished, the microtask queue runs.
-    - It has commands: `console.log(3); setTimeout(...4); console.log(5)`.
-    - Numbers `3` и `5` show up, while `setTimeout(() => console.log(4))` adds the `console.log(4)` call to the end of the macrotask queue.
-    - The macrotask queue is now: `console.log(2); console.log(6); console.log(4)`.
-3. After the microtask queue becomes empty, the macrotask queue executes. It outputs `2`, `6`, `4`.
+1. Les numéros `1` & `7` apparaissent immédiatement, car les appels simples `console.log` n'utilisent aucune file d'attente.
+2. Ensuite, une fois le flux de code principal terminé, la file d'attente des microtâches s'exécute.
+    - Il possède les commandes: `console.log (3); setTimeout (...4); console.log (5) `.
+    - Les nombres `3` & `5` apparaissent, tandis que `setTimeout (() => console.log (4))` ajoute l'appel `console.log (4)` à la fin de la file d'attente macrotask.
+    - La file d'attente macrotask est maintenant: `console.log (2); console.log (6); console.log (4) `.
+3. Une fois la file d'attente des microtâches vide, la file d'attente des macrotasques s'exécute. Il sort `2`, `6`, `4`.
 
-Finally, we have the output: `1 7 3 5 2 6 4`.
+Au final, nous avons la sortie: `1 7 3 5 2 6 4`.
