@@ -45,7 +45,7 @@ Des ressources supplémentaires et des exemples pour l'article ou l'exercice se 
 
 ## Conseils de traduction
 
-La traduction ne doit pas nécessairement être ultra précise (mot par mot). Elle devrait être techniquement correct et bien expliquée.
+La traduction ne doit pas nécessairement être ultra précise (mot par mot). Elle devrait être techniquement correcte et bien expliquée.
 
 Si vous voyez que la version anglaise peut être améliorée, merci d'envoyer un PR sur le repo correspondant.
 
