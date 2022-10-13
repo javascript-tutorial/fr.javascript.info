@@ -122,7 +122,7 @@ alert(null.test); // error
 ```
 ````
 
-## Sommaire
+## Résumé
 
 - Les primitives sauf null et undefined fournissent de nombreuses méthodes utiles. Nous étudierons cela dans les prochains chapitres.
 - Officiellement, ces méthodes fonctionnent via des objets temporaires, mais les moteurs JavaScript sont bien ajustés pour optimiser cela en interne, elles ne sont donc pas coûteuses à appeler.

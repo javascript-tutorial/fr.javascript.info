@@ -164,28 +164,28 @@ Il y a deux façons de le faire:
     alert( Math.round(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
     ```
 
-2. La méthode [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed) arrondit le nombre à `n` chiffres après le point et renvoie unechaîne de caractères du résultat.
+2. La méthode [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed) arrondit le nombre à `n` chiffres après le point et renvoie une chaîne de caractères du résultat.
         
     ```js run
     let num = 12.34;
     alert( num.toFixed(1) ); // "12.3"
     ```
 
-    Ceci arrondit à la valeur la plus proche, similaire à `Math.round`:
+    Ceci arrondit à la valeur la plus proche, similaire à `Math.round` :
 
     ```js run
     let num = 12.36;
     alert( num.toFixed(1) ); // "12.4"
     ```
 
-    Veuillez noter que le résultat de `toFixed` est une chaîne de caractères. Si la partie décimale est plus courte qu'indiquée, des zéros sont ajoutés à la fin:
+    Veuillez noter que le résultat de `toFixed` est une chaîne de caractères. Si la partie décimale est plus courte qu'indiquée, des zéros sont ajoutés à la fin :
 
     ```js run
     let num = 12.34;
     alert( num.toFixed(5) ); // "12.34000", ajout de zéros pour faire exactement 5 chiffres
     ```
 
-    Nous pouvons le convertir en un nombre en utilisant le plus unaire `+` ou un appel `Number()`: `+num.toFixed(5)`.
+    Nous pouvons le convertir en un nombre en utilisant le plus unaire `+` ou un appel `Number()` : `+num.toFixed(5)`.
 
 ## Calculs imprécis
 
@@ -207,13 +207,13 @@ alert( 0.1 + 0.2 == 0.3 ); // *!*faux*/!*
 
 Si on vérifie si la somme de `0.1` et `0.2` est égale à `0.3` on obtient `faux`.
 
-Étrange! Qu'est-ce que c'est alors si ce n'est pas `0.3`?
+Étrange ! Qu'est-ce que c'est alors si ce n'est pas `0.3`?
 
 ```js run
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
-Aie! Imaginez que vous créiez un site d'e-commerce et que le visiteur mette des produits à `0,10 €` et `0,20 €` dans son panier. Le total de la commande sera de `0,30000000000000004 €`. Cela surprendrait n'importe qui.
+Aie ! Imaginez que vous créiez un site d'e-commerce et que le visiteur mette des produits à `0,10 €` et `0,20 €` dans son panier. Le total de la commande sera de `0,30000000000000004 €`. Cela surprendrait n'importe qui.
 
 Mais pourquoi cela se produit-il ?
 

@@ -221,7 +221,8 @@ delete user?.name; // supprime user.name si user existe
 Le chaînage optionnel `?.` n'a aucune utilité sur le côté gauche d'une affectation :
 
 
-For example:
+Par exemple :
+
 ```js run
 
 let user = null;
@@ -240,7 +241,7 @@ Le chaînage optionnel '?.' A trois formes :
 3. `obj?.method()` -- appel `obj.method()` si `obj.method` existe, sinon retourne `undefined`.
 
 
-Comme nous pouvons le voir, tous sont simples et simples à utiliser. Le `?.` vérifie la partie gauche pour `nul/undefined` et permet à l'évaluation de se poursuivre si ce n'est pas le cas.
+Comme nous pouvons le voir, tous sont simples et simples à utiliser. Le `?.` vérifie la partie gauche pour `null/undefined` et permet à l'évaluation de se poursuivre si ce n'est pas le cas.
 
 Une chaîne de `?.` permet d'accéder en toute sécurité aux propriétés imbriquées.
 

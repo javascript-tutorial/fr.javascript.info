@@ -112,7 +112,7 @@ Le point-virgule serait là pour une affectation plus simple, telle que `let say
 
 ## Fonctions callback (de rappel)
 
-Examinons plus d’exemples de :fonctions passées en tant que valeurs et utilisant des expressions de fonction.
+Examinons plus d’exemples de fonctions passées en tant que valeurs et utilisant des expressions de fonction.
 
 Nous allons écrire une fonction `ask(question, oui, non)` avec trois paramètres :
 

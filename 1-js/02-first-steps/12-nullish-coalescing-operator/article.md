@@ -157,7 +157,7 @@ alert(x); // 2
 
 ## Résumé
 
-- L'opérateur de coalescence des nuls `??` fournit un moyen court de choisir une valeur "définie" à pratir d'une liste.
+- L'opérateur de coalescence des nuls `??` fournit un moyen court de choisir une valeur "définie" à partir d'une liste.
 
     Il est utilisé pour attribuer des valeurs par défaut aux variables :
 

@@ -52,8 +52,7 @@ describe("pow", function() {
 Une spécification a trois blocs de construction principaux que vous pouvez voir ci-dessus :
 
 `describe("title", function() { ... })`
-: Quelle fonctionnalité nous décrivons. Utilisations pour grouper les "workers" - le bloc `it`. Dans notre cas, nous décrivons la fonction `pow`.
-Quelle fonctionnalité nous décrivons. Dans notre cas, nous décrivons la fonction `pow`. Utilisée pour grouper les "workers" - le bloc `it`.
+: Quelle fonctionnalité nous décrivons. Dans notre cas, nous décrivons la fonction `pow`, utilisée pour grouper les "workers" - le bloc `it`.
 
 `it("use case description", function() { ... })`
 : Dans le titre de `it`, nous décrivons d'une *manière lisible par l'homme* le cas particulier d'utilisation, et le deuxième argument est une fonction qui le teste.
@@ -384,11 +383,11 @@ La spécification peut être utilisée de trois manières :
 
 1. En tant que **Tests** -- garantir que le code fonctionne correctement.
 2. En tant que **Docs** -- les titres de `describe` et `it` indiquent ce que fait la fonction.
-3. En tant que **Examples** -- les tests sont en fait d'exemples de travail montrant comment une fonction peut être utilisée.
+3. En tant que **Examples** -- les tests sont en fait des exemples de travail montrant comment une fonction peut être utilisée.
 
 Avec la spécification, nous pouvons sans risque améliorer, modifier, même réécrire la fonction à partir de zéro et nous assurer qu'elle fonctionne toujours correctement.
 
-C’est particulièrement important dans les grands projets quand une fonction est utilisée dans de nombreux endroits. Lorsque nous changeons une telle fonction, il n’ya aucun moyen de vérifier manuellement si chaque endroit qui l’utilise fonctionne toujours correctement.
+C’est particulièrement important dans les grands projets quand une fonction est utilisée dans de nombreux endroits. Lorsque nous changeons une telle fonction, il n’y a aucun moyen de vérifier manuellement si chaque endroit qui l’utilise fonctionne toujours correctement.
 
 Sans tests, les gens ont deux moyens :
 
