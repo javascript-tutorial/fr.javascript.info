@@ -1,35 +1,34 @@
-There are many ways to do it.
-
-Here are some of them:
+Il existe plusieurs façons de faire : 
+En voici quelques unes : 
 
 ```js
-// 1. The table with `id="age-table"`.
+// 1. Le tableau avec `id="age-table"`.
 let table = document.getElementById('age-table')
 
-// 2. All label elements inside that table
+// 2. Tous les éléments 'label' dans le tableau
 table.getElementsByTagName('label')
-// or
+// ou
 document.querySelectorAll('#age-table label')
 
-// 3. The first td in that table (with the word "Age")
+// 3. Le premier td dans ce tableau (avec le mot "Age")
 table.rows[0].cells[0]
-// or
+// ou
 table.getElementsByTagName('td')[0]
-// or
+// ou
 table.querySelector('td')
 
-// 4. The form with the name "search"
-// assuming there's only one element with name="search" in the document
+// 4. Le formulaire avec le nom "search"
+// en supposant qu'il n'y ait qu'un élément avec name="search" dans le document.
 let form = document.getElementsByName('search')[0]
-// or, form specifically
+// ou spécifiquement un formulaire
 document.querySelector('form[name="search"]')
 
-// 5. The first input in that form.
+// 5. Le premier input dans ce formulaire
 form.getElementsByTagName('input')[0]
-// or
+// ou
 form.querySelector('input')
 
-// 6. The last input in that form
-let inputs = form.querySelectorAll('input') // find all inputs
-inputs[inputs.length-1] // take the last one
+// 6. Le dernier input dans ce formulaire
+let inputs = form.querySelectorAll('input') // trouve tous les inputs
+inputs[inputs.length-1] // prend le dernier
 ```
