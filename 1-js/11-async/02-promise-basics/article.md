@@ -35,8 +35,13 @@ Donc, pour résumer : l'exécuteur s'exécute automatiquement et tente d’effec
 
 L'objet `promise` retourné par le constructeur `new Promise` a des propriétés internes :
 
+<<<<<<< HEAD
 - `state` (état) - initiallement à `"pending"` (en attente), se change soit en `"fulfilled"` (tenue) lorsque `resolve` est appelé ou `"rejected"` (rompue) si `reject` est appelé.
 - `result` - initialement à `undefined` se change à `value` quand `resolve(value)` est appelé ou `error` quand `reject(error)` est appelé.
+=======
+- `state` — initially `"pending"`, then changes to either `"fulfilled"` when `resolve` is called or `"rejected"` when `reject` is called.
+- `result` — initially `undefined`, then changes to `value` when `resolve(value)` is called or `error` when `reject(error)` is called.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Ainsi l'éxécuteur changera la promesse à un de ces états :
 
@@ -59,7 +64,14 @@ On peut voir deux chose en lançant le code ci-dessus :
 1. L'exécuteur est appelé automatiquement et immédiatement (avec `new Promise`).
 2. L'exécuteur reçoit deux arguments : `resolve` et `reject` - ces deux fonctions sont pré-définies par le moteur Javascript, ainsi nous n'avons pas besoin de les créer. Nous devons seulement appelé l'une ou l'autre quand le résultat est prêt.
 
+<<<<<<< HEAD
     Après une seconde de "traitement" l'exécuteur appelle `resolve("done")` pour produire le résultat. Cela change l'état de l'objet `promise` :
+=======
+1. The executor is called automatically and immediately (by `new Promise`).
+2. The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don't need to create them. We should only call one of them when ready.
+
+    After one second of "processing", the executor calls `resolve("done")` to produce the result. This changes the state of the `promise` object:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
     ![](promise-resolve-1.svg)
 
@@ -126,9 +138,15 @@ Pas de soucis. Nous acquittons immédiatement la promesse.
 Les propriétés `state` et `result` de l'objet `Promise` sont internes. Nous ne pouvons directement accéder à celles-ci. Nous pouvons utiliser `.then`/`.catch`/`.finally` pour cela. Elles sont décrites ci-dessous.
 ```
 
+<<<<<<< HEAD
 ## Les consommateurs: then, catch, finally
 
 Un objet promesse permet le lien entre l'exécuteur (le "code produit" ou "chanteur") et les fonctions consommatrices (les "fans"), lesquels recevront un résultat ou une erreur. Ces fonctions peuvent s'abonner (subscribed) utilisant les méthodes `.then`, `.catch` and `.finally`.
+=======
+## Consumers: then, catch
+
+A Promise object serves as a link between the executor (the "producing code" or "singer") and the consuming functions (the "fans"), which will receive the result or error. Consuming functions can be registered (subscribed) using the methods `.then` and `.catch`.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ### then (alors)
 
@@ -143,9 +161,15 @@ promise.then(
 );
 ```
 
+<<<<<<< HEAD
 Le premier argument de `.then` est une fonction qui se lance si la promesse est tenue, et reçoit le résultat.
 
 Le deuxième argument de `.then` est une fonction qui se lance si la promesse est rompue, et reçoit l'erreur.
+=======
+The first argument of `.then` is a function that runs when the promise is resolved and receives the result.
+
+The second argument of `.then` is a function that runs when the promise is rejected and receives the error.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Par exemple, voyons la réponse à un une requête correctement tenue :
 
@@ -209,10 +233,11 @@ promise.catch(alert); // affiche "Error: Whoops!" après 1 seconde
 
 L'appel à `.catch(f)` est complétement analogue à `.then(null, f)`, c'est juste un raccourci.
 
-### finally
+## Cleanup: finally
 
 Comme il y a un terme `finally` dans un `try {...} catch {...}`, il y a des `finally` dans les promesses.
 
+<<<<<<< HEAD
 L'appel à  `.finally(f)` est similaire à `.then(f, f)` dans le sens où `f` se lance toujours quand la promesse est aquittée : qu'elle soit tenue ou rompue.
 
 `finally` est un bon moyen pour nettoyer, i.e arrêter un indicateur de chargement, car ils ne sont plus utiles, qu'importe le résultat.
@@ -222,34 +247,76 @@ Comme cela :
 ```js
 new Promise((resolve, reject) => {
   /* faire quelque chose qui prend du temps puis lancer resolve/reject */
+=======
+The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` runs always, when the promise is settled: be it resolve or reject.
+
+The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
+
+E.g. stopping loading indicators, closing no longer needed connections, etc.
+
+Think of it as a party finisher. No matter was a party good or bad, how many friends were in it, we still need (or at least should) do a cleanup after it.
+
+The code may look like this:
+
+```js
+new Promise((resolve, reject) => {
+  /* do something that takes time, and then call resolve or maybe reject */
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 })
 *!*
   // se lance quand la promesse est acquittée, peu importe si celle-ci est tenue ou rompue
   .finally(() => stop loading indicator)
-  // so the loading indicator is always stopped before we process the result/error
+  // so the loading indicator is always stopped before we go on
 */!*
   .then(result => show result, err => show error)
 ```
 
+<<<<<<< HEAD
 Cela dit, `finally(f)` n'est pas exactement un alias de `then(f,f)`. Il existe quelques différences subtiles :
 
 1. Un gestionnaire `finally` ne prends pas d'arguments. Dans un `finally` nous ne savons pas si la promesse est tenue ou rompue. Cela ne pose pas de soucis, notre tâche est habituellement de réaliser les procédures finales "générales".
 2. Un gestionnaire `finally` passe le résultat ou l'erreur au gestionnaire suivant.
 
     Par exemple, le résultat passant à travers `finally` vers `then` :
+=======
+Please note that `finally(f)` isn't exactly an alias of `then(f,f)` though.
+
+There are important differences:
+
+1. A `finally` handler has no arguments. In `finally` we don't know whether the promise is successful or not. That's all right, as our task is usually to perform "general" finalizing procedures.
+
+    Please take a look at the example above: as you can see, the `finally` handler has no arguments, and the promise outcome is handled by the next handler.
+2. A `finally` handler "passes through" the result or error to the next suitable handler.
+
+    For instance, here the result is passed through `finally` to `then`:
+
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
     ```js run
     new Promise((resolve, reject) => {
-      setTimeout(() => resolve("result"), 2000)
+      setTimeout(() => resolve("value"), 2000);
     })
+<<<<<<< HEAD
       .finally(() => alert("Promise ready"))
       .then(result => alert(result)); // <-- .then gère le résultat
     ```
     Et là avec une erreur dans la promesse, passsant à travers `finally` vers `catch` :
+=======
+      .finally(() => alert("Promise ready")) // triggers first
+      .then(result => alert(result)); // <-- .then shows "value"
+    ```
+
+    As you can see, the `value` returned by the first promise is passed through `finally` to the next `then`.
+
+    That's very convenient, because `finally` is not meant to process a promise result. As said, it's a place to do generic cleanup, no matter what the outcome was.
+
+    And here's an example of an error, for us to see how it's passed through `finally` to `catch`:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
     ```js run
     new Promise((resolve, reject) => {
       throw new Error("error");
     })
+<<<<<<< HEAD
       .finally(() => alert("Promise ready"))
       .catch(err => alert(err));  // <-- .catch gère l'objet error
     ```
@@ -260,6 +327,30 @@ Cela dit, `finally(f)` n'est pas exactement un alias de `then(f,f)`. Il existe q
 
 ````smart header="Nous pouvons attacher des gestionnaires à des promesses configurées"
 Si une promesse est en attente, les gestionnaires `.then/catch/finally` l'attendent. Sinon, si une promesse est déjà configurée, ils exécutent simplement :
+=======
+      .finally(() => alert("Promise ready")) // triggers first
+      .catch(err => alert(err));  // <-- .catch shows the error
+    ```
+
+3. A `finally` handler also shouldn't return anything. If it does, the returned value is silently ignored.
+
+    The only exception to this rule is when a `finally` handler throws an error. Then this error goes to the next handler, instead of any previous outcome.
+
+To summarize:
+
+- A `finally` handler doesn't get the outcome of the previous handler (it has no arguments). This outcome is passed through instead, to the next suitable handler.
+- If a `finally` handler returns something, it's ignored.
+- When `finally` throws an error, then the execution goes to the nearest error handler.
+
+These features are helpful and make things work just the right way if we use `finally` how it's supposed to be used: for generic cleanup procedures.
+
+````smart header="We can attach handlers to settled promises"
+If a promise is pending, `.then/catch/finally` handlers wait for its outcome.
+
+Sometimes, it might be that a promise is already settled when we add a handler to it.
+
+In such case, these handlers just run immediately:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 // la prommesse est acquittée immédiatement à la création
@@ -273,11 +364,19 @@ Notez que cela rend les promesses plus puissantes que le scénario réel de "lis
 Les promesses sont plus flexibles. Nous pouvons ajouter des gestionnaires à tout moment : si le résultat est déjà là, ils s'exécutent simplement.
 ````
 
+<<<<<<< HEAD
 Ensuite, voyons des exemples plus pratiques pour lesquels les promesses nous aident à écrire du code asynchrone.
 
 ## Example: loadScript [#loadscript]
 
 Nous avons la fonction `loadScript` pour charger un script d'un chapitre précédent.
+=======
+## Example: loadScript [#loadscript]
+
+Next, let's see more practical examples of how promises can help us write asynchronous code.
+
+We've got the `loadScript` function for loading a script from the previous chapter.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Pour rappel voyons la solution avec des fonctions de retour :
 

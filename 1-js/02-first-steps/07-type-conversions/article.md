@@ -6,8 +6,15 @@ Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caract
 
 Il y a aussi des cas où nous devons convertir explicitement une valeur pour corriger les choses.
 
+<<<<<<< HEAD
 ```smart header="On ne parle pas encore des objets"
 Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les primitives. Plus tard, après avoir appris les objets, nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
+=======
+```smart header="Not talking about objects yet"
+In this chapter, we won't cover objects. For now, we'll just be talking about primitives.
+
+Later, after we learn about objects, in the chapter <info:object-toprimitive> we'll see how objects fit in.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 
 ## String Conversion
@@ -63,12 +70,21 @@ alert(age); // NaN, la conversion a échoué
 
 Règles de conversion numériques :
 
+<<<<<<< HEAD
 | Valeur                               | Devient ... |
 |--------------------------------------|-------------|
 | `undefined`                          | `NaN`       |
 | `null`                               | `0`         |
 | <code>true&nbsp;et&nbsp;false</code> | `1` et `0`  |
 | `string`                              | Les espaces blancs du début et de la fin sont supprimés. Ensuite, si la chaîne restante est vide, le résultat est 0. Sinon, le nombre est «lu» dans la chaîne. Une erreur donne `NaN`.
+=======
+| Value |  Becomes... |
+|-------|-------------|
+|`undefined`|`NaN`|
+|`null`|`0`|
+|<code>true&nbsp;and&nbsp;false</code> | `1` and `0` |
+| `string` | Whitespaces (includes spaces, tabs `\t`, newlines `\n` etc.) from the start and end are removed. If the remaining string is empty, the result is `0`. Otherwise, the number is "read" from the string. An error gives `NaN`. |
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Exemples:
 
@@ -123,12 +139,21 @@ Les  trois conversions de types les plus utilisées sont :  to string, to number
 
 La conversion vers `number` suit les règles suivantes :
 
+<<<<<<< HEAD
 | Valeur                              | Devient ...                                                                                                                               |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | `undefined`                         | `NaN`                                                                                                                                     |
 | `null`                              | `0`                                                                                                                                       |
 | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
 | `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. Une chaîne vide devient `0`. Une erreur donne `NaN`. |
+=======
+| Value |  Becomes... |
+|-------|-------------|
+|`undefined`|`NaN`|
+|`null`|`0`|
+|<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
+| `string` | The string is read "as is", whitespaces (includes spaces, tabs `\t`, newlines `\n` etc.) from both sides are ignored. An empty string becomes `0`. An error gives `NaN`. |
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 **`La conversion en Boolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
 

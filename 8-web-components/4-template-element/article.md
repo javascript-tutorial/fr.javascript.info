@@ -1,7 +1,11 @@
 
 # L'élément Template
 
+<<<<<<< HEAD
 L'élément intégré `<template>` sert de stockage pour les modèles de balisage HTML. Le navigateur ignore son contenu et vérifie uniquement la validité de la syntaxe, mais nous pouvons y accéder et l'utiliser dans JavaScript, pour créer d'autres éléments.
+=======
+A built-in `<template>` element serves as a storage for HTML markup templates. The browser ignores its contents, only checks for syntax validity, but we can access and use it in JavaScript, to create other elements.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 En théorie, nous pourrions créer n'importe quel élément invisible quelque part dans le code HTML à des fins de stockage de balises HTML. Quelle est la particularité de `<template>` ?
 

@@ -196,11 +196,19 @@ Une clé doit être de l'un de ces types : nombre, date, chaîne, binaire ou ta
 
 ![](indexeddb-structure.svg)
 
+<<<<<<< HEAD
 Comme nous le verrons très bientôt, nous pouvons fournir une clé lorsque nous ajoutons une valeur au magasin, similaire à `localStorage`. Mais lorsque nous stockons des objets, IndexedDB permet de configurer une propriété d'objet comme clé, ce qui est beaucoup plus pratique. Ou nous pouvons générer automatiquement des clés.
 
 Mais nous devons d'abord créer un magasin d'objets.
 
 La syntaxe pour créer un magasin d'objets :
+=======
+As we'll see very soon, we can provide a key when we add a value to the store, similar to `localStorage`. But when we store objects, IndexedDB allows setting up an object property as the key, which is much more convenient. Or we can auto-generate keys.
+
+But we need to create an object store first.
+
+The syntax to create an object store:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 db.createObjectStore(name, keyOptions);
@@ -217,6 +225,11 @@ Si nous ne fournissons pas `keyOptions`, nous devrons fournir une clé explicite
 
 Par exemple, ce magasin d'objets utilise la propriété `id` comme clé :
 
+<<<<<<< HEAD
+=======
+For instance, this object store uses `id` property as the key:
+
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```js
 db.createObjectStore('books', {keyPath: 'id'});
 ```
@@ -227,8 +240,15 @@ C'est une limitation technique. En dehors du gestionnaire, nous pourrons ajouter
 
 Pour effectuer une mise à niveau de version de base de données, il existe deux approches principales :
 
+<<<<<<< HEAD
 1. Nous pouvons implémenter des fonctions de mise à niveau par version : de 1 à 2, de 2 à 3, de 3 à 4, etc. Ensuite, dans `upgradeneeded`, nous pouvons comparer les versions (par exemple, l'ancienne 2, maintenant la 4) et exécuter des mises à niveau par version étape par étape, pour chaque version intermédiaire (2 à 3, puis 3 à 4).
 2. Ou nous pouvons simplement examiner la base de données : obtenez une liste des magasins d'objets existants sous le nom `db.objectStoreNames`. Cet objet est une [DOMStringList](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#domstringlist) qui fournit la méthode `contains(name)` pour vérifier l'existence. Et puis nous pouvons faire des mises à jour en fonction de ce qui existe et de ce qui n'existe pas.
+=======
+To perform a database version upgrade, there are two main approaches:
+
+1. We can implement per-version upgrade functions: from 1 to 2, from 2 to 3, from 3 to 4 etc. Then, in `upgradeneeded` we can compare versions (e.g. old 2, now 4) and run per-version upgrades step by step, for every intermediate version (2 to 3, then 3 to 4).
+2. Or we can just examine the database: get a list of existing object stores as `db.objectStoreNames`. That object is a [DOMStringList](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#domstringlist) that provides `contains(name)` method to check for existance. And then we can do updates depending on what exists and what doesn't.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Pour les petites bases de données, la deuxième variante peut être plus simple.
 
@@ -247,7 +267,11 @@ openRequest.onupgradeneeded = function() {
 };
 ```
 
+<<<<<<< HEAD
 Pour supprimer un magasin d'objets :
+=======
+To delete an object store:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 db.deleteObjectStore('books');
@@ -261,8 +285,15 @@ Une transaction est un groupe d'opérations qui doivent toutes réussir ou toute
 
 Par exemple, lorsqu'une personne achète quelque chose, nous devons :
 
+<<<<<<< HEAD
 1. Soustrayez l'argent de leur compte.
 2. Ajoutez l'objet à son inventaire.
+=======
+For instance, when a person buys something, we need to:
+
+1. Subtract the money from their account.
+2. Add the item to their inventory.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Ce serait plutôt mauvais si nous terminions la 1ère opération, puis quelque chose ne va pas, par ex. les lumières s'éteignent, et nous ne parvenons pas à faire le 2ème. Les deux doivent soit réussir (achat terminé, bon !) soit échouer (au moins la personne a gardé son argent, elle peut donc réessayer).
 
@@ -281,7 +312,11 @@ db.transaction(store, type);
   - `readonly` -- peut uniquement lire, la valeur par défaut.
   - `readwrite` -- ne peut que lire et écrire les données, mais pas créer/supprimer/modifier les magasins d'objets.
 
+<<<<<<< HEAD
 Il y a aussi le type de transaction `versionchange` : ces transactions peuvent tout faire, mais nous ne pouvons pas les créer manuellement. IndexedDB crée automatiquement une transaction `versionchange` lors de l'ouverture de la base de données, pour le gestionnaire `updateneeded`. C'est pourquoi c'est un endroit unique où nous pouvons mettre à jour la structure de la base de données, créer/supprimer des magasins d'objets.
+=======
+There's also `versionchange` transaction type: such transactions can do everything, but we can't create them manually. IndexedDB automatically creates a `versionchange` transaction when opening the database, for `upgradeneeded` handler. That's why it's a single place where we can update the database structure, create/remove object stores.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```smart header="Pourquoi existe-t-il différents types de transactions ?"
 La performance est la raison pour laquelle les transactions doivent être étiquetées `readonly` et `readwrite`.
@@ -619,6 +654,11 @@ La méthode `delete` recherche les valeurs à supprimer par une requête, le for
 
 Par exemple:
 
+<<<<<<< HEAD
+=======
+For instance:
+
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```js
 // supprimer le livre où id='js'
 books.delete('js');
@@ -636,7 +676,11 @@ request.onsuccess = function() {
 };
 ```
 
+<<<<<<< HEAD
 Pour tout supprimer :
+=======
+To delete everything:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 books.clear(); // effacer le stockage.
@@ -658,6 +702,11 @@ Comme un magasin d'objets est trié en interne par clé, un curseur parcourt le 
 
 La syntaxe :
 
+<<<<<<< HEAD
+=======
+The syntax:
+
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```js
 // comme getAll, mais avec un curseur :
 let request = store.openCursor(query, [direction]);
@@ -755,7 +804,6 @@ try {
 } catch(err) {
   console.log('error', err.message);
 }
-
 ```
 
 Nous avons donc tous les trucs sympas de "code asynchrone simple" et "try..catch".
@@ -778,11 +826,19 @@ window.addEventListener('unhandledrejection', event => {
 
 ### Le piège de "Inactive transaction"
 
+<<<<<<< HEAD
 Comme nous le savons déjà, une transaction s'auto-valide dès que le navigateur a terminé avec le code et les microtâches actuels. Donc, si nous plaçons une *macrotask* comme `fetch` au milieu d'une transaction, alors la transaction n'attendra pas qu'elle se termine. Il s'auto-valide simplement. Ainsi, la prochaine requête échouerait.
 
 Pour un wrapper de promesse et `async/wait` la situation est la même.
 
 Voici un exemple de `fetch` au milieu de la transaction :
+=======
+As we already know, a transaction auto-commits as soon as the browser is done with the current code and microtasks. So if we put a *macrotask* like `fetch` in the middle of a transaction, then the transaction won't wait for it to finish. It just auto-commits. So the next request in it would fail.
+
+For a promise wrapper and `async/await` the situation is the same.
+
+Here's an example of `fetch` in the middle of the transaction:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 let transaction = db.transaction("inventory", "readwrite");
@@ -799,8 +855,15 @@ Le prochain `inventory.add` après `fetch` `(*)` échoue avec une erreur "inacti
 
 La solution de contournement est la même que lorsque vous travaillez avec IndexedDB natif : faites une nouvelle transaction ou séparez simplement les éléments.
 
+<<<<<<< HEAD
 1. Préparez les données et récupérez tout ce qui est nécessaire en premier.
 2. Enregistrez ensuite dans la base de données.
+=======
+The workaround is the same as when working with native IndexedDB: either make a new transaction or just split things apart.
+
+1. Prepare the data and fetch all that's needed first.
+2. Then save in the database.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ### Obtenir des objets natifs
 

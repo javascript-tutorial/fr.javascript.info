@@ -53,8 +53,13 @@ Il y a aussi une variable globale nommée selon l'`id` qui référence l'éléme
 </script>
 ```
 
+<<<<<<< HEAD
 ```warn header="Ne pas utiliser les variables globales nommées selon l'id pour accéder aux éléments !"
 Ce comportement est décrit [dans la spécification](http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem), donc c'est standard. C'est principalement gardé pour des histoires de compatibilité.
+=======
+```warn header="Please don't use id-named global variables to access elements"
+This behavior is described [in the specification](http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem), so it's a kind of standard. But it is supported mainly for compatibility.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM. C'est bien pour des scripts simples, intégré dans du HTML, mais en genéral ce n'est pas bon. Il peut y avoir des conflits de noms. Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
 
@@ -116,7 +121,11 @@ En d'autres termes, le résultat sera le même que `elem.querySelectorAll(css)[0
 
 Les méthodes précédentes recherchaient dans le DOM.
 
+<<<<<<< HEAD
 La commande [elem.matches(css)](http://dom.spec.whatwg.org/#dom-element-matches) ne recherche rien, elle vérifie simplement que `elem` correspond au sélecteur CSS donné. Elle renvoie `true` ou `false`.
+=======
+The [elem.matches(css)](https://dom.spec.whatwg.org/#dom-element-matches) does not look for anything, it merely checks if `elem` matches the given CSS-selector. It returns `true` or `false`.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Cette méthode devient utile quand on itère sur des éléments (comme dans un array par exemple) et qu'on veut filtrer ceux qui nous intéressent.
 

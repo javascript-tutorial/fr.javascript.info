@@ -170,8 +170,13 @@ alert( new SmallUser().name );  // John
 
 Généralement, les constructeurs n’ont pas d’instruction `return`. Nous mentionnons ici le comportement spécial avec les objets renvoyés principalement dans un souci de complétude.
 
+<<<<<<< HEAD
 ````smart header="Omettre les parenthèses"
 À propos, on peut omettre les parenthèses après `new`, s'il n'y a pas d'argument :
+=======
+````smart header="Omitting parentheses"
+By the way, we can omit parentheses after `new`:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 let user = new User; // <-- pas de parenthèses

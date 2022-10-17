@@ -21,9 +21,15 @@ let promise = fetch(url, {
     // selon la requête du body
     "Content-Type": "text/plain;charset=UTF-8"
   },
+<<<<<<< HEAD
   body: undefined // string, FormData, Blob, BufferSource, or URLSearchParams
   referrer: "about:client", // ou "" pour ne pas envoyer de header Referer,
   // ou une URL de l'origine actuelle
+=======
+  body: undefined, // string, FormData, Blob, BufferSource, or URLSearchParams
+  referrer: "about:client", // or "" to send no Referer header,
+  // or an url from the current origin
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
   referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
   mode: "cors", // same-origin, no-cors
   credentials: "same-origin", // omit, include
@@ -52,7 +58,11 @@ Habituellement, cet en-tête est défini automatiquement et contient l'url de la
 
 **L'option `referer` permet de définir n'importe quel `Referer` dans l'origine actuelle) ou de le supprimer.**
 
+<<<<<<< HEAD
 Pour n'envoyer aucun referer, définissez une chaîne de caractères vide :
+=======
+To send no referrer, set an empty string:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```js
 fetch('/page', {
 *!*
@@ -179,7 +189,11 @@ L'option `intégrité` permet de vérifier si la réponse correspond à la somme
 
 Comme décrit dans la [spécification](https://w3c.github.io/webappsec-subresource-integrity/), les fonctions de hachage prises en charge sont SHA-256, SHA-384 et SHA-512, il peut y en avoir d'autres en fonction du navigateur.
 
+<<<<<<< HEAD
 Par exemple, nous téléchargeons un fichier et nous savons que sa somme de contrôle SHA-256 est "abcdef" (une vraie somme de contrôle est plus longue, bien sûr).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Nous pouvons le mettre dans l'option `integrity`, comme ceci :
 

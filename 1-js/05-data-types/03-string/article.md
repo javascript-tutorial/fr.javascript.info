@@ -48,9 +48,15 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
+<<<<<<< HEAD
 Les guillemets simples et doubles proviennent d'anciens temps de la création linguistique lorsque la nécessité de chaînes multilignes n'était pas prise en compte. Les backticks sont apparus beaucoup plus tard et sont donc plus polyvalents.
 
 Les Backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Vous pouvez en savoir plus à ce sujet dans la [doc](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
+=======
+Single and double quotes come from ancient times of language creation, when the need for multiline strings was not taken into account. Backticks appeared much later and thus are more versatile.
+
+Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This feature is called "tagged templates", it's rarely seen, but you can read about it in the MDN: [Template literals](mdn:/JavaScript/Reference/Template_literals#Tagged_templates).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 
 ## Caractères spéciaux
@@ -60,10 +66,17 @@ Il est encore possible de créer des chaînes de caractères multilignes avec de
 ```js run
 let guestList = "Guests:\n * John\n * Pete\n * Mary";
 
+<<<<<<< HEAD
 alert(guestList); // une liste d'invités multiligne
 ```
 
 Par exemple, ces deux lignes sont égales, juste écrites différemment :
+=======
+alert(guestList); // a multiline list of guests, same as above
+```
+
+As a simpler example, these two lines are equal, just written differently:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 let str1 = "Hello\nWorld"; // deux lignes utilisant un "symbole de nouvelle ligne"
@@ -75,6 +88,7 @@ World`;
 alert(str1 == str2); // true
 ```
 
+<<<<<<< HEAD
 Il existe d'autres caractères "spéciaux" moins courants.
 
 Voici la liste complète :
@@ -102,6 +116,28 @@ alert( "\u{1F60D}" ); // 😍, un symbole de visage souriant (un autre long unic
 Tous les caractères spéciaux commencent par un backslash (barre oblique inversée) `\`. On l'appelle aussi "caractère d'échappement".
 
 Nous pourrions également l'utiliser si nous voulions insérer une citation dans la chaîne de caractères.
+=======
+There are other, less common special characters:
+
+| Character | Description |
+|-----------|-------------|
+|`\n`|New line|
+|`\r`|In Windows text files a combination of two characters `\r\n` represents a new break, while on non-Windows OS it's just `\n`. That's for historical reasons, most Windows software also understands `\n`. |
+|`\'`,&nbsp;`\"`,&nbsp;<code>\\`</code>|Quotes|
+|`\\`|Backslash|
+|`\t`|Tab|
+|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- mentioned for completeness, coming from old times, not used nowadays (you can forget them right now). |
+
+As you can see, all special characters start with a backslash character `\`. It is also called an "escape character".
+
+Because it's so special, if we need to show an actual backslash `\` within the string, we need to double it:
+
+```js run
+alert( `The backslash: \\` ); // The backslash: \
+```
+
+So-called "escaped" quotes `\'`, `\"`, <code>\\`</code> are used to insert a quote into the same-quoted string.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Par exemple :
 
@@ -114,9 +150,10 @@ Comme vous pouvez le constater, nous devons précéder le simple quote intérieu
 Bien sûr, il ne faut échapper que les guillemets identiques à ceux qui les entourent. Donc, comme solution plus élégante, nous pourrions passer aux guillemets doubles ou aux backticks :
 
 ```js run
-alert( `I'm the Walrus!` ); // I'm the Walrus!
+alert( "I'm the Walrus!" ); // I'm the Walrus!
 ```
 
+<<<<<<< HEAD
 Veuillez noter que le backslash `\` sert à la lecture correcte de la chaîne de caractères par JavaScript, puis disparaît. La chaîne de caractères en mémoire ne contient pas `\`. Vous pouvez le voir clairement dans l'`alert` à partir des exemples ci-dessus.
 
 Mais que faire si nous devons afficher un réel backslash `\` à l'intérieur de la chaîne de caractères ?
@@ -126,6 +163,9 @@ C’est possible, mais nous devons le doubler comme ceci `\\` :
 ```js run
 alert( `The backslash: \\` ); // The backslash: \
 ```
+=======
+Besides these special characters, there's also a special notation for Unicode codes `\u…`, it's rarely used and is covered in the optional chapter about [Unicode](info:unicode).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## Longueur de chaîne de caractères
 
@@ -141,33 +181,55 @@ Notez que `\n` est un seul caractère "spécial", la longueur est donc bien `3`.
 ```warn header="`length` est une propriété"
 Les personnes ayant des connaissances dans d'autres langages peuvent parfois commettre des erreurs en l'appelant `str.length()` au lieu de `str.length`. Cela ne fonctionne pas.
 
+<<<<<<< HEAD
 Veuillez noter que `str.length` est une propriété numérique et non une fonction. Il n'est pas nécessaire d'ajouter des parenthèses après.
+=======
+Please note that `str.length` is a numeric property, not a function. There is no need to add parenthesis after it. Not `.length()`, but `.length`.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 
 ## Accéder aux caractères
 
+<<<<<<< HEAD
 Pour obtenir un caractère à la position `pos`, utilisez des crochets `[pos]` ou appelez la méthode [str.charAt(pos)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/charAt). Le premier caractère commence à la position zéro :
+=======
+To get a character at position `pos`, use square brackets `[pos]` or call the method [str.at(pos)](mdn:js/String/at). The first character starts from the zero position:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 let str = `Hello`;
 
 // le premier caractère
 alert( str[0] ); // H
-alert( str.charAt(0) ); // H
+alert( str.at(0) ); // H
 
 // le dernier caractère
 alert( str[str.length - 1] ); // o
+alert( str.at(-1) );
 ```
 
+<<<<<<< HEAD
 Les crochets sont un moyen moderne d’obtenir un caractère, tandis que `charAt` existe principalement pour des raisons historiques.
 
 La seule différence entre eux est que si aucun caractère  n'est trouvé, `[]` retourne `undefined`, et `charAt` retourne une chaîne de caractères vide :
+=======
+As you can see, the `.at(pos)` method has a benefit of allowing negative position. If `pos` is negative, then it's counted from the end of the string.
+
+So `.at(-1)` means the last character, and `.at(-2)` is the one before it, etc.
+
+The square brackets always return `undefined` for negative indexes, for instance:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 let str = `Hello`;
 
+<<<<<<< HEAD
 alert( str[1000] ); // undefined
 alert( str.charAt(1000) ); // '' (un string vide)
+=======
+alert( str[-2] ); // undefined
+alert( str.at(-2) ); // l
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 
 Nous pouvons également parcourir les caractères en utilisant un `for..of` :
@@ -216,7 +278,7 @@ alert( 'Interface'.toLowerCase() ); // interface
 
 Ou, si nous voulons un seul caractère minuscule :
 
-```js
+```js run
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
@@ -313,6 +375,7 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
+<<<<<<< HEAD
 #### L'astuce du NON binaire
 
 L’un des vieux trucs utilisés ici est l'opérateur [NON binaire](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateurs_binaires#(NON_binaire)) `~`. Il convertit le nombre en un entier de 32 bits (supprime la partie décimale, s'elle existe), puis inverse tous les bits de sa représentation binaire.
@@ -353,6 +416,8 @@ Pour être précis cependant, les grands nombres sont tronqués à 32 bits par l
 
 Pour le moment, nous ne voyons cette astuce que dans l'ancien code, car JavaScript fournit une méthode `.includes` (voir ci-dessous).
 
+=======
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ### includes, startsWith, endsWith
 
 La méthode plus moderne [str.includes(substr, pos)](mdn:js/String/includes) retourne `true/false` en fonction de si `str` contient `substr`.
@@ -375,8 +440,13 @@ alert( "Widget".includes("id", 3) ); // false, à partir de la position 3, il n'
 Les méthodes [str.startsWith](mdn:js/String/startsWith) et [str.endsWith](mdn:js/String/endsWith) font exactement ce qu'elle disent :
 
 ```js run
+<<<<<<< HEAD
 alert( "Widget".startsWith("Wid") ); // true, "Widget" commence avec "Wid"
 alert( "Widget".endsWith("get") );   // true, "Widget" fini avec "get"
+=======
+alert( "*!*Wid*/!*get".startsWith("Wid") ); // true, "Widget" starts with "Wid"
+alert( "Wid*!*get*/!*".endsWith("get") ); // true, "Widget" ends with "get"
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 
 ## Obtenir un substring (sous-chaîne de caractères)
@@ -411,9 +481,15 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     ```
 
 `str.substring(start [, end])`
+<<<<<<< HEAD
 : Renvoie la partie de la chaîne de caractères *entre* `start` et `end`.
 
     C'est presque la même chose que `slice`, mais cela permet que `start` soit plus grand que `end`.
+=======
+: Returns the part of the string *between* `start` and `end` (not including `end`).
+
+    This is almost the same as `slice`, but it allows `start` to be greater than `end` (in this case it simply swaps `start` and `end` values).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
     Par exemple :
 
@@ -449,6 +525,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     alert( str.substr(-4, 2) ); // 'gi', à partir de la 4ème position on obtient 2 caractères
     ```
 
+<<<<<<< HEAD
 Récapitulons ces méthodes pour éviter toute confusion :
 
 | méthodes                | séléction ...                           | valeurs negatives                    |
@@ -457,12 +534,29 @@ Récapitulons ces méthodes pour éviter toute confusion :
 | `substring(start, end)` | entre `start` et `end`                  | les valeurs négatives signifient `0` |
 | `substr(start, length)` | de `start` obtient `length` caractères  | permet un `start` negatif            |
 
+=======
+    This method resides in the [Annex B](https://tc39.es/ecma262/#sec-string.prototype.substr) of the language specification. It means that only browser-hosted Javascript engines should support it, and it's not recommended to use it. In practice, it's supported everywhere.
+
+Let's recap these methods to avoid any confusion:
+
+| method | selects... | negatives |
+|--------|-----------|-----------|
+| `slice(start, end)` | from `start` to `end` (not including `end`) | allows negatives |
+| `substring(start, end)` | between `start` and `end` (not including `end`)| negative values mean `0` |
+| `substr(start, length)` | from `start` get `length` characters | allows negative `start` |
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```smart header="Lequel choisir ?"
 Tous peuvent faire le travail. Formellement, `substr` présente un inconvénient mineur : il n’est pas décrit dans la spécification JavaScript principale, mais dans l’Annexe B, qui couvre les fonctionnalités réservées au navigateur qui existent principalement pour des raisons historiques. Ainsi, les environnements autres que les navigateurs peuvent ne pas le prendre en charge. Mais dans la pratique, cela fonctionne partout.
 
 Parmi les deux autres variantes, `slice` est un peu plus flexible, il permet des arguments négatifs et une écriture plus courte. Il suffit donc de ne retenir que le `slice` de ces trois méthodes.
 
+<<<<<<< HEAD
+=======
+Of the other two variants, `slice` is a little bit more flexible, it allows negative arguments and shorter to write.
+
+So, for practical use it's enough to remember only `slice`.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 
 ## Comparer les strings
@@ -485,6 +579,7 @@ Bien que, il y a quelques bizarreries.
 
     Cela peut conduire à des résultats étranges si nous trions ces noms de pays. Habituellement, les gens s'attendent à `Zealand` pour venir après `Österreich` dans la liste.
 
+<<<<<<< HEAD
 Pour comprendre ce qui se passe, examinons la représentation interne des chaînes de caractères en JavaScript.
 
 Toutes les chaînes de caractères sont encodées en utilisant [UTF-16](https://fr.wikipedia.org/wiki/UTF-16). C'est-à-dire que chaque caractère a un code numérique correspondant. Il existe des méthodes spéciales permettant d'obtenir le caractère pour le code et vice versa.
@@ -495,7 +590,20 @@ Toutes les chaînes de caractères sont encodées en utilisant [UTF-16](https://
     ```js run
     // différentes casses de lettres ont des codes différents
     alert( "z".codePointAt(0) ); // 122
+=======
+To understand what happens, we should be aware that strings in Javascript are encoded using [UTF-16](https://en.wikipedia.org/wiki/UTF-16). That is: each character has a corresponding numeric code.
+
+There are special methods that allow to get the character for the code and back:
+
+`str.codePointAt(pos)`
+: Returns a decimal number representing the code for the character at position `pos`:
+
+    ```js run
+    // different case letters have different codes
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
     alert( "Z".codePointAt(0) ); // 90
+    alert( "z".codePointAt(0) ); // 122
+    alert( "z".codePointAt(0).toString(16) ); // 7a (if we need a hexadecimal value)
     ```
 
 `String.fromCodePoint(code)`
@@ -503,6 +611,7 @@ Toutes les chaînes de caractères sont encodées en utilisant [UTF-16](https://
 
     ```js run
     alert( String.fromCodePoint(90) ); // Z
+<<<<<<< HEAD
     ```
 
     Nous pouvons également ajouter des caractères Unicode par leurs codes en utilisant `\u` suivi du code hexadécimal :
@@ -510,6 +619,9 @@ Toutes les chaînes de caractères sont encodées en utilisant [UTF-16](https://
     ```js run
     // 90 is 5a en système hexadécimal
     alert( '\u005a' ); // Z
+=======
+    alert( String.fromCodePoint(0x5a) ); // Z (we can also use a hex value as an argument)
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
     ```
 
 Voyons maintenant les caractères avec les codes `65..220` (l’alphabet latin et un peu plus) en créant une chaîne de caractères de ceux-ci :
@@ -521,6 +633,7 @@ for (let i = 65; i <= 220; i++) {
   str += String.fromCodePoint(i);
 }
 alert( str );
+// Output:
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 ```
@@ -541,7 +654,11 @@ L'algorithme "approprié" pour effectuer des comparaisons de chaînes est plus c
 
 Le navigateur doit donc connaître la langue à comparer.
 
+<<<<<<< HEAD
 Heureusement, tous les navigateurs modernes (IE10- nécessite la bibliothèque supplémentaire [Intl.js](https://github.com/andyearnshaw/Intl.js/)) supportent le standard d'internationalisation [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+=======
+Luckily, modern browsers support the internationalization standard [ECMA-402](https://www.ecma-international.org/publications-and-standards/standards/ecma-402/).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Elle fournit une méthode spéciale pour comparer des chaînes de caractères dans différentes langues, en respectant leurs règles.
 
@@ -560,6 +677,7 @@ alert( 'Österreich'.localeCompare('Zealand') ); // -1
 
 Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/localeCompare), ce qui lui permet de spécifier la langue (par défaut, pris dans l'environnement, l'ordre des lettres dépend de la langue.) et de définir des règles supplémentaires telles que la sensibilité à la casse ou doit-on traiter `"a"` et `"á"` de la même manière, etc.
 
+<<<<<<< HEAD
 ## Internals, Unicode
 
 ```warn header="Savoir avancé"
@@ -678,6 +796,17 @@ Si vous souhaitez en savoir plus sur les règles de normalisation et leurs varia
 - Pour mettre une chaîne de caractères en minuscule ou en majuscule, utilisez : `toLowerCase/toUpperCase`.
 - Pour rechercher un substring utilisez : `indexOf`, ou `includes/startsWith/endsWith` pour de simple vérifications.
 - Pour comparer les chaînes de caractères en fonction de la langue, utilisez : `localeCompare`, sinon, ils sont comparés par les codes de caractères.
+=======
+## Summary
+
+- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
+- We can use special characters, such as a line break `\n`.
+- To get a character, use: `[]`.
+- To get a substring, use: `slice` or `substring`.
+- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
+- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
+- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Il existe plusieurs autres méthodes utiles dans les strings :
 
@@ -685,4 +814,10 @@ Il existe plusieurs autres méthodes utiles dans les strings :
 - `str.repeat(n)` -- répète la chaîne de caractères `n` fois.
 - … et plus. Voir le [manuel](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) pour plus de détails.
 
+<<<<<<< HEAD
 Les strings ont aussi des méthodes pour rechercher / remplacer avec des expressions régulières. Mais c’est un sujet important, il est donc expliqué dans une autre section de ce tutoriel <info:regular-expressions>.
+=======
+Strings also have methods for doing search/replace with regular expressions. But that's big topic, so it's explained in a separate tutorial section <info:regular-expressions>.
+
+Also, as of now it's important to know that strings are based on Unicode encoding, and hence there're issues with comparisons. There's more about Unicode in the chapter <info:unicode>.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
