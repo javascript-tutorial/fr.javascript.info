@@ -44,7 +44,11 @@ L'objet `user` résultant peut être imaginé comme une armoire avec deux fichie
 
 ![user object](object-user.svg)
 
+<<<<<<< HEAD
 Nous pouvons ajouter, supprimer et lire des fichiers à tout moment.
+=======
+We can add, remove and read files from it at any time.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Les valeurs de propriété sont accessibles à l'aide de la notation par points :
 
@@ -62,7 +66,11 @@ user.isAdmin = true;
 
 ![user object 2](object-user-isadmin.svg)
 
+<<<<<<< HEAD
 Pour supprimer une propriété, nous pouvons utiliser l'opérateur `delete` :
+=======
+To remove a property, we can use the `delete` operator:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 delete user.age;
@@ -201,13 +209,21 @@ let bag = {
 };
 ```
 
+<<<<<<< HEAD
 Les crochets sont beaucoup plus puissants que la notation par points. Ils autorisent tous les noms de propriété et variables. Mais ils sont aussi plus lourds à écrire.
+=======
+Square brackets are much more powerful than dot notation. They allow any property names and variables. But they are also more cumbersome to write.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Ainsi, la plupart du temps, lorsque les noms de propriété sont connus et simples, le point est utilisé. Et si nous avons besoin de quelque chose de plus complexe, nous passons aux crochets.
 
 ## Valeur de propriété abrégée (Property value shorthand)
 
+<<<<<<< HEAD
 Dans le code, nous utilisons souvent des variables existantes en tant que valeurs pour les noms de propriétés.
+=======
+In real code, we often use existing variables as values for property names.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Par exemple :
 
@@ -253,7 +269,13 @@ let user = {
 
 Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés au language comme "for", "let", "return" etc.
 
+<<<<<<< HEAD
 Mais pour une propriété d'objet, il n'y a pas de telle restriction :
+=======
+As we already know, a variable cannot have a name equal to one of the language-reserved words like "for", "let", "return" etc.
+
+But for an object property, there's no such restriction:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 // these properties are all right
@@ -325,7 +347,11 @@ alert( "blabla" in user ); // false, user.blabla n'existe pas
 
 Veuillez noter que sur le côté gauche de `in`, il doit y avoir un *nom de propriété*. C’est généralement une chaîne de caractères entre guillemets.
 
+<<<<<<< HEAD
 Si nous omettons les guillemets, cela signifie une variable, elle doit contenir le nom réel à tester. Par exemple :
+=======
+If we omit quotes, that means a variable should contain the actual name to be tested. For instance:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 let user = { age: 30 };
@@ -355,6 +381,10 @@ Dans le code ci-dessus, la propriété `obj.test` existe techniquement. Donc, l'
 
 Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué. Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides". Ainsi, l'opérateur `in` est un invité exotique dans le code.
 
+<<<<<<< HEAD
+=======
+## The "for..in" loop [#forin]
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## La boucle "for..in"
 
@@ -414,7 +444,11 @@ for(let code in codes) {
 */!*
 ```
 
+<<<<<<< HEAD
 L'objet peut être utilisé pour suggérer une liste d'options à l'utilisateur. Si nous créons un site principalement pour le public allemand, nous voulons probablement que `49` soit le premier.
+=======
+The object may be used to suggest a list of options to the user. If we're making a site mainly for a German audience then we probably want `49` to be the first.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Mais si nous exécutons ce code, nous voyons une image totalement différente :
 
@@ -426,6 +460,7 @@ Les indicatifs de téléphone sont classés par ordre croissant, car ce sont des
 ````smart header="Propriétés entier (integer properties) ? Qu'est-ce que c'est ?"
 Le terme "propriété entier" (integer properties) désigne ici une chaîne de caractères pouvant être convertie en un entier à partir de-et-sans modification.
 
+<<<<<<< HEAD
 Ainsi, "49" est un nom de propriété entier, parce que lorsqu'il est transformé en nombre entier et inversement, il reste identique. Mais "+49" et "1.2" ne le sont pas :
 
 ```js run
@@ -433,6 +468,16 @@ Ainsi, "49" est un nom de propriété entier, parce que lorsqu'il est transform�
 alert( String(Math.trunc(Number("49"))) ); // "49", idem, propriété entier (integer property)
 alert( String(Math.trunc(Number("+49"))) ); // "49", pas pareil "+49" ⇒ pas une propriété entier (integer property)
 alert( String(Math.trunc(Number("1.2"))) ); // "1", pas pareil "1.2" ⇒ pas une propriété entier (integer property)
+=======
+So, `"49"` is an integer property name, because when it's transformed to an integer number and back, it's still the same. But `"+49"` and `"1.2"` are not:
+
+```js run
+// Number(...) explicitly converts to a number
+// Math.trunc is a built-in function that removes the decimal part
+alert( String(Math.trunc(Number("49"))) ); // "49", same, integer property
+alert( String(Math.trunc(Number("+49"))) ); // "49", not same "+49" ⇒ not integer property
+alert( String(Math.trunc(Number("1.2"))) ); // "1", not same "1.2" ⇒ not integer property
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```
 ````
 
@@ -478,9 +523,15 @@ Maintenant, cela fonctionne comme prévu.
 
 Les objets sont des tableaux associatifs dotés de plusieurs fonctionnalités spéciales.
 
+<<<<<<< HEAD
 Ils stockent des propriétés (paires clé-valeur), où :
 - Les clés de propriété doivent être des chaînes de caractères ou des symboles (généralement des chaînes de caractères).
 - Les valeurs peuvent être de tout type.
+=======
+To access a property, we can use:
+- The dot notation: `obj.property`.
+- Square brackets notation `obj["property"]`. Square brackets allow taking the key from a variable, like `obj[varWithKey]`.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Pour accéder à une propriété, nous pouvons utiliser :
 - La notation par points : `obj.property`.

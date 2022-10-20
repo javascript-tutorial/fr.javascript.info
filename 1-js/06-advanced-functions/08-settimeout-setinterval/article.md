@@ -101,7 +101,11 @@ Comme on peut le voir dans les résultats des `alert`, dans notre navigateur, l'
 
 Encore une fois, il n'y a pas de spécification universelle pour ces méthodes, donc ce n'est pas gênant.
 
+<<<<<<< HEAD
 Dans le cas des navigateurs web, les timers sont décrits dans [la section sur les timers](https://www.w3.org/TR/html5/webappapis.html#timers) de la documentation du standard HTML5.
+=======
+For browsers, timers are described in the [timers section](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) of HTML Living Standard.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## setInterval
 
@@ -232,7 +236,11 @@ setTimeout(function() {...}, 100);
 
 Pour `setInterval`, la fonction reste en mémoire jusqu'à ce qu'on appelle `clearInterval`.
 
+<<<<<<< HEAD
 Mais il y a un effet de bord, une fonction référence l'environement lexical extérieur, donc tant qu'elle existe, les variables extérieures existent aussi. Ces variables peuvent occuper autant d'espace mémoire que la fonction elle-même. De ce fait quand on n'a plus besoin d'une fonction planifiée, il est préférable de l'annuler, même si elle est courte.
+=======
+There's a side effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ````
 
 ## setTimeout sans délai
@@ -255,8 +263,13 @@ La première ligne "met l'appel dans le calendrier après 0 ms". Mais le planifi
 
 Il y a aussi d'autres cas d'usage avancés d'ordonnancement à délai nul, spécifique au cas des navigateurs web, dont nous parlerons dans le chapitre <info:event-loop>.
 
+<<<<<<< HEAD
 ````smart header="Un délai nul n'est pas vraiment nul (pour un navigateur)"
 Il y a une limitation intrinsèque à chaque navigateur sur la fréquence à laquelle des timers consécutifs peuvent s'exécuter. Le [standard HTML5](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) indique : "au delà de 5 timers consécutifs, l'interval est obligatoirement d'au moins 4 millisecondes.".
+=======
+````smart header="Zero delay is in fact not zero (in a browser)"
+In the browser, there's a limitation of how often nested timers can run. The [HTML Living Standard](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) says: "after five nested timers, the interval is forced to be at least 4 milliseconds.".
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Nous allons illustrer ce que cela veut dire dans l'exemple ci-dessous. L'appel à `setTimeout` s'y ré-ordonnance lui-même avec un délai nul. Chaque appel se souvient de l'heure de l'appel précédent grâce au tableau `times`. Cela va nous permettre de mesurer les délais réels entre les exécutions :
 
@@ -294,9 +307,16 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 
 Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 
+<<<<<<< HEAD
 Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
 - Le CPU est surchargé.
 - L'onglet du navigateur est en tâche de fond.
 - L'ordinateur est en mode économie d'énergie.
+=======
+For example, the in-browser timer may slow down for a lot of reasons:
+- The CPU is overloaded.
+- The browser tab is in the background mode.
+- The laptop is on battery saving mode.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Tout ceci peut augmenter la résolution de l'horloge (le délai minimum) jusqu'à 300ms voire 1000ms en fonction du navigateur et des paramètres de performance au niveau du système d'exploitation.

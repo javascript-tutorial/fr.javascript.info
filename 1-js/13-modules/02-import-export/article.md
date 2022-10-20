@@ -46,7 +46,7 @@ En outre, nous pouvons mettre l'`export` séparément.
 
 Ici, nous déclarons d'abord, puis exportons:
 
-```js  
+```js
 // 📁 say.js
 function sayHi(user) {
   alert(`Hello, ${user}!`);
@@ -93,6 +93,7 @@ say.sayBye('John');
 
 Eh bien, il y a quelques raisons.
 
+<<<<<<< HEAD
 1. Les outils de construction modernes ([webpack](http://webpack.js.org) et autres) regroupent les modules et les optimisent pour accélérer le chargement et supprimer les éléments inutilisés.
 
     Disons que nous avons ajouté à notre projet une bibliothèque tierce, say.js, avec de nombreuses fonctions:
@@ -112,6 +113,16 @@ Eh bien, il y a quelques raisons.
 
 2. Énumérer explicitement ce qu'il faut importer donne des noms plus courts: `sayHi()` au lieu de `say.sayHi()`.
 3. La liste explicite des importations donne une meilleure vue d'ensemble de la structure du code: ce qui est utilisé et où. Cela facilite la prise en charge du code et la refactorisation.
+=======
+1. Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
+2. Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
+
+```smart header="Don't be afraid to import too much"
+Modern build tools, such as [webpack](https://webpack.js.org/) and others, bundle modules together and optimize them to speedup loading. They also removed unused imports.
+
+For instance, if you `import * as library` from a huge code library, and then use only few methods, then unused ones [will not be included](https://github.com/webpack/webpack/tree/main/examples/harmony-unused#examplejs) into the optimzed bundle.
+```
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## Import "as"
 
@@ -224,7 +235,7 @@ Sans `defaut`, une telle exportation donnerait une erreur:
 export class { // Erreur! (un export autre que par défaut nécessite un nom)
   constructor() {}
 }
-```     
+```
 
 ### Le nom par "default"
 
@@ -325,7 +336,7 @@ Imaginez, nous écrivons un "package": un dossier avec beaucoup de modules, avec
 La structure de fichier pourrait être comme ceci :
 ```
 auth/
-    index.js  
+    index.js
     user.js
     helpers.js
     tests/
@@ -371,7 +382,7 @@ La syntaxe `export ... from ...` est juste une notation plus courte pour importe
 
 ```js
 // 📁 auth/index.js
-// re-export login/logout 
+// re-export login/logout
 export {login, logout} from './helpers.js';
 
 // re-export l'exportation par défaut en tant qu'User
@@ -379,7 +390,11 @@ export {default as User} from './user.js';
 ...
 ```
 
+<<<<<<< HEAD
 La différence notable entre `export ... from` et `import/export` est que les modules réexportés ne sont pas disponibles dans le fichier actuel. Donc, dans l'exemple ci-dessus de `auth/index.js`, nous ne pouvons pas utiliser les fonctions `login/logout` réexportées.
+=======
+The notable difference of `export ... from` compared to `import/export` is that re-exported modules aren't available in the current file. So inside the above example of `auth/index.js` we can't use re-exported `login/logout` functions.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ### Ré-exportation de l'exportation par défaut
 
@@ -398,7 +413,11 @@ On peut y rencontrer deux problèmes :
 
 1. `export User from './user.js'` çe ne fonctionnera pas... Cela conduirait à une erreur de syntaxe.
 
+<<<<<<< HEAD
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
+=======
+    To re-export the default export, we have to write `export {default as User}`, as in the example above.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
@@ -429,7 +448,11 @@ Import:
 
 - Importations d’exports nommés :
   - `import {x [as y], ...} from "module"`
+<<<<<<< HEAD
 - Importation de l’export par défaut : 
+=======
+- Importing the default export:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
   - `import x from "module"`
   - `import {default as x} from "module"`
 - Tout importer :
