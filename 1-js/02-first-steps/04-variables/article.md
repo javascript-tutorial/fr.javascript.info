@@ -96,7 +96,7 @@ Il y a des différences subtiles entre `let` et `var`, mais elles n'ont pas enco
 
 Nous pouvons facilement saisir le concept d'une "variable" si nous l'imaginons comme une "boîte" pour les données, avec un autocollant portant un nom unique.
 
-Par exemple, la variable message peut être imaginé comme une boîte étiquetée "message" avec la valeur "Hello!" à l'intérieur :
+Par exemple, la variable message peut être imaginée comme une boîte étiquetée "message" avec la valeur "Hello!" à l'intérieur :
 
 ![](variable.svg)
 
