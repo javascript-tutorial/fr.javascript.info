@@ -8,16 +8,7 @@ let newStr = str[0].toUpperCase() + str.slice(1);
 
 Il y a un petit problème cependant. Si `str` est vide, alors `str[0]` est `undefined`, et comme `undefined` n’a pas la méthode `toUpperCase()`, nous aurons une erreur.
 
-<<<<<<< HEAD
-Il y a deux variantes ici ;;
-
-1. Utiliser `str.charAt(0)`, comme il retourne toujours une chaîne de caractères (peut-être vide).
-2. Ajouter un test pour une chaîne de caractères vide.
-
-Voici la deuxième variante :
-=======
-The easiest way out is to add a test for an empty string, like this:
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+La solution la plus simple consiste à ajouter un test pour une chaîne vide, comme ceci :
 
 ```js run demo
 function ucFirst(str) {
