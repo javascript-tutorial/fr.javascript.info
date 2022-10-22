@@ -192,12 +192,8 @@ userGuest.admin?.(); // nothing happens (no such method)
 
 Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) pour obtenir la propriété `admin`, car nous supposons que l'objet `user` existe, il peut donc être lu en toute sécurité.
 
-Puis `?.()` Vérifie la partie gauche : si la fonction admin existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
+Puis `?.()` Vérifie la partie gauche : si la fonction `admin` existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
 
-<<<<<<< HEAD
-=======
-Then `?.()` checks the left part: if the `admin` function exists, then it runs (that's so for `userAdmin`). Otherwise (for `userGuest`) the evaluation stops without errors.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 La syntaxe `?.[]` Fonctionne également, si nous voulons utiliser des crochets `[]` pour accéder aux propriétés au lieu du point `.`. Similaire aux cas précédents, il permet de lire en toute sécurité une propriété à partir d'un objet qui peut ne pas exister.
 
@@ -219,12 +215,6 @@ Nous pouvons également utiliser `?.` avec `delete` :
 ```js run
 delete user?.name; // supprime user.name si user existe
 ```
-
-<<<<<<< HEAD
-=======
-````warn header="We can use `?.` for safe reading and deleting, but not writing"
-The optional chaining `?.` has no use on the left side of an assignment.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```warn header="Nous pouvons utiliser `?.` pour lire et supprimer en toute sécurité, mais pas pour écrire"
 Le chaînage optionnel `?.` n'a aucune utilité sur le côté gauche d'une affectation :
