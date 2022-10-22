@@ -59,11 +59,7 @@ alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
 
 La solution a une complexité temporelle de [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). En d'autres termes, si nous augmentons la taille du tableau 2 fois, l'algorithme fonctionnera 4 fois plus longtemps.
 
-<<<<<<< HEAD
 Pour les grands tableaux (1000, 10000 ou plus), de tels algorithmes peuvent conduire à une grande lenteur.
-=======
-For big arrays (1000, 10000 or more items) such algorithms can lead to serious sluggishness.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 # Solution rapide
 
@@ -97,7 +93,3 @@ L'algorithme nécessite exactement 1 passage de tableau, la complexité temporel
 
 Vous pouvez trouver plus d'informations détaillées sur l'algorithme ici: [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem). Si la raison de ce fonctionnement n’est pas encore évidente, tracez l’algorithme à partir des exemples ci-dessus et voyez comment il fonctionne.
 
-<<<<<<< HEAD
-=======
-You can find more detailed information about the algorithm here: [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem). If it's still not obvious why that works, then please trace the algorithm on the examples above, see how it works, that's better than any words.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
