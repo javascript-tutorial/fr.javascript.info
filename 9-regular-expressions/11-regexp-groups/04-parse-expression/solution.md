@@ -8,17 +8,10 @@ Nous cherchons un nombre, un opérateur puis un autre nombre. Et d'éventuels es
 
 Cela done l'expression régulière : `pattern:-?\d+(\.\d+)?\s*[-+*/]\s*-?\d+(\.\d+)?`.
 
-<<<<<<< HEAD
 Il y a trois parties, avec `pattern:\s*` entre elles :
 1. `pattern:-?\d+(\.\d+)?` - le premier nombre,
-1. `pattern:[-+*/]` - l'opérateur,
-1. `pattern:-?\d+(\.\d+)?` - le deuxième nombre.
-=======
-It has 3 parts, with `pattern:\s*` between them:
-1. `pattern:-?\d+(\.\d+)?` - the first number,
-2. `pattern:[-+*/]` - the operator,
-3. `pattern:-?\d+(\.\d+)?` - the second number.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+2. `pattern:[-+*/]` - l'opérateur,
+3. `pattern:-?\d+(\.\d+)?` - le deuxième nombre.
 
 Pour faire de chacune de ces parties un élément distinct du tableau de correspondance, entourons-les de parenthèses : `pattern:(-?\d+(\.\d+)?)\s*([-+*/])\s*(-?\d+(\.\d+)?)`.
 
