@@ -6,15 +6,9 @@ Ce qui est intéressant à leur sujet, c'est que les données survivent à une a
 
 Nous avons déjà des cookies. Pourquoi des objets supplémentaires ?
 
-<<<<<<< HEAD
-- Contrairement aux cookies, les objets de stockage Web ne sont pas envoyés au serveur à chaque requête. Grâce à cela, nous pouvons stocker beaucoup plus. La plupart des navigateurs autorisent au moins 2 mégaoctets de données (ou plus) et ont des paramètres pour configurer cela.
+- Contrairement aux cookies, les objets de stockage Web ne sont pas envoyés au serveur à chaque requête. Grâce à cela, nous pouvons stocker beaucoup plus. La plupart des navigateurs autorisent au moins 5 mégaoctets de données (ou plus) et ont des paramètres pour configurer cela.
 - Contrairement aux cookies également, le serveur ne peut pas manipuler les objets de stockage via les en-têtes HTTP. Tout se fait en JavaScript.
 - Le stockage est lié à l'origine (triplet domaine/protocole/port). Autrement dit, différents protocoles ou sous-domaines impliquent différents objets de stockage, ils ne peuvent pas accéder aux données les uns des autres.
-=======
-- Unlike cookies, web storage objects are not sent to server with each request. Because of that, we can store much more. Most modern browsers allow at least 5 megabytes of data (or more) and have settings to configure that.
-- Also unlike cookies, the server can't manipulate storage objects via HTTP headers. Everything's done in JavaScript.
-- The storage is bound to the origin (domain/protocol/port triplet). That is, different protocols or subdomains infer different storage objects, they can't access data from each other.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Les deux objets de stockage fournissent les mêmes méthodes et propriétés :
 
