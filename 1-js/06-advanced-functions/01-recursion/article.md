@@ -285,11 +285,7 @@ Le `pow` itératif utilise un contexte unique qui change les processus `i` et `r
 
 **Toute récursion peut être réécrite sous forme de boucle. La variante de boucle peut généralement être rendue plus efficace.**
 
-<<<<<<< HEAD
 ..Parfois, la réécriture n’est pas triviale, en particulier lorsque la fonction utilise différents sous-appels récursifs en fonction des conditions et fusionne leurs résultats ou lorsque la création de branche est plus complexe. Et l'optimisation risque de ne pas être nécessaire et de ne pas valoir la peine.
-=======
-...But sometimes the rewrite is non-trivial, especially when a function uses different recursive subcalls depending on conditions and merges their results or when the branching is more intricate. And the optimization may be unneeded and totally not worth the efforts.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 La récursion peut donner un code plus court, plus facile à comprendre et à supporter. Les optimisations ne sont pas nécessaires à chaque endroit, nous avons surtout besoin d'un bon code, c'est pourquoi il est utilisé.
 
@@ -540,11 +536,7 @@ Lorsqu'une fonction s'appelle elle-même, cela s'appelle une *étape de récursi
     list = { value, next -> list }
     ```
 
-<<<<<<< HEAD
-    Les arbres tels que l’arbre des éléments HTML ou l’arbre des départements de ce chapitre sont également naturellement récursifs: ils ont des branchent et chaque branche peut avoir d’autres branches.
-=======
-    Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they have branches and every branch can have other branches.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+    Les arbres tels que l’arbre des éléments HTML ou l’arbre des départements de ce chapitre sont également naturellement récursifs: ils ont des branches et chaque branche peut avoir d’autres branches.
 
     Des fonctions récursives peuvent être utilisées pour les parcourir, comme nous l'avons vu dans l'exemple `sumSalary`.
 
