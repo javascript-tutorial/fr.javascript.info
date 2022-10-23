@@ -1,10 +1,6 @@
 Pour insérer après la balise `<body>`, nous devons d'abord la trouver. Nous pouvons utiliser le modèle d'expression régulière `pattern:<body.*?>` pour cela.
 
-<<<<<<< HEAD
 Dans cette tâche, nous n'avons pas besoin de modifier la balise `<body>`. Nous n'avons qu'à ajouter le texte après.
-=======
-In this task, we don't need to modify the `<body>` tag. We only need to add the text after it.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Voici comment nous pouvons le faire :
 
@@ -28,7 +24,6 @@ alert(str); // ...<body style="..."><h1>Hello</h1>...
 
 Comme vous pouvez le voir, il n'y a qu'une partie lookbehind dans cette expression régulière.
 
-<<<<<<< HEAD
 Cela fonctionne comme ceci :
 - À chaque position dans le texte.
 - Vérifiez s'il est précédé de `pattern:<body.*?>`.
@@ -37,15 +32,5 @@ Cela fonctionne comme ceci :
 La balise `pattern:<body.*?>` ne sera pas renvoyée. Le résultat de cette expression régulière est littéralement une chaîne vide, mais elle ne correspond qu'aux positions précédées de `pattern:<body.*?>`.
 
 Il remplace donc la "ligne vide", précédée de `pattern:<body.*?>`, par `<h1>Hello</h1>`. C'est l'insertion après `<body>`.
-=======
-It works like this:
-- At every position in the text.
-- Check if it's preceded by `pattern:<body.*?>`.
-- If it's so, then we have the match.
-
-The tag `pattern:<body.*?>` won't be returned. The result of this regexp is literally an empty string, but it matches only at positions preceded by `pattern:<body.*?>`.
-
-So it replaces the "empty line", preceded by `pattern:<body.*?>`, with `<h1>Hello</h1>`. That's the insertion after `<body>`.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 PS Les drapeaux d'expression régulière, tels que `pattern:s` et `pattern:i` peuvent également être utiles : `pattern:/<body.*?>/si`. Le drapeau `pattern:s` fait correspondre le point `pattern:.` à un caractère de retour à la ligne, et le drapeau `pattern:i` fait que `pattern:<body>` correspond également à `match:<BODY>` insensible à la casse.

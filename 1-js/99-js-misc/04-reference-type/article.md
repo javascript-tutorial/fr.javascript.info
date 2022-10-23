@@ -87,11 +87,7 @@ Le résultat de l'accès à la propriété `user.hi` n'est pas une fonction, mai
 (user, "hi", true)
 ```
 
-<<<<<<< HEAD
-Quand les parenthèses `()` sont appelées, elles reçoivent les informations sur l'objet et ses méthodes et peut assigné le `this` correct (`=user` dans ce cas).
-=======
-When parentheses `()` are called on the Reference Type, they receive the full information about the object and its method, and can set the right `this` (`user` in this case).
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+Lorsque les parenthèses `()` sont appelées sur le type de référence, elles reçoivent les informations complètes sur l'objet et sa méthode, et peuvent définir le bon `this` (`user` dans ce cas).
 
 Le type référence est un type interne "intermédiaire", avec comme but de passer l'information du point `.`  aux parenthèses `()`.
 

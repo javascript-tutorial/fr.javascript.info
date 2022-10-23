@@ -15,13 +15,9 @@ Un IDE charge le projet (peut contenir de nombreux fichiers), permet la navigati
 Si vous n'avez pas encore pensé à sélectionner un IDE, examinez les variantes suivantes :
 
 - [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
-<<<<<<< HEAD
-- [WebStorm](http://www.jetbrains.com/webstorm/) pour le développement frontend et autres éditeurs de la même société si vous avez besoin de langues supplémentaires.
+- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, payant).
 
 Pour Windows, il existe également "Visual Studio", à ne pas confondre avec "Visual Studio Code ". "Visual Studio" est un éditeur payant et puissant, uniquement conçu pour Windows, bien adapté à la plate-forme .NET. C’est aussi bon en JavaScript. Il y a aussi une version gratuite [Visual Studio Community](https://www.visualstudio.com/vs/community/).
-=======
-- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, paid).
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 La plupart des IDE sont payants, mais ont une période d'essai. Leur coût est généralement négligeable par rapport au salaire d’un développeur qualifié, alors choisissez le meilleur pour vous.
 
@@ -37,17 +33,10 @@ En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris
 
 Les options suivantes méritent votre attention :
 
-- [Atom](https://atom.io/) (multiplateforme, gratuit).
 - [Sublime Text](http://www.sublimetext.com) (multiplateforme, payant).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuit).
 - [Vim](http://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.
 
-<<<<<<< HEAD
-=======
-- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
-- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
-- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## Ne discutons pas
 

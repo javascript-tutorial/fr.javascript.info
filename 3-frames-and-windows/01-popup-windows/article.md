@@ -92,11 +92,7 @@ Paramètres de `params`:
 
 Il existe également certains paramètres spécifiques aux navigateurs qui sont moins bien supportés et généralement pas utilisés. Consultez <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/open"> window.open sur MDN</a> pour plus d'exemples.
 
-<<<<<<< HEAD
 ## Exemple: une fenêtre minimaliste  
-=======
-## Example: a minimalistic window
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver : 
 
@@ -129,11 +125,7 @@ Règles des paramètres omis:
 
 ## Accèder a une pop-up depuis une fenêtre
 
-<<<<<<< HEAD
 La fonction `open` retourne une référence à la nouvelle fenêtre. Celle ci peut être utilisée pour manipuler ses propriétés, changer sa localisation et bien plus.
-=======
-The `open` call returns a reference to the new window. It can be used to manipulate its properties, change location and even more.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Dans cet exemple, nous générons du contenu en pop-up avec Javascript: 
 
@@ -255,13 +247,9 @@ Il existe un évènement `window.onscroll`.
 
 Théoriquement, il existe des méthodes `window.focus()` et `window.blur()` pour faire/défaire le focus sur une fenêtre.  Il existe également des événements `focus/blur` qui permettent de saisir le moment où le visiteur focus une fenêtre et passe ailleurs.
 
-<<<<<<< HEAD
 Bien que, dans la pratique, ils soient sévèrement limités, car dans le passé, des pages malveillantes en abusaient.
 
 Par exemple, regardez ce code :
-=======
-Although, in practice they are severely limited, because in the past evil pages abused them.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 
 ```js run
@@ -279,17 +267,10 @@ Pourtant, il existe des cas d'utilisation où de tels appels fonctionnent et peu
 
 Par exemple:
 
-<<<<<<< HEAD
 - Lorsque nous ouvrons une pop-up, l peut être judicieux d'y lancer un `newWindow.focus()`. Juste au cas où, pour certaines combinaisons de systèmes d'exploitation/navigateurs, cela garantit que l'utilisateur se trouve maintenant dans la nouvelle fenêtre.
-- Si nous voulons savoir quand un visiteur utilise effectivement notre site web, nous pouvons suivre `window.onfocus/onblur`. Cela nous permet de suspendre/reprendre les activités en page, les animations, etc. Mais veuillez noter que l'événement `blur` signifie que le visiteur a quitté la fenêtre, mais qu'il peut toujours l'observer. La fenêtre est en arrière-plan, mais elle peut être toujours visible.
+- Si nous voulons savoir quand un visiteur utilise réellement notre application Web, nous pouvons suivre `window.onfocus/onblur`. Cela nous permet de suspendre/reprendre les activités sur la page, les animations, etc. Mais veuillez noter que l'événement `blur` signifie que le visiteur est sorti de la fenêtre, mais qu'il peut toujours l'observer. La fenêtre est en arrière-plan, mais peut toujours être visible.
 
 ## Résumé  
-=======
-- When we open a popup, it might be a good idea to run `newWindow.focus()` on it. Just in case, for some OS/browser combinations it ensures that the user is in the new window now.
-- If we want to track when a visitor actually uses our web-app, we can track `window.onfocus/onblur`. That allows us to suspend/resume in-page activities, animations etc. But please note that the `blur` event means that the visitor switched out from the window, but they still may observe it. The window is in the background, but still may be visible.
-
-## Summary
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Les fenêtres pop-up sont rarement utilisées, car il existe des alternatives : chargement et affichage des informations dans la page, ou dans l'iframe.
 

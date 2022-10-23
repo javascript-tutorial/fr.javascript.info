@@ -128,21 +128,16 @@ setTimeout(() => document.body.style.display = "", 1000); // retour à la normal
 
 Si nous attribuons `style.display` à une chaîne vide, le navigateur applique les classes CSS et ses styles intégrés normalement, comme s'il n'y avait pas de propriété `style.display`.
 
-<<<<<<< HEAD
-````smart header="Réécriture complète avec `style.cssText`"
-Normalement, nous utilisons `style.*` pour attribuer des propriétés de style individuelles. Nous ne pouvons pas attribuer le style complet comme `div.style="color: red; width: 100px"`, parce que `div.style` est un object, et il est en lecture seulement.
-=======
-Also there is a special method for that, `elem.style.removeProperty('style property')`. So, We can remove a property like this:
+Il existe également une méthode spéciale pour cela, `elem.style.removeProperty('style property')`. Ainsi, nous pouvons supprimer une propriété comme celle-ci :
 
 ```js run
-document.body.style.background = 'red'; //set background to red
+document.body.style.background = 'red'; //configure le background à rouge
 
-setTimeout(() => document.body.style.removeProperty('background'), 1000); // remove background after 1 second
+setTimeout(() => document.body.style.removeProperty('background'), 1000); // supprime l'arrière-plan après 1 seconde
 ```
 
-````smart header="Full rewrite with `style.cssText`"
-Normally, we use `style.*` to assign individual style properties. We can't set the full style like `div.style="color: red; width: 100px"`, because `div.style` is an object, and it's read-only.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+````smart header="Réécriture complète avec `style.cssText`"
+Normalement, nous utilisons `style.*` pour attribuer des propriétés de style individuelles. Nous ne pouvons pas attribuer le style complet comme `div.style="color: red; width: 100px"`, parce que `div.style` est un object, et il est en lecture seulement.
 
 Pour définir un style complet comme une chaîne, il y a une propriété spéciale `style.cssText`:
 
@@ -273,25 +268,7 @@ Maintenant, `getComputedStyle` renvoie la valeur résolue de la propriété, hab
 ````warn header="`getComputedStyle` exige le nom complet de la propriété"
 Nous devons toujours demander pour la propriété exacte requise, comme `paddingLeft` ou `marginTop` ou `borderTopWidth`. Sinon, recevoir le bon résultat n'est pas garanti.
 
-<<<<<<< HEAD
-Par exemple, s'il y a les propriétés `paddingLeft/paddingTop`, qu'est-ce que nous recevrons de `getComputedStyle(elem).padding`? Rien, ou peut-être une valeur générée des écarts de remplissage connus? Il n'y a pas de règle standard ici.
-
-Il y a des autres incohérences. À titre d'exemple, certains navigateurs (Chrome) indique `10px` dans le document ci-dessous, et certains (Firefox) -- n'en indique pas:
-
-```html run
-<style>
-  body {
-    margin: 10px;
-  }
-</style>
-<script>
-  let style = getComputedStyle(document.body);
-  alert(style.margin); // chaîne vide dans Firefox
-</script>
-```
-=======
-For instance, if there are properties `paddingLeft/paddingTop`, then what should we get for `getComputedStyle(elem).padding`? Nothing, or maybe a "generated" value from known paddings? There's no standard rule here.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+Par exemple, s'il existe des propriétés `paddingLeft/paddingTop`, que devrions-nous obtenir pour `getComputedStyle(elem).padding` ? Rien, ou peut-être une valeur "générée" à partir de paddings connus ? Il n'y a pas de règle standard ici.
 ````
 
 ```smart header="Styles appliqués aux liens `:visited` sont cachés!"
@@ -302,7 +279,7 @@ Cependant, `getComputedStyle` ne donne pas accès à cette couleur, parce qu'aut
 JavaScript ne pourrait pas voir les styles appliqués par `:visited`. De plus, il y a une limitation avec CSS qui interdit l'application de styles qui changent la géométrie dans `:visited`. C'est pour garantir qu'il n'y a aucun moyen pour une page malfaisante de tester si un lien a été visité, qui porterait atteinte à la vie privée.
 ```
 
-## Récapitulation
+## Résumé
 
 Pour gérer les classes, il y a deux propriétés DOM:
 

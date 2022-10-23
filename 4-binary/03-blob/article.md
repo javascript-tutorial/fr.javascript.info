@@ -97,13 +97,9 @@ Voilà à quoi ressemble la valeur de `link.href`:
 blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 ```
 
+Pour chaque URL générée par `URL.createObjectURL`, le navigateur stocke en interne un mappage URL -> `Blob`. De telles URL sont donc courtes, mais permettent d'accéder au `Blob`.
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`, `<a>`, essentiellement tout autre objet qui attend une URL.
-
-<<<<<<< HEAD
-=======
-There's a side effect though. While there's a mapping for a `Blob`, the `Blob` itself resides in the memory. The browser can't free it.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
 

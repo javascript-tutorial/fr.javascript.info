@@ -224,11 +224,7 @@ Cette fonctionnalité nous permet d'intégrer des objets personnalisés avec des
 
 ## Un plus grand exemple: fetch
 
-<<<<<<< HEAD
 Dans la programmation du front-end, les promesses sont souvent utilisées pour les requêtes réseau. Voyons donc un exemple étendu de cela.
-=======
-In frontend programming, promises are often used for network requests. So let's see an extended example of that.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Nous allons utiliser la méthode [fetch](info:fetch) pour charger les informations sur l'utilisateur à partir du serveur distant. Il a beaucoup de paramètres optionnels couverts dans [des chapitres séparés](info:fetch), mais la syntaxe de base est assez simple:
 

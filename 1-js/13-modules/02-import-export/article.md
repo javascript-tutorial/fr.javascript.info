@@ -93,36 +93,14 @@ say.sayBye('John');
 
 Eh bien, il y a quelques raisons.
 
-<<<<<<< HEAD
-1. Les outils de construction modernes ([webpack](http://webpack.js.org) et autres) regroupent les modules et les optimisent pour accélérer le chargement et supprimer les éléments inutilisés.
+1. Lister explicitement ce qu'il faut importer donne des noms plus courts : `sayHi()` au lieu de `say.sayHi()`.
+2. La liste explicite des importations donne un meilleur aperçu de la structure du code : ce qui est utilisé et où. Cela facilite la prise en charge du code et la refactorisation.
 
-    Disons que nous avons ajouté à notre projet une bibliothèque tierce, say.js, avec de nombreuses fonctions:
-    ```js
-    // 📁 say.js
-    export function sayHi() { ... }
-    export function sayBye() { ... }
-    export function becomeSilent() { ... }
-    ```
+```smart header="N'ayez pas peur d'importer trop"
+Les outils de construction modernes, tels que [webpack](https://webpack.js.org/) et d'autres, regroupent les modules et les optimisent pour accélérer le chargement. Ils ont également supprimé les importations inutilisées.
 
-    Maintenant, si nous n’utilisons qu’une des fonctions de say.js dans notre projet:
-    ```js
-    // 📁 main.js
-    import {sayHi} from './say.js';
-    ```
-    … Ensuite, l'optimiseur verra cela et supprimera les autres fonctions du code fourni, rendant ainsi la construction plus petite. C'est ce qu'on appelle "tree-shaking".
-
-2. Énumérer explicitement ce qu'il faut importer donne des noms plus courts: `sayHi()` au lieu de `say.sayHi()`.
-3. La liste explicite des importations donne une meilleure vue d'ensemble de la structure du code: ce qui est utilisé et où. Cela facilite la prise en charge du code et la refactorisation.
-=======
-1. Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
-2. Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
-
-```smart header="Don't be afraid to import too much"
-Modern build tools, such as [webpack](https://webpack.js.org/) and others, bundle modules together and optimize them to speedup loading. They also removed unused imports.
-
-For instance, if you `import * as library` from a huge code library, and then use only few methods, then unused ones [will not be included](https://github.com/webpack/webpack/tree/main/examples/harmony-unused#examplejs) into the optimzed bundle.
+Par exemple, si vous importer `import * as library` à partir d'une énorme bibliothèque de codes, puis n'utilisez que quelques méthodes, celles qui ne sont pas utilisées [ne seront pas incluses] (https://github.com/webpack/webpack/tree/main/ examples/harmony-unused#examplejs) dans le bundle optimisé.
 ```
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## Import "as"
 
@@ -390,11 +368,7 @@ export {default as User} from './user.js';
 ...
 ```
 
-<<<<<<< HEAD
 La différence notable entre `export ... from` et `import/export` est que les modules réexportés ne sont pas disponibles dans le fichier actuel. Donc, dans l'exemple ci-dessus de `auth/index.js`, nous ne pouvons pas utiliser les fonctions `login/logout` réexportées.
-=======
-The notable difference of `export ... from` compared to `import/export` is that re-exported modules aren't available in the current file. So inside the above example of `auth/index.js` we can't use re-exported `login/logout` functions.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ### Ré-exportation de l'exportation par défaut
 
@@ -413,11 +387,7 @@ On peut y rencontrer deux problèmes :
 
 1. `export User from './user.js'` çe ne fonctionnera pas... Cela conduirait à une erreur de syntaxe.
 
-<<<<<<< HEAD
     Pour réexporter l'exportation par défaut, nous devrions écrire `export {default as User}`, comme dans l'exemple ci-dessus.
-=======
-    To re-export the default export, we have to write `export {default as User}`, as in the example above.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 2. `export * from './user.js'` ne réexporte que les exportations nommées, et ignore celle par défaut.
 
@@ -448,11 +418,7 @@ Import:
 
 - Importations d’exports nommés :
   - `import {x [as y], ...} from "module"`
-<<<<<<< HEAD
 - Importation de l’export par défaut : 
-=======
-- Importing the default export:
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
   - `import x from "module"`
   - `import {default as x} from "module"`
 - Tout importer :

@@ -177,13 +177,8 @@ Lorsqu'une valeur est passée en tant que paramètre de fonction, elle est égal
 
 En d'autres termes, pour mettre ces termes au clair :
 
-<<<<<<< HEAD
 - Un paramètre est la variable répertoriée entre parenthèses dans la fonction déclaration (c'est un terme du temps de la déclaration).
 - Un argument est la valeur qui est transmise à la fonction lorsqu'elle est appelée (c'est un terme du temps de l'appel).
-=======
-- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
-- An argument is the value that is passed to the function when it is called (it's a call time term).
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
@@ -212,17 +207,13 @@ function showMessage(from, *!*text = "no text given"*/!*) {
 showMessage("Ann"); // Ann: aucun texte fourni
 ```
 
-<<<<<<< HEAD
 Maintenant, si le paramètre `text` n'est pas passé, il obtiendra la valeur `"no text given"`.
-=======
-Now if the `text` parameter is not passed, it will get the value `"no text given"`.
 
-The default value also jumps in if the parameter exists, but strictly equals `undefined`, like this:
+La valeur par défaut saute également si le paramètre existe, mais est strictement égal à `undefined`, comme ceci :
 
 ```js
 showMessage("Ann", undefined); // Ann: no text given
 ```
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant. Donc, cela est également possible :
 
@@ -241,17 +232,12 @@ Dans l'exemple ci-dessus, `anotherFunction()` n'est pas du tout appelé, si le p
 D'un autre côté, il est appelé indépendamment à chaque fois que `text` est manquant.
 ```
 
-<<<<<<< HEAD
-### Paramètres par défaut alternatifs
+````smart header="Paramètres par défaut dans l'ancien code JavaScript"
+Il y a plusieurs années, JavaScript ne prenait pas en charge la syntaxe des paramètres par défaut. Les gens ont donc utilisé d'autres moyens pour les spécifier.
 
-Il est parfois judicieux de définir des valeurs par défaut pour les paramètres non pas dans la fonction déclaration, mais à un stade ultérieur, lors de son exécution.
-=======
-````smart header="Default parameters in old JavaScript code"
-Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+De nos jours, on peut les croiser dans d'anciens scripts.
 
-Nowadays, we can come across them in old scripts.
-
-For example, an explicit check for `undefined`:
+Par exemple, une vérification explicite pour `undefined` :
 
 ```js
 function showMessage(from, text) {
@@ -265,12 +251,12 @@ function showMessage(from, text) {
 }
 ```
 
-...Or using the `||` operator:
+...Ou en utilisant l'opérateur `||` :
 
 ```js
 function showMessage(from, text) {
-  // If the value of text is falsy, assign the default value
-  // this assumes that text == "" is the same as no text at all
+  // Si la valeur du texte est fausse, attribuez la valeur par défaut
+  // cela suppose que text == "" est identique à pas de texte du tout
   text = text || 'no text given';
   ...
 }
@@ -278,10 +264,9 @@ function showMessage(from, text) {
 ````
 
 
-### Alternative default parameters
+### Paramètres par défaut alternatifs
 
-Sometimes it makes sense to assign default values for parameters at a later stage after the function declaration.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+Il est parfois judicieux de définir des valeurs par défaut pour les paramètres non pas dans la fonction déclaration, mais à un stade ultérieur, lors de son exécution.
 
 Nous pouvons vérifier si le paramètre est passé lors de l'exécution de la fonction, en le comparant avec `undefined` :
 
@@ -544,11 +529,7 @@ function name(parameters, delimited, by, comma) {
 
 Pour rendre le code propre et facile à comprendre, il est recommandé d’utiliser principalement des variables et des paramètres locaux dans la fonction, et non des variables externes.
 
-<<<<<<< HEAD
 Il est toujours plus facile de comprendre une fonction qui possède des paramètres, fonctionne avec eux et renvoie un résultat, plutôt qu’une fonction qui ne comporte aucun paramètre, mais modifie des variables externes comme un effet secondaire.
-=======
-It is always easier to understand a function which gets parameters, works with them and returns a result than a function which gets no parameters, but modifies outer variables as a side effect.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Nommage de fonction :
 

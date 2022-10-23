@@ -237,24 +237,14 @@ Voyons maintenant les méthodes de recherche dans un tableau.
 
 ### indexOf/lastIndexOf et includes
 
-<<<<<<< HEAD
-Les méthodes [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) et [arr.includes](mdn:js/Array/includes) ont la même syntaxe et utilisent essentiellement la même chose que leurs équivalents de chaîne, mais fonctionnent sur des éléments au lieu de caractères:
+Les méthodes [arr.indexOf](mdn:js/Array/indexOf), et [arr.includes](mdn:js/Array/includes) ont la même syntaxe et utilisent essentiellement la même chose que leurs équivalents de chaîne, mais fonctionnent sur des éléments au lieu de caractères:
 
 - `arr.indexOf(item, from)` recherche l'élément `item` à partir de l'index `from`, et retourne l'index où il a été trouvé, sinon il retourne `-1`.
-- `arr.lastIndexOf(item, from)` -- pareil, mais regarde de droite à gauche.
 - `arr.includes(item, from)` -- recherche l'élément `item` en commençant par l'index `from`, retourne `true` si il est trouvé.
 
+Habituellement, ces méthodes sont utilisées avec un seul argument : l'élément à rechercher. Par défaut, la recherche s'effectue depuis le début.
+
 Par exemple:
-=======
-The methods [arr.indexOf](mdn:js/Array/indexOf) and [arr.includes](mdn:js/Array/includes) have the similar syntax and do essentially the same as their string counterparts, but operate on items instead of characters:
-
-- `arr.indexOf(item, from)` -- looks for `item` starting from index `from`, and returns the index where it was found, otherwise `-1`.
-- `arr.includes(item, from)` -- looks for `item` starting from index `from`, returns `true` if found.
-
-Usually these methods are used with only one argument: the `item` to search. By default, the search is from the beginning.
-
-For instance:
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run
 let arr = [1, 0, false];
@@ -266,22 +256,12 @@ alert( arr.indexOf(null) ); // -1
 alert( arr.includes(1) ); // true ////// arreter ici
 ```
 
-<<<<<<< HEAD
-Notez que les méthodes utilisent la comparaison `===`. Donc, si nous cherchons `false`, il trouve exactement `false` et pas le zéro.
+Veuillez noter que `indexOf` utilise l'égalité stricte `===` pour la comparaison. Donc, si nous cherchons "faux", il trouve exactement "faux" et non le zéro.
 
-Si nous voulons vérifier l'inclusion et ne voulons pas connaître l'index exact, alors `arr.includes` est préférable.
+Si nous voulons vérifier si `item` existe dans le tableau et n'avons pas besoin de l'index exact, alors `arr.includes` est préféré.
 
-De plus, une différence très mineure avec `includes` est qu’il gère correctement `NaN`, contrairement à `indexOf / lastIndexOf`:
+La méthode [arr.lastIndexOf](mdn:js/Array/lastIndexOf) est la même que `indexOf`, mais recherche de droite à gauche.
 
-```js run
-const arr = [NaN];
-alert( arr.indexOf(NaN) ); // -1 (devrait être 0, mais l'égalité ===  ne fonctionne pas pour NaN)
-=======
-Please note that `indexOf` uses the strict equality `===` for comparison. So, if we look for `false`, it finds exactly `false` and not the zero.
-
-If we want to check if `item` exists in the array, and don't need the exact index, then `arr.includes` is preferred.
-
-The method [arr.lastIndexOf](mdn:js/Array/lastIndexOf) is the same as `indexOf`, but looks for from right to left.
 
 ```js run
 let fruits = ['Apple', 'Orange', 'Apple']
@@ -290,23 +270,18 @@ alert( fruits.indexOf('Apple') ); // 0 (first Apple)
 alert( fruits.lastIndexOf('Apple') ); // 2 (last Apple)
 ```
 
-````smart header="The `includes` method handles `NaN` correctly"
-A minor, but noteworthy feature of `includes` is that it correctly handles `NaN`, unlike `indexOf`:
+````smart header="La méthode `includes` gère `NaN` correctement"
+Une caractéristique mineure mais remarquable de `includes` est qu'il gère correctement `NaN`, contrairement à `indexOf` :
 
 ```js run
 const arr = [NaN];
-alert( arr.indexOf(NaN) ); // -1 (wrong, should be 0)
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+alert( arr.indexOf(NaN) ); // -1 (faux, devrait être 0)
 alert( arr.includes(NaN) );// true (correct)
 ```
-That's because `includes` was added to JavaScript much later and uses the more up to date comparison algorithm internally.
+C'est parce que `includes` a été ajouté à JavaScript beaucoup plus tard et utilise l'algorithme de comparaison le plus à jour en interne.
 ````
 
-<<<<<<< HEAD
-### find et findIndex
-=======
-### find and findIndex/findLastIndex
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+### find et findIndex/findLastIndex
 
 Imaginez que nous ayons un tableau d'objets. Comment pouvons-nous trouver un objet avec la condition spécifique?
 
@@ -346,14 +321,11 @@ Dans la vie réelle, les tableaux d'objets sont une chose courante, la méthode 
 
 Notez que dans l'exemple, nous fournissons à `find` la fonction `item => item.id == 1` avec un argument. C'est typique, les autres arguments de cette fonction sont rarement utilisés.
 
-<<<<<<< HEAD
-La méthode [arr.findIndex](mdn:js/Array/findIndex) est essentiellement la même, mais elle retourne l'index où l'élément a été trouvé à la place de l'élément lui-même.
-=======
-The [arr.findIndex](mdn:js/Array/findIndex) method has the same syntax, but returns the index where the element was found instead of the element itself. The value of `-1` is returned if nothing is found.
+La méthode [arr.findIndex](mdn:js/Array/findIndex) est essentiellement la même, mais elle retourne l'index où l'élément a été trouvé à la place de l'élément lui-même. La valeur de `-1` est retournée si rien n'est trouvé.
 
-The [arr.findLastIndex](mdn:js/Array/findLastIndex) method is like `findIndex`, but searches from right to left, similar to `lastIndexOf`.
+La méthode [arr.findLastIndex](mdn:js/Array/findLastIndex) est comme `findIndex`, mais recherche de droite à gauche, similaire à `lastIndexOf`.
 
-Here's an example:
+Voici un exemple :
 
 ```js run
 let users = [
@@ -363,15 +335,12 @@ let users = [
   {id: 4, name: "John"}
 ];
 
-// Find the index of the first John
+// Trouver l'index du premier John
 alert(users.findIndex(user => user.name == 'John')); // 0
 
-// Find the index of the last John
+// Trouver l'index du dernier John
 alert(users.findLastIndex(user => user.name == 'John')); // 3
 ```
-
-
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ### filter
 
@@ -457,11 +426,6 @@ Pour utiliser notre propre ordre de tri, nous devons fournir une fonction comme 
 
 La fonction doit comparer deux valeurs arbitraires et renvoyer :
 
-<<<<<<< HEAD
-=======
-The function should compare two arbitrary values and return:
-
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 ```js
 function compare(a, b) {
   if (a > b) return 1; // if the first value is greater than the second
@@ -716,13 +680,8 @@ Les tableaux ne forment pas un type de langue distinct. Ils sont basés sur des 
 Donc son `typeof` ne permet pas de distinguer un objet brut d'un tableau:
 
 ```js run
-<<<<<<< HEAD
-alert(typeof {}); // objet
-alert(typeof []); // pareil
-=======
 alert(typeof {}); // object
-alert(typeof []); // object (same)
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
+alert(typeof []); // object (pareil)
 ```
 
 ...Mais les tableaux sont utilisés si souvent qu'il existe une méthode spéciale pour cela: [Array.isArray(value)](mdn:js/Array/isArray). Il renvoie `true` si la `value` est un tableau, sinon il renvoie `false`.
@@ -811,16 +770,11 @@ Un cheat sheet des méthodes de tableau :
   - `split/join` -- convertit une chaîne en tableau et retour.
   - `reduce(func, initial)` -- calcule une valeur unique sur le tableau en appelant `func` pour chaque élément et en transmettant un résultat intermédiaire entre les appels.
 - Aditionellement:
-  - `Array.isArray(arr)` vérifie que l'`arr` est bien un tableau.
+  - `Array.isArray(value)` vérifie que `value` est un tableau, si c'est le cas, renvoie `true`, sinon `false`.
 
 Veuillez noter que les méthodes `sort`, `reverse` et `splice` modifient le tableau lui-même.
 
-<<<<<<< HEAD
 Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation. Mais il y en a encore d'autres:
-=======
-- Additionally:
-  - `Array.isArray(value)` checks `value` for being an array, if so returns `true`, otherwise `false`.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 
 - [arr.some(fn)](mdn:js/Array/some)/[arr.every(fn)](mdn:js/Array/every) vérifie le tableau.
@@ -831,14 +785,8 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
   
   Ces méthodes se comportent en quelque sorte comme les opérateurs `||` et `&&` : si `fn` renvoie une valeur vraie, `arr.some()` renvoie immédiatement `true` et arrête de parcourir les autres éléments ; si `fn` renvoie une valeur fausse, `arr.every()`retourne immédiatement `false` et arrête également d'itérer sur les autres éléments.
 
-<<<<<<< HEAD
   On peut utiliser `every` pour compaere les tableaux :
-=======
-  These methods behave sort of like `||` and `&&` operators: if `fn` returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest of items; if `fn` returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest of items as well.
 
-  We can use `every` to compare arrays:
-
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
   ```js run
   function arraysEqual(arr1, arr2) {
     return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);

@@ -57,19 +57,13 @@ Pour créer un nouvel objet `Date`, appelez `new Date ()` avec l'un des argument
 `new Date(année, mois, date, heures, minutes, secondes, ms)`
 : Crée la date avec les composants donnés dans le fuseau horaire local. Seul le premier argument est obligatoire.
 
-<<<<<<< HEAD
     Note:
-=======
-    - The `year` should have 4 digits. For compatibility, 2 digits are also accepted and considered `19xx`, e.g. `98` is the same as `1998` here, but always using 4 digits is strongly encouraged.
-    - The `month` count starts with `0` (Jan), up to `11` (Dec).
-    - The `date` parameter is actually the day of month, if absent then `1` is assumed.
-    - If `hours/minutes/seconds/ms` is absent, they are assumed to be equal `0`.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
-    - l'`année` doit comporter 4 chiffres: `2013` c'est bon, `98` ne l'est pas.
-    - le `mois` commence par `0` (Jan), jusqu'à `11` (Dec).
-    - la `date` est en fait le jour du mois, s'il est absent cela deviendra `1` par défaut.
-    - si `heures/minutes/secondes/ms` sont absentes, elles sont par défaut égales à `0`.
+    - L'année `year` doit avoir 4 chiffres. Pour des raisons de compatibilité, 2 chiffres sont également acceptés et considérés comme `19xx`, par ex. `98` est identique à `1998` ici, mais il est fortement recommandé d'utiliser toujours 4 chiffres.
+    - Le décompte des mois `month` commence par `0` (Janvier) jusqu'à `11` (Décembre).
+    - Le paramètre `date` est en fait le jour du mois, s'il est absent alors `1` est supposé.
+    - Si `heures/minutes/seconds/ms` est absent, elles sont supposées égales à `0`.
+
 
     Par exemple:
 
