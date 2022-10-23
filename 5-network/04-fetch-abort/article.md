@@ -143,12 +143,6 @@ let results = await Promise.all([...fetchJobs, ourJob]);
 
 ## Résumé
 
-<<<<<<< HEAD
 - `AbortController` est un objet simple qui génère un événement `abort` sur sa propriété `signal` lorsque la méthode `abort()` est appelée (et définit également `signal.aborted` sur` true`).
 - `fetch` s'intègre avec lui : nous passons la propriété `signal` comme option, puis` fetch` l'écoute, il devient donc possible d'annuler le `fetch`.
 - Nous pouvons utiliser `AbortController` dans notre code. L'interaction "appeler `abort()`" -> "écouter l'événement `abort`" est simple et universelle. Nous pouvons l'utiliser même sans `fetch`.
-=======
-- `AbortController` is a simple object that generates an `abort` event on its `signal` property when the `abort()` method is called (and also sets `signal.aborted` to `true`).
-- `fetch` integrates with it: we pass the `signal` property as the option, and then `fetch` listens to it, so it's possible to abort the `fetch`.
-- We can use `AbortController` in our code. The "call `abort()`" -> "listen to `abort` event" interaction is simple and universal. We can use it even without `fetch`.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
