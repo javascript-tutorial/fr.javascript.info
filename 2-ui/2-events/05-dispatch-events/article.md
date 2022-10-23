@@ -210,12 +210,8 @@ Remarque: l'événement doit avoir le marqueur `cancelable: true`, sinon l'appel
 
 ## Les événements imbriqués sont synchrones
 
-<<<<<<< HEAD
-=======
-Usually events are processed in a queue. That is: if the browser is processing `onclick` and a new event occurs, e.g. mouse moved, then its handling is queued up, corresponding `mousemove` handlers will be called after `onclick` processing is finished.
->>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
-Les événements sont généralement traités dans une file d'attente. C'est-à-dire : si le navigateur traite `onclick` et qu'un nouvel événement se produit, par exemple la souris a bougé, puis sa gestion est mise en file d'attente, les gestionnaires `mousemove` correspondants seront appelés après la fin du traitement `onclick`.
+Les événements sont généralement traités dans une file d'attente. C'est-à-dire : si le navigateur traite `onclick` et qu'un nouvel événement se produit, par exemple la souris a bougé, sa gestion est mise en file d'attente, les gestionnaires `mousemove` correspondants seront appelés après la fin du traitement `onclick`.
 
 
 L'exception notable est lorsqu'un événement est déclenché à partir d'un autre, par exemple en utilisant `dispatchEvent`. Ces événements sont traités immédiatement: les nouveaux gestionnaires d'événements sont appelés, puis la gestion des événements en cours est reprise.
