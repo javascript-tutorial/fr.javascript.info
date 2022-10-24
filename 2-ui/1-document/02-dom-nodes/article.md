@@ -212,7 +212,11 @@ Il existe [12 types de nœuds](https://dom.spec.whatwg.org/#node). En pratique, 
 
 ## Voyez par vous-même
 
+<<<<<<< HEAD
 Pour voir la structure dom en temps réel, essayez le [live dom viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/). Tapez simplement le document, et il apparaîtra comme un dom en un instant.
+=======
+To see the DOM structure in real-time, try [Live DOM Viewer](https://software.hixie.ch/utilities/js/live-dom-viewer/). Just type in the document, and it will show up as a DOM at an instant.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Une autre façon d'explorer le dom est d'utiliser les outils de développement du navigateur. en fait, c'est ce que nous utilisons lors du développement.
 

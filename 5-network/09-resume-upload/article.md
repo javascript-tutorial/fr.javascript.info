@@ -48,7 +48,7 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
 
 3. Ensuite, nous pouvons utiliser un `Blob` par la méhtode `slice` pour envoyer le fichier depuis `startByte` :
     ```js
-    xhr.open("POST", "upload", true);
+    xhr.open("POST", "upload");
 
     // Identifiant du fichier, afin que le serveur sache quel fichier nous uploadons
     xhr.setRequestHeader('X-File-Id', fileId);

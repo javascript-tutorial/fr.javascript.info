@@ -79,7 +79,11 @@ alert( 8 ** (1/3) ); // 2 (la puissance de 1/3 équivaut à une racine cubique)
 
 ## Concaténation de chaînes de caractères, binaire `+`
 
+<<<<<<< HEAD
 Voyons maintenant les caractéristiques spéciales des opérateurs JavaScript qui sont au-delà de l’arithmétique scolaire.
+=======
+Let's meet the features of JavaScript operators that are beyond school arithmetics.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Habituellement, l'opérateur `+` additionne des chiffres.
 

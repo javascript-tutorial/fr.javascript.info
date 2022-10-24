@@ -44,7 +44,11 @@ Une façon de communiquer avec un autre serveur était de soumettre un `<form>`.
 <iframe name="iframe"></iframe>
 */!*
 
+<<<<<<< HEAD
 <!-- un formulaire pourrait être généré dynamiquement et soumis par JavaScript -->
+=======
+<!-- a form could be dynamically generated and submitted by JavaScript -->
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 *!*
 <form target="iframe" method="POST" action="http://another.com/…">
 */!*
@@ -169,6 +173,7 @@ Pour les requêtes cross-origin, par défaut, JavaScript ne peut accéder qu'aux
 
 - `Cache-Control`
 - `Content-Language`
+- `Content-Length`
 - `Content-Type`
 - `Expires`
 - `Last-Modified`
@@ -176,6 +181,7 @@ Pour les requêtes cross-origin, par défaut, JavaScript ne peut accéder qu'aux
 
 L'accès à tout autre en-tête de réponse provoque une erreur.
 
+<<<<<<< HEAD
 ```smart
 Il n'y a pas d'en-tête `Content-Length` dans la liste !
 
@@ -183,6 +189,9 @@ Cet en-tête contient la longueur de réponse complète. Donc, si nous télécha
 ```
 
 Pour accorder un accès JavaScript à tout autre en-tête de réponse, le serveur doit envoyer l'en-tête `Access-Control-Expose-Headers`. Il contient une liste séparée par des virgules de noms d'en-tête non sécurisés qui doivent être rendus accessibles.
+=======
+To grant JavaScript access to any other response header, the server must send the `Access-Control-Expose-Headers` header. It contains a comma-separated list of unsafe header names that should be made accessible.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Par exemple :
 
@@ -190,15 +199,20 @@ Par exemple :
 200 OK
 Content-Type:text/html; charset=UTF-8
 Content-Length: 12345
+Content-Encoding: gzip
 API-Key: 2c9de507f2c54aa1
 Access-Control-Allow-Origin: https://javascript.info
 *!*
-Access-Control-Expose-Headers: Content-Length,API-Key
+Access-Control-Expose-Headers: Content-Encoding,API-Key
 */!*
 ```
 Avec cet en-tête `Access-Control-Expose-Headers`, le script est autorisé à lire les en-têtes `Content-Length` et `API-Key` de la réponse.
 
+<<<<<<< HEAD
 ## Requêtes "Non-sécurisées" 
+=======
+With such an `Access-Control-Expose-Headers` header, the script is allowed to read the `Content-Encoding` and `API-Key` headers of the response.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Nous pouvons utiliser n'importe quelle méthode HTTP : pas seulement `GET/POST`, mais aussi `PATCH`, `DELETE` et d'autres.
 

@@ -266,7 +266,7 @@ Voici un document avec `<iframe>`, `<img>` et des gestionnaires qui consignent l
 
 <iframe src="iframe.html" onload="log('iframe onload')"></iframe>
 
-<img src="http://en.js.cx/clipart/train.gif" id="img">
+<img src="https://en.js.cx/clipart/train.gif" id="img">
 <script>
   img.onload = () => log('img onload');
 </script>

@@ -53,8 +53,13 @@ Il y a aussi une variable globale nommée selon l'`id` qui référence l'éléme
 </script>
 ```
 
+<<<<<<< HEAD
 ```warn header="Ne pas utiliser les variables globales nommées selon l'id pour accéder aux éléments !"
 Ce comportement est décrit [dans la spécification](http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem), donc c'est une sorte de standard. C'est principalement supporté pour des histoires de compatibilité.
+=======
+```warn header="Please don't use id-named global variables to access elements"
+This behavior is described [in the specification](https://html.spec.whatwg.org/multipage/window-object.html#named-access-on-the-window-object), but it is supported mainly for compatibility.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM. C'est bien pour des scripts simples, intégré dans du HTML, mais en genéral ce n'est pas bon. Il peut y avoir des conflits de noms. Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
 
