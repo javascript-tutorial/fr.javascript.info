@@ -1,7 +1,11 @@
 
 # Polyfills et transpilers
 
+<<<<<<< HEAD
 Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [specification officielle](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+=======
+The JavaScript language steadily evolves. New proposals to the language appear regularly, they are analyzed and, if considered worthy, are appended to the list at <https://tc39.github.io/ecma262/> and then progress to the [specification](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/).
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre. Elles peuvent décider de mettre en œuvre des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
 
@@ -71,9 +75,15 @@ if (!Math.trunc) { // si une telle fonction n'existe pas
 
 JavaScript est un langage très dynamique, les scripts peuvent ajouter/modifier toutes les fonctions, y compris celles intégrées.
 
+<<<<<<< HEAD
 Deux librairies intéressantes de polyfills sont :
 - [core js](https://github.com/zloirock/core-js) qui prend en charge beaucoup, permet d'inclure uniquement les fonctionnalités nécessaires.
 - [polyfill.io](http://polyfill.io) est un service qui fournit un script avec des polyfills, en fonction des fonctionnalités et du navigateur de l'utilisateur.
+=======
+Two interesting polyfill libraries are:
+- [core js](https://github.com/zloirock/core-js) that supports a lot, allows to include only needed features.
+- [polyfill.io](https://polyfill.io/) service that provides a script with polyfills, depending on the features and user's browser.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 
 ## Résumé

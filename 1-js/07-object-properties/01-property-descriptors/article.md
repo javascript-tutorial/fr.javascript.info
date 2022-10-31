@@ -122,8 +122,13 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 
 Maintenant, personne ne peut changer le nom de notre utilisateur, à moins qu’ils appliquent leur propre `defineProperty` pour remplacer le nôtre.
 
+<<<<<<< HEAD
 ```smart header="Les erreurs apparaissent uniquement en mode strict"
 En mode non strict, aucune erreur ne se produit lors de l'écriture dans les propriétés en lecture seule, etc. Mais l'opération ne réussira toujours pas. Les actions qui violent les dexcripteurs sont simplement ignorées en mode non strict.
+=======
+```smart header="Errors appear only in strict mode"
+In non-strict mode, no errors occur when writing to non-writable properties and such. But the operation still won't succeed. Flag-violating actions are just silently ignored in non-strict.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 Voici le même exemple, mais la propriété est créée à partir de zéro:

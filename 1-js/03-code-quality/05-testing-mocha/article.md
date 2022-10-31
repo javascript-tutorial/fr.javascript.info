@@ -68,6 +68,7 @@ La spécification peut être exécutée et le test spécifié dans le bloc `it` 
 
 Le flux de développement ressemble généralement à ceci :
 
+<<<<<<< HEAD
 1. Une spécification initiale est écrite, avec des tests pour les fonctionnalités les plus élémentaires.
 2. Une implémentation initiale est créée.
 3. Pour vérifier si cela fonctionne, nous exécutons le framework de test [Mocha](http://mochajs.org/) (plus de détails bientôt) qui exécute la spécification. Tant que la fonctionnalité n'est pas complète, des erreurs sont affichées. Nous apportons des corrections jusqu'à ce que tout fonctionne.
@@ -75,6 +76,15 @@ Le flux de développement ressemble généralement à ceci :
 5. Nous ajoutons d'autres cas d'utilisation à la spécification, probablement pas encore pris en charge par les implémentations. Les tests commencent à échouer.
 6. Passez à l'étape 3, mettez à jour l'implémentation jusqu'à ce que les tests ne génèrent aucune erreur.
 7. Répétez les étapes 3 à 6 jusqu'à ce que la fonctionnalité soit prête.
+=======
+1. An initial spec is written, with tests for the most basic functionality.
+2. An initial implementation is created.
+3. To check whether it works, we run the testing framework [Mocha](https://mochajs.org/) (more details soon) that runs the spec. While the functionality is not complete, errors are displayed. We make corrections until everything works.
+4. Now we have a working initial implementation with tests.
+5. We add more use cases to the spec, probably not yet supported by the implementations. Tests start to fail.
+6. Go to 3, update the implementation till tests give no errors.
+7. Repeat steps 3-6 till the functionality is ready.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Donc, le développement est *itératif*. Nous écrivons la spécification, la mettons en œuvre, nous nous assurons que les tests réussissent, puis rédigeons d'autres tests, nous nous assurons qu'ils fonctionnent, etc. À la fin, nous avons une implémentation qui fonctionne et des tests.
 
@@ -86,9 +96,15 @@ La première étape est déjà terminée : nous avons une spécification initial
 
 Dans ce tutoriel, nous utiliserons les bibliothèques JavaScript suivantes pour les tests :
 
+<<<<<<< HEAD
 - [Mocha](http://mochajs.org/) -- le framework central : il fournit des fonctions de test communes, y compris `describe`, et `it` ainsi que la fonction principale qui exécute les tests.
 - [Chai](http://chaijs.com) -- la bibliothèque avec de nombreuses affirmations. Elle permet d’utiliser beaucoup d’affirmations différentes, pour le moment nous n’avons besoin que de `assert.equal`.
 - [Sinon](http://sinonjs.org/) -- une bibliothèque pour espionner des fonctions, émuler des fonctions intégrées et plus encore, nous en aurons besoin beaucoup plus tard.
+=======
+- [Mocha](https://mochajs.org/) -- the core framework: it provides common testing functions including `describe` and `it` and the main function that runs tests.
+- [Chai](https://www.chaijs.com/) -- the library with many assertions. It allows to use a lot of different assertions, for now we need only `assert.equal`.
+- [Sinon](https://sinonjs.org/) -- a library to spy over functions, emulate built-in functions and more, we'll need it much later.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Ces bibliothèques conviennent aux tests sur le navigateur et sur le serveur. Ici, nous allons considérer la variante du navigateur.
 
@@ -340,6 +356,7 @@ Les tests récemment ajoutés échouent car notre implémentation ne les prend p
 
 Veuillez noter l'affirmation `assert.isNaN` : elle vérifie `NaN`.
 
+<<<<<<< HEAD
 Il y a aussi d'autres affirmations dans [Chai](http://chaijs.com), par exemple :
 
 - `assert.equal(value1, value2)` -- vérifie l'égalité `value1 == value2`.
@@ -348,6 +365,16 @@ Il y a aussi d'autres affirmations dans [Chai](http://chaijs.com), par exemple :
 - `assert.isTrue(value)` -- vérifie que `value === true`
 - `assert.isFalse(value)` -- vérifie que `value === false`
 - … la liste complète est dans la [doc](http://chaijs.com/api/assert/)
+=======
+There are other assertions in [Chai](https://www.chaijs.com/) as well, for instance:
+
+- `assert.equal(value1, value2)` -- checks the equality  `value1 == value2`.
+- `assert.strictEqual(value1, value2)` -- checks the strict equality `value1 === value2`.
+- `assert.notEqual`, `assert.notStrictEqual` -- inverse checks to the ones above.
+- `assert.isTrue(value)` -- checks that `value === true`
+- `assert.isFalse(value)` -- checks that `value === false`
+- ...the full list is in the [docs](https://www.chaijs.com/api/assert/)
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 Donc, nous devrions ajouter quelques lignes à `pow`:
