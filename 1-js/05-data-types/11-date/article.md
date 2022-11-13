@@ -382,7 +382,11 @@ for (let i = 0; i < 10; i++) {
 ```warn header="Faites attention au micro-benchmarking"
 Les moteurs JavaScript modernes effectuent de nombreuses optimisations. Ils peuvent modifier les résultats des «tests artificiels» par rapport à «l'utilisation normale», en particulier lorsque nous comparons quelque chose de très petit. Donc, si vous voulez sérieusement comprendre les performances, alors étudiez le fonctionnement du moteur JavaScript. Et puis vous n’aurez probablement pas besoin de micro-points de repère.
 
+<<<<<<< HEAD
 Un bon paquet d'article a propos de V8 se trouve ici <http://mrale.ph>.
+=======
+The great pack of articles about V8 can be found at <https://mrale.ph>.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 ## Date.parse d'une chaîne de caractère
