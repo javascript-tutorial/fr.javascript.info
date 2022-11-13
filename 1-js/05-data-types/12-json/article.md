@@ -451,11 +451,7 @@ let json = `{
 
 En outre, JSON ne prend pas en charge les commentaires. L'ajout d'un commentaire à JSON le rend invalide.
 
-<<<<<<< HEAD
-Il y a un autre format nommé [JSON5](http://json5.org/),qui autorise les clés non commentées, les commentaires, etc. Mais il s’agit d’une bibliothèque autonome, pas dans la spécification du langage.
-=======
-There's another format named [JSON5](https://json5.org/), which allows unquoted keys, comments etc. But this is a standalone library, not in the specification of the language.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+Il y a un autre format nommé [JSON5](https://json5.org/),qui autorise les clés non commentées, les commentaires, etc. Mais il s’agit d’une bibliothèque autonome, pas dans la spécification du langage.
 
 Le JSON standard est très strict, non pas parce que ses développeurs sont paresseux, mais pour permettre une implémentation facile, fiable et très rapide de l'algorithme de conversion.
 
