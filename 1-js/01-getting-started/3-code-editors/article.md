@@ -31,20 +31,12 @@ La principale différence entre un "éditeur léger" et un "IDE" réside dans le
 
 En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris des analyseurs de syntaxe au niveau des répertoires et des autocompléteurs. Il n’ya donc pas de frontière stricte entre un éditeur léger et un IDE.
 
-Les options suivantes méritent votre attention :
+Il existe de nombreuses options, par exemple :
 
-<<<<<<< HEAD
 - [Sublime Text](http://www.sublimetext.com) (multiplateforme, payant).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuit).
-- [Vim](http://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.
+- [Vim](https://www.vim.org/) et [Emacs](https://www.gnu.org/software/emacs/) sont également cool, si vous savez comment les utiliser.
 
-=======
-There are many options, for instance:
-
-- [Sublime Text](https://www.sublimetext.com/) (cross-platform, shareware).
-- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
-- [Vim](https://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ## Ne discutons pas
 
@@ -52,13 +44,9 @@ Les éditeurs des listes ci-dessus sont ceux que moi-même ou mes amis, que je c
 
 Il y a d'autres grands éditeurs dans notre vaste monde. Veuillez choisir celui que vous aimez le plus.
 
-<<<<<<< HEAD
 Le choix d'un éditeur, comme tout autre outil, est individuel et dépend de vos projets, de vos habitudes, de vos préférences personnelles.
-=======
-The choice of an editor, like any other tool, is individual and depends on your projects, habits, and personal preferences.
 
-The author's personal opinion:
+L'avis personnel de l'auteur :
 
-- I'd use [Visual Studio Code](https://code.visualstudio.com/) if I develop mostly frontend.
-- Otherwise, if it's mostly another language/platform and partially frontend, then consider other editors, such as XCode (Mac), Visual Studio (Windows) or Jetbrains family (Webstorm, PHPStorm, RubyMine etc, depending on the language).
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+- J'utilise [Visual Studio Code](https://code.visualstudio.com/) si je développe principalement du frontend.
+- Sinon, s'il s'agit principalement d'un autre langage/plate-forme et partiellement d'un frontend, envisagez d'autres éditeurs, tels que XCode (Mac), Visual Studio (Windows) ou la famille Jetbrains (Webstorm, PHPStorm, RubyMine, etc., selon le langage).

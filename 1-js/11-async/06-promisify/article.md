@@ -25,11 +25,7 @@ function loadScript(src, callback) {
 
 La fonction charge un script avec le `src` donné, puis appelle `callback(err)` en cas d'erreur, ou `callback (null, script) `en cas de chargement réussi. C'est un accord répandu pour l'utilisation des rappels, nous l'avons vu auparavant.
 
-<<<<<<< HEAD
 Promisifions le.
-=======
-Let's promisify it.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Nous allons créer une nouvelle fonction `loadScriptPromise(src)`, qui fait la même chose (charge le script), mais retourne une promesse au lieu d'utiliser des rappels.
 
@@ -128,11 +124,7 @@ Pour des formats de rappel plus exotiques, comme ceux sans `err` : `callback(res
 Il existe également des modules avec des fonctions de promisification un peu plus flexibles, e.g. [es6-promisify](https://github.com/digitaldesignlabs/es6-promisify). Dans Node.js, il existe une fonction intégrée `util.promisify` pour cela.
 
 ```smart
-<<<<<<< HEAD
-La promisification est une excellente approche, surtout lorsque vous utilisez `async/wait` (voir le chapitre suivant), mais ne remplace pas totalement les rappels.
-=======
-Promisification is a great approach, especially when you use `async/await` (covered later in the chapter <info:async-await>), but not a total replacement for callbacks.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+La promisification est une excellente approche, en particulier lorsque vous utilisez `async/await` (traité plus loin dans le chapitre <info:async-await>), mais ne remplace pas totalement les callbacks.
 
 N'oubliez pas qu'une promesse peut avoir un seul résultat, mais un rappel peut techniquement être appelé plusieurs fois.
 

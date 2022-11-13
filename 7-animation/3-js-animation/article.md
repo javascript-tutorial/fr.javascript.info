@@ -79,11 +79,7 @@ Ces redessinages indépendants doivent être regroupés, afin de faciliter le re
 
 Il y a une autre chose à garder en tête. Parfois, le CPU est surchargé, ou il y a d'autres raisons de redessiner moins souvent (comme lorsque l'onglet du navigateur est caché), donc nous ne devrions vraiment pas le lancer tous les `20ms`.
 
-<<<<<<< HEAD
-Mais comment le savoir en JavaScript ? Il existe une spécification [Animation timing](http://www.w3.org/TR/animation-timing/) qui fournit la fonction `requestAnimationFrame`. Elle répond à toutes ces questions et même plus.
-=======
-But how do we know about that in JavaScript? There's a specification [Animation timing](https://www.w3.org/TR/animation-timing/) that provides the function `requestAnimationFrame`. It addresses all these issues and even more.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+Mais comment le savoir en JavaScript ? Il existe une spécification [Animation timing](https://www.w3.org/TR/animation-timing/) qui fournit la fonction `requestAnimationFrame`. Elle répond à toutes ces questions et même plus.
 
 La syntaxe :
 ```js

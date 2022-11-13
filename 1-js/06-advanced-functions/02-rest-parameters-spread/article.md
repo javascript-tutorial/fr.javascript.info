@@ -23,11 +23,7 @@ function sum(a, b) {
 alert( sum(1, 2, 3, 4, 5) );
 ```
 
-<<<<<<< HEAD
-Il n'y aura pas d'erreur en raison d'arguments "excessifs". Mais bien sûr, dans le résultat, seuls les deux premiers seront comptés.
-=======
-There will be no error because of "excessive" arguments. But of course in the result only the first two will be counted, so the result in the code above is `3`.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+Il n'y aura pas d'erreur à cause d'arguments "excessifs". Mais bien sûr, dans le résultat, seuls les deux premiers seront comptés, donc le résultat dans le code ci-dessus est `3`.
 
 Le reste des paramètres peut être inclus dans la définition de la fonction en utilisant trois points `...` suivis du nom du tableau qui les contiendra. Les points signifient littéralement "rassemblez les paramètres restants dans un tableau".
 
