@@ -21,17 +21,10 @@ let promise = fetch(url, {
     // selon la requête du body
     "Content-Type": "text/plain;charset=UTF-8"
   },
-<<<<<<< HEAD
-  body: undefined // string, FormData, Blob, BufferSource, or URLSearchParams
-  referrer: "about:client", // ou "" pour ne pas envoyer de header Referer,
-  // ou une URL de l'origine actuelle
-  referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
-=======
-  body: undefined, // string, FormData, Blob, BufferSource, or URLSearchParams
-  referrer: "about:client", // or "" to send no Referer header,
+  body: undefined, // string, FormData, Blob, BufferSource, ou URLSearchParams
+  referrer: "about:client", // ou "" to send no Referer header,
   // or an url from the current origin
   referrerPolicy: "strict-origin-when-cross-origin", // no-referrer-when-downgrade, no-referrer, origin, same-origin...
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
   mode: "cors", // same-origin, no-cors
   credentials: "same-origin", // omit, include
   cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
@@ -92,41 +85,18 @@ Contrairement à l'option `referrer` qui permet de définir la valeur exacte de 
 
 Les valeurs possibles sont décrites dans la [spécification Referrer Policy](https://w3c.github.io/webappsec-referrer-policy/):
 
-<<<<<<< HEAD
-- **`"no-referrer-when-downgrade"`** -- la valeur par défaut : le `Referer` complet est toujours envoyé, sauf si nous envoyons une requête de HTTPS à HTTP (vers un protocole moins sécurisé).
-- **`"no-referrer"`** -- ne jamais envoyer de `Referer`.
-- **`"origin"`** -- envoyer uniquement l'origine dans `Referer`, pas l'URL de la page complète, par exemple uniquement `http://site.com` au lieu de` http://site.com/path`.
-- **`"origin-when-cross-origin"`** -- envoyer un `Referer` complet à la même origine, mais uniquement la partie origine pour les requêtes cross-origin(comme ci-dessus).
-- **`"same-origin"`** -- envoyer un `Referer` complet à la même origine, mais pas de referer pour les requêtes cross-origin.
-- **`"strict-origin"`** -- envoyer uniquement l'origine, ne pas envoyer de `Referer` pour les requêtes HTTPS → HTTP.
-- **`"strict-origin-when-cross-origin"`** -- pour la même origine envoyer un `Referer` complet, pour une cross-origin, envoyer uniquement l'origine, à moins que ce ne soit HTTPS → requête HTTP, puis ne rien envoyer.
-- **`"unsafe-url"`** -- toujours envoyer l'url complète dans `Referer`, même pour les requêtes HTTPS → HTTP
-=======
-- **`"strict-origin-when-cross-origin"`** -- the default value: for same-origin send the full `Referer`, for cross-origin send only the origin, unless it's HTTPS→HTTP request, then send nothing.
-- **`"no-referrer-when-downgrade"`** -- full `Referer` is always sent, unless we send a request from HTTPS to HTTP (to the less secure protocol).
-- **`"no-referrer"`** -- never send `Referer`.
-- **`"origin"`** -- only send the origin in `Referer`, not the full page URL, e.g. only `http://site.com` instead of `http://site.com/path`.
-- **`"origin-when-cross-origin"`** -- send the full `Referer` to the same origin, but only the origin part for cross-origin requests (as above).
-- **`"same-origin"`** -- send the full `Referer` to the same origin, but no `Referer` for cross-origin requests.
-- **`"strict-origin"`** -- send only the origin, not the `Referer` for HTTPS→HTTP requests.
-- **`"unsafe-url"`** -- always send the full url in `Referer`, even for HTTPS→HTTP requests.
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+- **`"strict-origin-when-cross-origin"`** -- la valeur par défaut : pour la même origine, envoie le `Referer` complet, pour l'origine croisée, envoie uniquement l'origine, à moins qu'il ne s'agisse d'une requête HTTPS→HTTP , puis n'envoie rien.
+- **`"no-referrer-when-downgrade"`** -- le `Referer` complet est toujours envoyé, sauf si nous envoyons une requête de HTTPS à HTTP (vers le protocole le moins sécurisé).
+- **`"no-referrer"`** -- n'envoie jamais le `Referer`.
+- **`"origine"`** -- n'envoie que l'origine dans le `Referer`, pas l'URL complète de la page, par ex. uniquement `http://site.com` au lieu de `http://site.com/path`.
+- **`"origin-when-cross-origin"`** -- envoie le `Referer` complet à la même origine, mais uniquement la partie d'origine pour les requêtes cross-origin (comme ci-dessus).
+- **`"same-origin"`** -- envoie le `Referer` complet à la même origine, mais pas de `Referer` pour les requêtes cross-origin.
+- **`"strict-origin"`** -- envoie uniquement l'origine, pas le `Referer` pour les requêtes HTTPS→HTTP.
+- **`"unsafe-url"`** -- envoie toujours l'url complète dans `Referer`, même pour les requêtes HTTPS→HTTP.
 
 Voici un tableau avec toutes les combinaisons :
 
-<<<<<<< HEAD
-| Valeur                                           | Vers la même origine | Vers une autre origine | HTTPS→HTTP |
-|--------------------------------------------------|----------------------|------------------------|------------|
-| `"no-referrer"`                                  | -                    | -                      | -          |
-| `"no-referrer-when-downgrade"` or `""` (default) | full                 | full                   | -          |
-| `"origin"`                                       | origin               | origin                 | origin     |
-| `"origin-when-cross-origin"`                     | full                 | origin                 | origin     |
-| `"same-origin"`                                  | full                 | -                      | -          |
-| `"strict-origin"`                                | origin               | origin                 | -          |
-| `"strict-origin-when-cross-origin"`              | full                 | origin                 | -          |
-| `"unsafe-url"`                                   | full                 | full                   | full       |
-=======
-| Value | To same origin | To another origin | HTTPS→HTTP |
+| Valeur | Pour la même origine | Pour une autre origine | HTTPS→HTTP |
 |-------|----------------|-------------------|------------|
 | `"no-referrer"` | - | - | - |
 | `"no-referrer-when-downgrade"` | full | full | - |
@@ -136,7 +106,6 @@ Voici un tableau avec toutes les combinaisons :
 | `"strict-origin"` | origin | origin | - |
 | `"strict-origin-when-cross-origin"` or `""` (default) | full | origin | - |
 | `"unsafe-url"` | full | full | full |
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Disons que nous avons une zone d'administration avec une structure d'URL qui ne devrait pas être connue de l'extérieur du site.
 
