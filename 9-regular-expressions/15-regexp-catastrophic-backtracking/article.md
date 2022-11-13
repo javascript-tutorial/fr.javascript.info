@@ -282,11 +282,7 @@ alert( "JavaScript".match(/(?=(\w+))\1Script/)); // null
 Nous pouvons mettre une expression régulière plus complexe dans `pattern:(?=(\w+))\1` au lieu de `pattern:\w`, lorsque nous devons interdire la rétroaction pour `pattern:+` après.
 
 ```smart
-<<<<<<< HEAD
-Il y a plus d'informations sur la relation entre les quantificateurs possessifs et lookahead dans les articles [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) et [Mimicking Atomic Groups](http://blog.stevenlevithan.com/archives/mimic-atomic-groups).
-=======
-There's more about the relation between possessive quantifiers and lookahead in articles [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](https://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) and [Mimicking Atomic Groups](https://blog.stevenlevithan.com/archives/mimic-atomic-groups).
->>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
+Il y a plus d'informations sur la relation entre les quantificateurs possessifs et lookahead dans les articles [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](https://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) et [Mimicking Atomic Groups](https://blog.stevenlevithan.com/archives/mimic-atomic-groups).
 ```
 
 Réécrivons le premier exemple en utilisant lookahead pour éviter la rétroaction :
