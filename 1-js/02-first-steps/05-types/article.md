@@ -225,7 +225,11 @@ Le type `symbol` est utilisé pour créer des identificateurs uniques pour les o
 
 ## L'opérateur typeof [#type-typeof]
 
+<<<<<<< HEAD
 L'opérateur `typeof` renvoie le type de l'argument. Il est utile lorsqu'on souhaite traiter différemment les valeurs de différents types ou de faire une vérification rapide.
+=======
+The `typeof` operator returns the type of the operand. It's useful when we want to process values of different types differently or just want to do a quick check.
+>>>>>>> 1ce5644a15ee141fbe78c0fb79c8f40d870d7043
 
 
 L'appel `typeof x` renvoie une chaîne de caractères avec le nom du type :

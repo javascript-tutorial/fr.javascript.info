@@ -58,7 +58,7 @@ alert(test); // ReferenceError: test is not defined
 
 Même principe pour les boucles: `var` ne peut pas être locale pour les blocs ni les boucles :
 
-```js
+```js run
 for (var i = 0; i < 10; i++) {
   var one = 1;
   // ...
@@ -170,7 +170,7 @@ Cela est mieux démontré avec un exemple :
 
 ```js run
 function sayHi() {
-  alert(phrase);  
+  alert(phrase);
 
 *!*
   var phrase = "Hello";
