@@ -150,12 +150,21 @@ let message = "That"; // SyntaxError: 'message' has already been declared
 Donc, nous devrions déclarer une variable une fois et y faire référence sans `let`.
 ````
 
+<<<<<<< HEAD
 ```smart header="Langages fonctionnels"
 Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle), comme [Scala](https://www.scala-lang.org/) ou [Erlang](https://www.erlang.org/) qui interdisent de modifier une valeur de variable.
+=======
+```smart header="Functional languages"
+It's interesting to note that there exist so-called [pure functional](https://en.wikipedia.org/wiki/Purely_functional_programming) programming languages, such as [Haskell](https://en.wikipedia.org/wiki/Haskell), that forbid changing variable values.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réutiliser l’ancienne.
 
+<<<<<<< HEAD
 Bien que cela puisse paraître un peu étrange à première vue, ces langages sont tout à fait capables de se développer sérieusement. Plus que cela, il existe des domaines tels que les calculs parallèles où cette limitation confère certains avantages. Étudier un tel langage (même si on ne prévoit pas de l'utiliser rapidement) est recommandé pour élargir son horizon.
+=======
+Though it may seem a little odd at first sight, these languages are quite capable of serious development. More than that, there are areas like parallel computations where this limitation confers certain benefits.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ```
 
 ## Nom de variable [#variable-naming]
