@@ -232,9 +232,15 @@ En revanche, `Symbol.toPrimitive` est plus strict, il *doit* retourner une primi
 
 Comme nous le savons déjà, de nombreux opérateurs et fonctions effectuent des conversions de types, par exemple la multiplication `*` convertit les opérandes en nombres.
 
+<<<<<<< HEAD
 Si nous passons un objet en argument, il y a deux étapes de  calcul :
 1. L'objet est converti en primitive (en utilisant les règles décrites ci-dessus).
 2. Si cela est nécessaire pour d'autres calculs, la primitive résultante est également convertie.
+=======
+If we pass an object as an argument, then there are two stages of calculations:
+1. The object is converted to a primitive (using the rules described above).
+2. If necessary for further calculations, the resulting primitive is also converted.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 Par exemple :
 
