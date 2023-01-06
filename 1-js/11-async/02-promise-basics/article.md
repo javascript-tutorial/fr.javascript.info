@@ -80,7 +80,7 @@ L'appel a `reject(...)` change l'object promesse à l'état `"rejected"` :
 
 Pour résumer, l'exécuteur devrait réaliser une tâche (normalement quelque chose qui prends du temps) puis appelle `resolve` ou `reject` pour changer l'état de l'objet promesse correspondant.
 
-Une promesse qui est soit tenue ou rejetée est appelée "settled" (acquitttée) opposé à une promesse initialisée à "en attente".
+Une promesse qui est soit tenue ou rejetée est appelée "settled" (acquittée) opposé à une promesse initialisée à "en attente".
 
 ````smart header="Il ne peut y avoir qu'un seul résultat ou une erreur"
 L'exécuteur devrait appeler seulement une fois `resolve` ou `reject`. N'importe quel changement d'état est définitif.
