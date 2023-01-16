@@ -41,6 +41,7 @@ button.onclick = () => {
 
 De cette manière, les utilisateurs sont en quelques sortes protégés des pop-up indésirées, mais la fonctionnalité n'est pas complètement désactivée.
 
+<<<<<<< HEAD
 Et si la pop-up s'ouvre depuis un `onclick`, mais après un `setTimeout` ? C'est un peu délicat.
 
 Essayons ce code:
@@ -61,6 +62,8 @@ setTimeout(() => window.open('http://google.com'), 1000);
 
 La différence est que Firefox traite le timeout de 2000ms ou moins comme acceptable, mais au delà, il enlève la "confiance", assumant que désormais c'est "hors de l'action de l'utilisateur". Donc le premier cas est bloqué, quand le second ne l'est pas.
 
+=======
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ## window.open
 
 La syntaxe pour ouvrir une pop-up est : `window.open(url, name, params)`:
