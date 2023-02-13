@@ -513,6 +513,7 @@ Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la do
 
 ## Résumé
 
+<<<<<<< HEAD
 - Il existe 3 types de quotes. Les Backticks permettent à une chaîne de s'étendre sur plusieurs lignes et d'intégrer des expressions `${…}`.
 - Nous pouvons utiliser des caractères spéciaux, comme un saut de ligne `\n`.
 - Pour obtenir un caractère, utilisez : `[]`.
@@ -520,6 +521,15 @@ Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la do
 - Pour mettre une chaîne de caractères en minuscule ou en majuscule, utilisez : `toLowerCase/toUpperCase`.
 - Pour rechercher un substring utilisez : `indexOf`, ou `includes/startsWith/endsWith` pour de simple vérifications.
 - Pour comparer les chaînes de caractères en fonction de la langue, utilisez : `localeCompare`, sinon, ils sont comparés par les codes de caractères.
+=======
+- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
+- We can use special characters, such as a line break `\n`.
+- To get a character, use: `[]` or `at` method.
+- To get a substring, use: `slice` or `substring`.
+- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
+- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
+- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+>>>>>>> 9e3fa1351f80cfd6353a778a55b2c86bca9e895f
 
 Il existe plusieurs autres méthodes utiles dans les strings :
 
@@ -529,4 +539,8 @@ Il existe plusieurs autres méthodes utiles dans les strings :
 
 Les strings ont aussi des méthodes pour rechercher / remplacer avec des expressions régulières. Mais c’est un sujet important, il est donc expliqué dans une autre section de ce tutoriel <info:regular-expressions>.
 
+<<<<<<< HEAD
 De plus, à partir de maintenant, il est important de savoir que les chaînes de caractères sont basées sur l'encodage Unicode, et donc il y a des problèmes avec les comparaisons. Il y a plus d'informations sur Unicode dans le chapitre <info:unicode>.
+=======
+Also, as of now it's important to know that strings are based on Unicode encoding, and hence there're issues with comparisons. There's more about Unicode in the chapter <info:unicode>.
+>>>>>>> 9e3fa1351f80cfd6353a778a55b2c86bca9e895f

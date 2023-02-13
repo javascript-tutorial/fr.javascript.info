@@ -103,6 +103,7 @@ Plus d’informations dans : <info:variables> et <info:types>.
 
 Nous utilisons un navigateur comme environnement de travail. Les fonctions de base de l'interface utilisateur sont les suivantes :
 
+<<<<<<< HEAD
 [`prompt(question[, default])`](mdn:api/Window/prompt)
 : Posez une question et retournez soit ce que le visiteur a entré, soit `null` s'il clique sur "cancel".
 
@@ -111,6 +112,16 @@ Nous utilisons un navigateur comme environnement de travail. Les fonctions de ba
 
 [`alert(message)`](mdn:api/Window/alert)
 : Affiche un `message`.
+=======
+[`prompt(question, [default])`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+: Ask a `question`, and return either what the visitor entered or `null` if they clicked "cancel".
+
+[`confirm(question)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
+: Ask a `question` and suggest to choose between Ok and Cancel. The choice is returned as `true/false`.
+
+[`alert(message)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
+: Output a `message`.
+>>>>>>> 9e3fa1351f80cfd6353a778a55b2c86bca9e895f
 
 Toutes ces fonctions sont *modales*, elles suspendent l'exécution du code et empêchent le visiteur d'interagir avec la page tant qu'il n'a pas répondu.
 
@@ -144,7 +155,11 @@ Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
 Bitwise
+<<<<<<< HEAD
 : Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators)) quand ils sont nécessaires.
+=======
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) when they are needed.
+>>>>>>> 9e3fa1351f80cfd6353a778a55b2c86bca9e895f
 
 Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
