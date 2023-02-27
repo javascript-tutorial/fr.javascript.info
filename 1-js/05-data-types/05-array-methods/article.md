@@ -258,9 +258,13 @@ alert( arr.includes(1) ); // true ////// arreter ici
 
 Veuillez noter que `indexOf` utilise l'égalité stricte `===` pour la comparaison. Donc, si nous cherchons "faux", il trouve exactement "faux" et non le zéro.
 
+<<<<<<< HEAD
 Si nous voulons vérifier si `item` existe dans le tableau et n'avons pas besoin de l'index exact, alors `arr.includes` est préféré.
 
 La méthode [arr.lastIndexOf](mdn:js/Array/lastIndexOf) est la même que `indexOf`, mais recherche de droite à gauche.
+=======
+If we want to check if `item` exists in the array, and don't need the index, then `arr.includes` is preferred.
+>>>>>>> 9e3fa1351f80cfd6353a778a55b2c86bca9e895f
 
 
 ```js run
