@@ -12,7 +12,7 @@ C'est une analogie réelle à un problème courant de programmation :
 2. Un "consommateur de code" qui attend un résultat du "producteur de code" quand il est prêt. Beaucoup de fonctions peuvent avoir besoin de ce résultat. Ces fonctions sont les "fans".
 3. Une *promesse* (promise) est un objet spécial en javascript qui lie le "producteur de code" et le "consommateur de code" ensemble. En comparant à notre analogie c'est la "liste d'abonnement". Le "producteur de code" prends le temps nécessaires pour produire le résultat promis, et la "promesse" donne le résultat disponible pour le code abonné quand c'est prêt.
 
-L'analogie n'est pas la plus correct, car les promesses en Javascript sont un peu plus complexes qu'une simple liste d'abonnement : elles ont d'autres possibilités mais aussi des certaines limitations. Toutefois c'est suffisant pour débuter.
+L'analogie n'est pas la plus correcte, car les promesses en Javascript sont un peu plus complexes qu'une simple liste d'abonnement : elles ont d'autres possibilités mais aussi des certaines limitations. Toutefois c'est suffisant pour débuter.
 
 La syntaxe du constructeur pour une promesse est :
 
