@@ -130,7 +130,7 @@ for (let [key, value] of user) {
 ```
 ````
 
-```smart header="Astuce d'échange de variables"
+````smart header="Astuce d'échange de variables"
 Il existe une astuce bien connue pour permuter les valeurs de deux variables à l'aide d'une affectation de déstructuration :
 
 ```js run

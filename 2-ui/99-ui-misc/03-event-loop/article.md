@@ -260,7 +260,7 @@ alert("code");
 Quel sera l'ordre ici?
 
 1. `code` s'affiche en premier, car il s'agit d'un appel synchrone régulier.
-2. `promesse` s'affiche en second, car `.then` passe par la file d'attente des microtâches et s'exécute après le code actuel.
+2. `promise` s'affiche en second, car `.then` passe par la file d'attente des microtâches et s'exécute après le code actuel.
 3. `timeout` s'affiche en dernier, car c'est une macrotâche.
 
 Une image, plus parlante, de la boucle d'événements ressemble à ceci (l'ordre est de haut en bas, c'est-à-dire: le script d'abord, puis les microtâches, le rendu, etc.):
