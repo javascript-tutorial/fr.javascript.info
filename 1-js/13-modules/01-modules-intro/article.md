@@ -216,7 +216,7 @@ config.user = "Pete";
 
 ...Maintenant, le module `admin.js` est configuré.
 
-Further importers can call it, and it correctly shows the current user:
+Quand d'autres scripts importeront ce module, `config.user` sera correctement défini :
 
 ```js
 // 📁 another.js
