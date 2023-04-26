@@ -4,7 +4,7 @@ Voyons ce qui est spécial à propos de JavaScript, ce qu'il nous permet de fair
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-eEx3yRZ-sE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Qu'est-ce que JavaScript?
+## Qu'est-ce que JavaScript ?
 
 _JavaScript_ a été initiallement créé pour "rendre les pages web vivantes".
 
@@ -12,7 +12,7 @@ Les programmes dans ce langage sont appelés _scripts_. Ils peuvent être écrit
 
 Les scripts sont fournis et exécutés en texte brut. Ils n'ont pas besoin d'une préparation spéciale ou d'une compilation pour fonctionner.
 
-De par cet aspect, JavaScript est très différent d'un autre langage appelé [Java](<https://fr.wikipedia.org/wiki/Java_(langage)>).
+De part cet aspect, JavaScript est très différent d'un autre langage appelé [Java](<https://fr.wikipedia.org/wiki/Java_(langage)>).
 
 ```smart header="Pourquoi est-il appelé <u>Java</u>Script ?"
 Quand Javascript a été créé, il portait initialement un autre nom : "LiveScript". Mais à cette époque le langage Java était très populaire, il a donc été décidé que positionner un nouveau langage en tant que "petit frère" de Java pourrait aider.
@@ -30,7 +30,7 @@ Différents moteurs ont différents "nom de code", par exemple:
 - [SpiderMonkey](https://fr.wikipedia.org/wiki/SpiderMonkey) -- dans Firefox.
 - … Il existe d'autres noms de code comme "Chakra" pour IE, "JavaScriptCore", "Nitro" et "SquirrelFish" pour Safari etc.
 
-Les termes ci-dessus sont bons à retenir, car ils sont utilisés dans les articles destinés aux développeurs sur Internet. Nous les utiliserons aussi. Par exemple, si "une fonctionnalité X est prise en charge par V8", cela fonctionne probablement dans Chrome et Opera.
+Les termes ci-dessus sont bons à retenir, car ils sont utilisés dans les articles destinés aux développeurs sur Internet. Nous les utiliserons aussi. Par exemple, si "une fonctionnalité X est prise en charge par V8", cela fonctionne probablement dans Chrome, Edge et Opera.
 
 ```smart header="Comment fonctionnent les moteurs ?"
 
@@ -75,7 +75,7 @@ Les exemples de telles restrictions sont:
 
   C'est ce qu'on appelle la "politique de même origine" (“Same Origin Policy”). Pour contourner cette sécurité, _les deux pages_ doivent se mettre d'accord et contenir un code JavaScript spécial qui gère l'échange de données. Nous allons voir cela plus loin dans ce tutoriel.
 
-  Cette limitation concerne également la sécurité de l'utilisateur. Une page de `http://autresite.com` qu'un utilisateur a ouverte ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
+  Cette limitation concerne également la sécurité de l'utilisateur. Une page de `http://autresite.com` qu'un utilisateur a ouvrit ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
 
 - JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page en cours. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
 
@@ -107,7 +107,7 @@ Il faut s’y attendre, parce que les projets et les exigences sont différents 
 
 Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont _transpilés_ (convertis) en JavaScript avant leur exécution dans le navigateur.
 
-Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans une autre langue et de la convertir automatiquement "sous le capot".
+Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans un autre langage et de le convertir automatiquement "sous le capot".
 
 Les exemples de ce genre de langages :
 
