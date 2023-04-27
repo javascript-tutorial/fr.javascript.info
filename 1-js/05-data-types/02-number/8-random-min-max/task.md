@@ -8,7 +8,7 @@ La fonction intégrée `Math.random()` crée une valeur aléatoire de 0 à 1 (1 
 
 Ecrivez la fonction `random(min, max)` pour générer un nombre aléatoire compris entre `min` et `max` (max non compris).
 
-Quelques exemples:
+Quelques exemples :
 
 ```js
 alert( random(1, 5) ); // 1.2345623452

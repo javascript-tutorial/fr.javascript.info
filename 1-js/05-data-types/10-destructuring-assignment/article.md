@@ -7,7 +7,7 @@ Les deux structures de données les plus utilisées en JavaScript sont `Object` 
 
 Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
 
-*L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique. 
+*L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique.
 
 La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
 
@@ -79,7 +79,6 @@ let [one, two, three] = new Set([1, 2, 3]);
 That works, because internally a destructuring assignment works by iterating over the right value. It's a kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
 ````
 
-
 ````smart header="Attribuer n'importe quoi à la partie gauche"
 Nous pouvons utiliser n'importe quels "assignables" à gauche.
 
@@ -122,7 +121,7 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
-// Map iterates as [key, value] pairs, very convenient for destructuring
+// Map est itéré sous forme de paires [key, value], ce qui est très pratique pour la déstructuration
 for (let [key, value] of user) {
 */!*
   alert(`${key}:${value}`); // name:John, ensuite age:30
@@ -137,9 +136,8 @@ Il existe une astuce bien connue pour permuter les valeurs de deux variables à 
 let guest = "Jane";
 let admin = "Pete";
 
-// Permutons les valeurs : make guest=Pete, admin=Jane
+// Permutons les valeurs : guest=Pete, admin=Jane
 *!*
->>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 [guest, admin] = [admin, guest];
 */!*
 
@@ -163,29 +161,29 @@ let [name1, name2] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 
 alert(name1); // Julius
 alert(name2); // Caesar
-// Further items aren't assigned anywhere
+// Les autres éléments ne sont affectés nulle part
 ```
 
-If we'd like also to gather all that follows -- we can add one more parameter that gets "the rest" using three dots `"..."`:
+Si nous souhaitons également rassembler tout ce qui suit, nous pouvons ajouter un paramètre supplémentaire qui permet d'obtenir "le reste" à l'aide de trois points `"..."` :
 
 ```js run
 let [name1, name2, *!*...rest*/!*] = ["Julius", "Caesar", *!*"Consul", "of the Roman Republic"*/!*];
 
 *!*
-// rest is array of items, starting from the 3rd one
+// reste est un tableau d'éléments, à partir du 3ème
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
 */!*
 ```
 
-La valeur de `rest` est le tableau des éléments du tableau restants. 
+La valeur de `rest` est le tableau des éléments du tableau restants.
 
 Nous pouvons utiliser n’importe quel autre nom de variable à la place de `rest`, assurez-vous simplement qu’il a trois points devant lui et soit placé en dernier dans l’affectation par décomposition.
 
 ```js run
 let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
-// now titles = ["Consul", "of the Roman Republic"]
+// maintenant titles = ["Consul", "of the Roman Republic"]
 ```
 
 ### Les valeurs par défaut
@@ -209,25 +207,25 @@ Si nous voulons qu'une valeur "par défaut" remplace la valeur manquante, nous p
 let [name = "Guest", surname = "Anonymous"] = ["Julius"];
 */!*
 
-alert(name);    // Julius (from array)
-alert(surname); // Anonymous (default used)
+alert(name);    // Julius (depuis le tableau)
+alert(surname); // Anonymous (valeur par défaut)
 ```
 
 Les valeurs par défaut peuvent être des expressions plus complexes ou même des appels de fonction. Ils ne sont évalués que si la valeur n'est pas fournie.
 
-Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut : 
+Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut :
 
 ```js run
-// runs only prompt for surname
+// ne demande que le nom de famille
 let [name = prompt('name?'), surname = prompt('surname?')] = ["Julius"];
 
-alert(name);    // Julius (from array)
-alert(surname); // whatever prompt gets
+alert(name);    // Julius (depuis le tableau)
+alert(surname); // saisi par l'utilisateur
 ```
 
-Please note: the `prompt` will run only for the missing value (`surname`).
+Notez que le `prompt` ne s'exécutera que pour la valeur manquante (`surname`).
 
-## Décomposition d'object 
+## Décomposition d'object
 
 L'affectation par décomposition fonctionne également avec les objets.
 
@@ -257,7 +255,7 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-Les propriétés `options.title`, `options.width` et `options.height` sont affectées aux variables correspondantes. 
+Les propriétés `options.title`, `options.width` et `options.height` sont affectées aux variables correspondantes.
 
 L'ordre n'a pas d'importance. Cela fonctionne aussi :
 
@@ -323,7 +321,7 @@ let {width = prompt("width?"), title = prompt("title?")} = options;
 */!*
 
 alert(title);  // Menu
-alert(width);  // (whatever the result of prompt is)
+alert(width);  // saisi par l'utilisateur
 ```
 
 Nous pouvons également combiner les deux points et l'égalité :
@@ -373,20 +371,21 @@ let options = {
 };
 
 *!*
-// title = property named title
-// rest = object with the rest of properties
+// title = propriété nommée title
+// rest = objet avec le reste des propriétés
 let {title, ...rest} = options;
 */!*
 
-// now title="Menu", rest={height: 200, width: 100}
+// maintenant title="Menu", rest={height: 200, width: 100}
 alert(rest.height);  // 200
 alert(rest.width);   // 100
 ```
 
-````smart header="Gotcha if there's no `let`"
+````smart header="Attention, sans `let`, ça coince"
 Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
 
 Cela ne fonctionnera pas :
+
 ```js run
 let title, width, height;
 
@@ -412,7 +411,7 @@ Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons e
 ```js run
 let title, width, height;
 
-// okay now
+// maintenant c'est bon
 *!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
 
 alert( title ); // Menu
@@ -423,7 +422,7 @@ alert( title ); // Menu
 
 Si un objet ou un tableau contient d'autres objets et tableaux imbriqués, nous pouvons utiliser des modèles à gauche plus complexes pour extraire des parties plus profondes.
 
-Dans le code ci-dessous, `options` a un autre objet dans la propriété` size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
+Dans le code ci-dessous, `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
 
 ```js run
 let options = {
@@ -432,7 +431,7 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
-  extra: true    
+  extra: true
 };
 
 // affectation par décomposition divisée sur plusieurs lignes pour la clarté
@@ -477,7 +476,7 @@ Dans la vraie vie, le problème est de savoir comment retenir l'ordre des argume
 Comme ceci ?
 
 ```js
-// undefined where default values are fine
+// undefined où les valeurs par défaut sont adéquates
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 
@@ -542,7 +541,7 @@ Ensuite, pour un objet de paramètres, il y aura une variable `varName` pour la 
 Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
 
 ```js
-showMenu({}); // ok, all values are default
+showMenu({}); // ok, toutes les valeurs par défaut
 
 showMenu(); // cela donnerait une erreur
 ```

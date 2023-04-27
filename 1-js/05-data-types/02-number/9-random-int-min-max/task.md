@@ -4,12 +4,11 @@ importance: 2
 
 # Un entier aléatoire de min à max
 
-Créez une fonction `randomInteger(min, max)` qui génère un nombre entier aléatoire compris entre `min` et `max` (`min` et `max` inclut). 
+Créez une fonction `randomInteger(min, max)` qui génère un nombre entier aléatoire compris entre `min` et `max` (`min` et `max` inclut).
 
 Tout nombre compris dans l'intervalle `min..max` doit apparaître avec la même probabilité.
 
-
-Quelques exemples:
+Quelques exemples :
 
 ```js
 alert( randomInteger(1, 5) ); // 1

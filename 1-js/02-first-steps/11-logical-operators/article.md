@@ -21,9 +21,9 @@ En JavaScript, l'opérateur est un peu plus compliqué et puissant. Mais voyons 
 Il existe quatre combinaisons logiques possibles :
 
 ```js run
-alert( true || true );   // true
-alert( false || true );  // true
-alert( true || false );  // true
+alert( true  || true  ); // true
+alert( false || true  ); // true
+alert( true  || false ); // true
 alert( false || false ); // false
 ```
 
@@ -53,7 +53,7 @@ if (hour < 10 || hour > 18) {
 }
 ```
 
-Nous pouvons passer plus de conditions : 
+Nous pouvons passer plus de conditions :
 
 ```js run
 let hour = 12;
@@ -84,7 +84,7 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
-En d'autres termes, une chaîne de OR `||` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
+En d'autres termes, une chaîne de OR `||` renvoie la première valeur `true` ou la dernière valeur si aucune valeur `true` n'a été trouvée.
 
 Par exemple :
 
@@ -115,7 +115,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     */!*
     ```
 
-    If all variables were falsy, `"Anonymous"` would show up.
+    Si toutes les variables étaient fausses, ce serait `"Anonymous"` qui apparaîtrait.
 
 2. **Évaluation des courts-circuits.**
 
@@ -147,9 +147,9 @@ result = a && b;
 En programmation classique, AND retourne `true` si les deux opérandes sont `true` et `false` dans les autres cas :
 
 ```js run
-alert( true && true );   // true
-alert( false && true );  // false
-alert( true && false );  // false
+alert( true  && true  ); // true
+alert( false && true  ); // false
+alert( true  && false ); // false
 alert( false && false ); // false
 ```
 
@@ -187,7 +187,7 @@ L'opérateur AND `&&` effectue les opérations suivantes :
 - Pour chaque opérande, il le converti en booléen. Si le résultat est `false`, arrêtez et retournez la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retournez le dernier opérande.
 
-En d'autres termes, AND renvoie la première valeur `false` ou la dernière valeur si aucune n'a été trouvée.
+En d'autres termes, une chaîne de AND `&&` renvoie la première valeur `false` ou la dernière valeur si aucune valeur `false` n'a été trouvée.
 
 Les règles ci-dessus sont similaires à OR. La différence est que AND retourne la première valeur `false` tandis que OR renvoie la première valeur `true`.
 

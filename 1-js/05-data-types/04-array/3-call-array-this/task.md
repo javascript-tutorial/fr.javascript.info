@@ -1,10 +1,10 @@
-importance: 5 
+importance: 5
 
 ---
 
 # Appel dans un contexte de tableau
 
-Quel est le résultat ? et Pourquoi?
+Quel est le résultat ? Et pourquoi ?
 
 ```js
 let arr = ["a", "b"];
@@ -15,4 +15,3 @@ arr.push(function() {
 
 arr[2](); // ?
 ```
-

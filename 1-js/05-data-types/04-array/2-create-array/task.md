@@ -1,8 +1,8 @@
-importance: 5 
+importance: 5
 
 ---
 
-# Opérations de tableaux.
+# Opérations de tableaux
 
 Essayons 5 opérations de tableau.
 
@@ -12,7 +12,7 @@ Essayons 5 opérations de tableau.
 4. Extrayez la première valeur du tableau et affichez-la.
 5. Ajoutez `Rap` et `Reggae` au tableau.
 
-Le processus du tableau:
+Le processus du tableau :
 
 ```js no-beautify
 Jazz, Blues
@@ -21,4 +21,3 @@ Jazz, Classics, Rock-n-Roll
 Classics, Rock-n-Roll
 Rap, Reggae, Classics, Rock-n-Roll
 ```
-

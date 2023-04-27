@@ -1,5 +1,3 @@
-
-
 ```js run demo
 let a = +prompt("Le premier numéro?", "");
 let b = +prompt("Le second numéro?", "");

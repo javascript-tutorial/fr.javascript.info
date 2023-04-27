@@ -4,7 +4,7 @@ Comme nous le savons du chapitre <info:structure>, les commentaires peuvent êtr
 
 Nous les utilisons normalement pour décrire comment et pourquoi le code fonctionne.
 
-De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation les utilise souvent à tort.
+De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation les utilisent souvent à tort.
 
 ## Mauvais commentaires
 
@@ -52,7 +52,7 @@ function showPrimes(n) {
   for (let i = 2; i < n; i++) {
     *!*if (!isPrime(i)) continue;*/!*
 
-    alert(i);  
+    alert(i);
   }
 }
 
@@ -177,4 +177,4 @@ Les bons commentaires nous permettent de bien maintenir le code, d'y revenir apr
 - Qui disent "comment fonctionne le code" et "ce qu'il fait".
 - Ne les mettez que s’il est impossible de rendre le code aussi simple et auto-descriptif qu’il n’en nécessite pas.
 
-Les commentaires sont également utilisés pour les outils de documentation automatique tels que JSDoc3: ils les lisent et génèrent des documents HTML (ou des documents dans un autre format).
+Les commentaires sont également utilisés pour les outils de documentation automatique tels que JSDoc3. Ils les lisent et génèrent des documents HTML (ou des documents dans un autre format).

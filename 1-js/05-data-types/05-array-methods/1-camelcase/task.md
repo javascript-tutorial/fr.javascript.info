@@ -1,4 +1,4 @@
-importance: 5 
+importance: 5
 
 ---
 
@@ -6,9 +6,9 @@ importance: 5
 
 Ecrivez la fonction `camelize(str)` qui change les mots séparés par des tirets comme "my-short-string" en camel-cased "myShortString".
 
-Donc: supprime tous les tirets  et met en majuscule la première lettre de chaque mot à partir du deuxième mot.
+La fonction doit donc supprimer tous les tirets et mettre en majuscule la première lettre de chaque mot à partir du deuxième mot.
 
-Exemples:
+Exemples :
 
 ```js
 camelize("background-color") == 'backgroundColor';
@@ -16,4 +16,4 @@ camelize("list-style-image") == 'listStyleImage';
 camelize("-webkit-transition") == 'WebkitTransition';
 ```
 
-P.S. Astuce: utilisez `split` pour scinder la chaîne dans un tableau, transformer la et ensuite `join`.
+P.S. Astuce : utilisez `split` pour scinder la chaîne dans un tableau, transformer la et ensuite utilisez `join`.

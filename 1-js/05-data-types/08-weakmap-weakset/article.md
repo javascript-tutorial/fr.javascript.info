@@ -3,6 +3,7 @@
 Comme nous le savons du chapitre <info:garbage-collection>, le moteur JavaScript stocke une valeur en mémoire pendant qu'elle est accessible et peut potentiellement être utilisée.
 
 Par exemple :
+
 ```js
 let john = { name: "John" };
 
@@ -151,7 +152,7 @@ Maintenant, l'objet `john` doit être nettoyé, mais cependant, il reste en mém
 
 Nous devons nettoyer `visitesCountMap` lorsque nous supprimons des utilisateurs, sinon il augmentera indéfiniment en mémoire. Un tel nettoyage peut devenir une tâche fastidieuse dans des architectures complexes.
 
-Nous pouvons éviter cela en utilisant `WeakMap` : 
+Nous pouvons éviter cela en utilisant `WeakMap` :
 
 ```js
 // 📁 visitsCount.js
@@ -188,7 +189,7 @@ function process(obj) {
 }
 
 *!*
-// Maintenant, utilisons process () dans un autre fichier :
+// Maintenant, utilisons process() dans un autre fichier :
 */!*
 
 // 📁 main.js
@@ -276,7 +277,7 @@ john = null;
 // visitedSet sera nettoyé automatiquement
 ```
 
-La limitation la plus notable de `WeakMap` et `WeakSet` est l'absence d'itérations et l'impossibilité d'obtenir tout le contenu actuel. Cela peut sembler gênant, mais n'empêche pas `WeakMap/WeakSet` de faire leur travail principal -- être un stockage "supplémentaire" de données pour les objets qui sont stockés/gérés à un autre endroit.
+La limitation la plus notable de `WeakMap` et `WeakSet` est l'absence d'itérations et l'impossibilité d'obtenir tout le contenu actuel. Cela peut sembler gênant, mais n'empêche pas `WeakMap`/`WeakSet` de faire leur travail principal -- être un stockage "supplémentaire" de données pour les objets qui sont stockés/gérés à un autre endroit.
 
 ## Résumé
 
@@ -286,6 +287,6 @@ La limitation la plus notable de `WeakMap` et `WeakSet` est l'absence d'itérati
 
 Leurs principaux avantages sont qu'ils ont une faible référence aux objets, de sorte qu'ils peuvent facilement être supprimés par le garbage collector.
 
-Cela se fait au prix de ne pas avoir de support pour `clear`,` size`, `keys`,` values` ...
+Cela se fait au prix de ne pas avoir de support pour `clear`, `size`, `keys`, `values`...
 
 `WeakMap` et `WeakSet` sont utilisées comme structures de données "secondaires" en plus du stockage d'objets "principal". Une fois que l'objet est retiré du stockage principal, s'il n'est trouvé que comme clé de `WeakMap` ou dans un `WeakSet`, il sera nettoyé automatiquement.

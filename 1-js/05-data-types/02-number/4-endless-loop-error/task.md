@@ -4,7 +4,7 @@ importance: 4
 
 # Une boucle infinie
 
-Cette boucle est infinie. Ça ne finit jamais. Pourquoi?
+Cette boucle est infinie. Ça ne finit jamais. Pourquoi ?
 
 ```js
 let i = 0;
