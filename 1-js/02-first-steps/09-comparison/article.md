@@ -45,6 +45,7 @@ Par exemple :
 alert( 'Z' > 'A' ); // true
 alert( 'Glow' > 'Glee' ); // true
 alert( 'Bee' > 'Be' ); // true
+alert( '9' > '10' ); // true
 ```
 
 L'algorithme pour comparer deux chaînes  de caractères est simple :
