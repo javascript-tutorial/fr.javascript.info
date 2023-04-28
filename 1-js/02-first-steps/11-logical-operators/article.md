@@ -21,9 +21,9 @@ En JavaScript, l'opérateur est un peu plus compliqué et puissant. Mais voyons 
 Il existe quatre combinaisons logiques possibles :
 
 ```js run
-alert( true || true );   // true
-alert( false || true );  // true
-alert( true || false );  // true
+alert( true  || true  ); // true
+alert( false || true  ); // true
+alert( true  || false ); // true
 alert( false || false ); // false
 ```
 
@@ -53,7 +53,7 @@ if (hour < 10 || hour > 18) {
 }
 ```
 
-Nous pouvons passer plus de conditions : 
+Nous pouvons passer plus de conditions :
 
 ```js run
 let hour = 12;
