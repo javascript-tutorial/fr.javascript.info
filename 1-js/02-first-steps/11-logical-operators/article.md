@@ -147,9 +147,9 @@ result = a && b;
 En programmation classique, AND retourne `true` si les deux opérandes sont `true` et `false` dans les autres cas :
 
 ```js run
-alert( true && true );   // true
-alert( false && true );  // false
-alert( true && false );  // false
+alert( true  && true  ); // true
+alert( false && true  ); // false
+alert( true  && false ); // false
 alert( false && false ); // false
 ```
 
