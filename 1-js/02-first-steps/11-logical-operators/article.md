@@ -84,7 +84,7 @@ L'opérateur OR `||` fait ce qui suit :
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
-En d'autres termes, une chaîne de OR `||` renvoie la première valeur vraie ou la dernière si aucune valeur vraie n'est trouvée.
+En d'autres termes, une chaîne de OR `||` renvoie la première valeur `true` ou la dernière valeur si aucune valeur `true` n'a été trouvée.
 
 Par exemple :
 
@@ -187,7 +187,7 @@ L'opérateur AND `&&` effectue les opérations suivantes :
 - Pour chaque opérande, il le converti en booléen. Si le résultat est `false`, arrêtez et retournez la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retournez le dernier opérande.
 
-En d'autres termes, AND renvoie la première valeur `false` ou la dernière valeur si aucune n'a été trouvée.
+En d'autres termes, une chaîne de AND `&&` renvoie la première valeur `false` ou la dernière valeur si aucune valeur `false` n'a été trouvée.
 
 Les règles ci-dessus sont similaires à OR. La différence est que AND retourne la première valeur `false` tandis que OR renvoie la première valeur `true`.
 
