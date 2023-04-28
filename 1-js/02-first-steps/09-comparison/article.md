@@ -179,7 +179,7 @@ alert( null >= 0 ); // (3) *!*true*/!*
 
 Ouais, mathématiquement c'est étrange. Le dernier résultat indique que "`null` est supérieur ou égal à zéro". Alors que l'une des comparaisons au dessus devrait être correcte, mais les deux sont fausses.
 
-La raison est qu'une vérification d'égalité `==` et les comparaisons> `<> >= <=` fonctionnent différemment. Les comparaisons convertissent `null` en un nombre, donc le traitent comme `0`. C'est pourquoi (3) `null >= 0` est vrai et (1) `nul > 0` est faux.
+La raison est qu'une vérification d'égalité `==` et les comparaisons> `<> >= <=` fonctionnent différemment. Les comparaisons convertissent `null` en un nombre, donc le traitent comme `0`. C'est pourquoi (3) `null >= 0` est vrai et (1) `null > 0` est faux.
 
 D’un autre côté, la vérification de l’égalité `==` pour `undefined` et `null` est définie de telle sorte que, sans aucune conversion, ils sont égaux et ne correspondent à rien d’autre. C'est pourquoi (2) `null == 0` est faux.
 
