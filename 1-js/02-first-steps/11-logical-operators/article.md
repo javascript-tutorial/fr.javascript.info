@@ -115,7 +115,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     */!*
     ```
 
-    If all variables were falsy, `"Anonymous"` would show up.
+    Si toutes les variables étaient fausses, ce serait `"Anonymous"` qui apparaîtrait.
 
 2. **Évaluation des courts-circuits.**
 
