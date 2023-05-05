@@ -1,6 +1,6 @@
 # Le tutoriel JavaScript moderne
 
-Ce dépôt héberge le contenu français du tutoriel JavaScript moderne, publié à l'adresse [https://javascript.info](https://javascript.info).
+Ce dépôt héberge le contenu français du tutoriel JavaScript moderne, publié à l'adresse [https://fr.javascript.info](https://fr.javascript.info).
 
 Aidez-nous à améliorer la traduction.
 
@@ -29,7 +29,7 @@ Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
 Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
-**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.  
+**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.
 
 La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
 
@@ -108,11 +108,11 @@ Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
   - `article.md` représente un article
   - `task.md` représente un exercice (la solution doit également être fournie dans le fichier `solution.md`)
 
-Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>. 
+Le serveur est disponible à cette adresse : <https://github.com/javascript-tutorial/server>.
 Chacun de ces fichiers commence à partir du `# titre principal`.
 
 Il est très facile d'ajouter quelque chose de nouveau.
 
----  
-♥  
+---
+♥
 Ilya Kantor @iliakan
