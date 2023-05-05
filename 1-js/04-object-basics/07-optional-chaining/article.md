@@ -1,17 +1,12 @@
-
-
 # Chaînage optionnel '?.'
 
 [recent browser="new"]
 
-
-Le chaînage optionnel `?.` Est un moyen sécurisé d'accéder aux propriétés d'objet imbriquées, même si une propriété intermédiaire n'existe pas.
+Le chaînage optionnel `?.` est un moyen sécurisé d'accéder aux propriétés d'objet imbriquées, même si une propriété intermédiaire n'existe pas.
 
 ## Le problème de la "propriété non existante"
 
-
 Si vous venez de commencer à lire le tutoriel et à apprendre JavaScript, peut-être que le problème ne vous a pas encore touché, mais c'est assez courant.
-
 
 À titre d'exemple, disons que nous avons des objets `user` qui contiennent les informations sur nos utilisateurs.
 
@@ -49,8 +44,7 @@ let user = {};
 alert(user.address ? user.address.street : undefined);
 ```
 
-Cela fonctionne, il n'y a pas d'erreur ... Mais c'est assez inélégant. Comme vous pouvez le voir, `"user.address"` apparaît deux fois dans le code. 
-
+Cela fonctionne, il n'y a pas d'erreur ... Mais c'est assez inélégant. Comme vous pouvez le voir, `"user.address"` apparaît deux fois dans le code.
 
 Voici à quoi ressemblerait la même chose pour `document.querySelector` :
 
@@ -148,7 +142,6 @@ La variable doit être déclarée (par exemple `let/const/var user` ou en tant q
 
 Comme il a été dit précédemment, le `?.` arrête immédiatement ("court-circuite") l'évaluation si la partie gauche n'existe pas.
 
-
 Ainsi, s'il y a d'autres appels de fonction ou opérations à droite de `?.`, elles ne seront pas effectuées.
 
 Par exemple :
@@ -194,7 +187,6 @@ Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) p
 
 Puis `?.()` Vérifie la partie gauche : si la fonction `admin` existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
 
-
 La syntaxe `?.[]` Fonctionne également, si nous voulons utiliser des crochets `[]` pour accéder aux propriétés au lieu du point `.`. Similaire aux cas précédents, il permet de lire en toute sécurité une propriété à partir d'un objet qui peut ne pas exister.
 
 ```js run
@@ -219,7 +211,6 @@ delete user?.name; // supprime user.name si user existe
 ```warn header="Nous pouvons utiliser `?.` pour lire et supprimer en toute sécurité, mais pas pour écrire"
 Le chaînage optionnel `?.` n'a aucune utilité sur le côté gauche d'une affectation :
 
-
 Par exemple :
 
 ```js run
@@ -239,10 +230,8 @@ Le chaînage optionnel '?.' A trois formes :
 2. `obj?.[prop]` -- retourne `obj[prop]` si `obj` existe, sinon `undefined`.
 3. `obj?.method()` -- appel `obj.method()` si `obj.method` existe, sinon retourne `undefined`.
 
-
 Comme nous pouvons le voir, tous sont simples et simples à utiliser. Le `?.` vérifie la partie gauche pour `null/undefined` et permet à l'évaluation de se poursuivre si ce n'est pas le cas.
 
 Une chaîne de `?.` permet d'accéder en toute sécurité aux propriétés imbriquées.
-
 
 Néanmoins, nous devons appliquer `?.` avec précaution, uniquement là où il est acceptable, selon la logique de notre code, que la partie gauche n'existe pas. Pour qu'il ne nous cache pas les erreurs de programmation, si elles se produisent.
