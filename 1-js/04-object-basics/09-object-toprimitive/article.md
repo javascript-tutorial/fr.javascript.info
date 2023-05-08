@@ -1,4 +1,3 @@
-
 # Conversion d'objet en primitive
 
 Que se passe-t-il lorsque des objets sont ajoutés `obj1 + obj2`, soustraits `obj1 - obj2` ou imprimés à l'aide de `alert (obj)` ?
@@ -28,7 +27,6 @@ Dans le chapitre <info:type-conversions> nous avons vu les règles pour les conv
 2. La conversion numérique se produit lorsque nous soustrayons des objets ou appliquons des fonctions mathématiques. Par exemple, les objets `Date` (à traiter dans le chapitre <info:date>) peut être soustrait et le résultat de `date1 - date2` est la différence de temps entre deux dates.
 3. En ce qui concerne la conversion de chaîne de caractères - cela se produit généralement lorsque nous affichons un objet tel que `alert (obj)` et dans des contextes similaires.
 
-
 Nous pouvons implémenter nous-mêmes la conversion de chaînes de caractères et de chiffres, en utilisant des méthodes d'objet spéciales.
 
 Passons maintenant aux détails techniques, car c'est le seul moyen d'aborder le sujet en profondeur.
@@ -41,7 +39,6 @@ Il existe trois variantes de conversion de type, qui se produisent dans diverses
 
 Il existe trois variantes de conversion de type, appelées "hints", décrites dans la [specification](https://tc39.github.io/ecma262/#sec-toprimitive) :
 
-
 **`"string"`**
 
 Pour une conversion d'un objet vers une chaîne de caractères, lorsque nous effectuons une opération sur un objet qui attend une chaîne, comme `alert` :
@@ -53,7 +50,6 @@ alert(obj);
 // utiliser un objet comme clé de propriété
 anotherObj[obj] = 123;
 ```
-
 
 **`"number"`**
 
@@ -138,7 +134,6 @@ alert(user + 500); // hint: default -> 1500
 ```
 
 Comme on peut le voir d'après le code, `user` devient une chaîne de caractères auto-descriptive ou un montant d'argent en fonction de la conversion. La méthode unique `user[Symbol.toPrimitive]` gère tous les cas de conversion.
-
 
 ## toString / valueOf
 
@@ -233,6 +228,7 @@ En revanche, `Symbol.toPrimitive` est plus strict, il *doit* retourner une primi
 Comme nous le savons déjà, de nombreux opérateurs et fonctions effectuent des conversions de types, par exemple la multiplication `*` convertit les opérandes en nombres.
 
 Si nous passons un objet en argument, il y a deux étapes de  calcul :
+
 1. L'objet est converti en primitive (en utilisant les règles décrites ci-dessus).
 2. Si cela est nécessaire pour d'autres calculs, la primitive résultante est également convertie.
 
@@ -269,6 +265,7 @@ alert(obj + 2); // 22 ("2" + 2), la conversion en primitive a renvoyé une chaî
 La conversion objet à primitive est appelée automatiquement par de nombreuses fonctions intégrées et opérateurs qui attendent une primitive en tant que valeur.
 
 Il en existe 3 types (hints) :
+
 - `"string"` (pour `alert` et d'autres opérations qui nécessitent une chaîne de caractères)
 - `"number"` (pour des maths)
 - `"default"` (peu d'opérateurs, généralement des objets l'implémentent de la même manière que `"number"`)
@@ -286,4 +283,3 @@ L'algorithme de conversion est :
 Toutes ces méthodes doivent renvoyer une primitive pour fonctionner (si elle est définie).
 
 En pratique, il suffit souvent d'implémenter uniquement `obj.toString()` comme méthode "fourre-tout" pour les conversions de chaînes de caractères qui devraient renvoyer une représentation "lisible par l'homme" d'un objet, à des fins de journalisation ou de débogage.
-
