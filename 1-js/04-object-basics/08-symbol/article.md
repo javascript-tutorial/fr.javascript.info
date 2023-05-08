@@ -57,7 +57,7 @@ let id = Symbol("id");
 alert(id); // TypeError: Impossible de convertir une valeur de symbole en chaîne de caractères
 */!*
 ```
-C'est un "gardien du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent accidentellement pas être convertis les uns en les autres. 
+C'est un "gardien du langage" contre les erreurs, parce que les chaînes de caractères et les symboles sont fondamentalement différents et ne doivent accidentellement pas être convertis les uns en les autres.
 
 Si nous voulons vraiment afficher un symbole, nous devons appeler `.toString()` dessus, comme ici :
 
@@ -104,7 +104,7 @@ Poussons un peu plus loin l’exemple pour voir cela.
 
 Comme les objets `user` appartiennent à une autre base de code, il n'est pas sûr de leur ajouter des champs, car nous pourrions affecter le comportement prédéfini dans cette autre base de code. Cependant, les symboles ne peuvent pas être accédés accidentellement. Le code tiers ne sera pas conscient des symboles nouvellement définis, il est donc prudent d'ajouter des symboles aux objets `user`.
 
-Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation. 
+Imaginez qu'un autre script veuille avoir son propre identifiant à l'intérieur de `user`, pour sa propre utilisation.
 
 Ensuite, ce script peut créer son propre `symbol("id")`, comme ceci :
 
@@ -256,13 +256,13 @@ alert( localSymbol.description ); // name
 
 Il existe de nombreux "systèmes" symboles que JavaScript utilise en interne et que nous pouvons utiliser pour affiner divers aspects de nos objets.
 
-Ils sont listés dans la documentation [Well-known symbols](https://tc39.github.io/ecma262/#sec-well-known-symbols) : 
+Ils sont listés dans la documentation [Well-known symbols](https://tc39.github.io/ecma262/#sec-well-known-symbols) :
 
 - `Symbol.hasInstance`
 - `Symbol.isConcatSpreadable`
 - `Symbol.iterator`
 - `Symbol.toPrimitive`
-- …etc.
+- Etc.
 
 Par exemple, `Symbol.toPrimitive` nous permet de décrire une conversion d’objet en primitive. Nous verrons son utilisation très bientôt.
 
@@ -274,16 +274,16 @@ Nous nous familiariserons également avec d’autres symboles lorsque nous étud
 
 Les symboles sont créés avec l'appel `Symbol()` ainsi qu'une description facultative.
 
-Les symboles sont toujours de valeurs différentes, même s'ils portent le même nom. Si nous voulons que les symboles portant le même nom soient égaux, nous devons utiliser le registre global : `Symbol.for(key)` renvoie (crée si nécessaire) un symbole global avec `key` comme nom. 
+Les symboles sont toujours de valeurs différentes, même s'ils portent le même nom. Si nous voulons que les symboles portant le même nom soient égaux, nous devons utiliser le registre global : `Symbol.for(key)` renvoie (crée si nécessaire) un symbole global avec `key` comme nom.
 Les multiples appels de `Symbol.for` avec la même `key` renvoient exactement le même symbole.
 
 Les symboles ont deux principaux cas d'utilisation :
 
 1. Propriétés d'objet "masquées".
-    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée accidentellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation accidntelle ou un écrasement.
+    Si nous voulons ajouter une propriété à un objet qui "appartient" à un autre script ou à une librairie, nous pouvons créer un symbole et l'utiliser comme clé de propriété. Une propriété symbolique n’apparait pas dans `for..in`, elle ne sera donc pas traitée accidentellement avec d'autres propriétés. De plus, elle ne sera pas accessible directement, car un autre script n’a pas notre symbole. Ainsi, la propriété sera protégée contre une utilisation accidentelle ou un écrasement.
 
     Ainsi, nous pouvons "dissimuler" quelque chose dans des objets dont nous avons besoin, mais que les autres ne devraient pas voir, en utilisant des propriétés symboliques.
 
-2. De nombreux symboles système utilisés par JavaScript sont accessibles en tant que `Symbol.*`. Nous pouvons les utiliser pour modifier certains comportements internes. Par exemple, plus tard dans le tutoriel, nous utiliserons `Symbol.iterator` pour [iterables](info:iterable), `Symbol.toPrimitive` etc.
+2. De nombreux symboles système utilisés par JavaScript sont accessibles en tant que `Symbol.*`. Nous pouvons les utiliser pour modifier certains comportements internes. Par exemple, plus tard dans le tutoriel, nous utiliserons `Symbol.iterator` pour [iterables](info:iterable), `Symbol.toPrimitive`, etc.
 
 Techniquement, les symboles ne sont pas cachés à 100%. Il y a une méthode intégrée [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui nous permet d’obtenir tous les symboles. Il y a aussi une méthode nommée [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) qui renvoie *toutes* les clés d'un objet, y compris celles symboliques. Donc, ils ne sont pas vraiment cachés. Mais la plupart des bibliothèques, fonctions intégrées et structures de syntaxe n'utilisent pas ces méthodes.
