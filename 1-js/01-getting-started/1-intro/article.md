@@ -4,7 +4,7 @@ Voyons ce qui est spécial à propos de JavaScript, ce qu'il nous permet de fair
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-eEx3yRZ-sE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Qu'est-ce que JavaScript?
+## Qu'est-ce que JavaScript ?
 
 _JavaScript_ a été initiallement créé pour "rendre les pages web vivantes".
 
@@ -30,7 +30,7 @@ Différents moteurs ont différents "nom de code", par exemple:
 - [SpiderMonkey](https://fr.wikipedia.org/wiki/SpiderMonkey) -- dans Firefox.
 - … Il existe d'autres noms de code comme "Chakra" pour IE, "JavaScriptCore", "Nitro" et "SquirrelFish" pour Safari etc.
 
-Les termes ci-dessus sont bons à retenir, car ils sont utilisés dans les articles destinés aux développeurs sur Internet. Nous les utiliserons aussi. Par exemple, si "une fonctionnalité X est prise en charge par V8", cela fonctionne probablement dans Chrome et Opera.
+Les termes ci-dessus sont bons à retenir, car ils sont utilisés dans les articles destinés aux développeurs sur Internet. Nous les utiliserons aussi. Par exemple, si "une fonctionnalité X est prise en charge par V8", cela fonctionne probablement dans Chrome, Edge et Opera.
 
 ```smart header="Comment fonctionnent les moteurs ?"
 
@@ -107,7 +107,7 @@ Il faut s’y attendre, parce que les projets et les exigences sont différents 
 
 Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont _transpilés_ (convertis) en JavaScript avant leur exécution dans le navigateur.
 
-Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans une autre langue et de la convertir automatiquement "sous le capot".
+Les outils modernes rendent la [transpilation](https://fr.wiktionary.org/wiki/transpilation) très rapide et transparente, permettant aux développeurs de coder dans un autre langage et de le convertir automatiquement "sous le capot".
 
 Les exemples de ce genre de langages :
 
