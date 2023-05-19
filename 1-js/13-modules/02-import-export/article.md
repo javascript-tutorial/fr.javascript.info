@@ -325,7 +325,7 @@ auth/
         ...
 ```
 
-Nous aimerions exposer les fonctionnalités du paquet via un seul point d’entrée. 
+Nous aimerions exposer les fonctionnalités du paquet via un seul point d’entrée.
 
 En d'autres termes, une personne souhaitant utiliser notre package ne doit importer que depuis le "fichier principal" `auth/index.js`.
 
@@ -399,7 +399,7 @@ On peut y rencontrer deux problèmes :
 
 Ces bizarreries de réexporter une exportation par défaut sont l'une des raisons pour lesquelles certains développeurs n'aiment pas les exportations par défaut et préfèrent les exportations nommées.
 
-## Sommaire
+## Résumé
 
 Voici tous les types d'`export` que nous avons abordés dans ce chapitre et dans les chapitres précédents.
 
@@ -418,7 +418,7 @@ Import:
 
 - Importations d’exports nommés :
   - `import {x [as y], ...} from "module"`
-- Importation de l’export par défaut : 
+- Importation de l’export par défaut :
   - `import x from "module"`
   - `import {default as x} from "module"`
 - Tout importer :
