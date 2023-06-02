@@ -47,14 +47,14 @@ let rabbit = {
 rabbit.__proto__ = animal; // (*)
 */!*
 
-// nous pouvons maintenant trouver les deux propriétés dans rabbit:
+// nous pouvons maintenant trouver les deux propriétés dans rabbit :
 *!*
 alert( rabbit.eats ); // true (**)
 */!*
 alert( rabbit.jumps ); // true
 ```
 
-Ici, la ligne `(*)` définit `animal` pour être un prototype de` lapin`.
+Ici, la ligne `(*)` définit `animal` pour être un prototype de `lapin`.
 
 Ensuite, lorsque `alert` essaie de lire la propriété `rabbit.eats` `(**)`, ce n'est pas dans `rabbit`, donc JavaScript suit la référence `[[Prototype]]` et la trouve dans `animal` (regarde de bas en haut) :
 
@@ -129,8 +129,7 @@ Il n'y a que deux limitations :
 1. Les références ne peuvent pas tourner en rond. JavaScript va générer une erreur si nous essayons d'assigner `__proto__` dans un cercle.
 2. La valeur de `__proto__` peut être un objet ou `null`. Les autres types sont ignorés.
 
-Cela peut aussi être évident, mais quand même: il ne peut y avoir qu'un seul `[[Prototype]]`. Un objet ne peut pas hériter de deux autres.
-
+Cela peut aussi être évident, mais quand même : il ne peut y avoir qu'un seul `[[Prototype]]`. Un objet ne peut pas hériter de deux autres.
 
 ```smart header="`__proto__` est un getter/setter historique pour [[Prototype]]`"
 C'est une erreur courante des développeurs novices de ne pas connaître la différence entre les deux.
@@ -156,7 +155,7 @@ Dans l'exemple ci-dessous, nous affectons sa propre méthode `walk` à `rabbit` 
 let animal = {
   eats: true,
   walk() {
-    /* cette méthode ne sera pas utilisée par rabbit */  
+    /* cette méthode ne sera pas utilisée par rabbit */
   }
 };
 
@@ -215,9 +214,9 @@ Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le p
 
 Une question intéressante peut se poser dans l'exemple ci-dessus : quelle est la valeur de `this` dans `set fullName(value)` ? Où sont écrites les propriétés `this.name` et `this.surname` : dans `user` ou `admin` ?
 
-La réponse est simple: `this` n'est pas du tout affecté par les prototypes.
+La réponse est simple : `this` n'est pas du tout affecté par les prototypes.
 
-**Peu importe où la méthode est trouvée: dans un objet ou son prototype. Dans un appel de méthode, `this` est toujours l'objet avant le point.**
+**Peu importe où la méthode est trouvée : dans un objet ou son prototype. Dans un appel de méthode, `this` est toujours l'objet avant le point.**
 
 Ainsi, l'appel du groupe `admin.fullName=` utilise `admin` comme `this`, pas `user`.
 
@@ -287,7 +286,7 @@ for(let prop in rabbit) alert(prop); // jumps, puis eats
 */!*
 ```
 
-Si ce n'est pas ce que nous voulons et que nous aimerions exclure les propriétés héritées, il existe une méthode intégrée [obj.hasOwnProperty(key)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/hasOwnProperty): elle renvoie `true` si `obj` a sa propre propriété (non héritée) nommée `key`.
+Si ce n'est pas ce que nous voulons et que nous aimerions exclure les propriétés héritées, il existe une méthode intégrée [obj.hasOwnProperty(key)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/hasOwnProperty) : elle renvoie `true` si `obj` a sa propre propriété (non héritée) nommée `key`.
 
 Nous pouvons donc filtrer les propriétés héritées (ou faire autre chose avec elles) :
 
@@ -312,15 +311,15 @@ for(let prop in rabbit) {
 }
 ```
 
-Nous avons ici la chaîne d'héritage suivante: `rabbit` hérite de `animal`, qui lui hérite de `Object.prototype` (car `animal` est un objet littéral `{...}`, donc c'est par défaut), puis `null` au-dessus :
+Nous avons ici la chaîne d'héritage suivante : `rabbit` hérite de `animal`, qui lui hérite de `Object.prototype` (car `animal` est un objet littéral `{...}`, donc c'est par défaut), puis `null` au-dessus :
 
 ![](rabbit-animal-object.svg)
 
-Remarque, il y a une chose amusante. D'où vient la méthode `rabbit.hasOwnProperty`? Nous ne l'avons pas défini. En regardant la chaîne, nous pouvons voir que la méthode est fournie par `Object.prototype.hasOwnProperty`. En d'autres termes, c'est hérité.
+Remarque, il y a une chose amusante. D'où vient la méthode `rabbit.hasOwnProperty` ? Nous ne l'avons pas défini. En regardant la chaîne, nous pouvons voir que la méthode est fournie par `Object.prototype.hasOwnProperty`. En d'autres termes, c'est hérité.
 
 ...Mais pourquoi `hasOwnProperty` n'apparaît pas dans la boucle `for..in`, comme `eats` et `jumps`, s'il répertorie toutes les propriétés héritées.
 
-La réponse est simple: ce n'est pas énumérable. Comme toutes les autres propriétés de `Object.prototype`, il possède l'attribut `enumerable: false`. C'est pourquoi ils ne sont pas répertoriés. Et `for..in` ne répertorie que les propriétés énumérables. C'est pourquoi elle et le reste des propriétés `Object.prototype` ne sont pas listés.
+La réponse est simple : ce n'est pas énumérable. Comme toutes les autres propriétés de `Object.prototype`, il possède l'attribut `enumerable: false`. C'est pourquoi ils ne sont pas répertoriés. Et `for..in` ne répertorie que les propriétés énumérables. C'est pourquoi elle et le reste des propriétés `Object.prototype` ne sont pas listés.
 
 ```smart header="Presque toutes les autres méthodes d'obtention de clé/valeur ignorent les propriétés héritées"
 Presque toutes les autres méthodes d'obtention de clé/valeur, telles que `Object.keys`, `Object.values` et ainsi de suite ignorent les propriétés héritées.
