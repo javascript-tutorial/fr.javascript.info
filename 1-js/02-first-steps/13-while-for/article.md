@@ -107,7 +107,7 @@ for (début; condition; étape) {
 }
 ```
 
-Apprenons la signification de ces parties par l'exemple. La boucle ci-dessous exécute `alert(i)` pour `i` en partant de `0` jusqu'à (mais non compris) `3` :
+Apprenons la signification de ces parties par l'exemple. La boucle ci-dessous exécute `alert(i)` pour `i` en partant de `0` jusqu'à `3` (mais non compris) :
 
 ```js run
 for (let i = 0; i < 3; i++) { // affiche 0, puis 1, puis 2
