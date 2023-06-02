@@ -12,7 +12,7 @@ Le résultat de `a ?? b` est :
 - si `a` n'est pas défini, alors `b`.
 
 
-En d'autres termes, `??` renvoie le premier argument s'il n'est pas `nul/undefined`. Sinon, le second.
+En d'autres termes, `??` renvoie le premier argument s'il n'est pas `null/undefined`. Sinon, le second.
 
 L'opérateur de coalescence des nuls n'est pas complètement nouveau. C'est juste une belle syntaxe pour obtenir la première valeur "defined" des deux.
 
