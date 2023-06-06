@@ -45,7 +45,6 @@ Par exemple :
 alert( 'Z' > 'A' ); // true
 alert( 'Glow' > 'Glee' ); // true
 alert( 'Bee' > 'Be' ); // true
-alert( '9' > '10' ); // true
 ```
 
 L'algorithme pour comparer deux chaînes  de caractères est simple :
@@ -162,8 +161,8 @@ Pour un contrôle d'égalité non strict `==`
     alert( null == undefined ); // true
     ```
 
-Pour les maths et autres comparaisons `<`, `>`, `<=`, `>=`
-: Les valeurs `null`/`undefined` sont converties en un nombre : `null` devient `0`, alors qu'`undefined` devient `NaN`.
+Pour les maths et autres comparaisons `< > <= >=`
+: Les valeurs `null/undefined` sont converties en un nombre : `null` devient `0`, alors qu'`undefined` devient `NaN`.
 
 Voyons maintenant des choses amusantes qui se produisent lorsque nous appliquons ces règles. Et, ce qui est plus important, comment ne pas tomber dans un piège avec ces caractéristiques.
 
@@ -179,7 +178,7 @@ alert( null >= 0 ); // (3) *!*true*/!*
 
 Ouais, mathématiquement c'est étrange. Le dernier résultat indique que "`null` est supérieur ou égal à zéro". Alors que l'une des comparaisons au dessus devrait être correcte, mais les deux sont fausses.
 
-La raison est qu'une vérification d'égalité (`==`) et les comparaisons (`<`, `>`, `<=`, `>=`) fonctionnent différemment. Les comparaisons convertissent `null` en un nombre, donc le traitent comme `0`. C'est pourquoi (3) `null >= 0` est vrai et (1) `null > 0` est faux.
+La raison est qu'une vérification d'égalité `==` et les comparaisons> `<> >= <=` fonctionnent différemment. Les comparaisons convertissent `null` en un nombre, donc le traitent comme `0`. C'est pourquoi (3) `null >= 0` est vrai et (1) `nul > 0` est faux.
 
 D’un autre côté, la vérification de l’égalité `==` pour `undefined` et `null` est définie de telle sorte que, sans aucune conversion, ils sont égaux et ne correspondent à rien d’autre. C'est pourquoi (2) `null == 0` est faux.
 
@@ -188,8 +187,8 @@ D’un autre côté, la vérification de l’égalité `==` pour `undefined` et 
 La valeur `undefined` ne doit pas du tout participer aux comparaisons :
 
 ```js run
-alert( undefined > 0 );  // false (1)
-alert( undefined < 0 );  // false (2)
+alert( undefined > 0 ); // false (1)
+alert( undefined < 0 ); // false (2)
 alert( undefined == 0 ); // false (3)
 ```
 
@@ -204,14 +203,14 @@ Nous avons ces résultats parce que :
 
 Pourquoi avons-nous observé ces exemples? Devrions-nous nous souvenir de ces particularités tout le temps ? Eh bien pas vraiment. En fait, ces notions délicates deviennent progressivement familières au fil du temps, mais il existe un moyen solide d’éviter tout problème avec elles.
 
-Il suffit de traiter toute comparaison avec `null`/`undefined` (à l'exception de la stricte égalité `===`) avec un soin exceptionnel.
+Il suffit de traiter toute comparaison avec `undefined/null` (à l'exception de la stricte égalité `===`) avec un soin exceptionnel.
 
-N'utilisez pas de comparaisons `=>`, `>`, `<`, `<=` avec une variable qui peut être `null`/`undefined`, sauf si vous êtes vraiment sûr de ce que vous faites. Si une variable peut avoir de telles valeurs, vérifiez-les séparément.
+N'utilisez pas de comparaisons `=> > < <=` avec une variable qui peut être `null/undefined`, sauf si vous êtes vraiment sûr de ce que vous faites. Si une variable peut avoir de telles valeurs, vérifiez-les séparément.
 
 ## Résumé
 
 - Les opérateurs de comparaison renvoient une valeur logique.
 - Les chaînes de caractères sont comparées lettre par lettre dans l'ordre "dictionnaire".
 - Lorsque des valeurs de différents types sont comparées, elles sont converties en nombres (à l'exclusion d'un contrôle d'égalité strict).
-- Les valeurs `null` et `undefined` sont égales (`==`) et ne correspondent à aucune autre valeur.
-- Soyez prudent lorsque vous utilisez des comparaisons telles que `>` ou `<` avec des variables pouvant parfois être `null`/`undefined`. Faire une vérification séparée pour `null`/`undefined` est une bonne idée.
+- Les valeurs `null` et `undefined` sont égales `==` et ne correspondent à aucune autre valeur.
+- Soyez prudent lorsque vous utilisez des comparaisons telles que `>` ou `<` avec des variables pouvant parfois être `null/undefined`. Faire une vérification séparée pour `null/undefined` est une bonne idée.

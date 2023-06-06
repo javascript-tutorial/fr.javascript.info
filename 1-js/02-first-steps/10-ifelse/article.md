@@ -29,7 +29,7 @@ if (year == 2015) {
 }
 ```
 
-Il est recommandé d'entourer votre bloc de code avec des accolades `{}` à chaque fois avec `if`, même s’il n’y a qu’une seule instruction. Cela améliore la lisibilité.
+Il est recommandé d'entourer votre bloc de code avec des accolades `{}` à chaque fois avec `if`, même s’il n’ya qu’une seule instruction. Cela améliore la lisibilité.
 
 ## Conversion booléenne
 

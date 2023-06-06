@@ -8,7 +8,7 @@ Dans ce chapitre, nous nous concentrons sur les aspects qui ne sont pas couverts
 
 Avant de continuer, saisissons la terminologie commune.
 
-- Un opérande est ce à quoi les opérateurs sont appliqués. Par exemple, dans la multiplication `5 * 2`, il y a deux opérandes : l'opérande gauche est `5` et l'opérande droit est `2`. Parfois, les gens disent "arguments" au lieu de "opérandes".
+- Un opérande est ce à quoi les opérateurs sont appliqués. Par exemple, dans la multiplication `5 * 2`, il y a deux opérandes: l'opérande gauche est `5` et l'opérande droit est `2`. Parfois, les gens disent "arguments" au lieu de "opérandes".
 - Un opérateur est unaire s'il a un seul opérande. Par exemple, la négation unaire `-` inverse le signe du nombre :
 
     ```js run
@@ -47,12 +47,11 @@ L'opérateur reste `%`, malgré son apparence, n'est pas lié aux pourcentages.
 
 Le résultat de `a % b` est le [reste](https://fr.wikipedia.org/wiki/Reste) de la division entière de `a` par `b`.
 
-Par exemple :
+Par exemple:
 
 ```js run
 alert( 5 % 2 ); // 1, le reste de 5 divisé par 2
 alert( 8 % 3 ); // 2, le reste de 8 divisé par 3
-alert( 8 % 2 ); // 0, le reste de 8 divisé par 2
 ```
 
 ### Exponentiation **
@@ -60,7 +59,7 @@ alert( 8 % 2 ); // 0, le reste de 8 divisé par 2
 L'opérateur d'exponentiation `a ** b` multiplie `a` par lui-même `b` fois.
 En mathématiques à l'école, nous écrivons cela a<sup>b</sup>.
 
-Par exemple :
+Par exemple:
 
 ```js run
 alert( 2 ** 2 ); // 2² = 4
@@ -119,7 +118,7 @@ Ici, le premier opérande est une chaîne de caractères, le compilateur traite 
 
 Le binaire `+` est le seul opérateur qui prend en charge les chaînes de caractères de cette manière. D'autres opérateurs arithmétiques ne fonctionnent qu'avec des nombres et convertissent toujours leurs opérandes en nombres.
 
-Voici l'exemple pour la soustraction et la division :
+Voici l'exemple pour la soustraction et la division:
 ```js run
 alert( 6 - '2' ); // 4, convertit '2' en nombre
 alert( '6' / '2' ); // 3, convertit les deux opérandes en nombres
@@ -186,7 +185,7 @@ Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini 
 
 De l'école, nous savons tous que la multiplication dans l'expression `1 + 2 * 2` devrait être calculée avant l'addition. C’est exactement cela la précédence. La multiplication est dite avoir une *précédence supérieure* à l'addition.
 
-Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisfaits de l'ordre par défaut, nous pouvons les utiliser, comme : `(1 + 2) * 2`.
+Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisfaits de l'ordre par défaut, nous pouvons les utiliser, comme: `(1 + 2) * 2`.
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
@@ -228,7 +227,7 @@ Tous les opérateurs en JavaScript renvoient une valeur. C'est évident pour `+`
 
 L'appel `x = valeur` écrit la` valeur` dans `x` *puis la renvoie*.
 
-Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe :
+Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe:
 
 ```js run
 let a = 1;
@@ -264,9 +263,9 @@ alert( b ); // 4
 alert( c ); // 4
 ```
 
-Les affectations en chaîne sont évaluées de droite à gauche. D'abord, l'expression la plus à droite `2 + 2` est évaluée puis assignée aux variables de gauche : `c`, `b` et `a`. À la fin, toutes les variables partagent une seule valeur.
+Les affectations en chaîne sont évaluées de droite à gauche. D'abord, l'expression la plus à droite `2 + 2` est évaluée puis assignée aux variables de gauche: `c`, `b` et `a`. À la fin, toutes les variables partagent une seule valeur.
 
-Encore une fois, pour des raisons de lisibilité, il est préférable de diviser ce code en quelques lignes :
+Encore une fois, pour des raisons de lisibilité, il est préférable de diviser ce code en quelques lignes:
 
 ```js
 c = 2 + 2;
@@ -297,14 +296,14 @@ n *= 2; // maintenant n = 14 (identique à n = n * 2)
 alert( n ); // 14
 ```
 
-Il existe des opérateurs de "modification et assignation" courts pour tous les opérateurs arithmétiques et binaires : `/=`, `-=` etc.
+Il existe de opérateurs de "modification et assignation" courts pour tous les opérateurs arithmétiques et binaires: `/=`, `-=` etc.
 
 Ces opérateurs ont la même précédence qu'une affectation normale. Ils s'exécutent donc après la plupart des autres calculs :
 
 ```js run
 let n = 2;
 
-n *= 3 + 5; // la partie de droite est évaluée en premier (identique à n *= 8)
+n *= 3 + 5; // right part evaluated first, same as n *= 8
 
 alert( n ); // 16  
 ```
@@ -321,14 +320,14 @@ Il y a donc des opérateurs spéciaux pour cela :
 
     ```js run no-beautify
     let counter = 2;
-    counter++;        // fonctionne de la même manière que counter = counter + 1, mais c'est plus court
+    counter++;      // fonctionne de la même manière que counter = counter + 1, mais c'est plus court
     alert( counter ); // 3
     ```
 - **Décrémentation** `--` diminue une variable de 1 :
 
     ```js run no-beautify
     let counter = 2;
-    counter--;        // fonctionne de la même manière que counter = counter - 1, mais c'est plus court
+    counter--;      // fonctionne de la même manière que counter = counter - 1, mais c'est plus court
     alert( counter ); // 1
     ```
 
@@ -339,7 +338,7 @@ L'incrémentation / décrémentation ne peut être appliquée qu'à une variable
 Les opérateurs `++` et `--` peuvent être placés à la fois après et avant la variable.
 
 - Lorsque l'opérateur va après la variable, cela s'appelle une "forme postfixe" : `counter++`.
-- La "forme préfixe" est celle où l'opérateur se place devant la variable : `++counter`.
+- La "forme préfixe" est celle où l'opérateur se place devant la variable: `++counter`.
 
 Ces deux operateurs font la même chose : augmenter le `counter` de `1`.
 

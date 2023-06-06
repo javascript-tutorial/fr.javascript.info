@@ -56,15 +56,15 @@ if (condition) {
 }
 ```
 
-Une construction sur une seule ligne, comme `if (condition) doSomething()`, est un cas important. Devrions-nous utiliser des accolades ?
+Une construction sur une seule ligne, comme `if (condition) doSomething()`, est un cas important. Devrions-nous utiliser des accolades ? 
 
 Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
 
-1. 😠 Les débutants font parfois cela. C'est une mauvaise pratique ! Les accolades ne sont pas nécessaires :
+1. 😠 Les débutants font parfois cela. C'est une mauvaise pratique! Les accolades ne sont pas nécessaires :
     ```js
     if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
     ```
-2. 😠 Lorsque vous n'utilisez pas d'accolades, évitez de passer pas à la ligne car il est facile de se tromper :
+2. 😠 Lorsque vous n'utilisez pas d'accolades, évitez de passer pas à la ligne, il est facile de se tromper! :
     ```js
     if (n < 0)
       alert(`Power ${n} is not supported`);
@@ -80,14 +80,14 @@ Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
     }
     ```
 
-Pour un code tres court, une ligne est autorisée, par exemple `if (cond) return null`. Mais la variante numéro 4 est généralement plus lisible.
+Pour un code tres court, une ligne est autorisée, par exemple. `if (cond) return null`. Mais la variante numéro 4 est généralement plus lisible.
+
 
 ### Longueur de la ligne
 
-Personne n'aime lire une longue ligne horizontale de code. La meilleure pratique est de la scinder.
+Personne n'aime lire une longue ligne horizontale de code. La meilleure pratique est de les scinder.
 
 Par exemple :
-
 ```js
 // les guillemets backtick ` permettent de scinder la chaîne de caractères en plusieurs lignes
 let str = `
@@ -115,13 +115,13 @@ La longueur de ligne maximale est convenue au niveau de l'équipe. C’est gén�
 
 Il existe deux types d'indentations :
 
-- **Un retrait horizontal : 2 ou 4 espaces.**
+- **Un retrait horizontal : 2(4) espaces.**
 
-    Une indentation horizontale est faite en utilisant 2 ou 4 espaces ou le symbole  horizontal de tabulation (touche `key:Tab`). Lequel choisir est une vieille guerre sainte. Les espaces sont plus communs de nos jours.
+    Une indentation horizontale est faite en utilisant 2 ou 4 espaces ou le symbole  horizontal de tabulation (key `key:Tab`). Lequel choisir est une vieille guerre sainte. Les espaces sont plus communs de nos jours.
 
     Un des avantages des espaces sur les tabulations est qu’ils permettent des configurations de retrait plus flexibles que le symbole tabulation.
 
-    Par exemple, nous pouvons aligner les arguments avec la parenthèse d’ouverture, comme ceci :
+    Par exemple, nous pouvons aligner les arguments avec le crochet d’ouverture, comme ceci :
 
     ```js no-beautify
     show(parameters,
@@ -164,7 +164,7 @@ Si vous êtes un programmeur JavaScript expérimenté, vous pouvez choisir un st
 
 Il ne devrait pas y avoir trop de niveaux d'imbrication.
 
-Par exemple, dans une boucle, c’est parfois une bonne idée d’utiliser la directive ["continue"](info:while-for#continue) pour éviter une imbrication supplémentaire.
+Par exemple, dans une boucle, c’est parfois une bonne idée d’utiliser la directive ["continue"](info:while-for#continue) pour éviter une imbrication supplémentaire. 
 
 Par exemple, au lieu d’ajouter un `if` imbriqué conditionnel comme ceci :
 
@@ -185,7 +185,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-Une chose similaire peut être faite avec `if`/`else` et `return`.
+Une chose similaire peut être faite avec `if/else` et `return`.
 
 Par exemple, les deux constructions ci-dessous sont identiques.
 
@@ -203,7 +203,7 @@ function pow(x, n) {
     }
 
     return result;
-  }
+  }  
 }
 ```
 
@@ -228,7 +228,7 @@ function pow(x, n) {
 
 Le second est plus lisible, parce que le "cas marginal" de `n < 0` est traité tôt. Une fois la vérification effectuée, nous pouvons passer au flux de code "principal" sans avoir besoin d'imbrication supplémentaire.
 
-## Placement des fonctions
+## Placement de Fonction
 
 Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les utiliser, il existe trois façons de les placer.
 
@@ -283,9 +283,9 @@ C’est parce qu’en lisant du code, nous voulons d’abord savoir ce qu’il f
 
 ## Guides de style
 
-Un guide de style contient des règles générales sur "comment écrire" du code. Exemple : les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
+Un guide de style contient des règles générales sur "comment écrire" du code, ex: les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
 
-Lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
+Au total, lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
 
 Bien sûr, une équipe peut toujours écrire son propre guide de style, mais cela n’est généralement pas nécessaire. Il existe de nombreux guides existants à choisir.
 
@@ -349,6 +349,6 @@ De plus, certains IDE prennent en charge le linting nativement, ce qui peut éga
 
 Toutes les règles de syntaxe de ce chapitre et les guides de style visent à améliorer la lisibilité, elles sont donc toutes discutables.
 
-Lorsque nous pensons à écrire du "meilleur" code, les questions que nous devrions nous poser sont les suivantes : "Qu'est-ce qui rend le code plus lisible et plus facile à comprendre ?" et "Qu'est-ce qui peut nous aider à éviter les erreurs ?". Telles sont les principales choses à garder à l'esprit lors du choix et du débat sur les styles de code.
+Lorsque nous pensons à écrire du "meilleur" code, les questions que nous devrions nous poser sont les suivantes : "Qu'est-ce qui rend le code plus lisible et plus facile à comprendre ?" Et "Qu'est-ce qui peut nous aider à éviter les erreurs ?" Telles sont les principales choses à garder à l'esprit lors du choix et du débat sur les styles de code.
 
 Lisez les guides de style pour connaître les dernières idées à ce sujet et suivez celles que vous trouvez les meilleures.

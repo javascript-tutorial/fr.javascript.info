@@ -2,6 +2,7 @@
 
 [recent browser="new"]
 
+
 L'opérateur de coalescence des nuls est écrit sous la forme de deux points d'interrogation `??`.
 
 Comme il traite `null` et `undefined` de la même manière, nous utiliserons un terme spécial ici, dans cet article. Par souci de brièveté, nous dirons qu'une expression est "définie" lorsqu'elle n'est ni `null` ni `undefined`.
@@ -10,7 +11,8 @@ Le résultat de `a ?? b` est :
 - si `a` est défini, alors `a`,
 - si `a` n'est pas défini, alors `b`.
 
-En d'autres termes, `??` renvoie le premier argument s'il n'est pas `null`/`undefined`. Sinon, le second.
+
+En d'autres termes, `??` renvoie le premier argument s'il n'est pas `null/undefined`. Sinon, le second.
 
 L'opérateur de coalescence des nuls n'est pas complètement nouveau. C'est juste une belle syntaxe pour obtenir la première valeur "defined" des deux.
 
@@ -22,9 +24,9 @@ result = (a !== null && a !== undefined) ? a : b;
 
 Maintenant, il devrait être absolument clair ce que fait `??`. Voyons où cela aide.
 
-Le cas d'utilisation courant de `??` est de fournir une valeur par défaut.
+Le cas d'utilisation courant de `??` est de fournir une valeur par défaut. 
 
-Par exemple, nous affichons ici `user` si sa valeur n'est pas `null`/`undefined`, sinon `Anonymous` :
+Par exemple, nous affichons ici `user` si sa valeur n'est pas `null/undefined`, sinon `Anonymous` :
 
 ```js run
 let user;
@@ -40,11 +42,11 @@ let user = "John";
 alert(user ?? "Anonymous"); // John (user is not null/udefined)
 ```
 
-Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur dans une liste qui n'est pas `null`/`undefined`.
+Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur dans une liste qui n'est pas `null/undefined`.
 
 Disons que nous avons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`. Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeurs correspondantes.
 
-Nous aimerions afficher le nom d'utilisateur à l'aide de l'une de ces variables, ou afficher "Anonyme" si toutes sont `null`/`undefined`.
+Nous aimerions afficher le nom d'utilisateur à l'aide de l'une de ces variables, ou afficher "Anonyme" si toutes sont `null/undefined`.
 
 Utilisons l'opérateur `??` pour cela :
 
@@ -53,10 +55,9 @@ let firstName = null;
 let lastName = null;
 let nickName = "Supercoder";
 
-// affiche la première valeur définie :
+// affiche la première valeur définie:
 *!*
 alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
-*/!*
 ```
 
 ## Comparaison avec ||
@@ -70,7 +71,7 @@ let firstName = null;
 let lastName = null;
 let nickName = "Supercoder";
 
-// affiche la première valeur vraie :
+// shows the first truthy value:
 *!*
 alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*
@@ -84,9 +85,9 @@ La différence importante entre eux est que :
 - `||` renvoie la première valeur *vraie*.
 - `??` renvoie la première valeur *définie*.
 
-En d'autres termes, `||` ne fait pas la distinction entre `false`, `0`, une chaîne vide `" "` et `null`/`undefined`. Ce sont tous les mêmes -- des valeurs fausses. Si l'un de ceux-ci est le premier argument de `||`, alors nous obtiendrons le deuxième argument comme résultat.
+En d'autres termes, `||` ne fait pas la distinction entre `false`, `0`, une chaîne vide `" "` et `null/undefined`. Ce sont tous les mêmes -- des valeurs fausses. Si l'un de ceux-ci est le premier argument de `||`, alors nous obtiendrons le deuxième argument comme résultat.
 
-Dans la pratique cependant, nous pouvons vouloir utiliser la valeur par défaut uniquement lorsque la variable est `null`/`undefined`. Autrement dit, lorsque la valeur est vraiment inconnue/non définie.
+Dans la pratique cependant, nous pouvons vouloir utiliser la valeur par défaut uniquement lorsque la variable est `null/undefined`. Autrement dit, lorsque la valeur est vraiment inconnue/non définie.
 
 Par exemple, considérez ceci :
 
@@ -99,7 +100,7 @@ alert(height ?? 100); // 0
 
 - L'expression `height || 100` vérifie que `height` est une valeur fausse, et c'est `0`, elle est fausse en effet.
     - donc le résultat de `||` est le deuxième argument, `100`.
-- L'expression `height ?? 100` vérifie que `height` est `null`/`undefined`, et ce n'est pas le cas,
+- L'expression `height ?? 100` vérifie que `height` est `null/undefined`, et ce n'est pas le cas,
     - donc le résultat est `height` "tel quel", c'est-à-dire `0`.
 
 En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas être remplacée par la valeur par défaut. Alors `??` fait ce qu'il faut.
@@ -108,7 +109,7 @@ En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas êt
 
 La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
 
-Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, mais après la plupart des autres opérations, telles que `+`, `*`.
+Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, Mais après la plupart des autres opérations, telles que `+`, `*`.
 
 Nous devrons donc peut-être ajouter des parenthèses dans des expressions comme celle-ci :
 
@@ -122,13 +123,13 @@ let area = (height ?? 100) * (width ?? 50);
 alert(area); // 5000
 ```
 
-Sinon, si nous omettons les parenthèses, alors que `*` a une priorité plus élevée que `??`, il s'exécuterait en premier, conduisant à des résultats incorrects.
+Sinon, si nous omettons les parenthèses, alors que `*` a la priorité la plus élevée que `??`, il s'exécuterait en premier, conduisant à des résultats incorrects.
 
 ```js
 // sans parenthèses
 let area = height ?? 100 * width ?? 50;
 
-// ...fonctionne de cette façon (pas ce que nous voulons) :
+// ...fonctionne de cette façon (pas ce que nous voulons) : 
 let area = height ?? (100 * width) ?? 50;
 ```
 
@@ -161,7 +162,7 @@ alert(x); // 2
     Il est utilisé pour attribuer des valeurs par défaut aux variables :
 
     ```js
-    // configurer height = 100, si height est null ou undefined
+    // configurer height=100, si height est null ou undefined
     height = height ?? 100;
     ```
 

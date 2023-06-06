@@ -2,11 +2,11 @@
 
 La syntaxe normale `{...}` permet de créer un seul objet. Mais souvent, nous devons créer de nombreux objets similaires, tels que plusieurs utilisateurs ou éléments de menu, etc.
 
-Cela peut être fait en utilisant les fonctions constructeur et l'opérateur `"new"`.
+Cela peut être fait en utilisant les fonctions du constructeur et l'opérateur `"new"`.
 
 ## La function constructeur
 
-Les fonctions constructeur sont techniquement des fonctions habituelles. Il existe cependant deux conventions :
+Les fonctions du constructeur sont techniquement des fonctions habituelles. Il existe cependant deux conventions :
 
 1. Elles  sont nommées avec une lettre majuscule en premier.
 2. Elles ne devraient être executées qu'avec l'opérateur `"new"`.
@@ -71,13 +71,13 @@ Si nous avons beaucoup de lignes de code concernant la création d'un seul objet
 
 ```js
 // create a function and immediately call it with new
-let user = new function() {
+let user = new function() { 
   this.name = "John";
   this.isAdmin = false;
 
   // ...autre code pour la création d'utilisateur
   // peut-être une logique complexe et des déclarations
-  // de variables locales etc.
+  // variables locales  etc
 };
 ```
 
@@ -117,7 +117,7 @@ Nous pouvons également faire des appels `new` et réguliers pour faire la même
 ```js run
 function User(name) {
   if (!new.target) { // si vous m'executer sans new
-    return new User(name); // ...j'ajouterai un new pour vous
+    return new User(name); // ...J'ajouterai du new pour vous
   }
 
   this.name = name;
@@ -152,7 +152,7 @@ function BigUser() {
   return { name: "Godzilla" };  // <-- retourne cet objet
 }
 
-alert( new BigUser().name );  // Godzilla, obtenu cet objet
+alert( new BigUser().name );  // Godzilla, got that object
 ```
 
 Et voici un exemple avec un `return` vide (ou nous pourrions placer une primitive après, peu importe) :
@@ -175,7 +175,7 @@ Généralement, les constructeurs n’ont pas d’instruction `return`. Nous men
 
 ```js
 let user = new User; // <-- pas de parenthèses
-// identique à
+// same as
 let user = new User();
 ```
 
@@ -213,12 +213,12 @@ john = {
 */
 ```
 
-Pour créer des objets complexes, il existe une syntaxe plus avancée, les [classes](info:classes), que nous allons couvrir plus tard.
+Pour créer des objets complexes, il existe une syntaxe plus avancée, [classes](info:classes), que nous allons couvrir plus tard.
 
 ## Résumé
 
 - Les fonctions constructeur ou, plus brièvement, les constructeurs, sont des fonctions normales, mais il est généralement convenu de les nommer avec une première lettre en majuscule.
-- Les fonctions constructeur ne doivent être appelées qu'avec `new`. Un tel appel implique la création d'un objet `this` vide au début de la fonction et le renvoi de l'objet complété à la fin.
+- Les fonctions constructeur ne doivent être appelées qu'avec `new`. Un tel appel implique la création d'un `this` vide au début et de le retourner complété à la fin.
 
 Nous pouvons utiliser des fonctions constructeurs pour créer plusieurs objets similaires.
 
@@ -227,5 +227,5 @@ JavaScript fournit des fonctions constructeur pour de nombreux objets intégrés
 ```smart header="Objets, nous reviendrons !"
 Dans ce chapitre, nous ne couvrons que les bases sur les objets et les constructeurs. Elles sont essentielles pour en savoir plus sur les types de données et les fonctions dans les chapitres suivants.
 
-Après avoir appris cela, nous reviendrons aux objets et les couvrirons en profondeur dans les chapitres <info:prototypes> et <info:classes>.
+Après avoir appris cela, dans le chapitre <info:object-oriented-programming> nous reviendrons aux objets et les couvrirons en profondeur, y compris l'héritage et les classes.
 ```

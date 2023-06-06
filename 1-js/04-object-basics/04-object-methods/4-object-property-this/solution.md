@@ -18,7 +18,7 @@ C'est parce que les règles qui définissent `this` ne prennent pas en compte la
 
 Ici, la valeur de `this` à l'intérieur de `makeUser()` est `undefined`, car elle est appelée en tant que fonction et non en tant que méthode avec la syntaxe au "point".
 
-La valeur de `this` est la même pour toute la fonction, les blocs de code et les littéraux d'objet ne l'affectent pas.
+La valeur de `this` est un pour toute la fonction, les blocs de code et les littéraux d'objet ne l'affectent pas.
 
 Donc `ref: this` prend actuellement le `this` courant de la fonction.
 
@@ -53,3 +53,4 @@ alert( user.ref().name ); // John
 ```
 
 Maintenant cela fonctionne parce que `user.ref()` est une méthode. Et la valeur de `this` est définie pour l'objet avant le point `.`.
+

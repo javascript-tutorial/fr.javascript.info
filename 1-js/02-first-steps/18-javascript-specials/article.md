@@ -43,7 +43,7 @@ for(;;) {
 
 Plus d'informations dans : <info:structure>.
 
-## Mode strict
+## Strict mode
 
 Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous devrions commencer les scripts avec `"use strict"`.
 
@@ -70,7 +70,6 @@ Peut être déclaré en utilisant :
 - `var` (à l'ancienne, nous le verrons plus tard)
 
 Un nom de variable peut inclure :
-
 - Lettres et chiffres, mais le premier caractère ne peut pas être un chiffre.
 - Les caractères `$` et `_` sont normaux, à égalité avec les lettres.
 - Les alphabets et les hiéroglyphes non latins sont également autorisés, mais ils ne sont généralement pas utilisés.
@@ -86,14 +85,13 @@ Il y a 8 types de données :
 
 - `number` pour les nombres à virgule flottante et les nombres entiers,
 - `bigint` pour des nombres entiers de longueur arbitraire,
-- `string` pour les chaînes de caractères,
+- `string` pour les chaînes de caractères
 - `boolean` pour les valeurs logiques : `true/false`,
 - `null` -- un type avec une seule valeur `null`, signifiant "vide" ou "n'existe pas",
 - `undefined` -- un type avec une seule valeur `undefined`, signifiant "non assigné",
-- `object` et `symbol` -- pour les structures de données complexes et les identifiants uniques, nous ne les avons pas encore appris.
+- `object` et `symbol` -- Pour les structures de données complexes et les identifiants uniques, nous ne les avons pas encore appris.
 
 L'opérateur `typeof` renvoie le type d'une valeur, à deux exceptions près :
-
 ```js
 typeof null == "object" // erreur dans le langage
 typeof function(){} == "function" // les fonctions sont traitées spécialement
@@ -146,19 +144,19 @@ Affectations
 : Il y a une assignation simple : `a = b` et des combinés comme `a *= 2`.
 
 Bitwise
-: Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) quand ils sont nécessaires.
+: Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators)) quand ils sont nécessaires.
 
 Conditionnel
 : Le seul opérateur avec trois paramètres : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
 
 Opérateurs logiques
-: ET logique `&&` et OU `||` effectuent une évaluation en circuit court puis renvoyent la valeur là où ils se sont arrêtés (pas nécessairement `true`/`false`). NOT logique `!` convertit l'opérande en type booléen et retourne la valeur inverse.
+: ET logique `&&` et OU `||` effectuent une évaluation en circuit court puis renvoyent la valeur là où ils se sont arrêtés(pas nécessairement `true`/`false`). NOT logique `!` convertit l'opérande en type booléen et retourne la valeur inverse.
 
 L'opérateur de coalescence des nuls
-: L'opérateur `??` permet de choisir une valeur définie dans une liste de variables. Le résultat de `a ?? b` est `a` sauf s'il est `null`/`undefined`, alors `b`.
+: L'opérateur `??` permet de choisir une valeur définie dans une liste de variables. Le résultat de `a ?? b` est `a` sauf s'il est `null/undefined`, alors `b`.
 
 Comparaisons
-: Le contrôle d’égalité `==` pour les valeurs de types différents les convertit en un nombre (sauf `null` et `undefined`, égales entre elles et rien d’autre), elles sont donc égales :
+: Le contrôle d’égalité `==` pour les valeurs de types différents les convertit en un nombre (sauf `null` et `undefined` égales entre elles et rien d’autre), elles sont donc égales :
 
     ```js run
     alert( 0 == false ); // true
@@ -282,4 +280,4 @@ Details : voir <info:function-basics>, <info:arrow-functions-basics>.
 
 ## Plus à venir
 
-C’était une brève liste de fonctionnalités de JavaScript. Pour l’instant, nous n’avons étudié que les bases. Plus loin dans le tutoriel, vous trouverez plus de fonctionnalités spéciales et avancées de JavaScript.
+C’était une brève liste de fonctionnalités JavaScript. Pour l’instant, nous n’avons étudié que les bases. Plus loin dans le tutoriel, vous trouverez plus de fonctionnalités spéciales et avancées de JavaScript.

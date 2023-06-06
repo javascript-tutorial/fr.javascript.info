@@ -18,13 +18,13 @@ Voici ce que vous devriez voir si vous le faites pour la première fois :
 
 ![](chrome-open-sources.svg)
 
-Le bouton <span class="devtools" style="background-position:-172px -98px"></span> ouvre le volet avec les fichiers.
+Le bouton <span class="devtools" style="background-position:-172px -98px"></span> ouvre l'onglet avec les fichiers.
 
 Cliquez dessus et sélectionnez `hello.js` dans l’arborescence. Voici ce qui devrait apparaître :
 
 ![](chrome-tabs.svg)
 
-Ici nous pouvons voir 3 parties :
+Ici nous pouvons voir 3 parties : 
 
 1. Le volet **explorateur de fichiers** répertorie les fichiers HTML, JavaScript, CSS et autres fichiers, y compris les images jointes à la page. Des extensions Chrome peuvent également apparaître ici.
 2. Le volet **Editeur de Code** affiche le code source.
@@ -60,7 +60,7 @@ Nous pouvons toujours trouver une liste de points d'arrêt dans le volet de droi
 - Sauter rapidement au point d'arrêt dans le code (en cliquant dessus dans le volet de droite).
 - Désactiver temporairement le point d'arrêt en le décochant.
 - Supprimer le point d'arrêt en cliquant avec le bouton droit de la souris et en sélectionnant Supprimer.
-- … Et ainsi de suite.
+- … Et ainsi de suite
 
 ```smart header="Points d'arrêt conditionnels"
 *Clic droit* sur le numéro de ligne permet de créer un point d'arrêt *conditionnel*. Il ne se déclenche que lorsque l'expression donnée, que vous devez fournir lors de sa création, est vraie.
@@ -123,7 +123,7 @@ Il y a des boutons pour cela en haut du volet de droite. Actionnons-les.
 <span class="devtools" style="background-position:-146px -168px"></span> -- "Reprendre" : continue l'exécution, raccourci clavier `key:F8`.
 : Reprend l'exécution. S'il n'y a pas de points d'arrêt supplémentaires, l'exécution continue et le débogueur perd le contrôle.
 
-    Voici ce que nous pouvons voir après un clic dessus :
+    Voici ce que nous pouvons voir après un clic dessus : 
 
     ![](chrome-sources-debugger-trace-1.svg)
 
@@ -137,11 +137,11 @@ Il y a des boutons pour cela en haut du volet de droite. Actionnons-les.
 <span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": lance la commande suivante, mais *n'entre pas dans une fonction*, raccourci clavier `key:F10`.
  : Similaire à la commande "Step" précédente, mais se comporte différemment si l'instruction suivante est un appel de fonction (pas une fonction intégrée, comme `alert`, mais une fonction qui nous est propre).
 
-Si nous les comparons, la commande "Step" entre dans un appel de fonction imbriqué et interrompt l'exécution à sa première ligne, tandis que "Step over" exécute l'appel de fonction imbriqué de manière invisible pour nous, en sautant les fonctions internes.
+    Si nous les comparons, la commande "Step" entre dans un appel de fonction imbriqué et interrompt l'exécution à sa première ligne, tandis que "Step over" exécute l'appel de fonction imbriqué de manière invisible pour nous, en sautant les fonctions internes.
 
-L'exécution est alors suspendue immédiatement après cette fonction.
+    L'exécution est alors suspendue immédiatement après cette fonction.
 
-C'est bien si nous ne sommes pas intéressés à voir ce qui se passe dans l'appel de fonction.
+    C'est bien si nous ne sommes pas intéressés à voir ce qui se passe dans l'appel de fonction.
 
 <span class="devtools" style="background-position:-4px -194px"></span> -- "Step into", raccourci clavier `key:F11`.
 : Cela ressemble à "Step", mais se comporte différemment dans le cas d'appels de fonctions asynchrones. Si vous commencez seulement à apprendre le JavaScript, vous pouvez alors ignorer la différence, car nous n'avons pas encore d'appels asynchrones.
@@ -167,10 +167,10 @@ C’est pratique lorsque nous voulons faire plusieurs pas en avant, mais nous so
 
 Pour afficher quelque chose sur la console depuis notre code, utilisez la fonction `console.log`.
 
-Par exemple, cela affiche les valeurs de `0` à `4` sur la console :
+Par exemple, cela affiche les valeurs de `0` à `4` sur la console : 
 
 ```js run
-// ouvrir la console pour visualiser
+// open console to see
 for (let i = 0; i < 5; i++) {
   console.log("value,", i);
 }
@@ -183,9 +183,9 @@ Si nous avons assez de logging dans notre code, nous pouvons voir ce qui se pass
 ## Résumé
 
 Comme nous pouvons le constater, il existe trois méthodes principales pour suspendre un script :
-1. Les points d'arrêt (breakpoint).
+1. A breakpoint.
 2. Les instructions du `debugger`.
-3. Une erreur (si les outils de développement sont ouverts et le bouton <span class="devtools" style="background-position:-90px -146px"></span> est activé)
+3. Une erreur (si les outils de développement sont ouverts et le bouton <span class="devtools" style="background-position:-90px -146px"></span> est "on")
 
 En pause, nous pouvons déboguer -- examiner les variables et suivre le code pour voir où l’exécution s’est mal passée.
 
@@ -193,4 +193,4 @@ Il y a beaucoup plus d'options dans les outils de développement que celles couv
 
 Les informations de ce chapitre sont suffisantes pour commencer le débogage, mais plus tard, en particulier si vous utilisez beaucoup de fonctions de navigateur, allez-y et examinez les fonctionnalités plus avancées des outils de développement.
 
-Oh, et vous pouvez aussi cliquer sur différents endroits des outils de développement et voir ce qui s’affiche. C’est probablement la voie la plus rapide pour apprendre les outils de développement. N'oubliez pas le clic droit et les menus contextuels !
+Oh, et vous pouvez aussi cliquer sur différents endroits des outils de développement et voir ce qui s’affiche. C’est probablement la voie la plus rapide pour apprendre les outils de développement. Ne pas oublier le clic droit aussi les menus contextuels !

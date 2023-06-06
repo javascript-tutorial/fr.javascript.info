@@ -198,14 +198,14 @@ admin.f = sayHi;
 */!*
 
 // ces appels ont un this différent
-// "this" à l'intérieur de la fonction est l'objet "avant le point"
+// "this" à l'intérieur de la fonction se trouve l'objet "avant le point"
 user.f(); // John  (this == user)
 admin.f(); // Admin  (this == admin)
 
 admin['f'](); // Admin (le point ou les crochets accèdent à la méthode - peu importe)
 ```
 
-La règle est simple : si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`. C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
+La règle est simple: si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`. C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
 
 ````smart header="Appel sans objet : `this` == undefined"
 Nous pouvons même appeler la fonction sans objet du tout :
@@ -220,7 +220,7 @@ sayHi(); // undefined
 
 Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder à `this.name`, il y aura une erreur.
 
-En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique que le mode strict corrige.
+En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique qui corrige `"use strict"`.
 
 Ce genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
 ````

@@ -72,7 +72,7 @@ if (!Math.trunc) { // si une telle fonction n'existe pas
 JavaScript est un langage très dynamique, les scripts peuvent ajouter/modifier toutes les fonctions, y compris celles intégrées.
 
 Deux librairies intéressantes de polyfills sont :
-- [core js](https://github.com/zloirock/core-js) qui prend en charge beaucoup de choses et permet d'inclure uniquement les fonctionnalités nécessaires.
+- [core js](https://github.com/zloirock/core-js) qui prend en charge beaucoup, permet d'inclure uniquement les fonctionnalités nécessaires.
 - [polyfill.io](https://polyfill.io) est un service qui fournit un script avec des polyfills, en fonction des fonctionnalités et du navigateur de l'utilisateur.
 
 
@@ -89,3 +89,4 @@ De bonnes ressources qui montrent l'état actuel de la prise en charge de divers
 - <https://caniuse.com/> - pour les fonctions liées au navigateur.
 
 P.S. Google Chrome est généralement le plus à jour avec les fonctionnalités du langage, essayez-le si une démonstration d'un tutoriel échoue. La plupart des démos de didacticiels fonctionnent avec n'importe quel navigateur moderne.
+
