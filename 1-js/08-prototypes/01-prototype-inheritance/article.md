@@ -33,7 +33,7 @@ rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
 
 Si nous recherchons une propriété dans `rabbit`, et qu'elle en manque, JavaScript la prend automatiquement à partir de `animal`.
 
-Par exemple:
+Par exemple :
 
 ```js
 let animal = {
@@ -54,7 +54,7 @@ alert( rabbit.eats ); // true (**)
 alert( rabbit.jumps ); // true
 ```
 
-Ici, la ligne `(*)` définit `animal` pour être un prototype de `lapin`.
+Ici, la ligne `(*)` définit `animal` comme le prototype de `lapin`.
 
 Ensuite, lorsque `alert` essaie de lire la propriété `rabbit.eats` `(**)`, ce n'est pas dans `rabbit`, donc JavaScript suit la référence `[[Prototype]]` et la trouve dans `animal` (regarde de bas en haut) :
 
@@ -201,14 +201,14 @@ let admin = {
 
 alert(admin.fullName); // John Smith (*)
 
-// le mutateur se déclanche!
+// le mutateur se déclanche !
 admin.fullName = "Alice Cooper"; // (**)
 
-alert(admin.fullName); // Alice Cooper, state of admin modified
-alert(user.fullName); // John Smith, state of user protected
+alert(admin.fullName); // Alice Cooper, l'état de admin est modifié
+alert(user.fullName); // John Smith, l'état de user est protégé
 ```
 
-Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le prototype `user`, donc c'est appelé. Et dans la ligne `(**)` la propriété a un mutateur dans le prototype, donc c'est appelé.
+Ici dans la ligne `(*)` la propriété `admin.fullName` a un accesseur dans le prototype `user`, il est donc appelé. Et dans la ligne `(**)` la propriété a un mutateur dans le prototype, il est donc appelé.
 
 ## La valeur de "this"
 
