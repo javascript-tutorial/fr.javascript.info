@@ -252,7 +252,7 @@ Pouvons-nous contourner le problème? Bien sûr, la méthode la plus fiable est 
     alert( sum.toFixed(2) ); // "0.30"
     ```
 
-    Veuillez noter que `toFixed` renvoie toujours une chaîne de caractères. Il s'assure qu'il a 2 chiffres après le point décimal. C'est pratique si nous avons un magasin en ligne et devons montrer `0.30$`. Pour les autres cas, nous pouvons utiliser le plus unaire `+` pour le contraindre en un nombre:
+Veuillez noter que `toFixed` renvoie toujours une chaîne de caractères. Il s'assure qu'il a 2 chiffres après le point décimal. C'est pratique si nous avons un magasin en ligne et devons montrer `0.30$`. Pour les autres cas, nous pouvons utiliser le plus unaire `+` pour le contraindre en un nombre:
 
     ```js run
     let sum = 0.1 + 0.2;
