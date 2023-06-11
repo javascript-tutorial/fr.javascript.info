@@ -335,33 +335,33 @@ alert( isFinite(num) );
 
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement un espace est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
-````smart header="`Number.isNaN` and `Number.isFinite`"
-[Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) and [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) methods are the more "strict" versions of `isNaN` and `isFinite` functions. They do not autoconvert their argument into a number, but check if it belongs to the `number` type instead.
+````smart header="`Number.isNaN` et `Number.isFinite`"
+Les méthodes [Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) et [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) sont des versions plus "strictes" des fonctions `isNaN` et `isFinite`. Elles ne convertissent pas automatiquement leur argument en nombre, mais vérifient s'il appartient au type `number`.
 
-- `Number.isNaN(value)` returns `true` if the argument belongs to the `number` type and it is `NaN`. In any other case it returns `false`.
+- `Number.isNaN(value)` retourne `true` si l'argument appartient au type `number` et s'il vaut `NaN`. Dans tous les autres cas, elle retourne `false`.
 
     ```js run
     alert( Number.isNaN(NaN) ); // true
     alert( Number.isNaN("str" / 2) ); // true
 
-    // Note the difference:
-    alert( Number.isNaN("str") ); // false, because "str" belongs to the string type, not the number type
-    alert( isNaN("str") ); // true, because isNaN converts string "str" into a number and gets NaN as a result of this conversion
+    // Notez la différence :
+    alert( Number.isNaN("str") ); // false, car "str" est de type "string"
+    alert( isNaN("str") ); // true, car isNaN convertit la string "str" en un nombre et obtient NaN comme résultatde la conversion
     ```
 
-- `Number.isFinite(value)` returns `true` if the argument belongs to the `number` type and it is not `NaN/Infinity/-Infinity`. In any other case it returns `false`.
+- `Number.isFinite(value)` retourne `true` si l'argument appartient au type `number` et s'il vaut ni `NaN`, ni `Infinity`, ni `-Infinity`. Dans tous les autres cas, elle retourne `false`.
 
     ```js run
     alert( Number.isFinite(123) ); // true
     alert( Number.isFinite(Infinity) ); // false
     alert( Number.isFinite(2 / 0) ); // false
 
-    // Note the difference:
-    alert( Number.isFinite("123") ); // false, because "123" belongs to the string type, not the number type
-    alert( isFinite("123") ); // true, because isFinite converts string "123" into a number 123
+    // Notez la différence :
+    alert( Number.isFinite("123") ); // false, car "123" est de type "string"
+    alert( isFinite("123") ); // true, car isFinite convertit la string "123" en un nombre 123
     ```
 
-In a way, `Number.isNaN` and `Number.isFinite` are simpler and more straightforward than `isNaN` and `isFinite` functions. In practice though, `isNaN` and `isFinite` are mostly used, as they're shorter to write.
+En quelque sorte, les fonction `Number.isNaN` et `Number.isFinite` sont plus simples et plus directes que les fonctions `isNaN` et `isFinite`. Cependant, en pratique `isNaN` et `isFinite` sont plus souvent utilisées car elles sont plus courtes à écrire.
 ````
 
 ```smart header="Comparer avec Object.is"
