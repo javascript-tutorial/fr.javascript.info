@@ -342,7 +342,7 @@ Utilisons des proxys pour empêcher tout accès aux propriétés commençant par
 
 Nous aurons besoin des pièges:
 - `get` lancer une erreur lors de la lecture d'une telle propriété,
-- `set` lancer une erreur lors de l'écriture, 
+- `set` lancer une erreur lors de l'écriture,
 - `deleteProperty` lancer une erreur lors de la suppression,
 - `ownKeys` pour exclure les propriétés commençant par `_` de `for..in` et les méthodes comme `Object.keys`.
 
@@ -376,7 +376,7 @@ user = new Proxy(user, {
   },
 *!*
   deleteProperty(target, prop) { // pour intercepter la suppression de propriété
-*/!*  
+*/!*
     if (prop.startsWith('_')) {
       throw new Error("Access denied");
     } else {
@@ -998,7 +998,7 @@ Nous utilisons ici `WeakMap` au lieu de `Map` car cela ne bloquera pas le "garba
 - spécification: [Proxy](https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots).
 - MDN: [Proxy](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Proxy).
 
-## Sommaire
+## Résumé
 
 Le `proxy` est un wrapper autour d'un objet, qui transfère des opérations sur celui-ci à l'objet, éventuellement en piégeant certains d'entre eux.
 

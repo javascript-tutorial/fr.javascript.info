@@ -234,7 +234,7 @@ Son contenu dépend de l'environnement. Dans le navigateur, il contient l'URL du
 
 ```html run height=0
 <script type="module">
-  alert(import.meta.url); // URL du script 
+  alert(import.meta.url); // URL du script
   // pour un script en ligne - l'URL de la page HTML actuelle
 </script>
 ```
@@ -398,7 +398,7 @@ Si nous utilisons des outils d'ensemble, alors que les scripts sont regroupés d
 
 Cela dit, les modules natifs sont également utilisables. Nous n’utilisons donc pas Webpack ici: vous pourrez le configurer plus tard.
 
-## Sommaire
+## Résumé
 
 Pour résumer, les concepts de base sont les suivants:
 
