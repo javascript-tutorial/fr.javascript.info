@@ -107,6 +107,7 @@ switch (+a) {
     alert("this doesn't run");
 }
 ```
+
 Ici `+a` donne `1`, qui est comparé à `b + 1` dans le `case`, et le code correspondant est exécuté.
 ````
 
@@ -149,6 +150,7 @@ Par exemple, considérons le code suivant :
 
 ```js run
 let arg = prompt("Enter a value?");
+
 switch (arg) {
   case '0':
   case '1':
@@ -162,6 +164,7 @@ switch (arg) {
   case 3:
     alert( 'Never executes!' );
     break;
+
   default:
     alert( 'An unknown value' );
 }
@@ -169,4 +172,4 @@ switch (arg) {
 
 1. Pour `0`, `1`, la première `alert` est exécutée.
 2. Pour `2`, la deuxième `alert` est exécutée.
-3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort dans le `case 3`! La variante par défaut sera donc exécutée.
+3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort dans le `case 3` ! La variante par défaut sera donc exécutée.
