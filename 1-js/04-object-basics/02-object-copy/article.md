@@ -39,7 +39,7 @@ L'objet est stocké quelque part dans la mémoire (du coté droit de l'image), t
 
 On peut imaginer la variable d'objet, ici `user`, comme une feuille de papier avec l'adresse de l'objet écrit dessus.
 
-Lorque l'on réalise une action avec l'objet, par exemple récupérer la propriété `user.name`, le moteur de Javascript regarde à l'adresse et réalise l'opération sur l'objet actuel.
+Lorque l'on réalise une action avec l'objet, par exemple récupérer la propriété `user.name`, le moteur de JavaScript regarde à l'adresse et réalise l'opération sur l'objet actuel.
 
 Et voilà pourquoi cela est important.
 
@@ -152,7 +152,7 @@ for (let key in user) {
 // maintenant clone est un objet complétemnet indépendant avec le même contenu
 clone.name = "Pete"; // On change les données de celui-ci
 
-alert( user.name ); // c'est toujour john dans l'objet copié
+alert( user.name ); // c'est toujour John dans l'objet copié
 ```
 
 On peut aussi utiliser la méthode [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cela.
@@ -220,7 +220,7 @@ Il existe également d'autres méthodes de clonage d'un objet, par ex. en utilis
 
 ## Clonage imbriqué
 
-Jusqu'à maintenant on suppose que toutes les propriétés de `user` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gèrer ces cas-là ?
+Jusqu'à maintenant on suppose que toutes les propriétés de `user` sont des primitives. Mais les propriétés peuvent être des références vers d'autres objets. Comment gérer ces cas-là ?
 
 Comme ceci :
 ```js run
@@ -278,11 +278,11 @@ let user = {
 let clone = structuredClone(user);
 */!*
 
-alert( user.sizes === clone.sizes ); // false, different objects
+alert( user.sizes === clone.sizes ); // false, c'est un objet différent
 
-// user and clone are totally unrelated now
-user.sizes.width = 60;    // change a property from one place
-alert(clone.sizes.width); // 50, not related
+// user et clone n'ont plus aucun lien entre eux
+user.sizes.width = 60;    // changer une propriété d'un endroit
+alert(clone.sizes.width); // 50, sans lien
 ```
 
 La méthode `structuredClone` peut cloner la plupart des types de données, tels que des objets, des tableaux, des valeurs primitives.
@@ -316,7 +316,7 @@ structuredClone({
 
 Les propriétés de fonction ne sont pas prises en charge.
 
-Pour gérer des cas aussi complexes, nous devrons peut-être utiliser une combinaison de méthodes de clonage, écrire du code personnalisé ou, pour ne pas réinventer la roue, prendre une implémentation existante, par exemple [_.cloneDeep(obj)](https://lodash.com /docs#cloneDeep) de la bibliothèque JavaScript [lodash](https://lodash.com).
+Pour gérer des cas aussi complexes, nous devrons peut-être utiliser une combinaison de méthodes de clonage, écrire du code personnalisé ou, pour ne pas réinventer la roue, prendre une implémentation existante, par exemple [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) de la bibliothèque JavaScript [lodash](https://lodash.com).
 
 ## Résumé
 
