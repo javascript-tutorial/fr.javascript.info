@@ -182,7 +182,7 @@ En d'autres termes, pour mettre ces termes au clair :
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
-Dans l'exemple ci-dessus, on pourrait dire : "la fonction `showMessage` est déclarée avec deux paramètres, puis appelée avec deux arguments : `from` et `"Hello"`".
+Dans l'exemple ci-dessus, on pourrait dire : "la fonction `showMessage` est déclarée avec deux paramètres, puis appelée avec deux arguments : `from` et `"Hello"`.
 
 
 ## Les valeurs par défaut
@@ -204,7 +204,7 @@ function showMessage(from, *!*text = "no text given"*/!*) {
   alert( from + ": " + text );
 }
 
-showMessage("Ann"); // Ann: aucun texte fourni
+showMessage("Ann"); // Ann: no text given
 ```
 
 Maintenant, si le paramètre `text` n'est pas passé, il obtiendra la valeur `"no text given"`.
@@ -219,10 +219,11 @@ Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une
 
 ```js run
 function showMessage(from, text = anotherFunction()) {
-  // anotherFunction() exécuté uniquement si aucun texte n'est fourni
+  // anotherFunction() est exécuté uniquement si aucun texte n'est fourni
   // son résultat devient la valeur de text
 }
 ```
+
 ```smart header="Évaluation des paramètres par défaut"
 
 En JavaScript, un paramètre par défaut est évalué chaque fois que la fonction est appelée sans le paramètre correspondant.
@@ -378,7 +379,7 @@ function doNothing() { /* vide */ }
 alert( doNothing() === undefined ); // true
 ```
 
-Une `return` vide est également identique à un `return undefined` :
+Un `return` vide est également identique à un `return undefined` :
 
 ```js run
 function doNothing() {
@@ -453,7 +454,7 @@ Quelques exemples de violation de cette règle :
 
 - `getAge` -- serait mauvais si elle affichait une `alert` avec l'âge (devrait seulement obtenir).
 - `createForm` -- serait mauvais s’il modifiait le document en y ajoutant un formulaire (il ne devrait que le créer et le renvoyer).
-- `checkPermission` -- serait mauvais si affiche le message d'accès accordé/refusé (doit uniquement effectuer la vérification et renvoyer le résultat).
+- `checkPermission` -- serait mauvais s'il affiche le message d'accès accordé/refusé (doit uniquement effectuer la vérification et renvoyer le résultat).
 
 Ces exemples supposent des significations communes de préfixes. Vous et votre équipe êtes libres de vous entendre sur d'autres sens, mais ils ne sont généralement pas très différents. Dans tous les cas, vous devez bien comprendre ce que signifie un préfixe, ce qu'une fonction préfixée peut et ne peut pas faire. Toutes les fonctions ayant le même préfixe doivent obéir aux règles. Et l'équipe devrait partager ces connaissances.
 ```

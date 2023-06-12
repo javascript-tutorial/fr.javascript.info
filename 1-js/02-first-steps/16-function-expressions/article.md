@@ -74,7 +74,7 @@ sayHi(); // Hello    //     cela fonctionne toujours aussi (pourquoi pas)
 Voici ce qui se passe ci-dessus en détail :
 
 1. La Déclaration de Fonction `(1)` crée la fonction et la place dans la variable nommée `sayHi`.
-2. La ligne `(2)` le copie dans la variable `func`. Veuillez noter à nouveau : il n'y a pas de parenthèses après `sayHi`. S'il y en avait, alors `func = sayHi()` écrirait *le résultat de l'appel* `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
+2. La ligne `(2)` la copie dans la variable `func`. Veuillez noter à nouveau : il n'y a pas de parenthèses après `sayHi`. S'il y en avait, alors `func = sayHi()` écrirait *le résultat de l'appel* `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
 3. Maintenant, la fonction peut être appelée à la fois en tant que `sayHi()` et `func()`.
 
 Nous aurions aussi pu utiliser une Fonction Expression pour déclarer `sayHi`, à la première ligne :
@@ -114,12 +114,12 @@ Le point-virgule serait là pour une affectation plus simple, telle que `let say
 
 Examinons plus d’exemples de fonctions passées en tant que valeurs et utilisant des expressions de fonction.
 
-Nous allons écrire une fonction `ask(question, oui, non)` avec trois paramètres :
+Nous allons écrire une fonction `ask(question, yes, no)` avec trois paramètres :
 
 `question`
 : Texte de la question
 
-`Yes`
+`yes`
 : Fonction à exécuter si la réponse est “Yes”
 
 `no`
@@ -130,7 +130,7 @@ La fonction doit poser la question et, en fonction de la réponse de l'utilisate
 ```js run
 *!*
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 */!*
@@ -151,13 +151,13 @@ En pratique, ces fonctions sont très utiles. La principale différence entre un
 
 **Les arguments `showOk` et `showCancel` de `ask` s'appellent des *fonctions callback* (fonctions de rappel) ou simplement des *callbacks* (rappels).**
 
-L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la "non" réponse.
+L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la réponse "non".
 
 Nous pouvons utiliser les Fonctions Expressions pour écrire la même fonction mais plus courte :
 
 ```js run no-beautify
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 
@@ -181,7 +181,6 @@ Une fonction peut être perçue comme une *action*.
 
 Nous pouvons tout aussi bien la passer en tant que variable ou l'exécuter si nous le voulons.
 ```
-
 
 ## Fonction Expression vs Fonction Déclaration
 
@@ -214,7 +213,7 @@ Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = f
 
 Les déclarations de fonction sont différentes.
 
-**Une fonction déclaration peut être appelée plus tôt que sa définition.**
+**Une Fonction Déclaration peut être appelée plus tôt que sa définition.**
 
 Par exemple, une fonction déclaration globale est visible dans tout le script, peu importe où elle se trouve.
 
@@ -250,7 +249,9 @@ let sayHi = function(name) {  // (*) plus de magie
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
 
+ 
 Une autre particularité des Fonctions Declaration est leur portée de bloc.
+ 
 
 **En mode strict, quand une Fonction Déclaration se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
@@ -295,7 +296,7 @@ if (age < 18) {
 */!*
                            //  |
   function welcome() {     //  |
-    alert("Hello!");      //  |  La déclaration de fonction est disponible
+    alert("Hello!");       //  |  La déclaration de fonction est disponible
   }                        //  |  partout dans le bloc où elle est déclarée
                            //  |
 *!*
