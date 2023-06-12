@@ -207,9 +207,9 @@ Tout d'abord, la syntaxe : comment les différencier dans le code.
 
 La différence la plus subtile est *quand* une fonction est créée par le moteur JavaScript.
 
-**Une Fonction Expression est créée lorsque l’exécution l’atteint et est utilisable à partir de cet moment.**
+**Une Fonction Expression est créée lorsque l’exécution l’atteint.**
 
-Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` -- voilà, la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.) à partir de maintenant.
+Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` , la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.).
 
 Les déclarations de fonction sont différentes.
 
@@ -217,9 +217,9 @@ Les déclarations de fonction sont différentes.
 
 Par exemple, une fonction déclaration globale est visible dans tout le script, peu importe où elle se trouve.
 
-Cela est dû aux algorithmes internes. Lorsque JavaScript se prépare à exécuter le script, il recherche d'abord les fonction déclarations globales et créer les fonctions. Nous pouvons considérer cela comme une "étape d'initialisation".
+Cela est dû aux algorithmes internes. Lorsque JavaScript se prépare à exécuter le script, il recherche d'abord les fonctions déclarations globales et les crée. Nous pouvons considérer cela comme une "étape d'initialisation".
 
-Et après le traitement de toutes les fonction déclarations, le code est exécuté. Donc, il a accès à ces fonctions.
+Une fois que toutes les déclarations de fonctions ont été traitées, le reste du code est exécuté. Ainsi, il a accès à ces fonctions pour les appeler.
 
 Par exemple, cela fonctionne :
 
@@ -249,7 +249,9 @@ let sayHi = function(name) {  // (*) plus de magie
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
 
-Une autre particularité des Fonction Déclaration est leur portée de bloc.
+ 
+Une autre particularité des Fonctions Declaration est leur portée de bloc.
+ 
 
 **En mode strict, quand une Fonction Déclaration se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
@@ -346,7 +348,7 @@ welcome(); // ok maintenant
 */!*
 ```
 
-Ou nous pourrions simplifier encore davantage en utilisant un opérateur point d'interrogation `?` :
+Ou nous pourrions simplifier encore davantage en utilisant un opérateur conditionnel ternaire `?` :
 
 ```js run
 let age = prompt("What is your age?", 18);
