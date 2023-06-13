@@ -6,7 +6,7 @@ importance: 5
 
 Imaginez nous avons un objet arbitraire `obj`, créé par une fonction constructeur - nous ne savons pas lequel, mais nous aimerions créer un nouvel objet à l'aide de celui-ci.
 
-Pouvons-nous le faire comme ça?
+Pouvons-nous le faire comme ça ?
 
 ```js
 let obj2 = new obj.constructor();
