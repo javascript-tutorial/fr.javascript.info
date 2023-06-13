@@ -30,7 +30,7 @@ D'un autre côté, il est important de comprendre les différences lors de la mi
 
 Les variables, déclarées avec `var`, ont une portée fonction ou globale. Ils sont visibles à travers des blocs.
 
-Par exemple:
+Par exemple :
 
 ```js run
 if (true) {
@@ -44,7 +44,7 @@ alert(test); // vrai, la variable existe après if
 
 Comme `var` ignore les blocs de code, nous avons une variable globale `test`.
 
-Si nous aurions utilisé `let test` au lieu de `var test`, la variable aurait seulement été visible à l'intérieur de `if`:
+Si nous aurions utilisé `let test` au lieu de `var test`, la variable aurait seulement été visible à l'intérieur de `if` :
 
 ```js run
 if (true) {
@@ -56,7 +56,7 @@ alert(test); // ReferenceError: test is not defined
 */!*
 ```
 
-Même principe pour les boucles: `var` ne peut pas être locale pour les blocs ni les boucles :
+Même principe pour les boucles : `var` ne peut pas être locale pour les blocs ni les boucles :
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -113,7 +113,7 @@ Les déclarations `var` sont traitées quand la fonction commence (ou quand le s
 
 En d'autres mots, les variables `var` sont définies au début de la fonction, peu importe où la définition se retrouve (présumant que la définition n'est pas dans une fonction imbriquée).
 
-Alors ce code:
+Alors ce code :
 
 ```js run
 function sayHi() {
@@ -128,7 +128,7 @@ function sayHi() {
 sayHi();
 ```
 
-...est techniquement identique à ceci (nous avons simplement bougé `var phrase` du code juste avant):
+...est techniquement identique à ceci (nous avons simplement bougé `var phrase` du code juste avant) :
 
 ```js run
 function sayHi() {
@@ -143,7 +143,7 @@ function sayHi() {
 sayHi();
 ```
 
-...ou même ceci (souvenez-vous, les blocs de code sont ignorés):
+...ou même ceci (souvenez-vous, les blocs de code sont ignorés) :
 
 ```js run
 function sayHi() {
@@ -162,7 +162,7 @@ sayHi();
 
 Certains nomment ce comportement "hoisting" (hisser) parce que toutes les `var` sont "hoisted" (hissées) jusqu'en haut de la fonction.
 
-Alors dans l'exemple au dessus, la branche `if (false)` n'est jamais exécutée, mais ce n'est pas grave. La `var` à l'intérieur de cette branche est traitée au début de la fonction, alors au moment `(*)`, la variable existe.
+Ainsi, dans l'exemple ci-dessus, la branche `if (false)` ne s'exécute jamais, mais cela n'a pas d'importance. La `var` qu'elle contient est traitée au début de la fonction, donc au moment de `(*)` la variable existe.
 
 **Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
@@ -170,7 +170,7 @@ Cela est mieux démontré avec un exemple :
 
 ```js run
 function sayHi() {
-  alert(phrase);  
+  alert(phrase);
 
 *!*
   var phrase = "Hello";
@@ -277,7 +277,7 @@ Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécu
 
 ## Résumé
 
-Il y a deux différences majeures entre `var` et `let/const`:
+Il y a deux différences majeures entre `var` et `let`/`const`:
 
 1. Les variables `var` n'ont pas de portée de bloc, leur visibilité est étendue à la fonction actuelle, ou globale, si elle est déclarée hors fonction.
 2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
