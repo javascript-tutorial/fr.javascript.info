@@ -6,28 +6,28 @@ Nous verrons d’abord les détails, puis comment l’utiliser pour ajouter de n
 
 ## Object.prototype
 
-Disons que nous produisons un objet vide:
+Disons que nous produisons un objet vide :
 
 ```js run
 let obj = {};
 alert( obj ); // "[object Object]" ?
 ```
 
-Où est le code qui génère la chaîne `"[object Object]"`? C'est une méthode `toString` intégrée, mais où est-elle? Le `obj` est vide!
+Où est le code qui génère la chaîne `"[object Object]"` ? C'est une méthode `toString` intégrée, mais où est-elle ? L'objet `obj` est vide !
 
 ...Mais la notation abrégée `obj = {}` est identique à `obj = new Object()`, où `Object` est une fonction constructeur de l'objet intégrée, avec son propre `prototype` référençant un énorme objet avec `toString` et d'autres méthodes.
 
-Voici ce qui se passe:
+Voici ce qui se passe :
 
 ![](object-prototype.svg)
 
-Lorsque `new Object()` est appelé (ou un objet littéral `{...}` est créé), le `[[Prototype]]` de celui-ci est défini sur `Object.prototype` conformément à la règle dont nous avons parlé dans le chapitre précédent:
+Lorsque `new Object()` est appelé (ou un objet littéral `{...}` est créé), le `[[Prototype]]` de celui-ci est défini sur `Object.prototype` conformément à la règle dont nous avons parlé dans le chapitre précédent :
 
 ![](object-prototype-1.svg)
 
 Ainsi, quand on appelle `obj.toString()`, la méthode est extraite de `Object.prototype`.
 
-Nous pouvons le vérifier comme ceci:
+Nous pouvons le vérifier comme ceci :
 
 ```js run
 let obj = {};
@@ -38,7 +38,7 @@ alert(obj.toString === obj.__proto__.toString); //true
 alert(obj.toString === Object.prototype.toString); //true
 ```
 
-Veuillez noter qu'il n'y a plus de `[[Prototype]]` dans la chaîne au dessus de `Object.prototype`:
+Veuillez noter qu'il n'y a plus de `[[Prototype]]` dans la chaîne au dessus de `Object.prototype` :
 
 ```js run
 alert(Object.prototype.__proto__); // null
@@ -52,26 +52,26 @@ Par exemple, lorsque nous créons un tableau `[1, 2, 3]`, le constructeur `new A
 
 Par spécification, tous les prototypes intégrés ont `Object.prototype` en haut. C'est pourquoi certaines personnes disent que "tout hérite d'objets".
 
-Voici la vue d'ensemble:
+Voici la vue d'ensemble :
 
 ![](native-prototypes-classes.svg)
 
-Vérifions les prototypes manuellement:
+Vérifions les prototypes manuellement :
 
 ```js run
 let arr = [1, 2, 3];
 
-// il hérite de Array.prototype?
+// il hérite de Array.prototype ?
 alert( arr.__proto__ === Array.prototype ); // true
 
-// puis de Object.prototype?
+// puis de Object.prototype ?
 alert( arr.__proto__.__proto__ === Object.prototype ); // true
 
 // et null tout en haut.
 alert( arr.__proto__.__proto__.__proto__ ); // null
 ```
 
-Certaines méthodes dans les prototypes peuvent se chevaucher, par exemple, `Array.prototype` a son propre `toString` qui répertorie les éléments délimités par des virgules:
+Certaines méthodes dans les prototypes peuvent se chevaucher, par exemple, `Array.prototype` a son propre `toString` qui répertorie les éléments délimités par des virgules :
 
 ```js run
 let arr = [1, 2, 3]
@@ -80,11 +80,9 @@ alert(arr); // 1,2,3 <-- le résultat de Array.prototype.toString
 
 Comme nous l'avons vu précédemment, `Object.prototype` a aussi `toString`, mais `Array.prototype` est plus proche dans la chaîne, la variante de tableau est donc utilisée.
 
-
 ![](native-prototypes-array-tostring.svg)
 
-
-Les outils intégrés au navigateur, tels que la console de développement Chrome, affichent également l'héritage (il faut éventuellement utiliser `console.dir` pour les objets intégrés):
+Les outils intégrés au navigateur, tels que la console de développement Chrome, affichent également l'héritage (il faut éventuellement utiliser `console.dir` pour les objets intégrés) :
 
 ![](console_dir_array.png)
 
@@ -101,7 +99,7 @@ alert(f.__proto__.__proto__ == Object.prototype); // true, hérite d'objets
 
 Une chose complexe se produit avec les chaînes, les nombres et les booléens.
 
-Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`,` Number` et `Boolean`, ils fournissent les méthodes et disparaissent.
+Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`, `Number` et `Boolean`, ils fournissent les méthodes et disparaissent.
 
 Ces objets sont créés de manière invisible pour nous et la plupart des moteurs les optimisent, mais la spécification le décrit exactement de cette façon. Les méthodes de ces objets résident également dans des prototypes, disponibles sous les noms `String.prototype`, `Number.prototype` et `Boolean.prototype`.
 
@@ -111,7 +109,7 @@ Les valeurs spéciales `null` et `undefined` se démarquent. Elles n'ont pas de 
 
 ## Modification des prototypes natifs [#native-prototype-change]
 
-Les prototypes natifs peuvent être modifiés. Par exemple, si nous ajoutons une méthode à `String.prototype`, elle devient disponible pour toutes les chaînes:
+Les prototypes natifs peuvent être modifiés. Par exemple, si nous ajoutons une méthode à `String.prototype`, elle devient disponible pour toutes les chaînes :
 
 ```js run
 String.prototype.show = function() {
