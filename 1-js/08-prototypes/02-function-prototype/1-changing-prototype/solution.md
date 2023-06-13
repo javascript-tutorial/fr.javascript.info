@@ -13,7 +13,7 @@ Réponses :
 
 3. `true`.
 
-     Toutes les opérations `delete` sont appliquées directement à l'objet. `Delete rabbit.eats` tente ici de supprimer la propriété `eats` de `rabbit`, mais ne l’a pas. Donc l'opération n'aura aucun effet.
+     Toutes les opérations `delete` sont appliquées directement à l'objet. `delete rabbit.eats` tente ici de supprimer la propriété `eats` de `rabbit`, mais ne l’a pas. Donc l'opération n'aura aucun effet.
 
 4. `undefined`.
 

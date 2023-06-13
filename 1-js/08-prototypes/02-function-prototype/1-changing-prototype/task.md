@@ -36,7 +36,7 @@ alert( rabbit.eats ); // true
     alert( rabbit.eats ); // ?
     ```
 
-2. ...Et si le code est comme ça (une ligne remplacé) ?
+2. ...Et si le code est comme ça (une ligne remplacée) ?
 
     ```js
     function Rabbit() {}
