@@ -17,7 +17,7 @@ Rabbit.prototype.sayHi = function() {
 let rabbit = new Rabbit("Rabbit");
 ```
 
-Ces appels font la même chose ou pas ?
+Ces appels font-ils la même chose ou non ?
 
 ```js
 rabbit.sayHi();
