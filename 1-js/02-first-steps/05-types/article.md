@@ -41,6 +41,7 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
     ```js run
     alert( Infinity ); // Infinity
     ```
+
 - `NaN` représente une erreur de calcul. C'est le résultat d'une opération mathématique incorrecte ou non définie, par exemple :
 
     ```js run
@@ -56,7 +57,6 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
     ```
 
     Donc, s'il y a `NaN` quelque part dans une expression mathématique, il se propage à l'ensemble du résultat (il n'y a qu'une seule exception : `NaN ** 0` vaut `1`).
-
 
 ```smart header="Les opérations mathématiques sont sûres"
 Faire des maths est sans danger en JavaScript. Nous pouvons faire n'importe quoi : diviser par zéro, traiter les chaînes non numériques comme des nombres, etc.
@@ -228,7 +228,6 @@ Le type `symbol` est utilisé pour créer des identificateurs uniques pour les o
 
 L'opérateur `typeof` renvoie le type de l'argument. Il est utile lorsqu'on souhaite traiter différemment les valeurs de différents types ou de faire une vérification rapide.
 
-
 L'appel `typeof x` renvoie une chaîne de caractères avec le nom du type :
 
 ```js
@@ -262,8 +261,6 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
 2. Le résultat de `typeof null` est `"object"`. C'est une erreur officiellement reconnue dans `typeof`, datant des premiers jours de JavaScript et conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Le comportement de `typeof` est incorrect ici.
 3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
-
-
 
 ```smart header="La syntaxe `typeof(x)`"
 Vous pouvez également rencontrer une autre syntaxe : `typeof(x)`. C'est la même chose que `typeof x`.
