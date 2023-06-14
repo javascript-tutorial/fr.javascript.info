@@ -1,6 +1,6 @@
 Nous pouvons utiliser cette approche si nous sommes sûrs que la propriété `"constructeur"` a la valeur correcte.
 
-Par exemple, si nous ne touchons pas le `"prototype"` par défaut, alors ce code fonctionne à coup sûr:
+Par exemple, si nous ne touchons pas le `"prototype"` par défaut, alors ce code fonctionne à coup sûr :
 
 ```js run
 function User(name) {
@@ -10,14 +10,14 @@ function User(name) {
 let user = new User('John');
 let user2 = new user.constructor('Pete');
 
-alert( user2.name ); // Pete (ça marche!)
+alert( user2.name ); // Pete (ça marche !)
 ```
 
 Cela a fonctionné, car `User.prototype.constructor == User`.
 
 ..Mais si quelqu'un, pour ainsi dire, écrase `User.prototype` et oublie de recréer `constructor` pour faire référence à `User`, il échouera.
 
-Par exemple:
+Par exemple :
 
 ```js run
 function User(name) {
@@ -33,9 +33,9 @@ let user2 = new user.constructor('Pete');
 alert( user2.name ); // undefined
 ```
 
-Pourquoi `user2.name` est `undefined`?
+Pourquoi `user2.name` est `undefined` ?
 
-Voici comment `new user.constructor('Pete')` fonctionne:
+Voici comment `new user.constructor('Pete')` fonctionne :
 
 1. Tout d'abord, il cherche `constructor` dans `user`. Rien.
 2. Ensuite, il suit la chaîne de prototypes. Le prototype de `user` est `User.prototype`, et il n'a pas non plus de `constructor` (parce que nous avons "oublié" de le régler correctement !).

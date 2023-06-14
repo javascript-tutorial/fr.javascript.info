@@ -319,12 +319,12 @@ Remarque, il y a une chose amusante. D'où vient la méthode `rabbit.hasOwnPrope
 
 ...Mais pourquoi `hasOwnProperty` n'apparaît pas dans la boucle `for..in`, comme `eats` et `jumps`, s'il répertorie toutes les propriétés héritées.
 
-La réponse est simple : ce n'est pas énumérable. Comme toutes les autres propriétés de `Object.prototype`, il possède l'attribut `enumerable: false`. C'est pourquoi ils ne sont pas répertoriés. Et `for..in` ne répertorie que les propriétés énumérables. C'est pourquoi elle et le reste des propriétés `Object.prototype` ne sont pas listés.
+La réponse est simple : ce n'est pas énumérable. Comme toutes les autres propriétés de `Object.prototype`, il possède l'attribut `enumerable: false`. C'est pourquoi ils ne sont pas répertoriés. Et `for..in` ne répertorie que les propriétés énumérables. C'est pourquoi elle et le reste des propriétés de `Object.prototype` ne sont pas listés.
 
 ```smart header="Presque toutes les autres méthodes d'obtention de clé/valeur ignorent les propriétés héritées"
 Presque toutes les autres méthodes d'obtention de clé/valeur, telles que `Object.keys`, `Object.values` et ainsi de suite ignorent les propriétés héritées.
 
-Ils ne fonctionnent que sur l'objet lui-même. Les propriétés du prototype ne sont *pas* prises en compte.
+Elles ne fonctionnent que sur l'objet lui-même. Les propriétés du prototype ne sont *pas* prises en compte.
 ```
 
 ## Résumé
