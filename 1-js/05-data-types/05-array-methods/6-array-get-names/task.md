@@ -4,9 +4,9 @@ importance: 5
 
 # Map en noms
 
-Vous avez un tableau d'objets `user`, chacun ayant` user.name`. Écrivez le code qui le convertit en un tableau de noms.
+Vous avez un tableau d'objets `user`, chacun ayant `user.name`. Écrivez le code qui le convertit en un tableau de noms.
 
-Par exemple:
+Par exemple :
 
 ```js no-beautify
 let john = { name: "John", age: 25 };
@@ -19,4 +19,3 @@ let names = /* ... votre code */
 
 alert( names ); // John, Pete, Mary
 ```
-

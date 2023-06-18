@@ -1,4 +1,4 @@
-We can use `slice()` to make a copy and run the sort on it:
+Nous pouvons utiliser `slice()` pour faire une copie et exécuter le tri sur celle-ci :
 
 ```js run
 function copySorted(arr) {
@@ -14,4 +14,3 @@ let sorted = copySorted(arr);
 alert( sorted );
 alert( arr );
 ```
-

@@ -36,7 +36,7 @@ let guestList = `Guests:
  * Mary
 `;
 
-alert(guestList); // a list of guests, multiple lines
+alert(guestList); // une liste d'invités sur plusieurs lignes
 ```
 
 Ça a l'air naturel, non? Mais les guillemets simples ou doubles ne fonctionnent pas de cette façon.
@@ -50,8 +50,7 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Les guillemets simples et doubles proviennent d'anciens temps de la création linguistique lorsque la nécessité de chaînes multilignes n'était pas prise en compte. Les backticks sont apparus beaucoup plus tard et sont donc plus polyvalents.
 
-Les Backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Cette fonctionnalité est appelée "tagged templates", elle est rarement vue, mais vous pouvez en savoir plus à ce sujet dans la doc MDN : [Template literals](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
-
+Les backticks nous permettent également de spécifier un "modèle de fonction" avant le premier backtick. La syntaxe est la suivante : <code>func&#96;string&#96;</code>. La fonction `func` est appelée automatiquement, elle reçoit la chaîne de caractères et les expressions incorporées et peut les traiter. Cette fonctionnalité est appelée "tagged templates", elle est rarement vue, mais vous pouvez en savoir plus à ce sujet dans la doc MDN : [Template literals](mdn:/JavaScript/Reference/Template_literals#Tagged_templates).
 
 ## Caractères spéciaux
 
@@ -116,8 +115,7 @@ Outre ces caractères spéciaux, il existe également une notation spéciale pou
 
 ## Longueur de chaîne de caractères
 
-
-La propriété `length` a la longueur de la chaîne de caractères :
+La propriété `length` indique la longueur de la chaîne de caractères :
 
 ```js run
 alert( `My\n`.length ); // 3
@@ -144,7 +142,7 @@ alert( str.at(0) ); // H
 
 // le dernier caractère
 alert( str[str.length - 1] ); // o
-alert( str.at(-1) );
+alert( str.at(-1) ); // o
 ```
 
 Comme vous pouvez le voir, la méthode `.at(pos)` a l'avantage de permettre une position négative. Si `pos` est négatif, alors il est compté à partir de la fin de la chaîne de caractères.
@@ -164,11 +162,11 @@ Nous pouvons également parcourir les caractères en utilisant un `for..of` :
 
 ```js run
 for (let char of "Hello") {
-  alert(char); // H,e,l,l,o (char devient "H", ensuite "e", ensuite "l" etc)
+  alert(char); // H,e,l,l,o (char devient "H", ensuite "e", ensuite "l", etc.)
 }
 ```
 
-## Les chaînes de caractères sont immuables 
+## Les chaînes de caractères sont immuables
 
 Les chaînes de caractères ne peuvent pas être changées en JavaScript. Il est impossible de modifier un caractère.
 
@@ -241,7 +239,6 @@ let str = 'Widget with id';
 alert( str.indexOf('id', 2) ) // 12
 ```
 
-
 Si toutes les occurrences nous intéressent, nous pouvons exécuter `indexOf` dans une boucle. Chaque nouvel appel est passé avec la position après le match précédent :
 
 ```js run
@@ -305,7 +302,7 @@ if (str.indexOf("Widget") != -1) {
 
 ### includes, startsWith, endsWith
 
-La méthode plus moderne [str.includes(substr, pos)](mdn:js/String/includes) retourne `true/false` en fonction de si `str` contient `substr`.
+La méthode plus moderne [str.includes(substr, pos)](mdn:js/String/includes) retourne `true`/`false` en fonction de si `str` contient `substr`.
 
 C’est le bon choix si nous devons tester la présence, mais n’avons pas besoin de sa position :
 
@@ -351,7 +348,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     alert( str.slice(2) ); // 'ringify', à partir de la 2e position jusqu'à la fin
     ```
 
-    Des valeurs négatives pour `start/end` sont également possibles. Elles veulent dire que la position est comptée à partir de la fin de la chaîne de caractères :
+    Des valeurs négatives pour `start`/`end` sont également possibles. Elles veulent dire que la position est comptée à partir de la fin de la chaîne de caractères :
 
     ```js run
     let str = "strin*!*gif*/!*y";
@@ -361,7 +358,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     ```
 
 `str.substring(start [, end])`
-: Renvoie la partie de la chaîne de caractères *entre* `start` et `end` (`end` non inclus)
+: Renvoie la partie de la chaîne de caractères *entre* `start` et `end` (`end` non inclus).
 
     C'est presque la même chose que `slice`, mais cela permet à `start` d'être supérieur à `end` (dans ce cas, il échange simplement les valeurs `start` et `end`).
 
@@ -399,7 +396,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     alert( str.substr(-4, 2) ); // 'gi', à partir de la 4ème position on obtient 2 caractères
     ```
 
-Cette méthode réside dans l'[Annexe B](https://tc39.es/ecma262/#sec-string.prototype.substr) de la spécification du langage. Cela signifie que seuls les moteurs Javascript hébergés par un navigateur doivent le prendre en charge et qu'il n'est pas recommandé de l'utiliser. En pratique, il est supporté partout.
+Cette méthode réside dans l'[Annexe B](https://tc39.es/ecma262/#sec-string.prototype.substr) de la spécification du langage. Cela signifie que seuls les moteurs JavaScript hébergés par un navigateur doivent le prendre en charge et qu'il n'est pas recommandé de l'utiliser. En pratique, il est supporté partout.
 
 Récapitulons ces méthodes pour éviter toute confusion :
 
@@ -409,11 +406,10 @@ Récapitulons ces méthodes pour éviter toute confusion :
 | `substring(start, end)` | entre `start` et `end`                  | les valeurs négatives signifient `0` |
 | `substr(start, length)` | de `start` obtient `length` caractères  | permet un `start` negatif            |
 
-
 ```smart header="Lequel choisir ?"
 Tous peuvent faire le travail. Formellement, `substr` présente un inconvénient mineur : il n’est pas décrit dans la spécification JavaScript principale, mais dans l’Annexe B, qui couvre les fonctionnalités réservées au navigateur qui existent principalement pour des raisons historiques. Ainsi, les environnements autres que les navigateurs peuvent ne pas le prendre en charge. Mais dans la pratique, cela fonctionne partout.
 
-Parmi les deux autres variantes, `slice` est un peu plus flexible, il permet des arguments négatifs et une écriture plus courte. 
+Parmi les deux autres variantes, `slice` est un peu plus flexible, il permet des arguments négatifs et une écriture plus courte.
 
 Donc, pour une utilisation pratique, il suffit de ne retenir que "slice".
 ```
@@ -424,7 +420,7 @@ Comme nous le savons du chapitre <info:comparison>, les strings sont comparées 
 
 Bien que, il y a quelques bizarreries.
 
-1. Une lettre minuscule est toujours plus grande que la majuscule :
+1. Une lettre minuscule est toujours plus grande qu'une majuscule :
 
     ```js run
     alert( 'a' > 'Z' ); // true
@@ -436,9 +432,9 @@ Bien que, il y a quelques bizarreries.
     alert( 'Österreich' > 'Zealand' ); // true
     ```
 
-    Cela peut conduire à des résultats étranges si nous trions ces noms de pays. Habituellement, les gens s'attendent à `Zealand` pour venir après `Österreich` dans la liste.
+    Cela peut conduire à des résultats étranges si nous trions ces noms de pays. Habituellement, les gens s'attendent à trouver `Zealand` après `Österreich` dans la liste.
 
-Pour comprendre ce qui se passe, nous devons être conscients que les chaînes de caractères en Javascript sont encodées en utilisant [UTF-16](https://en.wikipedia.org/wiki/UTF-16). C'est-à-dire : chaque caractère a un code numérique correspondant.
+Pour comprendre ce qui se passe, nous devons être conscients que les chaînes de caractères en JavaScript sont encodées en utilisant [UTF-16](https://en.wikipedia.org/wiki/UTF-16). C'est-à-dire que chaque caractère a un code numérique correspondant.
 
 Il existe des méthodes spéciales qui permettent d'obtenir le caractère pour le code et inversement :
 
@@ -453,7 +449,7 @@ Il existe des méthodes spéciales qui permettent d'obtenir le caractère pour l
     ```
 
 `String.fromCodePoint(code)`
-: Crée un caractère par son `code` chiffre 
+: Crée un caractère par son `code` chiffre
 
     ```js run
     alert( String.fromCodePoint(90) ); // Z
@@ -483,7 +479,6 @@ Les caractères sont comparés par leur code numérique. Le plus grand code sign
 - Toutes les lettres minuscules vont après les lettres majuscules car leurs codes sont plus grands.
 - Certaines lettres comme `Ö` se distinguent de l'alphabet principal. Ici, le code est supérieur à tout ce qui va de `a` à `z`.
 
-
 ### Les comparaisons correctes [#comparaisons-correctes]
 
 L'algorithme "approprié" pour effectuer des comparaisons de chaînes est plus complexe qu'il n'y paraît, car les alphabets diffèrent d'une langue à l'autre.
@@ -500,26 +495,23 @@ L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier
 - Renvoie un nombre positif si `str` est supérieur à `str2`
 - Renvoie `0` s'ils sont équivalents.
 
-
 Par exemple :
 
 ```js run
 alert( 'Österreich'.localeCompare('Zealand') ); // -1
 ```
 
-Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/localeCompare), ce qui lui permet de spécifier la langue (par défaut, pris dans l'environnement, l'ordre des lettres dépend de la langue.) et de définir des règles supplémentaires telles que la sensibilité à la casse ou doit-on traiter `"a"` et `"á"` de la même manière, etc.
-
-
+Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/localeCompare), ce qui lui permet de spécifier la langue (par défaut, pris dans l'environnement, l'ordre des lettres dépend de la langue) et de définir des règles supplémentaires telles que la sensibilité à la casse ou doit-on traiter `"a"` et `"á"` de la même manière, etc.
 
 ## Résumé
 
-- Il existe 3 types de quotes. Les Backticks permettent à une chaîne de s'étendre sur plusieurs lignes et d'intégrer des expressions `${…}`.
+- Il existe 3 types de quotes : simples (`'`), doubles (`"`) et les backticks (`` ` ``). Les backticks permettent à une chaîne de s'étendre sur plusieurs lignes et d'intégrer des expressions `${…}`.
 - Nous pouvons utiliser des caractères spéciaux, comme un saut de ligne `\n`.
-- Pour obtenir un caractère, utilisez : `[]`.
-- Pour obtenir un substring utilisez : `slice` ou `substring`.
-- Pour mettre une chaîne de caractères en minuscule ou en majuscule, utilisez : `toLowerCase/toUpperCase`.
-- Pour rechercher un substring utilisez : `indexOf`, ou `includes/startsWith/endsWith` pour de simple vérifications.
-- Pour comparer les chaînes de caractères en fonction de la langue, utilisez : `localeCompare`, sinon, ils sont comparés par les codes de caractères.
+- Pour obtenir un caractère d'une string, utilisez `[]` ou la méthode `at`.
+- Pour obtenir un substring, utilisez les méthodes `slice` ou `substring`.
+- Pour mettre une chaîne de caractères en minuscule ou en majuscule, utilisez les méthodes `toLowerCase` ou `toUpperCase`.
+- Pour rechercher un substring, utilisez `indexOf`, ou `includes` / `startsWith` / `endsWith` pour de simple vérifications.
+- Pour comparer les chaînes de caractères en fonction de la langue, utilisez la méthode `localeCompare`, si non ils sont comparés par les codes de caractères.
 
 Il existe plusieurs autres méthodes utiles dans les strings :
 

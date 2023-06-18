@@ -11,4 +11,3 @@ La valeur résultante doit être renvoyée sous forme de nombre.
 Le visiteur peut également arrêter le processus en entrant une ligne vide ou en appuyant sur "CANCEL". Dans ce cas, la fonction doit renvoyer `null`.
 
 [Lancer la démo]
-

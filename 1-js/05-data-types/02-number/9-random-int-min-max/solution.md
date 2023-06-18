@@ -1,10 +1,10 @@
 # La solution simple mais fausse
 
-La solution la plus simple mais fausse serait de générer une valeur de `min` à `max` et de l'arrondir:
+La solution la plus simple mais fausse serait de générer une valeur de `min` à `max` et de l'arrondir :
 
 ```js run
 function randomInteger(min, max) {
-  let rand = min + Math.random() * (max - min); 
+  let rand = min + Math.random() * (max - min);
   return Math.round(rand);
 }
 
@@ -15,7 +15,7 @@ La fonction marche, mais elle est incorrecte. La probabilité d'obtenir les vale
 
 Si vous exécutez l'exemple ci-dessous plusieurs fois, vous verrez facilement que `2` apparaît le plus souvent.
 
-Cela se produit car `Math.round()` obtient des nombres aléatoires à partir de l'intervalle `1..3` et les arrondit comme ici:
+Cela se produit car `Math.round()` obtient des nombres aléatoires à partir de l'intervalle `1..3` et les arrondit comme ici :
 
 ```js no-beautify
 values from 1    ... to 1.4999999999  devient 1
@@ -27,7 +27,7 @@ Maintenant, nous pouvons clairement voir que `1` obtient deux fois moins de vale
 
 # La bonne solution
 
-il existe de nombreuses solutions correctes à la tâche. L'une d'elles consiste à ajuster les limites d'intervalle. Pour garantir les mêmes intervalles, nous pouvons générer des valeurs comprises entre `0.5` et `3.5`, ajoutant ainsi les probabilités requises:
+Il existe de nombreuses solutions correctes à la tâche. L'une d'elles consiste à ajuster les limites d'intervalle. Pour garantir les mêmes intervalles, nous pouvons générer des valeurs comprises entre `0.5` et `3.5`, ajoutant ainsi les probabilités requises :
 
 ```js run
 *!*
@@ -55,7 +55,7 @@ function randomInteger(min, max) {
 alert( randomInteger(1, 3) );
 ```
 
-Maintenant,tous les intervalles sont mappés de cette façon:
+Maintenant, tous les intervalles sont mappés de cette façon :
 
 ```js no-beautify
 values from 1  ... to 1.9999999999  devient 1

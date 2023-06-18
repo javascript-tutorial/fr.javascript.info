@@ -2,9 +2,9 @@ importance: 3
 
 ---
 
-# Le tableau est-il copié?
+# Le tableau est-il copié ?
 
-Qu'est-ce que ce code va montrer?
+Qu'est-ce que ce code va montrer ?
 
 ```js
 let fruits = ["Apples", "Pear", "Orange"];
@@ -13,7 +13,6 @@ let fruits = ["Apples", "Pear", "Orange"];
 let shoppingCart = fruits;
 shoppingCart.push("Banana");
 
-// Qu'y a-t-il dans fruits?
+// Qu'y a-t-il dans fruits ?
 alert( fruits.length ); // ?
 ```
-

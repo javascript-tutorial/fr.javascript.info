@@ -4,7 +4,7 @@ Supposons que nous avons un objet complexe et que nous aimerions le convertir en
 
 Naturellement, une telle chaîne devrait inclure toutes les propriétés importantes.
 
-Nous pourrions implémenter la conversion comme ceci:
+Nous pourrions implémenter la conversion comme ceci :
 
 ```js run
 let user = {
@@ -29,12 +29,13 @@ Heureusement, il n'est pas nécessaire d'écrire le code pour gérer tout cela. 
 
 Le [JSON](http://en.wikipedia.org/wiki/JSON) (JavaScript Object Notation) est un format général pour représenter les valeurs et les objets. Il est décrit comme tel dans le standard [RFC 4627](http://tools.ietf.org/html/rfc4627). Initialement, il était conçu pour JavaScript, mais de nombreux autres langages disposent également de bibliothèques pour le gérer. Il est donc facile d’utiliser JSON pour l’échange de données lorsque le client utilise JavaScript et que le serveur est écrit sur Ruby/PHP/Java et bien d'autres.
 
-JavaScript fournit des méthodes:
+JavaScript fournit des méthodes :
 
 - `JSON.stringify` pour convertir des objets en JSON.
 - `JSON.parse` pour reconvertir JSON en objet.
 
-Par exemple, nous allons `JSON.stringify` un student (etudiant):
+Par exemple, nous allons `JSON.stringify` un student (étudiant) :
+
 ```js run
 let student = {
   name: 'John',
@@ -48,11 +49,11 @@ let student = {
 let json = JSON.stringify(student);
 */!*
 
-alert(typeof json); //  nous avons une string!
+alert(typeof json); // nous avons une string !
 
 alert(json);
 *!*
-/* JSON-encoded object:
+/* Objet encodé en JSON :
 {
   "name": "John",
   "age": 30,
@@ -66,8 +67,7 @@ alert(json);
 
 La méthode `JSON.stringify(student)` prend l'objet et le convertit en une chaîne.
 
-La chaine `json` résultante est appelé un objet *JSON-encoded* ou *serialized* ou *stringified* ou *marshalled*. Nous sommes prêts à l'envoyer par le câble ou à le placer dans un simple stockage de données.
-
+La chaine `json` résultante est appelé un objet *JSON-encoded* ou *serialized* (sérialisé) ou *stringified* ou *marshalled*. Nous sommes prêts à l'envoyer par le câble ou à le placer dans un simple stockage de données.
 
 Veuillez noter qu'un objet JSON-encoded a plusieurs différences importantes par rapport au objet littéral :
 
@@ -80,10 +80,10 @@ JSON prend en charge les types de données suivants :
 
 - Objets `{ ... }`
 - Tableaux `[ ... ]`
-- Primitives:
+- Primitives :
     - chaînes,
     - nombres,
-    - valeurs booléennes `true/false`,
+    - valeurs booléennes `true`/`false`,
     - `null`.
 
 Par exemple :
@@ -102,7 +102,7 @@ alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]
 
 JSON est une spécification indépendante du langage et ne contenant que des données. Par conséquent, certaines propriétés d'objet spécifiques à JavaScript sont ignorées par `JSON.stringify`.
 
-À savoir:
+À savoir :
 
 - Propriétés de fonction (méthodes).
 - Clés et valeurs symboliques.
@@ -124,7 +124,7 @@ D'habitude ça va. Si ce n'est pas ce que nous souhaitons, nous verrons bientôt
 
 Le grand avantage est que les objets imbriqués sont pris en charge et convertis automatiquement.
 
-Par exemple:
+Par exemple :
 
 ```js run
 let meetup = {
@@ -138,7 +138,7 @@ let meetup = {
 };
 
 alert( JSON.stringify(meetup) );
-/* La structure entière est stringified:
+/* La structure entière est stringified :
 {
   "title":"Conference",
   "room":{"number":23,"participants":["john","ann"]},
@@ -146,9 +146,9 @@ alert( JSON.stringify(meetup) );
 */
 ```
 
-La limitation importante: il ne doit pas y avoir de références circulaires.
+La limitation importante est qu'il ne doit pas y avoir de références circulaires.
 
-Par exemple:
+Par exemple :
 
 ```js run
 let room = {
@@ -160,7 +160,7 @@ let meetup = {
   participants: ["john", "ann"]
 };
 
-meetup.place = room;       // meetup references room
+meetup.place = room;      // meetup references room
 room.occupiedBy = meetup; // room references meetup
 
 *!*
@@ -168,14 +168,13 @@ JSON.stringify(meetup); // Erreur: Conversion d'une structure circulaire en JSON
 */!*
 ```
 
-Ici, la conversion échoue à cause d'une référence circulaire: `room.occupiedBy` references `meetup`, et `meetup.place` references `room`:
+Ici, la conversion échoue à cause d'une référence circulaire : `room.occupiedBy` references `meetup`, et `meetup.place` references `room` :
 
 ![](json-meetup.svg)
 
+## Exclure et transformer : replacer
 
-## Exclure et transformer: replacer
-
-La syntaxe complète de `JSON.stringify` est:
+La syntaxe complète de `JSON.stringify` est :
 
 ```js
 let json = JSON.stringify(value[, replacer, space])
@@ -185,7 +184,7 @@ Value
 : Une valeur à encoder.
 
 Replacer
-: Tableau de propriétés à encoder ou une fonction de mapping`function(key, value)`.
+: Tableau de propriétés à encoder ou une fonction de mapping `function(key, value)`.
 
 Space
 : Quantité d'espace à utiliser pour le formatage
@@ -194,7 +193,7 @@ La plupart du temps, `JSON.stringify` est utilisé avec le premier argument uniq
 
 Si nous lui passons un tableau de propriétés, seules ces propriétés seront encodées.
 
-Par exemple:
+Par exemple :
 
 ```js run
 let room = {
@@ -240,13 +239,13 @@ alert( JSON.stringify(meetup, *!*['title', 'participants', 'place', 'name', 'num
 */
 ```
 
-Maintenant tout sauf `occupiedBy` est serialized. Mais la liste des propriétés est assez longue.
+Maintenant tout sauf `occupiedBy` est serialisé. Mais la liste des propriétés est assez longue.
 
 Heureusement, nous pouvons utiliser une fonction au lieu d'un tableau comme `replacer`.
 
 La fonction sera appelée pour chaque paire de `(key, value)` et devrait renvoyer la valeur "remplacée", qui sera utilisée à la place de celle d'origine. Ou `undefined` si la valeur doit être ignorée.
 
-Dans notre cas, nous pouvons retourner une `value` "en l'état" pour tout sauf `occupiedBy`. Pour ignorer `occupiedBy`, le code ci-dessous retourne `undefined`:
+Dans notre cas, nous pouvons retourner une `value` "en l'état" pour tout sauf `occupiedBy`. Pour ignorer `occupiedBy`, le code ci-dessous retourne `undefined` :
 
 ```js run
 let room = {
@@ -276,7 +275,7 @@ name:         John
 name:         Alice
 place:        [object Object]
 number:       23
-occupiedBy: [object Object]
+occupiedBy:   [object Object]
 */
 ```
 
@@ -285,7 +284,6 @@ Veuillez noter que la fonction `replacer` récupère chaque paire clé/valeur, y
 Le premier appel est spécial. Il est fabriqué en utilisant un "objet wrapper" spécial: `{"": meetup}`. En d'autres termes, la première paire `(key, value)` a une clé vide, et la valeur est l'objet cible dans son ensemble. C'est pourquoi la première ligne est `":[object Object]"` dans l'exemple ci-dessus.
 
 L’idée est de fournir autant de puissance pour `replacer` que possible : il a une chance d'analyser et de remplacer/ignorer même l'objet entier si nécessaire.
-
 
 ## Formatage : space
 
@@ -306,7 +304,7 @@ let user = {
 };
 
 alert(JSON.stringify(user, null, 2));
-/* indentation de 2 espaces:
+/* indentation de 2 espaces :
 {
   "name": "John",
   "age": 25,
@@ -317,7 +315,7 @@ alert(JSON.stringify(user, null, 2));
 }
 */
 
-/* pour JSON.stringify(user, null, 4) le résultat serait plus indenté:
+/* pour JSON.stringify(user, null, 4) le résultat serait plus indenté :
 {
     "name": "John",
     "age": 25,
@@ -333,11 +331,11 @@ Le troisième argument peut également être une chaîne de caractères. Dans ce
 
 Le paramètre `space` est utilisé uniquement à des fins de journalisation et de sortie agréable.
 
-## "toJSON" Personnalisé
+## "toJSON" personnalisé
 
 Comme `toString` pour la conversion de chaîne, un objet peut fournir une méthode `toJSON` pour une conversion en JSON. `JSON.stringify` appelle automatiquement si  il est disponible.
 
-Par exemple:
+Par exemple :
 
 ```js run
 let room = {
@@ -364,7 +362,7 @@ alert( JSON.stringify(meetup) );
 
 Ici on peut voir que `date` `(1)` est devenu une chaîne. C’est parce que toutes les dates ont une méthode `toJSON` intégrée qui retourne ce genre de chaîne.
 
-Ajoutons maintenant un `toJSON` personnalisé pour notre objet `room` `(2)`:
+Ajoutons maintenant un `toJSON` personnalisé pour notre objet `room` `(2)` :
 
 ```js run
 let room = {
@@ -398,12 +396,12 @@ alert( JSON.stringify(meetup) );
 
 Comme on peut le voir, `toJSON` est utilisé à la fois pour l'appel direct `JSON.stringify(room)` et quand `room` est imbriqué dans un autre objet encodé.
 
-
 ## JSON.parse
 
 Pour décoder une chaîne JSON, nous avons besoin d'une autre méthode nommée [JSON.parse](mdn:js/JSON/parse).
 
-La syntaxe:
+La syntaxe :
+
 ```js
 let value = JSON.parse(str, [reviver]);
 ```
@@ -412,9 +410,9 @@ str
 : La chaîne JSON à parse.
 
 reviver
-: Fonction optionnelle (clé,valeur) qui sera appelée pour chaque paire `(key, value)` et peut transformer la valeur.
+: Fonction optionnelle (clé, valeur) qui sera appelée pour chaque paire `(key, value)` et peut transformer la valeur.
 
-Par exemple:
+Par exemple :
 
 ```js run
 // stringified array
@@ -425,7 +423,7 @@ numbers = JSON.parse(numbers);
 alert( numbers[1] ); // 1
 ```
 
-Ou pour les objets imbriqués:
+Ou pour les objets imbriqués :
 
 ```js run
 let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
@@ -437,7 +435,7 @@ alert( user.friends[1] ); // 1
 
 Le JSON peut être aussi complexe que nécessaire, les objets et les tableaux peuvent inclure d'autres objets et tableaux. Mais ils doivent obéir au même format JSON.
 
-Voici des erreurs typiques dans JSON écrit à la main (nous devons parfois l'écrire à des fins de débogage):
+Voici des erreurs typiques dans JSON écrit à la main (nous devons parfois l'écrire à des fins de débogage) :
 
 ```js
 let json = `{
@@ -451,7 +449,7 @@ let json = `{
 
 En outre, JSON ne prend pas en charge les commentaires. L'ajout d'un commentaire à JSON le rend invalide.
 
-Il y a un autre format nommé [JSON5](https://json5.org/),qui autorise les clés non commentées, les commentaires, etc. Mais il s’agit d’une bibliothèque autonome, pas dans la spécification du langage.
+Il y a un autre format nommé [JSON5](https://json5.org/) qui autorise les clés non commentées, les commentaires, etc. Mais il s’agit d’une bibliothèque autonome, pas dans la spécification du langage.
 
 Le JSON standard est très strict, non pas parce que ses développeurs sont paresseux, mais pour permettre une implémentation facile, fiable et très rapide de l'algorithme de conversion.
 
@@ -459,7 +457,7 @@ Le JSON standard est très strict, non pas parce que ses développeurs sont pare
 
 Imaginez, nous avons un objet stringified `meetup` sur le serveur.
 
-Cela ressemble à ça:
+Cela ressemble à ça :
 
 ```js
 // title: (meetup title), date: (meetup date)
@@ -468,7 +466,7 @@ let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
 
 ... Et maintenant, nous devons le *deserialize*, pour le retourner en objet JavaScript.
 
-Faisons-le en appelant `JSON.parse`:
+Faisons-le en appelant `JSON.parse` :
 
 ```js run
 let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
@@ -480,9 +478,9 @@ alert( meetup.date.getDate() ); // Error!
 */!*
 ```
 
-Whoops! Une erreur!
+Whoops ! Une erreur !
 
-La valeur de `meetup.date` est une chaîne, pour un objet `Date`.Comment `JSON.parse` pourrait-il savoir qu'il devrait transformer cette chaîne en` Date`?
+La valeur de `meetup.date` est une chaîne et non un objet `Date`. Comment `JSON.parse` pourrait-il savoir qu'il devrait transformer cette chaîne en `Date` ?
 
 Passons à `JSON.parse` la fonction de réactivation en tant que second argument, qui renvoie toutes les valeurs "en l'état", mais `date` deviendra une `Date` :
 
@@ -496,10 +494,10 @@ let meetup = JSON.parse(str, function(key, value) {
 });
 */!*
 
-alert( meetup.date.getDate() ); // ça fonctionne maintenant!
+alert( meetup.date.getDate() ); // ça fonctionne maintenant !
 ```
 
-À propos, cela fonctionne aussi pour les objets imbriqués:
+À propos, cela fonctionne aussi pour les objets imbriqués :
 
 ```js run
 let schedule = `{
@@ -515,11 +513,9 @@ schedule = JSON.parse(schedule, function(key, value) {
 });
 
 *!*
-alert( schedule.meetups[1].date.getDate() ); // ça fonctionne!
+alert( schedule.meetups[1].date.getDate() ); // ça fonctionne !
 */!*
 ```
-
-
 
 ## Résumé
 

@@ -1,4 +1,3 @@
-
 ```js run demo
 function readNumber() {
   let num;
@@ -8,7 +7,7 @@ function readNumber() {
   } while ( !isFinite(num) );
 
   if (num === null || num === '') return null;
-  
+
   return +num;
 }
 
@@ -19,5 +18,4 @@ La solution est un peu plus complexe qu'elle n'y paraît car nous devons gérer 
 
 Nous répétons donc la demande jusqu'à ce qu'il s'agisse d'un "nombre régulier". Les lignes `null` (cancel) et vide répondent également à cette condition car, sous forme numérique, elles valent `0`.
 
-Après que nous nous sommes arrêtés, nous devons traiter spécialement les lignes `null` et vides (retourner `null`), car les convertit en nombre renverrait `0`.
-
+Après que nous nous sommes arrêtés, nous devons traiter spécialement les lignes `null` et vides (retourner `null`), car les convertir en nombre renverrait `0`.

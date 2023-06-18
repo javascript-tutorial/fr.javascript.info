@@ -1,21 +1,21 @@
-
-# Map and Set
+# Map et Set
 
 Jusqu'à présent, nous avons découvert les structures de données complexes suivantes :
 
 - Les objets sont utilisés pour stocker des collections de clés.
 - Les tableaux sont utilisés pour stocker des collections ordonnées.
 
+Mais ce n'est pas suffisant pour la vie réelle. C'est pourquoi `Map` et `Set` existent également.
 
 ## Map
 
-Une [Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) permet, comme pour un `Object`, de stocker plusieurs éléments sous la forme de clés valeurs. Sauf que cette fois, les clés peuvent être de n'importe qu'elle type.
+Une [Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) permet, comme pour un `Object`, de stocker plusieurs éléments sous la forme de clés-valeurs. Sauf que cette fois, les clés peuvent être de n'importe quel type.
 
 Voici les méthodes et les propriétés d'une `Map` :
 
 - `new Map()` -- crée la map.
 - [`map.set(key, value)`](mdn:js/Map/set) -- stocke la valeur par la clé.
-- [`map.get(key)`](mdn:js/Map/get) -- renvoie la valeur par la clé, `undefined` si `key` n'existe pas dans la carte.
+- [`map.get(key)`](mdn:js/Map/get) -- renvoie la valeur par la clé, `undefined` si `key` n'existe pas dans la map.
 - [`map.has(key)`](mdn:js/Map/has) -- renvoie `true` si la `key` existe, `false` sinon.
 - [`map.delete(key)`](mdn:js/Map/delete) -- supprime la valeur par la clé.
 - [`map.clear()`](mdn:js/Map/clear) -- supprime tout de la map.
@@ -31,8 +31,8 @@ map.set(1, 'num1');     // une clé de type numérique
 map.set(true, 'bool1'); // une clé de type booléenne
 
 // souvenez-vous, dans un `Object`, les clés sont converties en chaîne de caractères
-// alors que `Map` conserve le type d'origine de la clé, 
-// c'est pourquoi les deux appels suivants retournent des valeurs différentes:
+// alors que `Map` conserve le type d'origine de la clé,
+// c'est pourquoi les deux appels suivants retournent des valeurs  :
 
 alert( map.get(1)   ); // 'num1'
 alert( map.get('1') ); // 'str1'
@@ -44,14 +44,14 @@ Au travers de cet exemple nous pouvons voir, qu'à la différence des `Objects`,
 Il est donc possible d'utiliser n'importe quel type.
 
 ```smart header="`map[key]` n'est pas la bonne façon d'utiliser un `Map`"
-Bien que `map[key]` fonctionne également, par exemple nous pouvons définir `map[key] = 2`, cela traite `map` comme un objet JavaScript simple, ce qui implique toutes les limitations correspondantes (uniquement des clés chaîne de caractères/symbol etc...).
+Bien que `map[key]` fonctionne également, par exemple nous pouvons définir `map[key] = 2`, cela traite `map` comme un objet JavaScript simple, ce qui implique toutes les limitations correspondantes (uniquement des clés chaîne de caractères/symbol etc.).
 
-Nous devons donc utiliser les méthodes `map`: `set`, `get` et ainsi de suite.
+Nous devons donc utiliser les méthodes de `map` : `set`, `get` et ainsi de suite.
 ```
 
 **Map peut également utiliser des objets comme clés.**
 
-Par exemple:
+Par exemple :
 
 ```js run
 let john = { name: "John" };
@@ -67,7 +67,7 @@ alert( visitsCountMap.get(john) ); // 123
 
 Utiliser des objets comme clés est l'une des fonctionnalités les plus notables et les plus importantes de `Map`. La même chose ne compte pas pour `Object`. Une chaîne de caractères comme clé dans `Object` est très bien, mais nous ne pouvons pas utiliser un autre `Object` comme clé dans `Object`.
 
-Essayons de faire comme l'exemple précédent directement avec un `Object`:
+Essayons de faire comme l'exemple précédent directement avec un `Object` :
 
 ```js run
 let john = { name: "John" };
@@ -80,23 +80,24 @@ visitsCountObj[john] = 123; // essayez d'utiliser l'objet john comme clé, l'obj
 
 *!*
 // C'est ce qui a été écrit!
-alert( visitsCountObj["[object Object]"] ); // 123 
+alert( visitsCountObj["[object Object]"] ); // 123
 */!*
 ```
+
 Comme `visitesCountObj` est un objet, il convertit toutes les clés `Object`, telles que `john` et `ben` ci-dessus, en la même chaîne de caractères `"[object Object]"`. Certainement pas ce que nous voulons.
 
 ```smart header="Comment `Map` compare les clés"
 
-Pour tester l'égalité entre les clés, `Map` se base sur l'algorithme [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). 
-C'est grosso modo la même chose que l'opérateur de stricte égalité `===`, à la différence que `NaN` est considéré comme étant égal à `NaN`. 
+Pour tester l'égalité entre les clés, `Map` se base sur l'algorithme [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero).
+C'est grosso modo la même chose que l'opérateur de stricte égalité `===`, à la différence que `NaN` est considéré comme étant égal à `NaN`.
 `NaN` peut donc être utilisé comme clé.
 
-Cet algorithme ne peut pas peut être modifié.
+Cet algorithme ne peut pas être modifié.
 ```
 
-````smart header="Chaining"
+````smart header="Chaînage"
 
-Chaque appel à `map.set` retourne la map elle-même, ce qui nous permet d'enchaîner les appels:
+Chaque appel à `map.set` retourne la `map` elle-même, ce qui nous permet d'enchaîner les appels :
 
 ```js
 map.set('1', 'str1')
@@ -104,7 +105,6 @@ map.set('1', 'str1')
   .set(true, 'bool1');
 ```
 ````
-
 
 ## Parcourir les éléments d'une `Map`
 
@@ -135,7 +135,7 @@ for (let amount of recipeMap.values()) {
 
 // on parcourt les entries (couple [clé, valeur])
 for (let entry of recipeMap) { // équivalent à : recipeMap.entries()
-  alert(entry); // cucumber,500 (etc...)
+  alert(entry); // cucumber,500 (etc.)
 }
 ```
 
@@ -148,7 +148,7 @@ Il est aussi possible d'utiliser `forEach` avec `Map` comme on pourrait le faire
 ```js
 // exécute la fonction pour chaque couple (key, value)
 recipeMap.forEach( (value, key, map) => {
-  alert(`${key}: ${value}`); // cucumber: 500 etc
+  alert(`${key}: ${value}`); // cucumber: 500 etc.
 });
 ```
 
@@ -245,11 +245,11 @@ Ses principales méthodes sont :
 - `new Set(iterable)` -- crée le set et si un objet `iterable` est fourni (généralement un tableau), copie les valeurs de celui-ci dans le set.
 - [`set.add(value)`](mdn:js/Set/add) -- ajoute une valeur, renvoie le set lui-même.
 - [`set.delete(value)`](mdn:js/Set/delete) -- supprime la valeur, renvoie `true` si `value` existait au moment de l'appel, sinon `false`.
-- [`set.has(value)`](mdn:js/Set/has) -- renvoie `true` si la valeur existe dans l'ensemble, sinon `false`.
+- [`set.has(value)`](mdn:js/Set/has) -- renvoie `true` si la valeur existe dans le set, sinon `false`.
 - [`set.clear()`](mdn:js/Set/clear) -- supprime tout du set.
-- [`set.size`](mdn:js/Set/size) -- est le nombre d'éléments.
+- [`set.size`](mdn:js/Set/size) -- renvoie le nombre actuel d’éléments.
 
-Ce qu'il faut surtout savoir c'est que lorsque l'on appelle plusieurs fois `set.add(value)` avec la même valeur, la méthode ne fait rien. 
+Ce qu'il faut surtout savoir c'est que lorsque l'on appelle plusieurs fois `set.add(value)` avec la même valeur, la méthode ne fait rien.
 C'est pourquoi chaque valeur est unique dans un `Set`.
 
 Par exemple, nous souhaitons nous souvenir de tous nos visiteurs. Mais chaque visiteurs doit être unique.
@@ -278,13 +278,11 @@ for (let user of set) {
 }
 ```
 
-Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque insertion que l'élément n'existe pas en utilisant 
-[arr.find](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find). Cependant les performances auraient été 
-moins bonnes car cette méthode parcours chaque élément du tableau. `Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
+Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque insertion que l'élément n'existe pas en utilisant [arr.find](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find). Cependant les performances auraient été moins bonnes car cette méthode parcours chaque élément du tableau. `Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
 
 ## Parcourir un Set
 
-Nous pouvons parcourir les éléments d'un Set avec `for..of` ou en utilisant `forEach` 
+Nous pouvons parcourir les éléments d'un Set avec `for..of` ou en utilisant `forEach` :
 
 ```js run
 let set = new Set(["oranges", "apples", "bananas"]);
@@ -297,8 +295,7 @@ set.forEach((value, valueAgain, set) => {
 });
 ```
 
-A noter que la fonction de callback utilisée par `forEach` prend 3 arguments en paramètres: une `value`, puis *la même valeur* `valueAgain`,
-et enfin le set lui-même.
+A noter que la fonction de callback utilisée par `forEach` prend 3 arguments en paramètres : une `value`, puis *la même valeur* `valueAgain`, et enfin le set lui-même.
 
 
 C'est pour la compatibilité avec `Map` où le callback `forEach` passé possède trois arguments. Ça a l'air un peu étrange, c'est sûr. Mais cela peut aider à remplacer facilement `Map` par `Set` dans certains cas, et vice versa.
@@ -309,11 +306,11 @@ Les méthodes pour parcourir les éléments d'une `Map` peuvent être utilisées
 - [`set.values()`](mdn:js/Set/values) -- identique à `set.keys()`, pour compatibilité avec `Map`,
 - [`set.entries()`](mdn:js/Set/entries) -- renvoie un objet itérable pour les entrées `[value, value]`, existe pour la compatibilité avec `Map`.
 
-## Summary
+## Résumé
 
 `Map` -- est une collection de clé valeurs.
 
-Méthodes et propriétés:
+Méthodes et propriétés :
 
 - `new Map([iterable])` -- crée la map, avec un `iterable` facultatif (par exemple un tableau) de paires `[key,value]` pour l'initialisation.
 - [`map.set(key, value)`](mdn:js/Map/set) -- stocke la valeur par la clé, renvoie la map elle-même.
@@ -325,10 +322,10 @@ Méthodes et propriétés:
 
 La différence entre `Map` avec un objet traditionel :
 
-- N'importe quel type peut être utilisé comme clé
+- N'importe quel type peut être utilisé comme clé.
 - Accès à des méthodes tels que `size`.
 
-`Set` -- est une collection de valeurs uniques
+`Set` -- est une collection de valeurs uniques.
 
 Méthodes et propriétés :
 
@@ -337,7 +334,7 @@ Méthodes et propriétés :
 - [`set.delete(value)`](mdn:js/Set/delete) -- supprime la valeur, renvoie `true` si `value` existait au moment de l'appel, sinon `false`.
 - [`set.has(value)`](mdn:js/Set/has) -- renvoie `true` si la valeur existe dans le set sinon `false`.
 - [`set.clear()`](mdn:js/Set/clear) -- supprime tout du set.
-- [`set.size`](mdn:js/Set/size) -- est le nombre d'éléments.
+- [`set.size`](mdn:js/Set/size) -- renvoie le nombre actuel d’éléments.
 
 On ne peut pas dire que les éléments dans une `Map` ou un `Set` sont désordonnés car ils sont toujours parcourut par ordre d'insertion.
 Il est cependant impossible de réorganiser les éléments ou bien de les retrouver par leur index.

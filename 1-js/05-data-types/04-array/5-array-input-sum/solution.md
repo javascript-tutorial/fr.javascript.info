@@ -1,16 +1,15 @@
-Veuillez noter le détail subtil mais important de la solution. Nous ne convertissons pas instantanément `value` en nombre après le `prompt`, parce qu'après `value = +value` nous ne pourrions pas distinguer une chaîne vide (signe d’arrêt) du zéro (nombre valide). Nous le faisons plus tard à la place.
-
+Veuillez noter le détail subtile mais important de la solution. Nous ne convertissons pas instantanément `value` en nombre après le `prompt`, parce qu'après `value = +value` nous ne pourrions pas distinguer une chaîne vide (signe d’arrêt) du zéro (nombre valide). Nous le faisons plus tard à la place.
 
 ```js run demo
 function sumInput() {
- 
+
   let numbers = [];
 
   while (true) {
 
     let value = prompt("A number please?", 0);
 
-    // devrions-nous annuler?
+    // devrions-nous annuler ?
     if (value === "" || value === null || !isFinite(value)) break;
 
     numbers.push(+value);
@@ -23,6 +22,5 @@ function sumInput() {
   return sum;
 }
 
-alert( sumInput() ); 
+alert( sumInput() );
 ```
-

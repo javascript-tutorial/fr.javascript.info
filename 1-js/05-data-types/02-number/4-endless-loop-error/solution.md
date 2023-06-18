@@ -1,6 +1,6 @@
-C'est parce que je n'aurais jamais égalé 10.
+C'est parce que `i` ne sera jamais exactement égal à 10.
 
-Exécutez-le pour voir les valeurs *réelles* de i:
+Exécutez-le pour voir les valeurs *réelles* de i :
 
 ```js run
 let i = 0;
@@ -12,6 +12,6 @@ while (i < 11) {
 
 Aucun d'entre eux n'est exactement `10`.
 
-De telles choses se produisent à cause des pertes de précision lors de l'ajout de fractions comme `0.2`.
+De telles choses se produisent à cause des pertes de précision lors de l'ajout des fractions comme `0.2`.
 
-Conclusion: évitez les contrôles d"égalité lorsque vous travaillez avec des fractions décimales."
+Conclusion : évitez les contrôles d'égalité lorsque vous travaillez avec des fractions décimales.

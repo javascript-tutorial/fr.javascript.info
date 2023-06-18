@@ -2,30 +2,30 @@
 
 Les objets vous permettent de stocker des collections de valeurs à clé. C'est très bien.
 
-Mais assez souvent, nous trouvons qu'il nous faut une *collection ordonnée*, où nous avons un 1er, un 2ème, un 3ème élément, etc. Par exemple, nous avons besoin de cela pour stocker une liste de quelque chose: utilisateurs, trucs, éléments HTML, etc.
+Mais assez souvent, nous trouvons qu'il nous faut une *collection ordonnée*, où nous avons un 1er, un 2ème, un 3ème élément, etc. Par exemple, nous avons besoin de cela pour stocker une liste de quelque chose : utilisateurs, trucs, éléments HTML, etc.
 
 Il n'est pas pratique d'utiliser un objet ici, car il ne fournit aucune méthode pour gérer l'ordre des éléments. Nous ne pouvons pas insérer une nouvelle propriété "entre" celles existantes. Les objets ne sont tout simplement pas destinés à un tel usage.
 
-Il existe une structure de données spéciale appelée `Array` (Tableau), pour stocker les collections ordonnées.
+Il existe une structure de données spéciale appelée `Array` (tableau), pour stocker les collections ordonnées.
 
 ## Déclaration
 
-Il existe deux syntaxes pour créer un tableau vide:
+Il existe deux syntaxes pour créer un tableau vide :
 
 ```js
 let arr = new Array();
 let arr = [];
 ```
 
-La plupart du temps c'est la deuxième syntaxe qui est utilisée. Nous pouvons fournir des éléments initiaux entre parenthèses:
+La plupart du temps c'est la deuxième syntaxe qui est utilisée. Nous pouvons fournir des éléments initiaux entre parenthèses :
 
 ```js
 let fruits = ["Apple", "Orange", "Plum"];
 ```
 
-Les éléments de tableau sont numérotés, et commence par zéro.
+Les éléments de tableau sont numérotés en commençant par zéro.
 
-On peut obtenir un élément par son numéro grace aux crochets:
+On peut obtenir un élément par son numéro grace aux crochets :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -35,19 +35,19 @@ alert( fruits[1] ); // Orange
 alert( fruits[2] ); // Plum
 ```
 
-Nous pouvons remplacer un élément:
+Nous pouvons remplacer un élément :
 
 ```js
 fruits[2] = 'Pear'; // maintenant ["Apple", "Orange", "Pear"]
 ```
 
-...Ou ajoutez-en un nouveau au tableau:
+...Ou en ajouter un nouveau au tableau :
 
 ```js
 fruits[3] = 'Lemon'; // maintenant ["Apple", "Orange", "Pear", "Lemon"]
 ```
 
-Le nombre total d'éléments dans le tableau est sa `length` (longueur):
+Le nombre total d'éléments dans le tableau est sa `length` (longueur) :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -55,7 +55,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 alert( fruits.length ); // 3
 ```
 
-Nous pouvons également utiliser un `alert` pour afficher l'ensemble du tableau.
+Nous pouvons également utiliser un `alert` pour afficher l'ensemble du tableau :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -65,7 +65,7 @@ alert( fruits ); // Apple,Orange,Plum
 
 Un tableau peut stocker des éléments de tout type.
 
-Par exemple:
+Par exemple :
 
 ```js run no-beautify
 // mélange de valeurs
@@ -78,10 +78,9 @@ alert( arr[1].name ); // John
 arr[3](); // hello
 ```
 
-
-````smart header="Trailing comma (Virgule de fin)"
+````smart header="Trailing comma (virgule de fin)"
 Un tableau, comme pour un objet, peut se terminer par une virgule :
-```js 
+```js
 let fruits = [
   "Apple",
   "Orange",
@@ -89,7 +88,7 @@ let fruits = [
 ];
 ```
 
-Le style "virgule de fin" facilite l'insertion/la suppression d'éléments, car toutes les lignes se ressemblent.
+Le style "virgule de fin" facilite l'insertion et la suppression d'éléments, car toutes les lignes se ressemblent.
 ````
 
 ## Get last elements with "at"
@@ -122,6 +121,7 @@ alert( fruits.at(-1) ); // Plum
 ```
 
 In other words, `arr.at(i)`:
+
 - is exactly the same as `arr[i]`, if `i >= 0`.
 - for negative values of `i`, it steps back from the end of the array.
 
@@ -130,7 +130,7 @@ In other words, `arr.at(i)`:
 Une [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (file d'attente) est l'une des utilisations les plus courantes pour les tableaux. En informatique, cela signifie une collection ordonnée d’éléments qui supporte deux opérations :
 
 - `push` ajoute un élément à la fin.
-- `shift` enleve un élément depuis le début, en faisant avancer la file d'attente, de sorte que le deuxième élément devienne le premier.
+- `shift` enlève un élément depuis le début, en faisant avancer la file d'attente, de sorte que le deuxième élément devienne le premier.
 
 ![](queue.svg)
 
@@ -138,29 +138,29 @@ Les tableaux prennent en charge les deux opérations.
 
 En pratique, nous en avons besoin très souvent. Par exemple, une file d'attente de messages devant être affichés à l'écran.
 
-Il y a un autre cas d'utilisation pour les tableaux -- la structure de données nommée [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
+Il y a un autre cas d'utilisation pour les tableaux -- la structure de données nommée [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
 
-Il supporte deux opérations:
+Il supporte deux opérations :
 
 - `push` ajoute un élément à la fin.
-- `pop` enleve un élément de la fin.
+- `pop` enlève un élément de la fin.
 
 Ainsi, de nouveaux éléments sont ajoutés ou enlevés toujours à partir de la "fin".
 
-Un stack(pile) est généralement illustrée par un jeu de cartes: de nouvelles cartes sont ajoutées ou enlevées par le haut:
+Un stack (pile) est généralement illustrée par un jeu de cartes. De nouvelles cartes sont ajoutées ou enlevées par le haut :
 
 ![](stack.svg)
 
-Pour les stacks(piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out)(dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out)(premier entré, premier sorti).
+Pour les stacks (piles), le dernier élément envoyé est reçu en premier, c'est le principe LIFO (Last-In-First-Out, dernier entré, premier sorti). Pour les files d'attente, nous avons FIFO (First-In-First-Out, premier entré, premier sorti).
 
-Les tableaux en JavaScript peuvent fonctionner à la fois en queue et en stack. Ils vous permettent d'ajouter/supprimer des éléments à la fois par le début ou par la fin.
+Les tableaux en JavaScript peuvent fonctionner à la fois en queue et en stack. Ils vous permettent d'ajouter ou supprimer des éléments à la fois par le début ou par la fin.
 
 En informatique, la structure de données qui permet cela s'appelle [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
 
-**Méthodes qui fonctionnent avec la fin du tableau:**
+**Méthodes qui fonctionnent avec la fin du tableau :**
 
 `pop`
-: Enleve dernier élément du tableau et le renvoie:
+: Extrait le dernier élément du tableau et le renvoie :
 
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
@@ -170,10 +170,10 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
     alert( fruits ); // Apple, Orange
     ```
 
-    Both `fruits.pop()` and `fruits.at(-1)` return the last element of the array, but `fruits.pop()` also modifies the array by removing it.
+    Les deux méthodes `fruits.pop()` et `fruits.at(-1)` renvoient le dernier élément du tableau, mais `fruits.pop()` modifie également le tableau en supprimant l'élément.
 
 `push`
-: Ajoute l'élément à la fin du tableau:
+: Ajoute l'élément à la fin du tableau :
 
     ```js run
     let fruits = ["Apple", "Orange"];
@@ -185,31 +185,31 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 
     L'appel de `fruits.push(...)` est égal à `fruits[fruits.length] = ...`.
 
-**Méthodes qui fonctionnent avec le début du tableau:**
+**Méthodes qui fonctionnent avec le début du tableau :**
 
 `shift`
-: Extrait le premier élément du tableau et le renvoie:
+: Extrait le premier élément du tableau et le renvoie :
 
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
-    alert( fruits.shift() ); // supprime Apple et l'alerte
+    alert( fruits.shift() ); // supprime "Apple" et l'alerte
 
     alert( fruits ); // Orange, Pear
     ```
 
 `unshift`
-: Ajoute l'élément au début du tableau:
+: Ajoute l'élément au début du tableau :
 
     ```js run
     let fruits = ["Orange", "Pear"];
 
-    fruits.unshift('Apple');
+    fruits.unshift("Apple");
 
     alert( fruits ); // Apple, Orange, Pear
     ```
 
-Les méthodes `push` et `unshift` peuvent ajouter plusieurs éléments à la fois:
+Les méthodes `push` et `unshift` peuvent ajouter plusieurs éléments à la fois :
 
 ```js run
 let fruits = ["Apple"];
@@ -229,7 +229,7 @@ Ils étendent les objets en fournissant des méthodes spéciales pour travailler
 
 N'oubliez pas qu'il n'y a que huit types de base en JavaScript (voir le chapitre [Les types de données](info:types) pour plus d'infos). `Array` est un objet et se comporte donc comme un objet.
 
-Par exemple, il est copié par référence:
+Par exemple, il est copié par référence :
 
 ```js run
 let fruits = ["Banana"]
@@ -237,7 +237,7 @@ let fruits = ["Banana"]
 let arr = fruits; // copier par référence (deux variables font référence au même tableau)
 
 alert( arr === fruits ); // true
- 
+
 arr.push("Pear"); // modifie le tableau par référence
 
 alert( fruits ); // Banana, Pear - 2 items maintenant
@@ -247,7 +247,7 @@ alert( fruits ); // Banana, Pear - 2 items maintenant
 
 Mais ils se cassent tous si nous arrêtons de travailler avec un tableau comme avec une "collection ordonnée" et commençons à le travailler comme s'il s'agissait d'un objet normal.
 
-Par exemple, techniquement, nous pouvons le faire:
+Par exemple, techniquement, nous pouvons faire ceci :
 
 ```js
 let fruits = []; // créer un tableau
@@ -261,21 +261,21 @@ C'est possible, car les tableaux sont des objets à leur base. Nous pouvons leur
 
 Mais le moteur verra que nous travaillons avec le tableau comme avec un objet normal. Les optimisations spécifiques à un tableau ne sont pas adaptées à ce type de situation et seront désactivées. Leurs avantages disparaissent.
 
-Les moyens de casser d'un tableau:
+Les moyens de casser un tableau :
 
-- Ajouter une propriété non numérique comme `arr.test = 5`. 
-- Faire des trous, comme: ajouter `arr[0]` et ensuite `arr[1000]` (et rien entre eux).
+- Ajouter une propriété non numérique comme `arr.test = 5`.
+- Faire des trous, comme ajouter `arr[0]` et ensuite `arr[1000]` (et rien entre eux).
 - Remplire le tableau dans l'ordre inverse, comme `arr[1000]`, `arr[999]` etc.
 
 Veuillez considérer les tableaux comme des structures spéciales pour travailler avec les *données ordonées*. Ils fournissent des méthodes spéciales pour cela. Les tableaux sont soigneusement réglés dans les moteurs JavaScript pour fonctionner avec des données ordonnées contiguës, veuillez les utiliser de cette manière. Et si vous avez besoin de clés arbitraires, il y a de fortes chances pour que vous ayez réellement besoin d'un objet régulier `{}`.
 
 ## Performance
 
-Les méthodes `push/pop` vont vite, alors que `shift/unshift` sont lentes.
+Les méthodes `push`/`pop` vont vite, alors que `shift`/`unshift` sont lentes.
 
 ![](array-speed.svg)
 
-Pourquoi est-il plus rapide de travailler avec la fin d'un tableau qu'avec son début? Voyons ce qui se passe pendant l'exécution:
+Pourquoi est-il plus rapide de travailler avec la fin d'un tableau qu'avec son début ? Voyons ce qui se passe pendant l'exécution :
 
 ```js
 fruits.shift(); // prends 1 élément du début
@@ -283,21 +283,21 @@ fruits.shift(); // prends 1 élément du début
 
 Il ne suffit pas de prendre l'élément avec le nombre `0`. D'autres éléments doivent également être renumérotés.
 
-L'opération `shift` doit faire 3 choses:
+L'opération `shift` doit faire 3 choses :
 
-1. Supprimez l'élément avec l'index `0`.
-2. Déplace tous les éléments à gauche, renumérote-les de l'index `1` à `0`, de`2` à `1` etc.
-3. Met à jour la propriété `length`.
+1. Supprimer l'élément avec l'index `0`.
+2. Déplacer tous les éléments à gauche, les renuméroter de l'index `1` à `0`, de`2` à `1`, etc.
+3. Mettre à jour la propriété `length`.
 
 ![](array-shift.svg)
 
 **Plus il y a d'éléments dans le tableau, plus il y faut de temps pour les déplacer, plus il y a d'opérations en mémoire.**
 
-La même chose se produit avec `unshift`: pour ajouter un élément au début du tableau, nous devons d’abord déplacer les éléments existants vers la droite, en augmentant leur index.
+La même chose se produit avec `unshift`. Pour ajouter un élément au début du tableau, nous devons d’abord déplacer les éléments existants vers la droite, en augmentant leur index.
 
-Et qu’en est-il avec `push/pop`? Ils n'ont pas besoin de déplacer quoi que ce soit. Pour extraire un élément de la fin, la méthode `pop` nettoie l'index et raccourcit` length`.
+Et qu’en est-il avec `push`/`pop` ? Ils n'ont pas besoin de déplacer quoi que ce soit. Pour extraire un élément de la fin, la méthode `pop` nettoie l'index et raccourcit `length`.
 
-Les actions pour l'opération `pop`:
+Les actions pour l'opération `pop` :
 
 ```js
 fruits.pop(); // enleve 1 élément de la fin
@@ -311,7 +311,7 @@ La même chose avec la méthode `push`.
 
 ## Boucles
 
-L'une des méthodes les plus anciennes pour cycler des éléments de tableau est la boucle `for` sur les index:
+L'une des méthodes les plus anciennes pour cycler des éléments de tableau est la boucle `for` sur les index :
 
 ```js run
 let arr = ["Apple", "Orange", "Pear"];
@@ -323,7 +323,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-Mais pour les tableaux, il existe une autre forme de boucle, `for..of`:
+Mais pour les tableaux, il existe une autre forme de boucle, `for..of` :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -336,7 +336,7 @@ for (let fruit of fruits) {
 
 Le `for..of` ne donne pas accès au numéro de l'élément actuel, mais à sa valeur, mais dans la plupart des cas, cela suffit. Et c'est plus court.
 
-Techniquement, comme les tableaux sont des objets, il est également possible d'utiliser `for..in`:
+Techniquement, comme les tableaux sont des objets, il est également possible d'utiliser `for..in` :
 
 ```js run
 let arr = ["Apple", "Orange", "Pear"];
@@ -348,7 +348,7 @@ for (let key in arr) {
 }
 ```
 
-Mais c'est en fait une mauvaise idée. Il y a des problèmes potentiels avec cela:
+Mais c'est en fait une mauvaise idée. Il y a des problèmes potentiels avec cela :
 
 1. La boucle `for..in` itère sur *toutes les propriétés*, pas seulement les propriétés numériques.
 
@@ -358,12 +358,11 @@ Mais c'est en fait une mauvaise idée. Il y a des problèmes potentiels avec cel
 
 En règle générale, nous ne devrions pas utiliser `for..in` pour les tableaux.
 
-
 ## Un mot à propos de "length"
 
 La propriété `length` est automatiquement mise à jour lorsque nous modifions le tableau. Pour être précis, il ne s'agit pas du nombre de valeurs du tableau, mais du plus grand index numérique plus un.
 
-Par exemple, un seul élément avec un grand index donne une grande longueur:
+Par exemple, un seul élément avec un grand index donne une grande longueur :
 
 ```js run
 let fruits = [];
@@ -376,7 +375,7 @@ Notez que nous n'utilisons généralement pas de tableaux de ce type.
 
 Une autre chose intéressante à propos de la propriété `length` est qu'elle est accessible en écriture.
 
-Si nous l'augmentons manuellement, rien d'intéressant ne se produit. Mais si nous le diminuons, le tableau est tronqué. Le processus est irréversible, voici l'exemple:
+Si nous l'augmentons manuellement, rien d'intéressant ne se produit. Mais si nous le diminuons, le tableau est tronqué. Le processus est irréversible, voici l'exemple :
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -388,12 +387,11 @@ arr.length = 5; // retourne la length d'origine
 alert( arr[3] ); // undefined: les valeurs ne reviennent pas
 ```
 
-Ainsi, le moyen le plus simple pour effacer le tableau est: `arr.length = 0;`.
-
+Ainsi, le moyen le plus simple pour effacer le tableau est `arr.length = 0;`.
 
 ## new Array() [#new-array]
 
-Il y a une syntaxe supplémentaire pour créer un tableau:
+Il y a une syntaxe supplémentaire pour créer un tableau :
 
 ```js
 let arr = *!*new Array*/!*("Apple", "Pear", "etc");
@@ -403,7 +401,7 @@ Il est rarement utilisé, car les crochets `[]` sont plus courts. En outre, il c
 
 Si `new Array` est appelé avec un seul argument qui est un nombre, il crée un tableau *sans éléments, mais avec la longueur donnée*.
 
-Voyons comment on peut se tirer une balle dans le pied:
+Voyons comment on peut se tirer une balle dans le pied :
 
 ```js run
 let arr = new Array(2); // va-t-il créer un tableau de [2] ?
@@ -433,8 +431,7 @@ alert( matrix[1][1] ); // 5, l'élément central
 
 Les tableaux ont leur propre implémentation de la méthode `toString` qui renvoie une liste d'éléments séparés par des virgules.
 
-Par exemple:
-
+Par exemple :
 
 ```js run
 let arr = [1, 2, 3];
@@ -443,7 +440,7 @@ alert( arr ); // 1,2,3
 alert( String(arr) === '1,2,3' ); // true
 ```
 
-Aussi, essayons ceci:
+Aussi, essayons ceci :
 
 ```js run
 alert( [] + 1 ); // "1"
@@ -453,7 +450,7 @@ alert( [1,2] + 1 ); // "1,21"
 
 Les tableaux n'ont pas de `Symbol.toPrimitive`, ni de `valueOf` viable, ils implémentent uniquement la conversion `toString`, donc ici `[]` devient une chaîne vide, `[1]` devient `"1"` et `[1,2]` devient `"1,2"`.
 
-Lorsque l'opérateur binaire plus `"+"` ajoute quelque chose à une chaîne, il la convertit également en chaîne. La prochaine étape est la suivante:
+Lorsque l'opérateur binaire plus `+` ajoute quelque chose à une chaîne, il la convertit également en chaîne, de sorte que l'étape suivante se présente comme suit :
 
 ```js run
 alert( "" + 1 ); // "1"
@@ -463,7 +460,7 @@ alert( "1,2" + 1 ); // "1,21"
 
 ## Ne comparez pas les tableaux avec ==
 
-Les tableaux en JavaScript, contrairement à certains autres langages de programmation, ne doivent pas être comparés à l'opérateur `==`.
+Les tableaux en JavaScript, contrairement à certains autres langages de programmation, ne doivent pas être comparés avec l'opérateur `==`.
 
 Cet opérateur n'a pas de traitement spécial pour les tableaux, il fonctionne avec eux comme avec n'importe quel objet.
 
@@ -471,13 +468,14 @@ Rappelons les règles :
 
 - Deux objets sont égaux `==` uniquement s'ils font référence au même objet.
 - Si l'un des arguments de `==` est un objet, et l'autre est une primitive, alors l'objet est converti en primitif, comme expliqué dans le chapitre <info:object-toprimitive>.
-- ...À l'exception de `null` et `undefined ` qui s'égalent `==` l'un l'autre et rien d'autre.
+- ...À l'exception de `null` et `undefined` qui s'égalent `==` l'un l'autre et rien d'autre.
 
 La comparaison stricte `===` est encore plus simple, car elle ne convertit pas les types.
 
 Donc, si nous comparons des tableaux avec `==`, ils ne sont jamais les mêmes, sauf si nous comparons deux variables qui référencent exactement le même tableau.
 
 Par exemple :
+
 ```js run
 alert( [] == [] ); // false
 alert( [0] == [0] ); // false
@@ -499,20 +497,20 @@ Ensuite, le processus de comparaison se poursuit avec les primitives, comme déc
 
 ```js run
 // après que [] soit converti vers ''
-alert( 0 == '' ); // true, tant que '' soit converti en nombre 0
+alert( 0 == '' ); // true, car '' est converti en nombre 0
 
 alert('0' == '' ); // false, pas de conversion de type, différentes chaînes de caractères
 ```
 
 Alors, comment comparer des tableaux ?
 
-C'est simple: n'utilisez pas l'opérateur `==`. Au lieu de cela, comparez-les élément par élément dans une boucle ou en utilisant les méthodes d'itération expliquées dans le chapitre suivant.
+C'est simple, n'utilisez pas l'opérateur `==`. Au lieu de cela, comparez-les élément par élément dans une boucle ou en utilisant les méthodes d'itération expliquées dans le chapitre suivant.
 
 ## Résumé
 
 Array est un type d’objet spécial, adapté au stockage et à la gestion des éléments de données ordonnées.
 
-- La déclaration:
+- La déclaration :
 
     ```js
     // crochets (habituel)
@@ -534,15 +532,16 @@ Obtenir les éléments :
 
 Nous pouvons utiliser un tableau comme deque avec les opérations suivantes :
 
-- `push (...items)` ajoute `items` à la fin.
+- `push(...items)` ajoute `items` à la fin.
 - `pop()` supprime l'élément de la fin et le renvoie.
 - `shift()` supprime l'élément du début et le renvoie.
 - `unshift(... items)` ajoute des `items` au début.
 
-Pour boucler sur les éléments du tableau:
-   - `for (let i = 0; i <arr.length; i ++)` -- fonctionne le plus rapidement, compatible avec les anciens navigateurs.
-   - `for (let item of arr)` -- la syntaxe moderne pour les éléments uniquement,
-   - `pour (let i in arr)` -- ne jamais utiliser.
+Pour boucler sur les éléments du tableau :
+
+- `for (let i = 0; i <arr.length; i++)` -- fonctionne le plus rapidement, compatible avec les anciens navigateurs.
+- `for (let item of arr)` -- la syntaxe moderne pour les éléments uniquement.
+- `pour (let i in arr)` -- ne jamais utiliser.
 
 Pour comparer des tableaux, n'utilisez pas l'opérateur `==` (ainsi que `>`, `<` et autres), car ils n'ont pas de traitement spécial pour les tableaux. Ils les traitent comme n'importe quel objet, et ce n'est pas ce que nous voulons habituellement.
 
