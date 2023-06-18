@@ -17,7 +17,7 @@ alert("Hello");
 window.alert("Hello");
 ```
 
-Dans un navigateur, les fonctions globales et les variables déclarées avec `var` (pas `let/const`!) Deviennent la propriété de l'objet global :
+Dans un navigateur, les fonctions globales et les variables déclarées avec `var` (pas `let`/`const` !) deviennent la propriété de l'objet global :
 
 ```js run untrusted refresh
 var gVar = 5;
@@ -27,7 +27,7 @@ alert(window.gVar); // 5 (var est devenue une propriété de l'objet global)
 
 Les fonctions déclarations ont le même effet (instructions avec le mot clé `function` dans le flux de code principal, pas les fonctions expressions).
 
-Ne comptez pas là-dessus! Ce comportement existe pour des raisons de compatibilité. Les scripts modernes utilisent les [modules JavaScript](info:modules) où une telle chose ne se produit pas.
+Ne comptez pas là-dessus ! Ce comportement existe pour des raisons de compatibilité. Les scripts modernes utilisent les [modules JavaScript](info:modules) où une telle chose ne se produit pas.
 
 Si nous utilisions `let` la place, une telle chose ne se produirait pas :
 
@@ -51,7 +51,7 @@ window.currentUser = {
 alert(currentUser.name);  // John
 
 // ou, si nous avons une variable locale avec le nom "currentUser"
-// obtenez la de window explicitement (c'est sécuritaire!)
+// obtenez la de window explicitement (c'est sécuritaire !)
 alert(window.currentUser.name); // John
 ```
 
@@ -62,6 +62,7 @@ Cela dit, l'utilisation de variables globales est généralement déconseillée.
 Nous utilisons l'objet global pour tester le support des fonctionnalités du langage moderne.
 
 Par exemple, nous pouvons tester si l'objet natif `Promise` existe (il n'existe pas dans les navigateurs très anciens) :
+
 ```js run
 if (!window.Promise) {
   alert("Your browser is really old!");
@@ -80,10 +81,10 @@ if (!window.Promise) {
 
 - L'objet global contient des variables qui devraient être disponibles partout.
 
-    Ceci inclut les objets natifs de Javascript, tels que `Array` et des valeurs spécifiques à l'environnement, comme `window.innerHeight` -- l'hauteur de la fenêtre dans le navigateur.
+    Ceci inclut les objets natifs de JavaScript, tels que `Array` et des valeurs spécifiques à l'environnement, comme `window.innerHeight` -- l'hauteur de la fenêtre dans le navigateur.
 - L'objet global porte un nom universel `globalThis`.
 
-    ...Mais il est plus souvent appelé par des noms spécifiques à l'environnement de la vieille école, comme `window` (navigateur) et `global` (Node.js). 
+    ...Mais il est plus souvent appelé par des noms spécifiques à l'environnement de la vieille école, comme `window` (navigateur) et `global` (Node.js).
 - Nous devons seulement stocker des valeurs dans l'objet global si elles sont réellement globales pour notre projet. Et gardez la quantité de ces valeurs à un minimum.
 - Dans les navigateurs, à moins que nous utilisons des [modules](info:modules), les fonctions et variables globales déclarées avec `var` deviennent une propriété de l'objet global.
 - Pour que notre code soit à l'épreuve du temps et plus facile à comprendre, nous devons accéder les propriétés de l'objet global directement, en utilisant `window.x`.

@@ -8,13 +8,14 @@ Par exemple :
 - `Object.assign(dest, src1, ..., srcN)` -- copie les propriétés de `src1..N` dans `dest`.
 - ... etc.
 
-Dans ce chapitre, nous allons apprendre à faire de même. Et aussi, comment passer des tableaux à des fonctions telles que des paramètres.
+Dans ce chapitre, nous apprendrons à faire de même. Et aussi, comment passer des tableaux en paramètre à de telles fonctions.
 
 ## Les paramètres Rest `...`
 
 Une fonction peut être appelée avec un nombre quelconque d'arguments, peu importe comment elle a été définie.
 
 Comme ici :
+
 ```js run
 function sum(a, b) {
   return a + b;
@@ -96,9 +97,9 @@ showName("Julius", "Caesar");
 showName("Ilya");
 ```
 
-Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser les `arguments` était le seul moyen d'obtenir tous les arguments de la fonction. Et cela fonctionne toujours, on peut le trouver dans l'ancien code.
+Autrefois, les paramètres rest n'existaient pas dans le langage, et utiliser `arguments` était le seul moyen d'obtenir tous les arguments de la fonction. Et cela fonctionne toujours, on peut le trouver dans l'ancien code.
 
-Mais l’inconvénient est que, bien que les `arguments` ressemblent à un tableau et qu’ils soient itératifs, ce n’est pas un tableau. Il ne supporte pas les méthodes de tableau, nous ne pouvons donc pas appeler `arguments.map(...)` par exemple.
+Mais l’inconvénient est que, bien que `arguments` ressemblent à un tableau et qu’ils soient itératifs, ce n’est pas un tableau. Il ne supporte pas les méthodes de tableau, nous ne pouvons donc pas appeler `arguments.map(...)` par exemple.
 
 De plus, il contient toujours tous les arguments. Nous ne pouvons pas les capturer partiellement, comme nous l’avons fait avec les paramètres rest.
 
@@ -147,7 +148,7 @@ alert( Math.max(arr) ); // NaN
 
 Et nous ne pouvons sûrement pas lister manuellement les éléments dans le code `Math.max(arr[0], arr[1], arr[2])`, parce que nous pouvons ne pas savoir combien il y en a. Au fur et à mesure que notre script s'exécute, il peut y en avoir beaucoup ou pas du tout. Et ça deviendrait moche.
 
-*La sytaxe Spread* à la rescousse! Il ressemble aux paramètres rest, en utilisant également `...`, mais fait tout le contraire.
+*La sytaxe Spread* à la rescousse ! Il ressemble aux paramètres rest, en utilisant également `...`, mais fait tout le contraire.
 
 Quand `...arr` est utilisé dans l'appel de fonction, il "développe" un objet itérable `arr` dans la liste des arguments.
 
@@ -203,9 +204,9 @@ alert( [...str] ); // H,e,l,l,o
 
 La syntaxe spread utilise en interne des itérateurs pour rassembler les éléments, de la même manière que `for..of`.
 
-Donc, pour une chaine de caractères, `for..of` retourn des caractères et `...str` devient `"H","e","l","l","o"`. La liste de caractères est transmise à l'initialiseur de tableau `[...str]`.
+Donc, pour une chaine de caractères, `for..of` retourne des caractères et `...str` devient `"H","e","l","l","o"`. La liste de caractères est transmise à l'initialiseur de tableau `[...str]`.
 
-Pour cette tâche particulière, nous pourrions également utiliser `Array.from`, car il convertit un itérable (comme une chaîne de caractères) en un tableau : 
+Pour cette tâche particulière, nous pourrions également utiliser `Array.from`, car il convertit un itérable (comme une chaîne de caractères) en un tableau :
 
 ```js run
 let str = "Hello";
@@ -223,10 +224,9 @@ Mais il existe une différence subtile entre `Array.from(obj)` et `[...obj]` :
 
 Donc, pour transformer quelque chose en tableau, `Array.from` tend à être plus universel.
 
-
 ## Copier un tableau/objet
 
-Souvenez-vous quand nous avons parlé de `Object.assign()` [par le passé](info:object-copy#cloning-and-merging-object-assign) ?
+Vous souvenez-vous quand nous avons parlé de `Object.assign()` [par le passé](info:object-copy#cloning-and-merging-object-assign) ?
 
 Il est possible de faire la même chose avec la syntaxe spread !
 
@@ -291,4 +291,4 @@ Modèles d'utilisation :
 
 Ensemble, ils permettent de voyager facilement entre une liste et un tableau de paramètres.
 
-Tous les arguments d'un appel de fonction sont également disponibles dans les `arguments` "à l'ancienne" : objet itérable array-like.
+Tous les arguments d'un appel de fonction sont également disponibles dans la vriable `arguments` "à l'ancienne" : objet itérable array-like.

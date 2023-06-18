@@ -37,7 +37,7 @@ Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte
 
 - Pour un argument unique, alors les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
-    For example:
+    Par exemple:
 
     ```js run
     *!*
@@ -64,7 +64,7 @@ Par exemple pour créer une fonction dynamiquement :
 let age = prompt("What is your age?", 18);
 
 let welcome = (age < 18) ?
-  () => alert('Hello!') :
+  () => alert("Hello!") :
   () => alert("Greetings!");
 
 welcome(); // ok now
@@ -76,7 +76,7 @@ Elles sont très utile pour des actions sur une ligne et que l'on est juste pare
 
 ## Les fonctions fléchées multiligne
 
-Les fonctions fléchées que nous avons vues jusqu'à présent étaient très simples. Elles ont pris des arguments à gauche de `=>`, les ont évalués et ont renvoyé l'expression de droite avec eux.
+Les fonctions fléchées que nous avons vues jusqu'à présent étaient très simples. Elles ont pris des arguments à gauche de `=>`, les ont évalués et ont renvoyé l'expression de droite avec elles.
 
 Parfois nous avons besoin de plus de compléxité, comme des expressions multiples ou des déclarations. Cela est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
 
@@ -94,11 +94,11 @@ alert( sum(1, 2) ); // 3
 ```
 
 ```smart header="Plus à venir"
-Ici nous nous arrêtons sur les fonctions fléchées pour leur syntaxe bréve mais ce n'est pas tout !
+Nous nous arrêtons ici sur les fonctions fléchées pour leur syntaxe brève mais ce n'est pas tout !
 
 Les fonctions fléchées ont d'autres particularités intéressantes.
 
-Pour les aprrendre en profondeur, nous devons d'abord voir d'autres aspects de Javascript, nous reviendrons donc aux fonctions fléchées plus tard dans le chapitre <info:arrow-functions>.
+Pour les apprendre en profondeur, nous devons d'abord voir d'autres aspects de JavaScript, nous reviendrons donc aux fonctions fléchées plus tard dans le chapitre <info:arrow-functions>.
 
 Pour l'instant, nous pouvons les utiliser pour des actions sur une ligne ou des callbacks (rappels).
 ```
@@ -107,5 +107,5 @@ Pour l'instant, nous pouvons les utiliser pour des actions sur une ligne ou des 
 
 Les fonctions fléchées sont pratiques pour des actions simples, en particulier pour les one-liners. Ils se déclinent en deux variantes :
 
-1. Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat. Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex. `n => n*2`. 
+1. Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat. Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex. `n => n*2`.
 2. Avec accolades : `(...args) => { body }` -- les accolades nous permet des déclarations multiples au sein de la fonction, mais nous devons ajouter un `return` explicite pour retourner quelque chose.

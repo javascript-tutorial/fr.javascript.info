@@ -3,6 +3,7 @@
 Peut-être que nous ne voulons pas exécuter une fonction tout de suite, mais à un certain moment dans le futur. Cela s'appelle "ordonnancer (ou planifier) un appel de fonction".
 
 Il existe deux méthodes pour cela :
+
 - `setTimeout` permet d'exécuter une fonction une unique fois après un certain laps de temps.
 - `setInterval` nous permet d'exécuter une fonction de manière répétée, en commençant après l'intervalle de temps, puis en répétant continuellement à cet intervalle.
 
@@ -10,13 +11,13 @@ Ces méthodes ne font pas partie de la spécification JavaScript. Mais la plupar
 
 ## setTimeout
 
-La syntaxe:
+La syntaxe :
 
 ```js
 let timerId = setTimeout(func|code, [delay], [arg1], [arg2], ...)
 ```
 
-Les paramètres:
+Les paramètres :
 
 `func|code`
 : Fonction ou chaîne de caractères représentant du code à exécuter.

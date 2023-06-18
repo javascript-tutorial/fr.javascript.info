@@ -74,7 +74,7 @@ sayHi(); // Hello    //     cela fonctionne toujours aussi (pourquoi pas)
 Voici ce qui se passe ci-dessus en détail :
 
 1. La Déclaration de Fonction `(1)` crée la fonction et la place dans la variable nommée `sayHi`.
-2. La ligne `(2)` le copie dans la variable `func`. Veuillez noter à nouveau : il n'y a pas de parenthèses après `sayHi`. S'il y en avait, alors `func = sayHi()` écrirait *le résultat de l'appel* `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
+2. La ligne `(2)` la copie dans la variable `func`. Veuillez noter à nouveau : il n'y a pas de parenthèses après `sayHi`. S'il y en avait, alors `func = sayHi()` écrirait *le résultat de l'appel* `sayHi()` dans `func`, et non *la fonction* `sayHi` elle-même.
 3. Maintenant, la fonction peut être appelée à la fois en tant que `sayHi()` et `func()`.
 
 Nous aurions aussi pu utiliser une Fonction Expression pour déclarer `sayHi`, à la première ligne :
@@ -114,12 +114,12 @@ Le point-virgule serait là pour une affectation plus simple, telle que `let say
 
 Examinons plus d’exemples de fonctions passées en tant que valeurs et utilisant des expressions de fonction.
 
-Nous allons écrire une fonction `ask(question, oui, non)` avec trois paramètres :
+Nous allons écrire une fonction `ask(question, yes, no)` avec trois paramètres :
 
 `question`
 : Texte de la question
 
-`Yes`
+`yes`
 : Fonction à exécuter si la réponse est “Yes”
 
 `no`
@@ -130,7 +130,7 @@ La fonction doit poser la question et, en fonction de la réponse de l'utilisate
 ```js run
 *!*
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 */!*
@@ -151,13 +151,13 @@ En pratique, ces fonctions sont très utiles. La principale différence entre un
 
 **Les arguments `showOk` et `showCancel` de `ask` s'appellent des *fonctions callback* (fonctions de rappel) ou simplement des *callbacks* (rappels).**
 
-L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la "non" réponse.
+L'idée est que nous passions une fonction et attendions qu'elle soit "rappelée" plus tard si nécessaire. Dans notre cas, `showOk` devient le rappel pour la réponse "oui" et `showCancel` pour la réponse "non".
 
 Nous pouvons utiliser les Fonctions Expressions pour écrire la même fonction mais plus courte :
 
 ```js run no-beautify
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 
@@ -181,7 +181,6 @@ Une fonction peut être perçue comme une *action*.
 
 Nous pouvons tout aussi bien la passer en tant que variable ou l'exécuter si nous le voulons.
 ```
-
 
 ## Fonction Expression vs Fonction Déclaration
 
@@ -208,19 +207,19 @@ Tout d'abord, la syntaxe : comment les différencier dans le code.
 
 La différence la plus subtile est *quand* une fonction est créée par le moteur JavaScript.
 
-**Une Fonction Expression est créée lorsque l’exécution l’atteint et est utilisable à partir de cet moment.**
+**Une Fonction Expression est créée lorsque l’exécution l’atteint.**
 
-Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` -- voilà, la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.) à partir de maintenant.
+Une fois que le flux d'exécution passe à droite de l'affectation, `let sum = function…` , la fonction est créée et peut désormais être utilisée (assignée, appelée, etc.).
 
 Les déclarations de fonction sont différentes.
 
-**Une fonction déclaration peut être appelée plus tôt que sa définition.**
+**Une Fonction Déclaration peut être appelée plus tôt que sa définition.**
 
 Par exemple, une fonction déclaration globale est visible dans tout le script, peu importe où elle se trouve.
 
-Cela est dû aux algorithmes internes. Lorsque JavaScript se prépare à exécuter le script, il recherche d'abord les fonction déclarations globales et créer les fonctions. Nous pouvons considérer cela comme une "étape d'initialisation".
+Cela est dû aux algorithmes internes. Lorsque JavaScript se prépare à exécuter le script, il recherche d'abord les fonctions déclarations globales et les crée. Nous pouvons considérer cela comme une "étape d'initialisation".
 
-Et après le traitement de toutes les fonction déclarations, le code est exécuté. Donc, il a accès à ces fonctions.
+Une fois que toutes les déclarations de fonctions ont été traitées, le reste du code est exécuté. Ainsi, il a accès à ces fonctions pour les appeler.
 
 Par exemple, cela fonctionne :
 
@@ -250,7 +249,9 @@ let sayHi = function(name) {  // (*) plus de magie
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
 
-Une autre particularité des Fonction Declaration est leur portée de bloc.
+ 
+Une autre particularité des Fonctions Declaration est leur portée de bloc.
+ 
 
 **En mode strict, quand une Fonction Déclaration se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
@@ -295,7 +296,7 @@ if (age < 18) {
 */!*
                            //  |
   function welcome() {     //  |
-    alert("Hello!");      //  |  La déclaration de fonction est disponible
+    alert("Hello!");       //  |  La déclaration de fonction est disponible
   }                        //  |  partout dans le bloc où elle est déclarée
                            //  |
 *!*
@@ -347,7 +348,7 @@ welcome(); // ok maintenant
 */!*
 ```
 
-Ou nous pourrions simplifier encore davantage en utilisant un opérateur point d'interrogation `?` :
+Ou nous pourrions simplifier encore davantage en utilisant un opérateur conditionnel ternaire `?` :
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -373,7 +374,7 @@ C’est également meilleur pour la lisibilité, car il est plus facile de reche
 
 ## Résumé
 
-- Les fonctions sont des valeurs. Ils peuvent être attribués, copiés ou déclarés à n’importe quel endroit du code.
+- Les fonctions sont des valeurs. Elles peuvent être attribuées, copiées ou déclarées à n’importe quel endroit du code.
 - Si la fonction est déclarée comme une instruction distincte dans le flux de code principal, cela s'appelle une "déclaration de fonction".
 - Si la fonction est créée dans le cadre d’une expression, elle est appelée "expression de fonction".
 - Les déclarations de fonctions sont traitées avant l'exécution du bloc de code. Elles sont visibles partout dans le bloc.

@@ -6,7 +6,7 @@ importance: 5
 
 Dans le code ci-dessous, nous créons `new Rabbit`, puis essayons de modifier son prototype.
 
-Au début, nous avons ce code:
+Au début, nous avons ce code :
 
 ```js run
 function Rabbit() {}
@@ -19,8 +19,7 @@ let rabbit = new Rabbit();
 alert( rabbit.eats ); // true
 ```
 
-
-1. Nous avons ajouté une chaîne de caractères supplémentaire (surlignée), qu'affiche `alert` maintenant?
+1. Nous avons ajouté une chaîne de caractères supplémentaire (surlignée), qu'affiche `alert` maintenant ?
 
     ```js
     function Rabbit() {}
@@ -37,7 +36,7 @@ alert( rabbit.eats ); // true
     alert( rabbit.eats ); // ?
     ```
 
-2. ...Et si le code est comme ça (une ligne remplacé)?
+2. ...Et si le code est comme ça (une ligne remplacée) ?
 
     ```js
     function Rabbit() {}
@@ -54,7 +53,7 @@ alert( rabbit.eats ); // true
     alert( rabbit.eats ); // ?
     ```
 
-3. Et comme ceci (une ligne remplacée)?
+3. Et comme ceci (une ligne remplacée) ?
 
     ```js
     function Rabbit() {}
@@ -71,7 +70,7 @@ alert( rabbit.eats ); // true
     alert( rabbit.eats ); // ?
     ```
 
-4. La dernière variante:
+4. La dernière variante :
 
     ```js
     function Rabbit() {}

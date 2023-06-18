@@ -24,7 +24,7 @@ let range = {
 // for (let num of range) ... num=1,2,3,4,5
 ```
 
-Pour rendre la `range` itérable (et donc laisser `for..of` faire sont travail), nous devons ajouter une méthode à l'objet nommé `Symbol.iterator` (un symbole intégré spécial que pour cela).
+Pour rendre la `range` itérable (et donc laisser `for..of` faire son travail), nous devons ajouter une méthode à l'objet nommé `Symbol.iterator` (un symbole intégré spécial que pour cela).
 
 1. Lorsque `for..of` démarre, il appelle cette méthode une fois (ou des erreurs si il n'est pas trouvé). La méthode doit retourner un *iterator* -- un objet avec la méthode `next`.
 2. À partir de là, `for..of` ne fonctionne *qu'avec cet objet retourné*.

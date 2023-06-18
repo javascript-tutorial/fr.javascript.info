@@ -6,7 +6,7 @@ importance: 4
 
 Ajoutez au prototype de toutes les fonctions la méthode `defer(ms)`, qui renvoie un wrapper, retardant l’appel de `ms` millisecondes.
 
-Voici un exemple de la façon dont cela devrait fonctionner:
+Voici un exemple de la façon dont cela devrait fonctionner :
 
 ```js
 function f(a, b) {

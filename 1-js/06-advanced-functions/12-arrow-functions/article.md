@@ -61,7 +61,7 @@ let group = {
 group.showList();
 ```
 
-L'erreur se produit parce que `forEach` exécute des fonctions avec `this = undefined` par défaut. La tentative d'accès à `undefined.title` est faite.
+L'erreur se produit parce que `forEach` exécute des fonctions avec `this = undefined` par défaut, ce qui entraîne une tentative d'accès à `undefined.title`.
 
 Cela n’affecte pas les fonctions fléchées, car elles n’ont tout simplement pas de `this`.
 
@@ -73,7 +73,7 @@ Ne pas avoir de `this` signifie naturellement une autre limitation : les fonctio
 Il y a une différence subtile entre une fonction fléchée `=>` et une fonction régulière appelée avec `.bind(this)` :
 
 - `.bind(this)` crée une "version liée" de la fonction.
-- The arrow `=>` ne crée aucune liaison. La fonction n'a tout simplement pas de `this`. La recherche de `this` est faite exactement de la même manière qu’une recherche de variable normale : dans l’environnement lexical externe.
+- La flèche `=>` ne crée aucune liaison. La fonction n'a tout simplement pas de `this`. La recherche de `this` est faite exactement de la même manière qu’une recherche de variable normale : dans l’environnement lexical externe.
 ```
 
 ## Les fonctions fléchées n'ont pas "d'arguments"
@@ -112,7 +112,7 @@ function defer(f, ms) {
 }
 ```
 
-Ici, nous avons dû créer des variables additionnelles `args` et` ctx` afin que la fonction à l'intérieur de `setTimeout` puisse les prendre.
+Ici, nous avons dû créer des variables additionnelles `args` et `ctx` afin que la fonction à l'intérieur de `setTimeout` puisse les prendre.
 
 ## Résumé
 
@@ -121,6 +121,6 @@ Les fonctions fléchées :
 - N'ont pas de `this`
 - N'ont pas d'`arguments`
 - Ne peuvent pas être appelées avec `new`
-- Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>
+- Elles n'ont pas non plus de `super`, mais nous ne l'avons pas encore étudié. Nous le ferons dans le chapitre <info:class-inheritance>.
 
 C'est parce qu'elles sont destinées à de courts morceaux de code qui n'ont pas leur propre "contexte", mais qui fonctionnent dans le contexte actuel. Et elles brillent vraiment dans ce cas d'utilisation.

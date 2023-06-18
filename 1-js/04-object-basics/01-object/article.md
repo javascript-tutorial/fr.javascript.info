@@ -131,7 +131,7 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité. 
+Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité.
 
 Par exemple :
 
@@ -147,7 +147,7 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (si entré "name")
 ```
 
-The dot notation cannot be used in a similar way:
+La notation par points ne peut pas être utilisée de la même manière :
 
 ```js run
 let user = {
@@ -251,12 +251,12 @@ let user = {
 
 ## Limitations des noms de propriété
 
-Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés au language comme "for", "let", "return" etc.
+Comme nous le savons déjà, une variable ne peut pas avoir un nom égal à l'un des mots réservés au langage comme "for", "let", "return" etc.
 
 Mais pour une propriété d'objet, il n'y a pas de telle restriction :
 
 ```js run
-// these properties are all right
+// ces propriétés sont toutes correctes
 let obj = {
   for: 1,
   let: 2,
@@ -274,10 +274,10 @@ Par exemple, un nombre `0` devient une chaîne `"0"` lorsqu'il est utilisé comm
 
 ```js run
 let obj = {
-  0: "test" // same as "0": "test"
+  0: "test" // identique à "0": "test"
 };
 
-// both alerts access the same property (the number 0 is converted to string "0")
+// les 2 alertes accèdent à la même propriété (le chiffre 0 est converti en string "0")
 alert( obj["0"] ); // test
 alert( obj[0] ); // test (same property)
 ```
@@ -287,7 +287,7 @@ Il y a un problème mineur avec une propriété spéciale nommée `__proto__`. N
 
 ```js run
 let obj = {};
-obj.__proto__ = 5; // assign a number
+obj.__proto__ = 5; // assignation d'un nombre
 alert(obj.__proto__); // [object Object] - la valeur est un objet, n'a pas fonctionné comme prévu
 ```
 
@@ -336,7 +336,7 @@ alert( *!*key*/!* in user ); // true, la propriété "age" existe
 
 Pourquoi l'opérateur `in` existe-t-il ? N'est-ce pas suffisant de comparer avec `undefined` ?
 
-Eh bien, la plupart du temps, la comparaison avec `undefined` fonctionne bien. Mais il y a un cas particulier quand il échoue, mais `"in"`fonctionne correctement.
+Eh bien, la plupart du temps, la comparaison avec `undefined` fonctionne bien. Mais il y a un cas particulier quand il échoue, mais `in` fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -363,7 +363,7 @@ Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de bou
 La syntaxe :
 
 ```js
-for(key in object) {
+for (key in object) {
   // exécute le corps pour chaque clé parmi les propriétés de l'objet
 }
 ```
@@ -377,7 +377,7 @@ let user = {
   isAdmin: true
 };
 
-for(let key in user) {
+for (let key in user) {
   // keys
   alert( key );  // name, age, isAdmin
   // valeurs pour les clés
@@ -387,7 +387,7 @@ for(let key in user) {
 
 Notez que toutes les constructions "for" nous permettent de déclarer la variable en boucle à l'intérieur de la boucle, comme `let key` ici.
 
-En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`. Par exemple, `"for(let prop in obj)"` est également largement utilisé.
+En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`. Par exemple, `for(let prop in obj)` est également largement utilisé.
 
 
 ### Ordonné comme un objet
@@ -424,7 +424,7 @@ Mais si nous exécutons ce code, nous voyons une image totalement différente :
 Les indicatifs de téléphone sont classés par ordre croissant, car ce sont des entiers. Donc on voit `1, 41, 44, 49`.
 
 ````smart header="Propriétés entier (integer properties) ? Qu'est-ce que c'est ?"
-Le terme "propriété entier" (integer properties) désigne ici une chaîne de caractères pouvant être convertie en un entier à partir de-et-sans modification.
+Le terme "propriété entier" (integer properties) désigne ici une chaîne de caractères qui peut être convertie en un nombre entier ou inversement sans changement.
 
 Ainsi, `"49"` est un nom de propriété entier, parce que lorsqu'il est transformé en nombre entier et inversement, il reste identique. Mais `"+49"` et `"1.2"` ne le sont pas :
 
@@ -485,21 +485,21 @@ Ils stockent des propriétés (paires clé-valeur), où :
 
 Pour accéder à une propriété, nous pouvons utiliser :
 - La notation par points : `obj.property`.
-- Notation entre crochets `obj["property"]`. Les crochets permettent de prendre la clé d’une variable, comme `obj[varWithKey]`.
+- Notation entre crochets `obj["property"]`. Les crochets permettent de prendre la clé à partir d’une variable, comme `obj[varWithKey]`.
 
 Opérateurs supplémentaires :
 - Pour supprimer une propriété : `delete obj.prop`.
 - Pour vérifier si une propriété avec la clé donnée existe : `"key" in obj`.
 - Pour parcourir un objet : la boucle `for (let key in obj)`.
 
-Ce que nous avons étudié dans ce chapitre s’appelle un "objet simple" (plain object) ou juste `Object`.  
+Ce que nous avons étudié dans ce chapitre s’appelle un "objet simple" (plain object) ou juste `Object`.
 Il existe de nombreux autres types d'objets en JavaScript :
 
 - `Array` pour stocker des collections de données ordonnées,
 - `Date` pour stocker des informations sur la date et l'heure,
 - `Error` pour stocker des informations sur une erreur.
-- … Etc.
+- Etc.
 
-Ils ont leurs particularités que nous étudierons plus tard. Parfois, les gens disent quelque chose comme "Type de tableau" ou "Type de date", mais ils ne sont pas formellement propres, mais appartiennent à un seul type de données "objet". Et ils l'étendent de différentes manières.
+Ils ont leurs particularités que nous étudierons plus tard. Parfois, les gens disent quelque chose comme "type Tableau" ou "type Date", mais ils ne sont pas formellement propres, mais appartiennent à un seul type de données "objet". Et ils l'étendent de différentes manières.
 
 Les objets en JavaScript sont très puissants. Nous venons de gratter la surface d’un sujet vraiment énorme. Nous allons travailler étroitement avec les objets et en apprendre davantage à leur sujet dans d’autres parties du tutoriel.

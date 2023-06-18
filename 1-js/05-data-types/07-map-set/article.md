@@ -152,12 +152,12 @@ recipeMap.forEach( (value, key, map) => {
 });
 ```
 
-## Object.entries: Map from Object
+## Object.entries: Créer une Map à partir d'un objet
 
-When a `Map` is created, we can pass an array (or another iterable) with key/value pairs for initialization, like this:
+Lorsqu'une `Map` est créée, nous pouvons passer un tableau (ou un autre itérable) contenant des paires clé/valeur pour l'initialisation, comme ceci :
 
 ```js run
-// array of [key, value] pairs
+// tableau de paires [clé, valeur]
 let map = new Map([
   ['1',  'str1'],
   [1,    'num1'],
@@ -167,9 +167,9 @@ let map = new Map([
 alert( map.get('1') ); // str1
 ```
 
-If we have a plain object, and we'd like to create a `Map` from it, then we can use built-in method [Object.entries(obj)](mdn:js/Object/entries) that returns an array of key/value pairs for an object exactly in that format.
+Si nous avons un objet simple et que nous souhaitons en créer une `Map`, nous pouvons utiliser la méthode intégrée [Object.entries(obj)](mdn:js/Object/entries) qui renvoie un tableau de paires clé/valeur pour un objet exactement dans ce format.
 
-So we can create a map from an object like this:
+Nous pouvons donc créer une `Map` à partir d'un objet de la manière suivante :
 
 ```js run
 let obj = {
@@ -184,14 +184,13 @@ let map = new Map(Object.entries(obj));
 alert( map.get('name') ); // John
 ```
 
-Here, `Object.entries` returns the array of key/value pairs: `[ ["name","John"], ["age", 30] ]`. That's what `Map` needs.
+Ici, `Object.entries` renvoie le tableau de paires clé/valeur : `[ ["name", "John"], ["age", 30] ]`. C'est ce dont a besoin la `Map`.
 
+## Object.fromEntries: Objet à partir d'une Map
 
-## Object.fromEntries: Object from Map
+Nous venons de voir comment créer une `Map` à partir d'un objet simple avec `Object.entries(obj)`.
 
-We've just seen how to create `Map` from a plain object with `Object.entries(obj)`.
-
-There's `Object.fromEntries` method that does the reverse: given an array of `[key, value]` pairs, it creates an object from them:
+Il existe une méthode `Object.fromEntries` qui fait l'inverse : étant donné un tableau de paires `[clé, valeur]`, elle crée un objet à partir de ces paires :
 
 ```js run
 let prices = Object.fromEntries([
@@ -200,16 +199,16 @@ let prices = Object.fromEntries([
   ['meat', 4]
 ]);
 
-// now prices = { banana: 1, orange: 2, meat: 4 }
+// maintenant, prices = { banana: 1, orange: 2, meat: 4 }
 
 alert(prices.orange); // 2
 ```
 
-We can use `Object.fromEntries` to get a plain object from `Map`.
+Nous pouvons utiliser `Object.fromEntries` pour obtenir un objet simple à partir d'une `Map`.
 
-E.g. we store the data in a `Map`, but we need to pass it to a 3rd-party code that expects a plain object.
+Par exemple, nous stockons les données dans une `Map`, mais nous devons les transmettre à un code tiers qui attend un objet simple.
 
-Here we go:
+Voici comment procéder :
 
 ```js run
 let map = new Map();
@@ -218,23 +217,24 @@ map.set('orange', 2);
 map.set('meat', 4);
 
 *!*
-let obj = Object.fromEntries(map.entries()); // make a plain object (*)
+let obj = Object.fromEntries(map.entries()); // créer un objet simple (*)
 */!*
 
-// done!
+// terminé!
 // obj = { banana: 1, orange: 2, meat: 4 }
 
 alert(obj.orange); // 2
 ```
 
-A call to `map.entries()` returns an iterable of key/value pairs, exactly in the right format for `Object.fromEntries`.
+Un appel à `map.entries()` renvoie un itérable de paires clé/valeur, exactement dans le bon format pour `Object.fromEntries`.
 
-We could also make line `(*)` shorter:
+Nous pourrions également raccourcir la ligne (*) :
+
 ```js
-let obj = Object.fromEntries(map); // omit .entries()
+let obj = Object.fromEntries(map); // .entries() omis
 ```
 
-That's the same, because `Object.fromEntries` expects an iterable object as the argument. Not necessarily an array. And the standard iteration for `map` returns same key/value pairs as `map.entries()`. So we get a plain object with same key/values as the `map`.
+C'est la même chose, car `Object.fromEntries` attend un objet itérable en argument. Pas nécessairement un tableau. Et l'itération standard pour une `map` renvoie les mêmes paires clé/valeur que `map.entries()`. Ainsi, nous obtenons un objet simple avec les mêmes clés/valeurs que la `map`.
 
 ## Set
 

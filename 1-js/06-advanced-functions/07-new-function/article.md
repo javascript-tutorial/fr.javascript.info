@@ -5,7 +5,7 @@ Il existe encore un autre moyen de créer une fonction. C'est rarement utilisé,
 
 ## Syntaxe
 
-La syntaxe pour créer une fonction:
+La syntaxe pour créer une fonction :
 
 ```js
 let func = new Function ([arg1, arg2, ...argN], functionBody);
@@ -13,7 +13,7 @@ let func = new Function ([arg1, arg2, ...argN], functionBody);
 
 La fonction est créée avec les arguments `arg1...argN` et le `functionBody` donné.
 
-C'est plus facile à comprendre en regardant un exemple. Voici une fonction avec deux arguments:
+C'est plus facile à comprendre en regardant un exemple. Voici une fonction avec deux arguments :
 
 ```js run
 let sum = new Function('a', 'b', 'return a + b');
@@ -21,7 +21,7 @@ let sum = new Function('a', 'b', 'return a + b');
 alert( sum(1, 2) ); // 3
 ```
 
-Et voici une fonction sans arguments, seulement le corps de la fonction:
+Et voici une fonction sans arguments, seulement le corps de la fonction :
 
 ```js run
 let sayHi = new Function('alert("Hello")');
@@ -29,11 +29,11 @@ let sayHi = new Function('alert("Hello")');
 sayHi(); // Hello
 ```
 
-La différence majeure par rapport aux autres méthodes que nous avons deja vu est que la fonction est créée littéralement à partir d'une chaîne de caractères passée au moment de l'exécution.
+La différence majeure par rapport aux autres méthodes que nous avons déjà vu est que la fonction est créée littéralement à partir d'une chaîne de caractères passée au moment de l'exécution.
 
 Toutes les déclarations précédentes nous demandait, nous les programmeurs, d'écrire le code de la fonction dans le script.
 
-Mais `new Function` nous permet de convertir n'importe qu'elle chaine de caractères en fonction. Par exemple, nous pouvons recevoir une nouvelle fonction d’un serveur puis l’exécuter:
+Mais `new Function` nous permet de convertir n'importe qu'elle chaine de caractères en fonction. Par exemple, nous pouvons recevoir une nouvelle fonction d’un serveur puis l’exécuter :
 
 ```js
 let str = ... receive the code from a server dynamically ...
@@ -66,7 +66,7 @@ function getFunc() {
 getFunc()(); // error: value is not defined
 ```
 
-Comparez-le avec le comportement habituel:
+Comparez-le avec le comportement habituel :
 
 ```js run
 function getFunc() {
@@ -88,11 +88,11 @@ Imaginons que nous devions créer une fonction à partir d'une chaîne de caract
 
 Notre nouvelle fonction doit interagir avec le script principal.
 
-Et si il pouvait accéder aux variables externes?
+Et si il pouvait accéder aux variables externes ?
 
-Le problème est qu'avant la publication de JavaScript en production, JavaScript est compressé à l'aide d'un *minifier*, un programme spécial qui rétrécit le code en supprimant les commentaires, espaces supplémentaires et, plus particuliarement, renomme les variables locales pour quelles soient plus courtes.
+Le problème est qu'avant la publication de JavaScript en production, JavaScript est compressé à l'aide d'un *minifier*, un programme spécial qui rétrécit le code en supprimant les commentaires, espaces supplémentaires et, plus particulièrement, renomme les variables locales pour quelles soient plus courtes.
 
-Par exemple, si une fonction a `let userName`, le minifier la remplace par `let a` (ou une autre lettre si celle-ci est deja prise), et le fait partout. C’est généralement une chose sûre à faire, car la variable est locale, rien en dehors de la fonction ne peut y accéder. Et à l'intérieur de la fonction, le minifier remplace chaque mention. Les minifiers sont intelligents, ils analysent la structure du code pour ne rien casser. Ils ne sont pas juste une simple fonction de trouvaille et remplacement.
+Par exemple, si une fonction a `let userName`, le minifier la remplace par `let a` (ou une autre lettre si celle-ci est déjà prise), et le fait partout. C’est généralement une chose sûre à faire, car la variable est locale, rien en dehors de la fonction ne peut y accéder. Et à l'intérieur de la fonction, le minifier remplace chaque mention. Les minifiers sont intelligents, ils analysent la structure du code pour ne rien casser. Ils ne sont pas juste une simple fonction de recherche et remplacement.
 
 Donc, si `new Function` avait accès aux variables externes, il serait impossible de trouver le nom d'utilisateur `userName` renommé.
 
@@ -104,7 +104,7 @@ Pour passer quelque chose à une fonction créée par `new Function`, nous devon
 
 ## Résumé
 
-La syntaxe:
+La syntaxe :
 
 ```js
 let func = new Function ([arg1, arg2, ...argN], functionBody);
@@ -120,4 +120,4 @@ new Function('a,b', 'return a + b'); // séparés par des virgules
 new Function('a , b', 'return a + b'); // séparés par des virgules et espacés
 ```
 
-fonctions créées avec `new Function` ont leur `[[Environment]]` qui fait référence à l’environnement lexical global, et non l’environnement externe. Par conséquent, elles ne peuvent pas utiliser de variables externes. Mais c’est bien, parce que cela nous protège des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.
+Les fonctions créées avec `new Function` ont leur `[[Environment]]` qui fait référence à l’environnement lexical global, et non à l’environnement externe. Par conséquent, elles ne peuvent pas utiliser de variables externes. Mais c’est bien, parce que cela nous protège des erreurs. Passer explicitement des paramètres est une méthode bien meilleure sur le plan architectural et ne pose aucun problème avec les minifiers.

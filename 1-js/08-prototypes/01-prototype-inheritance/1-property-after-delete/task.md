@@ -6,7 +6,7 @@ importance: 5
 
 Voici le code qui crée une paire d'objets, puis les modifie.
 
-Quelles sont les valeurs affichées dans le processus?
+Quelles sont les valeurs affichées dans le processus ?
 
 ```js
 let animal = {

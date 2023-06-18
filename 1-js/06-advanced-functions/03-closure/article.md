@@ -7,12 +7,12 @@ Nous savons déjà qu'une fonction peut accéder à des variables en dehors de c
 
 Mais que se passe-t-il si les variables externes changent depuis la création d'une fonction ? La fonction obtiendra-t-elle des valeurs plus récentes ou les anciennes ?
 
-Et si une fonction est transmise en tant que paramètre et appelée depuis un autre endroit de code, aura-t-elle accès aux variables externes au nouvel endroit ?
+Et si une fonction est transmise en tant que paramètre et appelée depuis un autre endroit du code, aura-t-elle accès aux variables externes au nouvel endroit ?
 
 Développons maintenant nos connaissances pour inclure des scénarios plus complexes.
 
-```smart header="Nous parlerons ici des variables `let/const`"
-En JavaScript, il y a 3 façons de déclarer une variable: `let`, `const`(les modernes) et `var` (le vestige du passé).
+```smart header="Nous parlerons ici des variables `let`/`const`"
+En JavaScript, il y a 3 façons de déclarer une variable : `let`, `const` (les modernes) et `var` (le vestige du passé).
 
 - Dans cet article, nous utiliserons des variables `let` dans les exemples.
 - Les variables, déclarées avec `const`, se comportent de la même manière, donc cet article concerne également `const`.
@@ -81,7 +81,7 @@ if (true) {
 alert(phrase); // Error, no such variable!
 ```
 
-Here, after `if` finishes, the `alert` below won't see the `phrase`, hence the error.
+Ici, après la fin du `if`, l'`alert` ci-dessous ne verra pas `phrase`, d'où l'erreur.
 
 C'est super, car cela nous permet de créer des variables locales, spécifiques à une branche `if`.
 
@@ -96,13 +96,13 @@ for (let i = 0; i < 3; i++) {
 alert(i); // Error, no such variable
 ```
 
-Visually, `let i` is outside of `{...}`. But the `for` construct is special here: the variable, declared inside it, is considered a part of the block.
+Visuellement, `let i` est à l'extérieur de `{...}`. Mais la construction de `for` est spéciale ici : la variable déclarée à l'intérieur est considérée comme faisant partie du bloc.
 
 ## Fonctions imbriquées
 
 Une fonction est appelée "imbriquée" lorsqu'elle est créée dans une autre fonction.
 
-Il est facilement possible de faire cela avec JavaScript.
+Il est possible de faire cela facilement avec JavaScript.
 
 Nous pouvons l'utiliser pour organiser notre code, comme ceci :
 
@@ -175,7 +175,7 @@ Dans ce code simple sans fonctions, il n'y a qu'un seul environnement lexical :
 
 Il s'agit de l'environnement Lexical dit *global*, associé à l'ensemble du script.
 
-Sur l'image ci-dessus, le rectangle signifie Environment Record(stockage de variable) et la flèche signifie la référence externe. L'environnement lexical global n'a pas de référence externe, c'est pourquoi la flèche pointe vers `null`.
+Sur l'image ci-dessus, le rectangle signifie Environment Record (stockage de variable) et la flèche signifie la référence externe. L'environnement lexical global n'a pas de référence externe, c'est pourquoi la flèche pointe vers `null`.
 
 À mesure que le code commence à s'exécuter et se poursuit, l'environnement lexical change.
 
@@ -189,7 +189,7 @@ Les rectangles sur le côté droit montrent comment l'environnement lexical glob
     - Initialement, elles sont à l'état "non initialisé". C'est un état interne spécial, cela signifie que le moteur connaît la variable, mais elle ne peut pas être référencée tant qu'elle n'a pas été déclarée avec `let`. C'est presque la même chose que si la variable n'existait pas.
 2. Ensuite, la définition de `let phrase` apparaît. Il n'y a pas encore d'affectation, donc sa valeur est `undefined`. Nous pouvons utiliser la variable depuis ce moment.
 3. `phrase` se voit attribuer une valeur.
-4. `phrase` change la valeur.
+4. `phrase` change de valeur.
 
 Tout semble simple pour l'instant, non ?
 
@@ -199,7 +199,8 @@ Tout semble simple pour l'instant, non ?
 ```smart header="L'environnement lexical est un objet de spécification"
 "L'environnement lexical" est un objet de spécification : il n'existe que "théoriquement" dans la [spécification du language](https://tc39.es/ecma262/#sec-lexical-environments) pour décrire comment les choses fonctionnent. nous ne pouvons pas obtenir cet objet dans notre code et le manipuler directement.
 
-JavaScript engines also may optimize it, discard variables that are unused to save memory and perform other internal tricks, as long as the visible behavior remains as described.
+Les moteurs JavaScript peuvent également l'optimiser, supprimer les variables inutilisées pour économiser de la mémoire et effectuer d'autres opérations internes, tant que le comportement visible reste conforme à la description.
+
 ```
 
 ### Step 2. Fonctions Declarations
@@ -237,12 +238,12 @@ Par exemple, pour `say("John")`, cela ressemble à ceci (l'exécution est à la 
 
 ![](lexical-environment-simple.svg)
 
-Pendant l'appel de la fonction, nous avons deux environnements lexicaux : l'intérieur(pour l'appel de la fonction) et l'extérieur(global) :
+Pendant l'appel de la fonction, nous avons deux environnements lexicaux : l'intérieur (pour l'appel de la fonction) et l'extérieur (global) :
 
-- L'environnement lexical interne correspond à l'exécution actuelle de `say`. Il a une seule propriété: `nom`, l'argument de la fonction. Nous avons appelé `say("John")`, donc la valeur du `name` est `"John"`.
+- L'environnement lexical interne correspond à l'exécution actuelle de `say`. Il a une seule propriété : `name`, l'argument de la fonction. Nous avons appelé `say("John")`, donc la valeur de `name` est `"John"`.
 - L'environnement lexical externe est l'environnement lexical global. Il a la variable `phrase` et la fonction elle-même.
 
-L'environnement lexical intérieur a une référence à l'environnement `outer`(extérieur).
+L'environnement lexical intérieur a une référence à l'environnement `outer` (extérieur).
 
 **Lorsque le code veut accéder à une variable - l'environnement lexical interne est recherché en premier, puis celui externe, puis le plus externe et ainsi de suite jusqu'à celui global.**
 
@@ -254,7 +255,6 @@ Dans cet exemple, la recherche se déroule comme ceci :
 - Lorsqu'elle veut accéder à `phrase`, il n'y a pas de `phrase` localement, elle suit donc la référence à l'environnement lexical externe et la trouve là.
 
 ![lexical environment lookup](lexical-environment-simple-lookup.svg)
-
 
 ### Step 4. Retourner une fonction
 
@@ -290,7 +290,7 @@ Plus tard, lorsque `counter()` est appelé, un nouvel environnement lexical est 
 
 ![](closure-makecounter-nested-call.svg)
 
-Maintenant, lorsque le code à l'intérieur de `counter()` recherche la variable `count`, il recherche d'abord son propre environnement lexical (vide, car il n'y a pas de variables locales), puis l'environnement lexical de l'appel externe `makeCounter()`, où le trouve et change.
+Maintenant, lorsque le code à l'intérieur de `counter()` recherche la variable `count`, il recherche d'abord son propre environnement lexical (vide, car il n'y a pas de variables locales), puis l'environnement lexical de l'appel externe `makeCounter()`, où il la trouve et la change.
 
 **Une variable est mise à jour dans l'environnement lexical où elle se trouve.**
 
@@ -307,7 +307,7 @@ Une [closure](https://fr.wikipedia.org/wiki/Fermeture_(informatique)) est une fo
 
 C'est-à-dire : elles se souviennent automatiquement de l'endroit où elles ont été créées en utilisant une propriété cachée `[[Environnement]]`, puis leur code peut accéder aux variables externes.
 
-Lors d'un entretien d'embauche, un développeur frontend reçoit assez souvent une question du genre "qu'est-ce qu'une closure ?". Une réponse valide serait une définition de la closure ainsi qu'une explication sure le fait que toutes les fonctions en JavaScript sont des closures, et peut-être quelques mots de plus sur les détails techniques : la propriété `[[Environment]]` et comment fonctionnent les environnements lexicaux.
+Lors d'un entretien d'embauche, un développeur frontend reçoit assez souvent une question du genre "qu'est-ce qu'une closure ?". Une réponse valide serait une définition de la closure ainsi qu'une explication sur le fait que toutes les fonctions en JavaScript sont des closures, et peut-être quelques mots de plus sur les détails techniques : la propriété `[[Environment]]` et comment fonctionnent les environnements lexicaux.
 ```
 
 ## Garbage collection
@@ -333,7 +333,7 @@ let g = f(); // g.[[Environment]] stocke une référence à l'environnement lexi
 // de l'appel f() correspondant
 ```
 
-veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets d'environnement lexicaux correspondants seront également conservés en mémoire. tous les 3 dans le code ci-dessous :
+Veuillez noter que si `f()` est appelé plusieurs fois et que les fonctions résultantes sont sauvegardées, tous les objets correspondants de l'environnement lexical seront également conservés en mémoire. Dans le code ci-dessous, ils sont tous les trois :
 
 ```js
 function f() {
@@ -347,7 +347,7 @@ function f() {
 let arr = [f(), f(), f()];
 ```
 
-un objet environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). en d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
+Un objet environnement lexical meurt lorsqu'il devient inaccessible (comme tout autre objet). En d'autres termes, il n'existe que s'il existe au moins une fonction imbriquée qui le référence.
 
 Dans le code ci-dessous, une fois que la fonction imbriquée est supprimée, son environnement lexical englobant (et donc la `value`) est nettoyé de la mémoire :
 
@@ -392,7 +392,7 @@ let g = f();
 g();
 ```
 
-Comme vous avez pu le constater, cette variable n'existe pas! En théorie, elle devrait être accessible, mais le moteur l'a optimisé.
+Comme vous avez pu le constater, cette variable n'existe pas ! En théorie, elle devrait être accessible, mais le moteur l'a optimisée.
 
 Cela peut conduire à des problèmes de débogage amusants (voire fastidieux). L'un d'eux -- nous pouvons voir une variable externe portant le même nom au lieu de celle attendue :
 
