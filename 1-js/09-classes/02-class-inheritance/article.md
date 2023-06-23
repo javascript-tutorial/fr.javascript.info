@@ -288,7 +288,7 @@ Cette note suppose que vous avez une certaine expérience avec les classes, peut
 
 Cela donne un meilleur aperçu du langage et explique également le comportement qui pourrait être une source de bogues (mais pas très souvent).
 
-Si vous avez du mal à comprendre, continuez, continuez à lire, puis revenez-y un peu plus tard.
+Si vous avez du mal à comprendre, continuez, poursuivez votre lecture et revenez-y un peu plus tard.
 ```
 
 Nous pouvons remplacer non seulement les méthodes, mais également les champs de classe.
@@ -320,7 +320,7 @@ Ici, la classe `Rabbit` étend `Animal` et remplace le champ `name` par sa propr
 
 Il n'y a pas de constructeur propre dans `Rabbit`, donc le constructeur `Animal` est appelé.
 
-Ce qui est intéressant, c'est que dans les deux cas : `new Animal()` et `new Rabbit()`, l' `alert` dans la ligne `(*)` montre `animal`.
+Ce qui est intéressant, c'est que dans les deux cas : `new Animal()` et `new Rabbit()`, l'`alert` dans la ligne `(*)` montre `animal`.
 
 **En d'autres termes, le constructeur parent utilise toujours sa propre valeur de champ, pas celle remplacée.**
 
