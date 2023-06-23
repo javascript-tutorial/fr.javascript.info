@@ -63,7 +63,7 @@ Un piège fréquent des développeurs novices est de mettre une virgule entre le
 La notation ici ne doit pas être confondue avec les objets littéraux. A l'intérieure d'une classe, aucune virgule n'est requise.
 ```
 
-## Qu'est-ce qu'une classe?
+## Qu'est-ce qu'une classe ?
 
 Alors, c'est quoi exactement une `class` ? Ce n'est pas totalement une nouvelle entité au niveau du langage, comme on pourrait le penser.
 
