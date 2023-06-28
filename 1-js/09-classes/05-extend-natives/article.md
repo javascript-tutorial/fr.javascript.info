@@ -58,7 +58,7 @@ alert(arr.isEmpty()); // false
 let filteredArr = arr.filter(item => item >= 10);
 
 *!*
-// filteredArr n'est pas PowerArray, mais Array
+// filteredArr n'est pas un PowerArray, mais un Array
 */!*
 alert(filteredArr.isEmpty()); // Error: filteredArr.isEmpty is not a function
 ```
@@ -73,15 +73,15 @@ D'autres collections, telles que `Map` et `Set`, fonctionnent de la même maniè
 
 Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object.keys`, `Array.isArray`, etc.
 
-Comme nous le savons déjà, les classes natives s'étendent les uns des autres. Par exemple, `Array` extends `Object`.
+Comme nous le savons déjà, les classes natives s'étendent les uns des autres. Par exemple, `Array` étend (hérite de) `Object`.
 
 Normalement, lorsqu'une classe en étend une autre, les méthodes statiques et non statiques sont héritées. Cela a été expliqué en détail dans le chapitre [](info:static-properties-methods#statics-and-inheritance).
 
-Mais les classes intégrées sont une exception. Ils n'héritent pas les méthodes statiques les uns des autres.
+Mais les classes intégrées sont une exception. Elles n'héritent pas des méthodes statiques les unes des autres.
 
 Par exemple, `Array` et `Date` héritent de `Object`, de sorte que leurs instances ont des méthodes issues de `Object.prototype`. Mais `Array.[[Prototype]]` ne fait pas référence à `Object`, il n'y a donc pas, par exemple, de méthode statique `Array.keys()` (ou `Date.keys()`).
 
-Voici la structure d'image pour `Date` et `Object`:
+Voici le schéma la structure pour `Date` et `Object` :
 
 ![](object-date-inheritance.svg)
 
