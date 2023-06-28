@@ -197,7 +197,7 @@ Tout semble simple pour l'instant, non ?
 - Travailler avec des variables, c'est travailler avec les propriétés de cet objet.
 
 ```smart header="L'environnement lexical est un objet de spécification"
-"L'environnement lexical" est un objet de spécification : il n'existe que "théoriquement" dans la [spécification du language](https://tc39.es/ecma262/#sec-lexical-environments) pour décrire comment les choses fonctionnent. nous ne pouvons pas obtenir cet objet dans notre code et le manipuler directement.
+"L'environnement lexical" est un objet de spécification : il n'existe que "théoriquement" dans la [spécification du langage](https://tc39.es/ecma262/#sec-lexical-environments) pour décrire comment les choses fonctionnent. nous ne pouvons pas obtenir cet objet dans notre code et le manipuler directement.
 
 Les moteurs JavaScript peuvent également l'optimiser, supprimer les variables inutilisées pour économiser de la mémoire et effectuer d'autres opérations internes, tant que le comportement visible reste conforme à la description.
 

@@ -185,7 +185,7 @@ Le résultat est un tableau de correspondance, mais sans les détails de chacune
 
 Pour les obtenir, nous devons rechercher avec la méthode `str.matchAll(regexp)`.
 
-Elle a été ajoutée au language JavaScript longtemps après `match`, comme étant sa "version nouvelle et améliorée".
+Elle a été ajoutée au langage JavaScript longtemps après `match`, comme étant sa "version nouvelle et améliorée".
 
 Tout comme `match`, elle cherche des correspondances, mais avec 3 différences :
 
