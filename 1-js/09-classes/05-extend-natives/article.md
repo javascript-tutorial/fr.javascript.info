@@ -3,7 +3,7 @@
 
 Les classes intégrées telles que Array, Map et autres sont également extensibles.
 
-Par exemple, ici, `PowerArray` hérite du `Array` natif:
+Par exemple, ici, `PowerArray` hérite du `Array` natif :
 
 ```js run
 // ajoutez-y une méthode supplémentaire
@@ -24,6 +24,7 @@ alert(filteredArr.isEmpty()); // false
 Notez une chose très intéressante. Les méthodes intégrées telles que `filter`, `map` et autres renvoient des nouveaux objets exactement du type hérité `PowerArray`. Leur implémentation interne utilise la propriété d'objet `constructor` pour cela.
 
 Dans l'exemple ci-dessus,
+
 ```js
 arr.constructor === PowerArray
 ```
@@ -34,7 +35,7 @@ Encore plus, nous pouvons personnaliser ce comportement.
 
 Nous pouvons ajouter un accésseur statique spécial `Symbol.species` à la classe. S'il existe, il devrait renvoyer le constructeur que JavaScript utilisera en interne pour créer de nouvelles entités dans `map`, `filter`, etc.
 
-Si nous souhaitons que des méthodes intégrées comme `map` ou `filter` renvoient des tableaux classiques, nous pouvons retourner `Array` dans `Symbol.species`, comme ici:
+Si nous souhaitons que des méthodes intégrées comme `map` ou `filter` renvoient des tableaux classiques, nous pouvons retourner `Array` dans `Symbol.species`, comme ici :
 
 ```js run
 class PowerArray extends Array {
@@ -70,7 +71,7 @@ D'autres collections, telles que `Map` et `Set`, fonctionnent de la même maniè
 
 ## Pas d'héritage statique dans les éléments intégrés
 
-Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object.keys`,` Array.isArray` etc.
+Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object.keys`, `Array.isArray`, etc.
 
 Comme nous le savons déjà, les classes natives s'étendent les uns des autres. Par exemple, `Array` extends `Object`.
 
