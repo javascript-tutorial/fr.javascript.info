@@ -2,9 +2,9 @@
 
 En JavaScript, nous ne pouvons hériter que d'un seul objet. Il ne peut y avoir qu'un `[[Prototype]]` pour un objet. Et une classe peut étendre qu'une seule autre classe.
 
-Mais parfois, cela semble limitant. Par exemple, nous avons une classe `StreetSweeper` et une classe `Bicycle`, et nous voulons faire leur mélange: un `StreetSweepingBicycle`.
+Mais parfois, cela semble limitant. Par exemple, nous avons une classe `StreetSweeper` et une classe `Bicycle`, et nous voulons faire leur mélange : un `StreetSweepingBicycle`.
 
-Ou nous avons une classe `User` et une classe `EventEmitter` qui implémente la génération d'événements, et nous aimerions ajouter la fonctionnalité de `EventEmitter` à` User 'afin que nos utilisateurs puissent émettre des événements.
+Ou nous avons une classe `User` et une classe `EventEmitter` qui implémente la génération d'événements, et nous aimerions ajouter la fonctionnalité de `EventEmitter` à `User` afin que nos utilisateurs puissent émettre des événements.
 
 Il existe un concept qui peut aider ici, appelé "mixins".
 
@@ -16,7 +16,7 @@ En d'autres termes, un *mixin* fournit des méthodes qui implémentent un certai
 
 Le moyen le plus simple d'implémenter un mixin en JavaScript est de créer un objet avec des méthodes utiles, de sorte que nous puissions facilement les fusionner dans un prototype de n'importe quelle classe.
 
-Par exemple ici, le mixin `sayHiMixin` est utilisé pour ajouter un peu de "discours" à `User`:
+Par exemple ici, le mixin `sayHiMixin` est utilisé pour ajouter un peu de "discours" à `User` :
 
 ```js run
 *!*
@@ -47,7 +47,7 @@ Object.assign(User.prototype, sayHiMixin);
 new User("Dude").sayHi(); // Hello Dude!
 ```
 
-Il n'y a pas d'héritage, mais une méthode de copie simple. Ainsi, `User` peut hériter d'une autre classe et inclure le mixin pour ajouter les méthodes supplémentaires, comme ceci:
+Il n'y a pas d'héritage, mais une simple copie de méthode. Ainsi, `User` peut hériter d'une autre classe et inclure le mixin pour ajouter les méthodes supplémentaires, comme ceci :
 
 ```js
 class User extends Person {
@@ -59,7 +59,7 @@ Object.assign(User.prototype, sayHiMixin);
 
 Les mixins peuvent utiliser l'héritage à l'intérieur d'eux-mêmes.
 
-Par exemple, ici `sayHiMixin` hérite de `sayMixin`:
+Par exemple, ici `sayHiMixin` hérite de `sayMixin` :
 
 ```js run
 let sayMixin = {
@@ -97,7 +97,7 @@ new User("Dude").sayHi(); // Hello Dude!
 
 Veuillez noter que l’appel à la méthode du parent `super.say()` à partir de `sayHiMixin` (aux lignes étiquetées avec `(*)`) recherche la méthode dans le prototype de ce mixin, pas la classe.
 
-Voici le schéma (voir la partie droite):
+Voici le schéma (voir la partie droite) :
 
 ![](mixin-inheritance.svg)
 
@@ -112,14 +112,14 @@ Faisons maintenant un mixin concret.
 Une caractéristique importante de nombreux objets de navigateur (par exemple) est qu'ils peuvent générer des événements. Les événements sont un excellent moyen de "diffuser des informations" à tous ceux qui le souhaitent. Faisons donc un mixin qui permet d’ajouter facilement des fonctions relatives aux événements à n’importe quelle classe/objet.
 
 - Le mixin fournira une méthode `.trigger(name, [... data])` pour "générer un événement" quand quelque chose d'important lui arrive. L'argument `name` est un nom de l'événement, éventuellement suivi d'arguments supplémentaires avec les données d'événement.
-- Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
+- Également la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
 - ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.
 
 Après avoir ajouté le mixin, un objet `user` sera capable de générer un événement `"login"` lorsque le visiteur se connectera. Un autre objet, par exemple, `calendar` peut vouloir écouter de tels événements pour charger le calendrier de la personne connectée.
 
 Ou bien, un `menu` peut générer l'événement `"select"` lorsqu'un élément de menu est sélectionné, et d'autres objets peuvent affecter des gestionnaires pour réagir à cet événement. Etc.
 
-Voici le code:
+Voici le code :
 
 ```js run
 let eventMixin = {
@@ -164,12 +164,11 @@ let eventMixin = {
 };
 ```
 
-
 - `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
 - `.off(eventName, handler)` - supprime la fonction de la liste des gestionnaires.
 - `.trigger(eventName, ... args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
 
-Usage:
+Usage :
 
 ```js run
 // Créez une classe
@@ -199,7 +198,7 @@ Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classe
 
 ## Résumé
 
-*Mixin* -- est un terme générique de programmation orienté objet: une classe contenant des méthodes pour d’autres classes.
+*Mixin* est un terme générique de programmation orienté objet : une classe contenant des méthodes pour d’autres classes.
 
 D'autres langages autorisent l'héritage multiple. JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
 
