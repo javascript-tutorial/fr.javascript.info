@@ -2,13 +2,13 @@
 
 Peu importe notre niveau en programmation, nos scripts comportent parfois des erreurs. Elles peuvent être dues à nos erreurs, à une entrée utilisateur imprévue, à une réponse erronée du serveur et à mille autres raisons.
 
-Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'imprimant sur la console.
+Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'affichant dans la console.
 
 Mais il existe une construction de syntaxe `try...catch` qui permet au script "d'attraper" les erreurs et, au lieu de mourir en cas de problème, de faire quelque chose de plus raisonnable.
 
 ## La syntaxe "try...catch"
 
-La construction `try...catch` a deux blocs principaux: `try`, puis `catch`:
+La construction `try...catch` a deux blocs principaux : `try`, puis `catch` :
 
 ```js
 try {
@@ -22,11 +22,11 @@ try {
 }
 ```
 
-Cela fonctionne comme ceci:
+Cela fonctionne comme ceci :
 
 1. Tout d'abord, le code dans `try {...}` est exécuté.
 2. S'il n'y a pas eu d'erreur, alors `catch(err)` est ignoré : l'exécution arrive à la fin de `try` et continue en ignorant `catch`.
-3. Si une erreur survient, alors l'exécution de `try` est arrêtée et le contrôle se place au début de `catch(err) `. La variable `err` (qui peut utiliser n'importe quel nom) contient un objet d'erreur avec des détails sur ce qui s'est passé.
+3. Si une erreur survient, alors l'exécution de `try` est arrêtée et le contrôle se place au début de `catch(err)`. La variable `err` (qui peut utiliser n'importe quel nom) contient un objet d'erreur avec des détails sur ce qui s'est passé.
 
 ![](try-catch-flow.svg)
 
@@ -34,7 +34,7 @@ Donc, une erreur dans le bloc `try {...}` ne tue pas le script -- nous avons une
 
 Voyons des exemples.
 
-- Un exemple sans erreur: affiche `alert` `(1)` et `(2)`:
+- Un exemple sans erreur : affiche `alert` `(1)` et `(2)` :
 
     ```js run
     try {
@@ -51,7 +51,8 @@ Voyons des exemples.
 
     }
     ```
-- Un exemple avec une erreur: montre `(1)` et `(3)`:
+
+- Un exemple avec une erreur : montre `(1)` et `(3)` :
 
     ```js run
     try {
@@ -71,7 +72,6 @@ Voyons des exemples.
     }
     ```
 
-
 ````warn header="`try...catch` ne fonctionne que pour les erreurs d'exécution"
 Pour que `try...catch` fonctionne, le code doit être exécutable. En d'autres termes, le code doit être du JavaScript valide.
 
@@ -89,7 +89,6 @@ Le moteur JavaScript lit d'abord le code, puis l'exécute. Les erreurs qui se pr
 
 Ainsi, `try...catch` ne peut gérer que les erreurs qui se produisent dans du code valide. De telles erreurs sont appelées "erreurs d'exécution" ou, parfois, "exceptions".
 ````
-
 
 ````warn header="`try...catch` fonctionne de manière synchrone"
 Si une exception se produit dans le code "planifié", comme dans `setTimeout`,`try...catch` ne l'attrapera pas :
@@ -109,7 +108,7 @@ C’est parce que la fonction elle-même est exécutée ultérieurement, lorsque
 Pour capturer une exception dans une fonction planifiée, `try...catch` doit être à l'intérieur de cette fonction :
 ```js run
 setTimeout(function() {
-  try {    
+  try {
     noSuchVariable; // try...catch gère l'erreur!
   } catch {
     alert( "error is caught here!" );
