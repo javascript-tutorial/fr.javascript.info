@@ -124,7 +124,7 @@ Voici le code :
 ```js run
 let eventMixin = {
   /**
-   * Souscrire à l'événement, usage:
+   * Souscrire à l'événement, usage :
    *  menu.on('select', function(item) { ... }
   */
   on(eventName, handler) {
@@ -136,7 +136,7 @@ let eventMixin = {
   },
 
   /**
-   * Annuler la souscription, usage:
+   * Annuler la souscription, usage :
    *  menu.off('select', handler)
    */
   off(eventName, handler) {
@@ -164,9 +164,9 @@ let eventMixin = {
 };
 ```
 
-- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
+- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et il l'ajoute simplement à la liste.
 - `.off(eventName, handler)` - supprime la fonction de la liste des gestionnaires.
-- `.trigger(eventName, ... args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
+- `.trigger(eventName, ... args)` - génère l'événement : tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
 
 Usage :
 
@@ -182,19 +182,19 @@ Object.assign(Menu.prototype, eventMixin);
 
 let menu = new Menu();
 
-// ajouter un gestionnaire, à appeler lors de la sélection:
+// ajouter un gestionnaire, à appeler lors de la sélection :
 *!*
 menu.on("select", value => alert(`Value selected: ${value}`));
 */!*
 
-// déclenche l'événement => le gestionnaire ci-dessus s'exécute et affiche:
+// déclenche l'événement => le gestionnaire ci-dessus s'exécute et affiche :
 // Value selected: 123
 menu.choose("123");
 ```
 
 Maintenant, si nous souhaitons que le code réagisse lors de la sélection du menu, nous pouvons l'écouter avec `menu.on(...)`.
 
-Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classes que nous le voudrions, sans interférer avec la chaîne d'héritage.
+Et le mixin `eventMixin` facilite l'ajout d'un tel comportement à autant de classes que nous le voudrions, sans interférer avec la chaîne d'héritage.
 
 ## Résumé
 
