@@ -265,9 +265,9 @@ throw <error object>
 
 Techniquement, on peut utiliser n'importe quoi comme objet d'erreur. Cela peut même être une primitive, comme un nombre ou une chaîne, mais il est préférable d’utiliser des objets, de préférence avec les propriétés `name` et `message` (pour rester quelque peu compatibles avec les erreurs intégrées).
 
-JavaScript comporte de nombreux constructeurs intégrés pour les erreurs standard: `Error`, `SyntaxError`, `ReferenceError`, `TypeError` et autres. Nous pouvons également les utiliser pour créer des objets d'erreur.
+JavaScript comporte de nombreux constructeurs intégrés pour les erreurs standards : `Error`, `SyntaxError`, `ReferenceError`, `TypeError` et autres. Nous pouvons également les utiliser pour créer des objets d'erreur.
 
-Leur syntaxe est la suivante:
+Leur syntaxe est la suivante :
 
 ```js
 let error = new Error(message);
@@ -279,7 +279,7 @@ let error = new ReferenceError(message);
 
 Pour les erreurs intégrées (pas pour les objets, mais pour les erreurs), la propriété `name` est exactement le nom du constructeur. Et `message` est tiré de l'argument.
 
-Par exemple:
+Par exemple :
 
 ```js run
 let error = new Error("Things happen o_O");
@@ -288,7 +288,7 @@ alert(error.name); // Error
 alert(error.message); // Things happen o_O
 ```
 
-Voyons quel type d'erreur `JSON.parse` génère:
+Voyons quel type d'erreur `JSON.parse` génère :
 
 ```js run
 try {
@@ -303,9 +303,9 @@ try {
 
 Comme on peut le constater, c’est une `SyntaxError`.
 
-Et dans notre cas, l’absence de `name` est une erreur, car les utilisateurs doivent avoir un` name`.
+Et dans notre cas, l’absence de `name` est une erreur, car les utilisateurs doivent avoir un `name`.
 
-Alors utilisons throw:
+Alors utilisons `throw` :
 
 ```js run
 let json = '{ "age": 30 }'; // données incomplètes
@@ -327,9 +327,9 @@ try {
 }
 ```
 
-Dans la ligne `(*)`, l'instruction `throw` génère une `SyntaxError` avec le `message` donné, de la même manière que JavaScript le générerait lui-même. L'exécution de `try` s'arrête immédiatement et le flux de contrôle saute dans `catch`.
+À la ligne `(*)`, l'instruction `throw` génère une `SyntaxError` avec le `message` donné, de la même manière que JavaScript le générerait lui-même. L'exécution de `try` s'arrête immédiatement et le flux de contrôle saute dans `catch`.
 
-Maintenant, `catch` est devenu un emplacement unique pour toutes les erreurs de traitement: à la fois pour `JSON.parse` et d'autres cas.
+Maintenant, `catch` est devenu un emplacement unique pour toutes les erreurs de traitement : à la fois pour `JSON.parse` et d'autres cas.
 
 ## Propager une exception
 
@@ -350,7 +350,7 @@ try {
 }
 ```
 
-Bien sûr, tout est possible! Les programmeurs font des erreurs. Même dans les utilitaires à code source ouvert utilisés par des millions de personnes pendant des décennies, on découvre soudainement un bug qui conduit à de terribles piratages.
+Bien sûr, tout est possible ! Les programmeurs font des erreurs. Même dans les utilitaires à code source ouvert utilisés par des millions de personnes pendant des décennies, on découvre soudainement un bug qui conduit à de terribles piratages.
 
 Dans notre cas, `try...catch` est destiné à intercepter les erreurs "incorrect data". Mais par sa nature, `catch` obtient *toutes* les erreurs de `try`. Ici, une erreur inattendue se produit, mais le même message `"JSON Error"` est toujours affiché. C'est faux et rend également le code plus difficile à déboguer.
 
@@ -373,14 +373,14 @@ try {
 *!*
   if (err instanceof ReferenceError) {
 */!*
-    alert('ReferenceError'); // "ReferenceError" for accessing an undefined variable
+    alert('ReferenceError'); // "ReferenceError" pour avoir accédé à une variable non définie
   }
 }
 ```
 
 Nous pouvons également obtenir le nom de la classe d'erreur à partir de la propriété `err.name`. Toutes les erreurs natives l'ont. Une autre option est de lire `err.constructor.name`.
 
-Dans le code ci-dessous, nous utilisons la technique de "propagation" pour que `catch` ne traite que `SyntaxError`:
+Dans le code ci-dessous, nous utilisons la technique de "propagation" pour que `catch` ne traite que `SyntaxError` :
 
 ```js run
 let json = '{ "age": 30 }'; // données incomplètes
@@ -411,11 +411,11 @@ try {
 }
 ```
 
-L’erreur de l’instruction throw à la ligne `(*)` de l’intérieur du bloc `catch` "tombe" de `try...catch` et peut être interceptée par une construction externe `try...catch` (si elle existe), ou tue le script.
+L’erreur de l’instruction `throw` à la ligne `(*)` de l’intérieur du bloc `catch` "sort" de `try...catch` et peut être soit capturée par une structure `try...catch` externe (si elle existe), soit elle arrête le script.
 
-Ainsi, le bloc `catch` ne traite que les erreurs qu’il sait gérer et" ignore "toutes les autres.
+Ainsi, le bloc `catch` ne traite que les erreurs qu’il sait gérer et "ignore" toutes les autres.
 
-L'exemple ci-dessous montre comment de telles erreurs peuvent être interceptées par un niveau supplémentaire de `try...catch` :
+L'exemple ci-dessous montre comment de telles erreurs peuvent être capturées par un niveau supplémentaire de `try...catch` :
 
 ```js run
 function readData() {
@@ -430,7 +430,7 @@ function readData() {
     // ...
     if (!(err instanceof SyntaxError)) {
 *!*
-      throw err; // propager (ne sachant pas comment gérer)
+      throw err; // propager l'erreur (ne sachant pas comment la gérer)
 */!*
     }
   }
@@ -440,7 +440,7 @@ try {
   readData();
 } catch (err) {
 *!*
-  alert( "External catch got: " + err ); // attrapé!
+  alert( "External catch got: " + err ); // attrapé !
 */!*
 }
 ```
@@ -449,16 +449,16 @@ Ici, `readData` ne sait que gérer `SyntaxError`, alors que le `try...catch` ext
 
 ## try...catch...finally
 
-Attends, ce n'est pas tout.
+Mais ce n'est pas tout.
 
-La construction `try...catch` peut avoir une autre clause de code : `finally`.
+La structure `try...catch` peut avoir un bloc de code supplémentaire : `finally`.
 
-S'il existe, il s'exécute dans tous les cas:
+S'il existe, il s'exécute dans tous les cas :
 
 - après `try`, s'il n'y a pas eu d'erreur,
 - après `catch`, s'il y a eu des erreurs.
 
-La syntaxe étendue ressemble à ceci:
+La syntaxe étendue ressemble à ceci :
 
 ```js
 *!*try*/!* {
@@ -470,7 +470,7 @@ La syntaxe étendue ressemble à ceci:
 }
 ```
 
-Essayez d'exécuter ce code:
+Essayez d'exécuter ce code :
 
 ```js run
 try {
@@ -483,7 +483,7 @@ try {
 }
 ```
 
-Le code a deux manières d'exécution:
+Ce code a deux manières de s'exécuter :
 
 1. Si vous répondez "Yes" à "Make an error?", Alors `try -> catch -> finally`.
 2. Si vous dites "No", alors `try -> finally`.
