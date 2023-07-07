@@ -53,7 +53,7 @@ En JavaScript, il existe deux types de champs d’objet (propriétés et méthod
 - Publique : accessible de n'importe où. Ils comprennent l'interface externe. Jusqu'à présent, nous utilisions uniquement des propriétés et méthodes publiques.
 - Privée : accessible uniquement de l'intérieur de la classe. Ce sont pour l'interface interne.
 
-Dans de nombreux autres langages, il existe également des champs "protégés" : accessibles uniquement de l'intérieur de la classe et de ceux qui l'étendent (comme privé, mais avec accès des classes héritées). Ils sont également utiles pour l'interface interne. En un sens, elles sont plus répandues que les méthodes privées, car nous souhaitons généralement que les classes héritées puissent y accéder.
+Dans de nombreux autres langages, il existe également des champs "protégés" : accessibles uniquement de l'intérieur de la classe et de ceux qui en héritent (comme privé, mais avec accès des classes héritées). Ils sont également utiles pour l'interface interne. En un sens, elles sont plus répandues que les méthodes privées, car nous souhaitons généralement que les classes héritées puissent y accéder.
 
 Les champs protégés ne sont pas implémentés en JavaScript au niveau du langage, mais dans la pratique, ils sont très pratiques, ils sont donc imités.
 
