@@ -123,11 +123,11 @@ Maintenant, l'accès est sous contrôle, donc le réglage de l'eau en dessous de
 
 ## "power" en lecture seule
 
-Pour la propriété `power`, rendons-la en lecture seule. Il arrive parfois qu'une propriété doit être définie au moment de la création, puis ne jamais être modifiée.
+Pour la propriété `power`, rendons-la en lecture seule. Il arrive parfois qu'une propriété doive être définie au moment de la création, puis ne jamais être modifiée.
 
 C'est exactement le cas pour une machine à café : la puissance ne change jamais.
 
-Pour ce faire, il suffit de définir l'accésseur, mais pas le mutateur :
+Pour ce faire, il suffit de définir l'accesseur, mais pas le mutateur :
 
 ```js run
 class CoffeeMachine {

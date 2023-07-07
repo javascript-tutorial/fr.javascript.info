@@ -119,7 +119,7 @@ alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi
 
 ## Pas simplement un sucre syntaxique
 
-Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit rien de nouveau), parce qu'en réalité nous pouvons déclarer la même chose sans utiliser le mot clé `classe` :
+Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit rien de nouveau), parce qu'en réalité nous pouvons déclarer la même chose sans utiliser le mot clé `class` :
 
 ```js run
 // Réécriture de class User en fonctions pures
@@ -158,7 +158,7 @@ Cependant, il existe des différences importantes.
     User(); // Erreur: le constructeur Class User ne peut être invoque sans 'new'
     ```
 
-    Aussi, la représentation en chaine de caractère d'un constructeur de class dans la plupart des moteurs de JavaScript commence avec "class..." :
+    Aussi, la représentation en chaîne de caractères d'un constructeur de class dans la plupart des moteurs de JavaScript commence avec "class..." :
 
     ```js run
     class User {
@@ -171,7 +171,7 @@ Cependant, il existe des différences importantes.
     Il y a d'autres différences, nous les verrons bientôt.
 
 2. Les méthodes de Class sont non-énumérable.
-    Une définition de la classe attribue `false` à la propriété `énumérable` pour toutes les méthodes du `"prototype"`.
+    Une définition de la classe attribue `false` à la propriété `enumerable` pour toutes les méthodes du `"prototype"`.
 
     C'est bien, parce que si nous exécutons un `for..in` sur un Object, souvent nous ne voulons pas accéder aux méthodes de sa classe.
 

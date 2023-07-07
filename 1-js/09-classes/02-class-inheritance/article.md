@@ -69,8 +69,8 @@ Par exemple, pour trouver la méthode `rabbit.run`, le moteur vérifie (de bas e
 
 Comme nous pouvons nous en rappeler dans le chapitre <info:native-prototypes>, JavaScript lui-même utilise l'héritage prototypale pour les objets intégrés. Exemple : `Date.prototype.[[Prototype]]` est `Object.prototype`. C'est pourquoi les dates ont accès aux méthodes d'objet génériques.
 
-````smart header="Toute expression est autorisée après `extend`"
-La syntaxe de classe permet de spécifier non seulement une classe, mais toute expression après `extend`.
+````smart header="Toute expression est autorisée après `extends`"
+La syntaxe de classe permet de spécifier non seulement une classe, mais toute expression après `extends`.
 
 Par exemple, un appel de fonction qui génère la classe parent :
 
@@ -114,7 +114,7 @@ Les classes fournissent le mot clé `"super"` pour cela.
 - `super.method(...)` pour appeler une méthode parente.
 - `super(...)` pour appeler un constructeur parent (dans notre constructeur uniquement).
 
-Par exemple, laisson rabbit se cacher automatiquement à l’arrêt :
+Par exemple, laissons rabbit se cacher automatiquement à l’arrêt :
 
 ```js run
 class Animal {
@@ -388,9 +388,9 @@ Poussons un peu plus loin sous le capot de `super`. Nous y verrons des choses in
 
 Tout d'abord, d'après tout ce que nous avons appris jusqu'à présent, `super` ne devrait pas fonctionner du tout !
 
-Oui, en effet, demandons-nous comment cela devrait fonctionner techniquement ? Lorsqu'une méthode d'objet est exécutée, l'objet actuel est remplacé par `this`. Si nous appelons `super.method()`, le moteur doit obtenir la `methode` à partir du prototype de l'objet actuel. Mais comment ?
+Oui, en effet, demandons-nous comment cela devrait fonctionner techniquement ? Lorsqu'une méthode d'objet est exécutée, l'objet actuel est remplacé par `this`. Si nous appelons `super.method()`, le moteur doit obtenir la `method` à partir du prototype de l'objet actuel. Mais comment ?
 
-La tâche peut sembler simple, mais elle ne l’est pas. Le moteur connaît l'objet en cours `this`, de sorte qu'il pourrait obtenir la `methode` parent sous la forme `this.__proto__.Method`. Malheureusement, une telle solution "naïve" ne fonctionnera pas.
+La tâche peut sembler simple, mais elle ne l’est pas. Le moteur connaît l'objet en cours `this`, de sorte qu'il pourrait obtenir la `method` parent sous la forme `this.__proto__.Method`. Malheureusement, une telle solution "naïve" ne fonctionnera pas.
 
 Montrons le problème. Sans les classes, en utilisant des objets simples pour des raisons de simplicité.
 

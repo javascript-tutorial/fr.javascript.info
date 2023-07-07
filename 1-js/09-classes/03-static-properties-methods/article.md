@@ -144,7 +144,7 @@ Article.publisher = "Ilya Kantor";
 
 Les propriétés et méthodes statiques sont héritées.
 
-Par exemple, `Animal.compare` et `Animal.planet` dans le code ci-dessous sont hérités et accessibles  par `Rabbit.compare` et `Rabbit.planet` :
+Par exemple, `Animal.compare` et `Animal.planet` dans le code ci-dessous sont hérités et accessibles par `Rabbit.compare` et `Rabbit.planet` :
 
 ```js run
 class Animal {
@@ -191,7 +191,7 @@ alert(Rabbit.planet); // Earth
 
 Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.
 
-Comment cela fonctionne t-il ? Encore une fois, en utilisant des prototypes. Comme vous l'avez peut-être déjà deviné, `extends` donne à `Rabbit` la référence de `[[Prototype]]` à `Animal`.
+Comment cela fonctionne-t-il ? Encore une fois, en utilisant des prototypes. Comme vous l'avez peut-être déjà deviné, `extends` donne à `Rabbit` la référence de `[[Prototype]]` à `Animal`.
 
 ![](animal-rabbit-static.svg)
 
