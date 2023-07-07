@@ -75,7 +75,7 @@ Voyons des exemples.
 ````warn header="`try...catch` ne fonctionne que pour les erreurs d'exécution"
 Pour que `try...catch` fonctionne, le code doit être exécutable. En d'autres termes, le code doit être du JavaScript valide.
 
-Cela ne fonctionnera pas si le code est syntaxiquement incorrect, par exemple, il a des accolades inégalées:
+Cela ne fonctionnera pas si le code est syntaxiquement incorrect, par exemple, il a des accolades inégalées :
 
 ```js run
 try {
@@ -91,7 +91,7 @@ Ainsi, `try...catch` ne peut gérer que les erreurs qui se produisent dans du co
 ````
 
 ````warn header="`try...catch` fonctionne de manière synchrone"
-Si une exception se produit dans le code "planifié", comme dans `setTimeout`,`try...catch` ne l'attrapera pas :
+Si une exception se produit dans le code "planifié", comme dans `setTimeout`, `try...catch` ne l'attrapera pas :
 
 ```js run
 try {
@@ -109,7 +109,7 @@ Pour capturer une exception dans une fonction planifiée, `try...catch` doit êt
 ```js run
 setTimeout(function() {
   try {
-    noSuchVariable; // try...catch gère l'erreur!
+    noSuchVariable; // try...catch gère l'erreur !
   } catch {
     alert( "error is caught here!" );
   }
@@ -119,7 +119,7 @@ setTimeout(function() {
 
 ## Objet d'erreur
 
-En cas d'erreur, JavaScript génère un objet contenant les détails à son sujet. L'objet est ensuite passé en argument à `catch`:
+En cas d'erreur, JavaScript génère un objet contenant les détails à son sujet. L'objet est ensuite passé en argument à `catch` :
 
 ```js
 try {
@@ -129,7 +129,7 @@ try {
 }
 ```
 
-Pour toutes les erreurs intégrées, l'objet d'erreur a deux propriétés principales:
+Pour toutes les erreurs intégrées, l'objet d'erreur a deux propriétés principales :
 
 `name`
 : Nom de l'erreur. Par exemple, pour une variable non définie, il s'agit de `"ReferenceError"`.
@@ -137,12 +137,12 @@ Pour toutes les erreurs intégrées, l'objet d'erreur a deux propriétés princi
 `message`
 : Message textuel sur les détails de l'erreur.
 
-Il existe d'autres propriétés non standard disponibles dans la plupart des environnements. L'un des plus largement utilisés et supportés est:
+Il existe d'autres propriétés non standard disponibles dans la plupart des environnements. L'un des plus largement utilisés et supportés est :
 
 `stack`
-: Pile d'exécution en cours: chaîne contenant des informations sur la séquence d'appels imbriqués ayant entraîné l'erreur. Utilisé à des fins de débogage.
+: Pile d'exécution en cours : chaîne contenant des informations sur la séquence d'appels imbriqués ayant entraîné l'erreur. Utilisé à des fins de débogage.
 
-Par exemple:
+Par exemple :
 
 ```js run untrusted
 try {
@@ -164,7 +164,7 @@ try {
 
 [recent browser=new]
 
-Si nous n'avons pas besoin de détails d'erreur, `catch` peut l'omettre:
+Si nous n'avons pas besoin de détails d'erreur, `catch` peut l'omettre :
 
 ```js
 try {
@@ -182,7 +182,7 @@ Comme nous le savons déjà, JavaScript prend en charge la méthode [JSON.parse(
 
 Il est généralement utilisé pour décoder les données reçues sur le réseau, par le serveur ou par une autre source.
 
-Nous le recevons et appelons `JSON.parse` comme ceci:
+Nous le recevons et appelons `JSON.parse` comme ceci :
 
 ```js run
 let json = '{"name":"John", "age": 30}'; // données du serveur
@@ -200,7 +200,7 @@ Vous trouverez des informations plus détaillées sur JSON dans le chapitre <inf
 
 **Si `json` est malformé, `JSON.parse` génère une erreur, de sorte que le script "meurt".**
 
-Devrions-nous en être satisfaits ? Bien sûr que non!
+Devrions-nous en être satisfaits ? Bien sûr que non !
 
 De cette façon, si quelque chose ne va pas avec les données, le visiteur ne le saura jamais (à moins d'ouvrir la console du développeur). Et les gens n'aiment vraiment pas quand quelque chose "meurt" sans aucun message d'erreur.
 
@@ -226,13 +226,13 @@ try {
 }
 ```
 
-Ici, nous utilisons le bloc `catch` uniquement pour afficher le message, mais nous pouvons faire beaucoup plus: envoyer une nouvelle requête réseau, suggérer une alternative au visiteur, envoyer des informations sur l'erreur à un enregistrement des erreurs, ... . Bien mieux que de juste mourir.
+Ici, nous utilisons le bloc `catch` uniquement pour afficher le message, mais nous pouvons faire beaucoup plus : envoyer une nouvelle requête réseau, suggérer une alternative au visiteur, envoyer des informations sur l'erreur à un système de journalisation, ... Bien mieux que de juste mourir.
 
 ## Lever nos propres exceptions
 
-Que se passe-t-il si `json` est correct du point de vue syntaxique, mais qu'il n'a pas de propriété requise `name`?
+Que se passe-t-il si `json` est correct du point de vue syntaxique, mais qu'il n'a pas de propriété requise `name` ?
 
-Comme ceci:
+Comme ceci :
 
 ```js run
 let json = '{ "age": 30 }'; // données incomplètes
@@ -241,7 +241,7 @@ try {
 
   let user = JSON.parse(json); // <-- pas d'erreurs
 *!*
-  alert( user.name ); // pas de "name"!
+  alert( user.name ); // pas de "name" !
 */!*
 
 } catch (err) {
@@ -257,7 +257,7 @@ Pour unifier le traitement des erreurs, nous allons utiliser l'opérateur `throw
 
 L'instruction `throw` génère une erreur.
 
-La syntaxe est la suivante:
+La syntaxe est la suivante :
 
 ```js
 throw <error object>
