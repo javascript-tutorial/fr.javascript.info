@@ -4,11 +4,11 @@ Peu importe notre niveau en programmation, nos scripts comportent parfois des er
 
 Généralement, un script "meurt" (s'arrête immédiatement) en cas d'erreur, en l'affichant dans la console.
 
-Mais il existe une construction de syntaxe `try...catch` qui permet au script "d'attraper" les erreurs et, au lieu de mourir en cas de problème, de faire quelque chose de plus raisonnable.
+Mais il existe une structure de syntaxe `try...catch` qui permet au script "d'attraper" les erreurs et, au lieu de mourir en cas de problème, de faire quelque chose de plus raisonnable.
 
 ## La syntaxe "try...catch"
 
-La construction `try...catch` a deux blocs principaux : `try`, puis `catch` :
+La structure `try...catch` a deux blocs principaux : `try`, puis `catch` :
 
 ```js
 try {
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-C’est parce que la fonction elle-même est exécutée ultérieurement, lorsque le moteur a déjà quitté la construction `try...catch`.
+C’est parce que la fonction elle-même est exécutée ultérieurement, lorsque le moteur a déjà quitté la structure `try...catch`.
 
 Pour capturer une exception dans une fonction planifiée, `try...catch` doit être à l'intérieur de cette fonction :
 ```js run
@@ -561,7 +561,7 @@ alert( func() ); // en premier l'alert du `finally`, puis celle-ci (`1`)
 
 ````smart header="`try...finally`"
 
-La construction `try...finally`, sans la clause `catch`, est également utile. Nous l'appliquons lorsque nous ne voulons pas gérer les erreurs ici (les laisser passer), mais nous voulons être sûrs que les processus que nous avons démarrés sont finalisés.
+La structure `try...finally`, sans la clause `catch`, est également utile. Nous l'appliquons lorsque nous ne voulons pas gérer les erreurs ici (les laisser passer), mais nous voulons être sûrs que les processus que nous avons démarrés sont finalisés.
 
 ```js
 function func() {
@@ -576,19 +576,19 @@ function func() {
 Dans le code ci-dessus, une erreur à l'intérieur de `try` ressort toujours, car il n'y a pas de `catch`. Mais `finally` fonctionne avant que le flux d’exécution ne quitte la fonction.
 ````
 
-## Catch globale
+## Catch global
 
 ```warn header="Spécifique à l'environnement"
 Les informations de cette section ne font pas partie du code JavaScript principal.
 ```
 
-Imaginons que nous ayons une erreur fatale en dehors de `try...catch` et que le script soit mort. Comme une erreur de programmation ou autre chose terrible.
+Imaginons que nous ayons une erreur fatale en dehors de `try...catch` et que le script soit mort. Comme une erreur de programmation ou une autre chose terrible.
 
 Y a-t-il un moyen de réagir à de tels événements ? Nous pouvons vouloir enregistrer l'erreur, montrer quelque chose à l'utilisateur (normalement, ils ne voient pas les messages d'erreur), etc.
 
 Il n'y en a pas dans la spécification, mais les environnements le fournissent généralement, car c'est vraiment utile. Par exemple, Node.js a [`process.on("uncaughtException")`](https://nodejs.org/api/process.html#process_event_uncaughtexception) pour ça. Et dans le navigateur, nous pouvons attribuer une fonction à la propriété [window.onerror](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onerror), qui fonctionnera en cas d'erreur non interceptée.
 
-La syntaxe:
+La syntaxe :
 
 ```js
 window.onerror = function(message, url, line, col, error) {
@@ -608,7 +608,7 @@ window.onerror = function(message, url, line, col, error) {
 `error`
 : Objet d'erreur.
 
-Par exemple:
+Par exemple :
 
 ```html run untrusted refresh height=1
 <script>
@@ -619,7 +619,7 @@ Par exemple:
 */!*
 
   function readData() {
-    badFunc(); // Whoops, quelque chose s'est mal passé!
+    badFunc(); // Whoops, quelque chose s'est mal passé !
   }
 
   readData();
@@ -628,9 +628,9 @@ Par exemple:
 
 Le rôle du gestionnaire global `window.onerror` est généralement de ne pas récupérer l'exécution du script - c'est probablement impossible en cas d'erreur de programmation, mais d'envoyer le message d'erreur aux développeurs.
 
-Il existe également des services Web fournissant un journal des erreurs pour de tels cas, comme<https://errorception.com> ou <https://www.muscula.com>.
+Il existe également des services Web fournissant un journal des erreurs pour de tels cas, comme <https://errorception.com> ou <https://www.muscula.com>.
 
-Ils fonctionnent comme ceci:
+Ils fonctionnent comme ceci :
 
 1. Nous nous inscrivons au service et obtenons un morceau de JS (ou une URL de script) à insérer sur des pages.
 2. Ce script JS définit une fonction `window.onerror` personnalisée.
@@ -639,9 +639,9 @@ Ils fonctionnent comme ceci:
 
 ## Résumé
 
-La construction `try...catch` permet de gérer les erreurs d'exécution. Cela permet littéralement "d'essayer" (`try`) d'exécuter le code et "d’attraper" (`catch`) les erreurs qui peuvent s'y produire.
+La structure `try...catch` permet de gérer les erreurs d'exécution. Cela permet littéralement "d'essayer" (`try`) d'exécuter le code et "d’attraper" (`catch`) les erreurs qui peuvent s'y produire.
 
-La syntaxe est la suivante:
+La syntaxe est la suivante :
 
 ```js
 try {
@@ -654,18 +654,18 @@ try {
 }
 ```
 
-Il peut ne pas y avoir de section `catch` ou de `finally`, donc les constructions plus courtes `try...catch` et `try...finally` sont également valides.
+Il peut ne pas y avoir de section `catch` ou de `finally`, donc les structures plus courtes `try...catch` et `try...finally` sont également valides.
 
-Les objets d'erreur ont les propriétés suivantes:
+Les objets d'erreur ont les propriétés suivantes :
 
 - `message` - le message d'erreur.
 - `name` - la chaîne avec le nom d'erreur (nom du constructeur de l'erreur).
 - `stack` (non standard, mais bien supporté) - la pile d'exécution au moment de la création de l'erreur.
 
-Si un objet d'erreur n'est pas nécessaire, nous pouvons l'omettre en utilisant `catch {` au lieu de `catch(err) {`.
+Si un objet d'erreur n'est pas nécessaire, nous pouvons l'omettre en utilisant `catch {...}` au lieu de `catch(err) {...}`.
 
 Nous pouvons également générer nos propres erreurs en utilisant l'opérateur `throw`. Techniquement, l'argument de `throw` peut être n'importe quoi, mais il s'agit généralement d'un objet d'erreur héritant de la classe `Error` intégrée. Plus d'informations sur l'extension des erreurs dans le chapitre suivant.
 
-La technique de *propagation* est un modèle très important de gestion des erreurs: un bloc `catch` s'attend généralement à savoir comment gérer le type d'erreur particulier et sait comment le gérer. Il doit donc "propager" les erreurs qu'il ne connaît pas.
+La technique de *propagation* est un modèle très important de gestion des erreurs : un bloc `catch` s'attend généralement à un type d'erreur particulier et sait comment le gérer, il doit donc "propager" (renvoyer) les erreurs qu'il ne connaît pas.
 
-Même si nous n'avons pas `try...catch`, la plupart des environnements permettent de configurer un gestionnaire d'erreurs "globale" pour intercepter les erreurs qui "tombent". Dans le navigateur, c'est `window.onerror`.
+Même si nous n'avons pas `try...catch`, la plupart des environnements permettent de configurer un gestionnaire d'erreurs "globales" pour intercepter les erreurs qui "tombent". Dans le navigateur, c'est `window.onerror`.
