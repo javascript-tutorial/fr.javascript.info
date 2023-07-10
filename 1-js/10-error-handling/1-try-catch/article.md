@@ -488,16 +488,16 @@ Ce code a deux manières de s'exécuter :
 1. Si vous répondez "Yes" à "Make an error?", Alors `try -> catch -> finally`.
 2. Si vous dites "No", alors `try -> finally`.
 
-La clause `finally` est souvent utilisée lorsque nous commençons à faire quelque chose et que nous voulons le finaliser dans tous les cas de résultats.
+La clause `finally` est souvent utilisée lorsque nous commençons à faire quelque chose et que nous voulons le finaliser dans tous les cas de figure.
 
-Par exemple, nous voulons mesurer le temps que prend une fonction de nombre de Fibonacci `fib(n)`. Naturellement, nous pouvons commencer à mesurer avant l'exécution et finir ensuite. Mais que se passe-t-il s'il y a une erreur lors de l'appel de la fonction? En particulier, la mise en oeuvre de `fib(n)` dans le code ci-dessous renvoie une erreur pour les nombres négatifs ou non entiers.
+Par exemple, nous voulons mesurer le temps que prend une fonction de nombre de Fibonacci `fib(n)`. Naturellement, nous pouvons commencer à mesurer avant l'exécution et finir ensuite. Mais que se passe-t-il s'il y a une erreur lors de l'appel de la fonction ? En particulier, la mise en oeuvre de `fib(n)` dans le code ci-dessous renvoie une erreur pour les nombres négatifs ou non entiers.
 
 La clause `finally` est un bon endroit pour finir les mesures, quoi qu’il arrive.
 
-Ici, `finally` garantit que le temps sera correctement mesuré dans les deux situations - en cas d’exécution réussie de `fib` et en cas d’erreur:
+Ici, `finally` garantit que le temps sera correctement mesuré dans les deux situations - en cas d’exécution réussie de `fib` et en cas d’erreur :
 
 ```js run
-let num = +prompt("Enter a positive integer number?", 35)
+let num = +prompt("Enter a positive integer number.", 35)
 
 let diff, result;
 
@@ -529,7 +529,6 @@ Vous pouvez vérifier en exécutant le code en entrant `35` dans `prompt` - il s
 
 En d'autres termes, la fonction peut finir par `return` ou `throw`, cela n'a pas d'importance. La clause `finally` s'exécute dans les deux cas.
 
-
 ```smart header="Les variables sont locales à l'intérieur de `try...catch...finally`"
 Veuillez noter que les variables `result` et `diff` dans le code ci-dessus sont déclarées *avant* `try...catch`.
 
@@ -543,12 +542,10 @@ Dans l'exemple ci-dessous, il y a `return` dans `try`. Dans ce cas, `finally` es
 
 ```js run
 function func() {
-
   try {
 *!*
     return 1;
 */!*
-
   } catch (err) {
     /* ... */
   } finally {
@@ -558,13 +555,13 @@ function func() {
   }
 }
 
-alert( func() ); // en premièr l'alert du `finally`, puis celle-ci
+alert( func() ); // en premier l'alert du `finally`, puis celle-ci (`1`)
 ```
 ````
 
 ````smart header="`try...finally`"
 
-La construction `try...finally`, sans la clause `catch`, est également utile. Nous l'appliquons lorsque nous ne voulons pas gérer les erreurs ici (laissez-les tomber), mais nous voulons être sûrs que les processus que nous avons démarrés sont finalisés.
+La construction `try...finally`, sans la clause `catch`, est également utile. Nous l'appliquons lorsque nous ne voulons pas gérer les erreurs ici (les laisser passer), mais nous voulons être sûrs que les processus que nous avons démarrés sont finalisés.
 
 ```js
 function func() {
@@ -576,7 +573,7 @@ function func() {
   }
 }
 ```
-Dans le code ci-dessus, une erreur à l'intérieur de `try` tombe toujours, car il n'y a pas de `catch`. Mais `finally` fonctionne avant que le flux d’exécution ne quitte la fonction.
+Dans le code ci-dessus, une erreur à l'intérieur de `try` ressort toujours, car il n'y a pas de `catch`. Mais `finally` fonctionne avant que le flux d’exécution ne quitte la fonction.
 ````
 
 ## Catch globale
