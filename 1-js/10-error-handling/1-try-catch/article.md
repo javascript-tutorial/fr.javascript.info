@@ -579,7 +579,7 @@ Dans le code ci-dessus, une erreur à l'intérieur de `try` ressort toujours, ca
 ## Catch global
 
 ```warn header="Spécifique à l'environnement"
-Les informations de cette section ne font pas partie du code JavaScript principal.
+Les informations de cette section ne font pas partie du JavaScript de base.
 ```
 
 Imaginons que nous ayons une erreur fatale en dehors de `try...catch` et que le script soit mort. Comme une erreur de programmation ou une autre chose terrible.
