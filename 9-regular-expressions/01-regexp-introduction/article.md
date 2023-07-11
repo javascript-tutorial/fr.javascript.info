@@ -44,7 +44,7 @@ Les expressions régulières peuvent avoir des flags qui affectent la recherche.
 Il n'y en a que 6 en JavaScript :
 
 `pattern:i`
-: Avec cet indicateur, la recherche est insensible à la casse: pas de différence entre `A` et` a` (voir l'exemple ci-dessous).
+: Avec cet indicateur, la recherche est insensible à la casse: pas de différence entre `A` et `a` (voir l'exemple ci-dessous).
 
 `pattern:g`
 : Avec cet indicateur, la recherche liste toutes les correspondances, sans lui - seulement la première.
@@ -138,14 +138,14 @@ alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
 
 Le deuxième argument est la chaîne de caractères `replacement`. Nous pouvons utiliser des combinaisons de caractères spéciaux pour insérer des fragments de la correspondance :
 
-| Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                                  |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$&`                 | insère toute la correspondance match                                                                                                                        |
-| <code>$&#096;</code> | insère une partie de la chaîne de caractères avant la correspondance                                                                                        |
-| `$'`                 | insère une partie de la chaîne de caractères après la correspondance                                                                                        |
+| Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                           |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$&`                 | insère toute la correspondance match                                                                                                                 |
+| <code>$&#096;</code> | insère une partie de la chaîne de caractères avant la correspondance                                                                                 |
+| `$'`                 | insère une partie de la chaîne de caractères après la correspondance                                                                                 |
 | `$n`                 | si `n` est un nombre à un ou deux chiffres, alors il insère le contenu des nièmes parenthèses, plus à ce sujet dans le chapitre <info:regexp-groups> |
-| `$<name>`            | insère le contenu des parenthèses avec le `name` donné, plus à ce sujet dans le chapitre <info:regexp-groups>                                               |
-| `$$`                 | insère le caractère `$`                                                                                                                                     |
+| `$<name>`            | insère le contenu des parenthèses avec le `name` donné, plus à ce sujet dans le chapitre <info:regexp-groups>                                        |
+| `$$`                 | insère le caractère `$`                                                                                                                              |
 
 Un exemple avec `pattern:$&` :
 
@@ -155,7 +155,7 @@ alert( "I love HTML".replace(/HTML/, "$& and JavaScript") ); // I love HTML and 
 
 ## Tester : regexp.test
 
-La méthode `regexp.test(str)` recherche au moins une correspondance ; si elle est trouvée, retourne `true`, sinon` false`.
+La méthode `regexp.test(str)` recherche au moins une correspondance ; si elle est trouvée, retourne `true`, sinon `false`.
 
 ```js run
 let str = "I love JavaScript";

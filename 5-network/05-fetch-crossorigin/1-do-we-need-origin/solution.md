@@ -2,7 +2,7 @@ Nous avons besoin de `Origin`, car parfois `Referer` est absent. Par exemple, lo
 
 Le [Content Security Policy](http://en.wikipedia.org/wiki/Content_Security_Policy) peut interdire l'envoi d'un `Referer`.
 
-Comme nous le verrons, `fetch` a des options qui empêchent d'envoyer le` Referer` et permettent même de le changer (dans le même site).
+Comme nous le verrons, `fetch` a des options qui empêchent d'envoyer le `Referer` et permettent même de le changer (dans le même site).
 
 Par spécification, `Referer` est un en-tête HTTP facultatif.
 

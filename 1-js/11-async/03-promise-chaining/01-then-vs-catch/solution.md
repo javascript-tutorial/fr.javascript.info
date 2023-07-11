@@ -1,6 +1,6 @@
-La réponse courte est : **non, ils ne sont pas égaux**:
+La réponse courte est : **non, ils ne sont pas égaux** :
 
-La différence est que si une erreur survient dans `f1`, elle est gérée par` .catch` ici:
+La différence est que si une erreur survient dans `f1`, elle est gérée par `.catch` ici :
 
 ```js run
 promise

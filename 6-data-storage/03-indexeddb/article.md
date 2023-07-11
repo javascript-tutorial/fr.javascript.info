@@ -97,7 +97,7 @@ openRequest.onupgradeneeded = function(event) {
 };
 ```
 
-Veuillez noter: comme notre version actuelle est `2`, le gestionnaire `onupgradneeded` a une branche de code pour la version `0`, adaptée aux utilisateurs qui accéderont pour la première fois et n'ont pas de base de données, ainsi que pour la version` 1`, pour les mises à niveau.
+Veuillez noter : comme notre version actuelle est `2`, le gestionnaire `onupgradneeded` a une branche de code pour la version `0`, adaptée aux utilisateurs qui accéderont pour la première fois et n'ont pas de base de données, ainsi que pour la version `1`, pour les mises à niveau.
 
 Et puis, seulement si le gestionnaire `onupgradeededed` se termine sans erreurs, `openRequest.onsuccess` se déclanche et la base de données est considérée comme ouverte avec succès.
 

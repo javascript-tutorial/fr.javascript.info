@@ -459,7 +459,7 @@ function upload(file) {
 </script>
 ```
 
-## Requêtes Cross-origin 
+## Requêtes Cross-origin
 
 `XMLHttpRequest` peut faire des requêtes cross-origin, en utilisant la même politique CORS que [fetch](info:fetch-crossorigin).
 
@@ -521,7 +521,7 @@ Il y a en fait plus d'événements, la [spécification moderne](https://xhr.spec
 
 Les événements `error`, `abort`, `timeout`, et `load` s'excluent mutuellement. Un seul d'entre eux peut se produire.
 
-Les événements les plus utilisés sont la progression du chargement (`load`), l'échec du chargement (` error`), ou nous pouvons utiliser un seul gestionnaire `loadend` et vérifier les propriétés de l'objet de requête `xhr` pour voir ce qui s'est passé.
+Les événements les plus utilisés sont la progression du chargement (`load`), l'échec du chargement (`error`), ou nous pouvons utiliser un seul gestionnaire `loadend` et vérifier les propriétés de l'objet de requête `xhr` pour voir ce qui s'est passé.
 
 Nous avons déjà vu un autre événement : `readystatechange`. Historiquement, il est apparu il y a longtemps, avant que la spécification ne soit réglée. De nos jours, il n'est pas nécessaire de l'utiliser, nous pouvons le remplacer par des événements plus récents, mais il peut souvent être trouvé dans des scripts plus anciens.
 

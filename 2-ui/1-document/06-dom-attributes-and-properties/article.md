@@ -110,7 +110,7 @@ Voici une démonstration de la lecture d'une propriété non standard :
 
 Les attributs HTML ont les fonctionnalités suivantes :
 
-- Leur nom est insensible à la casse (`id` est identique à` ID`).
+- Leur nom est insensible à la casse (`id` est identique à `ID`).
 - Leurs valeurs sont toujours des chaînes de caractères.
 
 Voici une démonstration détaillée de l'utilisation des attributs :

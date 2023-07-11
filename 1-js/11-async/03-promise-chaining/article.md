@@ -7,7 +7,7 @@ Les promesses fournissent quelques options pour le faire.
 
 Dans ce chapitre, nous traitons de l'enchaînement des promesses.
 
-Cela ressemble à ceci:
+Cela ressemble à ceci :
 
 ```js run
 new Promise(function(resolve, reject) {
@@ -35,6 +35,7 @@ new Promise(function(resolve, reject) {
 L'idée est que le résultat est transmis à travers la chaîne de gestionnaires `.then`.
 
 Ici, le flux est :
+
 1. La promesse initiale est résolue en 1 seconde `(*)`,
 2. Ensuite, le gestionnaire `.then` est appelé `(**)`, qui à son tour crée une nouvelle promesse (résolue avec la valeur `2`).
 3. Le `then` suivant `(***)` obtient le résultat du précédent, le traite (double) et le passe au gestionnaire suivant.
@@ -44,13 +45,14 @@ Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous p
 
 ![](promise-then-chain.svg)
 
-Le tout fonctionne, parce qu’un appel à `.then` renvoie une nouvelle promesse, de sorte que nous puissions appeler le prochain` .then` dessus.
+Le tout fonctionne, parce qu’un appel à `.then` renvoie une nouvelle promesse, de sorte que nous puissions appeler le prochain `.then` dessus.
 
 Lorsqu'un gestionnaire renvoie une valeur, cela devient le résultat de cette promesse. Le prochain `.then` est appelé avec.
 
 **Une erreur classique pour les débutants: techniquement, nous pouvons également ajouter plusieurs `.then` à une seule promesse. Ceci n'est pas le chaînage des promesses.**
 
-Par example:
+Par example :
+
 ```js run
 let promise = new Promise(function(resolve, reject) {
   setTimeout(() => resolve(1), 1000);
@@ -78,7 +80,7 @@ Voici la representation (comparez-la avec l'enchaînement ci-dessus):
 
 ![](promise-then-many.svg)
 
-Tous les `.then` sur la même promesse obtiennent le même résultat - le résultat de cette promesse. Donc, dans le code ci-dessus, les `alert` montre la même chose:` 1`.
+Tous les `.then` sur la même promesse obtiennent le même résultat - le résultat de cette promesse. Donc, dans le code ci-dessus, les `alert` montre la même chose : `1`.
 
 En pratique, nous avons rarement besoin de plusieurs gestionnaires pour une même promesse. Le chaînage est utilisé beaucoup plus souvent.
 

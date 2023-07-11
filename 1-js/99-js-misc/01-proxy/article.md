@@ -241,7 +241,7 @@ Si nous oublions de le faire ou retournons une valeur fausse, l'opération décl
 
 ## Itération avec "ownKeys" et "getOwnPropertyDescriptor"
 
-La boucle `Object.keys`,` for..in` et la plupart des autres méthodes qui itèrent sur les propriétés des objets utilisent la méthode interne `[[OwnPropertyKeys]]` (interceptée par le piège `ownKeys`) pour obtenir une liste des propriétés.
+La boucle `Object.keys`, `for..in` et la plupart des autres méthodes qui itèrent sur les propriétés des objets utilisent la méthode interne `[[OwnPropertyKeys]]` (interceptée par le piège `ownKeys`) pour obtenir une liste des propriétés.
 
 Ces méthodes diffèrent dans les détails:
 - `Object.getOwnPropertyNames(obj)` renvoie des clés non symboliques.
@@ -251,7 +251,7 @@ Ces méthodes diffèrent dans les détails:
 
 ... Mais tous commencent par cette liste.
 
-Dans l'exemple ci-dessous, nous utilisons le piège `ownKeys` pour faire une boucle` for..in` sur `user`, ainsi que` Object.keys` et `Object.values`, pour ignorer les propriétés commençant par un trait de soulignement`_`:
+Dans l'exemple ci-dessous, nous utilisons le piège `ownKeys` pour faire une boucle `for..in` sur `user`, ainsi que `Object.keys` et `Object.values`, pour ignorer les propriétés commençant par un trait de soulignement`_` :
 
 ```js run
 let user = {

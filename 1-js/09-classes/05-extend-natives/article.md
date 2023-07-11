@@ -70,7 +70,7 @@ D'autres collections, telles que `Map` et `Set`, fonctionnent de la même maniè
 
 ## Pas d'héritage statique dans les éléments intégrés
 
-Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object.keys`,` Array.isArray` etc.
+Les objets intégrés ont leurs propres méthodes statiques, par exemple `Object.keys`, `Array.isArray`, etc.
 
 Comme nous le savons déjà, les classes natives s'étendent les uns des autres. Par exemple, `Array` extends `Object`.
 

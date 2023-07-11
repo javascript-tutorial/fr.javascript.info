@@ -230,7 +230,7 @@ let rabbit = new Rabbit("White Rabbit", 10); // Error: this is not defined.
 
 Oups! Nous avons une erreur. Maintenant, nous ne pouvons pas créer de lapins. Qu'est-ce qui s'est passé?
 
-La réponse courte est : 
+La réponse courte est :
 
 - **les constructeurs dans les classes qui héritent doivent appeler `super(...)`, et (!) le faire avant d'utiliser `this`.**
 
@@ -245,7 +245,7 @@ Ce label affecte son comportement avec `new`.
 - Lorsqu'une fonction normale est exécutée avec `new`, elle crée un objet vide et l'assigne à `this`.
 - Mais lorsqu'un constructeur dérivé s'exécute, il ne le fait pas. Il s'attend à ce que le constructeur parent fasse ce travail.
 
-Ainsi, un constructeur dérivé doit appeler `super` pour exécuter son constructeur parent (de base), sinon l'objet pour` this` ne sera pas créé. Et nous aurons une erreur.
+Ainsi, un constructeur dérivé doit appeler `super` pour exécuter son constructeur parent (de base), sinon l'objet pour `this` ne sera pas créé. Et nous aurons une erreur.
 
 Pour que le constructeur `Rabbit` fonctionne, il doit appeler `super()` avant d'utiliser `this`, comme ici :
 
@@ -279,7 +279,6 @@ alert(rabbit.name); // White Rabbit
 alert(rabbit.earLength); // 10
 */!*
 ```
-
 
 ### Remplacer les champs de classe : une note délicate
 
@@ -362,6 +361,7 @@ Et c'est ce à quoi nous nous attendons naturellement. Lorsque le constructeur p
 Pourquoi y a-t-il une différence ?
 
 Eh bien, la raison est dans l'ordre d'initialisation du champ. Le champ de classe est initialisé :
+
 - Avant le constructeur de la classe de base (qui n'étend rien),
 - Immédiatement après `super()` pour la classe dérivée.
 
@@ -374,7 +374,6 @@ Cette subtile différence entre les champs et les méthodes est propre à JavaSc
 Heureusement, ce comportement ne se révèle que si un champ surchargé est utilisé dans le constructeur parent. Ensuite, il peut être difficile de comprendre ce qui se passe, alors nous l'expliquons ici.
 
 Si cela devient un problème, on peut le résoudre en utilisant des méthodes ou des getters / setters au lieu de champs.
-
 
 ## Super: les internes, [[HomeObject]]
 

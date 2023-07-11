@@ -243,6 +243,7 @@ La raison en est que le nœud racine `document.documentElement` (`<html>`) a
 `document` comme parent. Mais `document` n'est pas un nœud élément, donc `parentNode` le renvoie et pas `parentElement`.
 
 Ce détail peut être utile lorsque nous voulons passer d'un élément arbitraire `elem` à `<html>`, mais pas au `document` :
+
 ```js
 while(elem = elem.parentElement) { // remonter jusqu'à <html>
   alert( elem );

@@ -106,7 +106,7 @@ Les propriétés de géométrie sont calculées uniquement pour les éléments a
 
 Si un élément (ou l'un de ses ancêtres) a `display:none` ou n'est pas dans le document, alors toutes les propriétés géométriques sont zéro (ou `null` pour `offsetParent`).
 
-Par exemple, `offsetParent` est` null`, et `offsetWidth`,` offsetHeight` sont `0` lorsque nous avons créé un élément, mais ne l'avons pas encore inséré dans le document, ou il (ou son ancêtre) a `display:none`.
+Par exemple, `offsetParent` est `null`, et `offsetWidth`, `offsetHeight` sont `0` lorsque nous avons créé un élément, mais ne l'avons pas encore inséré dans le document, ou il (ou son ancêtre) a `display:none`.
 
 Nous pouvons l'utiliser pour vérifier si un élément est caché, comme ceci :
 

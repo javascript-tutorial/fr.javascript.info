@@ -4,7 +4,7 @@ En JavaScript, nous ne pouvons hériter que d'un seul objet. Il ne peut y avoir 
 
 Mais parfois, cela semble limitant. Par exemple, nous avons une classe `StreetSweeper` et une classe `Bicycle`, et nous voulons faire leur mélange: un `StreetSweepingBicycle`.
 
-Ou nous avons une classe `User` et une classe `EventEmitter` qui implémente la génération d'événements, et nous aimerions ajouter la fonctionnalité de `EventEmitter` à` User 'afin que nos utilisateurs puissent émettre des événements.
+Ou nous avons une classe `User` et une classe `EventEmitter` qui implémente la génération d'événements, et nous aimerions ajouter la fonctionnalité de `EventEmitter` à `User` afin que nos utilisateurs puissent émettre des événements.
 
 Il existe un concept qui peut aider ici, appelé "mixins".
 

@@ -179,7 +179,7 @@ D'un autre côté, la syntaxe accesseur/mutateur est plus courte, donc il n'y a 
 ````
 
 ```smart header="Les champs protégés sont hérités"
-Si nous héritons de `classe MegaMachine extends CoffeeMachine`, rien ne nous empêche d'accéder à` this._waterAmount` ou `this._power` à partir des méthodes de la nouvelle classe.
+Si nous héritons de `classe MegaMachine extends CoffeeMachine`, rien ne nous empêche d'accéder à `this._waterAmount` ou `this._power` à partir des méthodes de la nouvelle classe.
 
 Les champs protégés sont donc naturellement héritables. Contrairement aux champs privés que nous verrons ci-dessous.
 ```
@@ -293,9 +293,9 @@ Protection des utilisateurs pour qu'ils ne se tirent pas une balle dans le pied
 
 
     Tous les développeurs sont civilisés - ils utilisent la machine à café comme prévu. Mais l'un d'entre eux, John, a décidé qu'il était le plus intelligent et a apporté quelques modifications aux éléments internes de la machine à café. La machine à café a donc échoué deux jours plus tard.
-    
+
     Ce n’est sûrement pas la faute de John, mais bien de la personne qui a enlevé le capot de protection et laissé John manipuler.
-    
+
     La même chose en programmation. Si un utilisateur d'une classe va changer des choses qui ne sont pas destinées à être modifiées de l'extérieur, les conséquences sont imprévisibles.
 
 Maintenable

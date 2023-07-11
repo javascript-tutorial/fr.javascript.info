@@ -68,7 +68,7 @@ alert( 2 ** 3 ); // 2³ = 8
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 
-Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. 
+Mathématiquement, l'exponentiation est également définie pour les nombres non entiers.
 
 Par exemple, une racine carrée est une exponentiation de `½` :
 
@@ -226,7 +226,7 @@ Le fait que `=` soit un opérateur, pas une construction de langage "magique" a 
 
 Tous les opérateurs en JavaScript renvoient une valeur. C'est évident pour `+` et `-`, mais aussi vrai pour `=`.
 
-L'appel `x = valeur` écrit la` valeur` dans `x` *puis la renvoie*.
+L'appel `x = valeur` écrit la `valeur` dans `x` *puis la renvoie*.
 
 Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe :
 
@@ -306,7 +306,7 @@ let n = 2;
 
 n *= 3 + 5; // la partie de droite est évaluée en premier (identique à n *= 8)
 
-alert( n ); // 16  
+alert( n ); // 16
 ```
 
 ## Incrémentation / décrémentation
