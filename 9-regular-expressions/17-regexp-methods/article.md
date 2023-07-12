@@ -26,8 +26,8 @@ Elle dispose de 3 options :
     alert( result.input );  // I love JavaScript (chaîne sur laquelle a été effectuée la recherche)
     ```
 
-2. Si la `regexp` dispose d'un marqueur `pattern:g`, alors elle retourne un tableau de toutes les correspondances de texte, sans capturer les groupes ou les autres propriétés.    
-    
+2. Si la `regexp` dispose d'un marqueur `pattern:g`, alors elle retourne un tableau de toutes les correspondances de texte, sans capturer les groupes ou les autres propriétés.
+
     ```js run
     let str = "I love JavaScript";
 
@@ -60,7 +60,7 @@ Elle dispose de 3 options :
 
 [recent browser="new"]
 
-La méthode `str.matchAll(regexp)` est une variante "améliorée" de `str.match`. 
+La méthode `str.matchAll(regexp)` est une variante "améliorée" de `str.match`.
 
 Elle est principalement utilisée pour rechercher toutes les correspondances au sein de chaque groupe.
 
@@ -109,7 +109,7 @@ alert('12, 34, 56'.split(/,\s*/)) // array of ['12', '34', '56']
 
 ## str.search(regexp)
 
-La méthode `str.search(regexp)` renvoie l'indice du premier motif correspondant, ou `-1` si aucune correspondance n'est trouvée: 
+La méthode `str.search(regexp)` renvoie l'indice du premier motif correspondant, ou `-1` si aucune correspondance n'est trouvée:
 
 ```js run
 let str = "A drop of ink may make a million think";
@@ -119,11 +119,11 @@ alert( str.search( /ink/i ) ); // 10 (indice du premier motif correspondant)
 
 **Limitation importante: `search` renvoie uniquement la première correspondance.**
 
-Si nous avons besoin de l'indice ou de plus de correspondances, nous devrions utiliser d'autres méthodes, comme les trouver tous avec `str.matchAll(regexp)`. 
+Si nous avons besoin de l'indice ou de plus de correspondances, nous devrions utiliser d'autres méthodes, comme les trouver tous avec `str.matchAll(regexp)`.
 
 ## str.replace(str|regexp, str|func)
 
-Il s'agit d'une méthode générique pour chercher et remplacer une chaîne de caractères, l'une des plus utiles. Le couteau suisse pour chercher et remplacer. 
+Il s'agit d'une méthode générique pour chercher et remplacer une chaîne de caractères, l'une des plus utiles. Le couteau suisse pour chercher et remplacer.
 
 Nous pouvons l'utiliser sans regexps, pour chercher et remplacer une sous-chaîne de caractères:
 
@@ -136,12 +136,12 @@ Toutefois, il y a un piège.
 
 **Quand le premier argument de `replace` est une chaîne de caractères, elle ne remplace que la première occurence.**
 
-Vous pouvez constater dans l'exemple ci-dessous que seul le premier `"-"` est remplacé par `":"`. 
+Vous pouvez constater dans l'exemple ci-dessous que seul le premier `"-"` est remplacé par `":"`.
 
-Pour trouver tous les traits d'unions, nous devons utiliser non pas le caractère `"-"`, mais une expression rationnelle `pattern:/-/g`, avec obligatoirement le marqueur `pattern:g`;   
+Pour trouver tous les traits d'unions, nous devons utiliser non pas le caractère `"-"`, mais une expression rationnelle `pattern:/-/g`, avec obligatoirement le marqueur `pattern:g`;
 
 ```js run
-// remplace tous les tirets par deux-points 
+// remplace tous les tirets par deux-points
 alert( '12-34-56'.replace( *!*/-/g*/!*, ":" ) )  // 12:34:56
 ```
 
@@ -181,7 +181,7 @@ La fonction est appelée avec des arguments `func(match, p1, p2, ..., pn, offset
 
 Si la regexp ne comporte pas de parenthèses, alors la fonction ne contient que 3 arguments: `func(str, offset, input)`.
 
-Par exemple, pour convertir les chaînes de caractères correspondantes en majuscule: 
+Par exemple, pour convertir les chaînes de caractères correspondantes en majuscule:
 
 ```js run
 let str = "html and css";
@@ -217,7 +217,7 @@ let result = str.replace(/(\w+) (\w+)/, (...match) => `${match[2]}, ${match[1]}`
 alert(result); // Smith, John
 ```
 
-Ou, si nous utilisons des groupes nommés, alors l'objet `groups` est toujours placé en dernier, et nous pouvons l'obtenir de cette façon: 
+Ou, si nous utilisons des groupes nommés, alors l'objet `groups` est toujours placé en dernier, et nous pouvons l'obtenir de cette façon:
 
 ```js run
 let str = "John Smith";
@@ -256,7 +256,7 @@ La méthode `regexp.exec(str)` renvoie une correspondance for `regexp` dans la c
 
 Elle se comporte différement selon que la regexp dispose d'un marqueur `pattern:g` ou non.
 
-Si `pattern:g` n'est pas présent, alors `regexp.exec(str)` renvoie la première correspondance tel que le ferait `str.match(regexp)`. Ce comportement n'apporte rien de nouveau.  
+Si `pattern:g` n'est pas présent, alors `regexp.exec(str)` renvoie la première correspondance tel que le ferait `str.match(regexp)`. Ce comportement n'apporte rien de nouveau.
 
 Mais si `pattern:g` est utilisé, alors:
 - Un appel à `regexp.exec(str)` renvoie la première correspondance et sauvegarde l'indice situé juste après, accessible via la propriété `regexp.lastIndex`.
@@ -266,7 +266,7 @@ Mais si `pattern:g` est utilisé, alors:
 
 Donc, un appel répété à cette fonction renvoie toutes les correspondances l'une après l'autre, utilisant la propriété `regexp.lastIndex` pour se souvenir de l'indice courant à partir duquel la recherche est effectuée.
 
-Avant que la méthode `str.matchAll` ait été ajoutée à Javascript, des appels à `regexp.exec` étaient utilisés dans une boucle afin d'obtenir toutes les correspondances:  
+Avant que la méthode `str.matchAll` ait été ajoutée à JavaScript, des appels à `regexp.exec` étaient utilisés dans une boucle afin d'obtenir toutes les correspondances:
 
 ```js run
 let str = 'More about JavaScript at https://javascript.info';
@@ -281,7 +281,7 @@ while (result = regexp.exec(str)) {
 }
 ```
 
-Cela fonctionne également très bien, bien que sur les navigateurs les plus récents `str.matchAll` est généralement plus pratique. 
+Cela fonctionne également très bien, bien que sur les navigateurs les plus récents `str.matchAll` est généralement plus pratique.
 
 **Nous pouvons utiliser `regexp.exec` pour rechercher à partir d'un indice donné en réglant manuellement la valeur de `lastIndex`.**
 
@@ -291,12 +291,12 @@ Par exemple:
 let str = 'Hello, world!';
 
 let regexp = /\w+/g; // sans le marqueur "g", la propriété lastIndex est ignorée
-regexp.lastIndex = 5; // commence la recherche à partir de la 5ème position (à partir de la virgule)  
+regexp.lastIndex = 5; // commence la recherche à partir de la 5ème position (à partir de la virgule)
 
 alert( regexp.exec(str) ); // world
 ```
 
-Si la regexp utilise le marqueur `pattern:y`, alors la recherche s'effectuera à l'indice précis de `regexp.lastIndex`, pas plus loin. 
+Si la regexp utilise le marqueur `pattern:y`, alors la recherche s'effectuera à l'indice précis de `regexp.lastIndex`, pas plus loin.
 
 Remplaçons le marqueur `pattern:g` par `pattern:y` dans l'exemple précédent. Aucune correspondance n'est trouvée, car il n'y a aucun mot à l'indice `5`:
 
@@ -309,7 +309,7 @@ regexp.lastIndex = 5; // cherche exactement à l'indice 5
 alert( regexp.exec(str) ); // null
 ```
 
-C'est pratique dans une situation où nous cherchons uniquement à lire quelque chose au sein d'un texte avec une regexp à un indice spécifique, en occultant le reste. 
+C'est pratique dans une situation où nous cherchons uniquement à lire quelque chose au sein d'un texte avec une regexp à un indice spécifique, en occultant le reste.
 
 ## regexp.test(str)
 
@@ -334,7 +334,7 @@ alert( *!*/love/i*/!*.test(str) ); // false
 alert( str.search(*!*/love/i*/!*) != -1 ); // false
 ```
 
-Si la regexp à le marqueur `pattern:g`, alors `regexp.test` verifiera la propriété `regexp.lastIndex` et mettra à jours cette propriété, tout comme `regexp.exec`.    
+Si la regexp à le marqueur `pattern:g`, alors `regexp.test` verifiera la propriété `regexp.lastIndex` et mettra à jours cette propriété, tout comme `regexp.exec`.
 
 On peut donc l'utiliser pour effectuer une recherche à partir d'un indice donnée:
 
@@ -351,7 +351,7 @@ alert( regexp.test(str) ); // false (pas de correspondance)
 ````warn header="Une même expression rationnelle testée de manière répétée sur différentes sources peut échouer"
 Appliquer la même expression rationnelle globale sur différentes entrées peut conduire à de mauvais résultats, car l'appel à `regexp.test` modifie la propriété `regexp.lastIndex`, par conséquent la recherche sur une autre chaîne de caractères risque d'être lancer à partir d'un autre indice que `0`.
 
-Par exemple, nous appelons ici `regexp.test` à deux reprises sur la même chaîne de texte, and le second appel échoue: 
+Par exemple, nous appelons ici `regexp.test` à deux reprises sur la même chaîne de texte, and le second appel échoue:
 
 ```js run
 let regexp = /javascript/g;  // (création d'une nouvelle regexp: regexp.lastIndex=0)
@@ -360,7 +360,7 @@ alert( regexp.test("javascript") ); // true (maintenant regexp.lastIndex=10)
 alert( regexp.test("javascript") ); // false
 ```
 
-C'est exactement parce que `regexp.lastIndex` n'est pas `0` lors du second test.  
+C'est exactement parce que `regexp.lastIndex` n'est pas `0` lors du second test.
 
-Afin de contourner cela, nous pouvons réinitialiser `regexp.lastIndex = 0` avant chaque recherche. Ou, au lieu d'appeler la méthode sur une regexp, nous pouvons utiliser les méthodes de l'objet String `str.match/search/...`, qui n'utilisent pas `lastIndex`. 
+Afin de contourner cela, nous pouvons réinitialiser `regexp.lastIndex = 0` avant chaque recherche. Ou, au lieu d'appeler la méthode sur une regexp, nous pouvons utiliser les méthodes de l'objet String `str.match/search/...`, qui n'utilisent pas `lastIndex`.
 ````
