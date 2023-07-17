@@ -228,8 +228,14 @@ Comme nous le savons déjà, de nombreux opérateurs et fonctions effectuent des
 
 Si nous passons un objet en argument, il y a deux étapes de  calcul :
 
+<<<<<<< HEAD
 1. L'objet est converti en primitive (en utilisant les règles décrites ci-dessus).
 2. Si cela est nécessaire pour d'autres calculs, la primitive résultante est également convertie.
+=======
+If we pass an object as an argument, then there are two stages of calculations:
+1. The object is converted to a primitive (using the rules described above).
+2. If necessary for further calculations, the resulting primitive is also converted.
+>>>>>>> 733ff697c6c1101c130e2996f7eca860b2aa7ab9
 
 Par exemple :
 

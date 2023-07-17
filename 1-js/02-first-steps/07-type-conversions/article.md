@@ -34,7 +34,11 @@ La conversion `String` est assez évidente. Un `false` devient `"false"`, `null`
 
 ## Numeric Conversion
 
+<<<<<<< HEAD
 La conversion numérique se produit automatiquement dans les fonctions et les expressions mathématiques.
+=======
+Numeric conversion in mathematical functions and expressions happens automatically.
+>>>>>>> 733ff697c6c1101c130e2996f7eca860b2aa7ab9
 
 Par exemple, lorsque la division `/` est appliqué à des non-numéros :
 
