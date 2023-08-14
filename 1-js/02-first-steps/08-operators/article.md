@@ -50,9 +50,15 @@ Le résultat de `a % b` est le [reste](https://fr.wikipedia.org/wiki/Reste) de l
 Par exemple :
 
 ```js run
+<<<<<<< HEAD
 alert( 5 % 2 ); // 1, le reste de 5 divisé par 2
 alert( 8 % 3 ); // 2, le reste de 8 divisé par 3
 alert( 8 % 2 ); // 0, le reste de 8 divisé par 2
+=======
+alert( 5 % 2 ); // 1, the remainder of 5 divided by 2
+alert( 8 % 3 ); // 2, the remainder of 8 divided by 3
+alert( 8 % 4 ); // 0, the remainder of 8 divided by 4
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 ```
 
 ### Exponentiation **
@@ -68,7 +74,11 @@ alert( 2 ** 3 ); // 2³ = 8
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 
+<<<<<<< HEAD
 Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. 
+=======
+Just like in maths, the exponentiation operator is defined for non-integer numbers as well.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Par exemple, une racine carrée est une exponentiation de `½` :
 
@@ -306,7 +316,7 @@ let n = 2;
 
 n *= 3 + 5; // la partie de droite est évaluée en premier (identique à n *= 8)
 
-alert( n ); // 16  
+alert( n ); // 16
 ```
 
 ## Incrémentation / décrémentation
