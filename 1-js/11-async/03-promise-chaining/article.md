@@ -72,7 +72,11 @@ promise.then(function(result) {
 });
 ```
 
+<<<<<<< HEAD
 Ce que nous avons fait ici n’est que plusieurs gestionnaires pour une promesse. Ils ne se transmettent pas le résultat, ils la traitent de manière indépendante.
+=======
+What we did here is just adding several handlers to one promise. They don't pass the result to each other; instead they process it independently.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Voici la representation (comparez-la avec l'enchaînement ci-dessus):
 
