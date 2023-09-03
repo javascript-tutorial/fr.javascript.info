@@ -39,7 +39,7 @@ Les opérations mathématiques suivantes sont supportées :
 - Reste `%`,
 - Exponentiation `**`.
 
-Les quatre premières sont assez simples, tandis que `%` et `**` nécéssitent quelques explications.
+Les quatre premières sont assez simples, tandis que `%` et `**` nécessitent quelques explications.
 
 ### Reste % (Modulo)
 
@@ -129,7 +129,7 @@ alert( '6' / '2' ); // 3, convertit les deux opérandes en nombres
 
 Le plus `+` existe sous deux formes. La forme binaire que nous avons utilisée ci-dessus et la forme unaire.
 
-L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est convertit en nombre.
+L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est converti en nombre.
 
 Par exemple :
 
@@ -182,7 +182,7 @@ Pourquoi les plus unaires sont-ils appliqués aux valeurs avant les binaires ? C
 
 ## Précédence des opérateurs
 
-Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
+Si une expression à plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
 
 De l'école, nous savons tous que la multiplication dans l'expression `1 + 2 * 2` devrait être calculée avant l'addition. C’est exactement cela la précédence. La multiplication est dite avoir une *précédence supérieure* à l'addition.
 
@@ -190,7 +190,7 @@ Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisf
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
-Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
+Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une priorité plus élevée que les binaires correspondants) :
 
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
@@ -341,7 +341,7 @@ Les opérateurs `++` et `--` peuvent être placés à la fois après et avant la
 - Lorsque l'opérateur va après la variable, cela s'appelle une "forme postfixe" : `counter++`.
 - La "forme préfixe" est celle où l'opérateur se place devant la variable : `++counter`.
 
-Ces deux operateurs font la même chose : augmenter le `counter` de `1`.
+Ces deux opérateurs font la même chose : augmenter le `counter` de `1`.
 
 Y a-t-il une différence ? Oui, mais nous ne pouvons le voir que si nous utilisons la valeur renvoyée de `++/--`.
 
