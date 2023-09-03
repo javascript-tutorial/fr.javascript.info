@@ -28,7 +28,7 @@ Il existe de nombreuses opérations pour les nombres, par ex. multiplication `*`
 
 Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui appartiennent également à ce type: `Infinity`, `-Infinity` et `NaN`.
 
-- `Infinity` répresente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
+- `Infinity` représente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
 
     Nous pouvons l'obtenir à la suite d'une division par zéro :
 
@@ -128,7 +128,7 @@ let name = "John";
 // une variable encapsulée
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
-// une expression encapulée
+// une expression encapsulée
 alert( `the result is *!*${1 + 2}*/!*` ); // le résultat est 3
 ```
 
@@ -269,7 +269,7 @@ Vous pouvez également rencontrer une autre syntaxe : `typeof(x)`. C'est la mê
 
 Pour être clair : `typeof` est un opérateur, pas une fonction. Les parenthèses ici ne font pas partie de `typeof`. C'est le genre de parenthèses utilisées pour le regroupement mathématique.
 
-Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiqement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
+Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiquement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
 
 Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit beaucoup plus courante.
 ```
@@ -293,6 +293,6 @@ L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable
 
 - Généralement utilisé sous cette forme `typeof x`, mais `typeof(x)` est également possible.
 - Renvoie une chaîne de caractères avec le nom du type, comme `"string"`.
-- Pour `null` il renvoit `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
+- Pour `null` il renvoie `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
 
 Dans les chapitres suivants, nous nous concentrerons sur les valeurs primitives et une fois que nous les connaîtrons, nous passerons aux objets.
