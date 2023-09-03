@@ -29,7 +29,7 @@ Ils sont principalement utilisés pour ouvrir et éditer instantanément un fich
 
 La principale différence entre un "éditeur léger" et un "IDE" réside dans le fait qu’un environnement de développement intégré fonctionne au niveau du projet. Il charge donc beaucoup plus de données au démarrage, analyse la structure du projet si nécessaire, etc. Un éditeur léger est beaucoup plus rapide si nous avons besoin d'un seul fichier.
 
-En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris des analyseurs de syntaxe au niveau des répertoires et des autocompléteurs. Il n’ya donc pas de frontière stricte entre un éditeur léger et un IDE.
+En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris des analyseurs de syntaxe au niveau des répertoires et des autocompléteurs. Il n’y a donc pas de frontière stricte entre un éditeur léger et un IDE.
 
 Il existe de nombreuses options, par exemple :
 
