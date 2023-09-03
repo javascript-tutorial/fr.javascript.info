@@ -372,7 +372,7 @@ outer:
 for (let i = 0; i < 3; i++) { ... }
 ```
 
-La directive `continue` peut également être utilisée avec un label. Dans ce cas, l'exécution passe à l'itération suivante de la boucle labelisée.
+La directive `continue` peut également être utilisée avec un label. Dans ce cas, l'exécution passe à l'itération suivante de la boucle labellisée.
 
 ````warn header="Les labels ne permettent pas de \"sauter\" n'importe où"
 Les labels ne nous permettent pas de sauter dans un endroit arbitraire du code.
