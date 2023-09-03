@@ -8,7 +8,7 @@ Le second type de propriétés est quelque chose de nouveau. Ce sont les *propri
 
 ## Les opérateurs de lecture et d'écriture
 
-Les propriétés des accesseurs sont représentées par les méthodes "lecture" et "écriture". Dans un objet litéral ils sont notés comme`get` et `set`:
+Les propriétés des accesseurs sont représentées par les méthodes "lecture" et "écriture". Dans un objet littéral ils sont notés comme `get` et `set`:
 
 ```js
 let obj = {
@@ -212,11 +212,11 @@ let john = new User("John", new Date(1992, 6, 1));
 
 Maintenant, que faire avec l'ancien code qui utilise encore la propriété `age`?
 
-Nous pouvons essayer de trouver toutes les occurences et les corriger mais cela prend du temps et peut être compliqué si ce code est utilisé par beaucoup d'autres personnes. Et en plus, `age` est une bonne chose à avoir dans `user`, n'est-ce pas?
+Nous pouvons essayer de trouver toutes les occurrences et les corriger mais cela prend du temps et peut être compliqué si ce code est utilisé par beaucoup d'autres personnes. Et en plus, `age` est une bonne chose à avoir dans `user`, n'est-ce pas?
 
 Gardons-le.
 
-L'ajout d'un opérateur de lecture pour `age` résoud le problème:
+L'ajout d'un opérateur de lecture pour `age` résout le problème:
 
 ```js run no-beautify
 function User(name, birthday) {
