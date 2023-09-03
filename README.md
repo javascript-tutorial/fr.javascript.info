@@ -27,7 +27,7 @@ N'hésitez pas à consulter <https://javascript.info/translate> pour plus de dé
 
 Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
-Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
+Quelque chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
 **Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.
 
