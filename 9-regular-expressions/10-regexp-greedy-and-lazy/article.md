@@ -8,7 +8,11 @@ Prenons comme exemple la tâche suivante.
 
 Nous avons un texte dans lequel nous devons remplacer tous les guillemets droits (doubles) `"..."` par des guillemets français : `«...»`, souvent préférés comme typographie dans de nombreux pays.
 
+<<<<<<< HEAD
 Par exemple : `"Hello, world"` devrait se transformer en `«Hello, world»`. Il existe aussi d'autres guillemets, comme `„Witam, świat!”` (polonais) ou `「你好，世界」` (chinois), mais pour notre exemple choisissons `«...»`.
+=======
+For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witaj, świecie!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 La première chose à faire est de trouver ces guillemets droits, et nous pourrons ensuite les remplacer.
 
