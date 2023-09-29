@@ -226,3 +226,73 @@ Veuillez noter que le selecteur `::slotted` ne peut pas se transmettre dans le s
 }
 ```
 Aussi, `::slotted` peut être utilisé uniquement en CSS, il n'est pas utilisable en `querySelector`.
+
+## Les hooks CSS avec les propriétés customisées
+
+Comment stylisons nous les éléments internes d'un composant au sein du document ?
+
+Les selecteurs tels que `:host` appliquent des règles sur les éléments `<custom-dialog>` ou `<user-card>`, mais comment styliser les éléments du DOM fantôme à l'intérieur de ces derniers ?
+
+Il n'y a pas de selecteur qui peuvent directement affecter le style du DOM fantôme depuis le document. Mais comme nous exposons des méthods pour intéragir avec notre composant, nous pouvons exposer des variables CSS (entendez par là des propriétés CSS) pour les styliser.
+
+**Les propriétés CSS customisés existent à tous niveaux, dans le light DOM & le shadow DOM.**
+
+Par exemple, dans le DOM fantôme nous pouvons utiliser la propriété ``--user-card-field-color`` pour styliser les champs et le document exterieur peut définir cette valeur : 
+
+```html
+<style>
+  .field {
+    color: var(--user-card-field-color, black);
+    /* if --user-card-field-color is not defined, use black color */
+  }
+</style>
+<div class="field">Name: <slot name="username"></slot></div>
+<div class="field">Birthday: <slot name="birthday"></slot></div>
+```
+Alors, on peut déclarer cette propriété dans le document exterieur pour `<user-card>` :
+
+```css
+user-card {
+  --user-card-field-color: green;
+}
+```
+
+Les propriétés CSS customisées passent au travers du DOM fantôme, elles sont accessibles partout, donc la règle `.field` interieure va l'utiliser.
+
+Voici l'exemple complet : 
+
+```html run autorun="no-epub" untrusted height=80
+<style>
+*!*
+  user-card {
+    --user-card-field-color: green;
+  }
+*/!*
+</style>
+
+<template id="tmpl">
+  <style>
+*!*
+    .field {
+      color: var(--user-card-field-color, black);
+    }
+*/!*
+  </style>
+  <div class="field">Name: <slot name="username"></slot></div>
+  <div class="field">Birthday: <slot name="birthday"></slot></div>
+</template>
+
+<script>
+customElements.define('user-card', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.append(document.getElementById('tmpl').content.cloneNode(true));
+  }
+});
+</script>
+
+<user-card>
+  <span slot="username">John Smith</span>
+  <span slot="birthday">01.01.2001</span>
+</user-card>
+```
