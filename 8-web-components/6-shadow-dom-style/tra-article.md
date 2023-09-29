@@ -296,3 +296,27 @@ customElements.define('user-card', class extends HTMLElement {
   <span slot="birthday">01.01.2001</span>
 </user-card>
 ```
+
+## Sommaire
+
+Le DOM fantôme peut comporter des styles tels que `<style>` ou `<link rel="stylesheet">`.
+
+Les styles locaux peuvent affecter : 
+
+- L'arborescence fantôme
+- L'hôte fantôme avec `:host` et les pseudos classes `:host()`
+- Les éléments slottés (Qui proviennet du DOM), `::slotted(selector)` permet de selectionner les éléments slottés mais pas leurs enfants.
+
+Les styles du document peuvent affecter :
+
+- L'hôte fantôme (Puisce qu'ils existent dans le document extérieur)
+- Les éléments slottés et leurs contenu (Puisce qu'ils existent aussi dans le document extérieur)
+
+Quand des propriétés CSS entrent en conflit, les styles du documents prennent la précendence (Les styles du document seront appliqués), sauf dans le cas ou une propriété est marquée comme `!important`, dans ce cas, le style local est appliqué.
+
+Les propriétés CSS customisées passe au travers du DOM fantôme.
+Elles sont utilisées comme "hooks" afin de styliser les composants.
+
+1. Le composant utilise une propriété CSS customisée pour styliser des éléments tels que `var(--component-name-title, <default value>)`.
+2. L'autheur du composant publie ces propriétés pour les développeur; elles sont aussi importantes que les autres méthodes publiques du composant.
+3. Lorsce qu'un développeur veut styliser un titre, il assigne la propriété CSS `--component-name-title` pour l'hôte fantôme ou pour les modules au dessus.
