@@ -63,3 +63,53 @@ Alors, le `<custom-dialog>` aura une marge interne de 0.
 Il est alors possible de définir des règles CSS de bases pour `:host` et ainsi modifier le style du composant par de nouvelles règles CSS écrites au sein du document.
 
 Une exception existe cependant, lorsce qu'une propriété locale est marquée comme `!important`, dans ce cas, les styles locaux seront appliqués.
+
+## :host (Selecteur)
+
+De même que pour `:host`, mais uniquement si l'hôte fantôme correspond au selecteur.
+
+Par exemple, nous aimerions centré un `<custom-dialog>` uniquement s'il possède l'attribut `centered`.
+
+```html run autorun="no-epub" untrusted height=80
+<template id="tmpl">
+  <style>
+*!*
+    :host([centered]) {
+*/!*
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-color: blue;
+    }
+
+    :host {
+      display: inline-block;
+      border: 1px solid red;
+      padding: 10px;
+    }
+  </style>
+  <slot></slot>
+</template>
+
+<script>
+customElements.define('custom-dialog', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'}).append(tmpl.content.cloneNode(true));
+  }
+});
+</script>
+
+
+<custom-dialog centered>
+  Centered!
+</custom-dialog>
+
+<custom-dialog>
+  Not centered.
+</custom-dialog>
+```
+
+Le styles permettant la centralisation d'élément seront appliqués uniquement sur le premier `<custom-dialog>`.
+
+Pour résumé, nous pouvons utiliser une flopée de selecteur pour stylisé l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
