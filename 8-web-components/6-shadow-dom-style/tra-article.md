@@ -113,3 +113,116 @@ customElements.define('custom-dialog', class extends HTMLElement {
 Le styles permettant la centralisation d'élément seront appliqués uniquement sur le premier `<custom-dialog>`.
 
 Pour résumé, nous pouvons utiliser une flopée de selecteur pour stylisé l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
+
+## Stylisation des contenus slottés
+
+Maintenant considérons cette situation avec des `<slot>`
+
+Les éléments slottés appartiennent au DOM, donc ils utilisent les styles du document. Les styles locaux n'affectent pas les contenus slottés.
+
+Dans l'exemple suivant, le `<span>` slotté est en gras, tel que définit par le style du document, mais il ne prends pas l'attribut `background` du style local.
+
+```html run autorun="no-epub" untrusted height=80
+<style>
+*!*
+  span { font-weight: bold }
+*/!*
+</style>
+
+<user-card>
+  <div slot="username">*!*<span>John Smith</span>*/!*</div>
+</user-card>
+
+<script>
+customElements.define('user-card', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+      <style>
+*!*
+      span { background: red; }
+*/!*
+      </style>
+      Name: <slot name="username"></slot>
+    `;
+  }
+});
+</script>
+```
+
+Le résultat est **gras** mais pas rouge.
+
+Si nous voulions styliser des éléments slottés dans notre composant, il y'a 2 possibilités.
+
+La première, nous pouvons appliqué du style sur le `<slot>` directement et compter sur l'inheritance du CSS :
+
+
+```html run autorun="no-epub" untrusted height=80
+<user-card>
+  <div slot="username">*!*<span>John Smith</span>*/!*</div>
+</user-card>
+
+<script>
+customElements.define('user-card', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+      <style>
+*!*
+      slot[name="username"] { font-weight: bold; }
+*/!*
+      </style>
+      Name: <slot name="username"></slot>
+    `;
+  }
+});
+</script>
+```
+
+Ici `<p>John Smith</p>` devient **gras**, car l'inhéritance du CSS prends effet entre le `<slot>` et son contenu. Cependant, en CSS, toutes les propriétés ne sont pas inhéritées.
+
+Une autre option est d'utiliser la pseudo classe `::slotted(selected)`.
+
+Ce selecteur est effectif en fonction de 2 conditions : 
+
+1. Il s'agit d'un élément slotté, qui vient du DOM, (le nom du slot n'entre pas en ligne de compte), seulement l'élément lui-même, pas ses enfants.
+2. L'élément possède le `selector`
+
+Dans notre exemple, `::slotted(div)` selectionne juste `<div slot="username'>`, mais pas ses enfants.
+
+```html run autorun="no-epub" untrusted height=80
+<user-card>
+  <div slot="username">
+    <div>John Smith</div>
+  </div>
+</user-card>
+
+<script>
+customElements.define('user-card', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+      <style>
+*!*
+      ::slotted(div) { border: 1px solid red; }
+*/!*
+      </style>
+      Name: <slot name="username"></slot>
+    `;
+  }
+});
+</script>
+```
+
+Veuillez noter que le selecteur `::slotted` ne peut pas se transmettre dans le slot, ces selecteurs sont invalides : 
+
+```css
+::slotted(div span) {
+  /* our slotted <div> does not match this */
+}
+
+::slotted(div) p {
+  /* can't go inside light DOM */
+}
+```
+Aussi, `::slotted` peut être utilisé uniquement en CSS, il n'est pas utilisable en `querySelector`.
