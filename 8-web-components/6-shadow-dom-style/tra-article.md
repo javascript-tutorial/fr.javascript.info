@@ -111,9 +111,9 @@ customElements.define('custom-dialog', class extends HTMLElement {
 </custom-dialog>
 ```
 
-Le styles permettant la centralisation d'élément seront appliqués uniquement sur le premier `<custom-dialog>`.
+Le style permettant la centralisation d'élément sera appliqué uniquement sur le premier `<custom-dialog>`.
 
-Pour résumé, nous pouvons utiliser une flopée de selecteur pour stylisé l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
+Pour résumé, nous pouvons utiliser une flopée de selecteur pour styliser l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
 
 ## Stylisation des contenus slottés
 
@@ -121,7 +121,7 @@ Maintenant considérons cette situation avec des `<slot>`
 
 Les éléments slottés appartiennent au DOM, donc ils utilisent les styles du document. Les styles locaux n'affectent pas les contenus slottés.
 
-Dans l'exemple suivant, le `<span>` slotté est en gras, tel que définit par le style du document, mais il ne prends pas l'attribut `background` du style local.
+Dans l'exemple suivant, le `<span>` slotté est en gras, tel que défini par le style du document, mais il ne prends pas l'attribut `background` du style local.
 
 ```html run autorun="no-epub" untrusted height=80
 <style>
@@ -153,9 +153,9 @@ customElements.define('user-card', class extends HTMLElement {
 
 Le résultat est **gras** mais pas rouge.
 
-Si nous voulions styliser des éléments slottés dans notre composant, il y'a 2 possibilités.
+Il y'a 2 possibilités pour styliser des éléments slotés au sein de notre composant.
 
-La première, nous pouvons appliqué du style sur le `<slot>` directement et compter sur l'inheritance du CSS :
+La première, nous pouvons appliquer du style sur le `<slot>` directement et compter sur l'inheritance du CSS :
 
 
 ```html run autorun="no-epub" untrusted height=80
@@ -180,14 +180,14 @@ customElements.define('user-card', class extends HTMLElement {
 </script>
 ```
 
-Ici `<p>John Smith</p>` devient **gras**, car l'inhéritance du CSS prends effet entre le `<slot>` et son contenu. Cependant, en CSS, toutes les propriétés ne sont pas inhéritées.
+Ici `<p>John Smith</p>` devient **gras**, car l'inheritance du CSS prend effet entre le `<slot>` et son contenu. Cependant, en CSS, toutes les propriétés ne sont pas inhéritées.
 
 Une autre option est d'utiliser la pseudo classe `::slotted(selected)`.
 
 Ce selecteur est effectif en fonction de 2 conditions : 
 
-1. Il s'agit d'un élément slotté, qui vient du DOM, (le nom du slot n'entre pas en ligne de compte), seulement l'élément lui-même, pas ses enfants.
-2. L'élément possède le `selector`
+1. Il s'agit d'un élément slotté, qui vient du DOM, (le nom du slot n'entre pas en ligne de compte); Cela prends en compte uniquement l'élément lui même, pas ses enfants.
+2. L'élément possède un `selecteur`
 
 Dans notre exemple, `::slotted(div)` selectionne juste `<div slot="username'>`, mais pas ses enfants.
 
@@ -223,7 +223,7 @@ Veuillez noter que le selecteur `::slotted` ne peut pas se transmettre dans le s
 }
 
 ::slotted(div) p {
-  /* Ne pas aller à l'interieur du DOM */
+  /* Ne va pas à l'intérieur du DOM */
 }
 ```
 Aussi, `::slotted` peut être utilisé uniquement en CSS, il n'est pas utilisable en `querySelector`.
@@ -238,7 +238,7 @@ Il n'y a pas de selecteur qui peuvent directement affecter le style du DOM fant�
 
 **Les propriétés CSS customisés existent à tous niveaux, dans le light DOM & le shadow DOM.**
 
-Par exemple, dans le DOM fantôme nous pouvons utiliser la propriété ``--user-card-field-color`` pour styliser les champs et le document exterieur peut définir cette valeur : 
+Par exemple, dans le DOM fantôme nous pouvons utiliser la propriété ``--user-card-field-color`` pour styliser les champs et le document extérieur peut définir cette valeur : 
 
 ```html
 <style>
@@ -250,7 +250,7 @@ Par exemple, dans le DOM fantôme nous pouvons utiliser la propriété ``--user-
 <div class="field">Name: <slot name="username"></slot></div>
 <div class="field">Birthday: <slot name="birthday"></slot></div>
 ```
-Alors, on peut déclarer cette propriété dans le document exterieur pour `<user-card>` :
+Alors, on peut déclarer cette propriété dans le document extérieur pour `<user-card>` :
 
 ```css
 user-card {
@@ -258,7 +258,7 @@ user-card {
 }
 ```
 
-Les propriétés CSS customisées passent au travers du DOM fantôme, elles sont accessibles partout, donc la règle `.field` interieure va l'utiliser.
+Les propriétés CSS customisées passent au travers du DOM fantôme, elles sont accessibles partout, donc la règle `.field` intérieure sera utilisable.
 
 Voici l'exemple complet : 
 
@@ -306,18 +306,18 @@ Les styles locaux peuvent affecter :
 
 - L'arborescence fantôme
 - L'hôte fantôme avec `:host` et les pseudos classes `:host()`
-- Les éléments slottés (Qui proviennet du DOM), `::slotted(selector)` permet de selectionner les éléments slottés mais pas leurs enfants.
+- `::slotted(selector)` permet de selectionner les éléments slottés (Qui proviennent du DOM) mais pas leurs enfants.
 
 Les styles du document peuvent affecter :
 
 - L'hôte fantôme (Puisce qu'ils existent dans le document extérieur)
 - Les éléments slottés et leurs contenu (Puisce qu'ils existent aussi dans le document extérieur)
 
-Quand des propriétés CSS entrent en conflit, les styles du documents prennent la précendence (Les styles du document seront appliqués), sauf dans le cas ou une propriété est marquée comme `!important`, dans ce cas, le style local est appliqué.
+Quand des propriétés CSS entrent en conflit, les styles du documents prennent la précédence (Les styles du document seront appliqués), sauf dans le cas où une propriété est marquée comme `!important`, dans ce cas, le style local est appliqué.
 
 Les propriétés CSS customisées passe au travers du DOM fantôme.
 Elles sont utilisées comme "hooks" afin de styliser les composants.
 
 1. Le composant utilise une propriété CSS customisée pour styliser des éléments tels que `var(--component-name-title, <default value>)`.
-2. L'autheur du composant publie ces propriétés pour les développeur; elles sont aussi importantes que les autres méthodes publiques du composant.
+2. L'autheur du composant publie ces propriétés pour les développeurs; elles sont aussi importantes que les autres méthodes publiques du composant.
 3. Lorsce qu'un développeur veut styliser un titre, il assigne la propriété CSS `--component-name-title` pour l'hôte fantôme ou pour les modules au dessus.
