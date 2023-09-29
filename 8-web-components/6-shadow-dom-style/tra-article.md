@@ -41,3 +41,25 @@ customElements.define('custom-dialog', class extends HTMLElement {
   Hello!
 </custom-dialog>
 ```
+
+## Cascading
+
+L'hôte fantôme (`<custom-dialog>` lui même) se trouve dans le DOM, il est donc affecté par les règles CSS.
+
+S'il y a une propriété CSS dans le `:host` ainsi que dans le document, alors le style du document sera appliqué.
+
+Par exemple, si nous avons dans le document : 
+
+```html
+<style>
+custom-dialog {
+  padding: 0;
+}
+</style>
+```
+
+Alors, le `<custom-dialog>` aura une marge interne de 0.
+
+Il est alors possible de définir des règles CSS de bases pour `:host` et ainsi modifier le style du composant par de nouvelles règles CSS écrites au sein du document.
+
+Une exception existe cependant, lorsce qu'une propriété locale est marquée comme `!important`, dans ce cas, les styles locaux seront appliqués.
