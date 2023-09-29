@@ -8,14 +8,15 @@ En règle général, les styles locaux fonctionnent uniquement au sein de l'arbo
 
 Le selecteur `:host` permet de selectionner l'hôte fantôme (L'élément contenant l'arborescence fantôme).
 
-Par exemple, nous faisons élément un `<custom-dialog>` qui devrait être centré. Pour ça, nous avons besoin d'appliquer un style sur l'élément `<custom-dialog>` directement.
+Par exemple, nous faisons un élément `<custom-dialog>` qui devrait être centré. Pour ça, nous avons besoin d'appliquer un style sur l'élément `<custom-dialog>` directement.
 
 C'est exactement ce que fait `:host`
 
 ```html run autorun="no-epub" untrusted height=80
 <template id="tmpl">
   <style>
-    /* the style will be applied from inside to the custom-dialog element */
+    /* Le style sera appliqué directement depuis
+    l'intérieur de l'élément custom-dialog */
     :host {
       position: fixed;
       left: 50%;
@@ -218,11 +219,11 @@ Veuillez noter que le selecteur `::slotted` ne peut pas se transmettre dans le s
 
 ```css
 ::slotted(div span) {
-  /* our slotted <div> does not match this */
+  /* Notre <div> slotté ne correspond pas au critère */
 }
 
 ::slotted(div) p {
-  /* can't go inside light DOM */
+  /* Ne pas aller à l'interieur du DOM */
 }
 ```
 Aussi, `::slotted` peut être utilisé uniquement en CSS, il n'est pas utilisable en `querySelector`.
@@ -243,7 +244,7 @@ Par exemple, dans le DOM fantôme nous pouvons utiliser la propriété ``--user-
 <style>
   .field {
     color: var(--user-card-field-color, black);
-    /* if --user-card-field-color is not defined, use black color */
+    /* Si --user-card-field-color n'est pas défini, utiliser une couleur noir par défaut*/
   }
 </style>
 <div class="field">Name: <slot name="username"></slot></div>
