@@ -20,7 +20,7 @@ Quand Javascript a été créé, il portait initialement un autre nom : "LiveScr
 Mais au fur et à mesure de son évolution, JavaScript est devenu un langage totalement indépendant, avec ses propres spécifications appelées [ECMAScript](https://fr.wikipedia.org/wiki/ECMAScript), aujourd'hui il n'a aucun rapport avec Java.
 ```
 
-Aujourd'hui, JavaScript peut s'exécuter non seulement dans le navigateur, mais également sur serveur, ou encore sur n'importe quel appareil dans lequel existe un programme appelé [le moteur JavaScript](https://fr.wikipedia.org/wiki/Moteur_JavaScript).
+Aujourd'hui, JavaScript peut s'exécuter non seulement dans le navigateur, mais également sur un serveur, ou encore sur n'importe quel appareil dans lequel existe un programme appelé [le moteur JavaScript](https://fr.wikipedia.org/wiki/Moteur_JavaScript).
 
 Le navigateur a un moteur intégré, parfois il peut être également appelé "la machine virtuelle JavaScript".
 
@@ -53,7 +53,7 @@ JavaScript intégré au navigateur peut faire tout ce qui concerne la manipulati
 
 Par exemple, JavaScript dans le navigateur est capable de :
 
-- Ajouter un nouveau code HTML à la page, modifiez le contenu existant, modifiez les styles.
+- Ajouter un nouveau code HTML à la page, modifier le contenu existant, modifier les styles.
 - Réagir aux actions de l'utilisateur, s'exécuter sur des clics de souris, des mouvements de pointeur, des appuis sur des touches.
 - Envoyer des requêtes sur le réseau à des serveurs distants, télécharger et envoyer des fichiers (technologies [AJAX](<https://fr.wikipedia.org/wiki/Ajax_(informatique)>) et [COMET](<https://fr.wikipedia.org/wiki/Comet_(informatique)>)).
 - Obtenir et définir des cookies, poser des questions au visiteur, afficher des messages.
@@ -69,19 +69,19 @@ Les exemples de telles restrictions sont:
 
   Les navigateurs modernes lui permettent de fonctionner avec des fichiers, mais l'accès est limité et n'est fourni que si l'utilisateur effectue certaines actions, comme «déposer» un fichier dans une fenêtre de navigateur ou le sélectionner via une balise `<input>`.
 
-  Il existe des moyens d’interagir avec une webcam/microphone et d’autres appareils, mais ils nécessitent une autorisation explicite de l’utilisateur. Ainsi, une page compatible avec JavaScript ne permet pas d'activer une caméra Web, d'observer l'environnement et d'envoyer les informations à la [NSA](https://fr.wikipedia.org/wiki/National_Security_Agency).
+  Il existe des moyens d’interagir avec une webcam/microphone et d’autres périphériques, mais ils nécessitent une autorisation explicite de l’utilisateur. Ainsi, une page contenant du JavaScript ne permet pas d'activer une caméra Web, d'observer l'environnement et d'envoyer les informations à la [NSA](https://fr.wikipedia.org/wiki/National_Security_Agency).
 
 - Différents onglets / fenêtres ne se connaissent généralement pas. Parfois, ils se croisent, par exemple lorsqu'une fenêtre utilise JavaScript pour ouvrir l'autre. Mais même dans ce cas, le JavaScript d'une page ne peut pas accéder à l'autre si elle provient de sites différents (provenant d'un autre domaine, protocole ou port).
 
-  C'est ce qu'on appelle la "politique de même origine" (“Same Origin Policy”). Pour contourner cette sécurité, _les deux pages_ doivent se mettre d'accord et contenir un code JavaScript spécial qui gère l'échange de données. Nous allons voir cela plus loin dans ce tutoriel.
+  C'est ce qu'on appelle la "politique de même origine" (“Same Origin Policy”). Pour contourner cette sécurité, _les deux pages_ doivent se mettre d'accord et contenir un code JavaScript spécial qui gère l'échange de données. Nous verrons cela plus loin dans ce tutoriel.
 
-  Cette limitation concerne également la sécurité de l'utilisateur. Une page de `http://autresite.com` qu'un utilisateur a ouverte ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
+  Cette limitation concerne également la sécurité de l'utilisateur. Une page de `http://autresite.com` qu'un utilisateur a ouvert ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
 
-- JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page en cours. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
+- JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
 
 ![Schéma des limitations du JavaScript dans un navigateur](limitations.svg)
 
-De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
+De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plugins / extensions susceptibles d’obtenir des autorisations étendues.
 
 ## Qu'est-ce qui rend JavaScript unique ?
 
@@ -95,7 +95,7 @@ Il y a au moins trois bonnes choses à propos de JavaScript:
 
 JavaScript est la seule technologie de navigateur qui combine ces trois éléments.
 
-C’est ce qui rend JavaScript unique. C’est pourquoi c’est l’outil le plus répandu pour créer des interfaces de navigateur.
+C’est ce qui rend JavaScript unique. C’est pourquoi, il est l’outil le plus répandu pour créer des interfaces de navigateur.
 
 Cela dit, JavaScript permet également de créer des serveurs, des applications mobiles, etc.
 
@@ -103,7 +103,7 @@ Cela dit, JavaScript permet également de créer des serveurs, des applications 
 
 La syntaxe de JavaScript ne convient pas aux besoins de tous. Différentes personnes veulent des fonctionnalités différentes.
 
-Il faut s’y attendre, parce que les projets et les exigences sont différents pour tous.
+Il faut s’y attendre, parce que les exigences sont différentes pour tous.
 
 Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont _transpilés_ (convertis) en JavaScript avant leur exécution dans le navigateur.
 
@@ -115,8 +115,8 @@ Les exemples de ce genre de langages :
 - [TypeScript](http://www.typescriptlang.org/) se concentre sur l'ajout de "typage strict des données" pour simplifier le développement et la prise en charge de systèmes complexes. Il est développé par Microsoft.
 - [Flow](http://flow.org/) ajoute également la saisie de données, mais de manière différente. Développé par Facebook.
 - [Dart](https://www.dartlang.org/) est un langage autonome doté de son propre moteur qui s'exécute dans des environnements autres que les navigateurs (comme les applications mobiles), mais peut aussi être transpilé en JavaScript. Développé par Google.
-- [Brython](https://brython.info/) est un transpilateur Python vers JavaScript qui permet d'écrire des applications en Python pur sans JavaScript.
-- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) est un langage de programmation moderne, concis et sûr qui peut cibler le navigateur ou Node.
+- [Brython](https://brython.info/) est un transpiler Python vers JavaScript qui permet d'écrire des applications en Python pur (sans JavaScript).
+- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) est un langage de programmation moderne, concis et sûr qui peut cibler le navigateur ou Node.js.
 
 Il en existe évidemment bien plus, cela dit, même si nous utilisons un de ces langages transpilés, nous devrions également connaître le langage JavaScript, pour bien comprendre ce que nous faisons.
 
@@ -124,4 +124,4 @@ Il en existe évidemment bien plus, cela dit, même si nous utilisons un de ces 
 
 - JavaScript a été initialement créé en tant que langage de navigateur uniquement, mais il est désormais également utilisé dans de nombreux autres environnements.
 - En ce moment, JavaScript occupe une position unique en tant que langage de navigateur le plus largement adopté avec une intégration complète avec HTML/CSS.
-- De nombreux langages sont "transpilés" en JavaScript et fournissent certaines fonctionnalités. Il est recommandé d'y jeter un coup d'œil, au moins brièvement, après avoir maîtrisé JavaScript.
+- De nombreux langages sont _transpilés_ en JavaScript et fournissent certaines fonctionnalités. Il est recommandé d'y jeter un coup d'œil, au moins brièvement, après avoir maîtrisé JavaScript.
