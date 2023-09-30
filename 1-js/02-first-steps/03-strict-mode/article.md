@@ -8,18 +8,18 @@ Il en avait été ainsi jusqu'en 2009 lorsque ECMAScript 5 (ES5) est apparu. Il 
 
 ## "use strict"
 
-La directive ressemble à une chaînede caractères : `"use strict"` ou `'use strict'`. Lorsqu'il se trouve en haut du script, l'ensemble du script fonctionne de manière "moderne".
+La directive ressemble à une chaîne de caractères : `"use strict"` ou `'use strict'`. Lorsqu'il se trouve en haut du script, l'ensemble du script fonctionne de manière "moderne".
 
 Par exemple
 
 ```js
 "use strict";
 
-// ce code fonctionne de manière moderne
+// Le code en dessous de cette directive fonctionnera de manière "moderne"
 ...
 ```
 
-Nous allons bientôt apprendre les fonctions (un moyen de regrouper les commandes). À l'avenir, notons que `"use strict"` peut être placé au début du corps de la fonction. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
+Nous apprendrons bientôt les fonctions (un moyen de regrouper les instructions). À l'avenir, notons que `"use strict"` peut être placé au début du corps de la fonction. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
 
 
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"
@@ -44,9 +44,8 @@ Il n'y a pas de directive `"no use strict"` ou similaire, qui réactiverait l'an
 
 Une fois que nous entrons dans le mode strict, il n’y a plus de retour possible.
 ```
-## Console du Navigateur
 
-Pour l’avenir, lorsque vous utilisez une console de navigation pour tester des fonctionnalités, veuillez noter qu’elle n’utilise pas `use strict` par défaut.
+## Console du Navigateur
 
 Lorsque vous utilisez une [console de développement](info:devtools) pour exécuter du code, veuillez noter qu'elle n'utilise pas `use strict` par défaut.
 
@@ -71,7 +70,7 @@ Si ce n’est pas le cas, comme par exemple dans un ancien navigateur, le moyen 
   'use strict';
 
   // ... votre code ici ...
-})()
+})() //<-- Exécution automatique de la fonction
 ```
 
 ## Devrions-nous activer "use strict" ?
@@ -82,10 +81,10 @@ On pourrait recommander de démarrer les scripts avec `"use strict"` ... Mais vo
 
 Le JavaScript moderne prend en charge les "classes" et les "modules" -- des structures de langage avancées (nous y arriverons sûrement), qui activent automatiquement `use strict`. Nous n'avons donc pas besoin d'ajouter la directive `"use strict"` si nous les utilisons.
 
-**Donc, pour l'instant `"use strict";` est un invité bienvenu en haut de vos scripts. Plus tard, lorsque votre code est entièrement dans des classes et des modules, vous pouvez l'omettre.**
+**Donc, pour l'instant `"use strict";` est un invité bienvenu en haut de vos scripts. Plus tard, lorsque votre code sera entièrement dans des classes et des modules, vous pourrez l'omettre.**
 
 A partir de maintenant, nous devons connaître `use strict` en général.
 
-Dans les chapitres suivants, au fur et à mesure que nous apprendrons les fonctionnalités du langage, nous verrons les différences entre les modes strict et anciens modes. Heureusement, il n'y en a pas beaucoup et ils améliorent en fait nos vies.
+Dans les chapitres suivants et au fur et à mesure que nous apprendrons les fonctionnalités du langage, nous verrons les différences entre les modes strict et anciens modes. Heureusement, il n'y en a pas beaucoup et ils améliorent en fait nos vies.
 
 Tous les exemples de ce tutoriel supposent le mode strict, sauf indication contraire (très rarement).
