@@ -7,13 +7,12 @@ Il existe huit types de données de base en JavaScript. Ici, nous les couvrirons
 Nous pouvons mettre n'importe quel type dans une variable. Par exemple, une variable peut à un moment être une chaîne de caractères puis stocker un nombre :
 
 ```js
-// pas d'erreur
+// Pas d'erreur
 let message = "hello";
 message = 123456;
 ```
 
 Les langages de programmation qui permettent de telles choses sont appelés "typés dynamiquement", ce qui signifie qu'il existe des types de données, mais que les variables ne sont liées à aucun d'entre eux.
-
 
 ## Number
 
@@ -66,11 +65,11 @@ Le script ne s'arrêtera jamais avec une erreur fatale ("die"). Au pire, nous au
 
 Les valeurs numériques spéciales appartiennent formellement au type "number". Bien sûr, ce ne sont pas des nombres au sens commun de ce mot.
 
-Nous allons en voir plus sur le travail avec les nombres dans le chapitre <info:number>.
+Nous en verrons plus sur le travail avec les nombres dans le chapitre <info:number>.
 
 ## BigInt [#bigint-type]
 
-En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>(2<sup>53</sup>-1)</code> (c'est `9007199254740991`), ou moins que <code>-(2<sup>53</sup>-1)</code> pour les chiffres négatifs. C'est une limitation technique causée par leur représentation interne.
+En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>(2<sup>53</sup>-1)</code> ( `9007199254740991`), ou moins que <code>-(2<sup>53</sup>-1)</code> pour les chiffres négatifs. C'est une limitation technique causée par leur représentation interne.
 
 Pour être vraiment précis, le type "number" peut stocker des entiers plus grands (jusqu'à <code>1.7976931348623157 * 10<sup>308</sup></code>), mais en dehors de la plage d'entiers sûrs <code>±(2 <sup>53</sup>-1)</code> il y aura une erreur de précision, car tous les chiffres ne rentrent pas dans le stockage 64 bits fixe. Ainsi, une valeur "approximative" peut être stockée.
 
@@ -90,7 +89,7 @@ Dans la plupart des cas, la plage <code>±(2<sup>53</sup>-1)</code> est tout à 
 Une valeur `BigInt` est créé en ajoutant `n` à la fin d'un entier :
 
 ```js
-// le "n" à la fin signifie que c'est un BigInt
+// Le "n" à la fin signifie que c'est un BigInt
 const bigInt = 1234567890123456789012345678901234567890n;
 ```
 
@@ -100,16 +99,16 @@ Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacr�
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge/Safari, mais pas dans IE.
 ```
 
-You can check [*MDN* BigInt compatibility table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility) to know which versions of a browser are supported.
+Vous pouvez consulter [*MDN* Table de comptabilité BigInt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/BigInt#compatibilit%C3%A9_des_navigateurs) pour savoir quels versions des navigateurs supports BigInt.
 
 ## String
 
 Une chaîne de caractères en JavaScript doit être entre guillemets.
 
 ```js
-let str = "Hello";
-let str2 = 'Single quotes are ok too';
-let phrase = `can embed another ${str}`;
+let str = "Hello"; // Affectation dites "Double Quoted"
+let str2 = 'Single quotes are ok too'; // Affectation dites "Single Quoted"
+let phrase = `can embed another ${str}`; // Utilisation du string template de JavaScript
 ```
 
 En JavaScript, il existe 3 types de guillemets.
@@ -125,39 +124,39 @@ Les backticks sont des guillemets "à fonctionnalité étendue". Ils nous permet
 ```js run
 let name = "John";
 
-// une variable encapsulée
+// Une variable encapsulée
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
-// une expression encapulée
-alert( `the result is *!*${1 + 2}*/!*` ); // le résultat est 3
+// Une expression encapulée
+alert( `the result is *!*${1 + 2}*/!*` ); // Le résultat est 3
 ```
 
 L'expression à l'intérieur de `${…}` est évaluée et le résultat devient une partie de la chaîne. On peut y mettre n'importe quoi : une variable comme `name` ou une expression arithmétique comme `1 + 2` ou quelque chose de plus complexe.
 
 Veuillez noter que cela ne peut être fait que dans les backticks. Les autres guillemets ne permettent pas une telle intégration !
 ```js run
-alert( "the result is ${1 + 2}" ); // le résultat est ${1 + 2} (les doubles quotes ne font rien)
+alert( "the result is ${1 + 2}" ); // Le résultat est ${1 + 2} (les doubles quotes ne font rien)
 ```
 
 Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <info:string>.
 
 ```smart header="Il n'y a pas de type *character*."
-Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
+Dans certains langages, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit du type "char".
 
-En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type: `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs d'entre eux.
+En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type: `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs.
 ```
 
 ## Boolean (type logique)
 
 Le type booléen n'a que deux valeurs: `true` et `false`.
 
-Ce type est couramment utilisé pour stocker des valeurs oui / non: `true` signifie "oui, correct" et `false` signifie "non, incorrect".
+Ce type est couramment utilisé pour stocker des valeurs oui / non: `true` signifie "vrai" et `false` signifie "faux".
 
 Par exemple :
 
 ```js
-let nameFieldChecked = true; // oui, le champ de nom est coché
-let ageFieldChecked = false; // non, le champ d'âge n'est pas coché
+let nameFieldChecked = true; // Oui, le champ de nom est coché
+let ageFieldChecked = false; // Non, le champ d'âge n'est pas coché
 ```
 
 Les valeurs booléennes résultent également de comparaisons :
@@ -165,10 +164,10 @@ Les valeurs booléennes résultent également de comparaisons :
 ```js run
 let isGreater = 4 > 1;
 
-alert( isGreater ); // true (le résultat de la comparaison est "oui")
+alert( isGreater ); // True (le résultat de la comparaison est vrai, 4 est bien supérieur à 1)
 ```
 
-Nous couvrirons plus profondément les booléens plus tard dans le chapitre <info:logical-operators>.
+Nous couvrirons plus profondément les booléens dans le chapitre <info:logical-operators>.
 
 ## La valeur "null" 
 
@@ -205,7 +204,7 @@ Techniquement, il est possible d'affecter explicitement `undefined` à une varia
 ```js run
 let age = 100;
 
-// change the value to undefined
+// Réassignation de la valeur de 'age' à 'undefined'
 age = undefined;
 
 alert(age); // "undefined"
@@ -217,7 +216,7 @@ alert(age); // "undefined"
 
 Le type `object` est spécial.
 
-Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des collections de données et des entités plus complexes. 
+Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des ensembles de données et des entités plus complexes. 
 
 Étant aussi important, les objets méritent un traitement spécial. Nous les traiterons plus tard dans le chapitre <info:object>, après en savoir plus sur les primitifs.
 
@@ -226,7 +225,6 @@ Le type `symbol` est utilisé pour créer des identificateurs uniques pour les o
 ## L'opérateur typeof [#type-typeof]
 
 L'opérateur `typeof` renvoie le type de l'argument. Il est utile lorsqu'on souhaite traiter différemment les valeurs de différents types ou de faire une vérification rapide.
-
 
 L'appel `typeof x` renvoie une chaîne de caractères avec le nom du type :
 
@@ -258,18 +256,16 @@ typeof alert // "function"  (3)
 
 Les trois dernières lignes peuvent nécessiter des explications supplémentaires :
 
-1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
+1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'objet.
 2. Le résultat de `typeof null` est `"object"`. C'est une erreur officiellement reconnue dans `typeof`, datant des premiers jours de JavaScript et conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Le comportement de `typeof` est incorrect ici.
 3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
-
-
 
 ```smart header="La syntaxe `typeof(x)`"
 Vous pouvez également rencontrer une autre syntaxe : `typeof(x)`. C'est la même chose que `typeof x`.
 
 Pour être clair : `typeof` est un opérateur, pas une fonction. Les parenthèses ici ne font pas partie de `typeof`. C'est le genre de parenthèses utilisées pour le regroupement mathématique.
 
-Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiqement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
+Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiquement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
 
 Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit beaucoup plus courante.
 ```
@@ -278,15 +274,15 @@ Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit
 
 Il existe 8 types de données de base en JavaScript.
 
-- Sept types de données primitifs :
-    - `number` pour les nombres de toute nature : entier ou virgule flottante, les nombres entiers sont limités à <code>±(2<sup>53</sup>-1)</code>.
+- 7 types de données primitifs :
+    - `number` pour les nombres de toute nature : entier ou à virgule flottante, les nombres entiers sont limités à <code>±(2<sup>53</sup>-1)</code>.
     - `bigint` pour des nombres entiers de longueur arbitraire.
     - `string` pour les chaînes de caractères. Une chaîne de caractères peut avoir zéro ou plusieurs caractères, il n'y a pas de type à caractère unique distinct.
     - `boolean` pour `true`/`false` (vrai/faux).
     - `null` pour les valeurs inconnues - un type autonome qui a une seule valeur `null`.
     - `undefined` pour les valeurs non attribuées - un type autonome avec une valeur unique `undefined`.
     - `symbol` pour les identifiants uniques.
-- Et un type de données non primitif :
+- Et 1 type de données non primitif :
     - `object` pour des structures de données plus complexes.
 
 L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable.
