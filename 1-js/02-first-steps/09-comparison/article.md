@@ -21,16 +21,16 @@ Tout comme tous les autres opérateurs, une comparaison renvoie une valeur de ty
 Par exemple :
 
 ```js run
-alert( 2 > 1 );  // true (correct)
-alert( 2 == 1 ); // false (faux)
-alert( 2 != 1 ); // true (correct)
+alert(2 > 1);  // true (correct)
+alert(2 == 1); // false (faux)
+alert(2 != 1); // true (correct)
 ```
 
 Un résultat de comparaison peut être affecté à une variable, comme toute valeur :
 
 ```js run
 let result = 5 > 4; // attribue le résultat de la comparaison
-alert( result ); // true
+alert(result); // true
 ```
 
 ## Comparaison de chaînes de caractères
@@ -42,10 +42,10 @@ En d'autres termes, les chaînes de caractères sont comparées lettre par lettr
 Par exemple :
 
 ```js run
-alert( 'Z' > 'A' ); // true
-alert( 'Glow' > 'Glee' ); // true
-alert( 'Bee' > 'Be' ); // true
-alert( '9' > '10' ); // true
+alert('Z' > 'A'); // true
+alert('Glow' > 'Glee'); // true
+alert('Bee' > 'Be'); // true
+alert('9' > '10'); // true
 ```
 
 L'algorithme pour comparer deux chaînes  de caractères est simple :
@@ -77,8 +77,8 @@ Lorsque les valeurs comparées appartiennent à différents types, elles sont co
 Par exemple :
 
 ```js run
-alert( '2' > 1 ); // true, la chaîne '2' devient un numéro 2
-alert( '01' == 1 ); // true, chaîne '01' devient un numéro 1
+alert('2' > 1); // true, la chaîne '2' devient un numéro 2
+alert('01' == 1); // true, chaîne '01' devient un numéro 1
 ```
 
 Pour les valeurs booléennes, `true` devient `1` et `false` devient `0`.
@@ -86,8 +86,8 @@ Pour les valeurs booléennes, `true` devient `1` et `false` devient `0`.
 Par exemple :
 
 ```js run
-alert( true == 1 ); // true
-alert( false == 0 ); // true
+alert(true == 1); // true
+alert(false == 0); // true
 ```
 
 ````smart header="Une conséquence amusante"
@@ -100,10 +100,10 @@ Par exemple :
 
 ```js run
 let a = 0;
-alert( Boolean(a) ); // false
+alert(Boolean(a)); // false
 
 let b = "0";
-alert( Boolean(b) ); // true
+alert(Boolean(b)); // true
 
 alert(a == b); // true!
 ```
@@ -116,13 +116,13 @@ Du point de vue de JavaScript, c'est tout à fait normal. Un contrôle d'égalit
 Une vérification d'égalité régulière `==` a un problème. Elle ne peut pas faire la différence entre `0` et `false` :
 
 ```js run
-alert( 0 == false ); // true
+alert(0 == false); // true
 ```
 
 La même chose avec une chaîne de caractères vide :
 
 ```js run
-alert( '' == false ); // true
+alert('' == false); // true
 ```
 
 C’est parce que les opérandes de différents types sont convertis en un nombre par l’opérateur d’égalité `==`. Une chaîne de caractères vide, tout comme `false`, devient un zéro.
@@ -136,7 +136,7 @@ En d'autres termes, si `a` et `b` sont de types différents, alors `a === b` ren
 Essayons :
 
 ```js run
-alert( 0 === false ); // false, parce que les types sont différents
+alert(0 === false); // false, parce que les types sont différents
 ```
 
 Il existe également un opérateur de "strict non-égalité" `!==`, par analogie à la non-égalité `!=`.
@@ -152,14 +152,14 @@ Pour un contrôle de strict égalité `===`
 : Ces valeurs sont différentes car chacune d’entre elles appartient à un type distinct.
 
     ```js run
-    alert( null === undefined ); // false
+    alert(null === undefined); // false
     ```
 
 Pour un contrôle d'égalité non strict `==`
 : Il y a une règle spéciale. Ces deux là forment "un beau couple" : ils sont égaux (au sens de `==`), mais pas à d'autres valeurs.
 
     ```js run
-    alert( null == undefined ); // true
+    alert(null == undefined); // true
     ```
 
 Pour les maths et autres comparaisons `<`, `>`, `<=`, `>=`
@@ -172,9 +172,9 @@ Voyons maintenant des choses amusantes qui se produisent lorsque nous appliquons
 Comparons `null` avec un zéro :
 
 ```js run
-alert( null > 0 );  // (1) false
-alert( null == 0 ); // (2) false
-alert( null >= 0 ); // (3) *!*true*/!*
+alert(null > 0);  // (1) false
+alert(null == 0); // (2) false
+alert(null >= 0); // (3) *!*true*/!*
 ```
 
 Ouais, mathématiquement c'est étrange. Le dernier résultat indique que "`null` est supérieur ou égal à zéro". Alors que l'une des comparaisons au dessus devrait être correcte, mais les deux sont fausses.
@@ -188,9 +188,9 @@ D’un autre côté, la vérification de l’égalité `==` pour `undefined` et 
 La valeur `undefined` ne doit pas du tout participer aux comparaisons :
 
 ```js run
-alert( undefined > 0 );  // false (1)
-alert( undefined < 0 );  // false (2)
-alert( undefined == 0 ); // false (3)
+alert(undefined > 0);  // false (1)
+alert(undefined < 0);  // false (2)
+alert(undefined == 0); // false (3)
 ```
 
 Pourquoi est-ce qu'il n'aime pas le zéro ? Toujours faux!
