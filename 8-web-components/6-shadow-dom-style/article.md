@@ -1,12 +1,12 @@
 # Style Shadow DOM
 
-Le Shadow DOM peut inclure les balises `<style>` et `<link rel="stylesheet" href="…">`. Dans le second cas, les feuilles de styles sont mises en cache (HTTP), elles ne seront donc pas re-téléchargées pour plusieurs componsants qui utilisent les mêmes ressources.
+Le Shadow DOM peut inclure les balises `<style>` et `<link rel="stylesheet" href="…">`. Dans le second cas, les feuilles de styles sont mises en cache (HTTP), elles ne seront donc pas re-téléchargées pour plusieurs composants qui utilisent les mêmes ressources.
 
 En règle général, les styles locaux fonctionnent uniquement au sein de l'arborescence fantôme, les styles du document fonctionnent en dehors, mais il existe quelques exceptions.
 
-## Le selecteur ':host'
+## Le sélecteur ':host'
 
-Le selecteur `:host` permet de selectionner l'hôte fantôme (L'élément contenant l'arborescence fantôme).
+Le sélecteur `:host` permet de selectionner l'hôte fantôme (L'élément contenant l'arborescence fantôme).
 
 Par exemple, nous faisons un élément `<custom-dialog>` qui devrait être centré. Pour ça, nous avons besoin d'appliquer un style sur l'élément `<custom-dialog>` directement.
 
@@ -43,7 +43,7 @@ customElements.define('custom-dialog', class extends HTMLElement {
 </custom-dialog>
 ```
 
-## Cascading
+## Application de style
 
 L'hôte fantôme (`<custom-dialog>` lui même) se trouve dans le DOM, il est donc affecté par les règles CSS.
 
@@ -65,11 +65,11 @@ Il est alors possible de définir des règles CSS de bases pour `:host` et ainsi
 
 Une exception existe cependant, lorsce qu'une propriété locale est marquée comme `!important`, dans ce cas, les styles locaux seront appliqués.
 
-## :host (Selecteur)
+## :host (sélecteur)
 
-De même que pour `:host`, mais uniquement si l'hôte fantôme correspond au selecteur.
+De même que pour `:host`, mais uniquement si l'hôte fantôme correspond au sélecteur.
 
-Par exemple, nous aimerions centré un `<custom-dialog>` uniquement s'il possède l'attribut `centered`.
+Par exemple, nous aimerions centrer un `<custom-dialog>` uniquement s'il possède l'attribut `centered`.
 
 ```html run autorun="no-epub" untrusted height=80
 <template id="tmpl">
@@ -111,17 +111,17 @@ customElements.define('custom-dialog', class extends HTMLElement {
 </custom-dialog>
 ```
 
-Le style permettant la centralisation d'élément sera appliqué uniquement sur le premier `<custom-dialog>`.
+Le style permettant la centralisation de l'élément sera appliqué uniquement sur le premier `<custom-dialog>`.
 
-Pour résumé, nous pouvons utiliser une flopée de selecteur pour styliser l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
+Pour résumé, nous pouvons utiliser une flopée de sélecteurs pour styliser l'élément principal `:host` du composant. Ces styles (sauf ceux marqués en tant que `!important`) peuvent être redéfinis par le document.
 
 ## Stylisation des contenus slottés
 
-Maintenant considérons cette situation avec des `<slot>`
+Maintenant considérons cette situation avec des `<slot>`.
 
 Les éléments slottés appartiennent au DOM, donc ils utilisent les styles du document. Les styles locaux n'affectent pas les contenus slottés.
 
-Dans l'exemple suivant, le `<span>` slotté est en gras, tel que défini par le style du document, mais il ne prends pas l'attribut `background` du style local.
+Dans l'exemple suivant, le `<span>` slotté est en **gras**, tel que défini par le style du document, mais il ne prends pas l'attribut `background` du style local.
 
 ```html run autorun="no-epub" untrusted height=80
 <style>
@@ -153,7 +153,7 @@ customElements.define('user-card', class extends HTMLElement {
 
 Le résultat est **gras** mais pas rouge.
 
-Il y'a 2 possibilités pour styliser des éléments slotés au sein de notre composant.
+Il y a 2 possibilités pour styliser des éléments slotés au sein de notre composant.
 
 La première, nous pouvons appliquer du style sur le `<slot>` directement et compter sur l'inheritance du CSS :
 
@@ -180,14 +180,14 @@ customElements.define('user-card', class extends HTMLElement {
 </script>
 ```
 
-Ici `<p>John Smith</p>` devient **gras**, car l'inheritance du CSS prend effet entre le `<slot>` et son contenu. Cependant, en CSS, toutes les propriétés ne sont pas inhéritées.
+Ici `<p>John Smith</p>` devient **gras**, car l'héritage du CSS prend effet entre le `<slot>` et son contenu. Cependant, en CSS, toutes les propriétés ne sont pas héritées.
 
 Une autre option est d'utiliser la pseudo classe `::slotted(selected)`.
 
-Ce selecteur est effectif en fonction de 2 conditions : 
+Ce sélecteur est effectif en fonction de 2 conditions : 
 
 1. Il s'agit d'un élément slotté, qui vient du DOM, (le nom du slot n'entre pas en ligne de compte); Cela prends en compte uniquement l'élément lui même, pas ses enfants.
-2. L'élément possède un `selecteur`
+2. L'élément possède un `sélecteur`
 
 Dans notre exemple, `::slotted(div)` selectionne juste `<div slot="username'>`, mais pas ses enfants.
 
@@ -215,7 +215,7 @@ customElements.define('user-card', class extends HTMLElement {
 </script>
 ```
 
-Veuillez noter que le selecteur `::slotted` ne peut pas se transmettre dans le slot, ces selecteurs sont invalides : 
+Veuillez noter que le sélecteur `::slotted` ne peut pas se transmettre dans le slot, ces sélecteurs sont invalides : 
 
 ```css
 ::slotted(div span) {
@@ -232,9 +232,9 @@ Aussi, `::slotted` peut être utilisé uniquement en CSS, il n'est pas utilisabl
 
 Comment stylisons nous les éléments internes d'un composant au sein du document ?
 
-Les selecteurs tels que `:host` appliquent des règles sur les éléments `<custom-dialog>` ou `<user-card>`, mais comment styliser les éléments du DOM fantôme à l'intérieur de ces derniers ?
+Les sélecteurs tels que `:host` appliquent des règles sur les éléments `<custom-dialog>` ou `<user-card>`, mais comment styliser les éléments du DOM fantôme à l'intérieur de ces derniers ?
 
-Il n'y a pas de selecteur qui peuvent directement affecter le style du DOM fantôme depuis le document. Mais comme nous exposons des méthods pour intéragir avec notre composant, nous pouvons exposer des variables CSS (entendez par là des propriétés CSS) pour les styliser.
+Il n'y a pas de sélecteur qui puissent directement affecter le style du DOM fantôme depuis le document. Mais comme nous exposons des méthodes pour interagir avec notre composant, nous pouvons exposer des variables CSS (entendez par là des propriétés CSS) pour les styliser.
 
 **Les propriétés CSS customisés existent à tous niveaux, dans le light DOM & le shadow DOM.**
 
