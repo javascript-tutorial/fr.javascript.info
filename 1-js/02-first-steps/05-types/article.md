@@ -99,15 +99,15 @@ Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacr�
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge/Safari, mais pas dans IE.
 ```
 
-Vous pouvez consulter [*MDN* Table de comptabilité BigInt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/BigInt#compatibilit%C3%A9_des_navigateurs) pour savoir quels versions des navigateurs supports BigInt.
+Vous pouvez consulter [*MDN* Table de comptabilité BigInt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/BigInt#compatibilit%C3%A9_des_navigateurs) pour savoir quelles versions des navigateurs supportent BigInt.
 
 ## String
 
 Une chaîne de caractères en JavaScript doit être entre guillemets.
 
 ```js
-let str = "Hello"; // Affectation dites "Double Quoted"
-let str2 = 'Single quotes are ok too'; // Affectation dites "Single Quoted"
+let str = "Hello"; // Affectation dite "Double Quoted"
+let str2 = 'Single quotes are ok too'; // Affectation dite "Single Quoted"
 let phrase = `can embed another ${str}`; // Utilisation du string template de JavaScript
 ```
 

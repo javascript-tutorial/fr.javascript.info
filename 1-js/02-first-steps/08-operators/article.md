@@ -170,8 +170,8 @@ let oranges = "3";
 alert(+apples + +oranges); // 5
 */!*
 
-// C'est équivalent à cette variante plus longue
-// alert(Number(apples) + Number(oranges)); // 5
+/* C'est équivalent à cette variante plus longue
+alert(Number(apples) + Number(oranges)); (5) *;
 ```
 
 Du point de vue du mathématicien, l’abondance des `+` peut sembler étrange. Mais du point de vue du développeur, il n’y a rien de spécial : les opérateurs `+` unaires sont appliqués en premier, ils convertissent les chaînes de caractères en nombres, puis le plus binaire les additionne.

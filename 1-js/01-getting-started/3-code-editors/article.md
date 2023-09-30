@@ -39,7 +39,7 @@ Il existe de nombreuses options, par exemple :
 
 ## Ne discutons pas
 
-Les éditeurs présentés ci-dessus sont ceux que mes amis (que je considère comme de bons développeurs) ou moi-même, utilisent depuis longtemps et dont nous sommes satisfaits.
+Les éditeurs présentés ci-dessus sont ceux que mes amis (que je considère comme de bons développeurs) ou moi-même, utilisons depuis longtemps et dont nous sommes satisfaits.
 
 Il y a d'autres grands éditeurs dans notre vaste monde. Veillez à choisir celui qui vous convient le plus.
 

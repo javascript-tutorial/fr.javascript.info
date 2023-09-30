@@ -46,7 +46,7 @@ alert(3 +
 + 2);
 ```
 
-Le code génère `6`, car JavaScript n'insère pas de point-virgule ici. Il est intuitivement évident que si la ligne se termine par un plus `"+"` (un opérateur ou une opérande), alors c'est une "expression incomplète", donc un point-virgule serait incorrect. Et dans ce cas, cela fonctionne comme prévu.
+Le code génère `6`, car JavaScript n'insère pas de point-virgule ici. Il est intuitivement évident que si la ligne se termine par un plus `"+"` (un opérateur ou un opérande), alors c'est une "expression incomplète", donc un point-virgule serait incorrect. Et dans ce cas, cela fonctionne comme prévu.
 
 **Mais il existe des situations où JavaScript "échoue" à prendre un point-virgule là où il est vraiment nécessaire.**
 

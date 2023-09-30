@@ -115,7 +115,7 @@ Les exemples de ce genre de langages :
 - [TypeScript](http://www.typescriptlang.org/) se concentre sur l'ajout de "typage strict des données" pour simplifier le développement et la prise en charge de systèmes complexes. Il est développé par Microsoft.
 - [Flow](http://flow.org/) ajoute également la saisie de données, mais de manière différente. Développé par Facebook.
 - [Dart](https://www.dartlang.org/) est un langage autonome doté de son propre moteur qui s'exécute dans des environnements autres que les navigateurs (comme les applications mobiles), mais peut aussi être transpilé en JavaScript. Développé par Google.
-- [Brython](https://brython.info/) est un transpiler Python vers JavaScript qui permet d'écrire des applications en Python pur (sans JavaScript).
+- [Brython](https://brython.info/) est un transpiler (ou transpileur en bon français) Python vers JavaScript qui permet d'écrire des applications en Python pur (sans JavaScript).
 - [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) est un langage de programmation moderne, concis et sûr qui peut cibler le navigateur ou Node.js.
 
 Il en existe évidemment bien plus, cela dit, même si nous utilisons un de ces langages transpilés, nous devrions également connaître le langage JavaScript, pour bien comprendre ce que nous faisons.

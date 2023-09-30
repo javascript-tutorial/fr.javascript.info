@@ -5,7 +5,7 @@ Il y a de nombreux opérateurs de comparaison que nous connaissons des mathémat
 - Plus grand/petit que : <code>a &gt; b</code>, <code>a &lt; b</code>.
 - Plus grand/petit ou égal à : <code>a &gt;= b</code>, <code>a &lt;= b</code>.
 - Égalité : `a == b` (veuillez noter le signe de la double égalité `==` signifie un test d’égalité. Un seul symbole `a = b` signifierait une affectation).
-- Pas égal : en mathématique la notation est <code>&ne;</code>, mais en JavaScript elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
+- Non égal : en arithmétique la notation est <code>&ne;</code>, mais en JavaScript elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
 
 Dans cet article, nous en apprendrons plus sur les différents types de comparaisons, sur la façon dont JavaScript les effectue, y compris sur les particularités importantes.
 
