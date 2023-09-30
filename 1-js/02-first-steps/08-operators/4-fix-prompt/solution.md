@@ -1,4 +1,4 @@
-La raison en est que le prompt renvoie l'entrée utilisateur sous forme de chaîne de caractères.
+La raison est que le prompt renvoie l'entrée utilisateur sous forme de chaîne de caractères.
 
 Les variables ont donc respectivement les valeurs `"1"` et `"2"`.
 
@@ -9,7 +9,7 @@ let b = "2"; // prompt("Second number?", 2);
 alert(a + b); // 12
 ```
 
-Ce que nous devons faire est de convertir les chaînes de caractères en nombres avant `+`. Par exemple, en utilisant `Number()` ou en les préfixant avec `+`.
+Nous devons convertir les chaînes de caractères en nombres avant l'opérateur `+`. Par exemple, en utilisant `Number()` ou en les préfixant avec `+`.
 
 Par exemple, juste avant `prompt` :
 
@@ -29,4 +29,4 @@ let b = prompt("Second number?", 2);
 alert(+a + +b); // 3
 ```
 
-Nous utilisons à la fois unaire et binaire `+` dans le dernier code. Ça a l'air drôle, non ?
+Nous utilisons à la fois l'opérateur unaire (en guise de convertisseur explicite) et binaire `+` dans le dernier code. Ça a l'air drôle, non ?

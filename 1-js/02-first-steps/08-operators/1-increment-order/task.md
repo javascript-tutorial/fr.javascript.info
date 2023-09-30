@@ -4,7 +4,7 @@ importance: 5
 
 # Les formes postfixes et préfixes
 
-Quelles sont les valeurs finales de toutes les variables `a`, `b`, `c` et `d` après le code ci-dessous ?
+Quelles sont les valeurs finales de toutes les variables `a`, `b`, `c` et `d` après l'exécution du code ci-dessous ?
 
 ```js
 let a = 1, b = 1;

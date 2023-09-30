@@ -4,7 +4,7 @@ importance: 3
 
 # Résultat d'affectation
 
-Quelles sont les valeurs de `a` et `x` après le code ci-dessous ?
+Quelles sont les valeurs de `a` et `x` après l'exécution du code ci-dessous ?
 
 ```js
 let a = 2;
