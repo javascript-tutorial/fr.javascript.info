@@ -74,7 +74,7 @@ Le fichier de script est attaché au HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
-Ici, `/chemin/vers/script.js` est le chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courrant.
+Ici, `/chemin/vers/script.js` est le chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courant.
 
 Nous pouvons également donner une URL complète, par exemple :
 
@@ -95,7 +95,7 @@ En règle générale, seuls les scripts les plus simples sont insérés directem
 
 L’avantage d’un fichier séparé est que le navigateur le télécharge puis le stocke dans son [cache](https://fr.wikipedia.org/wiki/Cache_web).
 
-Après quoi, les autres pages qui veulent le même script le récupèreront à partir du cache au lieu de le télécharger à nouveau. Le fichier n'est donc téléchargé qu'une seule fois.
+Après quoi, les autres pages qui veulent le même script le récupéreront à partir du cache au lieu de le télécharger à nouveau. Le fichier n'est donc téléchargé qu'une seule fois.
 
 Cela économise du trafic et rend le chargement des pages plus rapides.
 ```

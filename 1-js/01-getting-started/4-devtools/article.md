@@ -60,6 +60,6 @@ Maintenant `key:Cmd+Opt+C` peut activer la console. Notez également que le nouv
 ## Résumé
 
 - Les outils de développement nous permettent de voir les erreurs, d'exécuter des instructions, d'examiner des variables et bien plus encore.
-- Ils peuvent être ouverts avec `key:F12` pour la plupart des navigateurs sous Windows. Chrome pour Mac necessite la combinaison `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (doit être activé avant).
+- Ils peuvent être ouverts avec `key:F12` pour la plupart des navigateurs sous Windows. Chrome pour Mac nécessite la combinaison `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (doit être activé avant).
 
 Nous avons maintenant notre environnement prêt. Dans la section suivante, nous passerons à JavaScript.
