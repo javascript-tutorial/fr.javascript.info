@@ -4,9 +4,9 @@ importance: 4
 
 # Est-ce que "else" est requis ?
 
-La fonction suivante renvoie `true` si le paramètre `age` est supérieur à `18`.
+La fonction suivante retourne `true` si le paramètre `age` est supérieur à `18`.
 
-Sinon, il demande une confirmation et renvoie son résultat :
+Sinon, il demande une confirmation et retourne son résultat :
 
 ```js
 function checkAge(age) {

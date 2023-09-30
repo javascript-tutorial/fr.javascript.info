@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Réécrivez la fonction en utilisant '?' ou '||'
+# Réécrire la fonction en utilisant '?' ou '||'
 
 La fonction suivante renvoie `true` si le paramètre `age` est supérieur à `18`.
 

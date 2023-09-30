@@ -4,7 +4,7 @@ Très souvent, nous devons effectuer une action similaire à plusieurs endroits 
 
 Par exemple, nous devons afficher un beau message lorsqu'un visiteur se connecte, se déconnecte et peut-être ailleurs.
 
-Les fonctions sont les principales "composantes" du programme. Ils permettent au code d'être appelé plusieurs fois sans répétition.
+Les fonctions sont les principales "composantes" du programme. Elles permettent au code d'être appelé plusieurs fois sans répétition.
 
 Nous avons déjà vu des exemples de fonctions intégrées, telles que `alert(message)`, `prompt(message, default)` et `confirm(question)`. Mais nous pouvons aussi créer nos propres fonctions.
 
@@ -16,7 +16,7 @@ Cela ressemble à ceci :
 
 ```js
 function showMessage() {
-  alert( 'Hello everyone!' );
+  alert('Hello everyone!');
 }
 ```
 
@@ -24,7 +24,7 @@ Le mot-clé `function` commence en premier, puis le *nom de la fonction*, puis u
 
 ```js
 function name(parameter1, parameter2, ... parameterN) {
- // body
+ // corps de la fonction
 }
 ```
 
@@ -34,7 +34,7 @@ Par exemple :
 
 ```js run
 function showMessage() {
-  alert( 'Hello everyone!' );
+  alert('Hello everyone!');
 }
 
 *!*
@@ -47,7 +47,7 @@ L'appel `showMessage()` exécute le code de la fonction. Ici, nous verrons le me
 
 Cet exemple illustre clairement l’un des principaux objectifs des fonctions: éviter la duplication de code.
 
-Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit: la fonction qui le renvoie.
+Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit: la fonction qui l'affiche.
 
 ## Variables locales
 
@@ -61,17 +61,17 @@ function showMessage() {
   let message = "Hello, I'm JavaScript!"; // variable locale
 */!*
 
-  alert( message );
+  alert(message);
 }
 
 showMessage(); // Hello, I'm JavaScript!
 
-alert( message ); // <-- Erreur! La variable est locale à la fonction
+alert(message); // <-- Erreur! La variable est locale à la fonction
 ```
 
-## Variables externes
+## Variables globales
 
-Une fonction peut également accéder à une variable externe, par exemple :
+Une fonction peut également accéder à une variable globale, par exemple :
 
 ```js run no-beautify
 let *!*userName*/!* = 'John';
@@ -84,7 +84,7 @@ function showMessage() {
 showMessage(); // Hello, John
 ```
 
-La fonction a un accès complet à la variable externe. Cela peut aussi la modifier.
+La fonction a un accès complet à la variable globale. Elle peut aussi la modifier.
 
 Par exemple :
 
@@ -92,40 +92,39 @@ Par exemple :
 let *!*userName*/!* = 'John';
 
 function showMessage() {
-  *!*userName*/!* = "Bob"; // (1) changé la variable externe
+  *!*userName*/!* = "Bob"; // (1) Changer la variable globale
 
   let message = 'Hello, ' + *!*userName*/!*;
   alert(message);
 }
 
-alert( userName ); // *!*John*/!* avant l'appel de fonction
+alert(userName); // *!*John*/!* avant l'appel de fonction
 
 showMessage();
 
-alert( userName ); // *!*Bob*/!*, la valeur a été modifiée par la fonction
+alert(userName); // *!*Bob*/!*, la valeur a été modifiée par la fonction
 ```
 
-La variable externe n’est utilisée que s’il n’y a pas de variable locale.
+La variable globale n’est utilisée que s’il n’y a pas de variable locale.
 
-
-Si une variable du même nom est déclarée à l'intérieur de la fonction, elle *eclipsera* la variable externe. Par exemple, dans le code ci-dessous, la fonction utilise le nom `userName` local. L'externe est ignoré :
+Si une variable du même nom est déclarée à l'intérieur de la fonction, elle *eclipsera* la variable externe. Par exemple, dans le code ci-dessous, la fonction utilise le nom `userName` local. La globale est ignoré :
 
 ```js run
 let userName = 'John';
 
 function showMessage() {
 *!*
-  let userName = "Bob"; // déclarer une variable locale
+  let userName = "Bob"; // Déclarer une variable locale
 */!*
 
   let message = 'Hello, ' + userName; // *!*Bob*/!*
   alert(message);
 }
 
-// la fonction créera et utilisera son propre userName
+// La fonction créera et utilisera son propre userName
 showMessage();
 
-alert( userName ); // *!*John*/!*, inchangé, la fonction n'a pas accédé à la variable externe
+alert(userName); // *!*John*/!*, inchangée, la fonction n'a pas accédé à la variable globale
 ```
 
 ```smart header="Variables globales"
@@ -133,7 +132,7 @@ Les variables déclarées en dehors de toute fonction, telle que `userName` exte
 
 Les variables globales sont visibles depuis n'importe quelle fonction (sauf si elles sont masquées par les variables locales).
 
-C'est une bonne pratique de minimiser l'utilisation de variables globales. Le code moderne a peu ou pas de variable globales. La plupart des variables résident dans leurs fonctions. Parfois, cependant, ils peuvent être utiles pour stocker des données au niveau du projet.
+C'est une bonne pratique de minimiser l'utilisation de variables globales. Le code moderne a peu ou pas de variable globales. La plupart des variables résident dans leurs fonctions. Parfois, cependant, elles peuvent être utiles pour stocker des données au niveau du script.
 ```
 
 ## Arguments
@@ -143,7 +142,7 @@ Nous pouvons transmettre des données arbitraires à des fonctions à l'aide de 
 Dans l'exemple ci-dessous, la fonction a deux paramètres: `from` et `text`.
 
 ```js run
-function showMessage(*!*from, text*/!*) { // arguments : from, text
+function showMessage(*!*from, text*/!*) { // Arguments : from, text
   alert(from + ': ' + text);
 }
 
@@ -153,37 +152,38 @@ function showMessage(*!*from, text*/!*) { // arguments : from, text
 
 Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`. Ensuite, la fonction les utilise.
 
-Voici un autre exemple: nous avons une variable `from` et la transmettons à la fonction. Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
+Voici un autre exemple: nous avons une variable `from` et la transmettons à la fonction. 
+
+Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
 
 ```js run
 function showMessage(from, text) {
 
 *!*
-  from = '*' + from + '*'; // améliore l'apparence de "from"
+  from = '*' + from + '*'; // Améliore l'apparence de "from"
 */!*
 
-  alert( from + ': ' + text );
+  alert(from + ': ' + text);
 }
 
 let from = "Ann";
 
 showMessage(from, "Hello"); // *Ann*: Hello
 
-// la valeur de "from" est la même, la fonction a modifié une copie locale
-alert( from ); // Ann
+// La valeur de "from" est la même, la fonction a modifié une copie locale
+alert(from); // Ann
 ```
 
 Lorsqu'une valeur est passée en tant que paramètre de fonction, elle est également appelée *argument*.
 
-En d'autres termes, pour mettre ces termes au clair :
+Pour mettre ces termes au clair :
 
-- Un paramètre est la variable répertoriée entre parenthèses dans la fonction déclaration (c'est un terme du temps de la déclaration).
+- Un paramètre est la variable répertoriée entre parenthèses dans la déclaration de la fonction.
 - Un argument est la valeur qui est transmise à la fonction lorsqu'elle est appelée (c'est un terme du temps de l'appel).
 
 Nous déclarons des fonctions en listant leurs paramètres, puis les appelons en passant des arguments.
 
 Dans l'exemple ci-dessus, on pourrait dire : "la fonction `showMessage` est déclarée avec deux paramètres, puis appelée avec deux arguments : `from` et `"Hello"`.
-
 
 ## Les valeurs par défaut
 
@@ -195,13 +195,13 @@ Par exemple, la fonction `showMessage(from, text)` mentionnée précédemment pe
 showMessage("Ann");
 ```
 
-Ce n'est pas une erreur. Un tel appel produirait `"*Ann*: undefined"`. Comme la valeur de `text` n'est pas transmise, elle devient `undefined`.
+Ce n'est pas une erreur. Un tel appel produirait `"*Ann*: undefined"`. Comme la valeur de `text` n'est pas transmise, elle devient `undefined` (elle n'a pas été définie lors de l'appel).
 
 Nous pouvons spécifier la valeur dite "par défaut" (à utiliser si omise) pour un paramètre dans la déclaration de fonction, en utilisant `=` :
 
 ```js run
 function showMessage(from, *!*text = "no text given"*/!*) {
-  alert( from + ": " + text );
+  alert(from + ": " + text);
 }
 
 showMessage("Ann"); // Ann: no text given
@@ -215,12 +215,12 @@ La valeur par défaut saute également si le paramètre existe, mais est stricte
 showMessage("Ann", undefined); // Ann: no text given
 ```
 
-Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant. Donc, cela est également possible :
+Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant. Donc, ceci est également possible :
 
 ```js run
 function showMessage(from, text = anotherFunction()) {
-  // anotherFunction() est exécuté uniquement si aucun texte n'est fourni
-  // son résultat devient la valeur de text
+  /* anotherFunction() est exécutée uniquement si aucun texte n'est fourni
+  son résultat devient la valeur de text */
 }
 ```
 
@@ -248,7 +248,7 @@ function showMessage(from, text) {
   }
 */!*
 
-  alert( from + ": " + text );
+  alert(from + ": " + text);
 }
 ```
 
@@ -256,18 +256,17 @@ function showMessage(from, text) {
 
 ```js
 function showMessage(from, text) {
-  // Si la valeur du texte est fausse, attribuez la valeur par défaut
-  // cela suppose que text == "" est identique à pas de texte du tout
+  /* Si la valeur du texte est fausse, attribuez la valeur par défaut
+  cela suppose que text == "" est identique à pas de texte du tout */
   text = text || 'no text given';
   ...
 }
 ```
 ````
 
-
 ### Paramètres par défaut alternatifs
 
-Il est parfois judicieux de définir des valeurs par défaut pour les paramètres non pas dans la fonction déclaration, mais à un stade ultérieur, lors de son exécution.
+Il est parfois judicieux de définir des valeurs par défaut pour les paramètres, non pas dans la déclaration de la fonction, mais à un stade ultérieur, lors de son exécution.
 
 Nous pouvons vérifier si le paramètre est passé lors de l'exécution de la fonction, en le comparant avec `undefined` :
 
@@ -276,7 +275,7 @@ function showMessage(text) {
   // ...
 
 *!*
-  if (text === undefined) { // si le paramètre est manquant
+  if (text === undefined) { // Si le paramètre est manquant
     text = 'empty message';
   }
 */!*
@@ -291,7 +290,7 @@ showMessage(); // empty message
 
 ```js
 function showMessage(text) {
-  // if text is undefined or otherwise falsy, set it to 'empty'
+  // Si text est indéfinie ou falsy, text devient 'empty'
   text = text || 'empty';
   ...
 }
@@ -301,7 +300,7 @@ Les moteurs JavaScript modernes prennent en charge [l'opérateur de coalescence 
 
 ```js run
 function showCount(count) {
-  // if count is undefined or null, show "unknown"
+  // Si count est indéfini ou null, afficher "unknown"
   alert(count ?? "unknown");
 }
 
@@ -310,10 +309,9 @@ showCount(null); // unknown
 showCount(); // unknown
 ```
 
+## Retourner une valeur
 
-## Renvoyer une valeur
-
-Une fonction peut renvoyer une valeur dans le code appelant en tant que résultat.
+Une fonction peut retourner une valeur dans le code appelant en tant que résultat.
 
 L'exemple le plus simple serait une fonction qui additionne deux valeurs :
 
@@ -323,10 +321,10 @@ function sum(a, b) {
 }
 
 let result = sum(1, 2);
-alert( result ); // 3
+alert(result); // 3
 ```
 
-La directive `return` peut être n'importe où dans la fonction. Lorsque l'exécution le permet, la fonction s'arrête et la valeur est renvoyée au code appelant (affecté à `result` ci-dessus).
+L'instruction `return` peut être n'importe où dans la fonction. Lorsque l'exécution le permet, la fonction s'arrête et la valeur est renvoyée au code appelant (affecté à `result` ci-dessus).
 
 Il peut y avoir plusieurs occurrences de `return` dans une seule fonction. Par exemple :
 
@@ -345,26 +343,26 @@ function checkAge(age) {
 
 let age = prompt('How old are you?', 18);
 
-if ( checkAge(age) ) {
-  alert( 'Access granted' );
+if (checkAge(age)) {
+  alert('Access granted');
 } else {
-  alert( 'Access denied' );
+  alert('Access denied');
 }
 ```
 
-Il est possible d'utiliser `return` sans valeur. Cela entraîne la sortie immédiate de la fonction.
+Il est possible d'utiliser `return` sans valeur. Cela retourne un résultat `undefined` de la fonction.
 
 Par exemple :
 
 ```js
 function showMovie(age) {
-  if ( !checkAge(age) ) {
+  if (!checkAge(age)) {
 *!*
     return;
 */!*
   }
 
-  alert( "Showing you the movie" ); // (*)
+  alert("Showing you the movie"); // (*)
   // ...
 }
 ```
@@ -376,7 +374,7 @@ Dans le code ci-dessus, si `checkAge(age)` renvoie `false`, alors `ShowMovie` n�
 ```js run
 function doNothing() { /* vide */ }
 
-alert( doNothing() === undefined ); // true
+alert(doNothing() === undefined); // true
 ```
 
 Un `return` vide est également identique à un `return undefined` :
@@ -386,7 +384,7 @@ function doNothing() {
   return;
 }
 
-alert( doNothing() === undefined ); // true
+alert(doNothing() === undefined); // true
 ```
 ````
 
@@ -406,14 +404,14 @@ return*!*;*/!*
 
 Donc, cela devient effectivement un retour vide.
 
-Si nous voulons que l'expression renvoyée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`. Ou du moins mettre les parenthèses d'ouverture comme suit :
+Si nous voulons que l'expression retournée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`. Ou du moins mettre les parenthèses d'ouverture comme suit :
 
 ```js
 return (
   some + long + expression
   + or +
   whatever * f(a) + f(b)
-  )
+)
 ```
 Et cela fonctionnera comme prévu.
 ````
@@ -436,14 +434,14 @@ Fonction commençant par…
 Exemples de quelques noms :
 
 ```js no-beautify
-showMessage(..)     // affiche un message
-getAge(..)          // renvoie l'âge (l'obtient en quelque sorte)
-calcSum(..)         // calcule une somme et renvoie le résultat
-createForm(..)      // crée un formulaire (et le retourne généralement)
-checkPermission(..) // vérifie une permission, retourne vrai/faux
+showMessage(..)     // Affiche un message
+getAge(..)          // Renvoie l'âge (l'obtient en quelque sorte)
+calcSum(..)         // Calcule une somme et renvoie le résultat
+createForm(..)      // Crée un formulaire (et le retourne généralement)
+checkPermission(..) // Vérifie une permission, retourne vrai/faux
 ```
 
-Avec les préfixes en place, un coup d'œil sur un nom de fonction permet de comprendre le type de travail effectué et le type de valeur renvoyé.
+Avec les préfixes en place, un coup d'œil sur un nom de fonction permet de comprendre le type de travail effectué et le type de valeur retourné.
 
 ```smart header="Une fonction - une action"
 Une fonction doit faire exactement ce qui est suggéré par son nom, pas plus.
@@ -485,7 +483,7 @@ function showPrimes(n) {
       if (i % j == 0) continue nextPrime;
     }
 
-    alert( i ); // un nombre premier
+    alert(i); // un nombre premier
   }
 }
 ```
@@ -498,13 +496,13 @@ function showPrimes(n) {
   for (let i = 2; i < n; i++) {
     *!*if (!isPrime(i)) continue;*/!*
 
-    alert(i);  // un nombre premier
+    alert(i); // un nombre premier
   }
 }
 
 function isPrime(n) {
   for (let i = 2; i < n; i++) {
-    if ( n % i == 0) return false;
+    if (n % i == 0) return false;
   }
   return true;
 }
@@ -512,7 +510,7 @@ function isPrime(n) {
 
 La deuxième variante est plus facile à comprendre, n’est-ce pas ? Au lieu du bloc de code, nous voyons le nom de l'action (`isPrime`). Parfois, les gens se réfèrent à ce code comme étant *auto-descriptif*.
 
-Des fonctions peuvent donc être créées même si nous n’avons pas l’intention de les réutiliser. Ils structurent le code et le rendent lisible.
+Des fonctions peuvent donc être créées même si nous n’avons pas l’intention de les réutiliser. Elles structurent le code et le rendent lisible.
 
 ## Résumé
 
@@ -525,17 +523,18 @@ function name(parameters, delimited, by, comma) {
 ```
 
 - Les valeurs transmises à une fonction en tant que paramètres sont copiées dans ses variables locales.
-- Une fonction peut accéder à des variables externes. Mais cela ne fonctionne que de l'intérieur. Le code en dehors de la fonction ne voit pas ses variables locales.
-- Une fonction peut renvoyer une valeur. Si ce n'est pas le cas, le résultat est `undefined`.
+- Une fonction peut accéder à des variables globales. 
+- Le code en dehors des fonction ne voit pas les variables locales (déclarées dans des fonctions).
+- Une fonction peut retourner une valeur. Si ce n'est pas le cas, le résultat est `undefined`.
 
-Pour rendre le code propre et facile à comprendre, il est recommandé d’utiliser principalement des variables et des paramètres locaux dans la fonction, et non des variables externes.
+Pour rendre le code propre et facile à comprendre, il est recommandé d’utiliser principalement des variables et des paramètres locaux dans la fonction, et non des variables globales.
 
-Il est toujours plus facile de comprendre une fonction qui possède des paramètres, fonctionne avec eux et renvoie un résultat, plutôt qu’une fonction qui ne comporte aucun paramètre, mais modifie des variables externes comme un effet secondaire.
+Il est toujours plus facile de comprendre une fonction qui possède des paramètres, fonctionne avec eux et retourne un résultat, plutôt qu’une fonction qui ne comporte aucun paramètre, mais modifie des variables globales comme un effet secondaire.
 
 Nommage de fonction :
 
 - Un nom doit clairement décrire le rôle de la fonction. Lorsque nous voyons un appel de fonction dans le code, un bon nom nous donne instantanément une compréhension de ce qu’elle fait et de ce qu’elle retourne.
-- Une fonction est une action, les noms de fonctions sont donc généralement verbaux.
-- Il existe de nombreux préfixes de fonctions bien connus, tels que `create…`, `show…`, `get…`, `check…` et ainsi de suite. Utilisez-les pour indiquer ce que fait une fonction.
+- Une fonction représente une action, les noms de fonctions sont donc généralement verbeux.
+- Il existe de nombreux préfixes de fonctions bien connus, tels que `create`, `show`, `get`, `check` et ainsi de suite. Utilisez-les pour indiquer ce que fait une fonction.
 
 Les fonctions sont les principaux éléments constitutifs des scripts. Maintenant que nous avons couvert les bases, nous pouvons donc commencer à les créer et les utiliser. Mais ce n’est que le début du chemin. Nous allons y revenir plusieurs fois, en approfondissant leurs fonctionnalités avancées.

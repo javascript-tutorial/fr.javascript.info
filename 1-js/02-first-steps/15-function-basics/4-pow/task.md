@@ -4,7 +4,7 @@ importance: 4
 
 # Fonction pow(x,n)
 
-Ecrivez une fonction `pow(x, n)` qui renvoie `x` à la puissance `n`. Ou, autrement dit, multiplie `x` par lui-même `n` fois et renvoie le résultat.
+Ecrivez une fonction `pow(x, n)` qui retourne `x` à la puissance `n`. Ou, autrement dit, multiplie `x` par lui-même `n` fois et retourne le résultat.
 
 ```js
 pow(3, 2) = 3 * 3 = 9
