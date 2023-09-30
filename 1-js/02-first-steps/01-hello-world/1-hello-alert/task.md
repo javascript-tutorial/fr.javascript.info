@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Afficher une alerte
+# Affichez une alerte
 
-Créez une page qui affiche un message "Je suis JavaScript!".
+Créez une page qui affiche un message "I'm JavaScript!".
 
 Faites-le dans un bac à sable ou sur votre disque dur, peu importe, assurez-vous simplement que cela fonctionne.
 
