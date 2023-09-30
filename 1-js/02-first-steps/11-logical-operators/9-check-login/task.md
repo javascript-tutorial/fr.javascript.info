@@ -2,7 +2,7 @@ importance: 3
 
 ---
 
-# Check the login
+# Verfiez les identifiants
 
 Écrivez le code qui demande une connexion avec `prompt`.
 
@@ -11,7 +11,7 @@ Si le visiteur entre `"Admin"`, puis `prompt` pour un mot de passe, si l'entrée
 Le mot de passe est vérifié comme suit :
 
 - S'il est égal à "TheMaster", alors affichez "Welcome!",
-- Une autre chaînede caractères -- affichez "Wrong password",
+- Une autre chaîne de caractères -- affichez "Wrong password",
 - Pour une chaîne de caractères vide ou une entrée annulée, affichez "Canceled".
 
 Le schéma :

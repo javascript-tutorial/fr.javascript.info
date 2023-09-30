@@ -7,6 +7,6 @@ importance: 3
 Qu'est-ce que le code ci-dessous va sortir ?
 
 ```js
-alert( alert(1) || 2 || alert(3) );
+alert(alert(1) || 2 || alert(3));
 ```
 

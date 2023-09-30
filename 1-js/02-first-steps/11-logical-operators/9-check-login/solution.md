@@ -1,5 +1,3 @@
-
-
 ```js run demo
 let userName = prompt("Who's there?", '');
 
@@ -8,18 +6,18 @@ if (userName === 'Admin') {
   let pass = prompt('Password?', '');
 
   if (pass === 'TheMaster') {
-    alert( 'Welcome!' );
+    alert('Welcome!');
   } else if (pass === '' || pass === null) {
-    alert( 'Canceled' );
+    alert('Canceled');
   } else {
-    alert( 'Wrong password' );
+    alert('Wrong password');
   }
 
 } else if (userName === '' || userName === null) {
-  alert( 'Canceled' );
+  alert('Canceled');
 } else {
-  alert( "I don't know you" );
+  alert("I don't know you");
 }
 ```
 
-Notez les retraits verticaux à l'intérieur des blocs `if`. Ils ne sont techniquement pas nécessaires, mais rendent le code plus lisible.
+Notez les retraits verticaux (on appelle ça l'indentation) à l'intérieur des blocs `if`. Ils ne sont techniquement pas nécessaires, mais rendent le code plus lisible.

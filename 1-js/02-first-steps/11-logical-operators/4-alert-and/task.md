@@ -7,6 +7,6 @@ importance: 3
 Qu’est-ce que ce code va afficher ?
 
 ```js
-alert( alert(1) && alert(2) );
+alert(alert(1) && alert(2));
 ```
 

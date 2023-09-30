@@ -1,7 +1,7 @@
 La réponse : `3`.
 
 ```js run
-alert( null || 2 && 3 || 4 );
+alert(null || 2 && 3 || 4);
 ```
 
 La priorité de AND `&&` est supérieure à OR `||`, elle s'exécute donc en premier.

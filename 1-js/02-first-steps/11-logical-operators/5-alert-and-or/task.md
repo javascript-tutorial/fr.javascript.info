@@ -7,6 +7,6 @@ importance: 5
 Quel sera le résultat ?
 
 ```js
-alert( null || 2 && 3 || 4 );
+alert(null || 2 && 3 || 4);
 ```
 
