@@ -1,12 +1,12 @@
 # Opérateurs logiques
 
-Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT), `??` (Coalescence des nulles). Nous couvrons ici les trois premiers, l'opérateur `??` est dans l'article suivant.
+Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT), `??` (Coalescence des nulles). Nous couvrons ici les trois premiers, l'explication de l'opérateur `??` est dans l'article suivant.
 
 Bien qu'ils soient appelés "logiques", ils peuvent être appliqués à des valeurs de tout type, pas seulement booléennes. Le résultat peut également être de tout type.
 
 Voyons les détails.
 
-## || (OR)
+## L'opérateur || (OR)
 
 L'opérateur "OR" est représenté avec deux symboles de ligne verticale :
 
@@ -21,10 +21,10 @@ En JavaScript, l'opérateur est un peu plus compliqué et puissant. Mais voyons 
 Il existe quatre combinaisons logiques possibles :
 
 ```js run
-alert( true  || true  ); // true
-alert( false || true  ); // true
-alert( true  || false ); // true
-alert( false || false ); // false
+alert(true  || true); // true
+alert(false || true); // true
+alert(true  || false); // true
+alert(false || false); // false
 ```
 
 Comme on peut le voir, le résultat est toujours `true` sauf pour le cas où les deux opérandes sont `false`.
@@ -34,8 +34,8 @@ Si un opérande n'est pas booléen, il est converti en booléen pour l'évaluati
 Par exemple, un nombre `1` est traité comme `true`, un nombre `0` - comme `false` :
 
 ```js run
-if (1 || 0) { // fonctionne comme si ( true || false )
-  alert( 'truthy!' );
+if (1 || 0) { // Fonctionne comme (true || false)
+  alert('truthy!');
 }
 ```
 
@@ -49,7 +49,7 @@ let hour = 9;
 *!*
 if (hour < 10 || hour > 18) {
 */!*
-  alert( 'The office is closed.' );
+  alert('The office is closed.');
 }
 ```
 
@@ -60,7 +60,7 @@ let hour = 12;
 let isWeekend = true;
 
 if (hour < 10 || hour > 18 || isWeekend) {
-  alert( 'The office is closed.' ); // c'est le weekend
+  alert('The office is closed.'); // C'est le weekend
 }
 ```
 
@@ -70,7 +70,7 @@ La logique décrite ci-dessus est quelque peu classique. Maintenant, apportons l
 
 L'algorithme étendu fonctionne comme suit.
 
-En cas de mutiples valeurs liées par OR :
+En cas de multiples valeurs liées par OR :
 
 ```js
 result = value1 || value2 || value3;
@@ -78,9 +78,9 @@ result = value1 || value2 || value3;
 
 L'opérateur OR `||` fait ce qui suit :
 
-- Évaluez les opérandes de gauche à droite.
-- Pour chaque opérande, il le converti en booléen. Si le résultat est `true`, arrêtez et retournez la valeur d'origine de cet opérande.
-- Si tous les autres opérandes ont été évalués (c’est-à-dire que tous étaient `false`), renvoyez le dernier opérande.
+- Évaluer les opérandes de gauche à droite.
+- Pour chaque opérande, il le convertit en booléen. Si le résultat est `true`, arrêter et retourner la valeur d'origine de cet opérande.
+- Si tous les autres opérandes ont été évalués (c’est-à-dire que tous étaient `false`), renvoyer le dernier opérande.
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
 
@@ -89,12 +89,12 @@ En d'autres termes, une chaîne de OR `||` renvoie la première valeur `true` ou
 Par exemple :
 
 ```js run
-alert( 1 || 0 ); // 1 (1 est vrai)
+alert(1 || 0); // 1 (1 est vrai)
 
-alert( null || 1 ); // 1 (1 est la première valeur vraie)
-alert( null || 0 || 1 ); // 1 (la première valeur vraie)
+alert(null || 1); // 1 (1 est la première valeur vraie)
+alert(null || 0 || 1); // 1 (la première valeur vraie)
 
-alert( undefined || null || 0 ); // 0 (tous faux, renvoie la dernière valeur)
+alert(undefined || null || 0); // 0 (tous faux, renvoie la dernière valeur)
 ```
 
 Cela conduit à des usages intéressants par rapport à un "OR pur, classique, booléen uniquement".
@@ -111,7 +111,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     let nickName = "SuperCoder";
 
     *!*
-    alert( firstName || lastName || nickName || "Anonymous"); // SuperCoder
+    alert(firstName || lastName || nickName || "Anonymous"); // SuperCoder
     */!*
     ```
 
@@ -121,7 +121,7 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
     Une autre caractéristique de l'opérateur OR `||` est l'évaluation dite de "court-circuit".
 
-    Cela signifie que `||` traite ses arguments jusqu'à ce que la première valeur de vérité soit atteinte, puis la valeur est renvoyée immédiatement, sans même toucher l'autre argument.
+    Cela signifie que `||` traite ses arguments jusqu'à ce que la première valeur de vérité soit atteinte, puis la valeur est retournée immédiatement, sans même toucher l'autre argument.
 
     L'importance de cette fonctionnalité devient évidente si un opérande n'est pas seulement une valeur, mais une expression avec un effet secondaire, comme une affectation de variable ou un appel de fonction.
 
@@ -132,11 +132,11 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
     *!*false*/!* || alert("printed");
     ```
 
-    Dans la première ligne, l'opérateur OR `||` arrête l'évaluation immédiatement après avoir vu `true`, de sorte que `alert` n'est pas exécuté.
+    Dans la première ligne, l'opérateur OR `||` arrête l'évaluation immédiatement après avoir vu `true`, dans ce cas `alert` n'est pas exécuté.
 
-    Parfois, les gens utilisent cette fonctionnalité pour exécuter des commandes uniquement si la condition sur la partie gauche est fausse.
+    Parfois, les gens utilisent cette fonctionnalité pour exécuter des instructions uniquement si la condition sur la partie gauche est fausse.
 
-## && (AND)
+## L'opérateur && (AND)
 
 L'opérateur AND est représenté avec deux esperluettes `&&` :
 
@@ -147,10 +147,10 @@ result = a && b;
 En programmation classique, AND retourne `true` si les deux opérandes sont `true` et `false` dans les autres cas :
 
 ```js run
-alert( true  && true  ); // true
-alert( false && true  ); // false
-alert( true  && false ); // false
-alert( false && false ); // false
+alert(true  && true); // true
+alert(false && true); // false
+alert(true  && false); // false
+alert(false && false); // false
 ```
 
 Un exemple avec `if`:
@@ -160,18 +160,17 @@ let hour = 12;
 let minute = 30;
 
 if (hour == 12 && minute == 30) {
-  alert( 'Time is 12:30' );
+  alert('Time is 12:30');
 }
 ```
 
 Tout comme pour OR, toute valeur est autorisée en tant qu'opérande de AND :
 
 ```js run
-if (1 && 0) { // évalué comme true && false
-  alert( "Ne marchera pas, car le résultat est faux" );
+if (1 && 0) { // Evaluée comme true && false
+  alert("Will not be executed");
 }
 ```
-
 
 ## AND "&&" cherche la première valeur fausse
 
@@ -183,9 +182,9 @@ result = value1 && value2 && value3;
 
 L'opérateur AND `&&` effectue les opérations suivantes :
 
-- Évalue les opérandes de gauche à droite.
-- Pour chaque opérande, il le converti en booléen. Si le résultat est `false`, arrêtez et retournez la valeur d'origine de cet opérande.
-- Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retournez le dernier opérande.
+- Évaluer les opérandes de gauche à droite.
+- Pour chaque opérande, il le convertit en booléen. Si le résultat est `false`, arrêter et retourner la valeur d'origine de cet opérande.
+- Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retourner le dernier opérande.
 
 En d'autres termes, une chaîne de AND `&&` renvoie la première valeur `false` ou la dernière valeur si aucune valeur `false` n'a été trouvée.
 
@@ -194,27 +193,27 @@ Les règles ci-dessus sont similaires à OR. La différence est que AND retourne
 Exemples :
 
 ```js run
-// si le premier opérande est vrai,
-// AND retourne le second opérande :
-alert( 1 && 0 ); // 0
-alert( 1 && 5 ); // 5
+/* Si le premier opérande est vrai,
+AND retourne le second opérande : */
+alert(1 && 0); // 0
+alert(1 && 5); // 5
 
-// si le premier opérande est faux,
-// AND le retourne. Le deuxième opérande est ignoré
-alert( null && 5 ); // null
-alert( 0 && "no matter what" ); // 0
+/* Si le premier opérande est faux,
+AND le retourne. Le deuxième opérande est ignoré */
+alert(null && 5); // null
+alert(0 && "no matter what"); // 0
 ```
 
 Nous pouvons également transmettre plusieurs valeurs à la suite sur une même ligne. Voyez comment le premier faux est retourné :
 
 ```js run
-alert( 1 && 2 && null && 3 ); // null
+alert(1 && 2 && null && 3); // null
 ```
 
 Lorsque toutes les valeurs sont vraies, la dernière valeur est renvoyée :
 
 ```js run
-alert( 1 && 2 && 3 ); // 3, la dernière
+alert(1 && 2 && 3); // 3, la dernière
 ```
 
 ````smart header="La précédence de AND `&&` est supérieure à OR `||`"
@@ -231,7 +230,7 @@ Par exemple :
 ```js run
 let x = 1;
 
-(x > 0) && alert( 'Greater than zero!' );
+(x > 0) && alert('Greater than zero!');
 ```
 
 L'action dans la partie droite de `&&` ne s'exécutera que si l'évaluation lui parvient. C'est-à-dire que seulement si `(x > 0)` est vrai.
@@ -241,16 +240,15 @@ Donc, nous avons une analogie pour :
 ```js run
 let x = 1;
 
-if (x > 0) alert( 'Greater than zero!' );
+if (x > 0) alert('Greater than zero!');
 ```
 
 Bien que la variante avec `&&` semble plus courte, `if` est plus évidente et a tendance à être un peu plus lisible. Nous recommandons donc d'utiliser chaque construction dans son but : utilisez `if` si nous voulons `if` et utilisez `&&` si nous voulons ET.
 ````
 
+## L'opérateur ! (NOT)
 
-## ! (NOT)
-
-L'opérateur booléen NOT est représenté par un point d'exclamation `!`.
+L'opérateur logique (booléen) NOT est représenté par un point d'exclamation `!`.
 
 La syntaxe est assez simple :
 
@@ -266,24 +264,24 @@ L'opérateur accepte un seul argument et effectue les opérations suivantes :
 Par exemple :
 
 ```js run
-alert( !true ); // false
-alert( !0 ); // true
+alert(!true); // false
+alert(!0); // true
 ```
 
 Un double NOT `!!` est parfois utilisé pour convertir une valeur en type booléen :
 
 ```js run
-alert( !!"non-empty string" ); // true
-alert( !!null ); // false
+alert(!!"non-empty string"); // true
+alert(!!null); // false
 ```
 
-C'est-à-dire que le premier NOT convertit la valeur en booléen et retourne l'inverse, et que le second NOT l'inverse encore. À la fin, nous avons une conversion valeur à booléen simple.
+C'est-à-dire que le premier NOT convertit la valeur en booléen et retourne l'inverse, et que le second NOT l'inverse encore. À la fin, nous avons une conversion booléenne simple.
 
 Il existe un moyen un peu plus verbeux de faire la même chose -- une fonction `Boolean` intégrée :
 
 ```js run
-alert( Boolean("non-empty string") ); // true
-alert( Boolean(null) ); // false
+alert(Boolean("non-empty string")); // true
+alert(Boolean(null)); // false
 ```
 
 La précédence de NOT `!` est la plus élevée de tous les opérateurs binaire, il est donc toujours exécuté en premier, avant les autres.
