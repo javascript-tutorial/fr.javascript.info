@@ -8,7 +8,7 @@ Réécrivez le code en modifiant la boucle `for` en `while` sans modifier son co
 
 ```js run
 for (let i = 0; i < 3; i++) {
-  alert( `number ${i}!` );
+  alert(`number ${i}!`);
 }
 ```
 

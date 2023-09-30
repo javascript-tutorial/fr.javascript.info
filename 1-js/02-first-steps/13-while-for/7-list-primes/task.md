@@ -10,8 +10,8 @@ En d’autres termes, `n > 1` est un nombre premier s’il ne peut être divisé
 
 Par exemple, `5` est un nombre premier, car il ne peut pas être divisé sans reste par `2`, `3` et `4`.
 
-**Écrivez un code qui produit les nombres premiers dans l’intervall e 2 à n.**
+**Écrivez un code qui produit les nombres premiers dans l’intervalle 2 à n.**
 
 Pour `n = 10`, le résultat sera `2`,`3`,`5`,`7`.
 
-P.S. Le code devrait fonctionner pour n'importe quel `n` et aucune valeur fixe ne doit être codé en dur.
+P.S. Le code devrait fonctionner pour n'importe quel `n` et aucune valeur fixe ne doit être codée en dur.

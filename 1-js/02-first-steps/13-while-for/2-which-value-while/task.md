@@ -4,7 +4,7 @@ importance: 4
 
 # Quelles valeurs affiche la boucle while ?
 
-A votre avis, quelles sont les valeurs affichées pour chaque boucle ?  Notez-les puis comparer avec la réponse.
+À votre avis, quelles sont les valeurs affichées pour chaque boucle ? Notez-les puis comparez avec la réponse.
 
 Les deux boucles affichent-elles les mêmes valeurs dans l'`alert` ou pas ?
 
@@ -12,11 +12,11 @@ Les deux boucles affichent-elles les mêmes valeurs dans l'`alert` ou pas ?
 
     ```js
     let i = 0;
-    while (++i < 5) alert( i );
+    while (++i < 5) alert(i);
     ```
 2. Le postfixe sous forme `i++` :
 
     ```js
     let i = 0;
-    while (i++ < 5) alert( i );
+    while (i++ < 5) alert(i);
     ```

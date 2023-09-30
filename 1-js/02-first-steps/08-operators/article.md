@@ -114,7 +114,6 @@ alert('1' + 2 + 2); // "122" et non "14"
 ```
 Ici, le premier opérande est une chaîne de caractères, le compilateur traite également les deux autres opérandes comme des chaînes de caractères. Le `2` est concaténé à `'1'`, donc c'est comme `'1'+ 2 = "12"` et `"12" + 2 = "122"`.
 
-
 L'opérateur binaire `+` est le seul opérateur qui prend en charge les chaînes de caractères de cette manière. D'autres opérateurs arithmétiques ne fonctionnent qu'avec des nombres et convertissent toujours leurs opérandes en nombres.
 
 Voici l'exemple pour la soustraction et la division :

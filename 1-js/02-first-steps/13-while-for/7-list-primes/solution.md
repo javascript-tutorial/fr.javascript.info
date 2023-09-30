@@ -3,11 +3,12 @@ Il existe de nombreux algorithmes pour cette tâche.
 Utilisons une boucle imbriquée :
 
 ```js
-Pour chaque i dans l'intervalle {
+/*Pour chaque i dans l'intervalle {
   vérifier si i a un diviseur de 1..i
   si oui => la valeur n'est pas un nombre premier
-  si non => la valeur est un nombre premier, affichez-le
+  si non => la valeur est un nombre premier, on l'affiche
 }
+*/
 ```
 
 Un code utilisant un label :
@@ -18,8 +19,8 @@ let n = 10;
 nextPrime:
 for (let i = 2; i <= n; i++) { // Pour chaque i...
 
-  for (let j = 2; j < i; j++) { // cherche un diviseur ..
-    if (i % j == 0) continue nextPrime; // pas un premier, on passe au prochain i
+  for (let j = 2; j < i; j++) { // Cherche un diviseur ..
+    if (i % j == 0) continue nextPrime; // Pas un premier, on passe au prochain i
   }
 
   alert( i ); // un premier

@@ -10,6 +10,6 @@ Quelle est la dernière valeur affichée par ce code ? Pourquoi ?
 let i = 3;
 
 while (i) {
-  alert( i-- );
+  alert(i--);
 }
 ```
