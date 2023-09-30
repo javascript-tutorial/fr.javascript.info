@@ -2,7 +2,7 @@ importance: 3
 
 ---
 
-# Verfiez les identifiants
+# Verfier les identifiants
 
 Écrivez le code qui demande une connexion avec `prompt`.
 

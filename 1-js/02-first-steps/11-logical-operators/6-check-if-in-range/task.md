@@ -2,7 +2,7 @@ importance: 3
 
 ---
 
-# Vérifiez la plage différentielle
+# Vérifier la plage différentielle
 
 Ecrivez une condition `"if"` pour vérifier que l’`age` est compris entre `14` et `90` ans inclus.
 

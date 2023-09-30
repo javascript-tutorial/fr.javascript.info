@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Corrigez l'addition
+# Corriger l'addition
 
 Voici un code qui demande à l'utilisateur deux nombres et affiche leur somme.
 

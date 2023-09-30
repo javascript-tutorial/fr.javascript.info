@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Affichez une alerte
+# Afficher une alerte
 
 Créez une page qui affiche un message "I'm JavaScript!".
 

@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Comparaisons
+# Comparer les valeurs
 
 Quel sera le résultat pour les expressions suivantes :
 
