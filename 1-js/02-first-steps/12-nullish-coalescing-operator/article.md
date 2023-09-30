@@ -10,9 +10,9 @@ Le résultat de `a ?? b` est :
 - si `a` est défini, alors `a`,
 - si `a` n'est pas défini, alors `b`.
 
-En d'autres termes, `??` renvoie le premier argument s'il n'est pas `null`/`undefined`. Sinon, le second.
+En d'autres termes, `??` retourne le premier argument s'il n'est pas `null`/`undefined`. Sinon, le second.
 
-L'opérateur de coalescence des nuls n'est pas complètement nouveau. C'est juste une belle syntaxe pour obtenir la première valeur "defined" des deux.
+L'opérateur de coalescence des nuls n'est pas complètement nouveau. C'est juste une belle syntaxe pour obtenir la première valeur definie (non équivalente à `undefined`) des deux.
 
 Nous pouvons réécrire `result = a ?? b` en utilisant les opérateurs que nous connaissons déjà, comme ceci :
 
@@ -20,7 +20,7 @@ Nous pouvons réécrire `result = a ?? b` en utilisant les opérateurs que nous 
 result = (a !== null && a !== undefined) ? a : b;
 ```
 
-Maintenant, il devrait être absolument clair ce que fait `??`. Voyons où cela aide.
+Maintenant, ce que `??` fait devrait être absolument clair. Voyons où cela aide.
 
 Le cas d'utilisation courant de `??` est de fournir une valeur par défaut.
 
@@ -29,7 +29,7 @@ Par exemple, nous affichons ici `user` si sa valeur n'est pas `null`/`undefined`
 ```js run
 let user;
 
-alert(user ?? "Anonymous"); // Anonymous (user is undefined)
+alert(user ?? "Anonymous"); // Anonymous (user est undefined)
 ```
 
 Voici l'exemple avec `user` attribué à un nom :
@@ -37,14 +37,14 @@ Voici l'exemple avec `user` attribué à un nom :
 ```js run
 let user = "John";
 
-alert(user ?? "Anonymous"); // John (user is not null/udefined)
+alert(user ?? "Anonymous"); // John (n'est pas null/undefined)
 ```
 
-Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur dans une liste qui n'est pas `null`/`undefined`.
+Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur d'une liste qui n'est pas `null`/`undefined`.
 
-Disons que nous avons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`. Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeurs correspondantes.
+Disons que nous ayons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`. Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeurs correspondantes.
 
-Nous aimerions afficher le nom d'utilisateur à l'aide de l'une de ces variables, ou afficher "Anonyme" si toutes sont `null`/`undefined`.
+Nous aimerions afficher le nom d'utilisateur à l'aide de l'une de ces variables, ou afficher "Anonymous" si toutes sont `null`/`undefined`.
 
 Utilisons l'opérateur `??` pour cela :
 
@@ -78,7 +78,7 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 
 Historiquement, l'opérateur OR `||` était là en premier. Il existe depuis le début de JavaScript, donc les développeurs l'utilisaient à de telles fins depuis longtemps.
 
-D'un autre côté, l'opérateur de coalescence des nuls `??` n'a été ajouté à JavaScript que récemment, et la raison en était que les gens n'étaient pas tout à fait satisfaits de `||`.
+D'un autre côté, l'opérateur de coalescence des nuls `??` n'a été ajouté à JavaScript que récemment, car les développeurs n'étaient pas tout à fait satisfaits de `||`.
 
 La différence importante entre eux est que :
 - `||` renvoie la première valeur *vraie*.
@@ -106,9 +106,9 @@ En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas êt
 
 ## Priorité
 
-La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
+La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#tableau).
 
-Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, mais après la plupart des autres opérations, telles que `+`, `*`.
+Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, mais après la plupart des autres opérateurs, tels que `+`, `*`.
 
 Nous devrons donc peut-être ajouter des parenthèses dans des expressions comme celle-ci :
 
@@ -116,19 +116,19 @@ Nous devrons donc peut-être ajouter des parenthèses dans des expressions comme
 let height = null;
 let width = null;
 
-// important : utilisez des parenthèses
+// Important : utilisez des parenthèses
 let area = (height ?? 100) * (width ?? 50);
 
 alert(area); // 5000
 ```
 
-Sinon, si nous omettons les parenthèses, alors que `*` a une priorité plus élevée que `??`, il s'exécuterait en premier, conduisant à des résultats incorrects.
+Sinon, si nous omettions les parenthèses, alors que `*` a une priorité plus élevée que `??`, il s'exécuterait en premier, conduisant à des résultats incorrects.
 
 ```js
-// sans parenthèses
+// Sans parenthèses
 let area = height ?? 100 * width ?? 50;
 
-// ...fonctionne de cette façon (pas ce que nous voulons) :
+// ...Fonctionne de cette façon (pas ce que nous voulons) :
 let area = height ?? (100 * width) ?? 50;
 ```
 
@@ -156,14 +156,14 @@ alert(x); // 2
 
 ## Résumé
 
-- L'opérateur de coalescence des nuls `??` fournit un moyen court de choisir une valeur "définie" à partir d'une liste.
+- L'opérateur de coalescence des nuls `??` fournit un moyen court de choisir une valeur _définie_ à partir d'une liste.
 
     Il est utilisé pour attribuer des valeurs par défaut aux variables :
 
     ```js
-    // configurer height = 100, si height est null ou undefined
+    // Configurer height = 100, si height est null ou undefined
     height = height ?? 100;
     ```
 
-- L'opérateur `??` a une priorité très faible, un peu plus élevée que `?` et `=`, pensez donc à ajouter des parenthèses lors de son utilisation dans une expression.
-- Il est interdit de l'utiliser avec `||` ou `&&` sans parenthèses explicites.
+- L'opérateur `??` a une priorité très faible, un peu plus élevée que `?` et `=`, pensez donc à ajouter des parenthèses lors de son utilisation.
+- Il n'est pas possible de l'utiliser avec `||` ou `&&` sans parenthèses explicites.
