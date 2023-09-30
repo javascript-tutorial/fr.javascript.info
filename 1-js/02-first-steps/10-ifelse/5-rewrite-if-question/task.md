@@ -4,7 +4,7 @@ importance: 5
 
 # Réécrire 'if' en '?'
 
-Réécrivez ce `if` en utilisant l'opérateur conditionnel `'?'` :
+Réécrivez ce `if` en utilisant l'opérateur ternaire `'?'` :
 
 ```js
 let result;

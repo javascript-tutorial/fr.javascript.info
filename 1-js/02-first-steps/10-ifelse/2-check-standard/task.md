@@ -6,7 +6,7 @@ importance: 2
 
 En utilisant la construction `if..else`, écrivez le code qui demande : 'Quel est le nom "officiel" de JavaScript?'
 
-Si le visiteur entre "ECMAScript", alors éditez une sortie "Bonne réponse !", Sinon -- retourne "Ne sait pas ? ECMAScript!"
+Si le visiteur entre "ECMAScript", alors affichez "Correct !", Sinon -- affichez "Vous ne savez pas ? ECMAScript!"
 
 ![](ifelse_task2.svg)
 

@@ -6,7 +6,7 @@ Nous pouvons exécuter et vérifier:
 
 ```js run
 if ("0") {
-  alert( 'Hello' );
+  alert('Hello');
 }
 ```
 

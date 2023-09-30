@@ -8,7 +8,7 @@ Est-ce que `alert` sera affiché ?
 
 ```js
 if ("0") {
-  alert( 'Hello' );
+  alert('Hello');
 }
 ```
 

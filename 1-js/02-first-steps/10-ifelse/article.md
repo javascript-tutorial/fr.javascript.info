@@ -2,11 +2,11 @@
 
 Parfois, nous devons effectuer différentes actions en fonction d'une condition.
 
-Pour ce faire, nous pouvons utiliser l'instruction `if` et l'opérateur conditionnel `? `, également appelé opérateur "point d'interrogation".
+Pour ce faire, nous pouvons utiliser l'instruction `if` et l'opérateur conditionnel `?`, également appelé opérateur "point d'interrogation" ou opérateur ternaire.
 
 ## L'instruction "if"
 
-L'instruction `if(...)` évalue une condition entre parenthèses et, si le résultat est `true`, exécute un bloc de code.
+L'instruction `if(...)` évalue une condition entre parenthèses, si le résultat est `true`, exécute un bloc de code.
 
 Par exemple :
 
@@ -14,7 +14,7 @@ Par exemple :
 let year = prompt('In which year was ECMAScript-2015 specification published?', '');
 
 *!*
-if (year == 2015) alert( 'You are right!' );
+if (year == 2015) alert('You are right!');
 */!*
 ```
 
@@ -24,8 +24,8 @@ S'il y a plus d'une instruction à exécuter, nous devons envelopper notre bloc 
 
 ```js
 if (year == 2015) {
-  alert( "That's correct!" );
-  alert( "You're so smart!" );
+  alert("That's correct!");
+  alert("You're so smart!");
 }
 ```
 
@@ -37,7 +37,7 @@ L'instruction `if (…)` évalue l'expression entre parenthèses et la convertit
 
 Rappelons les règles de conversion du chapitre <info:type-conversions>:
 
-- Un nombre `0`, une chaîne de caractères vide `""`, `null`, `undefined` et `NaN` deviennent `false`. À cause de cela, on dit de ces valeurs qu'elles sont "falsy".
+- Un nombre `0`, une chaîne de caractères vide `""`, `null`, `undefined` et `NaN` deviennent `false`. Dû à cela, on dit de ces valeurs qu'elles sont "falsy".
 - Les autres valeurs deviennent `true`, on dit qu'elles sont "truthy".
 
 Donc, le code sous cette condition ne sera jamais exécuté :
@@ -59,7 +59,7 @@ if (1) { // 1 est truthy
 Nous pouvons également transmettre une valeur booléenne pré-évaluée à `if`, comme ici :
 
 ```js
-let cond = (year == 2015); // l'égalité évalue à vrai ou faux
+let cond = (year == 2015); // L'égalité évalue à vrai ou faux
 
 if (cond) {
   ...
@@ -68,16 +68,16 @@ if (cond) {
 
 ## La clause "else"
 
-L'instruction `if` peut contenir un bloc optionnel "else". Il s'exécute lorsque la condition est fausse.
+L'instruction `if` peut contenir un bloc optionnel "else". Il s'exécute lorsque le résultat de l'évaluation conditionnelle n'est pas vrai.
 
 Par exemple :
 ```js run
 let year = prompt('In which year was the ECMAScript-2015 specification published?', '');
 
 if (year == 2015) {
-  alert( 'You guessed it right!' );
+  alert('You guessed it right!');
 } else {
-  alert( 'How can you be so wrong?' ); // toute autre valeur que 2015
+  alert('How can you be so wrong?'); // Toute autre valeur que 2015
 }
 ```
 
@@ -88,20 +88,20 @@ Parfois, nous aimerions tester plusieurs variantes d'une condition. Il y a une c
 Par exemple :
 
 ```js run
-let year = prompt('En quelle année la spécification ECMAScript-2015 a-t-elle été publiée ?', '');
+let year = prompt('In which year was the ECMAScript-2015 specification published?', '');
 
-if (year < 2015) {
-  alert( 'Too early...' );
-} else if (year > 2015) {
-  alert( 'Too late' );
-} else {
-  alert( 'Exactly!' );
+if (year < 2015) { // Si l'année est STRICTEMENT inférieure à 2015
+  alert('Too early...');
+} else if (year > 2015) { // Si l'année est STRICTEMENT supérieur à 2015
+  alert('Too late');
+} else { //Sinon (si l'année est STRICTEMENT égale à 2015)
+  alert('Exactly!'); 
 }
 ```
 
 Dans le code ci-dessus, JavaScript vérifie `year < 2015`. S'il est falsy, il passe à l'année de condition suivante `year > 2015` et c'est toujours `false` il passe à la dernière instruction et affiche la dernière alerte.
 
-Il peut y avoir plus de blocks `else if`. Le dernier `else` est optionnel.
+Il peut y avoir plus de blocs `else if`. Le dernier `else` est optionnel.
 
 ## Opérateur ternaire '?'
 
@@ -130,7 +130,7 @@ L'opérateur est représenté par un point d'interrogation `?`. Appelé aussi "t
 
 La syntaxe est :
 ```js
-let result = condition ? value1 : value2
+let result = condition ? value1 : value2;
 ```
 
 La `condition` est évaluée, si elle est vraie, alors `value1` est retournée, sinon -- `value2`.
@@ -146,8 +146,8 @@ Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`. L'op�
 Cet exemple fera la même chose que le précédent :
 
 ```js
-// l'opérateur de comparaison "age > 18" s'exécute en premier quoiqu'il en soit
-// (pas besoin de l'envelopper entre parenthèses)
+/* L'opérateur de comparaison "age > 18" s'exécute en premier quoiqu'il en soit
+(pas besoin de l'envelopper entre parenthèses) */
 let accessAllowed = age > 18 ? true : false;
 ```
 
@@ -175,15 +175,15 @@ let message = (age < 3) ? 'Hi, baby!' :
   (age < 100) ? 'Greetings!' :
   'What an unusual age!';
 
-alert( message );
+alert(message);
 ```
 
 Il peut être difficile au début de comprendre ce qui se passe. Mais après un examen plus approfondi, nous constatons que ce n’est qu’une séquence de tests ordinaire.
 
 1. Le premier point d'interrogation vérifie si `age < 3`.
-2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchi les deux points `":"` et vérifie si `age < 18`.
-3. Si vrai -- retourne `'Salut !'`, sinon -- il franchi à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
-4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchi enfin les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
+2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchit les deux points `":"` et vérifie si `age < 18`.
+3. Si vrai -- retourne `'Salut !'`, sinon -- il franchit à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
+4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchit les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
 
 La même logique utilisant `if..else` :
 
