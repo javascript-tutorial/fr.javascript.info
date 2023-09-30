@@ -19,7 +19,7 @@ L'`age` est calculé à partir de `birthday` en utilisant `someCode()`, ce qui s
 Serait-il juste d'utiliser des majuscules pour `birthday`? Pour `age`? Ou même pour les deux ?
 
 ```js
-const BIRTHDAY = '18.04.1982'; // mettre l'anniversaire en majuscule ?
+const BIRTHDAY = '18.04.1982'; // Mettre l'anniversaire en majuscule ?
 
-const AGE = someCode(BIRTHDAY); // mettre l'âge en majuscule ?
+const AGE = someCode(BIRTHDAY); // Mettre l'âge en majuscule ?
 ```
