@@ -2,14 +2,15 @@
 
 La plupart du temps, les opérateurs et les fonctions convertissent automatiquement les valeurs qui leur sont attribuées dans le bon type.
 
-Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour l'afficher. Les opérations mathématiques convertissent les valeurs en nombres.
+Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour permettre leur affichage. 
+Les opérations mathématiques convertissent les valeurs en nombres.
 
 Il y a aussi des cas où nous devons convertir explicitement une valeur pour corriger les choses.
 
 ```smart header="On ne parle pas encore des objets"
-Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les primitives. 
+Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les types primitifs. 
 
-Plus tard, après avoir appris les objets, nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
+Nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
 
 ## String Conversion
@@ -25,21 +26,21 @@ let value = true;
 alert(typeof value); // boolean
 
 *!*
-value = String(value); // maintenant la valeur est une chaîne de caractères "true"
+value = String(value); // Maintenant la valeur est une chaîne de caractères "true"
 alert(typeof value); // string
 */!*
 ```
 
 La conversion `String` est assez évidente. Un `false` devient `"false"`, `null` devient `"null"` etc.
 
-## Numeric Conversion
+## La conversion numérique
 
 La conversion numérique se produit automatiquement dans les fonctions et les expressions mathématiques.
 
-Par exemple, lorsque la division `/` est appliqué à des non-numéros :
+Par exemple, lorsque la division `/` est appliquée à des valeurs non numérales :
 
 ```js run
-alert( "6" / "2" ); // 3, les chaînes de caractères sont converties en nombres
+alert( "6" / "2" ); // Les chaînes de caractères sont converties en nombres, le résultat de cette opération vaut 3 
 ```
 
 Nous pouvons utiliser une fonction `Number(value)` pour convertir explicitement une valeur :
@@ -48,29 +49,29 @@ Nous pouvons utiliser une fonction `Number(value)` pour convertir explicitement 
 let str = "123";
 alert(typeof str); // string
 
-let num = Number(str); // devient un nombre 123
+let num = Number(str); // Devient un nombre 123
 
-alert(typeof num); // nombre
+alert(typeof num); // number
 ```
 
-Une conversion explicite est généralement requise lorsque nous lisons une valeur à partir d'une source basée sur des chaînes de caractères, par exemple un champ texte, mais qu'un nombre doit être entré.
+Une conversion explicite est généralement requise lorsque nous récupérons une valeur à partir d'une source basée sur des chaînes de caractères, par exemple un champ texte, mais qu'un nombre doit être entré.
 
 Si la chaîne de caractères n'est pas un nombre valide, le résultat de cette conversion est `NaN`, par exemple :
 
 ```js run
-let age = Number("une chaîne de caractères arbitraire au lieu d'un nombre");
+let age = Number("Une chaîne de caractères arbitraire au lieu d'un nombre");
 
 alert(age); // NaN, la conversion a échoué
 ```
 
-Règles de conversion numériques :
+Règles de conversions numériques :
 
-| Valeur                               | Devient ... |
-|--------------------------------------|-------------|
-| `undefined`                          | `NaN`       |
-| `null`                               | `0`         |
-| <code>true&nbsp;et&nbsp;false</code> | `1` et `0`  |
-| `string`                              | Les espaces blancs du début et de la fin sont supprimés. Ensuite, si la chaîne restante est vide, le résultat est `0`. Sinon, le nombre est «lu» dans la chaîne. Une erreur donne `NaN`.
+| Valeur                               | Devient ...                                                                                                                                                                              |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `undefined`                          | `NaN`                                                                                                                                                                                    |
+| `null`                               | `0`                                                                                                                                                                                      |
+| <code>true&nbsp;et&nbsp;false</code> | Respectivement `1` et `0`                                                                                                                                                                |
+| `string`                             | Les espaces blancs du début et de la fin sont supprimés. Ensuite, si la chaîne restante est vide, le résultat est `0`. Sinon, le nombre est «lu» dans la chaîne. Une erreur donne `NaN`. |
 
 Exemples:
 
@@ -85,7 +86,7 @@ Veuillez noter que `null` et `undefined` se comportent différemment ici : `null
 
 La plupart des opérateurs mathématiques effectuent également une telle conversion, nous le verrons dans le chapitre suivant.
 
-## Boolean Conversion
+## Conversion Booléenne
 
 La conversion booléenne est la plus simple.
 
@@ -111,22 +112,22 @@ Certains langages (à savoir PHP) traitent `"0"` comme faux. Mais en JavaScript,
 
 ```js run
 alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // espaces, également vrai (toute chaîne de caractères non vide est vraie)
+alert( Boolean(" ") ); // Espaces, également vrai (toute chaîne de caractères non vide est vraie)
 ```
 ````
 
 ## Résumé
 
-Les  trois conversions de types les plus utilisées sont :  to string, to number et to boolean.
+Les trois conversions de types les plus utilisées sont : to string, to number et to boolean.
 
-**`La conversion en String`** -- Se produit lorsque nous sortons quelque chose, peut être effectué avec `String(value)`. La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
+**`La conversion en String`** -- Peut être effectué avec `String(value)`. La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
 
 **`La conversion en Number`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
 
 La conversion vers `number` suit les règles suivantes :
 
 | Valeur                              | Devient ...                                                                                                                               |
-|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `undefined`                         | `NaN`                                                                                                                                     |
 | `null`                              | `0`                                                                                                                                       |
 | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
@@ -137,7 +138,7 @@ La conversion vers `number` suit les règles suivantes :
 La conversion vers `boolean` suit les règles suivantes :
 
 | Valeur                                | Devient ... |
-|---------------------------------------|-------------|
+| ------------------------------------- | ----------- |
 | `0`, `null`, `undefined`, `NaN`, `""` | `false`     |
 | tout autre valeur                     | `true`      |
 
