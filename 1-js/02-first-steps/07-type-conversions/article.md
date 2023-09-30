@@ -13,7 +13,7 @@ Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'
 Nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
 
-## String Conversion
+## Conversion String
 
 La conversion `String` se produit lorsque nous avons besoin de la forme chaîne de caractères d'une valeur.
 
@@ -33,7 +33,7 @@ alert(typeof value); // string
 
 La conversion `String` est assez évidente. Un `false` devient `"false"`, `null` devient `"null"` etc.
 
-## La conversion numérique
+## Conversion numérique
 
 La conversion numérique se produit automatiquement dans les fonctions et les expressions mathématiques.
 
