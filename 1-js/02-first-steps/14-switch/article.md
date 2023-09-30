@@ -1,4 +1,4 @@
-# La déclaration "switch"
+# L'instruction "switch"
 
 Une instruction `switch` peut remplacer plusieurs vérification `if`.
 
@@ -6,12 +6,12 @@ Cela donne un moyen plus descriptif de comparer une valeur avec plusieurs varian
 
 ## La syntaxe
 
-Le `switch` a un ou plusieurs blocs `case` (cas) et une valeur par défaut facultative.
+La `switch` a une ou plusieurs clauses `case` (cas) et une valeur par défaut facultative.
 
 Cela ressemble à ceci :
 
 ```js no-beautify
-switch(x) {
+switch (x) {
   case 'value1':  // si (x === 'value1')
     ...
     [break]
@@ -26,9 +26,9 @@ switch(x) {
 }
 ```
 
-- La valeur de `x` est vérifiée pour une égalité stricte avec la valeur du premier `case` (c'est-à-dire, `value1`), puis du second (`value2`) et ainsi de suite.
-- Si l'égalité est trouvée, `switch` commence à exécuter le code à partir du `case` correspondant, jusqu'au prochain `break` (ou jusqu'à la fin du switch).
-- Si aucun cas ne correspond, le code par défaut (`default`) est exécuté (s'il existe).
+- La valeur de `x` est évaluée en tant qu'égalité stricte avec la valeur de la première clause `case` (c'est-à-dire, `value1`), puis de la seconde (`value2`) et ainsi de suite.
+- Si l'égalité est vraie, `switch` commence à exécuter le code à partir de la clause `case` correspondante, jusqu'au prochain `break` (ou jusqu'à la fin du switch).
+- Si aucun cas ne correspond, le code par défaut (contenu dans la clause `default`) est exécuté (s'il est défini).
 
 ## Un exemple
 
@@ -39,26 +39,26 @@ let a = 2 + 2;
 
 switch (a) {
   case 3:
-    alert( 'Too small' );
+    alert('Too small');
     break;
 *!*
   case 4:
-    alert( 'Exactly!' );
+    alert('Exactly!');
     break;
 */!*
   case 5:
-    alert( 'Too big' );
+    alert('Too big');
     break;
   default:
-    alert( "I don't know such values" );
+    alert("I don't know such values");
 }
 ```
 
-Ici, le `switch` commence à comparer `a` avec le premier `case` dont la valeur est `3`. La correspondance échoue.
+Ici, la `switch` commence à comparer `a` avec la première `case` dont la valeur est `3`. La correspondance échoue.
 
-Ensuite `4`, c’est une correspondance. L’exécution commence donc à partir du `case 4` jusqu’au prochain `break`.
+Ensuite `4`, c’est une correspondance. L’exécution commence donc à partir de la `case 4` jusqu’au prochain `break`.
 
-**S'il n'y a pas de `break`, l'exécution continue avec le `case` suivant sans aucun contrôle.**
+**S'il n'y a pas de `break`, l'exécution continue avec la `case` suivante qu'importe l'expression de cette dernière.**
 
 Un exemple sans `break`:
 
@@ -67,14 +67,14 @@ let a = 2 + 2;
 
 switch (a) {
   case 3:
-    alert( 'Too small' );
+    alert('Too small');
 *!*
   case 4:
-    alert( 'Exactly!' );
+    alert('Exactly!');
   case 5:
-    alert( 'Too big' );
+    alert('Too big');
   default:
-    alert( "I don't know such values" );
+    alert("I don't know such values");
 */!*
 }
 ```
@@ -82,13 +82,13 @@ switch (a) {
 Dans l'exemple ci-dessus, nous verrons l'exécution séquentielle de trois `alert` :
 
 ```js
-alert( 'Exactly!' );
-alert( 'Too big' );
-alert( "I don't know such values" );
+alert('Exactly!');
+alert('Too big');
+alert("I don't know such values");
 ```
 
 ````smart header="Toute expression peut être un argument `switch/case`"
-`Switch` et `case` permettent des expressions arbitraires.
+`switch` et `case` permettent des expressions arbitraires.
 
 Par exemple :
 
@@ -108,7 +108,7 @@ switch (+a) {
 }
 ```
 
-Ici `+a` donne `1`, qui est comparé à `b + 1` dans le `case`, et le code correspondant est exécuté.
+Ici `+a` donne `1`, qui est comparé à `b + 1` dans la `case`, et le code correspondant est exécuté.
 ````
 
 ## Groupement de "case"
@@ -126,7 +126,7 @@ switch (a) {
     break;
 
 *!*
-  case 3: // (*) grouped two cases
+  case 3: // (*) Deux cas groupés
   case 5:
     alert('Wrong!');
     alert("Why don't you take a math class?");
@@ -140,11 +140,11 @@ switch (a) {
 
 Maintenant, les `3` et `5` affichent le même message.
 
-La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`. Ici, l’exécution du `case 3` commence à partir de la ligne `(*)` et passe par le `case 5`, car il n’ya pas de `break`.
+La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`. Ici, l’exécution de la `case 3` commence à partir de la ligne `(*)` et passe par la `case 5`, car il n’y a pas de `break`.
 
 ## Le type compte
 
-Soulignons que le contrôle d’égalité est toujours strict. Les valeurs doivent être du même type pour correspondre.
+Soulignons que la vérification d’égalité est toujours stricte. Les valeurs doivent être du même type pour correspondre.
 
 Par exemple, considérons le code suivant :
 
@@ -154,22 +154,22 @@ let arg = prompt("Enter a value?");
 switch (arg) {
   case '0':
   case '1':
-    alert( 'One or zero' );
+    alert('One or zero');
     break;
 
   case '2':
-    alert( 'Two' );
+    alert('Two');
     break;
 
   case 3:
-    alert( 'Never executes!' );
+    alert('Never executes!');
     break;
 
   default:
-    alert( 'An unknown value' );
+    alert('An unknown value');
 }
 ```
 
 1. Pour `0`, `1`, la première `alert` est exécutée.
 2. Pour `2`, la deuxième `alert` est exécutée.
-3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort dans le `case 3` ! La variante par défaut sera donc exécutée.
+3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort (unreachable / inacessible) dans la `case 3` ! La variante par défaut sera donc exécutée.

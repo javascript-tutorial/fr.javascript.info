@@ -9,12 +9,12 @@ if(browser == 'Edge') {
  || browser == 'Firefox'
  || browser == 'Safari'
  || browser == 'Opera') {
-  alert( 'Okay we support these browsers too' );
+  alert('Okay we support these browsers too');
 } else {
-  alert( 'We hope that this page looks ok!' );
+  alert('We hope that this page looks ok!');
 }
 ```
 
 Remarque: la construction `browser == 'Chrome' || navigateur == 'Firefox'…` est divisée en plusieurs lignes pour une meilleure lisibilité.
 
-Mais la construction `switch` est toujours plus propre et plus descriptive.
+Mais la construction `switch` est toujours plus efficace.
