@@ -5,31 +5,31 @@ Il y a de nombreux opérateurs de comparaison que nous connaissons des mathémat
 - Plus grand/petit que : <code>a &gt; b</code>, <code>a &lt; b</code>.
 - Plus grand/petit ou égal à : <code>a &gt;= b</code>, <code>a &lt;= b</code>.
 - Égalité : `a == b` (veuillez noter le signe de la double égalité `==` signifie un test d’égalité. Un seul symbole `a = b` signifierait une affectation).
-- Pas égal : en maths la notation est <code>&ne;</code>, mais en JavaScript elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
+- Pas égal : en mathématique la notation est <code>&ne;</code>, mais en JavaScript elle est écrite comme une assignation avec un signe d’exclamation : <code>a != b</code>.
 
-Dans cet article, nous en apprendrons plus sur les différents types de comparaisons, sur la façon dont JavaScript les fait, y compris sur les particularités importantes.
+Dans cet article, nous en apprendrons plus sur les différents types de comparaisons, sur la façon dont JavaScript les effectue, y compris sur les particularités importantes.
 
 À la fin, vous trouverez une bonne recette pour éviter les problèmes liés aux "bizarreries JavaScript".
 
 ## Booléen est le résultat
 
-Tout comme tous les autres opérateurs, une comparaison renvoie une valeur de type booléenne.
+Tout comme les autres opérateurs, une comparaison renvoie une valeur de type booléenne.
 
-- `true` -- signifie "oui", "correct" ou "vrai".
-- `false` -- signifie "non", "incorrect" ou "faux".
+- `true` -- signifie "vrai".
+- `false` -- signifie "faux".
 
 Par exemple :
 
 ```js run
-alert(2 > 1);  // true (correct)
+alert(2 > 1);  // true (vrai)
 alert(2 == 1); // false (faux)
-alert(2 != 1); // true (correct)
+alert(2 != 1); // true (vrai)
 ```
 
 Un résultat de comparaison peut être affecté à une variable, comme toute valeur :
 
 ```js run
-let result = 5 > 4; // attribue le résultat de la comparaison
+let result = 5 > 4; // Attribue le résultat de la comparaison
 alert(result); // true
 ```
 
@@ -48,15 +48,15 @@ alert('Bee' > 'Be'); // true
 alert('9' > '10'); // true
 ```
 
-L'algorithme pour comparer deux chaînes  de caractères est simple :
+L'algorithme pour comparer deux chaînes de caractères est simple :
 
 1. Compare les premiers caractères des deux chaînes de caractères.
 2. Si le premier est supérieur (ou inférieur), la première chaîne de caractères est supérieure (ou inférieure) à la seconde. Nous en avons fini.
 3. Sinon, si les premiers caractères sont égaux, comparez les deuxièmes caractères de la même manière.
-4. Répéter jusqu'à la fin d'une chaîne de caractères.
+4. Répéter jusqu'à la fin d'une des chaîne de caractères comparées.
 5. Si les deux chaînes de caractères se sont terminées simultanément, alors elles sont égales. Sinon, la chaîne la plus longue est plus grande.
 
-Dans l'exemple ci-dessus, la comparaison `'Z' > 'A'` obtient le résultat à la première étape.
+Dans l'exemple ci-dessus, la comparaison `'Z' > 'A'` renvoie le résultat à la première étape.
 
 La deuxième comparaison `'Glow'` et `'Glee'` nécessite plus d'étapes car les chaînes de caractères sont comparées caractère par caractère :
 
@@ -139,7 +139,7 @@ Essayons :
 alert(0 === false); // false, parce que les types sont différents
 ```
 
-Il existe également un opérateur de "strict non-égalité" `!==`, par analogie à la non-égalité `!=`.
+Il existe également un opérateur de "non-égalité stricte" `!==`, par analogie à la non-égalité `!=`.
 
 L’opérateur de vérification de l’égalité stricte est un peu plus long à écrire, mais rend évident ce qui se passe et laisse moins d’espace pour les erreurs.
 
@@ -147,8 +147,7 @@ L’opérateur de vérification de l’égalité stricte est un peu plus long à
 
 Il existe un comportement non intuitif lorsque `null` ou `undefined` sont comparés à d’autres valeurs.
 
-
-Pour un contrôle de strict égalité `===`
+Pour un contrôle d'égalité strict `===`
 : Ces valeurs sont différentes car chacune d’entre elles appartient à un type distinct.
 
     ```js run
