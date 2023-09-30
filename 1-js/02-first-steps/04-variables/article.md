@@ -18,13 +18,13 @@ L'instruction ci-dessous crée (autrement dit: *déclare*) une variable avec le 
 let message;
 ```
 
-Maintenant, nous pouvons y mettre des données en utilisant l'opérateur d'affectation `=` :
+Maintenant, nous pouvons y mettre des données en utilisant l'opérateur d'affectation (ou assignation) `=` :
 
 ```js
 let message;
 
 *!*
-message = 'Hello'; // stocke la chaîne de caractères 'Hello' dans la variable nommée message
+message = 'Hello'; // Stocke la chaîne de caractères 'Hello' dans la variable nommée message
 */!*
 ```
 
@@ -35,14 +35,14 @@ let message;
 message = 'Hello!';
 
 *!*
-alert(message); // affiche le contenu de la variable
+alert(message); // Affiche le contenu de la variable
 */!*
 ```
 
 Pour être concis, nous pouvons fusionner la déclaration et l'affectation de variables en une seule ligne :
 
 ```js run
-let message = 'Hello!'; // définir la variable et assigner la valeur
+let message = 'Hello!'; // Définir la variable et affecter/assigner la valeur
 
 alert(message); // Hello!
 ```
@@ -53,7 +53,7 @@ Nous pouvons également déclarer plusieurs variables sur une seule ligne :
 let user = 'John', age = 25, message = 'Hello';
 ```
 
-Cela peut sembler plus court, mais ce n'est pas recommandé. Pour une meilleure lisibilité, veuillez utiliser une seule ligne par variable.
+Cela peut sembler plus court, mais ce n'est pas recommandé. Pour une meilleure lisibilité, veuillez utiliser une seule ligne par déclaration de variable.
 
 La variante multiligne est un peu plus longue, mais plus facile à lire :
 
@@ -103,23 +103,23 @@ Par exemple, la variable message peut être imaginée comme une boîte étiquet�
 
 Nous pouvons mettre n'importe quelle valeur dans la boîte.
 
-On peut aussi le changer autant de fois qu'on veut :
+On peut aussi la changer autant de fois qu'on le souhaite :
 
 ```js run
 let message;
 
 message = 'Hello!';
 
-message = 'World!'; // valeur changée
+message = 'World!'; // Valeur changée
 
 alert(message);
 ```
 
-Lorsque la valeur est modifiée, les anciennes données sont supprimées de la variable :
+Lorsque la valeur est modifiée, les anciennes données sont supprimées de la variable (on parle alors de réaffectation ou réassignation) :
 
 ![](variable-change.svg)
 
-Nous pouvons également déclarer deux variables et copier des données de l'une à l'autre.
+Nous pouvons également déclarer deux variables et copier les données de l'une à l'autre.
 
 ```js run
 let hello = 'Hello world!';
@@ -127,11 +127,11 @@ let hello = 'Hello world!';
 let message;
 
 *!*
-// copier 'Hello world' de hello vers message
+// Copier 'Hello world' de hello vers message
 message = hello;
 */!*
 
-// maintenant les deux variables contiennent les mêmes données
+// Maintenant les deux variables contiennent les mêmes données
 alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
@@ -144,7 +144,7 @@ Une déclaration répétée de la même variable est une erreur :
 ```js run
 let message = "This";
 
-// répéter 'let' conduit à une erreur
+// Répéter 'let' conduit à une erreur
 let message = "That"; // SyntaxError: 'message' has already been declared
 ```
 Donc, nous devrions déclarer une variable une fois et y faire référence sans `let`.
@@ -153,7 +153,7 @@ Donc, nous devrions déclarer une variable une fois et y faire référence sans 
 ```smart header="Langages fonctionnels"
 Il peut être intéressant de savoir qu'il existe aussi des langages de [programmation fonctionelle](https://fr.wikipedia.org/wiki/Programmation_fonctionnelle), comme [Scala](https://www.scala-lang.org/) ou [Erlang](https://www.erlang.org/) qui interdisent de modifier une valeur de variable.
 
-Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réutiliser l’ancienne.
+Dans ce genre de langage, une fois la valeur stockée dans la boîte, elle est là pour toujours. Si nous devons stocker autre chose, le langage nous oblige à créer une nouvelle boîte (déclarer une nouvelle variable). Nous ne pouvons pas réassigner l’ancienne valeur de la variable.
 
 Bien que cela puisse paraître un peu étrange à première vue, ces langages sont tout à fait capables de se développer sérieusement. Plus que cela, il existe des domaines tels que les calculs parallèles où cette limitation confère certains avantages. Étudier un tel langage (même si on ne prévoit pas de l'utiliser rapidement) est recommandé pour élargir son horizon.
 ```
@@ -179,8 +179,8 @@ Ce qui est intéressant -- le signe dollar `'$'` et l'underscore `'_'` peuvent �
 Ces noms sont valides :
 
 ```js run untrusted
-let $ = 1; // déclarer une variable avec le nom "$"
-let _ = 2; // et maintenant une variable avec le nom "_"
+let $ = 1; // Déclarer une variable avec le nom "$"
+let _ = 2; // Et maintenant une variable avec le nom "_"
 
 alert($ + _); // 3
 ```
@@ -188,9 +188,9 @@ alert($ + _); // 3
 Exemples de noms de variables incorrects :
 
 ```js no-beautify
-let 1a; // ne peut pas commencer avec un chiffre
+let 1a; // Ne peut pas commencer avec un chiffre
 
-let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
+let mon-nom; // Un trait d'union '-' n'est pas autorisé dans le nom
 ```
 
 ```smart header="La casse est importante"
@@ -212,13 +212,13 @@ Techniquement, il n'y a pas d'erreur ici, ces noms sont autorisés, mais il exis
 ````warn header="Noms réservés"
 Il existe une [liste de mots réservés](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Grammaire_lexicale#Mots-cl%C3%A9s), qui ne peuvent pas être utilisés comme noms de variables, car ils sont utilisés par le langage lui-même.
 
-Par exemple, les mots `let`, `class`, `return`, `function` sont réservés.
+Par exemple, les mots `let`, `class`, `return`, `function` sont réservés (on parle de mots clés).
 
 Le code ci-dessous donne une erreur de syntaxe :
 
 ```js run no-beautify
-let let = 5; // impossible de nommer une variable "let", erreur!
-let return = 5; // on ne peut pas la nommer "return" aussi, erreur!
+let let = 5; // Impossible de nommer une variable "let", erreur!
+let return = 5; // On ne peut pas la nommer "return" aussi, erreur!
 ```
 ````
 
@@ -227,9 +227,9 @@ let return = 5; // on ne peut pas la nommer "return" aussi, erreur!
 Normalement, nous devons définir une variable avant de l'utiliser. Mais jadis, il était techniquement possible de créer une variable par simple affectation de la valeur, sans `let`. Cela fonctionne toujours maintenant si nous ne mettons pas `use strict`. Le comportement est conservé pour la compatibilité avec les anciens scripts.
 
 ```js run no-strict
-// note : pas de "use strict" dans cet exemple
+// Note : pas de "use strict" dans cet exemple
 
-num = 5; // la variable "num" est créée si elle n'existe pas
+num = 5; // La variable "num" est créée si elle n'existe pas
 
 alert(num); // 5
 ```
@@ -240,15 +240,14 @@ C’est une mauvaise pratique, cela donne une erreur en mode strict :
 "use strict";
 
 *!*
-num = 5; // erreur: num n'est pas défini
+num = 5; // Erreur: num n'est pas défini
 */!*
 ```
 ````
 
-
 ## Les Constantes
 
-Pour déclarer une constante (non changeante), on peut utiliser `const` plutôt que `let` :
+Pour déclarer une constante (variable à valeur non changeante), on peut utiliser `const` plutôt que `let` :
 
 ```js
 const myBirthday = '18.04.1982';
@@ -259,11 +258,10 @@ Les variables déclarées à l'aide de `const` sont appelées "constantes". Elle
 ```js run
 const myBirthday = '18.04.1982';
 
-myBirthday = '01.01.2001'; // erreur, ne peut pas réaffecter la constante !
+myBirthday = '01.01.2001'; // Erreur, ne peut pas réaffecter la constante !
 ```
 
-Lorsqu'un programmeur est certain que la variable ne doit jamais changer, il peut utiliser `const` pour le garantir et également le montrer clairement à tout le monde.
-
+Lorsqu'un développeur est certain que la variable ne doit jamais changer, il peut utiliser `const` pour le garantir et également le montrer clairement à tout le monde.
 
 ### Les constantes en majuscules
 
@@ -279,7 +277,7 @@ const COLOR_GREEN = "#0F0";
 const COLOR_BLUE = "#00F";
 const COLOR_ORANGE = "#FF7F00";
 
-// ... quand il faut choisir une couleur
+// ... Quand il faut choisir une couleur
 let color = COLOR_ORANGE;
 alert(color); // #FF7F00
 ```
@@ -297,7 +295,7 @@ Quand devrions-nous utiliser les majuscules pour une constante et quand devrions
 Par exemple :
 
 ```js
-const pageLoadTime = /* temps pris par une page Web pour charger */;
+const pageLoadTime = // Temps pris par une page Web pour charger;
 ```
 
 La valeur de `pageLoadTime` n’est pas connue avant le chargement de la page, elle est donc nommée normalement. Mais cela reste une constante, car elle ne change pas après l’affectation.
@@ -326,7 +324,7 @@ Voici quelques règles à suivre :
 Cela semble simple ? En effet, ça l'est, mais la création de noms descriptifs et concis dans la pratique ne l'est pas. Fonce.
 
 ```smart header="Réutiliser ou créer ?"
-Une dernière note. Certains programmeurs paresseux, au lieu de déclarer une nouvelle variable, ont tendance à réutiliser ceux qui existent déjà.
+Une dernière note. Certains développeurs paresseux, au lieu de déclarer une nouvelle variable, ont tendance à réutiliser celles qui existent déjà.
 
 En conséquence, la variable est comme une boîte où les gens jettent des choses différentes sans changer l'autocollant. Qu'est-ce qu'il y a dedans maintenant ? Qui sait … Nous devons creuser et vérifier.
 
@@ -345,4 +343,4 @@ Nous pouvons déclarer des variables pour stocker des données. Cela peut être 
 - `var` -- est une déclaration de variable old-school. Normalement, nous ne l’utilisons pas du tout, mais nous couvrirons les différences subtiles par rapport à `let` dans le chapitre <info:var>, juste au cas où vous en auriez besoin.
 - `const` -- est équivalent à `let`, mais la valeur de la variable ne peut pas être modifiée.
 
-Les variables doivent être nommées d’une manière qui nous permet de comprendre facilement ce qui est à l’intérieur.
+Les variables doivent être nommées de manière à ce que n'importe quel développeur comprenne rapidement ce qui se trouve à l'intérieur.
