@@ -1,4 +1,4 @@
-# Ramasse-miettes (garbage collection)
+# Ramasse-miettes (Garbage Collector)
 
 La gestion de la mémoire en JavaScript est effectuée automatiquement et de manière invisible pour nous. Nous créons des primitives, des objets, des fonctions… Tout cela prend de la mémoire.
 
@@ -151,7 +151,7 @@ L’ancien objet `"family"` a été dissocié de la racine, elle n’y fait plus
 
 L'algorithme de base de la récupération de place (garbage collection) s'appelle "mark-and-sweep".
 
-Les étapes suivantes du "ramasse-miettes" (garbage collection) sont régulièrement effectuées :
+Les étapes suivantes du "ramasse-miettes" (garbage collector) sont régulièrement effectuées :
 
 - Le ramasse-miettes prend les racines et les "marque" (se souvient).
 - Ensuite, il visite et "marque" toutes les références.
@@ -183,7 +183,7 @@ Désormais, les objets qui n'ont pas pu être visités sont considérés comme i
 
 Nous pouvons également imaginer que le processus consiste à renverser un énorme seau de peinture à la racine, qui traverse toutes les références et marque tous les objets accessibles. Les non marqués sont ensuite supprimés.
 
-C'est le concept de la façon dont la garbage collection fonctionne. Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
+C'est la façon dont la garbage collection fonctionne. Les moteurs JavaScript appliquent de nombreuses optimisations pour accélérer l’exécution et ne pas affecter l’exécution.
 
 Certaines des optimisations :
 
@@ -203,10 +203,10 @@ Les principales choses à savoir :
 
 Les moteurs modernes implémentent des algorithmes avancés de récupération de place.
 
-Un livre général intitulé "The Garbage Collection Handbook: The Art of Automatic Memory Management" (R. Jones et al.) En parle.
+Un livre général intitulé "The Garbage Collection Handbook : The Art of Automatic Memory Management" (R. Jones et al.) En parle.
 
 Si vous êtes familiarisé avec la programmation de bas niveau, les informations plus détaillées sur le garbage collector V8 se trouvent dans l'article [A tour of V8: Garbage Collection](https://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
 
-Le [blog V8](https://v8.dev) publie également des articles sur les modifications de la gestion de la mémoire de temps à autre. Naturellement, pour apprendre la récupération de place, vous feriez mieux de vous préparer en vous renseignant sur les éléments internes de V8 en général et en lisant le blog de [Vyacheslav Egorov](https://mrale.ph) qui a travaillé comme l'un des ingénieurs V8. Je dis: «V8», car c'est le plus couvert d'articles sur Internet. Pour d'autres moteurs, de nombreuses approches sont similaires, mais la récupération de place diffère à de nombreux égards.
+Le [blog V8](https://v8.dev) publie également des articles sur les modifications de la gestion de la mémoire de temps à autre. Naturellement, pour apprendre la récupération de place, vous feriez mieux de vous préparer en vous renseignant sur les éléments internes de V8 en général et en lisant le blog de [Vyacheslav Egorov](https://mrale.ph) qui a travaillé comme l'un des ingénieurs V8. Je dis : «V8», car c'est le plus couvert d'articles sur Internet. Pour d'autres moteurs, de nombreuses approches sont similaires, mais la récupération de place diffère à de nombreux égards.
 
 Une connaissance approfondie des moteurs est utile lorsque vous avez besoin d'optimisations de bas niveau. Il serait sage de planifier cela comme prochaine étape après la connaissance du langage.
