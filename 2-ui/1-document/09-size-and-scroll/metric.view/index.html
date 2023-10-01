@@ -27,7 +27,6 @@
 
 <body>
 
-
   <div id="example">
     <h3>Introduction</h3>
     <p>This Ecma Standard is based on several originating technologies, the most well known being JavaScript (Netscape) and JScript (Microsoft). The language was invented by Brendan Eich at Netscape and first appeared in that company's Navigator 2.0 browser.
@@ -42,10 +41,8 @@
 
   </div>
 
-
   <div id="mouse-wrap">Mouse coordinates: <span id="mouse">...</span></div>
   <div id="info"></div>
-
 
   <script>
     let props = {
@@ -78,7 +75,6 @@
       value = value.tagName || value;
       document.getElementById(prop).innerHTML = value;
     };
-
 
     document.onmousemove = function(e) {
       document.getElementById('mouse').innerHTML = Math.round(e.clientX) + ':' + Math.round(e.clientY);

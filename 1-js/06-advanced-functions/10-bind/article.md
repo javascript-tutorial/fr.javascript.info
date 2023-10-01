@@ -72,7 +72,6 @@ Looks fine, but a slight vulnerability appears in our code structure.
 
 What if before `setTimeout` triggers (there's one second delay!) `user` changes value? Then, suddenly, it will call the wrong object!
 
-
 ```js run
 let user = {
   firstName: "John",
@@ -110,7 +109,7 @@ In other words, calling `boundFunc` is like `func` with fixed `this`.
 
 For instance, here `funcUser` passes a call to `func` with `this=user`:
 
-```js run  
+```js run 
 let user = {
   firstName: "John"
 };
@@ -121,7 +120,7 @@ function func() {
 
 *!*
 let funcUser = func.bind(user);
-funcUser(); // John  
+funcUser(); // John 
 */!*
 ```
 
@@ -129,7 +128,7 @@ Here `func.bind(user)` as a "bound variant" of `func`, with fixed `this=user`.
 
 All arguments are passed to the original `func` "as is", for instance:
 
-```js run  
+```js run 
 let user = {
   firstName: "John"
 };
@@ -147,7 +146,6 @@ funcUser("Hello"); // Hello, John (argument "Hello" is passed, and this=user)
 ```
 
 Now let's try with an object method:
-
 
 ```js run
 let user = {

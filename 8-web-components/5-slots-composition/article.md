@@ -429,7 +429,6 @@ setTimeout(() => {
 </script>
 ```
 
-
 ## Summary
 
 Usually, if an element has shadow DOM, then its light DOM is not displayed. Slots allow to show elements from light DOM in specified places of shadow DOM.

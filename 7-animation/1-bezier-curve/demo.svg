@@ -16,12 +16,9 @@ http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#path_C
 </pattern>
 </defs>
 
-
 <rect x="20" y="50" width="300" height="300" fill="url(#Pat01)"/>
 
-
 <path d="M20,50 H320 V350 H20 Z" fill="none" stroke="none" stroke-width="0.5" stroke-dasharray="2 2"/>
-
 
 <path fill="none" id="control-path" stroke="#E8C48E"/>
 <path stroke="red" fill="none" id="bezier-path" stroke-width="1.2"/>
@@ -76,7 +73,6 @@ http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#path_C
 
 	let runButton = document.getElementById("run-button");
 	runButton.parentNode.style.display = location.search.match('animate=1') ? 'block' : 'none';
-
 
 
 	let tPathTemplate = document.getElementById("t-path-template");
@@ -215,7 +211,6 @@ http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#path_C
 	let t = 0;
 	let timer;
 
-
 	// animate the curve
 	function animate(complete) {
 
@@ -271,7 +266,6 @@ http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#path_C
 
 	drawPath();
 	drawPoints(points);
-
 
 //]]></script>
 </svg>

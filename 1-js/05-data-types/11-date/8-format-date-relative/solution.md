@@ -66,7 +66,7 @@ function formatDate(date) {
   minutes = minutes < 10 ? '0' + minutes : minutes;
 
   if (diffSec < 1) {
-    return 'right now';  
+    return 'right now'; 
   } else if (diffMin < 1) {
     return `${diffSec} sec. ago`
   } else if (diffHour < 1) {

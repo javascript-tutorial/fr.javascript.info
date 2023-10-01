@@ -1,5 +1,5 @@
 describe("test", function() {
-  
+ 
   // Habituellement Mocha attends 2 secondes avant de considérer qu'ils sont érronés
 
   this.timeout(200000); // Avec ce code, on définit 200,000 millisecondes (200 secondes) de délai

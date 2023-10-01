@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Les conversions de type 
+# Les conversions de type
 
 Quels sont les résultats de ces expressions ?
 

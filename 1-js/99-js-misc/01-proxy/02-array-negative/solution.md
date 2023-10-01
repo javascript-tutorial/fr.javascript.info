@@ -13,7 +13,6 @@ array = new Proxy(array, {
   }
 });
 
-
 alert(array[-1]); // 3
 alert(array[-2]); // 2
 ```

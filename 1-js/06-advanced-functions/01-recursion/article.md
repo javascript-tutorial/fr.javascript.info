@@ -72,7 +72,6 @@ On peut aussi dire que `pow` *s'appelle récursivement* jusqu'à ce que `n == 1`
 
 ![diagramme récursif de puissance](recursion-pow.svg)
 
-
 Par exemple, pour calculer `pow(2, 4)` la variante récursive effectue ces étapes:
 
 1. `pow(2, 4) = 2 * pow(2, 3)`
@@ -148,7 +147,6 @@ function pow(x, n) {
 alert( pow(2, 3) );
 ```
 
-
 Les variables sont les mêmes, mais la ligne change, le contexte est donc le suivant:
 
 <ul class="function-execution-context-list">
@@ -185,7 +183,7 @@ Voici la pile de contexte lorsque nous sommes entrés dans le sous-appel `pow(2,
 
 Le nouveau contexte d'exécution actuel est en haut (et en gras) et les contextes précédemment mémorisés sont en dessous.
 
-Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté. 
+Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté.
 
 ```smart
 Ici, dans l'image, nous utilisons le mot "line", comme dans notre exemple, il n'y a qu'un seul sous-appel en ligne, mais généralement une seule ligne de code peut contenir plusieurs sous-appels, comme `pow(…) + pow(…) + somethingElse(…)`.
@@ -235,7 +233,6 @@ function pow(x, n) {
 Il n'y a plus d'appels imbriqués, donc la fonction se termine en renvoyant`2`.
 
 Lorsque la fonction se termine, son contexte d'exécution n'est plus nécessaire, il est donc supprimé de la mémoire. La précédente est restaurée en haut de la pile:
-
 
 <ul class="function-execution-context-list">
   <li>
@@ -347,7 +344,6 @@ Le 2ème cas où nous obtenons un objet est l'étape récursive. Une tâche comp
 
 L'algorithme est probablement encore plus facile à lire à partir du code:
 
-
 ```js run
 let company = { // le même objet, compressé pour la brièveté
   sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 1600 }],
@@ -385,9 +381,8 @@ On peut facilement voir le principe: pour un objet `{...}` les sous-appels sont 
 
 Notez que le code utilise des fonctionnalités intelligentes que nous avons déjà abordées:
 
-- La méthode `arr.reduce` a été expliquée dans le chapitre <info:array-methods> pour obtenir la somme du tableau. 
+- La méthode `arr.reduce` a été expliquée dans le chapitre <info:array-methods> pour obtenir la somme du tableau.
 - La boucle `for(val of Object.values(obj))` itérer sur les valeurs d'objet: `Object.values` retourne un tableau d'eux-mêmes.
-
 
 ## Structures récursives
 
@@ -514,7 +509,6 @@ Naturellement, les listes ne sont pas toujours meilleures que les tableaux. Sino
 Le principal inconvénient est que nous ne pouvons pas facilement accéder à un élément par son numéro. Dans un tableau simple: `arr [n]` est une référence directe. Mais dans la liste, nous devons commencer à partir du premier élément et aller `next``N` fois pour obtenir le Nième élément.
 
 ...Mais nous n’avons pas toujours besoin de telles opérations. Par exemple, quand on a besoin d’une file d’attente ou même d’un [deque](https://en.wikipedia.org/wiki/Double-ended_queue) -- la structure ordonnée qui doit permettre l'ajout/suppression très rapide d'éléments des deux extrémités, mais l'accès au milieu n'est pas nécessaire.
-
 
 Les listes peuvent être améliorées:
 - Nous pouvons ajouter la propriété `prev` en plus de `next` pour référencer l'élément précédent, pour revenir facilement.

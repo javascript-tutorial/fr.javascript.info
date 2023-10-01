@@ -20,7 +20,7 @@ dictionary.__proto__ = "test";
 // apple et __proto__ sont dans la boucle
 for(let key in dictionary) {
   alert(key); // "apple", puis "__proto__"
-}  
+} 
 
 // liste de propriétés séparées par des virgules par toString
 alert(dictionary); // "apple,__proto__"

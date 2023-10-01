@@ -80,7 +80,6 @@ Pour des raisons historiques, les deux propriétés existent, mais elles sont id
 ```
 ## Défilement : scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
-
 ```warn
 Pour faire défiler la page avec JavaScript, son DOM doit être entièrement construit.
 

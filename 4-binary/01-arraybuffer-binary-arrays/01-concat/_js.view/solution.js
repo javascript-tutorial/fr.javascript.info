@@ -3,7 +3,7 @@ function concat(arrays) {
   let totalLength = arrays.reduce((acc, value) => acc + value.length, 0);
 
   let result = new Uint8Array(totalLength);
-  
+ 
   if (!arrays.length) return result;
 
   // for each array - copy it over result

@@ -181,7 +181,6 @@ Ainsi, le nom est stocké dans la propriété `_name`, et l'accès s'effectue vi
 
 Techniquement, le code externe est capable d'accéder au nom directement en utilisant `user._name`. Mais d'après une convention largement reconnue, les propriétés commençant avec un underscore `"_"` sont internes et ne devraient pas être accessibles hors de l'objet.
 
-
 ## Utilisation pour la compatibilité
 
 Une des utilisations géniales des accesseurs est qu'ils permettent de prendre le contrôle d'une propriété de données "classique" à tout moment en la remplaçant par un opérateur de lecture et d'écriture, et de modifier son comportement.

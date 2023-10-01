@@ -17,7 +17,6 @@ Dans ce cas, lorsque nous essayons d'obtenir `user.address.street`, et que l'uti
 ```js run
 let user = {}; // un utilisateur sans propriété "address"
 
-
 alert(user.address.street); // Error!
 ```
 
@@ -79,7 +78,6 @@ Et le chemin complet vers la propriété garantit que tous les composants existe
 Comme vous pouvez le voir, les noms de propriétés sont toujours dupliqués dans le code. Par exemple, dans le code ci-dessus, `user.address` apparaît trois fois.
 
 C'est pourquoi le chaînage facultatif `?.` a été ajouté au langage. Pour résoudre ce problème une fois pour toutes !
-
 
 ## Chaînage optionnel
 
@@ -153,10 +151,8 @@ let x = 0;
 
 user?.sayHi(x++); // pas de "user", donc l'exécution n'atteint pas l'appel sayHi et x++
 
-
 alert(x); // 0, la valeur n'est pas incrémenté
 ```
-
 
 ## Autres variantes : ?.(), ?.[]
 

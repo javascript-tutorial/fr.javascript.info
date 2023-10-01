@@ -122,7 +122,6 @@ La propriété `document.domain` est en cours de suppression de la [spécificati
 Cela dit, actuellement tous les navigateurs le supportent. Et le support sera conservé pour l'avenir, pour ne pas casser l'ancien code qui repose sur `document.domain`.
 ```
 
-
 ## Iframe: le piège du mauvais document
 
 Lorsqu'une iframe provient de la même origine, et que nous pouvons accéder à son  `document`, il y a un piège. Ce n'est pas lié à des questions d'origine croisée, mais il est important de le savoir.
@@ -132,7 +131,6 @@ Dès sa création, une iframe dispose immédiatement d'un document. Mais ce docu
 Donc, si nous faisons quelque chose avec le document immédiatement, il sera probablement perdu.
 
 Voici par exemple:
-
 
 ```html run
 <iframe src="/" id="iframe"></iframe>
@@ -250,7 +248,6 @@ Nous pouvons noter que rien ne fonctionne. Le réglage par défaut est donc trè
 
 [codetabs src="sandbox" height=140]
 
-
 ```smart
 Le but de l'attribut `"sandbox"` est uniquement *d'ajouter* des restrictions. Il ne peut pas les supprimer. En particulier, il ne peut pas assouplir les restrictions de même origine si l'iframe provient d'une autre origine.
 ```
@@ -271,7 +268,6 @@ Arguments:
 
 `data`
 : Les données à envoyer. Peut être n'importe quel objet, les données sont clonées à l'aide de l'"algorithme de clonage structuré". IE ne supporte que les chaînes de caractères, nous devrions donc `JSON.stringify` des objets complexes pour ce navigateur.
-
 
 `targetOrigin`
 : Spécifie l'origine de la fenêtre cible, de sorte que seule une fenêtre de l'origine donnée recevra le message.
@@ -305,7 +301,6 @@ Si nous ne voulons pas de ce contrôle, nous pouvons régler `targetOrigin` sur 
 */!*
 </script>
 ```
-
 
 ### onmessage
 

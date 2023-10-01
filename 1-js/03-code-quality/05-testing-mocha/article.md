@@ -22,7 +22,7 @@ C’est très typique. Lorsque nous développons quelque chose, nous gardons à 
 
 ## Développement pilotée par le comportement / Behavior Driven Development (BDD)
 
-Commençons par une technique nommée [Behavior Driven Development](https://fr.wikipedia.org/wiki/Behavior-driven_development) ou, en bref, BDD. 
+Commençons par une technique nommée [Behavior Driven Development](https://fr.wikipedia.org/wiki/Behavior-driven_development) ou, en bref, BDD.
 
 **BDD, c'est trois choses en une : les tests ET la documentation ET les exemples.**
 
@@ -322,7 +322,7 @@ describe("pow", function() {
 
   it("for non-integer n the result is NaN", function() {
 *!*
-    assert.isNaN(pow(2, 1.5));    
+    assert.isNaN(pow(2, 1.5));   
 */!*
   });
 

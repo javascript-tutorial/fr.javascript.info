@@ -349,13 +349,11 @@ If we assign a handler in HTML, we can also use the `event` object, like this:
 That's possible because when the browser reads the attribute, it creates a handler like this:  `function(event) { alert(event.type) }`. That is: its first argument is called `"event"`, and the body is taken from the attribute.
 ````
 
-
 ## Object handlers: handleEvent
 
 We can assign not just a function, but an object as an event handler using `addEventListener`. When an event occurs, its `handleEvent` method is called.
 
 For instance:
-
 
 ```html run
 <button id="elem">Click me</button>
@@ -374,7 +372,6 @@ For instance:
 As we can see, when `addEventListener` receives an object as the handler, it calls `obj.handleEvent(event)` in case of an event.
 
 We could also use objects of a custom class, like this:
-
 
 ```html run
 <button id="elem">Click me</button>

@@ -4,5 +4,4 @@ describe("extractCurrencyValue", function() {
     assert.strictEqual(extractCurrencyValue('$120'), 120);
   });
 
-
 });

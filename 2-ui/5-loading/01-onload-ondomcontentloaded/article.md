@@ -6,7 +6,6 @@ Le cycle de vie d'une page HTML comporte trois événements importants:
 - `load` -- non seulement le HTML est chargé, mais également toutes les ressources externes : images, styles, etc.
 - `beforeunload/unload` -- l'utilisateur quitte la page.
 
-
 Chaque événement peut être utile:
 
 - `DOMContentLoaded` événement -- DOM est prêt, le gestionnaire peut donc rechercher des nœuds DOM, initialiser l'interface.
@@ -33,7 +32,6 @@ Par exemple:
 <script>
   function ready() {
     alert('DOM is ready');
-
 
     // l'image n'est pas encore chargée (sauf si elle a été mise en cache), donc la taille est 0x0
 
@@ -154,7 +152,6 @@ window.addEventListener("unload", function() {
 Lorsque la demande `sendBeacon` est terminée, le navigateur a probablement déjà quitté le document, donc il n'y a aucun moyen d'obtenir une réponse du serveur (qui est vide habituellement pour l'analyse).
 
 Il y a aussi un marqueur `keepalive` pour les demandes "apres sortie du document" dans [fetch](info:fetch) méthode pour les demandes de réseau génériques. Vous pouvez trouver plus d'informations dans le chapitre <info:fetch-api>.
-
 
 Si nous voulons annuler la transition vers une autre page, nous ne pouvons pas le faire ici. Mais nous pouvons utiliser un autre événement -- `onbeforeunload`.
 
@@ -287,7 +284,6 @@ Les nombres entre crochets indiquent l'heure approximative à laquelle cela se p
 
 - `document.readyState` devient `interactive` juste avant `DOMContentLoaded`. Ces deux choses signifient en fait la même chose.
 - `document.readyState` devient `complete` lorsque toutes les ressources (`iframe` et `img`) sont chargées. Ici, nous pouvons voir que cela se produit à peu près en même temps que `img.onload` (`img` est la dernière ressource) et `window.onload`. Passer à l'état `complete` signifie la même chose que `window.onload`. La différence est que `window.onload` fonctionne toujours après tous les autres gestionnaires de `load`.
-
 
 ## Résumé
 

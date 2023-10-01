@@ -2,7 +2,7 @@
 
 Les outils de navigation du DOM sont très pratiques quand les éléments sont proches les uns des autres. Mais s'ils ne le sont pas ? Comment atteindre un élément arbitraire de la page ?
 
-Il existe d'autres méthodes de recherche pour cela. 
+Il existe d'autres méthodes de recherche pour cela.
 
 ## document.getElementById ou juste id
 
@@ -144,9 +144,9 @@ Les *ancêtres* d'un élément sont : le parent, le parent du parent, son propre
 
 La méthode `elem.closest(css)` cherche l'ancêtre le plus proche qui correspond au sélecteur CSS. L'élément `elem` est lui-même inclus dans la recherche.
 
-En d'autres mots, la méthode `closest` part de l'élément et remonte en regardant chacun des parents. S'il correspond au sélecteur, la recherche s'arrête et l'ancêtre est renvoyé. 
+En d'autres mots, la méthode `closest` part de l'élément et remonte en regardant chacun des parents. S'il correspond au sélecteur, la recherche s'arrête et l'ancêtre est renvoyé.
 
-Par exemple : 
+Par exemple :
 
 ```html run
 <h1>Contenu</h1>
@@ -174,7 +174,7 @@ Il y a aussi d'autres méthodes pour rechercher des balises par tag, classe, etc
 
 Aujourd'hui, elles sont principalement de l'histoire ancienne, car `querySelector` est plus puissante et plus courte à écrire.
 
-Donc ici, on va surtout en parler dans le souci d'être complet, comme elles peuvent encore se retrouver dans des vieux scripts. 
+Donc ici, on va surtout en parler dans le souci d'être complet, comme elles peuvent encore se retrouver dans des vieux scripts.
 
 - `elem.getElementsByTagName(tag)` cherche les éléments avec le tag donné et renvoie l'ensemble de ces éléments. Le paramètre `tag` peut aussi être une étoile `"*"` pour signifier n'importe quel tag.
 - `elem.getElementsByClassName(className)` renvoie les éléments qui ont la classe CSS donnée.
@@ -182,7 +182,7 @@ Donc ici, on va surtout en parler dans le souci d'être complet, comme elles peu
 
 Par exemple:
 ```js
-// récupérer tous les divs du document. 
+// récupérer tous les divs du document.
 let divs = document.getElementsByTagName('div');
 ```
 
@@ -225,14 +225,14 @@ La lettre `"s"` letter n'apparait pas dans `getElementById`, car cette méthode 
 ```
 
 ````warn header="Elle renvoie un ensemble, pas un élément !"
-Une autre erreur répandue parmi les débutants est d'écrire : 
+Une autre erreur répandue parmi les débutants est d'écrire :
 
 ```js
-// ne fonctionne pas : 
+// ne fonctionne pas :
 document.getElementsByTagName('input').value = 5;
 ```
 
-Cela ne va pas marcher, parce qu'on essaie d'affecter une valeur à un ensemble d'objets plutôt qu'à un élément de cet ensemble. 
+Cela ne va pas marcher, parce qu'on essaie d'affecter une valeur à un ensemble d'objets plutôt qu'à un élément de cet ensemble.
 On devrait plutôt itérer sur l'ensemble ou récupérer un élément par son index, et lui affecter la valeur, comme ceci :
 
 ```js
@@ -263,7 +263,7 @@ Recherche des éléments `.article` :
 
 Toutes les méthodes `"getElementsBy*"` renvoient l'ensemble *courant*. De tels ensembles montrent toujours l'état courant du document and se mettent à jour automatiquement quand celui-ci change.
 
-Dans l'exemple ci-dessous, il y a deux scripts : 
+Dans l'exemple ci-dessous, il y a deux scripts :
 
 1. Le premier crée une référence à l'ensemble des `<div>`. Maintenant, sa longueur est `1`.
 2. Le second se lance après que le navigateur aie rencontré un autre `<div>`, donc sa longueur est `2`.
@@ -289,7 +289,6 @@ A l'opposé, `querySelectorAll` renvoie un ensemble *statique*. C'est comme un t
 
 Si on l'utilise, alors les deux scripts ci-dessus renvoient `1`:
 
-
 ```html run
 <div>Premier div</div>
 
@@ -311,7 +310,7 @@ Maintenant, on voit facilement la différence. L'ensemble statique ne s'est pas 
 
 ## Résumé
 
-Il y a 6 principales méthodes pour rechercher des balises dans le DOM : 
+Il y a 6 principales méthodes pour rechercher des balises dans le DOM :
 
 <table>
 <thead>
@@ -362,7 +361,7 @@ Il y a 6 principales méthodes pour rechercher des balises dans le DOM :
 </tbody>
 </table>
 
-De loin, les plus utilisées sont `querySelector` et `querySelectorAll`, mais `getElement(s)By*` peut être de temps en temps utile ou rencontrée dans de vieux scripts. 
+De loin, les plus utilisées sont `querySelector` et `querySelectorAll`, mais `getElement(s)By*` peut être de temps en temps utile ou rencontrée dans de vieux scripts.
 
 A part ça :
 

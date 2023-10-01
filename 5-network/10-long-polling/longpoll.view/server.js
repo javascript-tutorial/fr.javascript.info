@@ -75,7 +75,7 @@ if (!module.parent) {
 } else {
   exports.accept = accept;
 
-  if (process.send) { 
+  if (process.send) {
      process.on('message', (msg) => {
        if (msg === 'shutdown') {
          close();

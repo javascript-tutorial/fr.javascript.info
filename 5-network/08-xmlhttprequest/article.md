@@ -459,7 +459,7 @@ function upload(file) {
 </script>
 ```
 
-## Requêtes Cross-origin 
+## Requêtes Cross-origin
 
 `XMLHttpRequest` peut faire des requêtes cross-origin, en utilisant la même politique CORS que [fetch](info:fetch-crossorigin).
 
@@ -476,7 +476,6 @@ xhr.open('POST', 'http://anywhere.com/request');
 ```
 
 Voir le chapitre <info:fetch-crossorigin> pour plus de détails sur les en-têtes cross-origin.
-
 
 ## Résumé
 

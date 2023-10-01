@@ -27,7 +27,6 @@ describe("spy", function() {
     assert(sum.calledWith(1, 2));
   });
 
-
   it("transparently wraps methods", function() {
 
     let calc = {

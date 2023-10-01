@@ -1,6 +1,5 @@
 Il existe de nombreuses façons, par exemple :
 
-
 Le noeud `<div>` du DOM :
 
 ```js

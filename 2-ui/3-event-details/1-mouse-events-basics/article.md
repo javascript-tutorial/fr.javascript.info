@@ -4,7 +4,7 @@ Dans ce chapitre, nous verrons plus en détails les événements de la souris et
 
 Remarque: Ces événements peuvent provenir non seulement de "périphériques de souris", mais également de périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
 
-## Les types d'évènements de Souris 
+## Les types d'évènements de Souris
 
 Nous avons déjà vu certains de ces événements :
 
@@ -57,12 +57,12 @@ D'un autre côté, les gestionnaires `mousedown` et `mouseup` peuvent avoir beso
 Les valeurs possibles de `event.button` sont :
 
 | État du bouton              | `event.button` |
-|-----------------------------|----------------|
+| --------------------------- | -------------- |
 | Bouton gauche (principal)   | 0              |
 | Bouton central (auxiliaire) | 1              |
 | Bouton droit (secondaire)   | 2              |
 | X1 bouton (arrière)         | 3              |
-| X2 bouton (avant)          | 4              |
+| X2 bouton (avant)           | 4              |
 
 La plupart des souris n'ont que les boutons gauche et droit, donc les valeurs possibles sont `0` ou `2`. Les appareils tactiles génèrent également des événements similaires lorsque l'on appuie dessus.
 
@@ -93,7 +93,7 @@ Ils sont `true` si la touche correspondante fut appuyée durant l'évènement.
 
 Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
 
-```html autorun height=60 
+```html autorun height=60
 <button id="button">Alt+Shift+Click on me!</button>
 
 <script>
@@ -133,7 +133,6 @@ Mais si leur appareil n'en a pas, il devrait y avoir un moyen de vivre sans touc
 ## Cordonnées: clientX/Y, pageX/Y
 
 Tous les événements de souris fournissent des coordonnées de deux manières :
-
 
 Nous avons déjà couvert la différence entre eux dans le chapitre <info:coordinates>.
 
@@ -196,7 +195,7 @@ Si vous essayer de copier une partie de texte dans un `<div>`, cela ne va pas fo
 Certes, l'utilisateur a accès à la source HTML de la page et peut en extraire le contenu, mais tout le monde ne sait pas comment le faire.
 ````
 
-## Résumé 
+## Résumé
 
 Les évènements de souris ont les propriétés suivantes :
 

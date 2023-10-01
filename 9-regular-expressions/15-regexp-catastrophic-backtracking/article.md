@@ -110,7 +110,6 @@ Voici ce que fait le moteur d'expression régulière :
     (12345678)(9)z
     ```
 
-
 4. Il n'y a pas de correspondance, donc le moteur continuera à revenir en arrière, diminuant le nombre de répétitions. Le backtracking fonctionne généralement comme ceci : le dernier quantificateur gourmand diminue le nombre de répétitions jusqu'à ce qu'il atteigne le minimum. Ensuite, le quantificateur gourmand précédent diminue, et ainsi de suite.
 
     Toutes les combinaisons possibles sont tentées. Voici leurs exemples.
@@ -148,7 +147,6 @@ Voici ce que fait le moteur d'expression régulière :
     ```
 
     ...Et ainsi de suite.
-
 
 Il existe de nombreuses façons de diviser une séquence de chiffres "123456789" en nombres. Pour être précis, il y a <code>2<sup>n</sup>-1</code>, où `n` est la longueur de la séquence.
 

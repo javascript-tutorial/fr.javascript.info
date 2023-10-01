@@ -1,7 +1,7 @@
 # Les variables
 
 La plupart du temps, une application JavaScript doit utiliser des informations. Voici 2 exemples :
-1. Une boutique en ligne - les informations peuvent inclure des articles vendus et un panier d'achat. 
+1. Une boutique en ligne - les informations peuvent inclure des articles vendus et un panier d'achat.
 2. Une application de chat - les informations peuvent inclure des utilisateurs, des messages et bien plus encore.
 
 Les variables sont utilisées pour stocker ces informations.

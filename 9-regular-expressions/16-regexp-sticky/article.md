@@ -85,7 +85,7 @@ let word = regexp.exec(str);
 alert(word); // varName
 ```
 
-Houra ! Problème résolu ! 
+Houra ! Problème résolu !
 
 Nous avons recherché le motif `pattern:\w+`, à partir de la position `regexp.lastIndex = 4`.
 
@@ -105,7 +105,7 @@ let regexp = /\w+/g;
 regexp.lastIndex = 3;
 */!*
 
-let word = regexp.exec(str); 
+let word = regexp.exec(str);
 // trouve la correspondance à la position 4
 alert(word[0]); // varName
 alert(word.index); // 4

@@ -32,7 +32,6 @@ let uint8Array = new Uint8Array([72, 101, 108, 108, 111]);
 alert( new TextDecoder().decode(uint8Array) ); // Hello
 ```
 
-
 ```js run
 let uint8Array = new Uint8Array([228, 189, 160, 229, 165, 189]);
 
@@ -40,7 +39,6 @@ alert( new TextDecoder().decode(uint8Array) ); // 你好
 ```
 
 Nous pouvons décoder une partie du Buffer en créant une vue de sous-tableau pour celui-ci:
-
 
 ```js run
 let uint8Array = new Uint8Array([0, 72, 101, 108, 108, 111, 0]);

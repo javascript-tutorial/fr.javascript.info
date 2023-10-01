@@ -4,7 +4,6 @@ describe("getDateAgo", function() {
     assert.equal(getDateAgo(new Date(2015, 0, 2), 1), 1);
   });
 
-
   it("2 days before 02.01.2015 -> day 31", function() {
     assert.equal(getDateAgo(new Date(2015, 0, 2), 2), 31);
   });

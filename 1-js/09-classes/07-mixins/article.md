@@ -164,7 +164,6 @@ let eventMixin = {
 };
 ```
 
-
 - `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
 - `.off(eventName, handler)` - supprime la fonction de la liste des gestionnaires.
 - `.trigger(eventName, ... args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.

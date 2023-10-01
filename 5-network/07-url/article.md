@@ -61,7 +61,6 @@ Voici le cheatsheet pour les composants URL :
 - `hash` commence par le caractère de hachage `#`
 - il peut y avoir aussi les propriétés `user` et `password` si l'authentification HTTP est présente : `http://login:password@site.com` (pas expliqué ci-dessus, très peu utilisé)
 
-
 ```smart header="Nous pouvons passer des objets `URL` aux méthodes de mise en réseau (et à la plupart des autres) au lieu d'une chaîne de caractères"
 Nous pouvons utiliser un objet `URL` dans `fetch` ou `XMLHttpRequest`, presque partout où une chaîne de caractères URL est attendue.
 
@@ -112,7 +111,6 @@ for(let [name, value] of url.searchParams) {
   alert(`${name}=${value}`); // q=test me!, ensuite tbs=qdr:y
 }
 ```
-
 
 ## Encodage
 

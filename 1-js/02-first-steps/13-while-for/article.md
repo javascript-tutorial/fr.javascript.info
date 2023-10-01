@@ -124,7 +124,6 @@ Examinons l'instruction conditionnelle (la boucle) `for` partie par partie :
 | corps          | `alert(i)`  | S'exécute encore et encore tant que la condition est vraie                                             |
 | expression     | `i++`       | S'exécute après le corps à chaque itération                                                            |
 
-
 L'algorithme de boucle général fonctionne comme ceci :
 ```
 Déclarer et affecter une variable itérative (Initialisation)

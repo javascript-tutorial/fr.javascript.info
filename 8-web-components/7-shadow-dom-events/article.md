@@ -2,7 +2,7 @@
 
 L'idée derrière l'arbre fantôme est d'encapsuler les détails d'implémentation internes d'un composant.
 
-Disons qu'un événement de clic se produit à l'intérieur du DOM fantôme du composant `<user-card>`. Mais les scripts dans le document principal n'ont aucune idée des internes du DOM fantôme, surtout si le composant provient d'une bibliothèque tierce.  
+Disons qu'un événement de clic se produit à l'intérieur du DOM fantôme du composant `<user-card>`. Mais les scripts dans le document principal n'ont aucune idée des internes du DOM fantôme, surtout si le composant provient d'une bibliothèque tierce. 
 
 Donc, pour garder les détails encapsulés, le navigateur *recible* l'événement.
 
@@ -91,7 +91,6 @@ Dans l'exemple ci-dessus, le DOM aplati est :
 </user-card>
 ```
 
-
 Ainsi, pour un clic sur `<span slot="username">`, un appel à `event.composedPath()` renvoie un tableau : [`span`, `slot`, `div`, `shadow-root`, `user-card`, `body`, `html`, `document`, `window`]. C'est exactement la chaîne parentale de l'élément cible dans le DOM aplati, après la composition.
 
 ```warn header="Les détails de l'arbre fantôme ne sont fournis que pour les arbres `{mode : 'open'}`"
@@ -99,7 +98,6 @@ Si l'arbre fantôme a été créé avec `{mode : 'closed'}`, alors le chemin com
 
 C'est le même principe que pour les autres méthodes qui fonctionnent avec les DOM fantômes. Les internes des arbres fermés sont complètement cachés.
 ```
-
 
 ## event.composed
 

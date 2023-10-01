@@ -1,7 +1,7 @@
 describe("army", function() {
 
   let army;
-  
+ 
   before(function() {
     army = makeArmy();
     window.alert = sinon.stub(window, "alert");
@@ -11,7 +11,6 @@ describe("army", function() {
     army[0]();
     assert(alert.calledWith(0));
   });
-
 
   it("army[5] shows 5", function() {
     army[5]();

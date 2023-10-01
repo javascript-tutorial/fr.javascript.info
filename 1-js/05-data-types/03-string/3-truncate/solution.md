@@ -4,7 +4,7 @@ Notez qu'il existe en réalité un seul caractère Unicode pour une ellipse. Ce 
 
 ```js run
 function truncate(str, maxlength) {
-  return (str.length > maxlength) ? 
+  return (str.length > maxlength) ?
     str.slice(0, maxlength - 1) + '…' : str;
 }
 ```

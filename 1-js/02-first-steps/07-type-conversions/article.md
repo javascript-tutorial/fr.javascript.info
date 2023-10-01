@@ -2,13 +2,13 @@
 
 La plupart du temps, les opérateurs et les fonctions convertissent automatiquement les valeurs qui leur sont attribuées dans le bon type.
 
-Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour permettre leur affichage. 
+Par exemple, `alert` convertit automatiquement toute valeur en chaîne de caractères pour permettre leur affichage.
 Les opérations mathématiques convertissent les valeurs en nombres.
 
 Il y a aussi des cas où nous devons convertir explicitement une valeur pour corriger les choses.
 
 ```smart header="On ne parle pas encore des objets"
-Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les types primitifs. 
+Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les types primitifs.
 
 Nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
@@ -40,7 +40,7 @@ La conversion numérique se produit automatiquement dans les fonctions et les ex
 Par exemple, lorsque la division `/` est appliquée à des valeurs non numérales :
 
 ```js run
-alert( "6" / "2" ); // Les chaînes de caractères sont converties en nombres, le résultat de cette opération vaut 3 
+alert( "6" / "2" ); // Les chaînes de caractères sont converties en nombres, le résultat de cette opération vaut 3
 ```
 
 Nous pouvons utiliser une fonction `Number(value)` pour convertir explicitement une valeur :
@@ -141,7 +141,6 @@ La conversion vers `boolean` suit les règles suivantes :
 | ------------------------------------- | ----------- |
 | `0`, `null`, `undefined`, `NaN`, `""` | `false`     |
 | tout autre valeur                     | `true`      |
-
 
 La plupart de ces règles sont faciles à comprendre et à mémoriser. Les exceptions notables où les gens font généralement des erreurs sont :
 

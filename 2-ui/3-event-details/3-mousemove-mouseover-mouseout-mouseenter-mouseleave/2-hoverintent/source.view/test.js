@@ -15,10 +15,8 @@ describe("hoverIntent", function() {
     elem.dispatchEvent(new MouseEvent(eventType, eventOptions));
   }
 
-
   let isOver;
   let hoverIntent;
-
 
   before(function() {
     this.clock = sinon.useFakeTimers();
@@ -27,7 +25,6 @@ describe("hoverIntent", function() {
   after(function() {
     this.clock.restore();
   });
-
 
   beforeEach(function() {
     isOver = false;
@@ -69,7 +66,6 @@ describe("hoverIntent", function() {
     this.clock.tick(100);
     assert.isFalse(isOver);
   });
-
 
   it("mouseover -> slow move -> tooltips", function() {
     mouse('mouseover', 10, 10);

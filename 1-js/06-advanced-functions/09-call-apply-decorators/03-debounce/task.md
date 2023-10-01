@@ -23,10 +23,9 @@ let f = _.debounce(alert, 1000);
 
 f("a");
 setTimeout( () => f("b"), 200);
-setTimeout( () => f("c"), 500); 
+setTimeout( () => f("c"), 500);
 // la fonction debounce attend 1000ms après le dernier appel puis exécute : alert("c")
 ```
-
 
 Maintenant, un exemple pratique. Disons que l'utilisateur tape quelque chose et que nous aimerions envoyer une requête au serveur lorsque l'entrée est terminée.
 
@@ -44,7 +43,6 @@ Vous voyez ? La deuxième entrée appelle la fonction "debounced", donc son cont
 ```
 
 Donc, `debounce` est un excellent moyen de traiter une séquence d'événements: que ce soit une séquence de touches, de mouvements de souris ou autre.
-
 
 Il attend le temps donné après le dernier appel, puis exécute sa fonction, qui peut traiter le résultat.
 

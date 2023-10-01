@@ -20,7 +20,6 @@ De plus, si vous développez pour le navigateur, d'autres spécifications sont c
 
   Cependant, il est souvent préférable d’utiliser une recherche sur Internet. Utilisez simplement "MDN [terme]" dans la requête, par exemple <https://google.com/search?q=MDN+parseInt> pour rechercher la fonction `parseInt`.
 
-
 ## Tableaux de compatibilité
 
 JavaScript est un langage en développement, de nouvelles fonctionnalités sont ajoutées régulièrement.

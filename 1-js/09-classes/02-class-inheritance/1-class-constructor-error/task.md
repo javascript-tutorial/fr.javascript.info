@@ -17,7 +17,7 @@ class Animal {
 }
 
 class Rabbit extends Animal {
-  constructor(name) {  
+  constructor(name) { 
     this.name = name;
     this.created = Date.now();
   }

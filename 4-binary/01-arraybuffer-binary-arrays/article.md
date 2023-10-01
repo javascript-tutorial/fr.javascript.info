@@ -139,7 +139,6 @@ let arr8 = new Uint8Array([0, 1, 2, 3]);
 let arr16 = new Uint16Array(arr8.buffer);
 ```
 
-
 Voici une liste de tableaux typés:
 
 - `Uint8Array`, `Uint16Array`, `Uint32Array` -- Pour les entiers de 8, 16 et 32 bits.
@@ -148,7 +147,7 @@ Voici une liste de tableaux typés:
 - `Float32Array`, `Float64Array` -- Pour les nombres flottants signés de 32 et 64 bits.
 
 ```warn header="Pas de `int8` ou de types similaires"
-Malgré la présence de noms tels que `Int8Array`, il n'y a pas de type comme `int` ou `int8` dans JavaScript. 
+Malgré la présence de noms tels que `Int8Array`, il n'y a pas de type comme `int` ou `int8` dans JavaScript.
 
 Car en effet `Int8Array` n'est pas un tableau de ces valeurs individuelles, mais plutôt une vue sur `ArrayBuffer`.
 ```

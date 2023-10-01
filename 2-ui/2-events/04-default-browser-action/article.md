@@ -106,7 +106,6 @@ L'option `passive: true` communique au navigateur que le gestionnaire n'annulera
 
 Pour certains navigateurs (Firefox, Chrome), `passive` est `true` par défaut pour les évènements `touchstart` et `touchmove`.
 
-
 ## event.defaultPrevented
 
 La propriété `event.defaultPrevented` est `true` si l'action par défaut a été empêchée, et `false` dans les autres cas.
@@ -177,7 +176,6 @@ Comment régler cela? Une des solutions est de penser: "Quand nous gérons le cl
 Maintenant le bouton contextuel du menu fonctionne comme voulu. Mais le prix est elevé. Nous bloquons pour toujours l'accès aux informations sur les clics droits au code extérieur, comme les compteurs qui récoltent des statistiques. Ce n'est pas sage.
 
 Une solution alternative est de vérifier dans le gestionnaire du `document` si l'action par défaut a été empêchée? Si c'est le cas, alors l'évènement a été géré, et nous n'avons pas besoin de réagir.
-
 
 ```html autorun height=80 no-beautify run
 <p>Clic droit ici pour le menu contextuel du document (une vérification a été ajoutée avec event.defaultPrevented)</p>

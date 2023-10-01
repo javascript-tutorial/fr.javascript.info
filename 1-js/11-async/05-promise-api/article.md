@@ -128,7 +128,7 @@ Promise.all([
   fetch('/template.html'),
   fetch('/style.css'),
   fetch('/data.json')
-]).then(render); // la méthode "render" a besoin des résultats de tous les "fetchs" 
+]).then(render); // la méthode "render" a besoin des résultats de tous les "fetchs"
 ```
 
 `Promise.allSettled` attend juste que toutes les promesses se résolvent, quel que soit le résultat. Le tableau résultant a :
@@ -215,7 +215,6 @@ Promise.race([
 ```
 
 La première promesse a été la plus rapide, donc, elle est devenue le résultat. Après la première promesse faite " vainqueur de la course ", tous les autres résultats/erreurs sont ignorés.
-
 
 ## Promise.any
 

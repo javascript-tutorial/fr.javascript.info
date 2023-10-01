@@ -230,7 +230,7 @@ let rabbit = new Rabbit("White Rabbit", 10); // Error: this is not defined.
 
 Oups! Nous avons une erreur. Maintenant, nous ne pouvons pas créer de lapins. Qu'est-ce qui s'est passé?
 
-La réponse courte est : 
+La réponse courte est :
 
 - **les constructeurs dans les classes qui héritent doivent appeler `super(...)`, et (!) le faire avant d'utiliser `this`.**
 
@@ -279,7 +279,6 @@ alert(rabbit.name); // White Rabbit
 alert(rabbit.earLength); // 10
 */!*
 ```
-
 
 ### Remplacer les champs de classe : une note délicate
 
@@ -374,7 +373,6 @@ Cette subtile différence entre les champs et les méthodes est propre à JavaSc
 Heureusement, ce comportement ne se révèle que si un champ surchargé est utilisé dans le constructeur parent. Ensuite, il peut être difficile de comprendre ce qui se passe, alors nous l'expliquons ici.
 
 Si cela devient un problème, on peut le résoudre en utilisant des méthodes ou des getters / setters au lieu de champs.
-
 
 ## Super: les internes, [[HomeObject]]
 

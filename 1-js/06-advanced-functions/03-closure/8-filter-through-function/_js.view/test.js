@@ -10,7 +10,6 @@ describe("inArray", function() {
   });
 });
 
-
 describe("inBetween", function() {
 
   it("returns the filter for values between", function() {

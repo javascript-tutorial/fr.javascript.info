@@ -20,5 +20,4 @@ showNotification({
 
 [demo src="solution"]
 
-
 Use CSS positioning to show the element at given top/right coordinates. The source document has the necessary styles.

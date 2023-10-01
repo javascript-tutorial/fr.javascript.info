@@ -53,21 +53,21 @@ Les pièges proxy interceptent les invocations de ces méthodes. Ils sont réper
 
 Pour chaque méthode interne, il y a un piège dans ce tableau: le nom de la méthode que nous pouvons ajouter au `handler` du `new Proxy` pour intercepter l'opération:
 
-| Méthode interne | Méthode d'handler | Se déclenche lorsque... |
-|-----------------|----------------|-------------|
-| `[[Get]]` | `get` | lit une propriété |
-| `[[Set]]` | `set` | écrit une propriété |
-| `[[HasProperty]]` | `has` | utilise l'opérateur `in` |
-| `[[Delete]]` | `deleteProperty` | utilise l'opérateur `delete`  |
-| `[[Call]]` | `apply` | appel une fonction |
-| `[[Construct]]` | `construct` | utilise l'opérateur `new` |
-| `[[GetPrototypeOf]]` | `getPrototypeOf` | [Object.getPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) |
-| `[[SetPrototypeOf]]` | `setPrototypeOf` | [Object.setPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/setPrototypeOf) |
-| `[[IsExtensible]]` | `isExtensible` | [Object.isExtensible](mdn:/JavaScript/Reference/Global_Objects/Object/isExtensible) |
-| `[[PreventExtensions]]` | `preventExtensions` | [Object.preventExtensions](mdn:/JavaScript/Reference/Global_Objects/Object/preventExtensions) |
-| `[[DefineOwnProperty]]` | `defineProperty` | [Object.defineProperty](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperty), [Object.defineProperties](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperties) |
-| `[[GetOwnProperty]]` | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries` |
-| `[[OwnPropertyKeys]]` | `ownKeys` | [Object.getOwnPropertyNames](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols), `for..in`, `Object.keys/values/entries` |
+| Méthode interne         | Méthode d'handler          | Se déclenche lorsque...                                                                                                                                                                                                                           |
+| ----------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[[Get]]`               | `get`                      | lit une propriété                                                                                                                                                                                                                                 |
+| `[[Set]]`               | `set`                      | écrit une propriété                                                                                                                                                                                                                               |
+| `[[HasProperty]]`       | `has`                      | utilise l'opérateur `in`                                                                                                                                                                                                                          |
+| `[[Delete]]`            | `deleteProperty`           | utilise l'opérateur `delete`                                                                                                                                                                                                                      |
+| `[[Call]]`              | `apply`                    | appel une fonction                                                                                                                                                                                                                                |
+| `[[Construct]]`         | `construct`                | utilise l'opérateur `new`                                                                                                                                                                                                                         |
+| `[[GetPrototypeOf]]`    | `getPrototypeOf`           | [Object.getPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/getPrototypeOf)                                                                                                                                                           |
+| `[[SetPrototypeOf]]`    | `setPrototypeOf`           | [Object.setPrototypeOf](mdn:/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)                                                                                                                                                           |
+| `[[IsExtensible]]`      | `isExtensible`             | [Object.isExtensible](mdn:/JavaScript/Reference/Global_Objects/Object/isExtensible)                                                                                                                                                               |
+| `[[PreventExtensions]]` | `preventExtensions`        | [Object.preventExtensions](mdn:/JavaScript/Reference/Global_Objects/Object/preventExtensions)                                                                                                                                                     |
+| `[[DefineOwnProperty]]` | `defineProperty`           | [Object.defineProperty](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperty), [Object.defineProperties](mdn:/JavaScript/Reference/Global_Objects/Object/defineProperties)                                                              |
+| `[[GetOwnProperty]]`    | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries`                                                                                              |
+| `[[OwnPropertyKeys]]`   | `ownKeys`                  | [Object.getOwnPropertyNames](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](mdn:/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols), `for..in`, `Object.keys/values/entries` |
 
 ```warn header="Invariants"
 JavaScript applique certains invariants -- conditions qui doivent être remplies par des méthodes et des pièges internes.
@@ -436,7 +436,6 @@ user = {
 }
 ```
 
-
 L'appel `user.checkPassword()` obtient l'`user` proxy comme `this` (l'objet avant le point devient `this`), donc quand il essaie d'accéder à `this._password`, le piège `get` s'active (il se déclenche sur n'importe quelle propriété lue) et génère une erreur.
 
 Nous lions donc le contexte des méthodes objet à l'objet d'origine, `target`, dans la ligne `(*)`. Ensuite, leurs futurs appels utiliseront `target` comme `this`, sans aucun piège.
@@ -601,13 +600,13 @@ L'objet `Reflect` rend cela possible. Ses méthodes sont des wrapper minimales a
 
 Voici des exemples d'opérations et d'appels `Reflect` identiques:
 
-| Opération | Appel `Reflect` | Méthode interne |
-|-----------------|----------------|-------------|
-| `obj[prop]` | `Reflect.get(obj, prop)` | `[[Get]]` |
-| `obj[prop] = value` | `Reflect.set(obj, prop, value)` | `[[Set]]` |
-| `delete obj[prop]` | `Reflect.deleteProperty(obj, prop)` | `[[Delete]]` |
-| `new F(value)` | `Reflect.construct(F, value)` | `[[Construct]]` |
-| ... | ... | ... |
+| Opération           | Appel `Reflect`                     | Méthode interne |
+| ------------------- | ----------------------------------- | --------------- |
+| `obj[prop]`         | `Reflect.get(obj, prop)`            | `[[Get]]`       |
+| `obj[prop] = value` | `Reflect.set(obj, prop, value)`     | `[[Set]]`       |
+| `delete obj[prop]`  | `Reflect.deleteProperty(obj, prop)` | `[[Delete]]`    |
+| `new F(value)`      | `Reflect.construct(F, value)`       | `[[Construct]]` |
+| ...                 | ...                                 | ...             |
 
 Par exemple:
 
@@ -756,7 +755,6 @@ let userProxy = new Proxy(user, {
   }
 });
 
-
 let admin = {
   __proto__: userProxy,
   _name: "Admin"
@@ -776,7 +774,6 @@ get(target, prop, receiver) {
   return Reflect.get(*!*...arguments*/!*);
 }
 ```
-
 
 Les appels `Reflect` sont nommés exactement de la même manière que les pièges et acceptent les mêmes arguments. Ils ont été spécialement conçus de cette façon.
 

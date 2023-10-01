@@ -3,7 +3,7 @@ describe('Ladder', function() {
   before(function() {
     window.alert = sinon.stub(window, "alert");
   });
-  
+ 
   beforeEach(function() {
     ladder.step = 0;
   });
@@ -36,11 +36,11 @@ describe('Ladder', function() {
   it('showStep() should return this', function() {
     assert.equal(ladder.showStep(), ladder);
   });
- 
+
   it('up().up().down().showStep().down().showStep()', function () {
     assert.equal(ladder.up().up().down().showStep().down().showStep().step, 0)
   });
-  
+ 
   after(function() {
     ladder.step = 0;
     alert.restore();

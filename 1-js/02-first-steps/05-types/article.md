@@ -56,7 +56,6 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
 
     Donc, s'il y a `NaN` quelque part dans une expression mathématique, il se propage à l'ensemble du résultat (il n'y a qu'une seule exception : `NaN ** 0` vaut `1`).
 
-
 ```smart header="Les opérations mathématiques sont sûres"
 Faire des maths est sans danger en JavaScript. Nous pouvons faire n'importe quoi : diviser par zéro, traiter les chaînes non numériques comme des nombres, etc.
 
@@ -169,7 +168,7 @@ alert( isGreater ); // True (le résultat de la comparaison est vrai, 4 est bien
 
 Nous couvrirons plus profondément les booléens dans le chapitre <info:logical-operators>.
 
-## La valeur "null" 
+## La valeur "null"
 
 La valeur spéciale `null` n'appartient à aucun type de ceux décrits ci-dessus.
 
@@ -185,7 +184,7 @@ C’est juste une valeur spéciale qui a le sens de "rien", "vide" ou "valeur in
 
 Le code ci-dessus indique que l'`age` est inconnu.
 
-## La valeur "undefined" 
+## La valeur "undefined"
 
 La valeur spéciale `undefined` se distingue des autres. C'est un type à part entière, comme `null`.
 
@@ -216,7 +215,7 @@ alert(age); // "undefined"
 
 Le type `object` est spécial.
 
-Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des ensembles de données et des entités plus complexes. 
+Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des ensembles de données et des entités plus complexes.
 
 Étant aussi important, les objets méritent un traitement spécial. Nous les traiterons plus tard dans le chapitre <info:object>, après en savoir plus sur les primitifs.
 

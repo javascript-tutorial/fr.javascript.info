@@ -192,7 +192,6 @@ Bien sûr, la différence se reflète dans leurs noms, mais c'est en effet un pe
 
 Par exemple, comparons `tagName` et `nodeName` pour le `document` et un nœud de commentaire :
 
-
 ```html run
 <body><!-- commentaire -->
 
@@ -217,7 +216,6 @@ En mode HTML, `tagName/nodeName` est toujours en majuscule : c'est `BODY` pour `
 
 En mode XML, la casse est conservée "en l'état". De nos jours, le mode XML est rarement utilisé.
 ```
-
 
 ## innerHTML: les contenus
 
@@ -384,7 +382,7 @@ Parfois, les développeurs incorporent des informations ou des instructions de m
 
 ...Ensuite, JavaScript peut le lire à partir de la propriété `data` et traiter les instructions intégrées.
 
-## textContent: texte pur 
+## textContent: texte pur
 
 Le `textContent` donne accès au *texte* à l'intérieur de l'élément : seulement le texte, moins tous les `<tags>`.
 
@@ -453,7 +451,6 @@ Nous pouvons l'utiliser dans le HTML ou l'attribuer en utilisant JavaScript, com
 Techniquement, `hidden` fonctionne de la même manière que `style="display:none"`. Mais c'est plus court à écrire.
 
 Voici un élément clignotant :
-
 
 ```html run height=50
 <div id="elem">A blinking element</div>

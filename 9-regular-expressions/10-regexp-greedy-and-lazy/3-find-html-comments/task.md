@@ -6,7 +6,7 @@ Trouvez tous les commentaires HTML dans le texte :
 let regexp = /your regexp/g;
 
 let str = `... <!-- My -- comment
- test --> ..  <!----> .. 
+ test --> ..  <!----> ..
 `;
 
 alert( str.match(regexp) ); // '<!-- My -- comment \n test -->', '<!---->'

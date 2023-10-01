@@ -9,10 +9,10 @@ Il y a un objet `ladder` qui permet de monter et descendre :
 ```js
 let ladder = {
   step: 0,
-  up() { 
+  up() {
     this.step++;
   },
-  down() { 
+  down() {
     this.step--;
   },
   showStep: function() { // affiche l'étape en cours

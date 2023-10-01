@@ -267,7 +267,7 @@ La fonction `submit()` peut être réécrite sans `async/await` comme ceci :
 
 ```js
 function submit() {
-  canvasElem.toBlob(function(blob) {        
+  canvasElem.toBlob(function(blob) {       
     fetch('/article/fetch/post/image', {
       method: 'POST',
       body: blob

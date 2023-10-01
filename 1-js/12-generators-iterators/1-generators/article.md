@@ -338,7 +338,7 @@ let generator = gen();
 
 let question = generator.next().value; // <-- yield retournes une valeur
 
-generator.next(4); // --> passe le résultat dans le générateur  
+generator.next(4); // --> passe le résultat dans le générateur 
 ```
 
 ![](genYield2.svg)

@@ -33,7 +33,7 @@ La valeur de `this` dans l'appel `User.staticMethod()` est le constructeur de la
 
 Généralement, les méthodes statiques sont utilisées pour implémenter des fonctions appartenant à la classe, mais pas à un objet particulier de celle-ci.
 
-Par exemple, nous avons des objets `Article` et avons besoin d'une fonction pour les comparer. 
+Par exemple, nous avons des objets `Article` et avons besoin d'une fonction pour les comparer.
 
 Une solution naturelle serait d’ajouter la méthode `Article.compare`, comme ceci :
 
@@ -67,7 +67,7 @@ alert( articles[0].title ); // CSS
 
 Ici, `Article.compare` est "au dessus" des articles, comme un moyen de les comparer. Ce n'est pas une méthode d'article, mais plutôt de toute la classe.
 
-Un autre exemple serait une méthode dite "d'usine". 
+Un autre exemple serait une méthode dite "d'usine".
 
 Disons que nous avons besoin de plusieurs façons de créer un article :
 

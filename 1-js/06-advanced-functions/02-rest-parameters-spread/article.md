@@ -171,7 +171,6 @@ alert( Math.max(...arr1, ...arr2) ); // 8
 
 On peut même combiner la sytaxe spread avec des valeurs normales :
 
-
 ```js run
 let arr1 = [1, -2, 3, 4];
 let arr2 = [8, 3, -8, 1];
@@ -273,7 +272,6 @@ alert(JSON.stringify(objCopy)); // {"a":1,"b":2,"c":3}
 ```
 
 Cette façon de copier un objet est beaucoup plus courte que `let objCopy = Object.assign({}, obj)` ou pour un tableau `let arrCopy = Object.assign([], arr);` nous préférons donc l'utiliser chaque fois que nous le pouvons.
-
 
 ## Résumé
 

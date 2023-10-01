@@ -115,7 +115,6 @@ For instance:
 There's usually no real need to prevent the bubbling. A task that seemingly requires that may be solved by other means. One of them is to use custom events, we'll cover them later. Also we can write our data into the `event` object in one handler and read it in another one, so we can pass to handlers on parents information about the processing below.
 ```
 
-
 ## Capturing
 
 There's another phase of event processing called "capturing". It is rarely used in real code, but sometimes can be useful.
@@ -149,7 +148,6 @@ There are two possible values of the `capture` option:
 
 - If it's `false` (default), then the handler is set on the bubbling phase.
 - If it's `true`, then the handler is set on the capturing phase.
-
 
 Note that while formally there are 3 phases, the 2nd phase ("target phase": the event reached the element) is not handled separately: handlers on both capturing and bubbling phases trigger at that phase.
 
@@ -206,7 +204,6 @@ The `event.stopPropagation()` method and its sibling `event.stopImmediatePropaga
 
 In other words, normally the event goes first down ("capturing") and then up ("bubbling"). But if `event.stopPropagation()` is called during the capturing phase, then the event travel stops, no bubbling will occur.
 ```
-
 
 ## Summary
 

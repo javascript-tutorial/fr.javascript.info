@@ -1,13 +1,10 @@
-# Le Clavier: les évènements keydown et keyup 
+# Le Clavier: les évènements keydown et keyup
 
 Avant que nous en arrivions au clavier, veuillez noter que sur des appareils modernes il y a d'autres manières de “récupérer quelque chose". Par exemple, les gens utilisent la reconnaissance vocale (en particulier sur les appareils mobiles) oubien le copier/coller avec la souris.
 
-
 Donc si nous voulons contrôler une entrée dans un champ `<input>`, alors les évènements du clavier ne sont pas assez suffisants. Il y a un autre évènement nommé `input` pour gérer les changements d'un champ `<input>`, par n'importe quelle moyen. Et il peut être un meilleur choix pour une telle tâche. Nous allons traiter cela plus tard dans le chapitre <info:events-change-input>.
 
-
 Les évènements du clavier doivent être utilisés  lorsqu'on veut gérer les actions sur le clavier (Le clavier virtuel compte aussi). Par exemple, pour réagir sur les touches de directions `key:Up` et `key:Down` oubien les touches de raccourcis (y compris les combinaisons de touches).
-
 
 ## Teststand [#keyboard-test-stand]
 
@@ -23,7 +20,6 @@ Essayez les différentes combinaisons de touches dans la zone de texte.
 [codetabs src="keyboard-dump" height=480]
 ```
 
-
 ## Keydown et keyup
 
 Les évènements  `keydown` surviennent lorsqu'une touche est appuyée, et ensuite intervient `keyup` -- lorsqu'elle est relâchée.
@@ -32,17 +28,14 @@ Les évènements  `keydown` surviennent lorsqu'une touche est appuyée, et ensui
 
 La propriété `key` de l’objet évènement permet d'obtenir un caractère, tandis que la propriété `code` de l'objet évènement objet permet d'obtenir  le "code de la touche physique".
 
-
 Par exemple, la même touche `key:Z`  peut être appuyée avec ou sans `key:Shift`. Cela nous donne deux caractères différents : minuscule `z` et majuscule `Z`.
-
 
 La propriété `event.key` est exactement le caractère, et il sera diffèrent. Cependant `event.code` est la même:
 
-| Touche          | `event.key` | `event.code` |
-|--------------|-------------|--------------|
-| `key:Z`      |`z` (minuscule)         |`KeyZ`        |
-| `key:Shift+Z`|`Z` (majuscule)          |`KeyZ`        |
-
+| Touche        | `event.key`     | `event.code` |
+| ------------- | --------------- | ------------ |
+| `key:Z`       | `z` (minuscule) | `KeyZ`       |
+| `key:Shift+Z` | `Z` (majuscule) | `KeyZ`       |
 
 Si un utilisateur travaille avec des langues différentes, alors le fait de changer vers une autre langue aura pour effet de créer un caractère totalement diffèrent de `"Z"`.  Cela va devenir la valeur de `event.key`, tandis que `event.code` est toujours la même que: `"KeyZ"`.
 
@@ -56,7 +49,6 @@ Par exemple:
 
 Il existe plusieurs formats de claviers usuels, différents de par la présentation, et la spécification donne des codes pour les touches pour chacun d'entre eux.
 
-
 voir [la section alphanumérique de la specification](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section) pour plus de codes, ou essayez juste le [teststand](#keyboard-test-stand) au-dessus.
 
 ```
@@ -67,26 +59,21 @@ Semble être évident, mais beaucoup de gens font toujours des fautes.
 S'il vous plait éviter les fautes de frappes: c'est `KeyZ`, pas `keyZ`. Le control tel que `event.code=="keyZ"` ne vas pas fonctionner: la première lettre de `"Key"` doit être une majuscule.
 ```
 
-
 Et si une touche ne donne aucun caractère ? Par exemple, `key:Shift` ou `key:F1` ou autres.  Pour ces touches, `event.key` est approximativement la même chose que `event.code` :
 
-| Key          | `event.key` | `event.code` |
-|--------------|-------------|--------------|
-| `key:F1`      |`F1`          |`F1`        |
-| `key:Backspace`      |`Backspace`          |`Backspace`        |
-| `key:Shift`|`Shift`          |`ShiftRight` or `ShiftLeft`        |
+| Key             | `event.key` | `event.code`                |
+| --------------- | ----------- | --------------------------- |
+| `key:F1`        | `F1`        | `F1`                        |
+| `key:Backspace` | `Backspace` | `Backspace`                 |
+| `key:Shift`     | `Shift`     | `ShiftRight` or `ShiftLeft` |
 
 Veuillez noter que `event.code` spécifie exactement quelle touche est appuyée. Par exemple, la plupart des claviers ont deux touches de `key:Shift`: à gauche et à droite. La propriété `event.code` nous dit exactement laquelle fut appuyée, et `event.key` est responsable de la " signification " de la touche: comment il s'agit d'un ("Shift").
 
-
 Disons, nous voulons gérer un raccourci : `key:Ctrl+Z` (ou `key:Cmd+Z` pour Mac). La plupart des éditeurs accrochent l'action du "Defaire" sur cette touche. Nous pouvons mettre un écouteur lorsqu’on déclenche l'évènement `keydown` et chercher à savoir quelle touche est appuyée.
-
 
 Il existe un dilemme ici: Dans cet écouteur d’évènement, devons-nous contrôler la valeur de `event.key` oubien `event.code`?
 
-
 D'une part, la valeur de `event.key` est un caractère, elle change en fonction de la langue. Si le visiteur a plusieurs langues dans le système d'exploitation et bascule entre elles, la même clé donne des caractères différents. Il est donc logique de vérifier `event.code`, c'est toujours pareil.
-
 
 Ainsi:
 
@@ -98,18 +85,15 @@ document.addEventListener('keydown', function(event) {
 });
 ```
 
-
 D'autre part, il existe un problème avec `event.code`. Pour des dispositions de clavier différentes, la même touche peut avoir des caractères différents.
 
 Par exemple, voici la disposition du clavier Américain ("QWERTY") et Allemand ("QWERTZ") dessous (de Wikipedia) :
-
 
 ![](us-layout.svg)
 
 ![](german-layout.svg)
 
 Pour la même touche, le clavier Américain a un "Z", tandis que celui Allemand a un "Y" (les lettres sont échanges).
-
 
 Donc, `event.code` sera égal à `KeyZ` pour les gens utilisant le clavier Allemand lorsqu'ils appuient sur `key:Y`.
 
@@ -127,13 +111,11 @@ Voulons-nous gérer des clés dépendantes de la disposition ? Alors `event.key`
 
 Ou voulons-nous un raccourci clavier même après un changement de langue ? Alors, `event.code` peut être une meilleure option.
 
-
 ## Auto-repeat
 
 Si une touche est appuyée assez longtemps, elle commence la répétition avec la propriété "auto-repeat": l'évènement `keydown` se déclenche de manière répétitive, et ensuite lorsqu'elle est relâchée nous obtenons finalement l'évènement `keyup`. Donc c'est normal d'avoir plusieurs `keydown`  et un unique évènement `keyup`.
 
 Pour les évènements déclenchés par auto-repeat, l'évènement objet a une propriété `event.repeat` dont la valeur est assignée à `true`.
-
 
 ## Actions par défaut
 
@@ -189,7 +171,6 @@ L'approche alternative serait de suivre l'événement `oninput` -- il se déclen
 Dans le passé, il y'avait un évènement `keypress`, et aussi les propriétés `keyCode`, `charCode`, `which` de l'objet évènement.
 
 Il y avait tellement d'incompatibilités au niveau des navigateurs en travaillant avec eux que les développeurs de la spécification n'avaient autre moyen que de les déprécier tous et d’en créer de  nouveaux et plus modernes (tels que ceux décrits en haut dans ce chapitre). L'ancien code marche encore, étant donné que les navigateurs continuent de les supporter, mais nous n'avons nullement besoin de les utiliser maintenant.
-
 
 ## Claviers mobiles
 

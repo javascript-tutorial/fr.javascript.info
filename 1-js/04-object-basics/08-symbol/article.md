@@ -119,7 +119,6 @@ Il n'y aura pas de conflit entre nos identificateurs et les leurs, car les symbo
 
 Notez que si nous utilisions une chaîne de caractère `"id"` au lieu d'un symbole dans le même but, il y *aurait* un conflit :
 
-
 ```js
 let user = { name: "John" };
 

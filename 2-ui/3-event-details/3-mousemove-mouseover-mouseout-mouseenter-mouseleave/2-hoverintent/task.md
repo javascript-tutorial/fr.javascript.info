@@ -10,7 +10,7 @@ En d'autres termes, si l'usager déplace la souris sur l'élément et s'arrête 
 
 Techniquement, nous pouvons mesurer la vitesse de la souris sur un élément, et si elle est lente alors nous pouvons assumer qu'elle  arrive "sur l'élément" et monter l'info-bulle, si elle est rapide -- alors on l'ignore.
 
-Créer un objet universel `new HoverIntent(options)` pour cela. 
+Créer un objet universel `new HoverIntent(options)` pour cela.
 
 Ses `options` :
 

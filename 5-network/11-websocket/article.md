@@ -46,7 +46,7 @@ socket.onmessage = function(event) {
 };
 
 socket.onclose = function(event) {
-  if (event.wasClean) {  
+  if (event.wasClean) { 
     alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
   } else {
     // par exemple : processus serveur arrêté ou réseau en panne
@@ -208,7 +208,6 @@ setInterval(() => {
 }, 100);
 ```
 
-
 ## Connexion fermée
 
 Normalement, lorsqu'une partie souhaite fermer la connexion (le navigateur et le serveur ont les mêmes droits), ils envoient un "connection close frame" avec un code numérique et une raison textuelle.
@@ -260,7 +259,6 @@ socket.onclose = event => {
 };
 ```
 
-
 ## État de connexion
 
 Pour obtenir l'état de la connexion, il existe en outre la propriété `socket.readyState` avec des valeurs :
@@ -269,7 +267,6 @@ Pour obtenir l'état de la connexion, il existe en outre la propriété `socket.
 - **`1`** -- "OPEN": communicante,
 - **`2`** -- "CLOSING": la connexion se ferme,
 - **`3`** -- "CLOSED": la connexion est fermée.
-
 
 ## Exemple de tchat
 
@@ -353,7 +350,6 @@ function onSocketConnect(ws) {
   });
 }
 ```
-
 
 Voici l'exemple fonctionnel :
 

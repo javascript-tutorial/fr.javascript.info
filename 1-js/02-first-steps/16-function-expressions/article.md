@@ -90,10 +90,8 @@ let func = sayHi;
 
 Tout fonctionnerait de la même manière.
 
-
 ````smart header="Pourquoi y a-t-il un point-virgule à la fin ?"
 Il peut y avoir une question, pourquoi l'expression de fonction a un point-virgule `;` à la fin, et la déclaration de fonction non :
-
 
 ```js
 function sayHi() {
@@ -247,9 +245,9 @@ let sayHi = function(name) {  // (*) Plus de magie
 ```
 
 Les expressions de fonction sont créées lorsque l'exécution les atteint. Cela ne se produirait que dans la ligne `(*)`. Trop tard.
- 
+
 Une autre particularité des déclarations de fonction est leur portée de bloc.
- 
+
 **En mode strict, quand une déclaration de fonction se trouve dans un bloc de code, elle est visible partout dans ce bloc. Mais pas en dehors.**
 
 Par exemple, imaginons que nous ayons besoin de déclarer une fonction `welcome()` en fonction de la variable d’`age` obtenue lors de l’exécution. Et ensuite, nous prévoyons de l'utiliser plus tard.

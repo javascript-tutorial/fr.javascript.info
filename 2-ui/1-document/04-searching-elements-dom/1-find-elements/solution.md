@@ -1,5 +1,5 @@
-Il existe plusieurs façons de faire : 
-En voici quelques unes : 
+Il existe plusieurs façons de faire :
+En voici quelques unes :
 
 ```js
 // 1. Le tableau avec `id="age-table"`.

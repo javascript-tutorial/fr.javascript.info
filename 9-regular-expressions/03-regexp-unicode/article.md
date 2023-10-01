@@ -6,13 +6,13 @@ Cette plage n'est pas assez grande pour encoder tous les caractères possibles, 
 
 Voici les valeurs unicode de certains caractères :
 
-| Caractère | Unicode | Nombre d'octets en unicode |
-|-----------|---------|----------|
-| a | `0x0061` | 2 |
-| ≈ | `0x2248` | 2 |
-| 𝒳 | `0x1d4b3` | 4 |
-| 𝒴 | `0x1d4b4` | 4 |
-| 😄 | `0x1f604` | 4 |
+| Caractère | Unicode   | Nombre d'octets en unicode |
+| --------- | --------- | -------------------------- |
+| a         | `0x0061`  | 2                          |
+| ≈         | `0x2248`  | 2                          |
+| 𝒳         | `0x1d4b3` | 4                          |
+| 𝒴         | `0x1d4b4` | 4                          |
+| 😄         | `0x1f604` | 4                          |
 
 Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les codes pour `𝒳`, `𝒴` et `😄` sont plus longs, ils ont 4 octets.
 
@@ -89,7 +89,6 @@ Voici les principales catégories de caractères et leurs sous-catégories :
   - non affecté `Cn`,
   - usage privé `Co`,
   - substitut `Cs`.
-
 
 Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
 

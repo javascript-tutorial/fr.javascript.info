@@ -40,7 +40,6 @@ function accept(req, res) {
   fileServer.serve(req, res);
 }
 
-
 if (!module.parent) {
   http.createServer(accept).listen(8080);
 } else {

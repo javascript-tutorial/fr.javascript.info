@@ -55,7 +55,6 @@ Lorsque `new User("John")` est appelé :
 
 ...ensuite nous pouvons appeler les méthodes de l'objet, tel que `user.sayHi()`.
 
-
 ```warn header="Pas de virgule entre les méthodes de la classe"
 Un piège fréquent des développeurs novices est de mettre une virgule entre les méthodes de la classe,  entrainant ainsi une erreur syntaxique.
 
@@ -117,14 +116,14 @@ alert(User.prototype.sayHi); // le code de la méthode sayHi
 alert(Object.getOwnPropertyNames(User.prototype)); // constructeur, sayHi
 ```
 
-## Pas simplement un sucre syntaxique 
+## Pas simplement un sucre syntaxique
 
 Parfois certaines personnes disent que la notion de `class` est un "sucre syntaxique" (une syntaxe qui est destinée à rendre la lecture plus facile, mais elle n'introduit  rien de nouveau), parce qu'en réalité nous pouvons  déclarer la même chose sans utiliser le mot clé `classe` :
 
 ```js run
 // Réécriture de class User en fonctions pures
 
-// 1. Créer la fonction constructeur 
+// 1. Créer la fonction constructeur
 function User(name) {
   this.name = name;
 }
@@ -206,7 +205,7 @@ let User = class *!*MyClass*/!* {
   }
 };
 
-new User().sayHi(); // ça fonctionne, montre la définition de MyClass 
+new User().sayHi(); // ça fonctionne, montre la définition de MyClass
 
 alert(MyClass); // erreur, le nom MyClass n'est pas visible en dehors de la classe
 ```
@@ -215,7 +214,7 @@ Nous pouvons même créer les classes dynamiquement "a la demande", comme ainsi 
 
 ```js run
 function makeClass(phrase) {
-  // déclare une classe et la retourne 
+  // déclare une classe et la retourne
   return class {
     sayHi() {
       alert(phrase);
@@ -228,7 +227,6 @@ let User = makeClass("Hello");
 
 new User().sayHi(); // Hello
 ```
-
 
 ## Accesseurs/Mutateurs
 
@@ -344,7 +342,6 @@ class User {
 let user = new User();
 alert(user.name); // John
 ```
-
 
 ### Création de méthodes liées avec des champs de classe
 

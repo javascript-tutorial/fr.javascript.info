@@ -101,7 +101,6 @@ document.addEventListener('mousedown', function(event) {
       newY = Math.max(newY, 0); // newY ne doit pas etre moins de 0
     }
 
-
     // limite le nouveau X  (new X) dans les limites de la fenetre
     // il n'y a pas de defilement donc c'est simple
     if (newX < 0) newX = 0;

@@ -4,7 +4,6 @@ libs:
 
 ---
 
-
 # Parcourir le DOM
 
 Le DOM nous permet de faire n'importe quoi avec les éléments et leur contenu, mais nous devons d'abord atteindre l'objet DOM correspondant.

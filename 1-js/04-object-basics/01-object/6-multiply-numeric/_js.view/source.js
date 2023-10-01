@@ -4,9 +4,8 @@ let menu = {
   title: "My menu"
 };
 
-
 function multiplyNumeric(obj) {
-  
+ 
   /* Votre code */
 
 }

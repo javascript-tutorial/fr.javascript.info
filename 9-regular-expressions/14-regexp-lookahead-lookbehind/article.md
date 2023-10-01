@@ -94,7 +94,7 @@ Généralement, le contenu d'une parenthese de lookaround ne fait partie des res
 
 Par exmple dans le motif `pattern:\d+(?=€)`, le signe `pattern:€` n'est pas capture comme une partie de la corredpondance. C'est naturel: nous recherchons un nombre `pattern:\d+`, tandis que `pattern:(?=€)` iest juste un test qui doit etre suivi de `subject:€`.
 
-Mais dans certains cas, nous voulons capturer l'expression du lookaround aussi, comme une partie de la correspondance.C'est possible.Il suffit juste de le l'entourer d'une parenthese supplementaire. 
+Mais dans certains cas, nous voulons capturer l'expression du lookaround aussi, comme une partie de la correspondance.C'est possible.Il suffit juste de le l'entourer d'une parenthese supplementaire.
 
 Dans l'exemple suivant, le signe de la monnaie est capture, en meme temps aue la quqntite.
 
@@ -118,7 +118,7 @@ alert( str.match(regexp) ); // 30, $
 
 Lookahead et lookbehind (ensemble désignés sous le nom de looparound) sont utiles quand nous voulons identifier quelquechose selon le contexte avant/après lui.
 
-Pour les expressions regulières simple, nous pouvons une chose similaire manuellement: considerer tous les elemets, dans tous les contextes et alors filtrer par contexte en boucle 
+Pour les expressions regulières simple, nous pouvons une chose similaire manuellement: considerer tous les elemets, dans tous les contextes et alors filtrer par contexte en boucle
 
 Vous vous souvenez que `str.match` (sans le drapeau `pattern:g`) et `str.matchAll` retournent (toujours) les correspondances comme des tableaux avec une propriete `index`, et donc nous connaissons où exactement il est et nous pouvons verifier le contexte
 
@@ -126,9 +126,9 @@ Mais generalement lookaround est plus adapté.
 
 Types de lookaround:
 
-| motif           | type             | correspondances |
-|--------------------|------------------|---------|
-| `X(?=Y)`   | Lookahead positif | `pattern:X` si il est suivi de `pattern:Y` |
-| `X(?!Y)`   | Lookahead négatif | `pattern:X` si il n'est pas suivi de`pattern:Y` |
-| `(?<=Y)X` |  Lookbehind positif| `pattern:X` s'il suit `pattern:Y` |
-| `(?<!Y)X` | Lookbehind négatif| `pattern:X` s'il ne suit pas `pattern:Y` |
+| motif     | type               | correspondances                                 |
+| --------- | ------------------ | ----------------------------------------------- |
+| `X(?=Y)`  | Lookahead positif  | `pattern:X` si il est suivi de `pattern:Y`      |
+| `X(?!Y)`  | Lookahead négatif  | `pattern:X` si il n'est pas suivi de`pattern:Y` |
+| `(?<=Y)X` | Lookbehind positif | `pattern:X` s'il suit `pattern:Y`               |
+| `(?<!Y)X` | Lookbehind négatif | `pattern:X` s'il ne suit pas `pattern:Y`        |

@@ -127,7 +127,6 @@ Il doit être envoyé exactement comme un en-tête HTTP : le navigateur l'ignore
 
 L'en-tête peut avoir 3 valeurs:
 
-
 `DENY`
 : Ne jamais afficher la page à l'intérieur d'un iframe.
 

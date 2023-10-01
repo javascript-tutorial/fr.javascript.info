@@ -9,7 +9,6 @@ function handler(event) {
   return false;
 }
 
-
 function clearText() {
   text.value = "";
   lastMessage = "";

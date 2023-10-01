@@ -60,7 +60,7 @@ Un composant contient :
 - Sa propre classe JavaScript.
 - Sa structure du DOM, gérée seulement par sa classe : le code exterieur n'y aura pas accès (c'est le principe "d'encapsulation").
 - Son style CSS, qui sera appliqué à ce composant seulement.
-- Son API : les évenements, les méthodes de classe, ect, pour lui permettre d'interagir avec les autres composants. 
+- Son API : les évenements, les méthodes de classe, ect, pour lui permettre d'interagir avec les autres composants.
 
 Encore une fois, un composant n'a rien de spécial.
 

@@ -53,7 +53,6 @@ function onUpload(req, res) {
     debug("File reopened: " + filePath);
   }
 
-
   req.on('data', function(data) {
     debug("bytes received", upload.bytesReceived);
     upload.bytesReceived += data.length;
@@ -98,7 +97,6 @@ function onStatus(req, res) {
   }
 }
 
-
 function accept(req, res) {
   if (req.url == '/status') {
     onStatus(req, res);
@@ -109,7 +107,6 @@ function accept(req, res) {
   }
 
 }
-
 
 
 

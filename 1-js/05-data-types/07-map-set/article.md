@@ -297,7 +297,6 @@ set.forEach((value, valueAgain, set) => {
 
 A noter que la fonction de callback utilisée par `forEach` prend 3 arguments en paramètres : une `value`, puis *la même valeur* `valueAgain`, et enfin le set lui-même.
 
-
 C'est pour la compatibilité avec `Map` où le callback `forEach` passé possède trois arguments. Ça a l'air un peu étrange, c'est sûr. Mais cela peut aider à remplacer facilement `Map` par `Set` dans certains cas, et vice versa.
 
 Les méthodes pour parcourir les éléments d'une `Map` peuvent être utilisées :

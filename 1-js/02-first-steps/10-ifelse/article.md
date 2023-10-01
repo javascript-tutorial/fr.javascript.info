@@ -95,7 +95,7 @@ if (year < 2015) { // Si l'année est STRICTEMENT inférieure à 2015
 } else if (year > 2015) { // Si l'année est STRICTEMENT supérieur à 2015
   alert('Too late');
 } else { //Sinon (si l'année est STRICTEMENT égale à 2015)
-  alert('Exactly!'); 
+  alert('Exactly!');
 }
 ```
 

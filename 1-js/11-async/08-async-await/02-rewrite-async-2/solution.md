@@ -37,9 +37,8 @@ async function demoGithubUser() {
         // erreur inconnue, rejeter
         throw err;
       }
-    }      
+    }     
   }
-
 
   alert(`Full name: ${user.name}.`);
   return user;

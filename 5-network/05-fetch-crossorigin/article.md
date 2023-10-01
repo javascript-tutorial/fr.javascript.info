@@ -1,4 +1,4 @@
-# Fetch: Requêtes Cross-Origin 
+# Fetch: Requêtes Cross-Origin
 
 Si nous envoyons une requête `fetch` à un autre site Web, elle échouera probablement.
 
@@ -194,7 +194,7 @@ Access-Control-Expose-Headers: Content-Encoding,API-Key
 ```
 Avec ce genre d'en-tête `Access-Control-Expose-Headers`, le script est autorisé à lire les en-têtes `Content-Encoding` et `API-Key` de la réponse.
 
-## Requêtes "Non-sécurisées" 
+## Requêtes "Non-sécurisées"
 
 Nous pouvons utiliser n'importe quelle méthode HTTP : pas seulement `GET/POST`, mais aussi `PATCH`, `DELETE` et d'autres.
 
@@ -203,7 +203,6 @@ Il y a quelque temps, personne ne pouvait même imaginer qu'une page Web puisse 
 Ainsi, pour éviter les malentendus, toute demande "non sûre" - qui ne pouvait pas être faite par le passé, le navigateur ne fait pas de telles demandes tout de suite. Avant d'envoyer une demande préliminaire, dite de "contrôle en amont", demandant l'autorisation.
 
 Une demande de contrôle en amont utilise la méthode `OPTIONS`, pas de corps et deux en-têtes :
-
 
 - L’en-tête `Access-Control-Request-Method` contient la méthode de la requête non sécurisée.
 - L’en-tête `Access-Control-Request-Headers` fournit une liste séparée par des virgules de ses en-têtes HTTP non sécurisés.
@@ -263,7 +262,7 @@ Le serveur doit répondre avec le statut 200 et les en-têtes :
 
 Cela permet une communication future, sinon une erreur est déclenchée.
 
-Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en les ajoutant à la liste. 
+Si le serveur attend d'autres méthodes et en-têtes à l'avenir, il est logique de les autoriser à l'avance en les ajoutant à la liste.
 
 Par exemple, cette réponse autorise également `PUT`, `DELETE` et des en-têtes supplémentaires :
 

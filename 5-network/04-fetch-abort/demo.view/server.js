@@ -13,7 +13,6 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 
-
 if (!module.parent) {
   http.createServer(app.callback()).listen(8080);
 } else {

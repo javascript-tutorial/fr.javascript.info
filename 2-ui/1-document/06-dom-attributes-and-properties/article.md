@@ -235,7 +235,6 @@ Voici un exemple :
 
 Si nous avons besoin de la valeur de `href` ou de tout autre attribut exactement comme écrit dans le HTML, nous pouvons utiliser `getAttribute`.
 
-
 ## Attributs non standard, dataset
 
 Lors de l'écriture HTML, nous utilisons beaucoup d'attributs standard. Mais qu'en est-il des modèles non standard et personnalisés ? Voyons d'abord s'ils sont utiles ou non? Pourquoi ?
@@ -368,7 +367,7 @@ Veuillez noter que nous pouvons non seulement lire, mais également modifier les
 Une petite comparaison :
 
 |      | Propriétés                                                                                    | Attributs                            |
-|------|-----------------------------------------------------------------------------------------------|--------------------------------------|
+| ---- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
 | Type | N'importe quelle valeur, les propriétés standards ont des types décrits dans la spécification | Une chaîne de caractères             |
 | Nom  | Le nom est sensible à la casse                                                                | Le nom n'est pas sensible à la casse |
 

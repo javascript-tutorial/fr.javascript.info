@@ -2,7 +2,6 @@
 
 Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande. Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau. Les générateurs asynchrones rendent cela encore plus pratique.
 
-
 ## Rappeler les itérables
 
 Rappelons le sujet des itérables.
@@ -128,11 +127,11 @@ Nous pouvons observer que la structure est similaire aux itérateurs réguliers 
 
 Voici un petit tableau avec les différences :
 
-|       | itérateurs | itérateurs asynchrones |
-|-------|------------|------------------------|
+|                                             | itérateurs        | itérateurs asynchrones |
+| ------------------------------------------- | ----------------- | ---------------------- |
 | Méthode de l'objet qui fournit un itérateur | `Symbol.iterator` | `Symbol.asyncIterator` |
-| valeur de retour de la fonction `next()`    | peu importe       | `Promise`  |
-| pour boucler, utilisez                      | `for..of`         | `for await..of` |
+| valeur de retour de la fonction `next()`    | peu importe       | `Promise`              |
+| pour boucler, utilisez                      | `for..of`         | `for await..of`        |
 
 ````warn header="la 'spread syntax' `...` ne fonctionne pas de manière asynchrone"
 Les fonctionnalités qui nécessitent des itérateurs réguliers et synchrones ne fonctionnent pas avec les asynchrones.
@@ -153,9 +152,7 @@ Rappelons maintenant les générateurs, car ils permettent de raccourcir le code
 
 Par soucis de simplicité, nous omettons certaines choses importantes, ce sont des "fonctions qui génèrent (produisent) des valeurs". Elles sont expliquées en détails dans le chapitre [](info:generators).
 
-
 Les générateurs sont étiquetés avec `function*` (notez l'étoile) et utilisent `yield` pour générer une valeur, puis nous pouvons utiliser `for..of` pour boucler par dessus.
-
 
 Cet exemple génère une séquence de valeurs de `start` à `end` :
 
@@ -308,7 +305,6 @@ En pratique cependant, ce serait une chose étrange à faire.
 
 Jusqu'à présent, nous avons vu des exemples de base pour mieux comprendre. Passons maintenant en revue un cas d'utilisation réel.
 
-
 Ce modèle est très courant. Il ne s'agit pas d'utilisateurs, mais de n'importe quoi.
 
 Par exemple, GitHub nous permet de récupérer les commits de la même manière paginée :
@@ -385,10 +381,10 @@ Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 
 })();
 
-// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above 
+// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above
 ```
 
-C'est exactement ce que nous voulions. 
+C'est exactement ce que nous voulions.
 
 La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne chacun des commits.
 
@@ -400,17 +396,17 @@ Lorsque nous nous attendons à ce que les données arrivent de manière asynchro
 
 Différences de syntaxe entre les itérateurs asynchrones et synchrones :
 
-|       | itérateurs | itérateurs asynchrones |
-|-------|------------|------------------------|
-| Méthode de l'objet qui fournit un itérateur | `Symbol.iterator` | `Symbol.asyncIterator` |
-| valeur de retour de la fonction `next()`   | `{value:…, done: true/false}`         | Promesse qui se resout en `{value:…, done: true/false}`  |
+|                                             | itérateurs                    | itérateurs asynchrones                                  |
+| ------------------------------------------- | ----------------------------- | ------------------------------------------------------- |
+| Méthode de l'objet qui fournit un itérateur | `Symbol.iterator`             | `Symbol.asyncIterator`                                  |
+| valeur de retour de la fonction `next()`    | `{value:…, done: true/false}` | Promesse qui se resout en `{value:…, done: true/false}` |
 
 Différences de syntaxe entre les générateurs asynchrones et synchrones :
 
-|       | Générateurs | Générateurs asynchrones |
-|-------|-------------|-------------------------|
-| Déclaration | `function*` | `async function*` |
-| valeur de retour de la fonction `next()`      | `{value:…, done: true/false}`         | Promesse qui se résout en `{value:…, done: true/false}`  |
+|                                          | Générateurs                   | Générateurs asynchrones                                 |
+| ---------------------------------------- | ----------------------------- | ------------------------------------------------------- |
+| Déclaration                              | `function*`                   | `async function*`                                       |
+| valeur de retour de la fonction `next()` | `{value:…, done: true/false}` | Promesse qui se résout en `{value:…, done: true/false}` |
 
 Dans le développement Web, nous rencontrons souvent des flux de données, circulant morceau par morceau. Par exemple, dans le téléchargement ou l'envoi de gros fichiers.
 

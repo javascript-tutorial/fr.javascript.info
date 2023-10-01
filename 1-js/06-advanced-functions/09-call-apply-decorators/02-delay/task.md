@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Décorateur de retardement 
+# Décorateur de retardement
 
 Créez un décorateur `delay(f, ms)` qui retarde chaque appel de `f` de `ms` millisecondes.
 

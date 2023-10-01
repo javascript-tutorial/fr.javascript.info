@@ -6,7 +6,6 @@ Le code doit être exécuté lors du chargement du document afin qu'il ait accè
 
 Ou le mettre en dessous du `<body>` :
 
-
 ```js
 // ...Le contenu de la page est en haut...
 
@@ -15,7 +14,6 @@ function isVisible(elem) {
   let coords = elem.getBoundingClientRect();
 
   let windowHeight = document.documentElement.clientHeight;
-
 
   // Le bord supérieur de l'elem est visible ?
 
@@ -48,7 +46,6 @@ showVisible();
 window.onscroll = showVisible;
 */!*
 ```
-
 
 Pour les images visibles nous pouvons prendre `img.dataset.src` et l'assigner à `img.src` (si cela n’a pas été fait déjà).
 

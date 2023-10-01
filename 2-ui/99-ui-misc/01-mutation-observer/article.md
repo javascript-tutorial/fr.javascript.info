@@ -25,7 +25,7 @@ observer.observe(node, config);
 - `childList` -- les changements dans les enfants directs de `node`,
 - `subtree` -- dans tous les descendants de `node`,
 - `attributes` -- dans les attributs de `node`,
-- `attributeFilter` -- dans un tableau de noms d'attributs, pour n'observer que ceux qui sont sélectionnés, 
+- `attributeFilter` -- dans un tableau de noms d'attributs, pour n'observer que ceux qui sont sélectionnés,
 - `characterData` -- s'il faut observer `node.data` (contenu du texte),
 
 Quelques autres options:
@@ -37,9 +37,9 @@ Ensuite, après tout changement, le `callback` est exécuté : les changements s
 Les objects [MutationRecord](https://dom.spec.whatwg.org/#mutationrecord) ont les propriétés suivantes:
 
 - `type` -- type de mutation, valeurs possibles:
-    - `"attributes"`: attribut modifié, 
-    - `"characterData"`: données modifiées, utilisées pour les nœuds de texte, 
-    - `"childList"`: éléments enfants ajoutés/supprimés, 
+    - `"attributes"`: attribut modifié,
+    - `"characterData"`: données modifiées, utilisées pour les nœuds de texte,
+    - `"childList"`: éléments enfants ajoutés/supprimés,
 - `target` -- où le changement a eu lieu: un élément pour les `attributes`, ou un nœud de texte pour les `characterData`, ou un élément pour une mutation `childList`,
 - `addedNodes/removedNodes`  -- les nœuds qui ont été ajoutés/supprimés,
 - `previousSibling/nextSibling` -- le frère ou la sœur précédent(e) et suivant(e) aux nœuds ajoutés/supprimés,
@@ -251,7 +251,6 @@ observer.disconnect();
 ...
 ```
 
-
 ```smart header="Les enregistrements retournés par ʻobserver.takeRecords() `sont supprimés de la file d'attente de traitement"
 Le rappel ne sera pas appelé pour les enregistrements, renvoyé par `observer.takeRecords()`.
 ```
@@ -262,7 +261,7 @@ Les observateurs utilisent des références faibles aux nœuds en interne. Autre
 Le simple fait qu'un nœud DOM soit observé n'empêche pas le ramassage des ordures.
 ```
 
-## Résumé  
+## Résumé 
 
 `MutationObserver` peut réagir aux changements dans le DOM -- attributs, contenu de texte et ajout / suppression d'éléments.
 

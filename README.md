@@ -54,7 +54,6 @@ Si vous voyez que la version anglaise peut être améliorée, merci d'envoyer un
 - Traduire uniquement les commentaires.
 - Ne traduisez rien d'autre -- strings, variables.
 
-
 Exemple:
 
 ```js
@@ -100,7 +99,6 @@ Exemple:
 Pour les liens vers MDN, qui ne sont que partiellement traduits, utilisez également la version spécifique à la langue.
 
 Si un article lié n'a pas de version traduite, laissez le lien "tel quel".
-
 
 ## Exécuter une version locale
 

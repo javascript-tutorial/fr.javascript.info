@@ -150,7 +150,7 @@ Maintenant, quand nous commençons à `count()` et voyons que nous aurons besoin
 
 Si vous l'exécutez, il est facile de remarquer que cela prend beaucoup moins de temps.
 
-Pourquoi ?  
+Pourquoi ? 
 
 C'est simple: comme vous vous en souvenez, il y a le retard minimal dans le navigateur de 4 ms pour de nombreux appels de `setTimeout` imbriqués. Même si nous définissons un délai à `0`, c'est 4ms (ou un peu plus). Donc, plus nous les planifions tôt - plus ils s'exécuteront rapidement.
 
@@ -165,7 +165,6 @@ Comme mentionné précédemment, les modifications apportées au DOM ne sont pei
 D'une part, c'est génial, car notre fonction peut créer de nombreux éléments, les ajouter un par un au document et changer leurs styles - le visiteur ne verra aucun état "intermédiaire" et inachevé. Une chose importante, non?
 
 Voici la démo, les modifications apportées à `i` n'apparaîtront pas avant la fin de la fonction, nous ne verrons donc que la dernière valeur :
-
 
 ```html run
 <div id="progress"></div>
@@ -214,7 +213,6 @@ Cela semble plus joli :
 ```
 
 Maintenant, la `<div>` montre des valeurs croissantes de `i`, une sorte de barre de progression.
-
 
 ## Cas d'utilisation 3: faire quelque chose après l'événement
 

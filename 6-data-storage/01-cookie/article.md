@@ -30,7 +30,6 @@ Assuming you're on a website, it's possible to see the cookies from it, like thi
 alert( document.cookie ); // cookie1=value1; cookie2=value2;...
 ```
 
-
 The value of `document.cookie` consists of `name=value` pairs, delimited by `; `. Each one is a separate cookie.
 
 To find a particular cookie, we can split `document.cookie` by `; `, and then find the right name. We can use either a regular expression or array functions to do that.
@@ -64,7 +63,6 @@ document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
 alert(document.cookie); // ...; my%20name=John%20Smith
 ```
-
 
 ```warn header="Limitations"
 There are few limitations:
@@ -271,7 +269,6 @@ This option forbids any JavaScript access to the cookie. We can't see such a coo
 
 That's used as a precaution measure, to protect from certain attacks when a hacker injects his own JavaScript code into a page and waits for a user to visit that page. That shouldn't be possible at all, hackers should not be able to inject their code into our site, but there may be bugs that let them do it.
 
-
 Normally, if such a thing happens, and a user visits a web-page with hacker's JavaScript code, then that code executes and gains access to `document.cookie` with user cookies containing authentication information. That's bad.
 
 But if a cookie is `httpOnly`, then `document.cookie` doesn't see it, so it is protected.
@@ -355,7 +352,6 @@ Please note: when we update or delete a cookie, we should use exactly the same p
 
 Together: [cookie.js](cookie.js).
 
-
 ## Appendix: Third-party cookies
 
 A cookie is called "third-party" if it's placed by a domain other than the page the user is visiting.
@@ -374,7 +370,6 @@ For instance:
 
     ![](cookie-third-party-3.svg)
 
-
 Third-party cookies are traditionally used for tracking and ads services, due to their nature. They are bound to the originating domain, so `ads.com` can track the same user between different sites, if they all access it.
 
 Naturally, some people don't like being tracked, so browsers allow to disable such cookies.
@@ -382,7 +377,6 @@ Naturally, some people don't like being tracked, so browsers allow to disable su
 Also, some modern browsers employ special policies for such cookies:
 - Safari does not allow third-party cookies at all.
 - Firefox comes with a "black list" of third-party domains where it blocks third-party cookies.
-
 
 ```smart
 If we load a script from a third-party domain, like `<script src="https://google-analytics.com/analytics.js">`, and that script uses `document.cookie` to set a cookie, then such cookie is not third-party.
@@ -412,9 +406,7 @@ Websites generally have two variants of following GDPR. You must have seen them 
 
     To do so legally, a website shows a modal "splash screen" for newcomers, and requires them to agree to the cookies. Then the website can set them and let people see the content. That can be disturbing for new visitors though. No one likes to see such "must-click" modal splash screens instead of the content. But GDPR requires an explicit agreement.
 
-
 GDPR is not only about cookies, it's about other privacy-related issues too, but that's too much beyond our scope.
-
 
 ## Summary
 

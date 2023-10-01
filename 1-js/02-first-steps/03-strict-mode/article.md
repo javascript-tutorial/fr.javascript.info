@@ -21,7 +21,6 @@ Par exemple
 
 Nous apprendrons bientôt les fonctions (un moyen de regrouper les instructions). À l'avenir, notons que `"use strict"` peut être placé au début du corps de la fonction. Faire cela active le mode strict dans cette fonction uniquement. Mais d'habitude, les gens l'utilisent pour tout le script.
 
-
 ````warn header="Assurez-vous que \"use strict\" est tout en haut"
 Assurez-vous que `"use strict"` est en haut du script, sinon le mode strict peut ne pas être activé.
 

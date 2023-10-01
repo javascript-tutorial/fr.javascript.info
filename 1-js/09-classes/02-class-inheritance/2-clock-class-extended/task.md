@@ -6,7 +6,6 @@ importance: 5
 
 Nous avons une classe `Clock`. À partir de maintenant, il affiche l'heure à chaque seconde.
 
-
 [js src="source.view/clock.js"]
 
 Créez une nouvelle classe `ExtendedClock` qui hérite de `Clock` et ajoute le paramètre `precision` - le nombre de `ms` entre "ticks". Devrait être `1000` (1 seconde) par défaut.

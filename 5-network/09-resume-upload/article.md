@@ -68,7 +68,6 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
 
     Le serveur doit vérifier ses enregistrements et s'il y a eu un upload de ce fichier et que la taille actuellement téléchargée est exactement `X-Start-Byte`, alors il y ajoute les données.
 
-
 Voici la démo avec le code client et serveur, écrite sur Node.js.
 
 Cela ne fonctionne que partiellement sur ce site, car Node.js est derrière un autre serveur nommé Nginx, qui met en mémoire tampon les uploads, en les transmettant à Node.js que lorsqu'il est complètement terminé.

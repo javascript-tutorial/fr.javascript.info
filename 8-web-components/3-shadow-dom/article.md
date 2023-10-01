@@ -60,7 +60,7 @@ customElements.define('show-hello', class extends HTMLElement {
     shadow.innerHTML = `<p>
       Hello, ${this.getAttribute('name')}
     </p>`;
-  }  
+  } 
 });
 </script>
 
@@ -80,7 +80,7 @@ Il y a deux limitations :
 L'option `mode` définit le niveau d'encapsulation. Elle doit avoir l'une des deux valeurs suivantes :
 - `"open"` -- la racine fantôme est disponible comme `elem.shadowRoot`.
 
-    N'importe quel code est capable d'accéder à l'arbre fantôme de `elem`.   
+    N'importe quel code est capable d'accéder à l'arbre fantôme de `elem`.  
 - `"closed"` -- `elem.shadowRoot` est toujours `null`.
 
     On ne peut accéder le DOM fantôme que par la référence retournée par `attachShadow` (et probablement cachée dans une classe). Les arbres fantômes natifs des navigateurs, tels que `<input type="range">`, sont fermés. Il n'y a aucun moyen d'y accéder.
@@ -128,7 +128,7 @@ Par exemple :
 */!*
   alert(document.querySelectorAll('p').length); // 0
   alert(elem.shadowRoot.querySelectorAll('p').length); // 1
-</script>  
+</script> 
 ```
 
 1. Le style provenant du document n'affecte pas l'arbre fantôme.
@@ -140,7 +140,6 @@ Par exemple :
 - DOM: <https://dom.spec.whatwg.org/#shadow-trees>
 - Compatibilité: <https://caniuse.com/#feat=shadowdomv1>
 - Le DOM fantôme est mentionné dans de nombreuses autres spécifications, par exemple [DOM Parsing](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) spécifie que la racine fantôme a `innerHTML`.
-
 
 ## Résumé
 

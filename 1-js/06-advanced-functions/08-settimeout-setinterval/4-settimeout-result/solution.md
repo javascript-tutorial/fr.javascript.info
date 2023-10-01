@@ -10,6 +10,6 @@ setTimeout(() => alert(i), 100); // 100000000
 
 // on considère que cette fonction met plus de 100ms à s'exécuter
 for(let j = 0; j < 100000000; j++) {
-  i++; 
+  i++;
 }
 ```

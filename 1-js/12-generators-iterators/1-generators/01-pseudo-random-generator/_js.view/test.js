@@ -8,7 +8,6 @@ describe("pseudoRandom", function() {
     assert.equal(generator.next().value, 1622650073);
   });
 
-
   it("returns same value for the same seed", function() {
     let generator1 = pseudoRandom(123);
     let generator2 = pseudoRandom(123);

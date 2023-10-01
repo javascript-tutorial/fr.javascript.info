@@ -30,7 +30,6 @@
   Click on a field to move the ball there.
   <br>
 
-
   <div id="field">
     <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -54,7 +53,6 @@
 
       // prevent crossing the left field boundary
       if (ballCoords.left < 0) ballCoords.left = 0;
-
 
       // // prevent crossing the right field boundary
       if (ballCoords.left + ball.clientWidth > field.clientWidth) {

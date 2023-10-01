@@ -271,7 +271,6 @@ f().catch(alert); // TypeError: failed to fetch // (*)
 
 Si nous oublions d'ajouter `.catch` à cet endroit, nous obtenons une erreur de promesse non gérée (visible dans la console). Nous pouvons attraper de telles erreurs en utilisant un gestionnaire d'événement global `unhandledrejection` comme décrit dans le chapitre <info:promise-error-handling>.
 
-
 ```smart header="`async/await` et `promise.then/catch`"
 Lorsque nous utilisons `async/await`, nous avons rarement besoin de `.then`, car `await` gère l'attente pour nous. Et nous pouvons utiliser un `try..catch` normal au lieu de `.catch`. C'est généralement (mais pas toujours) plus pratique.
 

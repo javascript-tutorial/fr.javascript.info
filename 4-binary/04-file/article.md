@@ -113,7 +113,6 @@ Nous pouvons l'utiliser pour convertir un blob dans un autre format:
 - `readAsDataURL(blob)` -- en URL des données encoder en base64.
 ```
 
-
 ```smart header="`FileReaderSync` est disponible dans Web Workers"
 Pour les Web Workers, il existe également une variante synchrone de `FileReader`, appelée [FileReaderSync](https://www.w3.org/TR/FileAPI/#FileReaderSync).
 

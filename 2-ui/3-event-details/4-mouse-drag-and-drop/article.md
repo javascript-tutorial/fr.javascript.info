@@ -16,20 +16,19 @@ Ici, nous verrons comment implémenter le glisser-déposer à l'aide d'événeme
 2. Puis sur `mousemove` le déplacer en changeant `left/top` et `position:absolute`.
 3. Sur `mouseup` - effectue toutes les actions liées à un Drag'n'Drop terminé.
 
-
 Ce sont les bases. Plus tard, nous verrons comment utiliser d'autres fonctionnalités, telles que la mise en évidence des éléments sous-jacents actuels pendant que nous les glissons.
 
 Voici la mise en œuvre de faire glisser une balle :
 
 ```js
-ball.onmousedown = function(event) { 
+ball.onmousedown = function(event) {
   // (1) la préparer au déplacement :  réglé en absolute et en haut par z-index
   ball.style.position = 'absolute';
   ball.style.zIndex = 1000;
 
   // déplacez-le de tout parent actuel directement dans body
   // pour le placer par rapport à body
-  document.body.append(ball);  
+  document.body.append(ball); 
 
   // Centrer la balle aux coordonnées (pageX, pageY)
   function moveAt(pageX, pageY) {
@@ -142,8 +141,8 @@ ball.onmousedown = function(event) {
 
   moveAt(event.pageX, event.pageY);
 
-  // Déplace la balle aux cordonnées (pageX, pageY) 
-  // Prenant en compte les changements initiaux 
+  // Déplace la balle aux cordonnées (pageX, pageY)
+  // Prenant en compte les changements initiaux
   function moveAt(pageX, pageY) {
     ball.style.left = pageX - *!*shiftX*/!* + 'px';
     ball.style.top = pageY - *!*shiftY*/!* + 'px';
@@ -290,7 +289,7 @@ Les composantes clés sont:
 
 - A l’exécution de l’évènement `mouseup` nous pouvons finaliser le déposer: changer les données, déplacer les évènements.
 - Nous pouvons mettre en valeur les éléments que nous survolons.
-- Nous pouvons limiter le glissement sur une surface et selon une direction voulue. 
+- Nous pouvons limiter le glissement sur une surface et selon une direction voulue.
 - Nous pouvons utiliser la délégation d’évènements avec  `mousedown/up`.  Un gestionnaire d’évènement sur une grande surface qui contrôle la propriété `event.target` peut gérer  le Glisser-déposer pour des centaines d’éléments.
 - Ainsi de suite.
 

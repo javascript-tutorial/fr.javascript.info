@@ -1,6 +1,6 @@
 
 Lorsque nous devons insérer un morceau de HTML quelque part, `insertAdjacentHTML` est le meilleur choix.
-  
+ 
 La solution :
 
 ```js

@@ -140,7 +140,7 @@ Cet exemple soumet une image à partir de `<canvas>`, ainsi que d'autres champs,
       let formData = new FormData();
       formData.append("firstName", "John");
       formData.append("image", imageBlob, "image.png");
-*/!*    
+*/!*   
 
       let response = await fetch('/article/formdata/post/image-form', {
         method: 'POST',

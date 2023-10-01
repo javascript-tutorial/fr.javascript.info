@@ -1,7 +1,7 @@
 
 # Custom elements
 
-Nous pouvons créer des éléments HTML personnalisés, définis par nos classes, avec leur propres méthodes et propriétés, gestionnaires d'événement, etc. 
+Nous pouvons créer des éléments HTML personnalisés, définis par nos classes, avec leur propres méthodes et propriétés, gestionnaires d'événement, etc.
 
 Une fois qu'un élément personnalisé est définit, nous pouvons l'utiliser au même titre qu'un élément HTML classique.
 
@@ -83,7 +83,6 @@ For example, there already exists `<time>` element in HTML, for date/time. But i
 
 Let's create `<time-formatted>` element that displays the time in a nice, language-aware format:
 
-
 ```html run height=50 autorun="no-epub"
 <script>
 *!*
@@ -124,7 +123,6 @@ customElements.define("time-formatted", TimeFormatted); // (2)
 1. The class has only one method `connectedCallback()` -- the browser calls it when `<time-formatted>` element is added to page (or when HTML parser detects it), and it uses the built-in [Intl.DateTimeFormat](mdn:/JavaScript/Reference/Global_Objects/DateTimeFormat) data formatter, well-supported across the browsers, to show a nicely formatted time.
 2. We need to register our new element by `customElements.define(tag, class)`.
 3. And then we can use it everywhere.
-
 
 ```smart header="Custom elements upgrade"
 If the browser encounters any `<time-formatted>` elements before `customElements.define`, that's not an error. But the element is yet unknown, just like any non-standard tag.
@@ -329,7 +327,7 @@ For example, buttons are instances of `HTMLButtonElement`, let's build upon it.
 2. Provide the third argument to `customElements.define`, that specifies the tag:
     ```js
     customElements.define('hello-button', HelloButton, *!*{extends: 'button'}*/!*);
-    ```    
+    ```   
 
     There may be different tags that share the same DOM-class, that's why specifying `extends` is needed.
 

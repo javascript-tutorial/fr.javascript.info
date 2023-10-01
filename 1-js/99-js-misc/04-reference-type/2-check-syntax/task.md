@@ -6,7 +6,6 @@ importance: 2
 
 Quel est le résultat de ce code ?
 
-
 ```js no-beautify
 let user = {
   name: "John",

@@ -10,7 +10,7 @@ function Counter() {
   this.up = function() {
     return ++count;
   };
-  
+ 
   this.down = function() {
     return --count;
   };

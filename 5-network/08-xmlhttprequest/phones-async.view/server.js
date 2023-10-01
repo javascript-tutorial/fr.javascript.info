@@ -6,7 +6,6 @@ var file = new static.Server('.', {
   cache: 0
 });
 
-
 function accept(req, res) {
 
   if (req.url == '/phones.json') {
@@ -19,7 +18,6 @@ function accept(req, res) {
   }
 
 }
-
 
 // ------ запустить сервер -------
 

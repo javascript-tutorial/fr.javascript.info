@@ -59,7 +59,6 @@ alert(ageElems[0]); // [object HTMLInputElement]
 
 These navigation properties do not depend on the tag structure. All control elements, no matter how deep they are in the form, are available in `form.elements`.
 
-
 ````smart header="Fieldsets as \"subforms\""
 A form may have one or many `<fieldset>` elements inside it. They also have `elements` property that lists form controls inside them.
 
@@ -197,7 +196,7 @@ Here is an example of all three methods:
 
 <script>
   // all three lines do the same thing
-  select.options[2].selected = true; 
+  select.options[2].selected = true;
   select.selectedIndex = 2;
   select.value = 'banana';
   // please note: options start from zero, so index 2 means the 3rd option.
@@ -223,7 +222,7 @@ Here's an example of how to get selected values from a multi-select:
     .filter(option => option.selected)
     .map(option => option.value);
 
-  alert(selected); // blues,rock  
+  alert(selected); // blues,rock 
 </script>
 ```
 
@@ -283,7 +282,7 @@ Form navigation:
 `document.forms`
 : A form is available as `document.forms[name/index]`.
 
-`form.elements`  
+`form.elements` 
 : Form elements are available as `form.elements[name/index]`, or can use just `form[name/index]`. The `elements` property also works for `<fieldset>`.
 
 `element.form`

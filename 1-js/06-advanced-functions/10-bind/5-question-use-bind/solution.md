@@ -40,4 +40,4 @@ askPassword(() => user.loginOk(), () => user.loginFail());
 
 Usually that also works and looks good.
 
-It's a bit less reliable though in more complex situations where `user` variable might change *after* `askPassword` is called, but *before* the visitor answers and calls `() => user.loginOk()`. 
+It's a bit less reliable though in more complex situations where `user` variable might change *after* `askPassword` is called, but *before* the visitor answers and calls `() => user.loginOk()`.

@@ -62,7 +62,6 @@ It's very convenient, as we can setup "default" component styles in its `:host` 
 
 The exception is when a local property is labelled `!important`, for such properties, local styles take precedence.
 
-
 ## :host(selector)
 
 Same as `:host`, but applied only if the shadow host matches the `selector`.
@@ -98,7 +97,6 @@ customElements.define('custom-dialog', class extends HTMLElement {
   }
 });
 </script>
-
 
 <custom-dialog centered>
   Centered!
@@ -293,7 +291,6 @@ customElements.define('user-card', class extends HTMLElement {
   <span slot="birthday">01.01.2001</span>
 </user-card>
 ```
-
 
 
 ## Summary

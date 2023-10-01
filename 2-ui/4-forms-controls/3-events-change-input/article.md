@@ -26,7 +26,6 @@ Pour les autres éléments: `select`, `input type=checkbox/radio` il se déclenc
 </select>
 ```
 
-
 ## Événement: input
 
 L'événement `input` se déclenche à chaque fois qu'une valeur est modifiée par l'utilisateur.
@@ -102,14 +101,14 @@ Même si quelqu'un décide d'enregistrer `event.clipboardData` dans un gestionna
 
 Pour réitérer, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) fonctionne uniquement dans le contexte des gestionnaires d'événements initiés par l'utilisateur.
 
-D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte. Elle demande l'autorisation de l'utilisateur, si nécessaire. 
+D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte. Elle demande l'autorisation de l'utilisateur, si nécessaire.
 
 ## Récapitulatif
 
 Événements de changement de données:
 
-| Événement | Description | Specials |
-|---------|----------|-------------|
-| `change`| Une valeur a été modifiée | Pour les entrées de texte, les déclencheurs sont sur la perte de mise au point. |
-| `input` | Pour les champs textes à chaque modification. | Se déclenche immédiatement contrairement à `change`. |
-| `cut/copy/paste` | Les actions couper/copier/coller. | L'action peut être empêchée. La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers. Tous les navigateurs, à l'exception de Firefox, prennent également en charge `navigator.clipboard`. |
+| Événement        | Description                                   | Specials                                                                                                                                                                                                                 |
+| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `change`         | Une valeur a été modifiée                     | Pour les entrées de texte, les déclencheurs sont sur la perte de mise au point.                                                                                                                                          |
+| `input`          | Pour les champs textes à chaque modification. | Se déclenche immédiatement contrairement à `change`.                                                                                                                                                                     |
+| `cut/copy/paste` | Les actions couper/copier/coller.             | L'action peut être empêchée. La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers. Tous les navigateurs, à l'exception de Firefox, prennent également en charge `navigator.clipboard`. |

@@ -4,7 +4,7 @@ importance: 5
 
 # Le salaire maximal
 
-Il y a un objet `salaries` : 
+Il y a un objet `salaries` :
 
 ```js
 let salaries = {

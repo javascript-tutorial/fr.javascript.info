@@ -143,12 +143,12 @@ Il existe plusieurs fonctions intégrées pour arrondir :
 
 Voici le tableau pour résumer les différences entre eux :
 
-|      | `Math.floor` | `Math.ceil` | `Math.round` | `Math.trunc` |
-|------|--------------|-------------|--------------|--------------|
-| `3.1`|          `3` |         `4` |          `3` |          `3` |
-| `3.6`|          `3` |         `4` |          `4` |          `3` |
-|`-1.1`|         `-2` |        `-1` |         `-1` |         `-1` |
-|`-1.6`|         `-2` |        `-1` |         `-2` |         `-1` |
+|        | `Math.floor` | `Math.ceil` | `Math.round` | `Math.trunc` |
+| ------ | ------------ | ----------- | ------------ | ------------ |
+| `3.1`  | `3`          | `4`         | `3`          | `3`          |
+| `3.6`  | `3`          | `4`         | `4`          | `3`          |
+| `-1.1` | `-2`         | `-1`        | `-1`         | `-1`         |
+| `-1.6` | `-2`         | `-1`        | `-2`         | `-1`         |
 
 Ces fonctions couvrent toutes les manières possibles de traiter la partie décimale d'un nombre. Mais que se passe-t-il si nous voulons arrondir le nombre à un certain chiffre après la virgule ?
 
@@ -252,9 +252,7 @@ let sum = 0.1 + 0.2;
 alert( sum.toFixed(2) ); // "0.30"
 ```
 
-
 Veuillez noter que `toFixed` renvoie toujours une chaîne de caractères. Il s'assure qu'il a 2 chiffres après le point décimal. C'est pratique si nous avons un magasin en ligne et devons montrer `0.30$`. Pour les autres cas, nous pouvons utiliser le plus unaire `+` pour le contraindre en un nombre :
-
 
 ```js run
 let sum = 0.1 + 0.2;

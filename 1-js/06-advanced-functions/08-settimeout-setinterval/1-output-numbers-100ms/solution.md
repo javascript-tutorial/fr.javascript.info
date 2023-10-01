@@ -20,7 +20,6 @@ printNumbers(5, 10);
 
 Utilisation de `setTimeout` imbriqué :
 
-
 ```js run
 function printNumbers(from, to) {
   let current = from;

@@ -33,4 +33,4 @@ alert( sumTo(100) ); // 5050
 
 P.S. Quelle solution est la plus rapide? La plus lente? Pourquoi?
 
-P.P.S. Peut-on utiliser la récursion pour compter `sumTo(100000)`? 
+P.P.S. Peut-on utiliser la récursion pour compter `sumTo(100000)`?

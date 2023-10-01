@@ -51,7 +51,6 @@ Entrez votre email: <input type="email" id="input">
 
 Le HTML moderne nous permet de faire plusieurs validations en utilisant les attributs de champ de saisie: `required`, `pattern`, etc. Et parfois nous n'avons pas besoin de plus. JavaScript peut être utilisé lorsque nous avons besoin de plus de flexibilité. Nous pourrions aussi automatiquement envoyer les données modifiées sur le serveur si elles sont correctes.
 
-
 ## Méthodes focus/blur
 
 Les méthodes `elem.focus()` et `elem.blur()` mettent/retirent le focus d'un élément.

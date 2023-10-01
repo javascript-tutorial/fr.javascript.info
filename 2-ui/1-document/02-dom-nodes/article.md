@@ -4,7 +4,7 @@ libs:
 
 ---
 
-# L'arbre DOM 
+# L'arbre DOM
 
 L'épine dorsale d'un document HTML est constituée de balises.
 
@@ -111,7 +111,6 @@ Si le navigateur rencontre du HTML mal formé, il le corrige automatiquement lor
 Par exemple, la balise la plus haute est toujours `<html>`. Même s'elle n'existe pas dans le document, elle existera dans le DOM, car le navigateur la créera. Il en va de même pour `<body>`.
 
 Par exemple, si le fichier HTML est le seul mot `"Hello"`, le navigateur l'enroulera dans `<html>` et `<body>`, et ajoutera le `<head>` requis, et le DOM sera :
-
 
 <div class="domtree"></div>
 

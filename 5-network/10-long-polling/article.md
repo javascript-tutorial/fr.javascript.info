@@ -1,4 +1,4 @@
-# L'interrogation longue 
+# L'interrogation longue
 
 L'interrogation longue est le moyen le plus simple d'avoir une connexion persistante avec le serveur, qui n'utilise aucun protocole spécifique comme WebSocket ou Server Side Events.
 

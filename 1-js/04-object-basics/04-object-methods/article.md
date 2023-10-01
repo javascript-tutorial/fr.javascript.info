@@ -156,7 +156,6 @@ let user = {
 
 };
 
-
 let admin = user;
 user = null; // écraser pour rendre les choses évidentes
 
@@ -254,7 +253,6 @@ user.sayHi(); // Ilya
 ```
 
 C’est une particularité des fonctions fléchées. C’est utile lorsque nous ne voulons pas réellement avoir un this distinct, mais plutôt le prendre à partir du contexte extérieur. Plus tard dans le chapitre <info:arrow-functions> nous allons approfondir les fonctions fléchées.
-
 
 ## Résumé
 

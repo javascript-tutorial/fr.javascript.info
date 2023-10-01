@@ -161,7 +161,6 @@ loadScript("/article/promise-chaining/one.js")
   });
 ```
 
-
 Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu. Ensuite, il lance le chargement du script suivant. Les scripts sont donc chargés les uns après les autres.
 
 Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
@@ -186,7 +185,6 @@ Ce code fait la même chose: charge 3 scripts en séquence. Mais il "pousse vers
 Les gens qui commencent à utiliser leurs promesses ne savent parfois pas comment enchaîner, alors ils l'écrivent de cette façon. Généralement, le chaînage est préféré.
 
 Parfois, il est correct d'écrire directement `.then`, car la fonction imbriquée a accès à la portée externe. Dans l'exemple ci-dessus, le rappel le plus imbriqué a accès à toutes les variables `script1`, `script2`, `script3`. Mais c'est une exception plutôt qu'une règle.
-
 
 ````smart header="Thenables"
 Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`. Il sera traité de la même manière q'une promesse.
@@ -220,7 +218,6 @@ JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(
 
 Cette fonctionnalité nous permet d'intégrer des objets personnalisés avec des chaînes de promesse sans avoir à hériter de `Promise`.
 ````
-
 
 ## Un plus grand exemple: fetch
 

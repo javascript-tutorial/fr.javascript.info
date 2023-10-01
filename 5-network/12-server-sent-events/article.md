@@ -7,10 +7,10 @@ Similaire à `WebSocket`, la connexion est persistante.
 Mais il existe plusieurs différences importantes :
 
 | `WebSocket`                                                             | `EventSource`                                       |
-|-------------------------------------------------------------------------|-----------------------------------------------------|
+| ----------------------------------------------------------------------- | --------------------------------------------------- |
 | Bi-directionnel : le client et le serveur peuvent échanger des messages | Unidirectionnel: seul le serveur envoie des données |
 | Données binaires et texte                                               | Texte uniquement                                    |
-| Protocol WebSocket                                              | HTTP régulier                                       |
+| Protocol WebSocket                                                      | HTTP régulier                                       |
 
 `EventSource` est un moyen de communication avec le serveur moins puissant que `WebSocket`.
 
@@ -64,7 +64,7 @@ eventSource.onmessage = function(event) {
 // or eventSource.addEventListener('message', ...)
 ```
 
-### Requêtes Cross-origin 
+### Requêtes Cross-origin
 
 `EventSource` prend en charge les requêtes cross-origin, comme `fetch` toute autre méthode de mise en réseau. Nous pouvons utiliser n'importe quelle URL :
 
@@ -83,7 +83,6 @@ let source = new EventSource("https://another-site.com/events", {
 ```
 
 Veuillez consulter le chapitre <info:fetch-crossorigin> pour plus de détails sur les en-têtes cross-origin.
-
 
 ## Reconnexion
 

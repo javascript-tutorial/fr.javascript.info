@@ -71,7 +71,6 @@ Voyons des exemples.
     }
     ```
 
-
 ````warn header="`try...catch` ne fonctionne que pour les erreurs d'exécution"
 Pour que `try...catch` fonctionne, le code doit être exécutable. En d'autres termes, le code doit être du JavaScript valide.
 
@@ -89,7 +88,6 @@ Le moteur JavaScript lit d'abord le code, puis l'exécute. Les erreurs qui se pr
 
 Ainsi, `try...catch` ne peut gérer que les erreurs qui se produisent dans du code valide. De telles erreurs sont appelées "erreurs d'exécution" ou, parfois, "exceptions".
 ````
-
 
 ````warn header="`try...catch` fonctionne de manière synchrone"
 Si une exception se produit dans le code "planifié", comme dans `setTimeout`,`try...catch` ne l'attrapera pas :
@@ -109,7 +107,7 @@ C’est parce que la fonction elle-même est exécutée ultérieurement, lorsque
 Pour capturer une exception dans une fonction planifiée, `try...catch` doit être à l'intérieur de cette fonction :
 ```js run
 setTimeout(function() {
-  try {    
+  try {   
     noSuchVariable; // try...catch gère l'erreur!
   } catch {
     alert( "error is caught here!" );
@@ -529,7 +527,6 @@ alert( `execution took ${diff}ms` );
 Vous pouvez vérifier en exécutant le code en entrant `35` dans `prompt` - il s'exécute normalement, `finally` après `try`. Puis entrez `-1` -- il y aura une erreur immédiate, puis l'exécution prendra `0ms`. Les deux mesures sont effectuées correctement.
 
 En d'autres termes, la fonction peut finir par `return` ou `throw`, cela n'a pas d'importance. La clause `finally` s'exécute dans les deux cas.
-
 
 ```smart header="Les variables sont locales à l'intérieur de `try...catch...finally`"
 Veuillez noter que les variables `result` et `diff` dans le code ci-dessus sont déclarées *avant* `try...catch`.

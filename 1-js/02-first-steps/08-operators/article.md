@@ -68,7 +68,7 @@ alert(2 ** 3); // 2³ = 8
 alert(2 ** 4); // 2⁴ = 16
 ```
 
-Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. 
+Mathématiquement, l'exponentiation est également définie pour les nombres non entiers.
 
 Par exemple, une racine carrée est une exponentiation de `½` :
 
@@ -303,7 +303,7 @@ let n = 2;
 
 n *= 3 + 5; // La partie de droite est évaluée en premier (identique à n *= 8)
 
-alert(n); // 16  
+alert(n); // 16 
 ```
 
 ## Incrémentation / décrémentation

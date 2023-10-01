@@ -80,10 +80,9 @@ Les points de contrôle (1,2 et 3) peuvent être déplacés par la souris. Appuy
 
     - Reliez les points. Sur l'image ci-dessous, le segment de connexion est peint en <span style="color:#167490">bleu</span>.
 
-
-| Pour `t=0.25`             | Pour `t=0.5`            |
-| ------------------------ | ---------------------- |
-| ![](bezier3-draw1.svg)   | ![](bezier3-draw2.svg) |
+| Pour `t=0.25`          | Pour `t=0.5`           |
+| ---------------------- | ---------------------- |
+| ![](bezier3-draw1.svg) | ![](bezier3-draw2.svg) |
 
 4. Maintenant, dans le segment <span style="color:#167490">bleu</span> prenez un point sur la distance proportionnelle à la même valeur de `t`. C'est-à-dire que pour `t=0.25` (l'image de gauche) nous avons un point à l'extrémité du quart gauche du segment, et pour `t=0.5` (l'image de droite) -- au milieu du segment. Sur les images ci-dessus, ce point est <span style="color:red">rouge</span>.
 
@@ -118,7 +117,6 @@ Ces points forment la courbe.
 **Exécutez et mettez en pause les exemples pour voir clairement les segments et la façon dont la courbe est construite.**
 ```
 
-
 Une courbe qui ressemble à `y=1/t`:
 
 [iframe src="demo.svg?p=0,0,0,0.75,0.25,1,1,1&animate=1" height=370]
@@ -149,7 +147,6 @@ Parfois, nous avons une autre tâche : dessiner une courbe *par plusieurs points
 Il existe des formules mathématiques pour de telles courbes, par exemple le [polynôme de Lagrange](https://fr.wikipedia.org/wiki/Interpolation_lagrangienne). En infographie l'[interpolation spline](https://en.wikipedia.org/wiki/Spline_interpolation) est souvent utilisé pour construire des courbes lisses qui relient plusieurs points.
 ```
 
-
 ## Mathématiques
 
 Une courbe de Bézier peut être décrite à l'aide d'une formule mathématique.
@@ -167,7 +164,6 @@ Comme nous l'avons vu, il n'est pas nécessaire de le savoir, la plupart des gen
 - Pour 4 points de contrôle:
 
     <code>P = (1−t)<sup>3</sup>P<sub>1</sub> + 3(1−t)<sup>2</sup>tP<sub>2</sub>  +3(1−t)t<sup>2</sup>P<sub>3</sub> + t<sup>3</sup>P<sub>4</sub></code>
-
 
 Ce sont des équations vectorielles. En d'autres termes, nous pouvons mettre `x` et `y` à la place de `P` pour obtenir les coordonnées correspondantes.
 

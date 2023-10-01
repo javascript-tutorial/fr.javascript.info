@@ -72,7 +72,6 @@ Tout ce dont nous avons besoin de faire est de définir `bulles` en tant que `tr
 </script>
 ```
 
-
 Remarques:
 
 1. Nous devrions utiliser `addEventListener` pour nos événements personnalisés, car `on<event>` n'existe que pour les événements intégrés, `document.onhello` ne fonctionne pas.
@@ -210,17 +209,13 @@ Remarque: l'événement doit avoir le marqueur `cancelable: true`, sinon l'appel
 
 ## Les événements imbriqués sont synchrones
 
-
 Les événements sont généralement traités dans une file d'attente. C'est-à-dire : si le navigateur traite `onclick` et qu'un nouvel événement se produit, par exemple la souris a bougé, sa gestion est mise en file d'attente, les gestionnaires `mousemove` correspondants seront appelés après la fin du traitement `onclick`.
-
 
 L'exception notable est lorsqu'un événement est déclenché à partir d'un autre, par exemple en utilisant `dispatchEvent`. Ces événements sont traités immédiatement: les nouveaux gestionnaires d'événements sont appelés, puis la gestion des événements en cours est reprise.
 
 Par exemple, dans le code ci-dessous, l'événement `menu-open` est déclenché pendant `onclick`.
 
-
 Il est traité immédiatement, sans attendre la fin du gestionnaire `onclick` :
-
 
 
 ```html run autorun
@@ -246,9 +241,7 @@ L'ordre de sortie est: 1 -> imbriqué -> 2.
 
 Veuillez noter que l'événement imbriqué `menu-open` est intercepté sur le `document`. La propagation et la gestion de l'événement imbriqué sont terminées avant que le traitement ne revienne au code externe (`onclick`).
 
-
 Il ne s'agit pas seulement de `dispatchEvent`, il y a d'autres cas. Si un gestionnaire d'événements appelle des méthodes qui déclenchent d'autres événements -- ils sont également traités de manière synchrone, de manière imbriquée.
-
 
 Disons que nous n'aimons pas ça. Nous voudrions que `onclick` soit entièrement traité en premier, indépendamment de `menu-open` ou de tout autre événement imbriqué.
 
@@ -288,11 +281,9 @@ D'autres constructeurs d'événements natifs tels que `MouseEvent`, `KeyboardEve
 
 Pour les événements personnalisés, nous devons utiliser le constructeur `CustomEvent`. Il a une option supplémentaire nommée `detail`, nous devons lui attribuer les données spécifiques à l'événement. Ensuite, tous les gestionnaires peuvent y accéder en tant que `event.detail`.
 
-
 Malgré la possibilité technique de générer des événements de navigateur comme  `click` ou `keydown`, nous devons les utiliser avec le plus grand soin.
 
 Nous ne devrions pas générer d'événements de navigateur car c'est une manière pirate d'exécuter des gestionnaires. C'est une mauvaise architecture la plupart du temps.
-
 
 Des événements natifs peuvent être générés:
 

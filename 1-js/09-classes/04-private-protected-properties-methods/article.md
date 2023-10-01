@@ -291,11 +291,10 @@ Cela offre les avantages suivants:
 Protection des utilisateurs pour qu'ils ne se tirent pas une balle dans le pied
 : Imaginez, il y a une équipe de développeurs utilisant une machine à café. Elle a été fabriquée par la société "Best CoffeeMachine" et fonctionne parfaitement, mais une coque de protection a été retirée. Donc, l'interface interne est exposée.
 
-
     Tous les développeurs sont civilisés - ils utilisent la machine à café comme prévu. Mais l'un d'entre eux, John, a décidé qu'il était le plus intelligent et a apporté quelques modifications aux éléments internes de la machine à café. La machine à café a donc échoué deux jours plus tard.
-    
+   
     Ce n’est sûrement pas la faute de John, mais bien de la personne qui a enlevé le capot de protection et laissé John manipuler.
-    
+   
     La même chose en programmation. Si un utilisateur d'une classe va changer des choses qui ne sont pas destinées à être modifiées de l'extérieur, les conséquences sont imprévisibles.
 
 Maintenable

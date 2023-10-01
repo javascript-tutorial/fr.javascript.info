@@ -21,7 +21,6 @@
 		console.log(`${receivedLength}/${contentLength} received`)
 	}
 
-
 	let chunksMerged = new Uint8Array(receivedLength);
 	let length = 0;
 	for(let chunk of chunks) {

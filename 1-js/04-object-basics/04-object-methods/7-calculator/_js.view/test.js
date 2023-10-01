@@ -1,7 +1,7 @@
 
 
 describe("calculator", function() {
-  
+ 
   context("when 2 and 3 entered", function() {
     beforeEach(function() {
       sinon.stub(window, "prompt");
@@ -15,7 +15,7 @@ describe("calculator", function() {
     afterEach(function() {
       prompt.restore();
     });
-    
+   
     it('the read get two values and saves them as object properties', function () {
       assert.equal(calculator.a, 2);
       assert.equal(calculator.b, 3);

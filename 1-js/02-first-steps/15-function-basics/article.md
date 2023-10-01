@@ -152,7 +152,7 @@ function showMessage(*!*from, text*/!*) { // Arguments : from, text
 
 Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`. Ensuite, la fonction les utilise.
 
-Voici un autre exemple : nous avons une variable `from` et la transmettons à la fonction. 
+Voici un autre exemple : nous avons une variable `from` et la transmettons à la fonction.
 
 Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
 
@@ -523,7 +523,7 @@ function name(parameters, delimited, by, comma) {
 ```
 
 - Les valeurs transmises à une fonction en tant que paramètres sont copiées dans ses variables locales.
-- Une fonction peut accéder à des variables globales. 
+- Une fonction peut accéder à des variables globales.
 - Le code en dehors des fonction ne voit pas les variables locales (déclarées dans des fonctions).
 - Une fonction peut retourner une valeur. Si ce n'est pas le cas, le résultat est `undefined`.
 

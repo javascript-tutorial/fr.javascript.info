@@ -4,7 +4,7 @@ importance: 4
 
 # Horloge colorée avec setInterval
 
-Créez une horloge colorée comme ici : 
+Créez une horloge colorée comme ici :
 
 [iframe src="solution" height=60]
 

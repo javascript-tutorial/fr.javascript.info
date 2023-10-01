@@ -201,10 +201,10 @@ The `linear` is a shorthand for `cubic-bezier(0, 0, 1, 1)` -- a straight line, w
 
 Other names are shorthands for the following `cubic-bezier`:
 
-| <code>ease</code><sup>*</sup> | <code>ease-in</code> | <code>ease-out</code> | <code>ease-in-out</code> |
-|-------------------------------|----------------------|-----------------------|--------------------------|
-| <code>(0.25, 0.1, 0.25, 1.0)</code> | <code>(0.42, 0, 1.0, 1.0)</code> | <code>(0, 0, 0.58, 1.0)</code> | <code>(0.42, 0, 0.58, 1.0)</code> |
-| ![ease, figure](ease.svg) | ![ease-in, figure](ease-in.svg) | ![ease-out, figure](ease-out.svg) | ![ease-in-out, figure](ease-in-out.svg) |
+| <code>ease</code><sup>*</sup>       | <code>ease-in</code>             | <code>ease-out</code>             | <code>ease-in-out</code>                |
+| ----------------------------------- | -------------------------------- | --------------------------------- | --------------------------------------- |
+| <code>(0.25, 0.1, 0.25, 1.0)</code> | <code>(0.42, 0, 1.0, 1.0)</code> | <code>(0, 0, 0.58, 1.0)</code>    | <code>(0.42, 0, 0.58, 1.0)</code>       |
+| ![ease, figure](ease.svg)           | ![ease-in, figure](ease-in.svg)  | ![ease-out, figure](ease-out.svg) | ![ease-in-out, figure](ease-in-out.svg) |
 
 `*` -- by default, if there's no timing function, `ease` is used.
 
@@ -262,7 +262,6 @@ But how do we make a Bezier curve for a specific task? There are many tools.
     2. Select the `Elements` tab, then pay attention to the `Styles` sub-panel at the right side.
     3. CSS properties with a word `cubic-bezier` will have an icon before this word.
     4. Click this icon to edit the curve.
-
 
 ### Steps
 

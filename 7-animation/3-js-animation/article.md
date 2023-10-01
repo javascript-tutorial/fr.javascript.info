@@ -178,7 +178,6 @@ La fonction `animate` accepte 3 paramètres qui décrivent essentiellement l'ani
 
     ...Ou faire n'importe quoi d'autre, nous pouvons animer toute chose, de n'importe quelle manière.
 
-
 Animons l'élément `width` de `0` à `100%` en utilisant notre fonction.
 
 Cliquez sur l'élément pour la démonstration :

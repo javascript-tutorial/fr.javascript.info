@@ -6,7 +6,6 @@ let file = new static.Server('.', {
   cache: 0
 });
 
-
 function accept(req, res) {
 
   if (req.method == 'POST') {
@@ -41,13 +40,11 @@ function accept(req, res) {
       }
     });
 
-
   } else {
     file.serve(req, res);
   }
 
 }
-
 
 // ------ запустить сервер -------
 

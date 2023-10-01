@@ -453,9 +453,7 @@ Maintenant, ça fonctionne comme nous l'avons prévu.
 
 Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non ? Il peut contenir des nombres, des chaînes de caractères, des objets ou autre. Nous avons donc un ensemble de *quelques items*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comment comparer ses éléments. La valeur par défaut est un ordre de chaîne de caractères.
 
-
 La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme générique de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement interne (c'est un [tri rapide optimisé](https://fr.wikipedia.org/wiki/Tri_rapide) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
-
 
 À propos, si nous voulons savoir quels éléments sont comparés, rien ne nous empêche de les alerter :
 
@@ -628,13 +626,13 @@ Le flux de calcul :
 
 Ou sous la forme d'un tableau, où chaque ligne représente un appel de fonction sur l'élément de tableau suivant :
 
-|   |`sum`|`current`|result|
-|---|-----|---------|------|
-|premier appel|`0`|`1`|`1`|
-|deuxième appel|`1`|`2`|`3`|
-|troisième appel|`3`|`3`|`6`|
-|quatrième appel|`6`|`4`|`10`|
-|cinquième appel|`10`|`5`|`15`|
+|                 | `sum` | `current` | result |
+| --------------- | ----- | --------- | ------ |
+| premier appel   | `0`   | `1`       | `1`    |
+| deuxième appel  | `1`   | `2`       | `3`    |
+| troisième appel | `3`   | `3`       | `6`    |
+| quatrième appel | `6`   | `4`       | `10`   |
+| cinquième appel | `10`  | `5`       | `15`   |
 
 Ici, nous pouvons clairement voir comment le résultat de l'appel précédent devient le premier argument du suivant.
 

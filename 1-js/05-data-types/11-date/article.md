@@ -318,7 +318,6 @@ Ok, nous avons quelque chose. Mais ce n’est pas encore une bonne référence.
 
 Imaginons qu’au moment de l’exécution du processeur `bench(diffSubtract)`, on faisait quelque chose en parallèle et que cela prenait des ressources. Et au moment de l'exécution du `bench(diffGetTime)`, le travail est terminé.
 
-
 Un scénario assez réel pour un système d'exploitation moderne multi-processus.
 
 En conséquence, le premier test aura moins de ressources de processeur que le second. Cela peut conduire à des résultats erronés.

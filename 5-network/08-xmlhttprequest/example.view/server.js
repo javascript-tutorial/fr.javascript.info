@@ -42,7 +42,6 @@ function accept(req, res) {
 }
 
 
-
 // ----- запуск accept как сервера из консоли или как модуля ------
 
 if (!module.parent) {

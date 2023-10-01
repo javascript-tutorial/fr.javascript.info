@@ -38,7 +38,6 @@ router.post('/image-form', async (ctx) => {
   };
 });
 
-
 router.post('/user-avatar', async (ctx) => {
 
   let files = [];
@@ -69,7 +68,6 @@ app
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
-
 
 if (!module.parent) {
   http.createServer(app.callback()).listen(8080);

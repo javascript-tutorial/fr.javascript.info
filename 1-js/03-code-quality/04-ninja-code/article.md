@@ -150,7 +150,7 @@ function ninjaFunction(elem) {
 
 Un collègue programmeur qui veut travailler avec `elem` dans la seconde moitié de la fonction sera surpris… Seulement lors du débogage, après avoir examiné le code, ils découvrira qu’il travaille avec un clone !
 
-MVu dans du code régulièrement. Mortellement efficace même contre un ninja expérimenté. 
+MVu dans du code régulièrement. Mortellement efficace même contre un ninja expérimenté.
 
 ## Underscores for fun
 
@@ -167,7 +167,6 @@ Laissez tout le monde voir à quel point vos entités sont magnifiques! Des noms
 En effet, d’une part, quelque chose s’écrit : `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux de leur temps de travail rémunéré.
 
 ## Chevaucher des variables externes
-
 
 
 ```quote author="Guan Yin Zi"
@@ -194,13 +193,11 @@ Un programmeur qui saute dans le `render` ne remarquera probablement pas qu’il
 
 Ensuite, il essaiera de travailler avec l’`user` en supposant que c’est la variable externe, le résultat de `authenticateUser()`… Le piège est déclenché ! Bonjour debugger…
 
-
 ## Effets secondaires partout !
 
 Certaines fonctions donnent l’impression de ne rien changer. Comme `isReady()`, `checkPermission()`, `findTags()`… Elles sont supposés effectuer des calculs, trouver et renvoyer les données, sans rien changer en dehors d'eux. En d'autres termes, sans "effets secondaires".
 
 **Une très belle astuce consiste à leur ajouter une action "utile", en plus de la tâche principale.**
-
 
 L’expression de surprise hébétée sur le visage de vos collègues quand ils voient une fonction nommée `is..`, `check..` ou `find...` changer quelque chose -- va certainement élargir vos limites de la raison.
 
@@ -209,7 +206,6 @@ L’expression de surprise hébétée sur le visage de vos collègues quand ils 
 Montrez votre pensée originale ! Laissez l'appel de `checkPermission` renvoyer non pas `true/false`, mais un objet complexe avec les résultats de la vérification.
 
 Les développeurs qui essaient d’écrire `if(checkPermission(..))` se demanderont pourquoi cela ne fonctionne pas. Dites-leur : "Lisez la documentation!". Et donnez cet article.
-
 
 ## Fonctions puissantes !
 
