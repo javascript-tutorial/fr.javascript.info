@@ -283,7 +283,7 @@ C’est parce qu’en lisant du code, nous voulons d’abord savoir ce qu’il f
 
 ## Guides de style
 
-Un guide de style contient des règles générales sur "comment écrire" du code. Exemple : les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
+Un guide de style contient des énérales sur "comment écrire" du code. Exemple : les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
 
 Lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
 
