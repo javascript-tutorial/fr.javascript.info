@@ -1,4 +1,3 @@
-
 ```js run
 let salaries = {
   John: 100,
@@ -13,4 +12,3 @@ for (let key in salaries) {
 
 alert(sum); // 390
 ```
-

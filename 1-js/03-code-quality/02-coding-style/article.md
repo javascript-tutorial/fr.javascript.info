@@ -87,7 +87,7 @@ Personne n'aime lire une longue ligne horizontale de code. La meilleure pratique
 Par exemple :
 
 ```js
-// Les accents backticks (considérables ici comme des apostrophes englobantes) ` permettent de scinder la chaîne de caractères en plusieurs lignes
+// Les accents backticks (considérables ici comme des guillemets) ` permettent de scinder la chaîne de caractères en plusieurs lignes
 let str = `
   ECMA International's TC39 is a group of JavaScript developers,
   implementers, academics, and more, collaborating with the community

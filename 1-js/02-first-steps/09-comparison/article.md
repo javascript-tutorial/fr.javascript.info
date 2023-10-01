@@ -201,7 +201,7 @@ Nous avons ces résultats parce que :
 
 ### Éviter les problèmes
 
-Pourquoi avons-nous observé ces exemples? Devrions-nous nous souvenir de ces particularités tout le temps ? Et bien pas vraiment. En fait, ces notions délicates deviennent progressivement familières au fil du temps, mais il existe un moyen solide d’éviter tout problème avec elles.
+Pourquoi avons-nous observé ces exemples? Devrions-nous nous souvenir de ces particularités tout le temps ? Eh bien, pas vraiment. En fait, ces notions délicates deviennent progressivement familières au fil du temps, mais il existe un moyen solide d’éviter tout problème avec elles.
 
 Il suffit de traiter toute comparaison avec `null`/`undefined` (à l'exception de la stricte égalité `===`) avec un soin exceptionnel.
 

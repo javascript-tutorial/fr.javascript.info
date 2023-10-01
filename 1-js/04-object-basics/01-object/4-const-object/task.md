@@ -12,7 +12,7 @@ const user = {
 };
 
 *!*
-// est-ce que ça fonctionne ?
+// Est-ce que ça fonctionne ?
 user.name = "Pete";
 */!*
 ```

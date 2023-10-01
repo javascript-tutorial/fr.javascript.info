@@ -9,7 +9,7 @@ Créez une fonction `multiplyNumeric(obj)` qui multiplie toutes les valeurs de p
 Par exemple :
 
 ```js
-// before the call
+// Avant l'appel
 let menu = {
   width: 200,
   height: 300,
@@ -18,7 +18,7 @@ let menu = {
 
 multiplyNumeric(menu);
 
-// after the call
+// Après l'appel
 menu = {
   width: 400,
   height: 600,
@@ -29,5 +29,3 @@ menu = {
 Veuillez noter que `multiplyNumeric` n’a pas besoin de retourner quoi que ce soit. Il devrait modifier l'objet en place.
 
 P.S. Utilisez `typeof` pour rechercher un `number` ici.
-
-
