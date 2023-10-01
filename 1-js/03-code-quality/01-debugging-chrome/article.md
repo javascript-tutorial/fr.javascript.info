@@ -2,17 +2,17 @@
 
 Avant d’écrire un code plus complexe, parlons de débogage.
 
-Le [Debugging](https://en.wikipedia.org/wiki/Debugging) est le processus de recherche et de correction des erreurs dans un script. Tous les navigateurs modernes et la plupart des autres environnements prennent en charge les outils de débogage - une interface utilisateur spéciale dans les outils de développement facilitant grandement le débogage. Cela permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
+Le [Débogage](https://en.wikipedia.org/wiki/Debugging) est le processus de recherche et de correction des erreurs dans un script. Tous les navigateurs modernes et la plupart des autres environnements prennent en charge les outils de débogage - une interface utilisateur spéciale dans les outils de développement facilitant grandement le débogage. Cela permet également de tracer le code étape par étape pour voir ce qui se passe exactement.
 
 Nous allons utiliser Chrome ici, car il possède suffisamment de fonctionnalités, la plupart des autres navigateurs utilisent un processus similaire.
 
-## Le volet "Sources"
+## L'onglet "Sources"
 
 Votre version de Chrome peut sembler un peu différente, mais vous devez tout de même savoir ce qui est là.
 
 - Ouvrez la [page d'exemple](debugging/index.html) dans Chrome.
 - Activer les outils de développement avec `key:F12` (Mac: `key:Cmd+Opt+I`).
-- Séléctionner le volet `Sources`.
+- Séléctionner l'onglet `Sources`.
 
 Voici ce que vous devriez voir si vous le faites pour la première fois :
 
@@ -32,9 +32,9 @@ Ici nous pouvons voir 3 parties :
 
 Maintenant, vous pouvez cliquer sur le même bouton <span class="devtools" style="background-position:-172px -122px"></span> à nouveau pour masquer la liste des ressources et laisser un peu d’espace au code.
 
-## Console
+## L'onglet console
 
-Si nous appuyons sur `key:Esc`, une console s'ouvre ci-dessous. Nous pouvons taper des commandes ici et appuyer sur `key:Entrée` pour les exécuter.
+Si nous appuyons sur `key:Esc`, une console s'ouvre ci-dessous. Nous pouvons taper des instructions ici et appuyer sur `key:Entrée` pour les exécuter.
 
 Une fois une instruction exécutée, son résultat est présenté ci-dessous.
 
@@ -42,7 +42,7 @@ Par exemple, ici `1+2` donne `3`, tandis que l'appel de fonction `hello("debugge
 
 ![](chrome-sources-console.svg)
 
-## Breakpoints
+## Les breakpoints (Points d'arrêt)
 
 Examinons ce qui se passe dans le code de la [page d'exemple](debugging/index.html). Dans `hello.js`, cliquez sur le numéro de ligne `4`. Oui, sur le chiffre `4`, pas sur le code.
 
@@ -54,10 +54,10 @@ Cela devrait ressembler à ceci (le bleu est l'endroit où vous devez cliquer) :
 
 Un *breakpoint* est un point dans le code où le débogueur mettra automatiquement en pause l'exécution de JavaScript.
 
-Pendant que le code est en pause, nous pouvons examiner les variables actuelles, exécuter des commandes dans la console, etc. En d'autres termes, nous pouvons le déboguer.
+Pendant que le code est en pause, nous pouvons examiner les variables actuelles, exécuter des commandes dans la console, etc. En d'autres termes, nous pouvons déboguer l'exécution du code.
 
 Nous pouvons toujours trouver une liste de points d'arrêt dans le volet de droite. C’est utile lorsque nous avons plusieurs points d’arrêt dans divers fichiers. Ça nous permet de :
-- Sauter rapidement au point d'arrêt dans le code (en cliquant dessus dans le volet de droite).
+- Sauter rapidement au point d'arrêt dans le code (en cliquant dessus, dans le volet de droite).
 - Désactiver temporairement le point d'arrêt en le décochant.
 - Supprimer le point d'arrêt en cliquant avec le bouton droit de la souris et en sélectionnant Supprimer.
 - … Et ainsi de suite.
@@ -68,24 +68,23 @@ Nous pouvons toujours trouver une liste de points d'arrêt dans le volet de droi
 C’est pratique lorsque nous devons nous arrêter uniquement pour une certaine valeur de variable ou pour certains paramètres de fonction.
 ```
 
-## La commande "debugger"
+## L'instruction "debugger"
 
 Nous pouvons également suspendre le code en utilisant la commande `debugger`, comme ceci :
 
 ```js
 function hello(name) {
-  let phrase = `Hello, ${name}!`;
+  let sentence = `Hello, ${name}!`;
 
 *!*
-  debugger;  // <-- le débogueur s'arrête ici
+  debugger;  // <-- Le débogueur s'arrête ici
 */!*
 
-  say(phrase);
+  say(sentence);
 }
 ```
 
-Une telle commande ne fonctionne que lorsque les outils de développement sont ouverts, sinon le navigateur l'ignore.
-
+Une telle instruction ne fonctionne que lorsque les outils de développement sont ouverts, sinon le navigateur l'ignore.
 
 ## Pause et regarder autour
 
@@ -110,7 +109,7 @@ Veuillez ouvrir les menus déroulants d’information à droite (indiqués par d
 
     `Local` affiche les variables de fonction locales. Vous pouvez également voir leurs valeurs surlignées directement sur la source.
 
-    `Global` a des variables globales (en dehors de toutes fonctions).
+    `Global` à des variables globales (en dehors de toutes fonctions).
 
     Il y a aussi le mot-clé `this` que nous n’avons pas encore étudié, mais nous le ferons bientôt.
 
@@ -127,7 +126,7 @@ Il y a des boutons pour cela en haut du volet de droite. Actionnons-les.
 
     ![](chrome-sources-debugger-trace-1.svg)
 
-    L'exécution a repris, atteint un autre point d'arrêt à l'intérieur de `say()` et s'y est arrêtée. Jetez un coup d’œil à "Call stack" à droite. Il a augmenté d'un appel supplémentaire. Nous sommes à l'intérieur `say()` maintenant.
+    L'exécution a repris, atteint un autre point d'arrêt à l'intérieur de `say()` et s'y est arrêtée. Jetez un coup d’œil à "Call stack" (Ou "Pile d'appel") à droite. Il a augmenté d'un appel supplémentaire. Nous sommes à l'intérieur de `say()` maintenant.
 
 <span class="devtools" style="background-position:-200px -190px"></span> -- "Step": lance la commande suivante, raccourci clavier `key:F9`.
 : Exécute la prochaine déclaration. Si nous cliquons dessus maintenant, `alert` sera affiché.
@@ -141,15 +140,15 @@ Si nous les comparons, la commande "Step" entre dans un appel de fonction imbriq
 
 L'exécution est alors suspendue immédiatement après cette fonction.
 
-C'est bien si nous ne sommes pas intéressés à voir ce qui se passe dans l'appel de fonction.
+C'est utile si ce qui se passe dans l'appel de fonctions ne nous intéresse pas.
 
 <span class="devtools" style="background-position:-4px -194px"></span> -- "Step into", raccourci clavier `key:F11`.
-: Cela ressemble à "Step", mais se comporte différemment dans le cas d'appels de fonctions asynchrones. Si vous commencez seulement à apprendre le JavaScript, vous pouvez alors ignorer la différence, car nous n'avons pas encore d'appels asynchrones.
+: Cela ressemble à "Step", mais se comporte différemment dans le cas d'appels de fonctions asynchrones. Si vous commencez seulement à apprendre le JavaScript, vous pouvez ignorer la différence, car nous n'avons pas encore d'appels asynchrones.
 
     Pour le futur, il suffit de noter que la commande "Step" ignore les actions asynchrones, telles que `setTimeout` (appel de fonction planifiée), qui s'exécutent ultérieurement. Le "Pas à pas" entre dans leur code, les attend si nécessaire. Voir [DevTools manual](https://developers.google.com/web/updates/2018/01/devtools#async) pour plus de détails.
 
 <span class="devtools" style="background-position:-32px -194px"></span> -- "Step out": continuer l'exécution jusqu'à la fin de la fonction en cours, raccourci clavier `key:Shift+F11`.
-: Continue l'exécution et l'arrête à la toute dernière ligne de la fonction en cours. C'est pratique lorsque nous avons accidentellement entré un appel imbriqué en utilisant <span class="devtools" style="background-position:-200px -190px"></span>, mais cela ne nous intéresse pas et nous voulons continuer jusqu'au bout le plus tôt possible.
+: Continue l'exécution et l'arrête à la toute dernière ligne de la fonction en cours. C'est pratique lorsque nous avons accidentellement entré un appel imbriqué en utilisant <span class="devtools" style="background-position:-200px -190px"></span>, mais cela ne nous intéresse pas.
 
 <span class="devtools" style="background-position:-61px -74px"></span> -- active / désactive tous les points d'arrêt.
 : Ce bouton ne déplace pas l'exécution. Juste un ensemble de on/off pour les points d'arrêt.
@@ -170,7 +169,7 @@ Pour afficher quelque chose sur la console depuis notre code, utilisez la foncti
 Par exemple, cela affiche les valeurs de `0` à `4` sur la console :
 
 ```js run
-// ouvrir la console pour visualiser
+// Ouvrir la console pour visualiser
 for (let i = 0; i < 5; i++) {
   console.log("value,", i);
 }
