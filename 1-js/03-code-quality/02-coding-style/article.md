@@ -4,8 +4,6 @@ Notre code doit être aussi propre et lisible que possible.
 
 C’est en fait un art de la programmation -- prendre une tâche complexe et la coder de manière correcte et lisible par l’homme. Un bon style de code aide grandement à cela.
 
-Une chose à aider est le bon style de code.
-
 ## Syntaxe
 
 Voici un aide-mémoire avec quelques règles suggérées (plus de détails ci-dessous) :
@@ -64,7 +62,7 @@ Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
     ```js
     if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
     ```
-2. 😠 Lorsque vous n'utilisez pas d'accolades, évitez de passer pas à la ligne car il est facile de se tromper :
+2. 😠 Lorsque vous n'utilisez pas d'accolades, évitez de passer à la ligne car il est facile de se tromper :
     ```js
     if (n < 0)
       alert(`Power ${n} is not supported`);
@@ -80,7 +78,7 @@ Voici les variantes annotées pour que vous puissiez juger de leur lisibilité :
     }
     ```
 
-Pour un code tres court, une ligne est autorisée, par exemple `if (cond) return null`. Mais la variante numéro 4 est généralement plus lisible.
+Pour un code très court, une ligne est autorisée, par exemple `if (cond) return null`. Mais la variante numéro 4 est généralement plus lisible.
 
 ### Longueur de la ligne
 
@@ -89,7 +87,7 @@ Personne n'aime lire une longue ligne horizontale de code. La meilleure pratique
 Par exemple :
 
 ```js
-// les guillemets backtick ` permettent de scinder la chaîne de caractères en plusieurs lignes
+// Les accents backticks (considérables ici comme des apostrophes englobantes) ` permettent de scinder la chaîne de caractères en plusieurs lignes
 let str = `
   ECMA International's TC39 is a group of JavaScript developers,
   implementers, academics, and more, collaborating with the community
@@ -111,13 +109,13 @@ if (
 
 La longueur de ligne maximale est convenue au niveau de l'équipe. C’est généralement 80 ou 120 caractères.
 
-### Indentations
+### L'indentation
 
-Il existe deux types d'indentations :
+Il existe deux types d'indentation :
 
 - **Un retrait horizontal : 2 ou 4 espaces.**
 
-    Une indentation horizontale est faite en utilisant 2 ou 4 espaces ou le symbole  horizontal de tabulation (touche `key:Tab`). Lequel choisir est une vieille guerre sainte. Les espaces sont plus communs de nos jours.
+    Une indentation horizontale est faite en utilisant 2 ou 4 espaces ou le symbole horizontal de tabulation (touche `key:Tab`). Lequel choisir est une vieille guerre sainte. Les espaces sont plus communs de nos jours.
 
     Un des avantages des espaces sur les tabulations est qu’ils permettent des configurations de retrait plus flexibles que le symbole tabulation.
 
@@ -150,15 +148,15 @@ Il existe deux types d'indentations :
     }
     ```
 
-    Insérez une nouvelle ligne où cela aide à rendre le code plus lisible. Il ne devrait pas y avoir plus de neuf lignes de code sans indentation verticale.
+    Insérez une nouvelle ligne où cela rends le code plus lisible. Il ne devrait pas y avoir plus de neuf lignes de code sans indentation verticale.
 
 ### Un point-virgule
 
-Un point-virgule doit être présent après chaque déclaration. Même si cela pourrait éventuellement être ignoré.
+Un point-virgule doit être présent après chaque instruction. Même si cela pourrait éventuellement être ignoré.
 
 Il y a des langages où le point-virgule est vraiment optionnel. Il est donc rarement utilisé. Mais dans JavaScript, il y a peu de cas où un saut de ligne n'est parfois pas interprété comme un point-virgule. Cela laisse place à des erreurs de programmation. Plus d'informations à ce sujet dans le chapitre <info:structure#semicolon>.
 
-Si vous êtes un programmeur JavaScript expérimenté, vous pouvez choisir un style de code sans point-virgule comme [StandardJS](https://standardjs.com/). Autrement, il est préférable d’utiliser des points-virgules pour éviter les pièges possibles. La majorité des développeurs mettent des points-virgules.
+Si vous êtes un développeur JavaScript expérimenté, vous pouvez choisir un style de code sans point-virgule comme [StandardJS](https://standardjs.com/). Autrement, il est préférable d’utiliser des points-virgules pour éviter les pièges possibles. La majorité des développeurs mettent des points-virgules.
 
 ### Niveaux d'imbrications
 
@@ -171,7 +169,7 @@ Par exemple, au lieu d’ajouter un `if` imbriqué conditionnel comme ceci :
 ```js
 for (let i = 0; i < 10; i++) {
   if (cond) {
-    ... // <- un autre niveau d'imbrication
+    ... // <- Un autre niveau d'imbrication
   }
 }
 ```
@@ -181,7 +179,7 @@ Nous pouvons écrire :
 ```js
 for (let i = 0; i < 10; i++) {
   if (!cond) *!*continue*/!*;
-  ...  // <- pas de niveau d'imbrication supplémentaire
+  ...  // <- Pas de niveau d'imbrication supplémentaire
 }
 ```
 
@@ -235,7 +233,7 @@ Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les 
 1. Déclarez les fonctions *au-dessus* du code qui les utilise :
 
     ```js
-    // *!*fonctions declarations*/!*
+    // *!*Declarations de fonctions*/!*
     function createElement() {
       ...
     }
@@ -248,7 +246,7 @@ Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les 
       ...
     }
 
-    // *!*le code qui les utilise*/!*
+    // *!*Le code qui les utilise*/!*
     let elem = createElement();
     setHandler(elem);
     walkAround();
@@ -256,7 +254,7 @@ Si vous écrivez plusieurs fonctions "helper" (auxiliaires) et le code pour les 
 2. Le code d'abord, puis les fonctions
 
     ```js
-    // *!*le code qui utilise les fonctions*/!*
+    // *!*Le code qui utilise les fonctions*/!*
     let elem = createElement();
     setHandler(elem);
     walkAround();
@@ -283,7 +281,7 @@ C’est parce qu’en lisant du code, nous voulons d’abord savoir ce qu’il f
 
 ## Guides de style
 
-Un guide de style contient des énérales sur "comment écrire" du code. Exemple : les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
+Un guide de style contient des recommandations générales sur "comment écrire" du code. Exemple : les quotes à utiliser, le nombre d'espaces pour indenter, la longueur de ligne maximale, etc. Beaucoup de petites choses.
 
 Lorsque tous les membres d'une équipe utilisent le même guide de style, le code est uniforme. Peu importe qui l’a écrit, c’est toujours le même style.
 
@@ -297,7 +295,7 @@ Par exemple :
 - [StandardJS](https://standardjs.com/)
 - (il y en a plus)
 
-Si vous êtes un développeur novice, commencez par le cheatsheet au début de ce chapitre. Ensuite, vous pouvez parcourir d'autres guides de style pour trouver plus d'idées et décider lequel vous préférez.
+Si vous êtes un développeur novice, commencez par le cheatsheet au début de ce chapitre. Ensuite, vous pourrez parcourir d'autres guides de style pour trouver plus d'idées et décider lequel vous préférez.
 
 ## Linters automatisés
 
@@ -313,14 +311,14 @@ Voici quelques linters bien connus :
 
 Tous peuvent faire le travail. L'auteur utilise [ESLint](http://eslint.org/).
 
-La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plug-in dans l'éditeur et de configurer le style.
+La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plugin dans l'éditeur et de configurer le style.
 
 Par exemple, pour ESLint, vous devez procéder comme suit :
 
 1. Installer [Node.js](https://nodejs.org/).
 2. Installer ESLint avec la commande `npm install -g eslint` (npm est un gestionnaire de paquets JavaScript).
-3. Créez un fichier de configuration nommé `.eslintrc` dans la racine de votre projet JavaScript (dans le dossier contenant tous vos fichiers).
-4. Installez / activez le plug-in pour votre éditeur qui s'intègre à ESLint. La majorité des éditeurs en ont un.
+3. Créer un fichier de configuration nommé `.eslintrc` dans la racine de votre projet JavaScript (le dossier contenant tous vos fichiers).
+4. Installer / activer le plugin pour votre éditeur qui s'intègre à ESLint. La majorité des éditeurs en ont un.
 
 Voici un exemple de `.eslintrc`:
 
@@ -339,7 +337,7 @@ Voici un exemple de `.eslintrc`:
 }
 ```
 
-Ici, la directive `"extends"` indique que nous nous basons sur l'ensemble de paramètres "eslint:recommended", puis nous spécifions les nôtres.
+Ici, la clé `"extends"` indique que nous nous basons sur l'ensemble de paramètres `eslint:recommended`, puis nous spécifions les nôtres.
 
 Il est aussi possible de télécharger des ensembles de règles de style à partir du Web et de les étendre. Voir <http://eslint.org/docs/user-guide/getting-started> pour plus de détails sur l'installation.
 
@@ -347,7 +345,7 @@ De plus, certains IDE prennent en charge le linting nativement, ce qui peut éga
 
 ## Résumé
 
-Toutes les règles de syntaxe de ce chapitre et les guides de style visent à améliorer la lisibilité, elles sont donc toutes discutables.
+Toutes les règles syntaxiques de ce chapitre et les guides de style visent à améliorer la lisibilité, elles sont donc toutes discutables.
 
 Lorsque nous pensons à écrire du "meilleur" code, les questions que nous devrions nous poser sont les suivantes : "Qu'est-ce qui rend le code plus lisible et plus facile à comprendre ?" et "Qu'est-ce qui peut nous aider à éviter les erreurs ?". Telles sont les principales choses à garder à l'esprit lors du choix et du débat sur les styles de code.
 

@@ -25,4 +25,4 @@ else
 }
 ```
 
-Réparer le.
+Réparez le.
