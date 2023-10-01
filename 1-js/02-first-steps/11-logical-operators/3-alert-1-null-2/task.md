@@ -9,4 +9,3 @@ Qu'est-ce que ce code va afficher ?
 ```js
 alert(1 && null && 2);
 ```
-

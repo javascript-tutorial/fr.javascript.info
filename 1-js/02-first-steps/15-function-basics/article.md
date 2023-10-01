@@ -24,7 +24,7 @@ Le mot-clé `function` commence en premier, puis le *nom de la fonction*, puis u
 
 ```js
 function name(parameter1, parameter2, ... parameterN) {
- // corps de la fonction
+ // Corps de la fonction
 }
 ```
 
@@ -45,9 +45,9 @@ showMessage();
 
 L'appel `showMessage()` exécute le code de la fonction. Ici, nous verrons le message deux fois, parce qu'on l'appelle deux fois.
 
-Cet exemple illustre clairement l’un des principaux objectifs des fonctions: éviter la duplication de code.
+Cet exemple illustre clairement l’un des principaux objectifs des fonctions : éviter la duplication de code.
 
-Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit: la fonction qui l'affiche.
+Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit : la fonction qui l'affiche.
 
 ## Variables locales
 
@@ -139,7 +139,7 @@ C'est une bonne pratique de minimiser l'utilisation de variables globales. Le co
 
 Nous pouvons transmettre des données arbitraires à des fonctions à l'aide de paramètres.
 
-Dans l'exemple ci-dessous, la fonction a deux paramètres: `from` et `text`.
+Dans l'exemple ci-dessous, la fonction a deux paramètres : `from` et `text`.
 
 ```js run
 function showMessage(*!*from, text*/!*) { // Arguments : from, text
@@ -152,7 +152,7 @@ function showMessage(*!*from, text*/!*) { // Arguments : from, text
 
 Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`. Ensuite, la fonction les utilise.
 
-Voici un autre exemple: nous avons une variable `from` et la transmettons à la fonction. 
+Voici un autre exemple : nous avons une variable `from` et la transmettons à la fonction. 
 
 Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
 

@@ -104,7 +104,7 @@ Veuillez ouvrir les menus déroulants d’information à droite (indiqués par d
 
     À ce moment précis, le débogueur se trouve dans l’appel `hello()`, appelé par un script dans `index.html` (aucune fonction n’est appelée, elle est donc appelée "anonyme").
 
-    Si vous cliquez sur un élément de la pile (ex: "anonymous"), le débogueur passe au code correspondant, et toutes ses variables peuvent également être examinées.
+    Si vous cliquez sur un élément de la pile (ex. : "anonymous"), le débogueur passe au code correspondant, et toutes ses variables peuvent également être examinées.
 3. **`Scope` -- variables actuelles.**
 
     `Local` affiche les variables de fonction locales. Vous pouvez également voir leurs valeurs surlignées directement sur la source.

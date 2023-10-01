@@ -73,7 +73,7 @@ Règles de conversions numériques :
 | <code>true&nbsp;et&nbsp;false</code> | Respectivement `1` et `0`                                                                                                                                                                |
 | `string`                             | Les espaces blancs du début et de la fin sont supprimés. Ensuite, si la chaîne restante est vide, le résultat est `0`. Sinon, le nombre est «lu» dans la chaîne. Une erreur donne `NaN`. |
 
-Exemples:
+Exemples :
 
 ```js run
 alert( Number("   123   ") ); // 123

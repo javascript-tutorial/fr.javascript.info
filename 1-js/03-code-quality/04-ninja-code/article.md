@@ -10,7 +10,7 @@ Les gourous de la révision de code les recherchent dans les tâches de test.
 
 Les développeurs novices les utilisent parfois encore mieux que les programmeurs ninjas.
 
-Lisez-les attentivement et découvrez qui vous êtes: un ninja, un novice ou peut-être un critique de code ?
+Lisez-les attentivement et découvrez qui vous êtes : un ninja, un novice ou peut-être un critique de code ?
 
 ```warn header="Ironie detectée"
 Beaucoup essaient de suivre les chemins des ninjas. Peu réussissent.
@@ -79,7 +79,7 @@ En choisissant un nom, essayez d’utiliser le mot le plus abstrait. Comme `obj`
 
     Accordez-leur une chance. Un jeune initié peut se demander : de tels noms sont-ils vraiment utiles à un ninja ? En effet, ils le sont !
 
-    Bien sûr, le nom de la variable signifie toujours quelque chose. Il indique ce qui est à l’intérieur de la variable: une chaîne de caractères, un nombre ou autre chose. Mais quand une personne essaiera de comprendre le code, elle sera surprise de constater qu’il n’y a en réalité aucune information ! Et finalement, elle ne pourra pas modifier votre code bien pensé.
+    Bien sûr, le nom de la variable signifie toujours quelque chose. Il indique ce qui est à l’intérieur de la variable : une chaîne de caractères, un nombre ou autre chose. Mais quand une personne essaiera de comprendre le code, elle sera surprise de constater qu’il n’y a en réalité aucune information ! Et finalement, elle ne pourra pas modifier votre code bien pensé.
 
     Le type de valeur est facile à déterminer par le débogage. Mais quel est le sens de la variable ? Quelle chaîne de caractères/nombre est-il stocké ?
 
@@ -109,13 +109,13 @@ Par exemple, considérons les préfixes de fonction. Si une fonction affiche un 
 
 Insinuez qu’il existe une différence subtile entre ces fonctions, alors qu’il n’en existe aucune.
 
-Faites un pacte avec les autres ninjas de l'équipe: si John commence à "afficher" des fonctions avec `display` ... dans son code, Peter pourra utiliser `render` ..., et Ann - `paint` ... Notez à quel point le code est devenu plus intéressant et diversifié.
+Faites un pacte avec les autres ninjas de l'équipe : si John commence à "afficher" des fonctions avec `display` ... dans son code, Peter pourra utiliser `render` ..., et Ann - `paint` ... Notez à quel point le code est devenu plus intéressant et diversifié.
 
 … Et maintenant le tour de magie !
 
 Pour deux fonctions présentant des différences importantes, utilisez le même préfixe !
 
-Par exemple, la fonction `printPage(page)` utilisera une imprimante. Et la fonction `printText(text)` mettra le texte à l'écran. Laissez un lecteur inconnu réfléchir à la fonction `printMessage`, qui porte le même nom: "Où place-t-il le message ? Pour une imprimante ou à l'écran ?". Pour le rendre vraiment brillant, `printMessage(message)` devrait l'extraire dans la nouvelle fenêtre!
+Par exemple, la fonction `printPage(page)` utilisera une imprimante. Et la fonction `printText(text)` mettra le texte à l'écran. Laissez un lecteur inconnu réfléchir à la fonction `printMessage`, qui porte le même nom : "Où place-t-il le message ? Pour une imprimante ou à l'écran ?". Pour le rendre vraiment brillant, `printMessage(message)` devrait l'extraire dans la nouvelle fenêtre!
 
 ## Réutiliser des noms
 
@@ -164,7 +164,7 @@ Un ninja intelligent place les traits de soulignement à un endroit du code et l
 
 Laissez tout le monde voir à quel point vos entités sont magnifiques! Des noms comme `superElement`, `megaFrame` et `niceItem` illumineront définitivement le lecteur.
 
-En effet, d’une part, quelque chose s’écrit: `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux de leur temps de travail rémunéré.
+En effet, d’une part, quelque chose s’écrit : `super ..`, `mega ..`, `nice ..`. Mais de l’autre -- cela n’apporte aucun détail. Un lecteur peut décider de chercher un sens caché et de méditer pendant une heure ou deux de leur temps de travail rémunéré.
 
 ## Chevaucher des variables externes
 

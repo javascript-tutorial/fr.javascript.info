@@ -132,7 +132,7 @@ Il existe deux types d'indentation :
     }
     ```
 
-- **Un retrait vertical: lignes vides pour fractionner le code en blocs logiques.**
+- **Un retrait vertical : lignes vides pour fractionner le code en blocs logiques.**
 
     Même une seule fonction peut souvent être divisée en blocs logiques. Dans l'exemple ci-dessous, l'initialisation des variables, la boucle principale et le retour du résultat sont fractionnés verticalement :
 
@@ -311,7 +311,7 @@ Voici quelques linters bien connus :
 
 Tous peuvent faire le travail. L'auteur utilise [ESLint](http://eslint.org/).
 
-La plupart des linters sont intégrés aux éditeurs: il suffit d'activer le plugin dans l'éditeur et de configurer le style.
+La plupart des linters sont intégrés aux éditeurs : il suffit d'activer le plugin dans l'éditeur et de configurer le style.
 
 Par exemple, pour ESLint, vous devez procéder comme suit :
 

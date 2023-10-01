@@ -1,6 +1,6 @@
-La réponse: le premier et le troisième vont s'exécuter.
+La réponse : le premier et le troisième vont s'exécuter.
 
-Details:
+Details :
 
 ```js run
 // S'éxécute; le résultat de -1 || 0 = -1, vrai
@@ -14,4 +14,3 @@ donc -1 && 1 s'exécute en premier, nous donnant la chaîne :
 null || -1 && 1  ->  null || 1  ->  1 */
 if (null || -1 && 1) alert('third');
 ```
-

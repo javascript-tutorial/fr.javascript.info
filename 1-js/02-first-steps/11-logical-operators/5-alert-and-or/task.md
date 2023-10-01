@@ -9,4 +9,3 @@ Quel sera le résultat ?
 ```js
 alert(null || 2 && 3 || 4);
 ```
-

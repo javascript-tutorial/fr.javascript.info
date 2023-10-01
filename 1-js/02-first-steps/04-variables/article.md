@@ -12,7 +12,7 @@ Une [variable](https://fr.wikipedia.org/wiki/Variable_(informatique)) est un "st
 
 Pour créer une variable en JavaScript, nous devons utiliser le mot-clé `let`.
 
-L'instruction ci-dessous crée (autrement dit: *déclare*) une variable avec le nom "message" :
+L'instruction ci-dessous crée (autrement dit : *déclare*) une variable avec le nom "message" :
 
 ```js
 let message;
@@ -240,7 +240,7 @@ C’est une mauvaise pratique, cela donne une erreur en mode strict :
 "use strict";
 
 *!*
-num = 5; // Erreur: num n'est pas défini
+num = 5; // Error: num is not defined
 */!*
 ```
 ````
@@ -282,7 +282,7 @@ let color = COLOR_ORANGE;
 alert(color); // #FF7F00
 ```
 
-Bénéfices:
+Bénéfices :
 
 - `COLOR_ORANGE` est beaucoup plus facile à retenir que `"#FF7F00"`.
 - Il est beaucoup plus facile de mal saisir `"#FF7F00"` que `COLOR_ORANGE`.

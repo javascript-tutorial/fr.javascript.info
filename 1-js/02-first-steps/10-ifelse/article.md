@@ -1,4 +1,4 @@
-# Branche conditionnelle : if, '?'
+# Structure conditionnelle : if, '?'
 
 Parfois, nous devons effectuer différentes actions en fonction d'une condition.
 
@@ -35,7 +35,7 @@ Il est recommandé d'entourer votre bloc de code avec des accolades `{}` à chaq
 
 L'instruction `if (…)` évalue l'expression entre parenthèses et la convertit en type booléen.
 
-Rappelons les règles de conversion du chapitre <info:type-conversions>:
+Rappelons les règles de conversion du chapitre <info:type-conversions> :
 
 - Un nombre `0`, une chaîne de caractères vide `""`, `null`, `undefined` et `NaN` deviennent `false`. Dû à cela, on dit de ces valeurs qu'elles sont "falsy".
 - Les autres valeurs deviennent `true`, on dit qu'elles sont "truthy".
@@ -154,10 +154,10 @@ let accessAllowed = age > 18 ? true : false;
 Mais les parenthèses rendent le code plus lisible, il est donc recommandé de les utiliser.
 
 ````smart
-Dans l'exemple ci-dessus, il est possible d'éviter l'opérateur ternaire, parce que la comparaison elle-même renvoie un `true/false`:
+Dans l'exemple ci-dessus, il est possible d'éviter l'opérateur ternaire, parce que la comparaison elle-même renvoie un `true/false` :
 
 ```js
-// la même chose
+// La même chose
 let accessAllowed = age > 18;
 ```
 ````

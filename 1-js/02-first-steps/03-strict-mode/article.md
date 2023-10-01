@@ -53,7 +53,7 @@ Parfois, lorsque `use strict` fait une différence, vous obtenez des résultats 
 
 Alors, comment utiliser `use strict` dans la console ?
 
-D'abord, vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme cela :
+D'abord, vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme ceci :
 
 ```js
 'use strict'; <Shift+Enter for a newline>

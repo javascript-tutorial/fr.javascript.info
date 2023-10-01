@@ -20,6 +20,6 @@ Le schéma :
 
 Veuillez utiliser des blocs `if` imbriqués. Attention à la lisibilité globale du code.
 
-Astuce: passer une entrée vide à un prompt renvoie une chaîne de caractères vide `''`. En pressant `key:ESC` lors d'un prompt cela retourne `null`.
+Astuce : passer une entrée vide à un prompt renvoie une chaîne de caractères vide `''`. En pressant `key:ESC` lors d'un prompt cela retourne `null`.
 
 [demo]

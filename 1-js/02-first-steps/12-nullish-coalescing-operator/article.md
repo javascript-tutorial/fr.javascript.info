@@ -70,7 +70,7 @@ let firstName = null;
 let lastName = null;
 let nickName = "Supercoder";
 
-// affiche la première valeur vraie :
+// Affiche la première valeur vraie :
 *!*
 alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*

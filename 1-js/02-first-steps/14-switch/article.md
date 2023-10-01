@@ -60,7 +60,7 @@ Ensuite `4`, c’est une correspondance. L’exécution commence donc à partir 
 
 **S'il n'y a pas de `break`, l'exécution continue avec la `case` suivante qu'importe l'expression de cette dernière.**
 
-Un exemple sans `break`:
+Un exemple sans `break` :
 
 ```js run
 let a = 2 + 2;

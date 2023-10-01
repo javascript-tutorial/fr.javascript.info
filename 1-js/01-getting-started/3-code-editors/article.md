@@ -4,7 +4,7 @@
 
 Un éditeur de code est un programme que les programmeurs utilisent le plus clair de leur temps.
 
-Il existe deux archétypes: IDE et les éditeurs légers. Beaucoup de personnes se sentent à l'aise pour choisir un outil de chaque type.
+Il existe deux archétypes : IDE et les éditeurs légers. Beaucoup de personnes se sentent à l'aise pour choisir un outil de chaque type.
 
 ## IDE
 

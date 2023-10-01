@@ -108,7 +108,7 @@ Le résultat :
 
 [iframe height=250 src="pow-1" border=1 edit]
 
-À partir de là, le test échoue, il y a une erreur. C’est logique: nous avons un code de fonction vide dans `pow`, donc `pow(2,3)` renvoie `undefined` au lieu de `8`.
+À partir de là, le test échoue, il y a une erreur. C’est logique : nous avons un code de fonction vide dans `pow`, donc `pow(2,3)` renvoie `undefined` au lieu de `8`.
 
 Pour l’avenir, notons qu’il existe des testeurs avancés, tel que [karma](https://karma-runner.github.io/), cela facilite le lancement automatique de nombreux tests différents.
 
@@ -128,7 +128,7 @@ Wow, maintenant ça marche !
 
 ## Améliorer les spécifications
 
-Ce que nous avons fait c'est définitivement de la triche. La fonction ne fonctionne pas: une tentative de calcul de `pow(3,4)` donnerait un résultat incorrect, mais les tests réussissent.
+Ce que nous avons fait c'est définitivement de la triche. La fonction ne fonctionne pas : une tentative de calcul de `pow(3,4)` donnerait un résultat incorrect, mais les tests réussissent.
 
 … Mais la situation est assez typique, cela se produit dans la pratique. Les tests réussissent, mais la fonction ne fonctionne pas correctement. Notre spec est imparfaite. Nous devons ajouter d'autres cas d'utilisation.
 
@@ -349,7 +349,7 @@ Il y a aussi d'autres affirmations dans [Chai](https://chaijs.com), par exemple 
 - … la liste complète est dans la [documentation](https://chaijs.com/api/assert/)
 ```
 
-Donc, nous devrions ajouter quelques lignes à `pow`:
+Donc, nous devrions ajouter quelques lignes à `pow` :
 
 ```js
 function pow(x, n) {

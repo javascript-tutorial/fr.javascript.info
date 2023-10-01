@@ -24,7 +24,7 @@ Aujourd'hui, JavaScript peut s'exécuter non seulement dans le navigateur, mais 
 
 Le navigateur a un moteur intégré, parfois il peut être également appelé "la machine virtuelle JavaScript".
 
-Différents moteurs ont différents "nom de code", par exemple:
+Différents moteurs ont différents "nom de code", par exemple :
 
 - [V8](<https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)>) -- dans Chrome et Opera.
 - [SpiderMonkey](https://fr.wikipedia.org/wiki/SpiderMonkey) -- dans Firefox.
@@ -63,7 +63,7 @@ Par exemple, JavaScript dans le navigateur est capable de :
 
 Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malveillante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
-Les exemples de telles restrictions sont:
+Les exemples de telles restrictions sont :
 
 - JavaScript sur une page Web ne peut pas lire/écrire des fichiers arbitrairement sur le disque dur, les copier ou exécuter des programmes. Il n'a pas d'accès direct aux fonctions du système d'exploitation.
 
@@ -85,7 +85,7 @@ De telles limites n'existent pas si JavaScript est utilisé en dehors du navigat
 
 ## Qu'est-ce qui rend JavaScript unique ?
 
-Il y a au moins trois bonnes choses à propos de JavaScript:
+Il y a au moins trois bonnes choses à propos de JavaScript :
 
 ```compare
 + Intégration complète avec HTML / CSS.

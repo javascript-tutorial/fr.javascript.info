@@ -37,7 +37,7 @@ Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte
 
 - Pour un argument unique, les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
-    Par exemple:
+    Par exemple :
 
     ```js run
     *!*
@@ -80,7 +80,7 @@ Les fonctions fléchées que nous avons vues jusqu'à présent étaient très si
 
 Parfois nous avons besoin de plus de complexité, comme des expressions multiples ou des déclarations. Ceci est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
 
-Comme cela :
+Comme ceci :
 
 ```js run
 let sum = (a, b) => {  // Les accolades ouvrent une fonction multiligne

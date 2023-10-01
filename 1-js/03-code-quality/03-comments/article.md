@@ -20,9 +20,9 @@ code;
 
 Mais en bon code, le nombre de ces commentaires "explicatifs" devrait être minime. Sérieusement, le code devrait être facile à comprendre sans eux.
 
-Il existe une excellente règle à ce sujet: "Si le code est si peu clair qu’il nécessite un commentaire, il devrait peut-être être réécrit".
+Il existe une excellente règle à ce sujet : "Si le code est si peu clair qu’il nécessite un commentaire, il devrait peut-être être réécrit".
 
-### Recette: refactoriser les fonctions
+### Recette : refactoriser les fonctions
 
 Parfois, il est avantageux de remplacer un code par une fonction, comme ici :
 
@@ -66,7 +66,7 @@ function isPrime(n) {
 
 Maintenant, nous pouvons comprendre le code facilement. La fonction elle-même devient le commentaire. Un tel code est appelé *auto-descriptif*.
 
-### Recette: créer des fonctions
+### Recette : créer des fonctions
 
 Et si nous avons une longue "feuille de code" comme celle-ci :
 
@@ -151,7 +151,7 @@ Pourquoi la tâche est-elle résolue de cette façon ?
 
     Sans ces commentaires, la situation suivante est possible :
     1. Vous (ou votre collègue) ouvrez le code écrit il y a quelque temps et constatez qu'il n'est pas optimal.
-    2. Vous pensez: "À quel point j'étais bête à ce moment-là et à quel point je suis plus malin maintenant", puis réécrivez en utilisant la variante "plus évidente et correcte".
+    2. Vous pensez : "À quel point j'étais bête à ce moment-là et à quel point je suis plus malin maintenant", puis réécrivez en utilisant la variante "plus évidente et correcte".
     3. … L'envie de réécrire était bonne. Mais dans le processus, vous constatez que la solution "plus évidente" fait défaut. Vous vous rappelez même vaguement pourquoi, parce que vous l'avez déjà essayé il y a longtemps. Vous revenez à la bonne variante, mais le temps a été perdu.
 
     Les commentaires qui expliquent la solution sont très importants. Ils aident à continuer le développement de la bonne façon.

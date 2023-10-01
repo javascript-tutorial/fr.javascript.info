@@ -1,4 +1,4 @@
-# Interaction: alert, prompt, confirm
+# Interaction : alert, prompt, confirm
 
 Comme nous allons utiliser le navigateur comme environnement de démonstration, voyons quelques fonctions pour interagir avec l'utilisateur : `alert`, `prompt` et `confirm`.
 
@@ -95,7 +95,7 @@ Nous avons vu 3 fonctions spécifiques aux interactions avec les visiteurs dans 
 `confirm`
 : Affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler". Il retourne `true` pour OK et `false` pour Annuler/`key:Esc`.
 
-Toutes ces méthodes sont modales: elles suspendent l'exécution du script et ne permettent pas au visiteur d'interagir avec le reste de la page tant que la fenêtre n'a pas été fermée.
+Toutes ces méthodes sont modales : elles suspendent l'exécution du script et ne permettent pas au visiteur d'interagir avec le reste de la page tant que la fenêtre n'a pas été fermée.
 
 Il existe deux limitations partagées par toutes les méthodes ci-dessus :
 

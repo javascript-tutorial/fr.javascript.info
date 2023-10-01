@@ -15,5 +15,5 @@ describe("pow", function() {
 
   });
 
-  // ... more tests to follow here, both describe and it can be added
+  // ... Plus de tests peuvent être inséré
 });

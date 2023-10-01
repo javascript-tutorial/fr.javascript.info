@@ -4,7 +4,7 @@ Nous connaissons bon nombre d'opérateur grâce à l'école. Ce sont les additio
 
 Dans ce chapitre, nous nous concentrons sur les aspects qui ne sont pas couverts par l'arithmétique scolaire.
 
-## Termes: "unaire", "binaire", "opérande"
+## Termes : "unaire", "binaire", "opérande"
 
 Avant de continuer, saisissons la terminologie commune.
 
@@ -468,7 +468,7 @@ Parfois, les gens l'utilisent dans des constructions plus complexes pour placer 
 Par exemple :
 
 ```js
-// trois opérations en une seule ligne
+// Trois opérations en une seule ligne
 for (*!*a = 1, b = 3, c = a * b*/!*; a < 10; a++) {
  ...
 }

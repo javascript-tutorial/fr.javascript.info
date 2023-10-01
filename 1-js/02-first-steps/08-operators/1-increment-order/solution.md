@@ -14,4 +14,3 @@ alert( b++ ); // 1, La forme postfixe renvoie l'ancienne valeur
 alert( a ); // 2, Incrémentée une fois
 alert( b ); // 2, Incrémentée une fois
 ```
-

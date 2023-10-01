@@ -153,7 +153,7 @@ alert(true  && false); // false
 alert(false && false); // false
 ```
 
-Un exemple avec `if`:
+Un exemple avec `if` :
 
 ```js run
 let hour = 12;
@@ -219,7 +219,7 @@ alert(1 && 2 && 3); // 3, la dernière
 ````smart header="La précédence de AND `&&` est supérieure à OR `||`"
 La priorité de l'opérateur AND `&&` est supérieure à OR `||`.
 
-Donc, le code `a && b || c && d` est essentiellement le même que si `&&` était entre parenthèses: `(a && b) || (c && d)`.
+Donc, le code `a && b || c && d` est essentiellement le même que si `&&` était entre parenthèses : `(a && b) || (c && d)`.
 ````
 
 ````warn header="Ne remplacez pas `if` par `||` ou `&&`"

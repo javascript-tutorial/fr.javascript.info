@@ -20,7 +20,7 @@ let b = +prompt("Second number?", 2);
 alert(a + b); // 3
 ```
 
-Ou dans l'`alert`:
+Ou dans l'`alert` :
 
 ```js run
 let a = prompt("First number?", 1);

@@ -15,6 +15,6 @@ if(browser == 'Edge') {
 }
 ```
 
-Remarque: la construction `browser == 'Chrome' || navigateur == 'Firefox'…` est divisée en plusieurs lignes pour une meilleure lisibilité.
+Remarque : la construction `browser == 'Chrome' || navigateur == 'Firefox'…` est divisée en plusieurs lignes pour une meilleure lisibilité.
 
 Mais la construction `switch` est toujours plus efficace.

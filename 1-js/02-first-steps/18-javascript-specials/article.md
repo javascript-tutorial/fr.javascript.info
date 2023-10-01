@@ -169,7 +169,7 @@ Comparaisons
 
     L’opérateur d’égalité stricte `===` ne fait pas la conversion : différents types signifient toujours différentes valeurs pour lui.
 
-    Les valeurs `null` et `undefined` sont spéciales: elles sont égales `==` l'une à l'autre et n’égalent rien d’autre.
+    Les valeurs `null` et `undefined` sont spéciales : elles sont égales `==` l'une à l'autre et n’égalent rien d’autre.
 
     Les comparaisons supérieures/inférieures comparent des chaînes caractère par caractère, les autres types sont convertis en nombre.
 
@@ -234,7 +234,7 @@ Details dans : <info:switch>.
 
 Nous avons couvert trois manières de créer une fonction en JavaScript :
 
-1. Déclaration de fonction: la fonction dans le flux de code principal
+1. Déclaration de fonction : la fonction dans le flux de code principal
 
     ```js
     function sum(a, b) {
@@ -273,7 +273,7 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
     let double = n => n * 2;
     ```
 
-- Une fonction peut avoir des variables locales: celles déclarées à l'intérieur de son corps ou sa liste de paramètres. Ces variables ne sont visibles qu'à l'intérieur de la fonction.
+- Une fonction peut avoir des variables locales : celles déclarées à l'intérieur de son corps ou sa liste de paramètres. Ces variables ne sont visibles qu'à l'intérieur de la fonction.
 - Les paramètres peuvent avoir des valeurs par défaut : `function sum(a = 1, b = 2) {...}`.
 - Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est déclarée ou qu'aucune expression ne suit l'instruction `return`, le résultat est `undefined`.
 

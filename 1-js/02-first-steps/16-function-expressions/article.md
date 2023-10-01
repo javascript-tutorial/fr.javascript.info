@@ -143,7 +143,7 @@ function showCancel() {
   alert("You canceled the execution.");
 }
 
-// Utilisation: les fonctions showOk, showCancel sont transmises en tant qu'arguments à ask
+// Utilisation : les fonctions showOk, showCancel sont transmises en tant qu'arguments à ask
 ask("Do you agree?", showOk, showCancel);
 ```
 

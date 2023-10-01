@@ -9,4 +9,3 @@ admin = name;
 
 alert( admin ); // "John"
 ```
-
