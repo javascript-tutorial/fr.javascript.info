@@ -1,8 +1,8 @@
 # Commentaires
 
-Comme nous le savons du chapitre <info:structure>, les commentaires peuvent être simples : à partir de `//` et multiligne : `/* ... */`.
+Comme nous l'avons vu dans le chapitre <info:structure>, les commentaires peuvent être monoligne : à partir de `//` et multiligne : `/* ... */`.
 
-Nous les utilisons normalement pour décrire comment et pourquoi le code fonctionne.
+Nous les utilisons normalement pour décrire le fonctionnement du code.
 
 De prime abord, les commentaires peuvent sembler évidents, mais les novices en programmation les utilisent souvent à tort.
 
@@ -11,8 +11,8 @@ De prime abord, les commentaires peuvent sembler évidents, mais les novices en 
 Les novices ont tendance à utiliser des commentaires pour expliquer "ce qui se passe dans le code". Comme ceci :
 
 ```js
-// Ce code fera cette chose (...) et cette chose (...)
-// ...Et qui sait quoi d'autre...
+/* Ce code fera cette chose (...) et cette chose (...)
+...Et qui sait quoi d'autre... */
 very;
 complex;
 code;
@@ -32,7 +32,7 @@ function showPrimes(n) {
   for (let i = 2; i < n; i++) {
 
 *!*
-    // check if i is a prime number
+    // Vérifie si i est premier
     for (let j = 2; j < i; j++) {
       if (i % j == 0) continue nextPrime;
     }
@@ -43,8 +43,7 @@ function showPrimes(n) {
 }
 ```
 
-La meilleure variante, avec une fonction factorisée est `isPrime` :
-
+La meilleure variante, avec une fonction refactorisée est `isPrime` :
 
 ```js
 function showPrimes(n) {
@@ -72,14 +71,14 @@ Maintenant, nous pouvons comprendre le code facilement. La fonction elle-même d
 Et si nous avons une longue "feuille de code" comme celle-ci :
 
 ```js
-// ici on ajoute du whisky
+// Ici on ajoute du whisky
 for(let i = 0; i < 10; i++) {
   let drop = getWhiskey();
   smell(drop);
   add(drop, glass);
 }
 
-// ici on ajoute du jus
+// Ici on ajoute du jus
 for(let t = 0; t < 3; t++) {
   let tomato = getTomato();
   examine(tomato);
@@ -111,7 +110,7 @@ function addJuice(container) {
 }
 ```
 
-Une fois encore, les fonctions elles-mêmes racontent ce qui se passe. Il n’y a rien à commenter. Et aussi la structure du code est meilleure quand elle est divisée. C'est clair ce que chaque fonction fait, ce qu’elle nécessite et ce qu’elle renvoie.
+Une fois encore, les fonctions elles-mêmes racontent ce qui se passe. Il n’y a rien à commenter. Et aussi la structure du code est meilleure quand elle est divisée. Ce que chaque fonction fait est clair, ce qu’elle nécessite et ce qu’elle retourne.
 
 En réalité, nous ne pouvons pas totalement éviter les commentaires «explicatifs». Il existe des algorithmes complexes. Et il existe des "réglages" intelligents à des fins d'optimisation. Mais généralement, nous devrions essayer de garder le code simple et auto-descriptif.
 
@@ -120,17 +119,17 @@ En réalité, nous ne pouvons pas totalement éviter les commentaires «explicat
 Ainsi, les commentaires explicatifs sont généralement mauvais. Quels commentaires sont bons ?
 
 Décrivez l'architecture
-: Fournissez une vue d’ensemble des composants, de leurs interactions, de ce que sont les flux de contrôle dans diverses situations… En bref -- une vue plongeante du code. Il existe un langage spécial [UML](https://fr.wikipedia.org/wiki/UML_(informatique)) pour les diagrammes d'architecture de haut niveau. Ça vaut vraiment la peine de l'étudier.
+: Fournissez une vue d’ensemble des composants, de leurs interactions, de ce que sont les flux de contrôle dans diverses situations… En bref -- une vue plongeante du code. Il existe un langage spécial [UML](https://fr.wikipedia.org/wiki/UML_(informatique)) pour les diagrammes d'architecture de haut niveau. Ça vaut vraiment la peine de l'étudier (sérieusement).
 
 Documenter les paramètres de fonction et leur utilisation
-: Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) pour documenter une fonction : utilisation, paramètres, valeur renvoyée.
+: Il y a une syntaxe spéciale [JSDoc](https://fr.wikipedia.org/wiki/JSDoc) pour documenter une fonction : utilisation, paramètres, valeur retournée.
 
 Par exemple :
 ```js
 /**
- * Renvoie x élevé à la n-ième puissance.
+ * Retourne x élevé à la n-ième puissance.
  *
- * @param {number} x Le nombre à augmenter.
+ * @param {number} x Le nombre à incrémenter.
  * @param {number} n L'exposant doit être un nombre naturel.
  * @return {number} x élevé à la n-ème puissance.
  */
@@ -141,9 +140,9 @@ function pow(x, n) {
 
 De tels commentaires nous permettent de comprendre le but de la fonction et de l’utiliser correctement sans regarder dans son code.
 
-À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peut aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
+À ce propos, de nombreux éditeurs comme [WebStorm](https://www.jetbrains.com/webstorm/) peuvent aussi les comprendre et les utiliser pour fournir une autocomplétion et une vérification automatique du code.
 
-En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc/jsdoc) qui peut générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
+En outre, il existe des outils comme [JSDoc 3](https://github.com/jsdoc/jsdoc) qui peuvent générer une documentation HTML à partir des commentaires. Vous pouvez lire plus d'informations sur JSDoc à l'adresse <http://usejsdoc.org/>.
 
 Pourquoi la tâche est-elle résolue de cette façon ?
 : Ce qui est écrit est important. Mais ce qui *n’est pas* écrit peut être encore plus important pour comprendre ce qui se passe. Pourquoi la tâche est-elle résolue exactement de cette façon ? Le code ne donne pas de réponse.
@@ -158,13 +157,13 @@ Pourquoi la tâche est-elle résolue de cette façon ?
     Les commentaires qui expliquent la solution sont très importants. Ils aident à continuer le développement de la bonne façon.
 
 Les caractéristiques subtiles du code ? Où sont-elles utilisés ?
-: Si le code a quelque chose de subtil et de contre-intuitif, cela vaut vraiment la peine de le commenter.
+: Si le code a quelque chose de subtil ou de contre-intuitif, cela vaut vraiment la peine de le commenter.
 
 ## Résumé
 
 Les commentaires sont une caractéristique importante du bon développeur : leur présence et même leur absence.
 
-Les bons commentaires nous permettent de bien maintenir le code, d'y revenir après un délai et de l'utiliser plus efficacement.
+Les bons commentaires nous permettent de bien maintenir le code, d'y revenir après un certain temps et de l'utiliser plus efficacement.
 
 **Commentez ceci :**
 
@@ -175,6 +174,6 @@ Les bons commentaires nous permettent de bien maintenir le code, d'y revenir apr
 **Évitez les commentaires :**
 
 - Qui disent "comment fonctionne le code" et "ce qu'il fait".
-- Ne les mettez que s’il est impossible de rendre le code aussi simple et auto-descriptif qu’il n’en nécessite pas.
+- Ne les mettez que s’il est impossible de rendre le code plus simple ou auto-descriptif.
 
 Les commentaires sont également utilisés pour les outils de documentation automatique tels que JSDoc3. Ils les lisent et génèrent des documents HTML (ou des documents dans un autre format).
