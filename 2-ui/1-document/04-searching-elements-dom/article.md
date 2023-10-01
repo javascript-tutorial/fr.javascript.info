@@ -41,7 +41,7 @@ Il y a aussi une variable globale nommée selon l'`id` qui référence l'éléme
 </script>
 ```
 
-...A moins qu'on déclare une variable Javascript avec le même nom, auquel cas celle-ci obtient la priorité :
+...A moins qu'on déclare une variable JavaScript avec le même nom, auquel cas celle-ci obtient la priorité :
 
 ```html run untrusted height=0
 <div id="elem"></div>

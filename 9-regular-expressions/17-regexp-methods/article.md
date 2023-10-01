@@ -149,14 +149,14 @@ alert( '12-34-56'.replace( *!*/-/g*/!*, ":" ) )  // 12:34:56
 Le second argument est une chaîne de caractères de remplacement. Nous pouvons utiliser des caractères spéciaux dedans :
 
 
-| Symbols | Action in the replacement string |
-|--------|--------|
-|`$&`|insère la chaine de caractère en correspondance|
-|<code>$&#096;</code>|Insère la partie de la chaîne de caractère qui précède la sous-chaîne en correspondance|
-|`$'`|insère la partie de la chaîne de caractère qui suit la sous-chaîne en correspondance|
-|`$n`|si `n` est un nombre à 1 ou 2 chiffres, insère la n-ième chaîne de sous-correspondance entre parenthèses, pour plus de détails voir [](info:regexp-groups)|
-|`$<name>`|insère la chaîne de caractère du `name` correspondant à celui entre parenthèse, pour plus de détails voir [](info:regexp-groups)|
-|`$$`|insère un caractère `$` |
+| Symbols              | Action in the replacement string                                                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$&`                 | insère la chaine de caractère en correspondance                                                                                                            |
+| <code>$&#096;</code> | Insère la partie de la chaîne de caractère qui précède la sous-chaîne en correspondance                                                                    |
+| `$'`                 | insère la partie de la chaîne de caractère qui suit la sous-chaîne en correspondance                                                                       |
+| `$n`                 | si `n` est un nombre à 1 ou 2 chiffres, insère la n-ième chaîne de sous-correspondance entre parenthèses, pour plus de détails voir [](info:regexp-groups) |
+| `$<name>`            | insère la chaîne de caractère du `name` correspondant à celui entre parenthèse, pour plus de détails voir [](info:regexp-groups)                           |
+| `$$`                 | insère un caractère `$`                                                                                                                                    |
 
 Par exemple:
 
@@ -266,7 +266,7 @@ Mais si `pattern:g` est utilisé, alors:
 
 Donc, un appel répété à cette fonction renvoie toutes les correspondances l'une après l'autre, utilisant la propriété `regexp.lastIndex` pour se souvenir de l'indice courant à partir duquel la recherche est effectuée.
 
-Avant que la méthode `str.matchAll` ait été ajoutée à Javascript, des appels à `regexp.exec` étaient utilisés dans une boucle afin d'obtenir toutes les correspondances:  
+Avant que la méthode `str.matchAll` ait été ajoutée à JavaScript, des appels à `regexp.exec` étaient utilisés dans une boucle afin d'obtenir toutes les correspondances:  
 
 ```js run
 let str = 'More about JavaScript at https://javascript.info';

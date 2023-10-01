@@ -10,10 +10,10 @@ C'est une analogie réelle à un problème courant de programmation :
 
 1. Un "producteur de code" qui réalise quelque chose mais nécessite du temps. Par exemple, un code qui charge des données à travers un réseau. C'est le "chanteur".
 2. Un "consommateur de code" qui attend un résultat du "producteur de code" quand il est prêt. Beaucoup de fonctions peuvent avoir besoin de ce résultat. Ces fonctions sont les "fans".
-3. Une *promesse* (promise) est un objet spécial en Javascript qui lie le "producteur de code" et le "consommateur de code" ensemble. En comparant à notre analogie c'est la "liste d'abonnement". Le "producteur de code" prend le temps nécessaire pour produire le résultat promis, et la "promesse" donne le résultat disponible pour le code abonné quand c'est prêt.
+3. Une *promesse* (promise) est un objet spécial en JavaScript qui lie le "producteur de code" et le "consommateur de code" ensemble. En comparant à notre analogie c'est la "liste d'abonnement". Le "producteur de code" prend le temps nécessaire pour produire le résultat promis, et la "promesse" donne le résultat disponible pour le code abonné quand c'est prêt.
 
 
-L'analogie n'est pas la plus correcte, car les promesses en Javascript sont un peu plus complexes qu'une simple liste d'abonnement : elles ont d'autres possibilités mais aussi certaines limitations. Toutefois c'est suffisant pour débuter.
+L'analogie n'est pas la plus correcte, car les promesses en JavaScript sont un peu plus complexes qu'une simple liste d'abonnement : elles ont d'autres possibilités mais aussi certaines limitations. Toutefois c'est suffisant pour débuter.
 
 
 La syntaxe du constructeur pour une promesse est :
@@ -26,7 +26,7 @@ let promise = new Promise(function(resolve, reject) {
 
 La fonction passée à `new Promise` est appelée l'*exécuteur*. Quand `new Promise` est créée, elle est lancée automatiquement. Elle contient le producteur de code, qui doit produire un résulat final. Dans l'analogie ci-dessus : l'exécuteur est le "chanteur".
 
-Ses arguments `resolve` (tenir) et `reject` (rompre) sont les fonctions de retour directement fournies par Javascript. Notre code est inclus seulement dans l'exécuteur.
+Ses arguments `resolve` (tenir) et `reject` (rompre) sont les fonctions de retour directement fournies par JavaScript. Notre code est inclus seulement dans l'exécuteur.
 
 Quand l'exécuteur obtient un résultat, qu'il soit rapide ou pas, cela n'a pas d'importance, il appellera une des deux fonctions de retour :
 
@@ -59,7 +59,7 @@ let promise = new Promise(function(resolve, reject) {
 On peut voir deux choses en lançant le code ci-dessus :
 
 1. L'exécuteur est appelé automatiquement et immédiatement (avec `new Promise`).
-2. L'exécuteur reçoit deux arguments : `resolve` et `reject` - ces deux fonctions sont pré-définies par le moteur Javascript, ainsi nous n'avons pas besoin de les créer. Nous devons seulement appeler l'une ou l'autre quand le résultat est prêt.
+2. L'exécuteur reçoit deux arguments : `resolve` et `reject` - ces deux fonctions sont pré-définies par le moteur JavaScript, ainsi nous n'avons pas besoin de les créer. Nous devons seulement appeler l'une ou l'autre quand le résultat est prêt.
 
     Après une seconde de "traitement" l'exécuteur appelle `resolve("done")` pour produire le résultat. Cela change l'état de l'objet `promise` :
 
@@ -354,9 +354,9 @@ promise.then(script => alert('Another handler...'));
 
 On peut remarquer immédiatement quelques avantages par rapport aux fonctions de retour :
 
-| Promesses | Fonctions de retour |
-|-----------|----------------------|
-| Les promesses nous permettent de faire des choses dans un ordre naturel. D'abord, nous lançons `loadScript(script)`, puis avec `.then` nous codons quoi faire avec le résultat. | Nous devons avoir une fonction de retour à notre disposition quand nous appelons `loadScript(script, callback)`. En d'autres termes, nous devons savoir quoi faire du résultat *avant* que `loadScript` soit appelé. |
-| Nous pouvons appeler `.then` sur une promesse autant de temps fois que nécessaire. À chaque fois, nous ajoutons un nouveau "fan", une nouvelle fonction s'abonnant à la "liste d'abonnés". Nous en verrons plus à ce sujet dans le prochain chapitre : [](info:promise-chaining). | Il ne peut y avoir qu'une seule fonction de retour. |
+| Promesses                                                                                                                                                                                                                                                                         | Fonctions de retour                                                                                                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Les promesses nous permettent de faire des choses dans un ordre naturel. D'abord, nous lançons `loadScript(script)`, puis avec `.then` nous codons quoi faire avec le résultat.                                                                                                   | Nous devons avoir une fonction de retour à notre disposition quand nous appelons `loadScript(script, callback)`. En d'autres termes, nous devons savoir quoi faire du résultat *avant* que `loadScript` soit appelé. |
+| Nous pouvons appeler `.then` sur une promesse autant de temps fois que nécessaire. À chaque fois, nous ajoutons un nouveau "fan", une nouvelle fonction s'abonnant à la "liste d'abonnés". Nous en verrons plus à ce sujet dans le prochain chapitre : [](info:promise-chaining). | Il ne peut y avoir qu'une seule fonction de retour.                                                                                                                                                                  |
 
 Les promesses nous permettent donc d'avoir plus de sens et une meilleure flexibilité. Mais il y a plus. Nous allons voir cela dans les chapitres suivants.

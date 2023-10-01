@@ -127,7 +127,7 @@ Règles des paramètres omis:
 
 La fonction `open` retourne une référence à la nouvelle fenêtre. Celle ci peut être utilisée pour manipuler ses propriétés, changer sa localisation et bien plus.
 
-Dans cet exemple, nous générons du contenu en pop-up avec Javascript: 
+Dans cet exemple, nous générons du contenu en pop-up avec JavaScript: 
 
 ```js
 let newWin = window.open("about:blank", "hello", "width=200,height=200");
