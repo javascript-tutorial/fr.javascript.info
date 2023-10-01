@@ -1,6 +1,5 @@
 # Ninja code
 
-
 ```quote author="Confucius (Entretiens)"
 Apprendre sans réfléchir est vain. Réfléchir sans apprendre est dangereux.
 ```
@@ -13,11 +12,9 @@ Les développeurs novices les utilisent parfois encore mieux que les programmeur
 
 Lisez-les attentivement et découvrez qui vous êtes: un ninja, un novice ou peut-être un critique de code ?
 
-
 ```warn header="Ironie detectée"
 Beaucoup essaient de suivre les chemins des ninjas. Peu réussissent.
 ```
-
 
 ## La concision est l'âme de l'esprit
 
@@ -28,7 +25,7 @@ Laissez les fonctionnalités du langage subtiles vous guider.
 Par exemple, jetez un oeil à cet opérateur ternaire `'?'` :
 
 ```js
-// tiré d'une bibliothèque javascript bien connue
+// Tiré d'une bibliothèque JavaScript bien connue
 i = i ? i < 0 ? Math.max(0, len + i) : i : 0;
 ```
 
@@ -98,8 +95,7 @@ Seul un programmeur vraiment attentif devrait être capable de comprendre votre 
 
 Mélangez-les où vous pouvez.
 
-Une lecture rapide de ce code devient impossible. Et quand il ya une faute de frappe… Humm… Nous sommes coincés longtemps, le temps de boire du thé.
-
+Une lecture rapide de ce code devient impossible. Et quand il y a une faute de frappe… Humm… Nous sommes coincés longtemps, le temps de boire du thé.
 
 ## Des synonymes intelligents
 

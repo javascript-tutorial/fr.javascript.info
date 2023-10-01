@@ -2,7 +2,6 @@
 
 Les tests automatisés seront utilisés dans d'autres tâches. Ils sont également largement utilisés dans des projets réels.
 
-
 ## Pourquoi avons-nous besoin de tests ?
 
 Lorsque nous écrivons une fonction, nous pouvons généralement imaginer ce qu’elle doit faire : quels paramètres donnent quels résultats.
@@ -15,13 +14,13 @@ Mais de telles "ré-exécutions" manuelles sont imparfaites.
 
 **Lors du test manuel d’un code, il est facile de rater quelque chose.**
 
-Par exemple, nous créons une fonction `f`. On écrit du code, on teste : `f(1)` fonctionne, mais `f(2)` ne fonctionne pas. Nous corrigeons le code et maintenant `f(2)` fonctionne. Cela semble complet ? Mais nous avons oublié de re-tester `f(1).` Cela peut conduire à une erreur.
+Par exemple, nous créons une fonction `f`. On écrit du code, on teste : `f(1)` fonctionne, mais `f(2)` ne fonctionne pas. Nous corrigeons le code, maintenant `f(2)` fonctionne. Cela semble complet ? Mais nous avons oublié de re-tester `f(1).` Cela peut conduire à une erreur.
 
 C’est très typique. Lorsque nous développons quelque chose, nous gardons à l’esprit beaucoup de cas d’utilisation possibles. Mais il est difficile de s’attendre à ce qu’un programmeur les vérifie manuellement après chaque modification. Il devient donc facile de réparer une chose et d'en casser une autre.
 
 **Le test automatisé signifie que les tests sont écrits séparément, en plus du code. Ils exécutent nos fonctions de différentes manières et comparent les résultats avec les attentes.**
 
-## Behavior Driven Development (BDD)
+## Développement pilotée par le comportement / Behavior Driven Development (BDD)
 
 Commençons par une technique nommée [Behavior Driven Development](https://fr.wikipedia.org/wiki/Behavior-driven_development) ou, en bref, BDD. 
 
@@ -29,7 +28,7 @@ Commençons par une technique nommée [Behavior Driven Development](https://fr.w
 
 Pour comprendre BDD, examinons un cas pratique de développement.
 
-## Développement de "pow": la spec
+## Développement de "pow": la spécification
 
 Imaginons que nous voulions créer une fonction `pow(x, n)` qui élève `x` à la puissance d'un entier `n`. Nous supposons que `n≥0`.
 
@@ -73,10 +72,10 @@ Le flux de développement ressemble généralement à ceci :
 3. Pour vérifier si cela fonctionne, nous exécutons le framework de test [Mocha](https://mochajs.org/) (plus de détails bientôt) qui exécute la spécification. Tant que la fonctionnalité n'est pas complète, des erreurs sont affichées. Nous apportons des corrections jusqu'à ce que tout fonctionne.
 4. Nous avons maintenant une implémentation initiale de travail avec des tests.
 5. Nous ajoutons d'autres cas d'utilisation à la spécification, probablement pas encore pris en charge par les implémentations. Les tests commencent à échouer.
-6. Passez à l'étape 3, mettez à jour l'implémentation jusqu'à ce que les tests ne génèrent aucune erreur.
-7. Répétez les étapes 3 à 6 jusqu'à ce que la fonctionnalité soit prête.
+6. Passer à l'étape 3, mettez à jour l'implémentation jusqu'à ce que les tests ne génèrent aucune erreur.
+7. Répéter les étapes 3 à 6 jusqu'à ce que la fonctionnalité soit prête.
 
-Donc, le développement est *itératif*. Nous écrivons la spécification, la mettons en œuvre, nous nous assurons que les tests réussissent, puis rédigeons d'autres tests, nous nous assurons qu'ils fonctionnent, etc. À la fin, nous avons une implémentation qui fonctionne et des tests.
+Donc, le développement est *itératif*. Nous écrivons la spécification, la mettons en œuvre, nous assurons que les tests réussissent, puis rédigeons d'autres tests, nous nous assurons qu'ils fonctionnent, etc. À la fin, nous avons une implémentation qui fonctionne et des tests.
 
 Voyons ce flux de développement dans notre cas pratique.
 
@@ -101,7 +100,7 @@ La page peut être divisée en quatre parties :
 
 1. Le `<head>` -- ajouter des bibliothèques et des styles tiers pour les tests.
 2. Le `<script>` avec la fonction à tester, dans notre cas - avec le code pour `pow`.
-3. Les tests - dans notre cas, un script externe `test.js` qui a `describe("pow", ...)` d'en haut.
+3. Les tests - dans notre cas, un script externe `test.js` qui a `describe("pow", ...)` en haut.
 4. L'élément HTML `<div id="mocha">` sera utilisé par Mocha pour afficher les résultats.
 5. Les tests sont lancés par la commande `mocha.run()`.
 
@@ -111,7 +110,7 @@ Le résultat :
 
 À partir de là, le test échoue, il y a une erreur. C’est logique: nous avons un code de fonction vide dans `pow`, donc `pow(2,3)` renvoie `undefined` au lieu de `8`.
 
-Pour l’avenir, notons qu’il existe des testeurs avancés, tels que [karma](https://karma-runner.github.io/) et d'autres, cela facilite le lancement automatique de nombreux tests différents.
+Pour l’avenir, notons qu’il existe des testeurs avancés, tel que [karma](https://karma-runner.github.io/), cela facilite le lancement automatique de nombreux tests différents.
 
 ## Implementation initiale
 
@@ -119,7 +118,7 @@ Faisons une simple implémentation de `pow`, pour que les tests réussissent :
 
 ```js
 function pow(x, n) {
-  return 8; // :) we cheat!
+  return 8; // :) On triche :)
 }
 ```
 
@@ -129,7 +128,7 @@ Wow, maintenant ça marche !
 
 ## Améliorer les spécifications
 
-Ce que nous avons fait est définitivement une triche. La fonction ne fonctionne pas: une tentative de calcul de `pow(3,4)` donnerait un résultat incorrect, mais les tests réussissent.
+Ce que nous avons fait c'est définitivement de la triche. La fonction ne fonctionne pas: une tentative de calcul de `pow(3,4)` donnerait un résultat incorrect, mais les tests réussissent.
 
 … Mais la situation est assez typique, cela se produit dans la pratique. Les tests réussissent, mais la fonction ne fonctionne pas correctement. Notre spec est imparfaite. Nous devons ajouter d'autres cas d'utilisation.
 
@@ -183,7 +182,7 @@ Le résultat :
 
 [iframe height=250 src="pow-2" edit border="1"]
 
-Comme on pouvait s'y attendre, le deuxième test a échoué. Bien sûr, notre fonction retourne toujours `8`, alors que l'`assert` en attend `81`.
+Comme on pouvait s'y attendre, le deuxième test a échoué. Bien sûr, notre fonction retourne toujours `8`, alors que l'`assert` attend `81`.
 
 ## Améliorer l'implémentation
 
@@ -252,7 +251,7 @@ describe("pow", function() {
   });
 */!*
 
-  // ... plus de tests à suivre ici, les deux describe et it peuvent être ajoutés
+  // ... Plus de tests à suivre ici, les deux describe et it peuvent être ajoutés
 });
 ```
 
@@ -260,7 +259,7 @@ La description imbriquée définit un nouveau "sous-groupe" de tests. Dans la so
 
 [iframe height=250 src="pow-4" edit border="1"]
 
-À l’avenir, nous pourrons ajouter plus d'`it` et `describe` au niveau supérieur avec leurs propres fonctions helper, ils ne verront pas `makeTest`.
+À l’avenir, nous pourrons ajouter plus d'`it` et de `describe` au niveau supérieur avec leurs propres fonctions helper, ils ne verront pas `makeTest`.
 
 ````smart header="`before/after` et `beforeEach/afterEach`"
 Nous pouvons configurer les fonctions `before/after` qui s'exécutent avant/après l'exécution des tests, ainsi que les fonctions `beforeEach/afterEach` qui s'exécutent avant/après chaque `it`.
@@ -302,7 +301,7 @@ Habituellement, `beforeEach/afterEach` et `before/after` sont utilisés pour eff
 
 ## Étendre les spécifications
 
-La fonctionnalité de base de `pow` est complète. La première itération du développement est terminée. Quand nous aurons fini de célébrer et de boire du champagne, continuons et améliorons-le.
+La fonctionnalité de base de `pow` est complète. La première itération du développement est terminée. Quand nous aurons fini de célébrer et de boire du champagne, nous pourrons continuer et l'améliorer.
 
 Comme il a été dit, la fonction `pow(x, n)` est censée fonctionner avec des valeurs entières positives `n`.
 
@@ -334,7 +333,7 @@ Le résultat avec de nouveaux tests :
 
 [iframe height=530 src="pow-nan" edit border="1"]
 
-Les tests récemment ajoutés échouent car notre implémentation ne les prend pas en charge. C’est comme cela que BDD est fait : d’abord nous écrivons des tests qui échouent, puis nous réalisons une implémentation pour eux.
+Les tests récemment ajoutés échouent car notre implémentation ne les prend pas en charge. BDD fonctionne comme suit : d’abord nous écrivons des tests qui échouent, puis nous réalisons une implémentation pour eux.
 
 ```smart header="Autres affirmations"
 
@@ -347,7 +346,7 @@ Il y a aussi d'autres affirmations dans [Chai](https://chaijs.com), par exemple 
 - `assert.notEqual`, `assert.notStrictEqual` -- contrôles inverses à ceux ci-dessus.
 - `assert.isTrue(value)` -- vérifie que `value === true`
 - `assert.isFalse(value)` -- vérifie que `value === false`
-- … la liste complète est dans la [doc](https://chaijs.com/api/assert/)
+- … la liste complète est dans la [documentation](https://chaijs.com/api/assert/)
 ```
 
 Donc, nous devrions ajouter quelques lignes à `pow`:
@@ -382,8 +381,8 @@ Dans BDD, la spécification commence, suivie de l'implémentation. À la fin, no
 La spécification peut être utilisée de trois manières :
 
 1. En tant que **Tests** -- garantir que le code fonctionne correctement.
-2. En tant que **Docs** -- les titres de `describe` et `it` indiquent ce que fait la fonction.
-3. En tant que **Examples** -- les tests sont en fait des exemples de travail montrant comment une fonction peut être utilisée.
+2. En tant que **Docs** -- les titres de `describe` et `it` indiquent ce que fait / doit faire la fonction.
+3. En tant qu'**Exemples** -- les tests sont en fait des exemples de travail montrant comment une fonction peut être utilisée.
 
 Avec la spécification, nous pouvons sans risque améliorer, modifier, même réécrire la fonction à partir de zéro et nous assurer qu'elle fonctionne toujours correctement.
 

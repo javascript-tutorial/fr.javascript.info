@@ -25,10 +25,9 @@ describe("Raises x to power n", function() {
 });
 ```
 
-Nous avons remplacé l'`it` unique par un `describe` et un groupe d'`it`. Si quelque chose échouait, nous verrions clairement quelles étaient les données erronées.
+Nous allons remplacer l'`it` unique par un `describe` et un groupe d'`it`. Si quelque chose échoue, nous verrons clairement quelles sont les données erronées.
 
 Nous pouvons également isoler un seul test et l'exécuter en mode autonome en l'écrivant `it.only` à la place de `it` :
-
 
 ```js
 describe("Raises x to power n", function() {
