@@ -16,7 +16,7 @@ let ladder = {
 */!*
   },
   showStep() {
-    alert( this.step );
+    alert(this.step);
 *!*
     return this;
 */!*
@@ -37,4 +37,3 @@ ladder
   .down()
   .showStep(); // 0
 ```
-

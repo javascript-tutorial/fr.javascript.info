@@ -1,4 +1,3 @@
-
 let ladder = {
   step: 0,
   up: function() {

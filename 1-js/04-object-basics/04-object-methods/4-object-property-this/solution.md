@@ -11,7 +11,7 @@ function makeUser() {
 
 let user = makeUser();
 
-alert( user.ref.name ); // Erreur: Impossible de lire la propriété 'nom' de undefined
+alert(user.ref.name); // Erreur : Impossible de lire la propriété 'nom' d'undefined
 ```
 
 C'est parce que les règles qui définissent `this` ne prennent pas en compte la définition d'objet. Seul le moment de l'appel compte.
@@ -26,12 +26,12 @@ Nous pouvons réécrire la fonction et renvoyer le même `this` avec la valeur `
 
 ```js run
 function makeUser(){
-  return this; // cette fois il n'y a pas d'objet littéral
+  return this; // Cette fois il n'y a pas d'objet littéral
 }
 
-alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
+alert(makeUser().name); // Erreur : Impossible de lire la propriété 'name' d'undefined
 ```
-Comme vous pouvez le constater, le résultat de `alert( makeUser().name )` est identique à celui de `alert( user.ref.name )` de l'exemple précédent.
+Comme vous pouvez le constater, le résultat de `alert(makeUser().name)` est identique à celui de `alert(user.ref.name)` de l'exemple précédent.
 
 Voici le cas contraire :
 
@@ -49,7 +49,7 @@ function makeUser() {
 
 let user = makeUser();
 
-alert( user.ref().name ); // John
+alert(user.ref().name); // John
 ```
 
 Maintenant cela fonctionne parce que `user.ref()` est une méthode. Et la valeur de `this` est définie pour l'objet avant le point `.`.

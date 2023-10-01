@@ -1,4 +1,3 @@
-
 describe('Ladder', function() {
   before(function() {
     window.alert = sinon.stub(window, "alert");

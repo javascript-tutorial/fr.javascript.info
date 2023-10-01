@@ -32,11 +32,11 @@ user.sayHi = function() {
 user.sayHi(); // Hello!
 ```
 
-Ici, nous venons d'utiliser une fonction expression pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
+Ici, nous venons d'utiliser une expression de fonction pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
 
 Ensuite, nous pouvons l'appeler comme `user.sayHi()`. L'utilisateur peut maintenant parler!
 
-Une fonction qui est la propriété d'un objet s'appelle sa *méthode*.
+Une fonction qui appartient à un objet s'appelle sa *méthode*.
 
 Nous avons donc ici une méthode `sayHi` de l’objet `user`.
 
@@ -48,29 +48,29 @@ let user = {
 };
 
 *!*
-// d'abord, déclarer
+// D'abord, déclarée
 function sayHi() {
   alert("Hello!");
 }
 
-// puis ajouter comme une méthode
+// Puis ajoutée comme une méthode
 user.sayHi = sayHi;
 */!*
 
 user.sayHi(); // Hello!
 ```
 
-```smart header="Programmation orientée objet"
-Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle une [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
+```smart header="Programmation Orientée Objet"
+Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle de la [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
-La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns: Elements of Reusable Object-Oriented Software" de E. Gamma, R. Helm, R. Johnson, J. Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
+La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns : Elements of Reusable Object-Oriented Software" de E. Gamma, R. Helm, R. Johnson, J. Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
 ```
 ### Méthode abrégée
 
 Il existe une syntaxe plus courte pour les méthodes dans un littéral d'objet :
 
 ```js
-// ces objets font la même chose
+// Ces objets font la même chose
 
 user = {
   sayHi: function() {
@@ -78,10 +78,10 @@ user = {
   }
 };
 
-// la méthode abrégée semble mieux, non ?
+// La méthode abrégée semble mieux, non ?
 user = {
 *!*
-  sayHi() { // identique à "sayHi: function(){...}"
+  sayHi() { // Identique à "sayHi: function(){...}"
 */!*
     alert("Hello");
   }
@@ -111,7 +111,7 @@ let user = {
 
   sayHi() {
 *!*
-    // "this" is the "current object"
+    // On vise la propriété 'name' de l'objet courant
     alert(this.name);
 */!*
   }
@@ -121,7 +121,7 @@ let user = {
 user.sayHi(); // John
 ```
 
-Ici, lors de l'exécution de `user.sayHi()`, la valeur de `this` sera `user`.
+Lors de l'exécution de `user.sayHi()`, la valeur de `this` sera `user`.
 
 Techniquement, il est également possible d’accéder à l’objet sans `this`, en le référençant via la variable externe :
 
@@ -150,14 +150,14 @@ let user = {
 
   sayHi() {
 *!*
-    alert( user.name ); // conduit à une erreur
+    alert(user.name); // Conduit à une erreur
 */!*
   }
 
 };
 
 let admin = user;
-user = null; // écraser pour rendre les choses évidentes
+user = null; // Écraser pour rendre les choses évidentes
 
 *!*
 admin.sayHi(); // TypeError: Cannot read property 'name' of null
@@ -174,7 +174,7 @@ Il n’y a pas d’erreur de syntaxe dans le code suivant :
 
 ```js
 function sayHi() {
-  alert( *!*this*/!*.name );
+  alert(*!*this*/!*.name);
 }
 ```
 
@@ -187,16 +187,16 @@ let user = { name: "John" };
 let admin = { name: "Admin" };
 
 function sayHi() {
-  alert( this.name );
+  alert(this.name);
 }
 
 *!*
-// utiliser la même fonction dans deux objets
+// Utiliser la même fonction dans deux objets
 user.f = sayHi;
 admin.f = sayHi;
 */!*
 
-// ces appels ont un this différent
+// Ces appels ont un this différent
 // "this" à l'intérieur de la fonction est l'objet "avant le point"
 user.f(); // John  (this == user)
 admin.f(); // Admin  (this == admin)
@@ -211,17 +211,17 @@ Nous pouvons même appeler la fonction sans objet du tout :
 
 ```js run
 function sayHi() {
-  alert(this);
+  alert(this); // Affiche undefined
 }
 
-sayHi(); // undefined
+sayHi();
 ```
 
 Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder à `this.name`, il y aura une erreur.
 
 En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique que le mode strict corrige.
 
-Ce genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelée dans un contexte d'objet.
+Ce genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelé dans un contexte d'objet.
 ````
 
 ```smart header="Les conséquences d'un `this` non lié"
@@ -252,17 +252,17 @@ let user = {
 user.sayHi(); // Ilya
 ```
 
-C’est une particularité des fonctions fléchées. C’est utile lorsque nous ne voulons pas réellement avoir un this distinct, mais plutôt le prendre à partir du contexte extérieur. Plus tard dans le chapitre <info:arrow-functions> nous allons approfondir les fonctions fléchées.
+C’est une particularité des fonctions fléchées. C’est utile lorsque nous ne voulons pas réellement avoir un this distinct, mais plutôt le prendre à partir du contexte extérieur. Plus tard dans le chapitre <info:arrow-functions> nous approfondirons les fonctions fléchées.
 
 ## Résumé
 
-- Les fonctions stockées dans les propriétés de l'objet s'appellent des "méthodes".
+- Les méthodes sont des fonctions déclarées dans les propriétés d'un objet.
 - Les méthodes permettent aux objets d’agir comme `object.doSomething()`.
 - Les méthodes peuvent référencer l'objet comme `this`.
 
 La valeur de `this` est définie au moment de l'exécution.
 - Lorsqu'une fonction est déclarée, elle peut utiliser `this`, mais ce `this` n'a aucune valeur jusqu'à ce que la fonction soit appelée.
-- Une fonction peut être copiée entre des objets.
-- Lorsqu'une fonction est appelée dans la syntaxe "méthode" : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
+- Une fonction / une méthode peut être copiée entre des objets.
+- Lorsqu'une méthode est appelée : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
 
 Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`. Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.

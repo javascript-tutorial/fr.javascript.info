@@ -18,6 +18,5 @@ function makeUser() {
 
 let user = makeUser();
 
-alert( user.ref.name ); // Quel est le résultat ?
+alert(user.ref.name); // Quel est le résultat ?
 ```
-

@@ -1,5 +1,3 @@
-
-
 describe("calculator", function() {
  
   context("when 2 and 3 entered", function() {
