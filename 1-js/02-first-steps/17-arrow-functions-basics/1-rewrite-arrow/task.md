@@ -1,4 +1,3 @@
-
 # Réécrire avec les fonctions fléchées
 
 Remplacez les expressions de fonction par des fonctions fléchées dans le code ci-dessous :
