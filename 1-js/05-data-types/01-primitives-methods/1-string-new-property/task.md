@@ -4,7 +4,7 @@ importance: 5
 
 # Pouvons-nous ajouter une propiété à une primitive ?
 
-Considérons le code suivant:
+Considérons le code suivant :
 
 ```js
 let str = "Hello";

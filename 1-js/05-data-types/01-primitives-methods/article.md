@@ -1,18 +1,18 @@
 # Méthodes des primitives
 
-JavaScript nous permet de travailler avec des primitives (chaînes de caractères, nombres, etc.) comme s'il s'agissait d'objets. Ils prévoient également des méthodes pour les appeler en tant que tel. Nous étudierons cela très bientôt, mais nous verrons d'abord comment cela fonctionne car, bien entendu, les primitives ne sont pas des objets (et nous allons rendre cela plus clair).
+JavaScript nous permet de travailler avec des primitives (chaînes de caractères, nombres, etc.) comme s'il s'agissait d'objets. Il fournit également des méthodes pour les appeler en tant que tel. Nous étudierons cela très bientôt, mais voyons d'abord comment cela fonctionne car, bien entendu, les primitives ne sont pas des objets (et nous allons rendre cela plus clair).
 
 Examinons les principales différences entre primitives et objets.
 
-Une primitive
+Une primitive :
 
 - Est une valeur de type primitif.
 - Il existe 7 types primitifs : `string`, `number`, `bigint`, `boolean`, `symbol`, `null` et `undefined`.
 
-Un objet
+Un objet :
 
 - Est capable de stocker plusieurs valeurs en tant que propriétés.
-- Peut être créé avec `{}`, par exemple : `{name: "John", age: 30}`. Il existe d'autres types d'objets en JavaScript. Les fonctions, par exemple, sont des objets.
+- Peut être créé avec `{}`, par exemple : `{name: "John", age: 30}`. Il existe d'autres types d'objets en JavaScript. Les fonctions par exemple, sont des objets.
 
 L'une des meilleurs choses à propos des objets est que nous pouvons stocker une fonction en tant que l'une de ses propriétés.
 
@@ -27,9 +27,9 @@ let john = {
 john.sayHi(); // Hi buddy!
 ```
 
-Nous avons donc crée un objet `john` avec la méthode `sayHI`.
+Nous avons donc crée un objet `john` possèdant la méthode `sayHi`.
 
-De nombreux objets intégrés existent déjà, tels que ceux qui fonctionnent avec des dates, des erreurs, des éléments HTML, etc. Ils ont des propriétés et des méthodes différente.
+De nombreux objets intégrés existent déjà, tels que ceux qui fonctionnent avec des dates, des erreurs, des éléments HTML, etc. Ils ont des propriétés et des méthodes différentes.
 
 Mais, ces fonctionnalités ont un coût !
 
@@ -39,20 +39,20 @@ Les objets sont "plus lourds" que les primitives. Ils ont besoin de ressources s
 
 Voici le paradoxe auquel est confronté le créateur de JavaScript :
 
-- Il y a beaucoup de choses que l'on voudrait faire avec une primitive telle qu'une chaîne de caractères ou un nombre. Ce serait génial d'y avoir accès avec des méthodes.
+- Il y a beaucoup de choses que l'on voudrait faire avec une primitive telle qu'une chaîne de caractères ou un nombre. Ce serait génial d'y avoir accès via des méthodes.
 - Les primitives doivent être aussi rapides et légères que possible.
 
 La solution semble peu commode, mais la voici :
 
-1. Les primitives sont toujours primitives. Une seule valeur, au choix.
+1. Les primitives sont toujours primitives. Une seule valeur.
 2. Le langage permet d'accéder aux méthodes et aux propriétés des chaînes de caractères, des nombres, des booléens et des symboles.
-3. Pour que cela fonctionne, un "wrapper d'objet" (conteneur)  spécial est crée pour fournir la fonctionnalité supplémentaire, puis il est détruit.
+3. Pour que cela fonctionne, un "wrapper d'objet" (conteneur) spécial est crée pour fournir la fonctionnalité supplémentaire, puis il est détruit.
 
 Les "wrapper d'objets" (conteneurs) sont différents pour chaque type de primitive et sont appelés `String`, `Number`, `Boolean` et `Symbol`. Ainsi, ils fournissent différents ensembles de méthodes.
 
-Par exemple, il existe une méthode de string [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) qui renvoie une chaîne de caractères `str` en majuscule.
+Par exemple, il existe une méthode de string [str.toUpperCase()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) qui retourne une chaîne de caractères `str` en majuscule.
 
-Voici comment ça fonctionne:
+Voici comment ça fonctionne :
 
 ```js run
 let str = "Hello";
@@ -98,27 +98,27 @@ Les objets sont toujours vrais dans les `if`, alors l'alerte apparaîtra ici :
 ```js run
 let zero = new Number(0);
 
-if (zero) { // zéro est vrai, parce que c'est un objet
+if (zero) { // Zéro est vrai, parce que c'est un objet
   alert("zero is truthy!?!");
 }
 ```
 
-Par ailleurs, utiliser les mêmes fonctions `String`, `Number` et `Boolean` sans `new` est une chose totalement valide et même recommandée. Ils convertissent une valeur dans le type correspondant : une chaîne de caractères, un nombre ou un booléen (primitive).
+Par ailleurs, utiliser les mêmes fonctions `String`, `Number` et `Boolean` sans `new` est une chose totalement valide et même recommandée. Elles convertissent une valeur dans le type correspondant : une chaîne de caractères, un nombre ou un booléen (primitive).
 
 Par exemple, ceci est entièrement valide :
 
 ```js
-let num = Number("123"); // convertir une chaîne de caractères en nombre
+let num = Number("123"); // Convertir une chaîne de caractères en nombre
 ```
 ````
 
 ````warn header="`null` / `undefined` n'ont pas de méthode"
 Les primitives spéciales `null` et `undefined` sont des exceptions. Elles n'ont pas de "wrapper d'objet" (conteneur) correspondants et ne fournissent aucune méthode. En un sens, elles sont "les plus primitives".
 
-Une tentative d'accès à une propriété d'une telle valeur donnerait l'erreur suivante:
+Une tentative d'accès à une propriété d'une telle valeur donnerait l'erreur suivante :
 
 ```js run
-alert(null.test); // error
+alert(null.test); // erreur
 ```
 ````
 
