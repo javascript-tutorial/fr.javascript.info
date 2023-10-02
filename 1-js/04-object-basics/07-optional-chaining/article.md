@@ -15,20 +15,20 @@ La plupart de nos utilisateurs ont des adresses dans la propriété `user.addres
 Dans ce cas, lorsque nous essayons d'obtenir `user.address.street`, et que l'utilisateur se trouve sans adresse, nous obtenons une erreur :
 
 ```js run
-let user = {}; // un utilisateur sans propriété "address"
+let user = {}; // Un utilisateur sans propriété "address"
 
-alert(user.address.street); // Error!
+alert(user.address.street); // Erreur !
 ```
 
 C'est le résultat attendu. JavaScript fonctionne comme cela. Comme `user.address` est `undefined`, une tentative d'obtention de `user.address.street` échoue avec une erreur.
 
 Dans de nombreux cas pratiques, nous préférerions obtenir `undefined` au lieu d'une erreur ici (signifiant "pas de rue").
 
-... Et un autre exemple. Dans le développement Web, nous pouvons obtenir un objet qui correspond à un élément de page Web à l'aide d'un appel de méthode spécial, tel que `document.querySelector('.elem')`, et il renvoie `null` lorsqu'il n'y a pas ce type d'élément.
+... Et un autre exemple. Dans le développement Web, nous pouvons obtenir un objet qui correspond à un élément de page Web à l'aide d'un appel de méthode spécial, tel que `document.querySelector('.elem')`, et il retourne `null` lorsqu'il n'y a pas ce type d'élément.
 
 ```js run
-// document.querySelector('.elem') est nul s'il n'y a pas d'élément
-let html = document.querySelector('.elem').innerHTML; // error if it's null
+// document.querySelector('.elem') est null s'il n'y a pas d'élément
+let html = document.querySelector('.elem').innerHTML; // Erreur si c'est null
 ```
 
 Encore une fois, si l'élément n'existe pas, nous obtiendrons une erreur lors de l'accès à la propriété `.innerHTML` de `null`. Et dans certains cas, lorsque l'absence de l'élément est normale, nous aimerions éviter l'erreur et accepter simplement `html = null` comme résultat.
@@ -38,7 +38,7 @@ Comment peut-on le faire ?
 La solution évidente serait de vérifier la valeur en utilisant `if` ou l'opérateur conditionnel `?`, avant d'accéder à sa propriété, comme ceci :
 
 ```js
-let user = {}; // l'utilisateur n'a pas d'adresse
+let user = {}; // L'utilisateur n'a pas d'adresse
 
 alert(user.address ? user.address.street : undefined);
 ```
@@ -58,7 +58,7 @@ Pour les propriétés plus profondément imbriquées, cela devient encore plus l
 Par exemple. récupérons `user.address.street.name` de la même manière.
 
 ```js
-let user = {}; // l'utilisateur n'a pas d'adresse
+let user = {}; // L'utilisateur n'a pas d'adresse
 
 alert(user.address ? user.address.street ? user.address.street.name : null : null);
 ```
@@ -68,9 +68,9 @@ C'est juste horrible, on peut même avoir des problèmes pour comprendre un tel 
 Il existe une meilleure façon de l'écrire, en utilisant l'opérateur `&&` :
 
 ```js run
-let user = {}; // l'utilisateur n'a pas d'adresse
+let user = {}; // L'utilisateur n'a pas d'adresse
 
-alert( user.address && user.address.street && user.address.street.name ); // undefined (no error)
+alert(user.address && user.address.street && user.address.street.name); // undefined (Pas d'erreur)
 ```
 
 Et le chemin complet vers la propriété garantit que tous les composants existent (sinon, l'évaluation s'arrête), mais n'est pas non plus idéal.
@@ -81,21 +81,21 @@ C'est pourquoi le chaînage facultatif `?.` a été ajouté au langage. Pour ré
 
 ## Chaînage optionnel
 
-Le chaînage optionnel `?.` arrête l'évaluation si la valeur avant `?.` est `undefined` ou `null` et renvoie `undefined`.
+Le chaînage optionnel `?.` arrête l'évaluation si la valeur avant `?.` est `undefined` ou `null` et retourne `undefined`.
 
 **Plus loin dans cet article, par souci de brièveté, nous dirons que quelque chose "existe" si ce n'est pas "null" et non "undefined".**
 
 En d'autres termes, `value?.prop` :
 
 - est identique à `value.prop` si `value` existe,
-- sinon (lorsque `value` est `undefined`/`null`), il renvoie `undefined`.
+- sinon (lorsque `value` est `undefined`/`null`), il retourne `undefined`.
 
 Voici le moyen sûr d'accéder à `user.address.street` en utilisant `?.` :
 
 ```js run
-let user = {}; // l'utilisateur n'a pas d'adresse
+let user = {}; // L'utilisateur n'a pas d'adresse
 
-alert( user?.address?.street ); // undefined (pas d'erreur)
+alert(user?.address?.street); // undefined (pas d'erreur)
 ```
 
 Le code est court et propre, il n'y a aucune duplication.
@@ -103,7 +103,7 @@ Le code est court et propre, il n'y a aucune duplication.
 Voici un exemple avec `document.querySelector` :
 
 ```js run
-let html = document.querySelector('.elem')?.innerHTML; // sera undefined s'il n'y a pas d'élément
+let html = document.querySelector('.elem')?.innerHTML; // Sera undefined s'il n'y a pas d'élément
 ```
 
 La lecture de l'adresse avec `user?.address` fonctionne même si l'objet `user` n'existe pas :
@@ -111,20 +111,20 @@ La lecture de l'adresse avec `user?.address` fonctionne même si l'objet `user` 
 ```js run
 let user = null;
 
-alert( user?.address ); // undefined
-alert( user?.address.street ); // undefined
+alert(user?.address); // undefined
+alert(user?.address.street); // undefined
 ```
 
 Remarque : la syntaxe `?.` rend facultative la valeur qui la précède, mais pas plus.
 
-Par exemple, dans `user?.address.street.name` le `?.` permet à `user` d'être en toute sécurité `null`/`undefined` (et renvoie `undefined` dans ce cas), mais ce n'est que pour `user`. D'autres propriétés sont accessibles de manière régulière. Si nous voulons que certaines d'entre elles soient optionnelles, alors nous devrons remplacer plus de `.` par `?.`.
+Par exemple, dans `user?.address.street.name` le `?.` permet à `user` d'être en toute sécurité `null`/`undefined` (et retourne `undefined` dans ce cas), mais ce n'est que pour `user`. D'autres propriétés sont accessibles de manière régulière. Si nous voulons que certaines d'entre elles soient optionnelles, alors nous devrons remplacer plus de `.` par `?.`.
 
 ```warn header="N'abusez pas du chaînage optionnel"
 Nous ne devrions utiliser `?.` que là où il est normal que quelque chose n'existe pas.
 
 Par exemple, si selon notre logique de codage, l'objet `user` doit exister, mais que `address` est facultatif, alors nous devrions écrire `user.address?.street`, mais pas `user?.address?.street`.
 
-Ensuite, si `user` n'est pas défini, nous verrons une erreur de programmation à ce sujet et nous la corrigerons. Sinon, si nous abusons de `?.`, les erreurs de codage peuvent être réduites au silence là où cela n'est pas approprié et devenir plus difficiles à déboguer.
+Ensuite, si `user` n'est pas défini, nous verrons une erreur de programmation à ce sujet et nous la corrigerons. Sinon, si nous abusons de `?.`, les erreurs de codage peuvent être réduites au silence là où ce n'est pas approprié et peut devenir plus difficiles à déboguer.
 ```
 
 ````warn header="La variable avant `?.` doit être déclarée"
@@ -139,7 +139,7 @@ La variable doit être déclarée (par exemple `let/const/var user` ou en tant q
 
 ## Court-circuit
 
-Comme il a été dit précédemment, le `?.` arrête immédiatement ("court-circuite") l'évaluation si la partie gauche n'existe pas.
+Comme il a été dit précédemment, le `?.` arrête immédiatement ("court-circuite") l'évaluation si l'expression à gauche n'existe pas.
 
 Ainsi, s'il y a d'autres appels de fonction ou opérations à droite de `?.`, elles ne seront pas effectuées.
 
@@ -149,14 +149,14 @@ Par exemple :
 let user = null;
 let x = 0;
 
-user?.sayHi(x++); // pas de "user", donc l'exécution n'atteint pas l'appel sayHi et x++
+user?.sayHi(x++); // Pas de "user", donc l'exécution n'atteint pas l'appel sayHi et x++
 
-alert(x); // 0, la valeur n'est pas incrémenté
+alert(x); // 0, La valeur n'est pas incrémentée
 ```
 
 ## Autres variantes : ?.(), ?.[]
 
-`?.` n'est pas un opérateur, mais une construction syntaxique particulière qui fonctionne aussi avec les appels de fonction et les crochets.
+`?.` n'est pas un opérateur ! Mais une construction syntaxique particulière qui fonctionne aussi avec les appels de fonction et les crochets.
 
 Par exemple, `?.()` est utilisé pour exécuter une fonction seulement si elle existe.
 
@@ -176,13 +176,13 @@ userAdmin.admin?.(); // I am admin
 */!*
 
 *!*
-userGuest.admin?.(); // rien ne se passe (aucune méthode de ce nom)
+userGuest.admin?.(); // Rien ne se passe (aucune méthode de ce nom)
 */!*
 ```
 
 Ici, dans les deux lignes, nous utilisons d'abord le point (`userAdmin.admin`) pour obtenir la propriété `admin`, car nous supposons que l'objet `user` existe, il peut donc être lu en toute sécurité.
 
-Puis `?.()` vérifie la partie gauche : si la fonction `admin` existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
+Puis `?.()` vérifie l'expression à gauche : si la fonction `admin` existe, alors elle s'exécute (c'est le cas pour `userAdmin`). Sinon (pour `userGuest`) l'évaluation s'arrête sans erreur.
 
 La syntaxe `?.[]` fonctionne également, si nous voulons utiliser des crochets `[]` pour accéder aux propriétés au lieu du point `.`. Similaire aux cas précédents, il permet de lire en toute sécurité une propriété à partir d'un objet qui peut ne pas exister.
 
@@ -195,14 +195,14 @@ let user1 = {
 
 let user2 = null;
 
-alert( user1?.[key] ); // John
-alert( user2?.[key] ); // undefined
+alert(user1?.[key]); // John
+alert(user2?.[key]); // undefined
 ```
 
 Nous pouvons également utiliser `?.` avec `delete` :
 
 ```js run
-delete user?.name; // supprime user.name si user existe
+delete user?.name; // Supprime user.name si user existe
 ```
 
 ```warn header="Nous pouvons utiliser `?.` pour lire et supprimer en toute sécurité, mais pas pour écrire"
@@ -218,6 +218,8 @@ user?.name = "John"; // Erreur, ne fonctionne pas
 // car il évalue : undefined = "John"
 ```
 Ce n'est tout simplement pas si intelligent.
+
+D'autant plus qu'en utilisant simplement `.`, cela aura pour effet de déclarer la propriété et d'y assigner la valeur.
 
 ## Résumé
 
