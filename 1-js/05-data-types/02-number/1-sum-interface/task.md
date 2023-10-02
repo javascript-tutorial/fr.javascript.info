@@ -6,6 +6,6 @@ importance: 5
 
 Créez un script qui invite le visiteur à entrer deux nombres, puis affiche leur somme.
 
-[Lancer la démo]
+[démo]
 
 P.S. Il y a un piège avec les types.

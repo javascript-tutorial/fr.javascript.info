@@ -32,7 +32,7 @@ Il existe de nombreuses solutions correctes à la tâche. L'une d'elles consiste
 ```js run
 *!*
 function randomInteger(min, max) {
-  // maintenant rand est entre (min-0.5) et (max+0.5)
+  // Maintenant rand est entre (min-0.5) et (max+0.5)
   let rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
 }
@@ -41,12 +41,12 @@ function randomInteger(min, max) {
 alert(randomInteger(1, 3));
 ```
 
-Une autre solution pourrait être d'utiliser `Math.floor` pour un nombre aléatoie compris entre `min` et `max+1`.
+Une autre solution pourrait être d'utiliser `Math.floor` pour un nombre aléatoie compris entre `min` et `max+1` :
 
 ```js run
 *!*
 function randomInteger(min, max) {
-  // ici rand est de min à (max+1)
+  // Ici rand est de min à (max+1)
   let rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 }

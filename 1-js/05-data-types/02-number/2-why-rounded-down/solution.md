@@ -27,5 +27,5 @@ alert((6.35 * 10).toFixed(20)); // 63.50000000000000000000
 Notez que `63.5` n'a aucune perte de précision. C'est parce que la partie décimale `0.5` est en réalité `1/2`. Les fractions divisées par les puissances de `2` sont représentées sans perte de précision dans le système binaire, on peut maintenant les arrondir :
 
 ```js run
-alert(Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64(arrondi) -> 6.4
+alert(Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64 (arrondi) -> 6.4
 ```

@@ -1,4 +1,3 @@
-
 function readNumber() {
   let num;
 

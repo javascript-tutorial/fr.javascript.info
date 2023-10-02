@@ -12,7 +12,7 @@ Par exemple :
 alert(1.35.toFixed(1)); // 1.4
 ```
 
-Dans l'exemple similaire ci-dessous, pourquoi est-ce que `6.35` est arrondi à `6.3` et non `6.4` ?
+Dans l'exemple ci-dessous, pourquoi est-ce que `6.35` est arrondi à `6.3` et non `6.4` ?
 
 ```js run
 alert(6.35.toFixed(1)); // 6.3
