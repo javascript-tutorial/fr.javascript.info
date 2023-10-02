@@ -1,15 +1,15 @@
 # Le constructeur, l'opérateur "new"
 
-La syntaxe normale `{...}` permet de créer un seul objet. Mais souvent, nous devons créer de nombreux objets similaires, tels que plusieurs utilisateurs ou éléments de menu, etc.
+La syntaxe "objet littéral" `{...}` permet de créer un seul objet. Mais souvent, nous devons créer de nombreux objets similaires, tels que plusieurs utilisateurs ou éléments de menu, etc.
 
 Cela peut être fait en utilisant les fonctions constructeur et l'opérateur `"new"`.
 
-## La function constructeur
+## La fonction constructeur
 
 Les fonctions constructeur sont techniquement des fonctions habituelles. Il existe cependant deux conventions :
 
-1. Elles  sont nommées avec une lettre majuscule en premier.
-2. Elles ne devraient être executées qu'avec l'opérateur `"new"`.
+1. Elles sont nommées avec une lettre majuscule en premier.
+2. Elles ne devraient être exécutées qu'avec l'opérateur `"new"`.
 
 Par exemple :
 
@@ -41,7 +41,7 @@ function User(name) {
   // this = {};  (implicitement)
 */!*
 
-  // ajoute des propriétés à this
+  // Ajoute des propriétés à this
   this.name = name;
   this.isAdmin = false;
 
@@ -70,14 +70,14 @@ Notons encore une fois -- techniquement, n'importe quelle fonction (à l'excepti
 Si nous avons beaucoup de lignes de code concernant la création d'un seul objet complexe, nous pouvons les envelopper dans une fonction constructeur, comme ceci :
 
 ```js
-// create a function and immediately call it with new
+// Créer une fonction et l'appelle directement avec new
 let user = new function() {
   this.name = "John";
   this.isAdmin = false;
 
-  // ...autre code pour la création d'utilisateur
-  // peut-être une logique complexe et des déclarations
-  // de variables locales etc.
+  /* ...Autre code pour la création d'utilisateur
+  peut-être une logique complexe et des déclarations
+  de variables locales etc. */
 };
 ```
 
@@ -90,7 +90,7 @@ Ce constructeur ne peut pas être appelé à nouveau, car il n'est enregistré n
 La syntaxe de cette section est rarement utilisée, sautez-la à moins de vouloir tout savoir.
 ```
 
-Dans une fonction, nous pouvons vérifier si elle a été appelée avec `new` ou sans, en utilisant la propriété spéciale `new.target`.
+Dans une fonction, nous pouvons vérifier si elle a été appelée avec `new` ou sans, en utilisant la méta propriété `new.target`.
 
 Elle n'est pas définie pour les appels réguliers et équivaut à la fonction si elle est appelée avec `new` :
 
@@ -99,12 +99,12 @@ function User() {
   alert(new.target);
 }
 
-// sans "new":
+// Sans "new":
 *!*
 User(); // undefined
 */!*
 
-// avec "new":
+// Avec "new":
 *!*
 new User(); // function User { ... }
 */!*
@@ -116,14 +116,14 @@ Nous pouvons également faire des appels `new` et réguliers pour faire la même
 
 ```js run
 function User(name) {
-  if (!new.target) { // si vous m'executer sans new
-    return new User(name); // ...j'ajouterai un new pour vous
+  if (!new.target) { // Si vous m'executer sans new ...
+    return new User(name); // J'ajouterai un new pour vous
   }
 
   this.name = name;
 }
 
-let john = User("John"); // redirige l'appel vers un new User
+let john = User("John"); // Redirige l'appel vers un new User
 alert(john.name); // John
 ```
 
@@ -137,8 +137,8 @@ Généralement, les constructeurs n'ont pas d'instruction `return`. Leur tâche 
 
 Mais s'il y a une déclaration `return`, alors la règle est simple :
 
-- Si `return` est appelé avec un object, alors il est renvoyé à la place de `this`.
-- Si `return` est appelé avec une primitive, elle est ignorée.
+- Si `return` est exécutée avec un objet, alors il est renvoyé à la place de `this`.
+- Si `return` est exécutée avec une primitive, elle est ignorée.
 
 En d'autres termes, `return` avec un objet renvoie cet objet, dans tous les autres cas, `this` est renvoyé.
 
@@ -149,10 +149,10 @@ function BigUser() {
 
   this.name = "John";
 
-  return { name: "Godzilla" };  // <-- retourne cet objet
+  return { name: "Godzilla" };  // <-- Retourne cet objet
 }
 
-alert( new BigUser().name );  // Godzilla, obtenu cet objet
+alert(new BigUser().name);  // Godzilla, obtenu de cet objet
 ```
 
 Et voici un exemple avec un `return` vide (ou nous pourrions placer une primitive après, peu importe) :
@@ -162,10 +162,10 @@ function SmallUser() {
 
   this.name = "John";
 
-  return; // renvoie this
+  return; // Renvoie this
 }
 
-alert( new SmallUser().name );  // John
+alert(new SmallUser().name); // John
 ```
 
 Généralement, les constructeurs n’ont pas d’instruction `return`. Nous mentionnons ici le comportement spécial avec les objets renvoyés principalement dans un souci de complétude.
@@ -174,12 +174,12 @@ Généralement, les constructeurs n’ont pas d’instruction `return`. Nous men
 À propos, on peut omettre les parenthèses après `new` :
 
 ```js
-let user = new User; // <-- pas de parenthèses
+let user = new User; // <-- Pas de parenthèses
 // identique à
 let user = new User();
 ```
 
-L'omission de parenthèses ici n'est pas considérée comme un "bon style", mais la syntaxe est autorisée par la spécification.
+L'omission de parenthèses ici n'est pas considérée comme une bonne pratique, mais la syntaxe est tolérée par la spécification.
 ````
 
 ## Les méthodes dans les constructeurs
@@ -195,7 +195,7 @@ function User(name) {
   this.name = name;
 
   this.sayHi = function() {
-    alert( "My name is: " + this.name );
+    alert("My name is: " + this.name);
   };
 }
 
