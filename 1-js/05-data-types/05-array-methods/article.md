@@ -24,10 +24,10 @@ let arr = ["I", "go", "home"];
 
 delete arr[1]; // supprime "go"
 
-alert( arr[1] ); // undefined
+alert(arr[1]); // undefined
 
 // maintenant arr = ["I",  , "home"];
-alert( arr.length ); // 3
+alert(arr.length); // 3
 ```
 
 L'élément a été supprimé, mais le tableau a toujours 3 éléments, on peut voir que `arr.length == 3`
@@ -57,7 +57,7 @@ let arr = ["I", "study", "JavaScript"];
 arr.splice(1, 1); // À partir de l'index 1 supprime 1 élément
 */!*
 
-alert( arr ); // ["I", "JavaScript"]
+alert(arr); // ["I", "JavaScript"]
 ```
 
 Facile, non ? À partir de l'index 1, il a supprimé 1 élément.
@@ -70,7 +70,7 @@ let arr = [*!*"I", "study", "JavaScript",*/!* "right", "now"];
 // supprime les 3 premiers éléments et les remplace par d'autre
 arr.splice(0, 3, "Let's", "dance");
 
-alert( arr ) // maintenant [*!*"Let's", "dance"*/!*, "right", "now"]
+alert(arr) // maintenant [*!*"Let's", "dance"*/!*, "right", "now"]
 ```
 
 Nous pouvons voir ici que `splice` renvoie le tableau des éléments supprimés :
@@ -81,7 +81,7 @@ let arr = [*!*"I", "study",*/!* "JavaScript", "right", "now"];
 // supprime les 2 premiers éléments
 let removed = arr.splice(0, 2);
 
-alert( removed ); // "I", "study" <-- tableau des éléments supprimés
+alert(removed); // "I", "study" <-- tableau des éléments supprimés
 ```
 
 La méthode `splice` est également capable d'insérer les éléments sans aucune suppression. Pour cela, nous devons définir `nombreDeSuppression` sur 0 :
@@ -94,7 +94,7 @@ let arr = ["I", "study", "JavaScript"];
 // et ajoute "complex" et "language"
 arr.splice(2, 0, "complex", "language");
 
-alert( arr ); // "I", "study", "complex", "language", "JavaScript"
+alert(arr); // "I", "study", "complex", "language", "JavaScript"
 ```
 
 ````smart header="Index négatifs autorisés"
@@ -108,7 +108,7 @@ let arr = [1, 2, 5];
 // puis insère 3 et 4
 arr.splice(-1, 0, 3, 4);
 
-alert( arr ); // 1,2,3,4,5
+alert(arr); // 1,2,3,4,5
 ```
 ````
 
@@ -131,9 +131,9 @@ Par exemple :
 ```js run
 let arr = ["t", "e", "s", "t"];
 
-alert( arr.slice(1, 3) ); // e,s (copie de 1 à 3, 3 non compris)
+alert(arr.slice(1, 3)); // e,s (copie de 1 à 3, 3 non compris)
 
-alert( arr.slice(-2) ); // s,t (copie de -2 jusqu'à la fin)
+alert(arr.slice(-2)); // s,t (copie de -2 jusqu'à la fin)
 ```
 
 Nous pouvons aussi l'appeler sans arguments : `arr.slice()` créer une copie de `arr`. Cela est souvent utilisé pour obtenir une copie pour d'autres transformations qui ne devraient pas affecter le tableau d'origine.
@@ -160,13 +160,13 @@ Par exemple :
 let arr = [1, 2];
 
 // créer un tableau à partir de arr et [3,4]
-alert( arr.concat([3, 4]) ); // 1,2,3,4
+alert(arr.concat([3, 4])); // 1,2,3,4
 
 // créer un tableau à partir de arr et [3,4] et [5,6]
-alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+alert(arr.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
 
 // créer un tableau à partir de arr et [3,4], puis ajoute les valeurs 5 et 6
-alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+alert(arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
 Normalement, il ne copie que les éléments des tableaux. Les autres objets, même s'ils ressemblent à des tableaux, sont ajoutés dans leur ensemble :
@@ -179,7 +179,7 @@ let arrayLike = {
   length: 1
 };
 
-alert( arr.concat(arrayLike) ); // 1,2,[object Object]
+alert(arr.concat(arrayLike)); // 1,2,[object Object]
 ```
 
 … Mais si un objet de type tableau (array-like) a une propriété spéciale `Symbol.isConcatSpreadable`, alors il est traité comme un tableau par `concat` : ses éléments sont ajoutés à la place :
@@ -196,7 +196,7 @@ let arrayLike = {
   length: 2
 };
 
-alert( arr.concat(arrayLike) ); // 1,2,something,else
+alert(arr.concat(arrayLike)); // 1,2,something,else
 ```
 
 ## Itérer: forEach (pourChaque)
@@ -246,11 +246,11 @@ Par exemple :
 ```js run
 let arr = [1, 0, false];
 
-alert( arr.indexOf(0) ); // 1
-alert( arr.indexOf(false) ); // 2
-alert( arr.indexOf(null) ); // -1
+alert(arr.indexOf(0)); // 1
+alert(arr.indexOf(false)); // 2
+alert(arr.indexOf(null)); // -1
 
-alert( arr.includes(1) ); // true
+alert(arr.includes(1)); // true
 ```
 
 Veuillez noter que `indexOf` utilise l'égalité stricte `===` pour la comparaison. Donc, si nous cherchons "faux", il trouve exactement "faux" et non le zéro.
@@ -262,8 +262,8 @@ La méthode [arr.lastIndexOf](mdn:js/Array/lastIndexOf) est la même que `indexO
 ```js run
 let fruits = ['Apple', 'Orange', 'Apple']
 
-alert( fruits.indexOf('Apple') ); // 0 (first Apple)
-alert( fruits.lastIndexOf('Apple') ); // 2 (last Apple)
+alert(fruits.indexOf('Apple')); // 0 (first Apple)
+alert(fruits.lastIndexOf('Apple')); // 2 (last Apple)
 ```
 
 ````smart header="La méthode `includes` gère `NaN` correctement"
@@ -271,8 +271,8 @@ Une caractéristique mineure mais remarquable de `includes` est qu'il gère corr
 
 ```js run
 const arr = [NaN];
-alert( arr.indexOf(NaN) ); // -1 (faux, devrait être 0)
-alert( arr.includes(NaN) ); // true (correct)
+alert(arr.indexOf(NaN)); // -1 (faux, devrait être 0)
+alert(arr.includes(NaN)); // true (correct)
 ```
 C'est parce que `includes` a été ajouté à JavaScript beaucoup plus tard et utilise l'algorithme de comparaison le plus à jour en interne.
 ````
@@ -408,7 +408,7 @@ let arr = [ 1, 2, 15 ];
 // la méthode réordonne le contenu de arr
 arr.sort();
 
-alert( arr );  // *!*1, 15, 2*/!*
+alert(arr);  // *!*1, 15, 2*/!*
 ```
 
 Avez-vous remarqué quelque chose d'étrange dans le résultat ?
@@ -459,7 +459,7 @@ La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme génériqu
 
 ```js run
 [1, -2, 15, 2, 0, 8].sort(function(a, b) {
-  alert( a + " <> " + b );
+  alert(a + " <> " + b);
   return a - b;
 });
 ```
@@ -484,7 +484,7 @@ alert(arr);  // *!*1, 2, 15*/!*
 Souvenez-vous des [fonctions fléchées](info:arrow-functions-basics) ? Nous pouvons les utiliser ici pour un tri plus net :
 
 ```js
-arr.sort( (a, b) => a - b );
+arr.sort((a, b) => a - b);
 ```
 
 Cela fonctionne exactement comme la version longue ci-dessus.
@@ -500,9 +500,9 @@ Par exemple, trions quelques pays en allemand :
 ```js run
 let countries = ['Österreich', 'Andorra', 'Vietnam'];
 
-alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (wrong)
+alert(countries.sort((a, b) => a > b ? 1 : -1)); // Andorra, Vietnam, Österreich (wrong)
 
-alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (correct!)
+alert(countries.sort((a, b) => a.localeCompare(b))); // Andorra,Österreich,Vietnam (correct!)
 ```
 ````
 
@@ -516,7 +516,7 @@ Par exemple :
 let arr = [1, 2, 3, 4, 5];
 arr.reverse();
 
-alert( arr ); // 5,4,3,2,1
+alert(arr); // 5,4,3,2,1
 ```
 
 Il retourne également le tableau `arr` après l'inversion.
@@ -535,7 +535,7 @@ let names = 'Bilbo, Gandalf, Nazgul';
 let arr = names.split(', ');
 
 for (let name of arr) {
-  alert( `Un message à ${name}.` ); // Un message à Bilbo  (ainsi que les autres noms)
+  alert(`Un message à ${name}.`); // Un message à Bilbo  (ainsi que les autres noms)
 }
 ```
 
@@ -553,7 +553,7 @@ L'appel de `split(s)` avec un `s` vide diviserait la chaîne en un tableau de le
 ```js run
 let str = "test";
 
-alert( str.split('') ); // t,e,s,t
+alert(str.split('')); // t,e,s,t
 ```
 ````
 
@@ -566,7 +566,7 @@ let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
 
 let str = arr.join(';'); // joint les éléments du tableau en une string en utilisant le caractère ";"
 
-alert( str ); // Bilbo;Gandalf;Nazgul
+alert(str); // Bilbo;Gandalf;Nazgul
 ```
 
 ### reduce/reduceRight
@@ -644,7 +644,7 @@ let arr = [1, 2, 3, 4, 5];
 // Suppression de la valeur initiale de reduce (pas de 0)
 let result = arr.reduce((sum, current) => sum + current);
 
-alert( result ); // 15
+alert(result); // 15
 ```
 
 Le résultat est le même. En effet, s'il n'y a pas de valeur initiale, alors `reduce` prend le premier élément du tableau comme valeur initiale et lance l'itération à partir du deuxième élément.
@@ -783,7 +783,7 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
     return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
   }
 
-  alert( arraysEqual([1, 2], [1, 2])); // true
+  alert(arraysEqual([1, 2], [1, 2])); // true
   ```
 
 - [arr.fill(value, start, end)](mdn:js/Array/fill) -- remplit le tableau avec une répétition de `value` de l'index `start` à `end`.

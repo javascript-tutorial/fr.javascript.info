@@ -17,5 +17,5 @@ let users = [ john, petemary ];
 
 let names = /* ... votre code */
 
-alert( names ); // John, Pete, Mary
+alert(names); // John, Pete, Mary
 ```

@@ -14,5 +14,5 @@ let shoppingCart = fruits;
 shoppingCart.push("Banana");
 
 // Qu'y a-t-il dans fruits ?
-alert( fruits.length ); // ?
+alert(fruits.length); // ?
 ```

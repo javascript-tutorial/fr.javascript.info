@@ -491,7 +491,7 @@ xhr.send();
 xhr.onload = function() {
   if (xhr.status != 200) { // HTTP error?
     // handle error
-    alert( 'Error: ' + xhr.status);
+    alert('Error: ' + xhr.status);
     return;
   }
 

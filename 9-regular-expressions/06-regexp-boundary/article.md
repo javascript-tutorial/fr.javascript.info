@@ -13,8 +13,8 @@ Il y a trois positions possibles pour une limite de mot :
 Par exemple l'expression régulière `pattern:\bJava\b` sera trouvé dans `subject:Hello, Java!`, où `subject:Java` est un mot isolé, mais pas dans `subject:Hello, JavaScript!`.
 
 ```js run
-alert( "Hello, Java!".match(/\bJava\b/) ); // Java
-alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
+alert("Hello, Java!".match(/\bJava\b/)); // Java
+alert("Hello, JavaScript!".match(/\bJava\b/)); // null
 ```
 
 Dans la chaîne `subject:Hello, Java!` les positions suivantes correspondent au motif `pattern:\b`:
@@ -30,10 +30,10 @@ Cette chaîne passe le test du motif `pattern:\bHello\b`, car :
 Donc le motif `pattern:\bHello\b` sera trouvé, mais pas `pattern:\bHell\b` (car il n'y a pas de limite de mot après `l`) ni `Java!\b` (car le point d'exclamation ne correspond pas au motif `pattern:\w`, il n'est donc pas suivi par une limite de mot).
 
 ```js run
-alert( "Hello, Java!".match(/\bHello\b/) ); // Hello
-alert( "Hello, Java!".match(/\bJava\b/) );  // Java
-alert( "Hello, Java!".match(/\bHell\b/) );  // null (aucune correspondance)
-alert( "Hello, Java!".match(/\bJava!\b/) ); // null (aucune correspondance)
+alert("Hello, Java!".match(/\bHello\b/)); // Hello
+alert("Hello, Java!".match(/\bJava\b/));  // Java
+alert("Hello, Java!".match(/\bHell\b/));  // null (aucune correspondance)
+alert("Hello, Java!".match(/\bJava!\b/)); // null (aucune correspondance)
 ```
 
 La limite de mot `pattern:\b` ne s'utilise pas uniquement pour des mots, mais aussi pour les nombres.
@@ -41,8 +41,8 @@ La limite de mot `pattern:\b` ne s'utilise pas uniquement pour des mots, mais au
 Par exemple, le motif `pattern:\b\d\d\b` recherche un nombre isolé à deux chiffres. C'est-à-dire, qu'il cherche un nombre à deux chiffres entouré par des caractères qui ne correspondent pas au motif `pattern:\w`, comme des espaces, une ponctuation, un début ou une fin de chaîne.
 
 ```js run
-alert( "1 23 456 78".match(/\b\d\d\b/g) ); // 23,78
-alert( "12,34,56".match(/\b\d\d\b/g) ); // 12,34,56
+alert("1 23 456 78".match(/\b\d\d\b/g)); // 23,78
+alert("12,34,56".match(/\b\d\d\b/g)); // 12,34,56
 ```
 
 ```warn header="La limite de mot `pattern:\b` ne fonctionne pas pour des alphabets non latin"

@@ -20,7 +20,7 @@ let str = `He said: "She's the one!".`;
 let regexp = /['"](.*?)['"]/g;
 
 // Le résultat n'est pas celui que nous aimerions avoir
-alert( str.match(regexp) ); // "She'
+alert(str.match(regexp)); // "She'
 ```
 
 Comme nous pouvons le voir, le pattern trouve des guillemets ouvrant `match:"`, puis le texte est récupéré jusqu'au `match:'`, ce qui termine la correspondance.
@@ -36,7 +36,7 @@ let str = `He said: "She's the one!".`;
 let regexp = /(['"])(.*?)\1/g;
 */!*
 
-alert( str.match(regexp) ); // "She's the one!"
+alert(str.match(regexp)); // "She's the one!"
 ```
 
 Maintenant, ça fonctionne ! Le moteur trouve le premier caractère de citation `pattern:(['"])` et mémorise son contenu. C'est le premier groupe de capture.
@@ -68,5 +68,5 @@ let str = `He said: "She's the one!".`;
 let regexp = /(?<quote>['"])(.*?)\k<quote>/g;
 */!*
 
-alert( str.match(regexp) ); // "She's the one!"
+alert(str.match(regexp)); // "She's the one!"
 ```

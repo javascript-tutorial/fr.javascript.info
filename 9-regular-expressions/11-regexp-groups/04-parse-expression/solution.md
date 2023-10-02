@@ -20,7 +20,7 @@ Cela donne :
 ```js run
 let regexp = /(-?\d+(\.\d+)?)\s*([-+*\/])\s*(-?\d+(\.\d+)?)/;
 
-alert( "1.2 + 12".match(regexp) );
+alert("1.2 + 12".match(regexp));
 ```
 
 Le résultat inclus :
@@ -52,7 +52,7 @@ function parse(expr) {
   return result;
 }
 
-alert( parse("-1.23 * 3.45") );  // -1.23, *, 3.45
+alert(parse("-1.23 * 3.45"));  // -1.23, *, 3.45
 ```
 
 As an alternative to using the non-capturing `?:`, we could name the groups, like this:
@@ -66,5 +66,5 @@ function parse(expr) {
 	return [result.groups.a, result.groups.operator, result.groups.b];
 }
 
-alert( parse("-1.23 * 3.45") );  // -1.23, *, 3.45;
+alert(parse("-1.23 * 3.45"));  // -1.23, *, 3.45;
 ```

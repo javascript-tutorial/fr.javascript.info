@@ -39,7 +39,7 @@ localStorage.setItem('test', 1);
 ...Et fermez/ouvrez le navigateur ou ouvrez simplement la même page dans une autre fenêtre, alors vous pouvez l'obtenir comme ceci :
 
 ```js run
-alert( localStorage.getItem('test') ); // 1
+alert(localStorage.getItem('test')); // 1
 ```
 
 Il suffit d'être sur la même origine (domaine/port/protocole), le chemin de l'url peut être différent.
@@ -55,7 +55,7 @@ Nous pouvons également utiliser un objet simple pour obtenir/définir des clés
 localStorage.test = 2;
 
 // obtenir la clé
-alert( localStorage.test ); // 2
+alert(localStorage.test); // 2
 
 // supprimer clé
 delete localStorage.test;
@@ -137,15 +137,15 @@ We can use `JSON` to store objects though:
 localStorage.user = JSON.stringify({name: "John"});
 
 // un peu plus tard
-let user = JSON.parse( localStorage.user );
-alert( user.name ); // John
+let user = JSON.parse(localStorage.user);
+alert(user.name); // John
 ```
 
 Il est également possible de transformer en chaîne l'ensemble de l'objet de stockage, par ex. à des fins de débogage :
 
 ```js run
 // ajout d'options de formatage à JSON.stringify pour rendre l'objet plus beau
-alert( JSON.stringify(localStorage, null, 2) );
+alert(JSON.stringify(localStorage, null, 2));
 ```
 
 ## sessionStorage
@@ -170,7 +170,7 @@ sessionStorage.setItem('test', 1);
 ...Puis actualisez la page. Maintenant, vous pouvez toujours obtenir les données :
 
 ```js run
-alert( sessionStorage.getItem('test') ); // après rafraîchissement : 1
+alert(sessionStorage.getItem('test')); // après rafraîchissement : 1
 ```
 
 ...Mais si vous ouvrez la même page dans un autre onglet et réessayez, le code ci-dessus renvoie `null`, ce qui signifie "rien trouvé".

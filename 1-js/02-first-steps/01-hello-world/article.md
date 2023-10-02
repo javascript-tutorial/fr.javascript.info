@@ -24,7 +24,7 @@ Par exemple :
 
 *!*
   <script>
-    alert( 'Hello, world!' );
+    alert('Hello, world!');
   </script>
 */!*
 

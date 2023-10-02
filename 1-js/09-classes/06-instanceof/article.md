@@ -21,7 +21,7 @@ let rabbit = new Rabbit();
 
 // est-ce un objet de la classe Rabbit?
 *!*
-alert( rabbit instanceof Rabbit ); // true
+alert(rabbit instanceof Rabbit); // true
 */!*
 ```
 
@@ -33,15 +33,15 @@ Cela fonctionne aussi avec les fonctions constructeur:
 function Rabbit() {}
 */!*
 
-alert( new Rabbit() instanceof Rabbit ); // true
+alert(new Rabbit() instanceof Rabbit); // true
 ```
 
 ...Et avec des classes intégrées comme `Array`:
 
 ```js run
 let arr = [1, 2, 3];
-alert( arr instanceof Array ); // true
-alert( arr instanceof Object ); // true
+alert(arr instanceof Array); // true
+alert(arr instanceof Object); // true
 ```
 
 Veuillez noter que `arr` appartient également à la classe `Object`. C'est parce que `Array` hérite de manière prototypale de `Object`.
@@ -120,7 +120,7 @@ Rabbit.prototype = {};
 
 // ...plus un rabbit!
 *!*
-alert( rabbit instanceof Rabbit ); // false
+alert(rabbit instanceof Rabbit); // false
 */!*
 ```
 
@@ -157,7 +157,7 @@ let objectToString = Object.prototype.toString;
 // quel type est-ce?
 let arr = [];
 
-alert( objectToString.call(arr) ); // [object *!*Array*/!*]
+alert(objectToString.call(arr)); // [object *!*Array*/!*]
 ```
 
 Ici nous avons utilisé [call](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Function/call) comme décrit dans le chapitre [](info:call-apply-decorators) exécuter la fonction `objectToString` dans le contexte `this=arr`.
@@ -167,9 +167,9 @@ En interne, l'algorithme `toString` examine `this` et renvoie le résultat corre
 ```js run
 let s = Object.prototype.toString;
 
-alert( s.call(123) ); // [object Number]
-alert( s.call(null) ); // [object Null]
-alert( s.call(alert) ); // [object Function]
+alert(s.call(123)); // [object Number]
+alert(s.call(null)); // [object Null]
+alert(s.call(alert)); // [object Function]
 ```
 
 ### Symbol.toStringTag
@@ -183,18 +183,18 @@ let user = {
   [Symbol.toStringTag]: "User"
 };
 
-alert( {}.toString.call(user) ); // [object User]
+alert({}.toString.call(user)); // [object User]
 ```
 
 Pour la plupart des objets spécifiques à l'environnement, il existe une telle propriété. Voici quelques exemples spécifiques à votre navigateur :
 
 ```js run
 // toStringTag pour l'objet et la classe spécifiques à l'environnement :
-alert( window[Symbol.toStringTag]); // Window
-alert( XMLHttpRequest.prototype[Symbol.toStringTag] ); // XMLHttpRequest
+alert(window[Symbol.toStringTag]); // Window
+alert(XMLHttpRequest.prototype[Symbol.toStringTag]); // XMLHttpRequest
 
-alert( {}.toString.call(window) ); // [object Window]
-alert( {}.toString.call(new XMLHttpRequest()) ); // [object XMLHttpRequest]
+alert({}.toString.call(window)); // [object Window]
+alert({}.toString.call(new XMLHttpRequest())); // [object XMLHttpRequest]
 ```
 
 Comme vous pouvez le constater, le résultat est exactement `Symbol.toStringTag` (s'il existe), encapsulé dans `[objet ...]`.
@@ -207,11 +207,11 @@ Nous pouvons utiliser `{}.toString.call` au lieu de `instanceof` pour les objets
 
 Résumons les méthodes de vérification de type que nous connaissons:
 
-|               | fonctionne pour   |  renvoie      |
-|---------------|-------------|---------------|
-| `typeof`      | primitives  |  string       |
-| `{}.toString` | primitives, objets intégrés, objets avec `Symbol.toStringTag`   |       string |
-| `instanceof`  | objects     |  true/false   |
+|               | fonctionne pour                                               | renvoie    |
+| ------------- | ------------------------------------------------------------- | ---------- |
+| `typeof`      | primitives                                                    | string     |
+| `{}.toString` | primitives, objets intégrés, objets avec `Symbol.toStringTag` | string     |
+| `instanceof`  | objects                                                       | true/false |
 
 Comme on peut le constater, `{}.toString` est techniquement un `typeof` "plus avancé".
 

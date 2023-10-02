@@ -10,5 +10,5 @@ Par exemple:
 
 ```js no-beautify
 let date = new Date(2012, 0, 3);  // 3 Janvier 2012
-alert( getWeekDay(date) );        // devrait afficher "TU"
+alert(getWeekDay(date));        // devrait afficher "TU"
 ```

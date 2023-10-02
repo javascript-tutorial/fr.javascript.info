@@ -12,7 +12,7 @@ Par exemple:
 
 ```js
 function work(a, b) {
-  alert( a + b ); // work est une fonction ou une méthode arbitraire
+  alert(a + b); // work est une fonction ou une méthode arbitraire
 }
 
 *!*
@@ -23,7 +23,7 @@ work(1, 2); // 3
 work(4, 5); // 9
 
 for (let args of work.calls) {
-  alert( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+  alert('call:' + args.join()); // "call:1,2", "call:4,5"
 }
 ```
 

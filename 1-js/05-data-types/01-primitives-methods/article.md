@@ -57,7 +57,7 @@ Voici comment ça fonctionne:
 ```js run
 let str = "Hello";
 
-alert( str.toUpperCase() ); // HELLO
+alert(str.toUpperCase()); // HELLO
 ```
 
 Simple, non? Voici ce qui se passe réellement dans `str.toUpperCase()`:
@@ -75,7 +75,7 @@ Un nombre a ses propres méthodes, par exemple, [toFixed(n)](https://developer.m
 ```js run
 let n = 1.23456;
 
-alert( n.toFixed(2) ); // 1.23
+alert(n.toFixed(2)); // 1.23
 ```
 
 Nous verrons des méthodes plus spécifiques dans les chapitres [Nombres](https://javascript.info/number) et [Chaînes de caractères](https://javascript.info/string).
@@ -88,9 +88,9 @@ En JavaScript, cela est également possible pour des raisons historique, mais fo
 Par exemple :
 
 ```js run
-alert( typeof 0 ); // "number"
+alert(typeof 0); // "number"
 
-alert( typeof new Number(0) ); // "object"!
+alert(typeof new Number(0)); // "object"!
 ```
 
 Les objets sont toujours vrais dans les `if`, alors l'alerte apparaîtra ici :
@@ -99,7 +99,7 @@ Les objets sont toujours vrais dans les `if`, alors l'alerte apparaîtra ici :
 let zero = new Number(0);
 
 if (zero) { // zéro est vrai, parce que c'est un objet
-  alert( "zero is truthy!?!" );
+  alert("zero is truthy!?!");
 }
 ```
 

@@ -90,14 +90,14 @@ Par exemple :
 
 ```js run
 // un nombre en JSON est juste un nombre
-alert( JSON.stringify(1) ) // 1
+alert(JSON.stringify(1)) // 1
 
 // une chaîne en JSON est toujours une chaîne, mais entre guillemets
-alert( JSON.stringify('test') ) // "test"
+alert(JSON.stringify('test')) // "test"
 
-alert( JSON.stringify(true) ); // true
+alert(JSON.stringify(true)); // true
 
-alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]
+alert(JSON.stringify([1, 2, 3])); // [1,2,3]
 ```
 
 JSON est une spécification indépendante du langage et ne contenant que des données. Par conséquent, certaines propriétés d'objet spécifiques à JavaScript sont ignorées par `JSON.stringify`.
@@ -117,7 +117,7 @@ let user = {
   something: undefined // ignorée
 };
 
-alert( JSON.stringify(user) ); // {} (objet vide)
+alert(JSON.stringify(user)); // {} (objet vide)
 ```
 
 D'habitude ça va. Si ce n'est pas ce que nous souhaitons, nous verrons bientôt comment personnaliser le processus.
@@ -137,7 +137,7 @@ let meetup = {
 */!*
 };
 
-alert( JSON.stringify(meetup) );
+alert(JSON.stringify(meetup));
 /* La structure entière est stringified :
 {
   "title":"Conference",
@@ -208,7 +208,7 @@ let meetup = {
 
 room.occupiedBy = meetup; // room references meetup
 
-alert( JSON.stringify(meetup, *!*['title', 'participants']*/!*) );
+alert(JSON.stringify(meetup, *!*['title', 'participants']*/!*));
 // {"title":"Conference","participants":[{},{}]}
 ```
 
@@ -229,7 +229,7 @@ let meetup = {
 
 room.occupiedBy = meetup; // room references meetup
 
-alert( JSON.stringify(meetup, *!*['title', 'participants', 'place', 'name', 'number']*/!*) );
+alert(JSON.stringify(meetup, *!*['title', 'participants', 'place', 'name', 'number']*/!*));
 /*
 {
   "title":"Conference",
@@ -260,7 +260,7 @@ let meetup = {
 
 room.occupiedBy = meetup; // room references meetup
 
-alert( JSON.stringify(meetup, function replacer(key, value) {
+alert(JSON.stringify(meetup, function replacer(key, value) {
   alert(`${key}: ${value}`);
   return (key == 'occupiedBy') ? undefined : value;
 }));
@@ -348,7 +348,7 @@ let meetup = {
   room
 };
 
-alert( JSON.stringify(meetup) );
+alert(JSON.stringify(meetup));
 /*
   {
     "title":"Conference",
@@ -380,10 +380,10 @@ let meetup = {
 };
 
 *!*
-alert( JSON.stringify(room) ); // 23
+alert(JSON.stringify(room)); // 23
 */!*
 
-alert( JSON.stringify(meetup) );
+alert(JSON.stringify(meetup));
 /*
   {
     "title":"Conference",
@@ -420,7 +420,7 @@ let numbers = "[0, 1, 2, 3]";
 
 numbers = JSON.parse(numbers);
 
-alert( numbers[1] ); // 1
+alert(numbers[1]); // 1
 ```
 
 Ou pour les objets imbriqués :
@@ -430,7 +430,7 @@ let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2
 
 let user = JSON.parse(userData);
 
-alert( user.friends[1] ); // 1
+alert(user.friends[1]); // 1
 ```
 
 Le JSON peut être aussi complexe que nécessaire, les objets et les tableaux peuvent inclure d'autres objets et tableaux. Mais ils doivent obéir au même format JSON.
@@ -474,7 +474,7 @@ let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
 let meetup = JSON.parse(str);
 
 *!*
-alert( meetup.date.getDate() ); // Error!
+alert(meetup.date.getDate()); // Error!
 */!*
 ```
 
@@ -494,7 +494,7 @@ let meetup = JSON.parse(str, function(key, value) {
 });
 */!*
 
-alert( meetup.date.getDate() ); // ça fonctionne maintenant !
+alert(meetup.date.getDate()); // ça fonctionne maintenant !
 ```
 
 À propos, cela fonctionne aussi pour les objets imbriqués :
@@ -513,7 +513,7 @@ schedule = JSON.parse(schedule, function(key, value) {
 });
 
 *!*
-alert( schedule.meetups[1].date.getDate() ); // ça fonctionne !
+alert(schedule.meetups[1].date.getDate()); // ça fonctionne !
 */!*
 ```
 

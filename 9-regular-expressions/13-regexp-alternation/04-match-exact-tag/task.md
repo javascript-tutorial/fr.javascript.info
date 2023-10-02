@@ -9,5 +9,5 @@ Par exemple:
 ```js
 let regexp = /your regexp/g;
 
-alert( '<style> <styler> <style test="...">'.match(regexp) ); // <style>, <style test="...">
+alert('<style> <styler> <style test="...">'.match(regexp)); // <style>, <style test="...">
 ```

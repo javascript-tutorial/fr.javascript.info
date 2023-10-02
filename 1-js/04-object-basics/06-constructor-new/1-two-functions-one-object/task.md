@@ -13,7 +13,7 @@ function B() { ... }
 let a = new A();
 let b = new B();
 
-alert( a == b ); // true
+alert(a == b); // true
 ```
 
 Si c'est le cas, donnez un exemple de leur code.

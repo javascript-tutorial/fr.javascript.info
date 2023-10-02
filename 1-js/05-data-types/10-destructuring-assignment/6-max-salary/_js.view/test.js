@@ -6,10 +6,10 @@ describe("topSalary", function() {
       "Mary": 250
     };
 
-    assert.equal( topSalary(salaries), "Pete" );
+    assert.equal(topSalary(salaries), "Pete");
   });
 
   it("returns null for the empty object", function() {
-    assert.isNull( topSalary({}) );
+    assert.isNull(topSalary({}));
   });
 });

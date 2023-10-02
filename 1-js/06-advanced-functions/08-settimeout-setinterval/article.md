@@ -45,7 +45,7 @@ Dans le cas où fonction `sayHi()` requiert des arguments :
 
 ```js run
 function sayHi(phrase, who) {
-  alert( phrase + ', ' + who );
+  alert(phrase + ', ' + who);
 }
 
 *!*

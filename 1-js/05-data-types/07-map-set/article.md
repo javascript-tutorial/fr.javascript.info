@@ -34,10 +34,10 @@ map.set(true, 'bool1'); // une clé de type booléenne
 // alors que `Map` conserve le type d'origine de la clé,
 // c'est pourquoi les deux appels suivants retournent des valeurs  :
 
-alert( map.get(1)   ); // 'num1'
-alert( map.get('1') ); // 'str1'
+alert(map.get(1)  ); // 'num1'
+alert(map.get('1')); // 'str1'
 
-alert( map.size ); // 3
+alert(map.size); // 3
 ```
 
 Au travers de cet exemple nous pouvons voir, qu'à la différence des `Objects`, les clés ne sont pas converties en chaîne de caractère.
@@ -62,7 +62,7 @@ let visitsCountMap = new Map();
 // john est utilisé comme clé dans la map
 visitsCountMap.set(john, 123);
 
-alert( visitsCountMap.get(john) ); // 123
+alert(visitsCountMap.get(john)); // 123
 ```
 
 Utiliser des objets comme clés est l'une des fonctionnalités les plus notables et les plus importantes de `Map`. La même chose ne compte pas pour `Object`. Une chaîne de caractères comme clé dans `Object` est très bien, mais nous ne pouvons pas utiliser un autre `Object` comme clé dans `Object`.
@@ -80,7 +80,7 @@ visitsCountObj[john] = 123; // essayez d'utiliser l'objet john comme clé, l'obj
 
 *!*
 // C'est ce qui a été écrit!
-alert( visitsCountObj["[object Object]"] ); // 123
+alert(visitsCountObj["[object Object]"]); // 123
 */!*
 ```
 
@@ -147,7 +147,7 @@ Il est aussi possible d'utiliser `forEach` avec `Map` comme on pourrait le faire
 
 ```js
 // exécute la fonction pour chaque couple (key, value)
-recipeMap.forEach( (value, key, map) => {
+recipeMap.forEach((value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc.
 });
 ```
@@ -164,7 +164,7 @@ let map = new Map([
   [true, 'bool1']
 ]);
 
-alert( map.get('1') ); // str1
+alert(map.get('1')); // str1
 ```
 
 Si nous avons un objet simple et que nous souhaitons en créer une `Map`, nous pouvons utiliser la méthode intégrée [Object.entries(obj)](mdn:js/Object/entries) qui renvoie un tableau de paires clé/valeur pour un objet exactement dans ce format.
@@ -181,7 +181,7 @@ let obj = {
 let map = new Map(Object.entries(obj));
 */!*
 
-alert( map.get('name') ); // John
+alert(map.get('name')); // John
 ```
 
 Ici, `Object.entries` renvoie le tableau de paires clé/valeur : `[ ["name", "John"], ["age", 30] ]`. C'est ce dont a besoin la `Map`.
@@ -271,7 +271,7 @@ set.add(john);
 set.add(mary);
 
 // set conserve une fois chaque visiteurs
-alert( set.size ); // 3
+alert(set.size); // 3
 
 for (let user of set) {
   alert(user.name); // John (puis Pete et Mary)

@@ -8,7 +8,7 @@ What will be the output?
 
 ```js
 function f() {
-  alert( this ); // ?
+  alert(this); // ?
 }
 
 let user = {

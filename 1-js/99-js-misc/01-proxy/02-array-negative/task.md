@@ -26,8 +26,8 @@ array = new Proxy(array, {
   /* your code */
 });
 
-alert( array[-1] ); // 3
-alert( array[-2] ); // 2
+alert(array[-1]); // 3
+alert(array[-2]); // 2
 
 // Les autres fonctionnalités de array doivent être conservées
 ```

@@ -9,5 +9,5 @@ let str = `... <!-- My -- comment
  test --> ..  <!----> ..
 `;
 
-alert( str.match(regexp) ); // '<!-- My -- comment \n test -->', '<!---->'
+alert(str.match(regexp)); // '<!-- My -- comment \n test -->', '<!---->'
 ```

@@ -36,11 +36,11 @@ function cachingDecorator(func) {
 
 slow = cachingDecorator(slow);
 
-alert( slow(1) ); // slow(1) est mis en cache et le résultat est renvoyé
-alert( "Again: " + slow(1) ); // le résultat slow(1) est retourné à partir du cache
+alert(slow(1)); // slow(1) est mis en cache et le résultat est renvoyé
+alert("Again: " + slow(1)); // le résultat slow(1) est retourné à partir du cache
 
-alert( slow(2) ); // slow(2) est mis en cache et le résultat est renvoyé
-alert( "Again: " + slow(2) ); // le résultat slow(2) est retourné à partir du cache
+alert(slow(2)); // slow(2) est mis en cache et le résultat est renvoyé
+alert("Again: " + slow(2)); // le résultat slow(2) est retourné à partir du cache
 ```
 
 Dans le code ci-dessus, `cachingDecorator` est un *décorateur* : une fonction spéciale qui prend une autre fonction et modifie son comportement.
@@ -96,12 +96,12 @@ function cachingDecorator(func) {
   };
 }
 
-alert( worker.slow(1) ); // la méthode originale fonctionne
+alert(worker.slow(1)); // la méthode originale fonctionne
 
 worker.slow = cachingDecorator(worker.slow); // ajoute la mise en cache
 
 *!*
-alert( worker.slow(2) ); // Whoops! Error: Cannot read property 'someMethod' of undefined
+alert(worker.slow(2)); // Whoops! Error: Cannot read property 'someMethod' of undefined
 */!*
 ```
 
@@ -150,8 +150,8 @@ let user = { name: "John" };
 let admin = { name: "Admin" };
 
 // utilisons call pour passer différents objets en tant que "this"
-sayHi.call( user ); // John
-sayHi.call( admin ); // Admin
+sayHi.call(user); // John
+sayHi.call(admin); // Admin
 ```
 
 Et ici, nous utilisons `call` pour appeler `say` avec le contexte et la phrase donnés :
@@ -164,7 +164,7 @@ function say(phrase) {
 let user = { name: "John" };
 
 // user devient this, et "Hello" devient le premier argument
-say.call( user, "Hello" ); // John: Hello
+say.call(user, "Hello"); // John: Hello
 ```
 
 Dans notre cas, nous pouvons utiliser `call` dans le wrapper pour passer le contexte à la fonction d'origine :
@@ -197,8 +197,8 @@ function cachingDecorator(func) {
 
 worker.slow = cachingDecorator(worker.slow); // ajoute la mise en cache
 
-alert( worker.slow(2) ); // ça fonctione
-alert( worker.slow(2) ); // ça fonctionne, n'appelle pas l'original (mis en cache)
+alert(worker.slow(2)); // ça fonctione
+alert(worker.slow(2)); // ça fonctionne, n'appelle pas l'original (mis en cache)
 ```
 
 Maintenant, tout va bien.
@@ -273,8 +273,8 @@ function hash(args) {
 
 worker.slow = cachingDecorator(worker.slow, hash);
 
-alert( worker.slow(3, 5) ); // ça marche
-alert( "Again " + worker.slow(3, 5) ); // pareil (mis en cache)
+alert(worker.slow(3, 5)); // ça marche
+alert("Again " + worker.slow(3, 5)); // pareil (mis en cache)
 ```
 
 Maintenant, cela fonctionne avec n'importe quel nombre d'arguments (bien que la fonction de hachage doive également être ajustée pour permettre n'importe quel nombre d'arguments. Une façon intéressante de gérer cela sera traitée ci-dessous).
@@ -353,7 +353,7 @@ Donc, appeler `join` échouerait, comme on peut le voir ci-dessous :
 ```js run
 function hash() {
 *!*
-  alert( arguments.join() ); // Error: arguments.join is not a function
+  alert(arguments.join()); // Error: arguments.join is not a function
 */!*
 }
 
@@ -365,7 +365,7 @@ Néanmoins, il existe un moyen simple d’utiliser `join` :
 ```js run
 function hash() {
 *!*
-  alert( [].join.call(arguments) ); // 1,2
+  alert([].join.call(arguments)); // 1,2
 */!*
 }
 

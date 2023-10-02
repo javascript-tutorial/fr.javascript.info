@@ -21,7 +21,7 @@ function sum(a, b) {
   return a + b;
 }
 
-alert( sum(1, 2, 3, 4, 5) );
+alert(sum(1, 2, 3, 4, 5));
 ```
 
 Il n'y aura pas d'erreur à cause d'arguments "excessifs". Mais bien sûr, dans le résultat, seuls les deux premiers seront comptés, donc le résultat dans le code ci-dessus est `3`.
@@ -39,9 +39,9 @@ function sumAll(...args) { // args est le nom du tableau
   return sum;
 }
 
-alert( sumAll(1) ); // 1
-alert( sumAll(1, 2) ); // 3
-alert( sumAll(1, 2, 3) ); // 6
+alert(sumAll(1)); // 1
+alert(sumAll(1, 2)); // 3
+alert(sumAll(1, 2, 3)); // 6
 ```
 
 Nous pouvons choisir d’obtenir les premiers paramètres sous forme de variables et de ne rassembler que le reste.
@@ -50,13 +50,13 @@ Ici, les deux premiers arguments vont dans les variables et le reste dans le tab
 
 ```js run
 function showName(firstName, lastName, ...titles) {
-  alert( firstName + ' ' + lastName ); // Julius Caesar
+  alert(firstName + ' ' + lastName); // Julius Caesar
 
   // le reste va dans le tableau titles
   // i.e. titles = ["Consul", "Imperator"]
-  alert( titles[0] ); // Consul
-  alert( titles[1] ); // Imperator
-  alert( titles.length ); // 2
+  alert(titles[0]); // Consul
+  alert(titles[1]); // Imperator
+  alert(titles.length); // 2
 }
 
 showName("Julius", "Caesar", "Consul", "Imperator");
@@ -82,9 +82,9 @@ Par exemple :
 
 ```js run
 function showName() {
-  alert( arguments.length );
-  alert( arguments[0] );
-  alert( arguments[1] );
+  alert(arguments.length);
+  alert(arguments[0]);
+  alert(arguments[1]);
 
   // c'est iterable
   // for(let arg of arguments) alert(arg);
@@ -131,7 +131,7 @@ Mais parfois, nous devons faire exactement l'inverse.
 Par exemple, il existe une fonction intégrée [Math.max](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math/max) qui renvoie le plus grand nombre d'une liste :
 
 ```js run
-alert( Math.max(3, 5, 1) ); // 5
+alert(Math.max(3, 5, 1)); // 5
 ```
 
 Maintenant, disons que nous avons un tableau `[3, 5, 1]`. Comment appelons-nous `Math.max` avec ?
@@ -142,7 +142,7 @@ Le passer "tel quel" ne fonctionnera pas, car `Math.max` attend une liste d’ar
 let arr = [3, 5, 1];
 
 *!*
-alert( Math.max(arr) ); // NaN
+alert(Math.max(arr)); // NaN
 */!*
 ```
 
@@ -157,7 +157,7 @@ Pour `Math.max` :
 ```js run
 let arr = [3, 5, 1];
 
-alert( Math.max(...arr) ); // 5 (spread transforme un tableau en une liste d'arguments)
+alert(Math.max(...arr)); // 5 (spread transforme un tableau en une liste d'arguments)
 ```
 
 Nous pouvons aussi passer plusieurs iterables de cette façon :
@@ -166,7 +166,7 @@ Nous pouvons aussi passer plusieurs iterables de cette façon :
 let arr1 = [1, -2, 3, 4];
 let arr2 = [8, 3, -8, 1];
 
-alert( Math.max(...arr1, ...arr2) ); // 8
+alert(Math.max(...arr1, ...arr2)); // 8
 ```
 
 On peut même combiner la sytaxe spread avec des valeurs normales :
@@ -175,7 +175,7 @@ On peut même combiner la sytaxe spread avec des valeurs normales :
 let arr1 = [1, -2, 3, 4];
 let arr2 = [8, 3, -8, 1];
 
-alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
+alert(Math.max(1, ...arr1, 2, ...arr2, 25)); // 25
 ```
 
 De plus, la sytaxe spread peut être utilisée pour fusionner des tableaux :
@@ -198,7 +198,7 @@ Par exemple, nous utilisons ici la syntaxe spread pour transformer le string en 
 ```js run
 let str = "Hello";
 
-alert( [...str] ); // H,e,l,l,o
+alert([...str]); // H,e,l,l,o
 ```
 
 La syntaxe spread utilise en interne des itérateurs pour rassembler les éléments, de la même manière que `for..of`.
@@ -211,7 +211,7 @@ Pour cette tâche particulière, nous pourrions également utiliser `Array.from`
 let str = "Hello";
 
 // Array.from convertit un itérable en tableau
-alert( Array.from(str) ); // H,e,l,l,o
+alert(Array.from(str)); // H,e,l,l,o
 ```
 
 Le résultat est le même que `[...str]`.

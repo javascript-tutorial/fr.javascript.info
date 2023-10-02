@@ -101,7 +101,7 @@ http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#path_C
 	  controlPath.setAttribute('d', controlPathD);
 
 	  function dist(a,b) {
-	    return Math.round(Math.sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)));
+	    return Math.round(Math.sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y)));
 	  }
 
 	  if (hideMiddleControlPath) {

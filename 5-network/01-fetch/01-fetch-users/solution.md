@@ -23,7 +23,7 @@ async function getUsers(names) {
       failResponse => {
         return null;
       }
-    );
+   );
     jobs.push(job);
   }
 

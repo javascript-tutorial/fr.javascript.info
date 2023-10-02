@@ -11,11 +11,11 @@ Finalement :
 ```js run
 let regexp = /^[0-9a-f]{2}(:[0-9a-f]{2}){5}$/i;
 
-alert( regexp.test('01:32:54:67:89:AB') ); // true
+alert(regexp.test('01:32:54:67:89:AB')); // true
 
-alert( regexp.test('0132546789AB') ); // false (pas de double point)
+alert(regexp.test('0132546789AB')); // false (pas de double point)
 
-alert( regexp.test('01:32:54:67:89') ); // false (5 nombres, au lieu de 6)
+alert(regexp.test('01:32:54:67:89')); // false (5 nombres, au lieu de 6)
 
-alert( regexp.test('01:32:54:67:89:ZZ') ) // false (ZZ à la fin)
+alert(regexp.test('01:32:54:67:89:ZZ')) // false (ZZ à la fin)
 ```

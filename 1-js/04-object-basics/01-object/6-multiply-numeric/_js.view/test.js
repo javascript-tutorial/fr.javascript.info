@@ -12,7 +12,7 @@ describe("multiplyNumeric", function() {
   });
 
   it("returns nothing", function() {
-    assert.isUndefined( multiplyNumeric({}) );
+    assert.isUndefined(multiplyNumeric({}));
   });
 
 });

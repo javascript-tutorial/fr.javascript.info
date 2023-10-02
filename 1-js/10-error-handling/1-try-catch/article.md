@@ -98,7 +98,7 @@ try {
     noSuchVariable; // le script mourra ici
   }, 1000);
 } catch (err) {
-  alert( "won't work" );
+  alert("won't work");
 }
 ```
 
@@ -110,7 +110,7 @@ setTimeout(function() {
   try {   
     noSuchVariable; // try...catch gère l'erreur!
   } catch {
-    alert( "error is caught here!" );
+    alert("error is caught here!");
   }
 }, 1000);
 ```
@@ -191,8 +191,8 @@ let user = JSON.parse(json); // convertir la représentation textuelle en objet 
 */!*
 
 // maintenant, user est un objet avec les propriétés de la chaîne
-alert( user.name ); // John
-alert( user.age );  // 30
+alert(user.name); // John
+alert(user.age);  // 30
 ```
 
 Vous trouverez des informations plus détaillées sur JSON dans le chapitre <info:json>.
@@ -213,14 +213,14 @@ try {
 *!*
   let user = JSON.parse(json); // <-- quand une erreur se produit...
 */!*
-  alert( user.name ); // ne fonctionne pas
+  alert(user.name); // ne fonctionne pas
 
 } catch (err) {
 *!*
   // ...l'exécution saute ici
-  alert( "Our apologies, the data has errors, we'll try to request it one more time." );
-  alert( err.name );
-  alert( err.message );
+  alert("Our apologies, the data has errors, we'll try to request it one more time.");
+  alert(err.name);
+  alert(err.message);
 */!*
 }
 ```
@@ -240,11 +240,11 @@ try {
 
   let user = JSON.parse(json); // <-- pas d'erreurs
 *!*
-  alert( user.name ); // pas de "name"!
+  alert(user.name); // pas de "name"!
 */!*
 
 } catch (err) {
-  alert( "doesn't execute" );
+  alert("doesn't execute");
 }
 ```
 
@@ -319,10 +319,10 @@ try {
 */!*
   }
 
-  alert( user.name );
+  alert(user.name);
 
 } catch (err) {
-  alert( "JSON Error: " + err.message ); // JSON Error: Incomplete data: no name
+  alert("JSON Error: " + err.message); // JSON Error: Incomplete data: no name
 }
 ```
 
@@ -395,13 +395,13 @@ try {
   blabla(); // erreur inattendue
 */!*
 
-  alert( user.name );
+  alert(user.name);
 
 } catch (err) {
 
 *!*
   if (err instanceof SyntaxError) {
-    alert( "JSON Error: " + err.message );
+    alert("JSON Error: " + err.message);
   } else {
     throw err; // propager (*)
   }
@@ -439,7 +439,7 @@ try {
   readData();
 } catch (err) {
 *!*
-  alert( "External catch got: " + err ); // attrapé!
+  alert("External catch got: " + err); // attrapé!
 */!*
 }
 ```
@@ -473,12 +473,12 @@ Essayez d'exécuter ce code:
 
 ```js run
 try {
-  alert( 'try' );
+  alert('try');
   if (confirm('Make an error?')) BAD_CODE();
 } catch (err) {
-  alert( 'catch' );
+  alert('catch');
 } finally {
-  alert( 'finally' );
+  alert('finally');
 }
 ```
 
@@ -521,7 +521,7 @@ try {
 
 alert(result || "error occurred");
 
-alert( `execution took ${diff}ms` );
+alert(`execution took ${diff}ms`);
 ```
 
 Vous pouvez vérifier en exécutant le code en entrant `35` dans `prompt` - il s'exécute normalement, `finally` après `try`. Puis entrez `-1` -- il y aura une erreur immédiate, puis l'exécution prendra `0ms`. Les deux mesures sont effectuées correctement.
@@ -551,12 +551,12 @@ function func() {
     /* ... */
   } finally {
 *!*
-    alert( 'finally' );
+    alert('finally');
 */!*
   }
 }
 
-alert( func() ); // en premièr l'alert du `finally`, puis celle-ci
+alert(func()); // en premièr l'alert du `finally`, puis celle-ci
 ```
 ````
 

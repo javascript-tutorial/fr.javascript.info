@@ -10,7 +10,7 @@ Quel est le résultat ? Et pourquoi ?
 let arr = ["a", "b"];
 
 arr.push(function() {
-  alert( this );
+  alert(this);
 });
 
 arr[2](); // ?

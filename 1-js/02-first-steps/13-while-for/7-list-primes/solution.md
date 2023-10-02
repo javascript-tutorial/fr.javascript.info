@@ -23,7 +23,7 @@ for (let i = 2; i <= n; i++) { // Pour chaque i...
     if (i % j == 0) continue nextPrime; // Pas un premier, on passe au prochain i
   }
 
-  alert( i ); // un premier
+  alert(i); // un premier
 }
 ```
 

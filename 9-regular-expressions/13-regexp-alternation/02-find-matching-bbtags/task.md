@@ -35,7 +35,7 @@ Par exemple :
 let regexp = /your regexp/flags;
 
 let str = "..[url]http://google.com[/url]..";
-alert( str.match(regexp) ); // [url]http://google.com[/url]
+alert(str.match(regexp)); // [url]http://google.com[/url]
 ```
 
 Si les tags sont imbriqués, alors nous voulons le tag extérieur (si nous voulons nous pouvons continuer la recherche dans le contenu) :
@@ -44,5 +44,5 @@ Si les tags sont imbriqués, alors nous voulons le tag extérieur (si nous voulo
 let regexp = /your regexp/flags;
 
 let str = "..[url][b]http://google.com[/b][/url]..";
-alert( str.match(regexp) ); // [url][b]http://google.com[/b][/url]
+alert(str.match(regexp)); // [url][b]http://google.com[/b][/url]
 ```

@@ -30,9 +30,9 @@ On peut obtenir un élément par son numéro grace aux crochets :
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-alert( fruits[0] ); // Apple
-alert( fruits[1] ); // Orange
-alert( fruits[2] ); // Plum
+alert(fruits[0]); // Apple
+alert(fruits[1]); // Orange
+alert(fruits[2]); // Plum
 ```
 
 Nous pouvons remplacer un élément :
@@ -52,7 +52,7 @@ Le nombre total d'éléments dans le tableau est sa `length` (longueur) :
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-alert( fruits.length ); // 3
+alert(fruits.length); // 3
 ```
 
 Nous pouvons également utiliser un `alert` pour afficher l'ensemble du tableau :
@@ -60,7 +60,7 @@ Nous pouvons également utiliser un `alert` pour afficher l'ensemble du tableau 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-alert( fruits ); // Apple,Orange,Plum
+alert(fruits); // Apple,Orange,Plum
 ```
 
 Un tableau peut stocker des éléments de tout type.
@@ -72,7 +72,7 @@ Par exemple :
 let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
 
 // récupère l'objet à l'index 1 et montre ensuite son nom
-alert( arr[1].name ); // John
+alert(arr[1].name); // John
 
 // affiche la fonction à l'index 3 et l'exécute la
 arr[3](); // hello
@@ -106,7 +106,7 @@ We can explicitly calculate the last element index and then access it: `fruits[f
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-alert( fruits[fruits.length-1] ); // Plum
+alert(fruits[fruits.length-1]); // Plum
 ```
 
 A bit cumbersome, isn't it? We need to write the variable name twice.
@@ -117,7 +117,7 @@ Luckily, there's a shorter syntax: `fruits.at(-1)`:
 let fruits = ["Apple", "Orange", "Plum"];
 
 // same as fruits[fruits.length-1]
-alert( fruits.at(-1) ); // Plum
+alert(fruits.at(-1)); // Plum
 ```
 
 In other words, `arr.at(i)`:
@@ -165,9 +165,9 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
-    alert( fruits.pop() ); // supprime "Pear" et l'alerte
+    alert(fruits.pop()); // supprime "Pear" et l'alerte
 
-    alert( fruits ); // Apple, Orange
+    alert(fruits); // Apple, Orange
     ```
 
     Les deux méthodes `fruits.pop()` et `fruits.at(-1)` renvoient le dernier élément du tableau, mais `fruits.pop()` modifie également le tableau en supprimant l'élément.
@@ -180,7 +180,7 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 
     fruits.push("Pear");
 
-    alert( fruits ); // Apple, Orange, Pear
+    alert(fruits); // Apple, Orange, Pear
     ```
 
     L'appel de `fruits.push(...)` est égal à `fruits[fruits.length] = ...`.
@@ -193,9 +193,9 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
-    alert( fruits.shift() ); // supprime "Apple" et l'alerte
+    alert(fruits.shift()); // supprime "Apple" et l'alerte
 
-    alert( fruits ); // Orange, Pear
+    alert(fruits); // Orange, Pear
     ```
 
 `unshift`
@@ -206,7 +206,7 @@ En informatique, la structure de données qui permet cela s'appelle [deque](http
 
     fruits.unshift("Apple");
 
-    alert( fruits ); // Apple, Orange, Pear
+    alert(fruits); // Apple, Orange, Pear
     ```
 
 Les méthodes `push` et `unshift` peuvent ajouter plusieurs éléments à la fois :
@@ -218,7 +218,7 @@ fruits.push("Orange", "Peach");
 fruits.unshift("Pineapple", "Lemon");
 
 // ["Pineapple", "Lemon", "Apple", "Orange", "Peach"]
-alert( fruits );
+alert(fruits);
 ```
 
 ## Les internes
@@ -236,11 +236,11 @@ let fruits = ["Banana"]
 
 let arr = fruits; // copier par référence (deux variables font référence au même tableau)
 
-alert( arr === fruits ); // true
+alert(arr === fruits); // true
 
 arr.push("Pear"); // modifie le tableau par référence
 
-alert( fruits ); // Banana, Pear - 2 items maintenant
+alert(fruits); // Banana, Pear - 2 items maintenant
 ```
 
 ...Mais ce qui rend les tableaux vraiment spéciaux, c'est leur représentation interne. Le moteur tente de stocker ses éléments dans une zone de mémoire contiguë, l'un après l'autre, exactement comme le montrent les illustrations de ce chapitre. Il existe également d'autres optimisations permettant de faire fonctionner les tableaux très rapidement.
@@ -319,7 +319,7 @@ let arr = ["Apple", "Orange", "Pear"];
 *!*
 for (let i = 0; i < arr.length; i++) {
 */!*
-  alert( arr[i] );
+  alert(arr[i]);
 }
 ```
 
@@ -330,7 +330,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // itère sur des éléments de tableau
 for (let fruit of fruits) {
-  alert( fruit );
+  alert(fruit);
 }
 ```
 
@@ -344,7 +344,7 @@ let arr = ["Apple", "Orange", "Pear"];
 *!*
 for (let key in arr) {
 */!*
-  alert( arr[key] ); // Apple, Orange, Pear
+  alert(arr[key]); // Apple, Orange, Pear
 }
 ```
 
@@ -368,7 +368,7 @@ Par exemple, un seul élément avec un grand index donne une grande longueur :
 let fruits = [];
 fruits[123] = "Apple";
 
-alert( fruits.length ); // 124
+alert(fruits.length); // 124
 ```
 
 Notez que nous n'utilisons généralement pas de tableaux de ce type.
@@ -381,10 +381,10 @@ Si nous l'augmentons manuellement, rien d'intéressant ne se produit. Mais si no
 let arr = [1, 2, 3, 4, 5];
 
 arr.length = 2; // tronque à 2 éléments
-alert( arr ); // [1, 2]
+alert(arr); // [1, 2]
 
 arr.length = 5; // retourne la length d'origine
-alert( arr[3] ); // undefined: les valeurs ne reviennent pas
+alert(arr[3]); // undefined: les valeurs ne reviennent pas
 ```
 
 Ainsi, le moyen le plus simple pour effacer le tableau est `arr.length = 0;`.
@@ -406,9 +406,9 @@ Voyons comment on peut se tirer une balle dans le pied :
 ```js run
 let arr = new Array(2); // va-t-il créer un tableau de [2] ?
 
-alert( arr[0] ); // undefined! pas d'éléments.
+alert(arr[0]); // undefined! pas d'éléments.
 
-alert( arr.length ); // length 2
+alert(arr.length); // length 2
 ```
 
 Pour éviter de telles surprises, nous utilisons généralement des crochets, sauf si nous savons vraiment ce que nous faisons.
@@ -424,7 +424,7 @@ let matrix = [
   [7, 8, 9]
 ];
 
-alert( matrix[1][1] ); // 5, l'élément central
+alert(matrix[1][1]); // 5, l'élément central
 ```
 
 ## toString
@@ -436,16 +436,16 @@ Par exemple :
 ```js run
 let arr = [1, 2, 3];
 
-alert( arr ); // 1,2,3
-alert( String(arr) === '1,2,3' ); // true
+alert(arr); // 1,2,3
+alert(String(arr) === '1,2,3'); // true
 ```
 
 Aussi, essayons ceci :
 
 ```js run
-alert( [] + 1 ); // "1"
-alert( [1] + 1 ); // "11"
-alert( [1,2] + 1 ); // "1,21"
+alert([] + 1); // "1"
+alert([1] + 1); // "11"
+alert([1,2] + 1); // "1,21"
 ```
 
 Les tableaux n'ont pas de `Symbol.toPrimitive`, ni de `valueOf` viable, ils implémentent uniquement la conversion `toString`, donc ici `[]` devient une chaîne vide, `[1]` devient `"1"` et `[1,2]` devient `"1,2"`.
@@ -453,9 +453,9 @@ Les tableaux n'ont pas de `Symbol.toPrimitive`, ni de `valueOf` viable, ils impl
 Lorsque l'opérateur binaire plus `+` ajoute quelque chose à une chaîne, il la convertit également en chaîne, de sorte que l'étape suivante se présente comme suit :
 
 ```js run
-alert( "" + 1 ); // "1"
-alert( "1" + 1 ); // "11"
-alert( "1,2" + 1 ); // "1,21"
+alert("" + 1); // "1"
+alert("1" + 1); // "11"
+alert("1,2" + 1); // "1,21"
 ```
 
 ## Ne comparez pas les tableaux avec ==
@@ -477,8 +477,8 @@ Donc, si nous comparons des tableaux avec `==`, ils ne sont jamais les mêmes, s
 Par exemple :
 
 ```js run
-alert( [] == [] ); // false
-alert( [0] == [0] ); // false
+alert([] == []); // false
+alert([0] == [0]); // false
 ```
 
 Ces tableaux sont des objets techniquement différents. Donc, ils ne sont pas égaux. L'opérateur `==` ne fait pas de comparaison élément par élément.
@@ -486,9 +486,9 @@ Ces tableaux sont des objets techniquement différents. Donc, ils ne sont pas é
 La comparaison avec les primitives peut également donner des résultats apparemment étranges :
 
 ```js run
-alert( 0 == [] ); // true
+alert(0 == []); // true
 
-alert('0' == [] ); // false
+alert('0' == []); // false
 ```
 
 Ici, dans les deux cas, nous comparons une primitive à un objet tableau. Ainsi, le tableau `[]` est converti en primitive à des fins de comparaison et devient une chaîne vide `''`.
@@ -497,9 +497,9 @@ Ensuite, le processus de comparaison se poursuit avec les primitives, comme déc
 
 ```js run
 // après que [] soit converti vers ''
-alert( 0 == '' ); // true, car '' est converti en nombre 0
+alert(0 == ''); // true, car '' est converti en nombre 0
 
-alert('0' == '' ); // false, pas de conversion de type, différentes chaînes de caractères
+alert('0' == ''); // false, pas de conversion de type, différentes chaînes de caractères
 ```
 
 Alors, comment comparer des tableaux ?

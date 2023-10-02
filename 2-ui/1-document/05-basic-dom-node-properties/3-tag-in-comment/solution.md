@@ -6,7 +6,7 @@ La réponse : **`BODY`**.
 
   body.innerHTML = "<!--" + body.tagName + "-->";
 
-  alert( body.firstChild.data ); // BODY
+  alert(body.firstChild.data); // BODY
 </script>
 ```
 

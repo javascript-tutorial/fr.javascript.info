@@ -239,9 +239,9 @@ To remove a handler we should pass exactly the same function as was assigned.
 This doesn't work:
 
 ```js no-beautify
-elem.addEventListener( "click" , () => alert('Thanks!'));
+elem.addEventListener("click" , () => alert('Thanks!'));
 // ....
-elem.removeEventListener( "click", () => alert('Thanks!'));
+elem.removeEventListener("click", () => alert('Thanks!'));
 ```
 
 The handler won't be removed, because `removeEventListener` gets another function -- with the same code, but that doesn't matter, as it's a different function object.
@@ -250,7 +250,7 @@ Here's the right way:
 
 ```js
 function handler() {
-  alert( 'Thanks!' );
+  alert('Thanks!');
 }
 
 input.addEventListener("click", handler);

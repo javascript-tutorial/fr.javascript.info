@@ -206,7 +206,7 @@ class PropertyRequiredError extends ValidationError {
 }
 
 // name is correct
-alert( new PropertyRequiredError("field").name ); // PropertyRequiredError
+alert(new PropertyRequiredError("field").name); // PropertyRequiredError
 ```
 
 Maintenant, les erreurs personnalisées sont beaucoup plus courtes, en particulier `ValidationError`, car nous nous sommes débarrassés de la ligne `"this.name = ..."` dans le constructeur.

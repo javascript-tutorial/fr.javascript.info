@@ -70,7 +70,7 @@ Cependant c'est pas magique. Il y a des cas où il n'y a aucun moyen de trouver 
 // fonction créée dans un tableau
 let arr = [function() {}];
 
-alert( arr[0].name ); // <chaîne de caractères vide>
+alert(arr[0].name); // <chaîne de caractères vide>
 // le moteur n'a aucun moyen de définir le bon nom. Donc, il n'y en a pas
 ```
 
@@ -146,7 +146,7 @@ sayHi.counter = 0; // valeur initiale
 sayHi(); // Hi
 sayHi(); // Hi
 
-alert( `Called ${sayHi.counter} times` ); // Appelée 2 fois
+alert(`Called ${sayHi.counter} times`); // Appelée 2 fois
 ```
 
 ```warn header="Une propriété n'est pas une variable"
@@ -172,8 +172,8 @@ function makeCounter() {
 }
 
 let counter = makeCounter();
-alert( counter() ); // 0
-alert( counter() ); // 1
+alert(counter()); // 0
+alert(counter()); // 1
 ```
 
 Le `count` est maintenant stocké dans la fonction directement, pas dans son environnement lexical externe.
@@ -198,7 +198,7 @@ let counter = makeCounter();
 
 *!*
 counter.count = 10;
-alert( counter() ); // 10
+alert(counter()); // 10
 */!*
 ```
 

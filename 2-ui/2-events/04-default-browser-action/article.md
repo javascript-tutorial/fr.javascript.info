@@ -65,7 +65,7 @@ menu.onclick = function(event) {
   if (event.target.nodeName != 'A') return;
 
   let href = event.target.getAttribute('href');
-  alert( href ); // ...peut être en chargement depuis le serveur, génération d'UI etc
+  alert(href); // ...peut être en chargement depuis le serveur, génération d'UI etc
 
 *!*
   return false; // empêche l'action du navigateur (ne va pas sur l'URL)

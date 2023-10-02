@@ -119,8 +119,8 @@ numbers = new Proxy(numbers, {
 });
 
 *!*
-alert( numbers[1] ); // 1
-alert( numbers[123] ); // 0 (élément inexistant)
+alert(numbers[1]); // 1
+alert(numbers[123]); // 0 (élément inexistant)
 */!*
 ```
 
@@ -136,8 +136,8 @@ let dictionary = {
   'Bye': 'Adiós'
 };
 
-alert( dictionary['Hello'] ); // Hola
-alert( dictionary['Welcome'] ); // undefined
+alert(dictionary['Hello']); // Hola
+alert(dictionary['Welcome']); // undefined
 ```
 
 À l'heure actuelle, s'il n'y a pas de phrase, la lecture de `dictionary` renvoie `undefined`. Mais en pratique, laisser une phrase non traduite est généralement mieux que `undefined`. Faisons donc renvoyer une phrase non traduite dans ce cas au lieu de `undefined`.
@@ -165,9 +165,9 @@ dictionary = new Proxy(dictionary, {
 
 // Rechercher des phrases arbitraires dans le dictionnaire!
 // Au pire, ils ne sont pas traduits
-alert( dictionary['Hello'] ); // Hola
+alert(dictionary['Hello']); // Hola
 *!*
-alert( dictionary['Welcome to Proxy']); // Welcome to Proxy (pas de traduction)
+alert(dictionary['Welcome to Proxy']); // Welcome to Proxy (pas de traduction)
 */!*
 ```
 
@@ -272,8 +272,8 @@ user = new Proxy(user, {
 for(let key in user) alert(key); // name, après: age
 
 // même effet sur ces méthodes:
-alert( Object.keys(user) ); // name,age
-alert( Object.values(user) ); // John,30
+alert(Object.keys(user)); // name,age
+alert(Object.values(user)); // John,30
 ```
 
 Jusqu'à présent, cela fonctionne.
@@ -291,7 +291,7 @@ user = new Proxy(user, {
   }
 });
 
-alert( Object.keys(user) ); // <empty>
+alert(Object.keys(user)); // <empty>
 ```
 
 Pourquoi? La raison est simple: `Object.keys` renvoie uniquement les propriétés avec l'indicateur `enumerable`. Pour le vérifier, il appelle la méthode interne `[[GetOwnProperty]]` pour chaque propriété à obtenir [son descripteur](info:property-descriptors). Et ici, comme il n'y a pas de propriété, son descripteur est vide, pas d'indicateur `enumerable`, il est donc ignoré.
@@ -318,7 +318,7 @@ user = new Proxy(user, {
 
 });
 
-alert( Object.keys(user) ); // a, b, c
+alert(Object.keys(user)); // a, b, c
 ```
 
 Notons encore une fois: nous n'avons besoin d'intercepter `[[GetOwnProperty]]` que si la propriété est absente dans l'objet.

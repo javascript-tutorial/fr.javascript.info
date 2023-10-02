@@ -11,6 +11,6 @@ Créer une fonction `extractCurrencyValue(str)` qui extrait la valeur numérique
 L'exemple :
 
 ```js
-alert( extractCurrencyValue('$120') === 120 ); // true
+alert(extractCurrencyValue('$120') === 120); // true
 ```
 

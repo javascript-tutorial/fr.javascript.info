@@ -225,7 +225,7 @@ Alors pourquoi ne pas lire la largeur d'un élément avec `getComputedStyle`, co
 ```js run
 let elem = document.body;
 
-alert( getComputedStyle(elem).width ); // affiche la largeur CSS pour elem
+alert(getComputedStyle(elem).width); // affiche la largeur CSS pour elem
 ```
 
 Pourquoi devrions-nous plutôt utiliser des propriétés géométriques ? Il y a deux raisons :
@@ -238,7 +238,7 @@ Pourquoi devrions-nous plutôt utiliser des propriétés géométriques ? Il y a
 
     <script>
     *!*
-      alert( getComputedStyle(elem).width ); // auto
+      alert(getComputedStyle(elem).width); // auto
     */!*
     </script>
     ```

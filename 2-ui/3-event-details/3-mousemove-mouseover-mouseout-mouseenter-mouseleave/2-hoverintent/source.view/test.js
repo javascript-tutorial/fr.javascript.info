@@ -62,7 +62,7 @@ describe("hoverIntent", function() {
     setTimeout(
       () => mouse('mouseout', 300, 300, { relatedTarget: document.body}),
       30
-    );
+   );
     this.clock.tick(100);
     assert.isFalse(isOver);
   });
@@ -73,7 +73,7 @@ describe("hoverIntent", function() {
       setTimeout(
         () => mouse('mousemove', i/5, 10),
         i
-      );
+     );
     }
     this.clock.tick(200);
     assert.isTrue(isOver);
@@ -85,7 +85,7 @@ describe("hoverIntent", function() {
       setTimeout(
         () => mouse('mousemove', i, 10),
         i
-      );
+     );
     }
     this.clock.tick(200);
     assert.isFalse(isOver);

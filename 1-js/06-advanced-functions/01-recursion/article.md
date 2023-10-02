@@ -36,7 +36,7 @@ Il y a deux façons de le mettre en œuvre.
       return result;
     }
 
-    alert( pow(2, 3) ); // 8
+    alert(pow(2, 3)); // 8
     ```
 
 2. La pensée récursive: simplifie la tâche et s'appele elle-même:
@@ -50,7 +50,7 @@ Il y a deux façons de le mettre en œuvre.
       }
     }
 
-    alert( pow(2, 3) ); // 8
+    alert(pow(2, 3)); // 8
     ```
 
 Veuillez noter en quoi la variante récursive est fondamentalement différente.
@@ -144,7 +144,7 @@ function pow(x, n) {
   }
 }
 
-alert( pow(2, 3) );
+alert(pow(2, 3));
 ```
 
 Les variables sont les mêmes, mais la ligne change, le contexte est donc le suivant:

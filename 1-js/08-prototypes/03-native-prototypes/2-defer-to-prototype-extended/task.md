@@ -10,7 +10,7 @@ Voici un exemple de la façon dont cela devrait fonctionner :
 
 ```js
 function f(a, b) {
-  alert( a + b );
+  alert(a + b);
 }
 
 f.defer(1000)(1, 2); // montre 3 après 1 seconde

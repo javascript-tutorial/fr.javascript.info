@@ -8,7 +8,7 @@ function randomInteger(min, max) {
   return Math.round(rand);
 }
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3));
 ```
 
 La fonction marche, mais elle est incorrecte. La probabilité d'obtenir les valeurs `min` et `max` est deux fois inférieure à toute autre.
@@ -38,7 +38,7 @@ function randomInteger(min, max) {
 }
 */!*
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3));
 ```
 
 Une autre solution pourrait être d'utiliser `Math.floor` pour un nombre aléatoie compris entre `min` et `max+1`.
@@ -52,7 +52,7 @@ function randomInteger(min, max) {
 }
 */!*
 
-alert( randomInteger(1, 3) );
+alert(randomInteger(1, 3));
 ```
 
 Maintenant, tous les intervalles sont mappés de cette façon :

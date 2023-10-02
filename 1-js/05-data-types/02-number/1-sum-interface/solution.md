@@ -2,7 +2,7 @@
 let a = +prompt("Le premier numéro?", "");
 let b = +prompt("Le second numéro?", "");
 
-alert( a + b );
+alert(a + b);
 ```
 
 Notez le plus unaire `+` avant le `prompt`. Il convertit immédiatement la valeur en nombre.

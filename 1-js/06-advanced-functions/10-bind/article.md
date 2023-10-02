@@ -236,9 +236,9 @@ function mul(a, b) {
 let double = mul.bind(null, 2);
 */!*
 
-alert( double(3) ); // = mul(2, 3) = 6
-alert( double(4) ); // = mul(2, 4) = 8
-alert( double(5) ); // = mul(2, 5) = 10
+alert(double(3)); // = mul(2, 3) = 6
+alert(double(4)); // = mul(2, 4) = 8
+alert(double(5)); // = mul(2, 5) = 10
 ```
 
 The call to `mul.bind(null, 2)` creates a new function `double` that passes calls to `mul`, fixing `null` as the context and `2` as the first argument. Further arguments are passed "as is".
@@ -258,9 +258,9 @@ function mul(a, b) {
 let triple = mul.bind(null, 3);
 */!*
 
-alert( triple(3) ); // = mul(3, 3) = 9
-alert( triple(4) ); // = mul(3, 4) = 12
-alert( triple(5) ); // = mul(3, 5) = 15
+alert(triple(3)); // = mul(3, 3) = 9
+alert(triple(4)); // = mul(3, 4) = 12
+alert(triple(5)); // = mul(3, 5) = 15
 ```
 
 Why do we usually make a partial function?

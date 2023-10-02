@@ -15,7 +15,7 @@ let salaries = {
   "Mary": 250
 };
 
-alert( sumSalaries(salaries) ); // 650
+alert(sumSalaries(salaries)); // 650
 ```
 Ou, éventuellement, nous pourrions aussi obtenir la somme en utilisant `Object.values` et `reduce`:
 

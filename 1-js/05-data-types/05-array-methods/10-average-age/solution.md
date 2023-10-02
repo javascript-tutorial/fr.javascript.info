@@ -9,6 +9,6 @@ let mary = { name: "Mary", age: 29 };
 
 let arr = [ john, pete, mary ];
 
-alert( getAverageAge(arr) ); // 28
+alert(getAverageAge(arr)); // 28
 ```
 

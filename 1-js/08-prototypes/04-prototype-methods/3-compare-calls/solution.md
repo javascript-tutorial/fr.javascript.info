@@ -8,7 +8,7 @@ function Rabbit(name) {
   this.name = name;
 }
 Rabbit.prototype.sayHi = function() {
-  alert( this.name );
+  alert(this.name);
 }
 
 let rabbit = new Rabbit("Rabbit");

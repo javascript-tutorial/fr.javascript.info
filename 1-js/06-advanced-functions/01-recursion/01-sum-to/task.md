@@ -28,7 +28,7 @@ Un exemple de résultat:
 ```js
 function sumTo(n) { /*... ton code ... */ }
 
-alert( sumTo(100) ); // 5050
+alert(sumTo(100)); // 5050
 ```
 
 P.S. Quelle solution est la plus rapide? La plus lente? Pourquoi?

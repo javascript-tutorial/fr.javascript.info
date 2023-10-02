@@ -22,9 +22,9 @@
       __proto__: bed
     };
 
-    alert( pockets.pen ); // 3
-    alert( bed.glasses ); // 1
-    alert( table.money ); // undefined
+    alert(pockets.pen); // 3
+    alert(bed.glasses); // 1
+    alert(table.money); // undefined
     ```
 
 2. Dans les moteurs modernes, en termes de performances, il n’ya pas de différence selon que l’on prend une propriété d’un objet ou de son prototype. Ils se souviennent du lieu où la propriété a été trouvée et le réutilisent à la demande suivante.

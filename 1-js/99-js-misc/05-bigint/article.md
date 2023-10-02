@@ -54,7 +54,7 @@ Afin d'éviter toute confusion, il n'est pas pris en charge sur les bigints :
 ```js run
 let bigint = 1n;
 
-alert( +bigint ); // erreur
+alert(+bigint); // erreur
 ```
 Donc nous devrions utiliser `Number()` pour convertir un bigint en un nombre.
 ````
@@ -64,17 +64,17 @@ Donc nous devrions utiliser `Number()` pour convertir un bigint en un nombre.
 Les comparaisons, telles `<`, `>` fonctionnent très bien avec les bigints et les nombres :
 
 ```js run
-alert( 2n > 1n ); // true
+alert(2n > 1n); // true
 
-alert( 2n > 1 ); // true
+alert(2n > 1); // true
 ```
 
 Veuillez cependant noter que puisque les nombres et les bigints sont deux types différents, ils peuvent être égaux `==`, mais pas strictement égaux `===`:
 
 ```js run
-alert( 1 == 1n ); // true
+alert(1 == 1n); // true
 
-alert( 1 === 1n ); // false
+alert(1 === 1n); // false
 ```
 
 ## Opérations booléennes
@@ -92,9 +92,9 @@ if (0n) {
 Les opérateurs booléens, tels `||`, `&&` et autres fonctionnent également avec les bigints, similairement aux nombres :
 
 ```js run
-alert( 1n || 2 ); // 1 (1n est considéré truthy)
+alert(1n || 2); // 1 (1n est considéré truthy)
 
-alert( 0n || 2 ); // 2 (0n est considéré falsy)
+alert(0n || 2); // 2 (0n est considéré falsy)
 ```
 
 ## Polyfills
@@ -111,12 +111,12 @@ Cependant, l'une des solutions est proposée par les développeurs de la bibliot
 
 Cette bibliothèque implémente les nombres conséquents à l'aide de ses propres méthodes. Nous pouvons les utiliser à la place des bigints natifs :
 
-| Opération | `BigInt` natif | JSBI |
-|-----------|-----------------|------|
-| Création depuis un nombre | `a = BigInt(789)` | `a = JSBI.BigInt(789)` |
-| Addition | `c = a + b` | `c = JSBI.add(a, b)` |
-| Soustraction	| `c = a - b` | `c = JSBI.subtract(a, b)` |
-| ... | ... | ... |
+| Opération                 | `BigInt` natif    | JSBI                      |
+| ------------------------- | ----------------- | ------------------------- |
+| Création depuis un nombre | `a = BigInt(789)` | `a = JSBI.BigInt(789)`    |
+| Addition                  | `c = a + b`       | `c = JSBI.add(a, b)`      |
+| Soustraction              | `c = a - b`       | `c = JSBI.subtract(a, b)` |
+| ...                       | ...               | ...                       |
 
 ...Et ensuite utiliser le polyfill (plugin Babel) pour convertir les appels JSBI en bigints natifs pour les navigateurs les supportant.
 

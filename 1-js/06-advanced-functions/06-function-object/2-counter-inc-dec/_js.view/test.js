@@ -4,9 +4,9 @@ describe("counter", function() {
 
     let counter = makeCounter();
 
-    assert.equal( counter(), 0 );
-    assert.equal( counter(), 1 );
-    assert.equal( counter(), 2 );
+    assert.equal(counter(), 0);
+    assert.equal(counter(), 1);
+    assert.equal(counter(), 2);
   });
 
  
@@ -17,8 +17,8 @@ describe("counter", function() {
 
       counter.set(10);
 
-      assert.equal( counter(), 10 );
-      assert.equal( counter(), 11 );
+      assert.equal(counter(), 10);
+      assert.equal(counter(), 11);
     });
   });
  
@@ -29,11 +29,11 @@ describe("counter", function() {
 
       counter.set(10);
 
-      assert.equal( counter(), 10 );
+      assert.equal(counter(), 10);
 
       counter.decrease();
 
-      assert.equal( counter(), 10 );
+      assert.equal(counter(), 10);
 
     });
   });

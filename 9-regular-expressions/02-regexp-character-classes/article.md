@@ -15,7 +15,7 @@ let str = "+7(903)-123-45-67";
 
 let regexp = /\d/;
 
-alert( str.match(regexp) ); // 7
+alert(str.match(regexp)); // 7
 ```
 
 Sans l'indicateur `pattern:g`, l'expression régulière ne recherche que la première correspondance, c'est-à-dire le premier chiffre `pattern:\d`.
@@ -27,10 +27,10 @@ let str = "+7(903)-123-45-67";
 
 let regexp = /\d/g;
 
-alert( str.match(regexp) ); // liste de correspondances: 7,9,0,3,1,2,3,4,5,6,7
+alert(str.match(regexp)); // liste de correspondances: 7,9,0,3,1,2,3,4,5,6,7
 
 // Obtenons un numéro de télephone composé uniquement de ces chiffres:
-alert( str.match(regexp).join('') ); // 79031234567
+alert(str.match(regexp).join('')); // 79031234567
 ```
 
 C'était une classe de caractères pour les chiffres. Il existe également d'autres classes de caractères.
@@ -56,13 +56,13 @@ Par exemple, `pattern:CSS\d` correspond à une chaîne `match:CSS` suivi d'un ch
 let str = "Is there CSS4?";
 let regexp = /CSS\d/
 
-alert( str.match(regexp) ); // CSS4
+alert(str.match(regexp)); // CSS4
 ```
 
 On peut également utiliser les classes de caractères :
 
 ```js run
-alert( "I love HTML5!".match(/\s\w\w\w\w\d/) ); // ' HTML5'
+alert("I love HTML5!".match(/\s\w\w\w\w\d/)); // ' HTML5'
 ```
 
 La correspondance (chaque classe de caractères d'expression régulière a le caractère de résultat correspondant) :
@@ -89,7 +89,7 @@ Au début du chapitre, nous avons vu comment créer un numéro de téléphone un
 ```js run
 let str = "+7(903)-123-45-67";
 
-alert( str.match(/\d/g).join('') ); // 79031234567
+alert(str.match(/\d/g).join('')); // 79031234567
 ```
 
 Une autre manière, plus courte, consiste à rechercher un motif non numérique `pattern:\D` et à le supprimer de la chaîne:
@@ -97,7 +97,7 @@ Une autre manière, plus courte, consiste à rechercher un motif non numérique 
 ```js run
 let str = "+7(903)-123-45-67";
 
-alert( str.replace(/\D/g, "") ); // 79031234567
+alert(str.replace(/\D/g, "")); // 79031234567
 ```
 
 ## Un point est "n'importe quel caractère"
@@ -107,7 +107,7 @@ Un point `pattern:.` est une classe de caractères spéciale qui correspond à "
 Par exemple:
 
 ```js run
-alert( "Z".match(/./) ); // Z
+alert("Z".match(/./)); // Z
 ```
 
 Ou au milieu d'une expression régulière:
@@ -115,15 +115,15 @@ Ou au milieu d'une expression régulière:
 ```js run
 let regexp = /CS.4/;
 
-alert( "CSS4".match(regexp) ); // CSS4
-alert( "CS-4".match(regexp) ); // CS-4
-alert( "CS 4".match(regexp) ); // CS 4 (l'espace est aussi un caractère)
+alert("CSS4".match(regexp)); // CSS4
+alert("CS-4".match(regexp)); // CS-4
+alert("CS 4".match(regexp)); // CS 4 (l'espace est aussi un caractère)
 ```
 
 Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre :
 
 ```js run
-alert( "CS4".match(/CS.4/) ); // null, pas de correspondance car il n'y a pas de caractère pour le point
+alert("CS4".match(/CS.4/)); // null, pas de correspondance car il n'y a pas de caractère pour le point
 ```
 
 ### Point tel que n'importe quel caractère avec l'indicateur "s"
@@ -133,7 +133,7 @@ Par défaut, un point ne correspond pas au caractère de saut de ligne `\n`.
 Par exemple, l'expression rationnelle `pattern:A.B` correspond à `match:A`, puis `match:B` avec n'importe quel caractère entre eux, sauf un saut de ligne `\n`:
 
 ```js run
-alert( "A\nB".match(/A.B/) ); // null (pas de correspondance)
+alert("A\nB".match(/A.B/)); // null (pas de correspondance)
 ```
 
 Il existe de nombreuses situations où nous aimerions qu'un point signifie littéralement "n'importe quel caractère", y compris le saut de ligne.
@@ -141,7 +141,7 @@ Il existe de nombreuses situations où nous aimerions qu'un point signifie litt�
 C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère :
 
 ```js run
-alert( "A\nB".match(/A.B/s) ); // A\nB (correspondance!)
+alert("A\nB".match(/A.B/s)); // A\nB (correspondance!)
 ```
 
 ````warn header="Non pris en charge par IE"
@@ -150,7 +150,7 @@ Le flag `pattern: s` n'est pas pris en charge dans IE.
 Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons utiliser une expression rationnelle comme `pattern:[\s\S]` pour faire correspondre "n'importe quel caractère" (ce modèle sera traité dans l'article <info:regex-character-sets-and-ranges>).
 
 ```js run
-alert( "A\nB".match(/A[\s\S]B/) ); // A\nB (correspondance!)
+alert("A\nB".match(/A[\s\S]B/)); // A\nB (correspondance!)
 ```
 
 Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace". En d'autres termes, "n'importe quoi". Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern:[\d\D]`, cela n'a pas d'importance. Ou même le `pattern:[^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
@@ -166,15 +166,15 @@ Mais si une expression régulière ne prend pas en compte les espaces, elle peut
 Essayons de trouver des chiffres séparés par un tiret :
 
 ```js run
-alert( "1 - 5".match(/\d-\d/) ); // null, pas de correspondance!
+alert("1 - 5".match(/\d-\d/)); // null, pas de correspondance!
 ```
 
 Corrigeons-le en ajoutant des espaces dans l'expression régulière `pattern:\d - \d` :
 
 ```js run
-alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, désormais, cela fonctionne
+alert("1 - 5".match(/\d - \d/)); // 1 - 5, désormais, cela fonctionne
 // ou on peut utiliser la classe \s:
-alert( "1 - 5".match(/\d\s-\s\d/) ); // 1 - 5, fonctionne aussi
+alert("1 - 5".match(/\d\s-\s\d/)); // 1 - 5, fonctionne aussi
 ```
 
 **Un espace est un caractère. Aussi important que n'importe quel autre caractère.**

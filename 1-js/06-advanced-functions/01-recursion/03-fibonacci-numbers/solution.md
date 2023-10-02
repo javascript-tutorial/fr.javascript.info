@@ -7,8 +7,8 @@ function fib(n) {
   return n <= 1 ? n : fib(n - 1) + fib(n - 2);
 }
 
-alert( fib(3) ); // 2
-alert( fib(7) ); // 13
+alert(fib(3)); // 2
+alert(fib(7)); // 13
 // fib(77); // Sera extrêmement lent!
 ```
 
@@ -100,9 +100,9 @@ function fib(n) {
   return b;
 }
 
-alert( fib(3) ); // 2
-alert( fib(7) ); // 13
-alert( fib(77) ); // 5527939700884757
+alert(fib(3)); // 2
+alert(fib(7)); // 13
+alert(fib(77)); // 5527939700884757
 ```
 
 La boucle commence par `i=3`, parce que les première et deuxième valeurs de séquence sont codées en dur dans des variables `a=1`, `b=1`.

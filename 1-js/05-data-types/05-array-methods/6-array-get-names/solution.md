@@ -8,5 +8,5 @@ let users = [ john, pete, mary ];
 
 let names = users.map(item => item.name);
 
-alert( names ); // John, Pete, Mary
+alert(names); // John, Pete, Mary
 ```

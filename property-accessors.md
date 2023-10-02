@@ -195,7 +195,7 @@ function User(name, age) {
 
 let john = new User("John", 25);
 
-alert( john.age ); // 25
+alert(john.age); // 25
 ```
 
 ...Mais tôt ou tard, les choses peuvent changer. Au lieu de `age` nous pouvons décider de stocker `birthday`, parce que c'est plus précis et commode:
@@ -235,8 +235,8 @@ function User(name, birthday) {
 
 let john = new User("John", new Date(1992, 6, 1));
 
-alert( john.birthday ); // anniversaire est disponible
-alert( john.age );      // ...ainsi que l'âge
+alert(john.birthday); // anniversaire est disponible
+alert(john.age);      // ...ainsi que l'âge
 ```
 
 Maintenant l'ancien code fonctionne aussi et nous avons une chouette propriété supplémentaire.

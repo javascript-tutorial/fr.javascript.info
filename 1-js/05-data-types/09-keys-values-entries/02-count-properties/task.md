@@ -12,7 +12,7 @@ let user = {
   age: 30
 };
 
-alert( count(user) ); // 2
+alert(count(user)); // 2
 ```
 
 Essayer d'écrire le code le plus petit possible.

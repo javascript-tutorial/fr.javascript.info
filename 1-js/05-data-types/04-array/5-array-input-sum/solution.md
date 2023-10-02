@@ -22,5 +22,5 @@ function sumInput() {
   return sum;
 }
 
-alert( sumInput() );
+alert(sumInput());
 ```

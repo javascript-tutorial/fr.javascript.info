@@ -138,7 +138,7 @@ Les fonctionnalités qui nécessitent des itérateurs réguliers et synchrones n
 
 Par exemple, la 'spread syntax' ne fonctionnera pas :
 ```js
-alert( [...range] ); // Erreur, pas de Symbol.iterator
+alert([...range]); // Erreur, pas de Symbol.iterator
 ```
 
 C'est naturel, comme il s'attend à trouver `Symbol.iterator`, pas `Symbol.asyncIterator`.

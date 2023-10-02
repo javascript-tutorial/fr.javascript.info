@@ -12,6 +12,6 @@ Qu'affice ce code ?
 
   body.innerHTML = "<!--" + body.tagName + "-->";
 
-  alert( body.firstChild.data ); // Qu'est ce qu'il y a ici ?
+  alert(body.firstChild.data); // Qu'est ce qu'il y a ici ?
 </script>
 ```

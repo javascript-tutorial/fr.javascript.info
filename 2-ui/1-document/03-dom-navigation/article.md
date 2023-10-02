@@ -42,7 +42,7 @@ Ainsi, dans l'exemple ci-dessous, la première `alert` affiche `null` :
 <head>
   <script>
 *!*
-    alert( "From HEAD: " + document.body ); // null, il n'y a pas encore de <body>
+    alert("From HEAD: " + document.body); // null, il n'y a pas encore de <body>
 */!*
   </script>
 </head>
@@ -50,7 +50,7 @@ Ainsi, dans l'exemple ci-dessous, la première `alert` affiche `null` :
 <body>
 
   <script>
-    alert( "From BODY: " + document.body ); // HTMLBodyElement maintenant existe
+    alert("From BODY: " + document.body); // HTMLBodyElement maintenant existe
   </script>
 
 </body>
@@ -85,7 +85,7 @@ Par exemple, ici `<body>` a des enfants `<div>` et `<ul>` (et quelques nœuds te
 </html>
 ```
 
-... Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>` ) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
+... Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>`) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
 
 **La collection `childNodes` répertorie tous les nœuds enfants, y compris les nœuds texte.**
 
@@ -105,7 +105,7 @@ L'exemple ci-dessous montre des enfants de `document.body` :
   <script>
 *!*
     for (let i = 0; i < document.body.childNodes.length; i++) {
-      alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+      alert(document.body.childNodes[i]); // Text, DIV, Text, UL, ..., SCRIPT
     }
 */!*
   </script>
@@ -148,7 +148,7 @@ Il y a deux conséquences importantes :
 La première chose est sympa. La seconde est tolérable, car nous pouvons utiliser `Array.from` pour créer un "vrai" tableau à partir de la collection, si nous voulons des méthodes de tableau :
 
   ```js run
-  alert( Array.from(document.body.childNodes).filter ); // function
+  alert(Array.from(document.body.childNodes).filter); // function
   ```
 
 ```warn header="Les collections DOM sont en lecture seule"
@@ -202,13 +202,13 @@ Par exemple :
 
 ```js run
 // le parent de <body> est <html>
-alert( document.body.parentNode === document.documentElement ); // true
+alert(document.body.parentNode === document.documentElement); // true
 
 // après <head> vient <body>
-alert( document.head.nextSibling ); // HTMLBodyElement
+alert(document.head.nextSibling); // HTMLBodyElement
 
 // avant <body> vient <head>
-alert( document.body.previousSibling ); // HTMLHeadElement
+alert(document.body.previousSibling); // HTMLHeadElement
 ```
 
 ## Navigation par élément uniquement
@@ -234,8 +234,8 @@ La propriété `parentElement` renvoie l'élément parent, tandis que `parentNod
 À la seule exception de `document.documentElement` :
 
 ```js run
-alert( document.documentElement.parentNode ); // document
-alert( document.documentElement.parentElement ); // null
+alert(document.documentElement.parentNode); // document
+alert(document.documentElement.parentElement); // null
 ```
 
 La raison en est que le nœud racine `document.documentElement` (`<html>`) a
@@ -244,7 +244,7 @@ La raison en est que le nœud racine `document.documentElement` (`<html>`) a
 Ce détail peut être utile lorsque nous voulons passer d'un élément arbitraire `elem` à `<html>`, mais pas au `document` :
 ```js
 while(elem = elem.parentElement) { // remonter jusqu'à <html>
-  alert( elem );
+  alert(elem);
 }
 ```
 ````

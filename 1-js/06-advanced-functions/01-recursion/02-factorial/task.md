@@ -25,7 +25,7 @@ Valeurs des factorielles pour des `n` différents:
 La tâche est d'écrire une fonction `factorial(n)` qui calcule `n!` en utilisant des appels récursifs.
 
 ```js
-alert( factorial(5) ); // 120
+alert(factorial(5)); // 120
 ```
 
 P.S. Indice: `n!` peut être écrit `n * (n-1)!` Par exemple: `3! = 3*2! = 3*2*1! = 6`

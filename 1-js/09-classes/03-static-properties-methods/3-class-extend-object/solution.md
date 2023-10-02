@@ -16,7 +16,7 @@ class Rabbit extends Object {
 
 let rabbit = new Rabbit("Rab");
 
-alert( rabbit.hasOwnProperty('name') ); // true
+alert(rabbit.hasOwnProperty('name')); // true
 ```
 
 Mais ce n'est pas tout.
@@ -33,8 +33,8 @@ Dans notre cas, pour `class Rabbit extends Object`, cela signifie:
 ```js run
 class Rabbit extends Object {}
 
-alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
-alert( Rabbit.__proto__ === Object ); // (2) true
+alert(Rabbit.prototype.__proto__ === Object.prototype); // (1) true
+alert(Rabbit.__proto__ === Object); // (2) true
 ```
 
 Donc `Rabbit` donne maintenant accès aux méthodes statiques de `Object` via `Rabbit`, comme ceci:
@@ -44,7 +44,7 @@ class Rabbit extends Object {}
 
 *!*
 // normalement nous appelons Object.getOwnPropertyNames
-alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // a,b
+alert (Rabbit.getOwnPropertyNames({a: 1, b: 2})); // a,b
 */!*
 ```
 
@@ -55,13 +55,13 @@ Voici la démo:
 ```js run
 class Rabbit {}
 
-alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
-alert( Rabbit.__proto__ === Object ); // (2) false (!)
-alert( Rabbit.__proto__ === Function.prototype ); // comme toute fonction par défaut
+alert(Rabbit.prototype.__proto__ === Object.prototype); // (1) true
+alert(Rabbit.__proto__ === Object); // (2) false (!)
+alert(Rabbit.__proto__ === Function.prototype); // comme toute fonction par défaut
 
 *!*
 // error, no such function in Rabbit
-alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error
+alert (Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error
 */!*
 ```
 
@@ -75,7 +75,7 @@ Voici l'image:
 
 Donc, pour faire court, il y a deux différences:
 
-| class Rabbit | class Rabbit extends Object  |
-|--------------|------------------------------|
-| --             | doit appeler `super()` dans le constructeur |
-| `Rabbit.__proto__ === Function.prototype` | `Rabbit.__proto__ === Object` |
+| class Rabbit                              | class Rabbit extends Object                 |
+| ----------------------------------------- | ------------------------------------------- |
+| --                                        | doit appeler `super()` dans le constructeur |
+| `Rabbit.__proto__ === Function.prototype` | `Rabbit.__proto__ === Object`               |

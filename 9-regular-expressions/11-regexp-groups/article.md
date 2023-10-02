@@ -18,7 +18,7 @@ Sans parenthèses, le motif `pattern:go+` signifie le caractère `subject:g`, su
 Avec des parenthèses regroupant les caractères, `pattern:(go)+` signifie alors  `match:go`, `match:gogo`, `match:gogogo` et ainsi de suite.
 
 ```js run
-alert( 'Gogogo now!'.match(/(go)+/ig) ); // "Gogogo"
+alert('Gogogo now!'.match(/(go)+/ig)); // "Gogogo"
 ```
 
 ### Exemple : domaine
@@ -40,7 +40,7 @@ En expression régulière cela donne `pattern:(\w+\.)+\w+`:
 ```js run
 let regexp = /(\w+\.)+\w+/g;
 
-alert( "site.com my.site.com".match(regexp) ); // site.com,my.site.com
+alert("site.com my.site.com".match(regexp)); // site.com,my.site.com
 ```
 
 La recherche fonctionne, mais ce motif ne correspondra pas à un domaine comportant un tiret, par ex. `my-site.com`, car le tiret n'appartient pas à la classe `pattern:\w`.
@@ -85,8 +85,8 @@ let str = '<h1>Hello, world!</h1>';
 
 let tag = str.match(/<(.*?)>/);
 
-alert( tag[0] ); // <h1>
-alert( tag[1] ); // h1
+alert(tag[0]); // <h1>
+alert(tag[1]); // h1
 ```
 
 ### Groupes imbriqués
@@ -140,10 +140,10 @@ Si nous lançons une recherche sur la seule lettre `subject:a`, alors le résult
 ```js run
 let match = 'a'.match(/a(z)?(c)?/);
 
-alert( match.length ); // 3
-alert( match[0] ); // a (correspondance complète)
-alert( match[1] ); // undefined
-alert( match[2] ); // undefined
+alert(match.length); // 3
+alert(match[0]); // a (correspondance complète)
+alert(match[1]); // undefined
+alert(match[2]); // undefined
 ```
 
 Le tableau a une longueur de `3`, mais tous les groupes sont vides.
@@ -153,10 +153,10 @@ Et voici une correspondance plus complexe avec la chaîne `subject:ac`:
 ```js run
 let match = 'ac'.match(/a(z)?(c)?/)
 
-alert( match.length ); // 3
-alert( match[0] ); // ac (correspondance complète)
-alert( match[1] ); // undefined, car il n'y a rien pour (z)?
-alert( match[2] ); // c
+alert(match.length); // 3
+alert(match[0]); // ac (correspondance complète)
+alert(match[1]); // undefined, car il n'y a rien pour (z)?
+alert(match[2]); // c
 ```
 
 La longueur du tableau fixe : `3`. Mais il n'y a rien pour le groupe `pattern:(z)?`, donc le résultat est `["ac", undefined, "c"]`.
@@ -178,7 +178,7 @@ let str = '<h1> <h2>';
 
 let tags = str.match(/<(.*?)>/g);
 
-alert( tags ); // <h1>,<h2>
+alert(tags); // <h1>,<h2>
 ```
 
 Le résultat est un tableau de correspondance, mais sans les détails de chacune d'entre elles. Mais en pratique nous avons souvent besoin des contenus des groupes capturant dans le résultat.
@@ -236,10 +236,10 @@ let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
 
 let [tag1, tag2] = results;
 
-alert( tag1[0] ); // <h1>
-alert( tag1[1] ); // h1
-alert( tag1.index ); // 0
-alert( tag1.input ); // <h1> <h2>
+alert(tag1[0]); // <h1>
+alert(tag1[1]); // h1
+alert(tag1.index); // 0
+alert(tag1.input); // <h1> <h2>
 ```
 
 ```smart header="Pourquoi le résultat d'un `matchAll` est un itérateur et pas un tableau ?"
@@ -305,7 +305,7 @@ Par exemple,
 let str = "John Bull";
 let regexp = /(\w+) (\w+)/;
 
-alert( str.replace(regexp, '$2, $1') ); // Bull, John
+alert(str.replace(regexp, '$2, $1')); // Bull, John
 ```
 
 Pour les parenthèses nommées la référence au groupe se fera avec `pattern:$<name>`.
@@ -317,7 +317,7 @@ let regexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
 
 let str = "2019-10-30, 2020-01-01";
 
-alert( str.replace(regexp, '$<day>.$<month>.$<year>') );
+alert(str.replace(regexp, '$<day>.$<month>.$<year>'));
 // 30.10.2019, 01.01.2020
 ```
 
@@ -341,9 +341,9 @@ let regexp = /(?:go)+ (\w+)/i;
 
 let result = str.match(regexp);
 
-alert( result[0] ); // Gogogo John (correspondance entière)
-alert( result[1] ); // John
-alert( result.length ); // 2 (pas d'autres éléments dans le tableau)
+alert(result[0]); // Gogogo John (correspondance entière)
+alert(result[1]); // John
+alert(result.length); // 2 (pas d'autres éléments dans le tableau)
 ```
 
 ## Résumé

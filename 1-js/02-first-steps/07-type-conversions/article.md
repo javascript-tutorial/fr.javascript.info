@@ -40,7 +40,7 @@ La conversion numérique se produit automatiquement dans les fonctions et les ex
 Par exemple, lorsque la division `/` est appliquée à des valeurs non numérales :
 
 ```js run
-alert( "6" / "2" ); // Les chaînes de caractères sont converties en nombres, le résultat de cette opération vaut 3
+alert("6" / "2"); // Les chaînes de caractères sont converties en nombres, le résultat de cette opération vaut 3
 ```
 
 Nous pouvons utiliser une fonction `Number(value)` pour convertir explicitement une valeur :
@@ -76,10 +76,10 @@ Règles de conversions numériques :
 Exemples :
 
 ```js run
-alert( Number("   123   ") ); // 123
-alert( Number("123z") );      // NaN (erreur de lecture d'un nombre à "z")
-alert( Number(true) );        // 1
-alert( Number(false) );       // 0
+alert(Number("   123   ")); // 123
+alert(Number("123z"));      // NaN (erreur de lecture d'un nombre à "z")
+alert(Number(true));        // 1
+alert(Number(false));       // 0
 ```
 
 Veuillez noter que `null` et `undefined` se comportent différemment ici : `null` devient un zéro, alors qu'`undefined` devient `NaN`.
@@ -100,19 +100,19 @@ La règle de conversion :
 Par exemple :
 
 ```js run
-alert( Boolean(1) ); // true
-alert( Boolean(0) ); // false
+alert(Boolean(1)); // true
+alert(Boolean(0)); // false
 
-alert( Boolean("hello") ); // true
-alert( Boolean("") ); // false
+alert(Boolean("hello")); // true
+alert(Boolean("")); // false
 ```
 
 ````warn header="Veuillez noter que la chaîne de caractères avec un zero `\"0\"` est `true`"
 Certains langages (à savoir PHP) traitent `"0"` comme faux. Mais en JavaScript, une chaîne non vide est toujours `true`.
 
 ```js run
-alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // Espaces, également vrai (toute chaîne de caractères non vide est vraie)
+alert(Boolean("0")); // true
+alert(Boolean(" ")); // Espaces, également vrai (toute chaîne de caractères non vide est vraie)
 ```
 ````
 

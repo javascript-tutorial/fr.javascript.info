@@ -14,12 +14,12 @@ Créez une fonction `formatDate(date)` qui devrait formater la `date` comme ceci
 Par exemple:
 
 ```js
-alert( formatDate(new Date(new Date - 1)) ); // "right now"
+alert(formatDate(new Date(new Date - 1))); // "right now"
 
-alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30 sec. ago"
+alert(formatDate(new Date(new Date - 30 * 1000))); // "30 sec. ago"
 
-alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 min. ago"
+alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 min. ago"
 
 // date d'hier comme ceci 31.12.16 20:00
-alert( formatDate(new Date(new Date - 86400 * 1000)) );
+alert(formatDate(new Date(new Date - 86400 * 1000)));
 ```

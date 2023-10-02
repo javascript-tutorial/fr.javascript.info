@@ -41,7 +41,7 @@ function makeTdEditable(td) {
 
   td.insertAdjacentHTML("beforeEnd",
     '<div class="edit-controls"><button class="edit-ok">OK</button><button class="edit-cancel">CANCEL</button></div>'
-  );
+ );
 }
 
 function finishTdEdit(td, isOk) {

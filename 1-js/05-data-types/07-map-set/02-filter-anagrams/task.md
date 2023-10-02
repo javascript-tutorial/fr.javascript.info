@@ -21,7 +21,7 @@ Par exemple :
 ```js
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-alert( aclean(arr) ); // "nap,teachers,ear" ou "PAN,cheaters,era"
+alert(aclean(arr)); // "nap,teachers,ear" ou "PAN,cheaters,era"
 ```
 
 De chaque groupe d’anagrammes ne devrait rester qu’un mot, peu importe lequel.

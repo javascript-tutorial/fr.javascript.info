@@ -19,6 +19,6 @@ let salaries = {
   "Mary": 250
 };
 
-alert( sumSalaries(salaries) ); // 650
+alert(sumSalaries(salaries)); // 650
 ```
 

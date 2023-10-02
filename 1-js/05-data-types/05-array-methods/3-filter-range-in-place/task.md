@@ -15,5 +15,5 @@ let arr = [5, 3, 8, 1];
 
 filterRangeInPlace(arr, 1, 4); // supprime les nombres qui ne sont pas entre 1 et 4
 
-alert( arr ); // [3, 1]
+alert(arr); // [3, 1]
 ```

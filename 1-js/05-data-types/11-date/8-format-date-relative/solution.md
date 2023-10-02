@@ -34,14 +34,14 @@ function formatDate(date) {
   return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
 }
 
-alert( formatDate(new Date(new Date - 1)) ); // "right now"
+alert(formatDate(new Date(new Date - 1))); // "right now"
 
-alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30 sec. ago"
+alert(formatDate(new Date(new Date - 30 * 1000))); // "30 sec. ago"
 
-alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 min. ago"
+alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 min. ago"
 
 // date d'hier comme ceci 31.12.2016 20:00
-alert( formatDate(new Date(new Date - 86400 * 1000)) );
+alert(formatDate(new Date(new Date - 86400 * 1000)));
 ```
 
 solution alternative:

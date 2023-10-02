@@ -15,7 +15,7 @@ Pour un nombre entier suivi de `sujet:€`, l'expression régulière sera `patte
 ```js run
 let str = "1 dinde coûte 30€";
 
-alert( str.match(/\d+(?=€)/) ); // 30, le nombre 1 est ignoré, vu qu'il n'est pas suivi de €
+alert(str.match(/\d+(?=€)/)); // 30, le nombre 1 est ignoré, vu qu'il n'est pas suivi de €
 ```
 
 NB: Le lookahead est seulement un test, le contenu de la parenthèse `pattern:(?=...)` n'est pas include dans le resultat `match:30`.
@@ -38,7 +38,7 @@ Par exemple, `pattern:\d+(?=\s)(?=.*30)` recherche `pattern:\d+` suivi du motif 
 ```js run
 let str = "1 dinde coute 30€";
 
-alert( str.match(/\d+(?=\s)(?=.*30)/) ); // 1
+alert(str.match(/\d+(?=\s)(?=.*30)/)); // 1
 ```
 
 Dans notre chaîne de caractères cela correspond exactement au nombre `1`.
@@ -54,7 +54,7 @@ La syntaxe est: `pattern:X(?!Y)`, cela veut dire `pattern:X`, mais seulement si 
 ```js run
 let str = "2 turkeys cost 60€";
 
-alert( str.match(/\d+\b(?!€)/g) ); // 2 (le prix ne correspond pas au motif)
+alert(str.match(/\d+\b(?!€)/g)); // 2 (le prix ne correspond pas au motif)
 ```
 
 ## Lookbehind
@@ -77,7 +77,7 @@ Pqr exemple,changeons le prix en dollars US. Le signe dollar est généralement 
 let str = "1 turkey costs $30";
 
 // le signe dollar est echappé \$
-alert( str.match(/(?<=\$)\d+/) ); // 30 (ignore le nombre sans dollar)
+alert(str.match(/(?<=\$)\d+/)); // 30 (ignore le nombre sans dollar)
 ```
 
 Et si nous avons besoin d'une quantité -- un nombre  non précédé de `subject:$`, alors nous pouvons utiliser un lookbehind négatif `pattern:(?<!\$)\d+`:
@@ -85,7 +85,7 @@ Et si nous avons besoin d'une quantité -- un nombre  non précédé de `subject
 ```js run
 let str = "2 dndes coûte $60";
 
-alert( str.match(/(?<!\$)\b\d+/g) ); // 2 (le prix ne correspond pas )
+alert(str.match(/(?<!\$)\b\d+/g)); // 2 (le prix ne correspond pas)
 ```
 
 ## Groupes capturants
@@ -102,7 +102,7 @@ Dans l'exemple suivant, le signe de la monnaie est capture, en meme temps aue la
 let str = "1 turkey costs 30€";
 let regexp = /\d+(?=(€|kr))/; // parentheses supplemetaires autour de  €|kr
 
-alert( str.match(regexp) ); // 30, €
+alert(str.match(regexp)); // 30, €
 ```
 
 Et voila le meme chose pour lookbehind:
@@ -111,7 +111,7 @@ Et voila le meme chose pour lookbehind:
 let str = "1 turkey costs $30";
 let regexp = /(?<=(\$|£))\d+/;
 
-alert( str.match(regexp) ); // 30, $
+alert(str.match(regexp)); // 30, $
 ```
 
 ## Summary

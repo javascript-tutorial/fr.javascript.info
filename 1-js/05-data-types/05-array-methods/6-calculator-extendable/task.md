@@ -15,7 +15,7 @@ The task consists of two parts.
     ```js
     let calc = new Calculator;
 
-    alert( calc.calculate("3 + 7") ); // 10
+    alert(calc.calculate("3 + 7")); // 10
     ```
 
 2. Then add the method `addMethod(name, func)` that teaches the calculator a new operation. It takes the operator `name` and the two-argument function `func(a,b)` that implements it.
@@ -29,7 +29,7 @@ The task consists of two parts.
     powerCalc.addMethod("**", (a, b) => a ** b);
 
     let result = powerCalc.calculate("2 ** 3");
-    alert( result ); // 8
+    alert(result); // 8
     ```
 
 - No parentheses or complex expressions in this task.

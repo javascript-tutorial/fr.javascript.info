@@ -22,10 +22,10 @@ function sum(a) {
   return f;
 }
 
-alert( sum(1)(2) ); // 3
-alert( sum(5)(-1)(2) ); // 6
-alert( sum(6)(-1)(-2)(-3) ); // 0
-alert( sum(0)(1)(2)(3)(4)(5) ); // 15
+alert(sum(1)(2)); // 3
+alert(sum(5)(-1)(2)); // 6
+alert(sum(6)(-1)(-2)(-3)); // 0
+alert(sum(0)(1)(2)(3)(4)(5)); // 15
 ```
 
 Veuillez noter que la fonction `sum` ne fonctionne réellement qu'une fois. Il renvoie la fonction `f`.

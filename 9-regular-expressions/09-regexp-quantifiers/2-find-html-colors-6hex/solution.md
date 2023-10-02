@@ -11,21 +11,21 @@ let regexp = /#[a-f0-9]{6}/gi;
 
 let str = "color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2"
 
-alert( str.match(regexp) );  // #121212,#AA00ef
+alert(str.match(regexp));  // #121212,#AA00ef
 ```
 
 Le problème est qu'elle trouve la couleur dans des séquences plus longues:
 
 ```js run
-alert( "#12345678".match( /#[a-f0-9]{6}/gi ) ) // #123456
+alert("#12345678".match(/#[a-f0-9]{6}/gi)) // #123456
 ```
 
 Pour règler ceci nous pouvons ajouter `pattern:\b` à la fin:
 
 ```js run
 // color
-alert( "#123456".match( /#[a-f0-9]{6}\b/gi ) ); // #123456
+alert("#123456".match(/#[a-f0-9]{6}\b/gi)); // #123456
 
 // not a color
-alert( "#12345678".match( /#[a-f0-9]{6}\b/gi ) ); // null
+alert("#12345678".match(/#[a-f0-9]{6}\b/gi)); // null
 ```

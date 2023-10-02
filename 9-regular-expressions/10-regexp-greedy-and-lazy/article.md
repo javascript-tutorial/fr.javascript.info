@@ -21,7 +21,7 @@ let regexp = /".+"/g;
 
 let str = 'a "witch" and her "broom" is one';
 
-alert( str.match(regexp) ); // "witch" and her "broom"
+alert(str.match(regexp)); // "witch" and her "broom"
 ```
 
 ... Nous pouvons voir que cela ne marche pas vraiment comme prévu !
@@ -109,7 +109,7 @@ let regexp = /".+?"/g;
 
 let str = 'a "witch" and her "broom" is one';
 
-alert( str.match(regexp) ); // "witch", "broom"
+alert(str.match(regexp)); // "witch", "broom"
 ```
 
 Pour bien comprendre la différence, suivons cette recherche pas à pas.
@@ -149,7 +149,7 @@ Les autres quantificateurs restent gloutons.
 Par exemple :
 
 ```js run
-alert( "123 456".match(/\d+ \d+?/) ); // 123 4
+alert("123 456".match(/\d+ \d+?/)); // 123 4
 ```
 
 1. Le motif `pattern:\d+` essaye de trouver autant de chiffres que possible (mode glouton), il trouve donc  `match:123` et s'arrête, car le caractère suivant est un `pattern:' '`.
@@ -179,7 +179,7 @@ let regexp = /"[^"]+"/g;
 
 let str = 'a "witch" and her "broom" is one';
 
-alert( str.match(regexp) ); // "witch", "broom"
+alert(str.match(regexp)); // "witch", "broom"
 ```
 
 La regexp `pattern:"[^"]+"` donne le bon résultat, parce qu'il cherche des guillemets `pattern:'"'` suivis par un ou plusieurs "non-guillemets"  `pattern:[^"]`, et ensuite les guillemets de fin.
@@ -204,7 +204,7 @@ let str = '...<a href="link" class="doc">...';
 let regexp = /<a href=".*" class="doc">/g;
 
 // Ça fonctionne !
-alert( str.match(regexp) ); // <a href="link" class="doc">
+alert(str.match(regexp)); // <a href="link" class="doc">
 ```
 
 Cela a fonctionné. Mais voyons ce qu'il se passe s'il y a plusieurs liens dans le texte ?
@@ -214,7 +214,7 @@ let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href=".*" class="doc">/g;
 
 // Oups! Les deux liens dans la même correspondance!
-alert( str.match(regexp) ); // <a href="link1" class="doc">... <a href="link2" class="doc">
+alert(str.match(regexp)); // <a href="link1" class="doc">... <a href="link2" class="doc">
 ```
 
 Cette fois le résultat n'est pas le bon, pour la même raison que l'exemple avec "witches". Le quantificateur `pattern:.*` a pris trop de caractères.
@@ -233,7 +233,7 @@ let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href=".*?" class="doc">/g;
 
 // Ça fonctionne !
-alert( str.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
+alert(str.match(regexp)); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
 L'expression régulière semble fonctionner à présent, il y a bien deux correspondances :
@@ -250,7 +250,7 @@ let str = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
 let regexp = /<a href=".*?" class="doc">/g;
 
 // Mauvaise correspondance !
-alert( str.match(regexp) ); // <a href="link1" class="wrong">... <p style="" class="doc">
+alert(str.match(regexp)); // <a href="link1" class="wrong">... <p style="" class="doc">
 ```
 
 Et maintenant ça échoue. La correspondance inclue non seulement le lien, mais aussi beaucoup du texte suivant, incluant `<p...>`.
@@ -284,8 +284,8 @@ let str2 = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
 let regexp = /<a href="[^"]*" class="doc">/g;
 
 // Ça marche !
-alert( str1.match(regexp) ); // null, aucune corespondance, c'est bien le résultat attendu
-alert( str2.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
+alert(str1.match(regexp)); // null, aucune corespondance, c'est bien le résultat attendu
+alert(str2.match(regexp)); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
 ## Résumé

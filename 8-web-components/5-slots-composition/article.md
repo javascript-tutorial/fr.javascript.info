@@ -107,7 +107,7 @@ That can be easily checked if we run `querySelectorAll`: nodes are still at thei
 
 ```js
 // light DOM <span> nodes are still at the same place, under `<user-card>`
-alert( document.querySelectorAll('user-card span').length ); // 2
+alert(document.querySelectorAll('user-card span').length); // 2
 ```
 
 So, the flattened DOM is derived from shadow DOM by inserting slots. The browser renders it and uses for style inheritance, event propagation (more about that later). But JavaScript still sees the document "as is", before flattening.
@@ -302,7 +302,7 @@ customElements.define('custom-menu', class extends HTMLElement {
     this.attachShadow({mode: 'open'});
 
     // tmpl is the shadow DOM template (above)
-    this.shadowRoot.append( tmpl.content.cloneNode(true) );
+    this.shadowRoot.append(tmpl.content.cloneNode(true));
 
     // we can't select light DOM nodes, so let's handle clicks on the slot
     this.shadowRoot.querySelector('slot[name="title"]').onclick = () => {
@@ -348,7 +348,7 @@ customElements.define('custom-menu', class extends HTMLElement {
     // shadowRoot can't have event handlers, so using the first child
     this.shadowRoot.firstElementChild.addEventListener('slotchange',
       e => alert("slotchange: " + e.target.name)
-    );
+   );
   }
 });
 

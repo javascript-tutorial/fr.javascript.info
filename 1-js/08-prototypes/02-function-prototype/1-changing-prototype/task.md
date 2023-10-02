@@ -16,7 +16,7 @@ Rabbit.prototype = {
 
 let rabbit = new Rabbit();
 
-alert( rabbit.eats ); // true
+alert(rabbit.eats); // true
 ```
 
 1. Nous avons ajouté une chaîne de caractères supplémentaire (surlignée), qu'affiche `alert` maintenant ?
@@ -33,7 +33,7 @@ alert( rabbit.eats ); // true
     Rabbit.prototype = {};
     */!*
 
-    alert( rabbit.eats ); // ?
+    alert(rabbit.eats); // ?
     ```
 
 2. ...Et si le code est comme ça (une ligne remplacée) ?
@@ -50,7 +50,7 @@ alert( rabbit.eats ); // true
     Rabbit.prototype.eats = false;
     */!*
 
-    alert( rabbit.eats ); // ?
+    alert(rabbit.eats); // ?
     ```
 
 3. Et comme ceci (une ligne remplacée) ?
@@ -67,7 +67,7 @@ alert( rabbit.eats ); // true
     delete rabbit.eats;
     */!*
 
-    alert( rabbit.eats ); // ?
+    alert(rabbit.eats); // ?
     ```
 
 4. La dernière variante :
@@ -84,5 +84,5 @@ alert( rabbit.eats ); // true
     delete Rabbit.prototype.eats;
     */!*
 
-    alert( rabbit.eats ); // ?
+    alert(rabbit.eats); // ?
     ```

@@ -12,5 +12,5 @@ En action :
 ```js run
 let regexp = /<style(>|\s.*?>)/g;
 
-alert( '<style> <styler> <style test="...">'.match(regexp) ); // <style>, <style test="...">
+alert('<style> <styler> <style test="...">'.match(regexp)); // <style>, <style test="...">
 ```

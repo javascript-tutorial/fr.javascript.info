@@ -79,7 +79,7 @@ Par exemple :
 ```js run
 let isBoss = confirm("Are you the boss?");
 
-alert( isBoss ); // True si OK est pressé
+alert(isBoss); // True si OK est pressé
 ```
 
 ## Résumé

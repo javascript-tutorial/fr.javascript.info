@@ -247,8 +247,8 @@ Prenons, par exemple:
 
     // maintenant nous pouvons en lire la marge et la couleur
 
-    alert( computedStyle.marginTop ); // 5px
-    alert( computedStyle.color ); // rgb(255, 0, 0)
+    alert(computedStyle.marginTop); // 5px
+    alert(computedStyle.color); // rgb(255, 0, 0)
   </script>
 
 </body>

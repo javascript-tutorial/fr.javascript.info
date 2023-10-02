@@ -58,7 +58,7 @@ let regexp = /\w+/g;
 let result;
 
 while (result = regexp.exec(str)) {
-  alert( `Found ${result[0]} at position ${result.index}` );
+  alert(`Found ${result[0]} at position ${result.index}`);
   // Found let at position 0, puis
   // Found varName at position 4
 }
@@ -123,10 +123,10 @@ let str = 'let varName = "value"';
 let regexp = /\w+/y;
 
 regexp.lastIndex = 3;
-alert( regexp.exec(str) ); // null (il n'y a pas de mot en position 3, mais un espace)
+alert(regexp.exec(str)); // null (il n'y a pas de mot en position 3, mais un espace)
 
 regexp.lastIndex = 4;
-alert( regexp.exec(str) ); // varName (mot en position 4)
+alert(regexp.exec(str)); // varName (mot en position 4)
 ```
 
 Comme nous pouvons le voir, la regexp `pattern:/\w+/y` ne trouve pas de correspondance en position `3` (contrairement au marqueur  `pattern:g`), mais trouve la correspondance en position `4`.

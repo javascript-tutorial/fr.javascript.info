@@ -22,8 +22,8 @@ function Counter() {
 
 let counter = new Counter();
 
-alert( counter.up() ); // ?
-alert( counter.up() ); // ?
-alert( counter.down() ); // ?
+alert(counter.up()); // ?
+alert(counter.up()); // ?
+alert(counter.down()); // ?
 ```
 

@@ -328,7 +328,7 @@ window.addEventListener("message", function(event) {
     return;
   }
 
-  alert( "received: " + event.data );
+  alert("received: " + event.data);
 
   // peut envoyer un message en retour en utilisant event.source.postMessage(...)
 });

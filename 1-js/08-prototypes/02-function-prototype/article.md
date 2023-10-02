@@ -29,7 +29,7 @@ Rabbit.prototype = animal;
 
 let rabbit = new Rabbit("White Rabbit"); //  rabbit.__proto__ == animal
 
-alert( rabbit.eats ); // true
+alert(rabbit.eats); // true
 ```
 
 Définir `Rabbit.prototype=animal` énonce littéralement ce qui suit : "Lorsqu'un `new Rabbit` est créé, assigner son `[[Prototype]]` à `animal`".
@@ -71,7 +71,7 @@ function Rabbit() {}
 // par défaut:
 // Rabbit.prototype = { constructor: Rabbit }
 
-alert( Rabbit.prototype.constructor == Rabbit ); // true
+alert(Rabbit.prototype.constructor == Rabbit); // true
 ```
 
 Naturellement, si nous ne faisons rien, la propriété `constructor` est disponible pour tous les "rabbits" via `[[Prototype]]` :

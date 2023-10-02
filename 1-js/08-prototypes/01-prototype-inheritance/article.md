@@ -49,9 +49,9 @@ rabbit.__proto__ = animal; // (*)
 
 // nous pouvons maintenant trouver les deux propriétés dans rabbit :
 *!*
-alert( rabbit.eats ); // true (**)
+alert(rabbit.eats); // true (**)
 */!*
-alert( rabbit.jumps ); // true
+alert(rabbit.jumps); // true
 ```
 
 Ici, la ligne `(*)` définit `animal` comme le prototype de `lapin`.

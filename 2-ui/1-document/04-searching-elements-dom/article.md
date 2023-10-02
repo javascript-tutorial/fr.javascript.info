@@ -132,7 +132,7 @@ Par exemple :
 *!*
     if (elem.matches('a[href$="zip"]')) {
 */!*
-      alert("le lien de l'archive : " + elem.href );
+      alert("le lien de l'archive : " + elem.href);
     }
   }
 </script>
@@ -213,7 +213,7 @@ Trouvons tous les tags `input` dans le tableau :
 */!*
 
   for (let input of inputs) {
-    alert( input.value + ': ' + input.checked );
+    alert(input.value + ': ' + input.checked);
   }
 </script>
 ```
@@ -236,7 +236,7 @@ Cela ne va pas marcher, parce qu'on essaie d'affecter une valeur à un ensemble 
 On devrait plutôt itérer sur l'ensemble ou récupérer un élément par son index, et lui affecter la valeur, comme ceci :
 
 ```js
-// doit fonctionner (s'il y a un élément 'input' )
+// doit fonctionner (s'il y a un élément 'input')
 document.getElementsByTagName('input')[0].value = 5;
 ```
 ````

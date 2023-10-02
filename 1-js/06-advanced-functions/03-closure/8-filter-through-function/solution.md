@@ -9,7 +9,7 @@ function inBetween(a, b) {
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7];
-alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+alert(arr.filter(inBetween(3, 6))); // 3,4,5,6
 ```
 
 # Filter inArray
@@ -22,5 +22,5 @@ function inArray(arr) {
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7];
-alert( arr.filter(inArray([1, 2, 10])) ); // 1,2
+alert(arr.filter(inArray([1, 2, 10]))); // 1,2
 ```

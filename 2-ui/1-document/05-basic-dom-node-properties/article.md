@@ -66,23 +66,23 @@ Il obtient les propriétés et les méthodes en superposition de (répertoriées
 Pour voir le nom de la classe de noeud DOM, nous pouvons rappeler qu'un objet a généralement la propriété `constructor`. Il fait référence au constructeur de classe, et `constructor.name` est son nom :
 
 ```js run
-alert( document.body.constructor.name ); // HTMLBodyElement
+alert(document.body.constructor.name); // HTMLBodyElement
 ```
 
 ...Or we can just `toString` it:
 
 ```js run
-alert( document.body ); // [object HTMLBodyElement]
+alert(document.body); // [object HTMLBodyElement]
 ```
 
 Nous pouvons également utiliser `instanceof` pour vérifier l'héritage :
 
 ```js run
-alert( document.body instanceof HTMLBodyElement ); // true
-alert( document.body instanceof HTMLElement ); // true
-alert( document.body instanceof Element ); // true
-alert( document.body instanceof Node ); // true
-alert( document.body instanceof EventTarget ); // true
+alert(document.body instanceof HTMLBodyElement); // true
+alert(document.body instanceof HTMLElement); // true
+alert(document.body instanceof Element); // true
+alert(document.body instanceof Node); // true
+alert(document.body instanceof EventTarget); // true
 ```
 
 Comme nous pouvons le voir, les nœuds DOM sont des objets JavaScript normaux. Ils utilisent des classes basées sur des prototypes pour l'héritage.
@@ -161,7 +161,7 @@ Par exemple :
   alert(elem.firstChild.nodeType); // 3 => text
 
   // pour l'objet document, le type est 9
-  alert( document.nodeType ); // 9
+  alert(document.nodeType); // 9
   </script>
 </body>
 ```
@@ -175,8 +175,8 @@ Dans les scripts modernes, nous pouvons utiliser `instanceof` et d'autres tests 
 Par exemple :
 
 ```js run
-alert( document.body.nodeName ); // BODY
-alert( document.body.tagName ); // BODY
+alert(document.body.nodeName); // BODY
+alert(document.body.tagName); // BODY
 ```
 
 Y a-t-il une différence entre `tagName` et `nodeName` ?
@@ -197,12 +197,12 @@ Par exemple, comparons `tagName` et `nodeName` pour le `document` et un nœud de
 
   <script>
     // pour le commentaire
-    alert( document.body.firstChild.tagName ); // undefined (pas un élément)
-    alert( document.body.firstChild.nodeName ); // #comment
+    alert(document.body.firstChild.tagName); // undefined (pas un élément)
+    alert(document.body.firstChild.nodeName); // #comment
 
     // pour le document
-    alert( document.tagName ); // undefined (pas un élément)
-    alert( document.nodeName ); // #document
+    alert(document.tagName); // undefined (pas un élément)
+    alert(document.nodeName); // #document
   </script>
 </body>
 ```
@@ -231,7 +231,7 @@ L'exemple montre le contenu de `document.body` puis le remplace complètement :
   <div>A div</div>
 
   <script>
-    alert( document.body.innerHTML ); // lit le contenu actuel
+    alert(document.body.innerHTML); // lit le contenu actuel
     document.body.innerHTML = 'The new BODY!'; // le remplace
   </script>
 
@@ -245,7 +245,7 @@ Nous pouvons essayer d'insérer du code HTML invalide, le navigateur corrigera n
 
   <script>
     document.body.innerHTML = '<b>test'; // oublié de fermer la balise
-    alert( document.body.innerHTML ); // <b>test</b> (corrigé)
+    alert(document.body.innerHTML); // <b>test</b> (corrigé)
   </script>
 
 </body>

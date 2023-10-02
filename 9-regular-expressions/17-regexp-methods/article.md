@@ -15,13 +15,13 @@ Elle dispose de 3 options :
 
     let result = str.match(/Java(Script)/);
 
-    alert( result[0] );     // JavaScript (correspondance exacte)
-    alert( result[1] );     // Script (premier groupe capturant)
-    alert( result.length ); // 2
+    alert(result[0]);     // JavaScript (correspondance exacte)
+    alert(result[1]);     // Script (premier groupe capturant)
+    alert(result.length); // 2
 
     // Additional information:
-    alert( result.index );  // 7 (indice de la chaîne de caractère où à été trouvée la correspondance)
-    alert( result.input );  // I love JavaScript (chaîne sur laquelle a été effectuée la recherche)
+    alert(result.index);  // 7 (indice de la chaîne de caractère où à été trouvée la correspondance)
+    alert(result.input);  // I love JavaScript (chaîne sur laquelle a été effectuée la recherche)
     ```
 
 2. Si la `regexp` dispose d'un marqueur `pattern:g`, alors elle retourne un tableau de toutes les correspondances de texte, sans capturer les groupes ou les autres propriétés.   
@@ -31,8 +31,8 @@ Elle dispose de 3 options :
 
     let result = str.match(/Java(Script)/g);
 
-    alert( result[0] ); // JavaScript
-    alert( result.length ); // 1
+    alert(result[0]); // JavaScript
+    alert(result.length); // 1
     ```
 
 3. S'il n'y a pas de correspondance, qu'il y ait un marqueur `pattern:g` ou non, `null` est renvoyé.
@@ -81,10 +81,10 @@ alert(matchAll); // [object RegExp String Iterator], pas un tableau, mais un it�
 matchAll = Array.from(matchAll); // maintenant un tableau
 
 let firstMatch = matchAll[0];
-alert( firstMatch[0] );  // <h1>
-alert( firstMatch[1] );  // h1
-alert( firstMatch.index );  // 0
-alert( firstMatch.input );  // <h1>Hello, world!</h1>
+alert(firstMatch[0]);  // <h1>
+alert(firstMatch[1]);  // h1
+alert(firstMatch.index);  // 0
+alert(firstMatch.input);  // <h1>Hello, world!</h1>
 ```
 
 Si nous utilisons `for..of` pour boucler sur les résultats de `matchAll`, alors il n'est pas nécessaire d'utiliser `Array.from`.
@@ -112,7 +112,7 @@ La méthode `str.search(regexp)` renvoie l'indice du premier motif correspondant
 ```js run
 let str = "A drop of ink may make a million think";
 
-alert( str.search( /ink/i ) ); // 10 (indice du premier motif correspondant)
+alert(str.search(/ink/i)); // 10 (indice du premier motif correspondant)
 ```
 
 **Limitation importante: `search` renvoie uniquement la première correspondance.**
@@ -140,7 +140,7 @@ Pour trouver tous les traits d'unions, nous devons utiliser non pas le caractèr
 
 ```js run
 // remplace tous les tirets par deux-points
-alert( '12-34-56'.replace( *!*/-/g*/!*, ":" ) )  // 12:34:56
+alert('12-34-56'.replace(*!*/-/g*/!*, ":"))  // 12:34:56
 ```
 
 Le second argument est une chaîne de caractères de remplacement. Nous pouvons utiliser des caractères spéciaux dedans :
@@ -270,7 +270,7 @@ let regexp = /javascript/ig;
 let result;
 
 while (result = regexp.exec(str)) {
-  alert( `Found ${result[0]} at position ${result.index}` );
+  alert(`Found ${result[0]} at position ${result.index}`);
   // Found JavaScript at position 11, puis
   // Found javascript at position 33
 }
@@ -288,7 +288,7 @@ let str = 'Hello, world!';
 let regexp = /\w+/g; // sans le marqueur "g", la propriété lastIndex est ignorée
 regexp.lastIndex = 5; // commence la recherche à partir de la 5ème position (à partir de la virgule) 
 
-alert( regexp.exec(str) ); // world
+alert(regexp.exec(str)); // world
 ```
 
 Si la regexp utilise le marqueur `pattern:y`, alors la recherche s'effectuera à l'indice précis de `regexp.lastIndex`, pas plus loin.
@@ -301,7 +301,7 @@ let str = 'Hello, world!';
 let regexp = /\w+/y;
 regexp.lastIndex = 5; // cherche exactement à l'indice 5
 
-alert( regexp.exec(str) ); // null
+alert(regexp.exec(str)); // null
 ```
 
 C'est pratique dans une situation où nous cherchons uniquement à lire quelque chose au sein d'un texte avec une regexp à un indice spécifique, en occultant le reste.
@@ -316,8 +316,8 @@ Par exemple:
 let str = "I love JavaScript";
 
 // Ces deux tests réalisent exactement la même chose
-alert( *!*/love/i*/!*.test(str) ); // true
-alert( str.search(*!*/love/i*/!*) != -1 ); // true
+alert(*!*/love/i*/!*.test(str)); // true
+alert(str.search(*!*/love/i*/!*) != -1); // true
 ```
 
 Un exemple avec un retour négatif:
@@ -325,8 +325,8 @@ Un exemple avec un retour négatif:
 ```js run
 let str = "Bla-bla-bla";
 
-alert( *!*/love/i*/!*.test(str) ); // false
-alert( str.search(*!*/love/i*/!*) != -1 ); // false
+alert(*!*/love/i*/!*.test(str)); // false
+alert(str.search(*!*/love/i*/!*) != -1); // false
 ```
 
 Si la regexp à le marqueur `pattern:g`, alors `regexp.test` verifiera la propriété `regexp.lastIndex` et mettra à jours cette propriété, tout comme `regexp.exec`.   
@@ -340,7 +340,7 @@ let str = "I love JavaScript";
 
 // commence la recherche à partir de l'indice 10:
 regexp.lastIndex = 10;
-alert( regexp.test(str) ); // false (pas de correspondance)
+alert(regexp.test(str)); // false (pas de correspondance)
 ```
 
 ````warn header="Une même expression rationnelle testée de manière répétée sur différentes sources peut échouer"
@@ -351,8 +351,8 @@ Par exemple, nous appelons ici `regexp.test` à deux reprises sur la même chaî
 ```js run
 let regexp = /javascript/g;  // (création d'une nouvelle regexp: regexp.lastIndex=0)
 
-alert( regexp.test("javascript") ); // true (maintenant regexp.lastIndex=10)
-alert( regexp.test("javascript") ); // false
+alert(regexp.test("javascript")); // true (maintenant regexp.lastIndex=10)
+alert(regexp.test("javascript")); // false
 ```
 
 C'est exactement parce que `regexp.lastIndex` n'est pas `0` lors du second test. 

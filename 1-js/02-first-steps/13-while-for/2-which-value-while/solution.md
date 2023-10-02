@@ -4,7 +4,7 @@ L'exercice montre comment les formes postfix/préfixe peuvent conduire à des r�
 
     ```js run
     let i = 0;
-    while (++i < 5) alert( i );
+    while (++i < 5) alert(i);
     ```
 
     La première valeur est `i=1`, parce que `++i` incrémente d'abord `i` puis renvoie la nouvelle valeur. La première comparaison est donc `1 < 5` et `alert` affiche `1`.

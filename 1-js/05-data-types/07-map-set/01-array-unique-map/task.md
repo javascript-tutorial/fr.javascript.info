@@ -19,7 +19,7 @@ let values = ["Hare", "Krishna", "Hare", "Krishna",
   "Krishna", "Krishna", "Hare", "Hare", ":-O"
 ];
 
-alert( unique(values) ); // Hare, Krishna, :-O
+alert(unique(values)); // Hare, Krishna, :-O
 ```
 
 P.S. Ici, les chaînes de caractères sont utilisées, mais elles peuvent être des valeurs de n'importe quel type.

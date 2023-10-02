@@ -8,9 +8,9 @@ class FormatError extends SyntaxError {
 
 let err = new FormatError("formatting error");
 
-alert( err.message ); // formatting error
-alert( err.name ); // FormatError
-alert( err.stack ); // stack
+alert(err.message); // formatting error
+alert(err.name); // FormatError
+alert(err.stack); // stack
 
-alert( err instanceof SyntaxError ); // true
+alert(err instanceof SyntaxError); // true
 ```

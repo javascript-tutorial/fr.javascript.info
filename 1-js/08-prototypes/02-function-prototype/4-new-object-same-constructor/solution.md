@@ -10,7 +10,7 @@ function User(name) {
 let user = new User('John');
 let user2 = new user.constructor('Pete');
 
-alert( user2.name ); // Pete (ça marche !)
+alert(user2.name); // Pete (ça marche !)
 ```
 
 Cela a fonctionné, car `User.prototype.constructor == User`.
@@ -30,7 +30,7 @@ User.prototype = {}; // (*)
 let user = new User('John');
 let user2 = new user.constructor('Pete');
 
-alert( user2.name ); // undefined
+alert(user2.name); // undefined
 ```
 
 Pourquoi `user2.name` est `undefined` ?

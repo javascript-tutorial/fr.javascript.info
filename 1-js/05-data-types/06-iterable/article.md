@@ -122,7 +122,7 @@ Pour une chaîne de caractères, `for..of` boucle sur ses caractères :
 ```js run
 for (let char of "test") {
   // se déclenche 4 fois: une fois pour chaque caractère
-  alert( char ); // t, ensuite e, ensuite s, ensuite t
+  alert(char); // t, ensuite e, ensuite s, ensuite t
 }
 ```
 
@@ -131,7 +131,7 @@ Et cela fonctionne correctement avec les paires de substitution !
 ```js run
 let str = '𝒳😂';
 for (let char of str) {
-    alert( char ); // 𝒳, et ensuite 😂
+    alert(char); // 𝒳, et ensuite 😂
 }
 ```
 
@@ -279,10 +279,10 @@ function slice(str, start, end) {
 
 let str = '𝒳😂𩷶';
 
-alert( slice(str, 1, 3) ); // 😂𩷶
+alert(slice(str, 1, 3)); // 😂𩷶
 
 // les méthodes native ne supporte pas les paires de substitution
-alert( str.slice(1, 3) ); // ordures (deux pièces de paires de substitution différentes)
+alert(str.slice(1, 3)); // ordures (deux pièces de paires de substitution différentes)
 ```
 
 ## Résumé

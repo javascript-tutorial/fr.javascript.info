@@ -15,6 +15,6 @@ A.prototype = B.prototype = {};
 let a = new A();
 
 *!*
-alert( a instanceof B ); // true
+alert(a instanceof B); // true
 */!*
 ```

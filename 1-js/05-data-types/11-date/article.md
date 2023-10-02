@@ -13,7 +13,7 @@ Pour créer un nouvel objet `Date`, appelez `new Date()` avec l'un des arguments
 
     ```js run
     let now = new Date();
-    alert( now ); // affiche la date/heure actuelle
+    alert(now); // affiche la date/heure actuelle
     ```
 
 `new Date(millisecondes)`
@@ -22,11 +22,11 @@ Pour créer un nouvel objet `Date`, appelez `new Date()` avec l'un des arguments
     ```js run
     // 0 signifie 01.01.1970 UTC+0
     let Jan01_1970 = new Date(0);
-    alert( Jan01_1970 );
+    alert(Jan01_1970);
 
     // maintenant, ajoutez 24 heures, cela devient 02.01.1970 UTC+0
     let Jan02_1970 = new Date(24 * 3600 * 1000);
-    alert( Jan02_1970 );
+    alert(Jan02_1970);
     ```
 
     Un nombre entier représentant le nombre de millisecondes écoulées depuis le début de 1970 est appelé un *timestamp* (horodatage).
@@ -37,7 +37,7 @@ Pour créer un nouvel objet `Date`, appelez `new Date()` avec l'un des arguments
     ```js run
     // 31 Dec 1969
     let Dec31_1969 = new Date(-24 * 3600 * 1000);
-    alert( Dec31_1969 );
+    alert(Dec31_1969);
     ```
 
 `new Date(datestring)`
@@ -75,7 +75,7 @@ Pour créer un nouvel objet `Date`, appelez `new Date()` avec l'un des arguments
 
     ```js run
     let date = new Date(2011, 0, 1, 2, 3, 4, 567);
-    alert( date ); // 1.01.2011, 02:03:04.567
+    alert(date); // 1.01.2011, 02:03:04.567
     ```
 
 ## Composants de date d'accès
@@ -114,10 +114,10 @@ Si votre fuseau horaire local est décalé par rapport à UTC, le code ci-dessou
 let date = new Date();
 
 // l'heure dans votre fuseau horaire actuel
-alert( date.getHours() );
+alert(date.getHours());
 
 // l'heure dans le fuseau horaire UTC + 0 (heure de Londres sans heure avancée)
-alert( date.getUTCHours() );
+alert(date.getUTCHours());
 ```
 
 Outre les méthodes indiquées, il existe deux méthodes spéciales qui ne possèdent pas de variante UTC :
@@ -131,7 +131,7 @@ Outre les méthodes indiquées, il existe deux méthodes spéciales qui ne poss�
     ```js run
     // si vous êtes dans le fuseau horaire UTC-1, génère 60
     // si vous êtes dans le fuseau horaire UTC + 3, les sorties -180
-    alert( new Date().getTimezoneOffset() );
+    alert(new Date().getTimezoneOffset());
 
     ```
 
@@ -183,7 +183,7 @@ let date = new Date(2016, 1, 28);
 date.setDate(date.getDate() + 2);
 */!*
 
-alert( date ); // 1 Mar 2016
+alert(date); // 1 Mar 2016
 ```
 
 Cette fonctionnalité est souvent utilisée pour obtenir la date après la période donnée. Par exemple, obtenons la date «70 secondes après maintenant» :
@@ -192,7 +192,7 @@ Cette fonctionnalité est souvent utilisée pour obtenir la date après la péri
 let date = new Date();
 date.setSeconds(date.getSeconds() + 70);
 
-alert( date ); // montre la date correcte
+alert(date); // montre la date correcte
 ```
 
 Nous pouvons également définir zéro ou même des valeurs négatives. Par exemple :
@@ -201,10 +201,10 @@ Nous pouvons également définir zéro ou même des valeurs négatives. Par exem
 let date = new Date(2016, 0, 2); // 2 Jan 2016
 
 date.setDate(1); // met le jour 1 du mois
-alert( date );
+alert(date);
 
 date.setDate(0); // la date minimum est le 1, le dernier jour du mois précédent devient alors la date
-alert( date ); // 31 Dec 2015
+alert(date); // 31 Dec 2015
 ```
 
 ## De Date à numéro, différence de date
@@ -230,7 +230,7 @@ for (let i = 0; i < 100000; i++) {
 
 let end = new Date(); // fin
 
-alert( `The loop took ${end - start} ms` );
+alert(`The loop took ${end - start} ms`);
 ```
 
 ## Date.now()
@@ -259,7 +259,7 @@ for (let i = 0; i < 100000; i++) {
 let end = Date.now(); // fin
 */!*
 
-alert( `The loop took ${end - start} ms` ); // soustrait des nombres, pas des dates
+alert(`The loop took ${end - start} ms`); // soustrait des nombres, pas des dates
 ```
 
 ## Benchmarking
@@ -308,8 +308,8 @@ function bench(f) {
   return Date.now() - start;
 }
 
-alert( 'Time of diffSubtract: ' + bench(diffSubtract) + 'ms' );
-alert( 'Time of diffGetTime: ' + bench(diffGetTime) + 'ms' );
+alert('Time of diffSubtract: ' + bench(diffSubtract) + 'ms');
+alert('Time of diffGetTime: ' + bench(diffGetTime) + 'ms');
 ```
 
 Wow! Utiliser `getTime()` est beaucoup plus rapide ! C’est parce qu’il n’y a pas de conversion de type, il est beaucoup plus facile pour JavaScript de faire le calcul.
@@ -355,8 +355,8 @@ for (let i = 0; i < 10; i++) {
 }
 */!*
 
-alert( 'Total time for diffSubtract: ' + time1 );
-alert( 'Total time for diffGetTime: ' + time2 );
+alert('Total time for diffSubtract: ' + time1);
+alert('Total time for diffGetTime: ' + time2);
 ```
 
 Les moteurs JavaScript modernes commencent à appliquer des optimisations avancées uniquement au «code dynamique» qui s'exécute plusieurs fois (inutile d'optimiser les tâches rarement exécutées). Ainsi, dans l'exemple ci-dessus, les premières exécutions ne sont pas bien optimisées. Nous voudrons peut-être ajouter un test pour s'échauffer :
@@ -405,7 +405,7 @@ alert(ms); // 1327611110417  (horodatage)
 Nous pouvons créer instantanément un nouvel objet `Date` à partir de l'horodatage :
 
 ```js run
-let date = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
+let date = new Date(Date.parse('2012-01-26T13:51:50.417-07:00'));
 
 alert(date);
 ```

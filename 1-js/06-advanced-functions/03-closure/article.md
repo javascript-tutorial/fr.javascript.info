@@ -114,8 +114,8 @@ function sayHiBye(firstName, lastName) {
     return firstName + " " + lastName;
   }
 
-  alert( "Hello, " + getFullName() );
-  alert( "Bye, " + getFullName() );
+  alert("Hello, " + getFullName());
+  alert("Bye, " + getFullName());
 
 }
 ```
@@ -137,9 +137,9 @@ function makeCounter() {
 
 let counter = makeCounter();
 
-alert( counter() ); // 0
-alert( counter() ); // 1
-alert( counter() ); // 2
+alert(counter()); // 0
+alert(counter()); // 1
+alert(counter()); // 2
 ```
 
 Bien que simples, des variantes légèrement modifiées de ce code ont des utilisations pratiques, par exemple un [générateur de nombres aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires) pour générer des valeurs aléatoires pour des tests automatisés.
@@ -230,7 +230,7 @@ Par exemple, pour `say("John")`, cela ressemble à ceci (l'exécution est à la 
     let phrase = "Hello";
 
     function say(name) {
-     alert( `${phrase}, ${name}` );
+     alert(`${phrase}, ${name}`);
     }
 
     say("John"); // Hello, John

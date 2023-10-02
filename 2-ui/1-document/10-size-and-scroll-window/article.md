@@ -25,8 +25,8 @@ S'il existe une barre de défilement et qu'elle occupe de l'espace, `clientWidth
 
 S'il y a une barre de défilement et qu'elle occupe de l'espace, ces deux lignes affichent des valeurs différentes :
 ```js run
-alert( window.innerWidth ); // pleine largeur de fenêtre
-alert( document.documentElement.clientWidth ); // largeur de la fenêtre moins la barre de défilement
+alert(window.innerWidth); // pleine largeur de fenêtre
+alert(document.documentElement.clientWidth); // largeur de la fenêtre moins la barre de défilement
 ```
 
 Dans la plupart des cas, nous avons besoin de la largeur de fenêtre *disponible* : pour dessiner ou positionner quelque chose. C'est-à-dire : à l'intérieur des barres de défilement s'il y en a. Nous devons donc utiliser `documentElement.clientHeight/Width`.
@@ -162,7 +162,7 @@ Géométrie :
       document.body.scrollHeight, document.documentElement.scrollHeight,
       document.body.offsetHeight, document.documentElement.offsetHeight,
       document.body.clientHeight, document.documentElement.clientHeight
-    );
+   );
     ```
 
 Défilement :

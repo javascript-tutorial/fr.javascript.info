@@ -6,13 +6,13 @@ function makeCounter() {
 
 let counter = makeCounter();
 
-alert( counter() ); // 0
-alert( counter() ); // 1
+alert(counter()); // 0
+alert(counter()); // 1
 
 counter.set(10); // définir le nouveau "count"
 
-alert( counter() ); // 10
+alert(counter()); // 10
 
 counter.decrease(); // diminuer de 1 le "count"
 
-alert( counter() ); // 10 (au lieu de 11)
+alert(counter()); // 10 (au lieu de 11)

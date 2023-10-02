@@ -43,7 +43,7 @@ Examinons exactement ce qui se fait à l'intérieur de `makeArmy`, et la solutio
       let i = 0;
       while (i < 10) {
         let shooter = function() { // fonction shooter
-          alert( i ); // should show its number
+          alert(i); // should show its number
         };
         shooters.push(shooter); // ajoute une fonction au tableau
         i++;
@@ -70,7 +70,7 @@ Examinons exactement ce qui se fait à l'intérieur de `makeArmy`, et la solutio
           let j = i;
         */!*
           let shooter = function() { // fonction shooter
-            alert( *!*j*/!* ); // devrait afficher son numéro
+            alert(*!*j*/!*); // devrait afficher son numéro
           };
         shooters.push(shooter);
         i++;
@@ -103,7 +103,7 @@ Examinons exactement ce qui se fait à l'intérieur de `makeArmy`, et la solutio
       for(let i = 0; i < 10; i++) {
     */!*
         let shooter = function() { // fonction shooter
-          alert( i ); // devrait afficher son numéro
+          alert(i); // devrait afficher son numéro
         };
         shooters.push(shooter);
       }

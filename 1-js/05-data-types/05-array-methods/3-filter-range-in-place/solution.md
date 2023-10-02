@@ -17,5 +17,5 @@ let arr = [5, 3, 8, 1];
 
 filterRangeInPlace(arr, 1, 4); // supprime les nombres sauf de 1 à 4
 
-alert( arr ); // [3, 1]
+alert(arr); // [3, 1]
 ```

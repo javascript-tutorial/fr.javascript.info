@@ -44,7 +44,7 @@ let user = {
 
 let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
 
-alert( JSON.stringify(descriptor, null, 2 ) );
+alert(JSON.stringify(descriptor, null, 2));
 /* property descriptor:
 {
   "value": "John",
@@ -84,7 +84,7 @@ value: "John"
 
 let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
 
-alert( JSON.stringify(descriptor, null, 2 ) );
+alert(JSON.stringify(descriptor, null, 2));
 /*
 {
 "value": "John",
@@ -202,7 +202,7 @@ Par exemple, `Math.PI` est en lecture seule, non énumérable et non configurabl
 ```js run
 let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
 
-alert( JSON.stringify(descriptor, null, 2 ) );
+alert(JSON.stringify(descriptor, null, 2));
 /*
 {
 "value": 3.141592653589793,

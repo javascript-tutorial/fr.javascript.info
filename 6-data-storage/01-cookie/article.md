@@ -27,7 +27,7 @@ Assuming you're on a website, it's possible to see the cookies from it, like thi
 ```js run
 // At javascript.info, we use Google Analytics for statistics,
 // so there should be some cookies
-alert( document.cookie ); // cookie1=value1; cookie2=value2;...
+alert(document.cookie); // cookie1=value1; cookie2=value2;...
 ```
 
 The value of `document.cookie` consists of `name=value` pairs, delimited by `; `. Each one is a separate cookie.
@@ -290,8 +290,8 @@ The function `getCookie(name)` returns the cookie with the given `name`:
 // or undefined if not found
 function getCookie(name) {
   let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
+    "(?:^|;)" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+ ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 ```

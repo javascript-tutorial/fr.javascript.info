@@ -31,7 +31,7 @@ let group = {
 *!*
     this.students.forEach(
       student => alert(this.title + ': ' + student)
-    );
+   );
 */!*
   }
 };

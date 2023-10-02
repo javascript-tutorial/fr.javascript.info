@@ -17,7 +17,7 @@ let str = `
   [/quote]
 `;
 
-alert( str.match(regexp) ); // [b]hello![/b],[quote][url]http://google.com[/url][/quote]
+alert(str.match(regexp)); // [b]hello![/b],[quote][url]http://google.com[/url][/quote]
 ```
 
 Veuillez noter qu'en plus d'échapper `pattern:[`, nous avons dû échapper une barre oblique pour la balise de fermeture `pattern:[\/\1]`, car normalement la barre oblique ferme le modèle.

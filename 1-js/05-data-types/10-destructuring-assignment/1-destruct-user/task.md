@@ -27,7 +27,7 @@ let user = { name: "John", years: 30 };
 // votre code à gauche ::
 // ... = user
 
-alert( name ); // John
-alert( age ); // 30
-alert( isAdmin ); // false
+alert(name); // John
+alert(age); // 30
+alert(isAdmin); // false
 ```

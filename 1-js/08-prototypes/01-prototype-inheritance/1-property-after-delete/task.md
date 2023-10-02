@@ -17,15 +17,15 @@ let rabbit = {
   jumps: true
 };
 
-alert( rabbit.jumps ); // ? (1)
+alert(rabbit.jumps); // ? (1)
 
 delete rabbit.jumps;
 
-alert( rabbit.jumps ); // ? (2)
+alert(rabbit.jumps); // ? (2)
 
 delete animal.jumps;
 
-alert( rabbit.jumps ); // ? (3)
+alert(rabbit.jumps); // ? (3)
 ```
 
 Il devrait y avoir 3 réponses.

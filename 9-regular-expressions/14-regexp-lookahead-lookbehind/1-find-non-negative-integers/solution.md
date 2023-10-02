@@ -10,7 +10,7 @@ let regexp = /(?<!-)\d+/g;
 
 let str = "0 12 -5 123 -18";
 
-console.log( str.match(regexp) ); // 0, 12, 123, *!*8*/!*
+console.log(str.match(regexp)); // 0, 12, 123, *!*8*/!*
 ```
 
 Comme vous pouvez le voir, il correspond à `match:8`, à partir de `subject:-18`. Pour l'exclure, nous devons nous assurer que l'expression régulière commence à correspondre à un nombre qui ne se trouve pas au milieu d'un autre nombre (non correspondant).
@@ -24,5 +24,5 @@ let regexp = /(?<![-\d])\d+/g;
 
 let str = "0 12 -5 123 -18";
 
-alert( str.match(regexp) ); // 0, 12, 123
+alert(str.match(regexp)); // 0, 12, 123
 ```

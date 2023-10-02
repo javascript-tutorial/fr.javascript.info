@@ -15,7 +15,7 @@ let arr = [5, 3, 8, 1];
 
 let filtered = filterRange(arr, 1, 4);
 
-alert( filtered ); // 3,1 (valeurs correspondantes)
+alert(filtered); // 3,1 (valeurs correspondantes)
 
-alert( arr ); // 5,3,8,1 (non modifié)
+alert(arr); // 5,3,8,1 (non modifié)
 ```

@@ -81,7 +81,7 @@ class HoverIntent {
       speed = Math.sqrt(
         Math.pow(this.prevX - this.lastX, 2) +
         Math.pow(this.prevY - this.lastY, 2)
-      ) / (this.lastTime - this.prevTime);
+     ) / (this.lastTime - this.prevTime);
     }
 
     if (speed < this.sensitivity) {

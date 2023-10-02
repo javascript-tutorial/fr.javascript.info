@@ -7,7 +7,7 @@ let user = {
 
 let {name, years: age, isAdmin = false} = user;
 
-alert( name ); // John
-alert( age ); // 30
-alert( isAdmin ); // false
+alert(name); // John
+alert(age); // 30
+alert(isAdmin); // false
 ```

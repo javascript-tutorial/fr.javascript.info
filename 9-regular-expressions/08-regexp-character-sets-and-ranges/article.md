@@ -10,7 +10,7 @@ On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autr
 
 ```js run
 // trouve [t ou m], puis "op"
-alert( "Mop top".match(/[tm]op/gi) ); // "Mop", "top"
+alert("Mop top".match(/[tm]op/gi)); // "Mop", "top"
 ```
 
 Bien qu'il y ait plusieurs caractères dans un ensemble, vous remarquez que l'on ne cherche la correspondance que d'un seul de ces caractères.
@@ -19,7 +19,7 @@ L'exemple suivant ne donne donc aucun résultat :
 
 ```js run
 // trouve "V", puis [o ou i], puis "la"
-alert( "Voila".match(/V[oi]la/) ); // null, pas de correspondance
+alert("Voila".match(/V[oi]la/)); // null, pas de correspondance
 ```
 
 L'expression régulière recherche :
@@ -39,7 +39,7 @@ Par exemple, `pattern:[a-z]` est un caractère pouvant aller de `a` à `z`, et `
 Dans l'exemple ci-dessous nous recherchons un `"x"` suivi par deux chiffres ou lettres de `A` à `F`:
 
 ```js run
-alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
+alert("Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g)); // xAF
 ```
 
 Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` comprise.
@@ -82,7 +82,7 @@ let regexp = /[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]/gu;
 let str = `Hi 你好 12`;
 
 // trouve toutes les lettres et chiffres:
-alert( str.match(regexp) ); // H,i,你,好,1,2
+alert(str.match(regexp)); // H,i,你,好,1,2
 ```
 
 Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
@@ -108,7 +108,7 @@ Par exemple :
 L'exemple ci-dessous cherche n'importe quel caractère n'étant pas une lettre, un chiffre ou un espace :
 
 ```js run
-alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ et .
+alert("alice15@gmail.com".match(/[^\d\sA-Z]/gi)); // @ et .
 ```
 
 ## L'échappement entre […]
@@ -117,7 +117,7 @@ Habituellement, lorsque nous cherchons précisément un caractère spécial, nou
 
 À l'intérieur de crochets nous pouvons utiliser une grande majorité des caractères spéciaux sans échappement :
 
-- Les symbols `pattern:. + ( )` ne sont jamais échappés.
+- Les symbols `pattern:. + ()` ne sont jamais échappés.
 - Un tiret `pattern:-` n'est pas échappé en début ou fin d'ensemble (là où il ne peut pas définir d'intervalle).
 - Un accent circonflexe `pattern:^` est échappé uniquement s'il débute l'ensemble (sinon il signifie l'exclusion).
 - Le crochet fermant `pattern:]` est toujours échappé (si nous le cherchons précisément).
@@ -132,7 +132,7 @@ Dans l'exemple ci-dessous l'expression régulière `pattern:[-().^+]` cherche un
 // Pas besoin d'échapper
 let regexp = /[-().^+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // trouve +, -
+alert("1 + 2 - 3".match(regexp)); // trouve +, -
 ```
 
 ... Si vous décidez de les échapper, "au cas où", il n'y aura de toute façon aucun d'impact :
@@ -141,7 +141,7 @@ alert( "1 + 2 - 3".match(regexp) ); // trouve +, -
 // Tout échappé
 let regexp = /[\-\(\)\.\^\+]/g;
 
-alert( "1 + 2 - 3".match(regexp) ); // fonctionne aussi: +, -
+alert("1 + 2 - 3".match(regexp)); // fonctionne aussi: +, -
 ```
 
 ## Intervalles et marqueur "u"
@@ -151,7 +151,7 @@ S'il y a une paire de seizets d'indirection([surrogate pair](https://fr.wikipedi
 Par exemple, cherchons `pattern:[𝒳𝒴]` dans la chaîne `subject:𝒳`:
 
 ```js run
-alert( '𝒳'.match(/[𝒳𝒴]/) ); // affiche un caractère étrange qui ressemble à [?]
+alert('𝒳'.match(/[𝒳𝒴]/)); // affiche un caractère étrange qui ressemble à [?]
 // (la recherche n'a pas fonctionné correctement, seule une moitié du caractère est retournée)
 ```
 
@@ -176,7 +176,7 @@ Donc, le premier exemple trouve et affiche la première moitié de `𝒳`.
 Mais si nous ajoutons le marqueur `pattern:u`, on aura alors le comportement attendu :
 
 ```js run
-alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
+alert('𝒳'.match(/[𝒳𝒴]/u)); // 𝒳
 ```
 
 On retrouve un mécanisme similaire dans les intervalles, comme `[𝒳-𝒴]`.
@@ -193,5 +193,5 @@ Avec le marqueur `pattern:u` le motif est interprété correctement :
 
 ```js run
 // Cherche un caractère entre 𝒳 et 𝒵 compris
-alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
+alert('𝒴'.match(/[𝒳-𝒵]/u)); // 𝒴
 ```

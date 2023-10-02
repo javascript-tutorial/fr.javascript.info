@@ -86,11 +86,11 @@ document.addEventListener('mousedown', function(event) {
 
       // un deplacement rapide de la souris  peut mettre le curseur au dela des limites du document
       // Si cela survient-
-      // limite le nouveau Y (new Y) au maximum possible ( tout just au bas dudocument)
+      // limite le nouveau Y (new Y) au maximum possible (tout just au bas dudocument)
       newY = Math.min(newY, document.documentElement.clientHeight - dragElement.offsetHeight);
     }
 
-    // Controler si les nouvelles coordonnees sont au dessus des limites superieures de la fenetre ( logique similaire)
+    // Controler si les nouvelles coordonnees sont au dessus des limites superieures de la fenetre (logique similaire)
     if (newY < 0) {
       // defile vers le haut
       let scrollY = Math.min(-newY, 10);

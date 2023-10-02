@@ -50,7 +50,7 @@ let requests = urls.map(url => fetch(url));
 Promise.all(requests)
   .then(responses => responses.forEach(
     response => alert(`${response.url}: ${response.status}`)
-  ));
+ ));
 ```
 
 Voici un plus gros exemple avec la récupération des informations des utilisateurs GitHub dans un tableau, par leurs noms (nous pourrions récupérer un tableau d'informations par leurs identifiants, la logique est la même) :

@@ -10,5 +10,5 @@ Vérifiez:
 
 ```js
 let regexp = /votre regexp/g;
-alert( "Hello!... How goes?.....".match(regexp) ); // ..., .....
+alert("Hello!... How goes?.....".match(regexp)); // ..., .....
 ```

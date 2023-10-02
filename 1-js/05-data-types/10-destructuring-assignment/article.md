@@ -62,7 +62,7 @@ Les éléments indésirables du tableau peuvent également être supprimés via 
 let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 */!*
 
-alert( title ); // Consul
+alert(title); // Consul
 ```
 
 Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisième est attribué à `title` et le reste du tableau est également ignoré (car il n'y a pas de variables pour eux).
@@ -400,7 +400,7 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
   // un bloc de code
   let message = "Hello";
   // ...
-  alert( message );
+  alert(message);
 }
 ```
 
@@ -414,7 +414,7 @@ let title, width, height;
 // maintenant c'est bon
 *!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
 
-alert( title ); // Menu
+alert(title); // Menu
 ```
 ````
 
@@ -497,8 +497,8 @@ let options = {
 function showMenu(*!*{title = "Untitled", width = 200, height = 100, items = []}*/!*) {
   // title, items – pris des options,
   // width, height – défauts utilisés
-  alert( `${title} ${width} ${height}` ); // My Menu 200 100
-  alert( items ); // Item1, Item2
+  alert(`${title} ${width} ${height}`); // My Menu 200 100
+  alert(items); // Item1, Item2
 }
 
 showMenu(options);
@@ -520,9 +520,9 @@ function showMenu({
   items: [item1, item2] // items premier élément va à item1, deuxième à item2
 }) {
 */!*
-  alert( `${title} ${w} ${h}` ); // My Menu 100 200
-  alert( item1 ); // Item1
-  alert( item2 ); // Item2
+  alert(`${title} ${w} ${h}`); // My Menu 100 200
+  alert(item1); // Item1
+  alert(item2); // Item2
 }
 
 showMenu(options);
@@ -550,7 +550,7 @@ Nous pouvons résoudre ce problème en faisant de `{}` la valeur par défaut pou
 
 ```js run
 function showMenu({ title = "Menu", width = 100, height = 200 }*!* = {}*/!*) {
-  alert( `${title} ${width} ${height}` );
+  alert(`${title} ${width} ${height}`);
 }
 
 showMenu(); // Menu 100 200

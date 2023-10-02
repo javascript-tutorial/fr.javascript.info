@@ -21,8 +21,8 @@ En action :
 ```js run
 let regexp = /^(\w+\s?)*$/;
 
-alert( regexp.test("A good string") ); // true
-alert( regexp.test("Bad characters: $@#") ); // false
+alert(regexp.test("A good string")); // true
+alert(regexp.test("Bad characters: $@#")); // false
 ```
 
 L'expression régulières semble fonctionner. Le résultat est correct. Bien que, sur certaines chaines, cela prenne beaucoup de temps. Tellement longtemps que le moteur JavaScript "se bloque" avec une consommation CPU de 100%.
@@ -34,7 +34,7 @@ let regexp = /^(\w+\s?)*$/;
 let str = "An input string that takes a long time or even makes this regexp hang!";
 
 // prendra très longtemps
-alert( regexp.test(str) );
+alert(regexp.test(str));
 ```
 
 Pour être juste, notons que certains moteurs d'expressions régulières peuvent gérer efficacement une telle recherche, par exemple la version du moteur V8 à partir de 8.8 peut le faire (donc Google Chrome 88 ne se bloque pas ici), tandis que le navigateur Firefox se bloque.
@@ -53,7 +53,7 @@ let regexp = /^(\d+)*$/;
 let str = "012345678901234567890123456789z";
 
 // prendra beaucoup de temps (attention!)
-alert( regexp.test(str) );
+alert(regexp.test(str));
 ```
 
 Alors, quel est le problème avec l'expression régulière ?
@@ -62,7 +62,7 @@ Tout d'abord, on peut remarquer que l'expression régulière `pattern:(\d+)*` es
 
 En effet, l'expression régulière est artificielle ; nous l'avons obtenu en simplifiant l'exemple précédent. Mais la raison de sa lenteur est la même. Alors comprenons-le, et alors l'exemple précédent deviendra évident.
 
-Que se passe-t-il lors de la recherche de `pattern:^(\d+)*$` dans la ligne `subject:123456789z` (raccourci un peu pour plus de clarté, veuillez noter un caractère non numérique `subject:z` à la fin, c'est important ), pourquoi cela prend-il autant de temps ?
+Que se passe-t-il lors de la recherche de `pattern:^(\d+)*$` dans la ligne `subject:123456789z` (raccourci un peu pour plus de clarté, veuillez noter un caractère non numérique `subject:z` à la fin, c'est important), pourquoi cela prend-il autant de temps ?
 
 Voici ce que fait le moteur d'expression régulière :
 
@@ -195,7 +195,7 @@ Cette expression régulière est équivalente à la précédente (correspond à 
 let regexp = /^(\w+\s)*\w*$/;
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false
+alert(regexp.test(str)); // false
 ```
 
 Pourquoi le problème a-t-il disparu ?
@@ -270,8 +270,8 @@ Par exemple, dans le mot `subject:JavaScript`, il peut non seulement correspondr
 Voici la comparaison de deux modèles :
 
 ```js run
-alert( "JavaScript".match(/\w+Script/)); // JavaScript
-alert( "JavaScript".match(/(?=(\w+))\1Script/)); // null
+alert("JavaScript".match(/\w+Script/)); // JavaScript
+alert("JavaScript".match(/(?=(\w+))\1Script/)); // null
 ```
 
 1. Dans la première variante, `pattern:\w+` capture d'abord le mot entier `subject:JavaScript` mais ensuite `pattern:+` revient en arrière caractère par caractère, pour essayer de faire correspondre le reste du modèle, jusqu'à ce qu'il réussisse finalement (lorsque `pattern:\w+` correspond à `match:Java`).
@@ -288,11 +288,11 @@ Réécrivons le premier exemple en utilisant lookahead pour éviter la rétroact
 ```js run
 let regexp = /^((?=(\w+))\2\s?)*$/;
 
-alert( regexp.test("A good string") ); // true
+alert(regexp.test("A good string")); // true
 
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false, fonctionne et rapidement!
+alert(regexp.test(str)); // false, fonctionne et rapidement!
 ```
 
 Ici, `pattern:\2` est utilisé à la place de `pattern:\1`, car il y a des parenthèses externes supplémentaires. Pour éviter de se tromper avec les chiffres, nous pouvons donner un nom aux parenthèses, par ex. `pattern:(?<word>\w+)`.
@@ -303,9 +303,9 @@ let regexp = /^((?=(?<word>\w+))\k<word>\s?)*$/;
 
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false
+alert(regexp.test(str)); // false
 
-alert( regexp.test("A correct string") ); // true
+alert(regexp.test("A correct string")); // true
 ```
 
 Le problème décrit dans cet article est appelé "rétroaction catastrophique".

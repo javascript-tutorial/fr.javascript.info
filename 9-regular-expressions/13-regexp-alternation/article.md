@@ -15,7 +15,7 @@ let regexp = /html|php|css|java(script)?/gi;
 
 let str = "First HTML appeared, then CSS, then JavaScript";
 
-alert( str.match(regexp) ); // 'HTML', 'CSS', 'JavaScript'
+alert(str.match(regexp)); // 'HTML', 'CSS', 'JavaScript'
 ```
 
 Nous avons déjà vu une chose similaire, les crochets. Ils permettent de choisir entre plusieurs caractères, par exemple `pattern:gr[ae]y` correspond à `match:gray` ou `match:grey`.

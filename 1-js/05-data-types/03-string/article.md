@@ -78,21 +78,21 @@ Il existe d'autres caractères "spéciaux" moins courants.
 
 Voici la liste complète :
 
-| Caractère                                          | Description                                                                                                                                                                                      |
-|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `\n`                                               | Nouvelle ligne                                                                                                                                                                                   |
-| `\r`                                               | Dans les fichiers texte Windows, une combinaison de deux caractères `\r\n` représente une nouvelle pause, tandis que sur un système d'exploitation non Windows, il s'agit simplement de `\n`. C'est pour des raisons historiques, la plupart des logiciels Windows comprennent également `\n`. |
-| `\'`, `\"`                                         | Quotes                                                                                                                                                                                           |
-| `\\`                                               | Backslash                                                                                                                                                                                        |
-| `\t`                                               | Tab                                                                                                                                                                                              |
-| `\b`, `\f`, `\v`                                   | Backspace, Form Feed, Vertical Tab -- conservés pour compatibilité, non utilisés de nos jours.                                                                                                   |
+| Caractère        | Description                                                                                                                                                                                                                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `\n`             | Nouvelle ligne                                                                                                                                                                                                                                                                                 |
+| `\r`             | Dans les fichiers texte Windows, une combinaison de deux caractères `\r\n` représente une nouvelle pause, tandis que sur un système d'exploitation non Windows, il s'agit simplement de `\n`. C'est pour des raisons historiques, la plupart des logiciels Windows comprennent également `\n`. |
+| `\'`, `\"`       | Quotes                                                                                                                                                                                                                                                                                         |
+| `\\`             | Backslash                                                                                                                                                                                                                                                                                      |
+| `\t`             | Tab                                                                                                                                                                                                                                                                                            |
+| `\b`, `\f`, `\v` | Backspace, Form Feed, Vertical Tab -- conservés pour compatibilité, non utilisés de nos jours.                                                                                                                                                                                                 |
 
 Comme vous pouvez le voir, tous les caractères spéciaux commencent par un backslash (barre oblique inversée) `\`. On l'appelle aussi "caractère d'échappement".
 
 Parce que c'est si spécial, si nous devons afficher une véritable barre oblique inverse `\` dans la chaîne, nous devons la doubler :
 
 ```js run
-alert( `The backslash: \\` ); // The backslash: \
+alert(`The backslash: \\`); // The backslash: \
 ```
 
 Les guillemets dits "échappés" `\'`, `\"`, <code>\\`</code> sont utilisés pour insérer un guillemet dans la même chaîne entre guillemets.
@@ -100,7 +100,7 @@ Les guillemets dits "échappés" `\'`, `\"`, <code>\\`</code> sont utilisés pou
 Par exemple :
 
 ```js run
-alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
+alert('I*!*\'*/!*m the Walrus!'); // *!*I'm*/!* the Walrus!
 ```
 
 Comme vous pouvez le constater, nous devons précéder le simple quote intérieure du backslash `\'`, sinon, cela indiquerait la fin de la chaîne de caractères.
@@ -108,7 +108,7 @@ Comme vous pouvez le constater, nous devons précéder le simple quote intérieu
 Bien sûr, il ne faut échapper que les guillemets identiques à ceux qui les entourent. Donc, comme solution plus élégante, nous pourrions passer aux guillemets doubles ou aux backticks :
 
 ```js run
-alert( "I'm the Walrus!" ); // I'm the Walrus!
+alert("I'm the Walrus!"); // I'm the Walrus!
 ```
 
 Outre ces caractères spéciaux, il existe également une notation spéciale pour les codes Unicode `\u…`, elle est rarement utilisée et est couverte dans le chapitre facultatif sur [Unicode](info:unicode).
@@ -118,7 +118,7 @@ Outre ces caractères spéciaux, il existe également une notation spéciale pou
 La propriété `length` indique la longueur de la chaîne de caractères :
 
 ```js run
-alert( `My\n`.length ); // 3
+alert(`My\n`.length); // 3
 ```
 
 Notez que `\n` est un seul caractère "spécial", la longueur est donc bien `3`.
@@ -137,12 +137,12 @@ Pour obtenir un caractère à la position `pos`, utilisez des crochets `[pos]` o
 let str = `Hello`;
 
 // le premier caractère
-alert( str[0] ); // H
-alert( str.at(0) ); // H
+alert(str[0]); // H
+alert(str.at(0)); // H
 
 // le dernier caractère
-alert( str[str.length - 1] ); // o
-alert( str.at(-1) ); // o
+alert(str[str.length - 1]); // o
+alert(str.at(-1)); // o
 ```
 
 Comme vous pouvez le voir, la méthode `.at(pos)` a l'avantage de permettre une position négative. Si `pos` est négatif, alors il est compté à partir de la fin de la chaîne de caractères.
@@ -154,8 +154,8 @@ Les crochets renvoient toujours `undefined` pour les index négatifs, par exempl
 ```js run
 let str = `Hello`;
 
-alert( str[-2] ); // undefined
-alert( str.at(-2) ); // l
+alert(str[-2]); // undefined
+alert(str.at(-2)); // l
 ```
 
 Nous pouvons également parcourir les caractères en utilisant un `for..of` :
@@ -176,7 +176,7 @@ Essayons de démontrer que cela ne fonctionne pas :
 let str = 'Hi';
 
 str[0] = 'h'; // error
-alert( str[0] ); // ne fonctionne pas
+alert(str[0]); // ne fonctionne pas
 ```
 
 La solution habituelle consiste à créer une nouvelle chaîne et à l’affecter à `str` au lieu de l’ancienne.
@@ -188,7 +188,7 @@ let str = 'Hi';
 
 str = 'h' + str[1];  // remplace la haine de caractères
 
-alert( str ); // hi
+alert(str); // hi
 ```
 
 Nous verrons plus d'exemples dans les sections suivantes.
@@ -198,14 +198,14 @@ Nous verrons plus d'exemples dans les sections suivantes.
 Les méthodes [toLowerCase()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/toLowerCase) et [toUpperCase()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/toUpperCase) modifient la casse :
 
 ```js run
-alert( 'Interface'.toUpperCase() ); // INTERFACE
-alert( 'Interface'.toLowerCase() ); // interface
+alert('Interface'.toUpperCase()); // INTERFACE
+alert('Interface'.toLowerCase()); // interface
 ```
 
 Ou, si nous voulons un seul caractère minuscule :
 
 ```js run
-alert( 'Interface'[0].toLowerCase() ); // 'i'
+alert('Interface'[0].toLowerCase()); // 'i'
 ```
 
 ## Rechercher un substring (partie de la chaîne de caractères)
@@ -223,10 +223,10 @@ Par exemple :
 ```js run
 let str = 'Widget with id';
 
-alert( str.indexOf('Widget') ); // 0, parce que 'Widget' est trouvé au début
-alert( str.indexOf('widget') ); // -1, pas trouvé, la recherche est sensible à la casse
+alert(str.indexOf('Widget')); // 0, parce que 'Widget' est trouvé au début
+alert(str.indexOf('widget')); // -1, pas trouvé, la recherche est sensible à la casse
 
-alert( str.indexOf("id") ); // 1, "id" est trouvé à la position 1 (..idget avec id)
+alert(str.indexOf("id")); // 1, "id" est trouvé à la position 1 (..idget avec id)
 ```
 
 Le second paramètre optionnel nous permet de rechercher à partir de la position donnée.
@@ -236,7 +236,7 @@ Par exemple, la première occurrence de `"id"` est à la position `1`. Pour rech
 ```js run
 let str = 'Widget with id';
 
-alert( str.indexOf('id', 2) ) // 12
+alert(str.indexOf('id', 2)) // 12
 ```
 
 Si toutes les occurrences nous intéressent, nous pouvons exécuter `indexOf` dans une boucle. Chaque nouvel appel est passé avec la position après le match précédent :
@@ -251,7 +251,7 @@ while (true) {
   let foundPos = str.indexOf(target, pos);
   if (foundPos == -1) break;
 
-  alert( `Found at ${foundPos}` );
+  alert(`Found at ${foundPos}`);
   pos = foundPos + 1; // continue la recherche à partir de la position suivante
 }
 ```
@@ -265,7 +265,7 @@ let target = "as";
 *!*
 let pos = -1;
 while ((pos = str.indexOf(target, pos + 1)) != -1) {
-  alert( pos );
+  alert(pos);
 }
 */!*
 ```
@@ -307,23 +307,23 @@ La méthode plus moderne [str.includes(substr, pos)](mdn:js/String/includes) ret
 C’est le bon choix si nous devons tester la présence, mais n’avons pas besoin de sa position :
 
 ```js run
-alert( "Widget with id".includes("Widget") ); // true
+alert("Widget with id".includes("Widget")); // true
 
-alert( "Hello".includes("Bye") ); // false
+alert("Hello".includes("Bye")); // false
 ```
 
 Le deuxième argument optionnel de `str.includes` est la position de départ de la recherche :
 
 ```js run
-alert( "Widget".includes("id") ); // true
-alert( "Widget".includes("id", 3) ); // false, à partir de la position 3, il n'y a pas de "id"
+alert("Widget".includes("id")); // true
+alert("Widget".includes("id", 3)); // false, à partir de la position 3, il n'y a pas de "id"
 ```
 
 Les méthodes [str.startsWith](mdn:js/String/startsWith) et [str.endsWith](mdn:js/String/endsWith) font exactement ce qu'elle disent :
 
 ```js run
-alert( "*!*Wid*/!*get".startsWith("Wid") ); // true, "Widget" démarre avec "Wid"
-alert( "Wid*!*get*/!*".endsWith("get") ); // true, "Widget" fini avec "get"
+alert("*!*Wid*/!*get".startsWith("Wid")); // true, "Widget" démarre avec "Wid"
+alert("Wid*!*get*/!*".endsWith("get")); // true, "Widget" fini avec "get"
 ```
 
 ## Obtenir un substring (sous-chaîne de caractères)
@@ -337,15 +337,15 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
 
     ```js run
     let str = "stringify";
-    alert( str.slice(0, 5) ); // 'strin', le substring de 0 à 5 (sans inclure 5)
-    alert( str.slice(0, 1) ); // 's', de 0 à 1, mais sans inclure 1, donc uniquement le caractère à l'index 0
+    alert(str.slice(0, 5)); // 'strin', le substring de 0 à 5 (sans inclure 5)
+    alert(str.slice(0, 1)); // 's', de 0 à 1, mais sans inclure 1, donc uniquement le caractère à l'index 0
     ```
 
     S'il n'y a pas de second argument, `slice` va jusqu'à la fin de la chaîne de caractères :
 
     ```js run
     let str = "st*!*ringify*/!*";
-    alert( str.slice(2) ); // 'ringify', à partir de la 2e position jusqu'à la fin
+    alert(str.slice(2)); // 'ringify', à partir de la 2e position jusqu'à la fin
     ```
 
     Des valeurs négatives pour `start`/`end` sont également possibles. Elles veulent dire que la position est comptée à partir de la fin de la chaîne de caractères :
@@ -354,7 +354,7 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     let str = "strin*!*gif*/!*y";
 
     // commence à la 4ème position à partir de la droite, se termine au 1er à partir de la droite
-    alert( str.slice(-4, -1) ); // 'gif'
+    alert(str.slice(-4, -1)); // 'gif'
     ```
 
 `str.substring(start [, end])`
@@ -368,12 +368,12 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
     let str = "st*!*ring*/!*ify";
 
     // ce sont les mêmes pour substring
-    alert( str.substring(2, 6) ); // "ring"
-    alert( str.substring(6, 2) ); // "ring"
+    alert(str.substring(2, 6)); // "ring"
+    alert(str.substring(6, 2)); // "ring"
 
     // ...mais pas pour slice :
-    alert( str.slice(2, 6) ); // "ring" (le même résultat)
-    alert( str.slice(6, 2) ); // "" (une chaîne de caractères vide)
+    alert(str.slice(2, 6)); // "ring" (le même résultat)
+    alert(str.slice(6, 2)); // "" (une chaîne de caractères vide)
 
     ```
 
@@ -386,14 +386,14 @@ Il existe 3 méthodes en JavaScript pour obtenir un substring : `substring`, `su
 
     ```js run
     let str = "st*!*ring*/!*ify";
-    alert( str.substr(2, 4) ); // 'ring', à partir de la 2ème position on obtient 4 caractères
+    alert(str.substr(2, 4)); // 'ring', à partir de la 2ème position on obtient 4 caractères
     ```
 
     Le premier argument peut être négatif, pour compter à partir de la fin :
 
     ```js run
     let str = "strin*!*gi*/!*fy";
-    alert( str.substr(-4, 2) ); // 'gi', à partir de la 4ème position on obtient 2 caractères
+    alert(str.substr(-4, 2)); // 'gi', à partir de la 4ème position on obtient 2 caractères
     ```
 
 Cette méthode réside dans l'[Annexe B](https://tc39.es/ecma262/#sec-string.prototype.substr) de la spécification du langage. Cela signifie que seuls les moteurs JavaScript hébergés par un navigateur doivent le prendre en charge et qu'il n'est pas recommandé de l'utiliser. En pratique, il est supporté partout.
@@ -401,7 +401,7 @@ Cette méthode réside dans l'[Annexe B](https://tc39.es/ecma262/#sec-string.pro
 Récapitulons ces méthodes pour éviter toute confusion :
 
 | méthodes                | séléction ...                           | valeurs negatives                    |
-|-------------------------|-----------------------------------------|--------------------------------------|
+| ----------------------- | --------------------------------------- | ------------------------------------ |
 | `slice(start, end)`     | de `start` à `end` (n'inclue pas `end`) | permet les négatifs                  |
 | `substring(start, end)` | entre `start` et `end`                  | les valeurs négatives signifient `0` |
 | `substr(start, length)` | de `start` obtient `length` caractères  | permet un `start` negatif            |
@@ -423,13 +423,13 @@ Bien que, il y a quelques bizarreries.
 1. Une lettre minuscule est toujours plus grande qu'une majuscule :
 
     ```js run
-    alert( 'a' > 'Z' ); // true
+    alert('a' > 'Z'); // true
     ```
 
 2. Les lettres avec des signes diacritiques sont "hors d'usage" :
 
     ```js run
-    alert( 'Österreich' > 'Zealand' ); // true
+    alert('Österreich' > 'Zealand'); // true
     ```
 
     Cela peut conduire à des résultats étranges si nous trions ces noms de pays. Habituellement, les gens s'attendent à trouver `Zealand` après `Österreich` dans la liste.
@@ -443,17 +443,17 @@ Il existe des méthodes spéciales qui permettent d'obtenir le caractère pour l
 
     ```js run
     // différentes lettres majuscules ont des codes différents
-    alert( "Z".codePointAt(0) ); // 90
-    alert( "z".codePointAt(0) ); // 122
-    alert( "z".codePointAt(0).toString(16) ); // 7a (si nous avons besoin d'une valeur hexadécimale)
+    alert("Z".codePointAt(0)); // 90
+    alert("z".codePointAt(0)); // 122
+    alert("z".codePointAt(0).toString(16)); // 7a (si nous avons besoin d'une valeur hexadécimale)
     ```
 
 `String.fromCodePoint(code)`
 : Crée un caractère par son `code` chiffre
 
     ```js run
-    alert( String.fromCodePoint(90) ); // Z
-    alert( String.fromCodePoint(0x5a) ); // Z (nous pouvons également utiliser une valeur hexadécimale comme argument)
+    alert(String.fromCodePoint(90)); // Z
+    alert(String.fromCodePoint(0x5a)); // Z (nous pouvons également utiliser une valeur hexadécimale comme argument)
     ```
 
 Voyons maintenant les caractères avec les codes `65..220` (l’alphabet latin et un peu plus) en créant une chaîne de caractères de ceux-ci :
@@ -464,7 +464,7 @@ let str = '';
 for (let i = 65; i <= 220; i++) {
   str += String.fromCodePoint(i);
 }
-alert( str );
+alert(str);
 // Output:
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
@@ -498,7 +498,7 @@ L'appel [str.localeCompare(str2)](mdn:js/String/localeCompare) renvoie un entier
 Par exemple :
 
 ```js run
-alert( 'Österreich'.localeCompare('Zealand') ); // -1
+alert('Österreich'.localeCompare('Zealand')); // -1
 ```
 
 Cette méthode a en fait deux arguments supplémentaires spécifiés dans [la documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/localeCompare), ce qui lui permet de spécifier la langue (par défaut, pris dans l'environnement, l'ordre des lettres dépend de la langue) et de définir des règles supplémentaires telles que la sensibilité à la casse ou doit-on traiter `"a"` et `"á"` de la même manière, etc.

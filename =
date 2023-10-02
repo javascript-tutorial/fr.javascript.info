@@ -64,7 +64,7 @@ Ne vous en souciez même pas, car il existe une meilleure façon de l'écrire, e
 ```js run
 let user = {}; // l'utilisateur n'a pas d'adresse
 
-alert( user.address && user.address.street && user.address.street.name ); // undefined (no error)
+alert(user.address && user.address.street && user.address.street.name); // undefined (no error)
 ```
 
 Et le chemin complet vers la propriété garantit que tous les composants existent (sinon, l'évaluation s'arrête), mais n'est pas non plus idéal.
@@ -90,7 +90,7 @@ Voici le moyen sûr d'accéder à `user.address.street` en utilisant `?.` :
 ```js run
 let user = {}; // l'utilisateur n'a pas d'adresse
 
-alert( user?.address?.street ); // undefined (no error)
+alert(user?.address?.street); // undefined (no error)
 ```
 
 Le code est court et propre, il n'y a aucune duplication.
@@ -100,8 +100,8 @@ La lecture de l'adresse avec `user?.address` fonctionne même si l'objet `user` 
 ```js run
 let user = null;
 
-alert( user?.address ); // undefined
-alert( user?.address.street ); // undefined
+alert(user?.address); // undefined
+alert(user?.address.street); // undefined
 ```
 
 Remarque: la syntaxe `?.` Rend facultative la valeur qui la précède, mais pas plus.
@@ -182,10 +182,10 @@ let user2 = null; // Imaginez, nous ne pouvons pas autoriser l'utilisateur
 
 let key = "firstName";
 
-alert( user1?.[key] ); // John
-alert( user2?.[key] ); // undefined
+alert(user1?.[key]); // John
+alert(user2?.[key]); // undefined
 
-alert( user1?.[key]?.something?.not?.existing); // undefined
+alert(user1?.[key]?.something?.not?.existing); // undefined
 ```
 
 Nous pouvons également utiliser `?.` avec `delete` :

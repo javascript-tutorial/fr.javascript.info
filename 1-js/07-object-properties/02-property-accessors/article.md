@@ -196,7 +196,7 @@ function User(name, age) {
 
 let john = new User("John", 25);
 
-alert( john.age ); // 25
+alert(john.age); // 25
 ```
 
 ...But sooner or later, things may change. Instead of `age` we may decide to store `birthday`, because it's more precise and convenient:
@@ -236,8 +236,8 @@ function User(name, birthday) {
 
 let john = new User("John", new Date(1992, 6, 1));
 
-alert( john.birthday ); // birthday is available
-alert( john.age );      // ...as well as the age
+alert(john.birthday); // birthday is available
+alert(john.age);      // ...as well as the age
 ```
 
 Now the old code works too and we've got a nice additional property.

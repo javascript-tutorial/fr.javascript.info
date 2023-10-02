@@ -29,8 +29,8 @@ usersMapped = [
 ]
 */
 
-alert( usersMapped[0].id ) // 1
-alert( usersMapped[0].fullName ) // John Smith
+alert(usersMapped[0].id) // 1
+alert(usersMapped[0].fullName) // John Smith
 ```
 
 Donc, en réalité, vous devez mapper un tableau d'objets sur un autre. Essayez d'utiliser `=>` ici. Il y a une petite prise.

@@ -81,7 +81,7 @@ Il dispose de 3 modes de travail :
     ```js run
     let str = "We will, we will rock you";
 
-    alert( str.match(/we/gi) ); // We,we (un tableau de 2 sous-chaînes de caractères correspondant)
+    alert(str.match(/we/gi)); // We,we (un tableau de 2 sous-chaînes de caractères correspondant)
     ```
     Veuillez noter que les deux `match:We` et `match:we` sont trouvés, parce que le flag `pattern:i` rend l'expression régulière insensible à la casse.
 
@@ -91,12 +91,12 @@ Il dispose de 3 modes de travail :
 
     let result = str.match(/we/i); // without flag g
 
-    alert( result[0] );     // We (1st match)
-    alert( result.length ); // 1
+    alert(result[0]);     // We (1st match)
+    alert(result.length); // 1
 
     // Details:
-    alert( result.index );  // 0 (position of the match)
-    alert( result.input );  // We will, we will rock you (source string)
+    alert(result.index);  // 0 (position of the match)
+    alert(result.input);  // We will, we will rock you (source string)
     ```
     Le tableau peut avoir d’autres index, en plus de `0` si une partie de l’expression régulière est entre parenthèses. Nous couvrirons cela dans le chapitre <info:regexp-groups>.
 
@@ -130,27 +130,27 @@ Par exemple :
 
 ```js run
 // no flag g
-alert( "We will, we will".replace(/we/i, "I") ); // I will, we will
+alert("We will, we will".replace(/we/i, "I")); // I will, we will
 
 // with flag g
-alert( "We will, we will".replace(/we/ig, "I") ); // I will, I will
+alert("We will, we will".replace(/we/ig, "I")); // I will, I will
 ```
 
 Le deuxième argument est la chaîne de caractères `replacement`. Nous pouvons utiliser des combinaisons de caractères spéciaux pour insérer des fragments de la correspondance :
 
-| Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                                  |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$&`                 | insère toute la correspondance match                                                                                                                        |
-| <code>$&#096;</code> | insère une partie de la chaîne de caractères avant la correspondance                                                                                        |
-| `$'`                 | insère une partie de la chaîne de caractères après la correspondance                                                                                        |
+| Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$&`                 | insère toute la correspondance match                                                                                                                 |
+| <code>$&#096;</code> | insère une partie de la chaîne de caractères avant la correspondance                                                                                 |
+| `$'`                 | insère une partie de la chaîne de caractères après la correspondance                                                                                 |
 | `$n`                 | si `n` est un nombre à un ou deux chiffres, alors il insère le contenu des nièmes parenthèses, plus à ce sujet dans le chapitre <info:regexp-groups> |
-| `$<name>`            | insère le contenu des parenthèses avec le `name` donné, plus à ce sujet dans le chapitre <info:regexp-groups>                                               |
-| `$$`                 | insère le caractère `$`                                                                                                                                     |
+| `$<name>`            | insère le contenu des parenthèses avec le `name` donné, plus à ce sujet dans le chapitre <info:regexp-groups>                                        |
+| `$$`                 | insère le caractère `$`                                                                                                                              |
 
 Un exemple avec `pattern:$&` :
 
 ```js run
-alert( "I love HTML".replace(/HTML/, "$& and JavaScript") ); // I love HTML and JavaScript
+alert("I love HTML".replace(/HTML/, "$& and JavaScript")); // I love HTML and JavaScript
 ```
 
 ## Tester : regexp.test
@@ -161,7 +161,7 @@ La méthode `regexp.test(str)` recherche au moins une correspondance ; si elle e
 let str = "I love JavaScript";
 let regexp = /LOVE/i;
 
-alert( regexp.test(str) ); // true
+alert(regexp.test(str)); // true
 ```
 
 Plus loin dans ce chapitre, nous étudierons davantage d’expressions régulières, parcourerons de nombreux autres exemples et rencontrerons d’autres méthodes.

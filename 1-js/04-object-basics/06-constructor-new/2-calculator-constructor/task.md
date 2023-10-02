@@ -16,8 +16,8 @@ Par exemple :
 let calculator = new Calculator();
 calculator.read();
 
-alert( "Sum=" + calculator.sum() );
-alert( "Mul=" + calculator.mul() );
+alert("Sum=" + calculator.sum());
+alert("Mul=" + calculator.mul());
 ```
 
 [demo]

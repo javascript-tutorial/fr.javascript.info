@@ -104,7 +104,7 @@ function loadScript(src, callback) {
 *!*
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
   alert(`Cool, the script ${script.src} is loaded`);
-  alert( _ ); // _ est une fonction déclarée dans le script chargé
+  alert(_); // _ est une fonction déclarée dans le script chargé
 });
 */!*
 ```

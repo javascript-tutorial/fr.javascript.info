@@ -9,7 +9,7 @@ function sumTo(n) {
   return sum;
 }
 
-alert( sumTo(100) );
+alert(sumTo(100));
 ```
 
 La solution utilisant la récursion:
@@ -20,7 +20,7 @@ function sumTo(n) {
   return n + sumTo(n - 1);
 }
 
-alert( sumTo(100) );
+alert(sumTo(100));
 ```
 
 La solution utilisant la formule: `sumTo(n) = n*(n+1)/2`:
@@ -30,7 +30,7 @@ function sumTo(n) {
   return n * (n + 1) / 2;
 }
 
-alert( sumTo(100) );
+alert(sumTo(100));
 ```
 
 P.S. Naturellement, la formule est la solution la plus rapide. Elle n’utilise que 3 opérations pour n’importe quel nombre `n`. Le calcul aide!

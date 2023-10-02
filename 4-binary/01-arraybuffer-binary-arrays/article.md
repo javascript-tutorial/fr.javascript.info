@@ -103,8 +103,8 @@ new TypedArray();
     *!*
     let arr = new Uint8Array([0, 1, 2, 3]);
     */!*
-    alert( arr.length ); // 4, a créé une liste binaire de la même taille
-    alert( arr[1] ); // 1, remplit avec 4 octets (entiers non signés sur 8 bits) avec des valeurs données
+    alert(arr.length); // 4, a créé une liste binaire de la même taille
+    alert(arr[1]); // 1, remplit avec 4 octets (entiers non signés sur 8 bits) avec des valeurs données
     ```
 3. Si un autre tableau typé est fourni, il fait la même chose: il crée un tableau typé de la même taille et copie le contenu. Les valeurs sont converties vers le nouveau type dans le processus si besoin.
     ```js run
@@ -112,15 +112,15 @@ new TypedArray();
     *!*
     let arr8 = new Uint8Array(arr16);
     */!*
-    alert( arr8[0] ); // 1
-    alert( arr8[1] ); // 232, 1000 ne rentre pas dans 8 bits (explications plus loin)
+    alert(arr8[0]); // 1
+    alert(arr8[1]); // 232, 1000 ne rentre pas dans 8 bits (explications plus loin)
     ```
 
 4. Si un argument `length` est fourni -- Il crée un tableau typé qui contient autant d'éléments. Sa taille en octets va être `length` multiplié par la taille en octets d'un seul élément `TypedArray.BYTES_PER_ELEMENT`:
     ```js run
     let arr = new Uint16Array(4); // Création d'un tableau typé de 4 entiers
-    alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 octets par entier
-    alert( arr.byteLength ); // 8 (taille en octets)
+    alert(Uint16Array.BYTES_PER_ELEMENT); // 2 octets par entier
+    alert(arr.byteLength); // 8 (taille en octets)
     ```
 
 5. Sans arguments, il crée un tableau typé de taille nulle.
@@ -231,13 +231,13 @@ let buffer = new Uint8Array([255, 255, 255, 255]).buffer;
 let dataView = new DataView(buffer);
 
 // récupération d'un nombre en 8 bits avec un décalage de 0
-alert( dataView.getUint8(0) ); // 255
+alert(dataView.getUint8(0)); // 255
 
 // récupération d'un nombre en 16 bits avec un décalage de 0, soit 2 octets, qui sont interprétés ensemble en 65535
-alert( dataView.getUint16(0) ); // 65535 (Plus grand entier non signé en 16 bits)
+alert(dataView.getUint16(0)); // 65535 (Plus grand entier non signé en 16 bits)
 
 // récupération d'un nombre en 32 bits avec un décalage de 0
-alert( dataView.getUint32(0) ); // 4294967295 (Plus grand entier non signé en 32 bits)
+alert(dataView.getUint32(0)); // 4294967295 (Plus grand entier non signé en 32 bits)
 
 dataView.setUint32(0, 0); // Fixe le nombre sous 4 octets à 0, fixant ainsi tous les octets à 0
 ```

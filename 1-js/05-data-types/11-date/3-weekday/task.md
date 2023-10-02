@@ -8,5 +8,5 @@ Les pays européens ont des jours de la semaine commençant par lundi (numéro 1
 
 ```js no-beautify
 let date = new Date(2012, 0, 3);  // 3 Janvier 2012
-alert( getLocalDay(date) );       // mardi, devrait afficher 2
+alert(getLocalDay(date));       // mardi, devrait afficher 2
 ```

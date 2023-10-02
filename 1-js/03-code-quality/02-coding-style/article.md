@@ -28,7 +28,7 @@ if (n < 0) {
   alert(`Power ${n} is not supported,
     please enter a non-negative integer number`);
 } else {
-  alert( pow(x, n) );
+  alert(pow(x, n));
 }
 ```
 
@@ -127,7 +127,7 @@ Il existe deux types d'indentation :
          one,
          after,
          another
-      ) {
+     ) {
       // ...
     }
     ```

@@ -13,7 +13,7 @@ let meetup = {
 room.occupiedBy = meetup;
 meetup.self = meetup;
 
-alert( JSON.stringify(meetup, function replacer(key, value) {
+alert(JSON.stringify(meetup, function replacer(key, value) {
   return (key != "" && value == meetup) ? undefined : value;
 }));
 

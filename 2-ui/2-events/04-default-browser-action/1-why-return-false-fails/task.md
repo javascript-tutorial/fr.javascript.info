@@ -9,7 +9,7 @@ Pourquoi dans le code ci-dessous `return false` ne fonctionne pas?
 ```html autorun run
 <script>
   function handler() {
-    alert( "..." );
+    alert("...");
     return false;
   }
 </script>

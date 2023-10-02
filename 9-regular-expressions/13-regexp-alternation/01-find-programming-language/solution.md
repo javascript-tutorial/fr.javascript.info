@@ -8,7 +8,7 @@ let regexp = /Java|JavaScript|PHP|C|C\+\+/g;
 
 let str = "Java, JavaScript, PHP, C, C++";
 
-alert( str.match(regexp) ); // Java,Java,PHP,C,C
+alert(str.match(regexp)); // Java,Java,PHP,C,C
 ```
 
 Le moteur d'expression régulière regarde les alternances une par une. C'est-à-dire : il regarde d'abord si nous avons `match:Java`, sinon il recherche `match:JavaScript` et ainsi de suite.
@@ -29,5 +29,5 @@ let regexp = /Java(Script)?|C(\+\+)?|PHP/g;
 
 let str = "Java, JavaScript, PHP, C, C++";
 
-alert( str.match(regexp) ); // Java,JavaScript,PHP,C,C++
+alert(str.match(regexp)); // Java,JavaScript,PHP,C,C++
 ```

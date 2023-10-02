@@ -27,9 +27,9 @@ let lazy = {
 
 // Celui-ci a trouvé la nourriture
 speedy.eat("apple");
-alert( speedy.stomach ); // apple
+alert(speedy.stomach); // apple
 
 // Celui-ci l'a aussi, pourquoi ? Merci de corriger cela.
-alert( lazy.stomach ); // apple
+alert(lazy.stomach); // apple
 ```
 

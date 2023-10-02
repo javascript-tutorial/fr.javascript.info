@@ -120,14 +120,14 @@ Voici une démonstration détaillée de l'utilisation des attributs :
   <div id="elem" about="Elephant"></div>
 
   <script>
-    alert( elem.getAttribute('About') ); // (1) 'Elephant', lecture
+    alert(elem.getAttribute('About')); // (1) 'Elephant', lecture
 
     elem.setAttribute('Test', 123); // (2), écriture
 
-    alert( elem.outerHTML ); // (3), voir si l'attribut est en HTML (oui)
+    alert(elem.outerHTML); // (3), voir si l'attribut est en HTML (oui)
 
     for (let attr of elem.attributes) { // (4) lister tout
-      alert( `${attr.name} = ${attr.value}` );
+      alert(`${attr.name} = ${attr.value}`);
     }
   </script>
 </body>
@@ -229,7 +229,7 @@ Voici un exemple :
   alert(a.getAttribute('href')); // #hello
 
   // property
-  alert(a.href ); // full URL in the form http://site.com/page#hello
+  alert(a.href); // full URL in the form http://site.com/page#hello
 </script>
 ```
 

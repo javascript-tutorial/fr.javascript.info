@@ -33,7 +33,7 @@ function sum(a, b) {
 
 let curriedSum = curry(sum);
 
-alert( curriedSum(1)(2) ); // 3
+alert(curriedSum(1)(2)); // 3
 ```
 
 Comme vous pouvez le voir, l'implémentation est simple : il ne s'agit que de deux enveloppes.
@@ -51,8 +51,8 @@ function sum(a, b) {
 
 let curriedSum = _.curry(sum); // usage de _.curry de la bibliothèque lodash
 
-alert( curriedSum(1, 2) ); // 3, toujours appelable normalement
-alert( curriedSum(1)(2) ); // 3, appelée partiellement
+alert(curriedSum(1, 2)); // 3, toujours appelable normalement
+alert(curriedSum(1)(2)); // 3, appelée partiellement
 ```
 
 ## La curryfication ? Pour quoi faire ?
@@ -140,9 +140,9 @@ function sum(a, b, c) {
 
 let curriedSum = curry(sum);
 
-alert( curriedSum(1, 2, 3) ); // 6, toujours appelable normalement
-alert( curriedSum(1)(2,3) ); // 6, curryfiée au premier argument
-alert( curriedSum(1)(2)(3) ); // 6, curryfiée totalement
+alert(curriedSum(1, 2, 3)); // 6, toujours appelable normalement
+alert(curriedSum(1)(2,3)); // 6, curryfiée au premier argument
+alert(curriedSum(1)(2)(3)); // 6, curryfiée totalement
 ```
 
 La nouvelle `curry` semble être compliquée, mais est assez simple à comprendre.

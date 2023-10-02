@@ -1,9 +1,9 @@
 **La réponse : de `0` à `4` dans les deux cas.**
 
 ```js run
-for (let i = 0; i < 5; ++i) alert( i );
+for (let i = 0; i < 5; ++i) alert(i);
 
-for (let i = 0; i < 5; i++) alert( i );
+for (let i = 0; i < 5; i++) alert(i);
 ```
 
 Ceci peut être facilement déduit de l'algorithme de `for` :

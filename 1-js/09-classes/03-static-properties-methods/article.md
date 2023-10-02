@@ -62,7 +62,7 @@ let articles = [
 articles.sort(Article.compare);
 */!*
 
-alert( articles[0].title ); // CSS
+alert(articles[0].title); // CSS
 ```
 
 Ici, `Article.compare` est "au dessus" des articles, comme un moyen de les comparer. Ce n'est pas une méthode d'article, mais plutôt de toute la classe.
@@ -96,7 +96,7 @@ class Article {
 
 let article = Article.createTodays();
 
-alert( article.title ); // Today's digest
+alert(article.title); // Today's digest
 ```
 
 Maintenant, chaque fois que nous avons besoin de créer le résumé d'aujourd'hui, nous pouvons appeler `Article.createTodays()`. Encore une fois, ce n'est pas une méthode d'article, mais une méthode de toute la classe.
@@ -131,7 +131,7 @@ class Article {
   static publisher = "Ilya Kantor";
 }
 
-alert( Article.publisher ); // Ilya Kantor
+alert(Article.publisher); // Ilya Kantor
 ```
 
 C’est la même chose qu’une assignation directe à `Article`:

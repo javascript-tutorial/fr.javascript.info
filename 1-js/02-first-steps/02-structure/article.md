@@ -145,7 +145,7 @@ Un tel code se terminera avec une erreur :
 /*
   /* commentaire imbriqué ?!? */
 */
-alert( 'World' );
+alert('World');
 ```
 ````
 

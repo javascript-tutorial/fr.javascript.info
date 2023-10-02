@@ -7,7 +7,7 @@ function factorial(n) {
   return (n != 1) ? n * factorial(n - 1) : 1;
 }
 
-alert( factorial(5) ); // 120
+alert(factorial(5)); // 120
 ```
 
 La base de la récursivité est la valeur `1`. Nous pouvons aussi faire de `0` la base ici, ça importe peu, mais donne une étape récursive supplémentaire:
@@ -17,5 +17,5 @@ function factorial(n) {
   return n ? n * factorial(n - 1) : 1;
 }
 
-alert( factorial(5) ); // 120
+alert(factorial(5)); // 120
 ```

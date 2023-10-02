@@ -208,7 +208,7 @@ let range = {
   }
 };
 
-alert( [...range] ); // 1,2,3,4,5
+alert([...range]); // 1,2,3,4,5
 ```
 
 Cela fonctionne, car `range[Symbol.iterator]()` renvoie maintenant un générateur, et les méthodes de générateur sont exactement ce que `for..of` attend:
@@ -373,11 +373,11 @@ function* gen() {
 
 let generator = gen();
 
-alert( generator.next().value ); // "2 + 2 = ?"
+alert(generator.next().value); // "2 + 2 = ?"
 
-alert( generator.next(4).value ); // "3 * 3 = ?"
+alert(generator.next(4).value); // "3 * 3 = ?"
 
-alert( generator.next(9).done ); // true
+alert(generator.next(9).done); // true
 ```
 
 L'image d'exécution:

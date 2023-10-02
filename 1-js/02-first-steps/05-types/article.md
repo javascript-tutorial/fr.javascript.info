@@ -32,26 +32,26 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
     Nous pouvons l'obtenir à la suite d'une division par zéro :
 
     ```js run
-    alert( 1 / 0 ); // Infinity
+    alert(1 / 0); // Infinity
     ```
 
     Ou mentionnez-le simplement dans le code directement :
 
     ```js run
-    alert( Infinity ); // Infinity
+    alert(Infinity); // Infinity
     ```
 - `NaN` représente une erreur de calcul. C'est le résultat d'une opération mathématique incorrecte ou non définie, par exemple :
 
     ```js run
-    alert( "pas un nombre" / 2 ); // NaN, une telle division est erronée
+    alert("pas un nombre" / 2); // NaN, une telle division est erronée
     ```
 
     `NaN` est contagieux. Toute autre opération sur `NaN` donnerait un `NaN` :
 
     ```js run
-    alert( NaN + 1 ); // NaN
-    alert( 3 * NaN ); // NaN
-    alert( "not a number" / 2 - 1 ); // NaN
+    alert(NaN + 1); // NaN
+    alert(3 * NaN); // NaN
+    alert("not a number" / 2 - 1); // NaN
     ```
 
     Donc, s'il y a `NaN` quelque part dans une expression mathématique, il se propage à l'ensemble du résultat (il n'y a qu'une seule exception : `NaN ** 0` vaut `1`).
@@ -68,7 +68,7 @@ Nous en verrons plus sur le travail avec les nombres dans le chapitre <info:numb
 
 ## BigInt [#bigint-type]
 
-En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>(2<sup>53</sup>-1)</code> ( `9007199254740991`), ou moins que <code>-(2<sup>53</sup>-1)</code> pour les chiffres négatifs. C'est une limitation technique causée par leur représentation interne.
+En JavaScript, le type "number" ne peut pas représenter des valeurs entières supérieures à <code>(2<sup>53</sup>-1)</code> (`9007199254740991`), ou moins que <code>-(2<sup>53</sup>-1)</code> pour les chiffres négatifs. C'est une limitation technique causée par leur représentation interne.
 
 Pour être vraiment précis, le type "number" peut stocker des entiers plus grands (jusqu'à <code>1.7976931348623157 * 10<sup>308</sup></code>), mais en dehors de la plage d'entiers sûrs <code>±(2 <sup>53</sup>-1)</code> il y aura une erreur de précision, car tous les chiffres ne rentrent pas dans le stockage 64 bits fixe. Ainsi, une valeur "approximative" peut être stockée.
 
@@ -124,17 +124,17 @@ Les backticks sont des guillemets "à fonctionnalité étendue". Ils nous permet
 let name = "John";
 
 // Une variable encapsulée
-alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
+alert(`Hello, *!*${name}*/!*!`); // Hello, John!
 
 // Une expression encapsulée
-alert( `the result is *!*${1 + 2}*/!*` ); // Le résultat est 3
+alert(`the result is *!*${1 + 2}*/!*`); // Le résultat est 3
 ```
 
 L'expression à l'intérieur de `${…}` est évaluée et le résultat devient une partie de la chaîne. On peut y mettre n'importe quoi : une variable comme `name` ou une expression arithmétique comme `1 + 2` ou quelque chose de plus complexe.
 
 Veuillez noter que cela ne peut être fait que dans les backticks. Les autres guillemets ne permettent pas une telle intégration !
 ```js run
-alert( "the result is ${1 + 2}" ); // Le résultat est ${1 + 2} (les doubles quotes ne font rien)
+alert("the result is ${1 + 2}"); // Le résultat est ${1 + 2} (les doubles quotes ne font rien)
 ```
 
 Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <info:string>.
@@ -163,7 +163,7 @@ Les valeurs booléennes résultent également de comparaisons :
 ```js run
 let isGreater = 4 > 1;
 
-alert( isGreater ); // True (le résultat de la comparaison est vrai, 4 est bien supérieur à 1)
+alert(isGreater); // True (le résultat de la comparaison est vrai, 4 est bien supérieur à 1)
 ```
 
 Nous couvrirons plus profondément les booléens dans le chapitre <info:logical-operators>.

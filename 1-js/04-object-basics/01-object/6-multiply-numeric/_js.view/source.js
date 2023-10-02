@@ -12,4 +12,4 @@ function multiplyNumeric(obj) {
 
 multiplyNumeric(menu);
 
-alert( "menu width=" + menu.width + " height=" + menu.height + " title=" + menu.title );
+alert("menu width=" + menu.width + " height=" + menu.height + " title=" + menu.title);

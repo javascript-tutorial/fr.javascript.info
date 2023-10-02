@@ -11,7 +11,7 @@ function sum(a) {
 
 }
 
-alert( sum(1)(2) ); // 3
-alert( sum(5)(-1) ); // 4
+alert(sum(1)(2)); // 3
+alert(sum(5)(-1)); // 4
 ```
 

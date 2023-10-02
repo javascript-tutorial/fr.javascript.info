@@ -8,7 +8,7 @@ Par exemple, testons si le texte commence par `Mary`:
 
 ```js run
 let str1 = "Mary had a little lamb";
-alert( /^Mary/.test(str1) ); // true
+alert(/^Mary/.test(str1)); // true
 ```
 
 Le paterne `pattern:^Mary` signifie : "le texte commence puis Mary".
@@ -17,7 +17,7 @@ Similairement, nous pouvons vérifier si le texte termine par `snow` en utilisan
 
 ```js run
 let str1 = "its fleece was white as snow";
-alert( /snow$/.test(str1) ); // true
+alert(/snow$/.test(str1)); // true
 ```
 
 In these particular cases we could use string methods `startsWith/endsWith` instead. Regular expressions should be used for more complex tests.
@@ -35,8 +35,8 @@ let goodInput = "12:34";
 let badInput = "12:345";
 
 let regexp = /^\d\d:\d\d$/;
-alert( regexp.test(goodInput) ); // true
-alert( regexp.test(badInput) ); // false
+alert(regexp.test(goodInput)); // true
+alert(regexp.test(badInput)); // false
 ```
 
 Ici, la correspondance pour `pattern:\d\d:\d\d` doit commencer juste après le début du texte `pattern:^`, et la fin `pattern:$` doit immédiatement suivre.

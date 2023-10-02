@@ -28,7 +28,7 @@ function aclean(arr) {
 
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-alert( aclean(arr) );
+alert(aclean(arr));
 ```
 
 Le tri des lettres se fait par la chaîne d'appels en ligne `(*)`.
@@ -73,5 +73,5 @@ function aclean(arr) {
 
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-alert( aclean(arr) );
+alert(aclean(arr));
 ```

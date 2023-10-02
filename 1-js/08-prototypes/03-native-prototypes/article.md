@@ -10,7 +10,7 @@ Disons que nous produisons un objet vide :
 
 ```js run
 let obj = {};
-alert( obj ); // "[object Object]" ?
+alert(obj); // "[object Object]" ?
 ```
 
 Où est le code qui génère la chaîne `"[object Object]"` ? C'est une méthode `toString` intégrée, mais où est-elle ? L'objet `obj` est vide !
@@ -62,13 +62,13 @@ Vérifions les prototypes manuellement :
 let arr = [1, 2, 3];
 
 // il hérite de Array.prototype ?
-alert( arr.__proto__ === Array.prototype ); // true
+alert(arr.__proto__ === Array.prototype); // true
 
 // puis de Object.prototype ?
-alert( arr.__proto__.__proto__ === Object.prototype ); // true
+alert(arr.__proto__.__proto__ === Object.prototype); // true
 
 // et null tout en haut.
-alert( arr.__proto__.__proto__.__proto__ ); // null
+alert(arr.__proto__.__proto__.__proto__); // null
 ```
 
 Certaines méthodes dans les prototypes peuvent se chevaucher, par exemple, `Array.prototype` a son propre `toString` qui répertorie les éléments délimités par des virgules :
@@ -149,7 +149,7 @@ if (!String.prototype.repeat) { // s'il n'y a pas une telle méthode
   };
 }
 
-alert( "La".repeat(3) ); // LaLaLa
+alert("La".repeat(3)); // LaLaLa
 ```
 
 ## Emprunt de prototypes
@@ -175,7 +175,7 @@ let obj = {
 obj.join = Array.prototype.join;
 */!*
 
-alert( obj.join(',') ); // Hello,world!
+alert(obj.join(',')); // Hello,world!
 ```
 
 Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`. Il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.

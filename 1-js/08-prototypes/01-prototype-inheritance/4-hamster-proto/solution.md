@@ -36,10 +36,10 @@ let lazy = {
 
 // Speedy a trouvé la nourriture
 speedy.eat("apple");
-alert( speedy.stomach ); // apple
+alert(speedy.stomach); // apple
 
 // L'estomac de Lazy est vide
-alert( lazy.stomach ); // <rien>
+alert(lazy.stomach); // <rien>
 ```
 
 Maintenant, tout fonctionne bien, car `this.stomach=` n'effectue pas de recherche de `stomach`. La valeur est écrite directement dans l'objet `this`.
@@ -71,10 +71,10 @@ let lazy = {
 
 // Speedy a trouvé la nourriture
 speedy.eat("apple");
-alert( speedy.stomach ); // apple
+alert(speedy.stomach); // apple
 
 // L'estomac de Lazy est vide
-alert( lazy.stomach ); // <rien>
+alert(lazy.stomach); // <rien>
 ```
 
 En tant que solution commune, toutes les propriétés qui décrivent l'état d'un objet particulier, comme `stomach` ci-dessus, devraient être écrits dans cet objet. Cela empêche de tels problèmes.

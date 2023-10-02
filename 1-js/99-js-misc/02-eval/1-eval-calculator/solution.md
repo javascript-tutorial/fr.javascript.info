@@ -3,7 +3,7 @@ Utilisons `eval` pour calculer l'expression mathématique :
 ```js demo run
 let expr = prompt("Type an arithmetic expression?", '2*3+2');
 
-alert( eval(expr) );
+alert(eval(expr));
 ```
 
 L'utilisateur peut envoyer n'importe quel texte ou code cependant.

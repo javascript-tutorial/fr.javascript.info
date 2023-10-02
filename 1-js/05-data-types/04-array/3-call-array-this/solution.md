@@ -6,7 +6,7 @@ Nous avons donc un appel de la fonction `arr[2]` comme méthode d'objet. Naturel
 let arr = ["a", "b"];
 
 arr.push(function() {
-  alert( this );
+  alert(this);
 })
 
 arr[2](); // a,b,function(){...}

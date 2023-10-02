@@ -18,7 +18,7 @@ C'est plus facile à comprendre en regardant un exemple. Voici une fonction avec
 ```js run
 let sum = new Function('a', 'b', 'return a + b');
 
-alert( sum(1, 2) ); // 3
+alert(sum(1, 2)); // 3
 ```
 
 Et voici une fonction sans arguments, seulement le corps de la fonction :

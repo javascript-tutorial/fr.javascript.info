@@ -13,7 +13,7 @@ function getSecondsToday() {
   return Math.round(diff / 1000); // arrondir en secondes
 }
 
-alert( getSecondsToday() );
+alert(getSecondsToday());
 ```
 
 Une autre solution serait d’obtenir les heures / minutes / secondes et de les convertir en secondes:
@@ -24,5 +24,5 @@ function getSecondsToday() {
   return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
 }
 
-alert( getSecondsToday() );
+alert(getSecondsToday());
 ```

@@ -46,8 +46,8 @@ Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgi
 ```js run
 let str = "A ბ ㄱ";
 
-alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
-alert( str.match(/\p{L}/g) ); // null (aucune correspondance, \p ne fonctionne pas sans le flag "u")
+alert(str.match(/\p{L}/gu)); // A,ბ,ㄱ
+alert(str.match(/\p{L}/g)); // null (aucune correspondance, \p ne fonctionne pas sans le flag "u")
 ```
 
 Voici les principales catégories de caractères et leurs sous-catégories :
@@ -129,7 +129,7 @@ let regexp = /\p{sc=Han}/gu; // renvoie des hiéroglyphes Chinois
 
 let str = `Hello Привет 你好 123_456`;
 
-alert( str.match(regexp) ); // 你,好
+alert(str.match(regexp)); // 你,好
 ```
 
 ### Exemple: devise
@@ -143,7 +143,7 @@ let regexp = /\p{Sc}\d/gu;
 
 let str = `Prices: $2, €1, ¥9`;
 
-alert( str.match(regexp) ); // $2,€1,¥9
+alert(str.match(regexp)); // $2,€1,¥9
 ```
 
 Plus loin, dans l'article <info:regexp-quantifiers>, nous verrons comment rechercher des nombres contenant de nombreux chiffres.

@@ -15,7 +15,7 @@ function makeArmy() {
   let i = 0;
   while (i < 10) {
     let shooter = function() { // créer une fonction shooter
-      alert( i ); // qui devrait afficher son numéro
+      alert(i); // qui devrait afficher son numéro
     };
     shooters.push(shooter); // and add it to the array
     i++;

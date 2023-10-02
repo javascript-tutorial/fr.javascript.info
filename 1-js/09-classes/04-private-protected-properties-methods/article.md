@@ -69,7 +69,7 @@ class CoffeeMachine {
 
   constructor(power) {
     this.power = power;
-    alert( `Created a coffee-machine, power: ${power}` );
+    alert(`Created a coffee-machine, power: ${power}`);
   }
 
 }
@@ -256,7 +256,7 @@ Mais si nous héritons de `CoffeeMachine`, nous n’aurons aucun accès direct �
 class MegaCoffeeMachine extends CoffeeMachine {
   method() {
 *!*
-    alert( this.#waterAmount ); // Error: can only access from CoffeeMachine
+    alert(this.#waterAmount); // Error: can only access from CoffeeMachine
 */!*
   }
 }
