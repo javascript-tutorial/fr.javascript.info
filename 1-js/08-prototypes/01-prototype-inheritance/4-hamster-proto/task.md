@@ -6,7 +6,8 @@ importance: 5
 
 Nous avons deux hamsters: `speedy` et `lazy` héritant de l'objet général `hamster`.
 
-Lorsque nous nourrissons l'un d'eux, l'autre est également rassasié. Pourquoi ? Comment y remédier ?
+Lorsque nous nourrissons l'un d'eux, l'autre est également rassasié.
+Pourquoi ? Comment y remédier ?
 
 ```js run
 let hamster = {

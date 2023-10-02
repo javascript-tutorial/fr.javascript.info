@@ -1,7 +1,8 @@
 
 # Propriétés et méthodes statiques
 
-Nous pouvons aussi assigner une méthode à la fonction de classe elle-même, pas à son `"prototype"`. De telles méthodes sont appelées *statique*.
+Nous pouvons aussi assigner une méthode à la fonction de classe elle-même, pas à son `"prototype"`.
+De telles méthodes sont appelées *statique*.
 
 Dans une classe, elles sont précédées du mot clé `static`, comme ceci:
 
@@ -65,17 +66,23 @@ articles.sort(Article.compare);
 alert(articles[0].title); // CSS
 ```
 
-Ici, `Article.compare` est "au dessus" des articles, comme un moyen de les comparer. Ce n'est pas une méthode d'article, mais plutôt de toute la classe.
+Ici, `Article.compare` est "au dessus" des articles, comme un moyen de les comparer.
+Ce n'est pas une méthode d'article, mais plutôt de toute la classe.
 
 Un autre exemple serait une méthode dite "d'usine".
 
 Disons que nous avons besoin de plusieurs façons de créer un article :
 
-1. Créez avec des paramètres donnés (`title`, `date` etc.).
-2. Créez un article vide avec la date du jour.
-3. ... ou d'une certaine manière.
+1.
+Créez avec des paramètres donnés (`title`, `date` etc.).
+2.
+Créez un article vide avec la date du jour.
+3.
+...
+ou d'une certaine manière.
 
-Le premier moyen peut être implémenté par le constructeur. Et pour le second, nous pouvons créer une méthode statique de la classe.
+Le premier moyen peut être implémenté par le constructeur.
+Et pour le second, nous pouvons créer une méthode statique de la classe.
 
 Comme `Article.createTodays()` ici :
 
@@ -99,7 +106,8 @@ let article = Article.createTodays();
 alert(article.title); // Today's digest
 ```
 
-Maintenant, chaque fois que nous avons besoin de créer le résumé d'aujourd'hui, nous pouvons appeler `Article.createTodays()`. Encore une fois, ce n'est pas une méthode d'article, mais une méthode de toute la classe.
+Maintenant, chaque fois que nous avons besoin de créer le résumé d'aujourd'hui, nous pouvons appeler `Article.createTodays()`.
+Encore une fois, ce n'est pas une méthode d'article, mais une méthode de toute la classe.
 
 Les méthodes statiques sont également utilisées dans les classes liées à la base de données pour rechercher/enregistrer/supprimer des entrées dans la base de données, comme ceci:
 
@@ -191,14 +199,17 @@ alert(Rabbit.planet); // Earth
 
 Maintenant, lorsque nous appellerons `Rabbit.compare`, le `Animal.compare` hérité sera appelé.
 
-Comment cela fonctionne t-il? Encore une fois, en utilisant des prototypes. Comme vous l'avez peut-être déjà deviné, `extends` donne à `Rabbit` la référence de `[[Prototype]]` à `Animal`.
+Comment cela fonctionne t-il? Encore une fois, en utilisant des prototypes.
+Comme vous l'avez peut-être déjà deviné, `extends` donne à `Rabbit` la référence de `[[Prototype]]` à `Animal`.
 
 ![](animal-rabbit-static.svg)
 
 Ainsi, `Rabbit extends Animal` crée deux références `[[Prototype]]`:
 
-1. La fonction `Rabbit` hérite de façon prototypique de la fonction `Animal`.
-2. `Rabbit.prototype` hérite de façon prototypique de `Animal.prototype`.
+1.
+La fonction `Rabbit` hérite de façon prototypique de la fonction `Animal`.
+2.
+`Rabbit.prototype` hérite de façon prototypique de `Animal.prototype`.
 
 En conséquence, l'héritage fonctionne à la fois pour les méthodes régulières et statiques.
 
@@ -217,7 +228,8 @@ alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
 
 ## Résumé
 
-Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble". Cela ne concerne pas une instance de classe concrète.
+Les méthodes statiques sont utilisées pour les fonctionnalités appartenant à la classe "dans son ensemble".
+Cela ne concerne pas une instance de classe concrète.
 
 Par exemple, une méthode de comparaison `Article.compare(article1, article2)` ou une méthode d'usine `Article.createTodays()`.
 
@@ -246,4 +258,5 @@ MyClass.method = ...
 
 Les propriétés et méthodes statiques sont héritées.
 
-Pour `class B extends A`, le prototype de la classe `B` pointe lui-même à `A`: `B.[[Prototype]] = A`. Donc, si un champ n'est pas trouvé dans `B`, la recherche continue dans `A`.
+Pour `class B extends A`, le prototype de la classe `B` pointe lui-même à `A`: `B.[[Prototype]] = A`.
+Donc, si un champ n'est pas trouvé dans `B`, la recherche continue dans `A`.

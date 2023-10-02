@@ -28,7 +28,8 @@ Pour nos propres scripts, nous pourrions utiliser des [modules JavaScript] (info
 
 ### script.onload
 
-L'assistant principal est l'événement `load`. Il se déclenche après le chargement et l'exécution du script.
+L'assistant principal est l'événement `load`.
+Il se déclenche après le chargement et l'exécution du script.
 
 Par exemple:
 
@@ -70,12 +71,16 @@ script.onerror = function() {
 */!*
 ```
 
-Veuillez noter que nous ne pouvons pas obtenir les détails des erreurs HTTP ici. Nous ne savons pas si c'était une erreur 404 ou 500 ou autre chose. Juste que le chargement a échoué.
+Veuillez noter que nous ne pouvons pas obtenir les détails des erreurs HTTP ici.
+Nous ne savons pas si c'était une erreur 404 ou 500 ou autre chose.
+Juste que le chargement a échoué.
 
 ```warn
 Les événements `onload`/`onerror` ne suivent que le chargement lui-même.
 
-Les erreurs qui peuvent survenir lors du traitement et de l'exécution du script sont hors de portée de ces événements. C'est-à-dire: si un script s'est chargé avec succès, alors `onload` se déclenche, même s'il contient des erreurs de programmation. Pour suivre les erreurs de script, on peut utiliser le gestionnaire global `window.onerror`.
+Les erreurs qui peuvent survenir lors du traitement et de l'exécution du script sont hors de portée de ces événements.
+C'est-à-dire: si un script s'est chargé avec succès, alors `onload` se déclenche, même s'il contient des erreurs de programmation.
+Pour suivre les erreurs de script, on peut utiliser le gestionnaire global `window.onerror`.
 ```
 
 ## Autres ressources
@@ -99,16 +104,20 @@ img.onerror = function() {
 
 Il y a quelques notes cependant:
 
-- La plupart des ressources commencent à se charger lorsqu'elles sont ajoutées au document. Mais `<img>` est une exception. Elle commence à se charger lorsqu'elle obtient un src `(*)`.
+- La plupart des ressources commencent à se charger lorsqu'elles sont ajoutées au document.
+Mais `<img>` est une exception.
+Elle commence à se charger lorsqu'elle obtient un src `(*)`.
 - Pour `<iframe>`, l'événement `iframe.onload` se déclenche lorsque le chargement de l'iframe est terminé, à la fois pour un chargement réussi et en cas d'erreur.
 
 C'est pour des raisons historiques.
 
 ## Politique de crossorigin
 
-Il y a une règle: les scripts d'un site ne peuvent pas accéder au contenu de l'autre site. Donc, par exemple un script sur `https://facebook.com` ne peut pas lire la boîte aux lettres de l'utilisateur sur `https://gmail.com`.
+Il y a une règle: les scripts d'un site ne peuvent pas accéder au contenu de l'autre site.
+Donc, par exemple un script sur `https://facebook.com` ne peut pas lire la boîte aux lettres de l'utilisateur sur `https://gmail.com`.
 
-Ou, pour être plus précis, une origine (triplet domaine/port/protocole) ne peut pas accéder au contenu à partir d'une autre. Donc, même si nous avons un sous-domaine, ou juste un autre port, ce sont des origines différentes sans accès les uns aux autres.
+Ou, pour être plus précis, une origine (triplet domaine/port/protocole) ne peut pas accéder au contenu à partir d'une autre.
+Donc, même si nous avons un sous-domaine, ou juste un autre port, ce sont des origines différentes sans accès les uns aux autres.
 
 Cette règle affecte également les ressources d'autres domaines.
 
@@ -157,11 +166,14 @@ Script error.
 , 0:0
 ```
 
-Les détails peuvent varier en fonction du navigateur, mais l'idée est la même: toute information sur les éléments internes d'un script, y compris les traces de pile d'erreurs, est masquée. Exactement parce que c'est d'un autre domaine.
+Les détails peuvent varier en fonction du navigateur, mais l'idée est la même: toute information sur les éléments internes d'un script, y compris les traces de pile d'erreurs, est masquée.
+Exactement parce que c'est d'un autre domaine.
 
 Pourquoi avons-nous besoin de détails d'erreur?
 
-Il existe de nombreux services (et nous pouvons créer le nôtre) qui écoutent les erreurs globales en utilisant `window.onerror`, enregistrent les erreurs et fournissent une interface pour y accéder et les analyser. C'est génial, car nous pouvons voir de vraies erreurs, déclenchées par nos utilisateurs. Mais si un script vient d'une autre origine, alors il n'y a pas beaucoup d'informations sur les erreurs, comme nous venons de le voir.
+Il existe de nombreux services (et nous pouvons créer le nôtre) qui écoutent les erreurs globales en utilisant `window.onerror`, enregistrent les erreurs et fournissent une interface pour y accéder et les analyser.
+C'est génial, car nous pouvons voir de vraies erreurs, déclenchées par nos utilisateurs.
+Mais si un script vient d'une autre origine, alors il n'y a pas beaucoup d'informations sur les erreurs, comme nous venons de le voir.
 
 Une politique d’origine croisée similaire (CORS) est également appliquée pour d’autres types de ressources.
 
@@ -169,17 +181,25 @@ Une politique d’origine croisée similaire (CORS) est également appliquée po
 
 Il existe trois niveaux d'accès cross-origin:
 
-1. **Aucun attribut `crossorigin`** -- accès interdit.
-2. **`crossorigin="anonymous"`** -- accès autorisé si le serveur répond avec l'en-tête `Access-Control-Allow-Origin` avec `*` ou notre origine. Le navigateur n'envoie pas d'autorisationinformation and cookies to remote server.
-3. **`crossorigin="use-credentials"`** -- accès autorisé si le serveur renvoie l'en-tête `Access-Control-Allow-Origin` avec notre origine et `Access-Control-Allow-Credentials:true`. Le navigateur envoie des informations d'autorisation et des cookies au serveur distant.
+1.
+**Aucun attribut `crossorigin`** -- accès interdit.
+2.
+**`crossorigin="anonymous"`** -- accès autorisé si le serveur répond avec l'en-tête `Access-Control-Allow-Origin` avec `*` ou notre origine.
+Le navigateur n'envoie pas d'autorisationinformation and cookies to remote server.
+3.
+**`crossorigin="use-credentials"`** -- accès autorisé si le serveur renvoie l'en-tête `Access-Control-Allow-Origin` avec notre origine et `Access-Control-Allow-Credentials:true`.
+Le navigateur envoie des informations d'autorisation et des cookies au serveur distant.
 
 ```smart
-Vous pouvez en savoir plus sur l'accès cross-origin dans le chapitre <info:fetch-crossorigin>. Il décrit la méthode `fetch` pour les requêtes réseau, mais la politique est exactement la même.
+Vous pouvez en savoir plus sur l'accès cross-origin dans le chapitre <info:fetch-crossorigin>.
+Il décrit la méthode `fetch` pour les requêtes réseau, mais la politique est exactement la même.
 
 Les "cookies" sont hors de notre portée actuelle, mais vous pouvez les lire dans le chapitre <info:cookie>.
 ```
 
-Dans notre cas, nous n'avions aucun attribut crossorigin. L'accès cross-origin était donc interdit. Ajoutons-le.
+Dans notre cas, nous n'avions aucun attribut crossorigin.
+L'accès cross-origin était donc interdit.
+Ajoutons-le.
 
 Nous pouvons choisir entre `"anonymous"` (aucun cookie envoyé, un en-tête côté serveur nécessaire) et `"use-credentials"` (envoie également des cookies, deux en-têtes côté serveur nécessaires).
 
@@ -194,7 +214,8 @@ window.onerror = function(message, url, line, col, errorObj) {
 <script *!*crossorigin="anonymous"*/!* src="https://cors.javascript.info/article/onload-onerror/crossorigin/error.js"></script>
 ```
 
-Maintenant, en supposant que le serveur fournit un en-tête `Access-Control-Allow-Origin`, tout va bien. Nous avons le rapport d'erreur complet.
+Maintenant, en supposant que le serveur fournit un en-tête `Access-Control-Allow-Origin`, tout va bien.
+Nous avons le rapport d'erreur complet.
 
 ## Résumé
 

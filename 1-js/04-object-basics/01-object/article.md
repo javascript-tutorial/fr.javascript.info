@@ -1,12 +1,18 @@
 # Objets
 
-Comme nous le savons depuis le chapitre <info:types>, il existe huit types de données dans le langage JavaScript. Sept d'entre eux sont appelés "primitifs", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
+Comme nous le savons depuis le chapitre <info:types>, il existe huit types de données dans le langage JavaScript.
+Sept d'entre eux sont appelés "primitifs", car leurs valeurs ne contiennent qu'une seule chose (que ce soit une chaîne, un nombre ou autre).
 
-En revanche, les objets sont utilisés pour stocker des collections de données variées et d’entités plus complexes. En JavaScript, les objets pénètrent dans presque tous les aspects du langage. Nous devons donc d'abord les comprendre avant d'aller plus loin.
+En revanche, les objets sont utilisés pour stocker des collections de données variées et d’entités plus complexes.
+En JavaScript, les objets pénètrent dans presque tous les aspects du langage.
+Nous devons donc d'abord les comprendre avant d'aller plus loin.
 
-Un objet peut être créé avec des accolades `{…}`, avec une liste optionnelle de *propriétés*. Une propriété est une paire "clé: valeur", dans laquelle la clé (`key`) est une chaîne de caractères (également appelée "nom de la propriété"), et la valeur (`value`) peut être n'importe quoi.
+Un objet peut être créé avec des accolades `{…}`, avec une liste optionnelle de *propriétés*.
+Une propriété est une paire "clé: valeur", dans laquelle la clé (`key`) est une chaîne de caractères (également appelée "nom de la propriété"), et la valeur (`value`) peut être n'importe quoi.
 
-Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
+Nous pouvons imaginer un objet comme une armoire avec des fichiers signés.
+Chaque donnée est stockée dans son fichier par la clé.
+Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
 ![](object.svg)
 
@@ -19,7 +25,8 @@ let user = {};  // Syntaxe "objet littéral"
 
 ![](object-user-empty.svg)
 
-Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
+Habituellement, les accolades `{...}` sont utilisées.
+Cette déclaration s'appelle un littéral objet (*object literal*).
 
 ## Littéraux et propriétés
 
@@ -36,8 +43,10 @@ Une propriété a une clé (également appelée "nom" ou "identifiant") avant le
 
 Dans l'objet `user`, il y a deux propriétés :
 
-1. La première propriété porte le nom `"name"` et la valeur `"John"`.
-2. La seconde a le nom `"age"` et la valeur `30`.
+1.
+La première propriété porte le nom `"name"` et la valeur `"John"`.
+2.
+La seconde a le nom `"age"` et la valeur `30`.
 
 L'objet `user` résultant peut être imaginé comme une armoire avec deux fichiers signés intitulés "nom" et "âge".
 
@@ -53,7 +62,8 @@ alert(user.name); // John
 alert(user.age); // 30
 ```
 
-La valeur peut être de tout type. Ajoutons un booléen :
+La valeur peut être de tout type.
+Ajoutons un booléen :
 
 ```js
 user.isAdmin = true;
@@ -89,7 +99,8 @@ let user = {
   age: 30*!*,*/!*
 }
 ```
-Cela s'appelle une virgule "trailing" ou "hanging". Elle facilite l'ajout/suppression/déplacement des propriétés, car toutes les lignes se ressemblent.
+Cela s'appelle une virgule "trailing" ou "hanging".
+Elle facilite l'ajout/suppression/déplacement des propriétés, car toutes les lignes se ressemblent.
 
 ## Crochets
 
@@ -100,9 +111,11 @@ Pour les propriétés multi-mots, l’accès par points ne fonctionne pas :
 user.likes birds = true
 ```
 
-JavaScript ne comprend pas cela. Il pense que nous adressons `user.likes`, ensuite il donne une erreur de syntaxe lorsqu'il rencontre `birds`, car l'expression est inattendue.
+JavaScript ne comprend pas cela.
+Il pense que nous adressons `user.likes`, ensuite il donne une erreur de syntaxe lorsqu'il rencontre `birds`, car l'expression est inattendue.
 
-Le point nécessite que la clé soit un identificateur de variable valide. Cela implique qu'elle ne contient aucun espace, ne commence pas par un chiffre et n'inclut pas de caractères spéciaux (`$` et `_` sont autorisés).
+Le point nécessite que la clé soit un identificateur de variable valide.
+Cela implique qu'elle ne contient aucun espace, ne commence pas par un chiffre et n'inclut pas de caractères spéciaux (`$` et `_` sont autorisés).
 
 Il existe une autre “notation entre crochets” qui fonctionne avec n’importe quelle chaîne :
 
@@ -130,7 +143,9 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur. Et ensuite, nous l'utilisons pour accéder à la propriété. Cela nous donne beaucoup de flexibilité.
+Ici, la variable `key` peut être calculée au moment de l'exécution ou dépendre de la saisie de l'utilisateur.
+Et ensuite, nous l'utilisons pour accéder à la propriété.
+Cela nous donne beaucoup de flexibilité.
 
 Par exemple :
 
@@ -160,7 +175,8 @@ alert(user.key) // undefined
 
 ### Propriétés calculées
 
-Nous pouvons utiliser des crochets dans un objet littéral, lorsqu'on crée un objet. Cela s'appelle des propriétés calculées (*computed properties*).
+Nous pouvons utiliser des crochets dans un objet littéral, lorsqu'on crée un objet.
+Cela s'appelle des propriétés calculées (*computed properties*).
 
 Par exemple :
 
@@ -201,9 +217,12 @@ let bag = {
 };
 ```
 
-Les crochets sont beaucoup plus puissants que la notation par points. Ils autorisent tous les noms de propriété et variables. Mais ils sont aussi plus lourds à écrire.
+Les crochets sont beaucoup plus puissants que la notation par points.
+Ils autorisent tous les noms de propriété et variables.
+Mais ils sont aussi plus lourds à écrire.
 
-Ainsi, la plupart du temps, lorsque les noms de propriété sont connus et simples, le point est utilisé. Et si nous avons besoin de quelque chose de plus complexe, nous passons aux crochets.
+Ainsi, la plupart du temps, lorsque les noms de propriété sont connus et simples, le point est utilisé.
+Et si nous avons besoin de quelque chose de plus complexe, nous passons aux crochets.
 
 ## Valeur de propriété abrégée (Property value shorthand)
 
@@ -224,7 +243,8 @@ let user = makeUser("John", 30);
 alert(user.name); // John
 ```
 
-Dans l'exemple ci-dessus, les propriétés portent les mêmes noms que les variables. Le cas d’utilisation de la création d’une propriété à partir d’une variable est si courant qu’il existe une valeur spéciale de propriété abrégée (*property value shorthand*) pour la rendre plus courte.
+Dans l'exemple ci-dessus, les propriétés portent les mêmes noms que les variables.
+Le cas d’utilisation de la création d’une propriété à partir d’une variable est si courant qu’il existe une valeur spéciale de propriété abrégée (*property value shorthand*) pour la rendre plus courte.
 
 Au lieu de `name:name`, nous pouvons simplement écrire `name`, comme ceci :
 
@@ -266,7 +286,8 @@ let obj = {
 alert(obj.for + obj.let + obj.return);  // 6
 ```
 
-En bref, il n'y a aucune limitation sur les noms de propriété. Il peut s'agir de n'importe quelle chaîne de caractères ou symbole (un type spécial pour les identifiants, qui sera traité plus tard).
+En bref, il n'y a aucune limitation sur les noms de propriété.
+Il peut s'agir de n'importe quelle chaîne de caractères ou symbole (un type spécial pour les identifiants, qui sera traité plus tard).
 
 Les autres types sont automatiquement convertis en chaînes de caractères.
 
@@ -282,7 +303,8 @@ alert(obj["0"]); // test
 alert(obj[0]); // test (même propriété)
 ```
 
-Il y a un problème mineur avec une propriété spéciale nommée `__proto__`. Nous ne pouvons pas le définir sur une valeur non-objet :
+Il y a un problème mineur avec une propriété spéciale nommée `__proto__`.
+Nous ne pouvons pas le définir sur une valeur non-objet :
 
 ```js run
 let obj = {};
@@ -296,9 +318,11 @@ Nous couvrirons la nature particulière de `__proto__` dans les [chapitres suiva
 
 ## Test d'existence de propriété, opérateur "in"
 
-Une caractéristique notable des objets en JavaScript, par rapport à de nombreux autres langages, est qu'il est possible d'accéder à n'importe quelle propriété. Il n'y aura pas d'erreur si la propriété n'existe pas !
+Une caractéristique notable des objets en JavaScript, par rapport à de nombreux autres langages, est qu'il est possible d'accéder à n'importe quelle propriété.
+Il n'y aura pas d'erreur si la propriété n'existe pas !
 
-La lecture d'une propriété non existante retourne simplement `undefined`. Nous pouvons donc facilement tester si la propriété existe :
+La lecture d'une propriété non existante retourne simplement `undefined`.
+Nous pouvons donc facilement tester si la propriété existe :
 
 ```js run
 let user = {};
@@ -322,9 +346,11 @@ alert("age" in user); // true, user.age existe
 alert("blabla" in user); // false, user.blabla n'existe pas
 ```
 
-Veuillez noter que sur le côté gauche de `in`, il doit y avoir un *nom de propriété*. C’est généralement une chaîne de caractères entre guillemets.
+Veuillez noter que sur le côté gauche de `in`, il doit y avoir un *nom de propriété*.
+C’est généralement une chaîne de caractères entre guillemets.
 
-Si nous omettons les guillemets, cela signifie qu'une variable doit contenir le nom réel à tester. Par exemple :
+Si nous omettons les guillemets, cela signifie qu'une variable doit contenir le nom réel à tester.
+Par exemple :
 
 ```js run
 let user = { age: 30 };
@@ -335,7 +361,8 @@ alert(*!*key*/!* in user); // true, la propriété "age" existe
 
 Pourquoi l'opérateur `in` existe-t-il ? N'est-ce pas suffisant de comparer avec `undefined` ?
 
-Eh bien, la plupart du temps, la comparaison avec `undefined` fonctionne bien. Mais il y a un cas particulier quand il échoue, mais `in` fonctionne correctement.
+Eh bien, la plupart du temps, la comparaison avec `undefined` fonctionne bien.
+Mais il y a un cas particulier quand il échoue, mais `in` fonctionne correctement.
 
 C’est lorsque une propriété d’objet existe, mais qu'elle stocke undefined :
 
@@ -349,13 +376,17 @@ alert(obj.test); // Est indéfini, donc - pas une telle propriété ?
 alert("test" in obj); // true, la propriété existe !
 ```
 
-Dans le code ci-dessus, la propriété `obj.test` existe techniquement. Donc, l'opérateur `in` fonctionne bien.
+Dans le code ci-dessus, la propriété `obj.test` existe techniquement.
+Donc, l'opérateur `in` fonctionne bien.
 
-Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué. Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides". Ainsi, l'opérateur `in` est un invité exotique dans le code.
+Des situations comme celle-ci se produisent très rarement, parce que `undefined` n'est généralement pas attribué.
+Nous utilisons principalement `null` pour les valeurs "inconnues" ou "vides".
+Ainsi, l'opérateur `in` est un invité exotique dans le code.
 
 ## La boucle "for..in" [#forin]
 
-Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`. C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
+Pour parcourir toutes les clés d'un objet, il existe une forme spéciale de boucle : `for..in`.
+C'est une chose complètement différente de la construction `for(;;)` que nous avons étudiée auparavant.
 
 La syntaxe :
 
@@ -384,13 +415,15 @@ for (let key in user) {
 
 Notez que toutes les constructions "for" nous permettent de déclarer la variable en boucle à l'intérieur de la boucle, comme `let key` ici.
 
-En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`. Par exemple, `for(let prop in obj)` est également largement utilisé.
+En outre, nous pourrions utiliser un autre nom de variable ici au lieu de `key`.
+Par exemple, `for(let prop in obj)` est également largement utilisé.
 
 ### Ordonné comme un objet
 
 Les objets sont-ils ordonnés ? En d'autres termes, si nous parcourons un objet en boucle, obtenons-nous toutes les propriétés dans le même ordre où elles ont été ajoutées ? Pouvons-nous compter sur cela ?
 
-La réponse courte est : "ordonné de manière spéciale" : les propriétés des entiers sont triées, les autres apparaissent dans l'ordre de création. Nous allons voir cela en détails.
+La réponse courte est : "ordonné de manière spéciale" : les propriétés des entiers sont triées, les autres apparaissent dans l'ordre de création.
+Nous allons voir cela en détails.
 
 Par exemple, considérons un objet avec les indicatifs de téléphone par pays :
 
@@ -410,19 +443,22 @@ for(let code in codes) {
 */!*
 ```
 
-L'objet peut être utilisé pour suggérer une liste d'options à l'utilisateur. Si nous créons un site principalement pour le public allemand, nous voulons probablement que `49` soit le premier.
+L'objet peut être utilisé pour suggérer une liste d'options à l'utilisateur.
+Si nous créons un site principalement pour le public allemand, nous voulons probablement que `49` soit le premier.
 
 Mais si nous exécutons ce code, nous voyons une image totalement différente :
 
 - USA (1) passe en premier
 - puis Switzerland (41) et ainsi de suite.
 
-Les indicatifs téléphoniques sont classés par ordre croissant, car ce sont des entiers. Donc on voit `1, 41, 44, 49`.
+Les indicatifs téléphoniques sont classés par ordre croissant, car ce sont des entiers.
+Donc on voit `1, 41, 44, 49`.
 
 ````smart header="Propriétés entières (integer properties) ? Qu'est-ce que c'est ?"
 Le terme "propriété entière" (integer property) désigne ici une chaîne de caractères qui peut être convertie en un nombre entier ou inversement sans changement.
 
-Ainsi, `"49"` est un nom de propriété entier, parce que lorsqu'il est transformé en nombre entier et inversement, il reste identique. Mais `"+49"` et `"1.2"` ne le sont pas :
+Ainsi, `"49"` est un nom de propriété entier, parce que lorsqu'il est transformé en nombre entier et inversement, il reste identique.
+Mais `"+49"` et `"1.2"` ne le sont pas :
 
 ```js run
 // Number(...) convertit explicitement en nombre
@@ -450,7 +486,8 @@ for (let prop in user) {
 }
 ```
 
-Donc, pour résoudre le problème avec les indicatifs de téléphone, nous pouvons "tricher" en rendant ces indicatifs non entiers. Ajouter un signe plus `"+"` avant chaque indicatif suffit.
+Donc, pour résoudre le problème avec les indicatifs de téléphone, nous pouvons "tricher" en rendant ces indicatifs non entiers.
+Ajouter un signe plus `"+"` avant chaque indicatif suffit.
 
 Comme ceci :
 
@@ -480,7 +517,8 @@ Ils stockent des propriétés (paires clé-valeur), où :
 
 Pour accéder à une propriété, nous pouvons utiliser :
 - La notation par points : `obj.property`.
-- La notation entre crochets `obj["property"]`. Les crochets permettent de prendre la clé à partir d’une variable, comme `obj[varWithKey]`.
+- La notation entre crochets `obj["property"]`.
+Les crochets permettent de prendre la clé à partir d’une variable, comme `obj[varWithKey]`.
 
 Opérateurs supplémentaires :
 - Pour supprimer une propriété : `delete obj.prop`.
@@ -496,6 +534,10 @@ Il existe de nombreux autres types d'objets en JavaScript :
 - `Error` pour stocker des informations sur une erreur.
 - Etc.
 
-Ils ont leurs particularités que nous étudierons plus tard. Parfois, les gens disent quelque chose comme "type Tableau" ou "type Date", mais ils ne sont pas formellement propres, mais appartiennent à un seul type de données "objet". Et ils l'étendent de différentes manières.
+Ils ont leurs particularités que nous étudierons plus tard.
+Parfois, les gens disent quelque chose comme "type Tableau" ou "type Date", mais ils ne sont pas formellement propres, mais appartiennent à un seul type de données "objet".
+Et ils l'étendent de différentes manières.
 
-Les objets en JavaScript sont très puissants. Nous venons de gratter la surface d’un sujet vraiment énorme. Nous allons travailler étroitement avec les objets et en apprendre davantage à leur sujet dans d’autres parties du tutoriel.
+Les objets en JavaScript sont très puissants.
+Nous venons de gratter la surface d’un sujet vraiment énorme.
+Nous allons travailler étroitement avec les objets et en apprendre davantage à leur sujet dans d’autres parties du tutoriel.

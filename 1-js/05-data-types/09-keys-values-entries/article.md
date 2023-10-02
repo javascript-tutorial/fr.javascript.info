@@ -4,7 +4,8 @@
 
 Dans le chapitre précédent, nous avons vu les méthodes `map.keys()`, `map.values()`, `map.entries()`.
 
-Ces méthodes sont génériques, il existe une convention de les utiliser pour les structures de données. Si nous devions créer notre propre structure de données, nous devrions aussi les implémenter.
+Ces méthodes sont génériques, il existe une convention de les utiliser pour les structures de données.
+Si nous devions créer notre propre structure de données, nous devrions aussi les implémenter.
 
 Ils sont pris en charge par :
 
@@ -24,16 +25,20 @@ Pour les objets simples, les méthodes suivantes sont disponibles :
 
 Veuillez noter les différences (par rapport à map par exemple) :
 
-|                 | Map           | Object                                    |
-|-----------------|---------------|-------------------------------------------|
-| Syntaxe d'appel | `map.keys()`  | `Object.keys(obj)`, mais pas `obj.keys()` |
-| Retours         | iterable      | "vrai" Array                              |
+|                 | Map          | Object                                    |
+| --------------- | ------------ | ----------------------------------------- |
+| Syntaxe d'appel | `map.keys()` | `Object.keys(obj)`, mais pas `obj.keys()` |
+| Retours         | iterable     | "vrai" Array                              |
 
 La première différence est que nous devons appeler `Object.keys(obj)` et non `obj.keys()`.
 
-Pourquoi cela ? La principale raison est la flexibilité. N'oubliez pas que les objets sont une base de toutes les structures complexes en JavaScript. Ainsi, nous pouvons avoir un objet à nous comme `data` qui implémente sa propre méthode `data.values()`. Et nous pouvons toujours appeler `Object.values(data)`.
+Pourquoi cela ? La principale raison est la flexibilité.
+N'oubliez pas que les objets sont une base de toutes les structures complexes en JavaScript.
+Ainsi, nous pouvons avoir un objet à nous comme `data` qui implémente sa propre méthode `data.values()`.
+Et nous pouvons toujours appeler `Object.values(data)`.
 
-La seconde différence réside dans le fait que les méthodes `Object.*` retourne de "réels" objets de tableau, et pas seulement des objets itératifs. C'est principalement pour des raisons historiques.
+La seconde différence réside dans le fait que les méthodes `Object.*` retourne de "réels" objets de tableau, et pas seulement des objets itératifs.
+C'est principalement pour des raisons historiques.
 
 Par exemple :
 
@@ -66,7 +71,9 @@ for (let value of Object.values(user)) {
 
 Tout comme une boucle `for..in`, ces méthodes ignorent les propriétés qui utilisent `Symbol(...)` comme clés.
 
-D'habitude c'est pratique. Mais si nous voulons aussi des clés symboliques, il existe une méthode distincte [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui retourne un tableau composé uniquement de clés symboliques. De plus, la méthde [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) renvoie *toutes* les clés.
+D'habitude c'est pratique.
+Mais si nous voulons aussi des clés symboliques, il existe une méthode distincte [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) qui retourne un tableau composé uniquement de clés symboliques.
+De plus, la méthde [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) renvoie *toutes* les clés.
 ```
 
 ## Transformer des objets
@@ -75,9 +82,12 @@ Les objets manquent de nombreuses méthodes existantes pour les tableaux, par ex
 
 Si nous souhaitons leur appliquer ces méthodes, nous pouvons utiliser `Object.entries` suivis par `Object.fromEntries` :
 
-1. Utilisons `Object.entries(obj)` pour obtenir un tableau de paires clé / valeur de `obj`.
-2. Utilisons des méthodes de tableau sur ce tableau, par exemple `map`, pour transformer ces paires clé / valeur.
-3. Utilisons `Object.fromEntries(array)` sur le tableau résultant pour le reconvertir en objet.
+1.
+Utilisons `Object.entries(obj)` pour obtenir un tableau de paires clé / valeur de `obj`.
+2.
+Utilisons des méthodes de tableau sur ce tableau, par exemple `map`, pour transformer ces paires clé / valeur.
+3.
+Utilisons `Object.fromEntries(array)` sur le tableau résultant pour le reconvertir en objet.
 
 Par exemple, nous avons un objet avec des prix et aimerions les doubler :
 
@@ -99,4 +109,5 @@ let doublePrices = Object.fromEntries(
 alert(doublePrices.meat); // 8
 ```
 
-Cela peut sembler difficile au premier abord, mais cela devient facile à comprendre après l’avoir utilisé une ou deux fois. Nous pouvons faire de puissantes chaînes de transformations de cette façon.
+Cela peut sembler difficile au premier abord, mais cela devient facile à comprendre après l’avoir utilisé une ou deux fois.
+Nous pouvons faire de puissantes chaînes de transformations de cette façon.

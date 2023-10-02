@@ -6,7 +6,8 @@ Plusieurs caractères ou classes de caractères, entourés de crochets `[…]` s
 
 Par exemple, `pattern:[eao]` signifie un caractère qui est soit `'a'`, `'e'`, ou `'o'`.
 
-On appelle cela un *ensemble*. Les ensembles peuvent être combinés avec d'autres caractères dans une même expression régulière :
+On appelle cela un *ensemble*.
+Les ensembles peuvent être combinés avec d'autres caractères dans une même expression régulière :
 
 ```js run
 // trouve [t ou m], puis "op"
@@ -44,13 +45,16 @@ alert("Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g)); // xAF
 
 Ici `pattern:[0-9A-F]` comporte deux intervalles : il recherche un caractère qui est soit chiffre entre `0` et `9` compris ou bien une lettre entre `A` et `F` comprise.
 
-Si nous voulons y inclure les lettres minuscules, nous pouvons ajouter l'intervalle `a-f`: `pattern:[0-9A-Fa-f]`. Ou bien ajouter le marqueur `pattern:i`.
+Si nous voulons y inclure les lettres minuscules, nous pouvons ajouter l'intervalle `a-f`: `pattern:[0-9A-Fa-f]`.
+Ou bien ajouter le marqueur `pattern:i`.
 
 Nous pouvons aussi utiliser les classes de caractères entre `[…]`.
 
 Par exemple, si nous voulons chercher un caractère alphanumérique, un trait de soulignement `pattern:\w` ou un tiret `pattern:-`, alors l'ensemble s'écrit `pattern:[\w-]`.
 
-Il est aussi possible de combiner plusieurs classes, p. ex. `pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
+Il est aussi possible de combiner plusieurs classes, p.
+ex.
+`pattern:[\s\d]` signifie "un caractère d'espacement ou un chiffre".
 
 ```smart header="Les classes de caractères sont en fait des racourcis pour des intervalles de caractères particuliers"
 Par exemple:
@@ -64,15 +68,19 @@ Par exemple:
 
 Comme la classe de caractères `pattern:\w` est un raccourci pour `pattern:[a-zA-Z0-9_]`, il ne peut pas trouver les idéogrammes chinois, ni les lettres cyrilliques, etc.
 
-Nous pouvons écrire un motif plus universel, pour rechercher le caractère d'un mot quelle que soit la langue. Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Nous pouvons écrire un motif plus universel, pour rechercher le caractère d'un mot quelle que soit la langue.
+Grâce aux propriétés Unicode, on obtient facilement : `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
-Déchiffrons cela. Tout comme `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
+Déchiffrons cela.
+Tout comme `pattern:\w`, nous construisons notre propre ensemble qui contient les caractères qui portent les propriétés Unicode :
 
 - `Alphabetic` (`Alpha`) - pour les lettres,
 - `Mark` (`M`) - pour les accents,
 - `Decimal_Number` (`Nd`) - pour les nombres,
 - `Connector_Punctuation` (`Pc`) - pour le trait de soulignement `'_'` et autres caractères similaires,
-- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, p. ex. en arabe.
+- `Join_Control` (`Join_C`) - deux codes spéciaux `200c` et `200d`, utilisés comme liaisons, p.
+ex.
+en arabe.
 
 Exemple d'usage :
 
@@ -85,12 +93,16 @@ let str = `Hi 你好 12`;
 alert(str.match(regexp)); // H,i,你,好,1,2
 ```
 
-Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des propriétés Unicode. Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
+Cet ensemble est bien sûr encore modifiable : on peut y ajouter ou retirer des propriétés Unicode.
+Plus de détail sur ces propriétés Unicode dans l'article <info:regexp-unicode>.
 
 ```warn header="Les propriétés Unicode ne sont pas supportées par IE"
-Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE. Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](https://xregexp.com/).
+Les propriétés Unicode `pattern:p{…}` ne sont pas implémentées dans IE.
+Si nous en avons vraiment besoin, nous pouvons utiliser la librairie [XRegExp](https://xregexp.com/).
 
-Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, p. ex.  `pattern:[а-я]` pour les lettres cyrilliques.
+Ou simplement utiliser des intervalles de caractères dans la langue qui nous intéresse, p.
+ex.
+ `pattern:[а-я]` pour les lettres cyrilliques.
 ```
 
 ## Intervalles d'exclusion
@@ -113,18 +125,21 @@ alert("alice15@gmail.com".match(/[^\d\sA-Z]/gi)); // @ et .
 
 ## L'échappement entre […]
 
-Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`. Et si nous cherchons un backslash, nous utilisons `pattern:\\`, etc.
+Habituellement, lorsque nous cherchons précisément un caractère spécial, nous devons l'échapper `pattern:\.`.
+Et si nous cherchons un backslash, nous utilisons `pattern:\\`, etc.
 
 À l'intérieur de crochets nous pouvons utiliser une grande majorité des caractères spéciaux sans échappement :
 
-- Les symbols `pattern:. + ()` ne sont jamais échappés.
+- Les symbols `pattern:.
++ ()` ne sont jamais échappés.
 - Un tiret `pattern:-` n'est pas échappé en début ou fin d'ensemble (là où il ne peut pas définir d'intervalle).
 - Un accent circonflexe `pattern:^` est échappé uniquement s'il débute l'ensemble (sinon il signifie l'exclusion).
 - Le crochet fermant `pattern:]` est toujours échappé (si nous le cherchons précisément).
 
 En d'autres termes, tous les caractères spéciaux ne sont pas échappés, sauf s'ils ont un sens particulier pour un ensemble.
 
-Un point `.` à l'intérieur de crochets signifie juste un point. Le motif `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
+Un point `.` à l'intérieur de crochets signifie juste un point.
+Le motif `pattern:[.,]` recherche un caractère : soit un point soit une virgule.
 
 Dans l'exemple ci-dessous l'expression régulière `pattern:[-().^+]` cherche un des caractères `-().^+`:
 
@@ -135,7 +150,8 @@ let regexp = /[-().^+]/g;
 alert("1 + 2 - 3".match(regexp)); // trouve +, -
 ```
 
-... Si vous décidez de les échapper, "au cas où", il n'y aura de toute façon aucun d'impact :
+...
+Si vous décidez de les échapper, "au cas où", il n'y aura de toute façon aucun d'impact :
 
 ```js run
 // Tout échappé
@@ -158,10 +174,14 @@ alert('𝒳'.match(/[𝒳𝒴]/)); // affiche un caractère étrange qui ressemb
 Le résultat n'est pas celui attendu, car par défaut une expression régulière ne reconnait pas une telle paire.
 
 Le moteur d'expression régulière pense que `[𝒳𝒴]` -- ne sont pas deux mais quatre caractères :
-1. la moitié gauche de `𝒳` `(1)`,
-2. la moitié droite de `𝒳` `(2)`,
-3. la moitié gauche de `𝒴` `(3)`,
-4. la moitié droite de `𝒴` `(4)`.
+1.
+la moitié gauche de `𝒳` `(1)`,
+2.
+la moitié droite de `𝒳` `(2)`,
+3.
+la moitié gauche de `𝒴` `(3)`,
+4.
+la moitié droite de `𝒴` `(4)`.
 
 On peut voir le code de ces caractères ainsi :
 
@@ -187,7 +207,9 @@ Si nous oublions le marqueur `pattern:u`, il y aura une erreur :
 '𝒳'.match(/[𝒳-𝒴]/); // Error: Invalid regular expression
 ```
 
-En effet sans le marqueur `pattern:u` une paire de seizets est perçue comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes). Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que le dernier `55349`. Ce qui explique l'erreur précédente.
+En effet sans le marqueur `pattern:u` une paire de seizets est perçue comme deux caractères distincts, donc `[𝒳-𝒴]` est interprété en `[<55349><56499>-<55349><56500>]` (chacune des paires est remplacée par ses codes).
+Il est maintenant évident que l'intervalle `56499-55349` n'est pas valide : le premier code `56499` est plus grand que le dernier `55349`.
+Ce qui explique l'erreur précédente.
 
 Avec le marqueur `pattern:u` le motif est interprété correctement :
 

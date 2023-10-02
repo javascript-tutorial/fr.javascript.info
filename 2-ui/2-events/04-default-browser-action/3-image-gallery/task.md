@@ -10,4 +10,5 @@ Comme ceci:
 
 [iframe src="solution" height=600]
 
-P.S. Utilisez la délégation d'évènement.
+P.S.
+Utilisez la délégation d'évènement.

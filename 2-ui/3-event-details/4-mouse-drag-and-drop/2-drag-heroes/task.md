@@ -6,7 +6,8 @@ importance: 5
 
 Cette tache peut vous aider à contrôler votre compréhension de plusieurs aspects du Glissez-déplacez et du DOM
 
-Donnez tous les éléments la classe `draggable` -- déplaçable. Comme une balle dans le chapitre.
+Donnez tous les éléments la classe `draggable` -- déplaçable.
+Comme une balle dans le chapitre.
 Etapes requises:
 
 - Utilisez la délégation d’évènement pour détecter start: un gestionnaire d’évènement unique  sur `document` pour l’évènement  `mousedown`.

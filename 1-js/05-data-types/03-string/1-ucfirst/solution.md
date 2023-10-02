@@ -6,7 +6,8 @@ Mais nous pouvons créer une nouvelle chaîne de caractères basée sur celle ex
 let newStr = str[0].toUpperCase() + str.slice(1);
 ```
 
-Il y a un petit problème cependant. Si `str` est vide, alors `str[0]` est `undefined`, et comme `undefined` n’a pas la méthode `toUpperCase()`, nous aurons une erreur.
+Il y a un petit problème cependant.
+Si `str` est vide, alors `str[0]` est `undefined`, et comme `undefined` n’a pas la méthode `toUpperCase()`, nous aurons une erreur.
 
 La solution la plus simple consiste à ajouter un test pour une chaîne vide, comme ceci :
 

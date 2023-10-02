@@ -6,7 +6,8 @@ importance: 5
 
 Voici le code avec `Rabbit` étendant` Animal`.
 
-Malheureusement, des objets `Rabbit` ne peuvent pas être créés. Qu'est-ce qui ne va pas? Répare le.
+Malheureusement, des objets `Rabbit` ne peuvent pas être créés.
+Qu'est-ce qui ne va pas? Répare le.
 ```js run
 class Animal {
 

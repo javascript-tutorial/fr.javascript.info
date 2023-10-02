@@ -1,17 +1,23 @@
-Une regexp pour un nombre : `pattern:-?\d+(\.\d+)?`. Nous l'avons vu dans l'exercice précédent.
+Une regexp pour un nombre : `pattern:-?\d+(\.\d+)?`.
+Nous l'avons vu dans l'exercice précédent.
 
-Pour l'opérateur `pattern:[-+*/]`. Le tiret `pattern:-` est en premier, car il pourrait signifier un intervalle de caractère, alors que nous souhaitons juste le caractère `-`.
+Pour l'opérateur `pattern:[-+*/]`.
+Le tiret `pattern:-` est en premier, car il pourrait signifier un intervalle de caractère, alors que nous souhaitons juste le caractère `-`.
 
 Le slash `/` doit être échappé en javascript dans une regexp `pattern:/.../`, et nous le ferons plus tard.
 
-Nous cherchons un nombre, un opérateur puis un autre nombre. Et d'éventuels espaces entre eux.
+Nous cherchons un nombre, un opérateur puis un autre nombre.
+Et d'éventuels espaces entre eux.
 
 Cela done l'expression régulière : `pattern:-?\d+(\.\d+)?\s*[-+*/]\s*-?\d+(\.\d+)?`.
 
 Il y a trois parties, avec `pattern:\s*` entre elles :
-1. `pattern:-?\d+(\.\d+)?` - le premier nombre,
-2. `pattern:[-+*/]` - l'opérateur,
-3. `pattern:-?\d+(\.\d+)?` - le deuxième nombre.
+1.
+`pattern:-?\d+(\.\d+)?` - le premier nombre,
+2.
+`pattern:[-+*/]` - l'opérateur,
+3.
+`pattern:-?\d+(\.\d+)?` - le deuxième nombre.
 
 Pour faire de chacune de ces parties un élément distinct du tableau de correspondance, entourons-les de parenthèses : `pattern:(-?\d+(\.\d+)?)\s*([-+*/])\s*(-?\d+(\.\d+)?)`.
 
@@ -32,7 +38,8 @@ Le résultat inclus :
 - `result[4] == "12"` (quatrième groupe `(-?\d+(\.\d+)?)` -- le second nombre)
 - `result[5] == undefined` (cinquième groupe `(\.\d+)?` -- la deuxième partie décimale est absente, c'est non défini)
 
-Nous ne souhaitons que les nombres et l'opérateur, sans la correspondance entière, ni les parties décimales. Faisons alors un peu le ménage.
+Nous ne souhaitons que les nombres et l'opérateur, sans la correspondance entière, ni les parties décimales.
+Faisons alors un peu le ménage.
 
 La correspondance complète(le premier élément du tableau) peut être enlevée par `result.shift()`.
 

@@ -6,8 +6,13 @@ importance: 5
 
 Écrivez le code, une ligne pour chaque action :
 
-1. Créer un objet vide `user`.
-2. Ajoutez la propriété `name` avec la valeur `John`.
-3. Ajoutez la propriété `surname` avec la valeur `Smith`.
-4. Changez la valeur de `name` pour `Pete`.
-5. Supprimez la propriété `name` de l'objet.
+1.
+Créer un objet vide `user`.
+2.
+Ajoutez la propriété `name` avec la valeur `John`.
+3.
+Ajoutez la propriété `surname` avec la valeur `Smith`.
+4.
+Changez la valeur de `name` pour `Pete`.
+5.
+Supprimez la propriété `name` de l'objet.

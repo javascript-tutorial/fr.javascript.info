@@ -4,7 +4,8 @@ importance: 5
 
 # Dernier jour du mois ?
 
-Ecrivez une fonction `getLastDayOfMonth(year, month)` qui renvoie le dernier jour du mois. Parfois, c'est 30, 31 ou même 28/29 février.
+Ecrivez une fonction `getLastDayOfMonth(year, month)` qui renvoie le dernier jour du mois.
+Parfois, c'est 30, 31 ou même 28/29 février.
 
 Paramètres:
 

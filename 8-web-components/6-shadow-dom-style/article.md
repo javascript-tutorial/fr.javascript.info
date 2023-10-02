@@ -1,14 +1,17 @@
 # Shadow DOM styling
 
-Shadow DOM may include both `<style>` and `<link rel="stylesheet" href="…">` tags. In the latter case, stylesheets are HTTP-cached, so they are not redownloaded for multiple components that use same template.
+Shadow DOM may include both `<style>` and `<link rel="stylesheet" href="…">` tags.
+In the latter case, stylesheets are HTTP-cached, so they are not redownloaded for multiple components that use same template.
 
-As a general rule, local styles work only inside the shadow tree, and document styles work outside of it. But there are few exceptions.
+As a general rule, local styles work only inside the shadow tree, and document styles work outside of it.
+But there are few exceptions.
 
 ## :host
 
 The `:host` selector allows to select the shadow host (the element containing the shadow tree).
 
-For instance, we're making `<custom-dialog>` element that should be centered. For that we need to style the `<custom-dialog>` element itself.
+For instance, we're making `<custom-dialog>` element that should be centered.
+For that we need to style the `<custom-dialog>` element itself.
 
 That's exactly what `:host` does:
 
@@ -109,13 +112,15 @@ customElements.define('custom-dialog', class extends HTMLElement {
 
 Now the additional centering styles are only applied to the first dialog: `<custom-dialog centered>`.
 
-To summarize, we can use `:host`-family of selectors to style the main element of the component. These styles (unless `!important`) can be overridden by the document.
+To summarize, we can use `:host`-family of selectors to style the main element of the component.
+These styles (unless `!important`) can be overridden by the document.
 
 ## Styling slotted content
 
 Now let's consider the situation with slots.
 
-Slotted elements come from light DOM, so they use document styles. Local styles do not affect slotted content.
+Slotted elements come from light DOM, so they use document styles.
+Local styles do not affect slotted content.
 
 In the example below, slotted `<span>` is bold, as per document style, but does not take `background` from the local style:
 ```html run autorun="no-epub" untrusted height=80
@@ -174,12 +179,18 @@ customElements.define('user-card', class extends HTMLElement {
 </script>
 ```
 
-Here `<p>John Smith</p>` becomes bold, because CSS inheritance is in effect between the `<slot>` and its contents. But in CSS itself not all properties are inherited.
+Here `<p>John Smith</p>` becomes bold, because CSS inheritance is in effect between the `<slot>` and its contents.
+But in CSS itself not all properties are inherited.
 
-Another option is to use `::slotted(selector)` pseudo-class. It matches elements based on two conditions:
+Another option is to use `::slotted(selector)` pseudo-class.
+It matches elements based on two conditions:
 
-1. That's a slotted element, that comes from the light DOM. Slot name doesn't matter. Just any slotted element, but only the element itself, not its children.
-2. The element matches the `selector`.
+1.
+That's a slotted element, that comes from the light DOM.
+Slot name doesn't matter.
+Just any slotted element, but only the element itself, not its children.
+2.
+The element matches the `selector`.
 
 In our example, `::slotted(div)` selects exactly `<div slot="username">`, but not its children:
 
@@ -207,7 +218,8 @@ customElements.define('user-card', class extends HTMLElement {
 </script>
 ```
 
-Please note, `::slotted` selector can't descend any further into the slot. These selectors are invalid:
+Please note, `::slotted` selector can't descend any further into the slot.
+These selectors are invalid:
 
 ```css
 ::slotted(div span) {
@@ -219,7 +231,8 @@ Please note, `::slotted` selector can't descend any further into the slot. These
 }
 ```
 
-Also, `::slotted` can only be used in CSS. We can't use it in `querySelector`.
+Also, `::slotted` can only be used in CSS.
+We can't use it in `querySelector`.
 
 ## CSS hooks with custom properties
 
@@ -227,7 +240,8 @@ How do we style internal elements of a component from the main document?
 
 Selectors like `:host` apply rules to `<custom-dialog>` element or `<user-card>`, but how to style shadow DOM elements inside them?
 
-There's no selector that can directly affect shadow DOM styles from the document. But just as we expose methods to interact with our component, we can expose CSS variables (custom CSS properties) to style it.
+There's no selector that can directly affect shadow DOM styles from the document.
+But just as we expose methods to interact with our component, we can expose CSS variables (custom CSS properties) to style it.
 
 **Custom CSS properties exist on all levels, both in light and shadow.**
 
@@ -306,11 +320,17 @@ Document styles can affect:
 - shadow host (as it lives in the outer document)
 - slotted elements and their contents (as that's also in the outer document)
 
-When CSS properties conflict, normally document styles have precedence, unless the property is labelled as `!important`. Then local styles have precedence.
+When CSS properties conflict, normally document styles have precedence, unless the property is labelled as `!important`.
+Then local styles have precedence.
 
-CSS custom properties pierce through shadow DOM. They are used as "hooks" to style the component:
+CSS custom properties pierce through shadow DOM.
+They are used as "hooks" to style the component:
 
-1. The component uses a custom CSS property to style key elements, such as `var(--component-name-title, <default value>)`.
-2. Component author publishes these properties for developers, they are same important as other public component methods.
-3. When a developer wants to style a title, they assign `--component-name-title` CSS property for the shadow host or above.
-4. Profit!
+1.
+The component uses a custom CSS property to style key elements, such as `var(--component-name-title, <default value>)`.
+2.
+Component author publishes these properties for developers, they are same important as other public component methods.
+3.
+When a developer wants to style a title, they assign `--component-name-title` CSS property for the shadow host or above.
+4.
+Profit!

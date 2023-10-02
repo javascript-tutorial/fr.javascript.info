@@ -1,6 +1,7 @@
 # Unicode: indicateur "u" et classe \p{...}
 
-JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) pour les chaînes de cractères. La plupart des caractères sont codés sur 2 octets, mais cela permet de représenter au plus 65536 caractères.
+JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) pour les chaînes de cractères.
+La plupart des caractères sont codés sur 2 octets, mais cela permet de représenter au plus 65536 caractères.
 
 Cette plage n'est pas assez grande pour encoder tous les caractères possibles, c'est pourquoi certains caractères rares sont encodés sur 4 octets, par exemple comme `𝒳` (X mathématique) ou `😄` (un sourire), certains hiéroglyphes et ainsi de suite.
 
@@ -16,7 +17,8 @@ Voici les valeurs unicode de certains caractères :
 
 Ainsi, les caractères comme `a` et `≈` occupent 2 octets, tandis que les codes pour `𝒳`, `𝒴` et `😄` sont plus longs, ils ont 4 octets.
 
-Il y a longtemps, lorsque le langage JavaScript a été créé, l'encodage Unicode était plus simple : il n'y avait pas de caractères à 4 octets. Ainsi, certaines fonctionnalités du langage les gèrent toujours de manière incorrecte.
+Il y a longtemps, lorsque le langage JavaScript a été créé, l'encodage Unicode était plus simple : il n'y avait pas de caractères à 4 octets.
+Ainsi, certaines fonctionnalités du langage les gèrent toujours de manière incorrecte.
 
 Par exemple, la propriété `length` pense qu'il y a deux caractères :
 
@@ -25,21 +27,32 @@ alert('😄'.length); // 2
 alert('𝒳'.length); // 2
 ```
 
-... Mais nous pouvons voir qu'il n'y en a qu'un, n'est-ce pas? Le fait est que la propriété `length` traite 4 octets comme deux caractères de 2 octets. C'est incorrect, car ils doivent être considérés uniquement ensemble (aussi appelé "paire de substitution", vous pouvez en lire plus dans l'article <info:string>).
+...
+Mais nous pouvons voir qu'il n'y en a qu'un, n'est-ce pas? Le fait est que la propriété `length` traite 4 octets comme deux caractères de 2 octets.
+C'est incorrect, car ils doivent être considérés uniquement ensemble (aussi appelé "paire de substitution", vous pouvez en lire plus dans l'article <info:string>).
 
-Par défaut, les expressions régulières traitent également les "caractères longs" de 4 octets comme une paire de caractères de 2 octets. Et, comme cela arrive avec les chaînes, cela peut conduire à des résultats étranges. Nous verrons cela un peu plus tard, dans l'article <info:regexp-character-sets-and-ranges>.
+Par défaut, les expressions régulières traitent également les "caractères longs" de 4 octets comme une paire de caractères de 2 octets.
+Et, comme cela arrive avec les chaînes, cela peut conduire à des résultats étranges.
+Nous verrons cela un peu plus tard, dans l'article <info:regexp-character-sets-and-ranges>.
 
-Contrairement aux chaînes de caractères, les expressions régulières ont l'indicateur `pattern:u` qui résout ces problèmes. Avec un tel indicateur, une expression rationnelle gère correctement les caractères de 4 octets. Et ainsi la recherche de propriétés Unicode devient également disponible, nous y reviendrons ensuite.
+Contrairement aux chaînes de caractères, les expressions régulières ont l'indicateur `pattern:u` qui résout ces problèmes.
+Avec un tel indicateur, une expression rationnelle gère correctement les caractères de 4 octets.
+Et ainsi la recherche de propriétés Unicode devient également disponible, nous y reviendrons ensuite.
 
 ## Propriétés Unicode \p{...}
 
-Chaque caractère dans Unicode a beaucoup de propriétés. Ils décrivent à quelle "catégorie" le caractère appartient, et contiennent diverses informations à son sujet.
+Chaque caractère dans Unicode a beaucoup de propriétés.
+Ils décrivent à quelle "catégorie" le caractère appartient, et contiennent diverses informations à son sujet.
 
-Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue). Et la propriété `Number` (Nombre) signifie que c'est un chiffre : peut-être l'arabe ou le chinois, et ainsi de suite.
+Par exemple, si un caractère a la propriété `Letter` (Lettre), cela signifie que le caractère appartient à un alphabet (de n'importe quelle langue).
+Et la propriété `Number` (Nombre) signifie que c'est un chiffre : peut-être l'arabe ou le chinois, et ainsi de suite.
 
-Nous pouvons rechercher des caractères avec une propriété, écrite sous la forme `pattern:\p{…}`. Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
+Nous pouvons rechercher des caractères avec une propriété, écrite sous la forme `pattern:\p{…}`.
+Pour utiliser `pattern:\p{…}`, une expression régulière doit avoir l'indicateur `pattern:u`.
 
-Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue. Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre). Il existe des alias plus courts pour presque toutes les propriétés.
+Par exemple, `\p{Letter}` désigne une lettre dans n'importe quelle langue.
+Nous pouvons également utiliser `\p{L}`, car `L` est un alias de `Letter` (Lettre).
+Il existe des alias plus courts pour presque toutes les propriétés.
 
 Dans l'exemple ci-dessous, on trouvera trois types de lettres : Anglais, Géorgien et Coréen.
 
@@ -154,7 +167,9 @@ L'indicateur `pattern:u` permet la prise en charge d'Unicode dans les expression
 
 Cela signifie deux choses :
 
-1. Les caractères de 4 octets sont traités correctement : comme un seul caractère, pas comme deux caractères de 2 octets.
-2. Les propriétés Unicode peuvent être utilisées dans la recherche : `\p{…}`.
+1.
+Les caractères de 4 octets sont traités correctement : comme un seul caractère, pas comme deux caractères de 2 octets.
+2.
+Les propriétés Unicode peuvent être utilisées dans la recherche : `\p{…}`.
 
 Avec les propriétés Unicode, nous pouvons rechercher des mots dans des langues données, des caractères spéciaux (guillemets, devises) et ainsi de suite.

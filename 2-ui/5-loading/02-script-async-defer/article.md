@@ -3,12 +3,17 @@
 
 Dans les sites Web modernes, les scripts sont souvent "plus lourds" que le HTML: leur taille de téléchargement est plus grande et le temps de traitement est également plus long.
 
-Lorsque le navigateur charge le HTML et rencontre une balise `<script>...</script>`, il ne peut pas continuer à construire le DOM. Il doit exécuter le script de suite. Il en va de même pour les scripts externes `<script src ="..."></script>`: le navigateur doit attendre le téléchargement du script, l'exécuter, puis traiter le reste de la page.
+Lorsque le navigateur charge le HTML et rencontre une balise `<script>...</script>`, il ne peut pas continuer à construire le DOM.
+Il doit exécuter le script de suite.
+Il en va de même pour les scripts externes `<script src ="..."></script>`: le navigateur doit attendre le téléchargement du script, l'exécuter, puis traiter le reste de la page.
 
 Cela conduit à deux problèmes importants:
 
-1. Les scripts ne peuvent pas voir les éléments DOM en dessous d'eux, ils ne peuvent donc pas ajouter de gestionnaires, etc.
-2. S'il y a un script volumineux en haut de la page, il "bloque la page". Les utilisateurs ne peuvent pas voir le contenu de la page tant qu'il n'est pas téléchargé et exécuté:
+1.
+Les scripts ne peuvent pas voir les éléments DOM en dessous d'eux, ils ne peuvent donc pas ajouter de gestionnaires, etc.
+2.
+S'il y a un script volumineux en haut de la page, il "bloque la page".
+Les utilisateurs ne peuvent pas voir le contenu de la page tant qu'il n'est pas téléchargé et exécuté:
 
 ```html run height=100
 <p>...content before script...</p>
@@ -19,7 +24,9 @@ Cela conduit à deux problèmes importants:
 <p>...content after script...</p>
 ```
 
-Il existe quelques solutions pour contourner cela. Par exemple, nous pouvons mettre un script en bas de page. Comme ça, il peut voir les éléments au-dessus, et cela ne bloque pas l'affichage du contenu de la page:
+Il existe quelques solutions pour contourner cela.
+Par exemple, nous pouvons mettre un script en bas de page.
+Comme ça, il peut voir les éléments au-dessus, et cela ne bloque pas l'affichage du contenu de la page:
 
 ```html
 <body>
@@ -29,7 +36,9 @@ Il existe quelques solutions pour contourner cela. Par exemple, nous pouvons met
 </body>
 ```
 
-Mais cette solution est loin d'être parfaite. Par exemple, le navigateur remarque le script (et peut commencer à le télécharger) uniquement après avoir téléchargé le document HTML complet. Pour les longs documents HTML, cela peut être un retard notable.
+Mais cette solution est loin d'être parfaite.
+Par exemple, le navigateur remarque le script (et peut commencer à le télécharger) uniquement après avoir téléchargé le document HTML complet.
+Pour les longs documents HTML, cela peut être un retard notable.
 
 De telles choses sont invisibles pour les personnes utilisant des connexions très rapides, mais de nombreuses personnes dans le monde ont encore des vitesses Internet lentes et utilisent une connexion Internet mobile loin d'être parfaite.
 
@@ -37,7 +46,9 @@ Heureusement, il y a deux attributs de `<script>` qui résolvent le problème po
 
 ## defer
 
-L'attribut `defer` indique au navigateur de ne pas attendre le script. Au lieu de cela, le navigateur continuera à traiter le HTML, à construire le DOM. Le script se charge "en arrière-plan", puis s'exécute lorsque le DOM est entièrement construit.
+L'attribut `defer` indique au navigateur de ne pas attendre le script.
+Au lieu de cela, le navigateur continuera à traiter le HTML, à construire le DOM.
+Le script se charge "en arrière-plan", puis s'exécute lorsque le DOM est entièrement construit.
 
 Voici le même exemple que ci-dessus, mais avec `defer`:
 
@@ -67,8 +78,11 @@ L'exemple suivant montre que:
 <p>...content after scripts...</p>
 ```
 
-1. Le contenu de la page s'affiche immédiatement.
-2. `DOMContentLoaded` attend le script différé. Il ne se déclenche que lorsque le script `(2)` est téléchargé et exécuté.
+1.
+Le contenu de la page s'affiche immédiatement.
+2.
+`DOMContentLoaded` attend le script différé.
+Il ne se déclenche que lorsque le script `(2)` est téléchargé et exécuté.
 
 Les scripts différés conservent leur ordre relatif, tout comme les scripts classiques.
 
@@ -79,9 +93,13 @@ Donc, si nous avons d'abord un long script, puis un plus petit, alors ce dernier
 <script defer src="https://javascript.info/article/script-async-defer/small.js"></script>
 ```
 
-Les navigateurs analysent la page à la recherche de scripts et les téléchargent en parallèle pour améliorer les performances. Ainsi, dans l'exemple ci-dessus, les deux scripts se téléchargent en parallèle. Le `small.js` se termine probablement en premier.
+Les navigateurs analysent la page à la recherche de scripts et les téléchargent en parallèle pour améliorer les performances.
+Ainsi, dans l'exemple ci-dessus, les deux scripts se téléchargent en parallèle.
+Le `small.js` se termine probablement en premier.
 
-... Mais l'attribut `defer`, en plus de dire au navigateur "de ne pas bloquer", garantit que l'ordre relatif est conservé. Ainsi, même si `small.js` se charge en premier, il attend et s'exécute toujours après l'exécution de` long.js`.
+...
+Mais l'attribut `defer`, en plus de dire au navigateur "de ne pas bloquer", garantit que l'ordre relatif est conservé.
+Ainsi, même si `small.js` se charge en premier, il attend et s'exécute toujours après l'exécution de` long.js`.
 Mais la spécification exige que les scripts s'exécutent dans l'ordre des documents, donc elle attend que `long.js` s'exécute.
 ```
 
@@ -95,11 +113,16 @@ L'attribut `defer` est ignoré si la balise `<script>` n'a pas de `src`.
 - D'autres scripts n'attendent pas les scripts `async`, et les scripts `async` ne les attendent pas.
 - `DOMContentLoaded` et les scripts asynchrones ne s’attendent pas :
     - `DOMContentLoaded` peut se produire à la fois avant un script asynchrone (si un script async termine le chargement une fois la page terminée)
-    - ... ou après un script async (si un script async est court ou était dans le cache HTTP)
+    - ...
+ou après un script async (si un script async est court ou était dans le cache HTTP)
 
-En d'autres termes, les scripts `async` se chargent en arrière-plan et s'exécutent lorsqu'ils sont prêts. Le DOM et les autres scripts ne les attendent pas, et ils n'attendent rien. Un script entièrement indépendant qui s'exécute lorsqu'il est chargé. Aussi simple que cela puisse être, non ?
+En d'autres termes, les scripts `async` se chargent en arrière-plan et s'exécutent lorsqu'ils sont prêts.
+Le DOM et les autres scripts ne les attendent pas, et ils n'attendent rien.
+Un script entièrement indépendant qui s'exécute lorsqu'il est chargé.
+Aussi simple que cela puisse être, non ?
 
-Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'importe quel ordre. Premier chargé -- premier exécuté:
+Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'importe quel ordre.
+Premier chargé -- premier exécuté:
 
 ```html run height=100
 <p>...content before scripts...</p>
@@ -116,7 +139,9 @@ Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'im
 
 - Le contenu de la page apparaît immédiatement: `async` ne la bloque pas.
 - `DOMContentLoaded` peut arriver soit avant ou après `async`, aucune garantie ici.
-- Les scripts asynchrones n'attendent pas les uns les autres. Un script plus petit `small.js` passe en second, mais se charge probablement avant `long.js`, donc s'exécute en premier. C'est ce qu'on appelle une commande "load-first".
+- Les scripts asynchrones n'attendent pas les uns les autres.
+Un script plus petit `small.js` passe en second, mais se charge probablement avant `long.js`, donc s'exécute en premier.
+C'est ce qu'on appelle une commande "load-first".
 
 Les scripts asynchrones sont parfaits lorsque nous intégrons un script tiers indépendant dans la page: compteurs, publicités, etc., car ils ne dépendent pas de nos scripts et nos scripts ne doivent pas les attendre:
 
@@ -160,7 +185,9 @@ script.async = false;
 document.body.append(script);
 ```
 
-Par exemple, nous ajoutons ici deux scripts. Sans `script.async=false`, ils s'exécuteraient dans l'ordre de chargement (le `small.js` probablement en premier). Mais avec, l'ordre est "comme dans le document":
+Par exemple, nous ajoutons ici deux scripts.
+Sans `script.async=false`, ils s'exécuteraient dans l'ordre de chargement (le `small.js` probablement en premier).
+Mais avec, l'ordre est "comme dans le document":
 
 ```js run
 function loadScript(src) {
@@ -177,18 +204,26 @@ loadScript("/article/script-async-defer/small.js");
 
 ## Résumé
 
-`Async` et `defer` ont un point commun: le téléchargement de tels scripts ne bloque pas le rendu des pages. Ainsi, l'utilisateur peut lire le contenu de la page et se familiariser immédiatement avec la page.
+`Async` et `defer` ont un point commun: le téléchargement de tels scripts ne bloque pas le rendu des pages.
+Ainsi, l'utilisateur peut lire le contenu de la page et se familiariser immédiatement avec la page.
 
 Mais il existe également des différences essentielles entre eux:
 
-|         | L'ordre                                                                                           | `DOMContentLoaded`                                                                                                                                                                                                   |
-| ------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `async` | *Load-first*. Leur ordre dans le document n'a pas d'importance -- premier chargé, premier exécuté | Sans importance. Peut se charger et s'exécuter alors que le document n'a pas encore été entièrement téléchargé. Cela se produit si les scripts sont petits ou mis en cache et que le document est suffisamment long. |
-| `defer` | *Ordre de document* (tel qu'il apparaît dans le document).                                        | Exécute après le chargement et l'analyse du document (ils attendent si nécessaire), juste avant `DOMContentLoaded`.                                                                                                  |
+|                                                                                     | L'ordre          | `DOMContentLoaded` |
+| ----------------------------------------------------------------------------------- | ---------------- | ------------------ |
+| `async`                                                                             | *Load-first*.    |
+| Leur ordre dans le document n'a pas d'importance -- premier chargé, premier exécuté | Sans importance. |
+Peut se charger et s'exécuter alors que le document n'a pas encore été entièrement téléchargé.
+Cela se produit si les scripts sont petits ou mis en cache et que le document est suffisamment long.
+|
+| `defer` | *Ordre de document* (tel qu'il apparaît dans le document).
+                                       | Exécute après le chargement et l'analyse du document (ils attendent si nécessaire), juste avant `DOMContentLoaded`.
+                                                                                                 |
 
 En pratique, `defer` est utilisé pour les scripts qui ont besoin de tout le DOM et/ou leur ordre d'exécution relatif est important.
 
-Et `async` est utilisé pour des scripts indépendants, comme des compteurs ou des publicités. Et leur ordre d'exécution relatif n'a pas d'importance.
+Et `async` est utilisé pour des scripts indépendants, comme des compteurs ou des publicités.
+Et leur ordre d'exécution relatif n'a pas d'importance.
 
 ```warn header="La page sans scripts devrait être utilisable"
 Veuillez noter que si vous utilisez `defer` ou `async`, l'utilisateur verra alors la page *avant* le chargement du script.

@@ -1,9 +1,11 @@
 
 # L'élément Template
 
-L'élément intégré `<template>` sert de stockage pour les modèles de balisage HTML. Le navigateur ignore son contenu et vérifie uniquement la validité de la syntaxe, mais nous pouvons y accéder et l'utiliser dans JavaScript, pour créer d'autres éléments.
+L'élément intégré `<template>` sert de stockage pour les modèles de balisage HTML.
+Le navigateur ignore son contenu et vérifie uniquement la validité de la syntaxe, mais nous pouvons y accéder et l'utiliser dans JavaScript, pour créer d'autres éléments.
 
-En théorie, nous pourrions créer n'importe quel élément invisible quelque part dans le code HTML à des fins de stockage de balises HTML. Quelle est la particularité de `<template>` ?
+En théorie, nous pourrions créer n'importe quel élément invisible quelque part dans le code HTML à des fins de stockage de balises HTML.
+Quelle est la particularité de `<template>` ?
 
 Tout d'abord, son contenu peut être n'importe quel HTML valide, même s'il nécessite normalement une balise d'entourage appropriée.
 
@@ -17,7 +19,9 @@ Par exemple, nous pouvons y placer une ligne de tableau `<tr>` :
 </template>
 ```
 
-Habituellement, si nous essayons de mettre `<tr>` à l'intérieur, disons, d'un `<div>`, le navigateur détecte la structure DOM invalide et la "corrige", en ajoutant `<table>` autour. Ce n'est pas ce que nous voulons. D'un autre côté, `<template>` conserve exactement ce que nous y plaçons.
+Habituellement, si nous essayons de mettre `<tr>` à l'intérieur, disons, d'un `<div>`, le navigateur détecte la structure DOM invalide et la "corrige", en ajoutant `<table>` autour.
+Ce n'est pas ce que nous voulons.
+D'un autre côté, `<template>` conserve exactement ce que nous y plaçons.
 
 Nous pouvons également placer des styles et des scripts dans `<template>` :
 

@@ -1,14 +1,18 @@
 # Manuels et spécifications
 
-Ce livre est un *tutoriel*. Il vise à vous aider à apprendre progressivement le langage. Mais une fois que vous maîtriserez les bases, vous aurez besoin d’autres ressources.
+Ce livre est un *tutoriel*.
+Il vise à vous aider à apprendre progressivement le langage.
+Mais une fois que vous maîtriserez les bases, vous aurez besoin d’autres ressources.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TqQs_MKMqwU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Spécification
 
-[The ECMA-262 specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contient les informations les plus détaillées et formalisées sur JavaScript. C'est elle qui définit le langage.
+[The ECMA-262 specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contient les informations les plus détaillées et formalisées sur JavaScript.
+C'est elle qui définit le langage.
 
-Une nouvelle version de la spécification est publiée chaque année. La dernière version en cours est disponible à cette adresse : <https://tc39.es/ecma262/>.
+Une nouvelle version de la spécification est publiée chaque année.
+La dernière version en cours est disponible à cette adresse : <https://tc39.es/ecma262/>.
 
 Pour en savoir plus sur les fonctionnalités à venir, y compris celles qui sont "presque standardisées" (appelées aussi "stage 3"), vous pouvez consulter les propositions à cette adresse : <https://github.com/tc39/proposals>.
 
@@ -16,9 +20,11 @@ De plus, si vous développez pour le navigateur, d'autres spécifications sont c
 
 ## Manuels
 
-- [**La référence MDN (Mozilla) JavaScript**](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference) est le principal manuel avec des exemples et d’autres informations. C’est une excellente source pour obtenir des informations détaillées sur les fonctions linguistiques, les méthodes, etc.
+- [**La référence MDN (Mozilla) JavaScript**](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference) est le principal manuel avec des exemples et d’autres informations.
+C’est une excellente source pour obtenir des informations détaillées sur les fonctions linguistiques, les méthodes, etc.
 
-  Cependant, il est souvent préférable d’utiliser une recherche sur Internet. Utilisez simplement "MDN [terme]" dans la requête, par exemple <https://google.com/search?q=MDN+parseInt> pour rechercher la fonction `parseInt`.
+  Cependant, il est souvent préférable d’utiliser une recherche sur Internet.
+Utilisez simplement "MDN [terme]" dans la requête, par exemple <https://google.com/search?q=MDN+parseInt> pour rechercher la fonction `parseInt`.
 
 ## Tableaux de compatibilité
 

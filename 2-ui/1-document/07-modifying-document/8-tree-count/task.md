@@ -6,7 +6,8 @@ importance: 5
 
 Il y a un arbre organisé comme un `ul/li` imbriqué.
 
-Écrivez le code qui ajoute à chaque `<li>` le nombre de ses descendants. Sautez les feuilles (nœuds sans enfants).
+Écrivez le code qui ajoute à chaque `<li>` le nombre de ses descendants.
+Sautez les feuilles (nœuds sans enfants).
 
 Le resultat :
 

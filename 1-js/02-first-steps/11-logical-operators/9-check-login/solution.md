@@ -20,4 +20,5 @@ if (userName === 'Admin') {
 }
 ```
 
-Notez les retraits verticaux (on appelle ça l'indentation) à l'intérieur des blocs `if`. Ils ne sont techniquement pas nécessaires, mais rendent le code plus lisible.
+Notez les retraits verticaux (on appelle ça l'indentation) à l'intérieur des blocs `if`.
+Ils ne sont techniquement pas nécessaires, mais rendent le code plus lisible.

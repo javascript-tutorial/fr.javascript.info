@@ -10,6 +10,7 @@ importance: 4
 - Finit de demander lorsque l'utilisateur entre une valeur non numérique, une chaîne vide ou appuie sur "Annuler".
 - Calcule et retourne la somme des éléments du tableau.
 
-P.S. Un zéro `0` est un nombre valide, donc s'il vous plaît n'arrêtez pas l'entrée sur zéro.
+P.S.
+Un zéro `0` est un nombre valide, donc s'il vous plaît n'arrêtez pas l'entrée sur zéro.
 
 [demo]

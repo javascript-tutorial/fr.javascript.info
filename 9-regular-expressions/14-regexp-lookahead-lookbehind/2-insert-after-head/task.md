@@ -2,7 +2,8 @@
 
 Nous avons une chaîne avec un document HTML.
 
-Écrivez une expression régulière qui insère `<h1>Hello</h1>` immédiatement après la balise `<body>`. La balise peut avoir des attributs.
+Écrivez une expression régulière qui insère `<h1>Hello</h1>` immédiatement après la balise `<body>`.
+La balise peut avoir des attributs.
 
 Par exemple:
 

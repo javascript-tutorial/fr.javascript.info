@@ -18,4 +18,5 @@ alert(getDateAgo(date, 2)); // 31, (31 Dec 2014)
 alert(getDateAgo(date, 365)); // 2, (2 Jan 2014)
 ```
 
-P.S. La fonction ne doit pas modifier la `date` donnée.
+P.S.
+La fonction ne doit pas modifier la `date` donnée.

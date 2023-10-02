@@ -4,7 +4,8 @@ importance: 5
 
 # Move the ball across the field
 
-Move the ball across the field to a click. Like this:
+Move the ball across the field to a click.
+Like this:
 
 [iframe src="solution" height="260" link]
 

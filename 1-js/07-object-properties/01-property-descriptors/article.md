@@ -3,7 +3,8 @@
 
 Comme nous le savons, les objets peuvent stocker des propriétés.
 
-Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur". Mais une propriété d'objet est en réalité une chose plus flexible et plus puissante.
+Jusqu'à présent, une propriété était pour nous une simple paire "clé-valeur".
+Mais une propriété d'objet est en réalité une chose plus flexible et plus puissante.
 
 Dans ce chapitre, nous étudierons des options de configuration supplémentaires et, dans le prochain, nous verrons comment les transformer de manière invisible en fonctions de accesseur / mutateur.
 
@@ -15,7 +16,9 @@ Les propriétés des objets, outre que **`valeur`**, ont trois attributs spécia
 - **`enumerable`** -- si `true`, alors listé dans les boucles, sinon non listé.
 - **`configurable`** -- si `true`, la propriété peut être supprimée et ces attributs peuvent être modifiés, sinon non.
 
-Nous ne les avons pas encore vues, car généralement elles ne se présentent pas. Lorsque nous créons une propriété "de la manière habituelle", ils sont tous `true`. Mais nous pouvons aussi les changer à tout moment.
+Nous ne les avons pas encore vues, car généralement elles ne se présentent pas.
+Lorsque nous créons une propriété "de la manière habituelle", ils sont tous `true`.
+Mais nous pouvons aussi les changer à tout moment.
 
 Voyons d’abord comment obtenir ces "flags".
 
@@ -69,7 +72,9 @@ Object.defineProperty(obj, propertyName, descriptor)
 `descriptor`
 : Descripteur de propriété d'objet à appliquer.
 
-Si la propriété existe, `defineProperty` met à jour ses attributs. Sinon, il crée la propriété avec la valeur et les descripteurs donnés. Dans ce cas, si aucun drapeau n'est fourni, il est supposé `false`.
+Si la propriété existe, `defineProperty` met à jour ses attributs.
+Sinon, il crée la propriété avec la valeur et les descripteurs donnés.
+Dans ce cas, si aucun drapeau n'est fourni, il est supposé `false`.
 
 Par exemple, ici, une propriété `name` est créée avec tous les attributs falsy :
 
@@ -97,7 +102,8 @@ alert(JSON.stringify(descriptor, null, 2));
 */
 ```
 
-Comparez-le avec `user.name` "normalement créé" ci-dessus : maintenant tous les attributs sont falsy. Si ce n'est pas ce que nous voulons, nous ferions mieux de leur attribuer la valeur `true` dans `descriptor`.
+Comparez-le avec `user.name` "normalement créé" ci-dessus : maintenant tous les attributs sont falsy.
+Si ce n'est pas ce que nous voulons, nous ferions mieux de leur attribuer la valeur `true` dans `descriptor`.
 
 Voyons maintenant les effets des attributs par exemple.
 
@@ -124,7 +130,9 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 Maintenant, personne ne peut changer le nom de notre utilisateur, à moins qu’ils appliquent leur propre `defineProperty` pour remplacer le nôtre.
 
 ```smart header="Les erreurs apparaissent uniquement en mode strict"
-En mode non strict, aucune erreur ne se produit lors de l'écriture dans des propriétés non inscriptibles et autres. Mais l'opération ne réussira toujours pas. Les actions violant l'indicateur sont simplement ignorées en silence dans les non-stricts.
+En mode non strict, aucune erreur ne se produit lors de l'écriture dans des propriétés non inscriptibles et autres.
+Mais l'opération ne réussira toujours pas.
+Les actions violant l'indicateur sont simplement ignorées en silence dans les non-stricts.
 ```
 
 Voici le même exemple, mais la propriété est créée à partir de zéro :
@@ -149,7 +157,8 @@ user.name = "Pete"; // Error
 
 Ajoutons maintenant un `toString` personnalisé à `user`.
 
-Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas dans `for..in`. Mais si nous ajoutons notre propre `toString`, alors, par défaut, il apparaît dans `for..in`, comme ceci :
+Normalement, un `toString` intégré pour les objets n'est pas énumérable, il n'apparaît pas dans `for..in`.
+Mais si nous ajoutons notre propre `toString`, alors, par défaut, il apparaît dans `for..in`, comme ceci :
 
 ```js run
 let user = {
@@ -163,7 +172,8 @@ toString() {
 for (let key in user) alert(key); // name, toString
 ```
 
-Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`. Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée :
+Si nous n'aimons pas cela, alors nous pouvons définir `enumerable: false`.
+Ensuite, il n'apparaîtra pas dans la boucle `for..in`, comme dans la boucle intégrée :
 
 ```js run
 let user = {
@@ -230,7 +240,8 @@ Object.defineProperty(Math, "PI", { writable: true });
 
 Il n'y a absolument rien que nous puissions faire avec `Math.PI`.
 
-Rendre une propriété non configurable est une voie à sens unique. Nous ne pouvons pas le modifier avec `defineProperty`.
+Rendre une propriété non configurable est une voie à sens unique.
+Nous ne pouvons pas le modifier avec `defineProperty`.
 
 **Veuillez noter : `configurable: false` empêche les changements d'indicateurs de propriété et sa suppression, tout en permettant de changer sa valeur.**
 
@@ -318,7 +329,8 @@ clone[key] = user[key]
 }
 ```
 
-...Mais cela ne copie pas les attributs. Donc, si nous voulons un "meilleur" clone, alors `Object.defineProperties` est préféré.
+...Mais cela ne copie pas les attributs.
+Donc, si nous voulons un "meilleur" clone, alors `Object.defineProperties` est préféré.
 
 Une autre différence est que `for..in` ignore les propriétés symboliques, mais que `Object.getOwnPropertyDescriptors` renvoie *tous* les descripteurs de propriété, y compris ceux symboliques et non énumérables.
 
@@ -332,10 +344,12 @@ Il existe également des méthodes qui limitent l'accès à l'objet *entier* :
 : Interdit l'ajout de nouvelles propriétés à l'objet.
 
 [Object.seal(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/seal)
-: Interdit l'ajout/la suppression de propriétés. Définit `configurable: false` pour toutes les propriétés existantes.
+: Interdit l'ajout/la suppression de propriétés.
+Définit `configurable: false` pour toutes les propriétés existantes.
 
 [Object.freeze(obj)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/freeze)
-: Interdit l'ajout/la suppression/la modification de propriétés. Définit `configurable: false, writeable: false` pour toutes les propriétés existantes.
+: Interdit l'ajout/la suppression/la modification de propriétés.
+Définit `configurable: false, writeable: false` pour toutes les propriétés existantes.
 
 Et aussi il y a des tests pour eux :
 

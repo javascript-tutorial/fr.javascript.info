@@ -15,5 +15,6 @@ describe("pow", function() {
 
   });
 
-  // ... Plus de tests peuvent être inséré
+  // ...
+Plus de tests peuvent être inséré
 });

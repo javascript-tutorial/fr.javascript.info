@@ -3,7 +3,8 @@
 
 Ce chapitre concerne l'envoi de formulaires HTML: avec ou sans fichiers, avec des champs supplémentaires, etc...
 
-Les objets [FormData](https://xhr.spec.whatwg.org/#interface-formdata) peuvent nous aider pour cela. Comme vous l'avez peut-être deviné, c'est l'objet pour représenter les données du formulaire HTML.
+Les objets [FormData](https://xhr.spec.whatwg.org/#interface-formdata) peuvent nous aider pour cela.
+Comme vous l'avez peut-être deviné, c'est l'objet pour représenter les données du formulaire HTML.
 
 Le constructeur est :
 ```js
@@ -12,7 +13,8 @@ let formData = new FormData([form]);
 
 Si un élément HTML `form` est fourni, il capture automatiquement ses champs.
 
-La particularité de `FormData` est que les méthodes réseau, telles que `fetch`, peuvent accepter un objet `FormData` en tant que corps. Il est encodé et envoyé avec `Content-Type: multipart/form-data`.
+La particularité de `FormData` est que les méthodes réseau, telles que `fetch`, peuvent accepter un objet `FormData` en tant que corps.
+Il est encodé et envoyé avec `Content-Type: multipart/form-data`.
 
 Du point de vue du serveur, cela ressemble à une soumission de formulaire habituelle.
 
@@ -47,7 +49,8 @@ Comme vous pouvez le voir, c'est presque une ligne :
 </script>
 ```
 
-Dans cet exemple, le code du serveur n'est pas présenté, car il dépasse notre portée. Le serveur accepte la requête POST et répond "User saved".
+Dans cet exemple, le code du serveur n'est pas présenté, car il dépasse notre portée.
+Le serveur accepte la requête POST et répond "User saved".
 
 ## Méthodes FormData
 
@@ -61,7 +64,9 @@ Nous pouvons modifier les champs dans `FormData` avec des méthodes :
 
 Un formulaire est techniquement autorisé à avoir plusieurs champs avec le même `name`, donc plusieurs appels à `append` ajoute d'autres champs portant le même nom.
 
-Il existe également la méthode `set`, avec la même syntaxe que `append`. La différence est que `.set` supprime tous les champs avec le `name` donné, puis ajoute un nouveau champ. Il s'assure donc qu'il n'y a qu'un seul champ avec ce genre de `name`, le reste est comme `append` :
+Il existe également la méthode `set`, avec la même syntaxe que `append`.
+La différence est que `.set` supprime tous les champs avec le `name` donné, puis ajoute un nouveau champ.
+Il s'assure donc qu'il n'y a qu'un seul champ avec ce genre de `name`, le reste est comme `append` :
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
@@ -81,7 +86,8 @@ for(let [name, value] of formData) {
 
 ## Envoi d'un formulaire avec un fichier
 
-Le formulaire est toujours envoyé en tant que `Content-Type: multipart/form-data`, cet encodage permet d'envoyer des fichiers. Ainsi, les champs `<input type="file">` sont également envoyés, comme pour une soumission de formulaire habituelle.
+Le formulaire est toujours envoyé en tant que `Content-Type: multipart/form-data`, cet encodage permet d'envoyer des fichiers.
+Ainsi, les champs `<input type="file">` sont également envoyés, comme pour une soumission de formulaire habituelle.
 
 Voici un exemple avec ce genre de formulaire :
 
@@ -112,7 +118,8 @@ Voici un exemple avec ce genre de formulaire :
 
 ## Envoi d'un formulaire avec des données Blob
 
-Comme nous l'avons vu dans le chapitre <info:fetch>, il est facile d'envoyer des données binaires générées dynamiquement, par exemple une image en tant que `Blob`. Nous pouvons le fournir directement en tant que paramètre `body` de `fetch`.
+Comme nous l'avons vu dans le chapitre <info:fetch>, il est facile d'envoyer des données binaires générées dynamiquement, par exemple une image en tant que `Blob`.
+Nous pouvons le fournir directement en tant que paramètre `body` de `fetch`.
 
 En pratique cependant, il est souvent plus commode d'envoyer une image non pas séparément, mais en tant que partie du formulaire, avec des champs supplémentaires, tels que "name" et autres métadonnées.
 
@@ -177,8 +184,11 @@ Nous pouvons soit créer un `new FormData(form)` à partir d'un formulaire HTML,
 
 Notons ici deux particularités :
 
-1. La méthode `set` supprime les champs du même nom, contrairement à `append`. C'est la seule différence entre eux.
-2. Pour envoyer un fichier, une syntaxe à 3 arguments est nécessaire, le dernier argument est un nom de fichier, qui est normalement extrait du système de fichiers utilisateur pour `<input type="file">`.
+1.
+La méthode `set` supprime les champs du même nom, contrairement à `append`.
+C'est la seule différence entre eux.
+2.
+Pour envoyer un fichier, une syntaxe à 3 arguments est nécessaire, le dernier argument est un nom de fichier, qui est normalement extrait du système de fichiers utilisateur pour `<input type="file">`.
 
 Les autres méthodes sont :
 

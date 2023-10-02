@@ -16,9 +16,13 @@ Mais il existe plusieurs différences importantes :
 
 Dans ce cas pourquoi devrait-on l'utiliser ?
 
-La raison principale : c'est plus simple. Dans de nombreuses applications, la puissance de `WebSocket` est un peu trop importante.
+La raison principale : c'est plus simple.
+Dans de nombreuses applications, la puissance de `WebSocket` est un peu trop importante.
 
-Nous devons recevoir un flux de données du serveur: peut-être des messages de chat ou des prix du marché, ou autre chose. C'est à cela qu'`EventSource` est bon. Il prend également en charge la reconnexion automatique, quelque chose que nous devons implémenter manuellement avec `WebSocket`. De plus, c'est un vieux HTTP simple, pas un nouveau protocole.
+Nous devons recevoir un flux de données du serveur: peut-être des messages de chat ou des prix du marché, ou autre chose.
+C'est à cela qu'`EventSource` est bon.
+Il prend également en charge la reconnexion automatique, quelque chose que nous devons implémenter manuellement avec `WebSocket`.
+De plus, c'est un vieux HTTP simple, pas un nouveau protocole.
 
 ## Recevoir des messages
 
@@ -41,7 +45,8 @@ data: of two lines
 - Les messages sont délimités par des doubles sauts de ligne `\n\n`.
 - Pour envoyer un saut de ligne `\n`, nous pouvons immédiatement envoyer une autre `data:` (3e message ci-dessus).
 
-En pratique, les messages complexes sont généralement envoyés au format JSON. Les sauts de ligne sont codés en tant que `\n`, donc les messages multilignes de `data:` ne sont pas nécessaires.
+En pratique, les messages complexes sont généralement envoyés au format JSON.
+Les sauts de ligne sont codés en tant que `\n`, donc les messages multilignes de `data:` ne sont pas nécessaires.
 
 Par exemple :
 
@@ -66,7 +71,8 @@ eventSource.onmessage = function(event) {
 
 ### Requêtes Cross-origin
 
-`EventSource` prend en charge les requêtes cross-origin, comme `fetch` toute autre méthode de mise en réseau. Nous pouvons utiliser n'importe quelle URL :
+`EventSource` prend en charge les requêtes cross-origin, comme `fetch` toute autre méthode de mise en réseau.
+Nous pouvons utiliser n'importe quelle URL :
 
 ```js
 let source = new EventSource("https://another-site.com/events");
@@ -101,7 +107,8 @@ data: Hello, I set the reconnection delay to 15 seconds
 
 Le `retry:` peut venir à la fois avec certaines données, ou en tant que message autonome.
 
-Le navigateur doit attendre autant de millisecondes avant de se reconnecter. Ou plus, par exemple si le navigateur sait (depuis le système d'exploitation) qu'il n'y a pas de connexion réseau pour le moment, il peut attendre que la connexion apparaisse, puis réessayer.
+Le navigateur doit attendre autant de millisecondes avant de se reconnecter.
+Ou plus, par exemple si le navigateur sait (depuis le système d'exploitation) qu'il n'y a pas de connexion réseau pour le moment, il peut attendre que la connexion apparaisse, puis réessayer.
 
 - Si le serveur souhaite que le navigateur cesse de se reconnecter, il doit répondre avec l'état HTTP 204.
 - Si le navigateur souhaite fermer la connexion, il doit appeler `eventSource.close()`:
@@ -112,10 +119,12 @@ let eventSource = new EventSource(...);
 eventSource.close();
 ```
 
-De plus, il n'y aura pas de reconnexion si la réponse a un `Content-Type` incorrect ou si son état HTTP diffère de 301, 307, 200 et 204. Dans de tels cas, l'événement `"error"` sera émis et le navigateur ne se reconnecte pas.
+De plus, il n'y aura pas de reconnexion si la réponse a un `Content-Type` incorrect ou si son état HTTP diffère de 301, 307, 200 et 204.
+Dans de tels cas, l'événement `"error"` sera émis et le navigateur ne se reconnecte pas.
 
 ```smart
-Lorsqu'une connexion est finalement fermée, il n'y a aucun moyen de la "rouvrir". Si nous souhaitons nous reconnecter, créez simplement un nouveau `EventSource`.
+Lorsqu'une connexion est finalement fermée, il n'y a aucun moyen de la "rouvrir".
+Si nous souhaitons nous reconnecter, créez simplement un nouveau `EventSource`.
 ```
 
 ## ID du message
@@ -236,7 +245,8 @@ La sécurité globale de cross-origin est la même que pour `fetch` et d'autres 
 : L'état de connexion actuel : soit `EventSource.CONNECTING (=0)`, `EventSource.OPEN (=1)` ou `EventSource.CLOSED (=2)`.
 
 `lastEventId`
-: Le dernier `id` reçu. Lors de la reconnexion, le navigateur l'envoie dans l'en-tête `Last-Event-ID`.
+: Le dernier `id` reçu.
+Lors de la reconnexion, le navigateur l'envoie dans l'en-tête `Last-Event-ID`.
 
 ### Les méthodes
 
@@ -252,9 +262,11 @@ La sécurité globale de cross-origin est la même que pour `fetch` et d'autres 
 : La connexion est établie.
 
 `error`
-: En cas d'erreur, y compris la perte de connexion (se reconnectera automatiquement) et les erreurs fatales. Nous pouvons vérifier `readyState` pour voir si la reconnexion est tentée.
+: En cas d'erreur, y compris la perte de connexion (se reconnectera automatiquement) et les erreurs fatales.
+Nous pouvons vérifier `readyState` pour voir si la reconnexion est tentée.
 
-Le serveur peut définir un nom d'événement personnalisé dans `event:`. De tels événements doivent être gérés en utilisant `addEventListener`, pas `on<event>`.
+Le serveur peut définir un nom d'événement personnalisé dans `event:`.
+De tels événements doivent être gérés en utilisant `addEventListener`, pas `on<event>`.
 
 ### Format de réponse du serveur
 
@@ -264,7 +276,8 @@ Un message peut contenir les champs suivants :
 
 - `data:` -- corps du message, une séquence de plusieurs `data` est interprétée comme un seul message, avec `\n` entre les parties.
 - `id:` -- renouvelle `lastEventId`, envoyé dans `Last-Event-ID` lors de la reconnexion.
-- `retry:` -- recommande un délai de relance pour les reconnexions en ms. Il n'y a aucun moyen de le définir à partir de JavaScript.
+- `retry:` -- recommande un délai de relance pour les reconnexions en ms.
+Il n'y a aucun moyen de le définir à partir de JavaScript.
 - `event:` -- nom de l'événement, doit précéder `data:`.
 
 Un message peut inclure un ou plusieurs champs dans n'importe quel ordre, mais `id:` va généralement en dernier.

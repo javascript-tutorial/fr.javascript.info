@@ -1,8 +1,11 @@
 # Les mixins
 
-En JavaScript, nous ne pouvons hériter que d'un seul objet. Il ne peut y avoir qu'un `[[Prototype]]` pour un objet. Et une classe peut étendre qu'une seule autre classe.
+En JavaScript, nous ne pouvons hériter que d'un seul objet.
+Il ne peut y avoir qu'un `[[Prototype]]` pour un objet.
+Et une classe peut étendre qu'une seule autre classe.
 
-Mais parfois, cela semble limitant. Par exemple, nous avons une classe `StreetSweeper` et une classe `Bicycle`, et nous voulons faire leur mélange: un `StreetSweepingBicycle`.
+Mais parfois, cela semble limitant.
+Par exemple, nous avons une classe `StreetSweeper` et une classe `Bicycle`, et nous voulons faire leur mélange: un `StreetSweepingBicycle`.
 
 Ou nous avons une classe `User` et une classe `EventEmitter` qui implémente la génération d'événements, et nous aimerions ajouter la fonctionnalité de `EventEmitter` à` User 'afin que nos utilisateurs puissent émettre des événements.
 
@@ -47,7 +50,8 @@ Object.assign(User.prototype, sayHiMixin);
 new User("Dude").sayHi(); // Hello Dude!
 ```
 
-Il n'y a pas d'héritage, mais une méthode de copie simple. Ainsi, `User` peut hériter d'une autre classe et inclure le mixin pour ajouter les méthodes supplémentaires, comme ceci:
+Il n'y a pas d'héritage, mais une méthode de copie simple.
+Ainsi, `User` peut hériter d'une autre classe et inclure le mixin pour ajouter les méthodes supplémentaires, comme ceci:
 
 ```js
 class User extends Person {
@@ -101,7 +105,8 @@ Voici le schéma (voir la partie droite):
 
 ![](mixin-inheritance.svg)
 
-C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`. Ainsi, même si elles ont été copiées, leur propriété interne `[[HomeObject]]` fait référence à `sayHiMixin`, comme indiqué sur l’image ci-dessus.
+C'est parce que les méthodes `sayHi` et `sayBye` ont été initialement créées dans `sayHiMixin`.
+Ainsi, même si elles ont été copiées, leur propriété interne `[[HomeObject]]` fait référence à `sayHiMixin`, comme indiqué sur l’image ci-dessus.
 
 Comme `super` cherche des méthodes du parent dans `[[HomeObject]].[[Prototype]]`, cela signifie qu'il cherche `sayHiMixin.[[Prototype]]`.
 
@@ -109,15 +114,23 @@ Comme `super` cherche des méthodes du parent dans `[[HomeObject]].[[Prototype]]
 
 Faisons maintenant un mixin concret.
 
-Une caractéristique importante de nombreux objets de navigateur (par exemple) est qu'ils peuvent générer des événements. Les événements sont un excellent moyen de "diffuser des informations" à tous ceux qui le souhaitent. Faisons donc un mixin qui permet d’ajouter facilement des fonctions relatives aux événements à n’importe quelle classe/objet.
+Une caractéristique importante de nombreux objets de navigateur (par exemple) est qu'ils peuvent générer des événements.
+Les événements sont un excellent moyen de "diffuser des informations" à tous ceux qui le souhaitent.
+Faisons donc un mixin qui permet d’ajouter facilement des fonctions relatives aux événements à n’importe quelle classe/objet.
 
-- Le mixin fournira une méthode `.trigger(name, [... data])` pour "générer un événement" quand quelque chose d'important lui arrive. L'argument `name` est un nom de l'événement, éventuellement suivi d'arguments supplémentaires avec les données d'événement.
-- Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné. Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
-- ... Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.
+- Le mixin fournira une méthode `.trigger(name, [...
+data])` pour "générer un événement" quand quelque chose d'important lui arrive.
+L'argument `name` est un nom de l'événement, éventuellement suivi d'arguments supplémentaires avec les données d'événement.
+- Egalement la méthode `.on(name, handler)` qui ajoute la fonction `handler` en tant qu'écouteur aux événements portant le nom donné.
+Il sera appelé lorsqu’un événement avec le `name` donné se déclenche, et récupérera les arguments de l’appel `.trigger`.
+- ...
+Et la méthode `.off(name, handler)` qui supprime le programme d'écoute `handler`.
 
-Après avoir ajouté le mixin, un objet `user` sera capable de générer un événement `"login"` lorsque le visiteur se connectera. Un autre objet, par exemple, `calendar` peut vouloir écouter de tels événements pour charger le calendrier de la personne connectée.
+Après avoir ajouté le mixin, un objet `user` sera capable de générer un événement `"login"` lorsque le visiteur se connectera.
+Un autre objet, par exemple, `calendar` peut vouloir écouter de tels événements pour charger le calendrier de la personne connectée.
 
-Ou bien, un `menu` peut générer l'événement `"select"` lorsqu'un élément de menu est sélectionné, et d'autres objets peuvent affecter des gestionnaires pour réagir à cet événement. Etc.
+Ou bien, un `menu` peut générer l'événement `"select"` lorsqu'un élément de menu est sélectionné, et d'autres objets peuvent affecter des gestionnaires pour réagir à cet événement.
+Etc.
 
 Voici le code:
 
@@ -125,7 +138,8 @@ Voici le code:
 let eventMixin = {
   /**
    * Souscrire à l'événement, usage:
-   *  menu.on('select', function(item) { ... }
+   *  menu.on('select', function(item) { ...
+}
   */
   on(eventName, handler) {
     if (!this._eventHandlers) this._eventHandlers = {};
@@ -164,9 +178,11 @@ let eventMixin = {
 };
 ```
 
-- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit. Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
+- `.on(eventName, handler)` - assigne la fonction `handler` à exécuter lorsque l'événement portant ce nom se produit.
+Techniquement, il existe une propriété `_eventHandlers`, qui stocke un tableau de gestionnaires pour chaque nom d'événement, et simplement ajouté à la liste.
 - `.off(eventName, handler)` - supprime la fonction de la liste des gestionnaires.
-- `.trigger(eventName, ... args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
+- `.trigger(eventName, ...
+args)` - génère l'événement: tous les gestionnaires de `_eventHandlers[eventName]` sont appelés, avec une liste d'arguments `...args`.
 
 Usage:
 
@@ -200,8 +216,10 @@ Et `eventMixin` mixin facilite l'ajout d'un tel comportement à autant de classe
 
 *Mixin* -- est un terme générique de programmation orienté objet: une classe contenant des méthodes pour d’autres classes.
 
-D'autres langages autorisent l'héritage multiple. JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
+D'autres langages autorisent l'héritage multiple.
+JavaScript ne prend pas en charge l'héritage multiple, mais les mixins peuvent être implémentés en copiant les méthodes dans le prototype.
 
 Nous pouvons utiliser les mixins comme moyen d'ajouter à une classe plusieurs comportements, comme la gestion d'événements, comme nous l'avons vu ci-dessus.
 
-Les mixins peuvent devenir un point de conflit s'ils écrasent accidentellement les méthodes de classe existantes. En règle générale, il convient de bien réfléchir aux méthodes de nommage d’un mixin, afin de minimiser la probabilité que cela se produise.
+Les mixins peuvent devenir un point de conflit s'ils écrasent accidentellement les méthodes de classe existantes.
+En règle générale, il convient de bien réfléchir aux méthodes de nommage d’un mixin, afin de minimiser la probabilité que cela se produise.

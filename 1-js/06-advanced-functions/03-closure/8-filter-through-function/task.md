@@ -4,7 +4,9 @@ importance: 5
 
 # Filtrer par fonction
 
-Nous avons une méthode intégrée `arr.filter(f)` pour les tableaux. Elle filtre tous les éléments à travers la fonction `f`. S'elle renvoie `true`, cet élément est renvoyé dans le tableau résultant.
+Nous avons une méthode intégrée `arr.filter(f)` pour les tableaux.
+Elle filtre tous les éléments à travers la fonction `f`.
+S'elle renvoie `true`, cet élément est renvoyé dans le tableau résultant.
 
 Créez un ensemble de filtres "prêts à l'emploi":
 
@@ -19,7 +21,8 @@ L'usage doit être comme ceci :
 Par exemple :
 
 ```js
-/* .. votre code pour inBetween et inArray */
+/* ..
+votre code pour inBetween et inArray */
 let arr = [1, 2, 3, 4, 5, 6, 7];
 
 alert(arr.filter(inBetween(3, 6))); // 3,4,5,6

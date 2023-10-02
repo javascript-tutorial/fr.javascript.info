@@ -13,7 +13,8 @@ let answer2 = [coords.right, coords.bottom];
 
 # Coin intérieur supérieur gauche
 
-Cela diffère du coin extérieur par la largeur de la bordure. Un moyen fiable pour obtenir la distance est `clientLeft/clientTop` :
+Cela diffère du coin extérieur par la largeur de la bordure.
+Un moyen fiable pour obtenir la distance est `clientLeft/clientTop` :
 
 ```js
 let answer3 = [coords.left + field.clientLeft, coords.top + field.clientTop];
@@ -32,7 +33,8 @@ let answer4 = [
 ];
 ```
 
-Une autre façon serait d'ajouter `clientWidth/clientHeight` aux coordonnées du coin supérieur gauche. C'est probablement encore mieux :
+Une autre façon serait d'ajouter `clientWidth/clientHeight` aux coordonnées du coin supérieur gauche.
+C'est probablement encore mieux :
 
 ```js
 let answer4 = [

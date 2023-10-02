@@ -22,9 +22,11 @@ for (let link of links) {
 }
 ```
 
-Veuillez noter: nous utilisons `link.getAttribute('href')`. Pas `link.href`, car nous avons besoin de la valeur HTML.
+Veuillez noter: nous utilisons `link.getAttribute('href')`.
+Pas `link.href`, car nous avons besoin de la valeur HTML.
 
-... Un autre moyen plus simple serait d'ajouter les contrôles au sélecteur CSS :
+...
+Un autre moyen plus simple serait d'ajouter les contrôles au sélecteur CSS :
 
 ```js
 // recherchez tous les liens qui ont :// dans href

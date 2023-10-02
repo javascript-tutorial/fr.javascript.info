@@ -8,7 +8,8 @@ Pour commencer, trouvons le prix  à partir d'une chaîne de caractères comme `
 
 ## Lookahead
 
-La syntaxe est: `pattern:X(?=Y)`, cela veut dire "recherche  `pattern:X`, mais renvoie une correspondance seulement si il est suivi de `pattern:Y`". Tous les motifs peuvent être utilisés au lieu de `pattern:X` et `pattern:Y`.
+La syntaxe est: `pattern:X(?=Y)`, cela veut dire "recherche  `pattern:X`, mais renvoie une correspondance seulement si il est suivi de `pattern:Y`".
+Tous les motifs peuvent être utilisés au lieu de `pattern:X` et `pattern:Y`.
 
 Pour un nombre entier suivi de `sujet:€`, l'expression régulière sera `pattern:\d+(?=€)`:
 
@@ -20,14 +21,19 @@ alert(str.match(/\d+(?=€)/)); // 30, le nombre 1 est ignoré, vu qu'il n'est p
 
 NB: Le lookahead est seulement un test, le contenu de la parenthèse `pattern:(?=...)` n'est pas include dans le resultat `match:30`.
 
-Quand nous recherchons `pattern:X(?=Y)`, le moteur d'expressions régulières trouve `pattern:X` et verifie s'il y a `pattern:Y` immediatemment après. Si ce n'est pas le cas, la correspondqnce possible est ignoré, et la recherche continue.
+Quand nous recherchons `pattern:X(?=Y)`, le moteur d'expressions régulières trouve `pattern:X` et verifie s'il y a `pattern:Y` immediatemment après.
+Si ce n'est pas le cas, la correspondqnce possible est ignoré, et la recherche continue.
 
 Des tests plus complexes sont possibles, ex: `pattern:X(?=Y)(?=Z)` signifie:
 
-1. Trouve`pattern:X`.
-2. Verifier si `pattern:Y` est immédiatement après `pattern:X` (ignorer sinon).
-3. Verifier si  `pattern:Z` se situe aussi immédiatement après `pattern:X` (ignorer sinon)..
-4. Si les deux tests sont réussis, alors le motif `pattern:X` correspond, sinon continuer à chercher.
+1.
+Trouve`pattern:X`.
+2.
+Verifier si `pattern:Y` est immédiatement après `pattern:X` (ignorer sinon).
+3.
+Verifier si  `pattern:Z` se situe aussi immédiatement après `pattern:X` (ignorer sinon)..
+4.
+Si les deux tests sont réussis, alors le motif `pattern:X` correspond, sinon continuer à chercher.
 
 En d'autres mots, ce genre de motif signifie que nous recherchons `pattern:X` suivi de `pattern:Y` et `pattern:Z` en meme temps
 
@@ -71,7 +77,8 @@ La syntaxe est:
 - Lookbehind positif: `pattern:(?<=Y)X`, correspond à `pattern:X`, mais seulement si il y a `pattern:Y` avant lui.
 - Lookbehind negatif: `pattern:(?<=Y)X`, correspond à `pattern:X`, mais seulement si il n'y a pas `pattern:Y` avant lui.
 
-Pqr exemple,changeons le prix en dollars US. Le signe dollar est généralement placé avant le chiffre,donc pour recupérer `$30`  nous utiliserons`pattern:(?<=\$)\d+` -- Une quantité précédé de `subject:$`:
+Pqr exemple,changeons le prix en dollars US.
+Le signe dollar est généralement placé avant le chiffre,donc pour recupérer `$30`  nous utiliserons`pattern:(?<=\$)\d+` -- Une quantité précédé de `subject:$`:
 
 ```js run
 let str = "1 turkey costs $30";
@@ -92,7 +99,8 @@ alert(str.match(/(?<!\$)\b\d+/g)); // 2 (le prix ne correspond pas)
 
 Généralement, le contenu d'une parenthese de lookaround ne fait partie des resultats.
 
-Par exmple dans le motif `pattern:\d+(?=€)`, le signe `pattern:€` n'est pas capture comme une partie de la corredpondance. C'est naturel: nous recherchons un nombre `pattern:\d+`, tandis que `pattern:(?=€)` iest juste un test qui doit etre suivi de `subject:€`.
+Par exmple dans le motif `pattern:\d+(?=€)`, le signe `pattern:€` n'est pas capture comme une partie de la corredpondance.
+C'est naturel: nous recherchons un nombre `pattern:\d+`, tandis que `pattern:(?=€)` iest juste un test qui doit etre suivi de `subject:€`.
 
 Mais dans certains cas, nous voulons capturer l'expression du lookaround aussi, comme une partie de la correspondance.C'est possible.Il suffit juste de le l'entourer d'une parenthese supplementaire.
 

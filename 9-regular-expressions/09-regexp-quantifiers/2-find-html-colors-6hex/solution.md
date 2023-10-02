@@ -1,6 +1,7 @@
 Nous devons chercher `#` suivi de 6 caractères hexadécimaux.
 
-Un caractère hexadécimal est défini comme `pattern:[0-9a-fA-F]`. Ou si nous utilisons le flag `pattern:i`, juste  `pattern:[0-9a-f]`.
+Un caractère hexadécimal est défini comme `pattern:[0-9a-fA-F]`.
+Ou si nous utilisons le flag `pattern:i`, juste  `pattern:[0-9a-f]`.
 
 Nous pouvons ensuite rechercher 6 d'entre eux en utilisant le quantificateur `pattern:{6}`.
 

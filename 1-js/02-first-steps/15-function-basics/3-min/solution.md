@@ -18,4 +18,5 @@ function min(a, b) {
 }
 ```
 
-P.S. Dans le cas d'une égalité `a == b`, peu importe ce qu'il faut retourner.
+P.S.
+Dans le cas d'une égalité `a == b`, peu importe ce qu'il faut retourner.

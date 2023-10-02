@@ -43,9 +43,12 @@ Le résultat (arbre) devrait ressembler à ceci :
 
 Choisissez l'une des deux façons de résoudre cette tâche :
 
-1. Créez le code HTML de l'arborescence, puis attribuez-le à `container.innerHTML`.
-2. Créez des nœuds d'arbre et ajoutez-les avec les méthodes DOM.
+1.
+Créez le code HTML de l'arborescence, puis attribuez-le à `container.innerHTML`.
+2.
+Créez des nœuds d'arbre et ajoutez-les avec les méthodes DOM.
 
 Ce serait génial si vous pouviez faire les deux.
 
-P.S. L'arbre ne doit pas avoir d'éléments "supplémentaires" comme des `<ul></ul>` vides pour les feuilles (de l'arbre).
+P.S.
+L'arbre ne doit pas avoir d'éléments "supplémentaires" comme des `<ul></ul>` vides pour les feuilles (de l'arbre).

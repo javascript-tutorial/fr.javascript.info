@@ -42,7 +42,8 @@ document.documentElement.getBoundingClientRect().top = -1400
 document.documentElement.getBoundingClientRect().bottom = 600
 ```
 
-Veuillez noter que le `bottom` ne peut être `0`, parce qu’elle n'atteint jamais le haut de la fenêtre. La limite la plus basse de coordonées `bottom` est la hauteur de la fenêtre (nous avons supposé que ce soit `600`),, nous ne pouvons plus la défiler vers le haut.
+Veuillez noter que le `bottom` ne peut être `0`, parce qu’elle n'atteint jamais le haut de la fenêtre.
+La limite la plus basse de coordonées `bottom` est la hauteur de la fenêtre (nous avons supposé que ce soit `600`),, nous ne pouvons plus la défiler vers le haut.
 
 Nous pouvons obtenir la hauteur de la fenêtre comme `document.documentElement.clientHeight`.
 

@@ -4,7 +4,8 @@ importance: 5
 
 # Copier et trier le tableau
 
-Nous avons un tableau de chaînes `arr`. Nous aimerions en avoir une copie triée, mais sans modifier `arr`.
+Nous avons un tableau de chaînes `arr`.
+Nous aimerions en avoir une copie triée, mais sans modifier `arr`.
 
 Créez une fonction `copySorted(arr)` qui renvoie une copie triée.
 

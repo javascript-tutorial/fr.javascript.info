@@ -11,4 +11,5 @@ Show the animation like on the picture below (click the plane):
 - The picture grows on click from `40x24px` to `400x240px` (10 times larger).
 - The animation takes 3 seconds.
 - At the end output: "Done!".
-- During the animation process, there may be more clicks on the plane. They shouldn't "break" anything.
+- During the animation process, there may be more clicks on the plane.
+They shouldn't "break" anything.

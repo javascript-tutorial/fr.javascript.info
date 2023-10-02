@@ -12,7 +12,8 @@ Nous devons trouver des chaînes citées : soit par des apostrophes `subject:'..
 
 Comment les trouver ?
 
-Nous pouvons mettre les deux types entre crochets : `pattern:['"](.*?)['"]`, mais ce pattern pourrait correspondre avec des mélanges comme `match:"...'` ou `match:'..."`. Cela mènerait à des correspondances incorrectes lorsqu'une citation apparaît dans une autre, comme dans le texte `subject:"She's the one!"`:
+Nous pouvons mettre les deux types entre crochets : `pattern:['"](.*?)['"]`, mais ce pattern pourrait correspondre avec des mélanges comme `match:"...'` ou `match:'..."`.
+Cela mènerait à des correspondances incorrectes lorsqu'une citation apparaît dans une autre, comme dans le texte `subject:"She's the one!"`:
 
 ```js run
 let str = `He said: "She's the one!".`;
@@ -39,14 +40,16 @@ let regexp = /(['"])(.*?)\1/g;
 alert(str.match(regexp)); // "She's the one!"
 ```
 
-Maintenant, ça fonctionne ! Le moteur trouve le premier caractère de citation `pattern:(['"])` et mémorise son contenu. C'est le premier groupe de capture.
+Maintenant, ça fonctionne ! Le moteur trouve le premier caractère de citation `pattern:(['"])` et mémorise son contenu.
+C'est le premier groupe de capture.
 
 Plus loin dans le pattern, `pattern:\1` signifie "cherche le même texte que dans le premier groupe de capture", le même caractère de citation dans notre cas.
 
 Similairement, `pattern:\2` voudrait référencier le 2nd groupe, `pattern:\3` - le 3e groupe, et ainsi de suite.
 
 ```smart
-Si nous utilisons `?:` dans le groupe, alors nous ne pouvons pas le référencer. Les groupes exclus de la capture `(?:...)` ne sont pas mémorisés par le moteur.
+Si nous utilisons `?:` dans le groupe, alors nous ne pouvons pas le référencer.
+Les groupes exclus de la capture `(?:...)` ne sont pas mémorisés par le moteur.
 ```
 
 ```warn header="Ne mélangez pas : dans le pattern, `pattern:\1`, dans le replacement : `pattern:$1`"

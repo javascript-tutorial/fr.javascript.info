@@ -13,6 +13,8 @@ La demo:
 
 [iframe border="1" src="solution" height=180]
 
-P.S. Pour cette tâche on peut assumer que les éléments de cette liste sont uniquement du texte.Pas de tags imbriqués.
+P.S.
+Pour cette tâche on peut assumer que les éléments de cette liste sont uniquement du texte.Pas de tags imbriqués.
 
-P.P.S. Empêcher la séléction des textes  déclenchée par défaut par le navigateur lors d'un click.
+P.P.S.
+Empêcher la séléction des textes  déclenchée par défaut par le navigateur lors d'un click.

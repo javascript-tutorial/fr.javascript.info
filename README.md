@@ -13,7 +13,8 @@ Aidez-nous à améliorer la traduction.
 
 Votre nom et la taille de la contribution apparaîtront dans la page "À propos du projet" lorsque la traduction sera publiée.
 
-P.S. La liste complète des langues est disponible sur <https://javascript.info/translate>.
+P.S.
+La liste complète des langues est disponible sur <https://javascript.info/translate>.
 
 ## Structure
 
@@ -29,7 +30,8 @@ Nous aimerions également collaborer dans ce tutoriel avec d'autres personnes.
 
 Quelque-chose ne va pas ? Un sujet est manquant ? Expliquez-le nous, en ajoutant un PR 👏
 
-**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre. Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.
+**Vous pouvez éditer le texte dans n'importe quel éditeur** Le tutoriel utilise un format amélioré de "markdown", facile à comprendre.
+Et si vous voulez voir à quoi ça ressemble sur le site, il y a un serveur pour exécuter le tutoriel localement à <https://github.com/javascript-tutorial/server>.
 
 La liste des contributeurs est disponible à <https://javascript.info/about#contributors>.
 
@@ -45,7 +47,8 @@ Des ressources supplémentaires et des exemples pour l'article ou l'exercice se 
 
 ## Conseils de traduction
 
-La traduction ne doit pas nécessairement être ultra précise (mot par mot). Elle devrait être techniquement correcte et bien expliquée.
+La traduction ne doit pas nécessairement être ultra précise (mot par mot).
+Elle devrait être techniquement correcte et bien expliquée.
 
 Si vous voyez que la version anglaise peut être améliorée, merci d'envoyer un PR sur le repo correspondant.
 

@@ -1,5 +1,6 @@
 <?php
-$files = trim(`find . -name *.png`);
+$files = trim(`find .
+-name *.png`);
 $files = explode("\n", $files);
 
 $root = getcwd();
@@ -10,7 +11,8 @@ foreach($files as $file) {
   if (strstr($file, '@2x')) continue;
 
   $filename = basename($file);
-  $dir = $root . dirname($file);
+  $dir = $root .
+dirname($file);
   chdir($dir);
   $result = `grep $filename *`;
 

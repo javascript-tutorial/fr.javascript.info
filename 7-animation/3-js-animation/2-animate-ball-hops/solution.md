@@ -1,4 +1,5 @@
-Dans la tâche <info:task/animate-ball>, nous n'avions qu'une seule propriété à animer. Maintenant, nous avons besoin d'une supplémentaire : `elem.style.left`.
+Dans la tâche <info:task/animate-ball>, nous n'avions qu'une seule propriété à animer.
+Maintenant, nous avons besoin d'une supplémentaire : `elem.style.left`.
 
 La coordonnée horizontale change selon une autre loi : elle ne "rebondit" pas, mais augmente progressivement en déplaçant la balle vers la droite.
 

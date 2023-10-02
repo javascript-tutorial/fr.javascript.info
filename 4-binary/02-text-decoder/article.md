@@ -22,7 +22,9 @@ let str = decoder.decode([input], [options]);
 
 - **`input`** -- `Source du buffer` à décoder.
 - **`options`** -- objet optionnel:
-  - **`stream`** -- vrai pour les flux de décodage, lorsque `decoder` est appelé à plusieurs reprises avec des blocs de données entrants. Dans ce cas, un caractère multi-octets peut parfois être divisé entre des morceaux. Cette option indique à `TextDecoder` de mémoriser les caractères" inachevés "et de les décoder lorsque le morceau suivant arrive.
+  - **`stream`** -- vrai pour les flux de décodage, lorsque `decoder` est appelé à plusieurs reprises avec des blocs de données entrants.
+Dans ce cas, un caractère multi-octets peut parfois être divisé entre des morceaux.
+Cette option indique à `TextDecoder` de mémoriser les caractères" inachevés "et de les décoder lorsque le morceau suivant arrive.
 
 Par exemple:
 

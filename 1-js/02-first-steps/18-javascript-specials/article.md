@@ -17,7 +17,8 @@ alert('Hello')
 alert('World')
 ```
 
-Cela s'appelle "insertion automatique de point-virgule". Parfois, cela ne fonctionne pas, par exemple :
+Cela s'appelle "insertion automatique de point-virgule".
+Parfois, cela ne fonctionne pas, par exemple :
 
 ```js run
 alert("Il y aura une erreur après ce message")
@@ -39,7 +40,8 @@ for(;;) {
 }
 ```
 
-… Mais même si nous pouvons mettre un point-virgule supplémentaire quelque part, ce n’est pas une erreur. Ce sera ignoré.
+… Mais même si nous pouvons mettre un point-virgule supplémentaire quelque part, ce n’est pas une erreur.
+Ce sera ignoré.
 
 Plus d'informations dans : <info:structure>.
 
@@ -55,7 +57,8 @@ Pour activer pleinement toutes les fonctionnalités de JavaScript moderne, nous 
 
 La directive doit être au sommet d'un script ou au début d'un corps de fonction.
 
-Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible". Nous préférons généralement le comportement moderne.
+Sans `"use strict"`, tout fonctionne toujours, mais certaines fonctionnalités se comportent à l'ancienne, de manière "compatible".
+Nous préférons généralement le comportement moderne.
 
 Certaines fonctionnalités modernes du langage (telles que les classes que nous étudierons dans le futur) activent implicitement le mode strict.
 
@@ -75,7 +78,8 @@ Un nom de variable peut inclure :
 - Les caractères `$` et `_` sont normaux, à égalité avec les lettres.
 - Les alphabets et les hiéroglyphes non latins sont également autorisés, mais ils ne sont généralement pas utilisés (Par convention).
 
-Les variables sont typées dynamiquement. Elles peuvent stocker n'importe quelle valeur :
+Les variables sont typées dynamiquement.
+Elles peuvent stocker n'importe quelle valeur :
 
 ```js
 let x = 5;
@@ -103,13 +107,15 @@ Plus d’informations dans : <info:variables> et <info:types>.
 
 ## Les interactions au sein du navigateur
 
-Nous utilisons un navigateur comme environnement de travail. Les fonctions de base de l'interface utilisateur sont les suivantes :
+Nous utilisons un navigateur comme environnement de travail.
+Les fonctions de base de l'interface utilisateur sont les suivantes :
 
 [`prompt(question[, default])`](mdn:api/Window/prompt)
 : Poser une question et retourner soit ce que le visiteur a entré, soit `null` s'il clique sur "cancel".
 
 [`confirm(question)`](mdn:api/Window/confirm)
-: Poser une `question` et suggérer de choisir entre Ok et Annuler. Le choix est retourné comme `true/false`.
+: Poser une `question` et suggérer de choisir entre Ok et Annuler.
+Le choix est retourné comme `true/false`.
 
 [`alert(message)`](mdn:api/Window/alert)
 : Affiche un `message`.
@@ -135,7 +141,8 @@ JavaScript prend en charge les opérateurs suivants :
 Arithmétique
 : Regulier : `* + - /`, aussi `%` pour le reste et `**` pour la puissance d'un nombre.
 
-    Le binaire plus `+` concatène des chaînes de caractères. Et si l'un des opérandes est une chaîne de caractères, l'autre est également converti en chaîne de caractères :
+    Le binaire plus `+` concatène des chaînes de caractères.
+Et si l'un des opérandes est une chaîne de caractères, l'autre est également converti en chaîne de caractères :
 
     ```js run
     alert('1' + 2); // '12', string
@@ -149,13 +156,16 @@ Bitwise
 : Les opérateurs au niveau du bit fonctionnent avec des entiers 32 bits au niveau du bit le plus bas : voir la [doc](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) quand ils sont nécessaires.
 
 Conditionnel
-: Le seul opérateur avec trois opérandes : `cond ? resultA : resultB`. Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
+: Le seul opérateur avec trois opérandes : `cond ? resultA : resultB`.
+Si `cond` est vrai, retourne `resultA`, autrement `resultB`.
 
 Opérateurs logiques
-: ET logique `&&` et OU `||` effectuent une évaluation en court-circuit puis renvoient la valeur là où ils se sont arrêtés (pas nécessairement `true`/`false`). NOT logique `!` convertit l'opérande en type booléen et retourne la valeur inverse.
+: ET logique `&&` et OU `||` effectuent une évaluation en court-circuit puis renvoient la valeur là où ils se sont arrêtés (pas nécessairement `true`/`false`).
+NOT logique `!` convertit l'opérande en type booléen et retourne la valeur inverse.
 
 L'opérateur de coalescence des nuls
-: L'opérateur `??` permet de choisir une valeur définie dans un ensemble de données. Le résultat de `a ?? b` est `a` sauf s'il est `null`/`undefined`, alors `b`.
+: L'opérateur `??` permet de choisir une valeur définie dans un ensemble de données.
+Le résultat de `a ?? b` est `a` sauf s'il est `null`/`undefined`, alors `b`.
 
 Comparaisons
 : Le contrôle d’égalité `==` pour les valeurs de types différents les convertit en un nombre (sauf `null` et `undefined`, égales entre elles et rien d’autre), elles sont donc égales :
@@ -199,8 +209,10 @@ Plus d'informations dans : <info:operators>, <info:comparison>, <info:logical-op
     }
     ```
 
-- La variable déclarée dans la boucle `for(let ...)` est visible uniquement à l'intérieur de la boucle. Mais nous pouvons aussi omettre `let` et réutiliser une variable existante.
-- Les instructions `break/continue` permettent de sortir complètement de la boucle / de l'itération en cours. Utilisez des labels pour rompre les boucles imbriquées.
+- La variable déclarée dans la boucle `for(let ...)` est visible uniquement à l'intérieur de la boucle.
+Mais nous pouvons aussi omettre `let` et réutiliser une variable existante.
+- Les instructions `break/continue` permettent de sortir complètement de la boucle / de l'itération en cours.
+Utilisez des labels pour rompre les boucles imbriquées.
 
 Details dans : <info:while-for>.
 
@@ -208,7 +220,8 @@ Plus tard, nous étudierons plus de types de boucles pour traiter des objets.
 
 ## La structure conditionnelle "switch"
 
-La structure conditionnelle "switch" peut remplacer plusieurs vérifications `if`. Elle utilise `===` (égalité stricte) pour les comparaisons.
+La structure conditionnelle "switch" peut remplacer plusieurs vérifications `if`.
+Elle utilise `===` (égalité stricte) pour les comparaisons.
 
 Par exemple :
 
@@ -234,7 +247,8 @@ Details dans : <info:switch>.
 
 Nous avons couvert trois manières de créer une fonction en JavaScript :
 
-1. Déclaration de fonction : la fonction dans le flux de code principal
+1.
+Déclaration de fonction : la fonction dans le flux de code principal
 
     ```js
     function sum(a, b) {
@@ -244,7 +258,8 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
     }
     ```
 
-2. Expression de fonction : fonction dans le contexte d'une expression
+2.
+Expression de fonction : fonction dans le contexte d'une expression
 
     ```js
     let sum = function(a, b) {
@@ -254,7 +269,8 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
     };
     ```
 
-3. Fonctions fléchées :
+3.
+Fonctions fléchées :
 
     ```js
     // Expression à droite
@@ -273,12 +289,16 @@ Nous avons couvert trois manières de créer une fonction en JavaScript :
     let double = n => n * 2;
     ```
 
-- Une fonction peut avoir des variables locales : celles déclarées à l'intérieur de son corps ou sa liste de paramètres. Ces variables ne sont visibles qu'à l'intérieur de la fonction.
+- Une fonction peut avoir des variables locales : celles déclarées à l'intérieur de son corps ou sa liste de paramètres.
+Ces variables ne sont visibles qu'à l'intérieur de la fonction.
 - Les paramètres peuvent avoir des valeurs par défaut : `function sum(a = 1, b = 2) {...}`.
-- Les fonctions retournent toujours quelque chose. Si aucune instruction `return` n’est déclarée ou qu'aucune expression ne suit l'instruction `return`, le résultat est `undefined`.
+- Les fonctions retournent toujours quelque chose.
+Si aucune instruction `return` n’est déclarée ou qu'aucune expression ne suit l'instruction `return`, le résultat est `undefined`.
 
 Details : voir <info:function-basics>, <info:arrow-functions-basics>.
 
 ## Plus à venir
 
-C’était une brève liste de fonctionnalités de JavaScript. Pour l’instant, nous n’avons étudié que les bases. Plus loin dans le tutoriel, vous trouverez plus de spécificités avancées de JavaScript.
+C’était une brève liste de fonctionnalités de JavaScript.
+Pour l’instant, nous n’avons étudié que les bases.
+Plus loin dans le tutoriel, vous trouverez plus de spécificités avancées de JavaScript.

@@ -35,4 +35,5 @@ alert(generator()); // 282475249
 alert(generator()); // 1622650073
 ```
 
-Cela fonctionne aussi. Mais alors nous perdons la capacité à itérer avec  `for..of` et d'utiliser une composition de générateur, qui pourrait être utile ailleurs.
+Cela fonctionne aussi.
+Mais alors nous perdons la capacité à itérer avec  `for..of` et d'utiliser une composition de générateur, qui pourrait être utile ailleurs.

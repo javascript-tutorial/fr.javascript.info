@@ -8,7 +8,8 @@ Créer un bouton nomme "to the top" pour aider à effectuer un défilement de pa
 
 Cela doit être ainsi:
 - Tandis que la page n'est pas défilée vers le bas pour au moins une hauteur égale a la fenêtre --  être invisible.
-- Quand la page est défilée vers le bas au-delà de la hauteur de la fenêtre -- il doit apparaitre une flèche pointant "vers le haut" au coin gauche supérieur. Si la page est défilée dans l'autre sens, elle disparait.
+- Quand la page est défilée vers le bas au-delà de la hauteur de la fenêtre -- il doit apparaitre une flèche pointant "vers le haut" au coin gauche supérieur.
+Si la page est défilée dans l'autre sens, elle disparait.
 - Lorsqu'on clique sur la flèche, la page défile vers le haut.
 
 Comme ceci (coin supérieur gauche, faites défiler pour voir) :

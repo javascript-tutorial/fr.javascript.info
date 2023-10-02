@@ -26,7 +26,8 @@ let ladder = {
 ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
 ```
 
-Nous pouvons également écrire un seul appel par ligne. Pour les longues chaînes, c'est plus lisible :
+Nous pouvons également écrire un seul appel par ligne.
+Pour les longues chaînes, c'est plus lisible :
 
 ```js
 ladder

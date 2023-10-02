@@ -1,4 +1,5 @@
-The `new Date` constructor uses the local time zone. So the only important thing to remember is that months start from zero.
+The `new Date` constructor uses the local time zone.
+So the only important thing to remember is that months start from zero.
 
 So February has number 1.
 

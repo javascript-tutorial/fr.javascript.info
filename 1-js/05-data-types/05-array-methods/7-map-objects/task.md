@@ -18,7 +18,9 @@ let mary = { name: "Mary", surname: "Key", id: 3 };
 let users = [ john, pete, mary ];
 
 *!*
-let usersMapped = /* ... votre code ... */
+let usersMapped = /* ...
+votre code ...
+*/
 */!*
 
 /*
@@ -33,4 +35,6 @@ alert(usersMapped[0].id) // 1
 alert(usersMapped[0].fullName) // John Smith
 ```
 
-Donc, en réalité, vous devez mapper un tableau d'objets sur un autre. Essayez d'utiliser `=>` ici. Il y a une petite prise.
+Donc, en réalité, vous devez mapper un tableau d'objets sur un autre.
+Essayez d'utiliser `=>` ici.
+Il y a une petite prise.

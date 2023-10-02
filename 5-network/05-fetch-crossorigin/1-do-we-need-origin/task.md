@@ -24,5 +24,7 @@ Comme vous pouvez le voir, `Referer` et `Origin` sont présents.
 
 Questions :
 
-1. Pourquoi `Origin` est nécessaire, si `Referer` a encore plus d'informations ?
-2. Est-il possible qu'il n'y ait pas de `Referer` ou `Origin`, ou est-ce incorrect ?
+1.
+Pourquoi `Origin` est nécessaire, si `Referer` a encore plus d'informations ?
+2.
+Est-il possible qu'il n'y ait pas de `Referer` ou `Origin`, ou est-ce incorrect ?

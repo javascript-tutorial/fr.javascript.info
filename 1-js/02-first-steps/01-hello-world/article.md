@@ -4,9 +4,12 @@
 
 Cette partie du tutoriel est à propos du coeur de JavaScript, le langage lui même.
 
-Mais nous avons besoin d'un environnement de travail pour exécuter nos scripts et, étant donné que ce guide est en ligne, le navigateur est un bon choix. Nous allons nous efforcer d'utiliser les instructions spécifiques au navigateur (comme `alert`) au minimum afin de ne pas y consacrer du temps si vous prévoyez de vous concentrer sur un autre environnement tel que Node.JS. Par ailleurs, les détails du navigateur sont expliqués dans [la partie suivante](/ui) du didacticiel.
+Mais nous avons besoin d'un environnement de travail pour exécuter nos scripts et, étant donné que ce guide est en ligne, le navigateur est un bon choix.
+Nous allons nous efforcer d'utiliser les instructions spécifiques au navigateur (comme `alert`) au minimum afin de ne pas y consacrer du temps si vous prévoyez de vous concentrer sur un autre environnement tel que Node.JS.
+Par ailleurs, les détails du navigateur sont expliqués dans [la partie suivante](/ui) du didacticiel.
 
-Alors, voyons d'abord comment intégrer un script à une page Web. Pour les environnements côté serveur, vous pouvez simplement l'exécuter avec une commande comme `"node index.js"` pour Node.JS.
+Alors, voyons d'abord comment intégrer un script à une page Web.
+Pour les environnements côté serveur, vous pouvez simplement l'exécuter avec une commande comme `"node index.js"` pour Node.JS.
 
 ## La balise "script"
 
@@ -46,10 +49,17 @@ La balise `<script>` contient du code JavaScript qui est automatiquement exécut
 La balise `<script>` a quelques attributs qui sont rarement utilisés de nos jours, mais nous pouvons les trouver dans l'ancien code :
 
  L'attribut `type` : <code>&lt;script <u>type</u>=...&gt;</code>
-: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habituellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais il s'agit d'un sujet avancé, nous parlerons de modules dans une autre partie du tutoriel.
+: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`.
+Habituellement c'était `type="text/javascript"`.
+Dorénavant ce n’est plus nécessaire.
+De plus, le standard HTML moderne a totalement changé la signification de cet attribut.
+Maintenant, il peut être utilisé pour les modules JavaScript.
+Mais il s'agit d'un sujet avancé, nous parlerons de modules dans une autre partie du tutoriel.
 
  L'attribut `language` : <code>&lt;script <u>language</u>=...&gt;</code>
-: Cet attribut était destiné à afficher la langue du script. Pour l'instant, cet attribut n'a aucun sens, le langage est le JavaScript par défaut. Pas besoin de l'utiliser.
+: Cet attribut était destiné à afficher la langue du script.
+Pour l'instant, cet attribut n'a aucun sens, le langage est le JavaScript par défaut.
+Pas besoin de l'utiliser.
 
 Commentaires avant et après les scripts.
 : Dans des livres et des guides vraiment anciens, on peut trouver des commentaires dans `<script>`, comme ceci :
@@ -60,7 +70,9 @@ Commentaires avant et après les scripts.
     //--></script>
     ```
 
-    Cette astuce n’est pas utilisée dans le JavaScript moderne. Ces commentaires ont été utilisés pour masquer le code JavaScript des anciens navigateurs qui ne savaient pas comment traiter une balise `<script>`. Comme les navigateurs nés au cours des 15 dernières années n’ont pas ce problème, ce type de commentaire peut vous aider à identifier un code très ancien.
+    Cette astuce n’est pas utilisée dans le JavaScript moderne.
+Ces commentaires ont été utilisés pour masquer le code JavaScript des anciens navigateurs qui ne savaient pas comment traiter une balise `<script>`.
+Comme les navigateurs nés au cours des 15 dernières années n’ont pas ce problème, ce type de commentaire peut vous aider à identifier un code très ancien.
 
 ## Scripts externes
 
@@ -72,7 +84,9 @@ Le fichier de script est attaché au HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
-Ici, `/chemin/vers/script.js` est le chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courant.
+Ici, `/chemin/vers/script.js` est le chemin absolu du script depuis la racine du site.
+On peut également fournir un chemin relatif à partir de la page en cours.
+Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courant.
 
 Nous pouvons également donner une URL complète, par exemple :
 
@@ -89,11 +103,13 @@ Pour joindre plusieurs scripts, utilisez plusieurs tags :
 ```
 
 ```smart
-En règle générale, seuls les scripts les plus simples sont insérés directement dans le code HTML. Les plus complexes résident dans des fichiers séparés.
+En règle générale, seuls les scripts les plus simples sont insérés directement dans le code HTML.
+Les plus complexes résident dans des fichiers séparés.
 
 L’avantage d’un fichier séparé est que le navigateur le télécharge puis le stocke dans son [cache](https://fr.wikipedia.org/wiki/Cache_web).
 
-Après quoi, les autres pages qui veulent le même script le récupéreront à partir du cache au lieu de le télécharger à nouveau. Le fichier n'est donc téléchargé qu'une seule fois.
+Après quoi, les autres pages qui veulent le même script le récupéreront à partir du cache au lieu de le télécharger à nouveau.
+Le fichier n'est donc téléchargé qu'une seule fois.
 
 Cela économise du trafic et rend le chargement des pages plus rapides.
 ```
@@ -127,4 +143,6 @@ L'exemple ci-dessus peut être divisé en deux scripts pour fonctionner :
 - Les attributs de `type` et de `langue` ne sont pas requis.
 - Un script dans un fichier externe peut être inséré avec `<script src = "chemin / vers / script.js"> </ script>`.
 
-Il y a beaucoup plus à apprendre sur les scripts de navigateur et leurs interactions avec la page Web. Mais gardons à l’esprit que cette partie du tutoriel est consacrée au langage JavaScript, nous ne devons donc pas nous en distraire. Nous utiliserons un navigateur comme moyen d'exécuter JavaScript, ce qui est très pratique pour la lecture en ligne, mais il en existe beaucoup d'autres.
+Il y a beaucoup plus à apprendre sur les scripts de navigateur et leurs interactions avec la page Web.
+Mais gardons à l’esprit que cette partie du tutoriel est consacrée au langage JavaScript, nous ne devons donc pas nous en distraire.
+Nous utiliserons un navigateur comme moyen d'exécuter JavaScript, ce qui est très pratique pour la lecture en ligne, mais il en existe beaucoup d'autres.

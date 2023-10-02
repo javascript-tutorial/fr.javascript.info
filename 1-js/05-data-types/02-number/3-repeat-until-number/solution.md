@@ -16,6 +16,7 @@ alert(`Read: ${readNumber()}`);
 
 La solution est un peu plus complexe qu'elle n'y paraît car nous devons gérer des lignes `null` / vides.
 
-Nous répétons donc la demande jusqu'à ce qu'il s'agisse d'un "nombre régulier". Les lignes `null` (cancel) et vide répondent également à cette condition car, sous forme numérique, elles valent `0`.
+Nous répétons donc la demande jusqu'à ce qu'il s'agisse d'un "nombre régulier".
+Les lignes `null` (cancel) et vide répondent également à cette condition car, sous forme numérique, elles valent `0`.
 
 Après s'être arrêtés, nous devons traiter spécialement les lignes `null` et vides (retourner `null`), car les convertir en nombre retournerait `0`.

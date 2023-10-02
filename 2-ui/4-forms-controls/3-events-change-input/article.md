@@ -8,7 +8,8 @@ L'événement `change` se déclenche lorsque le changement de la valeur de l'él
 
 Pour les éléments `input` de type `text` cela signifie que l'événement se produit lorsqu'ils perdent le focus.
 
-Par exemple, pendant que nous saisissons dans le champ de texte ci-dessous -- il n'y a aucun événement. Mais lorsque nous déplaçons le focus ailleurs, par exemple, en cliquant sur un bouton -- il y aura un événement `change`:
+Par exemple, pendant que nous saisissons dans le champ de texte ci-dessous -- il n'y a aucun événement.
+Mais lorsque nous déplaçons le focus ailleurs, par exemple, en cliquant sur un bouton -- il y aura un événement `change`:
 
 ```html autorun height=40 run
 <input type="text" onchange="alert(this.value)">
@@ -45,7 +46,8 @@ Par exemple:
 
 Si nous voulons gérer chaque modification d'un `<input>` alors cet événement est le meilleur choix.
 
-D'un autre coté, l'événement `input` ne se déclenche pas lors de la saisie au clavier et d'autres actions qui n'impliquent de changement de valeur, par ex. en appuyant sur les touches fléchées `touche:⇦` `touche:⇨` pendant la saisie.
+D'un autre coté, l'événement `input` ne se déclenche pas lors de la saisie au clavier et d'autres actions qui n'impliquent de changement de valeur, par ex.
+en appuyant sur les touches fléchées `touche:⇦` `touche:⇨` pendant la saisie.
 
 ```
 smart header="Impossible d'empêcher quoi que ce soit dans `oninput`"
@@ -79,36 +81,52 @@ Par exemple, le code ci-dessous empêche tous ces événements `cut/copy/paste` 
 </script>
 ```
 
-Remarque : à l'intérieur des gestionnaires d'événements `cut` et `copy`, un appel à `event.clipboardData.getData(...)` renvoie une chaîne vide. C'est parce que techniquement, les données ne sont pas encore dans le presse-papiers. Si nous utilisons `event.preventDefault()`, il ne sera pas du tout copié.
+Remarque : à l'intérieur des gestionnaires d'événements `cut` et `copy`, un appel à `event.clipboardData.getData(...)` renvoie une chaîne vide.
+C'est parce que techniquement, les données ne sont pas encore dans le presse-papiers.
+Si nous utilisons `event.preventDefault()`, il ne sera pas du tout copié.
 
-Ainsi, l'exemple ci-dessus utilise `document.getSelection()` pour obtenir le texte sélectionné. Vous pouvez trouver plus de détails sur la sélection de documents dans l'article <info:selection-range>.
+Ainsi, l'exemple ci-dessus utilise `document.getSelection()` pour obtenir le texte sélectionné.
+Vous pouvez trouver plus de détails sur la sélection de documents dans l'article <info:selection-range>.
 
-Il est possible de copier/coller pas seulement du texte, mais tout. Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
+Il est possible de copier/coller pas seulement du texte, mais tout.
+Par exemple, nous pouvons copier un fichier dans le gestionnaire de fichiers du système d'exploitation et le coller.
 
-C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour le glisser-déposer et le copier/coller. C'est un peu hors de notre portée maintenant, mais vous pouvez trouver ses méthodes dans la [spécification DataTransfer](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+C'est parce que `clipboardData` implémente l'interface `DataTransfer`, couramment utilisée pour le glisser-déposer et le copier/coller.
+C'est un peu hors de notre portée maintenant, mais vous pouvez trouver ses méthodes dans la [spécification DataTransfer](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
 
-En outre, il existe une API asynchrone supplémentaire pour accéder au presse-papiers : `navigator.clipboard`. Plus d'informations à ce sujet dans la spécification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [non pris en charge par Firefox](https://caniuse.com/async-clipboard).
+En outre, il existe une API asynchrone supplémentaire pour accéder au presse-papiers : `navigator.clipboard`.
+Plus d'informations à ce sujet dans la spécification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [non pris en charge par Firefox](https://caniuse.com/async-clipboard).
 
 ### Restrictions de sécurité
 
-Le presse-papiers est une chose "globale" au niveau du système d'exploitation. Un utilisateur peut basculer entre différentes applications, copier/coller différentes choses, et une page de navigateur ne devrait pas voir tout cela.
+Le presse-papiers est une chose "globale" au niveau du système d'exploitation.
+Un utilisateur peut basculer entre différentes applications, copier/coller différentes choses, et une page de navigateur ne devrait pas voir tout cela.
 
 Ainsi, la plupart des navigateurs permettent un accès en lecture/écriture transparent au presse-papiers uniquement dans le cadre de certaines actions de l'utilisateur, telles que le copier/coller, etc.
 
-Il est interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs sauf Firefox. Et même si nous parvenons à envoyer un tel événement, la spécification indique clairement que de tels événements "synthétiques" ne doivent pas donner accès au presse-papiers.
+Il est interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs sauf Firefox.
+Et même si nous parvenons à envoyer un tel événement, la spécification indique clairement que de tels événements "synthétiques" ne doivent pas donner accès au presse-papiers.
 
 Même si quelqu'un décide d'enregistrer `event.clipboardData` dans un gestionnaire d'événements, puis d'y accéder plus tard, cela ne fonctionnera pas.
 
 Pour réitérer, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) fonctionne uniquement dans le contexte des gestionnaires d'événements initiés par l'utilisateur.
 
-D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte. Elle demande l'autorisation de l'utilisateur, si nécessaire.
+D'autre part, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) est l'API la plus récente, destinée à être utilisée dans n'importe quel contexte.
+Elle demande l'autorisation de l'utilisateur, si nécessaire.
 
 ## Récapitulatif
 
 Événements de changement de données:
 
-| Événement        | Description                                   | Specials                                                                                                                                                                                                                 |
-| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `change`         | Une valeur a été modifiée                     | Pour les entrées de texte, les déclencheurs sont sur la perte de mise au point.                                                                                                                                          |
-| `input`          | Pour les champs textes à chaque modification. | Se déclenche immédiatement contrairement à `change`.                                                                                                                                                                     |
-| `cut/copy/paste` | Les actions couper/copier/coller.             | L'action peut être empêchée. La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers. Tous les navigateurs, à l'exception de Firefox, prennent également en charge `navigator.clipboard`. |
+| Événement                                            | Description                                   | Specials                                                                        |
+| ---------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------- |
+| `change`                                             | Une valeur a été modifiée                     | Pour les entrées de texte, les déclencheurs sont sur la perte de mise au point. |
+|                                                      |
+| `input`                                              | Pour les champs textes à chaque modification. |
+| Se déclenche immédiatement contrairement à `change`. |
+|                                                      |
+| `cut/copy/paste`                                     | Les actions couper/copier/coller.             |
+| L'action peut être empêchée.                         |
+La propiété `event.clipboardData` donne un accès en lecture/écriture au presse-papiers.
+Tous les navigateurs, à l'exception de Firefox, prennent également en charge `navigator.clipboard`.
+|

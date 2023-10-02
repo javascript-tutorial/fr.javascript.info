@@ -6,7 +6,8 @@ Jusqu'à présent, nous en savons pas mal sur `fetch`.
 Voyons le reste de l'API, pour couvrir toutes ses capacités.
 
 ```smart
-Remarque: la plupart de ces options sont rarement utilisées. Vous pouvez ignorer ce chapitre et continuer à utiliser `fetch` correctement.
+Remarque: la plupart de ces options sont rarement utilisées.
+Vous pouvez ignorer ce chapitre et continuer à utiliser `fetch` correctement.
 
 Pourtant, il est bon de savoir ce que `fetch` peut faire, donc si le besoin s'en fait sentir, vous pouvez revenir et lire les détails.
 ```
@@ -48,7 +49,8 @@ Explorons maintenant le reste des capacités.
 
 Ces options régissent la façon dont `fetch` définit l'en-tête HTTP `Referer`.
 
-Habituellement, cet en-tête est défini automatiquement et contient l'url de la page à l'origine de la requête. Dans la plupart des scénarios, ce n'est pas important du tout, parfois, pour des raisons de sécurité, il est logique de le supprimer ou de le raccourcir.
+Habituellement, cet en-tête est défini automatiquement et contient l'url de la page à l'origine de la requête.
+Dans la plupart des scénarios, ce n'est pas important du tout, parfois, pour des raisons de sécurité, il est logique de le supprimer ou de le raccourcir.
 
 **L'option `referer` permet de définir n'importe quel `Referer` dans l'origine actuelle) ou de le supprimer.**
 
@@ -77,9 +79,12 @@ fetch('/page', {
 
 Les requêtes sont divisées en 3 types :
 
-1. Requête à la même origine.
-2. Requête à une autre origine.
-3. Requête de HTTPS à HTTP (du protocole sûr au protocole non sécurisé).
+1.
+Requête à la même origine.
+2.
+Requête à une autre origine.
+3.
+Requête de HTTPS à HTTP (du protocole sûr au protocole non sécurisé).
 
 Contrairement à l'option `referrer` qui permet de définir la valeur exacte de `Referer`, `referrerPolicy` indique les règles générales du navigateur pour chaque type de requête.
 
@@ -88,7 +93,8 @@ Les valeurs possibles sont décrites dans la [spécification Referrer Policy](ht
 - **`"strict-origin-when-cross-origin"`** -- la valeur par défaut : pour la même origine, envoie le `Referer` complet, pour l'origine croisée, envoie uniquement l'origine, à moins qu'il ne s'agisse d'une requête HTTPS→HTTP , puis n'envoie rien.
 - **`"no-referrer-when-downgrade"`** -- le `Referer` complet est toujours envoyé, sauf si nous envoyons une requête de HTTPS à HTTP (vers le protocole le moins sécurisé).
 - **`"no-referrer"`** -- n'envoie jamais le `Referer`.
-- **`"origine"`** -- n'envoie que l'origine dans le `Referer`, pas l'URL complète de la page, par ex. uniquement `http://site.com` au lieu de `http://site.com/path`.
+- **`"origine"`** -- n'envoie que l'origine dans le `Referer`, pas l'URL complète de la page, par ex.
+uniquement `http://site.com` au lieu de `http://site.com/path`.
 - **`"origin-when-cross-origin"`** -- envoie le `Referer` complet à la même origine, mais uniquement la partie d'origine pour les requêtes cross-origin (comme ci-dessus).
 - **`"same-origin"`** -- envoie le `Referer` complet à la même origine, mais pas de `Referer` pour les requêtes cross-origin.
 - **`"strict-origin"`** -- envoie uniquement l'origine, pas le `Referer` pour les requêtes HTTPS→HTTP.
@@ -96,16 +102,16 @@ Les valeurs possibles sont décrites dans la [spécification Referrer Policy](ht
 
 Voici un tableau avec toutes les combinaisons :
 
-| Valeur | Pour la même origine | Pour une autre origine | HTTPS→HTTP |
-|-------|----------------|-------------------|------------|
-| `"no-referrer"` | - | - | - |
-| `"no-referrer-when-downgrade"` | full | full | - |
-| `"origin"` | origin | origin | origin |
-| `"origin-when-cross-origin"` | full | origin | origin |
-| `"same-origin"` | full | - | - |
-| `"strict-origin"` | origin | origin | - |
-| `"strict-origin-when-cross-origin"` or `""` (default) | full | origin | - |
-| `"unsafe-url"` | full | full | full |
+| Valeur                                                | Pour la même origine | Pour une autre origine | HTTPS→HTTP |
+| ----------------------------------------------------- | -------------------- | ---------------------- | ---------- |
+| `"no-referrer"`                                       | -                    | -                      | -          |
+| `"no-referrer-when-downgrade"`                        | full                 | full                   | -          |
+| `"origin"`                                            | origin               | origin                 | origin     |
+| `"origin-when-cross-origin"`                          | full                 | origin                 | origin     |
+| `"same-origin"`                                       | full                 | -                      | -          |
+| `"strict-origin"`                                     | origin               | origin                 | -          |
+| `"strict-origin-when-cross-origin"` or `""` (default) | full                 | origin                 | -          |
+| `"unsafe-url"`                                        | full                 | full                   | full       |
 
 Disons que nous avons une zone d'administration avec une structure d'URL qui ne devrait pas être connue de l'extérieur du site.
 
@@ -124,7 +130,8 @@ fetch('https://another.com/page', {
 
 Nous pouvons le mettre à tous les appels `fetch`, peut-être l'intégrer dans la bibliothèque JavaScript de notre projet qui fait toutes les requêtes et utilise `fetch` à l'intérieur.
 
-Sa seule différence par rapport au comportement par défaut est que pour les requêtes vers une autre origine, `fetch` envoie uniquement la partie origine de l'URL (par exemple `https://javascript.info`, sans le chemin). Pour les requêtes à notre origine, nous obtenons toujours le `Referer` complet (peut-être utile à des fins de débogage).
+Sa seule différence par rapport au comportement par défaut est que pour les requêtes vers une autre origine, `fetch` envoie uniquement la partie origine de l'URL (par exemple `https://javascript.info`, sans le chemin).
+Pour les requêtes à notre origine, nous obtenons toujours le `Referer` complet (peut-être utile à des fins de débogage).
 
 ```smart header="La Referrer policy n'est pas seulement pour `fetch`"
 La Referrer policy, décrite dans la [spécification](https://w3c.github.io/webappsec-referrer-policy/), n'est pas seulement pour `fetch`, mais plus globale.
@@ -152,16 +159,22 @@ L'option `credentials` spécifie si `fetch` doit envoyer des cookies et des en-t
 
 ## cache
 
-Par défaut, les requêtes `fetch` utilisent la mise en cache HTTP standard. Autrement dit, il honore les en-têtes `Expires` et `Cache-Control`, envoie `If-Modified-Since`, et ainsi de suite. Tout comme les requêtes HTTP régulières.
+Par défaut, les requêtes `fetch` utilisent la mise en cache HTTP standard.
+Autrement dit, il honore les en-têtes `Expires` et `Cache-Control`, envoie `If-Modified-Since`, et ainsi de suite.
+Tout comme les requêtes HTTP régulières.
 
 Les options `cache` permettent d'ignorer le cache HTTP ou d'affiner son utilisation :
 
 - **`"default"`** -- `fetch` utilise des règles et des en-têtes de cache HTTP standard,
 - **`"no-store"`** -- ignore totalement le cache HTTP, ce mode devient la valeur par défaut si nous définissons un en-tête `If-Modified-Since`, `If-None-Match`, `If-Unmodified-Since`, `If-Match`, ou `If-Range`,
 - **`"reload"`** -- ne prenez pas le résultat du cache HTTP (le cas échéant), mais remplissez le cache avec la réponse (si les en-têtes de réponse le permettent),
-- **`"no-cache"`** -- créer une requête conditionnelle s'il y a une réponse mise en cache, et sinon une requête normale. Remplissez le cache HTTP avec la réponse,
-- **`"force-cache"`** -- utilise une réponse du cache HTTP, même si elle est périmée. S'il n'y a pas de réponse dans le cache HTTP, fait une requête HTTP régulière, se comporte normalement,
-- **`"only-if-cached"`** -- utilise une réponse du cache HTTP, même si elle est périmée. S'il n'y a pas de réponse dans le cache HTTP, alors erreur. Fonctionne uniquement lorsque le `mode` est sur `"same-origin"`.
+- **`"no-cache"`** -- créer une requête conditionnelle s'il y a une réponse mise en cache, et sinon une requête normale.
+Remplissez le cache HTTP avec la réponse,
+- **`"force-cache"`** -- utilise une réponse du cache HTTP, même si elle est périmée.
+S'il n'y a pas de réponse dans le cache HTTP, fait une requête HTTP régulière, se comporte normalement,
+- **`"only-if-cached"`** -- utilise une réponse du cache HTTP, même si elle est périmée.
+S'il n'y a pas de réponse dans le cache HTTP, alors erreur.
+Fonctionne uniquement lorsque le `mode` est sur `"same-origin"`.
 
 ## redirect
 
@@ -171,7 +184,8 @@ L'option `redirect` permet de changer cela :
 
 - **`"follow"`** -- par défaut, suit les redirections HTTP,
 - **`"error"`** -- erreur en cas de redirection HTTP,
-- **`"manual"`** -- permet de traiter manuellement les redirections HTTP. En cas de redirection, nous obtiendrons un objet de réponse spécial, avec `response.hype="opaqueredirect"` et un statut zéro/vide ainsi que la plupart des autres propriétés.
+- **`"manual"`** -- permet de traiter manuellement les redirections HTTP.
+En cas de redirection, nous obtiendrons un objet de réponse spécial, avec `response.hype="opaqueredirect"` et un statut zéro/vide ainsi que la plupart des autres propriétés.
 
 ## integrity
 
@@ -189,7 +203,8 @@ fetch('http://site.com/file', {
 });
 ```
 
-Ensuite, `fetch` calculera SHA-256 seul et le comparera avec notre chaîne de caractères. En cas de non-concordance, une erreur est déclenchée.
+Ensuite, `fetch` calculera SHA-256 seul et le comparera avec notre chaîne de caractères.
+En cas de non-concordance, une erreur est déclenchée.
 
 ## keepalive
 
@@ -213,12 +228,16 @@ window.onunload = function() {
 };
 ```
 
-Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau associées sont abandonnées. Mais l'option `keepalive` indique au navigateur d'exécuter la requête en arrière-plan, même après avoir quitté la page. Cette option est donc essentielle à la réussite de notre demande.
+Normalement, lorsqu'un document est déchargé, toutes les requêtes réseau associées sont abandonnées.
+Mais l'option `keepalive` indique au navigateur d'exécuter la requête en arrière-plan, même après avoir quitté la page.
+Cette option est donc essentielle à la réussite de notre demande.
 
 Elle a quelques limitations :
 
 - Nous ne pouvons pas envoyer des mégaoctets : la limite de corps pour les requêtes `keepalive` est de 64kb.
     - Si nous avons besoin de rassembler beaucoup de statistiques sur la visite, nous devons les envoyer régulièrement par paquets, afin qu'il ne reste plus grand-chose pour la dernière requête `onunload`.
-    - Cette limite s'applique à toutes les demandes `keepalive` ensemble. En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
-- Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé. Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
+    - Cette limite s'applique à toutes les demandes `keepalive` ensemble.
+En d'autres termes, nous pouvons effectuer plusieurs requêtes `keepalive` en parallèle, mais la somme de leurs longueurs de corps ne doit pas dépasser 64 Kb.
+- Nous ne pouvons pas gérer la réponse du serveur si le document est déchargé.
+Donc, dans notre exemple, `fetch` réussira grâce à `keepalive`, mais les fonctions suivantes ne fonctionneront pas.
     - Dans la plupart des cas, comme l'envoi de statistiques, ce n'est pas un problème, car le serveur accepte simplement les données et envoie généralement une réponse vide à de telles demandes.

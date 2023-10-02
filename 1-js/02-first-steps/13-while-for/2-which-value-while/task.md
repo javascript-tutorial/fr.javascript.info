@@ -8,13 +8,15 @@ importance: 4
 
 Les deux boucles affichent-elles les mêmes valeurs dans l'`alert` ou pas ?
 
-1. Le préfixe sous forme `++i` :
+1.
+Le préfixe sous forme `++i` :
 
     ```js
     let i = 0;
     while (++i < 5) alert(i);
     ```
-2. Le postfixe sous forme `i++` :
+2.
+Le postfixe sous forme `i++` :
 
     ```js
     let i = 0;

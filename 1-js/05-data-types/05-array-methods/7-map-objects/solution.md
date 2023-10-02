@@ -37,7 +37,8 @@ let usersMapped = users.map(user => *!*{*/!*
 
 As we remember, there are two arrow functions: without body `value => expr` and with body `value => {...}`.
 
-Here JavaScript would treat `{` as the start of function body, not the start of the object. The workaround is to wrap them in the "normal" brackets:
+Here JavaScript would treat `{` as the start of function body, not the start of the object.
+The workaround is to wrap them in the "normal" brackets:
 
 ```js
 let usersMapped = users.map(user => *!*({*/!*

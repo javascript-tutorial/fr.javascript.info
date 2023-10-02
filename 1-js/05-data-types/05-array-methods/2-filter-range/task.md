@@ -6,7 +6,8 @@ importance: 4
 
 Ecrivez une fonction `filterRange(arr, a, b)` qui obtient un tableau `arr`, recherche les éléments avec des valeurs supérieures ou égales à `a` et inférieures ou égales à `b` et retourne un résultat sous forme de tableau.
 
-La fonction ne doit pas modifier le tableau. Elle doit juste retourner le nouveau tableau.
+La fonction ne doit pas modifier le tableau.
+Elle doit juste retourner le nouveau tableau.
 
 Par exemple :
 

@@ -32,7 +32,8 @@ Chaque `<th>` a le type dans l'attribut, comme ceci:
 </table>
 ```
 
-Dans l'exemple ci-dessus, la première colonne contient des nombres et la seconde -- des chaînes. La fonction de tri doit gérer le tri en fonction du type.
+Dans l'exemple ci-dessus, la première colonne contient des nombres et la seconde -- des chaînes.
+La fonction de tri doit gérer le tri en fonction du type.
 
 Seuls les types `"string"` et `"number"` doivent être pris en charge.
 
@@ -40,4 +41,5 @@ L'exemple de travail:
 
 [iframe border=1 src="solution" height=190]
 
-P.S. La table peut être grande, avec n'importe quel nombre de lignes et de colonnes.
+P.S.
+La table peut être grande, avec n'importe quel nombre de lignes et de colonnes.

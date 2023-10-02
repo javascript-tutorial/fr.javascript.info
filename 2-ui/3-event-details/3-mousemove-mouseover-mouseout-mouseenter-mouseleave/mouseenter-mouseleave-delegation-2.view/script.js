@@ -24,7 +24,8 @@ table.onmouseover = function(event) {
 table.onmouseout = function(event) {
   // si nous sommes en dehors de tout <td> maintenant, alors ignorez l'événement
   // c'est probablement un mouvement à l'intérieur du tableau, mais en dehors des <td>,
-  // par exemple. d'un <tr> à un autre <tr>
+  // par exemple.
+d'un <tr> à un autre <tr>
   if (!currentElem) return;
 
   // nous quittons l'élément - où aller ? Peut-être à un descendant ?
@@ -38,7 +39,8 @@ table.onmouseout = function(event) {
     relatedTarget = relatedTarget.parentNode;
   }
 
-  // nous avons quitté le <td>. vraiment.
+  // nous avons quitté le <td>.
+vraiment.
   onLeave(currentElem);
   currentElem = null;
 };

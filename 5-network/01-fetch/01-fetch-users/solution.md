@@ -35,6 +35,7 @@ async function getUsers(names) {
 
 Veuillez noter : l'appel `.then` est directement attaché à `fetch`, de sorte que lorsque nous avons la réponse, il n'attend pas d'autres fetches, mais commence à lire `.json()` immédiatement.
 
-Si nous avions utilisé `await Promise.all(names.map(name => fetch(...)))`, et appelé `.json()` sur les résultats, il aurait attendu que tous les fetches répondent. En ajoutant `.json()` directement à chaque `fetch`, nous nous assurons que les fetches individuels commencent à lire les données en JSON sans s'attendre les uns les autres.
+Si nous avions utilisé `await Promise.all(names.map(name => fetch(...)))`, et appelé `.json()` sur les résultats, il aurait attendu que tous les fetches répondent.
+En ajoutant `.json()` directement à chaque `fetch`, nous nous assurons que les fetches individuels commencent à lire les données en JSON sans s'attendre les uns les autres.
 
 C'est un exemple de la façon dont l'API Promise de bas niveau peut toujours être utile même si nous utilisons principalement `async/wait`.

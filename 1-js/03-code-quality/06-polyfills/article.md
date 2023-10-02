@@ -1,29 +1,36 @@
 # Polyfills et transpilers (Transpileur)
 
-Le langage JavaScript évolue régulièrement. De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [spécification officielle](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/).
+Le langage JavaScript évolue régulièrement.
+De nouvelles propositions pour le langage apparaissent régulièrement, elles sont analysées et, si elles sont jugées utiles, elles sont ajoutées à la liste dans <https://tc39.github.io/ecma262/> et ensuite progressent vers la [spécification officielle](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/).
 
-Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre. Elles peuvent décider de mettre en œuvre des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
+Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu'il faut d'abord mettre en œuvre.
+Elles peuvent décider de mettre en œuvre des propositions qui sont en projet et reporter des éléments qui figurent déjà dans les spécifications, car ils sont moins intéressants ou tout simplement plus difficiles à faire.
 
 Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie du standard.
 
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
 
-En tant que développeur, nous aimerions utiliser les fonctionnalités les plus récentes. Plus il y a de bonnes choses, mieux c'est !
+En tant que développeur, nous aimerions utiliser les fonctionnalités les plus récentes.
+Plus il y a de bonnes choses, mieux c'est !
 
 D'un autre côté, comment faire fonctionner le code moderne sur des moteurs plus anciens qui ne comprennent pas encore les fonctionnalités récentes ?
 
 Il existe deux outils pour cela :
 
-1. Les transpilers.
-2. Les polyfills.
+1.
+Les transpilers.
+2.
+Les polyfills.
 
 Dans ce chapitre, notre objectif est de comprendre l'essentiel de leur fonctionnement et de leur place dans le développement Web.
 
 ## Les transpilers
 
-Un [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) est un programme spécial qui traduit le code source en un autre code source. Il peut analyser ("lire et comprendre") du code moderne et le réécrire en utilisant des constructions syntaxiques plus anciennes, de sorte qu'il fonctionnera également dans des moteurs obsolètes.
+Un [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) est un programme spécial qui traduit le code source en un autre code source.
+Il peut analyser ("lire et comprendre") du code moderne et le réécrire en utilisant des constructions syntaxiques plus anciennes, de sorte qu'il fonctionnera également dans des moteurs obsolètes.
 
-Par exemple, JavaScript avant l'année 2020 n'avait pas "l'opérateur de coalescence des nuls" `??`. Alors, si un visiteur utilise un navigateur obsolète, il peut ne pas comprendre le code tel que `height = height ?? 100`.
+Par exemple, JavaScript avant l'année 2020 n'avait pas "l'opérateur de coalescence des nuls" `??`.
+Alors, si un visiteur utilise un navigateur obsolète, il peut ne pas comprendre le code tel que `height = height ?? 100`.
 
 Un transpiler analyserait notre code et réécrirait `height ?? 100` en `(height !== undefined && height !== null) ? height : 100`.
 
@@ -51,9 +58,11 @@ Par exemple, `Math.trunc(n)` est une fonction qui "coupe" la partie décimale d'
 
 Dans certains moteurs JavaScript (très obsolètes), il n'y a pas de `Math.trunc`, donc un tel code échouera.
 
-Comme nous parlons de nouvelles fonctions et non pas de changements de syntaxe, il n'est pas nécessaire de transpiler quoi que ce soit ici. Nous avons juste besoin de déclarer la fonction manquante.
+Comme nous parlons de nouvelles fonctions et non pas de changements de syntaxe, il n'est pas nécessaire de transpiler quoi que ce soit ici.
+Nous avons juste besoin de déclarer la fonction manquante.
 
-Un script qui met à jour/ajoute de nouvelles fonctions est appelé "polyfill". Il "comble" le vide et ajoute les implémentations manquantes.
+Un script qui met à jour/ajoute de nouvelles fonctions est appelé "polyfill".
+Il "comble" le vide et ajoute les implémentations manquantes.
 
 Pour ce cas particulier, le polyfill pour `Math.trunc` est un script qui l'implémente, comme ceci :
 
@@ -78,7 +87,8 @@ Deux librairies intéressantes de polyfills sont :
 
 Dans ce chapitre, nous aimerions vous motiver à étudier les fonctionnalités du langage moderne et même "de pointe", même si elles ne sont pas encore bien prises en charge par les moteurs JavaScript.
 
-N'oubliez pas d'utiliser un transpiler (si vous utilisez une syntaxe ou des opérateurs modernes) et des polyfills (pour ajouter des fonctions qui peuvent manquer). Ils veilleront à ce que le code fonctionne.
+N'oubliez pas d'utiliser un transpiler (si vous utilisez une syntaxe ou des opérateurs modernes) et des polyfills (pour ajouter des fonctions qui peuvent manquer).
+Ils veilleront à ce que le code fonctionne.
 
 Par exemple, plus tard, lorsque vous serez familiarisé avec JavaScript, vous pourrez configurer un système de création de code basé sur [webpack](http://webpack.js.org/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
 
@@ -86,4 +96,6 @@ De bonnes ressources qui montrent l'état actuel de la prise en charge de divers
 - <https://kangax.github.io/compat-table/es6/> - pour du JavaScript pur.
 - <https://caniuse.com/> - pour les fonctions liées au navigateur.
 
-P.S. Google Chrome est généralement le plus à jour avec les fonctionnalités du langage, essayez-le si une des démonstrations d'un tutoriel échoue. La plupart des démos de didacticiels fonctionnent avec n'importe quel navigateur moderne.
+P.S.
+Google Chrome est généralement le plus à jour avec les fonctionnalités du langage, essayez-le si une des démonstrations d'un tutoriel échoue.
+La plupart des démos de didacticiels fonctionnent avec n'importe quel navigateur moderne.

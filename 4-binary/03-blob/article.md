@@ -16,8 +16,10 @@ new Blob(blobParts, options);
 
 - **`blobParts`** est un tableau de `Blob`/`BufferSource`/`String`.
 - **`options`** objet optionnel:
-  - **`type`** -- le type du `Blob`, généralement de type MIME, par exemple. `image/png`,
-  - **`endings`** -- s'il faut transformer la fin de ligne pour rendre le `Blob` correspondent aux nouvelles lignes de l'OS actuel (`\r\n` ou `\n`). `"transparent"` Par défaut (ne fait rien), mais peut aussi être `"native"` (transformer).
+  - **`type`** -- le type du `Blob`, généralement de type MIME, par exemple.
+`image/png`,
+  - **`endings`** -- s'il faut transformer la fin de ligne pour rendre le `Blob` correspondent aux nouvelles lignes de l'OS actuel (`\r\n` ou `\n`).
+`"transparent"` Par défaut (ne fait rien), mais peut aussi être `"native"` (transformer).
 
 Par exemple:
 
@@ -58,7 +60,8 @@ Un Blob peut être facilement utilisé comme URL pour `<a>`, `<img>` ou d'autres
 
 Grâce au `type`, nous pouvons également télécharger / uploader des objets `Blob`, et le `type` devient naturellement `Content-Type` dans les requêtes réseau.
 
-Commençons par un exemple simple. En cliquant sur un lien, vous téléchargez un `Blob` généré dynamiquement avec le contenu de `hello world` sous forme de fichier:
+Commençons par un exemple simple.
+En cliquant sur un lien, vous téléchargez un `Blob` généré dynamiquement avec le contenu de `hello world` sous forme de fichier:
 
 ```html run
 <!-- l'attribut de téléchargement force le navigateur à télécharger au lieu de naviguer -->
@@ -96,15 +99,21 @@ Voilà à quoi ressemble la valeur de `link.href`:
 blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 ```
 
-Pour chaque URL générée par `URL.createObjectURL`, le navigateur stocke en interne un mappage URL -> `Blob`. De telles URL sont donc courtes, mais permettent d'accéder au `Blob`.
+Pour chaque URL générée par `URL.createObjectURL`, le navigateur stocke en interne un mappage URL -> `Blob`.
+De telles URL sont donc courtes, mais permettent d'accéder au `Blob`.
 
-Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`, `<a>`, essentiellement tout autre objet qui attend une URL.
+Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert.
+Et cela permet de référencer le `Blob` dans `<img>`, `<a>`, essentiellement tout autre objet qui attend une URL.
 
-Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert. Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
+Une URL générée (et donc le lien avec elle) n'est valide que dans le document actuel, tant qu'il est ouvert.
+Et cela permet de référencer le `Blob` dans `<img>`,`<a>`, ou tout autre objet qui attend une URL.
 
-Il y a cependant un effet secondaire. Bien qu'il y ait un mappage pour un `Blob`, le `Blob` lui-même réside dans la mémoire. Le navigateur ne peut pas le libérer.
+Il y a cependant un effet secondaire.
+Bien qu'il y ait un mappage pour un `Blob`, le `Blob` lui-même réside dans la mémoire.
+Le navigateur ne peut pas le libérer.
 
-Le mappage est automatiquement effacé lors du déchargement du document, les objets `Blob` sont alors libérés. Mais si une application dure longtemps, cela ne se produit pas de sitôt.
+Le mappage est automatiquement effacé lors du déchargement du document, les objets `Blob` sont alors libérés.
+Mais si une application dure longtemps, cela ne se produit pas de sitôt.
 
 **Donc, si nous créons une URL, ce `Blob` restera en mémoire, même s'il n'est plus nécessaire.**
 
@@ -112,15 +121,18 @@ Le mappage est automatiquement effacé lors du déchargement du document, les ob
 
 Dans le dernier exemple, nous voulons que le `Blob` ne soit utilisé qu'une seule fois, pour un téléchargement instantané, donc nous appelons `URL.revokeObjectURL(link.href)` immédiatement.
 
-Dans l'exemple précédent avec le lien HTML cliquable, nous n'appelons pas `URL.revokeObjectURL(link.href)`, car cela rendrait l'url `Blob` invalide. Après la révocation, comme le mappage est supprimé, l'URL ne fonctionne plus.
+Dans l'exemple précédent avec le lien HTML cliquable, nous n'appelons pas `URL.revokeObjectURL(link.href)`, car cela rendrait l'url `Blob` invalide.
+Après la révocation, comme le mappage est supprimé, l'URL ne fonctionne plus.
 
 ## Blob en base64
 
 Une alternative à `URL.createObjectURL` est de convertir un `Blob` en une chaîne de caractères encodée en base64.
 
-Cet encodage représente des données binaires sous la forme d'une chaîne de caractères "lisibles" ultra-sûrs avec des codes ASCII de 0 à 64. Et ce qui est plus important - nous pouvons utiliser cet encodage dans "data-urls".
+Cet encodage représente des données binaires sous la forme d'une chaîne de caractères "lisibles" ultra-sûrs avec des codes ASCII de 0 à 64.
+Et ce qui est plus important - nous pouvons utiliser cet encodage dans "data-urls".
 
-Une [URL de données](mdn:/http/Data_URIs) a la forme `data:[<mediatype>][;base64],<data>`. Nous pouvons utiliser de telles URL partout, au même titre que les URL "ordinaires".
+Une [URL de données](mdn:/http/Data_URIs) a la forme `data:[<mediatype>][;base64],<data>`.
+Nous pouvons utiliser de telles URL partout, au même titre que les URL "ordinaires".
 
 Par exemple, voici un smiley:
 
@@ -130,7 +142,9 @@ Par exemple, voici un smiley:
 
 Le navigateur décodera la chaîne de caractères et affichera l'image: <img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
 
-Pour transformer un `Blob` en base64, nous utiliserons l'objet `FileReader` intégré. Il peut lire les données des Blobs dans plusieurs formats. Dans le [chapitre suivant](info:file) nous le couvrirons plus en détail.
+Pour transformer un `Blob` en base64, nous utiliserons l'objet `FileReader` intégré.
+Il peut lire les données des Blobs dans plusieurs formats.
+Dans le [chapitre suivant](info:file) nous le couvrirons plus en détail.
 
 Voici la démo du téléchargement d'un blob, maintenant via base-64:
 
@@ -151,7 +165,8 @@ reader.onload = function() {
 };
 ```
 
-Les deux manières de créer une URL d'un `Blob` sont utilisables. Mais généralement `URL.createObjectURL(blob)` est plus simple et plus rapide.
+Les deux manières de créer une URL d'un `Blob` sont utilisables.
+Mais généralement `URL.createObjectURL(blob)` est plus simple et plus rapide.
 
 ```compare title-plus="URL.createObjectURL(blob)" title-minus="Blob vers l'URL de données"
 + Nous devons les révoquer si nous nous soucions de la mémoire.
@@ -162,12 +177,15 @@ Les deux manières de créer une URL d'un `Blob` sont utilisables. Mais généra
 
 ## Image à blob
 
-Nous pouvons créer un `Blob` d'une image, une partie d'image, ou même faire une capture d'écran de page. C'est pratique pour le télécharger quelque part.
+Nous pouvons créer un `Blob` d'une image, une partie d'image, ou même faire une capture d'écran de page.
+C'est pratique pour le télécharger quelque part.
 
 Les opérations sur les images se font via l'élément `<canvas>`:
 
-1. Dessinez une image (ou sa partie) sur le canevas en utilisant [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
-2. Appeler la méthode canvas [.toBlob(callback, format, quality)](mdn:/api/HTMLCanvasElement/toBlob) qui crée un `Blob` et exécute `callback` avec lui une fois terminé.
+1.
+Dessinez une image (ou sa partie) sur le canevas en utilisant [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
+2.
+Appeler la méthode canvas [.toBlob(callback, format, quality)](mdn:/api/HTMLCanvasElement/toBlob) qui crée un `Blob` et exécute `callback` avec lui une fois terminé.
 
 Dans l'exemple ci-dessous, une image est simplement copiée, mais nous pourrions la couper ou la transformer sur un canevas avant de créer un blob:
 
@@ -205,7 +223,9 @@ Si nous préférons `async/await` au lieu de callbacks:
 let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
 ```
 
-Pour faire une capture d'écran d'une page, nous pouvons utiliser une bibliothèque telle que <https://github.com/niklasvh/html2canvas>. Ce qu'elle fait, c'est simplement parcourir la page et la dessiner sur un `<canvas>`. Ensuite, nous pouvons en obtenir un `Blob` de la même manière que ci-dessus.
+Pour faire une capture d'écran d'une page, nous pouvons utiliser une bibliothèque telle que <https://github.com/niklasvh/html2canvas>.
+Ce qu'elle fait, c'est simplement parcourir la page et la dessiner sur un `<canvas>`.
+Ensuite, nous pouvons en obtenir un `Blob` de la même manière que ci-dessus.
 
 ## De Blob à ArrayBuffer
 
@@ -223,9 +243,12 @@ blob.arrayBuffer().then(buffer => /* process the ArrayBuffer */);
 
 ## From Blob to stream
 
-When we read and write to a blob of more than `2 GB`, the use of `arrayBuffer` becomes more memory intensive for us. At this point, we can directly convert the blob to a stream.
+When we read and write to a blob of more than `2 GB`, the use of `arrayBuffer` becomes more memory intensive for us.
+At this point, we can directly convert the blob to a stream.
 
-A stream is a special object that allows to read from it (or write into it) portion by portion. It's outside of our scope here, but here's an example, and you can read more at <https://developer.mozilla.org/fr/docs/Web/API/Streams_API>. Streams are convenient for data that is suitable for processing piece-by-piece.
+A stream is a special object that allows to read from it (or write into it) portion by portion.
+It's outside of our scope here, but here's an example, and you can read more at <https://developer.mozilla.org/fr/docs/Web/API/Streams_API>.
+Streams are convenient for data that is suitable for processing piece-by-piece.
 
 The `Blob` interface's `stream()` method returns a `ReadableStream` which upon reading returns the data contained within the `Blob`.
 
@@ -263,4 +286,6 @@ Nous pouvons facilement convertir les types de données binaires `Blob` et de ba
 - Nous pouvons créer un `Blob` à partir d'un tableau typé en utilisant le constructeur `new Blob(...)`.
 - Nous pouvons récupérer `ArrayBuffer` à partir d'un Blob en utilisant `blob.arrayBuffer()`, puis créer une vue dessus pour le traitement binaire de bas niveau.
 
-Les flux de conversion sont très utiles lorsque nous devons gérer de gros blob. Vous pouvez facilement créer un `ReadableStream` à partir d'un blob. La méthode `stream()` de l'interface `Blob` renvoie un `ReadableStream` qui, lors de la lecture, renvoie les données contenues dans le blob.
+Les flux de conversion sont très utiles lorsque nous devons gérer de gros blob.
+Vous pouvez facilement créer un `ReadableStream` à partir d'un blob.
+La méthode `stream()` de l'interface `Blob` renvoie un `ReadableStream` qui, lors de la lecture, renvoie les données contenues dans le blob.

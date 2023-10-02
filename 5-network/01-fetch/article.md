@@ -10,13 +10,17 @@ Par exemple, nous pouvons utiliser une requête réseau pour :
 - Recevoir les dernières mises à jour du serveur,
 - ...etc.
 
-... Et tout cela sans recharger la page !
+...
+Et tout cela sans recharger la page !
 
-Il y a un terme générique "AJAX" (abrégé de <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) pour les requêtes réseau à partir de JavaScript. Cependant nous n'avons pas besoin d'utiliser XML : le terme vient de l'ancien temps, c'est pourquoi ce mot est là. Vous avez peut-être déjà entendu ce terme.
+Il y a un terme générique "AJAX" (abrégé de <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) pour les requêtes réseau à partir de JavaScript.
+Cependant nous n'avons pas besoin d'utiliser XML : le terme vient de l'ancien temps, c'est pourquoi ce mot est là.
+Vous avez peut-être déjà entendu ce terme.
 
 Il existe plusieurs façons d'envoyer une requête réseau et d'obtenir des informations du serveur.
 
-La méthode `fetch()` est moderne et polyvalente, nous allons donc commencer avec celle-ci. Elle n'est pas prise en charge par les anciens navigateurs (peut être polyfilled), mais très bien prise en charge par les navigateurs modernes.
+La méthode `fetch()` est moderne et polyvalente, nous allons donc commencer avec celle-ci.
+Elle n'est pas prise en charge par les anciens navigateurs (peut être polyfilled), mais très bien prise en charge par les navigateurs modernes.
 
 La syntaxe de base est :
 
@@ -37,7 +41,8 @@ Obtenir une réponse est généralement un processus en deux étapes.
 
 À ce stade, nous pouvons vérifier l'état HTTP, pour voir s'il est réussi ou non, vérifier les en-têtes, mais nous ne disposons pas encore du corps.
 
-La promesse rejette si le `fetch` n'a pas pu faire de requête HTTP, par exemple problèmes de réseau, ou si l'adresse n'existe pas. Les statuts HTTP anormaux, tels que 404 ou 500, ne provoquent pas d'erreur.
+La promesse rejette si le `fetch` n'a pas pu faire de requête HTTP, par exemple problèmes de réseau, ou si l'adresse n'existe pas.
+Les statuts HTTP anormaux, tels que 404 ou 500, ne provoquent pas d'erreur.
 
 Nous pouvons voir l'état HTTP dans les propriétés de réponse :
 
@@ -152,7 +157,8 @@ for (let [key, value] of response.headers) {
 
 ## En-têtes de requêtes
 
-Pour définir un en-tête de requête dans `fetch`, nous pouvons utiliser l'option `headers`. Il a un objet avec des en-têtes sortants, comme ceci :
+Pour définir un en-tête de requête dans `fetch`, nous pouvons utiliser l'option `headers`.
+Il a un objet avec des en-têtes sortants, comme ceci :
 
 ```js
 let response = fetch(protectedUrl, {
@@ -162,7 +168,8 @@ let response = fetch(protectedUrl, {
 });
 ```
 
-... Mais il y a une liste d'[en-têtes HTTP interdits](https://fetch.spec.whatwg.org/#forbidden-header-name) que nous ne pouvons pas définir :
+...
+Mais il y a une liste d'[en-têtes HTTP interdits](https://fetch.spec.whatwg.org/#forbidden-header-name) que nous ne pouvons pas définir :
 
 - `Accept-Charset`, `Accept-Encoding`
 - `Access-Control-Request-Headers`
@@ -230,7 +237,8 @@ Mais, si nous envoyons du JSON, nous utiliserons à la place l'option `headers` 
 
 Nous pouvons également soumettre des données binaires avec `fetch` en utilisant des objets `Blob` ou `BufferSource`.
 
-Dans cet exemple, il y a un `<canvas>` où nous pouvons dessiner en déplaçant une souris dessus. Un clic sur le bouton "submit" envoie l'image au serveur :
+Dans cet exemple, il y a un `<canvas>` où nous pouvons dessiner en déplaçant une souris dessus.
+Un clic sur le bouton "submit" envoie l'image au serveur :
 
 ```html run autorun height="90"
 <body style="margin:0">
@@ -261,7 +269,8 @@ Dans cet exemple, il y a un `<canvas>` où nous pouvons dessiner en déplaçant 
 </body>
 ```
 
-Veuillez noter qu'ici, nous ne définissons pas l'en-tête `Content-Type` manuellement, car un objet `Blob` a un type intégré (ici `image/png`, tel que généré par `toBlob`). Pour les objets `Blob`, ce type devient la valeur de `Content-Type`.
+Veuillez noter qu'ici, nous ne définissons pas l'en-tête `Content-Type` manuellement, car un objet `Blob` a un type intégré (ici `image/png`, tel que généré par `toBlob`).
+Pour les objets `Blob`, ce type devient la valeur de `Content-Type`.
 
 La fonction `submit()` peut être réécrite sans `async/await` comme ceci :
 

@@ -8,7 +8,9 @@ libs:
 
 Le DOM nous permet de faire n'importe quoi avec les éléments et leur contenu, mais nous devons d'abord atteindre l'objet DOM correspondant.
 
-Toutes les opérations sur le DOM commencent par l'objet `document`. C'est le "point d'entrée" principal du DOM. De là, nous pouvons accéder à n'importe quel nœud.
+Toutes les opérations sur le DOM commencent par l'objet `document`.
+C'est le "point d'entrée" principal du DOM.
+De là, nous pouvons accéder à n'importe quel nœud.
 
 Voici une image des liens qui permettent de voyager entre les nœuds DOM :
 
@@ -21,7 +23,8 @@ Discutons-en plus en détail.
 Les nœuds supérieurs de l'arbre sont disponibles directement en tant que propriétés de `document` :
 
 `<html>` = `document.documentElement`
-: Le nœud de document le plus haut est `document.documentElement`. C'est le noeud DOM de la balise `<html>`.
+: Le nœud de document le plus haut est `document.documentElement`.
+C'est le noeud DOM de la balise `<html>`.
 
 `<body>` = `document.body`
 : Un autre nœud DOM largement utilisé est l'élément `<body>` -- `document.body`.
@@ -66,7 +69,9 @@ Dans le DOM, la valeur `null` signifie "n'existe pas" ou "pas ce genre de nœud"
 
 Nous utiliserons désormais deux termes :
 
-- **Noeuds enfants (ou enfants)** -- éléments qui sont des enfants directs. En d'autres termes, ils sont imbriqués dans celui donné. Par exemple, `<head>` et `<body>` sont des enfants de l'élément `<html>`.
+- **Noeuds enfants (ou enfants)** -- éléments qui sont des enfants directs.
+En d'autres termes, ils sont imbriqués dans celui donné.
+Par exemple, `<head>` et `<body>` sont des enfants de l'élément `<html>`.
 - **Descendants** -- tous les éléments imbriqués dans l'élément donné, y compris les enfants, leurs enfants, etc.
 
 Par exemple, ici `<body>` a des enfants `<div>` et `<ul>` (et quelques nœuds texte vides) :
@@ -85,7 +90,8 @@ Par exemple, ici `<body>` a des enfants `<div>` et `<ul>` (et quelques nœuds te
 </html>
 ```
 
-... Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>`) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
+...
+Et les descendants de `<body>` ne sont pas seulement des enfants directs `<div>`, `<ul>` mais aussi des éléments plus profondément imbriqués, tels que `<li>` (un enfant de `<ul>`) et `<b>` (un enfant de `<li>`) -- le sous-arbre entier.
 
 **La collection `childNodes` répertorie tous les nœuds enfants, y compris les nœuds texte.**
 
@@ -114,11 +120,14 @@ L'exemple ci-dessous montre des enfants de `document.body` :
 </html>
 ```
 
-Veuillez noter un détail intéressant ici. Si nous exécutons l'exemple ci-dessus, le dernier élément affiché est `<script>`. En fait, le document contient plus de choses en dessous, mais au moment de l'exécution du script, le navigateur ne l'a pas encore lu, donc le script ne le voit pas.
+Veuillez noter un détail intéressant ici.
+Si nous exécutons l'exemple ci-dessus, le dernier élément affiché est `<script>`.
+En fait, le document contient plus de choses en dessous, mais au moment de l'exécution du script, le navigateur ne l'a pas encore lu, donc le script ne le voit pas.
 
 **Les propriétés `firstChild` et `lastChild` donnent un accès rapide aux premier et dernier enfants.**
 
-Ce ne sont que des raccourcis. S'il existe des nœuds enfants, ce qui suit est toujours vrai :
+Ce ne sont que des raccourcis.
+S'il existe des nœuds enfants, ce qui suit est toujours vrai :
 ```js
 elem.childNodes[0] === elem.firstChild
 elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
@@ -128,11 +137,13 @@ Il y a aussi une fonction spéciale `elem.hasChildNodes()` pour vérifier s'il y
 
 ### Collections DOM
 
-Comme nous pouvons le voir, `childNodes` ressemble à un tableau. Mais en réalité ce n'est pas un tableau, mais plutôt une * collection * -- un objet itérable spécial semblable à un tableau.
+Comme nous pouvons le voir, `childNodes` ressemble à un tableau.
+Mais en réalité ce n'est pas un tableau, mais plutôt une * collection * -- un objet itérable spécial semblable à un tableau.
 
 Il y a deux conséquences importantes :
 
-1. Nous pouvons utiliser `for..of` pour itérer dessus :
+1.
+Nous pouvons utiliser `for..of` pour itérer dessus :
   ```js
   for (let node of document.body.childNodes) {
     alert(node); // shows all nodes from the collection
@@ -140,12 +151,14 @@ Il y a deux conséquences importantes :
   ```
   C'est parce qu'il est itérable (fournit la propriété `Symbol.iterator`, selon les besoins).
 
-2. Les méthodes de tableau ne fonctionneront pas, car ce n'est pas un tableau :
+2.
+Les méthodes de tableau ne fonctionneront pas, car ce n'est pas un tableau :
   ```js run
   alert(document.body.childNodes.filter); // undefined (there's no filter method!)
   ```
 
-La première chose est sympa. La seconde est tolérable, car nous pouvons utiliser `Array.from` pour créer un "vrai" tableau à partir de la collection, si nous voulons des méthodes de tableau :
+La première chose est sympa.
+La seconde est tolérable, car nous pouvons utiliser `Array.from` pour créer un "vrai" tableau à partir de la collection, si nous voulons des méthodes de tableau :
 
   ```js run
   alert(Array.from(document.body.childNodes).filter); // function
@@ -156,19 +169,24 @@ Les collections DOM, et plus encore -- *toutes* les propriétés de navigation r
 
 Nous ne pouvons pas remplacer un enfant par autre chose en attribuant `childNodes[i] = ...`.
 
-Changer le DOM nécessite d'autres méthodes. Nous les verrons dans le prochain chapitre.
+Changer le DOM nécessite d'autres méthodes.
+Nous les verrons dans le prochain chapitre.
 ```
 
 ```warn header="Les collections DOM sont live"
-Presque toutes les collections DOM avec des exceptions mineures sont *live*. En d'autres termes, elles reflètent l'état actuel du DOM.
+Presque toutes les collections DOM avec des exceptions mineures sont *live*.
+En d'autres termes, elles reflètent l'état actuel du DOM.
 
 Si nous gardons une référence à `element.childNodes`, et ajoutons/supprimons des nœuds dans le DOM, alors ils apparaissent automatiquement dans la collection.
 ```
 
 ````warn header="N'utilisez pas `for..in` pour parcourir les collections"
-Les collections sont itérables en utilisant `for..of`. Parfois, les gens essaient d'utiliser `for..in` pour cela.
+Les collections sont itérables en utilisant `for..of`.
+Parfois, les gens essaient d'utiliser `for..in` pour cela.
 
-À ne pas faire. La boucle `for..in` parcourt toutes les propriétés énumérables. Et les collections ont des propriétés "supplémentaires" rarement utilisées que nous ne voulons généralement pas obtenir :
+À ne pas faire.
+La boucle `for..in` parcourt toutes les propriétés énumérables.
+Et les collections ont des propriétés "supplémentaires" rarement utilisées que nous ne voulons généralement pas obtenir :
 
 ```html run
 <body>
@@ -213,9 +231,11 @@ alert(document.body.previousSibling); // HTMLHeadElement
 
 ## Navigation par élément uniquement
 
-Les propriétés de navigation répertoriées ci-dessus font référence à *tous* les nœuds. Par exemple, dans `childNodes`, nous pouvons voir à la fois les nœuds texte, les nœuds élément et même les nœuds commentaire s'il en existe.
+Les propriétés de navigation répertoriées ci-dessus font référence à *tous* les nœuds.
+Par exemple, dans `childNodes`, nous pouvons voir à la fois les nœuds texte, les nœuds élément et même les nœuds commentaire s'il en existe.
 
-Mais pour de nombreuses tâches, nous ne voulons pas de nœuds texte ou commentaire. Nous voulons manipuler des nœuds élément qui représentent des balises et forment la structure de la page.
+Mais pour de nombreuses tâches, nous ne voulons pas de nœuds texte ou commentaire.
+Nous voulons manipuler des nœuds élément qui représentent des balises et forment la structure de la page.
 
 Voyons donc plus de liens de navigation qui ne prennent en compte que les *nœuds élément* :
 
@@ -229,7 +249,8 @@ Les liens sont similaires à ceux donnés ci-dessus, juste avec le mot `Element`
 - `parentElement` -- élément parent.
 
 ````smart header="Pourquoi `parentElement` ? Le parent peut-il ne *pas* être un élément ?"
-La propriété `parentElement` renvoie l'élément parent, tandis que `parentNode` retourne le parent "peu importe le nœud". Ces propriétés sont généralement les mêmes : elles obtiennent toutes deux le parent.
+La propriété `parentElement` renvoie l'élément parent, tandis que `parentNode` retourne le parent "peu importe le nœud".
+Ces propriétés sont généralement les mêmes : elles obtiennent toutes deux le parent.
 
 À la seule exception de `document.documentElement` :
 
@@ -239,7 +260,8 @@ alert(document.documentElement.parentElement); // null
 ```
 
 La raison en est que le nœud racine `document.documentElement` (`<html>`) a
-`document` comme parent. Mais `document` n'est pas un nœud élément, donc `parentNode` le renvoie et pas `parentElement`.
+`document` comme parent.
+Mais `document` n'est pas un nœud élément, donc `parentNode` le renvoie et pas `parentElement`.
 
 Ce détail peut être utile lorsque nous voulons passer d'un élément arbitraire `elem` à `<html>`, mais pas au `document` :
 ```js
@@ -249,7 +271,8 @@ while(elem = elem.parentElement) { // remonter jusqu'à <html>
 ```
 ````
 
-Modifions l'un des exemples ci-dessus : remplaçons `childNodes` par `children`. Maintenant, il ne montre que des éléments :
+Modifions l'un des exemples ci-dessus : remplaçons `childNodes` par `children`.
+Maintenant, il ne montre que des éléments :
 
 ```html run
 <html>
@@ -319,7 +342,8 @@ Un exemple d'utilisation :
 
 La spécification : [tabular data](https://html.spec.whatwg.org/multipage/tables.html).
 
-Il existe également des propriétés de navigation supplémentaires pour les formulaires HTML. Nous les examinerons plus tard lorsque nous commencerons à travailler avec des formulaires.
+Il existe également des propriétés de navigation supplémentaires pour les formulaires HTML.
+Nous les examinerons plus tard lorsque nous commencerons à travailler avec des formulaires.
 
 ## Résumé
 

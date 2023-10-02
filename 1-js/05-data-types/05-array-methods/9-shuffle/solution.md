@@ -16,7 +16,8 @@ That somewhat works, because `Math.random() - 0.5` is a random number that may b
 
 But because the sorting function is not meant to be used this way, not all permutations have the same probability.
 
-For instance, consider the code below. It runs `shuffle` 1000000 times and counts appearances of all possible results:
+For instance, consider the code below.
+It runs `shuffle` 1000000 times and counts appearances of all possible results:
 
 ```js run
 function shuffle(array) {
@@ -60,9 +61,12 @@ We can see the bias clearly: `123` and `213` appear much more often than others.
 
 The result of the code may vary between JavaScript engines, but we can already see that the approach is unreliable.
 
-Why it doesn't work? Generally speaking, `sort` is a "black box": we throw an array and a comparison function into it and expect the array to be sorted. But due to the utter randomness of the comparison the black box goes mad, and how exactly it goes mad depends on the concrete implementation that differs between engines.
+Why it doesn't work? Generally speaking, `sort` is a "black box": we throw an array and a comparison function into it and expect the array to be sorted.
+But due to the utter randomness of the comparison the black box goes mad, and how exactly it goes mad depends on the concrete implementation that differs between engines.
 
-There are other good ways to do the task. For instance, there's a great algorithm called [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). The idea is to walk the array in the reverse order and swap each element with a random one before it:
+There are other good ways to do the task.
+For instance, there's a great algorithm called [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
+The idea is to walk the array in the reverse order and swap each element with a random one before it:
 
 ```js
 function shuffle(array) {

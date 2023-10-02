@@ -4,11 +4,13 @@ describe("formatDate", function() {
   });
 
   it('"30 seconds ago"', function() {
-    assert.equal(formatDate(new Date(new Date - 30 * 1000)), "30 sec. ago");
+    assert.equal(formatDate(new Date(new Date - 30 * 1000)), "30 sec.
+ago");
   });
 
   it('"5 minutes ago"', function() {
-    assert.equal(formatDate(new Date(new Date - 5 * 60 * 1000)), "5 min. ago");
+    assert.equal(formatDate(new Date(new Date - 5 * 60 * 1000)), "5 min.
+ago");
   });
 
   it("older dates as DD.MM.YY HH:mm", function() {

@@ -8,6 +8,7 @@ Créez une fonction `readNumber` qui invite le visiteur à entrer un nombre jusq
 
 La valeur résultante doit être retournée sous forme de nombre.
 
-Le visiteur peut également arrêter le processus en entrant une ligne vide ou en appuyant sur "Annuler". Dans ce cas, la fonction doit retourner `null`.
+Le visiteur peut également arrêter le processus en entrant une ligne vide ou en appuyant sur "Annuler".
+Dans ce cas, la fonction doit retourner `null`.
 
 [démo]

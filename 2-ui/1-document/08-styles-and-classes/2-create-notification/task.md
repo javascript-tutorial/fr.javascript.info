@@ -4,7 +4,8 @@ importance: 5
 
 # Create a notification
 
-Write a function `showNotification(options)` that creates a notification: `<div class="notification">` with the given content. The notification should automatically disappear after 1.5 seconds.
+Write a function `showNotification(options)` that creates a notification: `<div class="notification">` with the given content.
+The notification should automatically disappear after 1.5 seconds.
 
 The options are:
 
@@ -20,4 +21,5 @@ showNotification({
 
 [demo src="solution"]
 
-Use CSS positioning to show the element at given top/right coordinates. The source document has the necessary styles.
+Use CSS positioning to show the element at given top/right coordinates.
+The source document has the necessary styles.

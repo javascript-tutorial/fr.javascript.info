@@ -4,7 +4,8 @@ Comme nous allons utiliser le navigateur comme environnement de démonstration, 
 
 ## La fonction alert
 
-Celle-ci, nous l'avons déjà vu. Elle affiche un message et attend que l'utilisateur appuie sur "OK".
+Celle-ci, nous l'avons déjà vu.
+Elle affiche un message et attend que l'utilisateur appuie sur "OK".
 
 Par exemple :
 
@@ -12,7 +13,9 @@ Par exemple :
 alert("Hello");
 ```
 
-La mini-fenêtre avec le message s'appelle une *fenêtre modale*. Le mot "modal" signifie que le visiteur ne peut pas interagir avec le reste de la page, tant qu'il n'a pas traité la fenêtre. Dans ce cas -- jusqu'à ce qu'il appuie sur "OK".
+La mini-fenêtre avec le message s'appelle une *fenêtre modale*.
+Le mot "modal" signifie que le visiteur ne peut pas interagir avec le reste de la page, tant qu'il n'a pas traité la fenêtre.
+Dans ce cas -- jusqu'à ce qu'il appuie sur "OK".
 
 ## prompt
 
@@ -34,7 +37,9 @@ Elle affiche une fenêtre modale avec un message texte, un champ de saisie pour 
 Les crochets autour de `default` dans la syntaxe ci-dessus indiquent que le paramètre est facultatif, non requis.
 ```
 
-Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur OK. Ensuite, nous obtenons ce que l'utilisateur a entré dans la variable `result`. Ou il peut annuler la saisie en appuyant sur Annuler ou en appuyant sur la touche `key:Esc`, puis nous obtenons `null` comme valeur de la variable `result`.
+Le visiteur peut taper quelque chose dans le champ de saisie et appuyer sur OK.
+Ensuite, nous obtenons ce que l'utilisateur a entré dans la variable `result`.
+Ou il peut annuler la saisie en appuyant sur Annuler ou en appuyant sur la touche `key:Esc`, puis nous obtenons `null` comme valeur de la variable `result`.
 
 L'appel à `prompt` renvoie le texte du champ de saisie ou `null` si l'entrée a été annulée.
 
@@ -90,16 +95,23 @@ Nous avons vu 3 fonctions spécifiques aux interactions avec les visiteurs dans 
 : Affiche un message.
 
 `prompt`
-: Affiche un message demandant à l'utilisateur de saisir du texte. Il renvoie le texte ou `null`, si vous cliquez sur le bouton Annuler ou sur `key:Esc`.
+: Affiche un message demandant à l'utilisateur de saisir du texte.
+Il renvoie le texte ou `null`, si vous cliquez sur le bouton Annuler ou sur `key:Esc`.
 
 `confirm`
-: Affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler". Il retourne `true` pour OK et `false` pour Annuler/`key:Esc`.
+: Affiche un message et attend que l'utilisateur appuie sur "OK" ou "Annuler".
+Il retourne `true` pour OK et `false` pour Annuler/`key:Esc`.
 
 Toutes ces méthodes sont modales : elles suspendent l'exécution du script et ne permettent pas au visiteur d'interagir avec le reste de la page tant que la fenêtre n'a pas été fermée.
 
 Il existe deux limitations partagées par toutes les méthodes ci-dessus :
 
-1. L'emplacement exact de la fenêtre modale est déterminé par le navigateur. Habituellement, au centre.
-2. L'aspect exact de la fenêtre dépend également du navigateur. Nous ne pouvons pas le modifier.
+1.
+L'emplacement exact de la fenêtre modale est déterminé par le navigateur.
+Habituellement, au centre.
+2.
+L'aspect exact de la fenêtre dépend également du navigateur.
+Nous ne pouvons pas le modifier.
 
-C'est le prix de la simplicité. Il existe d'autres moyens d'afficher des fenêtres plus jolies et une interaction plus riche avec le visiteur, mais si l'aspect graphique n'a pas beaucoup d'importance, ces méthodes feront très bien l'affaire.
+C'est le prix de la simplicité.
+Il existe d'autres moyens d'afficher des fenêtres plus jolies et une interaction plus riche avec le visiteur, mais si l'aspect graphique n'a pas beaucoup d'importance, ces méthodes feront très bien l'affaire.

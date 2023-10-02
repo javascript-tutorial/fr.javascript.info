@@ -8,5 +8,7 @@ importance: 5
 
 Faites deux variantes de la solution :
 
-1. utilisant `setInterval`,
-2. Utilisation de `setTimeout` imbriqué.
+1.
+utilisant `setInterval`,
+2.
+Utilisation de `setTimeout` imbriqué.

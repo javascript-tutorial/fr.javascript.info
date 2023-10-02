@@ -1,6 +1,7 @@
 # Recherches: getElement*, querySelector*
 
-Les outils de navigation du DOM sont très pratiques quand les éléments sont proches les uns des autres. Mais s'ils ne le sont pas ? Comment atteindre un élément arbitraire de la page ?
+Les outils de navigation du DOM sont très pratiques quand les éléments sont proches les uns des autres.
+Mais s'ils ne le sont pas ? Comment atteindre un élément arbitraire de la page ?
 
 Il existe d'autres méthodes de recherche pour cela.
 
@@ -56,7 +57,10 @@ Il y a aussi une variable globale nommée selon l'`id` qui référence l'éléme
 ```warn header="Ne pas utiliser les variables globales nommées selon l'id pour accéder aux éléments !"
 Ce comportement est décrit [dans la spécification](https://html.spec.whatwg.org/multipage/window-object.html#named-access-on-the-window-object), mais il est pris en charge principalement pour la compatibilité .
 
-Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM. C'est bien pour des scripts simples, intégré dans du HTML, mais en genéral ce n'est pas bon. Il peut y avoir des conflits de noms. Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
+Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM.
+C'est bien pour des scripts simples, intégré dans du HTML, mais en genéral ce n'est pas bon.
+Il peut y avoir des conflits de noms.
+Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
 
 Dans ce tutoriel, on utilise `id` pour directement référencer un élément rapidement, quand il sera évident d'où il vient.
 
@@ -64,13 +68,16 @@ Dans la vraie vie, `document.getElementById` est la méthode à avantager.
 ```
 
 ```smart header="L' `id` doit être unique"
-L'`id` doit être unique. Il ne peut y avoir qu'un élément dans le document avec un `id` donné.
+L'`id` doit être unique.
+Il ne peut y avoir qu'un élément dans le document avec un `id` donné.
 
-S'il y a de multiples éléments avec le même `id`, alors le comportement de la méthode qui l'utilise est imprévisible, par exemple `document.getElementById` pourra renvoyer n'importe lequel de ces éléments aléatoirement. Donc suivez la règle et gardez l'`id` unique.
+S'il y a de multiples éléments avec le même `id`, alors le comportement de la méthode qui l'utilise est imprévisible, par exemple `document.getElementById` pourra renvoyer n'importe lequel de ces éléments aléatoirement.
+Donc suivez la règle et gardez l'`id` unique.
 ```
 
 ```warn header="Seulement `document.getElementById`, pas `anyElem.getElementById`"
-La méthode `getElementById` ne peut être appelée que sur l'objet `document` . Elle va chercher l'`id` dans le document entier.
+La méthode `getElementById` ne peut être appelée que sur l'objet `document` .
+Elle va chercher l'`id` dans le document entier.
 ```
 
 ## querySelectorAll [#querySelectorAll]
@@ -103,20 +110,23 @@ Cette méthode est très puissante, car tous les sélecteurs CSS peuvent être u
 
 ```smart header="On peut aussi utiliser des pseudo-classes"
 
-Les pseudo-classes dans le sélecteur CSS comme `:hover` et `:active` sont aussi acceptés. Par exemple, `document.querySelectorAll(':hover')` renverra l'ensemble des éléments dont le curseur est au-dessus en ce moment (dans l'ordre d'imbrication : du plus extérieur `<html>` au plus imbriqué).
+Les pseudo-classes dans le sélecteur CSS comme `:hover` et `:active` sont aussi acceptés.
+Par exemple, `document.querySelectorAll(':hover')` renverra l'ensemble des éléments dont le curseur est au-dessus en ce moment (dans l'ordre d'imbrication : du plus extérieur `<html>` au plus imbriqué).
 ```
 
 ## querySelector [#querySelector]
 
 Un appel à `elem.querySelector(css)` renverra le premier élément d'un sélecteur CSS donné.
 
-En d'autres termes, le résultat sera le même que `elem.querySelectorAll(css)[0]`, mais celui-ci cherchera *tous* les éléments et en choisira un seul, alors que `elem.querySelector` n'en cherchera qu'un. C'est donc plus rapide, et plus court à écrire.
+En d'autres termes, le résultat sera le même que `elem.querySelectorAll(css)[0]`, mais celui-ci cherchera *tous* les éléments et en choisira un seul, alors que `elem.querySelector` n'en cherchera qu'un.
+C'est donc plus rapide, et plus court à écrire.
 
 ## matches
 
 Les méthodes précédentes recherchaient dans le DOM.
 
-La commande [elem.matches(css)](http://dom.spec.whatwg.org/#dom-element-matches) ne recherche rien, elle vérifie simplement que `elem` correspond au sélecteur CSS donné. Elle renvoie `true` ou `false`.
+La commande [elem.matches(css)](http://dom.spec.whatwg.org/#dom-element-matches) ne recherche rien, elle vérifie simplement que `elem` correspond au sélecteur CSS donné.
+Elle renvoie `true` ou `false`.
 
 Cette méthode devient utile quand on itère sur des éléments (comme dans un array par exemple) et qu'on veut filtrer ceux qui nous intéressent.
 
@@ -140,11 +150,14 @@ Par exemple :
 
 ## closest
 
-Les *ancêtres* d'un élément sont : le parent, le parent du parent, son propre parent etc... Les ancêtres forment une chaîne de parents depuis l'élément jusqu'au sommet.
+Les *ancêtres* d'un élément sont : le parent, le parent du parent, son propre parent etc...
+Les ancêtres forment une chaîne de parents depuis l'élément jusqu'au sommet.
 
-La méthode `elem.closest(css)` cherche l'ancêtre le plus proche qui correspond au sélecteur CSS. L'élément `elem` est lui-même inclus dans la recherche.
+La méthode `elem.closest(css)` cherche l'ancêtre le plus proche qui correspond au sélecteur CSS.
+L'élément `elem` est lui-même inclus dans la recherche.
 
-En d'autres mots, la méthode `closest` part de l'élément et remonte en regardant chacun des parents. S'il correspond au sélecteur, la recherche s'arrête et l'ancêtre est renvoyé.
+En d'autres mots, la méthode `closest` part de l'élément et remonte en regardant chacun des parents.
+S'il correspond au sélecteur, la recherche s'arrête et l'ancêtre est renvoyé.
 
 Par exemple :
 
@@ -176,9 +189,11 @@ Aujourd'hui, elles sont principalement de l'histoire ancienne, car `querySelecto
 
 Donc ici, on va surtout en parler dans le souci d'être complet, comme elles peuvent encore se retrouver dans des vieux scripts.
 
-- `elem.getElementsByTagName(tag)` cherche les éléments avec le tag donné et renvoie l'ensemble de ces éléments. Le paramètre `tag` peut aussi être une étoile `"*"` pour signifier n'importe quel tag.
+- `elem.getElementsByTagName(tag)` cherche les éléments avec le tag donné et renvoie l'ensemble de ces éléments.
+Le paramètre `tag` peut aussi être une étoile `"*"` pour signifier n'importe quel tag.
 - `elem.getElementsByClassName(className)` renvoie les éléments qui ont la classe CSS donnée.
-- `document.getElementsByName(name)` renvoie les éléments qui ont l'attribut `name`, dans tout le document. Très rarement utilisé.
+- `document.getElementsByName(name)` renvoie les éléments qui ont l'attribut `name`, dans tout le document.
+Très rarement utilisé.
 
 Par exemple:
 ```js
@@ -219,9 +234,11 @@ Trouvons tous les tags `input` dans le tableau :
 ```
 
 ```warn header="N'oubliez pas la lettre `\"s\"` !"
-Les développeurs junior oublient parfois la lettre `"s"`. Ils essaient donc d'appeler `getElementByTagName` au lieu de <code>getElement<b>s</b>ByTagName</code>.
+Les développeurs junior oublient parfois la lettre `"s"`.
+Ils essaient donc d'appeler `getElementByTagName` au lieu de <code>getElement<b>s</b>ByTagName</code>.
 
-La lettre `"s"` letter n'apparait pas dans `getElementById`, car cette méthode renvoie un seul élément. Mais `getElementsByTagName` renvoie un ensemble d'éléments, il y a donc un `"s"`.
+La lettre `"s"` letter n'apparait pas dans `getElementById`, car cette méthode renvoie un seul élément.
+Mais `getElementsByTagName` renvoie un ensemble d'éléments, il y a donc un `"s"`.
 ```
 
 ````warn header="Elle renvoie un ensemble, pas un élément !"
@@ -261,12 +278,16 @@ Recherche des éléments `.article` :
 
 ## Ensembles courants
 
-Toutes les méthodes `"getElementsBy*"` renvoient l'ensemble *courant*. De tels ensembles montrent toujours l'état courant du document and se mettent à jour automatiquement quand celui-ci change.
+Toutes les méthodes `"getElementsBy*"` renvoient l'ensemble *courant*.
+De tels ensembles montrent toujours l'état courant du document and se mettent à jour automatiquement quand celui-ci change.
 
 Dans l'exemple ci-dessous, il y a deux scripts :
 
-1. Le premier crée une référence à l'ensemble des `<div>`. Maintenant, sa longueur est `1`.
-2. Le second se lance après que le navigateur aie rencontré un autre `<div>`, donc sa longueur est `2`.
+1.
+Le premier crée une référence à l'ensemble des `<div>`.
+Maintenant, sa longueur est `1`.
+2.
+Le second se lance après que le navigateur aie rencontré un autre `<div>`, donc sa longueur est `2`.
 
 ```html run
 <div>Premier div</div>
@@ -285,7 +306,8 @@ Dans l'exemple ci-dessous, il y a deux scripts :
 </script>
 ```
 
-A l'opposé, `querySelectorAll` renvoie un ensemble *statique*. C'est comme un tableau fixe d'éléments
+A l'opposé, `querySelectorAll` renvoie un ensemble *statique*.
+C'est comme un tableau fixe d'éléments
 
 Si on l'utilise, alors les deux scripts ci-dessus renvoient `1`:
 
@@ -306,7 +328,8 @@ Si on l'utilise, alors les deux scripts ci-dessus renvoient `1`:
 </script>
 ```
 
-Maintenant, on voit facilement la différence. L'ensemble statique ne s'est pas incrémenté après l'apparition d'un nouveau `div` dans le document.
+Maintenant, on voit facilement la différence.
+L'ensemble statique ne s'est pas incrémenté après l'apparition d'un nouveau `div` dans le document.
 
 ## Résumé
 

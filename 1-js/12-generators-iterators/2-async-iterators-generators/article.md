@@ -1,6 +1,8 @@
 # Itérateurs et générateurs asynchrones
 
-Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande. Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau. Les générateurs asynchrones rendent cela encore plus pratique.
+Les itérateurs asynchrones permettent d'itérer sur des données qui arrivent de manière asynchrone, à la demande.
+Par exemple, quand nous téléchargeons quelque chose morceau par morceau sur un réseau.
+Les générateurs asynchrones rendent cela encore plus pratique.
 
 ## Rappeler les itérables
 
@@ -66,10 +68,13 @@ Le cas le plus courant est que l'objet doit faire une requête réseau pour four
 
 Pour rendre un objet itérable de manière asynchrone :
 
-1. Utiliser `Symbol.asyncIterator` au lieu de `Symbol.iterator`.
-2. La méthode `next()` devrait retourner une promesse (à remplir avec la valeur suivante).
+1.
+Utiliser `Symbol.asyncIterator` au lieu de `Symbol.iterator`.
+2.
+La méthode `next()` devrait retourner une promesse (à remplir avec la valeur suivante).
     - Le mot-clé `async` le gère, nous pouvons simplement faire `async next()`.
-3. Pour itérer sur un tel objet, nous devrions utiliser une boucle `for await (let item of iterable)`.
+3.
+Pour itérer sur un tel objet, nous devrions utiliser une boucle `for await (let item of iterable)`.
     - Notez le mot `await`.
 
 Comme exemple de départ, créons un objet `range` itérable, similaire à celui d'avant, mais maintenant il retournera des valeurs de manière asynchrone, une par seconde.
@@ -120,10 +125,16 @@ let range = {
 
 Nous pouvons observer que la structure est similaire aux itérateurs réguliers :
 
-1. Pour rendre un objet itérable, asynchrone, il doit avoir une méthode `Symbol.asyncIterator` `(1)`.
-2. Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse `(2)`.
-3. La méthode `next()` n'a pas besoin d'être `async`, elle peut être une méthode normale retournant une promesse, mais `async` permet d'utiliser `await`, donc c'est pratique. Ici, nous ne faisons qu'attendre une seconde `(3)`.
-4. Pour itérer, nous utilisons `for await(let value of range)` `(4)`, c'est-à-dire que nous ajoutons "await" après "for". Il appelle `range[Symbol.asyncIterator]()` une fois, et ensuite son `next()` pour chaque valeur.
+1.
+Pour rendre un objet itérable, asynchrone, il doit avoir une méthode `Symbol.asyncIterator` `(1)`.
+2.
+Cette méthode doit retourner l'objet avec la méthode `next()` retournant une promesse `(2)`.
+3.
+La méthode `next()` n'a pas besoin d'être `async`, elle peut être une méthode normale retournant une promesse, mais `async` permet d'utiliser `await`, donc c'est pratique.
+Ici, nous ne faisons qu'attendre une seconde `(3)`.
+4.
+Pour itérer, nous utilisons `for await(let value of range)` `(4)`, c'est-à-dire que nous ajoutons "await" après "for".
+Il appelle `range[Symbol.asyncIterator]()` une fois, et ensuite son `next()` pour chaque valeur.
 
 Voici un petit tableau avec les différences :
 
@@ -148,9 +159,11 @@ C'est aussi le cas pour `for..of` : la syntaxe sans `await` a besoin de `Symbol.
 
 ## Rappeler les générateurs
 
-Rappelons maintenant les générateurs, car ils permettent de raccourcir le code d'itération. La plupart du temps, lorsque nous souhaitons créer un itérable, nous utiliserons des générateurs.
+Rappelons maintenant les générateurs, car ils permettent de raccourcir le code d'itération.
+La plupart du temps, lorsque nous souhaitons créer un itérable, nous utiliserons des générateurs.
 
-Par soucis de simplicité, nous omettons certaines choses importantes, ce sont des "fonctions qui génèrent (produisent) des valeurs". Elles sont expliquées en détails dans le chapitre [](info:generators).
+Par soucis de simplicité, nous omettons certaines choses importantes, ce sont des "fonctions qui génèrent (produisent) des valeurs".
+Elles sont expliquées en détails dans le chapitre [](info:generators).
 
 Les générateurs sont étiquetés avec `function*` (notez l'étoile) et utilisent `yield` pour générer une valeur, puis nous pouvons utiliser `for..of` pour boucler par dessus.
 
@@ -203,7 +216,8 @@ for(let value of range) {
 
 Veuillez consulter le chapitre [](info:generators) si vous souhaitez plus de détails.
 
-Dans les générateurs standards, nous ne pouvons pas utiliser `await`. Toutes les valeurs doivent être synchronisées, comme l'exige la construction `for..of`.
+Dans les générateurs standards, nous ne pouvons pas utiliser `await`.
+Toutes les valeurs doivent être synchronisées, comme l'exige la construction `for..of`.
 
 Et si nous souhaitons générer des valeurs de manière asynchrone ? À partir de requêtes réseau, par exemple.
 
@@ -213,7 +227,8 @@ Passons aux générateurs asynchrones pour rendre cela possible.
 
 Pour la plupart des applications pratiques, lorsque nous souhaitons créer un objet qui génère de manière asynchrone une séquence de valeurs, nous pouvons utiliser un générateur asynchrone.
 
-La syntaxe est simple : ajoutez `function*` à `async`. Cela rend le générateur asynchrone.
+La syntaxe est simple : ajoutez `function*` à `async`.
+Cela rend le générateur asynchrone.
 
 Et puis utilisez `for await (...)` pour itérer dessus, comme ceci :
 
@@ -249,7 +264,8 @@ Techniquement, si vous êtes un lecteur avancé qui se souvient des détails sur
 
 Pour les générateurs asynchrones, la méthode `generator.next()` est asynchrone, elle renvoie des promesses.
 
-Dans un générateur classique, nous utiliserions `result = generator.next()` pour obtenir des valeurs. Alors que, dans un générateur asynchrone, nous devrions ajouter `await`, comme ceci :
+Dans un générateur classique, nous utiliserions `result = generator.next()` pour obtenir des valeurs.
+Alors que, dans un générateur asynchrone, nous devrions ajouter `await`, comme ceci :
 
 ```js
 result = await generator.next(); // result = {value: ..., done: true/false}
@@ -303,9 +319,11 @@ En pratique cependant, ce serait une chose étrange à faire.
 
 ## Exemple réel : données paginées
 
-Jusqu'à présent, nous avons vu des exemples de base pour mieux comprendre. Passons maintenant en revue un cas d'utilisation réel.
+Jusqu'à présent, nous avons vu des exemples de base pour mieux comprendre.
+Passons maintenant en revue un cas d'utilisation réel.
 
-Ce modèle est très courant. Il ne s'agit pas d'utilisateurs, mais de n'importe quoi.
+Ce modèle est très courant.
+Il ne s'agit pas d'utilisateurs, mais de n'importe quoi.
 
 Par exemple, GitHub nous permet de récupérer les commits de la même manière paginée :
 
@@ -315,7 +333,9 @@ Par exemple, GitHub nous permet de récupérer les commits de la même manière 
 
 Pour notre code, nous aimerions avoir un moyen plus simple d'obtenir des commits.
 
-Faisons une fonction `fetchCommits(repo)` qui obtient des commits pour nous, faisant des requêtes chaque fois que nécessaire. Et laissez-le se soucier de tous les trucs de pagination. Pour nous, ce sera une simple itération asynchrone `for await..of`.
+Faisons une fonction `fetchCommits(repo)` qui obtient des commits pour nous, faisant des requêtes chaque fois que nécessaire.
+Et laissez-le se soucier de tous les trucs de pagination.
+Pour nous, ce sera une simple itération asynchrone `for await..of`.
 
 Donc, l'utilisation sera comme ceci :
 
@@ -353,15 +373,21 @@ async function* fetchCommits(repo) {
 
 Plus d'explications sur son fonctionnement :
 
-1. Nous utilisons la méthode du navigateur [fetch](info:fetch) pour télécharger les commits.
+1.
+Nous utilisons la méthode du navigateur [fetch](info:fetch) pour télécharger les commits.
 
     - L'URL initiale est `https://api.github.com/repos/<repo>/commits`, et la page suivante sera dans l'en-tête `Link` de la réponse.
     - La méthode `fetch` nous permet de fournir une autorisation et d'autres en-têtes si nécessaire - ici GitHub nécessite `User-Agent`.
-2. Les commits sont renvoyés au format JSON.
-3. Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse. Il a un format spécial, nous utilisons donc une [expression régulière](info:regular-expressions)).
+2.
+Les commits sont renvoyés au format JSON.
+3.
+Nous devrions obtenir l'URL de la page suivante à partir de l'en-tête `Link` de la réponse.
+Il a un format spécial, nous utilisons donc une [expression régulière](info:regular-expressions)).
 pour cela.
-    - L'URL de la page suivante peut ressembler à `https://api.github.com/repositories/93253246/commits?page=2`. Elle est générée par GitHub lui-même.
-4. Ensuite, nous donnons les commits reçus un par un, et quand ils se terminent, la prochaine itération `while(url)` se déclenchera, faisant une demande de plus.
+    - L'URL de la page suivante peut ressembler à `https://api.github.com/repositories/93253246/commits?page=2`.
+Elle est générée par GitHub lui-même.
+4.
+Ensuite, nous donnons les commits reçus un par un, et quand ils se terminent, la prochaine itération `while(url)` se déclenchera, faisant une demande de plus.
 
 Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 
@@ -386,7 +412,8 @@ Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 
 C'est exactement ce que nous voulions.
 
-La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne chacun des commits.
+La mécanique interne des pages est invisible de l'extérieur.
+Pour nous, c'est juste un générateur asynchrone qui retourne chacun des commits.
 
 ## Résumé
 
@@ -408,6 +435,8 @@ Différences de syntaxe entre les générateurs asynchrones et synchrones :
 | Déclaration                              | `function*`                   | `async function*`                                       |
 | valeur de retour de la fonction `next()` | `{value:…, done: true/false}` | Promesse qui se résout en `{value:…, done: true/false}` |
 
-Dans le développement Web, nous rencontrons souvent des flux de données, circulant morceau par morceau. Par exemple, dans le téléchargement ou l'envoi de gros fichiers.
+Dans le développement Web, nous rencontrons souvent des flux de données, circulant morceau par morceau.
+Par exemple, dans le téléchargement ou l'envoi de gros fichiers.
 
-Nous pouvons utiliser des générateurs asynchrones pour traiter ce genre de données. Il est également intéressant de noter que dans certains environnements, comme les navigateurs, il existe une autre API appelée Streams, qui fournit des interfaces spéciales pour travailler avec de tels flux, pour transformer les données et pour les faire passer d'un flux à l'autre (par exemple, télécharger à partir d'un endroit et envoyer immédiatement ailleurs).
+Nous pouvons utiliser des générateurs asynchrones pour traiter ce genre de données.
+Il est également intéressant de noter que dans certains environnements, comme les navigateurs, il existe une autre API appelée Streams, qui fournit des interfaces spéciales pour travailler avec de tels flux, pour transformer les données et pour les faire passer d'un flux à l'autre (par exemple, télécharger à partir d'un endroit et envoyer immédiatement ailleurs).

@@ -14,7 +14,8 @@ let f1000 = delay(alert, 1000);
 f1000("test"); // montre "test" après 1000ms
 ```
 
-Veuillez noter comment une fonction fléchée est utilisée ici. Comme nous le savons, les fonctions fléchées ne possèdent pas leurs propres `this` et `arguments`, aussi `f.apply(this, arguments)` prend `this` et `arguments` du wrapper.
+Veuillez noter comment une fonction fléchée est utilisée ici.
+Comme nous le savons, les fonctions fléchées ne possèdent pas leurs propres `this` et `arguments`, aussi `f.apply(this, arguments)` prend `this` et `arguments` du wrapper.
 
 Si nous passons une fonction régulière, `setTimeout` l'appellera sans arguments et `this = window` (en supposant que nous sommes dans le navigateur).
 

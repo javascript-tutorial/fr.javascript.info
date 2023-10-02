@@ -1,7 +1,9 @@
 
 # Chaînage des promesses
 
-Revenons au problème mentionné dans le chapitre <info:callbacks>: nous avons une séquence de tâches asynchrones à effectuer l'une après l'autre. Par exemple, charger des scripts. Comment pouvons-nous bien le coder ?
+Revenons au problème mentionné dans le chapitre <info:callbacks>: nous avons une séquence de tâches asynchrones à effectuer l'une après l'autre.
+Par exemple, charger des scripts.
+Comment pouvons-nous bien le coder ?
 
 Les promesses fournissent quelques options pour le faire.
 
@@ -35,10 +37,14 @@ new Promise(function(resolve, reject) {
 L'idée est que le résultat est transmis à travers la chaîne de gestionnaires `.then`.
 
 Ici, le flux est :
-1. La promesse initiale est résolue en 1 seconde `(*)`,
-2. Ensuite, le gestionnaire `.then` est appelé `(**)`, qui à son tour crée une nouvelle promesse (résolue avec la valeur `2`).
-3. Le `then` suivant `(***)` obtient le résultat du précédent, le traite (double) et le passe au gestionnaire suivant.
-4. ...et ainsi de suite.
+1.
+La promesse initiale est résolue en 1 seconde `(*)`,
+2.
+Ensuite, le gestionnaire `.then` est appelé `(**)`, qui à son tour crée une nouvelle promesse (résolue avec la valeur `2`).
+3.
+Le `then` suivant `(***)` obtient le résultat du précédent, le traite (double) et le passe au gestionnaire suivant.
+4.
+...et ainsi de suite.
 
 Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous pouvons voir une séquence d'appels `alert`: `1` -> `2` -> `4`.
 
@@ -46,9 +52,11 @@ Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous p
 
 Le tout fonctionne, parce qu’un appel à `.then` renvoie une nouvelle promesse, de sorte que nous puissions appeler le prochain` .then` dessus.
 
-Lorsqu'un gestionnaire renvoie une valeur, cela devient le résultat de cette promesse. Le prochain `.then` est appelé avec.
+Lorsqu'un gestionnaire renvoie une valeur, cela devient le résultat de cette promesse.
+Le prochain `.then` est appelé avec.
 
-**Une erreur classique pour les débutants: techniquement, nous pouvons également ajouter plusieurs `.then` à une seule promesse. Ceci n'est pas le chaînage des promesses.**
+**Une erreur classique pour les débutants: techniquement, nous pouvons également ajouter plusieurs `.then` à une seule promesse.
+Ceci n'est pas le chaînage des promesses.**
 
 Par example:
 ```js run
@@ -72,15 +80,18 @@ promise.then(function(result) {
 });
 ```
 
-Ce que nous avons fait ici n’est que plusieurs gestionnaires pour une promesse. Ils ne se transmettent pas le résultat, ils la traitent de manière indépendante.
+Ce que nous avons fait ici n’est que plusieurs gestionnaires pour une promesse.
+Ils ne se transmettent pas le résultat, ils la traitent de manière indépendante.
 
 Voici la representation (comparez-la avec l'enchaînement ci-dessus):
 
 ![](promise-then-many.svg)
 
-Tous les `.then` sur la même promesse obtiennent le même résultat - le résultat de cette promesse. Donc, dans le code ci-dessus, les `alert` montre la même chose:` 1`.
+Tous les `.then` sur la même promesse obtiennent le même résultat - le résultat de cette promesse.
+Donc, dans le code ci-dessus, les `alert` montre la même chose:` 1`.
 
-En pratique, nous avons rarement besoin de plusieurs gestionnaires pour une même promesse. Le chaînage est utilisé beaucoup plus souvent.
+En pratique, nous avons rarement besoin de plusieurs gestionnaires pour une même promesse.
+Le chaînage est utilisé beaucoup plus souvent.
 
 ## Renvoie de promesses
 
@@ -120,7 +131,9 @@ new Promise(function(resolve, reject) {
 });
 ```
 
-Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`. Au bout d'une seconde c'est résolu et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`. Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
+Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`.
+Au bout d'une seconde c'est résolu et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`.
+Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
 
 Le résultat est donc le même que dans l'exemple précédent: 1 -> 2 -> 4, mais maintenant avec un délai d'une seconde entre les appels `alert`.
 
@@ -161,9 +174,13 @@ loadScript("/article/promise-chaining/one.js")
   });
 ```
 
-Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu. Ensuite, il lance le chargement du script suivant. Les scripts sont donc chargés les uns après les autres.
+Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu.
+Ensuite, il lance le chargement du script suivant.
+Les scripts sont donc chargés les uns après les autres.
 
-Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
+Nous pouvons ajouter plus d'actions asynchrones à la chaîne.
+Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite.
+Il n'y a aucun signe de "pyramid of doom".
 
 Techniquement, nous pourrions ajouter `.then` directement à chaque `loadScript`, comme ceci:
 
@@ -180,16 +197,23 @@ loadScript("/article/promise-chaining/one.js").then(script1 => {
 });
 ```
 
-Ce code fait la même chose: charge 3 scripts en séquence. Mais il "pousse vers la droite". Nous avons donc le même problème qu'avec les callbacks.
+Ce code fait la même chose: charge 3 scripts en séquence.
+Mais il "pousse vers la droite".
+Nous avons donc le même problème qu'avec les callbacks.
 
-Les gens qui commencent à utiliser leurs promesses ne savent parfois pas comment enchaîner, alors ils l'écrivent de cette façon. Généralement, le chaînage est préféré.
+Les gens qui commencent à utiliser leurs promesses ne savent parfois pas comment enchaîner, alors ils l'écrivent de cette façon.
+Généralement, le chaînage est préféré.
 
-Parfois, il est correct d'écrire directement `.then`, car la fonction imbriquée a accès à la portée externe. Dans l'exemple ci-dessus, le rappel le plus imbriqué a accès à toutes les variables `script1`, `script2`, `script3`. Mais c'est une exception plutôt qu'une règle.
+Parfois, il est correct d'écrire directement `.then`, car la fonction imbriquée a accès à la portée externe.
+Dans l'exemple ci-dessus, le rappel le plus imbriqué a accès à toutes les variables `script1`, `script2`, `script3`.
+Mais c'est une exception plutôt qu'une règle.
 
 ````smart header="Thenables"
-Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`. Il sera traité de la même manière q'une promesse.
+Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`.
+Il sera traité de la même manière q'une promesse.
 
-L'idée est que les bibliothèques tierces peuvent implémenter leurs propres objets "compatibles avec les promesses". Elles peuvent avoir un ensemble étendu de méthodes, mais aussi être compatibles avec les promesses natives, car ils implémentent `.then`.
+L'idée est que les bibliothèques tierces peuvent implémenter leurs propres objets "compatibles avec les promesses".
+Elles peuvent avoir un ensemble étendu de méthodes, mais aussi être compatibles avec les promesses natives, car ils implémentent `.then`.
 
 Voici un exemple d'un objet "thenable":
 
@@ -214,22 +238,27 @@ new Promise(resolve => resolve(1))
   .then(alert); // shows 2 after 1000ms
 ```
 
-JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)` : s il a une méthode appelable nommé `then`, il appelle cette méthode fournissant les fonctions natives `resolve` et `reject` comme arguments (semblable à un executeur) et attend que l’un d’eux soit appelé. Dans l'exemple ci-dessus, `resolve(2)` est appelé après 1 seconde `(**)`. Ensuite, le résultat est transmis plus loin dans la chaîne.
+JavaScript vérifie l'objet retourné par le gestionnaire `.then` à la ligne `(*)` : s il a une méthode appelable nommé `then`, il appelle cette méthode fournissant les fonctions natives `resolve` et `reject` comme arguments (semblable à un executeur) et attend que l’un d’eux soit appelé.
+Dans l'exemple ci-dessus, `resolve(2)` est appelé après 1 seconde `(**)`.
+Ensuite, le résultat est transmis plus loin dans la chaîne.
 
 Cette fonctionnalité nous permet d'intégrer des objets personnalisés avec des chaînes de promesse sans avoir à hériter de `Promise`.
 ````
 
 ## Un plus grand exemple: fetch
 
-Dans la programmation du front-end, les promesses sont souvent utilisées pour les requêtes réseau. Voyons donc un exemple étendu de cela.
+Dans la programmation du front-end, les promesses sont souvent utilisées pour les requêtes réseau.
+Voyons donc un exemple étendu de cela.
 
-Nous allons utiliser la méthode [fetch](info:fetch) pour charger les informations sur l'utilisateur à partir du serveur distant. Il a beaucoup de paramètres optionnels couverts dans [des chapitres séparés](info:fetch), mais la syntaxe de base est assez simple:
+Nous allons utiliser la méthode [fetch](info:fetch) pour charger les informations sur l'utilisateur à partir du serveur distant.
+Il a beaucoup de paramètres optionnels couverts dans [des chapitres séparés](info:fetch), mais la syntaxe de base est assez simple:
 
 ```js
 let promise = fetch(url);
 ```
 
-Cela fait une requête réseau à la `url` et renvoie une promesse. La promesse se résout avec un objet `response` lorsque le serveur distant répond avec des en-têtes, mais *avant le téléchargement complet de la réponse*.
+Cela fait une requête réseau à la `url` et renvoie une promesse.
+La promesse se résout avec un objet `response` lorsque le serveur distant répond avec des en-têtes, mais *avant le téléchargement complet de la réponse*.
 
 Pour lire la réponse complète, nous devons appeler la méthode `response.text()` : elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en tant que résultat.
 
@@ -249,7 +278,8 @@ fetch('/article/promise-chaining/user.json')
   });
 ```
 
-L'objet `response` renvoyé par `fetch` comprend également la méthode `response.json()` qui lit les données distantes et les analyse en JSON. Dans notre cas, c'est encore plus pratique, alors passons-y.
+L'objet `response` renvoyé par `fetch` comprend également la méthode `response.json()` qui lit les données distantes et les analyse en JSON.
+Dans notre cas, c'est encore plus pratique, alors passons-y.
 
 Nous allons également utiliser les fonctions fléchées pour la brièveté:
 
@@ -284,9 +314,11 @@ fetch('/article/promise-chaining/user.json')
   });
 ```
 
-Le code fonctionne ; voir les commentaires à propos des détails. Pourtant, il y a un problème potentiel, une erreur typique de ceux qui commencent à utiliser les promesses.
+Le code fonctionne ; voir les commentaires à propos des détails.
+Pourtant, il y a un problème potentiel, une erreur typique de ceux qui commencent à utiliser les promesses.
 
-Regardez la ligne `(*)`: comment pouvons-nous faire quelque chose *après* l'avatar a fini d'afficher et d'être supprimé? Par exemple, nous aimerions montrer un formulaire pour éditer cet utilisateur ou autre chose. Pour l'instant, il n'y a pas moyen.
+Regardez la ligne `(*)`: comment pouvons-nous faire quelque chose *après* l'avatar a fini d'afficher et d'être supprimé? Par exemple, nous aimerions montrer un formulaire pour éditer cet utilisateur ou autre chose.
+Pour l'instant, il n'y a pas moyen.
 
 Pour rendre la chaîne extensible, nous devons retourner une promesse qui sera résolue une fois que l'avatar aura fini de s'afficher.
 
@@ -316,9 +348,12 @@ fetch('/article/promise-chaining/user.json')
   .then(githubUser => alert(`Finished showing ${githubUser.name}`));
 ```
 
-En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Promise`, qui ne sera réglé qu’après l’appel de `resolve(githubUser)` dans `setTimeout` `(**)`. Le prochain `.then` dans la chaîne attendra cela.
+En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Promise`, qui ne sera réglé qu’après l’appel de `resolve(githubUser)` dans `setTimeout` `(**)`.
+Le prochain `.then` dans la chaîne attendra cela.
 
-Comme bonne pratique, une action asynchrone doit toujours renvoyer une promesse. Cela permet de planifier des actions après. Même si nous n'avons pas l'intention d'étendre la chaîne maintenant, nous en aurons peut-être besoin plus tard.
+Comme bonne pratique, une action asynchrone doit toujours renvoyer une promesse.
+Cela permet de planifier des actions après.
+Même si nous n'avons pas l'intention d'étendre la chaîne maintenant, nous en aurons peut-être besoin plus tard.
 
 Enfin, nous pouvons scinder le code en fonctions réutilisables:
 
@@ -356,7 +391,8 @@ loadJson('/article/promise-chaining/user.json')
 
 ## Résumé
 
-Si un gestionnaire `.then` (ou `catch/finally`, peu importe) renvoie une promesse, le reste de la chaîne attend jusqu'à ce qu'elle se règle. Quand cela se produit, son résultat (ou son erreur) est passé plus loin.
+Si un gestionnaire `.then` (ou `catch/finally`, peu importe) renvoie une promesse, le reste de la chaîne attend jusqu'à ce qu'elle se règle.
+Quand cela se produit, son résultat (ou son erreur) est passé plus loin.
 
 Voici une image complète:
 

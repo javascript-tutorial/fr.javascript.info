@@ -29,7 +29,8 @@ if (year == 2015) {
 }
 ```
 
-Il est recommandé d'entourer votre bloc de code avec des accolades `{}` à chaque fois avec `if`, même s’il n’y a qu’une seule instruction. Cela améliore la lisibilité.
+Il est recommandé d'entourer votre bloc de code avec des accolades `{}` à chaque fois avec `if`, même s’il n’y a qu’une seule instruction.
+Cela améliore la lisibilité.
 
 ## Conversion booléenne
 
@@ -37,7 +38,8 @@ L'instruction `if (…)` évalue l'expression entre parenthèses et la convertit
 
 Rappelons les règles de conversion du chapitre <info:type-conversions> :
 
-- Un nombre `0`, une chaîne de caractères vide `""`, `null`, `undefined` et `NaN` deviennent `false`. Dû à cela, on dit de ces valeurs qu'elles sont "falsy".
+- Un nombre `0`, une chaîne de caractères vide `""`, `null`, `undefined` et `NaN` deviennent `false`.
+Dû à cela, on dit de ces valeurs qu'elles sont "falsy".
 - Les autres valeurs deviennent `true`, on dit qu'elles sont "truthy".
 
 Donc, le code sous cette condition ne sera jamais exécuté :
@@ -68,7 +70,8 @@ if (cond) {
 
 ## La clause "else"
 
-L'instruction `if` peut contenir un bloc optionnel "else". Il s'exécute lorsque le résultat de l'évaluation conditionnelle n'est pas vrai.
+L'instruction `if` peut contenir un bloc optionnel "else".
+Il s'exécute lorsque le résultat de l'évaluation conditionnelle n'est pas vrai.
 
 Par exemple :
 ```js run
@@ -83,7 +86,8 @@ if (year == 2015) {
 
 ## Plusieurs conditions : "else if"
 
-Parfois, nous aimerions tester plusieurs variantes d'une condition. Il y a une clause `else if` pour cela.
+Parfois, nous aimerions tester plusieurs variantes d'une condition.
+Il y a une clause `else if` pour cela.
 
 Par exemple :
 
@@ -99,9 +103,11 @@ if (year < 2015) { // Si l'année est STRICTEMENT inférieure à 2015
 }
 ```
 
-Dans le code ci-dessus, JavaScript vérifie `year < 2015`. S'il est falsy, il passe à l'année de condition suivante `year > 2015` et c'est toujours `false` il passe à la dernière instruction et affiche la dernière alerte.
+Dans le code ci-dessus, JavaScript vérifie `year < 2015`.
+S'il est falsy, il passe à l'année de condition suivante `year > 2015` et c'est toujours `false` il passe à la dernière instruction et affiche la dernière alerte.
 
-Il peut y avoir plus de blocs `else if`. Le dernier `else` est optionnel.
+Il peut y avoir plus de blocs `else if`.
+Le dernier `else` est optionnel.
 
 ## Opérateur ternaire '?'
 
@@ -126,7 +132,9 @@ alert(accessAllowed);
 
 L'opérateur dit "ternaire" ou "point d'interrogation" nous permet de le faire plus rapidement et plus simplement.
 
-L'opérateur est représenté par un point d'interrogation `?`. Appelé aussi "ternaire" parce que l'opérateur a trois opérandes. C'est en fait le seul et unique opérateur en JavaScript qui en a autant.
+L'opérateur est représenté par un point d'interrogation `?`.
+Appelé aussi "ternaire" parce que l'opérateur a trois opérandes.
+C'est en fait le seul et unique opérateur en JavaScript qui en a autant.
 
 La syntaxe est :
 ```js
@@ -141,7 +149,8 @@ Par exemple :
 let accessAllowed = (age > 18) ? true : false;
 ```
 
-Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`. L'opérateur point d'interrogation a une faible précédence, il s'exécute donc après la comparaison `>`.
+Techniquement, nous pouvons omettre les parenthèses autour de `age > 18`.
+L'opérateur point d'interrogation a une faible précédence, il s'exécute donc après la comparaison `>`.
 
 Cet exemple fera la même chose que le précédent :
 
@@ -178,12 +187,17 @@ let message = (age < 3) ? 'Hi, baby!' :
 alert(message);
 ```
 
-Il peut être difficile au début de comprendre ce qui se passe. Mais après un examen plus approfondi, nous constatons que ce n’est qu’une séquence de tests ordinaire.
+Il peut être difficile au début de comprendre ce qui se passe.
+Mais après un examen plus approfondi, nous constatons que ce n’est qu’une séquence de tests ordinaire.
 
-1. Le premier point d'interrogation vérifie si `age < 3`.
-2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchit les deux points `":"` et vérifie si `age < 18`.
-3. Si vrai -- retourne `'Salut !'`, sinon -- il franchit à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
-4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchit les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
+1.
+Le premier point d'interrogation vérifie si `age < 3`.
+2.
+Si vrai -- retourne `'Coucou bébé !'`, sinon il franchit les deux points `":"` et vérifie si `age < 18`.
+3.
+Si vrai -- retourne `'Salut !'`, sinon -- il franchit à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
+4.
+Si vrai -- retourne `'Salutations !'`, sinon -- il franchit les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
 
 La même logique utilisant `if..else` :
 
@@ -214,11 +228,13 @@ let company = prompt('Which company created JavaScript?', '');
 
 Selon si la condition  `company == 'Netscape'` est vraie ou non, la première ou la deuxième partie après `?` s'exécute et affiche l'alerte correspondante.
 
-Nous n’attribuons pas de résultat à une variable ici. L'idée est d'exécuter un code différent en fonction de la condition.
+Nous n’attribuons pas de résultat à une variable ici.
+L'idée est d'exécuter un code différent en fonction de la condition.
 
 **Il n'est pas recommandé d'utiliser l'opérateur ternaire de cette manière.**
 
-La notation semble être plus courte qu'un `if`, ce qui plaît à certains programmeurs. Mais c'est moins lisible.
+La notation semble être plus courte qu'un `if`, ce qui plaît à certains programmeurs.
+Mais c'est moins lisible.
 
 Voici le même code avec `if` pour comparaison :
 
@@ -234,6 +250,9 @@ if (company == 'Netscape') {
 */!*
 ```
 
-Nos yeux scrutent le code verticalement. Les constructions qui couvrent plusieurs lignes sont plus faciles à comprendre qu'un jeu d'instructions horizontal long.
+Nos yeux scrutent le code verticalement.
+Les constructions qui couvrent plusieurs lignes sont plus faciles à comprendre qu'un jeu d'instructions horizontal long.
 
-L'idée d'un point d'interrogation `?` est de renvoyer l'une ou l'autre valeur selon la condition. Veuillez l'utiliser pour cela exactement. Il y a `if` pour exécuter différentes branches du code.
+L'idée d'un point d'interrogation `?` est de renvoyer l'une ou l'autre valeur selon la condition.
+Veuillez l'utiliser pour cela exactement.
+Il y a `if` pour exécuter différentes branches du code.

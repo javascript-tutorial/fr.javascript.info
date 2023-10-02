@@ -46,7 +46,8 @@ Les objects [MutationRecord](https://dom.spec.whatwg.org/#mutationrecord) ont le
 - `attributeName/attributeNamespace` -- le nom/espace de nommage (pour XML) de l'attribut modifié,
 - `oldValue` -- la valeur précédente, uniquement pour les modifications d'attributs ou de texte, si l'option correspondante est définie `attributeOldValue/characterDataOldValue`.
 
-Par exemple, voici un `<div>` avec un attribut `contentEditable`. Cet attribut nous permet de "focus" contenu et de l'éditer.
+Par exemple, voici un `<div>` avec un attribut `contentEditable`.
+Cet attribut nous permet de "focus" contenu et de l'éditer.
 
 ```html run
 <div contentEditable id="elem">Click and <b>edit</b>, please</div>
@@ -115,7 +116,8 @@ Il y a d'autres situations où un script tiers ajoute quelque chose dans notre d
 
 Il y a aussi des situations où `MutationObserver` est bon du point de vue architectural.
 
-Disons que nous faisons un site web sur la programmation. Naturellement, les articles et autres matériels peuvent contenir des extraits de code source.
+Disons que nous faisons un site web sur la programmation.
+Naturellement, les articles et autres matériels peuvent contenir des extraits de code source.
 
 Voici à quoi ressemble un tel extrait dans un balisage HTML:
 
@@ -128,9 +130,11 @@ Voici à quoi ressemble un tel extrait dans un balisage HTML:
 ...
 ```
 
-Pour une meilleure lisibilité et en même temps, pour l'embellir, nous utiliserons une bibliothèque de coloration syntaxique JavaScript sur notre site, comme [Prism.js](https://prismjs.com/). Pour obtenir la coloration syntaxique de l'extrait de code ci-dessus dans Prism, `Prism.highlightElem(pre)` est appelé, qui examine le contenu de ces éléments `pre` et ajoute des balises et des styles spéciaux pour la coloration syntaxique colorée dans ces éléments, similaire à ce que vous voyez en exemples ici, sur cette page.
+Pour une meilleure lisibilité et en même temps, pour l'embellir, nous utiliserons une bibliothèque de coloration syntaxique JavaScript sur notre site, comme [Prism.js](https://prismjs.com/).
+Pour obtenir la coloration syntaxique de l'extrait de code ci-dessus dans Prism, `Prism.highlightElem(pre)` est appelé, qui examine le contenu de ces éléments `pre` et ajoute des balises et des styles spéciaux pour la coloration syntaxique colorée dans ces éléments, similaire à ce que vous voyez en exemples ici, sur cette page.
 
-Quand exactement faut-il appliquer cette méthode de mise en évidence ? Nous pouvons le faire sur l'événement `DOMContentLoaded`, ou en bas de page. À ce moment, nous avons notre DOM prêt, nous pouvons rechercher des éléments `pre[class*="language"]` et appeler `Prism.highlightElem` dessus :
+Quand exactement faut-il appliquer cette méthode de mise en évidence ? Nous pouvons le faire sur l'événement `DOMContentLoaded`, ou en bas de page.
+À ce moment, nous avons notre DOM prêt, nous pouvons rechercher des éléments `pre[class*="language"]` et appeler `Prism.highlightElem` dessus :
 
 ```js
 // mettre en évidence tous les extraits de code sur la page
@@ -139,14 +143,18 @@ document.querySelectorAll('pre[class*="language"]').forEach(Prism.highlightElem)
 
 Tout est simple jusqu'à présent, n'est-ce pas ? Nous trouvons des extraits de code en HTML et les mettons en évidence.
 
-Maintenant, continuons. Disons que nous allons chercher dynamiquement des éléments sur un serveur. Nous étudierons les méthodes pour cela [plus tard dans le tutoriel](info:fetch). Pour l'instant, il suffit d'aller chercher un article HTML sur un serveur web et de l'afficher à la demande :
+Maintenant, continuons.
+Disons que nous allons chercher dynamiquement des éléments sur un serveur.
+Nous étudierons les méthodes pour cela [plus tard dans le tutoriel](info:fetch).
+Pour l'instant, il suffit d'aller chercher un article HTML sur un serveur web et de l'afficher à la demande :
 
 ```js
 let article = /* récupérer du nouveau contenu sur le serveur */
 articleElem.innerHTML = article;
 ```
 
-Le nouvel `article` HTML peut contenir des extraits de code. Nous devons appeler `Prism.highlightElem` sur eux, sinon ils ne seront pas mis en évidence.
+Le nouvel `article` HTML peut contenir des extraits de code.
+Nous devons appeler `Prism.highlightElem` sur eux, sinon ils ne seront pas mis en évidence.
 
 **Où et quand appeler `Prism.highlightElem` pour un article chargé dynamiquement ?**
 
@@ -162,9 +170,12 @@ snippets.forEach(Prism.highlightElem);
 */!*
 ```
 
-... Mais imaginez si nous avons de nombreux endroits dans le code où nous chargeons notre contenu -- articles, quiz, messages de forum, etc. Devons-nous mettre l'appel de mise en évidence partout, pour mettre en évidence le code dans le contenu après le chargement? Ce n'est pas très pratique.
+...
+Mais imaginez si nous avons de nombreux endroits dans le code où nous chargeons notre contenu -- articles, quiz, messages de forum, etc.
+Devons-nous mettre l'appel de mise en évidence partout, pour mettre en évidence le code dans le contenu après le chargement? Ce n'est pas très pratique.
 
-Et si le contenu est chargé par un module tiers ? Par exemple, nous avons un forum écrit par quelqu'un d'autre, qui charge le contenu dynamiquement, et nous aimerions y ajouter une mise en évidence syntaxique. Personne n'aime patcher des scripts tiers.
+Et si le contenu est chargé par un module tiers ? Par exemple, nous avons un forum écrit par quelqu'un d'autre, qui charge le contenu dynamiquement, et nous aimerions y ajouter une mise en évidence syntaxique.
+Personne n'aime patcher des scripts tiers.
 
 Heureusement, il y a une autre option.
 
@@ -207,7 +218,8 @@ observer.observe(demoElem, {childList: true, subtree: true});
 
 Ci-dessous, il y a un élément HTML et JavaScript qui le remplit dynamiquement en utilisant `innerHTML`.
 
-Veuillez exécuter le code précédent (ci-dessus, qui observe cet élément), puis le code ci-dessous. Vous verrez comment `MutationObserver` détecte et met en évidence l'extrait.
+Veuillez exécuter le code précédent (ci-dessus, qui observe cet élément), puis le code ci-dessous.
+Vous verrez comment `MutationObserver` détecte et met en évidence l'extrait.
 
 <p id="highlight-demo" style="border: 1px solid #ddd">Voici un élément de démonstration avec <code>id="highlight-demo"</code>, exécutez le code ci-dessus pour l'observer.</p>
 
@@ -226,7 +238,8 @@ demoElem.innerHTML = `Vous trouverez ci-dessous un extrait de code:
 `;
 ```
 
-Nous avons maintenant `MutationObserver` qui peut suivre tous les surlignages dans les éléments observés ou dans le `document` entier. Nous pouvons ajouter/supprimer des bribes de code en HTML sans y penser.
+Nous avons maintenant `MutationObserver` qui peut suivre tous les surlignages dans les éléments observés ou dans le `document` entier.
+Nous pouvons ajouter/supprimer des bribes de code en HTML sans y penser.
 
 ## Méthodes supplémentaires
 
@@ -256,7 +269,8 @@ Le rappel ne sera pas appelé pour les enregistrements, renvoyé par `observer.t
 ```
 
 ```smart header="Interaction avec le garbage collection"
-Les observateurs utilisent des références faibles aux nœuds en interne. Autrement dit, si un nœud est retiré du DOM et devient inaccessible, il devient alors un déchet collecté.
+Les observateurs utilisent des références faibles aux nœuds en interne.
+Autrement dit, si un nœud est retiré du DOM et devient inaccessible, il devient alors un déchet collecté.
 
 Le simple fait qu'un nœud DOM soit observé n'empêche pas le ramassage des ordures.
 ```
@@ -267,4 +281,5 @@ Le simple fait qu'un nœud DOM soit observé n'empêche pas le ramassage des ord
 
 Nous pouvons l'utiliser pour suivre les changements introduits par d'autres parties de notre code, ainsi que pour intégrer des scripts tiers.
 
-`MutationObserver` peut suivre tout changement. Les options de configuration "ce qu'il faut observer" sont utilisées pour des optimisations, afin de ne pas dépenser des ressources pour des callback inutiles.
+`MutationObserver` peut suivre tout changement.
+Les options de configuration "ce qu'il faut observer" sont utilisées pour des optimisations, afin de ne pas dépenser des ressources pour des callback inutiles.

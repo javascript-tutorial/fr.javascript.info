@@ -40,11 +40,15 @@ console.log(7);
 
 Pour résumer,
 
-1. Les numéros `1` & `7` apparaissent immédiatement, car les appels simples `console.log` n'utilisent aucune file d'attente.
-2. Ensuite, une fois le flux de code principal terminé, la file d'attente des microtâches s'exécute.
+1.
+Les numéros `1` & `7` apparaissent immédiatement, car les appels simples `console.log` n'utilisent aucune file d'attente.
+2.
+Ensuite, une fois le flux de code principal terminé, la file d'attente des microtâches s'exécute.
     - Il possède les commandes: `console.log (3); setTimeout (...4); console.log (5) `.
     - Les nombres `3` & `5` apparaissent, tandis que `setTimeout (() => console.log (4))` ajoute l'appel `console.log (4)` à la fin de la file d'attente macrotask.
     - La file d'attente macrotask est maintenant: `console.log (2); console.log (6); console.log (4) `.
-3. Une fois la file d'attente des microtâches vide, la file d'attente des macrotasques s'exécute. Il sort `2`, `6`, `4`.
+3.
+Une fois la file d'attente des microtâches vide, la file d'attente des macrotasques s'exécute.
+Il sort `2`, `6`, `4`.
 
 Au final, nous avons la sortie: `1 7 3 5 2 6 4`.

@@ -57,13 +57,16 @@ alert(getMaxSubSum([1, 2, 3])); // 6
 alert(getMaxSubSum([100, -9, 2, -3, 5])); // 100
 ```
 
-La solution a une complexité temporelle de [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). En d'autres termes, si nous augmentons la taille du tableau 2 fois, l'algorithme fonctionnera 4 fois plus longtemps.
+La solution a une complexité temporelle de [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation).
+En d'autres termes, si nous augmentons la taille du tableau 2 fois, l'algorithme fonctionnera 4 fois plus longtemps.
 
 Pour les grands tableaux (1'000, 10'000 éléments ou plus), de tels algorithmes peuvent conduire à une grande lenteur.
 
 # Solution rapide
 
-Parcourons le tableau et conservons la somme partielle actuelle des éléments dans la variable `s`. Si `s` devient négatif à un moment donné, assignez `s=0`. Le maximum de tous ces `s` sera la réponse.
+Parcourons le tableau et conservons la somme partielle actuelle des éléments dans la variable `s`.
+Si `s` devient négatif à un moment donné, assignez `s=0`.
+Le maximum de tous ces `s` sera la réponse.
 
 Si la description est trop vague, veuillez voir le code, il est assez court :
 
@@ -91,4 +94,5 @@ alert(getMaxSubSum([-1, -2, -3])); // 0
 
 L'algorithme nécessite exactement 1 passage de tableau, la complexité temporelle est donc O(n).
 
-Vous pouvez trouver plus d'informations détaillées sur l'algorithme ici : [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem). Si la raison de ce fonctionnement n’est pas encore évidente, tracez l’algorithme à partir des exemples ci-dessus et voyez comment il fonctionne.
+Vous pouvez trouver plus d'informations détaillées sur l'algorithme ici : [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem).
+Si la raison de ce fonctionnement n’est pas encore évidente, tracez l’algorithme à partir des exemples ci-dessus et voyez comment il fonctionne.

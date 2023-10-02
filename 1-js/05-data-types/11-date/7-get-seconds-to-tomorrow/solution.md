@@ -29,4 +29,5 @@ function getSecondsToTomorrow() {
 }
 ```
 
-Veuillez noter que de nombreux pays ont l'heure d'été (DST), il peut donc y avoir des jours avec 23 ou 25 heures. Nous voudrons peut-être traiter ces jours séparément.
+Veuillez noter que de nombreux pays ont l'heure d'été (DST), il peut donc y avoir des jours avec 23 ou 25 heures.
+Nous voudrons peut-être traiter ces jours séparément.

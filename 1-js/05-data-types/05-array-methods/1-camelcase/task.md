@@ -16,4 +16,5 @@ camelize("list-style-image") == 'listStyleImage';
 camelize("-webkit-transition") == 'WebkitTransition';
 ```
 
-P.S. Astuce : utilisez `split` pour scinder la chaîne dans un tableau, transformer la et ensuite utilisez `join`.
+P.S.
+Astuce : utilisez `split` pour scinder la chaîne dans un tableau, transformer la et ensuite utilisez `join`.

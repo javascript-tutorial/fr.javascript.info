@@ -54,9 +54,11 @@ switch (a) {
 }
 ```
 
-Ici, la `switch` commence à comparer `a` avec la première `case` dont la valeur est `3`. La correspondance échoue.
+Ici, la `switch` commence à comparer `a` avec la première `case` dont la valeur est `3`.
+La correspondance échoue.
 
-Ensuite `4`, c’est une correspondance. L’exécution commence donc à partir de la `case 4` jusqu’au prochain `break`.
+Ensuite `4`, c’est une correspondance.
+L’exécution commence donc à partir de la `case 4` jusqu’au prochain `break`.
 
 **S'il n'y a pas de `break`, l'exécution continue avec la `case` suivante qu'importe l'expression de cette dernière.**
 
@@ -134,17 +136,20 @@ switch (a) {
 */!*
 
   default:
-    alert('The result is strange. Really.');
+    alert('The result is strange.
+Really.');
 }
 ```
 
 Maintenant, les `3` et `5` affichent le même message.
 
-La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`. Ici, l’exécution de la `case 3` commence à partir de la ligne `(*)` et passe par la `case 5`, car il n’y a pas de `break`.
+La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`.
+Ici, l’exécution de la `case 3` commence à partir de la ligne `(*)` et passe par la `case 5`, car il n’y a pas de `break`.
 
 ## Le type compte
 
-Soulignons que la vérification d’égalité est toujours stricte. Les valeurs doivent être du même type pour correspondre.
+Soulignons que la vérification d’égalité est toujours stricte.
+Les valeurs doivent être du même type pour correspondre.
 
 Par exemple, considérons le code suivant :
 
@@ -170,6 +175,10 @@ switch (arg) {
 }
 ```
 
-1. Pour `0`, `1`, la première `alert` est exécutée.
-2. Pour `2`, la deuxième `alert` est exécutée.
-3. Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`. Nous avons donc un code mort (unreachable / inacessible) dans la `case 3` ! La variante par défaut sera donc exécutée.
+1.
+Pour `0`, `1`, la première `alert` est exécutée.
+2.
+Pour `2`, la deuxième `alert` est exécutée.
+3.
+Mais pour `3`, le résultat du prompt est une chaîne de caractères `"3"`, ce qui n’est pas strictement égal `===` au chiffre `3`.
+Nous avons donc un code mort (unreachable / inacessible) dans la `case 3` ! La variante par défaut sera donc exécutée.

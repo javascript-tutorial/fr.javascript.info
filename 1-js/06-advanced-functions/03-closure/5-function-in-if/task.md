@@ -3,7 +3,8 @@ importance: 5
 ---
 # Fonction dans if
 
-Regardez ce code. Quel sera le résultat de l'appel à la dernière ligne ?
+Regardez ce code.
+Quel sera le résultat de l'appel à la dernière ligne ?
 
 ```js run
 let phrase = "Hello";

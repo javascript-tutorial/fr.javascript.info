@@ -1,7 +1,8 @@
 
 # Réécriture de "rethrow" avec async/await
 
-Vous trouverez ci-dessous l'exemple "rethrow". Réécrivez-le en utilisant `async/await` au lieu de `.then/catch`.
+Vous trouverez ci-dessous l'exemple "rethrow".
+Réécrivez-le en utilisant `async/await` au lieu de `.then/catch`.
 
 Et débarrassez-vous de la récursion en faveur d'une boucle dans `demoGithubUser` : avec `async/await`, cela devient facile à faire.
 

@@ -8,7 +8,8 @@ In the multiline mode they match not only at the beginning and the end of the st
 
 ## Searching at line start ^
 
-In the example below the text has multiple lines. The pattern `pattern:/^\d/gm` takes a digit from the beginning of each line:
+In the example below the text has multiple lines.
+The pattern `pattern:/^\d/gm` takes a digit from the beginning of each line:
 
 ```js run
 let str = `1st place: Winnie
@@ -82,6 +83,7 @@ As we can see, there are 2 matches instead of 3.
 
 That's because there's no newline after `subject:3` (there's text end though, so it matches `pattern:$`).
 
-Another difference: now every match includes a newline character `match:\n`. Unlike the anchors `pattern:^` `pattern:$`, that only test the condition (start/end of a line), `\n` is a character, so it becomes a part of the result.
+Another difference: now every match includes a newline character `match:\n`.
+Unlike the anchors `pattern:^` `pattern:$`, that only test the condition (start/end of a line), `\n` is a character, so it becomes a part of the result.
 
 So, a `\n` in the pattern is used when we need newline characters in the result, while anchors are used to find something at the beginning/end of a line.

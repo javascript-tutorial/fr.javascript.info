@@ -23,14 +23,16 @@ Pourquoi le `.then` se déclenche par la suite? Que se passe-t-il?
 
 ## File d'attente pour micro-tâches
 
-Les tâches asynchrones nécessitent une gestion appropriée. Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme V8).
+Les tâches asynchrones nécessitent une gestion appropriée.
+Pour cela, la norme ECMA spécifie une file d'attente interne `PromiseJobs`, plus souvent appelée "microtask queue" en anglais (terme V8).
 
 Comme indiqué dans la [spécification](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
 
 - La file d'attente est premier entré, premier sorti: les tâches mises en file d'attente en premier sont exécutées en premier.
 - L'exécution d'une tâche est lancée uniquement lorsque rien d'autre n'est en cours d'exécution.
 
-Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente ; ils ne sont pas encore exécutés. Lorsque le moteur JavaScript est libéré du code actuel, il extrait une tâche de la file d'attente et l'exécute.
+Ou, simplement, lorsqu'une promesse est prête, ses gestionnaires `.then/catch/finally` sont mis en file d'attente ; ils ne sont pas encore exécutés.
+Lorsque le moteur JavaScript est libéré du code actuel, il extrait une tâche de la file d'attente et l'exécute.
 
 C'est pourquoi "code finished" dans l'exemple ci-dessus s'affiche en premier.
 
@@ -38,7 +40,8 @@ C'est pourquoi "code finished" dans l'exemple ci-dessus s'affiche en premier.
 
 Les gestionnaires de promesses passent toujours par cette file d'attente interne.
 
-S'il existe une chaîne avec plusieurs `.then/catch/finally`, chacun d'entre eux est exécuté de manière asynchrone. C'est-à-dire qu'il est d'abord mis en file d'attente et exécuté lorsque le code actuel est terminé et que les gestionnaires précédemment placés en file d'attente sont terminés.
+S'il existe une chaîne avec plusieurs `.then/catch/finally`, chacun d'entre eux est exécuté de manière asynchrone.
+C'est-à-dire qu'il est d'abord mis en file d'attente et exécuté lorsque le code actuel est terminé et que les gestionnaires précédemment placés en file d'attente sont terminés.
 
 **Et si l'ordre importait pour nous ? Comment pouvons-nous faire en sorte que `code finished` apparaisse après `promise done` ?**
 
@@ -109,4 +112,5 @@ Ainsi, les gestionnaires `.then/catch/finally` sont toujours appelés une fois l
 
 Si nous devons garantir qu'un morceau de code est exécuté après `.then/catch/finally`, nous pouvons l'ajouter à un appel `.then` enchaîné.
 
-Dans la plupart des moteurs JavaScript, y compris les navigateurs et Node.js, le concept de micro-tâches est étroitement lié à la "boucle d'événement" et aux "macrotaches". Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.
+Dans la plupart des moteurs JavaScript, y compris les navigateurs et Node.js, le concept de micro-tâches est étroitement lié à la "boucle d'événement" et aux "macrotaches".
+Comme elles n’ont pas de relation directe avec les promesses, elles sont décrites dans une autre partie du didacticiel, au chapitre <info:event-loop>.

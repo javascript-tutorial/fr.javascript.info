@@ -36,10 +36,14 @@ Let's say we have 3 nested elements `FORM > DIV > P` with a handler on each of t
 ```
 
 A click on the inner `<p>` first runs `onclick`:
-1. On that `<p>`.
-2. Then on the outer `<div>`.
-3. Then on the outer `<form>`.
-4. And so on upwards till the `document` object.
+1.
+On that `<p>`.
+2.
+Then on the outer `<div>`.
+3.
+Then on the outer `<form>`.
+4.
+And so on upwards till the `document` object.
 
 ![](event-order-bubbling.svg)
 
@@ -50,7 +54,9 @@ The process is called "bubbling", because events "bubble" from the inner element
 ```warn header="*Almost* all events bubble."
 The key word in this phrase is "almost".
 
-For instance, a `focus` event does not bubble. There are other examples too, we'll meet them. But still it's an exception, rather than a rule, most events do bubble.
+For instance, a `focus` event does not bubble.
+There are other examples too, we'll meet them.
+But still it's an exception, rather than a rule, most events do bubble.
 ```
 
 ## event.target
@@ -64,7 +70,8 @@ Note the differences from `this` (=`event.currentTarget`):
 - `event.target` -- is the "target" element that initiated the event, it doesn't change through the bubbling process.
 - `this` -- is the "current" element, the one that has a currently running handler on it.
 
-For instance, if we have a single handler `form.onclick`, then it can "catch" all clicks inside the form. No matter where the click happened, it bubbles up to `<form>` and runs the handler.
+For instance, if we have a single handler `form.onclick`, then it can "catch" all clicks inside the form.
+No matter where the click happened, it bubbles up to `<form>` and runs the handler.
 
 In `form.onclick` handler:
 
@@ -79,7 +86,8 @@ It's possible that `event.target` could equal `this` -- it happens when the clic
 
 ## Stopping bubbling
 
-A bubbling event goes from the target element straight up. Normally it goes upwards till `<html>`, and then to `document` object, and some events even reach `window`, calling all handlers on the path.
+A bubbling event goes from the target element straight up.
+Normally it goes upwards till `<html>`, and then to `document` object, and some events even reach `window`, calling all handlers on the path.
 
 But any handler may decide that the event has been fully processed and stop the bubbling.
 
@@ -98,32 +106,48 @@ If an element has multiple event handlers on a single event, then even if one of
 
 In other words, `event.stopPropagation()` stops the move upwards, but on the current element all other handlers will run.
 
-To stop the bubbling and prevent handlers on the current element from running, there's a method `event.stopImmediatePropagation()`. After it no other handlers execute.
+To stop the bubbling and prevent handlers on the current element from running, there's a method `event.stopImmediatePropagation()`.
+After it no other handlers execute.
 ```
 
 ```warn header="Don't stop bubbling without a need!"
-Bubbling is convenient. Don't stop it without a real need: obvious and architecturally well thought out.
+Bubbling is convenient.
+Don't stop it without a real need: obvious and architecturally well thought out.
 
 Sometimes `event.stopPropagation()` creates hidden pitfalls that later may become problems.
 
 For instance:
 
-1. We create a nested menu. Each submenu handles clicks on its elements and calls `stopPropagation` so that the outer menu won't trigger.
-2. Later we decide to catch clicks on the whole window, to track users' behavior (where people click). Some analytic systems do that. Usually the code uses `document.addEventListener('click'…)` to catch all clicks.
-3. Our analytic won't work over the area where clicks are stopped by `stopPropagation`. Sadly, we've got a "dead zone".
+1.
+We create a nested menu.
+Each submenu handles clicks on its elements and calls `stopPropagation` so that the outer menu won't trigger.
+2.
+Later we decide to catch clicks on the whole window, to track users' behavior (where people click).
+Some analytic systems do that.
+Usually the code uses `document.addEventListener('click'…)` to catch all clicks.
+3.
+Our analytic won't work over the area where clicks are stopped by `stopPropagation`.
+Sadly, we've got a "dead zone".
 
-There's usually no real need to prevent the bubbling. A task that seemingly requires that may be solved by other means. One of them is to use custom events, we'll cover them later. Also we can write our data into the `event` object in one handler and read it in another one, so we can pass to handlers on parents information about the processing below.
+There's usually no real need to prevent the bubbling.
+A task that seemingly requires that may be solved by other means.
+One of them is to use custom events, we'll cover them later.
+Also we can write our data into the `event` object in one handler and read it in another one, so we can pass to handlers on parents information about the processing below.
 ```
 
 ## Capturing
 
-There's another phase of event processing called "capturing". It is rarely used in real code, but sometimes can be useful.
+There's another phase of event processing called "capturing".
+It is rarely used in real code, but sometimes can be useful.
 
 The standard [DOM Events](https://www.w3.org/TR/DOM-Level-3-Events/) describes 3 phases of event propagation:
 
-1. Capturing phase -- the event goes down to the element.
-2. Target phase -- the event reached the target element.
-3. Bubbling phase -- the event bubbles up from the element.
+1.
+Capturing phase -- the event goes down to the element.
+2.
+Target phase -- the event reached the target element.
+3.
+Bubbling phase -- the event bubbles up from the element.
 
 Here's the picture, taken from the specification, of the capturing `(1)`, target `(2)` and bubbling `(3)` phases for a click event on a `<td>` inside a table:
 
@@ -179,12 +203,16 @@ The code sets click handlers on *every* element in the document to see which one
 
 If you click on `<p>`, then the sequence is:
 
-1. `HTML` -> `BODY` -> `FORM` -> `DIV -> P` (capturing phase, the first listener):
-2. `P` -> `DIV` -> `FORM` -> `BODY` -> `HTML` (bubbling phase, the second listener).
+1.
+`HTML` -> `BODY` -> `FORM` -> `DIV -> P` (capturing phase, the first listener):
+2.
+`P` -> `DIV` -> `FORM` -> `BODY` -> `HTML` (bubbling phase, the second listener).
 
-Please note, the `P` shows up twice, because we've set two listeners: capturing and bubbling. The target triggers at the end of the first and at the beginning of the second phase.
+Please note, the `P` shows up twice, because we've set two listeners: capturing and bubbling.
+The target triggers at the end of the first and at the beginning of the second phase.
 
-There's a property `event.eventPhase` that tells us the number of the phase on which the event was caught. But it's rarely used, because we usually know it in the handler.
+There's a property `event.eventPhase` that tells us the number of the phase on which the event was caught.
+But it's rarely used, because we usually know it in the handler.
 
 ```smart header="To remove the handler, `removeEventListener` needs the same phase"
 If we `addEventListener(..., true)`, then we should mention the same phase in `removeEventListener(..., true)` to correctly remove the handler.
@@ -200,9 +228,11 @@ elem.addEventListener("click", e => alert(2));
 ````
 
 ```smart header="The `event.stopPropagation()` during the capturing also prevents the bubbling"
-The `event.stopPropagation()` method and its sibling `event.stopImmediatePropagation()` can also be called on the capturing phase. Then not only the futher capturing is stopped, but the bubbling as well.
+The `event.stopPropagation()` method and its sibling `event.stopImmediatePropagation()` can also be called on the capturing phase.
+Then not only the futher capturing is stopped, but the bubbling as well.
 
-In other words, normally the event goes first down ("capturing") and then up ("bubbling"). But if `event.stopPropagation()` is called during the capturing phase, then the event travel stops, no bubbling will occur.
+In other words, normally the event goes first down ("capturing") and then up ("bubbling").
+But if `event.stopPropagation()` is called during the capturing phase, then the event travel stops, no bubbling will occur.
 ```
 
 ## Summary
@@ -221,10 +251,16 @@ Each handler can access `event` object properties:
 
 Any event handler can stop the event by calling `event.stopPropagation()`, but that's not recommended, because we can't really be sure we won't need it above, maybe for completely different things.
 
-The capturing phase is used very rarely, usually we handle events on bubbling. And there's a logical explanation for that.
+The capturing phase is used very rarely, usually we handle events on bubbling.
+And there's a logical explanation for that.
 
-In real world, when an accident happens, local authorities react first. They know best the area where it happened. Then higher-level authorities if needed.
+In real world, when an accident happens, local authorities react first.
+They know best the area where it happened.
+Then higher-level authorities if needed.
 
-The same for event handlers. The code that set the handler on a particular element knows maximum details about the element and what it does. A handler on a particular `<td>` may be suited for that exactly `<td>`, it knows everything about it, so it should get the chance first. Then its immediate parent also knows about the context, but a little bit less, and so on till the very top element that handles general concepts and runs the last one.
+The same for event handlers.
+The code that set the handler on a particular element knows maximum details about the element and what it does.
+A handler on a particular `<td>` may be suited for that exactly `<td>`, it knows everything about it, so it should get the chance first.
+Then its immediate parent also knows about the context, but a little bit less, and so on till the very top element that handles general concepts and runs the last one.
 
 Bubbling and capturing lay the foundation for "event delegation" -- an extremely powerful event handling pattern that we study in the next chapter.

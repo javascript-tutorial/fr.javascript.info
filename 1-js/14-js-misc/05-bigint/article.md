@@ -24,7 +24,8 @@ alert(1n + 2n); // 3
 alert(5n / 2n); // 2
 ```
 
-Note : la division `5/2` retourne le résultat arrondi à zéro, sans la partie décimale. Toutes les opérations sur des bigints retourne des bigints.
+Note : la division `5/2` retourne le résultat arrondi à zéro, sans la partie décimale.
+Toutes les opérations sur des bigints retourne des bigints.
 
 Nous ne pouvons pas mélanger des bigints et des nombres ordinaires :
 
@@ -99,28 +100,35 @@ alert(0n || 2); // 2 (0n est considéré falsy)
 
 ## Polyfills
 
-Émuler des bigints est difficile. La raison est que beaucoup d'opérateurs de JavaScript, tels `+`, `-` et autres se comportent différemment avec les bigints comparé aux nombres ordinaires.
+Émuler des bigints est difficile.
+La raison est que beaucoup d'opérateurs de JavaScript, tels `+`, `-` et autres se comportent différemment avec les bigints comparé aux nombres ordinaires.
 
 Par exemple, la division de bigints retournera toujours un bigint (arrondi si nécessaire).
 
-Pour émuler un tel comportement, un polyfill devrait analyser le code et remplacer ces opérateurs par ses fonctions. Mais faire ainsi est encombrant et coûterait beaucoup en performances.
+Pour émuler un tel comportement, un polyfill devrait analyser le code et remplacer ces opérateurs par ses fonctions.
+Mais faire ainsi est encombrant et coûterait beaucoup en performances.
 
 Ainsi, il n'y a pas de bon polyfill connu.
 
 Cependant, l'une des solutions est proposée par les développeurs de la bibliothèque [JSBI](https://github.com/GoogleChromeLabs/jsbi).
 
-Cette bibliothèque implémente les nombres conséquents à l'aide de ses propres méthodes. Nous pouvons les utiliser à la place des bigints natifs :
+Cette bibliothèque implémente les nombres conséquents à l'aide de ses propres méthodes.
+Nous pouvons les utiliser à la place des bigints natifs :
 
 | Opération                 | `BigInt` natif    | JSBI                      |
 | ------------------------- | ----------------- | ------------------------- |
 | Création depuis un nombre | `a = BigInt(789)` | `a = JSBI.BigInt(789)`    |
 | Addition                  | `c = a + b`       | `c = JSBI.add(a, b)`      |
 | Soustraction              | `c = a - b`       | `c = JSBI.subtract(a, b)` |
-| ...                       | ...               | ...                       |
+| ...                       |
+| ...                       |
+| ...                       |
+|                           |
 
 ...Et ensuite utiliser le polyfill (plugin Babel) pour convertir les appels JSBI en bigints natifs pour les navigateurs les supportant.
 
-En d'autres termes, cette approche suggère d'écrire notre code avec JSBI à la place des bigints natifs. Mais JSBI travaille avec des nombres comme avec des bigints en interne, les émulant de près en suivant la spécification, le code sera ainsi compatible avec les bigints.
+En d'autres termes, cette approche suggère d'écrire notre code avec JSBI à la place des bigints natifs.
+Mais JSBI travaille avec des nombres comme avec des bigints en interne, les émulant de près en suivant la spécification, le code sera ainsi compatible avec les bigints.
 
 Nous pouvons utiliser du code JSBI "tel quel" pour les moteurs ne supportant pas les bigints et pour ceux qui les supportent - le polyfill les convertira en bigints natifs.
 

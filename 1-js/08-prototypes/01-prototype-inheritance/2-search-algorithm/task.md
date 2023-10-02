@@ -27,5 +27,8 @@ let pockets = {
 };
 ```
 
-1. Utilisez `__proto__` pour attribuer des prototypes de manière à ce que toute recherche de propriété suive le chemin:`pockets` -> `bed` -> `table` -> `head`. Par exemple, `pocket.pen` devrait être `3` (trouvé dans `table`), et `bed.glasses` devrait être `1` (trouvé dans `head`).
-2. Répondez à la question: est-il plus rapide d’obtenir `glasses` en tant que `pockets.glasses` ou `head.glasses`? Analyse si nécessaire.
+1.
+Utilisez `__proto__` pour attribuer des prototypes de manière à ce que toute recherche de propriété suive le chemin:`pockets` -> `bed` -> `table` -> `head`.
+Par exemple, `pocket.pen` devrait être `3` (trouvé dans `table`), et `bed.glasses` devrait être `1` (trouvé dans `head`).
+2.
+Répondez à la question: est-il plus rapide d’obtenir `glasses` en tant que `pockets.glasses` ou `head.glasses`? Analyse si nécessaire.

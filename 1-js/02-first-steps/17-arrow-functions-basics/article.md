@@ -33,7 +33,8 @@ let sum = function(a, b) {
 alert(sum(1, 2)); // 3
 ```
 
-Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments (possède 2 paramètres) nommés `a` et `b`. Lors de l'exécution, elle évalue l'expression `a + b` et retourne le résultat.
+Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments (possède 2 paramètres) nommés `a` et `b`.
+Lors de l'exécution, elle évalue l'expression `a + b` et retourne le résultat.
 
 - Pour un argument unique, les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
@@ -76,9 +77,12 @@ Elles sont très utiles pour des actions sur une ligne et que l'on est juste par
 
 ## Les fonctions fléchées multiligne
 
-Les fonctions fléchées que nous avons vues jusqu'à présent étaient très simples. Elles ont pris des arguments à gauche de `=>`, les ont évalués et ont renvoyé l'expression à leurs droites.
+Les fonctions fléchées que nous avons vues jusqu'à présent étaient très simples.
+Elles ont pris des arguments à gauche de `=>`, les ont évalués et ont renvoyé l'expression à leurs droites.
 
-Parfois nous avons besoin de plus de complexité, comme des expressions multiples ou des déclarations. Ceci est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
+Parfois nous avons besoin de plus de complexité, comme des expressions multiples ou des déclarations.
+Ceci est possible avec des accolades les délimitant.
+Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
 
 Comme ceci :
 
@@ -105,7 +109,12 @@ Pour l'instant, nous pouvons les utiliser pour des actions sur une ligne ou des 
 
 ## Résumé
 
-Les fonctions fléchées sont pratiques pour des actions simples, en particulier pour les one-liners. Elles se déclinent en deux variantes :
+Les fonctions fléchées sont pratiques pour des actions simples, en particulier pour les one-liners.
+Elles se déclinent en deux variantes :
 
-1. Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat. Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex. `n => n*2`.
-2. Avec accolades : `(...args) => { body }` -- les accolades nous permettent des instructions multiples au sein de la fonction, mais nous devons ajouter un `return` explicite pour retourner quelque chose.
+1.
+Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat.
+Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex.
+`n => n*2`.
+2.
+Avec accolades : `(...args) => { body }` -- les accolades nous permettent des instructions multiples au sein de la fonction, mais nous devons ajouter un `return` explicite pour retourner quelque chose.

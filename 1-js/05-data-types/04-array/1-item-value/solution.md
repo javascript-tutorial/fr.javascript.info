@@ -12,4 +12,5 @@ alert(fruits.length); // 4
 */!*
 ```
 
-C'est parce que les tableaux sont des objets. Donc, shoppingCart et fruits sont les références du même tableau.
+C'est parce que les tableaux sont des objets.
+Donc, shoppingCart et fruits sont les références du même tableau.

@@ -12,9 +12,11 @@ alert(fib(7)); // 13
 // fib(77); // Sera extrêmement lent!
 ```
 
-...Mais pour les grandes valeurs de `n` c'est très lent. Par exemple, `fib(77)` peut bloquer le moteur pendant un certain temps en consommant toutes les ressources du processeur.
+...Mais pour les grandes valeurs de `n` c'est très lent.
+Par exemple, `fib(77)` peut bloquer le moteur pendant un certain temps en consommant toutes les ressources du processeur.
 
-C'est parce que la fonction crée trop de sous-appels. Les mêmes valeurs sont réévaluées encore et encore.
+C'est parce que la fonction crée trop de sous-appels.
+Les mêmes valeurs sont réévaluées encore et encore.
 
 Par exemple, voyons un calcul pour `fib(5)`:
 
@@ -25,19 +27,22 @@ fib(4) = fib(3) + fib(2)
 ...
 ```
 
-Ici, nous pouvons voir que la valeur de `fib(3)` est nécessaire pour les deux `fib(5)` et `fib(4)`. Alors `fib(3)` sera appelé et évalué deux fois de manière totalement indépendante.
+Ici, nous pouvons voir que la valeur de `fib(3)` est nécessaire pour les deux `fib(5)` et `fib(4)`.
+Alors `fib(3)` sera appelé et évalué deux fois de manière totalement indépendante.
 
 Voici l'arbre de récursion complet:
 
 ![fibonacci recursion tree](fibonacci-recursion-tree.svg)
 
-Nous pouvons clairement remarquer que `fib(3)` est évalué deux fois et `fib(2)` est évalué trois fois. La quantité totale de calculs augmente beaucoup plus vite que `n`, le rendant énorme même pour `n=77`.
+Nous pouvons clairement remarquer que `fib(3)` est évalué deux fois et `fib(2)` est évalué trois fois.
+La quantité totale de calculs augmente beaucoup plus vite que `n`, le rendant énorme même pour `n=77`.
 
 Nous pouvons optimiser cela en nous rappelant les valeurs déjà évaluées: si une valeur de `fib(3)` est calculé une fois, alors nous pouvons simplement le réutiliser dans les calculs futurs.
 
 Une autre variante consisterait à abandonner la récursion et à utiliser un algorithme totalement différent basé sur des boucles.
 
-Au lieu de partir de `n` jusqu'à des valeurs plus basses, nous pouvons faire une boucle qui commence à partir de `1` et `2`, puis obtient `fib(3)` comme leur somme, ensuite `fib(4)` comme la somme de deux valeurs précédentes, ensuite `fib(5)` et monte, jusqu'à ce qu'il atteigne la valeur nécessaire. À chaque étape, il suffit de rappeler deux valeurs précédentes.
+Au lieu de partir de `n` jusqu'à des valeurs plus basses, nous pouvons faire une boucle qui commence à partir de `1` et `2`, puis obtient `fib(3)` comme leur somme, ensuite `fib(4)` comme la somme de deux valeurs précédentes, ensuite `fib(5)` et monte, jusqu'à ce qu'il atteigne la valeur nécessaire.
+À chaque étape, il suffit de rappeler deux valeurs précédentes.
 
 Voici les étapes du nouvel algorithme en détails.
 
@@ -84,7 +89,8 @@ c = a + b; // c = fib(5)
 */
 ```
 
-...Et ainsi de suite jusqu'à l'obtention de la valeur nécessaire. C'est beaucoup plus rapide que la récursion et n'implique aucun calcul en double.
+...Et ainsi de suite jusqu'à l'obtention de la valeur nécessaire.
+C'est beaucoup plus rapide que la récursion et n'implique aucun calcul en double.
 
 Le code complet:
 

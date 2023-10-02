@@ -37,7 +37,8 @@ function printNumbers(from, to) {
 printNumbers(5, 10);
 ```
 
-Notons que, dans les deux solutions, il y a un délai initial avant le premier résultat. En effet, la fonction est appelée pour la première fois au bout de `1000ms`.
+Notons que, dans les deux solutions, il y a un délai initial avant le premier résultat.
+En effet, la fonction est appelée pour la première fois au bout de `1000ms`.
 
 Afin d'exécuter la fonction immédiatement, on peut ajouter un autre appel avant `setInterval`.
 

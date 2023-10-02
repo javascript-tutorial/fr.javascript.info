@@ -21,4 +21,5 @@ it("Raises x to the power n", function() {
 });
 ```
 
-P.S. Syntaxiquement, le test est correct et réussi.
+P.S.
+Syntaxiquement, le test est correct et réussi.

@@ -2,13 +2,18 @@
 
 Il existe deux types de propriétés d'objet.
 
-Le premier désigne *les propriétés de données*. Nous savons déjà comment les utiliser. Toutes les propriétés que nous avons utilisées jusqu'à maintenant étaient des propriétés de données.
+Le premier désigne *les propriétés de données*.
+Nous savons déjà comment les utiliser.
+Toutes les propriétés que nous avons utilisées jusqu'à maintenant étaient des propriétés de données.
 
-Le second type de propriétés est quelque chose de nouveau. Ce sont les *propriétés des accesseurs*. Ce sont essentiellement des fonctions qui s'exécutent lors de la lecture d'une valeur ou son écriture, mais elles ressemblent à des propriétés classiques pour un code externe.
+Le second type de propriétés est quelque chose de nouveau.
+Ce sont les *propriétés des accesseurs*.
+Ce sont essentiellement des fonctions qui s'exécutent lors de la lecture d'une valeur ou son écriture, mais elles ressemblent à des propriétés classiques pour un code externe.
 
 ## Les opérateurs de lecture et d'écriture
 
-Les propriétés des accesseurs sont représentées par les méthodes "lecture" et "écriture". Dans un objet litéral ils sont notés comme`get` et `set`:
+Les propriétés des accesseurs sont représentées par les méthodes "lecture" et "écriture".
+Dans un objet litéral ils sont notés comme`get` et `set`:
 
 ```js
 let obj = {
@@ -33,7 +38,8 @@ let user = {
 };
 ```
 
-Maintenant nous voulons ajouter une propriété `fullName`, qui serait`"John Smith"`. Bien sûr, nous ne voulons pas copier-coller l'information existante, aussi nous pouvons la créer comme accesseur:
+Maintenant nous voulons ajouter une propriété `fullName`, qui serait`"John Smith"`.
+Bien sûr, nous ne voulons pas copier-coller l'information existante, aussi nous pouvons la créer comme accesseur:
 
 ```js run
 let user = {
@@ -52,9 +58,12 @@ alert(user.fullName); // John Smith
 */!*
 ```
 
-De l'extérieur, une propriété d'accesseur ressemble à une propriété classique. C'est l'idée avec les propriétés des accesseurs. Nous n'utilisons pas *call* pour appeler `user.fullName` comme une fonction, nous la lisons *read* normalement: l'accesseur s'exécute en coulisses.
+De l'extérieur, une propriété d'accesseur ressemble à une propriété classique.
+C'est l'idée avec les propriétés des accesseurs.
+Nous n'utilisons pas *call* pour appeler `user.fullName` comme une fonction, nous la lisons *read* normalement: l'accesseur s'exécute en coulisses.
 
-A partir de maintenant, `fullName` a juste un accesseur. Si nous tentons d'affecter `user.fullName=`, cela provoquera une erreur:
+A partir de maintenant, `fullName` a juste un accesseur.
+Si nous tentons d'affecter `user.fullName=`, cela provoquera une erreur:
 
 ```js run
 let user = {
@@ -93,7 +102,8 @@ alert(user.name); // Alice
 alert(user.surname); // Cooper
 ```
 
-Le résultat obtenu est une propriété "virtuelle" `fullName`. Elle est lisible et inscriptible.
+Le résultat obtenu est une propriété "virtuelle" `fullName`.
+Elle est lisible et inscriptible.
 
 ## Descripteurs de l'accesseur
 
@@ -179,7 +189,8 @@ user.name = ""; // Le nom est trop court...
 
 Ainsi, le nom est stocké dans la propriété `_name`, et l'accès s'effectue via les opérateurs de lecture et d'écriture.
 
-Techniquement, le code externe est capable d'accéder au nom directement en utilisant `user._name`. Mais d'après une convention largement reconnue, les propriétés commençant avec un underscore `"_"` sont internes et ne devraient pas être accessibles hors de l'objet.
+Techniquement, le code externe est capable d'accéder au nom directement en utilisant `user._name`.
+Mais d'après une convention largement reconnue, les propriétés commençant avec un underscore `"_"` sont internes et ne devraient pas être accessibles hors de l'objet.
 
 ## Utilisation pour la compatibilité
 
@@ -198,7 +209,8 @@ let john = new User("John", 25);
 alert(john.age); // 25
 ```
 
-...Mais tôt ou tard, les choses peuvent changer. Au lieu de `age` nous pouvons décider de stocker `birthday`, parce que c'est plus précis et commode:
+...Mais tôt ou tard, les choses peuvent changer.
+Au lieu de `age` nous pouvons décider de stocker `birthday`, parce que c'est plus précis et commode:
 
 ```js
 function User(name, birthday) {
@@ -211,7 +223,8 @@ let john = new User("John", new Date(1992, 6, 1));
 
 Maintenant, que faire avec l'ancien code qui utilise encore la propriété `age`?
 
-Nous pouvons essayer de trouver toutes les occurences et les corriger mais cela prend du temps et peut être compliqué si ce code est utilisé par beaucoup d'autres personnes. Et en plus, `age` est une bonne chose à avoir dans `user`, n'est-ce pas?
+Nous pouvons essayer de trouver toutes les occurences et les corriger mais cela prend du temps et peut être compliqué si ce code est utilisé par beaucoup d'autres personnes.
+Et en plus, `age` est une bonne chose à avoir dans `user`, n'est-ce pas?
 
 Gardons-le.
 

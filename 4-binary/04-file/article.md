@@ -15,7 +15,8 @@ new File(fileParts, fileName, [options])
 - **`options`** -- objet optionnel:
     - **`lastModified`** -- l'horodatage (date entière) de la dernière modification.
 
-Deuxièmement, le plus souvent, nous obtenons un fichier avec `<input type="file">`, en glisser-déposer ou d'autres interfaces de navigateur. Dans ce cas, le fichier obtient ces informations du système d'exploitation.
+Deuxièmement, le plus souvent, nous obtenons un fichier avec `<input type="file">`, en glisser-déposer ou d'autres interfaces de navigateur.
+Dans ce cas, le fichier obtient ces informations du système d'exploitation.
 
 Comme `File` hérite de `Blob`, les objets `File` ont les mêmes propriétés, plus:
 - `name` -- le nom du fichier,
@@ -37,7 +38,8 @@ function showFile(input) {
 ```
 
 ```smart
-L'entrée peut sélectionner plusieurs fichiers, donc `input.files` est un objet de type tableau. Ici, nous n'avons qu'un seul fichier, donc nous prenons juste `input.files[0]`.
+L'entrée peut sélectionner plusieurs fichiers, donc `input.files` est un objet de type tableau.
+Ici, nous n'avons qu'un seul fichier, donc nous prenons juste `input.files[0]`.
 ```
 
 ## FileReader
@@ -61,9 +63,11 @@ Les méthodes principales:
 
 Le choix de la méthode `read*` dépend du format que nous préférons, comment nous allons utiliser les données.
 
-- `readAsArrayBuffer` -- pour les fichiers binaires, pour effectuer des opérations binaires de bas niveau. Pour les opérations de haut niveau, comme le découpage, `File` hérite de `Blob`, nous pouvons donc les appeler directement, sans lire.
+- `readAsArrayBuffer` -- pour les fichiers binaires, pour effectuer des opérations binaires de bas niveau.
+Pour les opérations de haut niveau, comme le découpage, `File` hérite de `Blob`, nous pouvons donc les appeler directement, sans lire.
 - `readAsText` -- pour les fichiers texte, lorsque nous souhaitons obtenir une chaîne de caractères.
-- `readAsDataURL` -- quand nous utilisons ces données dans `src` pour `img` ou une autre balise. Il existe une alternative à la lecture d'un fichier, comme expliqué dans le chapitre <info:blob>:`URL.createObjectURL(file)`.
+- `readAsDataURL` -- quand nous utilisons ces données dans `src` pour `img` ou une autre balise.
+Il existe une alternative à la lecture d'un fichier, comme expliqué dans le chapitre <info:blob>:`URL.createObjectURL(file)`.
 
 Au fur et à mesure de la lecture, il y a des événements:
 - `loadstart` -- chargement commencé.
@@ -118,20 +122,24 @@ Pour les Web Workers, il existe également une variante synchrone de `FileReader
 
 Ses méthodes de lecture `read*` ne génèrent pas d'événements, mais renvoient plutôt un résultat, comme le font les fonctions régulières.
 
-Cependant, ce ne fonctionne qu'à l'intérieur d'un Web Worker, car les retards dans les appels synchrones qui sont possibles lors de la lecture à partir de fichiers, sont moins importants dans les Web Workers . Ils n'affectent pas la page.
+Cependant, ce ne fonctionne qu'à l'intérieur d'un Web Worker, car les retards dans les appels synchrones qui sont possibles lors de la lecture à partir de fichiers, sont moins importants dans les Web Workers .
+Ils n'affectent pas la page.
 ```
 
 ## Résumé
 
 Les objets `File` héritent de `Blob`.
 
-En plus des méthodes et propriétés `Blob`, les objets `File` ont également les propriétés `name` et `lastModified`, ainsi que la capacité interne de lire à partir du système de fichiers. Nous obtenons généralement des objets `File` à partir de l'entrée utilisateur, comme un `<input>` ou l'événement Drag'n'Drop (`ondragend`).
+En plus des méthodes et propriétés `Blob`, les objets `File` ont également les propriétés `name` et `lastModified`, ainsi que la capacité interne de lire à partir du système de fichiers.
+Nous obtenons généralement des objets `File` à partir de l'entrée utilisateur, comme un `<input>` ou l'événement Drag'n'Drop (`ondragend`).
 
  les objets `FileReader` peuvent lire à partir d'un fichier ou d'un objet blob, dans l'un des trois formats:
 - Chaînes de caractères (`readAsText`).
 - `ArrayBuffer` (`readAsArrayBuffer`).
 - URL des données, encodé en base64 (`readAsDataURL`).
 
-Dans de nombreux cas cependant, nous n'avons pas à lire le contenu du fichier. Tout comme nous l'avons fait avec les blobs, nous pouvons créer une URL courte avec `URL.createObjectURL(fichier)` et l'assigner à `<a>` ou `<img>`. De cette façon, le fichier peut être téléchargé ou affiché sous forme d'image, comme partie de canevas, etc..
+Dans de nombreux cas cependant, nous n'avons pas à lire le contenu du fichier.
+Tout comme nous l'avons fait avec les blobs, nous pouvons créer une URL courte avec `URL.createObjectURL(fichier)` et l'assigner à `<a>` ou `<img>`.
+De cette façon, le fichier peut être téléchargé ou affiché sous forme d'image, comme partie de canevas, etc..
 
 Et si nous voulons envoyer un `File` sur un réseau, c'est aussi simple: une API réseau comme `XMLHttpRequest` ou `fetch` accepte nativement les objets `File`.

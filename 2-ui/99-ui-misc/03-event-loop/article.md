@@ -9,15 +9,19 @@ Dans ce chapitre, nous couvrons d'abord les détails théoriques sur le fonction
 
 ## La boucle d'événement
 
-Le concept de *boucle d'événement* est très simple. Il y a une boucle sans fin, où le moteur JavaScript attend les tâches, les exécute puis dort, en attendant plus de tâches.
+Le concept de *boucle d'événement* est très simple.
+Il y a une boucle sans fin, où le moteur JavaScript attend les tâches, les exécute puis dort, en attendant plus de tâches.
 
 L'algorithme général du moteur:
 
-1. Tant qu'il y a des tâches:
+1.
+Tant qu'il y a des tâches:
     - il les exécute, en commençant par la tâche la plus ancienne.
-2. Dort jusqu'à ce qu'une tâche apparaisse, puis repasse à 1.
+2.
+Dort jusqu'à ce qu'une tâche apparaisse, puis repasse à 1.
 
-C'est une formalisation de ce que nous voyons lors de la navigation sur une page. Le moteur JavaScript ne fait rien la plupart du temps, il ne fonctionne que si un script / gestionnaire / événement s'active.
+C'est une formalisation de ce que nous voyons lors de la navigation sur une page.
+Le moteur JavaScript ne fait rien la plupart du temps, il ne fonctionne que si un script / gestionnaire / événement s'active.
 
 Exemples de tâches:
 
@@ -36,29 +40,41 @@ Les tâches forment une file d'attente, dite "file d'attente des macrotâches" (
 
 Par exemple, alors que le moteur est occupé à exécuter un `script`, un utilisateur peut déplacer sa souris provoquant un `mousemove`, et un `setTimeout` peut être écoulé, et ainsi de suite, ces tâches forment une file d'attente, comme illustré sur l'image ci-dessus.
 
-Les tâches de la file d'attente sont traitées sur la base du «premier arrivé - premier servi». Lorsque le navigateur du moteur en a fini avec le `script`, il gère l'événement `mousemove`, puis le gestionnaire `setTimeout`, etc.
+Les tâches de la file d'attente sont traitées sur la base du «premier arrivé - premier servi».
+Lorsque le navigateur du moteur en a fini avec le `script`, il gère l'événement `mousemove`, puis le gestionnaire `setTimeout`, etc.
 
 Jusqu'à présent, c'est assez simple, n'est-ce pas ?
 
 Deux détails supplémentaires:
-1. Le rendu ne se produit jamais pendant que le moteur exécute une tâche. Peu importe que la tâche prenne beaucoup de temps. Les modifications apportées au DOM ne sont peintes qu'après la fin de la tâche.
-2. Si une tâche prend trop de temps, le navigateur ne peut pas effectuer d'autres tâches, telles que le traitement des événements utilisateur. Donc, après un certain temps, cela soulève une alerte du type "La page ne répond plus", suggérant de tuer la tâche avec toute la page. Cela se produit lorsqu'il y a beaucoup de calculs complexes ou une erreur de programmation conduisant à une boucle infinie.
+1.
+Le rendu ne se produit jamais pendant que le moteur exécute une tâche.
+Peu importe que la tâche prenne beaucoup de temps.
+Les modifications apportées au DOM ne sont peintes qu'après la fin de la tâche.
+2.
+Si une tâche prend trop de temps, le navigateur ne peut pas effectuer d'autres tâches, telles que le traitement des événements utilisateur.
+Donc, après un certain temps, cela soulève une alerte du type "La page ne répond plus", suggérant de tuer la tâche avec toute la page.
+Cela se produit lorsqu'il y a beaucoup de calculs complexes ou une erreur de programmation conduisant à une boucle infinie.
 
-C'était la théorie. Voyons maintenant comment nous pouvons appliquer ces connaissances.
+C'était la théorie.
+Voyons maintenant comment nous pouvons appliquer ces connaissances.
 
 ## Cas d'utilisation 1: fractionnement des tâches consommatrices de CPU
 
 Supposons que nous avons une tâche gourmande en CPU.
 
-Par exemple, la mise en évidence de la syntaxe (utilisée pour coloriser des exemples de code sur cette page) est assez lourde en termes de CPU. Pour mettre en évidence le code, il effectue l'analyse, crée de nombreux éléments colorés, les ajoute au document - pour une grande quantité de texte qui prend beaucoup de temps.
+Par exemple, la mise en évidence de la syntaxe (utilisée pour coloriser des exemples de code sur cette page) est assez lourde en termes de CPU.
+Pour mettre en évidence le code, il effectue l'analyse, crée de nombreux éléments colorés, les ajoute au document - pour une grande quantité de texte qui prend beaucoup de temps.
 
-Bien que le moteur soit occupé à mettre en évidence la syntaxe, il ne peut pas faire d'autres trucs liés au DOM, traiter les événements utilisateur, etc. Cela peut même amener le navigateur à "saccader" ou même à "figer" un peu, ce qui est inacceptable.
+Bien que le moteur soit occupé à mettre en évidence la syntaxe, il ne peut pas faire d'autres trucs liés au DOM, traiter les événements utilisateur, etc.
+Cela peut même amener le navigateur à "saccader" ou même à "figer" un peu, ce qui est inacceptable.
 
-Nous pouvons éviter les problèmes en divisant la grande tâche en morceaux. Mettez en surbrillance les 100 premières lignes, puis planifiez un `setTimeout` (avec un délai à 0) pour les 100 lignes suivantes, etc.
+Nous pouvons éviter les problèmes en divisant la grande tâche en morceaux.
+Mettez en surbrillance les 100 premières lignes, puis planifiez un `setTimeout` (avec un délai à 0) pour les 100 lignes suivantes, etc.
 
 Pour démontrer cette approche, par souci de simplicité, au lieu de la colorisation du texte, prenons une fonction qui compte de `1` à `1000000000`.
 
-Si vous exécutez le code ci-dessous, le moteur va se "figer" pendant un certain temps. Pour du JS côté serveur, c'est clairement perceptible, et si vous l'exécutez dans le navigateur, essayez de cliquer sur d'autres boutons de la page - vous verrez qu'aucun autre événement n'est géré jusqu'à la fin du comptage.
+Si vous exécutez le code ci-dessous, le moteur va se "figer" pendant un certain temps.
+Pour du JS côté serveur, c'est clairement perceptible, et si vous l'exécutez dans le navigateur, essayez de cliquer sur d'autres boutons de la page - vous verrez qu'aucun autre événement n'est géré jusqu'à la fin du comptage.
 
 ```js run
 let i = 0;
@@ -109,13 +125,19 @@ Désormais, l'interface du navigateur est pleinement fonctionnelle pendant le pr
 
 Une seule exécution de `count` fait une partie du travail `(*)`, puis se re-calcule `(**)` si nécessaire:
 
-1. La première manche compte : `i=1...1000000`.
-2. La deuxième manche compte : `i=1000001..2000000`.
-3. ...et ainsi de suite.
+1.
+La première manche compte : `i=1...1000000`.
+2.
+La deuxième manche compte : `i=1000001..2000000`.
+3.
+...et ainsi de suite.
 
-Maintenant, si une nouvelle tâche secondaire (par ex. un événement `onclick`) apparaît pendant que le moteur est occupé à exécuter la partie 1, elle est mise en file d'attente, puis s'exécute lorsque la partie 1 est terminée, avant la partie suivante. Les retours périodiques à la boucle d'événement entre les exécutions «count» fournissent juste assez d '«air» pour que le moteur JavaScript fasse autre chose, pour réagir à d'autres actions de l'utilisateur.
+Maintenant, si une nouvelle tâche secondaire (par ex.
+un événement `onclick`) apparaît pendant que le moteur est occupé à exécuter la partie 1, elle est mise en file d'attente, puis s'exécute lorsque la partie 1 est terminée, avant la partie suivante.
+Les retours périodiques à la boucle d'événement entre les exécutions «count» fournissent juste assez d '«air» pour que le moteur JavaScript fasse autre chose, pour réagir à d'autres actions de l'utilisateur.
 
-La chose notable est que les deux variantes - avec et sans diviser le travail par `setTimeout` - sont comparables en vitesse. Il n'y a pas beaucoup de différence dans le temps de comptage global.
+La chose notable est que les deux variantes - avec et sans diviser le travail par `setTimeout` - sont comparables en vitesse.
+Il n'y a pas beaucoup de différence dans le temps de comptage global.
 
 Pour les minimiser, faisons une amélioration.
 
@@ -152,9 +174,12 @@ Si vous l'exécutez, il est facile de remarquer que cela prend beaucoup moins de
 
 Pourquoi ? 
 
-C'est simple: comme vous vous en souvenez, il y a le retard minimal dans le navigateur de 4 ms pour de nombreux appels de `setTimeout` imbriqués. Même si nous définissons un délai à `0`, c'est 4ms (ou un peu plus). Donc, plus nous les planifions tôt - plus ils s'exécuteront rapidement.
+C'est simple: comme vous vous en souvenez, il y a le retard minimal dans le navigateur de 4 ms pour de nombreux appels de `setTimeout` imbriqués.
+Même si nous définissons un délai à `0`, c'est 4ms (ou un peu plus).
+Donc, plus nous les planifions tôt - plus ils s'exécuteront rapidement.
 
-Voilà, nous avons divisé une tâche gourmande en CPU en morceaux - maintenant elle ne bloque pas l'interface utilisateur. Et son temps d'exécution global n'est pas beaucoup plus long.
+Voilà, nous avons divisé une tâche gourmande en CPU en morceaux - maintenant elle ne bloque pas l'interface utilisateur.
+Et son temps d'exécution global n'est pas beaucoup plus long.
 
 ## Cas d'utilisation 2: indicateur de progression
 
@@ -162,7 +187,8 @@ Un autre avantage de la division de tâches lourdes pour les scripts de navigate
 
 Comme mentionné précédemment, les modifications apportées au DOM ne sont peintes qu'après la fin de la tâche en cours d'exécution, quel que soit le temps nécessaire.
 
-D'une part, c'est génial, car notre fonction peut créer de nombreux éléments, les ajouter un par un au document et changer leurs styles - le visiteur ne verra aucun état "intermédiaire" et inachevé. Une chose importante, non?
+D'une part, c'est génial, car notre fonction peut créer de nombreux éléments, les ajouter un par un au document et changer leurs styles - le visiteur ne verra aucun état "intermédiaire" et inachevé.
+Une chose importante, non?
 
 Voici la démo, les modifications apportées à `i` n'apparaîtront pas avant la fin de la fonction, nous ne verrons donc que la dernière valeur :
 
@@ -216,7 +242,8 @@ Maintenant, la `<div>` montre des valeurs croissantes de `i`, une sorte de barre
 
 ## Cas d'utilisation 3: faire quelque chose après l'événement
 
-Dans un gestionnaire d'événements, nous pouvons décider de reporter certaines actions jusqu'à ce que l'événement "bouillonne" (bubble up) et soit géré à tous les niveaux. Nous pouvons le faire en enveloppant le code dans un `setTimeout` avec un délai nul.
+Dans un gestionnaire d'événements, nous pouvons décider de reporter certaines actions jusqu'à ce que l'événement "bouillonne" (bubble up) et soit géré à tous les niveaux.
+Nous pouvons le faire en enveloppant le code dans un `setTimeout` avec un délai nul.
 
 Dans le chapitre <info:dispatch-events>, nous avons vu un exemple: l'événement personnalisé `menu-open` est envoyé dans un `setTimeout`, de sorte qu'il se produit après que l'événement "clic" soit entièrement géré.
 
@@ -238,7 +265,9 @@ menu.onclick = function() {
 
 Avec les *macrotâches*, décrits dans ce chapitre, il y a les *microtâches*, mentionnés dans le chapitre <info:microtask-queue>.
 
-Les microtâches proviennent uniquement de notre code. Ils sont généralement créés par des Promesses: une exécution du gestionnaire `.then / catch / finally` devient une microtâche. Les microtâches sont également utilisées "sous la couverture" d'un `await`, car c'est une autre forme de gestion des Promesses.
+Les microtâches proviennent uniquement de notre code.
+Ils sont généralement créés par des Promesses: une exécution du gestionnaire `.then / catch / finally` devient une microtâche.
+Les microtâches sont également utilisées "sous la couverture" d'un `await`, car c'est une autre forme de gestion des Promesses.
 
 Il existe également une fonction spéciale `queueMicrotask(func)` qui met en file d'attente `func` pour l'exécution dans la file d'attente des microtâches.
 
@@ -257,9 +286,12 @@ alert("code");
 
 Quel sera l'ordre ici?
 
-1. `code` s'affiche en premier, car il s'agit d'un appel synchrone régulier.
-2. `promise` s'affiche en second, car `.then` passe par la file d'attente des microtâches et s'exécute après le code actuel.
-3. `timeout` s'affiche en dernier, car c'est une macrotâche.
+1.
+`code` s'affiche en premier, car il s'agit d'un appel synchrone régulier.
+2.
+`promise` s'affiche en second, car `.then` passe par la file d'attente des microtâches et s'exécute après le code actuel.
+3.
+`timeout` s'affiche en dernier, car c'est une macrotâche.
 
 Une image, plus parlante, de la boucle d'événements ressemble à ceci (l'ordre est de haut en bas, c'est-à-dire: le script d'abord, puis les microtâches, le rendu, etc.):
 
@@ -271,7 +303,9 @@ C'est important, car cela garantit que l'environnement de l'application est fond
 
 Si nous souhaitons exécuter une fonction de manière asynchrone (après le code actuel), mais avant que les modifications ne soient rendues ou que de nouveaux événements ne soient traités, nous pouvons la planifier avec un `queueMicrotask`.
 
-Voici un exemple avec le "calcul de la barre de progression", similaire à celui illustré précédemment, mais "queueMicrotask" est utilisé à la place de "setTimeout". Vous pouvez voir que cela se produit à la toute fin. Tout comme le code synchrone :
+Voici un exemple avec le "calcul de la barre de progression", similaire à celui illustré précédemment, mais "queueMicrotask" est utilisé à la place de "setTimeout".
+Vous pouvez voir que cela se produit à la toute fin.
+Tout comme le code synchrone :
 
 ```html run
 <div id="progress"></div>
@@ -303,13 +337,19 @@ Voici un exemple avec le "calcul de la barre de progression", similaire à celui
 
 Un algorithme de boucle d'événement plus détaillé (bien que toujours simplifié par rapport à la [spécification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
 
-1. Dépile et exécute la tâche la plus ancienne de la file d'attente *macrotâches* (par ex. "script").
-2. Exécute toutes les *microtâches* :
+1.
+Dépile et exécute la tâche la plus ancienne de la file d'attente *macrotâches* (par ex.
+"script").
+2.
+Exécute toutes les *microtâches* :
     - Tant que la file d'attente des microtâches n'est pas vide :
         - Dépile et exécute la plus ancienne microtâche.
-3. Le rendu change le cas échéant.
-4. Si la file d'attente des macrotâches est vide, attend qu'une macrotâche apparaisse.
-5. Passez à l'étape 1.
+3.
+Le rendu change le cas échéant.
+4.
+Si la file d'attente des macrotâches est vide, attend qu'une macrotâche apparaisse.
+5.
+Passez à l'étape 1.
 
 Pour planifier une nouvelle *macrotâche*:
 - Utilisez un `setTimeout(f)` avec un délai de 0.

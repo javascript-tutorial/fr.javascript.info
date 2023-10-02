@@ -1,6 +1,7 @@
 # Prototypes natifs
 
-La propriété `"prototype"` est largement utilisée au centre de JavaScript lui-même. Toutes les fonctions constructeurs intégrées l'utilisent.
+La propriété `"prototype"` est largement utilisée au centre de JavaScript lui-même.
+Toutes les fonctions constructeurs intégrées l'utilisent.
 
 Nous verrons d’abord les détails, puis comment l’utiliser pour ajouter de nouvelles fonctionnalités aux objets intégrés.
 
@@ -48,9 +49,12 @@ alert(Object.prototype.__proto__); // null
 
 D'autres objets intégrés, tels que `Array`, `Date`, `Function` et autres, conservent également des méthodes dans des prototypes.
 
-Par exemple, lorsque nous créons un tableau `[1, 2, 3]`, le constructeur `new Array()` par défaut est utilisé en interne. Donc `Array.prototype` devient son prototype et fournit des méthodes. C'est très efficace en mémoire.
+Par exemple, lorsque nous créons un tableau `[1, 2, 3]`, le constructeur `new Array()` par défaut est utilisé en interne.
+Donc `Array.prototype` devient son prototype et fournit des méthodes.
+C'est très efficace en mémoire.
 
-Par spécification, tous les prototypes intégrés ont `Object.prototype` en haut. C'est pourquoi certaines personnes disent que "tout hérite d'objets".
+Par spécification, tous les prototypes intégrés ont `Object.prototype` en haut.
+C'est pourquoi certaines personnes disent que "tout hérite d'objets".
 
 Voici la vue d'ensemble :
 
@@ -86,7 +90,9 @@ Les outils intégrés au navigateur, tels que la console de développement Chrom
 
 ![](console_dir_array.png)
 
-Les autres objets intégrés fonctionnent également de la même manière. Même les fonctions - ce sont des objets d'un constructeur intégré `Function`, et leurs méthodes (`call`/`apply` et autres) sont extraites de `Function.prototype`. Les fonctions ont aussi leur propre `toString`.
+Les autres objets intégrés fonctionnent également de la même manière.
+Même les fonctions - ce sont des objets d'un constructeur intégré `Function`, et leurs méthodes (`call`/`apply` et autres) sont extraites de `Function.prototype`.
+Les fonctions ont aussi leur propre `toString`.
 
 ```js run
 function f() {}
@@ -99,17 +105,22 @@ alert(f.__proto__.__proto__ == Object.prototype); // true, hérite d'objets
 
 Une chose complexe se produit avec les chaînes, les nombres et les booléens.
 
-Comme on s'en souvient, ce ne sont pas des objets. Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`, `Number` et `Boolean`, ils fournissent les méthodes et disparaissent.
+Comme on s'en souvient, ce ne sont pas des objets.
+Mais si nous essayons d'accéder à leurs propriétés, des objets wrapper temporaires sont créés à l'aide des constructeurs intégrés `String`, `Number` et `Boolean`, ils fournissent les méthodes et disparaissent.
 
-Ces objets sont créés de manière invisible pour nous et la plupart des moteurs les optimisent, mais la spécification le décrit exactement de cette façon. Les méthodes de ces objets résident également dans des prototypes, disponibles sous les noms `String.prototype`, `Number.prototype` et `Boolean.prototype`.
+Ces objets sont créés de manière invisible pour nous et la plupart des moteurs les optimisent, mais la spécification le décrit exactement de cette façon.
+Les méthodes de ces objets résident également dans des prototypes, disponibles sous les noms `String.prototype`, `Number.prototype` et `Boolean.prototype`.
 
 ```warn header="Les valeurs `null` et `undefined` n'ont pas de wrappers d'objet"
-Les valeurs spéciales `null` et `undefined` se démarquent. Elles n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux. Et il n'y a pas non plus de prototypes correspondants.
+Les valeurs spéciales `null` et `undefined` se démarquent.
+Elles n'ont pas de wrapper d'objet, donc les méthodes et les propriétés ne sont pas disponibles pour eux.
+Et il n'y a pas non plus de prototypes correspondants.
 ```
 
 ## Modification des prototypes natifs [#native-prototype-change]
 
-Les prototypes natifs peuvent être modifiés. Par exemple, si nous ajoutons une méthode à `String.prototype`, elle devient disponible pour toutes les chaînes :
+Les prototypes natifs peuvent être modifiés.
+Par exemple, si nous ajoutons une méthode à `String.prototype`, elle devient disponible pour toutes les chaînes :
 
 ```js run
 String.prototype.show = function() {
@@ -119,15 +130,18 @@ String.prototype.show = function() {
 "BOOM!".show(); // BOOM!
 ```
 
-Au cours du processus de développement, nous pouvons avoir des idées de nouvelles méthodes intégrées que nous aimerions avoir et nous pourrions être tentés de les ajouter à des prototypes natifs. Mais c'est généralement une mauvaise idée.
+Au cours du processus de développement, nous pouvons avoir des idées de nouvelles méthodes intégrées que nous aimerions avoir et nous pourrions être tentés de les ajouter à des prototypes natifs.
+Mais c'est généralement une mauvaise idée.
 
 ```warn
-Les prototypes sont globaux, il est donc facile de créer un conflit. Si deux bibliothèques ajoutent une méthode `String.prototype.show`, l'une d'elles remplacera la méthode de l'autre.
+Les prototypes sont globaux, il est donc facile de créer un conflit.
+Si deux bibliothèques ajoutent une méthode `String.prototype.show`, l'une d'elles remplacera la méthode de l'autre.
 
 Donc, généralement, modifier un prototype natif est considéré comme une mauvaise idée.
 ```
 
-**Dans la programmation moderne, il n'y a qu'un seul cas où la modification de prototypes natifs est approuvée. Le polyfilling.**
+**Dans la programmation moderne, il n'y a qu'un seul cas où la modification de prototypes natifs est approuvée.
+Le polyfilling.**
 
 Polyfilling est un terme utilisé pour remplacer une méthode existante dans la spécification JavaScript, mais qui n'est pas encore prise en charge par un moteur JavaScript particulier.
 
@@ -178,11 +192,14 @@ obj.join = Array.prototype.join;
 alert(obj.join(',')); // Hello,world!
 ```
 
-Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`. Il ne vérifie pas que l'objet est bien un tableau. Et beaucoup de méthodes intégrées sont comme ça.
+Cela fonctionne car l'algorithme interne de la méthode `join` intégrée ne se préoccupe que des index corrects et de la propriété `length`.
+Il ne vérifie pas que l'objet est bien un tableau.
+Et beaucoup de méthodes intégrées sont comme ça.
 
 Une autre possibilité consiste à hériter en fixant `obj.__proto__` sur `Array.prototype`, afin que toutes les méthodes `Array` soient automatiquement disponibles dans `obj`.
 
-Mais c'est impossible si `obj` hérite déjà d'un autre objet. N'oubliez pas que nous ne pouvons hériter que d'un objet à la fois.
+Mais c'est impossible si `obj` hérite déjà d'un autre objet.
+N'oubliez pas que nous ne pouvons hériter que d'un objet à la fois.
 
 L'emprunt des méthodes est flexible, cela permet de mélanger les fonctionnalités provenants d'objets différents en cas de besoin.
 
@@ -191,5 +208,8 @@ L'emprunt des méthodes est flexible, cela permet de mélanger les fonctionnalit
 - Tous les objets intégrés suivent le même schéma :
     - Les méthodes sont stockées dans le prototype (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.).
     - L'objet lui-même ne stocke que les données (éléments de tableau, propriétés de l'objet, date).
-- Les primitives stockent également des méthodes dans des prototypes d'objets wrapper : `Number.prototype`, `String.prototype`, `Boolean.prototype`. Seuls `undefined` et `null` n'ont pas d'objets wrapper.
-- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes. Mais il n'est pas recommandé de les changer. La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par le moteur JavaScript.
+- Les primitives stockent également des méthodes dans des prototypes d'objets wrapper : `Number.prototype`, `String.prototype`, `Boolean.prototype`.
+Seuls `undefined` et `null` n'ont pas d'objets wrapper.
+- Les prototypes intégrés peuvent être modifiés ou remplis avec de nouvelles méthodes.
+Mais il n'est pas recommandé de les changer.
+La seule cause possible est probablement l’ajout d’un nouveau standard, mais pas encore pris en charge par le moteur JavaScript.

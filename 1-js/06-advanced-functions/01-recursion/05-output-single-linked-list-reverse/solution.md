@@ -35,7 +35,8 @@ printReverseList(list);
 
 La variante de boucle est aussi un peu plus compliquée que la sortie directe.
 
-Il n'y a aucun moyen d'obtenir la dernière valeur de notre `list`. Nous ne pouvons pas non plus "revenir en arrière".
+Il n'y a aucun moyen d'obtenir la dernière valeur de notre `list`.
+Nous ne pouvons pas non plus "revenir en arrière".
 
 Nous pouvons donc commencer par parcourir les éléments dans l'ordre direct et les mémoriser dans un tableau, puis afficher ce que nous nous sommes rappelés dans l'ordre inverse:
 

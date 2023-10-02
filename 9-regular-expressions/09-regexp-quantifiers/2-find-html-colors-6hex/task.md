@@ -12,4 +12,5 @@ let str = "color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2 #1234
 alert(str.match(regexp))  // #121212,#AA00ef
 ```
 
-P.S. Dans cette tâche nous n'avons pas besoin des autres formats de couleur comme `#123` ou `rgb(1,2,3)` etc.
+P.S.
+Dans cette tâche nous n'avons pas besoin des autres formats de couleur comme `#123` ou `rgb(1,2,3)` etc.

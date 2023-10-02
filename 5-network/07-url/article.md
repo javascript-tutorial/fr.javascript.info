@@ -3,7 +3,9 @@
 
 La classe d'[URL](https://url.spec.whatwg.org/#api) intégrée fournit une interface pratique pour créer et analyser des URL.
 
-Il n'y a pas de méthodes de mise en réseau qui nécessitent exactement un objet `URL`, les chaînes de caractères sont assez bonnes. Donc, techniquement, nous n'avons pas à utiliser `URL`. Mais parfois, cela peut être très utile.
+Il n'y a pas de méthodes de mise en réseau qui nécessitent exactement un objet `URL`, les chaînes de caractères sont assez bonnes.
+Donc, techniquement, nous n'avons pas à utiliser `URL`.
+Mais parfois, cela peut être très utile.
 
 ## Création d'une URL
 
@@ -77,7 +79,8 @@ Nous pouvons les fournir dans la chaîne de caractères URL :
 new URL('https://google.com/search?query=JavaScript')
 ```
 
-… Mais les paramètres doivent être encodés s'ils contiennent des espaces, des lettres non latines, etc. (plus à ce sujet ci-dessous).
+… Mais les paramètres doivent être encodés s'ils contiennent des espaces, des lettres non latines, etc.
+(plus à ce sujet ci-dessous).
 
 Il y a donc une propriété URL pour cela : `url.searchParams`, un objet de type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
 
@@ -118,7 +121,8 @@ Il y a une norme [RFC3986](https://tools.ietf.org/html/rfc3986) qui définit que
 
 Ceux qui ne sont pas autorisés doivent être encodés, par exemple les lettres et les espaces non latins - remplacés par leurs codes UTF-8, préfixés par `%`, tels que `%20` (un espace peut être encodé par `+`, pour des raisons historiques, mais c'est une exception).
 
-La bonne nouvelle est que les objets `URL` gèrent tout cela automatiquement. Nous fournissons simplement tous les paramètres non codés, puis convertissons l'URL en chaîne de caractères :
+La bonne nouvelle est que les objets `URL` gèrent tout cela automatiquement.
+Nous fournissons simplement tous les paramètres non codés, puis convertissons l'URL en chaîne de caractères :
 
 ```js run
 // en utilisant des caractères cyrilliques pour cet exemple
@@ -137,7 +141,8 @@ L'URL est devenue plus longue, car chaque lettre cyrillique est représentée av
 
 Autrefois, avant que les objets `URL` n'apparaissent, les gens utilisaient des chaînes de caractères pour les URL.
 
-Pour l'instant, les objets `URL` sont souvent plus pratiques, mais les chaînes de caractères peuvent toujours être utilisées également. Dans de nombreux cas, l'utilisation d'une chaîne de caractères raccourcit le code.
+Pour l'instant, les objets `URL` sont souvent plus pratiques, mais les chaînes de caractères peuvent toujours être utilisées également.
+Dans de nombreux cas, l'utilisation d'une chaîne de caractères raccourcit le code.
 
 Si nous utilisons une chaîne de caractères, nous devons encoder/décoder les caractères spéciaux manuellement.
 
@@ -192,9 +197,11 @@ alert(url); // https://google.com/search?q=Rock&Roll
 
 Comme nous pouvons le voir, `encodeURI` n'encode pas `&`, car il s'agit d'un caractère légitime dans l'URL.
 
-Mais nous devons encoder `&` à l'intérieur d'un paramètre de recherche, sinon, nous obtenons `q=Rock&Roll` - qui est en fait `q=Rock` plus un paramètre obscur `Roll`. Pas comme prévu.
+Mais nous devons encoder `&` à l'intérieur d'un paramètre de recherche, sinon, nous obtenons `q=Rock&Roll` - qui est en fait `q=Rock` plus un paramètre obscur `Roll`.
+Pas comme prévu.
 
-Nous devons donc utiliser uniquement `encodeURIComponent` pour chaque paramètre de recherche, pour l'insérer correctement dans la chaîne de caractères URL. Le plus sûr est d'encoder à la fois le nom et la valeur, à moins que nous ne soyons absolument sûrs qu'il n'a que des caractères autorisés.
+Nous devons donc utiliser uniquement `encodeURIComponent` pour chaque paramètre de recherche, pour l'insérer correctement dans la chaîne de caractères URL.
+Le plus sûr est d'encoder à la fois le nom et la valeur, à moins que nous ne soyons absolument sûrs qu'il n'a que des caractères autorisés.
 
 ````smart header="Différence d'encodage par rapport à `URL`"
 Les classes [URL](https://url.spec.whatwg.org/#url-class) et [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) sont basés sur la dernière spécification d'URI : [RFC3986](https://tools.ietf.org/html/rfc3986), tandis que les fonctions `encode*` sont basées sur la version obsolète [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).

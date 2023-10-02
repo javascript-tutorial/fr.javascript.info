@@ -6,7 +6,8 @@ importance: 5
 
 Le code suivant crée un tableau de `shooters`.
 
-Chaque fonction est censée sortir son numéro. Mais quelque chose ne va pas …
+Chaque fonction est censée sortir son numéro.
+Mais quelque chose ne va pas …
 
 ```js run
 function makeArmy() {

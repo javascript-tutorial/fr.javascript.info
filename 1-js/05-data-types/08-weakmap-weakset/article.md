@@ -37,7 +37,8 @@ john = null; // écraser la référence
 */!*
 ```
 
-Semblable à cela, si nous utilisons un objet comme clé dans un `Map` classique, alors que le `Map` existe, cet objet existe également. Il occupe de la mémoire et ne peut pas être nettoyé (garbage collected).
+Semblable à cela, si nous utilisons un objet comme clé dans un `Map` classique, alors que le `Map` existe, cet objet existe également.
+Il occupe de la mémoire et ne peut pas être nettoyé (garbage collected).
 
 Par example :
 
@@ -55,7 +56,8 @@ john = null; // écraser la référence
 */!*
 ```
 
-`WeakMap` est fondamentalement différent dans cet aspect. Il n'empêche pas le nettoyage des clés objets.
+`WeakMap` est fondamentalement différent dans cet aspect.
+Il n'empêche pas le nettoyage des clés objets.
 
 Voyons ce que cela signifie sur des exemples.
 
@@ -89,7 +91,8 @@ john = null; // on écrase la référence
 // John est supprimé de la mémoire !
 ```
 
-Comparez-le avec l'exemple du `Map` ci-dessus. Maintenant, si `john` n'existe que comme clé de `WeakMap` -- il sera automatiquement supprimé du map (et de la mémoire).
+Comparez-le avec l'exemple du `Map` ci-dessus.
+Maintenant, si `john` n'existe que comme clé de `WeakMap` -- il sera automatiquement supprimé du map (et de la mémoire).
 
 `WeakMap` ne prend pas en charge l'itération et les méthodes `keys()`, `values()`, `entries()`, il n'y a donc aucun moyen d'en obtenir toutes les clés ou valeurs.
 
@@ -100,9 +103,15 @@ Comparez-le avec l'exemple du `Map` ci-dessus. Maintenant, si `john` n'existe qu
 - `weakMap.delete(key)`
 - `weakMap.has(key)`
 
-Pourquoi une telle limitation ? C'est pour des raisons techniques. Si un objet a perdu toutes les autres références (comme `john` dans le code ci-dessus), il doit être automatiquement nettoyé. Mais techniquement, ce n'est pas exactement spécifié *quand le nettoyage a lieu*.
+Pourquoi une telle limitation ? C'est pour des raisons techniques.
+Si un objet a perdu toutes les autres références (comme `john` dans le code ci-dessus), il doit être automatiquement nettoyé.
+Mais techniquement, ce n'est pas exactement spécifié *quand le nettoyage a lieu*.
 
-Le moteur JavaScript décide de cela. Il peut choisir d'effectuer le nettoyage de la mémoire immédiatement ou d'attendre et de faire le nettoyage plus tard lorsque d'autres suppressions se produisent. Donc, techniquement, le nombre d'éléments actuel d'un `WeakMap` n'est pas connu. Le moteur peut l'avoir nettoyé ou non, ou l'a fait partiellement. Pour cette raison, les méthodes qui accèdent à toutes les clés/valeurs ne sont pas prises en charge.
+Le moteur JavaScript décide de cela.
+Il peut choisir d'effectuer le nettoyage de la mémoire immédiatement ou d'attendre et de faire le nettoyage plus tard lorsque d'autres suppressions se produisent.
+Donc, techniquement, le nombre d'éléments actuel d'un `WeakMap` n'est pas connu.
+Le moteur peut l'avoir nettoyé ou non, ou l'a fait partiellement.
+Pour cette raison, les méthodes qui accèdent à toutes les clés/valeurs ne sont pas prises en charge.
 
 Maintenant, où avons-nous besoin d'une telle structure de données ?
 
@@ -121,7 +130,9 @@ weakMap.set(john, "secret documents");
 
 Regardons un exemple.
 
-Par exemple, nous avons un code qui conserve un nombre de visites pour les utilisateurs. Les informations sont stockées dans un map : un objet utilisateur est la clé et le nombre de visites est la valeur. Lorsqu'un utilisateur quitte (son objet est nettoyé), nous ne voulons plus stocker son nombre de visites.
+Par exemple, nous avons un code qui conserve un nombre de visites pour les utilisateurs.
+Les informations sont stockées dans un map : un objet utilisateur est la clé et le nombre de visites est la valeur.
+Lorsqu'un utilisateur quitte (son objet est nettoyé), nous ne voulons plus stocker son nombre de visites.
 
 Voici un exemple d'une fonction de comptage avec `Map` :
 
@@ -150,7 +161,8 @@ john = null;
 
 Maintenant, l'objet `john` doit être nettoyé, mais cependant, il reste en mémoire, parce que c'est une clé dans `visitesCountMap`.
 
-Nous devons nettoyer `visitesCountMap` lorsque nous supprimons des utilisateurs, sinon il augmentera indéfiniment en mémoire. Un tel nettoyage peut devenir une tâche fastidieuse dans des architectures complexes.
+Nous devons nettoyer `visitesCountMap` lorsque nous supprimons des utilisateurs, sinon il augmentera indéfiniment en mémoire.
+Un tel nettoyage peut devenir une tâche fastidieuse dans des architectures complexes.
 
 Nous pouvons éviter cela en utilisant `WeakMap` :
 
@@ -165,11 +177,13 @@ function countUser(user) {
 }
 ```
 
-Maintenant, nous n'avons plus à nettoyer `visitesCountMap`. Après que l'objet `john` devienne inaccessible autrement que en tant que clé de `WeakMap`, il est supprimé de la mémoire, en même temps que les informations de cette clé dans `WeakMap`.
+Maintenant, nous n'avons plus à nettoyer `visitesCountMap`.
+Après que l'objet `john` devienne inaccessible autrement que en tant que clé de `WeakMap`, il est supprimé de la mémoire, en même temps que les informations de cette clé dans `WeakMap`.
 
 ## Cas d'utilisation : mise en cache
 
-Un autre exemple courant est la mise en cache. Nous pouvons stocker ("cache") les résultats d'une fonction, afin que les futurs appels sur le même objet puissent le réutiliser.
+Un autre exemple courant est la mise en cache.
+Nous pouvons stocker ("cache") les résultats d'une fonction, afin que les futurs appels sur le même objet puissent le réutiliser.
 
 Pour y parvenir, nous pouvons utiliser `Map` (scénario non optimal) :
 
@@ -206,7 +220,8 @@ obj = null;
 alert(cache.size); // 1 (Ouch ! L'objet est toujours dans le cache, prenant de la mémoire !)
 ```
 
-Pour plusieurs appels de `process(obj)` avec le même objet, il ne calcule le résultat que la première fois, puis le prend simplement dans `cache`. L'inconvénient est que nous devons nettoyer le `cache` lorsque l'objet n'est plus nécessaire.
+Pour plusieurs appels de `process(obj)` avec le même objet, il ne calcule le résultat que la première fois, puis le prend simplement dans `cache`.
+L'inconvénient est que nous devons nettoyer le `cache` lorsque l'objet n'est plus nécessaire.
 
 Si nous remplaçons `Map` par `WeakMap`, alors ce problème disparaît : le résultat mis en cache sera automatiquement supprimé de la mémoire une fois que l'objet sera nettoyé.
 
@@ -249,7 +264,9 @@ obj = null;
 - Un objet existe dans le set tant qu'il est accessible ailleurs.
 - Comme `Set`, il prend en charge `add`, `has` et `delete`, mais pas `size`, `keys()` et aucune itération.
 
-Étant "weak" (faible), il sert également de stockage supplémentaire. Mais pas pour des données arbitraires, mais plutôt pour des faits "oui/non". Une appartenance à `WeakSet` peut signifier quelque chose à propos de l'objet.
+Étant "weak" (faible), il sert également de stockage supplémentaire.
+Mais pas pour des données arbitraires, mais plutôt pour des faits "oui/non".
+Une appartenance à `WeakSet` peut signifier quelque chose à propos de l'objet.
 
 Par exemple, nous pouvons ajouter des utilisateurs à `WeakSet` pour garder une trace de ceux qui ont visité notre site :
 
@@ -277,7 +294,8 @@ john = null;
 // visitedSet sera nettoyé automatiquement
 ```
 
-La limitation la plus notable de `WeakMap` et `WeakSet` est l'absence d'itérations et l'impossibilité d'obtenir tout le contenu actuel. Cela peut sembler gênant, mais n'empêche pas `WeakMap`/`WeakSet` de faire leur travail principal -- être un stockage "supplémentaire" de données pour les objets qui sont stockés/gérés à un autre endroit.
+La limitation la plus notable de `WeakMap` et `WeakSet` est l'absence d'itérations et l'impossibilité d'obtenir tout le contenu actuel.
+Cela peut sembler gênant, mais n'empêche pas `WeakMap`/`WeakSet` de faire leur travail principal -- être un stockage "supplémentaire" de données pour les objets qui sont stockés/gérés à un autre endroit.
 
 ## Résumé
 
@@ -289,4 +307,5 @@ Leurs principaux avantages sont qu'ils ont une faible référence aux objets, de
 
 Cela se fait au prix de ne pas avoir de support pour `clear`, `size`, `keys`, `values`...
 
-`WeakMap` et `WeakSet` sont utilisées comme structures de données "secondaires" en plus du stockage d'objets "principal". Une fois que l'objet est retiré du stockage principal, s'il n'est trouvé que comme clé de `WeakMap` ou dans un `WeakSet`, il sera nettoyé automatiquement.
+`WeakMap` et `WeakSet` sont utilisées comme structures de données "secondaires" en plus du stockage d'objets "principal".
+Une fois que l'objet est retiré du stockage principal, s'il n'est trouvé que comme clé de `WeakMap` ou dans un `WeakSet`, il sera nettoyé automatiquement.

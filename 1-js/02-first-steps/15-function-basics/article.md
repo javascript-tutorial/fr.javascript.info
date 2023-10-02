@@ -4,9 +4,11 @@ Très souvent, nous devons effectuer une action similaire à plusieurs endroits 
 
 Par exemple, nous devons afficher un beau message lorsqu'un visiteur se connecte, se déconnecte et peut-être ailleurs.
 
-Les fonctions sont les principales "composantes" du programme. Elles permettent au code d'être appelé plusieurs fois sans répétition.
+Les fonctions sont les principales "composantes" du programme.
+Elles permettent au code d'être appelé plusieurs fois sans répétition.
 
-Nous avons déjà vu des exemples de fonctions intégrées, telles que `alert(message)`, `prompt(message, default)` et `confirm(question)`. Mais nous pouvons aussi créer nos propres fonctions.
+Nous avons déjà vu des exemples de fonctions intégrées, telles que `alert(message)`, `prompt(message, default)` et `confirm(question)`.
+Mais nous pouvons aussi créer nos propres fonctions.
 
 ## Déclaration de fonction
 
@@ -23,7 +25,8 @@ function showMessage() {
 Le mot-clé `function` commence en premier, puis le *nom de la fonction*, puis une liste de *paramètres* entre les parenthèses (séparés par des virgules, vides dans l'exemple ci-dessus, nous verrons des exemples plus tard) et enfin le code de la fonction, également appelé "le corps de la fonction", entre des accolades.
 
 ```js
-function name(parameter1, parameter2, ... parameterN) {
+function name(parameter1, parameter2, ...
+parameterN) {
  // Corps de la fonction
 }
 ```
@@ -43,7 +46,8 @@ showMessage();
 */!*
 ```
 
-L'appel `showMessage()` exécute le code de la fonction. Ici, nous verrons le message deux fois, parce qu'on l'appelle deux fois.
+L'appel `showMessage()` exécute le code de la fonction.
+Ici, nous verrons le message deux fois, parce qu'on l'appelle deux fois.
 
 Cet exemple illustre clairement l’un des principaux objectifs des fonctions : éviter la duplication de code.
 
@@ -84,7 +88,8 @@ function showMessage() {
 showMessage(); // Hello, John
 ```
 
-La fonction a un accès complet à la variable globale. Elle peut aussi la modifier.
+La fonction a un accès complet à la variable globale.
+Elle peut aussi la modifier.
 
 Par exemple :
 
@@ -107,7 +112,9 @@ alert(userName); // *!*Bob*/!*, la valeur a été modifiée par la fonction
 
 La variable globale n’est utilisée que s’il n’y a pas de variable locale.
 
-Si une variable du même nom est déclarée à l'intérieur de la fonction, elle *eclipsera* la variable externe. Par exemple, dans le code ci-dessous, la fonction utilise le nom `userName` local. La globale est ignoré :
+Si une variable du même nom est déclarée à l'intérieur de la fonction, elle *eclipsera* la variable externe.
+Par exemple, dans le code ci-dessous, la fonction utilise le nom `userName` local.
+La globale est ignoré :
 
 ```js run
 let userName = 'John';
@@ -132,7 +139,10 @@ Les variables déclarées en dehors de toute fonction, telle que `userName` exte
 
 Les variables globales sont visibles depuis n'importe quelle fonction (sauf si elles sont masquées par les variables locales).
 
-C'est une bonne pratique de minimiser l'utilisation de variables globales. Le code moderne a peu ou pas de variable globales. La plupart des variables résident dans leurs fonctions. Parfois, cependant, elles peuvent être utiles pour stocker des données au niveau du script.
+C'est une bonne pratique de minimiser l'utilisation de variables globales.
+Le code moderne a peu ou pas de variable globales.
+La plupart des variables résident dans leurs fonctions.
+Parfois, cependant, elles peuvent être utiles pour stocker des données au niveau du script.
 ```
 
 ## Arguments
@@ -150,7 +160,8 @@ function showMessage(*!*from, text*/!*) { // Arguments : from, text
 *!*showMessage('Ann', "What's up?");*/!* // Ann: What's up? (**)
 ```
 
-Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`. Ensuite, la fonction les utilise.
+Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`.
+Ensuite, la fonction les utilise.
 
 Voici un autre exemple : nous avons une variable `from` et la transmettons à la fonction.
 
@@ -195,7 +206,9 @@ Par exemple, la fonction `showMessage(from, text)` mentionnée précédemment pe
 showMessage("Ann");
 ```
 
-Ce n'est pas une erreur. Un tel appel produirait `"*Ann*: undefined"`. Comme la valeur de `text` n'est pas transmise, elle devient `undefined` (elle n'a pas été définie lors de l'appel).
+Ce n'est pas une erreur.
+Un tel appel produirait `"*Ann*: undefined"`.
+Comme la valeur de `text` n'est pas transmise, elle devient `undefined` (elle n'a pas été définie lors de l'appel).
 
 Nous pouvons spécifier la valeur dite "par défaut" (à utiliser si omise) pour un paramètre dans la déclaration de fonction, en utilisant `=` :
 
@@ -215,7 +228,8 @@ La valeur par défaut saute également si le paramètre existe, mais est stricte
 showMessage("Ann", undefined); // Ann: no text given
 ```
 
-Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant. Donc, ceci est également possible :
+Ici, `"no text given"` est une chaîne de caractères, mais il peut s'agir d'une expression plus complexe, qui n'est évaluée et affectée que si le paramètre est manquant.
+Donc, ceci est également possible :
 
 ```js run
 function showMessage(from, text = anotherFunction()) {
@@ -234,7 +248,8 @@ D'un autre côté, il est appelé indépendamment à chaque fois que `text` est 
 ```
 
 ````smart header="Paramètres par défaut dans l'ancien code JavaScript"
-Il y a plusieurs années, JavaScript ne prenait pas en charge la syntaxe des paramètres par défaut. Les gens ont donc utilisé d'autres moyens pour les spécifier.
+Il y a plusieurs années, JavaScript ne prenait pas en charge la syntaxe des paramètres par défaut.
+Les gens ont donc utilisé d'autres moyens pour les spécifier.
 
 De nos jours, on peut les croiser dans d'anciens scripts.
 
@@ -324,9 +339,11 @@ let result = sum(1, 2);
 alert(result); // 3
 ```
 
-L'instruction `return` peut être n'importe où dans la fonction. Lorsque l'exécution le permet, la fonction s'arrête et la valeur est renvoyée au code appelant (affecté à `result` ci-dessus).
+L'instruction `return` peut être n'importe où dans la fonction.
+Lorsque l'exécution le permet, la fonction s'arrête et la valeur est renvoyée au code appelant (affecté à `result` ci-dessus).
 
-Il peut y avoir plusieurs occurrences de `return` dans une seule fonction. Par exemple :
+Il peut y avoir plusieurs occurrences de `return` dans une seule fonction.
+Par exemple :
 
 ```js run
 function checkAge(age) {
@@ -350,7 +367,8 @@ if (checkAge(age)) {
 }
 ```
 
-Il est possible d'utiliser `return` sans valeur. Cela retourne un résultat `undefined` de la fonction.
+Il est possible d'utiliser `return` sans valeur.
+Cela retourne un résultat `undefined` de la fonction.
 
 Par exemple :
 
@@ -395,7 +413,8 @@ Pour une longue expression dans `return`, il pourrait être tentant de la mettre
 return
  (some + long + expression + or + whatever * f(a) + f(b))
 ```
-Cela ne fonctionne pas, car JavaScript suppose un point-virgule après le `return`. Cela fonctionnera comme :
+Cela ne fonctionne pas, car JavaScript suppose un point-virgule après le `return`.
+Cela fonctionnera comme :
 
 ```js
 return*!*;*/!*
@@ -404,7 +423,8 @@ return*!*;*/!*
 
 Donc, cela devient effectivement un retour vide.
 
-Si nous voulons que l'expression retournée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`. Ou du moins mettre les parenthèses d'ouverture comme suit :
+Si nous voulons que l'expression retournée recouvre plusieurs lignes, nous devons la démarrer à la même ligne que `return`.
+Ou du moins mettre les parenthèses d'ouverture comme suit :
 
 ```js
 return (
@@ -418,9 +438,13 @@ Et cela fonctionnera comme prévu.
 
 ## Nommer une fonction [#function-naming]
 
-Les fonctions sont des actions. Donc, leur nom est généralement un verbe. Il convient de décrire brièvement, mais aussi précisément que possible, le rôle de la fonction. Pour qu'une personne qui lit le code reçoive le bon indice.
+Les fonctions sont des actions.
+Donc, leur nom est généralement un verbe.
+Il convient de décrire brièvement, mais aussi précisément que possible, le rôle de la fonction.
+Pour qu'une personne qui lit le code reçoive le bon indice.
 
-C'est une pratique répandue de commencer une fonction avec un préfixe verbal qui décrit vaguement l'action. Il doit exister un accord au sein de l'équipe sur la signification des préfixes.
+C'est une pratique répandue de commencer une fonction avec un préfixe verbal qui décrit vaguement l'action.
+Il doit exister un accord au sein de l'équipe sur la signification des préfixes.
 
 Par exemple, les fonctions qui commencent par `"show"` affichent généralement quelque chose.
 
@@ -454,24 +478,33 @@ Quelques exemples de violation de cette règle :
 - `createForm` -- serait mauvais s’il modifiait le document en y ajoutant un formulaire (il ne devrait que le créer et le renvoyer).
 - `checkPermission` -- serait mauvais s'il affiche le message d'accès accordé/refusé (doit uniquement effectuer la vérification et renvoyer le résultat).
 
-Ces exemples supposent des significations communes de préfixes. Vous et votre équipe êtes libres de vous entendre sur d'autres sens, mais ils ne sont généralement pas très différents. Dans tous les cas, vous devez bien comprendre ce que signifie un préfixe, ce qu'une fonction préfixée peut et ne peut pas faire. Toutes les fonctions ayant le même préfixe doivent obéir aux règles. Et l'équipe devrait partager ces connaissances.
+Ces exemples supposent des significations communes de préfixes.
+Vous et votre équipe êtes libres de vous entendre sur d'autres sens, mais ils ne sont généralement pas très différents.
+Dans tous les cas, vous devez bien comprendre ce que signifie un préfixe, ce qu'une fonction préfixée peut et ne peut pas faire.
+Toutes les fonctions ayant le même préfixe doivent obéir aux règles.
+Et l'équipe devrait partager ces connaissances.
 ```
 
 ```smart header="Noms de fonction ultra-courts"
 Les fonctions utilisées *très souvent* portent parfois des noms ultra-courts.
 
-Par exemple le framework [jQuery](https://jquery.com) définit une fonction avec `$`. La librairie [LoDash](https://lodash.com/) a nommé sa fonction principale `_`.
+Par exemple le framework [jQuery](https://jquery.com) définit une fonction avec `$`.
+La librairie [LoDash](https://lodash.com/) a nommé sa fonction principale `_`.
 
-Ce sont des exceptions. En règle générale, les noms de fonctions doivent être concis et descriptifs.
+Ce sont des exceptions.
+En règle générale, les noms de fonctions doivent être concis et descriptifs.
 ```
 
 ## Fonctions == Commentaires
 
-Les fonctions doivent être courtes et faire exactement une seule chose. Si cette chose est conséquente, il vaut peut-être la peine de scinder la fonction en quelques fonctions plus petites. Parfois, suivre cette règle peut ne pas être aussi facile, mais c’est définitivement une bonne pratique.
+Les fonctions doivent être courtes et faire exactement une seule chose.
+Si cette chose est conséquente, il vaut peut-être la peine de scinder la fonction en quelques fonctions plus petites.
+Parfois, suivre cette règle peut ne pas être aussi facile, mais c’est définitivement une bonne pratique.
 
 Une fonction distincte est non seulement plus facile à tester et à déboguer -- son existence même est un excellent commentaire!
 
-Par exemple, comparez les deux fonctions `showPrimes(n)` ci-dessous. Chacune extrait les [nombres premiers](https://fr.wikipedia.org/wiki/Nombre_premier) jusqu'à `n`.
+Par exemple, comparez les deux fonctions `showPrimes(n)` ci-dessous.
+Chacune extrait les [nombres premiers](https://fr.wikipedia.org/wiki/Nombre_premier) jusqu'à `n`.
 
 La première variante utilise un label :
 
@@ -508,9 +541,11 @@ function isPrime(n) {
 }
 ```
 
-La deuxième variante est plus facile à comprendre, n’est-ce pas ? Au lieu du bloc de code, nous voyons le nom de l'action (`isPrime`). Parfois, les gens se réfèrent à ce code comme étant *auto-descriptif*.
+La deuxième variante est plus facile à comprendre, n’est-ce pas ? Au lieu du bloc de code, nous voyons le nom de l'action (`isPrime`).
+Parfois, les gens se réfèrent à ce code comme étant *auto-descriptif*.
 
-Des fonctions peuvent donc être créées même si nous n’avons pas l’intention de les réutiliser. Elles structurent le code et le rendent lisible.
+Des fonctions peuvent donc être créées même si nous n’avons pas l’intention de les réutiliser.
+Elles structurent le code et le rendent lisible.
 
 ## Résumé
 
@@ -525,7 +560,8 @@ function name(parameters, delimited, by, comma) {
 - Les valeurs transmises à une fonction en tant que paramètres sont copiées dans ses variables locales.
 - Une fonction peut accéder à des variables globales.
 - Le code en dehors des fonction ne voit pas les variables locales (déclarées dans des fonctions).
-- Une fonction peut retourner une valeur. Si ce n'est pas le cas, le résultat est `undefined`.
+- Une fonction peut retourner une valeur.
+Si ce n'est pas le cas, le résultat est `undefined`.
 
 Pour rendre le code propre et facile à comprendre, il est recommandé d’utiliser principalement des variables et des paramètres locaux dans la fonction, et non des variables globales.
 
@@ -533,8 +569,13 @@ Il est toujours plus facile de comprendre une fonction qui possède des paramèt
 
 Nommage de fonction :
 
-- Un nom doit clairement décrire le rôle de la fonction. Lorsque nous voyons un appel de fonction dans le code, un bon nom nous donne instantanément une compréhension de ce qu’elle fait et de ce qu’elle retourne.
+- Un nom doit clairement décrire le rôle de la fonction.
+Lorsque nous voyons un appel de fonction dans le code, un bon nom nous donne instantanément une compréhension de ce qu’elle fait et de ce qu’elle retourne.
 - Une fonction représente une action, les noms de fonctions sont donc généralement verbeux.
-- Il existe de nombreux préfixes de fonctions bien connus, tels que `create`, `show`, `get`, `check` et ainsi de suite. Utilisez-les pour indiquer ce que fait une fonction.
+- Il existe de nombreux préfixes de fonctions bien connus, tels que `create`, `show`, `get`, `check` et ainsi de suite.
+Utilisez-les pour indiquer ce que fait une fonction.
 
-Les fonctions sont les principaux éléments constitutifs des scripts. Maintenant que nous avons couvert les bases, nous pouvons donc commencer à les créer et les utiliser. Mais ce n’est que le début du chemin. Nous allons y revenir plusieurs fois, en approfondissant leurs fonctionnalités avancées.
+Les fonctions sont les principaux éléments constitutifs des scripts.
+Maintenant que nous avons couvert les bases, nous pouvons donc commencer à les créer et les utiliser.
+Mais ce n’est que le début du chemin.
+Nous allons y revenir plusieurs fois, en approfondissant leurs fonctionnalités avancées.

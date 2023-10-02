@@ -8,7 +8,8 @@ Les opérations mathématiques convertissent les valeurs en nombres.
 Il y a aussi des cas où nous devons convertir explicitement une valeur pour corriger les choses.
 
 ```smart header="On ne parle pas encore des objets"
-Dans ce chapitre, nous ne couvrons pas encore les objets. Ici, nous étudions d'abord les types primitifs.
+Dans ce chapitre, nous ne couvrons pas encore les objets.
+Ici, nous étudions d'abord les types primitifs.
 
 Nous verrons comment la conversion d’objets fonctionne dans le chapitre <info:object-toprimitive>.
 ```
@@ -31,7 +32,8 @@ alert(typeof value); // string
 */!*
 ```
 
-La conversion `String` est assez évidente. Un `false` devient `"false"`, `null` devient `"null"` etc.
+La conversion `String` est assez évidente.
+Un `false` devient `"false"`, `null` devient `"null"` etc.
 
 ## Conversion numérique
 
@@ -66,12 +68,17 @@ alert(age); // NaN, la conversion a échoué
 
 Règles de conversions numériques :
 
-| Valeur                               | Devient ...                                                                                                                                                                              |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `undefined`                          | `NaN`                                                                                                                                                                                    |
-| `null`                               | `0`                                                                                                                                                                                      |
-| <code>true&nbsp;et&nbsp;false</code> | Respectivement `1` et `0`                                                                                                                                                                |
-| `string`                             | Les espaces blancs du début et de la fin sont supprimés. Ensuite, si la chaîne restante est vide, le résultat est `0`. Sinon, le nombre est «lu» dans la chaîne. Une erreur donne `NaN`. |
+| Valeur                               | Devient ...
+                                                                                                                                                                             |                                      |
+                                                                                                                                                                             | ------------------------------------ | -------------------------------------------------------- |
+                                                                                                                                                                             | `undefined`                          | `NaN`                                                    |
+                                                                                                                                                                             | `null`                               | `0`                                                      |
+                                                                                                                                                                             | <code>true&nbsp;et&nbsp;false</code> | Respectivement `1` et `0`                                |
+                                                                                                                                                                             | `string`                             | Les espaces blancs du début et de la fin sont supprimés. |
+Ensuite, si la chaîne restante est vide, le résultat est `0`.
+Sinon, le nombre est «lu» dans la chaîne.
+Une erreur donne `NaN`.
+|
 
 Exemples :
 
@@ -108,7 +115,8 @@ alert(Boolean("")); // false
 ```
 
 ````warn header="Veuillez noter que la chaîne de caractères avec un zero `\"0\"` est `true`"
-Certains langages (à savoir PHP) traitent `"0"` comme faux. Mais en JavaScript, une chaîne non vide est toujours `true`.
+Certains langages (à savoir PHP) traitent `"0"` comme faux.
+Mais en JavaScript, une chaîne non vide est toujours `true`.
 
 ```js run
 alert(Boolean("0")); // true
@@ -120,29 +128,36 @@ alert(Boolean(" ")); // Espaces, également vrai (toute chaîne de caractères n
 
 Les trois conversions de types les plus utilisées sont : to string, to number et to boolean.
 
-**`La conversion en String`** -- Peut être effectué avec `String(value)`. La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
+**`La conversion en String`** -- Peut être effectué avec `String(value)`.
+La conversion en chaîne de caractères est généralement évidente pour les valeurs primitives.
 
 **`La conversion en Number`** -- Se produit dans les opérations mathématiques, peut être effectué avec `Number(value)`.
 
 La conversion vers `number` suit les règles suivantes :
 
-| Valeur                              | Devient ...                                                                                                                               |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `undefined`                         | `NaN`                                                                                                                                     |
-| `null`                              | `0`                                                                                                                                       |
-| <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                                                                                   |
-| `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. Une chaîne vide devient `0`. Une erreur donne `NaN`. |
+| Valeur                              | Devient ...
+                                                                                                                              |                                     |
+                                                                                                                              | ----------------------------------- | ------------------------------------------------------------------------------------ |
+                                                                                                                              | `undefined`                         | `NaN`                                                                                |
+                                                                                                                              | `null`                              | `0`                                                                                  |
+                                                                                                                              | <code>true&nbsp;/&nbsp;false</code> | `1 / 0`                                                                              |
+                                                                                                                              | `string`                            | La chaîne de caractères est lue "tel quel", les espaces des deux côtés sont ignorés. |
+Une chaîne vide devient `0`.
+Une erreur donne `NaN`.
+|
 
 **`La conversion en Boolean`** -- Se produit dans des opérations logiques, ou peut être effectué avec `Boolean(value)`.
 
 La conversion vers `boolean` suit les règles suivantes :
 
-| Valeur                                | Devient ... |
-| ------------------------------------- | ----------- |
-| `0`, `null`, `undefined`, `NaN`, `""` | `false`     |
-| tout autre valeur                     | `true`      |
+| Valeur                                | Devient ...
+|                                       |
+| ------------------------------------- | ------- |
+| `0`, `null`, `undefined`, `NaN`, `""` | `false` |
+| tout autre valeur                     | `true`  |
 
-La plupart de ces règles sont faciles à comprendre et à mémoriser. Les exceptions notables où les gens font généralement des erreurs sont :
+La plupart de ces règles sont faciles à comprendre et à mémoriser.
+Les exceptions notables où les gens font généralement des erreurs sont :
 
 - `undefined` est `NaN` en tant que number, non `0`.
 - `"0"` et les espaces dans les chaines de caractères comme `"   "` sont "true" en booléen.

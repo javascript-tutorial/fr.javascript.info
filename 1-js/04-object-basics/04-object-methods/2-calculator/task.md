@@ -12,7 +12,8 @@ Créez un objet `calculator` avec trois méthodes :
 
 ```js
 let calculator = {
-  // ... votre code ...
+  // ...
+votre code ...
 };
 
 calculator.read();

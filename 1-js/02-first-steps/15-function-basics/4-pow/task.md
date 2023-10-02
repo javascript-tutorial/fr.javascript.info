@@ -4,7 +4,8 @@ importance: 4
 
 # Fonction pow(x,n)
 
-Ecrivez une fonction `pow(x, n)` qui retourne `x` à la puissance `n`. Ou, autrement dit, multiplie `x` par lui-même `n` fois et retourne le résultat.
+Ecrivez une fonction `pow(x, n)` qui retourne `x` à la puissance `n`.
+Ou, autrement dit, multiplie `x` par lui-même `n` fois et retourne le résultat.
 
 ```js
 pow(3, 2) = 3 * 3 = 9
@@ -16,4 +17,5 @@ Créez une page Web qui demande (`prompt`)`x` et `n`, puis affiche le résultat 
 
 [demo]
 
-P.S. Dans cette tâche, la fonction ne doit prendre en charge que les valeurs naturelles de `n` : entiers supérieurs à `1`.
+P.S.
+Dans cette tâche, la fonction ne doit prendre en charge que les valeurs naturelles de `n` : entiers supérieurs à `1`.

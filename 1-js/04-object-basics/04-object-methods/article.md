@@ -1,6 +1,7 @@
 # Méthodes d'objet, "this"
 
-Les objets sont généralement créés pour représenter des entités du monde réel, comme des utilisateurs, des commandes, etc. :
+Les objets sont généralement créés pour représenter des entités du monde réel, comme des utilisateurs, des commandes, etc.
+:
 
 ```js
 let user = {
@@ -34,7 +35,8 @@ user.sayHi(); // Hello!
 
 Ici, nous venons d'utiliser une expression de fonction pour créer la fonction et l'affecter à la propriété `user.sayHi` de l'objet.
 
-Ensuite, nous pouvons l'appeler comme `user.sayHi()`. L'utilisateur peut maintenant parler!
+Ensuite, nous pouvons l'appeler comme `user.sayHi()`.
+L'utilisateur peut maintenant parler!
 
 Une fonction qui appartient à un objet s'appelle sa *méthode*.
 
@@ -63,7 +65,13 @@ user.sayHi(); // Hello!
 ```smart header="Programmation Orientée Objet"
 Lorsque nous écrivons notre code en utilisant des objets pour représenter des entités, cela s'appelle de la [programmation orientée objet](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), en bref : "POO".
 
-La programmation orientée objet est un élément important, une science intéressante en soi. Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns : Elements of Reusable Object-Oriented Software" de E. Gamma, R. Helm, R. Johnson, J. Vissides ou "Object-Oriented Analysis and Design with Applications" de G. Booch, et plus.
+La programmation orientée objet est un élément important, une science intéressante en soi.
+Comment choisir les bonnes entités ? Comment organiser l'interaction entre elles ? C’est une architecture, et il existe d’excellents livres sur ce sujet, tels que "Design Patterns : Elements of Reusable Object-Oriented Software" de E.
+Gamma, R.
+Helm, R.
+Johnson, J.
+Vissides ou "Object-Oriented Analysis and Design with Applications" de G.
+Booch, et plus.
 ```
 ### Méthode abrégée
 
@@ -90,7 +98,9 @@ user = {
 
 Comme démontré, nous pouvons omettre `"function"` et simplement écrire `sayHi()`.
 
-A vrai dire, les notations ne sont pas totalement identiques. Il existe des différences subtiles liées à l'héritage d'objet (à couvrir plus tard), mais pour le moment, elles importent peu. Dans presque tous les cas, la syntaxe la plus courte est préférable.
+A vrai dire, les notations ne sont pas totalement identiques.
+Il existe des différences subtiles liées à l'héritage d'objet (à couvrir plus tard), mais pour le moment, elles importent peu.
+Dans presque tous les cas, la syntaxe la plus courte est préférable.
 
 ## "this" dans les méthodes
 
@@ -139,7 +149,8 @@ let user = {
 };
 ```
 
-… Mais un tel code n'est pas fiable. Si nous décidons de copier `user` dans une autre variable, par exemple `admin = user` et écraser `user` avec quelque chose d'autre, il accédera au mauvais objet.
+… Mais un tel code n'est pas fiable.
+Si nous décidons de copier `user` dans une autre variable, par exemple `admin = user` et écraser `user` avec quelque chose d'autre, il accédera au mauvais objet.
 
 Cela est démontré ci-dessous :
 
@@ -168,7 +179,8 @@ Si nous utilisions `this.name` au lieu de `user.name` dans l'`alert`, le code fo
 
 ## "this" n'est pas lié
 
-En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation. Il peut être utilisé dans n'importe quelle fonction, même si ce n'est pas une méthode d'un objet.
+En JavaScript, le mot clé `this` se comporte différemment de la plupart des autres langages de programmation.
+Il peut être utilisé dans n'importe quelle fonction, même si ce n'est pas une méthode d'un objet.
 
 Il n’y a pas d’erreur de syntaxe dans le code suivant :
 
@@ -204,7 +216,8 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (le point ou les crochets accèdent à la méthode - peu importe)
 ```
 
-La règle est simple : si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`. C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
+La règle est simple : si `obj.f()` est appelé, alors `this` est `obj` pendant l'appel de `f`.
+C'est donc l'`user` ou l'`admin` dans l'exemple ci-dessus.
 
 ````smart header="Appel sans objet : `this` == undefined"
 Nous pouvons même appeler la fonction sans objet du tout :
@@ -217,11 +230,14 @@ function sayHi() {
 sayHi();
 ```
 
-Dans ce cas, `this` est `undefined` en mode strict. Si nous essayons d'accéder à `this.name`, il y aura une erreur.
+Dans ce cas, `this` est `undefined` en mode strict.
+Si nous essayons d'accéder à `this.name`, il y aura une erreur.
 
-En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard). Ceci est un comportement historique que le mode strict corrige.
+En mode non strict (si on oublie `use strict`), la valeur de `this` dans ce cas sera l’*objet global* (la fenêtre d’un navigateur, nous y reviendrons plus tard).
+Ceci est un comportement historique que le mode strict corrige.
 
-Ce genre d'appel est généralement une erreur de programmation. Si il y a un `this` dans une fonction, il s'attend à être appelé dans un contexte d'objet.
+Ce genre d'appel est généralement une erreur de programmation.
+Si il y a un `this` dans une fonction, il s'attend à être appelé dans un contexte d'objet.
 ````
 
 ```smart header="Les conséquences d'un `this` non lié"
@@ -229,14 +245,18 @@ Si vous venez d'un autre langage de programmation, vous êtes probablement habit
 
 En JavaScript, `this` est "libre", sa valeur est évaluée au moment de l'appel et ne dépend pas de l'endroit où la méthode a été déclarée, mais plutôt de l'objet "avant le point".
 
-Le concept de temps d'exécution évalué de `this` présente à la fois des avantages et des inconvénients. D'une part, une fonction peut être réutilisée pour différents objets. D'autre part, une plus grande flexibilité ouvre la place à des erreurs.
+Le concept de temps d'exécution évalué de `this` présente à la fois des avantages et des inconvénients.
+D'une part, une fonction peut être réutilisée pour différents objets.
+D'autre part, une plus grande flexibilité ouvre la place à des erreurs.
 
-Ici, notre position n'est pas de juger si cette décision de conception linguistique est bonne ou mauvaise. Nous comprendrons comment travailler avec elle, comment obtenir des avantages et éviter les problèmes.
+Ici, notre position n'est pas de juger si cette décision de conception linguistique est bonne ou mauvaise.
+Nous comprendrons comment travailler avec elle, comment obtenir des avantages et éviter les problèmes.
 ```
 
 ## Les fonctions fléchées n'ont pas de "this"
 
-Les fonctions fléchées sont spéciales : elles n’ont pas leur "propre" `this`. Si nous faisons référence à `this` à partir d’une telle fonction, cela provient de la fonction externe "normale".
+Les fonctions fléchées sont spéciales : elles n’ont pas leur "propre" `this`.
+Si nous faisons référence à `this` à partir d’une telle fonction, cela provient de la fonction externe "normale".
 
 Par exemple, ici `arrow()` utilise `this` depuis la méthode externe `user.sayHi()` :
 
@@ -252,7 +272,9 @@ let user = {
 user.sayHi(); // Ilya
 ```
 
-C’est une particularité des fonctions fléchées. C’est utile lorsque nous ne voulons pas réellement avoir un this distinct, mais plutôt le prendre à partir du contexte extérieur. Plus tard dans le chapitre <info:arrow-functions> nous approfondirons les fonctions fléchées.
+C’est une particularité des fonctions fléchées.
+C’est utile lorsque nous ne voulons pas réellement avoir un this distinct, mais plutôt le prendre à partir du contexte extérieur.
+Plus tard dans le chapitre <info:arrow-functions> nous approfondirons les fonctions fléchées.
 
 ## Résumé
 
@@ -265,4 +287,5 @@ La valeur de `this` est définie au moment de l'exécution.
 - Une fonction / une méthode peut être copiée entre des objets.
 - Lorsqu'une méthode est appelée : `object.method()`, la valeur de `this` lors de l'appel est `objet`.
 
-Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`. Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.
+Veuillez noter que les fonctions fléchées sont spéciales : elles n'ont pas `this`.
+Lorsque `this` est accédé dans une fonction fléchée, il est pris de l'extérieur.

@@ -8,7 +8,8 @@ Par exemple :
 [url]http://google.com[/url]
 ```
 
-Les BB-tags peuvent être imbriqués. Mais un tag ne peut pas être imbriqué dans lui même, par exemple :
+Les BB-tags peuvent être imbriqués.
+Mais un tag ne peut pas être imbriqué dans lui même, par exemple :
 
 ```
 Normal:

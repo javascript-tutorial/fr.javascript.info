@@ -30,7 +30,8 @@ Becomes:
 We'll cover that in the chapter <a href="/function-basics">Function basics</a>.
 ```
 
-The title is auto-inserted from the referenced article. That has the benefit of keeping the right title if the article gets renamed.
+The title is auto-inserted from the referenced article.
+That has the benefit of keeping the right title if the article gets renamed.
 
 ## TODO
 

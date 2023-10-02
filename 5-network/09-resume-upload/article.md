@@ -4,7 +4,8 @@ Avec la méthode `fetch`, il est assez facile de upload un fichier.
 
 Comment reprendre l'upload après une perte de connexion ? Il n'y a pas d'option intégrée pour cela, mais nous avons les pièces pour l'implémenter.
 
-Les uploads pouvant être repris devraient être accompagnés d'une indication de progression, puisque nous pouvons nous attendre à de gros fichiers (au cas où on devrait reprendre). Donc, comme `fetch` ne permet pas de suivre la progression du téléchargement, nous utiliserons [XMLHttpRequest](info:xmlhttprequest).
+Les uploads pouvant être repris devraient être accompagnés d'une indication de progression, puisque nous pouvons nous attendre à de gros fichiers (au cas où on devrait reprendre).
+Donc, comme `fetch` ne permet pas de suivre la progression du téléchargement, nous utiliserons [XMLHttpRequest](info:xmlhttprequest).
 
 ## Événement de progression pas si utile
 
@@ -18,11 +19,13 @@ Peut-être que cela a été mis en mémoire tampon par un proxy de réseau local
 
 C'est pourquoi cet événement n'est utile que pour afficher une belle barre de progression.
 
-Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets reçus par le serveur. Et seul le serveur peut le dire, nous ferons donc une demande supplémentaire.
+Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets reçus par le serveur.
+Et seul le serveur peut le dire, nous ferons donc une demande supplémentaire.
 
 ## Algorithme
 
-1. Créer d'abord un identifiant de fichier pour identifier de manière unique le fichier que nous allons uploader :
+1.
+Créer d'abord un identifiant de fichier pour identifier de manière unique le fichier que nous allons uploader :
     ```js
     let fileId = file.name + '-' + file.size + '-' + file.lastModified;
     ```
@@ -30,7 +33,8 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
 
     Si le nom ou la taille ou la dernière date de modification change, alors il y aura un autre `fileId`.
 
-2. Envoyer une demande au serveur, lui demandant combien d'octets il possède déjà, comme ceci :
+2.
+Envoyer une demande au serveur, lui demandant combien d'octets il possède déjà, comme ceci :
     ```js
     let response = await fetch('status', {
       headers: {
@@ -42,11 +46,13 @@ Pour reprendre l'upload, nous devons connaître *exactement* le nombre d'octets 
     let startByte = +await response.text();
     ```
 
-    Cela suppose que le serveur effectue le suivi des uploads de fichiers par l'en-tête `X-File-Id`. Doit être implémenté côté serveur.
+    Cela suppose que le serveur effectue le suivi des uploads de fichiers par l'en-tête `X-File-Id`.
+Doit être implémenté côté serveur.
 
     Si le fichier n'existe pas encore sur le serveur, la réponse du serveur doit être `0`.
 
-3. Ensuite, nous pouvons utiliser un `Blob` par la méhtode `slice` pour envoyer le fichier depuis `startByte` :
+3.
+Ensuite, nous pouvons utiliser un `Blob` par la méhtode `slice` pour envoyer le fichier depuis `startByte` :
     ```js
     xhr.open("POST", "upload");
 

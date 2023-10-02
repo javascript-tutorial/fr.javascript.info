@@ -24,4 +24,6 @@ En d'autres termes, un objet retourné par `makeObservable` est exactement comme
 
 Chaque fois qu'une propriété change, le `handler(key, value)` est appelé avec le nom et la valeur de la propriété.
 
-P.S. Dans cette tâche, veillez uniquement à écrire sur une propriété. D'autres opérations peuvent être implémentées de manière similaire.
+P.S.
+Dans cette tâche, veillez uniquement à écrire sur une propriété.
+D'autres opérations peuvent être implémentées de manière similaire.

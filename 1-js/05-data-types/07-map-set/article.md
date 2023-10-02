@@ -5,11 +5,13 @@ Jusqu'à présent, nous avons découvert les structures de données complexes su
 - Les objets sont utilisés pour stocker des collections de clés.
 - Les tableaux sont utilisés pour stocker des collections ordonnées.
 
-Mais ce n'est pas suffisant pour la vie réelle. C'est pourquoi `Map` et `Set` existent également.
+Mais ce n'est pas suffisant pour la vie réelle.
+C'est pourquoi `Map` et `Set` existent également.
 
 ## Map
 
-Une [Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) permet, comme pour un `Object`, de stocker plusieurs éléments sous la forme de clés-valeurs. Sauf que cette fois, les clés peuvent être de n'importe quel type.
+Une [Map](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Map) (dictionnaire de donnée) permet, comme pour un `Object`, de stocker plusieurs éléments sous la forme de clés-valeurs.
+Sauf que cette fois, les clés peuvent être de n'importe quel type.
 
 Voici les méthodes et les propriétés d'une `Map` :
 
@@ -65,7 +67,9 @@ visitsCountMap.set(john, 123);
 alert(visitsCountMap.get(john)); // 123
 ```
 
-Utiliser des objets comme clés est l'une des fonctionnalités les plus notables et les plus importantes de `Map`. La même chose ne compte pas pour `Object`. Une chaîne de caractères comme clé dans `Object` est très bien, mais nous ne pouvons pas utiliser un autre `Object` comme clé dans `Object`.
+Utiliser des objets comme clés est l'une des fonctionnalités les plus notables et les plus importantes de `Map`.
+La même chose ne compte pas pour `Object`.
+Une chaîne de caractères comme clé dans `Object` est très bien, mais nous ne pouvons pas utiliser un autre `Object` comme clé dans `Object`.
 
 Essayons de faire comme l'exemple précédent directement avec un `Object` :
 
@@ -84,7 +88,8 @@ alert(visitsCountObj["[object Object]"]); // 123
 */!*
 ```
 
-Comme `visitesCountObj` est un objet, il convertit toutes les clés `Object`, telles que `john` et `ben` ci-dessus, en la même chaîne de caractères `"[object Object]"`. Certainement pas ce que nous voulons.
+Comme `visitesCountObj` est un objet, il convertit toutes les clés `Object`, telles que `john` et `ben` ci-dessus, en la même chaîne de caractères `"[object Object]"`.
+Certainement pas ce que nous voulons.
 
 ```smart header="Comment `Map` compare les clés"
 
@@ -184,7 +189,8 @@ let map = new Map(Object.entries(obj));
 alert(map.get('name')); // John
 ```
 
-Ici, `Object.entries` renvoie le tableau de paires clé/valeur : `[ ["name", "John"], ["age", 30] ]`. C'est ce dont a besoin la `Map`.
+Ici, `Object.entries` renvoie le tableau de paires clé/valeur : `[ ["name", "John"], ["age", 30] ]`.
+C'est ce dont a besoin la `Map`.
 
 ## Object.fromEntries: Objet à partir d'une Map
 
@@ -234,7 +240,10 @@ Nous pourrions également raccourcir la ligne (*) :
 let obj = Object.fromEntries(map); // .entries() omis
 ```
 
-C'est la même chose, car `Object.fromEntries` attend un objet itérable en argument. Pas nécessairement un tableau. Et l'itération standard pour une `map` renvoie les mêmes paires clé/valeur que `map.entries()`. Ainsi, nous obtenons un objet simple avec les mêmes clés/valeurs que la `map`.
+C'est la même chose, car `Object.fromEntries` attend un objet itérable en argument.
+Pas nécessairement un tableau.
+Et l'itération standard pour une `map` renvoie les mêmes paires clé/valeur que `map.entries()`.
+Ainsi, nous obtenons un objet simple avec les mêmes clés/valeurs que la `map`.
 
 ## Set
 
@@ -252,7 +261,8 @@ Ses principales méthodes sont :
 Ce qu'il faut surtout savoir c'est que lorsque l'on appelle plusieurs fois `set.add(value)` avec la même valeur, la méthode ne fait rien.
 C'est pourquoi chaque valeur est unique dans un `Set`.
 
-Par exemple, nous souhaitons nous souvenir de tous nos visiteurs. Mais chaque visiteurs doit être unique.
+Par exemple, nous souhaitons nous souvenir de tous nos visiteurs.
+Mais chaque visiteurs doit être unique.
 
 `Set` est exactement ce qu'il nous faut :
 
@@ -278,7 +288,9 @@ for (let user of set) {
 }
 ```
 
-Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque insertion que l'élément n'existe pas en utilisant [arr.find](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find). Cependant les performances auraient été moins bonnes car cette méthode parcours chaque élément du tableau. `Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
+Nous aurions aussi pu utiliser un tableau (`Array`) en vérifiant avant chaque insertion que l'élément n'existe pas en utilisant [arr.find](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find).
+Cependant les performances auraient été moins bonnes car cette méthode parcours chaque élément du tableau.
+`Set` est beaucoup plus efficace car il est optimisé en interne pour vérifier l'unicité des valeurs.
 
 ## Parcourir un Set
 
@@ -297,7 +309,9 @@ set.forEach((value, valueAgain, set) => {
 
 A noter que la fonction de callback utilisée par `forEach` prend 3 arguments en paramètres : une `value`, puis *la même valeur* `valueAgain`, et enfin le set lui-même.
 
-C'est pour la compatibilité avec `Map` où le callback `forEach` passé possède trois arguments. Ça a l'air un peu étrange, c'est sûr. Mais cela peut aider à remplacer facilement `Map` par `Set` dans certains cas, et vice versa.
+C'est pour la compatibilité avec `Map` où le callback `forEach` passé possède trois arguments.
+Ça a l'air un peu étrange, c'est sûr.
+Mais cela peut aider à remplacer facilement `Map` par `Set` dans certains cas, et vice versa.
 
 Les méthodes pour parcourir les éléments d'une `Map` peuvent être utilisées :
 

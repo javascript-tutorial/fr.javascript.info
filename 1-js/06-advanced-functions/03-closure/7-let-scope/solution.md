@@ -17,7 +17,8 @@ func();
 
 Dans cet exemple, nous pouvons observer la différence particulière entre une variable "non existante" et une variable "non initialisée".
 
-Comme vous l'avez peut-être lu dans l'article [](info:closure), une variable démarre à l'état "non initialisée" à partir du moment où l'exécution entre dans un bloc de code (ou une fonction). Et elle reste non initialisée jusqu'à la déclaration `let` correspondante.
+Comme vous l'avez peut-être lu dans l'article [](info:closure), une variable démarre à l'état "non initialisée" à partir du moment où l'exécution entre dans un bloc de code (ou une fonction).
+Et elle reste non initialisée jusqu'à la déclaration `let` correspondante.
 
 En d'autres termes, une variable existe techniquement, mais ne peut pas être utilisée avant `let`.
 

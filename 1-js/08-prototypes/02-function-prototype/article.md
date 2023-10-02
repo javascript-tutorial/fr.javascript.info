@@ -5,12 +5,16 @@ Rappelez-vous que de nouveaux objets peuvent être créés avec une fonction con
 Si `F.prototype` est un objet, alors l'opérateur `new` l'utilise pour définir `[[Prototype]]` pour le nouvel objet.
 
 ```smart header="Veuillez noter"
-JavaScript avait l'héritage prototypique depuis le début. C'était l'une des caractéristiques principales du langage.
+JavaScript avait l'héritage prototypique depuis le début.
+C'était l'une des caractéristiques principales du langage.
 
-Mais dans le passé, il n'y avait pas d'accès direct. La seule chose qui fonctionnait de manière fiable est une propriété `"prototype"` de la fonction constructeur décrite dans ce chapitre. Donc, il y a beaucoup de scripts qui l'utilisent encore.
+Mais dans le passé, il n'y avait pas d'accès direct.
+La seule chose qui fonctionnait de manière fiable est une propriété `"prototype"` de la fonction constructeur décrite dans ce chapitre.
+Donc, il y a beaucoup de scripts qui l'utilisent encore.
 ```
 
-Veuillez noter que `F.prototype` signifie ici une propriété régulière nommée `"prototype"` sur `F`. Cela ressemble quelque peu au terme "prototype", mais nous entendons ici une propriété régulière portant ce nom.
+Veuillez noter que `F.prototype` signifie ici une propriété régulière nommée `"prototype"` sur `F`.
+Cela ressemble quelque peu au terme "prototype", mais nous entendons ici une propriété régulière portant ce nom.
 
 Voici l'exemple :
 
@@ -41,7 +45,8 @@ Voici l'image résultante :
 Sur l'image, `"prototype"` est une flèche horizontale, ce qui signifie une propriété normale, et `[[Prototype]]` est vertical, ce qui signifie l'héritage de `rabbit` de `animal`.
 
 ```smart header="`F.prototype` utilisé uniquement pendant `new F`"
-La propriété `F.prototype` est utilisée uniquement lorsque `new F` est appelé, elle attribue `[[Prototype]]` du nouvel objet. Après cela, il n'y a plus de connexion entre `F.prototype` et le nouvel objet.
+La propriété `F.prototype` est utilisée uniquement lorsque `new F` est appelé, elle attribue `[[Prototype]]` du nouvel objet.
+Après cela, il n'y a plus de connexion entre `F.prototype` et le nouvel objet.
 
 Si, après la création, la propriété `F.prototype` change (`F.prototype = <un autre objet>`), les nouveaux objets créés par `new F` auront un autre objet comme `[[Prototype]]`, mais les objets déjà existants conservent l'ancien.
 ```
@@ -111,7 +116,8 @@ Mais probablement la chose la plus importante à propos de `"constructor"` est q
 
 **...JavaScript lui-même n'assure pas la bonne valeur de `"constructor"`.**
 
-Oui, il existe dans le `"prototype"` par défaut des fonctions, mais c'est tout. Ce qu'il en adviendra par la suite dépend entièrement de nous.
+Oui, il existe dans le `"prototype"` par défaut des fonctions, mais c'est tout.
+Ce qu'il en adviendra par la suite dépend entièrement de nous.
 
 En particulier, si nous remplaçons le prototype par défaut dans son ensemble, il ne contiendra pas de "constructor".
 
@@ -155,7 +161,8 @@ Rabbit.prototype = {
 
 ## Résumé
 
-Dans ce chapitre, nous avons brièvement décrit la manière de définir un `[[Prototype]]` pour les objets créés via une fonction constructeur. Plus tard, nous verrons des modèles de programmation plus avancés qui en dépendent.
+Dans ce chapitre, nous avons brièvement décrit la manière de définir un `[[Prototype]]` pour les objets créés via une fonction constructeur.
+Plus tard, nous verrons des modèles de programmation plus avancés qui en dépendent.
 
 Tout est assez simple, juste quelques précisions pour clarifier les choses :
 

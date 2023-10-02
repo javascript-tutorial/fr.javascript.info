@@ -22,5 +22,7 @@ Réécrivez-le, pour effectuer la même chose, mais sans `if`, et en une seule l
 
 Faites deux variantes de `checkAge` :
 
-1. En utilisant un opérateur point d'interrogation `?`
-2. En utilisant OU `||`
+1.
+En utilisant un opérateur point d'interrogation `?`
+2.
+En utilisant OU `||`

@@ -1,8 +1,10 @@
 # Opérateurs logiques
 
-Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT), `??` (Coalescence des nulles). Nous couvrons ici les trois premiers, l'explication de l'opérateur `??` est dans l'article suivant.
+Il y a trois opérateurs logiques en JavaScript : `||` (OR), `&&` (AND), `!` (NOT), `??` (Coalescence des nulles).
+Nous couvrons ici les trois premiers, l'explication de l'opérateur `??` est dans l'article suivant.
 
-Bien qu'ils soient appelés "logiques", ils peuvent être appliqués à des valeurs de tout type, pas seulement booléennes. Le résultat peut également être de tout type.
+Bien qu'ils soient appelés "logiques", ils peuvent être appliqués à des valeurs de tout type, pas seulement booléennes.
+Le résultat peut également être de tout type.
 
 Voyons les détails.
 
@@ -14,9 +16,11 @@ L'opérateur "OR" est représenté avec deux symboles de ligne verticale :
 result = a || b;
 ```
 
-En programmation classique, le OU logique est destiné à manipuler uniquement les valeurs booléennes. Si l'un de ses arguments est `true`, alors il renvoie `true`, sinon il renvoie `false`.
+En programmation classique, le OU logique est destiné à manipuler uniquement les valeurs booléennes.
+Si l'un de ses arguments est `true`, alors il renvoie `true`, sinon il renvoie `false`.
 
-En JavaScript, l'opérateur est un peu plus compliqué et puissant. Mais voyons d’abord ce qui se passe avec les valeurs booléennes.
+En JavaScript, l'opérateur est un peu plus compliqué et puissant.
+Mais voyons d’abord ce qui se passe avec les valeurs booléennes.
 
 Il existe quatre combinaisons logiques possibles :
 
@@ -66,7 +70,8 @@ if (hour < 10 || hour > 18 || isWeekend) {
 
 ### OR "||" cherche la première valeur vraie [#or-cherche-la-premiere-valeur-vraie]
 
-La logique décrite ci-dessus est quelque peu classique. Maintenant, apportons les fonctionnalités "supplémentaires" de JavaScript.
+La logique décrite ci-dessus est quelque peu classique.
+Maintenant, apportons les fonctionnalités "supplémentaires" de JavaScript.
 
 L'algorithme étendu fonctionne comme suit.
 
@@ -79,7 +84,8 @@ result = value1 || value2 || value3;
 L'opérateur OR `||` fait ce qui suit :
 
 - Évaluer les opérandes de gauche à droite.
-- Pour chaque opérande, il le convertit en booléen. Si le résultat est `true`, arrêter et retourner la valeur d'origine de cet opérande.
+- Pour chaque opérande, il le convertit en booléen.
+Si le résultat est `true`, arrêter et retourner la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire que tous étaient `false`), renvoyer le dernier opérande.
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
@@ -99,7 +105,8 @@ alert(undefined || null || 0); // 0 (tous faux, renvoie la dernière valeur)
 
 Cela conduit à des usages intéressants par rapport à un "OR pur, classique, booléen uniquement".
 
-1. **Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
+1.
+**Obtenir la première valeur vraie dans la liste des variables ou des expressions.**
 
     Par exemple, nous avons les variables `firstName`, `lastName` et `nickName`, toutes optionnelles (c'est-à-dire peut être indéfini ou avoir des valeurs fausses).
 
@@ -117,7 +124,8 @@ Cela conduit à des usages intéressants par rapport à un "OR pur, classique, b
 
     Si toutes les variables étaient fausses, ce serait `"Anonymous"` qui apparaîtrait.
 
-2. **Évaluation des courts-circuits.**
+2.
+**Évaluation des courts-circuits.**
 
     Une autre caractéristique de l'opérateur OR `||` est l'évaluation dite de "court-circuit".
 
@@ -183,12 +191,14 @@ result = value1 && value2 && value3;
 L'opérateur AND `&&` effectue les opérations suivantes :
 
 - Évaluer les opérandes de gauche à droite.
-- Pour chaque opérande, il le convertit en booléen. Si le résultat est `false`, arrêter et retourner la valeur d'origine de cet opérande.
+- Pour chaque opérande, il le convertit en booléen.
+Si le résultat est `false`, arrêter et retourner la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retourner le dernier opérande.
 
 En d'autres termes, une chaîne de AND `&&` renvoie la première valeur `false` ou la dernière valeur si aucune valeur `false` n'a été trouvée.
 
-Les règles ci-dessus sont similaires à OR. La différence est que AND retourne la première valeur `false` tandis que OR renvoie la première valeur `true`.
+Les règles ci-dessus sont similaires à OR.
+La différence est que AND retourne la première valeur `false` tandis que OR renvoie la première valeur `true`.
 
 Exemples :
 
@@ -199,12 +209,14 @@ alert(1 && 0); // 0
 alert(1 && 5); // 5
 
 /* Si le premier opérande est faux,
-AND le retourne. Le deuxième opérande est ignoré */
+AND le retourne.
+Le deuxième opérande est ignoré */
 alert(null && 5); // null
 alert(0 && "no matter what"); // 0
 ```
 
-Nous pouvons également transmettre plusieurs valeurs à la suite sur une même ligne. Voyez comment le premier faux est retourné :
+Nous pouvons également transmettre plusieurs valeurs à la suite sur une même ligne.
+Voyez comment le premier faux est retourné :
 
 ```js run
 alert(1 && 2 && null && 3); // null
@@ -233,7 +245,8 @@ let x = 1;
 (x > 0) && alert('Greater than zero!');
 ```
 
-L'action dans la partie droite de `&&` ne s'exécutera que si l'évaluation lui parvient. C'est-à-dire que seulement si `(x > 0)` est vrai.
+L'action dans la partie droite de `&&` ne s'exécutera que si l'évaluation lui parvient.
+C'est-à-dire que seulement si `(x > 0)` est vrai.
 
 Donc, nous avons une analogie pour :
 
@@ -243,7 +256,8 @@ let x = 1;
 if (x > 0) alert('Greater than zero!');
 ```
 
-Bien que la variante avec `&&` semble plus courte, `if` est plus évidente et a tendance à être un peu plus lisible. Nous recommandons donc d'utiliser chaque construction dans son but : utilisez `if` si nous voulons `if` et utilisez `&&` si nous voulons ET.
+Bien que la variante avec `&&` semble plus courte, `if` est plus évidente et a tendance à être un peu plus lisible.
+Nous recommandons donc d'utiliser chaque construction dans son but : utilisez `if` si nous voulons `if` et utilisez `&&` si nous voulons ET.
 ````
 
 ## L'opérateur ! (NOT)
@@ -258,8 +272,10 @@ result = !value;
 
 L'opérateur accepte un seul argument et effectue les opérations suivantes :
 
-1. Convertit l'opérande en type booléen : `true/false`.
-2. Renvoie la valeur inverse.
+1.
+Convertit l'opérande en type booléen : `true/false`.
+2.
+Renvoie la valeur inverse.
 
 Par exemple :
 
@@ -275,7 +291,8 @@ alert(!!"non-empty string"); // true
 alert(!!null); // false
 ```
 
-C'est-à-dire que le premier NOT convertit la valeur en booléen et retourne l'inverse, et que le second NOT l'inverse encore. À la fin, nous avons une conversion booléenne simple.
+C'est-à-dire que le premier NOT convertit la valeur en booléen et retourne l'inverse, et que le second NOT l'inverse encore.
+À la fin, nous avons une conversion booléenne simple.
 
 Il existe un moyen un peu plus verbeux de faire la même chose -- une fonction `Boolean` intégrée :
 

@@ -6,7 +6,8 @@ Ici, nous verrons comment créer de nouveaux éléments "à la volée" et modifi
 
 ## Exemple : afficher un message
 
-Démontrons en utilisant un exemple. Nous allons ajouter un message sur la page qui est plus joli que `alert`.
+Démontrons en utilisant un exemple.
+Nous allons ajouter un message sur la page qui est plus joli que `alert`.
 
 Voici à quoi cela ressemblera :
 
@@ -28,7 +29,8 @@ Voici à quoi cela ressemblera :
 */!*
 ```
 
-C'était un exemple HTML. Créons maintenant la même `div` avec JavaScript (en supposant que les styles sont déjà dans le HTML ou un fichier CSS externe).
+C'était un exemple HTML.
+Créons maintenant la même `div` avec JavaScript (en supposant que les styles sont déjà dans le HTML ou un fichier CSS externe).
 
 ## Création d'un élément
 
@@ -55,21 +57,27 @@ La plupart du temps, nous devons créer des nœuds d'élément, tels que le `div
 La création du message div prend 3 étapes :
 
 ```js
-// 1. Create <div> element
+// 1.
+Create <div> element
 let div = document.createElement('div');
 
-// 2. Set its class to "alert"
+// 2.
+Set its class to "alert"
 div.className = "alert";
 
-// 3. Fill it with the content
+// 3.
+Fill it with the content
 div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
 ```
 
-Nous avons créé l'élément. Mais pour le moment, ce n'est que dans une variable nommée `div`, pas encore dans la page. Nous ne pouvons donc pas le voir.
+Nous avons créé l'élément.
+Mais pour le moment, ce n'est que dans une variable nommée `div`, pas encore dans la page.
+Nous ne pouvons donc pas le voir.
 
 ## Méthodes d'insertion
 
-Pour faire apparaître la `div`, nous devons l'insérer quelque part dans `document`. Par exemple, dans l'élément `<body>`, référencé par `document.body`.
+Pour faire apparaître la `div`, nous devons l'insérer quelque part dans `document`.
+Par exemple, dans l'élément `<body>`, référencé par `document.body`.
 
 Il existe une méthode spéciale `append` pour cela : `document.body.append(div)`.
 
@@ -97,7 +105,8 @@ Voici le code complet :
 </script>
 ```
 
-Ici, nous avons appelé `append` sur `document.body`, mais nous pouvons appeler la méthode `append` sur n'importe quel autre élément, pour y mettre un autre élément. Par exemple, nous pouvons ajouter quelque chose à `<div>` en appelant `div.append(anotherElement)`.
+Ici, nous avons appelé `append` sur `document.body`, mais nous pouvons appeler la méthode `append` sur n'importe quel autre élément, pour y mettre un autre élément.
+Par exemple, nous pouvons ajouter quelque chose à `<div>` en appelant `div.append(anotherElement)`.
 
 Voici plus de méthodes d'insertion, elles spécifient différents endroits où insérer :
 
@@ -185,7 +194,8 @@ Mais que se passe-t-il si nous voulons insérer du HTML "en tant que html", avec
 
 Pour cela, nous pouvons utiliser une autre méthode assez polyvalente : `elem.insertAdjacentHTML(where, html)`.
 
-Le premier paramètre est un mot de code, spécifiant où insérer par rapport à `elem`. Doit être l'un des suivants :
+Le premier paramètre est un mot de code, spécifiant où insérer par rapport à `elem`.
+Doit être l'un des suivants :
 
 - `"beforebegin"` -- insère `html` immédiatement avant `elem`,
 - `"afterbegin"` -- insère `html` dans `elem`, au début,
@@ -218,14 +228,17 @@ Voici l'image des variantes d'insertion :
 
 ![](insert-adjacent.svg)
 
-Nous pouvons facilement remarquer des similitudes entre cette image et l'image précédente. Les points d'insertion sont en fait les mêmes, mais cette méthode insère du HTML.
+Nous pouvons facilement remarquer des similitudes entre cette image et l'image précédente.
+Les points d'insertion sont en fait les mêmes, mais cette méthode insère du HTML.
 
 La méthode a deux sœurs :
 
 - `elem.insertAdjacentText(where, text)` -- la même syntaxe, mais une chaîne de caractères `text` est insérée `en tant que texte` au lieu de HTML,
 - `elem.insertAdjacentElement(where, elem)` -- la même syntaxe, mais insère un élément.
 
-Elles existent principalement pour rendre la syntaxe "uniforme". En pratique, seule `insertAdjacentHTML` est utilisée la plupart du temps. Parce que pour les éléments et le texte, nous avons des méthodes `append/prepend/before/after` -- elles sont plus courtes à écrire et peuvent insérer des nœuds/morceaux de texte.
+Elles existent principalement pour rendre la syntaxe "uniforme".
+En pratique, seule `insertAdjacentHTML` est utilisée la plupart du temps.
+Parce que pour les éléments et le texte, nous avons des méthodes `append/prepend/before/after` -- elles sont plus courtes à écrire et peuvent insérer des nœuds/morceaux de texte.
 
 Voici donc une variante alternative pour afficher un message :
 
@@ -295,11 +308,13 @@ Par exemple, permutons les éléments :
 
 Comment insérer un autre message similaire ?
 
-Nous pourrions créer une fonction et y mettre le code. Mais l'alternative serait de *cloner* la `div` existant et de modifier le texte à l'intérieur (si nécessaire).
+Nous pourrions créer une fonction et y mettre le code.
+Mais l'alternative serait de *cloner* la `div` existant et de modifier le texte à l'intérieur (si nécessaire).
 
 Parfois, lorsque nous avons un gros élément, cela peut être plus rapide et plus simple.
 
-- L'appel `elem.cloneNode(true)` crée un clone "profond" de l'élément -- avec tous les attributs et sous-éléments. Si nous appelons `elem.cloneNode(false)`, alors le clone est fait sans éléments enfants.
+- L'appel `elem.cloneNode(true)` crée un clone "profond" de l'élément -- avec tous les attributs et sous-éléments.
+Si nous appelons `elem.cloneNode(false)`, alors le clone est fait sans éléments enfants.
 
 Un exemple de copie du message :
 
@@ -368,7 +383,8 @@ Veuillez noter qu'à la dernière ligne `(*)` nous ajoutons `DocumentFragment`, 
 </ul>
 ```
 
-`DocumentFragment` est rarement utilisé explicitement. Pourquoi ajouter à un type spécial de nœud, si nous pouvons renvoyer un tableau de nœuds à la place ? Exemple réécrit :
+`DocumentFragment` est rarement utilisé explicitement.
+Pourquoi ajouter à un type spécial de nœud, si nous pouvons renvoyer un tableau de nœuds à la place ? Exemple réécrit :
 
 ```html run
 <ul id="ul"></ul>
@@ -400,7 +416,8 @@ Nous mentionnons `DocumentFragment` principalement parce qu'il y a quelques conc
 
 Il existe également des méthodes de manipulation du DOM "à l'ancienne", qui existent pour des raisons historiques.
 
-Ces méthodes viennent d'une époque très ancienne. De nos jours, il n'y a aucune raison de les utiliser, depuis qu'il existe des méthodes modernes, telles que `append`, `prepend`, `before`, `after`, `remove`, `replaceWith`, qui sont plus flexibles.
+Ces méthodes viennent d'une époque très ancienne.
+De nos jours, il n'y a aucune raison de les utiliser, depuis qu'il existe des méthodes modernes, telles que `append`, `prepend`, `before`, `after`, `remove`, `replaceWith`, qui sont plus flexibles.
 
 La seule raison pour laquelle nous listons ces méthodes ici est que vous pouvez les trouver dans de nombreux anciens scripts :
 
@@ -471,7 +488,9 @@ La seule raison pour laquelle nous listons ces méthodes ici est que vous pouvez
     </script>
     ```
 
-Toutes ces méthodes renvoient le nœud inséré/supprimé. En d'autres termes, `parentElem.appendChild(node)` renvoie `node`. Mais généralement, la valeur retournée n'est pas utilisée, nous exécutons simplement la méthode.
+Toutes ces méthodes renvoient le nœud inséré/supprimé.
+En d'autres termes, `parentElem.appendChild(node)` renvoie `node`.
+Mais généralement, la valeur retournée n'est pas utilisée, nous exécutons simplement la méthode.
 
 ## Un mot sur "document.write"
 
@@ -489,9 +508,13 @@ La syntaxe :
 <p>The end</p>
 ```
 
-L'appel à `document.write(html)` écrit le `html` dans la page "ici et maintenant". La chaîne de caractères `html` peut être générée dynamiquement, donc c'est un peu flexible. Nous pouvons utiliser JavaScript pour créer une page Web à part entière et l'écrire.
+L'appel à `document.write(html)` écrit le `html` dans la page "ici et maintenant".
+La chaîne de caractères `html` peut être générée dynamiquement, donc c'est un peu flexible.
+Nous pouvons utiliser JavaScript pour créer une page Web à part entière et l'écrire.
 
-La méthode vient de l'époque où il n'y avait pas de DOM, pas de standards ... Des temps vraiment anciens. Il vit toujours, car il existe des scripts qui l'utilisent.
+La méthode vient de l'époque où il n'y avait pas de DOM, pas de standards ...
+Des temps vraiment anciens.
+Il vit toujours, car il existe des scripts qui l'utilisent.
 
 Dans les scripts modernes, nous le voyons rarement, en raison de la limitation importante suivante :
 
@@ -516,11 +539,15 @@ C'est donc un peu inutilisable au stade "post chargement", contrairement aux aut
 
 Voilà l'inconvénient.
 
-Il y a aussi un avantage. Techniquement, lorsque `document.write` est appelé pendant que le navigateur lit ("analyse") le HTML entrant, et qu'il écrit quelque chose, le navigateur le consomme comme s'il était initialement là, dans le texte HTML.
+Il y a aussi un avantage.
+Techniquement, lorsque `document.write` est appelé pendant que le navigateur lit ("analyse") le HTML entrant, et qu'il écrit quelque chose, le navigateur le consomme comme s'il était initialement là, dans le texte HTML.
 
-Cela fonctionne donc très rapidement, car il n'y a *aucune modification du DOM* impliquée. Il écrit directement dans le texte de la page, tandis que le DOM n'est pas encore construit.
+Cela fonctionne donc très rapidement, car il n'y a *aucune modification du DOM* impliquée.
+Il écrit directement dans le texte de la page, tandis que le DOM n'est pas encore construit.
 
-Donc, si nous devons ajouter beaucoup de texte en HTML de manière dynamique, et que nous sommes en phase de chargement de page, et que la vitesse compte, cela peut aider. Mais dans la pratique, ces exigences se rencontrent rarement. Et généralement, nous pouvons voir cette méthode dans les scripts simplement parce qu'ils sont anciens.
+Donc, si nous devons ajouter beaucoup de texte en HTML de manière dynamique, et que nous sommes en phase de chargement de page, et que la vitesse compte, cela peut aider.
+Mais dans la pratique, ces exigences se rencontrent rarement.
+Et généralement, nous pouvons voir cette méthode dans les scripts simplement parce qu'ils sont anciens.
 
 ## Résumé
 
@@ -558,4 +585,5 @@ Donc, si nous devons ajouter beaucoup de texte en HTML de manière dynamique, et
 - Pour ajouter du HTML à la page avant la fin du chargement :
     - `document.write(html)`
 
-    Une fois la page chargée, un tel appel efface le document. Surtout vu dans les anciens scripts.
+    Une fois la page chargée, un tel appel efface le document.
+Surtout vu dans les anciens scripts.

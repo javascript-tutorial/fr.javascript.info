@@ -8,9 +8,12 @@ importance: 4
 
 Pour chaque élément de la liste :
 
-1. Interrogez un utilisateur sur son contenu en utilisant `prompt`.
-2. Créez le `<li>` avec et ajoutez-le à `<ul>`.
-3. Continuez jusqu'à ce que l'utilisateur annule l'entrée (en appuyant sur la touche `key:Esc` ou une entrée vide).
+1.
+Interrogez un utilisateur sur son contenu en utilisant `prompt`.
+2.
+Créez le `<li>` avec et ajoutez-le à `<ul>`.
+3.
+Continuez jusqu'à ce que l'utilisateur annule l'entrée (en appuyant sur la touche `key:Esc` ou une entrée vide).
 
 Tous les éléments doivent être créés dynamiquement.
 

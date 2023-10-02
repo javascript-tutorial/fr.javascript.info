@@ -27,9 +27,12 @@ messages.shift();
 
 Le `WeakSet` permet de stocker un ensemble de messages et de vérifier facilement l’existence d’un message dedans.
 
-Il se nettoie automatiquement. Le compromis est que nous ne pouvons pas le parcourir, nous ne pouvons pas obtenir "tous les messages lus" directement. Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
+Il se nettoie automatiquement.
+Le compromis est que nous ne pouvons pas le parcourir, nous ne pouvons pas obtenir "tous les messages lus" directement.
+Mais nous pouvons le faire en parcourant tous les messages et en filtrant ceux qui sont dans le set.
 
-Une autre solution pourrait consister à ajouter une propriété telle que `message.isRead = true` à un message après sa lecture. Comme les objets de messages sont gérés par un autre code, cela est généralement déconseillé, mais nous pouvons utiliser une propriété symbolique pour éviter les conflits.
+Une autre solution pourrait consister à ajouter une propriété telle que `message.isRead = true` à un message après sa lecture.
+Comme les objets de messages sont gérés par un autre code, cela est généralement déconseillé, mais nous pouvons utiliser une propriété symbolique pour éviter les conflits.
 
 Comme ceci :
 ```js

@@ -9,18 +9,23 @@ Ce n'est pas ainsi que nous écrivons du nouveau code.
 
 Dans le tout premier chapitre qui parle des [variables](info:variables), nous avons mentionné trois façons pour déclarer une variable :
 
-1. `let`
-2. `const`
-3. `var`
+1.
+`let`
+2.
+`const`
+3.
+`var`
 
-La déclaration `var` est similaire à `let`. La plupart du temps, nous pouvons remplacer `let` par `var` ou vice-versa et nous attendre à ce que les choses fonctionnent :
+La déclaration `var` est similaire à `let`.
+La plupart du temps, nous pouvons remplacer `let` par `var` ou vice-versa et nous attendre à ce que les choses fonctionnent :
 
 ```js run
 var message = "Hi";
 alert(message); // Hi
 ```
 
-Mais en interne, `var` est une bête très différente, originaire de très vieux temps. Il n'est généralement pas utilisé dans les scripts modernes, mais se cache toujours dans les anciens.
+Mais en interne, `var` est une bête très différente, originaire de très vieux temps.
+Il n'est généralement pas utilisé dans les scripts modernes, mais se cache toujours dans les anciens.
 
 Si vous ne prévoyez pas de rencontrer de tels scripts, vous pouvez même sauter ce chapitre ou le reporter.
 
@@ -28,7 +33,8 @@ D'un autre côté, il est important de comprendre les différences lors de la mi
 
 ## "var" n'a pas de portée limitée aux blocs
 
-Les variables, déclarées avec `var`, ont une portée fonction ou globale. Ils sont visibles à travers des blocs.
+Les variables, déclarées avec `var`, ont une portée fonction ou globale.
+Ils sont visibles à travers des blocs.
 
 Par exemple :
 
@@ -85,7 +91,8 @@ sayHi();
 alert(phrase); // ReferenceError: phrase is not defined
 ```
 
-Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou les autres blocs de code. C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux, et `var` est un vestige de ce dernier.
+Comme nous pouvons le constater, `var` pénètre à travers `if`, `for` ou les autres blocs de code.
+C'est parce que, il y a longtemps, les blocs de JavaScript n'avaient pas d'environnements lexicaux, et `var` est un vestige de ce dernier.
 
 ## "var" tolère les redéclarations
 
@@ -96,7 +103,8 @@ let user;
 let user; // SyntaxError: 'user' has already been declared
 ```
 
-Avec `var`, nous pouvons redéclarer une variable autant de fois que nécessaire. Si nous utilisons `var` avec une variable déjà déclarée, elle est simplement ignorée :
+Avec `var`, nous pouvons redéclarer une variable autant de fois que nécessaire.
+Si nous utilisons `var` avec une variable déjà déclarée, elle est simplement ignorée :
 
 ```js run
 var user = "Pete";
@@ -162,7 +170,8 @@ sayHi();
 
 Certains nomment ce comportement "hoisting" (hisser) parce que toutes les `var` sont "hoisted" (hissées) jusqu'en haut de la fonction.
 
-Ainsi, dans l'exemple ci-dessus, la branche `if (false)` ne s'exécute jamais, mais cela n'a pas d'importance. La `var` qu'elle contient est traitée au début de la fonction, donc au moment de `(*)` la variable existe.
+Ainsi, dans l'exemple ci-dessus, la branche `if (false)` ne s'exécute jamais, mais cela n'a pas d'importance.
+La `var` qu'elle contient est traitée au début de la fonction, donc au moment de `(*)` la variable existe.
 
 **Les déclarations sont hissées, mais les affectations ne le sont pas.**
 
@@ -182,10 +191,13 @@ sayHi();
 
 La ligne `var phrase = "Hello"` contient deux actions :
 
-1. Déclaration de la variable `var`
-2. Affectation de la variable `=`.
+1.
+Déclaration de la variable `var`
+2.
+Affectation de la variable `=`.
 
-La déclaration est traitée au début de l'exécution de la fonction ("hoisted"), mais l'affectation fonctionne toujours à l'endroit où elle apparaît. Essentiellement, le code fonctionne comme ceci :
+La déclaration est traitée au début de l'exécution de la fonction ("hoisted"), mais l'affectation fonctionne toujours à l'endroit où elle apparaît.
+Essentiellement, le code fonctionne comme ceci :
 
 ```js run
 function sayHi() {
@@ -203,13 +215,16 @@ function sayHi() {
 sayHi();
 ```
 
-Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où. Mais les variables sont indéfinies jusqu'aux affectations.
+Parce que toutes les déclarations `var` sont traitées au début de la fonction, nous pouvons y faire référence n'importe où.
+Mais les variables sont indéfinies jusqu'aux affectations.
 
-Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe. Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
+Dans les deux exemples au dessus, `alert` fonctionne sans erreur parce que la variable `phrase` existe.
+Mais sa valeur n'est pas encore affectée, alors cela donne `undefined`.
 
 ## IIFE
 
-Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter. Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
+Comme par le passé, il n'y avait que `var`, et qu'il n'a pas de visibilité au niveau du bloc, les programmeurs ont inventé un moyen de l'imiter.
+Ce qu'ils ont fait a été appelé "expressions de fonction immédiatement invoquées" (en abrégé IIFE).
 
 Ce n'est pas quelque chose que nous devrions utiliser de nos jours, mais vous pouvez les trouver dans d'anciens scripts.
 
@@ -225,9 +240,11 @@ Un IIFE ressemble à ceci :
 })();
 ```
 
-Ici, une fonction expression est créée et immédiatement appelée. Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
+Ici, une fonction expression est créée et immédiatement appelée.
+Ainsi, le code s'exécute immédiatement et possède ses propres variables privées.
 
-La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"function"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration. Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
+La fonction expression est entourée de parenthèses `(fonction {...})`, car lorsque JavaScript rencontre `"function"` dans le flux de code principal, il le comprend comme le début d'une fonction déclaration.
+Mais une fonction déclaration doit avoir un nom, donc ce type de code donnera une erreur :
 
 ```js run
 // Essayons de déclarer et d'appeler immédiatement une fonction
@@ -273,15 +290,20 @@ Il existe d'autres façons que les parenthèses pour dire à JavaScript que nous
 }();
 ```
 
-Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement. Notons encore : de nos jours il n'y a aucune raison d'écrire un tel code.
+Dans tous les cas ci-dessus, nous déclarons une fonction expression et l'exécutons immédiatement.
+Notons encore : de nos jours il n'y a aucune raison d'écrire un tel code.
 
 ## Résumé
 
 Il y a deux différences majeures entre `var` et `let`/`const`:
 
-1. Les variables `var` n'ont pas de portée de bloc, leur visibilité est étendue à la fonction actuelle, ou globale, si elle est déclarée hors fonction.
-2. Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
+1.
+Les variables `var` n'ont pas de portée de bloc, leur visibilité est étendue à la fonction actuelle, ou globale, si elle est déclarée hors fonction.
+2.
+Les déclarations `var` sont traitées au début de la fonction (ou au début du script pour le cas global).
 
 Il y a une autre différence mineure associée à l'objet global, mais nous traiterons ce point dans le prochain chapitre.
 
-Ces différences rendent `var` pire que `let` dans la plupart des cas. Les variables au niveau des blocs sont extraordinaires. C'est pourquoi `let` a été introduit au standard il y a longtemps et c'est maintenant un moyen majeur (avec `const`) pour déclarer une variable.
+Ces différences rendent `var` pire que `let` dans la plupart des cas.
+Les variables au niveau des blocs sont extraordinaires.
+C'est pourquoi `let` a été introduit au standard il y a longtemps et c'est maintenant un moyen majeur (avec `const`) pour déclarer une variable.

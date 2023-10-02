@@ -40,10 +40,13 @@ alert(firstName); // John
 alert(surname);  // Smith
 ```
 
-Comme vous pouvez le voir, la syntaxe est simple. Il y a cependant plusieurs détails particuliers. Voyons plus d'exemples, pour mieux le comprendre.
+Comme vous pouvez le voir, la syntaxe est simple.
+Il y a cependant plusieurs détails particuliers.
+Voyons plus d'exemples, pour mieux le comprendre.
 
 ````smart header="\"Décomposition\" ne veut pas dire \"destruction\"."
-Cette manipulation est appelée "affectation par décomposition", car elle "se décompose" en copiant ses éléments dans des variables. Mais le tableau lui-même n'est pas modifié.
+Cette manipulation est appelée "affectation par décomposition", car elle "se décompose" en copiant ses éléments dans des variables.
+Mais le tableau lui-même n'est pas modifié.
 
 C’est juste une façon plus courte d’écrire :
 ```js
@@ -76,7 +79,8 @@ Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisi
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 ```
-That works, because internally a destructuring assignment works by iterating over the right value. It's a kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
+That works, because internally a destructuring assignment works by iterating over the right value.
+It's a kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
 ````
 
 ````smart header="Attribuer n'importe quoi à la partie gauche"
@@ -188,7 +192,8 @@ let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Ro
 
 ### Les valeurs par défaut
 
-Si le tableau est plus court que la liste des variables à gauche, il n'y aura aucune erreur. Les valeurs absentes sont considérées comme non définies :
+Si le tableau est plus court que la liste des variables à gauche, il n'y aura aucune erreur.
+Les valeurs absentes sont considérées comme non définies :
 
 ```js run
 *!*
@@ -211,7 +216,8 @@ alert(name);    // Julius (depuis le tableau)
 alert(surname); // Anonymous (valeur par défaut)
 ```
 
-Les valeurs par défaut peuvent être des expressions plus complexes ou même des appels de fonction. Ils ne sont évalués que si la valeur n'est pas fournie.
+Les valeurs par défaut peuvent être des expressions plus complexes ou même des appels de fonction.
+Ils ne sont évalués que si la valeur n'est pas fournie.
 
 Par exemple, nous utilisons ici la fonction `prompt` pour deux valeurs par défaut :
 
@@ -235,7 +241,9 @@ La syntaxe de base est la suivante :
 let {var1, var2} = {var1:…, var2:…}
 ```
 
-Nous devrions avoir un objet existant sur le côté droit, que nous voulons diviser en variables. La partie gauche contient un "modèle" de type objet pour les propriétés correspondantes. Dans le cas le plus simple, c'est une liste de noms de variables dans `{...}`.
+Nous devrions avoir un objet existant sur le côté droit, que nous voulons diviser en variables.
+La partie gauche contient un "modèle" de type objet pour les propriétés correspondantes.
+Dans le cas le plus simple, c'est une liste de noms de variables dans `{...}`.
 
 Par exemple :
 
@@ -257,7 +265,8 @@ alert(height); // 200
 
 Les propriétés `options.title`, `options.width` et `options.height` sont affectées aux variables correspondantes.
 
-L'ordre n'a pas d'importance. Cela fonctionne aussi :
+L'ordre n'a pas d'importance.
+Cela fonctionne aussi :
 
 ```js
 // changé l'ordre dans let {...}
@@ -289,7 +298,8 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
-Les deux points montrent "quoi: va où". Dans l'exemple ci-dessus, la propriété `width` est définie sur `w`, la propriété `height` est définie sur `h` et le `title` est attribué au même nom.
+Les deux points montrent "quoi: va où".
+Dans l'exemple ci-dessus, la propriété `width` est définie sur `w`, la propriété `height` est définie sur `h` et le `title` est attribué au même nom.
 
 Pour les propriétés potentiellement manquantes, nous pouvons définir les valeurs par défaut à l'aide de `"="`, comme ceci :
 
@@ -307,7 +317,8 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-Comme pour les tableaux ou les paramètres de fonction, les valeurs par défaut peuvent être des expressions ou même des appels de fonction. Elles seront évaluées si la valeur n'est pas fournie.
+Comme pour les tableaux ou les paramètres de fonction, les valeurs par défaut peuvent être des expressions ou même des appels de fonction.
+Elles seront évaluées si la valeur n'est pas fournie.
 
 Le code `prompt` ci-dessous demande la `width`, mais pas le `title`.
 
@@ -359,7 +370,8 @@ alert(title); // Menu
 
 Et si l'objet a plus de propriétés que de variables ? Peut-on en prendre puis assigner le "rest" quelque part ?
 
-Nous pouvons utiliser le modèle rest, comme nous l'avons fait avec les tableaux. Il n'est pas pris en charge par certains navigateurs plus anciens (IE, utilisez Babel pour le polyfiller), mais fonctionne avec les modernes.
+Nous pouvons utiliser le modèle rest, comme nous l'avons fait avec les tableaux.
+Il n'est pas pris en charge par certains navigateurs plus anciens (IE, utilisez Babel pour le polyfiller), mais fonctionne avec les modernes.
 
 Cela ressemble à ceci :
 
@@ -382,7 +394,9 @@ alert(rest.width);   // 100
 ```
 
 ````smart header="Attention, sans `let`, ça coince"
-Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`. Bien sûr, nous pourrions aussi utiliser des variables existantes. Mais il y a un problème.
+Dans les exemples ci-dessus, les variables ont été déclarées juste avant l'affectation : `let {…} = {…}`.
+Bien sûr, nous pourrions aussi utiliser des variables existantes.
+Mais il y a un problème.
 
 Cela ne fonctionnera pas :
 
@@ -393,7 +407,8 @@ let title, width, height;
 {title, width, height} = {title: "Menu", width: 200, height: 100};
 ```
 
-Le problème est que JavaScript traite `{...}` dans le flux de code principal (pas dans une autre expression) en tant que bloc de code. De tels blocs de code peuvent être utilisés pour regrouper des instructions, comme ceci :
+Le problème est que JavaScript traite `{...}` dans le flux de code principal (pas dans une autre expression) en tant que bloc de code.
+De tels blocs de code peuvent être utilisés pour regrouper des instructions, comme ceci :
 
 ```js run
 {
@@ -404,7 +419,8 @@ Le problème est que JavaScript traite `{...}` dans le flux de code principal (p
 }
 ```
 
-Donc ici, JavaScript suppose que nous avons un bloc de code, c'est pourquoi il y a une erreur. Nous voulons plutôt la déstructuration.
+Donc ici, JavaScript suppose que nous avons un bloc de code, c'est pourquoi il y a une erreur.
+Nous voulons plutôt la déstructuration.
 
 Pour montrer à JavaScript qu'il ne s'agit pas d'un bloc de code, nous pouvons envelopper l'expression entre parenthèses `(...)` :
 
@@ -422,7 +438,8 @@ alert(title); // Menu
 
 Si un objet ou un tableau contient d'autres objets et tableaux imbriqués, nous pouvons utiliser des modèles à gauche plus complexes pour extraire des parties plus profondes.
 
-Dans le code ci-dessous, `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
+Dans le code ci-dessous, `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`.
+Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
 
 ```js run
 let options = {
@@ -461,7 +478,10 @@ Notez qu'il n'y a pas de variables pour `size` et `items`, car nous prenons leur
 
 ## Paramètres de fonction intelligente
 
-Il peut arriver qu'une fonction ait plusieurs paramètres, dont la plupart sont facultatifs. C’est particulièrement vrai pour les interfaces utilisateur. Imaginez une fonction qui crée un menu. Il peut avoir une largeur, une hauteur, un titre, une liste d’articles, etc.
+Il peut arriver qu'une fonction ait plusieurs paramètres, dont la plupart sont facultatifs.
+C’est particulièrement vrai pour les interfaces utilisateur.
+Imaginez une fonction qui crée un menu.
+Il peut avoir une largeur, une hauteur, un titre, une liste d’articles, etc.
 
 Voici une mauvaise façon d’écrire ce genre de fonction :
 
@@ -471,7 +491,8 @@ function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
 }
 ```
 
-Dans la vraie vie, le problème est de savoir comment retenir l'ordre des arguments. Habituellement, les IDE essaient de nous aider, surtout si le code est bien documenté, mais quand même… Un autre problème est de savoir comment appeler une fonction lorsque la plupart des paramètres sont corrects par défaut.
+Dans la vraie vie, le problème est de savoir comment retenir l'ordre des arguments.
+Habituellement, les IDE essaient de nous aider, surtout si le code est bien documenté, mais quand même… Un autre problème est de savoir comment appeler une fonction lorsque la plupart des paramètres sont corrects par défaut.
 
 Comme ceci ?
 
@@ -480,7 +501,8 @@ Comme ceci ?
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 
-C’est moche. Et devient illisible lorsque nous traitons plus de paramètres.
+C’est moche.
+Et devient illisible lorsque nous traitons plus de paramètres.
 
 La décomposition vient à la rescousse !
 
@@ -538,7 +560,8 @@ function({
 
 Ensuite, pour un objet de paramètres, il y aura une variable `varName` pour la propriété `incomingProperty`, avec `defaultValue` par défaut.
 
-Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
+Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument.
+Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
 
 ```js
 showMenu({}); // ok, toutes les valeurs par défaut

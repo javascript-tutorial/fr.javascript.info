@@ -8,9 +8,12 @@ Dans le code ci-dessous il y a une exécution planifié par `setTimeout`, suivie
 
 Quand la fonction planifiée va-t-elle s'exécuter ?
 
-1. Après la boucle.
-2. Avant la boucle.
-3. Au début de la boucle.
+1.
+Après la boucle.
+2.
+Avant la boucle.
+3.
+Au début de la boucle.
 
 Qu'est-ce que `alert` va afficher ?
 

@@ -19,9 +19,12 @@ loadJson('https://javascript.info/no-such-user.json')
 
 Notes:
 
-1. La fonction `loadJson` devient `async`.
-2. Tous les `.then` intérieurs sont remplacés par `await`..
-3. Nous pouvons `return response.json()` au lieu de l'attendre, comme ceci:
+1.
+La fonction `loadJson` devient `async`.
+2.
+Tous les `.then` intérieurs sont remplacés par `await`..
+3.
+Nous pouvons `return response.json()` au lieu de l'attendre, comme ceci:
 
     ```js
     if (response.status == 200) {
@@ -29,5 +32,8 @@ Notes:
     }
     ```
 
-    Ensuite, le code externe devra "attendre" la résolution de cette promesse. Dans notre cas, cela n'a pas d'importance.
-4. L'erreur émise par `loadJson` est gérée par `.catch`. Nous ne pouvons pas utiliser `await loadJson(...)` ici, car nous ne sommes pas dans une fonction `async`..
+    Ensuite, le code externe devra "attendre" la résolution de cette promesse.
+Dans notre cas, cela n'a pas d'importance.
+4.
+L'erreur émise par `loadJson` est gérée par `.catch`.
+Nous ne pouvons pas utiliser `await loadJson(...)` ici, car nous ne sommes pas dans une fonction `async`..

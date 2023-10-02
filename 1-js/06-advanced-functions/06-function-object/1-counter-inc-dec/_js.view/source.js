@@ -1,7 +1,8 @@
 function makeCounter() {
   let count = 0;
 
-  // ... votre code ...
+  // ...
+votre code ...
 }
 
 let counter = makeCounter();

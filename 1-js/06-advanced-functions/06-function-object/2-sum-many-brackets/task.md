@@ -14,4 +14,5 @@ sum(6)(-1)(-2)(-3) == 0
 sum(0)(1)(2)(3)(4)(5) == 15
 ```
 
-P.S. Indice: vous devrez peut-être configurer une conversion d'objet à primitive personnalisé pour votre fonction.
+P.S.
+Indice: vous devrez peut-être configurer une conversion d'objet à primitive personnalisé pour votre fonction.

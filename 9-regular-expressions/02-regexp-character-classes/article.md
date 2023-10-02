@@ -2,11 +2,13 @@
 
 Considérons un exemple pratique -- nous avons un numero de téléphone tel que `"+7(903)-123-45-67"`, et nous souhaitons le convertir en nombres purs : `79031234567`.
 
-Pour ce faire, nous pouvons rechercher et supprimer tout ce qui n'est pas un nombre. Les classes de caractères peuvent nous aider.
+Pour ce faire, nous pouvons rechercher et supprimer tout ce qui n'est pas un nombre.
+Les classes de caractères peuvent nous aider.
 
 Une *classe de caractères* est une notation spéciale qui correspond à n'importe quel symbole d'un certain ensemble.
 
-Pour commencer, explorons la classe "digit". Elle s'écrit comme `pattern:\d` et correspond à "n'importe quel chiffre".
+Pour commencer, explorons la classe "digit".
+Elle s'écrit comme `pattern:\d` et correspond à "n'importe quel chiffre".
 
 Par exemple, recherchons le premier chiffre dans le numéro de téléphone :
 
@@ -33,7 +35,8 @@ alert(str.match(regexp)); // liste de correspondances: 7,9,0,3,1,2,3,4,5,6,7
 alert(str.match(regexp).join('')); // 79031234567
 ```
 
-C'était une classe de caractères pour les chiffres. Il existe également d'autres classes de caractères.
+C'était une classe de caractères pour les chiffres.
+Il existe également d'autres classes de caractères.
 
 Les plus utilisés sont :
 
@@ -44,7 +47,8 @@ Les plus utilisés sont :
 : Un symbole d'espace: inclut les espaces, les tabulations `\t`, les sauts de ligne `\n` et quelques autres caractères rares, tels que `\v`, `\f` et `\r`.
 
 `pattern:\w` ("w" vient de "word" ("mot"))
-: Un caractère "verbeux": soit une lettre de l'alphabet latin, soit un chiffre ou un trait de soulignement `_`. Les lettres non latines (comme le cyrillique ou l'hindi) n'appartiennent pas au `pattern:\w`.
+: Un caractère "verbeux": soit une lettre de l'alphabet latin, soit un chiffre ou un trait de soulignement `_`.
+Les lettres non latines (comme le cyrillique ou l'hindi) n'appartiennent pas au `pattern:\w`.
 
 Par exemple, `pattern:\d\s\w` signifie un "chiffre" suivi d'un "caractère espace" suivi d'un "caractère verbeux", tel que `match:1 a`.
 
@@ -120,7 +124,8 @@ alert("CS-4".match(regexp)); // CS-4
 alert("CS 4".match(regexp)); // CS 4 (l'espace est aussi un caractère)
 ```
 
-Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère". Il doit y avoir un caractère avec lequel le faire correspondre :
+Veuillez noter qu'un point signifie "n'importe quel caractère", mais pas "l'absence de caractère".
+Il doit y avoir un caractère avec lequel le faire correspondre :
 
 ```js run
 alert("CS4".match(/CS.4/)); // null, pas de correspondance car il n'y a pas de caractère pour le point
@@ -138,7 +143,8 @@ alert("A\nB".match(/A.B/)); // null (pas de correspondance)
 
 Il existe de nombreuses situations où nous aimerions qu'un point signifie littéralement "n'importe quel caractère", y compris le saut de ligne.
 
-C'est ce que fait l'indicateur `pattern:s`. Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère :
+C'est ce que fait l'indicateur `pattern:s`.
+Si une expression rationnelle l'a, alors un point `pattern:.` correspond littéralement à n'importe quel caractère :
 
 ```js run
 alert("A\nB".match(/A.B/s)); // A\nB (correspondance!)
@@ -147,19 +153,24 @@ alert("A\nB".match(/A.B/s)); // A\nB (correspondance!)
 ````warn header="Non pris en charge par IE"
 Le flag `pattern: s` n'est pas pris en charge dans IE.
 
-Heureusement, il existe une alternative qui fonctionne partout. Nous pouvons utiliser une expression rationnelle comme `pattern:[\s\S]` pour faire correspondre "n'importe quel caractère" (ce modèle sera traité dans l'article <info:regex-character-sets-and-ranges>).
+Heureusement, il existe une alternative qui fonctionne partout.
+Nous pouvons utiliser une expression rationnelle comme `pattern:[\s\S]` pour faire correspondre "n'importe quel caractère" (ce modèle sera traité dans l'article <info:regex-character-sets-and-ranges>).
 
 ```js run
 alert("A\nB".match(/A[\s\S]B/)); // A\nB (correspondance!)
 ```
 
-Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace". En d'autres termes, "n'importe quoi". Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern:[\d\D]`, cela n'a pas d'importance. Ou même le `pattern:[^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
+Le motif `pattern:[\s\S]` dit littéralement: "un caractère espace OU pas un caractère espace".
+En d'autres termes, "n'importe quoi".
+Nous pourrions utiliser une autre paire de classes complémentaires, telles que `pattern:[\d\D]`, cela n'a pas d'importance.
+Ou même le `pattern:[^]` -- car cela signifie correspondre à n'importe quel caractère sauf rien.
 
 Nous pouvons également utiliser cette astuce si nous voulons les deux types de "points" dans le même motif: le point réel `pattern:.` se comportant de manière habituelle ("ne pas inclure de saut de ligne") est également une facon de correspondre à "n'importe quel caractère" avec `pattern:[\s\S]` ou un motif semblable.
 ````
 
 ````warn header="Faites attention aux espaces"
-Habituellement, nous prêtons peu d'attention aux espaces. Pour nous, les chaînes `subject:1-5` et `subject:1 - 5` sont presque identiques.
+Habituellement, nous prêtons peu d'attention aux espaces.
+Pour nous, les chaînes `subject:1-5` et `subject:1 - 5` sont presque identiques.
 
 Mais si une expression régulière ne prend pas en compte les espaces, elle peut ne pas fonctionner.
 
@@ -177,7 +188,8 @@ alert("1 - 5".match(/\d - \d/)); // 1 - 5, désormais, cela fonctionne
 alert("1 - 5".match(/\d\s-\s\d/)); // 1 - 5, fonctionne aussi
 ```
 
-**Un espace est un caractère. Aussi important que n'importe quel autre caractère.**
+**Un espace est un caractère.
+Aussi important que n'importe quel autre caractère.**
 
 Nous ne pouvons pas ajouter ou supprimer des espaces dans une expression régulière et nous attendre à ce que cela fonctionne de la même manière.
 
@@ -200,4 +212,5 @@ Il existe les classes de caractères suivantes :
 
 Le codage Unicode, utilisé par JavaScript pour les chaînes de caractères, fournit de nombreuses propriétés aux caractères, tels que : à quelle langue la lettre appartient (si c'est une lettre), si c'est un signe de ponctuation, etc.
 
-Nous pouvons également faire une recherche selon leurs propriétés. Cela nécessite l'indicateur `pattern:u`, couvert dans le prochain article.
+Nous pouvons également faire une recherche selon leurs propriétés.
+Cela nécessite l'indicateur `pattern:u`, couvert dans le prochain article.

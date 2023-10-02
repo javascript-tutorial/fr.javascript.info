@@ -13,9 +13,12 @@ Il peut y avoir des espaces supplémentaires au début, à la fin ou entre chaqu
 
 Créez une fonction `parse(expr)` qui prend une expression et retourne un tableau de trois éléments :
 
-1. Le premier nombre.
-2. L'opérateur.
-3. Le second nombre.
+1.
+Le premier nombre.
+2.
+L'opérateur.
+3.
+Le second nombre.
 
 Par exemple :
 

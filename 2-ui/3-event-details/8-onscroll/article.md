@@ -1,6 +1,7 @@
 # Le Défilement
 
-L'événement `scroll` permet de réagir sur le défilement d'une page ou d'un élément. Il y a pas mal de bonnes choses que nous pouvons faire ici.
+L'événement `scroll` permet de réagir sur le défilement d'une page ou d'un élément.
+Il y a pas mal de bonnes choses que nous pouvons faire ici.
 
 Par exemple:
 - Montrer/cacher des contrôles additionnelles ou information selon la ou se trouve l'utilisateur sur le document.
@@ -32,6 +33,7 @@ Mais nous pouvons empêcher le défilement avec `event.preventDefault()` sur un 
 
 Si nous ajoutons un gestionnaire d'évènement a ces évènements et à `event.preventDefault()` , alors le défilement ne pas se déclencher.
 
-Il existe de nombreuses façons d’initialiser un défilement. Il est donc plus fiable d’utiliser la propriété CSS `overflow`.
+Il existe de nombreuses façons d’initialiser un défilement.
+Il est donc plus fiable d’utiliser la propriété CSS `overflow`.
 
 Voici quelques taches que vous pouvez résoudre oubien regarder afin de voir une application de l'évènement `onscroll`.

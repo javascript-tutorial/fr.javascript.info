@@ -25,7 +25,8 @@ Voici un exemple des valeurs après votre affectation :
 let user = { name: "John", years: 30 };
 
 // votre code à gauche ::
-// ... = user
+// ...
+= user
 
 alert(name); // John
 alert(age); // 30

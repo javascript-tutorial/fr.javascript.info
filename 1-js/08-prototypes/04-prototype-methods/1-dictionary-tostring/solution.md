@@ -1,7 +1,8 @@
 
 La méthode peut prendre toutes les clés énumérables en utilisant `Object.keys` et afficher leur liste.
 
-Pour rendre `toString` non-énumérable, définissons-le à l'aide d'un descripteur de propriété. La syntaxe de `Object.create` nous permet de fournir un objet avec des descripteurs de propriété comme second argument.
+Pour rendre `toString` non-énumérable, définissons-le à l'aide d'un descripteur de propriété.
+La syntaxe de `Object.create` nous permet de fournir un objet avec des descripteurs de propriété comme second argument.
 
 ```js run
 *!*
@@ -26,6 +27,7 @@ for(let key in dictionary) {
 alert(dictionary); // "apple,__proto__"
 ```
 
-Lorsque nous créons une propriété à l'aide d'un descripteur, ses indicateurs sont `false` par défaut. Donc, dans le code ci-dessus, `dictionary.toString` est non énumérable.
+Lorsque nous créons une propriété à l'aide d'un descripteur, ses indicateurs sont `false` par défaut.
+Donc, dans le code ci-dessus, `dictionary.toString` est non énumérable.
 
 Voir le chapitre [](info:property-descriptors) pour revoir.

@@ -4,7 +4,8 @@ importance: 5
 
 # Quelles variables sont disponibles ?
 
-La fonction `makeWorker` ci-dessous crée une autre fonction et la renvoie. Cette nouvelle fonction peut être appelée ailleurs.
+La fonction `makeWorker` ci-dessous crée une autre fonction et la renvoie.
+Cette nouvelle fonction peut être appelée ailleurs.
 
 Aura-t-elle accès aux variables externes depuis son lieu de création, ou depuis le lieu d'invocation, ou les deux ?
 

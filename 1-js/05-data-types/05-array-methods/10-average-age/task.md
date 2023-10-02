@@ -6,7 +6,8 @@ importance: 4
 
 Ecrivez la fonction `getAverageAge(users)` qui obtient un tableau d'objets avec la propriété `age` et qui ensuite retourne l'age moyen.
 
-La formule pour la moyenne est `(age1 + age2 + ... + ageN) / N`.
+La formule pour la moyenne est `(age1 + age2 + ...
++ ageN) / N`.
 
 Par exemple:
 

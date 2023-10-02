@@ -12,4 +12,5 @@ Pouvons-nous le faire comme ça ?
 let obj2 = new obj.constructor();
 ```
 
-Donne un exemple de fonction constructeur pour `obj` qui laisse ce code fonctionner correctement. Et un exemple qui fait que ça marche mal.
+Donne un exemple de fonction constructeur pour `obj` qui laisse ce code fonctionner correctement.
+Et un exemple qui fait que ça marche mal.

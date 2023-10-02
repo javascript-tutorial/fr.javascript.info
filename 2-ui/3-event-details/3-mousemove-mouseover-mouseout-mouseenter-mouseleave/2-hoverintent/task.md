@@ -6,7 +6,8 @@ importance: 5
 
 Ecrivez une fonction qui montre une info-bulle  sur un élément seulement si le visiteur déplace la souris *sur celui-ci*, et non pas *en le traversant*.
 
-En d'autres termes, si l'usager déplace la souris sur l'élément et s'arrête dessus -- afficher l'info bulle. Et si le visiteur déplace seulement la souris en traversant rapidement l'élément, pas besoin de le faire, qui a besoin d'un clignotement supplémentaire ?
+En d'autres termes, si l'usager déplace la souris sur l'élément et s'arrête dessus -- afficher l'info bulle.
+Et si le visiteur déplace seulement la souris en traversant rapidement l'élément, pas besoin de le faire, qui a besoin d'un clignotement supplémentaire ?
 
 Techniquement, nous pouvons mesurer la vitesse de la souris sur un élément, et si elle est lente alors nous pouvons assumer qu'elle  arrive "sur l'élément" et monter l'info-bulle, si elle est rapide -- alors on l'ignore.
 

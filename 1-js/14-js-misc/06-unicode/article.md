@@ -2,7 +2,8 @@
 # Unicode, String internals
 
 ```warn header="Advanced knowledge"
-The section goes deeper into string internals. This knowledge will be useful for you if you plan to deal with emoji, rare mathematical or hieroglyphic characters, or other rare symbols.
+The section goes deeper into string internals.
+This knowledge will be useful for you if you plan to deal with emoji, rare mathematical or hieroglyphic characters, or other rare symbols.
 ```
 
 As we already know, JavaScript strings are based on [Unicode](https://en.wikipedia.org/wiki/Unicode): each character is represented by a byte sequence of 1-4 bytes.
@@ -15,7 +16,8 @@ JavaScript allows us to insert a character into a string by specifying its hexad
 
     Because the `\xXX` notation supports only two hexadecimal digits, it can be used only for the first 256 Unicode characters.
 
-    These first 256 characters include the Latin alphabet, most basic syntax characters, and some others. For example, `"\x7A"` is the same as `"z"` (Unicode `U+007A`).
+    These first 256 characters include the Latin alphabet, most basic syntax characters, and some others.
+For example, `"\x7A"` is the same as `"z"` (Unicode `U+007A`).
 
     ```js run
     alert("\x7A"); // z
@@ -35,7 +37,8 @@ JavaScript allows us to insert a character into a string by specifying its hexad
 
 - `\u{X…XXXXXX}`
 
-    `X…XXXXXX` must be a hexadecimal value of 1 to 6 bytes between `0` and `10FFFF` (the highest code point defined by Unicode). This notation allows us to easily represent all existing Unicode characters.
+    `X…XXXXXX` must be a hexadecimal value of 1 to 6 bytes between `0` and `10FFFF` (the highest code point defined by Unicode).
+This notation allows us to easily represent all existing Unicode characters.
 
     ```js run
     alert("\u{20331}"); // 佫, a rare Chinese character (long Unicode)
@@ -44,9 +47,11 @@ JavaScript allows us to insert a character into a string by specifying its hexad
 
 ## Surrogate pairs
 
-All frequently used characters have 2-byte codes (4 hex digits). Letters in most European languages, numbers, and the basic unified CJK ideographic sets (CJK -- from Chinese, Japanese, and Korean writing systems), have a 2-byte representation.
+All frequently used characters have 2-byte codes (4 hex digits).
+Letters in most European languages, numbers, and the basic unified CJK ideographic sets (CJK -- from Chinese, Japanese, and Korean writing systems), have a 2-byte representation.
 
-Initially, JavaScript was based on UTF-16 encoding that only allowed 2 bytes per character. But 2 bytes only allow 65536 combinations and that's not enough for every possible symbol of Unicode.
+Initially, JavaScript was based on UTF-16 encoding that only allowed 2 bytes per character.
+But 2 bytes only allow 65536 combinations and that's not enough for every possible symbol of Unicode.
 
 So rare symbols that require more than 2 bytes are encoded with a pair of 2-byte characters called "a surrogate pair".
 
@@ -71,9 +76,12 @@ alert('𝒳'[0]); // shows strange symbols...
 alert('𝒳'[1]); // ...pieces of the surrogate pair
 ```
 
-Pieces of a surrogate pair have no meaning without each other. So the alerts in the example above actually display garbage.
+Pieces of a surrogate pair have no meaning without each other.
+So the alerts in the example above actually display garbage.
 
-Technically, surrogate pairs are also detectable by their codes: if a character has the code in the interval of `0xd800..0xdbff`, then it is the first part of the surrogate pair. The next character (second part) must have the code in interval `0xdc00..0xdfff`. These intervals are reserved exclusively for surrogate pairs by the standard.
+Technically, surrogate pairs are also detectable by their codes: if a character has the code in the interval of `0xd800..0xdbff`, then it is the first part of the surrogate pair.
+The next character (second part) must have the code in interval `0xdc00..0xdfff`.
+These intervals are reserved exclusively for surrogate pairs by the standard.
 
 So the methods [String.fromCodePoint](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint) and [str.codePointAt](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt) were added in JavaScript to deal with surrogate pairs.
 
@@ -98,10 +106,12 @@ alert('𝒳'.codePointAt(1).toString(16)); // dcb3
 // meaningless 2nd half of the pair
 ```
 
-You will find more ways to deal with surrogate pairs later in the chapter <info:iterable>. There are probably special libraries for that too, but nothing famous enough to suggest here.
+You will find more ways to deal with surrogate pairs later in the chapter <info:iterable>.
+There are probably special libraries for that too, but nothing famous enough to suggest here.
 
 ````warn header="Takeaway: splitting strings at an arbitrary point is dangerous"
-We can't just split a string at an arbitrary position, e.g. take `str.slice(0, 4)` and expect it to be a valid string, e.g.:
+We can't just split a string at an arbitrary position, e.g.
+take `str.slice(0, 4)` and expect it to be a valid string, e.g.:
 
 ```js run
 alert('hi 😂'.slice(0, 4)); //  hi [?]
@@ -109,7 +119,8 @@ alert('hi 😂'.slice(0, 4)); //  hi [?]
 
 Here we can see a garbage character (first half of the smile surrogate pair) in the output.
 
-Just be aware of it if you intend to reliably work with surrogate pairs. May not be a big problem, but at least you should understand what happens.
+Just be aware of it if you intend to reliably work with surrogate pairs.
+May not be a big problem, but at least you should understand what happens.
 ````
 
 ## Diacritical marks and normalization
@@ -118,7 +129,8 @@ In many languages, there are symbols that are composed of the base character wit
 
 For instance, the letter `a` can be the base character for these characters: `àáâäãåā`.
 
-Most common "composite" characters have their own code in the Unicode table. But not all of them, because there are too many possible combinations.
+Most common "composite" characters have their own code in the Unicode table.
+But not all of them, because there are too many possible combinations.
 
 To support arbitrary compositions, the Unicode standard allows us to use several Unicode characters: the base character followed by one or many "mark" characters that "decorate" it.
 
@@ -167,6 +179,7 @@ alert("S\u0307\u0323".normalize().length); // 1
 alert("S\u0307\u0323".normalize() == "\u1e68"); // true
 ```
 
-In reality, this is not always the case. The reason is that the symbol `Ṩ` is "common enough", so Unicode creators included it in the main table and gave it the code.
+In reality, this is not always the case.
+The reason is that the symbol `Ṩ` is "common enough", so Unicode creators included it in the main table and gave it the code.
 
 If you want to learn more about normalization rules and variants -- they are described in the appendix of the Unicode standard: [Unicode Normalization Forms](https://www.unicode.org/reports/tr15/), but for most practical purposes the information from this section is enough.

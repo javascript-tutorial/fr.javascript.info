@@ -6,7 +6,9 @@ JavaScript can be used to control CSS animations and make them even better, with
 
 ## CSS transitions [#css-transition]
 
-The idea of CSS transitions is simple. We describe a property and how its changes should be animated. When the property changes, the browser paints the animation.
+The idea of CSS transitions is simple.
+We describe a property and how its changes should be animated.
+When the property changes, the browser paints the animation.
 
 That is, all we need is to change the property, and the fluid transition will be done by the browser.
 
@@ -74,19 +76,25 @@ Now, let's cover animation properties one by one.
 
 ## transition-property
 
-In `transition-property`, we write a list of properties to animate, for instance: `left`, `margin-left`, `height`, `color`. Or we could write `all`, which means "animate all properties".
+In `transition-property`, we write a list of properties to animate, for instance: `left`, `margin-left`, `height`, `color`.
+Or we could write `all`, which means "animate all properties".
 
-Do note that, there are properties which can not be animated. However, [most of the generally used properties are animatable](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties).
+Do note that, there are properties which can not be animated.
+However, [most of the generally used properties are animatable](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties).
 
 ## transition-duration
 
-In `transition-duration` we can specify how long the animation should take. The time should be in [CSS time format](https://www.w3.org/TR/css3-values/#time): in seconds `s` or milliseconds `ms`.
+In `transition-duration` we can specify how long the animation should take.
+The time should be in [CSS time format](https://www.w3.org/TR/css3-values/#time): in seconds `s` or milliseconds `ms`.
 
 ## transition-delay
 
-In `transition-delay` we can specify the delay *before* the animation. For instance, if `transition-delay` is `1s` and `transition-duration` is `2s`, then the animation starts 1 second after the property change and the total duration will be 2 seconds.
+In `transition-delay` we can specify the delay *before* the animation.
+For instance, if `transition-delay` is `1s` and `transition-duration` is `2s`, then the animation starts 1 second after the property change and the total duration will be 2 seconds.
 
-Negative values are also possible. Then the animation is shown immediately, but the starting point of the animation will be after given value (time). For example, if `transition-delay` is `-1s` and `transition-duration` is `2s`, then animation starts from the halfway point and total duration will be 1 second.
+Negative values are also possible.
+Then the animation is shown immediately, but the starting point of the animation will be after given value (time).
+For example, if `transition-delay` is `-1s` and `transition-duration` is `2s`, then animation starts from the halfway point and total duration will be 1 second.
 
 Here the animation shifts numbers from `0` to `9` using CSS `translate` property:
 
@@ -108,7 +116,8 @@ In the example above JavaScript adds the class `.animate` to the element -- and 
 stripe.classList.add('animate');
 ```
 
-We could also start it from somewhere in the middle of the transition, from an exact number, e.g. corresponding to the current second, using a negative `transition-delay`.
+We could also start it from somewhere in the middle of the transition, from an exact number, e.g.
+corresponding to the current second, using a negative `transition-delay`.
 
 Here if you click the digit -- it starts the animation from the current second:
 
@@ -129,34 +138,43 @@ stripe.onclick = function() {
 
 ## transition-timing-function
 
-The timing function describes how the animation process is distributed along its timeline. Will it start slowly and then go fast, or vice versa.
+The timing function describes how the animation process is distributed along its timeline.
+Will it start slowly and then go fast, or vice versa.
 
-It appears to be the most complicated property at first. But it becomes very simple if we devote a bit time to it.
+It appears to be the most complicated property at first.
+But it becomes very simple if we devote a bit time to it.
 
-That property accepts two kinds of values: a Bezier curve or steps. Let's start with the curve, as it's used more often.
+That property accepts two kinds of values: a Bezier curve or steps.
+Let's start with the curve, as it's used more often.
 
 ### Bezier curve
 
 The timing function can be set as a [Bezier curve](/bezier-curve) with 4 control points that satisfy the conditions:
 
-1. First control point: `(0,0)`.
-2. Last control point: `(1,1)`.
-3. For intermediate points, the values of `x` must be in the interval `0..1`, `y` can be anything.
+1.
+First control point: `(0,0)`.
+2.
+Last control point: `(1,1)`.
+3.
+For intermediate points, the values of `x` must be in the interval `0..1`, `y` can be anything.
 
-The syntax for a Bezier curve in CSS: `cubic-bezier(x2, y2, x3, y3)`. Here we need to specify only 2nd and 3rd control points, because the 1st one is fixed to `(0,0)` and the 4th one is `(1,1)`.
+The syntax for a Bezier curve in CSS: `cubic-bezier(x2, y2, x3, y3)`.
+Here we need to specify only 2nd and 3rd control points, because the 1st one is fixed to `(0,0)` and the 4th one is `(1,1)`.
 
 The timing function describes how fast the animation process goes.
 
 - The `x` axis is the time: `0` -- the start, `1` -- the end of `transition-duration`.
 - The `y` axis specifies the completion of the process: `0` -- the starting value of the property, `1` -- the final value.
 
-The simplest variant is when the animation goes uniformly, with the same linear speed. That can be specified by the curve `cubic-bezier(0, 0, 1, 1)`.
+The simplest variant is when the animation goes uniformly, with the same linear speed.
+That can be specified by the curve `cubic-bezier(0, 0, 1, 1)`.
 
 Here's how that curve looks:
 
 ![](bezier-linear.svg)
 
-...As we can see, it's just a straight line. As the time (`x`) passes, the completion (`y`) of the animation steadily goes from `0` to `1`.
+...As we can see, it's just a straight line.
+As the time (`x`) passes, the completion (`y`) of the animation steadily goes from `0` to `1`.
 
 The train in the example below goes from left to right with the permanent speed (click it):
 
@@ -222,7 +240,8 @@ But it looks a bit differently.
 
 **A Bezier curve can make the animation exceed its range.**
 
-The control points on the curve can have any `y` coordinates: even negative or huge ones. Then the Bezier curve would also extend very low or high, making the animation go beyond its normal range.
+The control points on the curve can have any `y` coordinates: even negative or huge ones.
+Then the Bezier curve would also extend very low or high, making the animation go beyond its normal range.
 
 In the example below the animation code is:
 
@@ -248,20 +267,28 @@ Why it happens is pretty obvious if we look at the graph of the given Bezier cur
 
 ![](bezier-train-over.svg)
 
-We moved the `y` coordinate of the 2nd point below zero, and for the 3rd point we made it over `1`, so the curve goes out of the "regular" quadrant. The `y` is out of the "standard" range `0..1`.
+We moved the `y` coordinate of the 2nd point below zero, and for the 3rd point we made it over `1`, so the curve goes out of the "regular" quadrant.
+The `y` is out of the "standard" range `0..1`.
 
-As we know, `y` measures "the completion of the animation process". The value `y = 0` corresponds to the starting property value and `y = 1` -- the ending value. So values `y<0` move the property beyond the starting `left` and `y>1` -- past the final `left`.
+As we know, `y` measures "the completion of the animation process".
+The value `y = 0` corresponds to the starting property value and `y = 1` -- the ending value.
+So values `y<0` move the property beyond the starting `left` and `y>1` -- past the final `left`.
 
-That's a "soft" variant for sure. If we put `y` values like `-99` and `99` then the train would jump out of the range much more.
+That's a "soft" variant for sure.
+If we put `y` values like `-99` and `99` then the train would jump out of the range much more.
 
 But how do we make a Bezier curve for a specific task? There are many tools.
 
 - For instance, we can do it on the site <https://cubic-bezier.com>.
 - Browser developer tools also have special support for Bezier curves in CSS:
-    1. Open the developer tools with `key:F12` (Mac: `key:Cmd+Opt+I`).
-    2. Select the `Elements` tab, then pay attention to the `Styles` sub-panel at the right side.
-    3. CSS properties with a word `cubic-bezier` will have an icon before this word.
-    4. Click this icon to edit the curve.
+    1.
+Open the developer tools with `key:F12` (Mac: `key:Cmd+Opt+I`).
+    2.
+Select the `Elements` tab, then pay attention to the `Styles` sub-panel at the right side.
+    3.
+CSS properties with a word `cubic-bezier` will have an icon before this word.
+    4.
+Click this icon to edit the curve.
 
 ### Steps
 
@@ -296,7 +323,9 @@ There will be 9 steps, a step-move for each digit:
 }
 ```
 
-The first argument of `steps(9, start)` is the number of steps. The transform will be split into 9 parts (10% each). The time interval is automatically divided into 9 parts as well, so `transition: 9s` gives us 9 seconds for the whole animation – 1 second per digit.
+The first argument of `steps(9, start)` is the number of steps.
+The transform will be split into 9 parts (10% each).
+The time interval is automatically divided into 9 parts as well, so `transition: 9s` gives us 9 seconds for the whole animation – 1 second per digit.
 
 The second argument is one of two words: `start` or `end`.
 
@@ -334,16 +363,20 @@ Here's `steps(9, end)` in action (note the pause before the first digit change):
 
 There are also some pre-defined shorthands for `steps(...)`:
 
-- `step-start` -- is the same as `steps(1, start)`. That is, the animation starts immediately and takes 1 step. So it starts and finishes immediately, as if there were no animation.
+- `step-start` -- is the same as `steps(1, start)`.
+That is, the animation starts immediately and takes 1 step.
+So it starts and finishes immediately, as if there were no animation.
 - `step-end` -- the same as `steps(1, end)`: make the animation in a single step at the end of `transition-duration`.
 
-These values are rarely used, as they represent not a real animation, but rather a single-step change. We mention them here for completeness.
+These values are rarely used, as they represent not a real animation, but rather a single-step change.
+We mention them here for completeness.
 
 ## Event: "transitionend"
 
 When the CSS animation finishes, the `transitionend` event triggers.
 
-It is widely used to do an action after the animation is done. Also we can join animations.
+It is widely used to do an action after the animation is done.
+Also we can join animations.
 
 For instance, the ship in the example below starts to sail there and back when clicked, each time farther and farther to the right:
 
@@ -381,7 +414,8 @@ boat.onclick = function() {
 The event object for `transitionend` has a few specific properties:
 
 `event.propertyName`
-: The property that has finished animating. Can be good if we animate multiple properties simultaneously.
+: The property that has finished animating.
+Can be good if we animate multiple properties simultaneously.
 
 `event.elapsedTime`
 : The time (in seconds) that the animation took, without `transition-delay`.
@@ -390,7 +424,8 @@ The event object for `transitionend` has a few specific properties:
 
 We can join multiple simple animations together using the `@keyframes` CSS rule.
 
-It specifies the "name" of the animation and rules - what, when and where to animate. Then using the `animation` property, we can attach the animation to the element and specify additional parameters for it.
+It specifies the "name" of the animation and rules - what, when and where to animate.
+Then using the `animation` property, we can attach the animation to the element and specify additional parameters for it.
 
 Here's an example with explanations:
 
@@ -430,21 +465,32 @@ You probably won't need `@keyframes` often, unless everything is in constant mot
 
 ## Performance
 
-Most CSS properties can be animated, because most of them are numeric values. For instance, `width`, `color`, `font-size` are all numbers. When you animate them, the browser gradually changes these numbers frame by frame, creating a smooth effect.
+Most CSS properties can be animated, because most of them are numeric values.
+For instance, `width`, `color`, `font-size` are all numbers.
+When you animate them, the browser gradually changes these numbers frame by frame, creating a smooth effect.
 
 However, not all animations will look as smooth as you'd like, because different CSS properties cost differently to change.
 
 In more technical details, when there's a style change, the browser goes through 3 steps to render the new look:
 
-1. **Layout**: re-compute the geometry and position of each element, then
-2. **Paint**: re-compute how everything should look like at their places, including background, colors,
-3. **Composite**: render the final results into pixels on screen, apply CSS transforms if they exist.
+1.
+**Layout**: re-compute the geometry and position of each element, then
+2.
+**Paint**: re-compute how everything should look like at their places, including background, colors,
+3.
+**Composite**: render the final results into pixels on screen, apply CSS transforms if they exist.
 
-During a CSS animation, this process repeats every frame. However, CSS properties that never affect geometry or position, such as `color`, may skip the Layout step. If a `color` changes, the browser  doesn't calculate any new geometry, it goes to Paint -> Composite. And there are few properties that directly go to Composite. You can find a longer list of CSS properties and which stages they trigger at <https://csstriggers.com>.
+During a CSS animation, this process repeats every frame.
+However, CSS properties that never affect geometry or position, such as `color`, may skip the Layout step.
+If a `color` changes, the browser  doesn't calculate any new geometry, it goes to Paint -> Composite.
+And there are few properties that directly go to Composite.
+You can find a longer list of CSS properties and which stages they trigger at <https://csstriggers.com>.
 
-The calculations may take time, especially on pages with many elements and a complex layout. And the delays are actually visible on most devices, leading to "jittery", less fluid animations.
+The calculations may take time, especially on pages with many elements and a complex layout.
+And the delays are actually visible on most devices, leading to "jittery", less fluid animations.
 
-Animations of properties that skip the Layout step are faster. It's even better if Paint is skipped too.
+Animations of properties that skip the Layout step are faster.
+It's even better if Paint is skipped too.
 
 The `transform` property is a great choice, because:
 - CSS transforms affect the target element box as a whole (rotate, flip, stretch, shift it).
@@ -454,11 +500,15 @@ The `transform` property is a great choice, because:
 
 In other words, the browser calculates the Layout (sizes, positions), paints it with colors, backgrounds, etc at the Paint stage, and then applies `transform` to element boxes that need it.
 
-Changes (animations) of the `transform` property never trigger Layout and Paint steps. More than that, the browser  leverages the graphics accelerator (a special chip on the CPU or graphics card) for CSS transforms, thus making them very efficient.
+Changes (animations) of the `transform` property never trigger Layout and Paint steps.
+More than that, the browser  leverages the graphics accelerator (a special chip on the CPU or graphics card) for CSS transforms, thus making them very efficient.
 
-Luckily, the `transform` property is very powerful. By using `transform` on an element, you could rotate and flip it, stretch and shrink it, move it around, and [much more](https://developer.mozilla.org/docs/Web/CSS/transform#syntax). So instead of `left/margin-left` properties we can use `transform: translateX(…)`, use `transform: scale` for increasing element size, etc.
+Luckily, the `transform` property is very powerful.
+By using `transform` on an element, you could rotate and flip it, stretch and shrink it, move it around, and [much more](https://developer.mozilla.org/docs/Web/CSS/transform#syntax).
+So instead of `left/margin-left` properties we can use `transform: translateX(…)`, use `transform: scale` for increasing element size, etc.
 
-The `opacity` property also never triggers Layout (also skips Paint in Mozilla Gecko). We can use it for show/hide or fade-in/fade-out effects.
+The `opacity` property also never triggers Layout (also skips Paint in Mozilla Gecko).
+We can use it for show/hide or fade-in/fade-out effects.
 
 Paring `transform` with `opacity` can usually solve most of our needs, providing fluid, good-looking animations.
 
@@ -513,19 +563,24 @@ Here's a more complex example, with `@keyframes`:
 
 CSS animations allow smoothly (or step-by-step) animated changes of one or multiple CSS properties.
 
-They are good for most animation tasks. We're also able to use JavaScript for animations, the next chapter is devoted to that.
+They are good for most animation tasks.
+We're also able to use JavaScript for animations, the next chapter is devoted to that.
 
 Limitations of CSS animations compared to JavaScript animations:
 
 ```compare plus="CSS animations" minus="JavaScript animations"
 + Simple things done simply.
 + Fast and lightweight for CPU.
-- JavaScript animations are flexible. They can implement any animation logic, like an "explosion" of an element.
-- Not just property changes. We can create new elements in JavaScript as part of the animation.
+- JavaScript animations are flexible.
+They can implement any animation logic, like an "explosion" of an element.
+- Not just property changes.
+We can create new elements in JavaScript as part of the animation.
 ```
 
-In early examples in this chapter, we animate `font-size`, `left`, `width`, `height`, etc. In real life projects, we should use `transform: scale()` and `transform: translate()` for better performance.
+In early examples in this chapter, we animate `font-size`, `left`, `width`, `height`, etc.
+In real life projects, we should use `transform: scale()` and `transform: translate()` for better performance.
 
-The majority of animations can be implemented using CSS as described in this chapter. And the `transitionend` event allows JavaScript to be run after the animation, so it integrates fine with the code.
+The majority of animations can be implemented using CSS as described in this chapter.
+And the `transitionend` event allows JavaScript to be run after the animation, so it integrates fine with the code.
 
 But in the next chapter we'll do some JavaScript animations to cover more complex cases.

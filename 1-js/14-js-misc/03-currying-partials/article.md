@@ -5,7 +5,8 @@ libs:
 
 # Curryfication
 
-La [curryfication](https://fr.wikipedia.org/wiki/Curryfication) est une technique avancée de travail avec les fonctions. Ce n'est pas seulement utilisé avec JavaScript, mais dans d'autres langages également.
+La [curryfication](https://fr.wikipedia.org/wiki/Curryfication) est une technique avancée de travail avec les fonctions.
+Ce n'est pas seulement utilisé avec JavaScript, mais dans d'autres langages également.
 
 La curryfication est la transformation de fonction qui traduit une fonction de la forme `f(a, b, c)` en une fonction de la forme `f(a)(b)(c)`.
 
@@ -13,7 +14,8 @@ La curryfication n'appelle pas une fonction ; elle la transforme simplement.
 
 Voyons d'abord un exemple pour mieux comprendre de quoi nous parlons, et mettons ensuite en pratique.
 
-Nous allons créer une fonction d'aide `curry(f)` qui curryfie une fonction `f` à deux arguments. En d'autres mots, `curry(f)` sur une fonction `f(a, b)` la traduit en une fonction qui s'appelle par `f(a)(b)` :
+Nous allons créer une fonction d'aide `curry(f)` qui curryfie une fonction `f` à deux arguments.
+En d'autres mots, `curry(f)` sur une fonction `f(a, b)` la traduit en une fonction qui s'appelle par `f(a)(b)` :
 
 ```js run
 *!*
@@ -59,7 +61,8 @@ alert(curriedSum(1)(2)); // 3, appelée partiellement
 
 Pour comprendre les bénéfices, nous avons besoin d'un exemple réel.
 
-Par exemple, nous avons la fonction de journalisation `log(date, importance, message)` qui formate et écrit l'information. Dans de réels projets de telles fonctions ont beaucoup de fonctionnalités utiles comme envoyer les journaux sur un réseau, ici nous allons juste utiliser `alert` :
+Par exemple, nous avons la fonction de journalisation `log(date, importance, message)` qui formate et écrit l'information.
+Dans de réels projets de telles fonctions ont beaucoup de fonctionnalités utiles comme envoyer les journaux sur un réseau, ici nous allons juste utiliser `alert` :
 
 ```js
 function log(date, importance, message) {
@@ -79,7 +82,8 @@ Après ça `log` fonctionne normalement:
 log(new Date(), "DEBUG", "some debug"); // log(a, b, c)
 ```
 
-... mais aussi dans la forme curryfiée :
+...
+mais aussi dans la forme curryfiée :
 
 ```js
 log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
@@ -106,8 +110,10 @@ debugNow("message"); // [HH:mm] DEBUG message
 ```
 
 Donc :
-1. Nous n'avons rien perdu après avoir curryfié : `log` est toujours appelable normalement.
-2. Nous pouvons aisément créer des fonctions partielles comme pour la journalisation d'aujourd'hui.
+1.
+Nous n'avons rien perdu après avoir curryfié : `log` est toujours appelable normalement.
+2.
+Nous pouvons aisément créer des fonctions partielles comme pour la journalisation d'aujourd'hui.
 
 ## Implémentation avancée de la curryfication
 
@@ -164,8 +170,11 @@ function curried(...args) {
 
 Quand on la lance, il y a deux branches `if` :
 
-1. Si le nombre d'`args` passé est égal ou supérieur à celui de la fonction d'origine dans sa définition (`func.length`), alors on lui passe simplement l'appel en utilisant `func.apply`.
-2. Sinon, on obtient un partiel : nous n'appelons pas encore `func`. Au lieu de cela, un autre wrapper est retourné, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux.
+1.
+Si le nombre d'`args` passé est égal ou supérieur à celui de la fonction d'origine dans sa définition (`func.length`), alors on lui passe simplement l'appel en utilisant `func.apply`.
+2.
+Sinon, on obtient un partiel : nous n'appelons pas encore `func`.
+Au lieu de cela, un autre wrapper est retourné, qui réappliquera `curried` en fournissant les arguments précédents avec les nouveaux.
 
 Ensuite, si nous l'appelons, encore une fois, nous obtiendrons soit un nouveau partiel (si pas assez d'arguments) ou, finalement, le résultat.
 
@@ -183,6 +192,8 @@ Mais la plupart des implémentations en JavaScript sont avancées, comme décrit
 
 ## Résumé
 
-La *curryfication* est une transformation qui rend `f(a,b,c)` appelable comme `f(a)(b)(c)`. Les implémentations en JavaScript laissent généralement la possibilité d'appeler les fonctions normalement et de retourner une partielle si le nombre d'arguments n'est pas suffisant.
+La *curryfication* est une transformation qui rend `f(a,b,c)` appelable comme `f(a)(b)(c)`.
+Les implémentations en JavaScript laissent généralement la possibilité d'appeler les fonctions normalement et de retourner une partielle si le nombre d'arguments n'est pas suffisant.
 
-La curryfication nous permet d'avoir aisément des partielles. Comme nous avons pu le voir dans l'exemple de journalisation, après avoir curryfié la fonction à trois arguments, `log(date, importance, message)` nous donne une partielle quand appelée avec un argument (comme `log(date)`) ou deux arguments (comme `log(date, importance)`).
+La curryfication nous permet d'avoir aisément des partielles.
+Comme nous avons pu le voir dans l'exemple de journalisation, après avoir curryfié la fonction à trois arguments, `log(date, importance, message)` nous donne une partielle quand appelée avec un argument (comme `log(date)`) ou deux arguments (comme `log(date, importance)`).

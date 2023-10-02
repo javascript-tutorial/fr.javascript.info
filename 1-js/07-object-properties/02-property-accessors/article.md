@@ -3,13 +3,18 @@
 
 There are two kinds of object properties.
 
-The first kind is *data properties*. We already know how to work with them. All properties that we've been using until now were data properties.
+The first kind is *data properties*.
+We already know how to work with them.
+All properties that we've been using until now were data properties.
 
-The second type of property is something new. It's an *accessor property*. They are essentially functions that execute on getting and setting a value, but look like regular properties to an external code.
+The second type of property is something new.
+It's an *accessor property*.
+They are essentially functions that execute on getting and setting a value, but look like regular properties to an external code.
 
 ## Getters and setters
 
-Accessor properties are represented by "getter" and "setter" methods. In an object literal they are denoted by `get` and `set`:
+Accessor properties are represented by "getter" and "setter" methods.
+In an object literal they are denoted by `get` and `set`:
 
 ```js
 let obj = {
@@ -34,7 +39,8 @@ let user = {
 };
 ```
 
-Now we want to add a `fullName` property, that should be `"John Smith"`. Of course, we don't want to copy-paste existing information, so we can implement it as an accessor:
+Now we want to add a `fullName` property, that should be `"John Smith"`.
+Of course, we don't want to copy-paste existing information, so we can implement it as an accessor:
 
 ```js run
 let user = {
@@ -53,9 +59,12 @@ alert(user.fullName); // John Smith
 */!*
 ```
 
-From the outside, an accessor property looks like a regular one. That's the idea of accessor properties. We don't *call* `user.fullName` as a function, we *read* it normally: the getter runs behind the scenes.
+From the outside, an accessor property looks like a regular one.
+That's the idea of accessor properties.
+We don't *call* `user.fullName` as a function, we *read* it normally: the getter runs behind the scenes.
 
-As of now, `fullName` has only a getter. If we attempt to assign `user.fullName=`, there will be an error:
+As of now, `fullName` has only a getter.
+If we attempt to assign `user.fullName=`, there will be an error:
 
 ```js run
 let user = {
@@ -94,7 +103,8 @@ alert(user.name); // Alice
 alert(user.surname); // Cooper
 ```
 
-As the result, we have a "virtual" property `fullName`. It is readable and writable.
+As the result, we have a "virtual" property `fullName`.
+It is readable and writable.
 
 ## Accessor descriptors
 
@@ -180,7 +190,8 @@ user.name = ""; // Name is too short...
 
 So, the name is stored in `_name` property, and the access is done via getter and setter.
 
-Technically, external code is able to access the name directly by using `user._name`. But there is a widely known convention that properties starting with an underscore `"_"` are internal and should not be touched from outside the object.
+Technically, external code is able to access the name directly by using `user._name`.
+But there is a widely known convention that properties starting with an underscore `"_"` are internal and should not be touched from outside the object.
 
 ## Using for compatibility
 
@@ -199,7 +210,8 @@ let john = new User("John", 25);
 alert(john.age); // 25
 ```
 
-...But sooner or later, things may change. Instead of `age` we may decide to store `birthday`, because it's more precise and convenient:
+...But sooner or later, things may change.
+Instead of `age` we may decide to store `birthday`, because it's more precise and convenient:
 
 ```js
 function User(name, birthday) {
@@ -212,7 +224,8 @@ let john = new User("John", new Date(1992, 6, 1));
 
 Now what to do with the old code that still uses `age` property?
 
-We can try to find all such places and fix them, but that takes time and can be hard to do if that code is used by many other people. And besides, `age` is a nice thing to have in `user`, right?
+We can try to find all such places and fix them, but that takes time and can be hard to do if that code is used by many other people.
+And besides, `age` is a nice thing to have in `user`, right?
 
 Let's keep it.
 

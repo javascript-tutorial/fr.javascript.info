@@ -4,7 +4,9 @@
 ```warn header="Sujet avancé"
 Cet article couvre un sujet avancé pour mieux comprendre certains cas limites.
 
-Ce n'est pas important. De nombreux développeurs expérimentés vivent bien sans le savoir. Continuez à lire si vous voulez savoir comment les choses fonctionnent sous le capot.
+Ce n'est pas important.
+De nombreux développeurs expérimentés vivent bien sans le savoir.
+Continuez à lire si vous voulez savoir comment les choses fonctionnent sous le capot.
 ```
 
 Un appel de méthode évalué dynamiquement peut perdre `this`.
@@ -26,9 +28,11 @@ user.hi(); // fonctionne
 */!*
 ```
 
-Sur la dernière ligne il y a un opérateur conditionnel qui choisit entre `user.hi` ou `user.bye`. Ici le résultat est `user.hi`.
+Sur la dernière ligne il y a un opérateur conditionnel qui choisit entre `user.hi` ou `user.bye`.
+Ici le résultat est `user.hi`.
 
-Ensuite la méthode est immédiatement appelée avec les parenthèses `()`. Mais cela ne fonctionne pas !
+Ensuite la méthode est immédiatement appelée avec les parenthèses `()`.
+Mais cela ne fonctionne pas !
 
 Comme vous pouvez le voir, l'appel se résout avec une erreur car la valeur de `"this"` dans l'appel devient `undefined`.
 
@@ -48,8 +52,10 @@ Pourquoi ? Si nous voulons comprendre pourquoi cela arrive, regardons comment l
 
 En y regardant plus précisement, on peut remarquer 2 opérations dans la déclaration de `obj.method()`:
 
-1. En premier, le point `'.'` récupère la propriété `obj.method`.
-2. Puis les parenthèses `()` l'éxécute.
+1.
+En premier, le point `'.'` récupère la propriété `obj.method`.
+2.
+Puis les parenthèses `()` l'éxécute.
 
 Mais comment l'information du `this` est passée de la première opération à la deuxième ?
 
@@ -72,7 +78,8 @@ Ici `hi = user.hi` assigne la fonction à la variable, ensuite sur la dernière 
 
 **Pour faire que `user.hi()` fonctionne, JavaScript utilise une astuce -- le point `'.'` ne retourne pas une fonction, mais une valeur  de [type référence](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
 
-Le type référence n'est pas un "type de spécifiation". On ne peut l'utiliser explicitement, mais il est utilisé en interne par le langage.
+Le type référence n'est pas un "type de spécifiation".
+On ne peut l'utiliser explicitement, mais il est utilisé en interne par le langage.
 
 La valeur de Type Référence est une combinaison de 3 valeurs `(base, name, strict)`, où :
 
@@ -80,7 +87,8 @@ La valeur de Type Référence est une combinaison de 3 valeurs `(base, name, str
 - `name` est le nom de la propriété.
 - `strict` est vrai si `use strict` est en vigueur.
 
-Le résultat de l'accès à la propriété `user.hi` n'est pas une fonction, mais une valeur de Type Référence. Pour `user.hi` en mode strict cela est :
+Le résultat de l'accès à la propriété `user.hi` n'est pas une fonction, mais une valeur de Type Référence.
+Pour `user.hi` en mode strict cela est :
 
 ```js
 // Valeur de type référence
@@ -91,9 +99,11 @@ Lorsque les parenthèses `()` sont appelées sur le type de référence, elles r
 
 Le type référence est un type interne "intermédiaire", avec comme but de passer l'information du point `.`  aux parenthèses `()`.
 
-N'importe quelle autre opération d'assignement comme `hi = user.hi` rejette le type référence, prends la valeur de `user.hi` (une fonction) et la passe. Ainsi n'importe quelle opération suivante "perd" `this`.
+N'importe quelle autre opération d'assignement comme `hi = user.hi` rejette le type référence, prends la valeur de `user.hi` (une fonction) et la passe.
+Ainsi n'importe quelle opération suivante "perd" `this`.
 
-Il en résulte que la valeur de `this` n'est passée correctement seulement lorsque la fonction est appelée directement en utilisant la notation par points `obj.method()` ou la notation par crochet `obj['method']()` (c'est la même chose). Il existe différentes manières de résoudre ce problème comme [func.bind()](/bind#solution-2-bind).
+Il en résulte que la valeur de `this` n'est passée correctement seulement lorsque la fonction est appelée directement en utilisant la notation par points `obj.method()` ou la notation par crochet `obj['method']()` (c'est la même chose).
+Il existe différentes manières de résoudre ce problème comme [func.bind()](/bind#solution-2-bind).
 
 ## Résumé
 
@@ -106,4 +116,5 @@ Cela est fait pour que l'éxécution suivante, l'appel à la méthode  `()`, re�
 
 Pour toutes les autres opérations, le type référence sera automatiquement la valeur de la propriété (une fonction dans notre cas).
 
-Le fonctionnement est caché de notre vision. Cela n'a d'importance que dans certains cas, comme lorsqu'une méthode est obtenue dynamiquement de l'object en utilisant une expression.
+Le fonctionnement est caché de notre vision.
+Cela n'a d'importance que dans certains cas, comme lorsqu'une méthode est obtenue dynamiquement de l'object en utilisant une expression.

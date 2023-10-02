@@ -11,12 +11,14 @@ function formatDate(date) {
   let sec = Math.floor(diff / 1000); // convertir la différence en secondes
 
   if (sec < 60) {
-    return sec + ' sec. ago';
+    return sec + ' sec.
+ago';
   }
 
   let min = Math.floor(diff / 60000); // convertir la différence en minutes
   if (min < 60) {
-    return min + ' min. ago';
+    return min + ' min.
+ago';
   }
 
   // formater la date
@@ -36,9 +38,11 @@ function formatDate(date) {
 
 alert(formatDate(new Date(new Date - 1))); // "right now"
 
-alert(formatDate(new Date(new Date - 30 * 1000))); // "30 sec. ago"
+alert(formatDate(new Date(new Date - 30 * 1000))); // "30 sec.
+ago"
 
-alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 min. ago"
+alert(formatDate(new Date(new Date - 5 * 60 * 1000))); // "5 min.
+ago"
 
 // date d'hier comme ceci 31.12.2016 20:00
 alert(formatDate(new Date(new Date - 86400 * 1000)));
@@ -68,9 +72,11 @@ function formatDate(date) {
   if (diffSec < 1) {
     return 'right now'; 
   } else if (diffMin < 1) {
-    return `${diffSec} sec. ago`
+    return `${diffSec} sec.
+ago`
   } else if (diffHour < 1) {
-    return `${diffMin} min. ago`
+    return `${diffMin} min.
+ago`
   } else {
     return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
   }

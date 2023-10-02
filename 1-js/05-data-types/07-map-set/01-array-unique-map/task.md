@@ -22,6 +22,8 @@ let values = ["Hare", "Krishna", "Hare", "Krishna",
 alert(unique(values)); // Hare, Krishna, :-O
 ```
 
-P.S. Ici, les chaînes de caractères sont utilisées, mais elles peuvent être des valeurs de n'importe quel type.
+P.S.
+Ici, les chaînes de caractères sont utilisées, mais elles peuvent être des valeurs de n'importe quel type.
 
-P.P.S. Utilisez `Set` pour stocker des valeurs uniques.
+P.P.S.
+Utilisez `Set` pour stocker des valeurs uniques.

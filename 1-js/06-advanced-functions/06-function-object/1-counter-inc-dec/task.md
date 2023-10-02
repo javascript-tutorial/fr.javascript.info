@@ -12,4 +12,6 @@ Modifiez le code de `makeCounter()` afin que le compteur puisse également dimin
 
 Voir le code sandbox pour un exemple d'utilisation complet.
 
-P.S. Vous pouvez utiliser une fermeture ou la propriété de fonction pour maintenir le nombre actuel. Ou écrivez les deux variantes.
+P.S.
+Vous pouvez utiliser une fermeture ou la propriété de fonction pour maintenir le nombre actuel.
+Ou écrivez les deux variantes.

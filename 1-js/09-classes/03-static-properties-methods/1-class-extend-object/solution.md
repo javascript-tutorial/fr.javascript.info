@@ -1,6 +1,8 @@
 Voyons d'abord pourquoi ce dernier code ne fonctionne pas.
 
-La raison devient évidente si nous essayons de l'exécuter. Un constructeur de classe héritant doit appeler `super()`. Sinon `"this"` ne sera pas "défini".
+La raison devient évidente si nous essayons de l'exécuter.
+Un constructeur de classe héritant doit appeler `super()`.
+Sinon `"this"` ne sera pas "défini".
 
 Alors, voici la solution:
 
@@ -25,8 +27,10 @@ Même après le correctif, il existe toujours une différence importante entre `
 
 Comme on le sait, la syntaxe "extend" configure deux prototypes:
 
-1. Entre le `"prototype"` des fonctions du constructeur (pour les méthodes).
-2. Entre les fonctions du constructeur elles-mêmes (pour les méthodes statiques).
+1.
+Entre le `"prototype"` des fonctions du constructeur (pour les méthodes).
+2.
+Entre les fonctions du constructeur elles-mêmes (pour les méthodes statiques).
 
 Dans notre cas, pour `class Rabbit extends Object`, cela signifie:
 
@@ -67,7 +71,8 @@ alert (Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error
 
 Donc, `Rabbit` ne donne pas accès aux méthodes statiques de `Object` dans ce cas.
 
-En passant, `Function.prototype` a des méthodes de fonction  "génériques", comme `call`, `bind`, etc. Elles sont finalement disponibles dans les deux cas, car pour le constructeur `Object` intégré, `Object.__proto__ === Function.prototype`.
+En passant, `Function.prototype` a des méthodes de fonction  "génériques", comme `call`, `bind`, etc.
+Elles sont finalement disponibles dans les deux cas, car pour le constructeur `Object` intégré, `Object.__proto__ === Function.prototype`.
 
 Voici l'image:
 

@@ -7,10 +7,12 @@ Pour démontrer l'utilisation des callbacks, des promesses et d'autres concepts 
 
 Si vous n'êtes pas familier avec ces méthodes, et que leur utilisation dans les exemples est confuse, vous pouvez lire quelques chapitres de la [partie suivante](/document) du tutoriel.
 
-Mais nous allons quand même essayer de rendre les choses claires. Il n'y aura rien de vraiment complexe au niveau du navigateur.
+Mais nous allons quand même essayer de rendre les choses claires.
+Il n'y aura rien de vraiment complexe au niveau du navigateur.
 ```
 
-De nombreuses fonctions sont fournies par les environnements hôtes JavaScript qui vous permettent de planifier des actions *asynchrones*. En d'autres termes, des actions que nous lançons maintenant, mais qui se terminent plus tard.
+De nombreuses fonctions sont fournies par les environnements hôtes JavaScript qui vous permettent de planifier des actions *asynchrones*.
+En d'autres termes, des actions que nous lançons maintenant, mais qui se terminent plus tard.
 
 Par exemple, une de ces fonctions est la fonction `setTimeout`.
 
@@ -28,7 +30,8 @@ function loadScript(src) {
 }
 ```
 
-Il insère dans le document une nouvelle balise, créée dynamiquement, `<script src="...">` avec le `src` donné. Le navigateur commence automatiquement à la charger et l'exécute lorsqu'elle est terminée.
+Il insère dans le document une nouvelle balise, créée dynamiquement, `<script src="...">` avec le `src` donné.
+Le navigateur commence automatiquement à la charger et l'exécute lorsqu'elle est terminée.
 
 Nous pouvons utiliser cette fonction comme suit :
 
@@ -48,7 +51,8 @@ loadScript('/my/script.js');
 // ...
 ```
 
-Disons que nous devons utiliser le nouveau script dès qu'il est chargé. Il déclare de nouvelles fonctions, et nous voulons les exécuter.
+Disons que nous devons utiliser le nouveau script dès qu'il est chargé.
+Il déclare de nouvelles fonctions, et nous voulons les exécuter.
 
 Mais si nous le faisons immédiatement après l'appel `loadScript(...)`, cela ne fonctionnera pas:
 
@@ -60,7 +64,10 @@ newFunction(); // aucune fonction de ce type!
 */!*
 ```
 
-Naturellement, le navigateur n'a probablement pas eu le temps de charger le script. Pour l'instant, la fonction `loadScript` ne permet pas de suivre l'achèvement du chargement. Le script se charge et finit par s'exécuter, c'est tout. Mais nous aimerions savoir quand cela se produit, pour utiliser les nouvelles fonctions et variables de ce script.
+Naturellement, le navigateur n'a probablement pas eu le temps de charger le script.
+Pour l'instant, la fonction `loadScript` ne permet pas de suivre l'achèvement du chargement.
+Le script se charge et finit par s'exécuter, c'est tout.
+Mais nous aimerions savoir quand cela se produit, pour utiliser les nouvelles fonctions et variables de ce script.
 
 Ajoutons une fonction `callback` comme second argument à `loadScript` qui doit s'exécuter lorsque le script se charge :
 
@@ -109,7 +116,8 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', s
 */!*
 ```
 
-C'est ce qu'on appelle un style de programmation asynchrone basé sur les "callbacks". Une fonction qui fait quelque chose de manière asynchrone doit fournir un argument `callback` où nous mettons la fonction à exécuter après qu'elle soit terminée.
+C'est ce qu'on appelle un style de programmation asynchrone basé sur les "callbacks".
+Une fonction qui fait quelque chose de manière asynchrone doit fournir un argument `callback` où nous mettons la fonction à exécuter après qu'elle soit terminée.
 
 Ici nous l'avons fait dans `loadScript`, mais bien sûr c'est une approche générale.
 
@@ -135,7 +143,8 @@ loadScript('/my/script.js', function(script) {
 
 Une fois que le `loadScript` externe est terminé, le callback lance le `loadScript` interne.
 
-Et si nous voulons un script de plus... ?
+Et si nous voulons un script de plus...
+?
 
 ```js
 loadScript('/my/script.js', function(script) {
@@ -153,11 +162,13 @@ loadScript('/my/script.js', function(script) {
 });
 ```
 
-Ainsi, chaque nouvelle action se trouve dans une callback. C'est bien pour peu d'actions, mais pas pour beaucoup, donc nous verrons bientôt d'autres variantes.
+Ainsi, chaque nouvelle action se trouve dans une callback.
+C'est bien pour peu d'actions, mais pas pour beaucoup, donc nous verrons bientôt d'autres variantes.
 
 ## Gestion des erreurs
 
-Dans les exemples ci-dessus, nous n'avons pas tenu compte des erreurs. Que se passe-t-il si le chargement du script échoue ? Notre callback doit être capable de réagir à cette situation.
+Dans les exemples ci-dessus, nous n'avons pas tenu compte des erreurs.
+Que se passe-t-il si le chargement du script échoue ? Notre callback doit être capable de réagir à cette situation.
 
 Voici une version améliorée de `loadScript` qui suit les erreurs de chargement :
 
@@ -188,17 +199,24 @@ loadScript('/my/script.js', function(error, script) {
 });
 ```
 
-Une fois encore, la recette que nous avons utilisée pour `loadScript` est en fait assez commune. C'est le style "error-first callback".
+Une fois encore, la recette que nous avons utilisée pour `loadScript` est en fait assez commune.
+C'est le style "error-first callback".
 
 La convention est:
-1. Le premier argument de la `callback` est réservé pour une erreur si elle se produit. Ensuite, `callback(err)` est appelé.
-2. Le deuxième argument (et les suivants si nécessaire) sont pour le résultat réussi. Ensuite, `callback(null, result1, result2...)` est appelé.
+1.
+Le premier argument de la `callback` est réservé pour une erreur si elle se produit.
+Ensuite, `callback(err)` est appelé.
+2.
+Le deuxième argument (et les suivants si nécessaire) sont pour le résultat réussi.
+Ensuite, `callback(null, result1, result2...)` est appelé.
 
 Ainsi, la fonction unique `callback` est utilisée à la fois pour signaler les erreurs et pour renvoyer les résultats.
 
 ## Pyramide du malheur
 
-À première vue, il s'agit d'un moyen viable de codage asynchrone. Et c'est effectivement le cas. Pour un ou peut-être deux appels imbriqués, cela semble correct.
+À première vue, il s'agit d'un moyen viable de codage asynchrone.
+Et c'est effectivement le cas.
+Pour un ou peut-être deux appels imbriqués, cela semble correct.
 
 Mais pour de multiples actions asynchrones qui se succèdent, nous aurons un code comme celui-ci:
 
@@ -231,9 +249,12 @@ loadScript('1.js', function(error, script) {
 ```
 
 Dans le code ci-dessus:
-1. Nous chargeons `1.js`, puis s'il n'y a pas d'erreur …
-2. Nous chargeons `2.js`, puis s'il n'y a pas d'erreur …
-3. Nous chargeons `3.js`, puis s'il n'y a pas d'erreur -- fait autre chose `(*)`.
+1.
+Nous chargeons `1.js`, puis s'il n'y a pas d'erreur …
+2.
+Nous chargeons `2.js`, puis s'il n'y a pas d'erreur …
+3.
+Nous chargeons `3.js`, puis s'il n'y a pas d'erreur -- fait autre chose `(*)`.
 
 Au fur et à mesure que les appels deviennent plus imbriqués, le code devient plus profond et de plus en plus difficile à gérer, surtout si nous avons du vrai code au lieu de `...` qui peut inclure plus de boucles, des déclarations conditionnelles et ainsi de suite.
 
@@ -265,7 +286,8 @@ loadScript('1.js', function(error, script) {
 
 ![](callback-hell.svg)
 
-La "pyramide" d'appels imbriqués croît vers la droite à chaque action asynchrone. Bientôt, elle devient incontrôlable.
+La "pyramide" d'appels imbriqués croît vers la droite à chaque action asynchrone.
+Bientôt, elle devient incontrôlable.
 
 Donc cette façon de coder n'est pas très bonne.
 
@@ -303,10 +325,15 @@ function step3(error, script) {
 
 Vous voyez ? Il fait la même chose, et il n'y a pas d'imbrication profonde maintenant parce que nous avons fait de chaque action une fonction séparée de haut niveau.
 
-Cela fonctionne, mais le code ressemble à une feuille de calcul déchirée. Il est difficile à lire, et vous avez probablement remarqué qu'il faut passer d'un morceau à l'autre en le lisant. Ce n'est pas pratique, surtout si le lecteur n'est pas familier avec le code et ne sait pas où sauter du regard.
+Cela fonctionne, mais le code ressemble à une feuille de calcul déchirée.
+Il est difficile à lire, et vous avez probablement remarqué qu'il faut passer d'un morceau à l'autre en le lisant.
+Ce n'est pas pratique, surtout si le lecteur n'est pas familier avec le code et ne sait pas où sauter du regard.
 
-De plus, les fonctions nommées `step*` sont toutes à usage unique, elles sont créées uniquement pour éviter la "pyramide du malheur". Personne ne va les réutiliser en dehors de la chaîne d'action. Il y a donc un peu d'encombrement de l'espace de noms ici.
+De plus, les fonctions nommées `step*` sont toutes à usage unique, elles sont créées uniquement pour éviter la "pyramide du malheur".
+Personne ne va les réutiliser en dehors de la chaîne d'action.
+Il y a donc un peu d'encombrement de l'espace de noms ici.
 
 Nous aimerions avoir quelque chose de mieux.
 
-Heureusement, il existe d'autres moyens d'éviter de telles pyramides. L'un des meilleurs moyens est d'utiliser des "promesses", décrites dans le chapitre suivant.
+Heureusement, il existe d'autres moyens d'éviter de telles pyramides.
+L'un des meilleurs moyens est d'utiliser des "promesses", décrites dans le chapitre suivant.

@@ -9,7 +9,8 @@ function clear(elem) {
 }
 ```
 
-Cela ne fonctionnera pas, car l'appel à `remove()` décale la collection `elem.childNodes`, donc les éléments commencent à partir de l'index `0` à chaque fois. Mais `i` augmente et certains éléments seront ignorés.
+Cela ne fonctionnera pas, car l'appel à `remove()` décale la collection `elem.childNodes`, donc les éléments commencent à partir de l'index `0` à chaque fois.
+Mais `i` augmente et certains éléments seront ignorés.
 
 La boucle `for..of` fait de même.
 

@@ -6,7 +6,8 @@ importance: 5
 
 Comparez les deux fragments de code.
 
-1. Le premier utilise `finally` pour exécuter le code après `try..catch` :
+1.
+Le premier utilise `finally` pour exécuter le code après `try..catch` :
 
     ```js
     try {
@@ -19,7 +20,8 @@ Comparez les deux fragments de code.
     */!*
     }
     ```
-2. Le deuxième fragment fait le nettoyage juste après `try..catch` :
+2.
+Le deuxième fragment fait le nettoyage juste après `try..catch` :
 
     ```js
     try {

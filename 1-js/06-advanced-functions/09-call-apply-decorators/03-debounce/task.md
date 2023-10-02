@@ -6,15 +6,18 @@ importance: 5
 
 Le résultat du décorateur `debounce(f, ms)` est un wrapper qui suspend les appels à `f` jusqu'à ce qu'il y ait `ms` millisecondes d'inactivité (pas d'appels, "période de cooldown"), puis invoque `f` une fois avec les derniers arguments.
 
-En d'autres termes, `debounce` est comme une secrétaire qui accepte les "appels téléphoniques", et attend jusqu'à ce qu'il y ait des millisecondes de silence. Et alors seulement, elle transfère les dernières informations d'appel au "boss" (appellez le "f" réel).
+En d'autres termes, `debounce` est comme une secrétaire qui accepte les "appels téléphoniques", et attend jusqu'à ce qu'il y ait des millisecondes de silence.
+Et alors seulement, elle transfère les dernières informations d'appel au "boss" (appellez le "f" réel).
 
 Par exemple, nous avons eu une fonction `f` et l'avons remplacée par `f = debounce(f, 1000)`.
 
-Ensuite, si la fonction encapsulée est appelée à 0ms, 200ms et 500ms, et qu'il n'y a aucun appel, alors le `f` actuel ne sera appelé qu'une seule fois, à 1500 ms. Autrement dit: après la période de temps de recharge de 1000 ms à partir du dernier appel.
+Ensuite, si la fonction encapsulée est appelée à 0ms, 200ms et 500ms, et qu'il n'y a aucun appel, alors le `f` actuel ne sera appelé qu'une seule fois, à 1500 ms.
+Autrement dit: après la période de temps de recharge de 1000 ms à partir du dernier appel.
 
 ![](debounce.svg)
 
-... Et il récupérera les arguments du tout dernier appel, les autres appels sont ignorés.
+...
+Et il récupérera les arguments du tout dernier appel, les autres appels sont ignorés.
 
 Voici le code pour cela (utilise le décorateur debounce de la [librairie Lodash](https://lodash.com/docs/4.17.15#debounce)):
 
@@ -27,11 +30,15 @@ setTimeout(() => f("c"), 500);
 // la fonction debounce attend 1000ms après le dernier appel puis exécute : alert("c")
 ```
 
-Maintenant, un exemple pratique. Disons que l'utilisateur tape quelque chose et que nous aimerions envoyer une requête au serveur lorsque l'entrée est terminée.
+Maintenant, un exemple pratique.
+Disons que l'utilisateur tape quelque chose et que nous aimerions envoyer une requête au serveur lorsque l'entrée est terminée.
 
-Il ne sert à rien d'envoyer la requête pour chaque caractère saisi. Au lieu de cela, nous aimerions attendre, puis traiter l'ensemble du résultat.
+Il ne sert à rien d'envoyer la requête pour chaque caractère saisi.
+Au lieu de cela, nous aimerions attendre, puis traiter l'ensemble du résultat.
 
-Dans un navigateur Web, nous pouvons configurer un gestionnaire d'événements - une fonction qui est appelée à chaque modification d'un champ de saisie. Normalement, un gestionnaire d'événements est appelé très souvent, pour chaque touche tapée. Mais si on le `debounce` de 1000ms, il ne sera appelé qu'une seule fois, après 1000ms après la dernière entrée.
+Dans un navigateur Web, nous pouvons configurer un gestionnaire d'événements - une fonction qui est appelée à chaque modification d'un champ de saisie.
+Normalement, un gestionnaire d'événements est appelé très souvent, pour chaque touche tapée.
+Mais si on le `debounce` de 1000ms, il ne sera appelé qu'une seule fois, après 1000ms après la dernière entrée.
 
 ```online
 

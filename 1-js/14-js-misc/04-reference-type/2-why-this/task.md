@@ -6,7 +6,8 @@ importance: 3
 
 Dans le code ci-dessous, nous avons l'intention d'appeler la méthode `obj.go()` 4 fois de suite.
 
-Mais les appels `(1)` et `(2)` fonctionnent différemment de `(3)` et `(4)`. Pourquoi ?
+Mais les appels `(1)` et `(2)` fonctionnent différemment de `(3)` et `(4)`.
+Pourquoi ?
 
 ```js run no-beautify
 let obj, method;

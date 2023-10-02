@@ -62,7 +62,8 @@ function highlight(td) {
 }
 ```
 
-Un tel code ne se soucie pas du nombre de cellules dans le tableau. Nous pouvons ajouter / supprimer `<td>` dynamiquement à tout moment et le surlignage fonctionnera toujours.
+Un tel code ne se soucie pas du nombre de cellules dans le tableau.
+Nous pouvons ajouter / supprimer `<td>` dynamiquement à tout moment et le surlignage fonctionnera toujours.
 
 Pourtant, il y a un inconvénient.
 
@@ -100,10 +101,16 @@ table.onclick = function(event) {
 ```
 
 Explications:
-1. La méthode `elem.closest(selector)` retourne l'ancêtre le plus proche qui correspond au sélecteur. Dans notre cas, nous recherchons `<td>` en remontant de l'élément source.
-2. Si `event.target` n'est pas à l'intérieur d'un `<td>`, alors l'appel renvoie immédiatement, car il n'y a rien à faire.
-3. Dans le cas de tableaux imbriquées, `event.target` peut être un `<td>`, mais se trouvant en dehors du tableau actuel. Nous vérifions donc si c'est réellement la balise `<td>` de *notre tableau*.
-4. Si c'est le cas, surligner le.
+1.
+La méthode `elem.closest(selector)` retourne l'ancêtre le plus proche qui correspond au sélecteur.
+Dans notre cas, nous recherchons `<td>` en remontant de l'élément source.
+2.
+Si `event.target` n'est pas à l'intérieur d'un `<td>`, alors l'appel renvoie immédiatement, car il n'y a rien à faire.
+3.
+Dans le cas de tableaux imbriquées, `event.target` peut être un `<td>`, mais se trouvant en dehors du tableau actuel.
+Nous vérifions donc si c'est réellement la balise `<td>` de *notre tableau*.
+4.
+Si c'est le cas, surligner le.
 
 En conséquence, nous avons un code de surlignage rapide et efficace, qui ne se soucie pas du nombre total de `<td>` dans le tableau.
 
@@ -111,15 +118,20 @@ En conséquence, nous avons un code de surlignage rapide et efficace, qui ne se 
 
 Il existe d'autres utilisations de la délégation d'événements.
 
-Disons que nous voulons créer un menu avec les boutons "Save", "Load", "Search" et ainsi de suite. Et il y a un objet avec les méthodes `save`, `load`, `search`... Comment les faire correspondre?
+Disons que nous voulons créer un menu avec les boutons "Save", "Load", "Search" et ainsi de suite.
+Et il y a un objet avec les méthodes `save`, `load`, `search`...
+Comment les faire correspondre?
 
-La première idée peut être d'assigner un gestionnaire distinct à chaque bouton. Mais il existe une solution plus élégante. Nous pouvons ajouter un gestionnaire pour tout le menu et des attributs `data-action` pour les boutons qui ont la méthode à appeler:
+La première idée peut être d'assigner un gestionnaire distinct à chaque bouton.
+Mais il existe une solution plus élégante.
+Nous pouvons ajouter un gestionnaire pour tout le menu et des attributs `data-action` pour les boutons qui ont la méthode à appeler:
 
 ```html
 <button *!*data-action="save"*/!*>Click to Save</button>
 ```
 
-Le gestionnaire lit l'attribut et exécute la méthode. Jetez un œil à l'exemple suivant:
+Le gestionnaire lit l'attribut et exécute la méthode.
+Jetez un œil à l'exemple suivant:
 
 ```html autorun height=60 run untrusted
 <div id="menu">
@@ -161,24 +173,29 @@ Le gestionnaire lit l'attribut et exécute la méthode. Jetez un œil à l'exemp
 </script>
 ```
 
-Veuillez noter qu'à la ligne `(*)`, `this.onClick` est lié à `this`. C'est important, car sinon `this` à l'intérieur ferait référence à l'élément DOM (`elem`), pas à l'objet `Menu`, et `this[action]` ne serait pas ce dont nous avons besoin.
+Veuillez noter qu'à la ligne `(*)`, `this.onClick` est lié à `this`.
+C'est important, car sinon `this` à l'intérieur ferait référence à l'élément DOM (`elem`), pas à l'objet `Menu`, et `this[action]` ne serait pas ce dont nous avons besoin.
 
 Alors, quels avantages la délégation nous donne-t-elle ici?
 
 ```compare
-+ Nous n'avons pas besoin d'écrire le code pour affecter un gestionnaire à chaque bouton. Il suffit de faire une méthode et le mettre dans le balisage.
++ Nous n'avons pas besoin d'écrire le code pour affecter un gestionnaire à chaque bouton.
+Il suffit de faire une méthode et le mettre dans le balisage.
 + La structure HTML est flexible, nous pouvons ajouter / supprimer des boutons à tout moment.
 ```
 
-Nous pourrions également utiliser les classes `.action-save`, `.action-load`, mais un attribut `data-action` est mieux sémantiquement. Et nous pouvons également l'utiliser dans les règles CSS.
+Nous pourrions également utiliser les classes `.action-save`, `.action-load`, mais un attribut `data-action` est mieux sémantiquement.
+Et nous pouvons également l'utiliser dans les règles CSS.
 
 ## Le patron "comportement"
 
 Nous pouvons également utiliser la délégation d'événements pour ajouter des "comportements" aux éléments *déclarativement*, avec des attributs et des classes spéciaux.
 
 Le patron comporte deux parties:
-1. Nous ajoutons un attribut personnalisé à un élément qui décrit son comportement.
-2. Un gestionnaire à l'échelle du document suit les événements et, si un événement se produit sur un élément attribué -- exécute l'action.
+1.
+Nous ajoutons un attribut personnalisé à un élément qui décrit son comportement.
+2.
+Un gestionnaire à l'échelle du document suit les événements et, si un événement se produit sur un élément attribué -- exécute l'action.
 
 ### Comportement: Compteur
 
@@ -199,9 +216,12 @@ One more counter: <input type="button" value="2" data-counter>
 </script>
 ```
 
-Si nous cliquons sur un bouton - sa valeur est augmentée. Pas de boutons, mais l'approche générale est importante ici.
+Si nous cliquons sur un bouton - sa valeur est augmentée.
+Pas de boutons, mais l'approche générale est importante ici.
 
-Il peut y avoir autant d'attributs avec `data-counter` que nous le voulons. Nous pouvons à tout moment en ajouter de nouveaux au HTML. En utilisant la délégation d'événements, nous avons "étendu" le HTML, ajouté un attribut qui décrit un nouveau comportement.
+Il peut y avoir autant d'attributs avec `data-counter` que nous le voulons.
+Nous pouvons à tout moment en ajouter de nouveaux au HTML.
+En utilisant la délégation d'événements, nous avons "étendu" le HTML, ajouté un attribut qui décrit un nouveau comportement.
 
 ```warn header="Pour les gestionnaires de niveau document -- toujours `addEventListener`"
 Lorsque nous affectons un gestionnaire d'événements à l'objet `document`, nous devrions toujours utiliser `addEventListener`, pas `document.on<event>`, car ce dernier provoquera des conflits: les nouveaux gestionnaires écrasent les anciens.
@@ -211,7 +231,8 @@ Pour de vrais projets, il est normal qu'il y ait de nombreux gestionnaires sur `
 
 ### Comportement: Toggler
 
-Encore un exemple de comportement. Un clic sur un élément avec l'attribut `data-toggle-id` affichera/masquera l'élément avec le `id` donné:
+Encore un exemple de comportement.
+Un clic sur un élément avec l'attribut `data-toggle-id` affichera/masquera l'élément avec le `id` donné:
 
 ```html autorun run height=60
 <button *!*data-toggle-id="subscribe-mail"*/!*>
@@ -236,9 +257,12 @@ Encore un exemple de comportement. Un clic sur un élément avec l'attribut `dat
 </script>
 ```
 
-Notons encore une fois ce que nous avons fait. Maintenant, pour ajouter une fonctionnalité de basculement à un élément -- il n'est pas nécessaire de connaître JavaScript, utilisez simplement l'attribut `data-toggle-id`.
+Notons encore une fois ce que nous avons fait.
+Maintenant, pour ajouter une fonctionnalité de basculement à un élément -- il n'est pas nécessaire de connaître JavaScript, utilisez simplement l'attribut `data-toggle-id`.
 
-Cela peut devenir très pratique -- pas besoin d'écrire du JavaScript pour chacun de ces éléments. Utilisez simplement le comportement. Le gestionnaire au niveau du document le fait fonctionner pour n'importe quel élément de la page.
+Cela peut devenir très pratique -- pas besoin d'écrire du JavaScript pour chacun de ces éléments.
+Utilisez simplement le comportement.
+Le gestionnaire au niveau du document le fait fonctionner pour n'importe quel élément de la page.
 
 Nous pouvons également combiner plusieurs comportements sur un seul élément.
 
@@ -252,9 +276,12 @@ Il est souvent utilisé pour ajouter la même manipulation pour de nombreux él�
 
 L'algorithme:
 
-1. Placez un seul gestionnaire sur le conteneur.
-2. Dans le gestionnaire -- vérifiez l'élément source `event.target`.
-3. Si l'événement s'est produit à l'intérieur d'un élément qui nous intéresse, gérez l'événement.
+1.
+Placez un seul gestionnaire sur le conteneur.
+2.
+Dans le gestionnaire -- vérifiez l'élément source `event.target`.
+3.
+Si l'événement s'est produit à l'intérieur d'un élément qui nous intéresse, gérez l'événement.
 
 Avantages:
 
@@ -267,6 +294,9 @@ Avantages:
 La délégation a bien sûr ses limites:
 
 ```compare
-- Premièrement, l'événement doit bouillonner. Certains événements ne bouillonnent pas. De plus, les gestionnaires de bas niveau ne devraient pas utiliser `event.stopPropagation()`.
-- Deuxièmement, la délégation peut ajouter une charge au processeur, car le gestionnaire au niveau du conteneur réagit aux événements à n'importe quel endroit du conteneur, qu'ils nous intéressent ou non. Mais généralement, la charge est négligeable, nous ne la prenons donc pas en compte.
+- Premièrement, l'événement doit bouillonner.
+Certains événements ne bouillonnent pas.
+De plus, les gestionnaires de bas niveau ne devraient pas utiliser `event.stopPropagation()`.
+- Deuxièmement, la délégation peut ajouter une charge au processeur, car le gestionnaire au niveau du conteneur réagit aux événements à n'importe quel endroit du conteneur, qu'ils nous intéressent ou non.
+Mais généralement, la charge est négligeable, nous ne la prenons donc pas en compte.
 ```

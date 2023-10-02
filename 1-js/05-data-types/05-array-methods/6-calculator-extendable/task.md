@@ -8,7 +8,9 @@ Create a constructor function `Calculator` that creates "extendable" calculator 
 
 The task consists of two parts.
 
-1. First, implement the method `calculate(str)` that takes a string like `"1 + 2"` in the format "NUMBER operator NUMBER" (space-delimited) and returns the result. Should understand plus `+` and minus `-`.
+1.
+First, implement the method `calculate(str)` that takes a string like `"1 + 2"` in the format "NUMBER operator NUMBER" (space-delimited) and returns the result.
+Should understand plus `+` and minus `-`.
 
     Usage example:
 
@@ -18,7 +20,9 @@ The task consists of two parts.
     alert(calc.calculate("3 + 7")); // 10
     ```
 
-2. Then add the method `addMethod(name, func)` that teaches the calculator a new operation. It takes the operator `name` and the two-argument function `func(a,b)` that implements it.
+2.
+Then add the method `addMethod(name, func)` that teaches the calculator a new operation.
+It takes the operator `name` and the two-argument function `func(a,b)` that implements it.
 
     For instance, let's add the multiplication `*`, division `/` and power `**`:
 

@@ -5,16 +5,25 @@ Le marqueur `pattern:y` permet d'effectuer une recherche à partir d'une positio
 
 Pour appréhender le cas d'usage du marqueur `pattern:y` et mieux comprendre le fonctionnement des regexps, regardons un exemple pratique.
 
-Parmi les usages courants des regexps, l'analyse lexicale : Avec un texte donné, p. ex. dans un langage de programmation, nous avons besoin de trouver ses éléments de structure. Par exemple, l'HTML a des balises et des attributs, le code JavaScript a des fonctions, variables, etc.
+Parmi les usages courants des regexps, l'analyse lexicale : Avec un texte donné, p.
+ex.
+dans un langage de programmation, nous avons besoin de trouver ses éléments de structure.
+Par exemple, l'HTML a des balises et des attributs, le code JavaScript a des fonctions, variables, etc.
 
 L'écriture d'analyseurs lexicaux est un domaine spécifique, avec ses propres outils et algorithmes que nous n'explorerons pas ici, mais il y a une tâche courante : Lire quelque chose depuis une position donnée.
 
-P. ex. prenons la chaîne de caractères `subject:let varName = "value"`, dans laquelle nous devons lire le nom de la variable, qui commence à la position `4`.
+P.
+ex.
+prenons la chaîne de caractères `subject:let varName = "value"`, dans laquelle nous devons lire le nom de la variable, qui commence à la position `4`.
 
-Nous chercherons un nom de variable en utilisant la regexp `pattern:\w+`. Les noms de variable en JavaScript nécessitent en fait pour un résultat exact, une regexp un peu plus complexe, mais c'est sans importance ici.
+Nous chercherons un nom de variable en utilisant la regexp `pattern:\w+`.
+Les noms de variable en JavaScript nécessitent en fait pour un résultat exact, une regexp un peu plus complexe, mais c'est sans importance ici.
 
-- Un appel à `str.match(/\w+/)` trouvera seulement le premier mot de la ligne (`let`). Ça n'est pas ça.
-- Nous pouvons ajouter le marqueur `pattern:g`. Mais alors l'appel à `str.match(/\w+/g)` cherchera tous les mots du text, alors que nous avons besoin que d'un mot à partir de la position `4`. Ça n'est donc pas encore ça.
+- Un appel à `str.match(/\w+/)` trouvera seulement le premier mot de la ligne (`let`).
+Ça n'est pas ça.
+- Nous pouvons ajouter le marqueur `pattern:g`.
+Mais alors l'appel à `str.match(/\w+/g)` cherchera tous les mots du text, alors que nous avons besoin que d'un mot à partir de la position `4`.
+Ça n'est donc pas encore ça.
 
 **Alors comment rechercher un motif à partir d'une position donnée ?**
 
@@ -22,9 +31,12 @@ Essayons en utilisant la méthode `regexp.exec(str)`.
 
 Pour une `regexp` sans marqueur `pattern:g` ni `pattern:y`, cette méthode cherche seulement la première occurrence, cela fonctionne exactement comme `str.match(regexp)`.
 
-... Mais s'il y a le marqueur `pattern:g`, il effectue alors une recherche dans `str`, à partir de la position stockée dans la propriété `regexp.lastIndex`. Et s'il trouve une correspondance, il fixe `regexp.lastIndex` à l'index immédiatement après cette correspondance.
+...
+Mais s'il y a le marqueur `pattern:g`, il effectue alors une recherche dans `str`, à partir de la position stockée dans la propriété `regexp.lastIndex`.
+Et s'il trouve une correspondance, il fixe `regexp.lastIndex` à l'index immédiatement après cette correspondance.
 
-En d'autres termes, `regexp.lastIndex` sert de point de départ pour la recherche, puis chaque appel à `regexp.exec(str)` la change en une nouvelle valeur ("après la dernière correspondance"). Cela, bien entendu, uniquement avec le marquer `pattern:g`.
+En d'autres termes, `regexp.lastIndex` sert de point de départ pour la recherche, puis chaque appel à `regexp.exec(str)` la change en une nouvelle valeur ("après la dernière correspondance").
+Cela, bien entendu, uniquement avec le marquer `pattern:g`.
 
 Donc chaque appel successif à `regexp.exec(str)` retourne une correspondance après l'autre.
 
@@ -93,7 +105,8 @@ Le résultat est valide.
 
 ...Mais attendez, pas si vite.
 
-Vous noterez : l'appel à `regexp.exec` commence la recherche à la position `lastIndex` et continue ensuite plus loin. S'il n'y a pas de mot à la position `lastIndex`, mais qu'il y en a un plus loin, c'est celui-ci qui sera trouvé :
+Vous noterez : l'appel à `regexp.exec` commence la recherche à la position `lastIndex` et continue ensuite plus loin.
+S'il n'y a pas de mot à la position `lastIndex`, mais qu'il y en a un plus loin, c'est celui-ci qui sera trouvé :
 
 ```js run
 let str = 'let varName = "value"';
@@ -111,7 +124,9 @@ alert(word[0]); // varName
 alert(word.index); // 4
 ```
 
-Pour certaines tâches, et pour les analyses lexicales en particulier, c'est complètement faux. Nous avons besoin de trouver la correspondance du motif à la position exacte, et non quelque part plus loin. Et c'est justement ce que fait le marqueur `y`.
+Pour certaines tâches, et pour les analyses lexicales en particulier, c'est complètement faux.
+Nous avons besoin de trouver la correspondance du motif à la position exacte, et non quelque part plus loin.
+Et c'est justement ce que fait le marqueur `y`.
 
 **Le marqueur `pattern:y` fait que `regexp.exec` recherche exactement à la position `lastIndex`, et non à partir de cette position.**
 
@@ -133,6 +148,8 @@ Comme nous pouvons le voir, la regexp `pattern:/\w+/y` ne trouve pas de correspo
 
 En plus d'obtenir ce que nous cherchions, il y a un gain significatif de performance avec le marqueur `pattern:y`.
 
-Imaginez avec un long texte, sans aucune correspondance dedans. Une recherche avec le marqueur `pattern:g` ira alors jusqu'à la fin du texte pour ne rien trouver, et cela prendra bien plus de temps qu'avec le marqueur `pattern:y`, qui vérifie seulement à la position exacte.
+Imaginez avec un long texte, sans aucune correspondance dedans.
+Une recherche avec le marqueur `pattern:g` ira alors jusqu'à la fin du texte pour ne rien trouver, et cela prendra bien plus de temps qu'avec le marqueur `pattern:y`, qui vérifie seulement à la position exacte.
 
-Dans des tâches comme en analyse lexicale, il y a habituellement beaucoup de recherches sur des positions exactes, pour vérifier ce qu'il s'y trouve. L'utilisation du marqueur `pattern:y` est la clé pour des bonnes implémentations et de bonnes performances.
+Dans des tâches comme en analyse lexicale, il y a habituellement beaucoup de recherches sur des positions exactes, pour vérifier ce qu'il s'y trouve.
+L'utilisation du marqueur `pattern:y` est la clé pour des bonnes implémentations et de bonnes performances.

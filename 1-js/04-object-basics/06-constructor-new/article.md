@@ -1,15 +1,19 @@
 # Le constructeur, l'opérateur "new"
 
-La syntaxe "objet littéral" `{...}` permet de créer un seul objet. Mais souvent, nous devons créer de nombreux objets similaires, tels que plusieurs utilisateurs ou éléments de menu, etc.
+La syntaxe "objet littéral" `{...}` permet de créer un seul objet.
+Mais souvent, nous devons créer de nombreux objets similaires, tels que plusieurs utilisateurs ou éléments de menu, etc.
 
 Cela peut être fait en utilisant les fonctions constructeur et l'opérateur `"new"`.
 
 ## La fonction constructeur
 
-Les fonctions constructeur sont techniquement des fonctions habituelles. Il existe cependant deux conventions :
+Les fonctions constructeur sont techniquement des fonctions habituelles.
+Il existe cependant deux conventions :
 
-1. Elles sont nommées avec une lettre majuscule en premier.
-2. Elles ne devraient être exécutées qu'avec l'opérateur `"new"`.
+1.
+Elles sont nommées avec une lettre majuscule en premier.
+2.
+Elles ne devraient être exécutées qu'avec l'opérateur `"new"`.
 
 Par exemple :
 
@@ -29,9 +33,13 @@ alert(user.isAdmin); // false
 
 Quand une fonction est exécutée avec `new`, elle effectue les étapes suivantes :
 
-1. Un nouvel objet vide est créé et affecté à `this`.
-2. Le corps de la fonction est exécuté. Habituellement, il modifie `this`, y ajoutant de nouvelles propriétés.
-3. La valeur de `this` est retournée.
+1.
+Un nouvel objet vide est créé et affecté à `this`.
+2.
+Le corps de la fonction est exécuté.
+Habituellement, il modifie `this`, y ajoutant de nouvelles propriétés.
+3.
+La valeur de `this` est retournée.
 
 En d'autres termes, `new User(...)` fait quelque chose comme :
 
@@ -60,13 +68,17 @@ let user = {
 };
 ```
 
-Maintenant, si nous voulons créer d'autres utilisateurs, nous pouvons appeler `new User("Ann")`, `new User("Alice")` etc. Beaucoup plus court que d'écrire littéralement à chaque fois, et aussi facile à lire.
+Maintenant, si nous voulons créer d'autres utilisateurs, nous pouvons appeler `new User("Ann")`, `new User("Alice")` etc.
+Beaucoup plus court que d'écrire littéralement à chaque fois, et aussi facile à lire.
 
 C’est l’objectif principal des constructeurs -- implémenter du code de création d’objet réutilisable.
 
-Notons encore une fois -- techniquement, n'importe quelle fonction (à l'exception des fonctions fléchées, car elles n'ont pas de `this`) peut être utilisée comme constructeur. Elle peut être exécutée avec `new`, et elle exécutera l'algorithme ci-dessus. La "première lettre majuscule" est une convention, pour indiquer clairement qu'une fonction doit être exécutée avec `new`.
+Notons encore une fois -- techniquement, n'importe quelle fonction (à l'exception des fonctions fléchées, car elles n'ont pas de `this`) peut être utilisée comme constructeur.
+Elle peut être exécutée avec `new`, et elle exécutera l'algorithme ci-dessus.
+La "première lettre majuscule" est une convention, pour indiquer clairement qu'une fonction doit être exécutée avec `new`.
 
-````smart header="new function() { ... }"
+````smart header="new function() { ...
+}"
 Si nous avons beaucoup de lignes de code concernant la création d'un seul objet complexe, nous pouvons les envelopper dans une fonction constructeur, comme ceci :
 
 ```js
@@ -77,11 +89,13 @@ let user = new function() {
 
   /* ...Autre code pour la création d'utilisateur
   peut-être une logique complexe et des déclarations
-  de variables locales etc. */
+  de variables locales etc.
+*/
 };
 ```
 
-Ce constructeur ne peut pas être appelé à nouveau, car il n'est enregistré nulle part, juste créé et appelé. Cette astuce vise donc à encapsuler le code qui construit l'objet unique, sans réutilisation future.
+Ce constructeur ne peut pas être appelé à nouveau, car il n'est enregistré nulle part, juste créé et appelé.
+Cette astuce vise donc à encapsuler le code qui construit l'objet unique, sans réutilisation future.
 ````
 
 ## Constructeur mode test : new.target
@@ -106,7 +120,8 @@ User(); // undefined
 
 // Avec "new":
 *!*
-new User(); // function User { ... }
+new User(); // function User { ...
+}
 */!*
 ```
 
@@ -127,13 +142,16 @@ let john = User("John"); // Redirige l'appel vers un new User
 alert(john.name); // John
 ```
 
-Cette approche est parfois utilisée dans les librairies pour rendre la syntaxe plus flexible. Pour que les gens puissent appeler la fonction avec ou sans `new`, et que cela fonctionne toujours.
+Cette approche est parfois utilisée dans les librairies pour rendre la syntaxe plus flexible.
+Pour que les gens puissent appeler la fonction avec ou sans `new`, et que cela fonctionne toujours.
 
-Ce n’est probablement pas une bonne chose à utiliser partout cependant, car l’omission de `new` rend un peu moins évident ce qui se passe. Avec `new`, nous savons tous que le nouvel objet est en cours de création.
+Ce n’est probablement pas une bonne chose à utiliser partout cependant, car l’omission de `new` rend un peu moins évident ce qui se passe.
+Avec `new`, nous savons tous que le nouvel objet est en cours de création.
 
 ## Retour des constructeurs
 
-Généralement, les constructeurs n'ont pas d'instruction `return`. Leur tâche consiste à écrire tous les éléments nécessaires dans `this`, qui devient automatiquement le résultat.
+Généralement, les constructeurs n'ont pas d'instruction `return`.
+Leur tâche consiste à écrire tous les éléments nécessaires dans `this`, qui devient automatiquement le résultat.
 
 Mais s'il y a une déclaration `return`, alors la règle est simple :
 
@@ -168,7 +186,8 @@ function SmallUser() {
 alert(new SmallUser().name); // John
 ```
 
-Généralement, les constructeurs n’ont pas d’instruction `return`. Nous mentionnons ici le comportement spécial avec les objets renvoyés principalement dans un souci de complétude.
+Généralement, les constructeurs n’ont pas d’instruction `return`.
+Nous mentionnons ici le comportement spécial avec les objets renvoyés principalement dans un souci de complétude.
 
 ````smart header="Omettre les parenthèses"
 À propos, on peut omettre les parenthèses après `new` :
@@ -184,7 +203,8 @@ L'omission de parenthèses ici n'est pas considérée comme une bonne pratique, 
 
 ## Les méthodes dans les constructeurs
 
-L'utilisation de fonctions de constructeur pour créer des objets offre une grande flexibilité. La fonction constructeur peut avoir des paramètres qui définissent comment construire l'objet et ce qu'il doit y mettre.
+L'utilisation de fonctions de constructeur pour créer des objets offre une grande flexibilité.
+La fonction constructeur peut avoir des paramètres qui définissent comment construire l'objet et ce qu'il doit y mettre.
 
 Bien sûr, nous pouvons ajouter à `this` non seulement des propriétés, mais également des méthodes.
 
@@ -208,7 +228,8 @@ john.sayHi(); // My name is: John
 /*
 john = {
    name: "John",
-   sayHi: function() { ... }
+   sayHi: function() { ...
+}
 }
 */
 ```
@@ -218,14 +239,16 @@ Pour créer des objets complexes, il existe une syntaxe plus avancée, les [clas
 ## Résumé
 
 - Les fonctions constructeur ou, plus brièvement, les constructeurs, sont des fonctions normales, mais il est généralement convenu de les nommer avec une première lettre en majuscule.
-- Les fonctions constructeur ne doivent être appelées qu'avec `new`. Un tel appel implique la création d'un objet `this` vide au début de la fonction et le renvoi de l'objet complété à la fin.
+- Les fonctions constructeur ne doivent être appelées qu'avec `new`.
+Un tel appel implique la création d'un objet `this` vide au début de la fonction et le renvoi de l'objet complété à la fin.
 
 Nous pouvons utiliser des fonctions constructeurs pour créer plusieurs objets similaires.
 
 JavaScript fournit des fonctions constructeur pour de nombreux objets intégrés du langage : comme `Date` pour les dates, `Set` pour les ensembles et d'autres que nous prévoyons d’étudier.
 
 ```smart header="Objets, nous reviendrons !"
-Dans ce chapitre, nous ne couvrons que les bases sur les objets et les constructeurs. Elles sont essentielles pour en savoir plus sur les types de données et les fonctions dans les chapitres suivants.
+Dans ce chapitre, nous ne couvrons que les bases sur les objets et les constructeurs.
+Elles sont essentielles pour en savoir plus sur les types de données et les fonctions dans les chapitres suivants.
 
 Après avoir appris cela, nous reviendrons aux objets et les couvrirons en profondeur dans les chapitres <info:prototypes> et <info:classes>.
 ```

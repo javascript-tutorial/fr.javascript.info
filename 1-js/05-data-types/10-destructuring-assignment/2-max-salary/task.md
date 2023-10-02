@@ -19,4 +19,5 @@ Créer la fonction `topSalary(salaries)` qui renvoie le nom de la personne la mi
 - Si `salaries` est vide, devrait retourner `null`.
 - S'il y a plusieurs personnes les mieux payées, renvoyez-en une.
 
-P.S. Utilisez `Object.entries` et la décomposition pour parcourir les paires clé / valeur.
+P.S.
+Utilisez `Object.entries` et la décomposition pour parcourir les paires clé / valeur.

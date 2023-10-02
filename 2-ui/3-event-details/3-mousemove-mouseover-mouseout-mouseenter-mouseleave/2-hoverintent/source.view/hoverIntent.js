@@ -29,15 +29,18 @@ class HoverIntent {
   }
 
   onMouseOver(event) {
-    /* ... */
+    /* ...
+*/
   }
 
   onMouseOut(event) {
-    /* ... */
+    /* ...
+*/
   }
 
   onMouseMove(event) {
-    /* ... */
+    /* ...
+*/
   }
 
   destroy() {

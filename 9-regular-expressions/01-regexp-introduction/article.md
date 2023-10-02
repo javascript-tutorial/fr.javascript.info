@@ -23,13 +23,16 @@ regexp = /pattern/; // aucun marqueur
 regexp = /pattern/gmi; // avec marqueurs g, m, et i (bientôt abordés)
 ```
 
-Les slash `pattern:/.../` indique à JavaScript que l'on crée une expression régulière. Il joue le même rôle que les guillemets pour les chaînes de caractères (les "string").
+Les slash `pattern:/.../` indique à JavaScript que l'on crée une expression régulière.
+Il joue le même rôle que les guillemets pour les chaînes de caractères (les "string").
 
 Dans les deux cas `regexp` devient un objet de la classe intégrée `RegExp`.
 
-La différence principale entre ces deux syntaxes réside dans le fait que les pattern utilisants des slashes `/.../` ne permettent pas d'insérer des expressions (comme les modèles littéraux de chaîne de caractères `$ {...}`). Ils sont complètement statiques.
+La différence principale entre ces deux syntaxes réside dans le fait que les pattern utilisants des slashes `/.../` ne permettent pas d'insérer des expressions (comme les modèles littéraux de chaîne de caractères `$ {...}`).
+Ils sont complètement statiques.
 
-Les slashes sont utilisés lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante. Alors que `new RegExp` est plus utilisé lorsque nous devons créer une expression régulière "à la volée" à partir d'une chaîne de caractères générée dynamiquement, par exemple :
+Les slashes sont utilisés lorsque nous connaissons l'expression régulière au moment de l'écriture du code -- et c'est la situation la plus courante.
+Alors que `new RegExp` est plus utilisé lorsque nous devons créer une expression régulière "à la volée" à partir d'une chaîne de caractères générée dynamiquement, par exemple :
 
 ```js
 let tag = prompt("What tag do you want to find?", "h2");
@@ -56,7 +59,9 @@ Il n'y en a que 6 en JavaScript :
 : Active le mode "dotall", qui permet à un `pattern : .` de correspondre au caractère de nouvelle ligne `\n` (traité dans le chapitre <info:regexp-character-classes>).
 
 `pattern:u`
-: Active le support complet Unicode. Le flag permet le traitement correct des paires de substitution. Plus à ce sujet dans le chapitre <info:regexp-unicode>.
+: Active le support complet Unicode.
+Le flag permet le traitement correct des paires de substitution.
+Plus à ce sujet dans le chapitre <info:regexp-unicode>.
 
 `pattern:y`
 : mode "Sticky" : chercher à la position exacte dans le texte (couvert dans le chapitre <info:regexp-sticky>)
@@ -77,7 +82,8 @@ La méthode `str.match(regexp)` trouve tous les résultats de `regexp` dans la c
 
 Il dispose de 3 modes de travail :
 
-1. If the regular expression has flag `pattern:g`, it returns an array of all matches:
+1.
+If the regular expression has flag `pattern:g`, it returns an array of all matches:
     ```js run
     let str = "We will, we will rock you";
 
@@ -85,7 +91,8 @@ Il dispose de 3 modes de travail :
     ```
     Veuillez noter que les deux `match:We` et `match:we` sont trouvés, parce que le flag `pattern:i` rend l'expression régulière insensible à la casse.
 
-2. Si aucun indicateur de ce type n'existe, il retourne uniquement la première correspondance sous la forme d'un tableau, avec la correspondance complète à l'index `0` et quelques détails supplémentaires dans les propriétés :
+2.
+Si aucun indicateur de ce type n'existe, il retourne uniquement la première correspondance sous la forme d'un tableau, avec la correspondance complète à l'index `0` et quelques détails supplémentaires dans les propriétés :
     ```js run
     let str = "We will, we will rock you";
 
@@ -98,11 +105,15 @@ Il dispose de 3 modes de travail :
     alert(result.index);  // 0 (position of the match)
     alert(result.input);  // We will, we will rock you (source string)
     ```
-    Le tableau peut avoir d’autres index, en plus de `0` si une partie de l’expression régulière est entre parenthèses. Nous couvrirons cela dans le chapitre <info:regexp-groups>.
+    Le tableau peut avoir d’autres index, en plus de `0` si une partie de l’expression régulière est entre parenthèses.
+Nous couvrirons cela dans le chapitre <info:regexp-groups>.
 
-3. Et, enfin, s'il n'y a pas de correspondance, `null` est renvoyé (peu importe qu'il y ait un flag `pattern:g` ou pas).
+3.
+Et, enfin, s'il n'y a pas de correspondance, `null` est renvoyé (peu importe qu'il y ait un flag `pattern:g` ou pas).
 
-    C'est une nuance très importante. S'il n'y a pas de correspondance, nous n'obtenons pas un tableau vide, mais `null`. Oublier cela peut entraîner des erreurs, par exemple :
+    C'est une nuance très importante.
+S'il n'y a pas de correspondance, nous n'obtenons pas un tableau vide, mais `null`.
+Oublier cela peut entraîner des erreurs, par exemple :
 
     ```js run
     let matches = "JavaScript".match(/HTML/); // = null
@@ -136,7 +147,8 @@ alert("We will, we will".replace(/we/i, "I")); // I will, we will
 alert("We will, we will".replace(/we/ig, "I")); // I will, I will
 ```
 
-Le deuxième argument est la chaîne de caractères `replacement`. Nous pouvons utiliser des combinaisons de caractères spéciaux pour insérer des fragments de la correspondance :
+Le deuxième argument est la chaîne de caractères `replacement`.
+Nous pouvons utiliser des combinaisons de caractères spéciaux pour insérer des fragments de la correspondance :
 
 | Symboles             | Action dans la chaîne de caractères de remplacement string                                                                                           |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -39,7 +39,8 @@ As `<span>` has an implicit `display: inline`, it occupies exactly enough place 
 
 Toggling the menu should change the arrow and show/hide the menu list.
 
-All these changes are perfectly handled by CSS. In JavaScript we should label the current state of the menu by adding/removing the class `.open`.
+All these changes are perfectly handled by CSS.
+In JavaScript we should label the current state of the menu by adding/removing the class `.open`.
 
 Without it, the menu will be closed:
 

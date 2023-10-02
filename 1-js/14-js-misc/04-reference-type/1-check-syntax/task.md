@@ -15,4 +15,5 @@ let user = {
 (user.go)()
 ```
 
-P.S. Il y a un piège :)
+P.S.
+Il y a un piège :)

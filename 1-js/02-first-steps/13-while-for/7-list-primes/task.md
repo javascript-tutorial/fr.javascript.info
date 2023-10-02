@@ -14,4 +14,5 @@ Par exemple, `5` est un nombre premier, car il ne peut pas être divisé sans re
 
 Pour `n = 10`, le résultat sera `2`,`3`,`5`,`7`.
 
-P.S. Le code devrait fonctionner pour n'importe quel `n` et aucune valeur fixe ne doit être codée en dur.
+P.S.
+Le code devrait fonctionner pour n'importe quel `n` et aucune valeur fixe ne doit être codée en dur.

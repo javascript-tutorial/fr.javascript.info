@@ -4,7 +4,8 @@ importance: 4
 
 # Create keyed object from array
 
-Let's say we received an array of users in the form `{id:..., name:..., age:... }`.
+Let's say we received an array of users in the form `{id:..., name:..., age:...
+}`.
 
 Create a function `groupById(arr)` that creates an object from it, with `id` as the key, and array items as values.
 
@@ -32,6 +33,7 @@ usersById = {
 
 Such function is really handy when working with server data.
 
-In this task we assume that `id` is unique. There may be no two array items with the same `id`.
+In this task we assume that `id` is unique.
+There may be no two array items with the same `id`.
 
 Please use array `.reduce` method in the solution.

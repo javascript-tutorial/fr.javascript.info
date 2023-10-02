@@ -1,6 +1,7 @@
 # Attributs et propriétés
 
-Lorsque le navigateur charge la page, il "lit" (un autre mot: "analyse") le code HTML et en génère des objets DOM. Pour les nœuds éléments, la plupart des attributs HTML standards deviennent automatiquement des propriétés des objets DOM.
+Lorsque le navigateur charge la page, il "lit" (un autre mot: "analyse") le code HTML et en génère des objets DOM.
+Pour les nœuds éléments, la plupart des attributs HTML standards deviennent automatiquement des propriétés des objets DOM.
 
 Par exemple, si la balise est `<body id="page">`, alors l'objet DOM a `body.id="page"`.
 
@@ -8,9 +9,12 @@ Mais le mapping des propriétés d'attribut ne se fait pas un à un ! Dans ce ch
 
 ## Propriétés DOM
 
-Nous avons déjà vu des propriétés DOM intégrées. Il y en a beaucoup. Mais techniquement, personne ne nous limite et s'il n'y en a pas assez, nous pouvons ajouter les nôtres.
+Nous avons déjà vu des propriétés DOM intégrées.
+Il y en a beaucoup.
+Mais techniquement, personne ne nous limite et s'il n'y en a pas assez, nous pouvons ajouter les nôtres.
 
-Les nœuds DOM sont des objets JavaScript normaux. Nous pouvons les modifier.
+Les nœuds DOM sont des objets JavaScript normaux.
+Nous pouvons les modifier.
 
 Par exemple, créons une nouvelle propriété dans `document.body` :
 
@@ -51,9 +55,11 @@ Ainsi, les propriétés et méthodes DOM se comportent comme celles des objets J
 
 ## Attributs HTML
 
-En HTML, les balises peuvent avoir des attributs. Lorsque le navigateur analyse le code HTML pour créer des objets DOM pour les balises, il reconnaît les attributs * standard * et crée des propriétés DOM à partir d'elles.
+En HTML, les balises peuvent avoir des attributs.
+Lorsque le navigateur analyse le code HTML pour créer des objets DOM pour les balises, il reconnaît les attributs * standard * et crée des propriétés DOM à partir d'elles.
 
-Ainsi, lorsqu'un élément a `id` ou un autre attribut *standard*, la propriété correspondante est créée. Mais cela ne se produit pas si l'attribut n'est pas standard.
+Ainsi, lorsqu'un élément a `id` ou un autre attribut *standard*, la propriété correspondante est créée.
+Mais cela ne se produit pas si l'attribut n'est pas standard.
 
 Par exemple :
 ```html run
@@ -68,7 +74,9 @@ Par exemple :
 </body>
 ```
 
-Veuillez noter qu'un attribut standard pour un élément peut être inconnu pour un autre. Par exemple, `"type"` est standard pour `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), mais pas pour `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)). Les attributs standard sont décrits dans la spécification de la classe d'élément correspondante.
+Veuillez noter qu'un attribut standard pour un élément peut être inconnu pour un autre.
+Par exemple, `"type"` est standard pour `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), mais pas pour `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)).
+Les attributs standard sont décrits dans la spécification de la classe d'élément correspondante.
 
 Ici, nous pouvons le voir :
 ```html run
@@ -83,7 +91,8 @@ Ici, nous pouvons le voir :
 </body>
 ```
 
-Donc, si un attribut n'est pas standard, il n'y aura pas de propriété DOM pour lui. Existe-t-il un moyen d'accéder à ces attributs ?
+Donc, si un attribut n'est pas standard, il n'y aura pas de propriété DOM pour lui.
+Existe-t-il un moyen d'accéder à ces attributs ?
 
 Bien sûr, tous les attributs sont accessibles en utilisant les méthodes suivantes :
 
@@ -135,16 +144,23 @@ Voici une démonstration détaillée de l'utilisation des attributs :
 
 Veuillez noter :
 
-1. `getAttribute('About')` -- la première lettre est en majuscules ici, et en HTML tout est en minuscules. Mais cela n'a pas d'importance: les noms d'attribut ne sont pas sensibles à la casse.
-2. Nous pouvons assigner n'importe quoi à un attribut, mais il devient une chaîne. Nous avons donc ici `"123"` comme valeur.
-3. Tous les attributs, y compris ceux que nous définissons, sont visibles dans `outerHTML`.
-4. La collection `attributes` est itérable et possède tous les attributs de l'élément (standard et non standard) en tant qu'objets avec les propriétés `name` et `value`.
+1.
+`getAttribute('About')` -- la première lettre est en majuscules ici, et en HTML tout est en minuscules.
+Mais cela n'a pas d'importance: les noms d'attribut ne sont pas sensibles à la casse.
+2.
+Nous pouvons assigner n'importe quoi à un attribut, mais il devient une chaîne.
+Nous avons donc ici `"123"` comme valeur.
+3.
+Tous les attributs, y compris ceux que nous définissons, sont visibles dans `outerHTML`.
+4.
+La collection `attributes` est itérable et possède tous les attributs de l'élément (standard et non standard) en tant qu'objets avec les propriétés `name` et `value`.
 
 ## Synchronisation des attributs de propriété
 
 Lorsqu'un attribut standard change, la propriété correspondante est automatiquement mise à jour et (à quelques exceptions près) vice versa.
 
-Dans l'exemple ci-dessous, `id` est modifié en tant qu'attribut, et nous pouvons également voir la propriété modifiée. Et puis la même chose à l'envers :
+Dans l'exemple ci-dessous, `id` est modifié en tant qu'attribut, et nous pouvons également voir la propriété modifiée.
+Et puis la même chose à l'envers :
 
 ```html run
 <input>
@@ -190,7 +206,8 @@ Cette "fonctionnalité" peut en fait être utile, car les actions de l'utilisate
 
 ## Les propriétés DOM sont typées
 
-Les propriétés DOM ne sont pas toujours des chaînes de caractères. Par exemple, la propriété `input.checked` (pour les cases à cocher) est un booléen :
+Les propriétés DOM ne sont pas toujours des chaînes de caractères.
+Par exemple, la propriété `input.checked` (pour les cases à cocher) est un booléen :
 
 ```html run
 <input id="input" type="checkbox" checked> checkbox
@@ -201,7 +218,8 @@ Les propriétés DOM ne sont pas toujours des chaînes de caractères. Par exemp
 </script>
 ```
 
-Il y a d'autres exemples. L'attribut `style` est une chaîne de caractères, mais la propriété `style` est un objet :
+Il y a d'autres exemples.
+L'attribut `style` est une chaîne de caractères, mais la propriété `style` est un objet :
 
 ```html run
 <div id="div" style="color:red;font-size:120%">Hello</div>
@@ -218,7 +236,8 @@ Il y a d'autres exemples. L'attribut `style` est une chaîne de caractères, mai
 
 Cependant la plupart des propriétés sont des chaînes de caractères.
 
-Très rarement, même si un type de propriété DOM est une chaîne de caractères, il peut différer de l'attribut. Par exemple, la propriété DOM `href` est toujours une URL *complète*, même si l'attribut contient une URL relative ou juste un `#hash`.
+Très rarement, même si un type de propriété DOM est une chaîne de caractères, il peut différer de l'attribut.
+Par exemple, la propriété DOM `href` est toujours une URL *complète*, même si l'attribut contient une URL relative ou juste un `#hash`.
 
 Voici un exemple :
 
@@ -237,7 +256,8 @@ Si nous avons besoin de la valeur de `href` ou de tout autre attribut exactement
 
 ## Attributs non standard, dataset
 
-Lors de l'écriture HTML, nous utilisons beaucoup d'attributs standard. Mais qu'en est-il des modèles non standard et personnalisés ? Voyons d'abord s'ils sont utiles ou non? Pourquoi ?
+Lors de l'écriture HTML, nous utilisons beaucoup d'attributs standard.
+Mais qu'en est-il des modèles non standard et personnalisés ? Voyons d'abord s'ils sont utiles ou non? Pourquoi ?
 
 Parfois, des attributs non standard sont utilisés pour transmettre des données personnalisées de HTML à JavaScript ou pour "marquer" des éléments HTML pour JavaScript.
 
@@ -299,18 +319,22 @@ Par exemple, ici pour la commande de l'état de l'attribut, `order-state` est ut
 
 Pourquoi l'utilisation d'un attribut serait-elle préférable à des classes comme `.order-state-new`, `.order-state-pending`, `order-state-canceled` ?
 
-Parce qu'un attribut est plus pratique à gérer. L'état peut être changé aussi facilement que :
+Parce qu'un attribut est plus pratique à gérer.
+L'état peut être changé aussi facilement que :
 
 ```js
 // un peu plus simple que de supprimer l'ancienne / ajouter une nouvelle classe
 div.setAttribute('order-state', 'canceled');
 ```
 
-Mais il peut y avoir un problème possible avec les attributs personnalisés. Que se passe-t-il si nous utilisons un attribut non standard selon nos besoins et que plus tard le standard l'introduit et lui fait faire quelque chose ? Le langage HTML est vivant, il grandit et de plus en plus d'attributs semblent répondre aux besoins des développeurs. Il peut y avoir des effets inattendus dans ce cas.
+Mais il peut y avoir un problème possible avec les attributs personnalisés.
+Que se passe-t-il si nous utilisons un attribut non standard selon nos besoins et que plus tard le standard l'introduit et lui fait faire quelque chose ? Le langage HTML est vivant, il grandit et de plus en plus d'attributs semblent répondre aux besoins des développeurs.
+Il peut y avoir des effets inattendus dans ce cas.
 
 Pour éviter les conflits, il existe les attributs [data-*](https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes).
 
-**Tous les attributs commençant par "data-" sont réservés à l'usage des programmeurs. Ils sont disponibles dans la propriété `dataset`.**
+**Tous les attributs commençant par "data-" sont réservés à l'usage des programmeurs.
+Ils sont disponibles dans la propriété `dataset`.**
 
 Par exemple, si un `elem` a un attribut nommé `"data-about"`, il est disponible en tant que `elem.dataset.about`.
 
@@ -357,7 +381,8 @@ Voici un exemple d'"order state" réécrit :
 
 L'utilisation des attributs `data- *` est un moyen valide et sûr de transmettre des données personnalisées.
 
-Veuillez noter que nous pouvons non seulement lire, mais également modifier les attributs de données. Ensuite, CSS met à jour la vue en conséquence : dans l'exemple ci-dessus, la dernière ligne `(*)` change la couleur en bleu.
+Veuillez noter que nous pouvons non seulement lire, mais également modifier les attributs de données.
+Ensuite, CSS met à jour la vue en conséquence : dans l'exemple ci-dessus, la dernière ligne `(*)` change la couleur en bleu.
 
 ## Résumé
 
@@ -379,7 +404,10 @@ Les méthodes de travail avec les attributs sont les suivantes :
 - `elem.removeAttribute(name)` -- pour supprimer l'attribut.
 - `elem.attributes` est une collection de tous les attributs.
 
-Pour la plupart des situations, l'utilisation des propriétés DOM est préférable. Nous devons nous référer aux attributs uniquement lorsque les propriétés DOM ne nous conviennent pas, lorsque nous avons besoin exactement d'attributs, par exemple :
+Pour la plupart des situations, l'utilisation des propriétés DOM est préférable.
+Nous devons nous référer aux attributs uniquement lorsque les propriétés DOM ne nous conviennent pas, lorsque nous avons besoin exactement d'attributs, par exemple :
 
-- Nous avons besoin d'un attribut non standard. Mais s'il commence par `data-`, alors nous devrions utiliser `dataset`.
-- Nous voulons lire la valeur "telle qu'elle est écrite" en HTML. La valeur de la propriété DOM peut être différente, par exemple la propriété `href` est toujours une URL complète, et nous pouvons vouloir obtenir la valeur "originale".
+- Nous avons besoin d'un attribut non standard.
+Mais s'il commence par `data-`, alors nous devrions utiliser `dataset`.
+- Nous voulons lire la valeur "telle qu'elle est écrite" en HTML.
+La valeur de la propriété DOM peut être différente, par exemple la propriété `href` est toujours une URL complète, et nous pouvons vouloir obtenir la valeur "originale".

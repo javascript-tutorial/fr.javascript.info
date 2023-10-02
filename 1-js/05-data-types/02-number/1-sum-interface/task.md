@@ -8,4 +8,5 @@ Créez un script qui invite le visiteur à entrer deux nombres, puis affiche leu
 
 [démo]
 
-P.S. Il y a un piège avec les types.
+P.S.
+Il y a un piège avec les types.

@@ -49,5 +49,6 @@ window.onscroll = showVisible;
 
 Pour les images visibles nous pouvons prendre `img.dataset.src` et l'assigner à `img.src` (si cela n’a pas été fait déjà).
 
-P.S. La solution propose également une variante de `isVisible` qui "précharge" les images situées dans une page au-dessus / au-dessous du document en cours de défilement.
+P.S.
+La solution propose également une variante de `isVisible` qui "précharge" les images situées dans une page au-dessus / au-dessous du document en cours de défilement.
 

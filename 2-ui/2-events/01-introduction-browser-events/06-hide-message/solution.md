@@ -1,5 +1,7 @@
 
-To add the button we can use either `position:absolute` (and make the pane `position:relative`) or `float:right`. The `float:right` has the benefit that the button never overlaps the text, but `position:absolute` gives more freedom. So the choice is yours.
+To add the button we can use either `position:absolute` (and make the pane `position:relative`) or `float:right`.
+The `float:right` has the benefit that the button never overlaps the text, but `position:absolute` gives more freedom.
+So the choice is yours.
 
 Then for each pane the code can be like:
 ```js

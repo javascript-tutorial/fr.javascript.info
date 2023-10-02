@@ -1,7 +1,8 @@
 
 Cela fonctionnera sûrement très bien.
 
-Les deux fonctions imbriquées sont créées dans le même environnement Lexical externe. Elles partagent donc l'accès à la même variable `count` :
+Les deux fonctions imbriquées sont créées dans le même environnement Lexical externe.
+Elles partagent donc l'accès à la même variable `count` :
 
 ```js run
 function Counter() {

@@ -8,7 +8,8 @@ while (i) {
 }
 ```
 
-Chaque itération de boucle diminue `i` de `1` (on parle de décrémentation). La vérification `while(i)` arrête la boucle lorsque `i = 0`.
+Chaque itération de boucle diminue `i` de `1` (on parle de décrémentation).
+La vérification `while(i)` arrête la boucle lorsque `i = 0`.
 
 Par conséquent, les étapes de la boucle forment la séquence suivante ("boucle décomposée") :
 

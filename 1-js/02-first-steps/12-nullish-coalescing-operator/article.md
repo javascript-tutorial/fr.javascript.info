@@ -4,15 +4,18 @@
 
 L'opérateur de coalescence des nuls est écrit sous la forme de deux points d'interrogation `??`.
 
-Comme il traite `null` et `undefined` de la même manière, nous utiliserons un terme spécial ici, dans cet article. Par souci de brièveté, nous dirons qu'une expression est "définie" lorsqu'elle n'est ni `null` ni `undefined`.
+Comme il traite `null` et `undefined` de la même manière, nous utiliserons un terme spécial ici, dans cet article.
+Par souci de brièveté, nous dirons qu'une expression est "définie" lorsqu'elle n'est ni `null` ni `undefined`.
 
 Le résultat de `a ?? b` est :
 - si `a` est défini, alors `a`,
 - si `a` n'est pas défini, alors `b`.
 
-En d'autres termes, `??` retourne le premier argument s'il n'est pas `null`/`undefined`. Sinon, le second.
+En d'autres termes, `??` retourne le premier argument s'il n'est pas `null`/`undefined`.
+Sinon, le second.
 
-L'opérateur de coalescence des nuls n'est pas complètement nouveau. C'est juste une belle syntaxe pour obtenir la première valeur definie (non équivalente à `undefined`) des deux.
+L'opérateur de coalescence des nuls n'est pas complètement nouveau.
+C'est juste une belle syntaxe pour obtenir la première valeur definie (non équivalente à `undefined`) des deux.
 
 Nous pouvons réécrire `result = a ?? b` en utilisant les opérateurs que nous connaissons déjà, comme ceci :
 
@@ -20,7 +23,8 @@ Nous pouvons réécrire `result = a ?? b` en utilisant les opérateurs que nous 
 result = (a !== null && a !== undefined) ? a : b;
 ```
 
-Maintenant, ce que `??` fait devrait être absolument clair. Voyons où cela aide.
+Maintenant, ce que `??` fait devrait être absolument clair.
+Voyons où cela aide.
 
 Le cas d'utilisation courant de `??` est de fournir une valeur par défaut.
 
@@ -42,7 +46,8 @@ alert(user ?? "Anonymous"); // John (n'est pas null/undefined)
 
 Nous pouvons également utiliser une séquence de `??` pour sélectionner la première valeur d'une liste qui n'est pas `null`/`undefined`.
 
-Disons que nous ayons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`. Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeurs correspondantes.
+Disons que nous ayons les données d'un utilisateur dans les variables `firstName`, `lastName` ou `nickName`.
+Tous peuvent être indéfinis, si l'utilisateur décide de ne pas entrer de valeurs correspondantes.
 
 Nous aimerions afficher le nom d'utilisateur à l'aide de l'une de ces variables, ou afficher "Anonymous" si toutes sont `null`/`undefined`.
 
@@ -76,7 +81,8 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*
 ```
 
-Historiquement, l'opérateur OR `||` était là en premier. Il existe depuis le début de JavaScript, donc les développeurs l'utilisaient à de telles fins depuis longtemps.
+Historiquement, l'opérateur OR `||` était là en premier.
+Il existe depuis le début de JavaScript, donc les développeurs l'utilisaient à de telles fins depuis longtemps.
 
 D'un autre côté, l'opérateur de coalescence des nuls `??` n'a été ajouté à JavaScript que récemment, car les développeurs n'étaient pas tout à fait satisfaits de `||`.
 
@@ -84,9 +90,12 @@ La différence importante entre eux est que :
 - `||` renvoie la première valeur *vraie*.
 - `??` renvoie la première valeur *définie*.
 
-En d'autres termes, `||` ne fait pas la distinction entre `false`, `0`, une chaîne vide `" "` et `null`/`undefined`. Ce sont tous les mêmes -- des valeurs fausses. Si l'un de ceux-ci est le premier argument de `||`, alors nous obtiendrons le deuxième argument comme résultat.
+En d'autres termes, `||` ne fait pas la distinction entre `false`, `0`, une chaîne vide `" "` et `null`/`undefined`.
+Ce sont tous les mêmes -- des valeurs fausses.
+Si l'un de ceux-ci est le premier argument de `||`, alors nous obtiendrons le deuxième argument comme résultat.
 
-Dans la pratique cependant, nous pouvons vouloir utiliser la valeur par défaut uniquement lorsque la variable est `null`/`undefined`. Autrement dit, lorsque la valeur est vraiment inconnue/non définie.
+Dans la pratique cependant, nous pouvons vouloir utiliser la valeur par défaut uniquement lorsque la variable est `null`/`undefined`.
+Autrement dit, lorsque la valeur est vraiment inconnue/non définie.
 
 Par exemple, considérez ceci :
 
@@ -102,11 +111,13 @@ alert(height ?? 100); // 0
 - L'expression `height ?? 100` vérifie que `height` est `null`/`undefined`, et ce n'est pas le cas,
     - donc le résultat est `height` "tel quel", c'est-à-dire `0`.
 
-En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas être remplacée par la valeur par défaut. Alors `??` fait ce qu'il faut.
+En pratique, la hauteur zéro est souvent une valeur valide, qui ne doit pas être remplacée par la valeur par défaut.
+Alors `??` fait ce qu'il faut.
 
 ## Priorité
 
-La priorité de l'opérateur `??` est la même que celle de `||`. Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#tableau).
+La priorité de l'opérateur `??` est la même que celle de `||`.
+Elle est égale à `3` dans le [tableau MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#tableau).
 
 Cela signifie que, tout comme `||`, l'opérateur de coalescence des nuls `??` est évalué avant `=` et `?`, mais après la plupart des autres opérateurs, tels que `+`, `*`.
 

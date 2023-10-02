@@ -2,7 +2,10 @@
 
 Cette section décrit un ensemble des standards actuels pour les "web components".
 
-Encore aujourd'hui, ces standards sont toujours en développement. Quelques fonctionnalités sont bien supportées/intégrées dans les conventions HTML/DOM moderne, tandis que d'autres sont toujours au stade d'ébauches. Vous pouvez essayer les différents exemples dans n'importe quel navigateur, tout en gardant à l'esprit que Google Chrome est probablement le plus avancé en ce qui concerne l'intégration de ces fonctionnalités... Probablement car ce sont les développeurs de chez Google qui ont travaillé sur beaucoup de ces dites fonctionnalités.
+Encore aujourd'hui, ces standards sont toujours en développement.
+Quelques fonctionnalités sont bien supportées/intégrées dans les conventions HTML/DOM moderne, tandis que d'autres sont toujours au stade d'ébauches.
+Vous pouvez essayer les différents exemples dans n'importe quel navigateur, tout en gardant à l'esprit que Google Chrome est probablement le plus avancé en ce qui concerne l'intégration de ces fonctionnalités...
+Probablement car ce sont les développeurs de chez Google qui ont travaillé sur beaucoup de ces dites fonctionnalités.
 
 ## Rien de nouveau à l'horizon...
 
@@ -46,15 +49,23 @@ Nous pouvons facilement isoler plusieurs composants :
 
 ![](web-components-twitter.svg)
 
-1. Navigation.
-2. Information utilisateur.
-3. Suggestions.
-4. Formulaire d'envoi.
-5. (et enfin 6, 7) -- messages.
+1.
+Navigation.
+2.
+Information utilisateur.
+3.
+Suggestions.
+4.
+Formulaire d'envoi.
+5.
+(et enfin 6, 7) -- messages.
 
-Les composants peuvent avoir des sous-composants, par exemple les messages : ils peuvent faire partie du composant plus général "liste des messages". Une photo de profil cliquable peut elle-même être un composant et ainsi de suite.
+Les composants peuvent avoir des sous-composants, par exemple les messages : ils peuvent faire partie du composant plus général "liste des messages".
+Une photo de profil cliquable peut elle-même être un composant et ainsi de suite.
 
-Comment définir ou décider de ce qui doit être un composant ? Tout est question d'intuition, d'expérience et de sens commun. Généralement, c'est un élément visuel distinct, que l'on peut décrire en fonction de ce qu'il fait et de comment il interagit avec la page. Pour l'exemple ci-dessus, la page a des blocs, et chacun d'entre eux jouent leur propre rôle : il devient ainsi logique de les définir en tant que composant.
+Comment définir ou décider de ce qui doit être un composant ? Tout est question d'intuition, d'expérience et de sens commun.
+Généralement, c'est un élément visuel distinct, que l'on peut décrire en fonction de ce qu'il fait et de comment il interagit avec la page.
+Pour l'exemple ci-dessus, la page a des blocs, et chacun d'entre eux jouent leur propre rôle : il devient ainsi logique de les définir en tant que composant.
 
 Un composant contient :
 - Sa propre classe JavaScript.
@@ -64,7 +75,8 @@ Un composant contient :
 
 Encore une fois, un composant n'a rien de spécial.
 
-Il existe déjà beaucoup de frameworks et de méthode de développement pour en construire, chacun d'eux ayant leur propres avantages. Généralement, ce sont des classes et des conventions spéciales qui sont utilisées en CSS pour reproduire l'impression d'utiliser des composants -- le 'CSS scoping' et l'encapsulation du DOM.
+Il existe déjà beaucoup de frameworks et de méthode de développement pour en construire, chacun d'eux ayant leur propres avantages.
+Généralement, ce sont des classes et des conventions spéciales qui sont utilisées en CSS pour reproduire l'impression d'utiliser des composants -- le 'CSS scoping' et l'encapsulation du DOM.
 
 Les composants web proposent maintenant des outils intégrés au navigateur pour cela, nous n'avons plus besoin de les simuler :
 

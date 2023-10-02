@@ -26,6 +26,8 @@ menu = {
 };
 ```
 
-Veuillez noter que `multiplyNumeric` n’a pas besoin de retourner quoi que ce soit. Il devrait modifier l'objet en place.
+Veuillez noter que `multiplyNumeric` n’a pas besoin de retourner quoi que ce soit.
+Il devrait modifier l'objet en place.
 
-P.S. Utilisez `typeof` pour rechercher un `number` ici.
+P.S.
+Utilisez `typeof` pour rechercher un `number` ici.

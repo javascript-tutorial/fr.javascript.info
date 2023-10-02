@@ -18,4 +18,6 @@ function func() {
 func();
 ```
 
-P.S. Il y a un piège dans cette tâche. La solution n'est pas évidente.
+P.S.
+Il y a un piège dans cette tâche.
+La solution n'est pas évidente.

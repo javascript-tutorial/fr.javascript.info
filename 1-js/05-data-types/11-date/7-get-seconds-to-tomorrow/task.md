@@ -12,4 +12,5 @@ Par exemple, s'il est maintenant `23:00`, alors:
 getSecondsToTomorrow() == 3600
 ```
 
-P.S. La fonction devrait fonctionner à tout moment, le «aujourd'hui» n'est pas codé en dur.
+P.S.
+La fonction devrait fonctionner à tout moment, le «aujourd'hui» n'est pas codé en dur.

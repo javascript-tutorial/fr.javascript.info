@@ -8,7 +8,8 @@ Working with forms will be much more convenient when we learn them.
 
 Document forms are members of the special collection `document.forms`.
 
-That's a so-called *"named collection"*: it's both named and ordered. We can use both the name or the number in the document to get the form.
+That's a so-called *"named collection"*: it's both named and ordered.
+We can use both the name or the number in the document to get the form.
 
 ```js no-beautify
 document.forms.my; // the form with name="my"
@@ -36,9 +37,11 @@ For instance:
 </script>
 ```
 
-There may be multiple elements with the same name. This is typical with radio buttons and checkboxes.
+There may be multiple elements with the same name.
+This is typical with radio buttons and checkboxes.
 
-In that case, `form.elements[name]` is a *collection*. For instance:
+In that case, `form.elements[name]` is a *collection*.
+For instance:
 
 ```html run height=40
 <form>
@@ -57,10 +60,12 @@ alert(ageElems[0]); // [object HTMLInputElement]
 </script>
 ```
 
-These navigation properties do not depend on the tag structure. All control elements, no matter how deep they are in the form, are available in `form.elements`.
+These navigation properties do not depend on the tag structure.
+All control elements, no matter how deep they are in the form, are available in `form.elements`.
 
 ````smart header="Fieldsets as \"subforms\""
-A form may have one or many `<fieldset>` elements inside it. They also have `elements` property that lists form controls inside them.
+A form may have one or many `<fieldset>` elements inside it.
+They also have `elements` property that lists form controls inside them.
 
 For instance:
 
@@ -124,7 +129,8 @@ That's usually not a problem, however, because we rarely change names of form el
 
 ## Backreference: element.form
 
-For any element, the form is available as `element.form`. So a form references all elements, and elements reference the form.
+For any element, the form is available as `element.form`.
+So a form references all elements, and elements reference the form.
 
 Here's the picture:
 
@@ -175,15 +181,22 @@ It stores only the HTML that was initially on the page, not the current value.
 
 A `<select>` element has 3 important properties:
 
-1. `select.options` -- the collection of `<option>` subelements,
-2. `select.value` -- the *value* of the currently selected `<option>`,
-3. `select.selectedIndex` -- the *number* of the currently selected `<option>`.
+1.
+`select.options` -- the collection of `<option>` subelements,
+2.
+`select.value` -- the *value* of the currently selected `<option>`,
+3.
+`select.selectedIndex` -- the *number* of the currently selected `<option>`.
 
 They provide three different ways of setting a value for a `<select>`:
 
-1. Find the corresponding `<option>` element (e.g. among `select.options`) and set its `option.selected` to `true`.
-2. If we know a new value: set `select.value` to the new value.
-3. If we know the new option number: set `select.selectedIndex` to that number.
+1.
+Find the corresponding `<option>` element (e.g.
+among `select.options`) and set its `option.selected` to `true`.
+2.
+If we know a new value: set `select.value` to the new value.
+3.
+If we know the new option number: set `select.selectedIndex` to that number.
 
 Here is an example of all three methods:
 
@@ -203,7 +216,8 @@ Here is an example of all three methods:
 </script>
 ```
 
-Unlike most other controls, `<select>` allows to select multiple options at once if it has `multiple` attribute. This attribute is rarely used, though.
+Unlike most other controls, `<select>` allows to select multiple options at once if it has `multiple` attribute.
+This attribute is rarely used, though.
 
 For multiple selected values, use the first way of setting values: add/remove the `selected` property from `<option>` subelements.
 
@@ -236,7 +250,9 @@ In the [specification](https://html.spec.whatwg.org/multipage/forms.html#the-opt
 option = new Option(text, value, defaultSelected, selected);
 ```
 
-This syntax is optional. We can use `document.createElement('option')` and set attributes manually. Still, it may be shorter, so here are the parameters:
+This syntax is optional.
+We can use `document.createElement('option')` and set attributes manually.
+Still, it may be shorter, so here are the parameters:
 
 - `text` -- the text inside the option,
 - `value` -- the option value,
@@ -245,7 +261,8 @@ This syntax is optional. We can use `document.createElement('option')` and set a
 
 The difference between `defaultSelected` and `selected` is that `defaultSelected` sets the HTML-attribute (that we can get using `option.getAttribute('selected')`, while `selected` sets whether the option is selected or not.
 
-In practice, one should usually set _both_ values to `true` or `false`. (Or, simply omit them; both default to `false`.)
+In practice, one should usually set _both_ values to `true` or `false`.
+(Or, simply omit them; both default to `false`.)
 
 For instance, here's a new "unselected" option:
 
@@ -283,15 +300,18 @@ Form navigation:
 : A form is available as `document.forms[name/index]`.
 
 `form.elements` 
-: Form elements are available as `form.elements[name/index]`, or can use just `form[name/index]`. The `elements` property also works for `<fieldset>`.
+: Form elements are available as `form.elements[name/index]`, or can use just `form[name/index]`.
+The `elements` property also works for `<fieldset>`.
 
 `element.form`
 : Elements reference their form in the `form` property.
 
-Value is available as `input.value`, `textarea.value`, `select.value`, etc. (For checkboxes and radio buttons, use `input.checked` to determine whether a value is selected.)
+Value is available as `input.value`, `textarea.value`, `select.value`, etc.
+(For checkboxes and radio buttons, use `input.checked` to determine whether a value is selected.)
 
 For `<select>`, one can also get the value by the index `select.selectedIndex` or through the options collection `select.options`.
 
-These are the basics to start working with forms. We'll meet many examples further in the tutorial.
+These are the basics to start working with forms.
+We'll meet many examples further in the tutorial.
 
 In the next chapter we'll cover `focus` and `blur` events that may occur on any element, but are mostly handled on forms.

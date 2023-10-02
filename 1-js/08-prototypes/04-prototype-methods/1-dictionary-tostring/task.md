@@ -6,7 +6,8 @@ importance: 5
 
 Il existe un objet `dictionary`, créé en tant que `Object.create(null)`, pour stocker toutes les paires `clé`/`valeur`.
 
-Ajoutez la méthode `dictionary.toString()`, qui devrait renvoyer une liste de clés délimitée par des virgules. Votre `toString` ne devrait pas apparaître dans la boucle `for..in` sur l'objet.
+Ajoutez la méthode `dictionary.toString()`, qui devrait renvoyer une liste de clés délimitée par des virgules.
+Votre `toString` ne devrait pas apparaître dans la boucle `for..in` sur l'objet.
 
 Voici comment cela devrait fonctionner :
 
