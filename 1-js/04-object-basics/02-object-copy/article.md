@@ -155,7 +155,7 @@ clone.name = "Pete"; // On change les données de celui-ci
 alert(user.name); // C'est toujours John dans l'objet copié
 ```
 
-On peut aussi utiliser la méthode [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cela.
+On peut aussi utiliser la méthode [Object.assign](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) pour cela.
 
 La syntaxe est :
 

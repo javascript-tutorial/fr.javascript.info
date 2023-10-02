@@ -70,7 +70,7 @@ Les primitives peuvent donc fournir des méthodes, mais elles restent légères.
 
 Le moteur JavaScript optimise fortement ce processus. Il peut même ignorer la création de l'objet supplémentaire. Mais il doit toujours adhérer à la spécification et se comporter comme s'il en crée un.
 
-Un nombre a ses propres méthodes, par exemple, [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) arrondit le nombre à la précision indiquée :
+Un nombre a ses propres méthodes, par exemple, [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) arrondit le nombre à la précision indiquée :
 
 ```js run
 let n = 1.23456;

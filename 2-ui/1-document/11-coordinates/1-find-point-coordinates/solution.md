@@ -1,6 +1,6 @@
 # Coins extérieurs
 
-Les coins extérieurs sont essentiellement ce que nous obtenons de [elem.getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/DOM/element.getBoundingClientRect).
+Les coins extérieurs sont essentiellement ce que nous obtenons de [elem.getBoundingClientRect()](https://developer.mozilla.org/fr/docs/Web/API/Element/getBoundingClientRect).
 
 Les coordonnées du coin supérieur gauche `answer1` et du coin inférieur droit` answer2` :
 

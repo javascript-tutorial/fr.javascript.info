@@ -245,7 +245,7 @@ Le même problème existe dans de nombreux autres langages de programmation.
 PHP, Java, C, Perl, Ruby donnent exactement le même résultat, car ils sont basés sur le même format numérique.
 ```
 
-Pouvons-nous contourner le problème ? Bien sûr, la méthode la plus fiable est d'arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+Pouvons-nous contourner le problème ? Bien sûr, la méthode la plus fiable est d'arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
 
 ```js run
 let sum = 0.1 + 0.2;
@@ -333,7 +333,7 @@ alert( isFinite(num) );
 Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères contenant seulement des espaces est traitée comme `0` dans toutes les fonctions numérique, y compris `isFinite`.
 
 ````smart header="`Number.isNaN` et `Number.isFinite`"
-Les méthodes [Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) et [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) sont des versions plus "strictes" des fonctions `isNaN` et `isFinite`. Elles ne convertissent pas automatiquement leur argument en nombre, mais vérifient s'il appartient au type `number`.
+Les méthodes [Number.isNaN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) et [Number.isFinite](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) sont des versions plus "strictes" des fonctions `isNaN` et `isFinite`. Elles ne convertissent pas automatiquement leur argument en nombre, mais vérifient s'il appartient au type `number`.
 
 - `Number.isNaN(value)` retourne `true` si l'argument appartient au type `number` et s'il vaut `NaN`. Dans tous les autres cas, elle retourne `false`.
 
