@@ -40,11 +40,20 @@ console.log(7);
 
 Pour résumer,
 
+<<<<<<< HEAD
 1. Les numéros `1` & `7` apparaissent immédiatement, car les appels simples `console.log` n'utilisent aucune file d'attente.
 2. Ensuite, une fois le flux de code principal terminé, la file d'attente des microtâches s'exécute.
     - Il possède les commandes: `console.log (3); setTimeout (...4); console.log (5) `.
     - Les nombres `3` & `5` apparaissent, tandis que `setTimeout (() => console.log (4))` ajoute l'appel `console.log (4)` à la fin de la file d'attente macrotask.
     - La file d'attente macrotask est maintenant: `console.log (2); console.log (6); console.log (4) `.
 3. Une fois la file d'attente des microtâches vide, la file d'attente des macrotasques s'exécute. Il sort `2`, `6`, `4`.
+=======
+1. Numbers `1` and `7` show up immediately, because simple `console.log` calls don't use any queues.
+2. Then, after the main code flow is finished, the microtask queue runs.
+    - It has commands: `console.log(3); setTimeout(...4); console.log(5)`.
+    - Numbers `3` and `5` show up, while `setTimeout(() => console.log(4))` adds the `console.log(4)` call to the end of the macrotask queue.
+    - The macrotask queue is now: `console.log(2); console.log(6); console.log(4)`.
+3. After the microtask queue becomes empty, the macrotask queue executes. It outputs `2`, `6`, `4`.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Au final, nous avons la sortie: `1 7 3 5 2 6 4`.
