@@ -260,14 +260,14 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 
 1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
 2. Le résultat de `typeof null` est `"object"`. C'est une erreur officiellement reconnue dans `typeof`, datant des premiers jours de JavaScript et conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Le comportement de `typeof` est incorrect ici.
-3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
+3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object` mais `typeof` les traite différemment en retournant `"function"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
 
 ```smart header="La syntaxe `typeof(x)`"
 Vous pouvez également rencontrer une autre syntaxe : `typeof(x)`. C'est la même chose que `typeof x`.
 
 Pour être clair : `typeof` est un opérateur, pas une fonction. Les parenthèses ici ne font pas partie de `typeof`. C'est le genre de parenthèses utilisées pour le regroupement mathématique.
 
-Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiqement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
+Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiquement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
 
 Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit beaucoup plus courante.
 ```
