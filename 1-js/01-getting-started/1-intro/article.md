@@ -47,9 +47,11 @@ Le moteur applique des optimisations à chaque étape du processus. Il surveille
 
 ## Que peut faire JavaScript dans le navigateur ?
 
-Le JavaScript moderne est un langage de programmation "sûr". Il ne fournit pas d'accès de bas niveau à la mémoire ou au processeur, parce qu'il a été initialement conçu pour les navigateurs qui n'en ont pas besoin.
+Le JavaScript moderne est un langage de programmation "sûr". 
+Il ne fournit pas d'accès de bas niveau à la mémoire ou au processeur, parce qu'il a été initialement conçu pour les navigateurs qui n'en ont pas besoin.
 
-Les fonctionnalités dépendent grandement de l'environnement qui exécute JavaScript. Par exemple, [Node.js](https://fr.wikipedia.org/wiki/Node.js) prend en charge les fonctions qui permettent à JavaScript de lire / écrire des fichiers arbitrairement, d'exécuter des requêtes réseau, etc.
+Les fonctionnalités dépendent grandement de l'environnement qui exécute JavaScript. 
+Par exemple, [Node.js](https://fr.wikipedia.org/wiki/Node.js) prend en charge les fonctions qui permettent à JavaScript de lire / écrire des fichiers arbitrairement, d'exécuter des requêtes réseau, etc.
 
 JavaScript intégré au navigateur peut faire tout ce qui concerne la manipulation des pages Web, l'interaction avec l'utilisateur et le serveur Web.
 
@@ -63,7 +65,8 @@ Par exemple, JavaScript dans le navigateur est capable de :
 
 ## Qu'est-ce que JavaScript ne peut pas faire dans le navigateur ?
 
-Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. L'objectif est d'empêcher une page Web malveillante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
+Les capacités de JavaScript dans le navigateur sont limitées pour la sécurité de l'utilisateur. 
+L'objectif est d'empêcher une page Web malveillante d'accéder à des informations privées ou de nuire aux données de l'utilisateur.
 
 Les exemples de telles restrictions sont :
 
@@ -71,19 +74,29 @@ Les exemples de telles restrictions sont :
 
   Les navigateurs modernes lui permettent de fonctionner avec des fichiers, mais l'accès est limité et n'est fourni que si l'utilisateur effectue certaines actions, comme «déposer» un fichier dans une fenêtre de navigateur ou le sélectionner via une balise `<input>`.
 
-  Il existe des moyens d’interagir avec une webcam/microphone et d’autres périphériques, mais ils nécessitent une autorisation explicite de l’utilisateur. Ainsi, une page contenant du JavaScript ne permet pas d'activer une caméra Web, d'observer l'environnement et d'envoyer les informations à la [NSA](https://fr.wikipedia.org/wiki/National_Security_Agency).
+  Il existe des moyens d’interagir avec une webcam/microphone et d’autres périphériques, mais ils nécessitent une autorisation explicite de l’utilisateur. 
+  Ainsi, une page contenant du JavaScript ne permet pas d'activer une caméra Web, d'observer l'environnement et d'envoyer les informations à la [NSA](https://fr.wikipedia.org/wiki/National_Security_Agency).
 
-- Différents onglets / fenêtres ne se connaissent généralement pas. Parfois, ils se croisent, par exemple lorsqu'une fenêtre utilise JavaScript pour ouvrir l'autre. Mais même dans ce cas, le JavaScript d'une page ne peut pas accéder à l'autre si elle provient de sites différents (provenant d'un autre domaine, protocole ou port).
+- Différents onglets / fenêtres ne se connaissent généralement pas. 
+Parfois, ils se croisent, par exemple lorsqu'une fenêtre utilise JavaScript pour ouvrir l'autre. 
+Mais même dans ce cas, le JavaScript d'une page ne peut pas accéder à l'autre si elle provient de sites différents (provenant d'un autre domaine, protocole ou port).
 
-  C'est ce qu'on appelle la "politique de même origine" (“Same Origin Policy”). Pour contourner cette sécurité, _les deux pages_ doivent se mettre d'accord et contenir un code JavaScript spécial qui gère l'échange de données. Nous verrons cela plus loin dans ce tutoriel.
+  C'est ce qu'on appelle la "politique de même origine" (“Same Origin Policy”). 
+  Pour contourner cette sécurité, _les deux pages_ doivent se mettre d'accord et contenir un code JavaScript spécial qui gère l'échange de données.
+  Nous verrons cela plus loin dans ce tutoriel.
 
-  Cette limitation concerne également la sécurité de l'utilisateur. Une page de `http://autresite.com` qu'un utilisateur a ouvert ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
+  Cette limitation concerne également la sécurité de l'utilisateur. 
+  Une page de `http://autresite.com` qu'un utilisateur a ouvert ne doit pas pouvoir accéder à un autre onglet du navigateur avec l'URL `http://gmail.com` et y voler des informations.
 
-- JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page. Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. Encore une fois, ce sont des limites de sécurité.
+- JavaScript peut facilement communiquer sur le net avec le serveur d'où provient la page. 
+Mais sa capacité à recevoir des données d'autres sites / domaines est paralysée. 
+Bien que possible, il nécessite un accord explicite (exprimé dans les en-têtes HTTP) du côté distant. 
+Encore une fois, ce sont des limites de sécurité.
 
 ![Schéma des limitations du JavaScript dans un navigateur](limitations.svg)
 
-De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
+De telles limites n'existent pas si JavaScript est utilisé en dehors du navigateur, par exemple sur un serveur. 
+Les navigateurs modernes permettent également l’installation de plug-ins / extensions susceptibles d’obtenir des autorisations étendues.
 
 ## Qu'est-ce qui rend JavaScript unique ?
 
@@ -97,15 +110,17 @@ Il y a au moins trois bonnes choses à propos de JavaScript :
 
 JavaScript est la seule technologie de navigateur qui combine ces trois éléments.
 
-C’est ce qui rend JavaScript unique. C’est pourquoi il l’outil le plus répandu pour créer des interfaces de navigateur.
+C’est ce qui rend JavaScript unique. 
+C’est pourquoi il est l’outil le plus répandu pour créer des interfaces de navigateur.
 
 Cela dit, JavaScript permet également de créer des serveurs, des applications mobiles, etc.
 
 ## Les langages "par dessus" JavaScript
 
-La syntaxe de JavaScript ne convient pas aux besoins de tous. Différentes personnes veulent des fonctionnalités différentes.
+La syntaxe de JavaScript ne convient pas aux besoins de tous. 
+Différentes personnes veulent des fonctionnalités différentes.
 
-Il faut s’y attendre, parce que besoins sont différents pour tous.
+Il faut s’y attendre, parce que les besoins sont différents pour tous.
 
 Donc, récemment, une pléthore de nouveaux langages sont apparus, qui sont _transpilés_ (convertis) en JavaScript avant leur exécution dans le navigateur.
 
