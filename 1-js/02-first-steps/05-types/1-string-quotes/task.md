@@ -2,16 +2,16 @@ importance: 5
 
 ---
 
-# String quotes
+# Les types d'apostrophes
 
-Quelle est la sortie du script ?
+Quels sont les résultats du script ?
 
 ```js
 let name = "Ilya";
 
-alert( `hello ${1}` ); // ?
+alert(`hello ${1}`); // ?
 
-alert( `hello ${"name"}` ); // ?
+alert(`hello ${"name"}`); // ?
 
-alert( `hello ${name}` ); // ?
+alert(`hello ${name}`); // ?
 ```
