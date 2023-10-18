@@ -181,9 +181,9 @@ alert( message );
 Il peut être difficile au début de comprendre ce qui se passe. Mais après un examen plus approfondi, nous constatons que ce n’est qu’une séquence de tests ordinaire.
 
 1. Le premier point d'interrogation vérifie si `age < 3`.
-2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchi les deux points `":"` et vérifie si `age < 18`.
-3. Si vrai -- retourne `'Salut !'`, sinon -- il franchi à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
-4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchi enfin les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
+2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchit les deux points `":"` et vérifie si `age < 18`.
+3. Si vrai -- retourne `'Salut !'`, sinon -- il franchit à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
+4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchit enfin les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
 
 La même logique utilisant `if..else` :
 

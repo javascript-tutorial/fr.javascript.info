@@ -56,7 +56,7 @@ Il y a aussi une variable globale nommée selon l'`id` qui référence l'éléme
 ```warn header="Ne pas utiliser les variables globales nommées selon l'id pour accéder aux éléments !"
 Ce comportement est décrit [dans la spécification](https://html.spec.whatwg.org/multipage/window-object.html#named-access-on-the-window-object), mais il est pris en charge principalement pour la compatibilité .
 
-Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM. C'est bien pour des scripts simples, intégré dans du HTML, mais en genéral ce n'est pas bon. Il peut y avoir des conflits de noms. Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
+Le navigateur essaie de nous aider en mélangeant les noms de JS et du DOM. C'est bien pour des scripts simples, intégré dans du HTML, mais en général ce n'est pas bon. Il peut y avoir des conflits de noms. Aussi, quand quelqu'un lira le code JS sans avoir le HTML à côté, ce ne sera pas évident pour lui d'où vient la variable.
 
 Dans ce tutoriel, on utilise `id` pour directement référencer un élément rapidement, quand il sera évident d'où il vient.
 
@@ -221,7 +221,7 @@ Trouvons tous les tags `input` dans le tableau :
 ```warn header="N'oubliez pas la lettre `\"s\"` !"
 Les développeurs junior oublient parfois la lettre `"s"`. Ils essaient donc d'appeler `getElementByTagName` au lieu de <code>getElement<b>s</b>ByTagName</code>.
 
-La lettre `"s"` letter n'apparait pas dans `getElementById`, car cette méthode renvoie un seul élément. Mais `getElementsByTagName` renvoie un ensemble d'éléments, il y a donc un `"s"`.
+La lettre `"s"` letter n'apparaît pas dans `getElementById`, car cette méthode renvoie un seul élément. Mais `getElementsByTagName` renvoie un ensemble d'éléments, il y a donc un `"s"`.
 ```
 
 ````warn header="Elle renvoie un ensemble, pas un élément !"
@@ -261,7 +261,7 @@ Recherche des éléments `.article` :
 
 ## Ensembles courants
 
-Toutes les méthodes `"getElementsBy*"` renvoient l'ensemble *courant*. De tels ensembles montrent toujours l'état courant du document and se mettent à jour automatiquement quand celui-ci change.
+Toutes les méthodes `"getElementsBy*"` renvoient l'ensemble *courant*. De tels ensembles montrent toujours l'état courant du document et se mettent à jour automatiquement quand celui-ci change.
 
 Dans l'exemple ci-dessous, il y a deux scripts :
 

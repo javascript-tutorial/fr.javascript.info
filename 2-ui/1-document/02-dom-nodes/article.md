@@ -108,7 +108,7 @@ Sur d'autres images DOM, nous les omettons parfois lorsqu'elles ne sont pas pert
 
 Si le navigateur rencontre du HTML mal formé, il le corrige automatiquement lors de la création du DOM.
 
-Par exemple, la balise la plus haute est toujours `<html>`. Même s'elle n'existe pas dans le document, elle existera dans le DOM, car le navigateur la créera. Il en va de même pour `<body>`.
+Par exemple, la balise la plus haute est toujours `<html>`. Même si elle n'existe pas dans le document, elle existera dans le DOM, car le navigateur la créera. Il en va de même pour `<body>`.
 
 Par exemple, si le fichier HTML est le seul mot `"Hello"`, le navigateur l'enroulera dans `<html>` et `<body>`, et ajoutera le `<head>` requis, et le DOM sera :
 
@@ -224,7 +224,7 @@ Cela devrait ressembler à ça :
 
 Vous pouvez voir le dom, cliquer sur les éléments, voir leurs détails et ainsi de suite.
 
-Veuillez noter que la structure du dom dans les outils de développement est simplifiée. les nœuds texte sont affichés comme du texte. Et il n'y a aucun nœud texte "vide" (espace uniquement). C'est très bien, car la plupart du temps nous nous intéressons aux nœuds éléments.
+Veuillez noter que la structure du dom dans les outils de développement est simplifiée. Les nœuds texte sont affichés comme du texte. Et il n'y a aucun nœud texte "vide" (espace uniquement). C'est très bien, car la plupart du temps nous nous intéressons aux nœuds éléments.
 
 En cliquant sur le bouton <span class="devtools" style="background-position:-328px -124px"></span> dans le coin supérieur gauche cela nous permet de choisir un nœud à partir de la page Web à l'aide d'une souris (ou d'autres périphériques de pointeur) et de "l'inspecter" (faites défiler jusqu'à l'onglet Éléments). cela fonctionne très bien lorsque nous avons une énorme page html (et un énorme dom correspondant) et que nous aimerions voir la place d'un élément particulier.
 

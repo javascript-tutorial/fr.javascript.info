@@ -63,7 +63,7 @@ CSSOM est utilisé avec DOM lorsque nous modifions les règles de style du docum
 
 ## BOM (Browser Object Model)
 
-Le modèle d'objet du navigateur (BOM en anglais) contient des objets supplémentaire fourni par le navigateur (l'environnement hôte) pour travailler avec tout à l'exception du document.
+Le modèle d'objet du navigateur (BOM en anglais) contient des objets supplémentaires fournis par le navigateur (l'environnement hôte) pour travailler avec tout à l'exception du document.
 
 Par exemple :
 
@@ -95,7 +95,7 @@ La spécification DOM
 : Décrit la structure du document, ses manipulations et événements, voir <https://dom.spec.whatwg.org>.
 
 La spécification CSSOM
-: Décrit les feuilles de style et les régles de style, les manipulations de style les impliquant et leur liaisons aux documents, voir <https://www.w3.org/TR/cssom-1/>.
+: Décrit les feuilles de style et les règles de style, les manipulations de style les impliquant et leur liaisons aux documents, voir <https://www.w3.org/TR/cssom-1/>.
 
 Spécification HTML
 : Décrit le langage HTML (c'est à dire les balises) mais également le BOM (modèle d'objet du navigateur) -- diverses fonctions du navigateur : `setTimeout`, `alert`, `location` etc, voir <https://html.spec.whatwg.org>. Il récupère la spécification DOM et l'étend avec de nombreuses propriétés et méthodes additionnelles.

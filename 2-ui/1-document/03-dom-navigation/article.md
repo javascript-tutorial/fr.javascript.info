@@ -287,7 +287,7 @@ Les tableaux en sont un excellent exemple et représentent un cas particulièrem
 **L'élément `<table>`** supporte (en plus de ce qui précède) ces propriétés :
 - `table.rows` -- la collection d'éléments `<tr>` du tableau.
 - `table.caption/tHead/tFoot` -- références aux éléments `<caption>`, `<thead>`, `<tfoot>`.
-- `table.tBodies` -- la collection d'éléments `<tbody>` (peut être multiple selon la norme, mais il y en aura toujours au moins une - même s'elle n'est pas dans le HTML source, le navigateur la mettra dans le DOM).
+- `table.tBodies` -- la collection d'éléments `<tbody>` (peut être multiple selon la norme, mais il y en aura toujours au moins une - même si elle n'est pas dans le HTML source, le navigateur la mettra dans le DOM).
 
 **`<thead>`, `<tfoot>`, `<tbody>`** les éléments fournissent la propriété `rows` :
 - `tbody.rows` -- la collection de `<tr>` à l'intérieur.

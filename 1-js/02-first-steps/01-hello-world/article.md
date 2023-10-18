@@ -48,7 +48,7 @@ La balise `<script>` contient du code JavaScript qui est automatiquement exécut
 La balise `<script>` a quelques attributs qui sont rarement utilisés de nos jours, mais nous pouvons les trouver dans l'ancien code :
 
  L'attribut `type` : <code>&lt;script <u>type</u>=...&gt;</code>
-: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habiutellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais c’est un sujet avancé, nous parlerons de modules dans une autre partie du tutoriel.
+: L’ancien standard HTML4, nécessitait pour chaque script d'avoir un `type`. Habituellement c'était `type="text/javascript"`. Dorénavant ce n’est plus nécessaire. De plus, le standard HTML moderne a totalement changé la signification de cet attribut. Maintenant, il peut être utilisé pour les modules JavaScript. Mais c’est un sujet avancé, nous parlerons de modules dans une autre partie du tutoriel.
 
  L'attribut `language` : <code>&lt;script <u>language</u>=...&gt;</code>
 : Cet attribut était destiné à afficher le langage du script. Pour l'instant, cet attribut n'a aucun sens, le langage est le JavaScript par défaut. Pas besoin de l'utiliser.
@@ -75,7 +75,7 @@ Le fichier de script est attaché à HTML avec l'attribut `src` :
 <script src="/chemin/vers/script.js"></script>
 ```
 
-Ici, `/chemin/vers/script.js` est un chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courrant.
+Ici, `/chemin/vers/script.js` est un chemin absolu du script depuis la racine du site. On peut également fournir un chemin relatif à partir de la page en cours. Par exemple `src="script.js"` signifierait un fichier `"script.js"` dans le dossier courant.
 
 Nous pouvons également donner une URL complète, par exemple :
 
@@ -96,7 +96,7 @@ En règle générale, seuls les scripts les plus simples sont mis en HTML. Les p
 
 L’avantage d’un fichier séparé est que le navigateur le télécharge puis le stocke dans son [cache](https://fr.wikipedia.org/wiki/Cache_web).
 
-Après cela, les autres pages qui veulent le même script le récupèreront à partir du cache au lieu de le télécharger à nouveau. Le fichier n'est donc téléchargé qu'une seule fois.
+Après cela, les autres pages qui veulent le même script le récupéreront à partir du cache au lieu de le télécharger à nouveau. Le fichier n'est donc téléchargé qu'une seule fois.
 
 Cela économise du trafic et rend les pages plus rapides.
 ```

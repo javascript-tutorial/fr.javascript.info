@@ -70,7 +70,7 @@ La logique décrite ci-dessus est quelque peu classique. Maintenant, apportons l
 
 L'algorithme étendu fonctionne comme suit.
 
-En cas de mutiples valeurs liées par OR :
+En cas de multiples valeurs liées par OR :
 
 ```js
 result = value1 || value2 || value3;
@@ -79,7 +79,7 @@ result = value1 || value2 || value3;
 L'opérateur OR `||` fait ce qui suit :
 
 - Évaluez les opérandes de gauche à droite.
-- Pour chaque opérande, il le converti en booléen. Si le résultat est `true`, arrêtez et retournez la valeur d'origine de cet opérande.
+- Pour chaque opérande, il le convertit en booléen. Si le résultat est `true`, arrêtez et retournez la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire que tous étaient `false`), renvoyez le dernier opérande.
 
 Une valeur est renvoyée sous sa forme d'origine, sans conversion.
@@ -184,7 +184,7 @@ result = value1 && value2 && value3;
 L'opérateur AND `&&` effectue les opérations suivantes :
 
 - Évalue les opérandes de gauche à droite.
-- Pour chaque opérande, il le converti en booléen. Si le résultat est `false`, arrêtez et retournez la valeur d'origine de cet opérande.
+- Pour chaque opérande, il le convertit en booléen. Si le résultat est `false`, arrêtez et retournez la valeur d'origine de cet opérande.
 - Si tous les autres opérandes ont été évalués (c’est-à-dire tous étaient vrais), retournez le dernier opérande.
 
 En d'autres termes, une chaîne de AND `&&` renvoie la première valeur `false` ou la dernière valeur si aucune valeur `false` n'a été trouvée.

@@ -28,7 +28,7 @@ Il existe de nombreuses opérations pour les nombres, par ex. multiplication `*`
 
 Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui appartiennent également à ce type: `Infinity`, `-Infinity` et `NaN`.
 
-- `Infinity` répresente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
+- `Infinity` représente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
 
     Nous pouvons l'obtenir à la suite d'une division par zéro :
 
@@ -128,7 +128,7 @@ let name = "John";
 // une variable encapsulée
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
-// une expression encapulée
+// une expression encapsulée
 alert( `the result is *!*${1 + 2}*/!*` ); // le résultat est 3
 ```
 
@@ -291,6 +291,6 @@ L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable
 
 - Généralement utilisé sous cette forme `typeof x`, mais `typeof(x)` est également possible.
 - Renvoie une chaîne de caractères avec le nom du type, comme `"string"`.
-- Pour `null` il renvoit `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
+- Pour `null` il renvoie `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
 
 Dans les chapitres suivants, nous nous concentrerons sur les valeurs primitives et une fois que nous les connaîtrons, nous passerons aux objets.
