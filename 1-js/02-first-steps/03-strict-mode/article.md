@@ -21,7 +21,7 @@ Par exemple
 ```js
 "use strict";
 
-// Ce code fonctionne de manière moderne
+// Le code en dessous de cette directive fonctionnera de manière "moderne"
 ...
 ```
 
@@ -52,9 +52,10 @@ Il n'y a pas de directive `"no use strict"` ou similaire, qui réactiverait l'an
 
 Une fois que nous entrons dans le mode strict, il n’y a plus de retour possible.
 ```
+
 ## Console du Navigateur
 
-Pour l’avenir, lorsque vous utilisez une console de navigation pour tester des fonctionnalités, veuillez noter qu’elle n’utilise pas `use strict` par défaut.
+Lorsque vous utilisez une console de navigation pour tester des fonctionnalités, veuillez noter qu’elle n’utilise pas `use strict` par défaut.
 
 Lorsque vous utilisez une [console de développement](info:devtools) pour exécuter du code, veuillez noter qu'elle n'utilise pas `use strict` par défaut.
 
@@ -62,7 +63,7 @@ Parfois, lorsque `use strict` fait une différence, vous obtenez des résultats 
 
 Alors, comment utiliser `use strict` dans la console ?
 
-D'abord, vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme cela :
+D'abord, vous pouvez essayer d'appuyer sur `key:Shift+Enter` pour saisir plusieurs lignes et mettre `use strict` en haut comme ceci :
 
 ```js
 'use strict'; <Shift+Enter for a newline>
@@ -92,11 +93,11 @@ Le JavaScript moderne prend en charge les "classes" et les "modules" -- des stru
 Nous n'avons donc pas besoin d'ajouter la directive `"use strict"` si nous les utilisons.
 
 **Donc, pour l'instant `"use strict";` est un invité bienvenu en haut de vos scripts.**
-**Plus tard, lorsque votre code est entièrement dans des classes et des modules, vous pouvez l'omettre.**
+**Plus tard, lorsque votre code sera entièrement dans des classes et des modules, vous pourrez l'omettre.**
 
 A partir de maintenant, nous devons connaître `use strict` en général.
 
-Dans les chapitres suivants, au fur et à mesure que nous apprendrons les fonctionnalités du langage, nous verrons les différences entre les modes strict et anciens modes.
+Dans les chapitres suivants et au fur et à mesure que nous apprendrons les fonctionnalités du langage, nous verrons les différences entre les modes strict et anciens modes.
 Heureusement, il n'y en a pas beaucoup et ils améliorent en fait nos vies.
 
 Tous les exemples de ce tutoriel supposent le mode strict, sauf indication contraire (très rarement).
