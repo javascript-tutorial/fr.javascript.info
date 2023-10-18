@@ -8,9 +8,11 @@ Voyons ce qui est spécial à propos de JavaScript, ce qu'il nous permet de fair
 
 _JavaScript_ a été initialement créé pour "rendre les pages web vivantes".
 
-Les programmes dans ce langage sont appelés _scripts_. Ils peuvent être écrits directement dans une page HTML et exécutés automatiquement au chargement des pages.
+Les programmes dans ce langage sont appelés _scripts_. 
+Ils peuvent être écrits directement dans une page HTML et exécutés automatiquement au chargement des pages.
 
-Les scripts sont fournis et exécutés en texte brut. Ils n'ont pas besoin d'une préparation spéciale ou d'une compilation pour fonctionner.
+Les scripts sont fournis et exécutés en texte brut. 
+Ils n'ont pas besoin d'une préparation spéciale ou d'une compilation pour fonctionner.
 
 De par cet aspect, JavaScript est très différent d'un autre langage appelé [Java](<https://fr.wikipedia.org/wiki/Java_(langage)>).
 
