@@ -90,11 +90,11 @@ Voici les principales catégories de caractères et leurs sous-catégories :
   - usage privé `Co`,
   - substitut `Cs`.
 
-
 Ainsi, par exemple si nous avons besoin de lettres en minuscules, nous pouvons écrire `pattern:\p{Ll}`, de signes de ponctuation : `pattern:\p{P}` et ainsi de suite.
 
 Il existe également d'autres catégories dérivées, comme :
-- `Alphabetic` (Alphabétique)(`Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques)(`OAlpha`).
+
+- `Alphabetic` (Alphabétique, `Alpha`), qui comprend les lettres `L`, plus les numéros de lettre `Nl` (par exemple Ⅻ - un caractère pour le chiffre romain 12), plus quelques autres symboles `Other_Alphabetic` (Autre alphabétiques, `OAlpha`).
 - `Hex_Digit` comprend des chiffres hexadécimaux : `0-9`, `a-f`.
 - ...Et ainsi de suite.
 
@@ -121,7 +121,7 @@ alert("number: xAF".match(regexp)); // xAF
 
 Cherchons des hiéroglyphes Chinois.
 
-Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec),`Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
+Il y a une propriété unicode `Script` (un système d'écriture), qui peut avoir une valeur : `Cyrillic` (Cyrillique), `Greek` (Grec), `Arabic` (Arabe), `Han` (Chinois) et ainsi de suite, [voici la liste complète]("https://en.wikipedia.org/wiki/Script_(Unicode)").
 
 Pour rechercher des caractères dans un système d'écriture donné, nous devons utiliser `pattern:Script=<value>`, par exemple pour les lettres cyrilliques : `pattern:\p{sc=Cyrillic}`, pour les hiéroglyphes chinois : `pattern:\p{sc=Han}`, et ainsi de suite :
 

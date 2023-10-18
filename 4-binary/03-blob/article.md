@@ -34,8 +34,7 @@ let hello = new Uint8Array([72, 101, 108, 108, 111]); // "Hello" sous forme bina
 let blob = new Blob([hello, ' ', 'world'], {type: 'text/plain'});
 ```
 
-
-Nous pouvons extraire des parties du `Blob` avec:
+Nous pouvons extraire des parties du `Blob` avec :
 
 ```js
 blob.slice([byteStart], [byteEnd], [contentType]);
@@ -48,7 +47,7 @@ blob.slice([byteStart], [byteEnd], [contentType]);
 Les arguments sont similaires à `array.slice`, les nombres négatifs sont également autorisés.
 
 ```smart header="Les objets `Blob` sont immuables"
-Nous ne pouvons pas modifier les données directement dans un `Blob`, mais nous pouvons découper des parties d'un `Blob`, créer de nouveaux objets `Blob` à partir d'eux, les mélanger dans un nouveau` Blob` et ainsi de suite.
+Nous ne pouvons pas modifier les données directement dans un `Blob`, mais nous pouvons découper des parties d'un `Blob`, créer de nouveaux objets `Blob` à partir d'eux, les mélanger dans un nouveau `Blob` et ainsi de suite.
 
 Ce comportement est similaire aux chaînes de caractères JavaScript: nous ne pouvons pas changer un caractère dans une chaîne, mais nous pouvons créer une nouvelle chaîne corrigée.
 ```
@@ -121,9 +120,7 @@ Une alternative à `URL.createObjectURL` est de convertir un `Blob` en une chaî
 
 Cet encodage représente des données binaires sous la forme d'une chaîne de caractères "lisibles" ultra-sûrs avec des codes ASCII de 0 à 64. Et ce qui est plus important - nous pouvons utiliser cet encodage dans "data-urls".
 
-
 Une [URL de données](mdn:/http/Data_URIs) a la forme `data:[<mediatype>][;base64],<data>`. Nous pouvons utiliser de telles URL partout, au même titre que les URL "ordinaires".
-
 
 Par exemple, voici un smiley:
 
@@ -132,7 +129,6 @@ Par exemple, voici un smiley:
 ```
 
 Le navigateur décodera la chaîne de caractères et affichera l'image: <img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
-
 
 Pour transformer un `Blob` en base64, nous utiliserons l'objet `FileReader` intégré. Il peut lire les données des Blobs dans plusieurs formats. Dans le [chapitre suivant](info:file) nous le couvrirons plus en détail.
 
@@ -168,14 +164,12 @@ Les deux manières de créer une URL d'un `Blob` sont utilisables. Mais généra
 
 Nous pouvons créer un `Blob` d'une image, une partie d'image, ou même faire une capture d'écran de page. C'est pratique pour le télécharger quelque part.
 
-Les opérations sur les images se font via l'élément `<canvas>`:
-
+Les opérations sur les images se font via l'élément `<canvas>` :
 
 1. Dessinez une image (ou sa partie) sur le canevas en utilisant [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
 2. Appeler la méthode canvas [.toBlob(callback, format, quality)](mdn:/api/HTMLCanvasElement/toBlob) qui crée un `Blob` et exécute `callback` avec lui une fois terminé.
 
-
-Dans l'exemple ci-dessous, une image est simplement copiée, mais nous pourrions la couper ou la transformer sur un canevas avant de créer un blob:
+Dans l'exemple ci-dessous, une image est simplement copiée, mais nous pourrions la couper ou la transformer sur un canevas avant de créer un blob :
 
 ```js run
 // prendre n'importe quelle image
@@ -206,7 +200,8 @@ canvas.toBlob(function(blob) {
 }, 'image/png');
 ```
 
-Si nous préférons `async/await` au lieu de callbacks:
+Si nous préférons `async/await` au lieu de callbacks :
+
 ```js
 let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
 ```
@@ -258,7 +253,7 @@ while (true) {
 
 ## Résumé
 
-Alors qu'`ArrayBuffer`, `Uint8Array` et autres `BufferSource` sont des "données binaires", un [Blob] (https://www.w3.org/TR/FileAPI/#dfn-Blob) représente des "données binaires de type".
+Alors qu'`ArrayBuffer`, `Uint8Array` et autres `BufferSource` sont des "données binaires", un [Blob](https://www.w3.org/TR/FileAPI/#dfn-Blob) représente des "données binaires de type".
 
 Cela rend les Blobs pratiques pour les opérations de téléchargement (upload / download), qui sont courantes dans le navigateur.
 

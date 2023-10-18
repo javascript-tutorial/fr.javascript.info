@@ -185,7 +185,7 @@ Voici la pile de contexte lorsque nous sommes entrés dans le sous-appel `pow(2,
 
 Le nouveau contexte d'exécution actuel est en haut (et en gras) et les contextes précédemment mémorisés sont en dessous.
 
-Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté. 
+Quand on termine le sous-appel -- il est facile de reprendre le contexte précédent, car il conserve les deux variables et l'emplacement exact du code où il s'est arrêté.
 
 ```smart
 Ici, dans l'image, nous utilisons le mot "line", comme dans notre exemple, il n'y a qu'un seul sous-appel en ligne, mais généralement une seule ligne de code peut contenir plusieurs sous-appels, comme `pow(…) + pow(…) + somethingElse(…)`.
@@ -339,7 +339,7 @@ Essayons la récursion.
 Comme nous pouvons le constater, lorsque notre fonction demande à un département de faire la somme, il existe deux cas possibles:
 
 1. S’il s’agit d’un "simple" département avec un *tableau* de personnes, nous pouvons alors additionner les salaires en une simple boucle.
-2. Ou bien *c'est un objet* avec `N` sous-départements -- alors nous pouvons faire des appels` N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
+2. Ou bien *c'est un objet* avec `N` sous-départements -- alors nous pouvons faire des appels `N` récursifs pour obtenir la somme de chaque sous-étape et combiner les résultats.
 
 Le premier cas est la base de la récursivité, le cas trivial, lorsque nous obtenons un tableau.
 
@@ -385,7 +385,7 @@ On peut facilement voir le principe: pour un objet `{...}` les sous-appels sont 
 
 Notez que le code utilise des fonctionnalités intelligentes que nous avons déjà abordées:
 
-- La méthode `arr.reduce` a été expliquée dans le chapitre <info:array-methods> pour obtenir la somme du tableau. 
+- La méthode `arr.reduce` a été expliquée dans le chapitre <info:array-methods> pour obtenir la somme du tableau.
 - La boucle `for(val of Object.values(obj))` itérer sur les valeurs d'objet: `Object.values` retourne un tableau d'eux-mêmes.
 
 
@@ -462,7 +462,7 @@ list.next.next.next = { value: 4 };
 list.next.next.next.next = null;
 ```
 
-Ici, nous pouvons voir encore plus clairement qu'il y a plusieurs objets, chacun ayant les valeurs `value` et` next` pointant vers le voisin. La variable `list` est le premier objet de la chaîne. Par conséquent, en suivant les pointeurs `next`, nous pouvons atteindre n'importe quel élément.
+Ici, nous pouvons voir encore plus clairement qu'il y a plusieurs objets, chacun ayant les valeurs `value` et `next` pointant vers le voisin. La variable `list` est le premier objet de la chaîne. Par conséquent, en suivant les pointeurs `next`, nous pouvons atteindre n'importe quel élément.
 
 La liste peut être facilement divisée en plusieurs parties et ultérieurement réunie:
 

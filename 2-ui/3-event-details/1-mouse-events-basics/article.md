@@ -4,7 +4,7 @@ Dans ce chapitre, nous verrons plus en détails les événements de la souris et
 
 Remarque: Ces événements peuvent provenir non seulement de "périphériques de souris", mais également de périphériques, tels que les téléphones et les tablettes, où ils sont émulés pour des raisons de compatibilité.
 
-## Les types d'évènements de Souris 
+## Les types d'évènements de Souris
 
 Nous avons déjà vu certains de ces événements :
 
@@ -93,7 +93,7 @@ Ils sont `true` si la touche correspondante fut appuyée durant l'évènement.
 
 Par exemple le bouton en bas fonctionne seulement avec `key:Alt+Shift`+click:
 
-```html autorun height=60 
+```html autorun height=60
 <button id="button">Alt+Shift+Click on me!</button>
 
 <script>
@@ -134,10 +134,9 @@ Mais si leur appareil n'en a pas, il devrait y avoir un moyen de vivre sans touc
 
 Tous les événements de souris fournissent des coordonnées de deux manières :
 
-
 Nous avons déjà couvert la différence entre eux dans le chapitre <info:coordinates>.
 
-En résumé, les coordonnées relatives au document `pageX/Y` sont comptées à partir du coin supérieur gauche du document, et ne changent pas lorsque la page défile, tandis que` clientX/Y` sont comptées à partir du coin supérieur gauche de la fenêtre actuelle . Lorsque la page défile, ils changent.
+En résumé, les coordonnées relatives au document `pageX/Y` sont comptées à partir du coin supérieur gauche du document, et ne changent pas lorsque la page défile, tandis que `clientX/Y` sont comptées à partir du coin supérieur gauche de la fenêtre actuelle . Lorsque la page défile, ils changent.
 
 Par exemple, si nous avons une fenêtre de taille 500x500 et que la souris est dans le coin supérieur gauche, alors `clientX` et `clientY` sont `0`, peu importe comment la page est défilée.
 
@@ -150,7 +149,8 @@ Déplacez la souris sur le champ de saisie pour voir `clientX/clientY` (l'exempl
 <input onmousemove="this.value=event.clientX+':'+event.clientY" value="Mouse over me">
 ```
 ````
-Les coordonnées relatives au document `pageX`,` pageY` sont comptées à partir du coin supérieur gauche du document, pas de la fenêtre. Vous pouvez en savoir plus sur les coordonnées dans le chapitre <info:coordinates>.
+
+Les coordonnées relatives au document `pageX`, `pageY` sont comptées à partir du coin supérieur gauche du document, pas de la fenêtre. Vous pouvez en savoir plus sur les coordonnées dans le chapitre <info:coordinates>.
 
 ## Empêcher la sélection sur le mousedown
 
@@ -196,7 +196,7 @@ Si vous essayer de copier une partie de texte dans un `<div>`, cela ne va pas fo
 Certes, l'utilisateur a accès à la source HTML de la page et peut en extraire le contenu, mais tout le monde ne sait pas comment le faire.
 ````
 
-## Résumé 
+## Résumé
 
 Les évènements de souris ont les propriétés suivantes :
 

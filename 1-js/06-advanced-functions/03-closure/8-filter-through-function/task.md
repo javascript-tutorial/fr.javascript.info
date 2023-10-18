@@ -8,7 +8,7 @@ Nous avons une méthode intégrée `arr.filter(f)` pour les tableaux. Elle filtr
 
 Créez un ensemble de filtres "prêts à l'emploi":
 
-- `inBetween(a, b)` -- entre `a` et` b` ou égal à eux (inclusivement).
+- `inBetween(a, b)` -- entre `a` et `b` ou égal à eux (inclusivement).
 - `inArray([...])` -- dans le tableau donné.
 
 L'usage doit être comme ceci :
@@ -26,4 +26,3 @@ alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
 
 alert( arr.filter(inArray([1, 2, 10])) ); // 1,2
 ```
-

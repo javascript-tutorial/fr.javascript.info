@@ -32,10 +32,12 @@ Par exemple, la même touche `key:Z`  peut être appuyée avec ou sans `key:Shif
 
 La propriété `event.key` est exactement le caractère, et il sera diffèrent. Cependant `event.code` est la même:
 
-| Touche          | `event.key` | `event.code` |
-|--------------|-------------|--------------|
-| `key:Z`      |`z` (minuscule)         |`KeyZ`        |
-| `key:Shift+Z`|`Z` (majuscule)          |`KeyZ`        |
+
+| Touche       | `event.key`    | `event.code` |
+|--------------|----------------|--------------|
+| `key:Z`      |`z` (minuscule) | `KeyZ`       |
+| `key:Shift+Z`|`Z` (majuscule) | `KeyZ`       |
+
 
 Si un utilisateur travaille avec des langues différentes, alors le fait de changer vers une autre langue aura pour effet de créer un caractère totalement diffèrent de `"Z"`.  Cela va devenir la valeur de `event.key`, tandis que `event.code` est toujours la même que: `"KeyZ"`.
 
@@ -130,7 +132,7 @@ Pa exemple:
 - Un caractère est supprimé (`key:Delete` key).
 - Une page est défilée (`key:PageDown` key).
 - Le navigateur ouvre la boite de dialogue "Sauvegarder la Page" dialog (`key:Ctrl+S`)
--  ...ainsi de suite.
+- ...ainsi de suite.
 
 L’empêchement de l'action par défaut à l'évènement `keydown` peut annuler la plupart d'entre elles, à l'exception des touches spéciales spécifiques aux systèmes d'exploitations. Par exemple, sur Windows `key:Alt+F4` ferme la fenêtre en cours du navigateur. Et il n'existe aucun moyen de l'arrêter en empêchant l'action par défaut JavaScript.
 
@@ -179,7 +181,7 @@ Il y avait tellement d'incompatibilités au niveau des navigateurs en travaillan
 
 Lors de l'utilisation de claviers virtuels / mobiles, officiellement appelés IME (Input-Method Editor), la norme W3C indique qu'un KeyboardEvent [`e.keyCode` devrait être `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) et [`e.key` devrait être `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
 
-Bien que certains de ces claviers puissent toujours utiliser les bonnes valeurs pour `e.key`,` e.code`, `e.keyCode` ... lorsque vous appuyez sur certaines touches telles que les flèches ou le retour arrière, il n'y a aucune garantie, donc la logique de votre clavier peut ne pas toujours fonctionner sur les appareils mobiles.
+Bien que certains de ces claviers puissent toujours utiliser les bonnes valeurs pour `e.key`, `e.code`, `e.keyCode`, ... lorsque vous appuyez sur certaines touches telles que les flèches ou le retour arrière, il n'y a aucune garantie, donc la logique de votre clavier peut ne pas toujours fonctionner sur les appareils mobiles.
 
 ## Résumé
 

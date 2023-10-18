@@ -291,11 +291,12 @@ Pour le JavaScript côté serveur, cette limitation n'existe pas, et il existe d
 - Pour annuler l'exécution, nous devons appeler `clearInterval/clearTimeout` avec la valeur renvoyée par `setInterval/setTimeout`.
 - Les appels de `setTimeout` imbriqués sont une alternative plus flexible à `setInterval`, ils permettent de configurer le temps *entre* les exécution plus précisément.
 - L'ordonnancement à délai nul avec `setTimeout(func, 0)` (le même que `setTimeout(func)`) permet de planifier l'exécution "dès que possible, mais seulement une fois que le bloc de code courant a été exécuté".
-- Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour` setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
+- Le navigateur limite le délai minimal pour cinq appels imbriqués ou plus de `setTimeout` ou pour `setInterval` (après le 5ème appel) à 4 ms. C'est pour des raisons historiques.
 
 Veuillez noter que toutes les méthodes de planification ne garantissent pas le délai exact.
 
 Par exemple, le timer interne au navigateur peut être ralenti pour de nombreuses raisons :
+
 - Le CPU est surchargé.
 - L'onglet du navigateur est en tâche de fond.
 - L'ordinateur est en mode économie d'énergie.

@@ -266,7 +266,7 @@ Les générateurs réguliers peuvent être utilisés comme `Symbol.iterator` pou
 
 Similaire à cela, les générateurs asynchrones peuvent être utilisés comme `Symbol.asyncIterator` pour implémenter l'itération asynchrone.
 
-Par exemple, nous pouvons faire en sorte que l'objet `range` génère des valeurs de manière asynchrone, une fois par seconde, en remplaçant` Symbol.iterator` synchrone par `Symbol.asyncIterator` asynchrone :
+Par exemple, nous pouvons faire en sorte que l'objet `range` génère des valeurs de manière asynchrone, une fois par seconde, en remplaçant `Symbol.iterator` synchrone par `Symbol.asyncIterator` asynchrone :
 
 ```js run
 let range = {
@@ -385,10 +385,10 @@ Un exemple d'utilisation (montrant les auteurs de chaque commit en console) :
 
 })();
 
-// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above 
+// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above
 ```
 
-C'est exactement ce que nous voulions. 
+C'est exactement ce que nous voulions.
 
 La mécanique interne des pages est invisible de l'extérieur. Pour nous, c'est juste un générateur asynchrone qui retourne chacun des commits.
 
