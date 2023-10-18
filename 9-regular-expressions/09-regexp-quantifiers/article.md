@@ -125,7 +125,7 @@ alert( "0 1 12.345 7890".match(/\d+\.\d+/g) ); // 12.345
 
 **Regexp "balise HTML d'ouverture ou de fermeture sans attributs": `pattern:/<\/?[a-z][a-z0-9]*>/i`**
 
-Nous avons ajouté un slash optionnel `pattern:/?` près du début du pattern. Nous avons dû l'échapper avec un backslash, sinon Javascript aurait pensé que c'était la fin du pattern.
+Nous avons ajouté un slash optionnel `pattern:/?` près du début du pattern. Nous avons dû l'échapper avec un backslash, sinon JavaScript aurait pensé que c'était la fin du pattern.
 
 ```js run
 alert( "<h1>Hi!</h1>".match(/<\/?[a-z][a-z0-9]*>/gi) ); // <h1>, </h1>

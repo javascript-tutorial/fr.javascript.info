@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Finally ou juste le code?
+# Finally ou juste le code ?
 
 Comparez les deux fragments de code.
 
@@ -19,6 +19,7 @@ Comparez les deux fragments de code.
     */!*
     }
     ```
+
 2. Le deuxième fragment fait le nettoyage juste après `try..catch` :
 
     ```js
@@ -35,4 +36,4 @@ Comparez les deux fragments de code.
 
 Nous avons absolument besoin du nettoyage après le travail, peu importe qu'il y ait une erreur ou non.
 
-Y at-il un avantage ici à utiliser `finally` ou les deux fragments de code sont égaux? Si un tel avantage existe, donnez un exemple lorsque cela compte.
+Y at-il un avantage ici à utiliser `finally` ou les deux fragments de code sont égaux ? Si un tel avantage existe, donnez un exemple lorsque cela compte.

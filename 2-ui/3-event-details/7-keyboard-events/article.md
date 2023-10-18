@@ -32,10 +32,12 @@ Par exemple, la même touche `key:Z`  peut être appuyée avec ou sans `key:Shif
 
 La propriété `event.key` est exactement le caractère, et il sera diffèrent. Cependant `event.code` est la même:
 
+
 | Touche       | `event.key`    | `event.code` |
 |--------------|----------------|--------------|
 | `key:Z`      |`z` (minuscule) | `KeyZ`       |
 | `key:Shift+Z`|`Z` (majuscule) | `KeyZ`       |
+
 
 Si un utilisateur travaille avec des langues différentes, alors le fait de changer vers une autre langue aura pour effet de créer un caractère totalement diffèrent de `"Z"`.  Cela va devenir la valeur de `event.key`, tandis que `event.code` est toujours la même que: `"KeyZ"`.
 
@@ -48,7 +50,6 @@ Par exemple:
 - Les touches spéciales sont codées par leurs noms: `"Enter"`, `"Backspace"`, `"Tab"` etc.
 
 Il existe plusieurs formats de claviers usuels, différents de par la présentation, et la spécification donne des codes pour les touches pour chacun d'entre eux.
-
 
 voir [la section alphanumérique de la specification](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section) pour plus de codes, ou essayez juste le [teststand](#keyboard-test-stand) au-dessus.
 
@@ -78,7 +79,6 @@ Il existe un dilemme ici: Dans cet écouteur d’évènement, devons-nous contr�
 
 
 D'une part, la valeur de `event.key` est un caractère, elle change en fonction de la langue. Si le visiteur a plusieurs langues dans le système d'exploitation et bascule entre elles, la même clé donne des caractères différents. Il est donc logique de vérifier `event.code`, c'est toujours pareil.
-
 
 Ainsi:
 

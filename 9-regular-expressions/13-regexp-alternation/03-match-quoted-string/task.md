@@ -22,7 +22,7 @@ Exemple de chaine de caractère valides :
 .. *!*"\\ \""*/!* ..  (double backslash et guillemets échapées à l'intérieur)
 ```
 
-En Javascript nous devons doubler les slash pour les placer dans la chaine de caractère, comme ceci :
+En JavaScript nous devons doubler les slash pour les placer dans la chaine de caractère, comme ceci :
 
 ```js run
 let str = ' .. "test me" .. "Say \\"Hello\\"!" .. "\\\\ \\"" .. ';
