@@ -4,7 +4,7 @@ importance: 5
 
 # Map en objets
 
-Vous avez un tableau d'objets `user`, chacun ayant` name`, `surname` et` id`.
+Vous avez un tableau d'objets `user`, chacun ayant `name`, `surname` et `id`.
 
 Ecrivez le code pour créer un autre tableau à partir de celui-ci, avec les objets `id` et `fullName`, où `fullName` est généré à partir de `name` et `surname`.
 

@@ -8,4 +8,4 @@ importance: 4
 
 Quelle est sa place dans la hiérarchie DOM ?
 
-Hérite-t-il de `Node` ou` Element`, ou peut-être de `HTMLElement` ?
+Hérite-t-il de `Node` ou `Element`, ou peut-être de `HTMLElement` ?

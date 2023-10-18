@@ -140,7 +140,7 @@ switch (a) {
 
 Maintenant, les `3` et `5` affichent le même message.
 
-La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`. Ici, l’exécution du `case 3` commence à partir de la ligne `(*)` et passe par le `case 5`, car il n’ya pas de `break`.
+La possibilité de "grouper" les `case` est un effet secondaire de la façon dont le `switch/case` fonctionne sans `break`. Ici, l’exécution du `case 3` commence à partir de la ligne `(*)` et passe par le `case 5`, car il n’y a pas de `break`.
 
 ## Le type compte
 

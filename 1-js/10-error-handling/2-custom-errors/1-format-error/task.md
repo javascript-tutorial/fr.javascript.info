@@ -8,7 +8,7 @@ Créez une classe `FormatError` qui hérite de la classe `SyntaxError` intégré
 
 Il devrait supporter les propriétés `message`, `name` et `stack`.
 
-Exemple d'utilisation:
+Exemple d'utilisation :
 
 ```js
 let err = new FormatError("formatting error");

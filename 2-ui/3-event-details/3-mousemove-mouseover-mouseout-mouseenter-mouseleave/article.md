@@ -67,7 +67,7 @@ Déplacez également le pointeur dans la `div` enfant, puis le déplacer rapidem
 ```
 
 ```smart header="Si `mouseover` est déclenché, il doit y avoir `mouseout`"
-En cas de mouvements rapides de la souris, les éléments intermédiaires peuvent être ignorés, mais une chose est sûre : si le pointeur est "officiellement" entré dans un élément (événement `mouseover` généré), alors en le quittant, on aura toujours` mouseout`.
+En cas de mouvements rapides de la souris, les éléments intermédiaires peuvent être ignorés, mais une chose est sûre : si le pointeur est "officiellement" entré dans un élément (événement `mouseover` généré), alors en le quittant, on aura toujours `mouseout`.
 ```
 
 ## Mouseout en quittant pour un enfant

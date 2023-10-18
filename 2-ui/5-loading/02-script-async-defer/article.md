@@ -10,7 +10,6 @@ Cela conduit à deux problèmes importants:
 1. Les scripts ne peuvent pas voir les éléments DOM en dessous d'eux, ils ne peuvent donc pas ajouter de gestionnaires, etc.
 2. S'il y a un script volumineux en haut de la page, il "bloque la page". Les utilisateurs ne peuvent pas voir le contenu de la page tant qu'il n'est pas téléchargé et exécuté:
 
-
 ```html run height=100
 <p>...content before script...</p>
 
@@ -40,8 +39,7 @@ Heureusement, il y a deux attributs de `<script>` qui résolvent le problème po
 
 L'attribut `defer` indique au navigateur de ne pas attendre le script. Au lieu de cela, le navigateur continuera à traiter le HTML, à construire le DOM. Le script se charge "en arrière-plan", puis s'exécute lorsque le DOM est entièrement construit.
 
-
-Voici le même exemple que ci-dessus, mais avec `defer`:
+Voici le même exemple que ci-dessus, mais avec `defer` :
 
 ```html run height=100
 <p>...content before script...</p>
@@ -81,10 +79,9 @@ Donc, si nous avons d'abord un long script, puis un plus petit, alors ce dernier
 <script defer src="https://javascript.info/article/script-async-defer/small.js"></script>
 ```
 
-
 Les navigateurs analysent la page à la recherche de scripts et les téléchargent en parallèle pour améliorer les performances. Ainsi, dans l'exemple ci-dessus, les deux scripts se téléchargent en parallèle. Le `small.js` se termine probablement en premier.
 
-... Mais l'attribut `defer`, en plus de dire au navigateur "de ne pas bloquer", garantit que l'ordre relatif est conservé. Ainsi, même si `small.js` se charge en premier, il attend et s'exécute toujours après l'exécution de` long.js`.
+... Mais l'attribut `defer`, en plus de dire au navigateur "de ne pas bloquer", garantit que l'ordre relatif est conservé. Ainsi, même si `small.js` se charge en premier, il attend et s'exécute toujours après l'exécution de `long.js`.
 Mais la spécification exige que les scripts s'exécutent dans l'ordre des documents, donc elle attend que `long.js` s'exécute.
 ```
 
@@ -92,9 +89,7 @@ Mais la spécification exige que les scripts s'exécutent dans l'ordre des docum
 L'attribut `defer` est ignoré si la balise `<script>` n'a pas de `src`.
 ```
 
-
 ## async
-
 
 - Le navigateur ne bloque pas les scripts `async` (comme `defer`).
 - D'autres scripts n'attendent pas les scripts `async`, et les scripts `async` ne les attendent pas.
@@ -103,7 +98,6 @@ L'attribut `defer` est ignoré si la balise `<script>` n'a pas de `src`.
     - ... ou après un script async (si un script async est court ou était dans le cache HTTP)
 
 En d'autres termes, les scripts `async` se chargent en arrière-plan et s'exécutent lorsqu'ils sont prêts. Le DOM et les autres scripts ne les attendent pas, et ils n'attendent rien. Un script entièrement indépendant qui s'exécute lorsqu'il est chargé. Aussi simple que cela puisse être, non ?
-
 
 Donc, si nous avons plusieurs scripts `async`, ils peuvent s'exécuter dans n'importe quel ordre. Premier chargé -- premier exécuté:
 
@@ -151,10 +145,10 @@ Le script commence à se charger dès qu'il est ajouté au document `(*)`.
 
 **Les scripts dynamiques se comportent comme "asynchrones" par défaut.**
 
-C'est-à-dire:
+C'est-à-dire :
+
 - Ils n'attendent rien, rien ne les attend.
 - Le script qui se charge en premier -- s'exécute en premier ("load-first").
-
 
 ```js run
 let script = document.createElement('script');
@@ -169,7 +163,6 @@ document.body.append(script);
 
 Par exemple, nous ajoutons ici deux scripts. Sans `script.async=false`, ils s'exécuteraient dans l'ordre de chargement (le `small.js` probablement en premier). Mais avec, l'ordre est "comme dans le document":
 
-
 ```js run
 function loadScript(src) {
   let script = document.createElement('script');
@@ -182,7 +175,6 @@ function loadScript(src) {
 loadScript("/article/script-async-defer/long.js");
 loadScript("/article/script-async-defer/small.js");
 ```
-
 
 ## Résumé
 

@@ -1,5 +1,5 @@
 
-# Animé un cercle avec une promesse
+# Animer un cercle avec une promesse
 
 Ré-écrivez la fonction `showCircle` dans la solution de la tâche <info:task/animate-circle-callback> pour qu'elle renvoie une promesse au lieu d'une fonction de retour.
 

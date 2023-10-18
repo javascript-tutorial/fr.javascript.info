@@ -1,4 +1,3 @@
-
 Nous pouvons voir à quelle classe il appartient en le sortant, comme :
 
 ```js run
@@ -27,7 +26,7 @@ De plus, il y a une référence à la fonction constructeur à l'intérieur du `
 alert(HTMLDocument.prototype.constructor === HTMLDocument); // true
 ```
 
-Pour obtenir le nom de la classe sous forme de chaîne de caractères, nous pouvons utiliser `constructor.name`. Faisons-le pour toute la chaîne du prototype de `document`, jusqu'à la classe` Node`:
+Pour obtenir le nom de la classe sous forme de chaîne de caractères, nous pouvons utiliser `constructor.name`. Faisons-le pour toute la chaîne du prototype de `document`, jusqu'à la classe `Node` :
 
 ```js run
 alert(HTMLDocument.prototype.constructor.name); // HTMLDocument

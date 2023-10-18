@@ -8,7 +8,7 @@ Il en avait été ainsi jusqu'en 2009 lorsque ECMAScript 5 (ES5) est apparu. Il 
 
 ## "use strict"
 
-La directive ressemble à une chaînede caractères : `"use strict"` ou `'use strict'`. Lorsqu'il se trouve en haut du script, l'ensemble du script fonctionne de manière "moderne".
+La directive ressemble à une chaîne de caractères : `"use strict"` ou `'use strict'`. Lorsqu'il se trouve en haut du script, l'ensemble du script fonctionne de manière "moderne".
 
 Par exemple
 

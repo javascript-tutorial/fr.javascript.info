@@ -2,7 +2,7 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KNs-GfVmt3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Un éditeur de code est l'endroit où les programmeurs passent le plus clair de leur temps.
+Un éditeur de code est l'endroit où les programmeurs passent la plus grande partie de leur temps.
 
 Il existe deux archétypes: IDE et les éditeurs légers. Beaucoup de personnes se sentent à l'aise pour choisir un outil de chaque type.
 
@@ -17,7 +17,7 @@ Si vous n'avez pas encore pensé à sélectionner un IDE, examinez les variantes
 - [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
 - [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, payant).
 
-Pour Windows, il existe également "Visual Studio", à ne pas confondre avec "Visual Studio Code ". "Visual Studio" est un éditeur payant et puissant, uniquement conçu pour Windows, bien adapté à la plate-forme .NET. C’est aussi bon en JavaScript. Il y a aussi une version gratuite [Visual Studio Community](https://www.visualstudio.com/vs/community/).
+Pour Windows, il existe également "Visual Studio", à ne pas confondre avec "Visual Studio Code ". "Visual Studio" est un IDE payant et puissant, disponible sur Windows et Mac, bien adapté à la plate-forme .NET. C’est aussi bon en JavaScript. Il y a aussi une version gratuite [Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
 La plupart des IDE sont payants, mais ont une période d'essai. Leur coût est généralement négligeable par rapport au salaire d’un développeur qualifié, alors choisissez le meilleur pour vous.
 
@@ -29,7 +29,7 @@ Ils sont principalement utilisés pour ouvrir et éditer instantanément un fich
 
 La principale différence entre un "éditeur léger" et un "IDE" réside dans le fait qu’un environnement de développement intégré fonctionne au niveau du projet. Il charge donc beaucoup plus de données au démarrage, analyse la structure du projet si nécessaire, etc. Un éditeur léger est beaucoup plus rapide si nous avons besoin d'un seul fichier.
 
-En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris des analyseurs de syntaxe au niveau des répertoires et des autocompléteurs. Il n’ya donc pas de frontière stricte entre un éditeur léger et un IDE.
+En pratique, les éditeurs légers peuvent avoir beaucoup de plug-ins, y compris des analyseurs de syntaxe au niveau des répertoires et des autocompléteurs. Il n’y a donc pas de frontière stricte entre un éditeur léger et un IDE.
 
 Il existe de nombreuses options, par exemple :
 

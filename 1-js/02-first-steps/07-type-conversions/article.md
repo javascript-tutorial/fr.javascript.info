@@ -97,7 +97,7 @@ Cela se produit dans les opérations logiques (plus tard, nous nous intéressero
 
 La règle de conversion :
 
-- Les valeurs qui sont intuitivement "vides", comme `0`, une chaîne de caractères, `null`, `undefined` `NaN` deviennent `false`.
+- Les valeurs qui sont intuitivement "vides", comme `0`, une chaîne de caractères vide, `null`, `undefined` `NaN` deviennent `false`.
 - Les autres valeurs deviennent `true`.
 
 Par exemple :

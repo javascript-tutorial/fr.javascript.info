@@ -2,33 +2,32 @@
 
 Une fenêtre pop-up est l'une des plus anciennes méthodes pour montrer un document supplémentaire à l'utilisateur.
 
-Le code suivant:
+Le code suivant :
+
 ```js
 window.open('https://javascript.info/')
 ```
 
 ... Et cela Ouvrira simplement une nouvelle fenêtre avec l'url renseignée. La plupart des navigateurs modernes sont configurés pour ouvrir un nouvel onglet plutôt qu'une nouvelle feneêtre.
 
-Les pop-up existent depuis longtemps. L'idée initiale était de montrer du contenu supplémentaire sans fermer la fenêtre principale. Désormais, il y a d'autres manières de faire ça : on peut charger du contenu dynamiquement avec [fetch](info:fetch) et l'afficher dans une `<div>` générée dynamiquement. Les pop-up ne sont donc plus des choses utilisées de nos jours. 
+Les pop-up existent depuis longtemps. L'idée initiale était de montrer du contenu supplémentaire sans fermer la fenêtre principale. Désormais, il y a d'autres manières de faire ça : on peut charger du contenu dynamiquement avec [fetch](info:fetch) et l'afficher dans une `<div>` générée dynamiquement. Les pop-up ne sont donc plus des choses utilisées de nos jours.
 
 Les pop-up sont également délicate sur les appareils mobiles puis que ces derniers ne peuvent pas afficher plusieurs fenêtres simultanément.
 
-
 Pourtant, il y a quelques tâches où les pop-up sont toujours utilisées, par exemple pour les authentifications OAuth (se connecter avec Google/Facebook..) pour les raisons suivantes :
 
-1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé. 
+1. Une pop-up est une fenêtre séparée avec son environnement JavaScript indépendant. Donc ouvrir une pop-up d'une tierce partie venant d'un site peu fiable est sécurisé.
 2. Il est très facile d'ouvrir une pop-up.
 3. Une pop-up peut naviguer, changer d'url et envoyer des messages à la fenêtre qui l'a ouverte.
 
-
 ## Bloquage de pop-up
-
 
 Dans le passé, des sites malveillant usaient des pop-up à outrance. Une mauvaise page pouvait ouvrir beaucoup de fenêtre pop-up avec des pubs. Désormais, la plupart des navigateurs essaient de bloquer les pop-up et de protéger les utilisateurs.
 
 **Beaucoup de navigateurs bloquent les pop-up si elles sont appelés à l'extérieur de gestionnaire d'évènements déclenchés par l'utilisateurs comme `onclick`.**
 
-Par exemple:
+Par exemple :
+
 ```js
 // popup bloquée
 window.open('https://javascript.info');
@@ -78,12 +77,11 @@ params
 
 : La chaîne de caractères de la configuration pour la nouvelle fenêtre. Elle peut contenir des paramètres séparés par une virgule. Il ne peut pas y avoir d'espace dans les paramètres, par exemple : `width:200,height=100`.
 
+Paramètres de `params` :
 
-Paramètres de `params`:
-
-- Position:
+- Position :
   - `left/top` (numeric) -- paramètre la distance de la bordure gauche/supérieure par rapport à la zone de travail. Il y a une limitation : une nouvelle fenêtre ne peux pas dépasser de l'écran ou être positionnée à l'extérieur de celui ci.
-  - `width/height` (numeric) -- paramètre la largeur et la hauteur de la nouvelle fenêtre. La valeur minimale requise est de 100, il est donc impossible de créer une fenêtre invisible. 
+  - `width/height` (numeric) -- paramètre la largeur et la hauteur de la nouvelle fenêtre. La valeur minimale requise est de 100, il est donc impossible de créer une fenêtre invisible.
 - Caractéristiques de la fenêtre:
   - `menubar` (yes/no) -- affiche ou cache la barre de menu du navigateur de la nouvelle fenêtre.
   - `toolbar` (yes/no) -- affiche ou cache la barre de navigation (bouton précédente, suivante, actualiser etc) de la nouvelle fenêtre.
@@ -92,12 +90,11 @@ Paramètres de `params`:
   - `resizable` (yes/no) -- autorise ou désactive le redimensionnement de la nouvelle fenêtre. Non recommandé.
   - `scrollbars` (yes/no) -- autorise ou désactive la barre de défilement de la nouvelle fenêtre. Non recommandé.
 
-
 Il existe également certains paramètres spécifiques aux navigateurs qui sont moins bien supportés et généralement pas utilisés. Consultez <a href="https://developer.mozilla.org/fr/docs/Web/API/Window/open"> window.open sur MDN</a> pour plus d'exemples.
 
-## Exemple: une fenêtre minimaliste  
+## Exemple: une fenêtre minimaliste
 
-Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver : 
+Ouvrons une fenêtre avec le minimum de paramètres fonctionnels juste pour voir quels navigateurs nous autorise à les désactiver :
 
 ```js run
 let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -130,7 +127,7 @@ Règles des paramètres omis:
 
 La fonction `open` retourne une référence à la nouvelle fenêtre. Celle ci peut être utilisée pour manipuler ses propriétés, changer sa localisation et bien plus.
 
-Dans cet exemple, nous générons du contenu en pop-up avec Javascript: 
+Dans cet exemple, nous générons du contenu en pop-up avec JavaScript :
 
 ```js
 let newWin = window.open("about:blank", "hello", "width=200,height=200");
@@ -155,7 +152,6 @@ newWindow.onload = function() {
 ```
 
 Il faut prendre en compte qu'immédiatement après avoir appelé `window.open`, la nouvelle fenêtre ne s'est pas encore chargée. On peut le constater avec `alert` à la ligne `(*)`. Nous devons donc attendre la fonction `onload` pour modifier cette fenêtre. Nous pourrions également utiliser l'évènement `DOMContentLoaded` pour `newWin.document`.
-
 
 ```warn header="Same origin policy"
 Les fenêtres peuvent avoir accès au contenu de chacunes d'entres elles si elles ont la même origine (le même protocol://domain:port).
@@ -199,7 +195,6 @@ newWindow.onload = function() {
   alert(newWindow.closed); // true
 };
 ```
-
 
 ## Se déplacer et redimensionner
 
@@ -247,18 +242,15 @@ Il existe un évènement `window.onscroll`.
 
 ## Mettre ou enlever le focus sur une fenêtre
 
-
 Théoriquement, il existe des méthodes `window.focus()` et `window.blur()` pour faire/défaire le focus sur une fenêtre.  Il existe également des événements `focus/blur` qui permettent de saisir le moment où le visiteur focus une fenêtre et passe ailleurs.
 
 Bien que, dans la pratique, ils soient sévèrement limités, car dans le passé, des pages malveillantes en abusaient.
 
 Par exemple, regardez ce code :
 
-
 ```js run
 window.onblur = () => window.focus();
 ```
-
 
 Lorsqu'un utilisateur tente de sortir de la fenêtre (`window.onblur`), le focus va revenir dessus. L'intention est de "verrouiller" l'utilisateur dans la `window`.
 
@@ -268,12 +260,12 @@ Par exemple, un navigateur mobile ignore généralement complètement `window.fo
 
 Pourtant, il existe des cas d'utilisation où de tels appels fonctionnent et peuvent être utiles.
 
-Par exemple:
+Par exemple :
 
 - Lorsque nous ouvrons une pop-up, l peut être judicieux d'y lancer un `newWindow.focus()`. Juste au cas où, pour certaines combinaisons de systèmes d'exploitation/navigateurs, cela garantit que l'utilisateur se trouve maintenant dans la nouvelle fenêtre.
 - Si nous voulons savoir quand un visiteur utilise réellement notre application Web, nous pouvons suivre `window.onfocus/onblur`. Cela nous permet de suspendre/reprendre les activités sur la page, les animations, etc. Mais veuillez noter que l'événement `blur` signifie que le visiteur est sorti de la fenêtre, mais qu'il peut toujours l'observer. La fenêtre est en arrière-plan, mais peut toujours être visible.
 
-## Résumé  
+## Résumé
 
 Les fenêtres pop-up sont rarement utilisées, car il existe des alternatives : chargement et affichage des informations dans la page, ou dans l'iframe.
 

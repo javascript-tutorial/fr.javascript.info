@@ -107,7 +107,8 @@ function readFile(input) {
 ```smart header="`FileReader` pour les objets blob"
 Comme mentionné dans le chapitre <info:blob>, `FileReader` peut lire non seulement les fichiers, mais tous les objets blob.
 
-Nous pouvons l'utiliser pour convertir un blob dans un autre format:
+Nous pouvons l'utiliser pour convertir un blob dans un autre format :
+
 - `readAsArrayBuffer(blob)` -- en `ArrayBuffer`,
 - `readAsText(blob, [encoding])` -- en chaîne de caractères (une alternative à `TextDecoder`),
 - `readAsDataURL(blob)` -- en URL des données encoder en base64.
@@ -128,7 +129,8 @@ Les objets `File` héritent de `Blob`.
 
 En plus des méthodes et propriétés `Blob`, les objets `File` ont également les propriétés `name` et `lastModified`, ainsi que la capacité interne de lire à partir du système de fichiers. Nous obtenons généralement des objets `File` à partir de l'entrée utilisateur, comme un `<input>` ou l'événement Drag'n'Drop (`ondragend`).
 
- les objets `FileReader` peuvent lire à partir d'un fichier ou d'un objet blob, dans l'un des trois formats:
+ les objets `FileReader` peuvent lire à partir d'un fichier ou d'un objet blob, dans l'un des trois formats :
+
 - Chaînes de caractères (`readAsText`).
 - `ArrayBuffer` (`readAsArrayBuffer`).
 - URL des données, encodé en base64 (`readAsDataURL`).

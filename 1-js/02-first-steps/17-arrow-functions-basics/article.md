@@ -8,7 +8,7 @@ Les "fonctions fléchées" sont appelées ainsi pour leur syntaxe :
 let func = (arg1, arg2, ..., argN) => expression;
 ```
 
-Cela va créér une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
+Cela va créer une function `func` qui accepte les arguments `arg1...argN`, puis évalue l'`expression` sur le côté droit et retourne le résultat.
 
 C'est donc la version raccourcie de :
 
@@ -33,7 +33,7 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
-Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments nommés `a` et `b`. Lors de l'éxécution, elle évalue l'expression `a + b` et retourne le résultat.
+Comme vous pouvez le voir `(a, b) => a + b` représente une fonction qui accepte 2 arguments nommés `a` et `b`. Lors de l'exécution, elle évalue l'expression `a + b` et retourne le résultat.
 
 - Pour un argument unique, alors les parenthèses autour du paramètre peuvent être omises, rendant la fonction encore plus courte.
 
@@ -72,13 +72,13 @@ welcome(); // ok now
 
 Les fonctions fléchées peuvent paraître étranges et peu lisibles au début, mais cela change rapidement avec les yeux s'habituant à cette structure.
 
-Elles sont très utile pour des actions sur une ligne et que l'on est juste paresseux d'écrire d'autres mots.
+Elles sont très utiles pour des actions sur une ligne et que l'on est juste paresseux d'écrire d'autres mots.
 
 ## Les fonctions fléchées multiligne
 
 Les fonctions fléchées que nous avons vues jusqu'à présent étaient très simples. Elles ont pris des arguments à gauche de `=>`, les ont évalués et ont renvoyé l'expression de droite avec elles.
 
-Parfois nous avons besoin de plus de compléxité, comme des expressions multiples ou des déclarations. Cela est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
+Parfois nous avons besoin de plus de complexité, comme des expressions multiples ou des déclarations. Cela est possible avec des accolades les délimitant. Il faut ensuite utiliser un `return` à l'intérieur de celles-ci.
 
 Comme cela :
 
@@ -107,5 +107,5 @@ Pour l'instant, nous pouvons les utiliser pour des actions sur une ligne ou des 
 
 Les fonctions fléchées sont pratiques pour des actions simples, en particulier pour les one-liners. Ils se déclinent en deux variantes :
 
-1. Sans accolades : `(...args) => expression` -- le coté droit est une expression : la fonction l'évalue et retourne le résultat. Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex. `n => n*2`.
+1. Sans accolades : `(...args) => expression` -- le côté droit est une expression : la fonction l'évalue et retourne le résultat. Les parenthèses peuvent être omises s'il n'y a qu'un seul argument, par ex. `n => n*2`.
 2. Avec accolades : `(...args) => { body }` -- les accolades nous permet des déclarations multiples au sein de la fonction, mais nous devons ajouter un `return` explicite pour retourner quelque chose.

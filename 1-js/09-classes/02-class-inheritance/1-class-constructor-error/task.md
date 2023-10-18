@@ -4,9 +4,10 @@ importance: 5
 
 # Erreur lors de la création d'une instance
 
-Voici le code avec `Rabbit` étendant` Animal`.
+Voici le code avec `Rabbit` étendant `Animal`.
 
-Malheureusement, des objets `Rabbit` ne peuvent pas être créés. Qu'est-ce qui ne va pas? Répare le.
+Malheureusement, des objets `Rabbit` ne peuvent pas être créés. Qu'est-ce qui ne va pas ? Répare-le.
+
 ```js run
 class Animal {
 
@@ -17,7 +18,7 @@ class Animal {
 }
 
 class Rabbit extends Animal {
-  constructor(name) {  
+  constructor(name) {
     this.name = name;
     this.created = Date.now();
   }

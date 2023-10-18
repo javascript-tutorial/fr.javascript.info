@@ -8,7 +8,7 @@ Par exemple:
 - Un clic sur un bouton d'envoi de formulaire -- initie son envoie vers le serveur.
 - Appuyer sur un bouton de la souris au-dessus d'un texte et la déplacer -- sélectionne le texte.
 
-Si nous gérons un évènement avec Javascript, nous pouvons ne pas avoir envie de déclencher l'action de navigateur associée, et déclencher un autre comportement à la place.
+Si nous gérons un évènement avec JavaScript, nous pouvons ne pas avoir envie de déclencher l'action de navigateur associée, et déclencher un autre comportement à la place.
 
 ## Empêcher les actions du navigateur
 
@@ -25,7 +25,7 @@ ou
 <a href="/" onclick="event.preventDefault()">ici</a>
 ```
 
-Dans le prochain exemple nous allons utiliser cette technique pour créer un menu avec Javascript.
+Dans le prochain exemple nous allons utiliser cette technique pour créer un menu avec JavaScript.
 
 ```warn header="Renvoyer `false` depuis un gestionnaire d'évènement est une exception"
 La valeur renvoyée par un gestionnaire d'évènement est généralement ignorée.
@@ -56,7 +56,7 @@ Les objets du menu sont implémentés comme des liens HTML `<a>`, pas des bouton
 - Beaucoup de gens aiment utiliser "clic droit" -- "ouvrir dans une nouvelle fenêtre". Si nous utilisons `<button>` ou `<span>`, cela ne fonctionne pas.
 - Les moteurs de recherche suivent les liens `<a href="...">` lors de l'indexation.
 
-Donc nous utilisons `<a>`. Mais normalement nous avons l'intention de gérer les clics avec Javascript. Donc nous devrions empêcher les actions par défaut du navigateur.
+Donc nous utilisons `<a>`. Mais normalement nous avons l'intention de gérer les clics avec JavaScript. Donc nous devrions empêcher les actions par défaut du navigateur.
 
 Comme ici:
 
@@ -225,7 +225,7 @@ Il y a plusieurs actions de navigateur par défaut:
 - `contextmenu` -- l'évènement se déclenche lors d'un clic droit, l'action est d'afficher le menu contextuel du navigateur.
 - ...il y en a plus...
 
-Toutes les actions par défaut peuvent être empêchées si nous voulons gérer l'évènement exclusivement avec Javascript.
+Toutes les actions par défaut peuvent être empêchées si nous voulons gérer l'évènement exclusivement avec JavaScript.
 
 Pour empêcher une action par défaut -- utilisez soit `event.preventDefault()`, soit `return false`. La seconde méthode ne fonctionne que pour les gestionnaires assignés avec `on<event>`.
 
@@ -234,11 +234,11 @@ L'option `passive: true` de `addEventListener` dis au navigateur que l'action ne
 Si l'action par défaut a été empêchée, la valeur de `event.defaultPrevented` devient `true`, sinon `false`.
 
 ```warn header="Restez sémantique, n'abusez pas"
-Techniquement, en empêchant les actions par défaut et en ajoutant du Javascript nous pouvons personnaliser le comportement de n'importe quel élément. Par exemple, nous pouvons faire fonctionner un lien `<a>` comme un bouton, et un bouton `<button>` se comporter comme un lien (rediriger vers une autre URL ou autre).
+Techniquement, en empêchant les actions par défaut et en ajoutant du JavaScript nous pouvons personnaliser le comportement de n'importe quel élément. Par exemple, nous pouvons faire fonctionner un lien `<a>` comme un bouton, et un bouton `<button>` se comporter comme un lien (rediriger vers une autre URL ou autre).
 
 Mais nous devrions généralement garder la signification sémantique des éléments HTML. Par exemple `<a>` devrait entrainer une navigation, pas un bouton.
 
 Ce n'est pas "juste une bonne chose", cela rend votre HTML meilleur en terme d'accessibilité.
 
-Aussi, si nous prenons l'exemple avec `<a>`, veuillez noter: un navigateur nous permet d'ouvrir de tels liens dans une nouvelle fenêtre (en faisant un clic droit dessus par exemple). Et les gens aiment ça. Mais si nous faisons un bouton qui se comporte comme un lien en utilisant Javascript et qui ressemble à un lien en utilisant CSS, les fonctionnalités de navigateur spécifiques à `<a>` ne fonctionneront toujours pas.
+Aussi, si nous prenons l'exemple avec `<a>`, veuillez noter: un navigateur nous permet d'ouvrir de tels liens dans une nouvelle fenêtre (en faisant un clic droit dessus par exemple). Et les gens aiment ça. Mais si nous faisons un bouton qui se comporte comme un lien en utilisant JavaScript et qui ressemble à un lien en utilisant CSS, les fonctionnalités de navigateur spécifiques à `<a>` ne fonctionneront toujours pas.
 ```

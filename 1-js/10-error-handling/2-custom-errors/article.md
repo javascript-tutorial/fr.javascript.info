@@ -1,8 +1,8 @@
-# Les erreurs personnalisées, Étendre Error
+# Les erreurs personnalisées, extension de Error
 
 Lorsque nous développons quelque chose, nous avons souvent besoin de nos propres classes d'erreur pour refléter des problèmes spécifiques qui peuvent mal tourner dans nos tâches. Pour les erreurs dans les opérations réseau, nous aurons peut-être besoin de `HttpError`, pour les opérations de base de données `DbError`, pour les opérations de recherche `NotFoundError`, etc.
 
-Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais elles peuvent aussi avoir d’autres propriétés propres, par exemple Les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.
+Nos erreurs devraient prendre en charge des propriétés d'erreur de base telles que `message`, `name` et, de préférence, `stack`. Mais elles peuvent aussi avoir d’autres propriétés propres, par exemple les objets `HttpError` peuvent avoir une propriété `statusCode` avec une valeur telle que `404` ou `403` ou `500`.
 
 JavaScript permet d'utiliser `throw` avec n'importe quel argument. Par conséquent, techniquement, nos classes d'erreur personnalisées n'ont pas besoin d'hériter de `Error`. Mais si nous héritons, il devient alors possible d'utiliser `obj instanceof Error` pour identifier les objets d'erreur. Il vaut donc mieux en hériter.
 
@@ -12,12 +12,13 @@ Au fur et à mesure que l'application grandit, nos propres erreurs forment natur
 
 A titre d'exemple, considérons une fonction `readUser(json)` qui devrait lire JSON avec des données utilisateur.
 
-Voici un exemple de l'apparence d'un `json` valide:
+Voici un exemple de l'apparence d'un `json` valide :
+
 ```js
 let json = `{ "name": "John", "age": 30 }`;
 ```
 
-En interne, nous utiliserons `JSON.parse`. S'il reçoit un `json` malformé, il renvoie` SyntaxError`. Mais même si `json` est syntaxiquement correct, cela ne signifie pas que c'est un utilisateur valide, non? Il peut manquer les données nécessaires. Par exemple, il peut ne pas avoir les propriétés `name` et `age` qui sont essentielles pour nos utilisateurs.
+En interne, nous utiliserons `JSON.parse`. S'il reçoit un `json` malformé, il renvoie `SyntaxError`. Mais même si `json` est syntaxiquement correct, cela ne signifie pas que c'est un utilisateur valide, non ? Il peut manquer les données nécessaires. Par exemple, il peut ne pas avoir les propriétés `name` et `age` qui sont essentielles pour nos utilisateurs.
 
 Notre fonction `readUser(json)` va non seulement lire JSON, mais aussi vérifier ("valider") les données. S'il n'y a pas de champs obligatoires ou si le format est incorrect, c'est une erreur. Et ce n’est pas une `SyntaxError`, car les données sont syntaxiquement correctes, mais un autre type d’erreur. Nous l'appellerons `ValidationError` et créerons une classe pour cela. Une erreur de ce type devrait également comporter des informations sur le champ fautif.
 
@@ -36,7 +37,7 @@ class Error {
 }
 ```
 
-Maintenant, héritons de `ValidationError` et mettons-le en action:
+Maintenant, héritons de `ValidationError` et mettons-le en action :
 
 ```js run
 *!*
@@ -57,15 +58,15 @@ try {
 } catch(err) {
   alert(err.message); // Whoops!
   alert(err.name); // ValidationError
-  alert(err.stack); // une liste des appels imbriqués avec des numéros de ligne pour chaque
+  alert(err.stack); // une liste des appels imbriqués avec le numéro de ligne pour chacun d'entre eux
 }
 ```
 
-Remarque: à la ligne `(1)`, nous appelons le constructeur parent. JavaScript exige que nous appelions `super` dans le constructeur de l'enfant, donc c'est obligatoire. Le constructeur parent définit la propriété `message`.
+Remarque : à la ligne `(1)`, nous appelons le constructeur parent. JavaScript exige que nous appelions `super` dans le constructeur de l'enfant, donc c'est obligatoire. Le constructeur parent définit la propriété `message`.
 
 Le constructeur parent définit également la propriété `name` sur `"Error"`, donc à la ligne `(2)` nous la réinitialisons à la valeur correcte.
 
-Essayons de l'utiliser dans `readUser(json)`:
+Essayons de l'utiliser dans `readUser(json)` :
 
 ```js run
 class ValidationError extends Error {
@@ -101,7 +102,7 @@ try {
   } else if (err instanceof SyntaxError) { // (*)
     alert("JSON Syntax Error: " + err.message);
   } else {
-    throw err; // erreur inconnue, propager le (**)
+    throw err; // erreur inconnue, on la propage (**)
   }
 }
 ```
@@ -110,7 +111,7 @@ Le bloc `try..catch` dans le code ci-dessus gère à la fois notre `ValidationEr
 
 Veuillez regarder comment nous utilisons `instanceof` pour vérifier le type d'erreur spécifique à la ligne `(*)`.
 
-Nous pourrions aussi regarder `err.name`, comme ceci:
+Nous pourrions aussi regarder `err.name`, comme ceci :
 
 ```js
 // ...
@@ -119,9 +120,9 @@ Nous pourrions aussi regarder `err.name`, comme ceci:
 // ...
 ```
 
-La version `instanceof` est bien meilleure, car dans le futur nous allons étendre `ValidationError`, en créer des sous-types, comme `PropertyRequiredError`. Et `instanceof` check continuera à fonctionner pour les nouvelles classes héritées. Donc, c'est à l'épreuve du futur.
+La version `instanceof` est bien meilleure, car dans le futur nous allons étendre `ValidationError`, en créer des sous-types, comme `PropertyRequiredError`. Et `instanceof` continuera à fonctionner pour les nouvelles classes héritées. Donc, c'est à l'épreuve du futur.
 
-Il est également important que si `catch` rencontre une erreur inconnue, il la renvoie dans la ligne `(**)`. Le bloc `catch` ne sait que gérer les erreurs de validation et de syntaxe, d'autres types (causés par une faute de frappe dans le code ou d'autres raisons inconnues) devraient tomber.
+Il est également important que si `catch` rencontre une erreur inconnue, il la renvoie à la ligne `(**)`. Le bloc `catch` ne sait gérer que les erreurs de validation et de syntaxe, les autres types (causés par une faute de frappe dans le code ou d'autres raisons inconnues) devraient êtres propagés.
 
 ## Héritage complémentaire
 
@@ -173,18 +174,18 @@ try {
   } else if (err instanceof SyntaxError) {
     alert("JSON Syntax Error: " + err.message);
   } else {
-    throw err; // erreur inconnue, propager le
+    throw err; // erreur inconnue, on la propage
   }
 }
 ```
 
-La nouvelle classe `PropertyRequiredError` est facile à utiliser: il suffit de passer le nom de la propriété: `new PropertyRequiredError(property)`. Le `message` est généré par le constructeur.
+La nouvelle classe `PropertyRequiredError` est facile à utiliser : il suffit de passer le nom de la propriété : `new PropertyRequiredError(property)`. Le `message` est généré par le constructeur.
 
-Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux -- d'assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Et puis hériter de toutes nos erreurs personnalisées.
+Veuillez noter que `this.name` dans le constructeur `PropertyRequiredError` est à nouveau attribué manuellement. Cela peut devenir un peu fastidieux -- d'assigner `this.name = <class name>` dans chaque classe d'erreur personnalisée. Nous pouvons l'éviter en créant notre propre classe "d'erreur de base" qui assigne `this.name = this.constructor.name`. Puis nous en ferons hériter toutes nos classes d'erreur personnalisées.
 
 Appelons cela `MyError`.
 
-Voici le code avec `MyError` et d'autres classes d'erreur personnalisées, simplifié:
+Voici le code avec `MyError` et d'autres classes d'erreur personnalisées, simplifié :
 
 ```js run
 class MyError extends Error {
@@ -205,7 +206,7 @@ class PropertyRequiredError extends ValidationError {
   }
 }
 
-// name is correct
+// le nom est correcte
 alert( new PropertyRequiredError("field").name ); // PropertyRequiredError
 ```
 
@@ -247,9 +248,9 @@ La technique que nous décrivons ici est appelée "encapsulation d'exceptions".
 2. La fonction `readUser` interceptera les erreurs de lecture de données qui se produisent à l'intérieur, telles que `ValidationError` et `SyntaxError`, et générera à la place une `ReadError`.
 3. L'objet `ReadError` conservera la référence à l'erreur d'origine dans sa propriété `cause`.
 
-Ensuite, le code qui appelle `readUser` n'aura qu'à vérifier` ReadError`, pas pour tous les types d'erreurs de lecture de données. Et s'il a besoin de plus de détails sur une erreur, il peut vérifier sa propriété `cause`.
+Ensuite, le code qui appelle `readUser` n'aura qu'à vérifier `ReadError`, pas pour tous les types d'erreurs de lecture de données. Et s'il a besoin de plus de détails sur une erreur, il peut vérifier sa propriété `cause`.
 
-Voici le code qui définit `ReadError` et illustre son utilisation dans `readUser` et `try..catch`:
+Voici le code qui définit `ReadError` et illustre son utilisation dans `readUser` et `try..catch` :
 
 ```js run
 class ReadError extends Error {
@@ -317,7 +318,7 @@ try {
 }
 ```
 
-Dans le code ci-dessus, `readUser` fonctionne exactement comme décrit ci-dessus - corrige les erreurs de syntaxe et de validation et "throw" les erreurs `ReadError` (les erreurs inconnues sont propagées comme d'habitude).
+Dans le code ci-dessus, `readUser` fonctionne exactement comme décrit - il intercepte les erreurs de syntaxe et de validation et propage des erreurs `ReadError` (les erreurs inconnues sont propagées comme d'habitude).
 
 Donc, le code externe vérifie `instanceof ReadError` et c'est tout. Pas besoin de lister tous les types d'erreur possibles.
 

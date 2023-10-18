@@ -37,7 +37,7 @@ Dans de nombreux cas pratiques, nous préférerions obtenir `undefined` au lieu 
 let html = document.querySelector('.elem').innerHTML; // error if it's null
 ```
 
-Encore une fois, si l'élément n'existe pas, nous obtiendrons une erreur lors de l'accès à `.innerHTML` de` null`. Et dans certains cas, lorsque l'absence de l'élément est normale, nous aimerions éviter l'erreur et accepter simplement `html = null` comme résultat.
+Encore une fois, si l'élément n'existe pas, nous obtiendrons une erreur lors de l'accès à `.innerHTML` de `null`. Et dans certains cas, lorsque l'absence de l'élément est normale, nous aimerions éviter l'erreur et accepter simplement `html = null` comme résultat.
 
 Comment peut-on le faire ?
 
@@ -235,4 +235,3 @@ Une chaîne de `?.` permet d'accéder en toute sécurité aux propriétés imbri
 
 
 Néanmoins, nous devons appliquer «?.» Avec soin, uniquement s'il est acceptable que la partie gauche n'existe pas. Pour ne pas nous cacher les erreurs de programmation, si elles se produisent.
-

@@ -28,7 +28,7 @@ Il existe de nombreuses opérations pour les nombres, par ex. multiplication `*`
 
 Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui appartiennent également à ce type: `Infinity`, `-Infinity` et `NaN`.
 
-- `Infinity` répresente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
+- `Infinity` représente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
 
     Nous pouvons l'obtenir à la suite d'une division par zéro :
 
@@ -41,6 +41,7 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
     ```js run
     alert( Infinity ); // Infinity
     ```
+
 - `NaN` représente une erreur de calcul. C'est le résultat d'une opération mathématique incorrecte ou non définie, par exemple :
 
     ```js run
@@ -56,7 +57,6 @@ Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui
     ```
 
     Donc, s'il y a `NaN` quelque part dans une expression mathématique, il se propage à l'ensemble du résultat (il n'y a qu'une seule exception : `NaN ** 0` vaut `1`).
-
 
 ```smart header="Les opérations mathématiques sont sûres"
 Faire des maths est sans danger en JavaScript. Nous pouvons faire n'importe quoi : diviser par zéro, traiter les chaînes non numériques comme des nombres, etc.
@@ -128,13 +128,14 @@ let name = "John";
 // une variable encapsulée
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
-// une expression encapulée
+// une expression encapsulée
 alert( `the result is *!*${1 + 2}*/!*` ); // le résultat est 3
 ```
 
 L'expression à l'intérieur de `${…}` est évaluée et le résultat devient une partie de la chaîne. On peut y mettre n'importe quoi : une variable comme `name` ou une expression arithmétique comme `1 + 2` ou quelque chose de plus complexe.
 
 Veuillez noter que cela ne peut être fait que dans les backticks. Les autres guillemets ne permettent pas une telle intégration !
+
 ```js run
 alert( "the result is ${1 + 2}" ); // le résultat est ${1 + 2} (les doubles quotes ne font rien)
 ```
@@ -142,7 +143,7 @@ alert( "the result is ${1 + 2}" ); // le résultat est ${1 + 2} (les doubles quo
 Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <info:string>.
 
 ```smart header="Il n'y a pas de type *character*."
-Dans certaines langues, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
+Dans certains langages, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
 En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type: `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs d'entre eux.
 ```
@@ -170,7 +171,7 @@ alert( isGreater ); // true (le résultat de la comparaison est "oui")
 
 Nous couvrirons plus profondément les booléens plus tard dans le chapitre <info:logical-operators>.
 
-## La valeur "null" 
+## La valeur "null"
 
 La valeur spéciale `null` n'appartient à aucun type de ceux décrits ci-dessus.
 
@@ -186,7 +187,7 @@ C’est juste une valeur spéciale qui a le sens de "rien", "vide" ou "valeur in
 
 Le code ci-dessus indique que l'`age` est inconnu.
 
-## La valeur "undefined" 
+## La valeur "undefined"
 
 La valeur spéciale `undefined` se distingue des autres. C'est un type à part entière, comme `null`.
 
@@ -217,7 +218,7 @@ alert(age); // "undefined"
 
 Le type `object` est spécial.
 
-Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des collections de données et des entités plus complexes. 
+Tous les autres types sont appelés "primitifs", car leurs valeurs ne peuvent contenir qu’une seule chose (que ce soit une chaîne de caractères, un nombre ou autre). À contrario, les objets servent à stocker des collections de données et des entités plus complexes.
 
 Étant aussi important, les objets méritent un traitement spécial. Nous les traiterons plus tard dans le chapitre <info:object>, après en savoir plus sur les primitifs.
 
@@ -230,7 +231,6 @@ L'opérateur `typeof` renvoie le type de l'argument. Il est utile lorsqu'on souh
 =======
 The `typeof` operator returns the type of the operand. It's useful when we want to process values of different types differently or just want to do a quick check.
 >>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
-
 
 L'appel `typeof x` renvoie une chaîne de caractères avec le nom du type :
 
@@ -264,16 +264,14 @@ Les trois dernières lignes peuvent nécessiter des explications supplémentaire
 
 1. `Math` est un objet interne au langage qui fournit des opérations mathématiques. Nous allons l'apprendre dans le chapitre <info:number>. Ici, il sert uniquement comme exemple d'un objet.
 2. Le résultat de `typeof null` est `"object"`. C'est une erreur officiellement reconnue dans `typeof`, datant des premiers jours de JavaScript et conservée pour compatibilité. Bien sûr, `null` n'est pas un objet. C'est une valeur spéciale avec un type distinct qui lui est propre. Le comportement de `typeof` est incorrect ici.
-3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object`. Mais `typeof` les traite différemment, en retournant `"fonction"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
-
-
+3. Le résultat de `typeof alert` est `"function"`, car `alert` est une fonction. Nous étudierons les fonctions dans les chapitres suivants, et nous verrons qu’il n’y a pas de type "fonction" en JavaScript. Les fonctions appartiennent au type `object` mais `typeof` les traite différemment en retournant `"function"`. Cela vient également des débuts de JavaScript. Techniquement ce n’est pas tout à fait correct, mais très pratique à l'usage.
 
 ```smart header="La syntaxe `typeof(x)`"
 Vous pouvez également rencontrer une autre syntaxe : `typeof(x)`. C'est la même chose que `typeof x`.
 
 Pour être clair : `typeof` est un opérateur, pas une fonction. Les parenthèses ici ne font pas partie de `typeof`. C'est le genre de parenthèses utilisées pour le regroupement mathématique.
 
-Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiqement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
+Habituellement, ces parenthèses contiennent une expression mathématique, telle que `(2 + 2)`, mais ici elles ne contiennent qu'un seul argument `(x)`. Syntaxiquement, ils permettent d'éviter un espace entre l'opérateur `typeof` et son argument, et certains aiment ça.
 
 Certaines personnes préfèrent `typeof(x)`, bien que la syntaxe `typeof x` soit beaucoup plus courante.
 ```
@@ -297,6 +295,6 @@ L'opérateur `typeof` nous permet de voir quel type est stocké dans la variable
 
 - Généralement utilisé sous cette forme `typeof x`, mais `typeof(x)` est également possible.
 - Renvoie une chaîne de caractères avec le nom du type, comme `"string"`.
-- Pour `null` il renvoit `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
+- Pour `null` il renvoie `"object"` -- C’est une erreur dans le langage, ce n’est pas un objet en fait.
 
 Dans les chapitres suivants, nous nous concentrerons sur les valeurs primitives et une fois que nous les connaîtrons, nous passerons aux objets.

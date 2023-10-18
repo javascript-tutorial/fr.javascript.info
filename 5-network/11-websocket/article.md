@@ -46,7 +46,7 @@ socket.onmessage = function(event) {
 };
 
 socket.onclose = function(event) {
-  if (event.wasClean) {  
+  if (event.wasClean) {
     alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
   } else {
     // par exemple : processus serveur arrêté ou réseau en panne
@@ -95,7 +95,7 @@ Sec-WebSocket-Version: 13
 - `Sec-WebSocket-Version` -- Version du protocole WebSocket, 13 est la version actuelle.
 
 ```smart header="Le handshake WebSocket ne peut pas être émulé"
-Nous ne pouvons pas utiliser `XMLHttpRequest` ou` fetch` pour effectuer ce type de requête HTTP, car JavaScript n'est pas autorisé à définir ces en-têtes.
+Nous ne pouvons pas utiliser `XMLHttpRequest` ou `fetch` pour effectuer ce type de requête HTTP, car JavaScript n'est pas autorisé à définir ces en-têtes.
 ```
 
 Si le serveur accepte de passer à WebSocket, il doit envoyer le code de réponse 101 :
@@ -208,12 +208,12 @@ setInterval(() => {
 }, 100);
 ```
 
-
 ## Connexion fermée
 
 Normalement, lorsqu'une partie souhaite fermer la connexion (le navigateur et le serveur ont les mêmes droits), ils envoient un "connection close frame" avec un code numérique et une raison textuelle.
 
 La méthode pour cela est :
+
 ```js
 socket.close([code], [reason]);
 ```
@@ -260,7 +260,6 @@ socket.onclose = event => {
 };
 ```
 
-
 ## État de connexion
 
 Pour obtenir l'état de la connexion, il existe en outre la propriété `socket.readyState` avec des valeurs :
@@ -269,7 +268,6 @@ Pour obtenir l'état de la connexion, il existe en outre la propriété `socket.
 - **`1`** -- "OPEN": communicante,
 - **`2`** -- "CLOSING": la connexion se ferme,
 - **`3`** -- "CLOSED": la connexion est fermée.
-
 
 ## Exemple de tchat
 
@@ -289,6 +287,7 @@ HTML: nous avons besoin d'un `<form>` pour envoyer des messages et d'un `<div>` 
 ```
 
 De JavaScript, nous voulons trois choses :
+
 1. Ouvrir la connexion.
 2. Lors de la soumission du formulaire - `socket.send(message)` pour le message.
 3. Sur le message entrant - l'ajouter à `div#messages`.
@@ -354,7 +353,6 @@ function onSocketConnect(ws) {
 }
 ```
 
-
 Voici l'exemple fonctionnel :
 
 [iframe src="chat" height="100" zip]
@@ -372,10 +370,12 @@ WebSocket est un moyen moderne d'avoir des connexions navigateur-serveur persist
 L'API est simple.
 
 Les méthodes :
+
 - `socket.send(data)`,
 - `socket.close([code], [reason])`.
 
 Les événements :
+
 - `open`,
 - `message`,
 - `error`,
@@ -383,6 +383,6 @@ Les événements :
 
 WebSocket ne comprend pas à lui seul la reconnexion, l'authentification et de nombreux autres mécanismes de haut niveau. Il existe donc des bibliothèques client / serveur pour cela, et il est également possible d'implémenter ces capacités manuellement.
 
-Parfois, pour intégrer WebSocket dans un projet existant, les gens exécutent le serveur WebSocket en parallèle avec le serveur HTTP principal et partagent une seule base de données. Les requêtes à WebSocket utilisent `wss://ws.site.com`, un sous-domaine qui mène au serveur WebSocket, tandis que` https://site.com` va au serveur HTTP principal.
+Parfois, pour intégrer WebSocket dans un projet existant, les gens exécutent le serveur WebSocket en parallèle avec le serveur HTTP principal et partagent une seule base de données. Les requêtes à WebSocket utilisent `wss://ws.site.com`, un sous-domaine qui mène au serveur WebSocket, tandis que `https://site.com` va au serveur HTTP principal.
 
 Certes, d'autres modes d'intégration sont également possibles.

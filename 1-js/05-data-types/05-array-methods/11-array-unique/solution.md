@@ -26,11 +26,11 @@ Le code fonctionne, mais il comporte un problème de performances potentiel.
 
 La méthode `result.includes(str)` parcourt en interne le tableau `result` et compare chaque élément à `str` pour trouver la correspondance.
 
-Donc, s'il y a `100` éléments dans` result` et que personne ne correspond à `str`, alors il parcourra tout le `result` et fera exactement les `100` comparaisons. Et si `result` est grand, exemple `10000`, alors il y aura des `10000` comparaisons .
+Donc, s'il y a `100` éléments dans `result` et que personne ne correspond à `str`, alors il parcourra tout le `result` et fera exactement les `100` comparaisons. Et si `result` est grand, exemple `10000`, alors il y aura des `10000` comparaisons .
 
 Ce n'est pas un problème en soi, parce que les moteurs JavaScript sont très rapides, alors parcourir un tableau de `10000` éléments  est une question de microsecondes.
 
-Mais nous faisons ce test pour chaque élément de `arr`, dans la boucle` for`.
+Mais nous faisons ce test pour chaque élément de `arr`, dans la boucle `for`.
 
 Donc, si `arr.length` vaut `10000`, nous aurons quelque chose comme `10000*10000` = 100 millions de comparaisons. C'est beaucoup.
 

@@ -302,4 +302,4 @@ Les nombres entre crochets indiquent l'heure approximative à laquelle cela se p
 - `document.readyState` est l'état actuel du document, les modifications peuvent être suivies dans l'événement `readystatechange`:
   - `loading` -- le document est en cours de chargement.
   - `interactive` -- le document est analysé, se produit à peu près au même moment que `DOMContentLoaded`, mais avant lui.
-  - `complete` -- le document et les ressources sont chargés, se produit à peu près en même temps que` window.onload`, mais avant lui.
+  - `complete` -- le document et les ressources sont chargés, se produit à peu près en même temps que `window.onload`, mais avant lui.

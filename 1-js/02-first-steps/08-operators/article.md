@@ -39,7 +39,7 @@ Les opérations mathématiques suivantes sont supportées :
 - Reste `%`,
 - Exponentiation `**`.
 
-Les quatre premières sont assez simples, tandis que `%` et `**` nécéssitent quelques explications.
+Les quatre premières sont assez simples, tandis que `%` et `**` nécessitent quelques explications.
 
 ### Reste % (Modulo)
 
@@ -50,15 +50,11 @@ Le résultat de `a % b` est le [reste](https://fr.wikipedia.org/wiki/Reste) de l
 Par exemple :
 
 ```js run
-<<<<<<< HEAD
+
 alert( 5 % 2 ); // 1, le reste de 5 divisé par 2
 alert( 8 % 3 ); // 2, le reste de 8 divisé par 3
-alert( 8 % 2 ); // 0, le reste de 8 divisé par 2
-=======
-alert( 5 % 2 ); // 1, the remainder of 5 divided by 2
-alert( 8 % 3 ); // 2, the remainder of 8 divided by 3
-alert( 8 % 4 ); // 0, the remainder of 8 divided by 4
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
+alert( 8 % 4 ); // 0, le reste de 8 divisé par 4
+
 ```
 
 ### Exponentiation **
@@ -74,11 +70,7 @@ alert( 2 ** 3 ); // 2³ = 8
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 
-<<<<<<< HEAD
-Mathématiquement, l'exponentiation est également définie pour les nombres non entiers. 
-=======
-Just like in maths, the exponentiation operator is defined for non-integer numbers as well.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
+Tout comme en mathématiques, l'opérateur d'exponentiation est également défini pour les nombres non entiers.
 
 Par exemple, une racine carrée est une exponentiation de `½` :
 
@@ -139,7 +131,7 @@ alert( '6' / '2' ); // 3, convertit les deux opérandes en nombres
 
 Le plus `+` existe sous deux formes. La forme binaire que nous avons utilisée ci-dessus et la forme unaire.
 
-L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est convertit en nombre.
+L’unaire plus ou, en d’autres termes, l’opérateur plus `+` appliqué à une seule valeur, ne fait rien avec les nombres, mais si l’opérande n’est pas un nombre, alors il est converti en nombre.
 
 Par exemple :
 
@@ -192,7 +184,7 @@ Pourquoi les plus unaires sont-ils appliqués aux valeurs avant les binaires ? C
 
 ## Précédence des opérateurs
 
-Si une expression a plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
+Si une expression à plusieurs opérateurs, l’ordre d’exécution est défini par leur *priorité* ou, en d’autres termes, il existe un ordre de priorité implicite entre les opérateurs.
 
 De l'école, nous savons tous que la multiplication dans l'expression `1 + 2 * 2` devrait être calculée avant l'addition. C’est exactement cela la précédence. La multiplication est dite avoir une *précédence supérieure* à l'addition.
 
@@ -200,7 +192,7 @@ Les parenthèses outrepassent toute priorité, donc si nous ne sommes pas satisf
 
 Il y a beaucoup d'opérateurs en JavaScript. Chaque opérateur a un numéro correspondant à sa priorité de précédence. Celui qui est plus haut sur le tableau s'exécute en premier. Si la priorité est la même, l'ordre d'exécution est de gauche à droite.
 
-Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une prioritée plus élevée que les binaires correspondants) :
+Un extrait du [tableau de précédence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) (vous n'avez pas besoin de vous en souvenir, mais notez que les opérateurs unaires ont une priorité plus élevée que les binaires correspondants) :
 
 | Précédence | Nom             | Symbole |
 |------------|-----------------|---------|
@@ -236,7 +228,7 @@ Le fait que `=` soit un opérateur, pas une construction de langage "magique" a 
 
 Tous les opérateurs en JavaScript renvoient une valeur. C'est évident pour `+` et `-`, mais aussi vrai pour `=`.
 
-L'appel `x = valeur` écrit la` valeur` dans `x` *puis la renvoie*.
+L'appel `x = valeur` écrit la `valeur` dans `x` *puis la renvoie*.
 
 Voici un exemple qui utilise une affectation dans le cadre d'une expression plus complexe :
 
@@ -351,7 +343,7 @@ Les opérateurs `++` et `--` peuvent être placés à la fois après et avant la
 - Lorsque l'opérateur va après la variable, cela s'appelle une "forme postfixe" : `counter++`.
 - La "forme préfixe" est celle où l'opérateur se place devant la variable : `++counter`.
 
-Ces deux operateurs font la même chose : augmenter le `counter` de `1`.
+Ces deux opérateurs font la même chose : augmenter le `counter` de `1`.
 
 Y a-t-il une différence ? Oui, mais nous ne pouvons le voir que si nous utilisons la valeur renvoyée de `++/--`.
 

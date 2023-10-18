@@ -42,7 +42,7 @@ Par exemple, étant donné l'élément `<p>Hello</p>`, nous pouvons créer la pl
   let range = new Range();
   range.setStart(p.firstChild, 2);
   range.setEnd(p.firstChild, 4);
-  
+
   // toString d'une plage renvoie son contenu sous forme de texte
   console.log(range); // ll
 </script>
@@ -54,7 +54,7 @@ Ici, nous prenons le premier enfant de `<p>` (c'est le noeud texte) et nous spé
 
 ### Sélection des noeuds d'éléments
 
-**Alternativement, si `node` est un noeud d'élément, alors `offset` doit être le numéro de l'enfant.** 
+**Alternativement, si `node` est un noeud d'élément, alors `offset` doit être le numéro de l'enfant.**
 
 C'est pratique pour faire des plages qui contiennent les noeuds dans leur ensemble, et non pas s'arrêter quelque part dans leur texte.
 
@@ -103,7 +103,7 @@ drawHtmlTree(selectPDomtree, 'div.select-p-domtree', 690, 320);
 </script>
 
 Créons une plage pour `"Example: <i>italic</i>"`.
- 
+
 Comme nous pouvons le voir, cette phrase est composée d'exactement deux enfants de `<p>`, avec les indices `0` et `1` :
 
 ![](range-example-p-0-1.svg)
@@ -197,7 +197,7 @@ Nous devons créer une plage, qui :
 
 Comme vous pouvez le voir, il est assez facile de créer une plage de ce que l'on veut.
 
-Si nous voulons prendre les noeuds dans leur ensemble, nous pouvons passer des éléments dans `setStart/setEnd`. Sinon, nous pouvons travailler au niveau du texte. 
+Si nous voulons prendre les noeuds dans leur ensemble, nous pouvons passer des éléments dans `setStart/setEnd`. Sinon, nous pouvons travailler au niveau du texte.
 
 ## Propriétés de la plage
 
@@ -299,8 +299,8 @@ Cliquez sur les boutons pour exécuter des méthodes sur la sélection, "resetEx
       range.setStart(p.firstChild, 2);
       range.setEnd(p.querySelector('b').firstChild, 3);
 
-      window.getSelection().removeAllRanges();  
-      window.getSelection().addRange(range);  
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
     }
   };
 
@@ -313,7 +313,6 @@ Cliquez sur les boutons pour exécuter des méthodes sur la sélection, "resetEx
 ```
 
 Il existe également des méthodes permettant de comparer des plages, mais elles sont rarement utilisées. Si vous en avez besoin, veuillez vous reporter à la [spec](https://dom.spec.whatwg.org/#interface-range) ou au [manuel MDN](mdn:/api/Range).
-
 
 ## Sélection
 
@@ -357,7 +356,7 @@ Les principales propriétés de selection sont :
 
 Il y a une différence importante entre anchor/focus d'une sélection et start/end d'un objet `Range`.
 
-Comme nous le savons, les objets `Range` ont toujours leur début avant leur fin. 
+Comme nous le savons, les objets `Range` ont toujours leur début avant leur fin.
 
 Pour les sélections, ce n'est pas toujours le cas.
 
@@ -636,7 +635,7 @@ Voici un bouton qui insère `"HELLO"` à la position du curseur et place le curs
   button.onclick = () => {
     input.setRangeText("HELLO", input.selectionStart, input.selectionEnd, "end");
     input.focus();
-  };    
+  };
 </script>
 ```
 
