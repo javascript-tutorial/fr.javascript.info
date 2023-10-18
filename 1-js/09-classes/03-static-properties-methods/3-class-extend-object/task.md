@@ -2,11 +2,11 @@ importance: 3
 
 ---
 
-# Classe étend l'objet?
+# Class extends Object ?
 
 Comme nous le savons, tous les objets héritent normalement de `Object.prototype` et ont accès à des méthodes d'objet "génériques" comme `hasOwnProperty` etc.
 
-Par exemple:
+Par exemple :
 
 ```js run
 class Rabbit {
@@ -23,11 +23,11 @@ alert( rabbit.hasOwnProperty('name') ); // true
 */!*
 ```
 
-Mais si nous l’épelons explicitement comme suit: `"class Rabbit extends Object"`, le résultat serait alors différent d´un simple `"class Rabbit"`?
+Mais si nous l’épelons explicitement comme suit : `"class Rabbit extends Object"`, le résultat serait alors différent d´un simple `"class Rabbit"` ?
 
-Quelle est la différence?
+Quelle est la différence ?
 
-Voici un exemple d'un tel code (cela ne fonctionne pas - pourquoi? Réparez le?):
+Voici un exemple d'un tel code (cela ne fonctionne pas - pourquoi ? Réparez le ?) :
 
 ```js
 class Rabbit extends Object {
