@@ -23,7 +23,7 @@ let obj = {
 };
 ```
 
-Le getter sert quand `obj.propName` est lu, le setter -- quand c'est assigné.
+Le getter fonctionne quand `obj.propName` est lu, le setter -- quand il s'agit d'une assignation.
 
 Par exemple, nous avons un objet `user` avec `name` et `surname` :
 
@@ -34,7 +34,7 @@ let user = {
 };
 ```
 
-Maintenant nous voulons ajouter une propriété `fullName`, qui devrait être `"John Smith"`. Bien sûr, nous ne voulons pas copier-coller l'information existante, donc nous pouvons implementer un accesseur :
+Maintenant nous voulons ajouter une propriété `fullName`, qui devrait être `"John Smith"`. Bien sûr, nous ne voulons pas copier-coller l'information existante, donc nous pouvons implémenter un accesseur :
 
 ```js run
 let user = {
@@ -53,9 +53,9 @@ alert(user.fullName); // John Smith
 */!*
 ```
 
-De l'extérieur, un accesseur de propriété ressemble à une propriété normale. C'est l'idée d'un accesseur. Nous n'*appellons* pas `user.fullName` comme une fonction, nous la *lisons* normallement : le getter agit sans le faire savoir.
+De l'extérieur, un accesseur de propriété ressemble à une propriété normale. C'est l'idée d'un accesseur. Nous n'*appellons* pas `user.fullName` comme une fonction, nous la *lisons* normalement : le getter agit en arrière plan.
 
-Pour l'instant, `fullName` n'a qu'un getter. Si nous essayions d'assigner `user.fullName=`, il y aura une erreur :
+Pour l'instant, `fullName` n'a qu'un getter. Si nous essayons d'assigner `user.fullName=`, il y aura une erreur :
 
 ```js run
 let user = {
@@ -106,7 +106,7 @@ Pour les accesseurs de propriétés, il n'y a pas de `value` ou `writable`, à l
 Un descripteur d'accesseur peut avoir :
 
 - **`get`** -- une fonction sans arguments, pour la lecture de propriété,
-- **`set`** -- une fonction avec un argument, qui est appelée lorsque la propriété change de valeur,
+- **`set`** -- une fonction avec un argument, qui fonctionne lorsque la propriété change de valeur,
 - **`enumerable`** -- identique aux propriétés de données
 - **`configurable`** -- identique aux propriétés de données
 
@@ -135,13 +135,13 @@ alert(user.fullName); // John Smith
 for(let key in user) alert(key); // name, surname
 ```
 
-Veuillez notez qu'une propriété peut être soit un accesseur (qui a les méthodes `get/set`) ou une propriété de donnes (qui a `value`), pas les deux.
+Veuillez notez qu'une propriété peut être soit un accesseur (qui a les méthodes `get/set`) ou une propriété de données (qui a `value`), pas les deux.
 
 Si nous essayons de fournir les deux `get` and `value` dans le même descripteur, il y aura une erreur :
 
 ```js run
 *!*
-// Error: Invalid property descriptor.
+// Erreur : Descripteur de propriété invalide.
 */!*
 Object.defineProperty({}, 'prop', {
   get() {
@@ -152,11 +152,11 @@ Object.defineProperty({}, 'prop', {
 });
 ```
 
-## Des getters/setters plus intelligent
+## Des getters/setters plus intelligents 
 
 Les Getters/setters peuvent être utilisés comme des enveloppes autour des "réelles" valeurs de propriété pour gagner plus de contrôles sur leurs opérations.
 
-Par exemple, si nous voulons interdire les noms trop court pour `user`, nous pouvons avoir un setter `name` and garder la valeur dans une propriété séparée `_name` :
+Par exemple, si nous voulions interdire les noms trop court pour `user`, nous pourrions avoir un setter `name` et garder la valeur dans une propriété séparée `_name` :
 
 ```js run
 let user = {
@@ -181,7 +181,7 @@ user.name = ""; // Le nom est trop court...
 
 Donc, le nom est stocké dans la propriété `_name`, et l'accés est fait par le getter et le setter.
 
-Techniquement, le code extérieur est capable d'accéder directement à la propriété en utilisant `user._name`. Mais il y une convention très connue selon laquelle les propriétés commençant par un underscore `"_"` sont internes et ne devraient pas être touché depuis l'extérieur des objets.
+Techniquement, le code extérieur est capable d'accéder directement à la propriété en utilisant `user._name`. Mais il y a une convention très connue, selon laquelle les propriétés commençant par un underscore `"_"` sont internes et ne devraient pas être touchées depuis l'extérieur des objets.
 
 ## Utilisation pour la compatibilité
 
