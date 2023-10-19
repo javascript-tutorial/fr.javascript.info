@@ -151,3 +151,34 @@ Object.defineProperty({}, 'prop', {
   value: 2
 });
 ```
+
+## Des getters/setters plus intelligent
+
+Les Getters/setters peuvent être utilisés comme des enveloppes autour des "réelles" valeurs de propriété pour gagner plus de contrôles sur leurs opérations.
+
+Par exemple, si nous voulons interdire les noms trop court pour `user`, nous pouvons avoir un setter `name` and garder la valeur dans une propriété séparée `_name` :
+
+```js run
+let user = {
+  get name() {
+    return this._name;
+  },
+
+  set name(value) {
+    if (value.length < 4) {
+      alert("Name is too short, need at least 4 characters");
+      return;
+    }
+    this._name = value;
+  }
+};
+
+user.name = "Pete";
+alert(user.name); // Pete
+
+user.name = ""; // Le nom est trop court...
+```
+
+Donc, le nom est stocké dans la propriété `_name`, et l'accés est fait par le getter et le setter.
+
+Techniquement, le code extérieur est capable d'accéder directement à la propriété en utilisant `user._name`. Mais il y une convention très connue selon laquelle les propriétés commençant par un underscore `"_"` sont internes et ne devraient pas être touché depuis l'extérieur des objets.
