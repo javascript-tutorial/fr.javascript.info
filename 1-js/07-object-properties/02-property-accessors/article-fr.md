@@ -96,3 +96,58 @@ alert(user.surname); // Cooper
 ```
 
 Comme résultat, nous avons une propriété "virtuelle" `fullName`. Elle est lisible et ecrivable.
+
+## Descripteurs d'accesseur
+
+Les descripteurs d'accesseur de propriété sont différents de ceux pour les propriété de données.
+
+Pour les accesseurs de propriétés, il n'y a pas de `value` ou `writable`, à la place il y a les fonctions `get` et `set`.
+
+Un descripteur d'accesseur peut avoir :
+
+- **`get`** -- une fonction sans arguments, pour la lecture de propriété,
+- **`set`** -- une fonction avec un argument, qui est appelée lorsque la propriété change de valeur,
+- **`enumerable`** -- identique aux propriétés de données
+- **`configurable`** -- identique aux propriétés de données
+
+Par exemple, pour créer un accesseur `fullName` avec `defineProperty`, on peut passer un descripteur avec `get` et `set` :
+
+```js run
+let user = {
+  name: "John",
+  surname: "Smith"
+};
+
+*!*
+Object.defineProperty(user, 'fullName', {
+  get() {
+    return `${this.name} ${this.surname}`;
+  },
+
+  set(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+*/!*
+});
+
+alert(user.fullName); // John Smith
+
+for(let key in user) alert(key); // name, surname
+```
+
+Veuillez notez qu'une propriété peut être soit un accesseur (qui a les méthodes `get/set`) ou une propriété de donnes (qui a `value`), pas les deux.
+
+Si nous essayons de fournir les deux `get` and `value` dans le même descripteur, il y aura une erreur :
+
+```js run
+*!*
+// Error: Invalid property descriptor.
+*/!*
+Object.defineProperty({}, 'prop', {
+  get() {
+    return 1
+  },
+
+  value: 2
+});
+```
