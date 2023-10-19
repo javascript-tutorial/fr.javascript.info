@@ -1,10 +1,6 @@
 # L'interrogation longue 
 
-<<<<<<< HEAD
 L'interrogation longue est le moyen le plus simple d'avoir une connexion persistante avec le serveur, qui n'utilise aucun protocole spécifique comme WebSocket ou Server Side Events.
-=======
-Long polling is the simplest way of having persistent connection with server, that doesn't use any specific protocol like WebSocket or Server Sent Events.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Étant très facile à mettre en œuvre, elle est également assez bonne dans de nombreux cas.
 
@@ -33,11 +29,7 @@ Le flux :
 3. Lorsqu'un message apparaît - le serveur répond à la requête avec lui.
 4. Le navigateur fait immédiatement une nouvelle requête.
 
-<<<<<<< HEAD
-Lorsque le navigateur a envoyé une demande et a une connexion en attente avec le serveur est une situation relativement courante pour cette méthode. Ce n'est que lorsqu'un message est remis que la connexion est rétablie.
-=======
-This situation, where the browser has sent a request and keeps a pending connection with the server, is standard for this method. Only when a message is delivered, the connection is closed and reestablished.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
+Cette situation, dans laquelle le navigateur a envoyé une requête et maintient une connexion en attente avec le serveur, est standard pour cette méthode. Ce n'est que lorsqu'un message est délivré que la connexion est fermée et rétablie.
 
 ![](long-polling.svg)
 

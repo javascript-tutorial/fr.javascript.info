@@ -65,19 +65,11 @@ Les événements de pointeur ont les mêmes propriétés que les événements de
 
 Certains périphériques de pointage mesurent la surface de contact et la pression appliquée, par exemple pour un doigt sur l'écran tactile. Il existe des propriétés supplémentaires pour cela:
 
-<<<<<<< HEAD
 - `width` - la largeur de la zone du pointeur (par exemple un doigt) en contact avec l'appareil. Si incompatible, pour une souris par exemple, prend la valeur `1`.
 - `height` - la hauteur de la zone du pointeur en contact avec l'appareil. Si incompatible, prend la valeur `1`.
 - `pressure` - la pression de l'extrémité du pointeur, prenant des valeurs comprises entre 0 et 1. Pour les appareils qui ne prennent pas en charge la pression, la valeur doit être soit `0.5` (pression appliquée) ou `0`.
 - `tangentialPressure` - la pression tangentielle normalisée.
 - `tiltX`, `tiltY`, `twist` - propriétés spécifiques au stylet qui décrivent la position relative du stylet par rapport à la surface.
-=======
-- `width` - the width of the area where the pointer (e.g. a finger) touches the device. Where unsupported, e.g. for a mouse, it's always `1`.
-- `height` - the height of the area where the pointer touches the device. Where unsupported, it's always `1`.
-- `pressure` - the pressure of the pointer tip, in range from 0 to 1. For devices that don't support pressure must be either `0.5` (pressed) or `0`.
-- `tangentialPressure` - the normalized tangential pressure.
-- `tiltX`, `tiltY`, `twist` - pen-specific properties that describe how the pen is positioned relative to the surface.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Ces propriétés ne sont pas prises en charge par la plupart des appareils, et sont donc rarement utilisées. Vous trouverez plus de détails sur ces propriétés dans les [spécifications](https://w3c.github.io/pointerevents/#pointerevent-interface) si besoin.
 

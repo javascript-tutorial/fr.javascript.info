@@ -10,11 +10,7 @@ Nous avons déjà des cookies. Pourquoi des objets supplémentaires ?
 - Contrairement aux cookies également, le serveur ne peut pas manipuler les objets de stockage via les en-têtes HTTP. Tout se fait en JavaScript.
 - Le stockage est lié à l'origine (triplet domaine/protocole/port). Autrement dit, différents protocoles ou sous-domaines impliquent différents objets de stockage, ils ne peuvent pas accéder aux données les uns des autres.
 
-<<<<<<< HEAD
 Les deux objets de stockage fournissent les mêmes méthodes et propriétés :
-=======
-Both storage objects provide the same methods and properties:
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 - `setItem(key, value)` -- stocke la paire clé/valeur.
 - `getItem(key)` -- récupère la valeur par clé.
@@ -128,11 +124,7 @@ Ce dernier fonctionne, car `Object.keys` ne renvoie que les clés appartenant à
 
 Veuillez noter que la clé et la valeur doivent être des chaînes.
 
-<<<<<<< HEAD
-S'il s'agissait d'un autre type, comme un nombre ou un objet, il est automatiquement converti en chaîne :
-=======
-If they were any other type, like a number, or an object, they would get converted to a string automatically:
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
+S'il s'agissait d'un autre type, comme un nombre ou un objet, il est automatiquement converti en chaîne de caractères :
 
 ```js run
 localStorage.user = {name: "John"};
@@ -228,11 +220,7 @@ Les navigateurs modernes prennent également en charge [Broadcast channel API](m
 
 ## Résumé
 
-<<<<<<< HEAD
 Les objets de stockage Web `localStorage` et `sessionStorage` permettent de stocker des paires clé/valeur dans le navigateur.
-=======
-Web storage objects `localStorage` and `sessionStorage` allow to store key/value pairs in the browser.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 - `clé` et `valeur` doivent être des chaînes.
 - La limite est de 5mb+, dépend du navigateur.
