@@ -185,7 +185,7 @@ Techniquement, le code extérieur est capable d'accéder directement à la propr
 
 ## Utilisation pour la compatibilité
 
-Un des avantages dans l'utilisation des accesseurs et qu'ils permettent de prendre le contrôle sur un propriété de données "normale" à tout moment en la remplaçant par un getter et un setter et modifiant son comportement.
+Un des avantages de l'utilisation des accesseurs et qu'ils permettent de prendre le contrôle sur un propriété de données "normale" à tout moment, en la remplaçant par un getter et un setter et modifiant son comportement.
 
 Imaginons que nous commencions des objets utilisateur en utilisant des propriétés de données `name` et `age` :
 
@@ -213,7 +213,7 @@ let john = new User("John", new Date(1992, 6, 1));
 
 Maintenant que fait-on avec l'ancien code qui utilise toujours la propriété `age` ?
 
-On peut esssayer de trouver tous les endroits où on utilisent `age` et les modifier, mais ça prend du temps and ça peut être compliqué à faire si le code est utilisé par plusieurs personnes. En plus, `age` est une bonne chose à avoir dans `user`, n'est ce pas ?
+On peut essayer de trouver tous les endroits où on utilisent `age` et les modifier, mais ça prend du temps et ça peut être compliqué à faire si le code est utilisé par plusieurs personnes. En plus, `age` est une bonne chose à avoir dans `user`, n'est ce pas ?
 
 Gardons-le.
 
@@ -225,7 +225,7 @@ function User(name, birthday) {
   this.birthday = birthday;
 
 *!*
-  // Age est calculé à partir de la date actuelle et de birthday
+  // age est calculé à partir de la date actuelle et de birthday
   Object.defineProperty(this, "age", {
     get() {
       let todayYear = new Date().getFullYear();
@@ -241,4 +241,4 @@ alert( john.birthday ); // birthday est disponible
 alert( john.age );      // ...Ainsi que l'age 
 ```
 
-Maintenant l'ancien code fonctionne aussi et nous avons une propriété additionnelle.
+Maintenant l'ancien code fonctionne toujours et nous avons une propriété additionnelle.
