@@ -39,7 +39,7 @@ class Error {
 
 Maintenant, héritons de `ValidationError` et mettons-le en action :
 
-```js run untrusted
+```js run
 *!*
 class ValidationError extends Error {
 */!*

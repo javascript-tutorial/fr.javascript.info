@@ -68,7 +68,8 @@ if (cond) {
 
 ## La clause "else"
 
-L'instruction `if` peut contenir un bloc optionnel "else". Il s'exécute lorsque la condition est fausse.
+
+L'instruction `if` peut contenir un bloc optionnel `else`. Il s'exécute lorsque la condition est fausse.
 
 Par exemple :
 ```js run
@@ -180,10 +181,12 @@ alert( message );
 
 Il peut être difficile au début de comprendre ce qui se passe. Mais après un examen plus approfondi, nous constatons que ce n’est qu’une séquence de tests ordinaire.
 
+
 1. Le premier point d'interrogation vérifie si `age < 3`.
-2. Si vrai -- retourne `'Coucou bébé !'`, sinon il franchit les deux points `":"` et vérifie si `age < 18`.
-3. Si vrai -- retourne `'Salut !'`, sinon -- il franchit à nouveau les deux points suivants `":"` et vérifie si `age < 100`.
-4. Si vrai -- retourne `'Salutations !'`, sinon -- il franchit enfin les derniers deux points `":"` et retourne `'Quel âge inhabituel !'`.
+
+2. Si vrai -- retourne `'Hi, baby!'`, Sinon, il continue avec l'expression après les deux points ":" suivants et vérifie si `age < 18`.
+3. Si vrai -- retourne `'Hello!'`, Sinon, il continue avec l'expression après les deux points ":" suivants et vérifie si `age < 100`.
+4. Si vrai -- retourne `'Greetings!'`, Sinon, l'expression continue après les derniers deux-points et retourne `'What an unusual age!'`.
 
 La même logique utilisant `if..else` :
 

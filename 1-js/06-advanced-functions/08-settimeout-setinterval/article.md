@@ -27,7 +27,11 @@ En général, c'est une fonction. Pour des raisons historiques, une chaîne de c
 : La durée d'attente avant l'exécution, en millisecondes (1000ms = 1 seconde), par défaut 0.
 
 `arg1`, `arg2`...
+<<<<<<< HEAD
 : Arguments à passer à la fonction (incompatible avec IE9-).
+=======
+: Arguments for the function
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Par exemple, le code ci-dessous appelle la fonction `sayHi()` une unique fois au bout de 1 seconde :
 
