@@ -182,3 +182,63 @@ user.name = ""; // Le nom est trop court...
 Donc, le nom est stocké dans la propriété `_name`, et l'accés est fait par le getter et le setter.
 
 Techniquement, le code extérieur est capable d'accéder directement à la propriété en utilisant `user._name`. Mais il y une convention très connue selon laquelle les propriétés commençant par un underscore `"_"` sont internes et ne devraient pas être touché depuis l'extérieur des objets.
+
+## Utilisation pour la compatibilité
+
+Un des avantages dans l'utilisation des accesseurs et qu'ils permettent de prendre le contrôle sur un propriété de données "normale" à tout moment en la remplaçant par un getter et un setter et modifiant son comportement.
+
+Imaginons que nous commencions des objets utilisateur en utilisant des propriétés de données `name` et `age` :
+
+```js
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+let john = new User("John", 25);
+
+alert( john.age ); // 25
+```
+
+...Mais tôt ou tard, les choses pourraient changer. Au lieu d'`age` on pourrait decider de stocker `birthday`, parce que c'est plus précis et plus pratique :
+
+```js
+function User(name, birthday) {
+  this.name = name;
+  this.birthday = birthday;
+}
+
+let john = new User("John", new Date(1992, 6, 1));
+```
+
+Maintenant que fait-on avec l'ancien code qui utilise toujours la propriété `age` ?
+
+On peut esssayer de trouver tous les endroits où on utilisent `age` et les modifier, mais ça prend du temps and ça peut être compliqué à faire si le code est utilisé par plusieurs personnes. En plus, `age` est une bonne chose à avoir dans `user`, n'est ce pas ?
+
+Gardons-le.
+
+Ajoutons un getter pour `age` et résolvons le problème :
+
+```js run no-beautify
+function User(name, birthday) {
+  this.name = name;
+  this.birthday = birthday;
+
+*!*
+  // Age est calculé à partir de la date actuelle et de birthday
+  Object.defineProperty(this, "age", {
+    get() {
+      let todayYear = new Date().getFullYear();
+      return todayYear - this.birthday.getFullYear();
+    }
+  });
+*/!*
+}
+
+let john = new User("John", new Date(1992, 6, 1));
+
+alert( john.birthday ); // birthday est disponible
+alert( john.age );      // ...Ainsi que l'age 
+```
+
+Maintenant l'ancien code fonctionne aussi et nous avons une propriété additionnelle.
