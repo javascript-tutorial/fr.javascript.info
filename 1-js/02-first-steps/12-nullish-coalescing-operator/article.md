@@ -76,11 +76,7 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*
 ```
 
-<<<<<<< HEAD
 Historiquement, l'opérateur OR `||` était là en premier. Il existe depuis le début de JavaScript, donc les développeurs l'utilisaient à de telles fins depuis longtemps.
-=======
-Historically, the OR `||` operator was there first. It's been there since the beginning of JavaScript, so developers were using it for such purposes for a long time.
->>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 D'un autre côté, l'opérateur de coalescence des nuls `??` n'a été ajouté à JavaScript que récemment, et la raison en était que les gens n'étaient pas tout à fait satisfaits de `||`.
 
