@@ -294,3 +294,27 @@ customElements.define('user-card', class extends HTMLElement {
   <span slot="birthday">01.01.2001</span>
 </user-card>
 ```
+
+## Résumé
+
+Le Shadow DOM peut inclure des styles, tels que `<style>` ou `<link rel="stylesheet">`.
+
+Les styles locaux peuvent affectés :
+
+- l'arborescence shadow,
+- l'hôte shadow avec `:host` et les pseudo classes `:host()`,
+- les éléments "slotted" (qui proviennet du light DOM), `::slotted(selector)` permet de selectionner les éléments "slotted" en eux-même, mais pas leurs enfants.
+
+Les styles du document peuvent affectés :
+
+- l'hôte shadow (puisqu'il existe dans le document extérieur)
+- les éléments "slotted" et leurs contenus (puisqu'ils existent aussi dans le document extérieur)
+
+Quand les propriétés CSS entrent en conflit, les styles du document prennent le pas, sauf lorsque la propriété est marquée `!important`. Dans ce cas les styles locaux prennent le pas.
+
+Les propriétés CSS personnalisées passent au travers le shadow DOM. Elles sont utilisées comme des "hooks" pour appliquer du style au composant :
+
+1. Le composant utilise une propriété CSS personnalisée pour appliquer du style aux éléments clés, tels que `var(--component-name-title, <default value>)`.
+2. L'autheur d'un composant publie ces propriétés pour les développeurs, elles sont aussi importantes que les autres méthodes du composant.
+3. Quand un développeur veut appliquer du style à un titre, ils assignent une propriété CSS `--component-name-title` pour l'hôte shadow ou au dessus.
+4. Profitez !
