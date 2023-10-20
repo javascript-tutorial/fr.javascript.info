@@ -42,3 +42,23 @@ customElements.define('custom-dialog', class extends HTMLElement {
   Hello!
 </custom-dialog>
 ```
+
+## Cascading
+
+L'hôte shadow (`<custom-dialog>` lui-même) réside dans le light DOM, donc il est affecté par les règles CSS du document.
+
+S'il y a une propriété de style locale dans `:host`, et dans le document, alors le style du document prendra le pas.
+
+Par exemple, si nous avons dans le document :
+```html
+<style>
+custom-dialog {
+  padding: 0;
+}
+</style>
+```
+...Alors le `<custom-dialog>` n'aura pas de marge interne.
+
+C'est vraiment pratique, comme nous pouvons définir des styles par défaut dans les règles d'`:host`, et les outrepasser dans le document.
+
+L'exception est quand une propriété locale est marquée `!important`, pour de telles propriétés, les styles locaux prennent le pas.
