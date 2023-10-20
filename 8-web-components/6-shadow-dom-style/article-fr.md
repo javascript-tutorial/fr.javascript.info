@@ -223,3 +223,74 @@ Veuillez noter, le sélecteur `::slotted` ne peut pas descendre plus bas dans le
 ```
 
 Aussi, `::slotted` peut être utilisé uniquement en CSS. On ne peut pas l'utiliser dans `querySelector`.
+
+## Les Hooks en CSS avec des propriétés personnalisées
+
+Comment appliquons-nous du style aux éléments internes à un composant depuis le document principal ?
+
+Les sélecteurs comme `:host` appliquent des règles aux éléments `<custom-dialog>` ou `<user-card>`, mais comment appliquons-nous du style shadow DOM qui leurs sont internes ?
+
+Il n'y a pas de sélecteurs qui puisse directement affecté les styles du shadow DOM depuis le document. Mais comme nous venons d'exposer des méthodes pour interagir avec notre composant, nous pouvons exposer des variables CSS (propriétés CSS personnalisées) pour lui appliquer du style.
+
+**Les propriétés CSS personnalisées existent à tous les niveaux, dans le light et le shadow.**
+
+Par exemple, dans le shadow DOM nous pouvons utiliser la variable CSS `--user-card-field-color` pour appliquer du style aux champs, et pouvoir définir la valeur dans le document extérieur :
+
+```html
+<style>
+  .field {
+    color: var(--user-card-field-color, black);
+    /* Si --user-card-field-color n'est pas définie, utiliser la couleur noir*/
+  }
+</style>
+<div class="field">Name: <slot name="username"></slot></div>
+<div class="field">Birthday: <slot name="birthday"></slot></div>
+```
+
+Alors, on peut déclarer cette propriété dans le document extérieur pour `<user-card>` :
+
+```css
+user-card {
+  --user-card-field-color: green;
+}
+```
+
+Les propriétés CSS personnalisées passent au travers du shadow DOM, elles sont visibles depuis n'importe où, donc la règle intérieure `.field` s'en servira.
+
+Voici l'exemple complet :
+
+```html run autorun="no-epub" untrusted height=80
+<style>
+*!*
+  user-card {
+    --user-card-field-color: green;
+  }
+*/!*
+</style>
+
+<template id="tmpl">
+  <style>
+*!*
+    .field {
+      color: var(--user-card-field-color, black);
+    }
+*/!*
+  </style>
+  <div class="field">Name: <slot name="username"></slot></div>
+  <div class="field">Birthday: <slot name="birthday"></slot></div>
+</template>
+
+<script>
+customElements.define('user-card', class extends HTMLElement {
+  connectedCallback() {
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.append(document.getElementById('tmpl').content.cloneNode(true));
+  }
+});
+</script>
+
+<user-card>
+  <span slot="username">John Smith</span>
+  <span slot="birthday">01.01.2001</span>
+</user-card>
+```
