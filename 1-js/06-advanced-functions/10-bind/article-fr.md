@@ -93,3 +93,83 @@ user = {
 ```
 
 La prochaine solution garantit que ce genre de chose n'arrivera pas
+
+## Solution 2 : "bind"
+
+Les fonctions fournissent une méthode intégrée, [bind](mdn:js/Function/bind) qui permet de corriger `this`.
+
+La syntaxe basique est :
+
+```js
+// Une syntaxe plus complexe arrivera bientot
+let boundFunc = func.bind(context);
+```
+
+Le résultat de `func.bind(context)` est une "objet exotique" dans le style d'une fonction, qui est appellable comme une fonction et qui passe l'appel à `func` en définissant `this=context` de façon transparente.
+
+En d'autres termes, appeller `boundFunc` équivaut à `func` avec un `this` corrigé.
+
+Par exemple, ici `funcUser` passe l'appel à `this` tel que `this=user` :
+
+```js run  
+let user = {
+  firstName: "John"
+};
+
+function func() {
+  alert(this.firstName);
+}
+
+*!*
+let funcUser = func.bind(user);
+funcUser(); // John  
+*/!*
+```
+
+Ici `func.bind(user)` en tant "variante liée" de `func`, avec `this=user`.
+
+Tous les arguments sont passés à l'originale `func` "tel quel", par exemple :
+
+```js run  
+let user = {
+  firstName: "John"
+};
+
+function func(phrase) {
+  alert(phrase + ', ' + this.firstName);
+}
+
+// Lie this à user
+let funcUser = func.bind(user);
+
+*!*
+funcUser("Hello"); // Hello, John (l'argument "Hello" est passé, and this=user)
+*/!*
+```
+
+Maintenant essayons avec une méthode objet :
+
+
+```js run
+let user = {
+  firstName: "John",
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+*!*
+let sayHi = user.sayHi.bind(user); // (*)
+*/!*
+
+// Peut s'exécuter sans objet
+sayHi(); // Hello, John!
+
+setTimeout(sayHi, 1000); // Hello, John!
+
+// Mème si la valeur de user change dans 1 seconde
+// sayHi utilise la valeur pré-liée, laquelle fait référence à l'ancien objet user
+user = {
+  sayHi() { alert("Another user in setTimeout!"); }
+};
+```
