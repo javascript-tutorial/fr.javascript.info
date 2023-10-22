@@ -42,3 +42,54 @@ La méthode `setTimeout` dans le navigateur est un peu spéciale : elle définit
 
 Cette tâche est plutôt commune -- on veut passer une méthode objet quelque part ailleur (ici -- au scheduler) où elle sera appelée.
 Comment s'assurer qu'elle sera appelée dans le bon contexte ?
+
+## Solution 1 : Une enveloppe
+
+La solution la plus simple est d'utiliser une fonction enveloppée :
+
+```js run
+let user = {
+  firstName: "John",
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+*!*
+setTimeout(function() {
+  user.sayHi(); // Hello, John!
+}, 1000);
+*/!*
+```
+
+Maintenant ça fonctionne, car elle reçoit `user` depuis un environnement lexical extérieur, et donc les appels à la fonction se font normalement.
+
+La même chose mais en plus court :
+
+```js
+setTimeout(() => user.sayHi(), 1000); // Hello, John!
+```
+
+Ça à l'air bon, mais une légère vulnérabilité apparaît dans la structure de notre code.
+
+Qu'est ce qu'il se passe si avant le déclenchement de `setTimeout` (il y une seconde de délai) `user` changeait de valeur ? Alors, soudainement, ça appelera le mauvais objet !
+
+```js run
+let user = {
+  firstName: "John",
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+setTimeout(() => user.sayHi(), 1000);
+
+// ...La valeur d'user dans 1 seconde
+user = {
+  sayHi() { alert("Another user in setTimeout!"); }
+};
+
+// Un autre user est dans le setTimeout !
+```
+
+La prochaine solution garantit que ce genre de chose n'arrivera pas
