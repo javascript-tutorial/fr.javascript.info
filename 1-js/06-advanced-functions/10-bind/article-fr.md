@@ -209,7 +209,7 @@ Les librairies JavaScript fournissent aussi des fonctions pratiques pour les lia
 
 Jusqu'à maintenant nous avons parlé uniquement de lier `this`. Allons plus loin.
 
-Nous pouvons lier `this`, mais aussi des arguments. C'est rarement utilisé, mais ça peut être utile.
+Nous pouvons lier `this`, mais aussi des arguments. C'est rarement utilisé, mais ça peut être pratique.
 
 La syntaxe complète de `bind` :
 
@@ -217,7 +217,7 @@ La syntaxe complète de `bind` :
 let bound = func.bind(context, [arg1], [arg2], ...);
 ```
 
-Elle permet de lié le contexte en tant que `this` et de démarrer les arguments de la fonction.
+Elle permet de lier le contexte en tant que `this` et de démarrer les arguments de la fonction.
 
 Par exemple, nous avons une fonction de multiplication `mul(a, b)` :
 
@@ -243,7 +243,7 @@ alert( double(4) ); // = mul(2, 4) = 8
 alert( double(5) ); // = mul(2, 5) = 10
 ```
 
-L'appel à `mul.bind(null, 2)` créer une nouvelle fonction `double` qui transmet les appels à `mul`, corrigeant `null` dans le contexte et `2` comme premier argument. Les arguments sont passés "tel quel" plus loin.
+L'appel à `mul.bind(null, 2)` créer une nouvelle fonction `double` qui transmet les appels à `mul`, corrigeant `null` dans le contexte et `2` comme premier argument. Les arguments sont passés "tels quels" plus loin.
 
 Ça s'appelle [l'application de fonction partielle](https://en.wikipedia.org/wiki/Partial_application) -- nous créeons une nouvelle fonction en corrigeant certains paramètres d'une fonction existante.
 
@@ -265,9 +265,9 @@ alert( triple(4) ); // = mul(3, 4) = 12
 alert( triple(5) ); // = mul(3, 5) = 15
 ```
 
-Pourquoi faisons nous généralement un fonction partielle ?
+Pourquoi faisons nous généralement une fonction partielle ?
 
-L'avantage de faire ça est que on peut créer une fonction indépendante avec un nom lisible (`double`, `triple`). Nous pouvons les utiliser et ne pas fournir de premier argument à chaque fois comme c'est corrigé par `bind`.
+L'avantage de faire ça est que nous pouvons créer une fonction indépendante avec un nom lisible (`double`, `triple`). Nous pouvons les utiliser et ne pas fournir de premier argument à chaque fois puisque c'est corrigé par `bind`.
 
 Dans d'autres cas, les fonctions partielles sont utiles quand nous avons des fonctions vraiment génériques et que nous voulons une variante moins universelle pour des raisons pratiques.
 
