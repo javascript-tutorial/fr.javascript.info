@@ -173,3 +173,35 @@ user = {
   sayHi() { alert("Another user in setTimeout!"); }
 };
 ```
+
+Sur la ligne `(*)` nous prenons la méthode `user.sayHi` en nous la lions à `user`. La méthode `sayHi` est une fonction "liée", qui peut être appelée seule ou être passer à `setTimeout` -- ça n'a pas d'importance, le contexte sera le bon.
+
+Ici, nous pouvons voir que les arguments passés "tel quel", seulement `this` est corrigé par `bind` :
+
+```js run
+let user = {
+  firstName: "John",
+  say(phrase) {
+    alert(`${phrase}, ${this.firstName}!`);
+  }
+};
+
+let say = user.say.bind(user);
+
+say("Hello"); // Hello, John! (l'argument "Hello" est passé à say)
+say("Bye"); // Bye, John! (l'argument "Bye" est passé à say)
+```
+
+````smart header="La méthode pratique : `bindAll`"
+Si un objet a plusieurs méthodes et que nous prévoyons de le transmettre plusieurs fois, alors on pourrait toutes les lier dans une boucle :
+
+```js
+for (let key in user) {
+  if (typeof user[key] == 'function') {
+    user[key] = user[key].bind(user);
+  }
+}
+```
+
+Les librairies JavaScript fournissent aussi des fonctions partiques pour les liaisons de masse, e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) avec lodash.
+````
