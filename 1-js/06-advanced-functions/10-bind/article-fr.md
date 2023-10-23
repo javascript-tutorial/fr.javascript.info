@@ -205,3 +205,71 @@ for (let key in user) {
 
 Les librairies JavaScript fournissent aussi des fonctions partiques pour les liaisons de masse, e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) avec lodash.
 ````
+
+## Les fonctions partielles
+
+Jusqu'à maintenant nous avons parlé uniquement de lier `this`. Allons plus loin.
+
+Nous pouvons lier `this`, mais aussi des arguments. C'est rarement utilisé, mais ça peut être utile.
+
+La syntaxe complète de `bind` :
+
+```js
+let bound = func.bind(context, [arg1], [arg2], ...);
+```
+
+Elle permet de lié le contexte en tant que `this` et de démarrer les arguments de la fonction.
+
+Par exemple, nous avons une fonction de multiplication `mul(a, b)` :
+
+```js
+function mul(a, b) {
+  return a * b;
+}
+```
+
+Utilisons `bind` pour créer une fonction `double` sur cette base :
+
+```js run
+function mul(a, b) {
+  return a * b;
+}
+
+*!*
+let double = mul.bind(null, 2);
+*/!*
+
+alert( double(3) ); // = mul(2, 3) = 6
+alert( double(4) ); // = mul(2, 4) = 8
+alert( double(5) ); // = mul(2, 5) = 10
+```
+
+L'appel à `mul.bind(null, 2)` créer une nouvelle fonction `double` qui transmet les appels à `mul`, corrigeant `null` dans le contexte et `2` comme premier argument. Les arguments sont passés "tel quel" plus loin.
+
+Ça s'appelle [l'application de fonction partielle](https://en.wikipedia.org/wiki/Partial_application) -- nous créeons une nouvelle fonction en corrigeant certains paramètres d'une fonction existante.
+
+Veuillez noter que nous n'utilisons actuellement pas `this` ici. Mais `bind` en a besoin, donc nous devrions mettre quelque chose dedans comme `null`.
+
+La fonction `triple` dans le code ci-dessous triple la valeur :
+
+```js run
+function mul(a, b) {
+  return a * b;
+}
+
+*!*
+let triple = mul.bind(null, 3);
+*/!*
+
+alert( triple(3) ); // = mul(3, 3) = 9
+alert( triple(4) ); // = mul(3, 4) = 12
+alert( triple(5) ); // = mul(3, 5) = 15
+```
+
+Pourquoi faisons nous généralement un fonction partielle ?
+
+L'avantage de faire ça est que on peut créer une fonction indépendante avec un nom lisible (`double`, `triple`). Nous pouvons les utiliser et ne pas fournir de premier argument à chaque fois comme c'est corrigé par `bind`.
+
+Dans d'autres cas, les fonctions partielles sont utiles quand nous avons des fonctions vraiment génériques et que nous voulons une variante moins universelle pour des raisons pratiques.
+
+Par exemple, nous avons une fonction `send(from, to, text)`. Alors, dans un objet `user` nous pourrions vouloir en utiliser une variante partielle : `sendTo(to, text)` qui envoie depuis l'utilisateur actuel.
