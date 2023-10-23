@@ -104,7 +104,7 @@ La syntaxe basique est :
 let boundFunc = func.bind(context);
 ```
 
-Le résultat de `func.bind(context)` est une "objet exotique" dans le style d'une fonction, qui est appellable comme une fonction et qui passe l'appel à `func` en définissant `this=context` de façon transparente.
+Le résultat de `func.bind(context)` est une "objet exotique" dans le style d'une fonction, qui est appellable comme une fonction et qui transmet l'appel à `func` en définissant `this=context` de façon transparente.
 
 En d'autres termes, appeller `boundFunc` équivaut à `func` avec un `this` corrigé.
 
@@ -127,7 +127,7 @@ funcUser(); // John
 
 Ici `func.bind(user)` en tant "variante liée" de `func`, avec `this=user`.
 
-Tous les arguments sont passés à l'originale `func` "tel quel", par exemple :
+Tous les arguments sont passés à l'originale `func` "tels quels", par exemple :
 
 ```js run  
 let user = {
@@ -142,7 +142,7 @@ function func(phrase) {
 let funcUser = func.bind(user);
 
 *!*
-funcUser("Hello"); // Hello, John (l'argument "Hello" est passé, and this=user)
+funcUser("Hello"); // Hello, John (l'argument "Hello" est passé, et this=user)
 */!*
 ```
 
@@ -173,9 +173,9 @@ user = {
 };
 ```
 
-Sur la ligne `(*)` nous prenons la méthode `user.sayHi` en nous la lions à `user`. La méthode `sayHi` est une fonction "liée", qui peut être appelée seule ou être passer à `setTimeout` -- ça n'a pas d'importance, le contexte sera le bon.
+Sur la ligne `(*)` nous prenons la méthode `user.sayHi` en nous la lions à `user`. La méthode `sayHi` est une fonction "liée", qui peut être appelée seule ou être transmise à `setTimeout` -- ça n'a pas d'importance, le contexte sera le bon.
 
-Ici, nous pouvons voir que les arguments passés "tel quel", seulement `this` est corrigé par `bind` :
+Ici, nous pouvons voir que les arguments passés "tels quels", seulement `this` est corrigé par `bind` :
 
 ```js run
 let user = {
@@ -202,7 +202,7 @@ for (let key in user) {
 }
 ```
 
-Les librairies JavaScript fournissent aussi des fonctions partiques pour les liaisons de masse, e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) avec lodash.
+Les librairies JavaScript fournissent aussi des fonctions pratiques pour les liaisons de masse, e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) avec lodash.
 ````
 
 ## Les fonctions partielles
