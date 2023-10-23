@@ -77,3 +77,13 @@ Les options sont listées après `key=value`, délimité par `;`, comme ça :
 ```js run
 document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 ```
+
+## path
+
+- **`path=/mypath`**
+
+Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible depuis les pages du même chemin. Par défaut, c'est le chemin courant.
+
+Si un cookie est défini avec `pah=/admin`, il est visible depuis les pages `/admin` et `/admin/something`, mais pas depuis `/home` ou `/adminpage`.
+
+Généralement, nous devons définir `path` à la racine `path=/` pour rendre le cookie accessible depuis toutes les pages du site.
