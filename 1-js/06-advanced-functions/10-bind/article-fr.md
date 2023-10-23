@@ -273,3 +273,48 @@ L'avantage de faire ça est que on peut créer une fonction indépendante avec u
 Dans d'autres cas, les fonctions partielles sont utiles quand nous avons des fonctions vraiment génériques et que nous voulons une variante moins universelle pour des raisons pratiques.
 
 Par exemple, nous avons une fonction `send(from, to, text)`. Alors, dans un objet `user` nous pourrions vouloir en utiliser une variante partielle : `sendTo(to, text)` qui envoie depuis l'utilisateur actuel.
+
+## Aller dans les partielles sans contexte
+
+Que se passe t-il si nous voulions corriger certains arguments, mais pas le contexte `this` ?
+Par exemple, pour une méthode objet.
+
+La fonction `bind` native ne permet pas ça. Nous ne pouvons pas juste omettre le contexte et aller directement aux arguments.
+
+Heureusement, une fonction `partial` pour lié seulement les arguments peut être facilement implémentée.
+
+Comme ça :
+
+```js run
+*!*
+function partial(func, ...argsBound) {
+  return function(...args) { // (*)
+    return func.call(this, ...argsBound, ...args);
+  }
+}
+*/!*
+
+// Utilisation :
+let user = {
+  firstName: "John",
+  say(time, phrase) {
+    alert(`[${time}] ${this.firstName}: ${phrase}!`);
+  }
+};
+
+// Ajoute une méthode partielle avec time corrigé
+user.sayNow = partial(user.say, new Date().getHours() + ':' + new Date().getMinutes());
+
+user.sayNow("Hello");
+// Quelque chose du genre :
+// [10:00] John: Hello!
+```
+
+Le résultat de l'appel `partial(func[, arg1, arg2...])` est une enveloppe `(*)` qui appelle `func` avec :
+- Le même `this` qu'il récupère (pour `user.sayNow` l'appel est `user`)
+- Alors il donne `...argsBound` -- les arguments provenant de l'appel de `partial` (`"10:00"`)
+- Alors il donne `...args` -- les arguments donnés à l'enveloppe (`"Hello"`)
+
+Alors c'est simple à faire avec la spread syntaxe, pas vrai ?
+
+Aussi il y une implémentation de [_.partial](https://lodash.com/docs#partial) prête à l'emploi dans les librairies lodash.
