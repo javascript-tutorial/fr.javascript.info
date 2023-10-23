@@ -42,7 +42,7 @@ La méthode `setTimeout` dans le navigateur est un peu spéciale : elle définit
 Cette tâche est plutôt commune -- on veut transmettre une méthode objet quelque part ailleurs (ici -- au scheduler) où elle sera appelée.
 Comment s'assurer qu'elle sera appelée dans le bon contexte ?
 
-## Solution 1 : Une enveloppe
+## Solution 1 : Un wrapper
 
 La solution la plus simple est d'utiliser une fonction enveloppée :
 
