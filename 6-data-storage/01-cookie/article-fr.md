@@ -13,3 +13,25 @@ L'un des cas d'utilisation les plus répandus est l'authentification :
 Nous pouvons aussi accéder aux cookies depuis le navigateur, en utilisant la propriété `document.cookie`.
 
 Il y a beaucoup de chose malignes à faire à propos des cookies and leurs options. Dans ce chapitre nous les couvrirons en détail.
+
+## Lecture depuis document.cookie
+
+```online
+Votre navigateur stocke t-il des cookies depuis ce site ? Voyons voir :
+```
+
+```offline
+En admettant que vous êtes sur un site web, il est possible de voir ses cookies, comme ça :
+```
+
+```js run
+// Sur javascript.info, nous utilisons Google Analytics pour les statistiques,
+// Donc il devrait y avoir quelques cookies
+alert( document.cookie ); // cookie1=value1; cookie2=value2;...
+```
+
+La valeur de `document.cookie` consiste en des pairs `name=value`, délimité par `; `. Chacun est un cookie séparé.
+
+Pour trouver un cookie en particulier, nous pouvons divisé `document.cookie` par `; `, et donc trouver le bon nom. Nous pouvons utiliser soit une expression régulière (regex) ou les fonctions de tableau pour faire cela.
+
+Nous laissons ça en tant qu'exercice pour le lecteur. Aussi, à la fin du chapitre vous trouverez des fonctions utilitaires pour manipuler les cookies.
