@@ -71,7 +71,7 @@ setTimeout(() => user.sayHi(), 1000); // Hello, John!
 
 Ça à l'air bon, mais une légère vulnérabilité apparaît dans la structure de notre code.
 
-Qu'est ce qu'il se passe si avant le déclenchement de `setTimeout` (il y une seconde de délai) `user` changeait de valeur ? Alors, soudainement, ça appelera le mauvais objet !
+Que se passe t-il si avant le déclenchement de `setTimeout` (il y une seconde de délai) `user` changeait de valeur ? Alors, soudainement, ça appelera le mauvais objet !
 
 ```js run
 let user = {
