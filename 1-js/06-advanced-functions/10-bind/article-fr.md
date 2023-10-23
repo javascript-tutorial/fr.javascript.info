@@ -318,3 +318,13 @@ Le résultat de l'appel `partial(func[, arg1, arg2...])` est une enveloppe `(*)`
 Alors c'est simple à faire avec la spread syntaxe, pas vrai ?
 
 Aussi il y une implémentation de [_.partial](https://lodash.com/docs#partial) prête à l'emploi dans les librairies lodash.
+
+## Résumé
+
+La méthode `func.bind(context, ...args)` retourne une "variante liée" de la fonction `func` qui corrige le contexte de `this` et des premiers arguments s'ils sont donnés.
+
+Généralement nous appliquons `bind` pour corriger `this` pour une méthode objet, comme ça nous pouvons la passer ailleurs. Par exemple, à `setTimeout`.
+
+Quand nous corrigeons certains arguments d'une fonction existante, la fonction (moins universelle) en résultant est dite *partiellement appliquéé* ou *partielle*.
+
+Les fonctions partielles sont pratiques quand nous ne voulons par répéter le même argument encore et encore. Comme si nous avions une fonction `send(from, to)`, et que `from` devait être toujours le même pour notre tâche, nous pourrions récupérer une partielle et continuer.
