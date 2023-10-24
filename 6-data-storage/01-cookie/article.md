@@ -346,7 +346,7 @@ function deleteCookie(name) {
 ```
 
 ```warn header="Mettre à jour ou supprimer doivent utiliser le même path et domain"
-Veuillez noter : quand nous mettons à jour ou supprimons un cookie, nous devons utiliser exactement les mêmes options path et domain que lorsque nous l'avons définit
+Veuillez noter : quand nous mettons à jour ou supprimons un cookie, nous devons utiliser exactement les mêmes options path et domain que lorsque nous l'avions défini
 ```
 
 Ensemble : [cookie.js](cookie.js).
