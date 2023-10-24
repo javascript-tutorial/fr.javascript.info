@@ -96,12 +96,11 @@ Un domaine définit où le cookie est accessible. Cependant en pratique, il y a 
 
 **Il n'y a pas de moyen de laisser un cookie être accessible depuis un domaine de second niveau, donc `other.com` ne recevra jamais un cookie défini à `site.com`**
 
-C'est une restriction de sécurité, pour nous permettre de stocker des données sensible dans nos cookies qui ne seront disponibles que sur un site.
+C'est une restriction de sécurité, pour nous permettre de stocker des données sensibles dans nos cookies qui ne seront disponibles que sur un site.
 
-Par défaut, un cookie est accessible uniquement depuis le domaine qui l'a définit.
+Par défaut, un cookie est accessible uniquement depuis le domaine qui l'a défini.
 
 Veuillez noter, par défaut un cookie n'est pas partagé avec un sous-domaine, tel que `forum.site.com`.
-
 
 ```js
 // Si nous définissons un cookie sur site.com
@@ -111,9 +110,9 @@ document.cookie = "user=John"
 alert(document.cookie); // no user
 ```
 
-...Mais ça peut changer. Si nous voulions permettre aux sous-domaines comme `forum.site.com` de récupérer un cookie défini par `site.com`, c'est possible.
+...Mais cela peut changer. Si nous voulions permettre aux sous-domaines comme `forum.site.com` de récupérer un cookie défini par `site.com`, c'est possible.
 
-Pour que ça arrive, quand nous definissons un cookie depuis `site.com`, nous pouvons définir l'option `domain` à la racine du domaine : `domain=site.com`. Alors tous les sous-domaines verront un tel cookie.
+Pour que cela arrive, quand nous definissons un cookie depuis `site.com`, nous pouvons définir l'option `domain` à la racine du domaine : `domain=site.com`. Alors tous les sous-domaines verront un tel cookie.
 
 Par exemple :
 
@@ -128,7 +127,7 @@ document.cookie = "user=John; *!*domain=site.com*/!*"
 alert(document.cookie); // Le cookie user=John existe
 ```
 
-Pour des raisons historiques, `domain=.site.con` (avec un point avant `site.com`) fonctionne de la même manière, permettant l'accés au cookie depuis les sous-domaines. C'est une vielle façon de faire et pourrait être utilisée si nous voulons prendre en charge les très vieux navigateurs.
+Pour des raisons historiques, `domain=.site.con` (avec un point avant `site.com`) fonctionne de la même manière, permettant l'accés au cookie depuis les sous-domaines. C'est une vielle façon de faire et pourrait être utilisée si nous voulions prendre en charge les très vieux navigateurs.
 
 Pour résumer, l'option `domain` permet de rendre un cookie accessible aux sous-domaines.
 
