@@ -407,3 +407,22 @@ Les sites web ont généralement deux variantes pour suivre les RGPD. Vous devez
     Pour faire ça légalement, un site web affiche une fenêtre contextuelle "de démarrage" pour les nouveaux venus, et nécessite qu'ils acceptent les cookies. Alors le site web peut les définir et laisser les gens voir le contenu. Ça peut être dérangeant pour les nouveaux visiteurs cependant. Personne n'aime voir de tel fenêtre contextuelle "doit cliquer" plutôt que le contenu. Mais les RGPD requiert un accord explicite.
 
 Les RGPD ne concernent pas uniquement les cookies, ça concerne aussi les trucs d'ordres personnels. mais ça va au delà de notre portée.
+
+## Résumé
+
+`document.cookie` fournit un accès aux cookies.
+- Les opérations d'écriture modifie uniquement les cookies qu'elles mentionnent.
+- Name/value doivent être encodés.
+- Un cookie ne peut pas excéder 4KB en taille. Le nombre de cookies permis sur un domaine est d'environ 20+ (variable selon le navigateur)
+
+Les options de cookies sont :
+
+- `path=/`, par défaut le chemin courant, rend les cookies visibles uniquement sous ce chemin.
+- `domain=site.com`, par défaut un cookie est visible seulement sur le domaine courant. Si le domaine est définis explicitement, le cookie devient visible depuis les sous domaines.
+- `expires` ou `max-age` définissent la date d'expiration du cookie. Sans eux le cookie meurt à la fermeture du navigateur.
+- `secure` empêche le navigateur d'envoyer un cookie avec les requêtes en dehors du site. Ça aide à prévenir des attaques XSRF.
+
+Additionnellement :
+
+- Les cookies tiers peuvent être interdis par le navigateur, e.g. Safari le fait par défaut.
+- Quand nous définissons un cookie de tracking pour les citoyens Européens, les RGPD nécessite qu'on en demande la permissions.
