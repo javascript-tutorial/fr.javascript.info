@@ -176,7 +176,7 @@ Le cookie pourrait être transféré avec HTTPS.
 
 Les cookies sont "domain-based", ils ne sont pas distinguables entre les protocoles.
 
-Avec cette option, si un cookie est défini par `https://site.com`, alors il n'apparait pas quand le même site est accéder par HTTP, comme `http://site.com`. Donc si un cookie a un contenu sensible il ne devrait pas être envoyé sur HTTP qui est non chiffré, le flag `secure` est la bonne chose.
+Avec cette option, si un cookie est défini par `https://site.com`, alors il n'apparait pas quand le même site est accédé par HTTP, comme `http://site.com`. Donc si un cookie a un contenu sensible il ne devrait pas être envoyé sur HTTP qui est non chiffré, le flag `secure` est la bonne chose.
 
 ```js
 // Admettons que nous soyons sur https:// maintenant
