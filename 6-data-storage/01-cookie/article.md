@@ -30,9 +30,9 @@ En considérant que vous êtes sur un site web, il est possible de voir ses cook
 alert( document.cookie ); // cookie1=value1; cookie2=value2;...
 ```
 
-La valeur de `document.cookie` consiste en des paires `name=value`, délimitées par `; `. Chacune est un cookie séparé.
+La valeur de `document.cookie` consiste en des paires `name=value`, délimitées par `; `. Chacune étant un cookie séparé.
 
-Pour trouver un cookie en particulier, nous pouvons diviser `document.cookie` par `; `, et donc trouver le bon nom. Nous pouvons utiliser soit une expression régulière (regex) ou les fonctions de tableau pour faire cela.
+Pour trouver un cookie en particulier, nous pouvons diviser `document.cookie` par `; `, et donc trouver le bon nom. Nous pouvons utiliser soit une expression régulière (regex) ou des fonctions de tableau pour faire cela.
 
 Nous laissons cela en tant qu'exercice pour le lecteur. Aussi, à la fin du chapitre vous trouverez des fonctions utilitaires pour manipuler les cookies.
 
@@ -51,7 +51,7 @@ alert(document.cookie); // Affiche tous les cookies
 
 Si vous exécutez cela, vous verrez probablement plusieurs cookies. Car l'opération `document.cookie=` ne réécrit pas tous les cookies. Elle définit uniquement le cookie `user` mentionné.
 
-Techniquement, le nom et la valeur peuvent être n'importe quel caractère. Pour garder un formattage valide, ils devraient être échappés en utilisant la fonction integrée `encodeURIComponent` :
+Techniquement, le nom et la valeur peuvent être n'importe quel caractère. Pour garder le formattage valide, ils devraient être échappés en utilisant la fonction integrée `encodeURIComponent` :
 
 ```js run
 // Les caractères spéciaux ont besoin d'encodage
@@ -66,7 +66,7 @@ alert(document.cookie); // ...; my%20name=John%20Smith
 
 ```warn header="Limitations"
 Il y a quelques limites :
-- La paire `name=value`, après `encodeURIComponent`, ne peut pas excéder 4KB. Donc on ne peut pas stocker quelque chose trop lourd sur un cookie.
+- La paire `name=value`, après `encodeURIComponent`, ne peut pas excéder 4KB. Donc on ne peut pas stocker quelque chose de trop lourd sur un cookie.
 - Le nombre total de cookie par domaine est limité à ~ 20+, la limite exacte dépend du navigateur.
 ```
 
@@ -84,7 +84,7 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible pour les pages du même chemin. Par défaut, il s'agit du chemin courant.
 
-Si un cookie est défini avec `pah=/admin`, il est visible aux pages `/admin` et `/admin/something`, mais pas à `/home` ou `/adminpage`.
+Si un cookie est défini avec `path=/admin`, il est visible aux pages `/admin` et `/admin/something`, mais pas à `/home` ou `/adminpage`.
 
 Généralement, nous devons définir `path` à la racine `path=/` pour rendre le cookie accessible depuis toutes les pages du site.
 
@@ -92,11 +92,11 @@ Généralement, nous devons définir `path` à la racine `path=/` pour rendre le
 
 - **`domain=site.com`**
 
-Un domaine définit où le cookie est accessible. Cependant en pratique, il y a des limites. Nous ne pouvons pas définir n'importe quel domaine.
+Un domaine définit par où le cookie est accessible. Cependant en pratique, il y a des limites. Nous ne pouvons pas définir n'importe quel domaine.
 
 **Il n'y a pas de moyen de laisser un cookie être accessible depuis un domaine de second niveau, donc `other.com` ne recevra jamais un cookie défini à `site.com`**
 
-C'est une restriction de sécurité, pour nous permettre de stocker des données sensibles dans nos cookies qui ne seront disponibles que sur un site.
+Il s'agit d'une restriction de sécurité, pour nous permettre de stocker des données sensibles dans nos cookies qui ne seront disponibles que sur un site.
 
 Par défaut, un cookie est accessible uniquement depuis le domaine qui l'a défini.
 
@@ -110,7 +110,7 @@ document.cookie = "user=John"
 alert(document.cookie); // no user
 ```
 
-...Mais cela peut changer. Si nous voulions permettre aux sous-domaines comme `forum.site.com` de récupérer un cookie défini par `site.com`, c'est possible.
+...Mais cela peut changer. Si nous aimerions permettre aux sous-domaines comme `forum.site.com` de récupérer un cookie défini par `site.com`, c'est possible.
 
 Pour que cela arrive, quand nous definissons un cookie depuis `site.com`, nous pouvons définir l'option `domain` à la racine du domaine : `domain=site.com`. Alors tous les sous-domaines verront un tel cookie.
 
@@ -127,7 +127,7 @@ document.cookie = "user=John; *!*domain=site.com*/!*"
 alert(document.cookie); // Le cookie user=John existe
 ```
 
-Pour des raisons historiques, `domain=.site.con` (avec un point avant `site.com`) fonctionne de la même manière, permettant l'accés au cookie depuis les sous-domaines. C'est une vielle façon de faire et pourrait être utilisée si nous voulions prendre en charge les très vieux navigateurs.
+Pour des raisons historiques, `domain=.site.con` (avec un point avant `site.com`) fonctionne de la même manière, permettant l'accés au cookie depuis les sous-domaines. C'est une vielle notation et devrait être utilisée si nous avons besoin de prendre en charge les très vieux navigateurs.
 
 Pour résumer, l'option `domain` permet de rendre un cookie accessible aux sous-domaines.
 
