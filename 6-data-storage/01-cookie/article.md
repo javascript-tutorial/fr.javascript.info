@@ -224,13 +224,13 @@ Bien que, il y ait un petit inconvénient.
 
 Quand un utilisateur suit un lien légitime vers `bank.com`, comme depuis ses propres notes, il sera surpris que `bank.com` ne le reconnaisse pas. En effet, les cookies `samesite=strict` ne sont pas envoyés dans ce cas.
 
-Nous pouvons contourner ça avec deux cookies : une pour la "reconnaissance générale", uniquement dans le but de dire : "Salut, John", et un autre pour les opérations de changements de données avec `samesite=strict`. Alors, une personne venant de l'extérieur du site verra un message de bienvenue, mais les paiements devront être initié depuis le site de la banque, pour que le second cookie soit envoyé.
+Nous pouvons contourner ça avec deux cookies : une pour la "reconnaissance générale", uniquement dans le but de dire : "Salut, John", et un autre pour les opérations de changements de données avec `samesite=strict`. Alors, une personne venant de l'extérieur du site verra un message de bienvenue, mais les paiements devront être initiés depuis le site de la banque, pour que le second cookie soit envoyé.
 
 - **`samesite=lax`**
 
-Une approche plus relax qui protège aussi des XSRF et qui ne casse pas l'expérience utilisateur.
+Une approche plus relax qui protège aussi des XSRF et qui n'entrave pas l'expérience utilisateur.
 
-Le mode lax, tout comme `strict`, interdit le navigateur à envoyer des cookies quand venu de l'extérieur du site, mais ajoute une exception.
+Le mode lax, tout comme `strict`, interdit au navigateur d'envoyer des cookies quand venu de l'extérieur du site, mais ajoute une exception.
 
 Un cookie `samesite=lax` est envoyé lorsque deux conditions sont réunies :
 
@@ -240,13 +240,13 @@ Un cookie `samesite=lax` est envoyé lorsque deux conditions sont réunies :
 
 2. L'opération effectue une navigation de haut niveau (change l'URL dans la barre d'adresse).
 
-  C'est généralement vrai, mais si la navigation est effectuée dans une `<iframe>`, alors ce n'est pas du haut-niveau. Aussi, les méthodes JavaScript n'effectuent aucune navigation, ainsi elles ne conviennent pas.
+  C'est généralement vrai, mais si la navigation est effectuée dans une `<iframe>`, alors ce n'est pas du haut-niveau. Aussi, les méthodes JavaScript n'effectuent aucune navigation, alors elles ne conviennent pas.
 
 Donc, que fait `samesite=lax`, il permet les opérations basiques "va à l'URL" à avoir des cookies. E.g. ouvrir un lien depuis des notes satisfait ces conditions.
 
 Mais quelque chose de plus compliqué, comme une requête depuis un autre site ou une soumission de formulaire, perd les cookies.
 
-Si cela vous convient, alors ajouter `samesite=lax` ne cassera probablement pas l'expérience utilisateur et ajoutera une protection.
+Si cela vous convient, alors ajouter `samesite=lax` n'entravera probablement pas l'expérience utilisateur et ajoutera une protection.
 
 Dans l'ensemble, `samesite` est une bonne option.
 
@@ -260,7 +260,7 @@ Mais nous pouvons assurément utiliser `samesite` avec d'autres mesures de prote
 
 ## httpOnly
 
-Cette option n'a rien à faire avec JavaScript, mais nous devons la mentionner pour des raisons d'exhaustivité.
+Cette option n'a rien à voir avec JavaScript, mais nous devons la mentionner pour des raisons d'exhaustivité.
 
 Le serveur web utilise l'entête `Set-Cookie` pour définir un cookie. Aussi, il peut définir l'option `httpOnly`.
 
