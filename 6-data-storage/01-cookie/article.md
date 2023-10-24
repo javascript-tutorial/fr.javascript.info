@@ -36,11 +36,11 @@ Pour trouver un cookie en particulier, nous pouvons diviser `document.cookie` pa
 
 Nous laissons cela en tant qu'exercice pour le lecteur. Aussi, à la fin du chapitre vous trouverez des fonctions utilitaires pour manipuler les cookies.
 
-## Écrire depuis document.cookie
+## Écrire dans document.cookie
 
-Nous pouvons écrire avec `document.cookie`. Mais ce n'est pas une propriété de données, c'est un [accesseur (getter/setter)](info:property-accessors). Une affectation à ce dernier est traitée de façon particulière.
+Nous pouvons écrire dans `document.cookie`. Mais ce n'est pas une propriété de données, c'est un [accesseur (getter/setter)](info:property-accessors). Une affectation à ce dernier est traitée spécialement.
 
-**Une opération d'écriture à `document.cookie` met à jour seulement les cookies mentionnés dedans, mais ne touche pas les autres cookies.**
+**Une opération d'écriture dans `document.cookie` met à jour seulement les cookies mentionnés dedans, mais ne touche pas les autres cookies.**
 
 Par exemple, cet appel définit un cookie avec le nom `user` et la valeur `John` :
 
@@ -82,9 +82,9 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 - **`path=/mypath`**
 
-Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible depuis les pages du même chemin. Par défaut, il s'agit du chemin courant.
+Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible pour les pages du même chemin. Par défaut, il s'agit du chemin courant.
 
-Si un cookie est défini avec `pah=/admin`, il est visible depuis les pages `/admin` et `/admin/something`, mais pas depuis `/home` ou `/adminpage`.
+Si un cookie est défini avec `pah=/admin`, il est visible aux pages `/admin` et `/admin/something`, mais pas à `/home` ou `/adminpage`.
 
 Généralement, nous devons définir `path` à la racine `path=/` pour rendre le cookie accessible depuis toutes les pages du site.
 
