@@ -246,17 +246,17 @@ Donc, que fait `samesite=lax`, il permet les opérations basiques "va à l'URL" 
 
 Mais quelque chose de plus compliqué, comme une requête depuis un autre site ou une soumission de formulaire, perd les cookies.
 
-Si ça vous convient, alors ajouter `samesite=lax` ne cassera probablement pas l'expérience utilisateur et ajoutera une protection.
+Si cela vous convient, alors ajouter `samesite=lax` ne cassera probablement pas l'expérience utilisateur et ajoutera une protection.
 
 Dans l'ensemble, `samesite` est une bonne option.
 
-Il y un inconvénient :
+Il y a un inconvénient :
 
-- `samesite` est ignoré (non supporté) par les très vieux navigateurs, de 2017 et avant.
+- `samesite` est ignoré (non supporté) par les très vieux navigateurs, datant de 2017 et avant.
 
 **Donc si nous comptions uniquement sur `samesite` pour fournir une protection, alors les anciens navigateurs seraient vulnérables.**
 
-Mais nous pouvons assurément utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourreront, nous pourrons probablement nous passer des tokens xsrf.
+Mais nous pouvons assurément utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourront, nous pourrons probablement nous passer des tokens xsrf.
 
 ## httpOnly
 
