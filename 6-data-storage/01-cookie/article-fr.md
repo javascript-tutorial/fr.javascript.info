@@ -257,4 +257,4 @@ Il y un inconvénient :
 
 **Donc si nous comptions uniquement sur `samesite` pour fournir une protection, alors les anciens navigateurs seraient vulnérables.**
 
-Mais nous pouvons sûrement utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourreront, nous pourrons probablement nous passer des tokens xsrf.
+Mais nous pouvons assurément utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourreront, nous pourrons probablement nous passer des tokens xsrf.
