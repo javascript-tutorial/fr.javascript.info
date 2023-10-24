@@ -184,3 +184,7 @@ Avec cette option, si un cookie est défini par `https://site.com`, alors il n'a
 // Définit le cookie pour être sécurisé (seulement accessible par HTTPS)
 document.cookie = "user=John; secure";
 ```
+
+## samesite
+
+Il s'agit d'un nouvel attribut de sécurité `samesite`. Il a été conçu pour protéger de ce qu'on appelle attaques XSRF (cross-site-request-forgery).
