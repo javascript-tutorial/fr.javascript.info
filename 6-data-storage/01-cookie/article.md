@@ -353,11 +353,11 @@ Ensemble : [cookie.js](cookie.js).
 
 ## Annexe : Les cookies tiers
 
-Un cookie est appellé "tiers" s'il est placé par un domain autre que la page que l'utilisateur visite.
+Un cookie est appellé "tiers" s'il est placé par un domaine autre que la page que l'utilisateur visite.
 
 Par exemple :
 1. Une page à `site.com` charge une bannière depuis un autre site : `<img src="https://ads.com/banner.png">`.
-2. Le long de la banière, le serveur distant à `ads.com` peut définir un entête `Set-Cookie` avec un cookie type `id=1234`. Un tel cookie originaire du domaine `ads.com`, et ne sera visible que par `ads.com` :
+2. Le long de la bannière, le serveur distant à `ads.com` peut définir un entête `Set-Cookie` avec un cookie type `id=1234`. Un tel cookie originaire du domaine `ads.com`, et ne sera visible que par `ads.com` :
 
     ![](cookie-third-party.svg)
 
@@ -365,11 +365,11 @@ Par exemple :
  
     ![](cookie-third-party-2.svg)
 
-4. Le plus important c'est que, quand un utilisateur bouge depuis `site.com` vers un autre site `other.com`, qui a lui aussi une bannière, alors `ads.com` récupère le cookie, comme elle appartient à `ads.com`, de fait il reconnait le visiteur et le tracke comme il à bouger entre les sites :
+4. Le plus important c'est que, quand un utilisateur bouge depuis `site.com` vers un autre site `other.com`, qui a lui aussi une bannière, alors `ads.com` récupère le cookie, comme elle appartient à `ads.com`, de fait il reconnait le visiteur et le tracke puisqu'il a bougé entre les sites :
 
     ![](cookie-third-party-3.svg)
 
-Les cookies tiers sont traditionnellement utilisé pour le tracking et les services publicitaires, en raison de leur nature. Ils sont liés au domaine dont ils sont originaires, donc `ads.com` peut tracker le même utilisateur entre différents sites, s'ils y accédent tous.
+Les cookies tiers sont traditionnellement utilisés pour le tracking et les services publicitaires, en raison de leur nature. Ils sont liés au domaine dont ils sont originaires, donc `ads.com` peut tracker le même utilisateur entre différents sites, s'ils y accédent tous.
 
 Naturellement, certaines personnes n'aiment pas être trackées, donc les navigateurs permettent de désactiver ce genre de cookie.
 
