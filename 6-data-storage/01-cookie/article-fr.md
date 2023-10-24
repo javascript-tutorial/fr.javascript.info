@@ -333,3 +333,21 @@ function setCookie(name, value, options = {}) {
 // Exemple d'utilisation :
 setCookie('user', 'John', {secure: true, 'max-age': 3600});
 ```
+
+### deleteCookie(name)
+
+Pour supprimer un cookie, nous pouvons l'appeler avec une date d'expiration négative :
+
+```js
+function deleteCookie(name) {
+  setCookie(name, "", {
+    'max-age': -1
+  })
+}
+```
+
+```warn header="Mettre à jour ou supprimer doivent utiliser le même path et domain"
+Veuillez noter : quand nous mettons à jour ou supprimons un cookie, nous devons utiliser exactement les mêmes options path et domain que lorsque nous l'avons définit
+```
+
+Ensemble : [cookie.js](cookie.js).
