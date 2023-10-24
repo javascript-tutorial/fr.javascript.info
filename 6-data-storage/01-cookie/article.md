@@ -82,7 +82,7 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 - **`path=/mypath`**
 
-Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible depuis les pages du même chemin. Par défaut, c'est le chemin courant.
+Le préfix du chemin de l'URL doit être absolu. Ça rend le cookie accessible depuis les pages du même chemin. Par défaut, il s'agit du chemin courant.
 
 Si un cookie est défini avec `pah=/admin`, il est visible depuis les pages `/admin` et `/admin/something`, mais pas depuis `/home` ou `/adminpage`.
 
