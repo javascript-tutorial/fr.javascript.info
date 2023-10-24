@@ -278,3 +278,24 @@ Mais si un cookie est `httpOnly`, alors `document.cookie` ne le voit pas, donc i
 Ici un petit lot de fonctions qui fonctionnent avec les cookies, plus pratiques que des modifications manuelles de `document.cookie`.
 
 Il existe beaucoup de librairies de cookie pour ça, celles là sont à but démonstratifs. Elles fonctionnent complétement cependant.
+
+### getCookie(name)
+
+Le moyen le plus court d'accéder à un cookie est d'utiliser une [expression régulière](info:regular-expressions).
+
+La fonction `getCookie(name)` retourne un cookie avec le nom donné :
+
+```js
+// Retourne le cookie correspondant au nom donné,
+// ou undefined si non trouvé
+function getCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+```
+
+Ici `new RegExp` est généré dynamiquement, pour faire correspondre `; name=<value>`.
+
+Veuillez noter qu'un cookie à une valeur encodée, donc `getCookie` utilise une fonction `decodeURIComponent` intégrée pour la décoder.
