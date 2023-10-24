@@ -258,3 +258,17 @@ Il y un inconvénient :
 **Donc si nous comptions uniquement sur `samesite` pour fournir une protection, alors les anciens navigateurs seraient vulnérables.**
 
 Mais nous pouvons assurément utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourreront, nous pourrons probablement nous passer des tokens xsrf.
+
+## httpOnly
+
+Cette option n'a rien à faire avec JavaScript, mais nous devons la mentionner pour des raisons d'exhaustivité.
+
+Le serveur web utilise l'entête `Set-Cookie` pour définir un cookie. Aussi, il peut définir l'option `httpOnly`.
+
+Cette option interdit à JavaScript d'accéder au cookie. Nous ne pouvons pas voir de tels cookies ou les manipuler en utilisant `document.cookie`.s
+
+C'est utilisé en tant que précaution, pour protéger de certaines attaques quand un hacker injecte son propre code JavaScript dans une page et attend qu'un utilisateur visite la page. Ça ne devrait pas être possible du tout, les hackers ne devraient pas être capable d'injecter leur code dans votre site, mais il peut y avoir des bugs qui les laisserai le faire.
+
+Normalement, si ce genre de chose arrivent, et qu'un utilisateur visite une page web avec le code JavaScript d'un hacker, alors le code s'exécute et obtient l'accès à `document.cookie` avec les cookies de l'utilisateur contenant les informations d'authentification. C'est mauvais.
+
+Mais si un cookie est `httpOnly`, alors `document.cookie` ne le voit pas, donc il est protégé.
