@@ -383,3 +383,27 @@ Si nous chargeons un script d'un domaine tiers, comme `<script src="https://goog
 
 Si un script définit un cookie, alors peu importe d'où vient le script -- le cookie appartient au domaine de la page courante.
 ```
+
+## Annexe : RGPD
+
+Ce sujet n'est pas lié à JavaScript du tout, il s'agit de quelque chose à garder à l'esprit quand nous définissons des cookies.s
+
+Il y une législation en Europe appellée RGPD, qui force les sites web à suivre un ensemble de règle pour respecter la vie privée de l'utilisateur. L'une de ces règles est de nécessiter une permission explicite de l'utilisateur pour les cookies de tracking.
+
+Veuillez noter, ça concerne seulement les cookies de tracking/identification/autorisation.
+
+Donc, si nous définissons un cookie pour sauvegarder certaines informations, mais sans tracker ni identifier l'utilisateur, nous sommes libre de le faire.
+
+Mais si nous allons définir un cookie avec une session d'authentification ou un identifiant de tracking, alors l'utilisateur doit le permettre.
+
+Les sites web ont généralement deux variantes pour suivre les RGPD. Vous devez les avoir déjà vu sur le web :
+
+1. Si un site web veut définir des cookies de tracking uniquement pour les utilisateurs authentifiés.
+
+    Pour faire ça, le formulaire d'enregistrement doit avoir une case à cocher comme "Accepter la politique sur la vie privée" (qui décrit comment les cookies sont utilisés), l'utilisateur doit la cocher, and alors le site web est libre de définir des cookies d'authentification.
+
+2. Si un site web veut définir des cookies de tracking pour tout le monde.
+
+    Pour faire ça légalement, un site web affiche une fenêtre contextuelle "de démarrage" pour les nouveaux venus, et nécessite qu'ils acceptent les cookies. Alors le site web peut les définir et laisser les gens voir le contenu. Ça peut être dérangeant pour les nouveaux visiteurs cependant. Personne n'aime voir de tel fenêtre contextuelle "doit cliquer" plutôt que le contenu. Mais les RGPD requiert un accord explicite.
+
+Les RGPD ne concernent pas uniquement les cookies, ça concerne aussi les trucs d'ordres personnels. mais ça va au delà de notre portée.
