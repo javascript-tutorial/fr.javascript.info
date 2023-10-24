@@ -165,3 +165,22 @@ document.cookie = "user=John; max-age=3600";
 
 // Supprime le cookie (le laisser expirer tout de suite)
 document.cookie = "user=John; max-age=0";
+```
+
+## secure
+
+- **`secure`**
+
+Le cookie pourrait être transféré avec HTTPS.
+
+**Par défaut, si nous définissons un cookie depuis `http://site.com`, alors il apparaitra aussi depuis `https://site.com` et vice versa.**
+
+Les cookies sont "domain-based", ils ne sont pas distinguables entre les protocoles.
+
+Avec cette option, si un cookie est défini par `https://site.com`, alors il n'apparait pas quand le même site est accéder par HTTP, comme `http://site.com`. Donc si un cookie a un contenu sensible il ne devrait pas être envoyé sur HTTP qui est non chiffré, le flag `secure` est la bonne chose.
+
+```js
+// Admettons que nous soyons sur https:// maintenant
+// Définit le cookie pour être sécurisé (seulement accessible par HTTPS)
+document.cookie = "user=John; secure";
+```
