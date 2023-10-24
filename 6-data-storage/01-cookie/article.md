@@ -214,17 +214,17 @@ Elle a deux valeurs possible :
 
 Un cookie avec `samesite=strict` n'est jamais envoyé si un utilisateur vient d'en dehors du même site.
 
-En d'autres termes, qu'importe que l'utilise suive un lien de ses mails ou soumette un formulaire provenant d'`evil.com`, ou qu'il fasse des opérations originaires d'un autre domaine, le cookie n'est pas envoyé.
+En d'autres termes, qu'importe que l'utilisateur suive un lien de ses mails ou soumette un formulaire provenant d'`evil.com`, ou qu'il fasse des opérations originaires d'un autre domaine, le cookie n'est pas envoyé.
 
-Si le cookie d'authentification a l'option `samesite`, alors l'attaque XSRF n'a aucun chance d'être un succés, car une soumission depuis `evil.com` ne vient pas avec les cookies. Donc `bank.com` ne reconnaitra pas l'utilisateur et ne procédera pas au paiement.
+Si le cookie d'authentification a l'option `samesite`, alors l'attaque XSRF n'a aucune chance d'être un succés, car une soumission depuis `evil.com` ne vient pas avec les cookies. Donc `bank.com` ne reconnaitra pas l'utilisateur et ne procédera pas au paiement.
 
-La protection est plutôt fiable. Seules les opérations provenants de `bank.com` vont envoyés le cookie `samesite`, e.g. une soumission de formulaire depuis une autre page à `bank.com`.
+La protection est plutôt fiable. Seules les opérations provenants de `bank.com` vont envoyer le cookie `samesite`, e.g. une soumission de formulaire depuis une autre page à `bank.com`.
 
 Bien que, il y a un petit inconvénient.
 
 Quand un utilisateur suit un lien légitime vers `bank.com`, comme depuis ses propres notes, il sera surpris que `bank.com` ne le reconnaisse pas. En effet, les cookies `samesite=strict` ne sont pas envoyés dans ce cas.
 
-Nous pouvons travailler autour de ça avec deux cookies : une pour la "reconnaissance générale", uniquement dans le but de dire : "Salut, John", et un autre pour les opérations de changements de données avec `samesite=strict`. Alors, une personne venant de l'extérieur du site verra un message de bienvenue, mais les paiements doivent être initié depuis le site de la banque, pour que le second cookie soit envoyé.
+Nous pouvons travailler autour de ça avec deux cookies : une pour la "reconnaissance générale", uniquement dans le but de dire : "Salut, John", et un autre pour les opérations de changements de données avec `samesite=strict`. Alors, une personne venant de l'extérieur du site verra un message de bienvenue, mais les paiements devront être initié depuis le site de la banque, pour que le second cookie soit envoyé.
 
 - **`samesite=lax`**
 
