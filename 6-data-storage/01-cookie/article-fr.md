@@ -272,3 +272,9 @@ C'est utilisé en tant que précaution, pour protéger de certaines attaques qua
 Normalement, si ce genre de chose arrivent, et qu'un utilisateur visite une page web avec le code JavaScript d'un hacker, alors le code s'exécute et obtient l'accès à `document.cookie` avec les cookies de l'utilisateur contenant les informations d'authentification. C'est mauvais.
 
 Mais si un cookie est `httpOnly`, alors `document.cookie` ne le voit pas, donc il est protégé.
+
+## Annexe : Les fonctions du cookie
+
+Ici un petit lot de fonctions qui fonctionnent avec les cookies, plus pratiques que des modifications manuelles de `document.cookie`.
+
+Il existe beaucoup de librairies de cookie pour ça, celles là sont à but démonstratifs. Elles fonctionnent complétement cependant.
