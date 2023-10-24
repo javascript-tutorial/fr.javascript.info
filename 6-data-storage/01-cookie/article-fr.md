@@ -131,3 +131,37 @@ alert(document.cookie); // Le cookie user=John existe
 Pour des raisons historiques, `domain=.site.con` (avec un point avant `site.com`) fonctionne de la même manière, permettant l'accés au cookie depuis les sous-domaines. C'est une vielle façon de faire et pourrait être utilisée si nous voulons prendre en charge les très vieux navigateurs.
 
 Pour résumer, l'option `domain` permet de rendre un cookie accessible aux sous-domaines.
+
+## expires, max-age
+
+Par défaut, si un cookie n'a pas ces options, il disparait quand le navigateur est fermé. De tels cookies sont appellés "cookies de session"
+
+Pour laisser les cookies survivre à la fermeture du navigateur, nous pouvons soit définir l'option `expires` ou `max-age`.
+
+- **`expires=Tue, 19 Jan 2038 03:14:07 GMT`**
+
+La date d'expiration du cookie définit le temps, quand le navigateur va automatiquement le supprimer.
+
+La date doit être exactement dans ce format, en timezone GMT. Nous pouvons utiliser `date.toUTCString` pour le récupérer. Par exemple, nous pouvons définir le cookie pour qu'il expire dans 1 jour :
+
+```js
+// +1 jour depuis maintenant
+let date = new Date(Date.now() + 86400e3);
+date = date.toUTCString();
+document.cookie = "user=John; expires=" + date;
+```
+
+Si nous définissons `expires` à une date antérieure dans le temps, le cookie est supprimé.
+
+- **`max-age=3600`**
+
+C'est une alternative à `expires` et elle spécifie l'expiration du cookie en seconde à partir de l'instant.
+
+Si elle est définie à zero ou une valeur négative, le cookie sera supprimé :
+
+```js
+// Le cookie mourra dans +1 heure à partir de maintenant
+document.cookie = "user=John; max-age=3600";
+
+// Supprime le cookie (le laisser expirer tout de suite)
+document.cookie = "user=John; max-age=0";
