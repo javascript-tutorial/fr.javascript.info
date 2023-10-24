@@ -38,7 +38,7 @@ Nous laissons cela en tant qu'exercice pour le lecteur. Aussi, à la fin du chap
 
 ## Écrire depuis document.cookie
 
-Nous pouvons écrire avec `document.cookie`. Mais ce n'est pas une propriété de données, c'est un [accesseur (getter/setter)](info:property-accessors). Une affectation à ça est traitée de façon particulière.
+Nous pouvons écrire avec `document.cookie`. Mais ce n'est pas une propriété de données, c'est un [accesseur (getter/setter)](info:property-accessors). Une affectation à ce dernier est traitée de façon particulière.
 
 **Une opération d'écriture à `document.cookie` met à jour seulement les cookies mentionnés dedans, mais ne touche pas les autres cookies.**
 
@@ -49,9 +49,9 @@ document.cookie = "user=John"; // Met à jour uniquement le cookie nommé 'user'
 alert(document.cookie); // Affiche tous les cookies
 ```
 
-Si vous exécutez ça, vous verrez probablement plusieurs cookies. Car l'opération `document.cookie=` ne réécrit pas tous les cookies. Elle définit uniquement le cookie `user` mentionné.
+Si vous exécutez cela, vous verrez probablement plusieurs cookies. Car l'opération `document.cookie=` ne réécrit pas tous les cookies. Elle définit uniquement le cookie `user` mentionné.
 
-Techniquement, le nom et la valeur peuvent être n'importe quel caractère. Pour garder un formattage valide, ils devraient pouvoir être échappés en utilisant la fonction integrée `encodeURIComponent` :
+Techniquement, le nom et la valeur peuvent être n'importe quel caractère. Pour garder un formattage valide, ils devraient être échappés en utilisant la fonction integrée `encodeURIComponent` :
 
 ```js run
 // Les caractères spéciaux ont besoin d'encodage
@@ -72,7 +72,7 @@ Il y a quelques limites :
 
 Les cookies ont plusieurs options, beaucoup d'entre elles sont importantes et devraient être définies.
 
-Les options sont listées après `key=value`, délimité par `;`, comme ça :
+Les options sont listées après `key=value`, délimité par `;`, comme ceci :
 
 ```js run
 document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
