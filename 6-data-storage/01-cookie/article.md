@@ -170,16 +170,16 @@ document.cookie = "user=John; max-age=0";
 
 - **`secure`**
 
-Le cookie pourrait être transféré avec HTTPS.
+Le cookie devrait être transféré seulement avec HTTPS.
 
-**Par défaut, si nous définissons un cookie depuis `http://site.com`, alors il apparaitra aussi depuis `https://site.com` et vice versa.**
+**Par défaut, si nous définissons un cookie à `http://site.com`, alors il apparaitra aussi à `https://site.com` et vice versa.**
 
 Les cookies sont "domain-based", ils ne sont pas distinguables entre les protocoles.
 
-Avec cette option, si un cookie est défini par `https://site.com`, alors il n'apparait pas quand le même site est accédé par HTTP, comme `http://site.com`. Donc si un cookie a un contenu sensible il ne devrait pas être envoyé sur HTTP qui est non chiffré, le flag `secure` est la bonne chose.
+Avec cette option, si un cookie est défini par `https://site.com`, alors il n'apparait pas quand le même site est accédé par HTTP, comme `http://site.com`. Donc si un cookie a un contenu sensible il ne devrait pas être envoyé sur HTTP qui n'est chiffré, le flag `secure` est la bonne chose.
 
 ```js
-// Admettons que nous soyons sur https:// maintenant
+// Considérons que nous soyons sur https:// maintenant
 // Définit le cookie pour être sécurisé (seulement accessible par HTTPS)
 document.cookie = "user=John; secure";
 ```
@@ -202,11 +202,11 @@ C'est ce qu'on appelle une attaque "Cross-Site Request Forgery" (XSRF en plus co
 
 Les vraies banques en sont évidemment protégées. Tous les formulaires générés par `bank.com` ont un champ spécial, un certain "XSRF protection token", qu'une page malveillante ne peut pas générer ou extraire de la page distante. Elle peut y soumettre un formulaire, mais pas récupérer les données. Le site `bank.com` vérifie ce genre de token dans tous les formulaires qu'il reçoit.
 
-Une telle protection prend du temps à implémenter cependant. Nous avons besoin de nous assurer que tous les formulaires ont le champ de token requis, et nous devons aussi vérifier toutes les requêtes.
+Une telle protection prend du temps à mettre en œuvre cependant. Nous avons besoin de nous assurer que tous les formulaires ont le champ de token requis, et nous devons aussi vérifier toutes les requêtes.
 
 ### Entrer un cookie avec l'option samesite
 
-L'option `samesite` de cookie fournit un autre moyen de se protéger de telles attaques, ça (en théorie) ne devrait pas nécessiter de "tokens de protections xsrf".
+L'option `samesite` de cookie fournit un autre moyen de se protéger de telles attaques, cela ne devrait (en théorie) pas nécessiter de "tokens de protections xsrf".
 
 Elle a deux valeurs possible :
 
@@ -214,9 +214,9 @@ Elle a deux valeurs possible :
 
 Un cookie avec `samesite=strict` n'est jamais envoyé si un utilisateur vient d'en dehors du même site.
 
-En d'autres termes, qu'importe que l'utilisateur suive un lien de ses mails ou soumette un formulaire provenant d'`evil.com`, ou qu'il fasse des opérations originaires d'un autre domaine, le cookie n'est pas envoyé.
+En d'autres termes, qu'importe que l'utilisateur suive un lien de ses mails ou soumette un formulaire provenant d'`evil.com`, ou qu'il fasse des opérations provenants d'un autre domaine, le cookie n'est pas envoyé.
 
-Si le cookie d'authentification a l'option `samesite`, alors l'attaque XSRF n'a aucune chance d'être un succés, car une soumission depuis `evil.com` ne vient pas avec les cookies. Donc `bank.com` ne reconnaitra pas l'utilisateur et ne procédera pas au paiement.
+Si le cookie d'authentification a l'option `samesite`, alors l'attaque XSRF n'a aucune chance de se solder par un succés, car une soumission depuis `evil.com` ne vient pas avec les cookies. Donc `bank.com` ne reconnaitra pas l'utilisateur et ne procédera pas au paiement.
 
 La protection est plutôt fiable. Seules les opérations provenants de `bank.com` vont envoyer le cookie `samesite`, e.g. une soumission de formulaire depuis une autre page à `bank.com`.
 
@@ -357,7 +357,7 @@ Un cookie est appellé "tiers" s'il est placé par un domaine autre que la page 
 
 Par exemple :
 1. Une page à `site.com` charge une bannière depuis un autre site : `<img src="https://ads.com/banner.png">`.
-2. Le long de la bannière, le serveur distant à `ads.com` peut définir un entête `Set-Cookie` avec un cookie type `id=1234`. Un tel cookie originaire du domaine `ads.com`, et ne sera visible que par `ads.com` :
+2. Le long de la bannière, le serveur distant à `ads.com` peut définir un entête `Set-Cookie` avec un cookie type `id=1234`. Un tel cookie provenant du domaine `ads.com`, et ne sera visible que par `ads.com` :
 
     ![](cookie-third-party.svg)
 
@@ -369,7 +369,7 @@ Par exemple :
 
     ![](cookie-third-party-3.svg)
 
-Les cookies tiers sont traditionnellement utilisés pour le tracking et les services publicitaires, en raison de leur nature. Ils sont liés au domaine dont ils sont originaires, donc `ads.com` peut tracker le même utilisateur entre différents sites, s'ils y accédent tous.
+Les cookies tiers sont traditionnellement utilisés pour le tracking et les services publicitaires, en raison de leur nature. Ils sont liés au domaine dont ils proviennent, donc `ads.com` peut tracker le même utilisateur entre différents sites, s'ils y accédent tous.
 
 Naturellement, certaines personnes n'aiment pas être trackées, donc les navigateurs permettent de désactiver ce genre de cookie.
 
