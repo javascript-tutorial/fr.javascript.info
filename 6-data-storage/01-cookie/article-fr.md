@@ -351,3 +351,35 @@ Veuillez noter : quand nous mettons à jour ou supprimons un cookie, nous devons
 ```
 
 Ensemble : [cookie.js](cookie.js).
+
+## Annexe : Les cookies tiers
+
+Un cookie est appellé "tiers" s'il est placé par un domain autre que la page que l'utilisateur visite.
+
+Par exemple :
+1. Une page à `site.com` charge une bannière depuis un autre site : `<img src="https://ads.com/banner.png">`.
+2. Le long de la banière, le serveur distant à `ads.com` peut définir un entête `Set-Cookie` avec un cookie type `id=1234`. Un tel cookie originaire du domaine `ads.com`, et ne sera visible que par `ads.com` :
+
+    ![](cookie-third-party.svg)
+
+3. La prochaine fois que `ads.com` est accéder, le serveur distant récupère le cookie `id` et reconnait l'utilisateur :
+ 
+    ![](cookie-third-party-2.svg)
+
+4. Le plus important c'est que, quand un utilisateur bouge depuis `site.com` vers un autre site `other.com`, qui a lui aussi une bannière, alors `ads.com` récupère le cookie, comme elle appartient à `ads.com`, de fait il reconnait le visiteur et le tracke comme il à bouger entre les sites :
+
+    ![](cookie-third-party-3.svg)
+
+Les cookies tiers sont traditionnellement utilisé pour le tracking et les services publicitaires, en raison de leur nature. Ils sont liés au domaine dont ils sont originaires, donc `ads.com` peut tracker le même utilisateur entre différents sites, s'ils y accédent tous.
+
+Naturellement, certaines personnes n'aiment pas être trackées, donc les navigateurs permettent de désactiver ce genre de cookie.
+
+Aussi, les navigateur modernes mettent en place des politiques spéciales pour de tels cookies :
+- Safari ne permet pas du tout les cookies tiers
+- Firefox vient avec une "black list" de domaines tiers où sont bloqués les cookies tiers.
+
+```smart
+Si nous chargeons un script d'un domaine tiers, comme `<script src="https://google-analytics.com/analytics.js">`, et que ce script utilise `document.cookie` pour définir un cookie, alors un tel cookie n'est pas un cookie tiers.
+
+Si un script définit un cookie, alors peu importe d'où vient le script -- le cookie appartient au domaine de la page courante.
+```
