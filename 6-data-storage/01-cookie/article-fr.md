@@ -226,3 +226,35 @@ Bien que, il y a un petit inconvénient.
 Quand un utilisateur suit un lien légitime vers `bank.com`, comme depuis ses propres notes, il sera surpris que `bank.com` ne le reconnaisse pas. En effet, les cookies `samesite=strict` ne sont pas envoyés dans ce cas.
 
 Nous pouvons travailler autour de ça avec deux cookies : une pour la "reconnaissance générale", uniquement dans le but de dire : "Salut, John", et un autre pour les opérations de changements de données avec `samesite=strict`. Alors, une personne venant de l'extérieur du site verra un message de bienvenue, mais les paiements doivent être initié depuis le site de la banque, pour que le second cookie soit envoyé.
+
+- **`samesite=lax`**
+
+Une approche plus relax qui protège aussi des XSRF et qui ne casse pas l'expérience utilisateur.
+
+Le mode lax, tout comme `strict`, interdit le navigateur à envoyer des cookies quand venu de l'extérieur du site, mais ajoute une exception.
+
+Un cookie `samesite=lax` est envoyé lorsque deux conditions sont réunies :
+
+1. La méthode HTTP est "safe" (e.g. GET, mais pas POST).
+
+  La liste complète des méthodes HTTP safes est dans la [spécification RFC7231](https://tools.ietf.org/html/rfc7231). Basiquement ce sont des méthodes qui peuvent être utilisées pour lire, mais pas pour écrire de données. Elles ne doivent pas effectuer d'opérations de modifications de données. Suivre un lien c'est toujours du GET, la méthode safe.
+
+2. L'opération effectue une navigation de haut niveau (change l'URL dans la barre d'adresse).
+
+  C'est généralement vrai, mais si la navigation est effectuée dans une `<iframe>`, alors ce n'est pas du haut-niveau. Aussi, les méthodes JavaScript n'effectuent aucune navigation, ainsi elles ne conviennent pas.
+
+Donc, que fait `samesite=lax`, il permet les opérations basiques "va à l'URL" à avoir des cookies. E.g. ouvrir un lien depuis des notes satisfait ces conditions.
+
+Mais quelque chose de plus compliqué, comme une requête depuis un autre site ou une soumission de formulaire, perd les cookies.
+
+Si ça vous convient, alors ajouter `samesite=lax` ne cassera probablement pas l'expérience utilisateur et ajoutera une protection.
+
+Dans l'ensemble, `samesite` est une bonne option.
+
+Il y un inconvénient :
+
+- `samesite` est ignoré (non supporté) par les très vieux navigateurs, de 2017 et avant.
+
+**Donc si nous comptions uniquement sur `samesite` pour fournir une protection, alors les anciens navigateurs seraient vulnérables.**
+
+Mais nous pouvons sûrement utiliser `samesite` avec d'autres mesures de protections, comme les tokens xsrf, pour ajouter une couche de défense additionnelle et donc, dans le futur, quand les anciens navigateurs mourreront, nous pourrons probablement nous passer des tokens xsrf.
