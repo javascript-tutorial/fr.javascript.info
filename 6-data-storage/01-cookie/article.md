@@ -135,11 +135,11 @@ Pour résumer, l'option `domain` permet de rendre un cookie accessible aux sous-
 
 Par défaut, si un cookie n'a pas ces options, il disparait quand le navigateur est fermé. De tels cookies sont appellés "cookies de session"
 
-Pour laisser les cookies survivre à la fermeture du navigateur, nous pouvons soit définir l'option `expires` ou `max-age`.
+Pour laisser les cookies survivre à la fermeture du navigateur, nous pouvons soit définir soit l'option `expires` ou `max-age`.
 
 - **`expires=Tue, 19 Jan 2038 03:14:07 GMT`**
 
-La date d'expiration du cookie définit le temps, quand le navigateur va automatiquement le supprimer.
+La date d'expiration du cookie définit la date, à laquelle le navigateur le supprimera automatiquement.
 
 La date doit être exactement dans ce format, en timezone GMT. Nous pouvons utiliser `date.toUTCString` pour le récupérer. Par exemple, nous pouvons définir le cookie pour qu'il expire dans 1 jour :
 
@@ -150,11 +150,11 @@ date = date.toUTCString();
 document.cookie = "user=John; expires=" + date;
 ```
 
-Si nous définissons `expires` à une date antérieure dans le temps, le cookie est supprimé.
+Si nous définissons `expires` à une date dans le passé, le cookie est supprimé.
 
 - **`max-age=3600`**
 
-C'est une alternative à `expires` et elle spécifie l'expiration du cookie en seconde à partir de l'instant.
+Il s'agit d'une alternative à `expires` et elle spécifie l'expiration du cookie en seconde à partir de l'instant.
 
 Si elle est définie à zero ou une valeur négative, le cookie sera supprimé :
 
