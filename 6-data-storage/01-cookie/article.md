@@ -274,7 +274,7 @@ Mais si un cookie est `httpOnly`, alors `document.cookie` ne le voit pas, donc i
 
 ## Annexe : Les fonctions du cookie
 
-Ici un petit lot de fonctions qui fonctionnent avec les cookies, plus pratiques que des modifications manuelles de `document.cookie`.
+Ici un petit ensemble de fonctions qui fonctionnent avec les cookies, plus pratiques que des modifications manuelles de `document.cookie`.
 
 Il existe beaucoup de librairies de cookie pour ça, celles là sont à but démonstratifs. Elles fonctionnent complétement cependant.
 
@@ -297,7 +297,7 @@ function getCookie(name) {
 
 Ici `new RegExp` est généré dynamiquement, pour faire correspondre `; name=<value>`.
 
-Veuillez noter qu'un cookie à une valeur encodée, donc `getCookie` utilise une fonction `decodeURIComponent` intégrée pour la décoder.
+Veuillez noter qu'un cookie a une valeur encodée, donc `getCookie` utilise une fonction `decodeURIComponent` intégrée pour la décoder.
 
 ### setCookie(name, value, options)
 
