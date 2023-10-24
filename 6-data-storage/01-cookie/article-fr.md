@@ -299,3 +299,37 @@ function getCookie(name) {
 Ici `new RegExp` est généré dynamiquement, pour faire correspondre `; name=<value>`.
 
 Veuillez noter qu'un cookie à une valeur encodée, donc `getCookie` utilise une fonction `decodeURIComponent` intégrée pour la décoder.
+
+### setCookie(name, value, options)
+
+Définit le cookie `name` à la valeur `valeur` avec `path=/` par défaut (peut être modifié pour ajouter d'autres valeurs par défaut) :
+
+```js run
+function setCookie(name, value, options = {}) {
+
+  options = {
+    path: '/',
+    // Ajoute d'autres valeurs par défaut si nécessaire
+    ...options
+  };
+
+  if (options.expires instanceof Date) {
+    options.expires = options.expires.toUTCString();
+  }
+
+  let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+  for (let optionKey in options) {
+    updatedCookie += "; " + optionKey;
+    let optionValue = options[optionKey];
+    if (optionValue !== true) {
+      updatedCookie += "=" + optionValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+}
+
+// Exemple d'utilisation :
+setCookie('user', 'John', {secure: true, 'max-age': 3600});
+```
