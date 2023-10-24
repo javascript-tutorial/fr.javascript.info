@@ -21,7 +21,7 @@ Votre navigateur stocke t-il des cookies depuis ce site ? Voyons voir :
 ```
 
 ```offline
-En admettant que vous êtes sur un site web, il est possible de voir ses cookies, comme ça :
+En considérant que vous êtes sur un site web, il est possible de voir ses cookies, comme ceci :
 ```
 
 ```js run
@@ -30,11 +30,11 @@ En admettant que vous êtes sur un site web, il est possible de voir ses cookies
 alert( document.cookie ); // cookie1=value1; cookie2=value2;...
 ```
 
-La valeur de `document.cookie` consiste en des paires `name=value`, délimité par `; `. Chacun est un cookie séparé.
+La valeur de `document.cookie` consiste en des paires `name=value`, délimitées par `; `. Chacune est un cookie séparé.
 
-Pour trouver un cookie en particulier, nous pouvons divisé `document.cookie` par `; `, et donc trouver le bon nom. Nous pouvons utiliser soit une expression régulière (regex) ou les fonctions de tableau pour faire cela.
+Pour trouver un cookie en particulier, nous pouvons diviser `document.cookie` par `; `, et donc trouver le bon nom. Nous pouvons utiliser soit une expression régulière (regex) ou les fonctions de tableau pour faire cela.
 
-Nous laissons ça en tant qu'exercice pour le lecteur. Aussi, à la fin du chapitre vous trouverez des fonctions utilitaires pour manipuler les cookies.
+Nous laissons cela en tant qu'exercice pour le lecteur. Aussi, à la fin du chapitre vous trouverez des fonctions utilitaires pour manipuler les cookies.
 
 ## Écrire depuis document.cookie
 
