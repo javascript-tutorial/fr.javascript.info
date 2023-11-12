@@ -9,7 +9,7 @@ function setCookie(name, value, options = {}) {
 
   options = {
     path: '/',
-    // add other defaults here if necessary
+    // Ajouter d'autres valeurs par défaut si nécessaire
     ...options
   };
 
