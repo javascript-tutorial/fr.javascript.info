@@ -357,6 +357,6 @@ On peut remarquer immédiatement quelques avantages par rapport aux fonctions de
 | Promesses | Fonctions de retour |
 |-----------|----------------------|
 | Les promesses nous permettent de faire des choses dans un ordre naturel. D'abord, nous lançons `loadScript(script)`, puis avec `.then` nous codons quoi faire avec le résultat. | Nous devons avoir une fonction de retour à notre disposition quand nous appelons `loadScript(script, callback)`. En d'autres termes, nous devons savoir quoi faire du résultat *avant* que `loadScript` soit appelé. |
-| Nous pouvons appeler `.then` sur une promesse autant de temps fois que nécessaire. À chaque fois, nous ajoutons un nouveau "fan", une nouvelle fonction s'abonnant à la "liste d'abonnés". Nous en verrons plus à ce sujet dans le prochain chapitre : [](info:promise-chaining). | Il ne peut y avoir qu'une seule fonction de retour. |
+| Nous pouvons appeler `.then` sur une promesse autant de fois que nécessaire. À chaque fois, que nous ajoutons un nouveau "fan", une nouvelle fonction s'abonne à la "liste d'abonnés". Nous en verrons plus à ce sujet dans le prochain chapitre : [](info:promise-chaining). | Il ne peut y avoir qu'une seule fonction de retour. |
 
 Les promesses nous permettent donc d'avoir plus de sens et une meilleure flexibilité. Mais il y a plus. Nous allons voir cela dans les chapitres suivants.
