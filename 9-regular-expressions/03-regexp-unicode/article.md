@@ -1,6 +1,6 @@
 # Unicode: indicateur "u" et classe \p{...}
 
-JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) pour les chaînes de cractères. La plupart des caractères sont codés sur 2 octets, mais cela permet de représenter au plus 65536 caractères.
+JavaScript utilise [l'encodage Unicode](https://fr.wikipedia.org/wiki/Unicode) pour les chaînes de caractères. La plupart des caractères sont codés sur 2 octets, mais cela permet de représenter au plus 65536 caractères.
 
 Cette plage n'est pas assez grande pour encoder tous les caractères possibles, c'est pourquoi certains caractères rares sont encodés sur 4 octets, par exemple comme `𝒳` (X mathématique) ou `😄` (un sourire), certains hiéroglyphes et ainsi de suite.
 
