@@ -47,7 +47,7 @@ Dans notre chaîne de caractères cela correspond exactement au nombre `1`.
 
 Supposons que nous recherchons plutôt une quantité, non un prix, a partir de la même chaîne de caractères.
 
-Pour cela, le loopahead negatif peut etre utilisé.
+Pour cela, le lookahead negatif peut etre utilisé.
 
 La syntaxe est: `pattern:X(?!Y)`, cela veut dire `pattern:X`, mais seulement si il n'est pas suivi de  `pattern:Y`".
 
@@ -65,7 +65,7 @@ Veuillez noter : Lookbehind n'est pas pris en charge dans les navigateurs non-V8
 
 Lookahead permet d'ajouter une condition sur  "ce qui suit".
 
-Lookbehind est similaire a loopahead, mais il regarde derrière.Ça veut dire qu'il établit une correspondance seulement si il y a quelquechose avant lui,
+Lookbehind est similaire a lookahead, mais il regarde derrière.Ça veut dire qu'il établit une correspondance seulement si il y a quelquechose avant lui,
 
 La syntaxe est:
 - Lookbehind positif: `pattern:(?<=Y)X`, correspond à `pattern:X`, mais seulement si il y a `pattern:Y` avant lui.
@@ -116,7 +116,7 @@ alert( str.match(regexp) ); // 30, $
 
 ## Summary
 
-Lookahead et lookbehind (ensemble désignés sous le nom de looparound) sont utiles quand nous voulons identifier quelquechose selon le contexte avant/après lui.
+Lookahead et lookbehind (ensemble désignés sous le nom de lookaround) sont utiles quand nous voulons identifier quelquechose selon le contexte avant/après lui.
 
 Pour les expressions regulières simple, nous pouvons une chose similaire manuellement: considerer tous les elemets, dans tous les contextes et alors filtrer par contexte en boucle 
 
