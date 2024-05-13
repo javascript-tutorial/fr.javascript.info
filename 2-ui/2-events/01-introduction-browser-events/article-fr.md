@@ -5,26 +5,26 @@
 Voici la liste des événements du DOM les plus utiles, juste pour avoir un aperçu :
 
 **Événements de la souris :**
-- `click` -- lorsque la souris clique sur un élément (les appareils avec un écran tactile le génèrent d'un simple toucher).
+- `click` -- lorsque la souris clique sur un élément (les appareils avec écran tactile le génèrent d'une simple touche).
 - `contextmenu` -- lorsque la souris effectue un clic droit sur un élément.
 - `mouseover` / `mouseout` -- lorsque le curseur de la souris survole ou sort d'un élément.
-- `mousedown` / `mouseup` -- lorsque le button de la souris est pressé / relâché sur un élément.
-- `mousemove` -- lorsque la souris est bougée.
+- `mousedown` / `mouseup` -- lorsque le bouton de la souris est pressé / relâché sur un élément.
+- `mousemove` -- lorsque la souris est déplacée.
 
 **Événements du clavier :**
-- `keydown` / `keyup` -- lorsqu'une touche du clavier est pressée et relachée.
+- `keydown` / `keyup` -- lorsqu'une touche du clavier est pressée et relâchée.
 
 **Événements d'éléments de formulaire :**
 - `submit` -- lorsque le visiteur soumet un `<form>`.
-- `focus` -- lorsque le visiteur se concentre sur un élément, e.g sur un `<input>`.
+- `focus` -- lorsque le visiteur se concentre sur un élément, par exemple sur un `<input>`.
 
 **Événements du document :**
-- `DOMContentLoaded` -- lorsque le HTML est chargé et traité, DOM est complétement construit.
+- `DOMContentLoaded` -- lorsque le HTML est chargé et traité, le DOM est complètement construit.
 
 **Événements CSS :**
 - `transitionend` -- lorsqu'une animation CSS se termine.
 
-Il y a beaucoup d'autres événements. Nous verrons plus en détails les événements particuliers dans les chapitres à venir.
+Il y a beaucoup d'autres événements. Nous verrons plus en détail les événements particuliers dans les chapitres à venir.
 
 ## Handlers d'événements
 
