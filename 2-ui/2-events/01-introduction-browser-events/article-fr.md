@@ -25,3 +25,12 @@ Voici la liste des événements du DOM les plus utiles, juste pour avoir un aper
 - `transitionend` -- lorsqu'une animation CSS se termine.
 
 Il y a beaucoup d'autres événements. Nous verrons plus en détails les événements particuliers dans les chapitres à venir.
+
+## Handlers d'événements
+
+Pour réagir aux événements nous pouvons assigner un **handler** -- une fonction qui tourne dans le cas d'un événement.
+
+Les handlers sont un moyen d'exécuter du code JavaScript lors d'actions de l'utilisateur.
+
+Il existe plusieurs façons d'assigner un handler.
+Voyons les, en commençant par la plus simple.
