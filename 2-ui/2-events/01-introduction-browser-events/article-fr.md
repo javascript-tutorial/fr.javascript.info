@@ -340,13 +340,13 @@ Si nous assignons un handler en HTML, nous pouvons aussi utiliser l'objet `event
 Ceci est possible car lorsque le navigateur lit l'attribut, il crée un handler comme ceci : `function(event) { alert(event.type) }`. Autrement dit : Son premier argument est appelé `"event"`, et le corps est pris de l'attribut.
 ````
 
-## Objet handlers: handlerEvent
+## Objet handlers : handleEvent
 
-Nous pouvons assigner non pas juste une fonction, mais un objet à un event handler en utilisant `addEventListener`. Lorsqu'un événement se produit, la méthode `handleEvent` est appelée.
+Nous pouvons assigner non pas juste une fonction, mais un objet à un handler d'événements en utilisant `addEventListener`. Lorsqu'un événement se produit, la méthode `handleEvent` est appelée.
 
 Par exemple :
 
-```html run
+```html
 <button id="elem">Click me</button>
 
 <script>
@@ -364,7 +364,7 @@ Comme nous pouvons le voir, lorsque `addEventListener` reçoit un objet en tant 
 
 Nous pouvons aussi utiliser les objets d'une classe personnalisée, comme ceci :
 
-```html run
+```html
 <button id="elem">Click me</button>
 
 <script>
@@ -381,20 +381,18 @@ Nous pouvons aussi utiliser les objets d'une classe personnalisée, comme ceci :
     }
   }
 
-*!*
   let menu = new Menu();
 
   elem.addEventListener('mousedown', menu);
   elem.addEventListener('mouseup', menu);
-*/!*
 </script>
 ```
 
-Ici le même objet gère les deux événements. Veuillez noter que nous avons besoin de configurer explicitement les événements pour écouter en utilisant `addEventListener`. L'objet `menu` récupère uniquement `mousedown` et `mouseup` ici, aucun autre types d'événements.
+Ici le même objet gère les deux événements. Veuillez noter que nous avons besoin de configurer explicitement les événements pour écouter en utilisant `addEventListener`. L'objet `menu` récupère uniquement `mousedown` et `mouseup` ici, aucun autre type d'événements.
 
-La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle peut appeler d'autres méthods spécifiques aux événements à la place, comme ceci :
+La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle peut appeler d'autres méthodes spécifiques aux événements à la place, comme ceci :
 
-```html run
+```html
 <button id="elem">Click me</button>
 
 <script>
@@ -420,7 +418,7 @@ La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle 
 </script>
 ```
 
-Maintenant les handlers d'événements sont clairement séparés, ça devrait être plus simple à maintenir.
+Maintenant les handlers d'événements sont clairement séparés, cela devrait être plus simple à maintenir.
 
 ## Résumé
 
