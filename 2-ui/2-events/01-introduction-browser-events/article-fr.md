@@ -128,3 +128,13 @@ Dans l'exemple en dessous ajouter un handler avec JavaScript réécrit le handle
 ```
 
 Pour supprimer un handler -- assigner `elem.onclick = null`.
+
+## Accéder à l'élément: this
+
+La valeur de `this` dans un handler est l'élément. Celui sur lequel le handler se trouve.
+
+Dans le code suivant `button` affiche son contenu en utilisant `this.innerHTML` :
+
+```html height=50 autorun
+<button onclick="alert(this.innerHTML)">Click me</button>
+```
