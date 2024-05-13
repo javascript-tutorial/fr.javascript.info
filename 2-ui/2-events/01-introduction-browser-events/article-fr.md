@@ -299,17 +299,17 @@ Bien que, de tels événements sont davantage une exception qu'une règle.
 
 ## Objet événement
 
-Pour gérer proprement un événement nous voudrions en savoir davantage sur ce qui s'est passé. Pas juste un "click" ou un "keydown", mais où se trouvaient les coordonnées du curseur. Quelle touche a été pressée ? Et plus encore.
+Pour gérer proprement un événement, nous voudrions en savoir davantage sur ce qui s'est passé. Pas juste un "click" ou un "keydown", mais où se trouvaient les coordonnées du curseur. Quelle touche a été pressée ? Et plus encore.
 
-Lorsqu'un événement se produit, le navigateur créer un *objet événement*, il met des détails dedans et l'envoie en tant qu'argument au handler.
+Lorsqu'un événement se produit, le navigateur crée un *objet événement*, il met des détails dedans et l'envoie en tant qu'argument au handler.
 
 Voici un exemple de récupération des coordonnées de la souris depuis l'objet événement :
 
-```html run
+```html
 <input type="button" value="Click me" id="elem">
 
 <script>
-  elem.onclick = function(*!*event*/!*) {
+  elem.onclick = function(event) {
     // affiche le type de l'événement et les coordonnées du clic
     alert(event.type + " at " + event.currentTarget);
     alert("Coordinates: " + event.clientX + ":" + event.clientY);
@@ -326,18 +326,18 @@ Quelques propriétés de l'objet `event` :
 : L'élément qui a géré l'événement. C'est la même chose que `this`, à moins que le handler ne soit une fonction fléchée, ou c'est `this` qui est attaché à quelque chose d'autre, alors nous pouvons récupérer l'élément depuis `event.currentTarget`.
 
 `event.clientX` / `event.clientY`
-: Les coordonnées relatives de la souris par rapport à la fenêtre, pour les événement de curseur.
+: Les coordonnées relatives de la souris par rapport à la fenêtre, pour les événements de curseur.
 
-Il y a bien plus de propriété. Beaucoup d'entre elles dépendent du type de l'événement : Les événements de clavier ont un ensemble de propriétés, les événements du curseur -- un autre, nous les étudierons plus tard quand nous parlerons en détails des différents événements.
+Il y a bien plus de propriétés. Beaucoup d'entre elles dépendent du type de l'événement : Les événements de clavier ont un ensemble de propriétés, les événements du curseur -- un autre, nous les étudierons plus tard quand nous parlerons en détail des différents événements.
 
 ````smart header="L'objet événement est aussi disponible dans les handlers HTML"
 Si nous assignons un handler en HTML, nous pouvons aussi utiliser l'objet `event`, comme ceci :
 
-```html autorun height=60
-<input type="button" onclick="*!*alert(event.type)*/!*" value="Event type">
+```html
+<input type="button" onclick="alert(event.type)" value="Event type">
 ```
 
-Ceci est possible car lorsque le navigateur lit l'attribut, il créer un handler comme ceci : `function(event) { alert(event.type) }`. Autrement dit : Son premier argument est appelé `"event"`, et le corps est pris de l'attribut.
+Ceci est possible car lorsque le navigateur lit l'attribut, il crée un handler comme ceci : `function(event) { alert(event.type) }`. Autrement dit : Son premier argument est appelé `"event"`, et le corps est pris de l'attribut.
 ````
 
 ## Objet handlers: handlerEvent
