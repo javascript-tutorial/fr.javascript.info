@@ -66,3 +66,65 @@ Ici un clic exécute la fonction `countRabbits()` :
 ```
 
 Comme on le sait, les noms d'attributs HTML ne sont pas sensibles à la casse, donc `ONCLICK` fonctionne aussi bien que `onClick` et `onCLICK`... Cependant habituellement les attributs sont écrits en minuscule : `onclick`.
+
+### Propriété DOM
+
+Nous pouvons assigner un handler en utilisant une propriété du DOM `on<event>`.
+
+Par exemple, `elem.onclick` :
+
+```html autorun
+<input id="elem" type="button" value="Click me">
+<script>
+*!*
+  elem.onclick = function() {
+    alert('Thank you');
+  };
+*/!*
+</script>
+```
+
+Si le handler est assigné via un attribut HTML alors le navigateur le lis, créer une nouvelle fonction depuis le contenu de l'attribut et l'écrit dans la propriété DOM.
+
+Donc cette façon est la même que la précédente.
+
+Ces deux morceaux de code fonctionne de la même façon :
+
+
+1. HTML uniquement :
+
+    ```html autorun height=50
+    <input type="button" *!*onclick="alert('Click!')"*/!* value="Button">
+    ```
+
+2. HTML + JS:
+
+    ```html autorun height=50
+    <input type="button" id="button" value="Button">
+    <script>
+    *!*
+      button.onclick = function() {
+        alert('Click!');
+      };
+    */!*
+    </script>
+    ```
+
+Dans le premier exemple, l'attribut HTML est utilisé pour initialiser le `button.onclick`, tandis que dans le second exemple -- c'est le script, c'est la seule différence.
+
+**Comme il n'existe qu'une seule propriété `onclick`, nous ne pouvons pas assigner plus d'un event-handler.**
+
+Dans l'exemple en dessous ajouter un handler avec JavaScript réécrit le handler existant :
+
+```html run height=50 autorun
+<input type="button" id="elem" onclick="alert('Before')" value="Click me">
+<script>
+*!*
+  elem.onclick = function() { // overwrites the existing handler
+    alert('After'); // only this will be shown
+  };
+*/!*
+</script>
+```
+
+Pour supprimer un handler -- assigner `elem.onclick = null`.
