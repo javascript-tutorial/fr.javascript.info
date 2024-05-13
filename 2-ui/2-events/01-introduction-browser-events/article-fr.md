@@ -436,3 +436,21 @@ La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle 
 ```
 
 Maintenant les handlers d'événements sont clairement séparés, ça devrait être plus simple à maintenir.
+
+## Résumé
+
+Il y a 3 moyens d'assigner des event handlers :
+
+1. L'attribut HTML : `onclick="..."`.
+2. La propriété DOM : `elem.onclick = function`.
+3. Les méthodes : `elem.addEventListener(event, handler[, phase])` pour ajouter, `removeEventListener` pour la supprimer.
+
+Les attributs HTML sont utilisés avec parcimonie, car du JavaScript au millieu des balises HMTL parrait un peu désordonné. Aussi on ne peut pas écrire beaucoup de code dedans.
+
+L'utilisation des propriétés DOM est correcte, mais nous ne pouvons pas assigner plus d'un handler sur un événement en particulier. Dans de nombreux cas cette limitation n'est pas pressante.
+
+Le dernier moyen est le plus flexible, mais il est aussi le plus long à écrire. Il y a quelques événements qui ne fonctionne qu'avec lui, par exemple `transitionend` et `DOMContentLoaded` (à couvrir). Aussi `addEventListener` supporte les objets en tant que handler d'événements. Dans ce cas la méthode `handleEvent` est appelée lors d'un événement.
+
+Peu importe comment vous assignez le handler -- il prend un objet événement en premier argument. Cet objet contient les détails de ce qu'il s'est passé.
+
+Nous en apprendrons plus sur les évéments en général et sur les différents types d'événements dans les chapitres.
