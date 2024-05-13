@@ -107,18 +107,16 @@ Ces deux morceaux de code fonctionnent de la même façon :
 
 Dans le premier exemple, l'attribut HTML est utilisé pour initialiser le `button.onclick`, tandis que dans le second exemple -- c'est le script, c'est la seule différence.
 
-**Comme il n'existe qu'une seule propriété `onclick`, nous ne pouvons pas assigner plus d'un event-handler.**
+**Comme il n'existe qu'une seule propriété `onclick`, nous ne pouvons pas assigner plus d'un handler d'événements.**
 
-Dans l'exemple en dessous ajouter un handler avec JavaScript réécrit le handler existant :
+Dans l'exemple ci-dessous, ajouter un handler avec JavaScript réécrit le handler existant :
 
-```html run height=50 autorun
+```html
 <input type="button" id="elem" onclick="alert('Before')" value="Click me">
 <script>
-*!*
-  elem.onclick = function() { // overwrites the existing handler
-    alert('After'); // only this will be shown
+  elem.onclick = function() { // réécrit le handler existant
+    alert('After'); // seulement cela sera affiché
   };
-*/!*
 </script>
 ```
 
