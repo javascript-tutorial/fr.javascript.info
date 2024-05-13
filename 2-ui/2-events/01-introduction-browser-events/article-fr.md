@@ -41,7 +41,7 @@ Un handler peut être défini dans le HTML avec un attribut nommé `on<event>`.
 
 Par exemple, pour assigner un handler `click` sur un `input`, nous pouvons utiliser `onclick`, comme ici :
 
-```html
+```html run
 <input value="Click me" onclick="alert('Click!')" type="button">
 ```
 
@@ -53,7 +53,7 @@ Un attribut HTML n'est pas un endroit pratique où placer beaucoup de code, donc
 
 Ici, un clic exécute la fonction `countRabbits()` :
 
-```html
+```html autorun height=50
 <script>
   function countRabbits() {
     for (let i = 1; i <= 3; i++) {
@@ -73,7 +73,7 @@ Nous pouvons assigner un handler en utilisant une propriété du DOM `on<event>`
 
 Par exemple, `elem.onclick` :
 
-```html
+```html autorun
 <input id="elem" type="button" value="Click me">
 <script>
   elem.onclick = function() {
@@ -90,13 +90,13 @@ Ces deux morceaux de code fonctionnent de la même façon :
 
 1. HTML uniquement :
 
-    ```html
+    ```html autorun height=50
     <input type="button" onclick="alert('Click!')" value="Button">
     ```
 
 2. HTML + JS :
 
-    ```html
+    ```html autorun height=50
     <input type="button" id="button" value="Button">
     <script>
       button.onclick = function() {
@@ -111,7 +111,7 @@ Dans le premier exemple, l'attribut HTML est utilisé pour initialiser le `butto
 
 Dans l'exemple ci-dessous, ajouter un handler avec JavaScript réécrit le handler existant :
 
-```html
+```html run height=50 autorun
 <input type="button" id="elem" onclick="alert('Before')" value="Click me">
 <script>
   elem.onclick = function() { // réécrit le handler existant
@@ -128,7 +128,7 @@ La valeur de `this` dans un handler est l'élément sur lequel le handler est pl
 
 Dans le code suivant, `button` affiche son contenu en utilisant `this.innerHTML` :
 
-```html
+```html height=50 autorun
 <button onclick="alert(this.innerHTML)">Click me</button>
 ```
 
@@ -177,7 +177,7 @@ button.onclick = function() {
 
 De tels appels ne fonctionneront pas :
 
-```js
+```js run no-beautify
 // Un clic sur <body> générera une erreur,
 // car les attributs sont toujours des chaînes, une fonction devient une chaîne
 document.body.setAttribute('onclick', function() { alert(1) });
@@ -195,7 +195,7 @@ Disons que, une partie de notre code veut mettre en surbrillance un bouton lors 
 
 Nous aimerions assigner deux handlers pour cela. Cependant une nouvelle propriété DOM va réécrire celle existante :
 
-```js
+```js no-beautify
 input.onclick = function() { alert(1); }
 // ...
 input.onclick = function() { alert(2); } // Remplace le précédent handler
@@ -227,11 +227,12 @@ Pour supprimer un handler, utilisez `removeEventListener` :
 element.removeEventListener(event, handler, [options]);
 ```
 
+````warn header="La suppression nécessite la même fonction"
 Pour que la suppression soit effective, nous devons passer exactement la même fonction assignée.
 
 Ceci ne fonctionne pas :
 
-```js
+```js no-beautify
 elem.addEventListener( "click", () => alert('Thanks!'));
 // ....
 elem.removeEventListener( "click", () => alert('Thanks!'));
@@ -252,10 +253,11 @@ input.removeEventListener("click", handler);
 ```
 
 Veuillez noter -- si nous ne stockons pas de fonction dans une variable, alors nous ne pourrons pas la supprimer. Il n'y a pas de moyen de "retrouver" les handlers assignés par `addEventListener`.
+````
 
 Des appels multiples à `addEventListener` permettent d'ajouter de multiples handlers, comme ceci :
 
-```html
+```html run no-beautify
 <input id="elem" type="button" value="Click me"/>
 
 <script>
@@ -305,7 +307,7 @@ Lorsqu'un événement se produit, le navigateur crée un *objet événement*, il
 
 Voici un exemple de récupération des coordonnées de la souris depuis l'objet événement :
 
-```html
+```html run
 <input type="button" value="Click me" id="elem">
 
 <script>
@@ -346,7 +348,7 @@ Nous pouvons assigner non pas juste une fonction, mais un objet à un handler d'
 
 Par exemple :
 
-```html
+```html run
 <button id="elem">Click me</button>
 
 <script>
@@ -364,7 +366,7 @@ Comme nous pouvons le voir, lorsque `addEventListener` reçoit un objet en tant 
 
 Nous pouvons aussi utiliser les objets d'une classe personnalisée, comme ceci :
 
-```html
+```html run
 <button id="elem">Click me</button>
 
 <script>
@@ -392,7 +394,7 @@ Ici le même objet gère les deux événements. Veuillez noter que nous avons be
 
 La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle peut appeler d'autres méthodes spécifiques aux événements à la place, comme ceci :
 
-```html
+```html run
 <button id="elem">Click me</button>
 
 <script>
