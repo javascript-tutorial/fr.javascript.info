@@ -91,17 +91,17 @@ let fruits = [
 Le style "virgule de fin" facilite l'insertion et la suppression d'éléments, car toutes les lignes se ressemblent.
 ````
 
-## Get last elements with "at"
+# Récupérer les derniers éléments avec "at"
 
 [recent browser="new"]
 
-Let's say we want the last element of the array.
+Disons que nous voulons le dernier élément du tableau.
 
-Some programming languages allow the use of negative indexes for the same purpose, like `fruits[-1]`.
+Certains langages de programmation permettent l'utilisation d'index négatifs pour ça, comme `fruits[-1]`.
 
-Although, in JavaScript it won't work. The result will be `undefined`, because the index in square brackets is treated literally.
+Tandis qu'en JavaScript ça ne fonctionnera pas. Le résultat sera `undefined`, parce que l'index dans les crochets est traité littéralement.
 
-We can explicitly calculate the last element index and then access it: `fruits[fruits.length - 1]`.
+Nous pouvons calculer explicitement l'index du dernier élément et donc y accéder: `fruits[fruits.length - 1]`.
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -109,21 +109,21 @@ let fruits = ["Apple", "Orange", "Plum"];
 alert( fruits[fruits.length-1] ); // Plum
 ```
 
-A bit cumbersome, isn't it? We need to write the variable name twice.
+Un peu lourd, n'est-ce pas ? Nous devons écrire le même nom de variable deux fois.
 
-Luckily, there's a shorter syntax: `fruits.at(-1)`:
+Heureusement, il y une syntaxe plus courte : `fruits.at(-1)` :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-// same as fruits[fruits.length-1]
+// Identique à fruits[fruits.length-1]
 alert( fruits.at(-1) ); // Plum
 ```
 
-In other words, `arr.at(i)`:
+En d'autres termes, `arr.at(i)`:
 
-- is exactly the same as `arr[i]`, if `i >= 0`.
-- for negative values of `i`, it steps back from the end of the array.
+- est exactement identique à `arr[i]`, si `i >= 0`.
+- pour les valeurs négatives de `i`, ça recule depuis la fin du tableau.
 
 ## Les méthodes pop/push, shift/unshift
 
