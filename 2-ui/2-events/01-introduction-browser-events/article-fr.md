@@ -28,12 +28,12 @@ Il y a beaucoup d'autres événements. Nous verrons plus en détail les événem
 
 ## Handlers d'événements
 
-Pour réagir aux événements nous pouvons assigner un **handler** -- une fonction qui tourne dans le cas d'un événement.
+Pour réagir aux événements, nous pouvons assigner un **handler** -- une fonction qui s'exécute en cas d'événement.
 
 Les handlers sont un moyen d'exécuter du code JavaScript lors d'actions de l'utilisateur.
 
 Il existe plusieurs façons d'assigner un handler.
-Voyons les, en commençant par la plus simple.
+Voyons-les, en commençant par la plus simple.
 
 ### L'attribut HTML
 
