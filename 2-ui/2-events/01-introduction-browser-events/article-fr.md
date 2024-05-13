@@ -131,6 +131,7 @@ Dans le code suivant, `button` affiche son contenu en utilisant `this.innerHTML`
 ```html
 <button onclick="alert(this.innerHTML)">Click me</button>
 ```
+
 ## Erreurs possibles
 
 Si vous commencez à travailler avec les événements -- veuillez noter quelques subtilités.
@@ -155,23 +156,20 @@ button.onclick = sayThanks;
 button.onclick = sayThanks();
 ```
 
-Si nous ajoutons des paranthèses, alors `sayThanks()` devient un appel de fonction. Donc la dernière ligne prends le *retour* de l'exécution de la fonction, qui est `undefined` (puisque la fonction ne retourne rien), et l'assigne à `onclick`.
-Ça ne fonctionne pas.
+Si nous ajoutons des parenthèses, alors `sayThanks()` devient un appel de fonction. Donc la dernière ligne prend le *retour* de l'exécution de la fonction, qui est `undefined` (puisque la fonction ne retourne rien), et l'assigne à `onclick`. Ça ne fonctionnera pas.
 
-...En revanche, dans le balisage nous avons besoin des paranthèses :
+...En revanche, dans le balisage, nous avons besoin des parenthèses :
 
 ```html
 <input type="button" id="button" onclick="sayThanks()">
 ```
 
-La différence est simple à expliquer. Lorsque le navigateur lis l'attribut, il créer une fonction handler avec pour corps le contenu de l'attribut.
+La différence est simple à expliquer. Lorsque le navigateur lit l'attribut, il crée un handler avec pour corps le contenu de l'attribut.
 
 Donc le balisage génère cette propriété :
 ```js
 button.onclick = function() {
-*!*
   sayThanks(); // <-- Le contenu de l'attribut vient ici
-*/!*
 };
 ```
 
@@ -179,9 +177,9 @@ button.onclick = function() {
 
 De tels appels ne fonctionneront pas :
 
-```js run no-beautify
-// Un click sur <body> génèrera une erreur,
-// car les attributs sont toujours des strings, une fonction devient un string
+```js
+// Un clic sur <body> générera une erreur,
+// car les attributs sont toujours des chaînes, une fonction devient une chaîne
 document.body.setAttribute('onclick', function() { alert(1) });
 ```
 
