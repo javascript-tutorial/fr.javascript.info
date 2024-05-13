@@ -67,46 +67,41 @@ Ici, un clic exécute la fonction `countRabbits()` :
 
 Comme on le sait, les noms d'attributs HTML ne sont pas sensibles à la casse, donc `ONCLICK` fonctionne aussi bien que `onClick` et `onCLICK`... Cependant, habituellement, les attributs sont écrits en minuscules : `onclick`.
 
-### Propriété DOM
+### Propriétés DOM
 
 Nous pouvons assigner un handler en utilisant une propriété du DOM `on<event>`.
 
 Par exemple, `elem.onclick` :
 
-```html autorun
+```html
 <input id="elem" type="button" value="Click me">
 <script>
-*!*
   elem.onclick = function() {
     alert('Thank you');
   };
-*/!*
 </script>
 ```
 
-Si le handler est assigné via un attribut HTML alors le navigateur le lis, créer une nouvelle fonction depuis le contenu de l'attribut et l'écrit dans la propriété DOM.
+Si le handler est assigné via un attribut HTML, alors le navigateur le lit, crée une nouvelle fonction à partir du contenu de l'attribut et l'écrit dans la propriété DOM.
 
 Donc cette façon est la même que la précédente.
 
-Ces deux morceaux de code fonctionne de la même façon :
-
+Ces deux morceaux de code fonctionnent de la même façon :
 
 1. HTML uniquement :
 
-    ```html autorun height=50
-    <input type="button" *!*onclick="alert('Click!')"*/!* value="Button">
+    ```html
+    <input type="button" onclick="alert('Click!')" value="Button">
     ```
 
-2. HTML + JS:
+2. HTML + JS :
 
-    ```html autorun height=50
+    ```html
     <input type="button" id="button" value="Button">
     <script>
-    *!*
       button.onclick = function() {
         alert('Click!');
       };
-    */!*
     </script>
     ```
 
