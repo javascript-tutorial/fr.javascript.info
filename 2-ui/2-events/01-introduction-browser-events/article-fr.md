@@ -196,3 +196,118 @@ document.body.setAttribute('onclick', function() { alert(1) });
 **La casse de propriété DOM importe.**
 
 Assigner un handler à `elem.onclick`, pas `elem.ONCLICK`, car les propriétés DOM sont sensibles à la casse.
+
+## addEventListener
+
+Le problème fondamental des méthodes mentionnées ci-dessus pour assigner des handlers est que nous ne pouvons *assigner plusieurs handlers à un événement*.
+
+Disons que, une partie de notre code veut mettre en surbrillance un bouton lors d'un clic, et une autre veut afficher un message lors du même clic.
+
+Nous aimerions assigner deux handlers pour ça.
+Cependant une nouvelle propriété DOM va réécrire celle existante :
+
+```js no-beautify
+input.onclick = function() { alert(1); }
+// ...
+input.onclick = function() { alert(2); } // Remplace le précédent handler
+```
+
+Les développeurs du standard web ont compris cela depuis longtemps et ont suggérer une méthode alternative de gestion des handlers en utilisant les méthodes `addEventListener` et `removeEventListener` lesquels ne sont pas soumises à de telles contraintes.
+
+La syntaxe pour ajouter un handler :
+
+```js
+element.addEventListener(event, handler, [options]);
+```
+
+`event`
+: Le nom de l'événement, e.g. `"click"`.
+
+`handler`
+: La fonction handler
+
+`options`
+: Un objet additionnel et optionnel avec des propriétés :
+  - `once` : si `true`, alors le listener est automatiquement supprimé lorsqu'il est déclenché.
+  - `capture` : la phase où gérer l'événement, qui sera abordée plus tard dans le chapitre <info:bubbling-and-capturing>. Pour des raisons historiques, `options` peut aussi être `false/true`, c'est la même que `{capture: false/true}`.
+  - `passive` : si `true`, alors le handler n'appellera pas `preventDefault()`, nous l'expliquerons plus tard dans <info:default-browser-action>.
+
+Pour supprimer un handler, utilisez `removeEventListener` :
+
+```js
+element.removeEventListener(event, handler, [options]);
+```
+
+````warn header="La suppression nécessite la même fonction"
+Pour supprimer un handler nous devons passer exactement la même fonction assignée.
+
+Ceci ne fonctionne pas :
+
+```js no-beautify
+elem.addEventListener( "click" , () => alert('Thanks!'));
+// ....
+elem.removeEventListener( "click", () => alert('Thanks!'));
+```
+
+Le handler ne sera pas supprimé, car `removeEventListener` récupère une autre fonction -- avec le même code, mais ça n'a pas d'importance, il s'agit d'un objet fonction différent.
+
+Voici la bonne façon :
+
+```js
+function handler() {
+  alert( 'Thanks!' );
+}
+
+input.addEventListener("click", handler);
+// ....
+input.removeEventListener("click", handler);
+```
+
+Veuillez noter -- si nous ne stockons pas de fonction dans une variable, alors nous ne pourrons pas la supprimer. Il n'y a pas de moyen de "retrouver" les handlers assignés par `addEventListener`.
+````
+
+Des appels multiples à `addEventListener` permettent d'y ajouter de multiples handlers, comme ceci :
+
+```html run no-beautify
+<input id="elem" type="button" value="Click me"/>
+
+<script>
+  function handler1() {
+    alert('Thanks!');
+  };
+
+  function handler2() {
+    alert('Thanks again!');
+  }
+
+*!*
+  elem.onclick = () => alert("Hello");
+  elem.addEventListener("click", handler1); // Thanks!
+  elem.addEventListener("click", handler2); // Thanks again!
+*/!*
+</script>
+```
+
+Comme nous pouvons le voir dans l'exemple ci-dessus, nous pouvons définir les deux handlers en utilisant la propriété DOM et `addEventListener`. Mais générallement nous utilisons uniquement l'une de ces méthodes.
+
+````warn header="Pour certains événements, les handlers ne fonctionne qu'avec `addEventListener`"
+Il existe des événements qui ne peuvent pas être assignés via la propriété DOM. Seuleument avec `addEventListener`.
+
+Par exemple, l'événement `DOMContentLoaded`, il se déclenche lorsque le document est chargé et le DOM construit.
+
+```js
+// Ne s'exécutera jamais
+document.onDOMContentLoaded = function() {
+  alert("DOM built");
+};
+```
+
+```js
+// De cette façon ça fonctionne
+document.addEventListener("DOMContentLoaded", function() {
+  alert("DOM built");
+});
+```
+Donc `addEventListener` est plus universel.
+Bien que, de tels événements sont davantage une exeception qu'une règle.
+````
