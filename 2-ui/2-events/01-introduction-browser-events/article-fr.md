@@ -354,3 +354,85 @@ Si nous assignons un handler en HTML, nous pouvons aussi utiliser l'objet `event
 
 Ceci est possible car lorsque le navigateur lit l'attribut, il créer un handler comme ceci : `function(event) { alert(event.type) }`. Autrement dit : Son premier argument est appelé `"event"`, et le corps est pris de l'attribut.
 ````
+
+## Objet handlers: handlerEvent
+
+Nous pouvons assigner non pas juste une fonction, mais un objet à un event handler en utilisant `addEventListener`. Lorsqu'un événement se produit, la méthode `handleEvent` est appelée.
+
+Par exemple :
+
+```html run
+<button id="elem">Click me</button>
+
+<script>
+  let obj = {
+    handleEvent(event) {
+      alert(event.type + " at " + event.currentTarget);
+    }
+  };
+
+  elem.addEventListener('click', obj);
+</script>
+```
+
+Comme nous pouvons le voir, lorsque `addEventListener` reçoit un objet en tant que handler, il appelle `obj.handleEvent(event)` lors d'un événement.
+
+Nous pouvons aussi utiliser les objets d'une classe personnalisée, comme ceci :
+
+```html run
+<button id="elem">Click me</button>
+
+<script>
+  class Menu {
+    handleEvent(event) {
+      switch(event.type) {
+        case 'mousedown':
+          elem.innerHTML = "Mouse button pressed";
+          break;
+        case 'mouseup':
+          elem.innerHTML += "...and released.";
+          break;
+      }
+    }
+  }
+
+*!*
+  let menu = new Menu();
+
+  elem.addEventListener('mousedown', menu);
+  elem.addEventListener('mouseup', menu);
+*/!*
+</script>
+```
+
+Ici le même objet gère les deux événements. Veuillez noter que nous avons besoin de configurer explicitement les événements pour écouter en utilisant `addEventListener`. L'objet `menu` récupère uniquement `mousedown` et `mouseup` ici, aucun autre types d'événements.
+
+La méthode `handleEvent` n'a pas à faire tout le travail par elle-même. Elle peut appeler d'autres méthods spécifiques aux événements à la place, comme ceci :
+
+```html run
+<button id="elem">Click me</button>
+
+<script>
+  class Menu {
+    handleEvent(event) {
+      // mousedown -> onMousedown
+      let method = 'on' + event.type[0].toUpperCase() + event.type.slice(1);
+      this[method](event);
+    }
+
+    onMousedown() {
+      elem.innerHTML = "Mouse button pressed";
+    }
+
+    onMouseup() {
+      elem.innerHTML += "...and released.";
+    }
+  }
+
+  let menu = new Menu();
+  elem.addEventListener('mousedown', menu);
+  elem.addEventListener('mouseup', menu);
+</script>
+```
+
+Maintenant les handlers d'événements sont clairement séparés, ça devrait être plus simple à maintenir.
