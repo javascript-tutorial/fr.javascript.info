@@ -138,3 +138,61 @@ Dans le code suivant `button` affiche son contenu en utilisant `this.innerHTML` 
 ```html height=50 autorun
 <button onclick="alert(this.innerHTML)">Click me</button>
 ```
+
+## Erreurs possibles
+
+Si vous commencez à travailler avec les événements -- veuillez noter quelques subtilités.
+
+Nous pouvons définir une fonction existante en tant que handler :
+
+```js
+function sayThanks() {
+  alert('Thanks!');
+}
+
+elem.onclick = sayThanks;
+```
+
+Mais soyez vigilant : La fonction doit être assignée en tant que `sayThanks`, pas `sayThanks()`.
+
+```js
+// Bon
+button.onclick = sayThanks;
+
+// Mauvais
+button.onclick = sayThanks();
+```
+
+Si nous ajoutons des paranthèses, alors `sayThanks()` devient un appel de fonction. Donc la dernière ligne prends le *retour* de l'exécution de la fonction, qui est `undefined` (puisque la fonction ne retourne rien), et l'assigne à `onclick`.
+Ça ne fonctionne pas.
+
+...En revanche, dans le balisage nous avons besoin des paranthèses :
+
+```html
+<input type="button" id="button" onclick="sayThanks()">
+```
+
+La différence est simple à expliquer. Lorsque le navigateur lis l'attribut, il créer une fonction handler avec pour corps le contenu de l'attribut.
+
+Donc le balisage génère cette propriété :
+```js
+button.onclick = function() {
+*!*
+  sayThanks(); // <-- Le contenu de l'attribut vient ici
+*/!*
+};
+```
+
+**N'utilisez pas `setAttribute` pour les handlers**
+
+De tels appels ne fonctionneront pas :
+
+```js run no-beautify
+// Un click sur <body> génèrera une erreur,
+// car les attributs sont toujours des strings, une fonction devient un string
+document.body.setAttribute('onclick', function() { alert(1) });
+```
+
+**La casse de propriété DOM importe.**
+
+Assigner un handler à `elem.onclick`, pas `elem.ONCLICK`, car les propriétés DOM sont sensibles à la casse.
