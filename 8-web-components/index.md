@@ -1,3 +1,3 @@
-# Web components
+# Composants Web
 
-Web components is a set of standards to make self-contained components: custom HTML-elements with their own properties and methods, encapsulated DOM and styles.
+Les composants Web sont un ensemble de standards pour faire des composants auto-contenu: des éléments HTML personnalisés avec leurs propres propriétés et méhodes, encapsulé dans le DOM et les styles.
