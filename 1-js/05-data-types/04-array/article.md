@@ -111,7 +111,7 @@ alert( fruits[fruits.length-1] ); // Plum
 
 Un peu lourd, n'est-ce pas ? Nous devons écrire le même nom de variable deux fois.
 
-Heureusement, il y une syntaxe plus courte : `fruits.at(-1)` :
+Heureusement, il y a une syntaxe plus courte : `fruits.at(-1)` :
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
