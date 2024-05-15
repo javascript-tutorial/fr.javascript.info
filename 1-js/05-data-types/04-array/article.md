@@ -91,7 +91,7 @@ let fruits = [
 Le style "virgule de fin" facilite l'insertion et la suppression d'éléments, car toutes les lignes se ressemblent.
 ````
 
-# Récupérer les derniers éléments avec "at"
+## Récupérer les derniers éléments avec "at"
 
 [recent browser="new"]
 
