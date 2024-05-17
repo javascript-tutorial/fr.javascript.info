@@ -66,7 +66,7 @@ Il y a des abréviations pour les quantificateur les plus utilisés:
     ```
 
 `pattern:?`
-: Signifie "zéro ou plus", identique à `pattern:{0,1}`. En d'autres termes, il rend le symbole optionnel.
+: Signifie "zéro ou un", identique à `pattern:{0,1}`. En d'autres termes, il rend le symbole optionnel.
 
     Par exemple, le pattern `pattern:ou?r` cherche `match:o` suivi de zéro ou un `match:u`, puis `match:r`.
 
