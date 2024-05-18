@@ -1,3 +1,3 @@
-# Regular expressions
+# Expressions régulières
 
-Regular expressions is a powerful way of doing search and replace in strings.
+Les expression régulières sont un moyen puissant de rechercher et de remplacer dans les strings.
