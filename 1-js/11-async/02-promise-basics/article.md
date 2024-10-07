@@ -48,7 +48,7 @@ Plus tard nous verrons comment les "fans" peuvent s'abonner à ces changements.
 
 Voici un exemple d'un constructeur d'une promesse et d'une fonction exécutrice simple avec un "code produit" qui prend du temps (utilisant `setTimeout`) :
 
-```js run
+```js
 let promise = new Promise(function(resolve, reject) {
   // la fonction est exécutée automatiquement quand la promesse est construite
 

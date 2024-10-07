@@ -452,4 +452,8 @@ Nous pourrions certainement l'améliorer, mais les animations JavaScript ne sont
 
 Les animations JavaScript peuvent utiliser n'importe quelle fonction de temporisation. Nous avons couvert beaucoup d'exemples et de transformations pour les rendre encore plus polyvalentes. Contrairement à CSS, nous ne sommes pas limités ici aux courbes de Bézier.
 
+<<<<<<< HEAD
 Il en va de même pour `draw` : nous pouvons animer n'importe quoi, pas seulement des propriétés CSS.
+=======
+The same is true about `draw`: we can animate anything, not just CSS properties.
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
