@@ -171,7 +171,11 @@ Lorsque nous utilisons JavaScript pour des tâches pratiques dans un navigateur 
 
 Par exemple, les chaînes de caractères sont à la fois iterables (`for..of` fonctionne dessus) et des array-likes (elles ont des index numériques et une longueur).
 
+<<<<<<< HEAD
 Mais un itérable peut ne pas ressembler à un array-like. Et inversement, un array-like peut ne pas être itérable.
+=======
+But an iterable may not be array-like. And vice versa an array-like may not be iterable.
+>>>>>>> 6236eb8c3cdde729dab761a1d0967a88a1a6197e
 
 Par exemple, la `range` dans l'exemple ci-dessus est itérable, mais pas comme un array-like, car elle n'a pas de propriétés indexées et de `length`.
 
