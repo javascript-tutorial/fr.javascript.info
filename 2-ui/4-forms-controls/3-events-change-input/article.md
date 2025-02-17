@@ -96,7 +96,11 @@ Le presse-papiers est une chose "globale" au niveau du système d'exploitation. 
 
 Ainsi, la plupart des navigateurs permettent un accès en lecture/écriture transparent au presse-papiers uniquement dans le cadre de certaines actions de l'utilisateur, telles que le copier/coller, etc.
 
+<<<<<<< HEAD
 Il est interdit de générer des événements de presse-papiers "personnalisés" avec `dispatchEvent` dans tous les navigateurs sauf Firefox. Et même si nous parvenons à envoyer un tel événement, la spécification indique clairement que de tels événements "synthétiques" ne doivent pas donner accès au presse-papiers.
+=======
+It's forbidden to generate "custom" clipboard events with `dispatchEvent` in all browsers except Firefox. And even if we manage to dispatch such event, the specification clearly states that such "synthetic" events must not provide access to the clipboard.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Même si quelqu'un décide d'enregistrer `event.clipboardData` dans un gestionnaire d'événements, puis d'y accéder plus tard, cela ne fonctionnera pas.
 

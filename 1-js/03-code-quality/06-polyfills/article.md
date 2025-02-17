@@ -7,7 +7,11 @@ Les équipes derrière les moteurs JavaScript ont leurs propres idées sur ce qu
 
 Il est donc assez courant pour un moteur de ne mettre en œuvre qu'une partie du standard.
 
+<<<<<<< HEAD
 Une bonne page pour voir l’état actuel de la prise en charge des fonctionnalités du langage est <https://kangax.github.io/compat-table/es6/> (c’est énorme, nous avons encore beaucoup à étudier).
+=======
+A good page to see the current state of support for language features is <https://compat-table.github.io/compat-table/es6/> (it's big, we have a lot to study yet).
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 En tant que programmeurs, nous aimerions utiliser les fonctionnalités les plus récentes. Plus il y a de bonnes choses, mieux c'est !
 
@@ -71,10 +75,14 @@ if (!Math.trunc) { // si une telle fonction n'existe pas
 
 JavaScript est un langage très dynamique, les scripts peuvent ajouter/modifier toutes les fonctions, y compris celles intégrées.
 
+<<<<<<< HEAD
 Deux librairies intéressantes de polyfills sont :
 - [core js](https://github.com/zloirock/core-js) qui prend en charge beaucoup de choses et permet d'inclure uniquement les fonctionnalités nécessaires.
 - [polyfill.io](https://polyfill.io) est un service qui fournit un script avec des polyfills, en fonction des fonctionnalités et du navigateur de l'utilisateur.
 
+=======
+One interesting polyfill library is [core-js](https://github.com/zloirock/core-js), which supports a wide range of features and allows you to include only the ones you need.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ## Résumé
 
@@ -84,8 +92,16 @@ N'oubliez pas d'utiliser un transpiler (si vous utilisez une syntaxe ou des opé
 
 Par exemple, plus tard, lorsque vous serez familiarisé avec JavaScript, vous pourrez configurer un système de création de code basé sur [webpack](http://webpack.js.org/) avec le plugin [babel-loader](https://github.com/babel/babel-loader).
 
+<<<<<<< HEAD
 De bonnes ressources qui montrent l'état actuel de la prise en charge de diverses fonctionnalités :
 - <https://kangax.github.io/compat-table/es6/> - pour du pur JavaScript.
 - <https://caniuse.com/> - pour les fonctions liées au navigateur.
+=======
+Good resources that show the current state of support for various features:
+- <https://compat-table.github.io/compat-table/es6/> - for pure JavaScript.
+- <https://caniuse.com/> - for browser-related functions.
+
+P.S. Google Chrome is usually the most up-to-date with language features, try it if a tutorial demo fails. Most tutorial demos work with any modern browser though.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 P.S. Google Chrome est généralement le plus à jour avec les fonctionnalités du langage, essayez-le si une démonstration d'un tutoriel échoue. La plupart des démos de didacticiels fonctionnent avec n'importe quel navigateur moderne.
