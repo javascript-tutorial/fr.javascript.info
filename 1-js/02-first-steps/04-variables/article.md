@@ -326,7 +326,7 @@ Voici quelques règles à suivre :
 Cela semble simple ? En effet, ça l'est, mais la création de noms descriptifs et concis dans la pratique ne l'est pas. Fonce.
 
 ```smart header="Réutiliser ou créer ?"
-Une dernière note. Certains programmeurs paresseux, au lieu de déclarer une nouvelle variable, ont tendance à réutiliser ceux qui existent déjà.
+Une dernière note. Certains programmeurs paresseux, au lieu de déclarer une nouvelle variable, ont tendance à réutiliser celles qui existent déjà.
 
 En conséquence, la variable est comme une boîte où les gens jettent des choses différentes sans changer l'autocollant. Qu'est-ce qu'il y a dedans maintenant ? Qui sait … Nous devons creuser et vérifier.
 
