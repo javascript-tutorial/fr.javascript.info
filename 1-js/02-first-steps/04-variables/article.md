@@ -8,7 +8,7 @@ Les variables sont utilisées pour stocker ces informations.
 
 ## Une variable
 
-Une [variable](https://fr.wikipedia.org/wiki/Variable_(informatique)) est un "stockage nommé" pour les données. Nous pouvons utiliser des variables pour stocker des goodies, des visiteurs et d'autres données.
+Une <a href="https://fr.wikipedia.org/wiki/Variable_(informatique)" target="_blank">variable</a> est un "stockage nommé" pour les données. Nous pouvons utiliser des variables pour stocker des goodies, des visiteurs et d'autres données.
 
 Pour créer une variable en JavaScript, nous devons utiliser le mot-clé `let`.
 
@@ -172,7 +172,7 @@ let userName;
 let test123;
 ```
 
-Lorsque le nom contient plusieurs mots, le [camelCase](https://fr.wikipedia.org/wiki/Camel_case) est couramment utilisé. C'est-à-dire que les mots se succèdent, chaque mot à l'exception du premier commence par une majuscule : `monTresLongNom`.
+Lorsque le nom contient plusieurs mots, le <a href="https://fr.wikipedia.org/wiki/Camel_case" target="_blank">camelCase</a> est couramment utilisé. C'est-à-dire que les mots se succèdent, chaque mot à l'exception du premier commence par une majuscule : `monTresLongNom`.
 
 Ce qui est intéressant -- le signe dollar `'$'` et l'underscore `'_'` peuvent également être utilisé dans les noms. Ce sont des symboles réguliers, tout comme les lettres, sans aucune signification particulière.
 
