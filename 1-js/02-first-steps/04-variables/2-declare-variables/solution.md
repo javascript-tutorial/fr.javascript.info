@@ -3,7 +3,7 @@
 C’est simple :
 
 ```js
-let notrePlanete = "Terre";
+let ourPlanet = "Terre";
 ```
 
 Notez que nous pourrions utiliser un nom `planète` plus court, mais la planète à laquelle il fait référence pourrait ne pas être évidente. C’est bien d’être plus verbeux. Au moins jusqu'à ce que la variable n'estPasTropLongue.
