@@ -26,7 +26,7 @@ Le type *number* sert à la fois à des nombres entiers et à des nombres à vir
 
 Il existe de nombreuses opérations pour les nombres, par ex. multiplication `*`, division `/`, addition `+`, soustraction `-` et ainsi de suite.
 
-Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui appartiennent également à ce type: `Infinity`, `-Infinity` et `NaN`.
+Outre les nombres réguliers, il existe des "valeurs numériques spéciales" qui appartiennent également à ce type : `Infinity`, `-Infinity` et `NaN`.
 
 - `Infinity` représente l'[Infini](https://fr.wikipedia.org/wiki/Infini) ∞ mathématique. C'est une valeur spéciale qui est plus grande que n'importe quel nombre.
 
@@ -145,7 +145,7 @@ Nous couvrirons les chaînes de caractères plus en détails dans le chapitre <i
 ```smart header="Il n'y a pas de type *character*."
 Dans certains langages, il existe un type spécial "character" pour un seul caractère. Par exemple, en langage C et en Java, il s'agit de "char".
 
-En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type: `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs d'entre eux.
+En JavaScript, ce type n'existe pas. Il n'y a qu'un seul type : `string`. Une chaîne de caractères peut être composée de zéro caractère (être vide), d'un caractère ou de plusieurs d'entre eux.
 ```
 
 ## Boolean (type logique)
