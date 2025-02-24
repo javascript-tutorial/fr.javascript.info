@@ -4,7 +4,11 @@ En JavaScript moderne, il existe deux types de nombres :
 
 1. Les nombres standards en JavaScript sont stockés au format 64 bits [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), également connu sous le nom de "nombres à virgule flottante double précision". Ce sont des chiffres que nous utilisons le plus souvent, et nous en parlerons dans ce chapitre.
 
+<<<<<<< HEAD
 2. Les nombres BigInt pour représenter des entiers de longueur arbitraire. Ils sont parfois nécessaires, car un nombre régulier ne peut pas dépasser de manière précise <code>2<sup>53</sup></code> ou être inférieur à <code>-2<sup>53</sup></code>. Comme les bigints sont utilisés dans quelques zones spéciales, nous leur consacrons un chapitre spécial <info:bigint>.
+=======
+2. BigInt numbers represent integers of arbitrary length. They are sometimes needed because a regular integer number can't safely exceed <code>(2<sup>53</sup>-1)</code> or be less than <code>-(2<sup>53</sup>-1)</code>, as we mentioned earlier in the chapter <info:types>. As bigints are used in a few special areas, we devote them to a special chapter <info:bigint>.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Nous allons donc parler ici des nombres réguliers. Développons nos connaissances à leur sujet.
 
@@ -41,7 +45,11 @@ En d'autres termes, `e` multiplie le nombre par `1` suivi du nombre de zéros sp
 1.23e6 === 1.23 * 1000000 // e6 signifie *1000000
 ```
 
+<<<<<<< HEAD
 Maintenant, écrivons quelque chose de très petit. Disons, 1 microseconde (un millionième de seconde) :
+=======
+Now let's write something very small. Say, 1 microsecond (one-millionth of a second):
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js
 let us = 0.000001;
@@ -103,13 +111,23 @@ alert( num.toString(16) ); // ff
 alert( num.toString(2) );  // 11111111
 ```
 
+<<<<<<< HEAD
 La `base` peut varier de `2` à `36`. Par défaut, il s'agit de `10`.
+=======
+The `base` can vary from `2` to `36`. By default, it's `10`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Les cas d'utilisation courants sont :
 
+<<<<<<< HEAD
 - **base=16** est utilisé pour les couleurs hexadécimales, les encodages de caractères, etc. Les chiffres peuvent être `0..9` ou `A..F`.
 - **base=2** est principalement utilisé pour le débogage d'opérations binaires, les chiffres pouvant être `0` ou `1`.
 - **base=36** est le maximum, les chiffres peuvent être `0..9` ou `A..Z`. L'alphabet latin entier est utilisé pour représenter un nombre. Un cas amusant mais utile pour la base `36` consiste à transformer un identifiant numérique long en quelque chose de plus court, par exemple pour créer une URL courte. On peut simplement le représenter dans le système numérique avec base `36` :
+=======
+- **base=16** is used for hex colors, character encodings etc, digits can be `0..9` or `A..F`.
+- **base=2** is mostly for debugging bitwise operations, digits can be `0` or `1`.
+- **base=36** is the maximum, digits can be `0..9` or `A..Z`. The whole Latin alphabet is used to represent a number. A funny, but useful case for `36` is when we need to turn a long numeric identifier into something shorter, for example, to make a short url. Can simply represent it in the numeral system with base `36`:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
     ```js run
     alert( 123456..toString(36) ); // 2n9c
@@ -118,7 +136,13 @@ Les cas d'utilisation courants sont :
 ```warn header="Deux points pour appeler une méthode"
 Veuillez noter que deux points sur `123456..toString(36)` n'est pas une faute de frappe. Si nous voulons appeler une méthode directement sur un nombre, comme `toString` dans l'exemple ci-dessus, nous devons placer deux points `..` avant la méthode.
 
+<<<<<<< HEAD
 Si nous plaçions un seul point : `123456.toString(36)`, il y aurait une erreur, car la syntaxe JavaScript applique la partie décimale après le premier point et il lirait `toString(36)` comme étant la partie décimale de `123456` ce qui n'est pas le cas. Si nous plaçons un point de plus, alors JavaScript sait que la partie décimale est vide et peut maintenant appliquer la méthode.
+=======
+If we placed a single dot: `123456.toString(36)`, then there would be an error, because JavaScript syntax implies the decimal part after the first dot. And if we place one more dot, then JavaScript knows that the decimal part is empty and now uses the method.
+
+Also could write `(123456).toString(36)`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Il est aussi possible d'écrire `(123456).toString(36)`.
 ```
@@ -136,19 +160,34 @@ Il existe plusieurs fonctions intégrées pour arrondir :
 : Arrondis ver le haut : `3.1` devient `4`, et `-1.1` devient `-1`.
 
 `Math.round`
+<<<<<<< HEAD
 : Arrondit à l'entier le plus proche : `3,1` devient `3`, `3,6` devient `4` et pour le cas du milieu, `3,5` est également arrondit à `4`.
+=======
+: Rounds to the nearest integer: `3.1` becomes `3`, `3.6` becomes `4`. In the middle cases `3.5` rounds up to `4`, and `-3.5` rounds up to `-3`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 `Math.trunc` (non pris en charge par Internet Explorer)
 : Supprime tout ce qui suit le point décimal : `3.1` devient `3`, `-1.1` devient `-1`.
 
 Voici le tableau pour résumer les différences entre eux :
 
+<<<<<<< HEAD
 |      | `Math.floor` | `Math.ceil` | `Math.round` | `Math.trunc` |
 |------|--------------|-------------|--------------|--------------|
 | `3.1`|          `3` |         `4` |          `3` |          `3` |
 | `3.6`|          `3` |         `4` |          `4` |          `3` |
 |`-1.1`|         `-2` |        `-1` |         `-1` |         `-1` |
 |`-1.6`|         `-2` |        `-1` |         `-2` |         `-1` |
+=======
+|   | `Math.floor` | `Math.ceil` | `Math.round` | `Math.trunc` |
+|---|---------|--------|---------|---------|
+|`3.1`|  `3`    |   `4`  |    `3`  |   `3`   |
+|`3.5`|  `3`    |   `4`  |    `4`  |   `3`   |
+|`3.6`|  `3`    |   `4`  |    `4`  |   `3`   |
+|`-1.1`|  `-2`    |   `-1`  |    `-1`  |   `-1`   |
+|`-1.5`|  `-2`    |   `-1`  |    `-1`  |   `-1`   |
+|`-1.6`|  `-2`    |   `-1`  |    `-2`  |   `-1`   |
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Ces fonctions couvrent toutes les manières possibles de traiter la partie décimale d'un nombre. Mais que se passe-t-il si nous voulons arrondir le nombre à un certain chiffre après la virgule ?
 
@@ -187,7 +226,11 @@ Il y a deux façons de le faire:
     alert( num.toFixed(5) ); // "12.34000", ajout de zéros pour faire exactement 5 chiffres
     ```
 
+<<<<<<< HEAD
     Nous pouvons le convertir en un nombre en utilisant le plus unaire `+` ou un appel `Number()` : `+num.toFixed(5)`.
+=======
+    We can convert it to a number using the unary plus or a `Number()` call, e.g. write `+num.toFixed(5)`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ## Calculs imprécis
 
@@ -221,7 +264,17 @@ Mais pourquoi cela se produit-il ?
 
 Un nombre est stocké en mémoire sous sa forme binaire, une séquence de uns et de zéros. Mais les fractions telles que `0.1`, `0.2`, qui semblent simples dans le système numérique décimal, sont en réalité des fractions sans fin dans leur forme binaire.
 
+<<<<<<< HEAD
 En d'autres termes, qu'est-ce que `0.1` ? C'est un divisé par dix `1/10`, un dixième. Dans le système numérique décimal, ces nombres sont facilement représentables. Comparez-le à un tiers : `1/3`. Cela devient une fraction sans fin `0.33333(3)`.
+=======
+```js run
+alert(0.1.toString(2)); // 0.0001100110011001100110011001100110011001100110011001101
+alert(0.2.toString(2)); // 0.001100110011001100110011001100110011001100110011001101
+alert((0.1 + 0.2).toString(2)); // 0.0100110011001100110011001100110011001100110011001101
+```
+
+What is `0.1`? It is one divided by ten `1/10`, one-tenth. In the decimal numeral system, such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Ainsi, la division par puissances `10` est garantie de bien fonctionner dans le système décimal, mais la division par `3` ne l'est pas. Pour la même raison, dans le système de numération binaire, la division par des puissances de `2` est garantie, mais `1/10` devient une fraction binaire sans fin.
 
@@ -242,7 +295,11 @@ C'est pourquoi `0.1` + `0.2` n'est pas exactement `0.3`.
 ```smart header="Pas seulement JavaScript"
 Le même problème existe dans de nombreux autres langages de programmation.
 
+<<<<<<< HEAD
 PHP, Java, C, Perl, Ruby donnent exactement le même résultat, car ils sont basés sur le même format numérique.
+=======
+PHP, Java, C, Perl, and Ruby give exactly the same result, because they are based on the same numeric format.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ```
 
 Pouvons-nous contourner le problème ? Bien sûr, la méthode la plus fiable est d'arrondir le résultat à l'aide d'une méthode [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
@@ -268,7 +325,11 @@ alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
 alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
 ```
 
+<<<<<<< HEAD
 Ainsi, l'approche multiplier/diviser réduit l'erreur, mais ne la supprime pas totalement.
+=======
+So, the multiply/divide approach reduces the error, but doesn't remove it totally.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Parfois, nous pourrions essayer d'éviter les fractions complètement. Par exemple, si nous traitons avec un magasin, nous pouvons stocker les prix en cents au lieu de dollars. Mais que se passe-t-il si nous appliquons une réduction de 30 % ? En pratique, il est rarement possible d'éviter totalement les fractions. Il suffit de les arrondir pour couper les "queues" si nécessaire.
 
@@ -290,7 +351,11 @@ Une autre conséquence amusante de la représentation interne des nombres est l'
 
 C'est parce que le signe est représenté par un bit, il peut donc être défini ou non pour n’importe quel nombre, y compris le zéro.
 
+<<<<<<< HEAD
 Dans le plupart des cas, la distinction est imperceptible, car les opérateurs peuvent les traiter de la même manière.
+=======
+In most cases, the distinction is unnoticeable, because operators are suited to treat them as the same.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ```
 
 ## Tests : isFinite et isNaN
@@ -337,7 +402,11 @@ Veuillez noter qu'une chaîne de caractères vide ou une chaîne de caractères 
 ````smart header="`Number.isNaN` et `Number.isFinite`"
 Les méthodes [Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) et [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) sont des versions plus "strictes" des fonctions `isNaN` et `isFinite`. Elles ne convertissent pas automatiquement leur argument en nombre, mais vérifient s'il appartient au type `number`.
 
+<<<<<<< HEAD
 - `Number.isNaN(value)` retourne `true` si l'argument appartient au type `number` et s'il vaut `NaN`. Dans tous les autres cas, elle retourne `false`.
+=======
+- `Number.isNaN(value)` returns `true` if the argument belongs to the `number` type and it is `NaN`. In any other case, it returns `false`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
     ```js run
     alert( Number.isNaN(NaN) ); // true
@@ -348,7 +417,11 @@ Les méthodes [Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaSc
     alert( isNaN("str") ); // true, car isNaN convertit la string "str" en un nombre et obtient NaN comme résultatde la conversion
     ```
 
+<<<<<<< HEAD
 - `Number.isFinite(value)` retourne `true` si l'argument appartient au type `number` et s'il vaut ni `NaN`, ni `Infinity`, ni `-Infinity`. Dans tous les autres cas, elle retourne `false`.
+=======
+- `Number.isFinite(value)` returns `true` if the argument belongs to the `number` type and it is not `NaN/Infinity/-Infinity`. In any other case, it returns `false`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
     ```js run
     alert( Number.isFinite(123) ); // true
@@ -365,7 +438,12 @@ En quelque sorte, les fonction `Number.isNaN` et `Number.isFinite` sont plus sim
 
 ```smart header="Comparer avec Object.is"
 
+<<<<<<< HEAD
 Il existe une méthode intégrée spéciale [Object.is](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/is) qui compare des valeurs telles que `===`, mais qui est plus fiable pour deux cas extrêmes :
+=======
+1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
+2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, technically that's correct because internally the number has a sign bit that may be different even if all other bits are zeroes.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 1. Cela fonctionne avec `NaN` : `Object.is(NaN, NaN) === true`, c'est une bonne chose.
 2. Les valeurs `0` et `-0` sont différentes : `Object.is(0, -0) === false`, techniquement c’est vrai, car le numéro a en interne un bit de signe qui peut être différent même si tous les autres bits sont à zéro.
@@ -385,7 +463,11 @@ alert( +"100px" ); // NaN
 
 La seule exception concerne les espaces au début ou à la fin de la chaîne de caractères, car ils sont ignorés.
 
+<<<<<<< HEAD
 Mais dans la vraie vie, nous avons souvent des valeurs en unités, comme `"100px"` ou `"12pt"` en CSS. En outre, dans de nombreux pays, le symbole monétaire se situe après le montant. Nous avons donc `"19€"` et souhaitons en extraire une valeur numérique.
+=======
+But in real life, we often have values in units, like `"100px"` or `"12pt"` in CSS. Also in many countries, the currency symbol goes after the amount, so we have `"19€"` and would like to extract a numeric value out of that.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 C'est à quoi servent `parseInt` et `parseFloat`.
 
@@ -479,4 +561,8 @@ Pour les fractions :
 
 Plus de fonctions mathématiques :
 
+<<<<<<< HEAD
 - Voir l'objet [Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math) quand vous en avez besoin. La bibliothèque est très petite, mais peut couvrir les besoins de base.
+=======
+- See the [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object when you need them. The library is very small but can cover basic needs.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a

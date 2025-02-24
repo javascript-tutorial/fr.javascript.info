@@ -88,16 +88,26 @@ Dans les anciens scripts, vous pouvez également trouver un autre mot-clé : `v
 *!*var*/!* message = 'Hello';
 ```
 
+<<<<<<< HEAD
 Le mot-clé `var` est *presque* identique à `let`. Il déclare également une variable, mais d'une manière légèrement différente, à la mode "old school".
 
 Il y a des différences subtiles entre `let` et `var`, mais elles n'ont pas encore d'importance pour nous. Nous les couvrirons en détails plus tard, dans le chapitre <info:var>.
+=======
+The `var` keyword is *almost* the same as `let`. It also declares a variable but in a slightly different, "old-school" way.
+
+There are subtle differences between `let` and `var`, but they do not matter to us yet. We'll cover them in detail in the chapter <info:var>.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ````
 
 ## Une analogie avec la vie réelle
 
 Nous pouvons facilement saisir le concept d'une "variable" si nous l'imaginons comme une "boîte" pour les données, avec un autocollant portant un nom unique.
 
+<<<<<<< HEAD
 Par exemple, la variable message peut être imaginée comme une boîte étiquetée "message" avec la valeur "Hello!" à l'intérieur :
+=======
+For instance, the variable `message` can be imagined as a box labelled `"message"` with the value `"Hello!"` in it:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ![](variable.svg)
 
@@ -197,16 +207,25 @@ let mon-nom; // un trait d'union '-' n'est pas autorisé dans le nom
 Des variables nommées `apple` et `APPLE` sont deux variables différentes.
 ```
 
+<<<<<<< HEAD
 ````smart header="Les lettres non latines sont autorisées mais non recommandées"
 Il est possible d'utiliser n'importe quelle langue, y compris les lettres cyrilliques, les logogrammes chinois, etc., comme ceci :
+=======
+````smart header="Non-Latin letters are allowed, but not recommended"
+It is possible to use any language, including Cyrillic letters, Chinese logograms and so on, like this:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js
 let имя = '...';
 let 我 = '...';
 ```
 
+<<<<<<< HEAD
 Techniquement, il n'y a pas d'erreur ici, ces noms sont autorisés, mais il existe une convention internationale d'utiliser l'anglais dans les noms de variables. Même si nous écrivons un petit script, sa vie peut être longue. Les personnes d'autres pays peuvent avoir besoin de les lire quelque temps.
 
+=======
+Technically, there is no error here. Such names are allowed, but there is an international convention to use English in variable names. Even if we're writing a small script, it may have a long life ahead. People from other countries may need to read it sometime.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ````
 
 ````warn header="Noms réservés"
@@ -262,10 +281,18 @@ const myBirthday = '18.04.1982';
 myBirthday = '01.01.2001'; // erreur, ne peut pas réaffecter la constante !
 ```
 
+<<<<<<< HEAD
 Lorsqu'un programmeur est certain que la variable ne doit jamais changer, il peut utiliser `const` pour le garantir et également le montrer clairement à tout le monde.
+=======
+When a programmer is sure that a variable will never change, they can declare it with `const` to guarantee and communicate that fact to everyone.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 
+<<<<<<< HEAD
 ### Les constantes en majuscules
+=======
+There is a widespread practice to use constants as aliases for difficult-to-remember values that are known before execution.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Il existe une pratique répandue d’utiliser des constantes comme alias pour des valeurs difficiles à mémoriser, qui sont connues avant leur exécution.
 
@@ -292,7 +319,11 @@ Bénéfices:
 
 Quand devrions-nous utiliser les majuscules pour une constante et quand devrions-nous les nommer normalement ? Soyons clairs.
 
+<<<<<<< HEAD
 Être une "constante" signifie simplement que la valeur ne change jamais. Mais il existe des constantes connues avant l'exécution (comme une valeur hexadécimale pour le rouge), et il y a celles qui sont *calculées* en temps réel, pendant l'exécution, mais ne changent pas après l'affectation.
+=======
+Being a "constant" just means that a variable's value never changes. But some constants are known before execution (like a hexadecimal value for red) and some constants are *calculated* in run-time, during the execution, but do not change after their initial assignment.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Par exemple :
 
@@ -300,7 +331,11 @@ Par exemple :
 const pageLoadTime = /* temps pris par une page Web pour charger */;
 ```
 
+<<<<<<< HEAD
 La valeur de `pageLoadTime` n’est pas connue avant le chargement de la page, elle est donc nommée normalement. Mais cela reste une constante, car elle ne change pas après l’affectation.
+=======
+The value of `pageLoadTime` is not known before the page load, so it's named normally. But it's still a constant because it doesn't change after the assignment.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 En d'autres termes, les constantes nommées en majuscules ne sont utilisées que comme alias pour les valeurs "codées en dur".
 
@@ -310,18 +345,31 @@ En parlant de variables, il y a une autre chose extrêmement importante.
 
 Un nom de variable doit avoir une signification claire et évidente, décrivant les données qu'elle stocke.
 
+<<<<<<< HEAD
 Le nommage de variables est l’une des compétences les plus importantes et les plus complexes de la programmation. Un rapide coup d’œil sur les noms de variables peut révéler quel code est écrit par un débutant et par un développeur expérimenté.
 
 Dans un projet réel, la majeure partie du temps est consacrée à la modification et à l'extension de la base de code existant, plutôt que d'écrire quelque chose de complètement séparé de zéro. Et lorsque nous revenons au code après un certain temps, il est beaucoup plus facile de trouver des informations bien étiquetées. Ou, en d'autres termes, lorsque les variables ont de bons noms.
+=======
+Variable naming is one of the most important and complex skills in programming. A glance at variable names can reveal which code was written by a beginner versus an experienced developer.
+
+In a real project, most of the time is spent modifying and extending an existing code base rather than writing something completely separate from scratch. When we return to some code after doing something else for a while, it's much easier to find information that is well-labelled. Or, in other words, when the variables have good names.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Veuillez prendre le temps de réfléchir à un nom pertinent pour une variable avant de la déclarer. Cela vous facilitera énormément la vie.
 
 Voici quelques règles à suivre :
 
+<<<<<<< HEAD
 - Utilisez des noms lisibles par des humains comme `userName` ou `shoppingCart`.
 - Restez à l’écart des abréviations ou des noms courts tels que `a`, `b`, `c`, à moins que vous ne sachiez vraiment ce que vous faites.
 - Faire en sorte que le nom soit le plus descriptif et concis possible. Des exemples de noms incorrects sont `data` et `value`. Un tel nom ne dit rien. C’est tout à fait acceptable de les utiliser si le contexte dans lequel les données ou les valeurs sont impliquées est particulièrement évident.
 - S'accorder avec son équipe (et soi-même) sur les termes utilisés. Si un visiteur du site est appelé un "utilisateur", nous devrions nommer les variables connexes comme `currentUser` ou `newUser`, mais non `currentVisitor` ou encore `newManInTown`.
+=======
+- Use human-readable names like `userName` or `shoppingCart`.
+- Stay away from abbreviations or short names like `a`, `b`, and `c`, unless you know what you're doing.
+- Make names maximally descriptive and concise. Examples of bad names are `data` and `value`. Such names say nothing. It's only okay to use them if the context of the code makes it exceptionally obvious which data or value the variable is referencing.
+- Agree on terms within your team and in your mind. If a site visitor is called a "user" then we should name related variables `currentUser` or `newUser` instead of `currentVisitor` or `newManInTown`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Cela semble simple ? En effet, ça l'est, mais la création de noms descriptifs et concis dans la pratique ne l'est pas. Fonce.
 

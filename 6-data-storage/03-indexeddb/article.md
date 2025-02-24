@@ -17,7 +17,11 @@ Cette puissance est généralement excessive pour les applications traditionnell
 
 L'interface native à IndexedDB, décrite dans la spécification <https://www.w3.org/TR/IndexedDB>, est basée sur des événements.
 
+<<<<<<< HEAD
 Nous pouvons également utiliser `async/await` à l'aide d'un wrapper basé sur des promesses, comme <https://github.com/jakearchibald/idb> C'est assez pratique, mais le wrapper n'est pas parfait, il ne peut pas remplacer les événements pour tous les cas. Nous allons donc commencer par des événements, puis, après avoir compris IndexedDB, nous utiliserons le wrapper.
+=======
+We can also use `async/await` with the help of a promise-based wrapper, like <https://github.com/jakearchibald/idb>. That's pretty convenient, but the wrapper is not perfect, it can't replace events for all cases. So we'll start with events, and then, after we gain an understanding of IndexedDB, we'll use the wrapper.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```smart header="Où sont les données?"
 Techniquement, les données sont généralement stockées dans le répertoire d'origine du visiteur, ainsi que les paramètres du navigateur, les extensions, etc.

@@ -209,9 +209,15 @@ alert(results[0]); // <h1>,h1 (1st tag)
 alert(results[1]); // <h2>,h2 (2nd tag)
 ```
 
+<<<<<<< HEAD
 Comme nous pouvons le voir, la première différence est très importante, comme le montre la ligne `(*)`. Nous ne pouvons pas trouver la correspondance dans `results[0]`, car il ne se comporte pas comme un tableau. Nous pouvons le convertir en véritable `Array` avec `Array.from`. Il y a plus de détails sur les objets itérables dans l'article <info:iterable>.
 
 Il n'y a pas besoin de `Array.from` si nous bouclons sur le résultat :
+=======
+As we can see, the first difference is very important, as demonstrated in the line `(*)`. We can't get the match as `results[0]`, because that object is a pseudoarray. We can turn it into a real `Array` using `Array.from`. There are more details about pseudoarrays and iterables in the article <info:iterable>.
+
+There's no need for `Array.from` if we're looping over results:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
