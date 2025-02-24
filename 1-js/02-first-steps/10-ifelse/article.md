@@ -92,11 +92,11 @@ Par exemple :
 let year = prompt('En quelle année la spécification ECMAScript-2015 a-t-elle été publiée ?', '');
 
 if (year < 2015) {
-  alert( 'Too early...' );
+  alert( 'Trop tôt...' );
 } else if (year > 2015) {
-  alert( 'Too late' );
+  alert( 'Trop tard' );
 } else {
-  alert( 'Exactly!' );
+  alert( 'Exactement !' );
 }
 ```
 
