@@ -134,7 +134,7 @@ Exécuter le début
 → ...
 ```
 
-C'est-à-dire que `begin` est exécuté une fois, puis itéré : après chaque test de `condition`, `body` et `step` sont exécutés.
+C'est-à-dire que `début` est exécuté une fois, puis itéré : après chaque test de `condition`, `corps` et `étape` sont exécutés.
 
 Si vous débutez dans les boucles, il pourrait être utile de revenir à l'exemple et de reproduire comment elle s'exécute pas à pas sur une feuille de papier.
 
