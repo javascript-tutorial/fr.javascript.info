@@ -47,7 +47,7 @@ L'appel `showMessage()` exécute le code de la fonction. Ici, nous verrons le me
 
 Cet exemple illustre clairement l’un des principaux objectifs des fonctions: éviter la duplication de code.
 
-Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit: la fonction qui le renvoie.
+Si nous devons un jour modifier le message ou son affichage, il suffit de modifier le code à un endroit : la fonction qui le renvoie.
 
 ## Variables locales
 
@@ -153,7 +153,7 @@ function showMessage(*!*from, text*/!*) { // arguments : from, text
 
 Lorsque la fonction est appelée dans les lignes `(*)` et `(**)`, les valeurs données sont copiées dans les variables locales `from` et `text`. Ensuite, la fonction les utilise.
 
-Voici un autre exemple: nous avons une variable `from` et la transmettons à la fonction. Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
+Voici un autre exemple : nous avons une variable `from` et la transmettons à la fonction. Remarque : la fonction change `from`, mais le changement n'est pas visible à l'extérieur, car une fonction obtient toujours une copie de la valeur :
 
 ```js run
 function showMessage(from, text) {
