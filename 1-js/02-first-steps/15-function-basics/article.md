@@ -471,7 +471,7 @@ Ce sont des exceptions. En règle générale, les noms de fonctions doivent êtr
 
 Les fonctions doivent être courtes et faire exactement une seule chose. Si cette chose est conséquente, il vaut peut-être la peine de scinder la fonction en quelques fonctions plus petites. Parfois, suivre cette règle peut ne pas être aussi facile, mais c’est définitivement une bonne pratique.
 
-Une fonction distincte est non seulement plus facile à tester et à déboguer -- son existence même est un excellent commentaire!
+Une fonction distincte est non seulement plus facile à tester et à déboguer -- son existence même est un excellent commentaire !
 
 Par exemple, comparez les deux fonctions `showPrimes(n)` ci-dessous. Chacune extrait les [nombres premiers](https://fr.wikipedia.org/wiki/Nombre_premier) jusqu'à `n`.
 
