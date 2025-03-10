@@ -17,7 +17,11 @@ L'algorithme général du moteur:
     - il les exécute, en commençant par la tâche la plus ancienne.
 2. Dort jusqu'à ce qu'une tâche apparaisse, puis repasse à 1.
 
+<<<<<<< HEAD
 C'est une formalisation de ce que nous voyons lors de la navigation sur une page. Le moteur JavaScript ne fait rien la plupart du temps, il ne fonctionne que si un script / gestionnaire / événement s'active.
+=======
+That's a formalization of what we see when browsing a page. The JavaScript engine does nothing most of the time, it only runs if a script/handler/event activates.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Exemples de tâches:
 
@@ -30,6 +34,7 @@ Les tâches sont définies -- le moteur les gère -- puis attend plus de tâches
 
 Il peut arriver qu'une tâche arrive pendant que le moteur est occupé, il est alors mis en file d'attente.
 
+<<<<<<< HEAD
 Les tâches forment une file d'attente, dite "file d'attente des macrotâches" (terme v8) :
 
 ![](eventLoop.svg)
@@ -37,12 +42,27 @@ Les tâches forment une file d'attente, dite "file d'attente des macrotâches" (
 Par exemple, alors que le moteur est occupé à exécuter un `script`, un utilisateur peut déplacer sa souris provoquant un `mousemove`, et un `setTimeout` peut être écoulé, et ainsi de suite, ces tâches forment une file d'attente, comme illustré sur l'image ci-dessus.
 
 Les tâches de la file d'attente sont traitées sur la base du «premier arrivé - premier servi». Lorsque le navigateur du moteur en a fini avec le `script`, il gère l'événement `mousemove`, puis le gestionnaire `setTimeout`, etc.
+=======
+The tasks form a queue, the so-called "macrotask queue" ([v8](https://v8.dev/) term):
+
+![](eventLoop.svg)
+
+For instance, while the engine is busy executing a `script`, a user may move their mouse causing `mousemove`, and `setTimeout` may be due and so on, these tasks form a queue, as illustrated in the picture above.
+
+Tasks from the queue are processed on a "first come – first served" basis. When the engine browser is done with the `script`, it handles `mousemove` event, then `setTimeout` handler, and so on.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Jusqu'à présent, c'est assez simple, n'est-ce pas ?
 
+<<<<<<< HEAD
 Deux détails supplémentaires:
 1. Le rendu ne se produit jamais pendant que le moteur exécute une tâche. Peu importe que la tâche prenne beaucoup de temps. Les modifications apportées au DOM ne sont peintes qu'après la fin de la tâche.
 2. Si une tâche prend trop de temps, le navigateur ne peut pas effectuer d'autres tâches, telles que le traitement des événements utilisateur. Donc, après un certain temps, cela soulève une alerte du type "La page ne répond plus", suggérant de tuer la tâche avec toute la page. Cela se produit lorsqu'il y a beaucoup de calculs complexes ou une erreur de programmation conduisant à une boucle infinie.
+=======
+Two more details:
+1. Rendering never happens while the engine executes a task. It doesn't matter if the task takes a long time. Changes to the DOM are painted only after the task is complete.
+2. If a task takes too long, the browser can't do other tasks, such as processing user events. So after some time, it raises an alert like "Page Unresponsive", suggesting killing the task with the whole page. That happens when there are a lot of complex calculations or a programming error leading to an infinite loop.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 C'était la théorie. Voyons maintenant comment nous pouvons appliquer ces connaissances.
 
@@ -54,7 +74,11 @@ Par exemple, la mise en évidence de la syntaxe (utilisée pour coloriser des ex
 
 Bien que le moteur soit occupé à mettre en évidence la syntaxe, il ne peut pas faire d'autres trucs liés au DOM, traiter les événements utilisateur, etc. Cela peut même amener le navigateur à "saccader" ou même à "figer" un peu, ce qui est inacceptable.
 
+<<<<<<< HEAD
 Nous pouvons éviter les problèmes en divisant la grande tâche en morceaux. Mettez en surbrillance les 100 premières lignes, puis planifiez un `setTimeout` (avec un délai à 0) pour les 100 lignes suivantes, etc.
+=======
+We can avoid problems by splitting the big task into pieces. Highlight the first 100 lines, then schedule `setTimeout` (with zero-delay) for the next 100 lines, and so on.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Pour démontrer cette approche, par souci de simplicité, au lieu de la colorisation du texte, prenons une fonction qui compte de `1` à `1000000000`.
 
