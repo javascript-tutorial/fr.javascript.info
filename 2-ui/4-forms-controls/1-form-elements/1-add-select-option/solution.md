@@ -1,4 +1,4 @@
-The solution, step by step:
+La solution, étape par étape:
 
 ```html run
 <select id="genres">
