@@ -48,7 +48,7 @@ Plus tard nous verrons comment les "fans" peuvent s'abonner à ces changements.
 
 Voici un exemple d'un constructeur d'une promesse et d'une fonction exécutrice simple avec un "code produit" qui prend du temps (utilisant `setTimeout`) :
 
-```js run
+```js
 let promise = new Promise(function(resolve, reject) {
   // la fonction est exécutée automatiquement quand la promesse est construite
 
@@ -221,7 +221,11 @@ L'idée de `finally` est de configurer un gestionnaire pour effectuer le nettoya
 
 Par exemple l'arrêt des voyants de charge, la fermeture des connexions devenues inutiles, etc.
 
+<<<<<<< HEAD
 Considérez-le comme un nettoyeur de fête. Peu importe qu'une fête soit bonne ou mauvaise, combien d'amis y participaient, nous devons toujours (ou du moins devrions) faire un nettoyage après.
+=======
+Think of it as a party finisher. Irresepective of whether a party was good or bad, how many friends were in it, we still need (or at least should) do a cleanup after it.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Le code peut ressembler à ceci :
 

@@ -1,6 +1,10 @@
 # Méthodes de tableau
 
+<<<<<<< HEAD
 Les tableaux viennent avec beaucoup de méthodes. Pour faciliter les choses, dans ce chapitre, ils ont été divisés en groupes.
+=======
+Arrays provide a lot of methods. To make things easier, in this chapter, they are split into groups.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ## Ajouter/Supprimer des éléments
 
@@ -32,11 +36,19 @@ alert( arr.length ); // 3
 
 L'élément a été supprimé, mais le tableau a toujours 3 éléments, on peut voir que `arr.length == 3`
 
+<<<<<<< HEAD
 C'est normal, car `delete obj.key` supprime une valeur par la `clé`. C'est tout ce que ça fait. C'est donc parfait pour les objets. Mais pour les tableaux, nous souhaitons généralement que le reste des éléments se déplace et occupe la place libérée. Nous nous attendons à avoir un tableau plus court maintenant.
+=======
+That's natural, because `delete obj.key` removes a value by the `key`. It's all it does. Fine for objects. But for arrays we usually want the rest of the elements to shift and occupy the freed place. We expect to have a shorter array now.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Des méthodes spéciales doivent donc être utilisées.
 
+<<<<<<< HEAD
 La méthode [arr.splice](mdn:js/Array/splice) est un couteau suisse pour les tableaux. Elle peut tout faire : ajouter, supprimer et remplacer des éléments.
+=======
+The [arr.splice](mdn:js/Array/splice) method is a Swiss army knife for arrays. It can do everything: insert, remove and replace elements.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 La syntaxe est la suivante :
 
@@ -62,7 +74,11 @@ alert( arr ); // ["I", "JavaScript"]
 
 Facile, non ? À partir de l'index 1, il a supprimé 1 élément.
 
+<<<<<<< HEAD
 Dans l'exemple suivant, nous supprimons 3 éléments et les remplaçons par les deux autres :
+=======
+In the next example, we remove 3 elements and replace them with the other two:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 let arr = [*!*"I", "study", "JavaScript",*/!* "right", "now"];
@@ -84,7 +100,11 @@ let removed = arr.splice(0, 2);
 alert( removed ); // "I", "study" <-- tableau des éléments supprimés
 ```
 
+<<<<<<< HEAD
 La méthode `splice` est également capable d'insérer les éléments sans aucune suppression. Pour cela, nous devons définir `nombreDeSuppression` sur 0 :
+=======
+The `splice` method is also able to insert the elements without any removals. For that, we need to set `deleteCount` to `0`:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 let arr = ["I", "study", "JavaScript"];
@@ -114,7 +134,11 @@ alert( arr ); // 1,2,3,4,5
 
 ### slice
 
+<<<<<<< HEAD
 La méthode [arr.slice](mdn:js/Array/slice) est beaucoup plus simple qu'un similaire `arr.splice`.
+=======
+The method [arr.slice](mdn:js/Array/slice) is much simpler than the similar-looking `arr.splice`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 La syntaxe est la suivante :
 
@@ -124,7 +148,11 @@ arr.slice([start], [end])
 
 Il retourne un nouveau tableau dans lequel il copie tous les éléments index qui commencent de `start` à `end` (sans compter `end`). Les deux `start` et `end` peuvent être négatifs, dans ce cas, la position depuis la fin du tableau est supposée.
 
+<<<<<<< HEAD
 Cela ressemble à une méthode string `str.slice`, mais au lieu de sous-chaînes de caractères, cela crée des sous-tableaux.
+=======
+It's similar to a string method `str.slice`, but instead of substrings, it makes subarrays.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Par exemple :
 
@@ -207,7 +235,11 @@ La syntaxe :
 
 ```js
 arr.forEach(function(item, index, array) {
+<<<<<<< HEAD
   // ... fait quelques chose avec l'élément
+=======
+  // ... do something with an item
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 });
 ```
 
@@ -241,7 +273,13 @@ Les méthodes [arr.indexOf](mdn:js/Array/indexOf), et [arr.includes](mdn:js/Arra
 
 Habituellement, ces méthodes sont utilisées avec un seul argument : l'élément à rechercher. Par défaut, la recherche s'effectue depuis le début.
 
+<<<<<<< HEAD
 Par exemple :
+=======
+Usually, these methods are used with only one argument: the `item` to search. By default, the search is from the beginning.
+
+For instance:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 let arr = [1, 0, false];
@@ -255,7 +293,11 @@ alert( arr.includes(1) ); // true
 
 Veuillez noter que `indexOf` utilise l'égalité stricte `===` pour la comparaison. Donc, si nous cherchons "faux", il trouve exactement "faux" et non le zéro.
 
+<<<<<<< HEAD
 Si nous voulons vérifier si `item` existe dans le tableau et n'avons pas besoin de l'index, alors `arr.includes` est préféré.
+=======
+If we want to check if `item` exists in the array and don't need the index, then `arr.includes` is preferred.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 La méthode [arr.lastIndexOf](mdn:js/Array/lastIndexOf) est la même que `indexOf`, mais recherche de droite à gauche.
 
@@ -274,12 +316,20 @@ const arr = [NaN];
 alert( arr.indexOf(NaN) ); // -1 (faux, devrait être 0)
 alert( arr.includes(NaN) ); // true (correct)
 ```
+<<<<<<< HEAD
 C'est parce que `includes` a été ajouté à JavaScript beaucoup plus tard et utilise l'algorithme de comparaison le plus à jour en interne.
+=======
+That's because `includes` was added to JavaScript much later and uses the more up-to-date comparison algorithm internally.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ````
 
 ### find et findIndex/findLastIndex
 
+<<<<<<< HEAD
 Imaginez que nous ayons un tableau d'objets. Comment pouvons-nous trouver un objet avec une condition spécifique ?
+=======
+Imagine we have an array of objects. How do we find an object with a specific condition?
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Ici la méthode [arr.find(fn)](mdn:js/Array/find) se révèle vraiment pratique.
 
@@ -298,7 +348,11 @@ La fonction est appelée pour chaque élément du tableau, l'un après l'autre :
 - `index` est sont index.
 - `array` est le tableau lui même.
 
+<<<<<<< HEAD
 S'il renvoie `true`, la recherche est arrêtée, l'`item` est renvoyé. Si rien n'est trouvé, `undefined` est renvoyé.
+=======
+If it returns `true`, the search is stopped, the `item` is returned. If nothing is found, `undefined` is returned.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Par exemple, nous avons un tableau d’utilisateurs, chacun avec les champs `id` et `name`. Trouvons le premier avec l'`id == 1` :
 
@@ -314,11 +368,19 @@ let user = users.find(item => item.id == 1);
 alert(user.name); // John
 ```
 
+<<<<<<< HEAD
 Dans la vie réelle, les tableaux d'objets sont une chose courante, la méthode `find` est donc très utile.
+=======
+In real life, arrays of objects are a common thing, so the `find` method is very useful.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Notez que dans l'exemple, nous fournissons à `find` la fonction `item => item.id == 1` avec un argument. C'est typique, les autres arguments de cette fonction sont rarement utilisés.
 
+<<<<<<< HEAD
 La méthode [arr.findIndex](mdn:js/Array/findIndex) est essentiellement la même, mais elle retourne l'index où l'élément a été trouvé à la place de l'élément lui-même. La valeur de `-1` est retournée si rien n'est trouvé.
+=======
+The [arr.findIndex](mdn:js/Array/findIndex) method has the same syntax but returns the index where the element was found instead of the element itself. The value of `-1` is returned if nothing is found.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 La méthode [arr.findLastIndex](mdn:js/Array/findLastIndex) est comme `findIndex`, mais recherche de droite à gauche, similaire à `lastIndexOf`.
 
@@ -451,13 +513,21 @@ alert(arr);  // *!*1, 2, 15*/!*
 
 Maintenant, ça fonctionne comme nous l'avons prévu.
 
+<<<<<<< HEAD
 Mettons cela de côté et regardons ce qui se passe. L'`arr` peut être un tableau de n'importe quoi, non ? Il peut contenir des nombres, des chaînes de caractères, des objets ou autre. Nous avons donc un ensemble de *quelques items*. Pour le trier, nous avons besoin d’une *fonction de classement* qui sache comment comparer ses éléments. La valeur par défaut est un ordre de chaîne de caractères.
+=======
+Let's step aside and think about what's happening. The `arr` can be an array of anything, right? It may contain numbers or strings or objects or whatever. We have a set of *some items*. To sort it, we need an *ordering function* that knows how to compare its elements. The default is a string order.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 
+<<<<<<< HEAD
 La méthode `arr.sort(fn)` intégre l'implémentation d'un algorithme générique de tri. Nous n'avons pas besoin de nous préoccuper de son fonctionnement interne (c'est un [tri rapide optimisé](https://fr.wikipedia.org/wiki/Tri_rapide) la plupart du temps). Il va parcourir le tableau, comparer ses éléments à l'aide de la fonction fournie et les réorganiser. Tout ce dont nous avons besoin est de fournir la `fn` qui effectue la comparaison.
 
 
 À propos, si nous voulons savoir quels éléments sont comparés, rien ne nous empêche de les alerter :
+=======
+By the way, if we ever want to know which elements are compared -- nothing prevents us from alerting them:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 [1, -2, 15, 2, 0, 8].sort(function(a, b) {
@@ -529,7 +599,11 @@ Voici une situation réele. Nous écrivons une application de messagerie et la p
 
 La méthode [str.split(separator)](mdn:js/String/split) fait exactement cela. Elle divise la chaîne en un tableau selon le délimiteur `separator` donné.
 
+<<<<<<< HEAD
 Dans l'exemple ci-dessous, nous les séparons par une virgule suivie d'un espace :
+=======
+In the example below, we split by a comma followed by a space:
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ```js run
 let names = 'Bilbo, Gandalf, Nazgul';
@@ -596,9 +670,15 @@ Les arguments :
 - `index` -- est sa position.
 - `array` -- est le tableau.
 
+<<<<<<< HEAD
 Lorsque la fonction est appliquée, le résultat de l'appel de fonction précédent est transmis au suivant en tant que premier argument.
 
 Ainsi, le premier argument est l'accumulateur qui stocke le résultat combiné de toutes les exécutions précédentes. À la fin, il devient le résultat de la fonction `reduce`.
+=======
+As the function is applied, the result of the previous function call is passed to the next one as the first argument.
+
+So, the first argument is essentially the accumulator that stores the combined result of all previous executions. And at the end, it becomes the result of `reduce`.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Cela semble compliqué ?
 
@@ -667,7 +747,11 @@ arr.reduce((sum, current) => sum + current);
 
 Il est donc conseillé de toujours spécifier la valeur initiale.
 
+<<<<<<< HEAD
 La méthode [arr.reduceRight](mdn:js/Array/reduceRight) fait la même chose, mais va de droite à gauche.
+=======
+The method [arr.reduceRight](mdn:js/Array/reduceRight) does the same but goes from right to left.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 ## Array.isArray
 
@@ -692,7 +776,11 @@ alert(Array.isArray([])); // true
 
 Presque toutes les méthodes de tableau qui appellent des fonctions -- comme `find`, `filter`, `map`, à l'exception de `sort`, acceptent un paramètre supplémentaire facultatif `thisArg`.
 
+<<<<<<< HEAD
 Ce paramètre n'est pas expliqué dans les sections ci-dessus, car il est rarement utilisé. Mais pour être complet, nous devons quand même le voir.
+=======
+That parameter is not explained in the sections above, because it's rarely used. But for completeness, we have to cover it.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Voici la syntaxe complète de ces méthodes :
 
@@ -766,7 +854,15 @@ Un cheat sheet des méthodes de tableau :
 - Aditionellement :
   - `Array.isArray(value)` vérifie que `value` est un tableau, si c'est le cas, renvoie `true`, sinon `false`.
 
+<<<<<<< HEAD
 Veuillez noter que les méthodes `sort`, `reverse` et `splice` modifient le tableau lui-même.
+=======
+- To search among elements:
+  - `indexOf/lastIndexOf(item, pos)` -- look for `item` starting from position `pos`, and return the index or `-1` if not found.
+  - `includes(value)` -- returns `true` if the array has `value`, otherwise `false`.
+  - `find/filter(func)` -- filter elements through the function, return first/all values that make it return `true`.
+  - `findIndex` is like `find`, but returns the index instead of a value.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation. Mais il y en a encore d'autres :
 
@@ -796,7 +892,11 @@ Ces méthodes sont les plus utilisées, elles couvrent 99% des cas d'utilisation
 
 Pour la liste complète, consultez le [manuel](mdn:js/Array).
 
+<<<<<<< HEAD
 À première vue, vous pouvez penser qu’il existe de nombreuses méthodes difficiles à retenir. Mais en réalité, c'est beaucoup plus facile qu'il n'y paraît.
+=======
+At first sight, it may seem that there are so many methods, quite difficult to remember. But actually, that's much easier.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Parcourez le cheat sheet et essayer de vous en souvenir. Ensuite, faites les exercices de ce chapitre afin de vous familiariser avec les méthodes de tableau.
 

@@ -256,7 +256,11 @@ let obj = {
   }
 };
 
+<<<<<<< HEAD
 alert(obj + 2); // 22 ("2" + 2), la conversion en primitive a renvoyé une chaîne de caractères => concaténation
+=======
+alert(obj + 2); // "22" ("2" + 2), conversion to primitive returned a string => concatenation
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 ```
 
 ## Résumé

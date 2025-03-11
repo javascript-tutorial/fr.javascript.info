@@ -14,7 +14,11 @@ La seule utilisation de `__proto__`, qui n'est pas mal vue, est en tant que prop
 
 Bien qu'il existe également une méthode spéciale pour cela :
 
+<<<<<<< HEAD
 - [Object.create(proto, [descriptors])](mdn:js/Object/create) -- crée un objet vide avec `proto` donné comme `[[Prototype]]` et des descripteurs de propriété facultatifs.
+=======
+- [Object.create(proto[, descriptors])](mdn:js/Object/create) -- creates an empty object with given `proto` as `[[Prototype]]` and optional property descriptors.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Par exemple :
 
@@ -115,7 +119,11 @@ alert(obj[key]); // [object Object], pas "some value" !
 
 Ici, si l'utilisateur tape `__proto__`, l'assignation à la ligne 4 est ignorée !
 
+<<<<<<< HEAD
 Cela pourrait sûrement être surprenant pour un non-développeur, mais assez compréhensible pour nous. La propriété `__proto__` est spéciale : elle doit être soit un objet, soit `null`. Une chaîne de caractères ne peut pas devenir un prototype. C'est pourquoi une affectation d'une chaîne à `__proto__` est ignorée.
+=======
+That could surely be surprising for a non-developer, but pretty understandable for us. The `__proto__` property is special: it must be either an object or `null`. A string can not become a prototype. That's why assigning a string to `__proto__` is ignored.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
 Mais nous n'avions pas *l'intention* de mettre en œuvre un tel comportement, non ? Nous voulons stocker des paires clé/valeur, et la clé nommée `"__proto__"` n'a pas été correctement enregistrée. Donc c'est un bug !
 
@@ -198,8 +206,13 @@ alert(Object.keys(chineseDictionary)); // hello,bye
 
 - Pour créer un objet avec le prototype donné, utilisez :
 
+<<<<<<< HEAD
     - la syntaxe littérale : `{ __proto__: ... }`, permet de spécifier plusieurs propriétés
     - ou [Object.create(proto, [descriptors])](mdn:js/Object/create), permet de spécifier des descripteurs de propriété.
+=======
+    - literal syntax: `{ __proto__: ... }`, allows to specify multiple properties
+    - or [Object.create(proto[, descriptors])](mdn:js/Object/create), allows to specify property descriptors.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
 
     Le `Object.create` fournit un moyen simple de copier superficiellement un objet avec tous les descripteurs :
 
