@@ -2,7 +2,7 @@
 
 La gestion de la mémoire en JavaScript est effectuée automatiquement et de manière invisible pour nous. Nous créons des primitives, des objets, des fonctions… Tout cela prend de la mémoire.
 
-Que se passe-t-il quand quelque chose n'est plus nécessaire? Comment le moteur JavaScript le découvre et le nettoie ?
+Que se passe-t-il quand quelque chose n'est plus nécessaire ? Comment le moteur JavaScript le découvre et le nettoie ?
 
 ## Accessibilité
 
