@@ -103,7 +103,7 @@ Pour des comparaisons comme `obj1 > obj2` ou des comparaisons avec une primitive
 ````smart header="Les objets const peuvent être modifiés"
 Un effet secondaire important du stockage des objets en tant que références est qu'un objet déclaré comme `const` *peut* être modifié.
 
-Par exemgle :
+Par exemple :
 
 ```js run
 const user = {
