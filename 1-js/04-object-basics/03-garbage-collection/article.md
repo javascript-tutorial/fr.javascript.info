@@ -199,7 +199,7 @@ Les principales choses à savoir :
 
 - La garbage collection est effectuée automatiquement. Nous ne pouvons ni forcer ni empêcher cela.
 - Les objets sont conservés en mémoire tant qu'ils sont accessibles.
-- Être référencé n'est pas la même chose qu'être accessible (depuis une racine): un groupe d'objets liés entre eux peut devenir inaccessible dans son ensemble.
+- Être référencé n'est pas la même chose qu'être accessible (depuis une racine) : un groupe d'objets liés entre eux peut devenir inaccessible dans son ensemble.
 
 Les moteurs modernes implémentent des algorithmes avancés de récupération de place.
 
