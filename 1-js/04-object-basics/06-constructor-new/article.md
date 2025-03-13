@@ -188,7 +188,7 @@ L'utilisation de fonctions de constructeur pour créer des objets offre une gran
 
 Bien sûr, nous pouvons ajouter à `this` non seulement des propriétés, mais également des méthodes.
 
-Par exemple, `new User(name)` ci-dessous créer un objet avec le `name` donné et la méthode `sayHi` :
+Par exemple, `new User(name)` ci-dessous crée un objet avec le `name` donné et la méthode `sayHi` :
 
 ```js run
 function User(name) {
