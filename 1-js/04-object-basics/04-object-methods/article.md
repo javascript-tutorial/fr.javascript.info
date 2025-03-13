@@ -111,7 +111,7 @@ let user = {
 
   sayHi() {
 *!*
-    // "this" is the "current object"
+    // "this" est "l'objet actuel"
     alert(this.name);
 */!*
   }
