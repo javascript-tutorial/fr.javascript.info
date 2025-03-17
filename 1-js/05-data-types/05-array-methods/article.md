@@ -136,7 +136,7 @@ alert( arr.slice(1, 3) ); // e,s (copie de 1 à 3, 3 non compris)
 alert( arr.slice(-2) ); // s,t (copie de -2 jusqu'à la fin)
 ```
 
-Nous pouvons aussi l'appeler sans arguments : `arr.slice()` créer une copie de `arr`. Cela est souvent utilisé pour obtenir une copie pour d'autres transformations qui ne devraient pas affecter le tableau d'origine.
+Nous pouvons aussi l'appeler sans arguments : `arr.slice()` pour créer une copie de `arr`. Cela est souvent utilisé pour obtenir une copie pour d'autres transformations qui ne devraient pas affecter le tableau d'origine.
 
 ### concat
 
