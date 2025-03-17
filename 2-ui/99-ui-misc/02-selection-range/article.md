@@ -352,7 +352,11 @@ Les principales propriétés de selection sont :
 - `rangeCount` -- nombre de plages dans la sélection, maximum `1` dans tous les navigateurs sauf Firefox.
 
 
+<<<<<<< HEAD
 ```smart header="end/start de selection vs Range"
+=======
+There's an important difference between a selection anchor/focus compared with a `Range` start/end.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Il y a une différence importante entre anchor/focus d'une sélection et start/end d'un objet `Range`.
 

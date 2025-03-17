@@ -244,7 +244,11 @@ Cette syntaxe est optionnelle. On peut très bien utiliser `document.createEleme
 - `defaultSelected` -- Si `true`, alors l'attribut HTML `selected` est créé,
 - `selected` -- Si `true`, l'option est sélectionnée.
 
+<<<<<<< HEAD
 La différence entre `defaultSelected` and `selected` est que `defaultSelected` définit l'attribut HTML (qu'on peut récupérer via `option.getAttribute('selected')`), alors que `selected` définit si l'option est sélectionnée ou non.
+=======
+The difference between `defaultSelected` and `selected` is that `defaultSelected` sets the HTML-attribute (that we can get using `option.getAttribute('selected')`), while `selected` sets whether the option is selected or not.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 En pratique, il vaut mieux mettre les _deux_ valeurs à `true` ou `false`. (Ou simplement ne pas les utiliser, leur valeur sera `false` par défaut.)
 
