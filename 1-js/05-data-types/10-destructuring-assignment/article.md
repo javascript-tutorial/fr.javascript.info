@@ -5,18 +5,30 @@ Les deux structures de données les plus utilisées en JavaScript sont `Object` 
 - Les objets nous permettent de créer une seule entité qui stocke les éléments de données par clé.
 - Les tableaux nous permettent de rassembler des éléments de données dans une liste ordonnée.
 
+<<<<<<< HEAD
 Mais lorsque nous transmettons ceux-ci à une fonction, il se peut que celle-ci n'ait pas besoin d'un objet / tableau dans son ensemble, mais plutôt de morceaux individuels.
+=======
+However, when we pass these to a function, we may not need all of it. The function might only require certain elements or properties.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 *L'affectation par décomposition*  est une syntaxe spéciale qui nous permet de "décompresser" des tableaux ou des objets dans un ensemble de variables, ce qui est parfois plus pratique.
 
+<<<<<<< HEAD
 La décomposition fonctionne également très bien avec des fonctions complexes comportant de nombreux paramètres, valeurs par défaut, etc.
+=======
+Destructuring also works well with complex functions that have a lot of parameters, default values, and so on. Soon we'll see that.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ## Décomposition d'un tableau
 
 Voici un exemple de la façon dont un tableau est décomposé en variables :
 
 ```js
+<<<<<<< HEAD
 // nous avons un tableau avec le prénom et le nom
+=======
+// we have an array with a name and surname
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 let arr = ["John", "Smith"]
 
 *!*
@@ -40,10 +52,17 @@ alert(firstName); // John
 alert(surname);  // Smith
 ```
 
+<<<<<<< HEAD
 Comme vous pouvez le voir, la syntaxe est simple. Il y a cependant plusieurs détails particuliers. Voyons plus d'exemples, pour mieux le comprendre.
 
 ````smart header="\"Décomposition\" ne veut pas dire \"destruction\"."
 Cette manipulation est appelée "affectation par décomposition", car elle "se décompose" en copiant ses éléments dans des variables. Mais le tableau lui-même n'est pas modifié.
+=======
+As you can see, the syntax is simple. There are several peculiar details though. Let's see more examples to understand it better.
+
+````smart header="\"Destructuring\" does not mean \"destructive\"."
+It's called "destructuring assignment," because it "destructurizes" by copying items into variables. However, the array itself is not modified.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 C’est juste une façon plus courte d’écrire :
 ```js
@@ -65,7 +84,11 @@ let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic
 alert( title ); // Consul
 ```
 
+<<<<<<< HEAD
 Dans le code ci-dessus, le deuxième élément du tableau est ignoré, le troisième est attribué à `title` et le reste du tableau est également ignoré (car il n'y a pas de variables pour eux).
+=======
+In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array items are also skipped (as there are no variables for them).
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 ````
 
 ````smart header="Fonctionne avec n'importe quel itérable à droite"
@@ -93,11 +116,18 @@ alert(user.surname); // Smith
 
 ````
 
+<<<<<<< HEAD
 ````smart header="Boucler avec .entries()"
 
 Dans le chapitre précédent, nous avons vu la méthode [Object.entries(obj)](mdn:js/Object/entries).
 
 Nous pouvons l'utiliser avec la décomposition pour boucler sur les clés et valeurs d'un objet :
+=======
+````smart header="Looping with .entries()"
+In the previous chapter, we saw the [Object.entries(obj)](mdn:js/Object/entries) method.
+
+We can use it with destructuring to loop over the keys-and-values of an object:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ```js run
 let user = {
@@ -105,7 +135,11 @@ let user = {
   age: 30
 };
 
+<<<<<<< HEAD
 // boucler sur les clés et les valeurs
+=======
+// loop over the keys-and-values
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 *!*
 for (let [key, value] of Object.entries(user)) {
 */!*
@@ -170,7 +204,11 @@ Si nous souhaitons également rassembler tout ce qui suit, nous pouvons ajouter 
 let [name1, name2, *!*...rest*/!*] = ["Julius", "Caesar", *!*"Consul", "of the Roman Republic"*/!*];
 
 *!*
+<<<<<<< HEAD
 // reste est un tableau d'éléments, à partir du 3ème
+=======
+// rest is an array of items, starting from the 3rd one
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
@@ -188,7 +226,11 @@ let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Ro
 
 ### Les valeurs par défaut
 
+<<<<<<< HEAD
 Si le tableau est plus court que la liste des variables à gauche, il n'y aura aucune erreur. Les valeurs absentes sont considérées comme non définies :
+=======
+If the array is shorter than the list of variables on the left, there will be no errors. Absent values are considered undefined:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ```js run
 *!*
@@ -420,7 +462,11 @@ alert( title ); // Menu
 
 ## Décomposition imbriquée
 
+<<<<<<< HEAD
 Si un objet ou un tableau contient d'autres objets et tableaux imbriqués, nous pouvons utiliser des modèles à gauche plus complexes pour extraire des parties plus profondes.
+=======
+If an object or an array contains other nested objects and arrays, we can use more complex left-side patterns to extract deeper portions.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Dans le code ci-dessous, `options` a un autre objet dans la propriété `size` et un tableau dans la propriété `items`. Le modèle à gauche de l'affectation a la même structure pour en extraire des valeurs :
 
@@ -451,7 +497,11 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
+<<<<<<< HEAD
 Toutes les propriétés de l'objet `options`, à l'exception de `extra` qui est absente dans la partie gauche, sont affectés aux variables correspondantes :
+=======
+All properties of `options` object except `extra` which is absent in the left part, are assigned to corresponding variables:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ![](destructuring-complex.svg)
 
@@ -461,9 +511,15 @@ Notez qu'il n'y a pas de variables pour `size` et `items`, car nous prenons leur
 
 ## Paramètres de fonction intelligente
 
+<<<<<<< HEAD
 Il peut arriver qu'une fonction ait plusieurs paramètres, dont la plupart sont facultatifs. C’est particulièrement vrai pour les interfaces utilisateur. Imaginez une fonction qui crée un menu. Il peut avoir une largeur, une hauteur, un titre, une liste d’articles, etc.
 
 Voici une mauvaise façon d’écrire ce genre de fonction :
+=======
+There are times when a function has many parameters, most of which are optional. That's especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, an item list and so on.
+
+Here's a bad way to write such a function:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ```js
 function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
@@ -471,7 +527,11 @@ function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
 }
 ```
 
+<<<<<<< HEAD
 Dans la vraie vie, le problème est de savoir comment retenir l'ordre des arguments. Habituellement, les IDE essaient de nous aider, surtout si le code est bien documenté, mais quand même… Un autre problème est de savoir comment appeler une fonction lorsque la plupart des paramètres sont corrects par défaut.
+=======
+In real-life, the problem is how to remember the order of arguments. Usually, IDEs try to help us, especially if the code is well-documented, but still... Another problem is how to call a function when most parameters are ok by default.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Comme ceci ?
 
@@ -536,7 +596,11 @@ function({
 })
 ```
 
+<<<<<<< HEAD
 Ensuite, pour un objet de paramètres, il y aura une variable `varName` pour la propriété `incomingProperty`, avec `defaultValue` par défaut.
+=======
+Then, for an object of parameters, there will be a variable `varName` for the property `incomingProperty`, with `defaultValue` by default.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 Veuillez noter qu'une telle déstructuration suppose que `showMenu()` a un argument. Si nous voulons toutes les valeurs par défaut, alors nous devrions spécifier un objet vide :
 
@@ -563,7 +627,7 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 - L'affectation par décomposition permet de mapper instantanément un objet ou un tableau sur de nombreuses variables.
 - La syntaxe complète de l'objet :
     ```js
-    let {prop : varName = default, ...rest} = object
+    let {prop : varName = defaultValue, ...rest} = object
     ```
 
     Cela signifie que la propriété `prop` doit aller dans la variable `varName` et que, si aucune propriété de ce type n'existe, la valeur `default` doit être utilisée.
@@ -573,9 +637,13 @@ Dans le code ci-dessus, la totalité des arguments objet est `{}` par défaut, i
 - La syntaxe complète du tableau :
 
     ```js
-    let [item1 = default, item2, ...rest] = array
+    let [item1 = defaultValue, item2, ...rest] = array
     ```
 
+<<<<<<< HEAD
     Le premier item va à `item1`; le second passe à `item2`, tout le reste du tableau correspond au `rest`.
+=======
+    The first item goes to `item1`; the second goes into `item2`, and all the rest makes the array `rest`.
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 - Il est possible d'extraire des données de tableaux / objets imbriqués, pour cela le côté gauche doit avoir la même structure que le droit.

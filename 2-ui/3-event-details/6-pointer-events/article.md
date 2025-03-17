@@ -126,7 +126,11 @@ Voici le flux d'actions de l'utilisateur et les événements correspondants:
 Ainsi, le problème est le "détournement" de l'interaction par le navigateur: `pointercancel` se déclenche au début du processus de glisser-déposer, et plus aucun événement `pointermove` est généré.
 
 ```online
+<<<<<<< HEAD
 Voici la démo du glisser-déposer avec consignation des événements de pointeur (uniquement `up/down`, `move` et `cancel`) dans la `textarea` :
+=======
+Here's the drag'n'drop demo with logging of pointer events (only `up/down`, `move` and `cancel`) in the `textarea`:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 [iframe src="ball" height=240 edit]
 ```
