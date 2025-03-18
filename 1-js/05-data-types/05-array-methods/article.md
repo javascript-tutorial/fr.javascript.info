@@ -577,7 +577,7 @@ Lorsque nous devons parcourir un tableau, nous pouvons utiliser `forEach`, `for`
 
 Lorsque nous devons itérer et renvoyer les données pour chaque élément, nous pouvons utiliser `map`.
 
-Les méthodes [arr.reduce](mdn:js/Array/reduce) et [arr.reduceRight](mdn:js/Array/reduceRight) appartiennent également à cette famille, mais sont un peu plus complexes. Ce méthodes sont utilisées pour calculer une valeur unique basée sur un tableau.
+Les méthodes [arr.reduce](mdn:js/Array/reduce) et [arr.reduceRight](mdn:js/Array/reduceRight) appartiennent également à cette famille, mais sont un peu plus complexes. Ces méthodes sont utilisées pour calculer une valeur unique basée sur un tableau.
 
 La syntaxe est la suivante :
 
