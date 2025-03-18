@@ -661,7 +661,7 @@ Voici un exemple :
 let arr = [];
 
 // Erreur : Réduction du tableau vide sans valeur initiale
-// si la valeur initiale existait, reduction le renverrait pour l'arr vide.
+// si la valeur initiale existait, reduce la renverrait pour l'arr vide.
 arr.reduce((sum, current) => sum + current);
 ```
 
