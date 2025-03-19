@@ -126,7 +126,7 @@ Cela dit, si nous avons vraiment besoin de créer des propriétés d'objet const
 
 ## Clonage et fusion, Object.assign [#cloning-and-merging-object-assign]
 
-Copier une variable object créé une référence en plus vers le même objet.
+Copier une variable object crée une référence en plus vers le même objet.
 
 Mais que se passe-t-il si nous devons dupliquer un objet ?
 
