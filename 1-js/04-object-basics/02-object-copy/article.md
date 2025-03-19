@@ -149,7 +149,7 @@ for (let key in user) {
 }
 */!*
 
-// maintenant clone est un objet complétement indépendant avec le même contenu
+// maintenant clone est un objet complètement indépendant avec le même contenu
 clone.name = "Pete"; // On change les données de celui-ci
 
 alert( user.name ); // c'est toujour John dans l'objet copié
