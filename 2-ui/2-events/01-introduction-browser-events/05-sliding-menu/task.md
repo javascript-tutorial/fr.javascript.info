@@ -2,10 +2,10 @@ importance: 5
 
 ---
 
-# Create a sliding menu
+# Créer un menu déroulant
 
-Create a menu that opens/collapses on click:
+Créez un menu qui se déroule/s'enroule quand on clique dessus:
 
 [iframe border=1 height=100 src="solution"]
 
-P.S. HTML/CSS of the source document is to be modified.
+Note: Le HTML/CSS sont à modifier.

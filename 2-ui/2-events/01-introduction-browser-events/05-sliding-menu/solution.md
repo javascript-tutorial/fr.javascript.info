@@ -1,47 +1,48 @@
 
 # HTML/CSS
-First let's create HTML/CSS.
 
-A menu is a standalone graphical component on the page, so it's better to put it into a single DOM element.
+Tout d'abord, on va créer le HTML/CSS.
 
-A list of menu items can be laid out as a list `ul/li`.
+Un menu est un composant graphique indépendant sur la page, c'est donc une bonne idée de le mettre dans son propre élément dans le DOM.
 
-Here's the example structure:
+Une liste d'options dans un menu peut être affichée comme une liste `ul/li`.
+
+Voici la structure d'exemple:
 
 ```html
 <div class="menu">
-  <span class="title">Sweeties (click me)!</span>
+  <span class="title">Gâteaux (cliquez moi)!</span>
   <ul>
-    <li>Cake</li>
-    <li>Donut</li>
-    <li>Honey</li>
+    <li>Tarte aux pommes</li>
+    <li>Cookies</li>
+    <li>Brownies</li>
   </ul>
 </div>
 ```
 
-We use `<span>` for the title, because `<div>` has an implicit `display:block` on it, and it will occupy 100% of the horizontal width.
+On utilise `<span>` pour le titre, car `<div>` a la propriété `display:block` implicitement, et il occupera 100% de la largeur horizontale.
 
-Like this:
-
-```html autorun height=50
-<div style="border: solid red 1px" onclick="alert(1)">Sweeties (click me)!</div>
-```
-
-So if we set `onclick` on it, then it will catch clicks to the right of the text.
-
-As `<span>` has an implicit `display: inline`, it occupies exactly enough place to fit all the text:
+Comme ceci:
 
 ```html autorun height=50
-<span style="border: solid red 1px" onclick="alert(1)">Sweeties (click me)!</span>
+<div style="border: solid red 1px" onclick="alert(1)">Gâteaux (cliquez moi)!</div>
 ```
 
-# Toggling the menu
+Si on défini `onclick` dessus, il traitera les clics à droite du texte.
 
-Toggling the menu should change the arrow and show/hide the menu list.
+Comme `<span>` a la propriété `display: inline` implicitement, il occupe exactement assez de place pour y mettre tout le texte:
 
-All these changes are perfectly handled by CSS. In JavaScript we should label the current state of the menu by adding/removing the class `.open`.
+```html autorun height=50
+<span style="border: solid red 1px" onclick="alert(1)">Gâteaux (cliquez moi)!</span>
+```
 
-Without it, the menu will be closed:
+# Changer l'état du menu
+
+Changer l'état du menu devrait modifier la flèche et montrer/cacher le menu.
+
+Tous ces changements sont parfaitement gérés par CSS. En JavaScript, on devrait indiquer l'état actuel du menu en ajoutant/supprimant la classe CSS `.open`.
+
+Sans ça, le menu sera fermé:
 
 ```css
 .menu ul {
@@ -58,7 +59,7 @@ Without it, the menu will be closed:
 }
 ```
 
-...And with `.open` the arrow changes and the list shows up:
+...Et avec `.open`, la flèche change et la liste apparaît:
 
 ```css
 .menu.open .title::before {

@@ -2,20 +2,20 @@ importance: 5
 
 ---
 
-# Move the ball across the field
+# Déplacez le ballon sur le terrain
 
-Move the ball across the field to a click. Like this:
+Déplacez le ballon sur le terrain lors d'un clic. Comme ceci:
 
 [iframe src="solution" height="260" link]
 
-Requirements:
+Pré-requis:
 
-- The ball center should come exactly under the pointer on click (if possible without crossing the field edge).
-- CSS-animation is welcome.
-- The ball must not cross field boundaries.
-- When the page is scrolled, nothing should break.
+- Le centre du ballon derait arriver exactement aux coordonnées du clic.
+- Les animations CSS sont bienvenues.
+- Le ballon ne doit pas sortir du terrain.
+- Quand la page scrolle, rien de devrait se casser.
 
 Notes:
 
-- The code should also work with different ball and field sizes, not be bound to any fixed values.
-- Use properties `event.clientX/event.clientY` for click coordinates.
+- Le code devrait aussi fonctionner avec des ballons ou des terrains de différentes tailles; et ne pas utiliser des coordonnées fixes.
+- Utilisez les propriétés `event.clientX/event.clientY` for récupérer les coordonnées du clic.

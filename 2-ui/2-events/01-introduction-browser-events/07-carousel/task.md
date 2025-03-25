@@ -4,10 +4,10 @@ importance: 4
 
 # Carousel
 
-Create a "carousel" -- a ribbon of images that can be scrolled by clicking on arrows.
+Créez un "carousel" -- Un ruban d'images qu'on peut faire défiler en cliquant sur les flèches.
 
 [iframe height=200 src="solution"]
 
-Later we can add more features to it: infinite scrolling, dynamic loading etc.
+On pourra y ajouter des fonctionnalités plus tard: défilement infini, chargement dynamique, etc...
 
-P.S. For this task HTML/CSS structure is actually 90% of the solution.
+Note: Pour cet exercice, la structure du HTML/CSS représente 90% de la solution.

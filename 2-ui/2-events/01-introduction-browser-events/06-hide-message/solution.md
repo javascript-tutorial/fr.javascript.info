@@ -1,12 +1,12 @@
 
-To add the button we can use either `position:absolute` (and make the pane `position:relative`) or `float:right`. The `float:right` has the benefit that the button never overlaps the text, but `position:absolute` gives more freedom. So the choice is yours.
+Pour ajouter le bouton, on peut ajouter soit `position:absolute` (et ajouter `position:relative` à chaque message) ou `float:right`. `float:right` a l'avantage que le bouton ne sera jamais surimposé au texte, mais `position:absolute` donne plus de liberté. A vous de choisir.
 
-Then for each pane the code can be like:
+Ensuite, pour chaque message, le code pourrait être:
 ```js
 pane.insertAdjacentHTML("afterbegin", '<button class="remove-button">[x]</button>');
 ```
 
-Then the `<button>` becomes `pane.firstChild`, so we can add a handler to it like this:
+Alors le `<button>` devient `pane.firstChild`, on peut donc lui ajouter un gestionnaire comme ceci::
 
 ```js
 pane.firstChild.onclick = () => pane.remove();

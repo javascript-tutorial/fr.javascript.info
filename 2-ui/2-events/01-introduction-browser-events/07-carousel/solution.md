@@ -1,17 +1,17 @@
-The images ribbon can be represented as `ul/li` list of images `<img>`.
+Le ruban d'images peut être représenté comme une liste `ul/li` d'images `<img>`.
 
-Normally, such a ribbon is wide, but we put a fixed-size `<div>` around to "cut" it, so that only a part of the ribbon is visible:
+Le ruban est très large, on ajoute donc un `<div>` de taille fixe autour de lui pour le "couper", afin que seule une partie du ruban soit visible:
 
 ![](carousel1.svg)
 
-To make the list show horizontally we need to apply correct CSS properties for `<li>`, like `display: inline-block`.
+Pour afficher la liste horizontalement, on doit appliquer les propriétés adéquates aux `<li>`, comme `display: inline-block`.
 
-For `<img>` we should also adjust `display`, because by default it's `inline`. There's extra space reserved under `inline` elements for "letter tails", so we can use `display:block` to remove it.
+Pour `<img>` on doit ajuster `display`, car sa valeur est `inline` par défaut. Il y a de l'espace vide reservé en dessous des éléments `inline` pour les lettres comme "j" ou"p", on peut donc utiliser `display:block` pour le supprimer.
 
-To do the scrolling, we can shift `<ul>`. There are many ways to do it, for instance by changing `margin-left` or (better performance) use `transform: translateX()`:
+Pour le défilement, on peut décaler `<ul>`. Il y a plusieurs façons de le faire, par exemple en modifiant la valeur de `margin-left`, ou utiliser `transform: translateX()` (meilleure performance):
 
 ![](carousel2.svg)
 
-The outer `<div>` has a fixed width, so "extra" images are cut.
+Le `<div>` externe a une largeur fixe, les images "supplémentaires" sont donc coupées.
 
-The whole carousel is a self-contained "graphical component" on the page, so we'd better wrap it into a single `<div class="carousel">` and style things inside it.
+Le carousel complet est un composant graphique indépendant sur la page, c'est donc une bonne idée de le mettre dans son propre élément `<div class="carousel">`, et styliser les éléments à l'intérieur.

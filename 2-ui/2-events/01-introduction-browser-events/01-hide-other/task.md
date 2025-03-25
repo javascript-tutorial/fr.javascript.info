@@ -2,10 +2,10 @@ importance: 5
 
 ---
 
-# Hide on click
+# Cacher en cliquant
 
-Add JavaScript to the `button` to make `<div id="text">` disappear when we click it.
+Ajoutez du JavaScript au bouton `button` pour faire disparaître `<div id="text">` quand on clique dessus.
 
-The demo:
+La démo:
 
 [iframe border=1 src="solution" height=80]

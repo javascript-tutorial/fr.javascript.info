@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Which handlers run?
+# Quel gestionnaire est exécuté?
 
-There's a button in the variable. There are no handlers on it.
+Il y a un bouton dans la variable `button`. Il n'a aucun gestionnaire d'événement sur le bouton.
 
-Which handlers run on click after the following code? Which alerts show up?
+Quels gestionnaires vont s'exécuter lors d'un clic? Quelles alertes vont s'afficher?
 
 ```js no-beautify
 button.addEventListener("click", () => alert("1"));

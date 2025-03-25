@@ -1,8 +1,8 @@
-The answer: `1` and `2`.
+La réponse: `1` et `2`.
 
-The first handler triggers, because it's not removed by `removeEventListener`. To remove the handler we need to pass exactly the function that was assigned. And in the code a new function is passed, that looks the same, but is still another function.
+Le premier gestionnaire se déclenche, car il n'est pas supprimé par `removeEventListener`. Pour le supprimer, il faut passer en paramètre exactement la fonction qui a servi à le créer. Dans ce code, c'est une nouvelle fonction qui est passée en paramètre, qui est identique mais pas la même.
 
-To remove a function object, we need to store a reference to it, like this:
+Pour supprimer un gestionnaire d'un élement, il faut stocker quelque part une référence au gestionnaire, comme ceci:
 
 ```js
 function handler() {
@@ -13,4 +13,4 @@ button.addEventListener("click", handler);
 button.removeEventListener("click", handler);
 ```
 
-The handler `button.onclick` works independently and in addition to `addEventListener`.
+Le gestionnaire `button.onclick` fonctionne indépendamment et en plus de `addEventListener`.
