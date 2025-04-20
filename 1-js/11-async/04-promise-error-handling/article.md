@@ -44,7 +44,7 @@ Normalement, un tel `.catch` ne se déclenche pas du tout. Mais si l'une des pro
 
 Le code d'un exécuteur de promesses et d'un gestionnaire de promesses est entouré d'un "`try...catch` invisible". Si une exception se produit, elle est prise en compte et traitée comme un rejet.
 
-Par exemple, ce code:
+Par exemple, ce code :
 
 ```js run
 new Promise((resolve, reject) => {
@@ -54,7 +54,7 @@ new Promise((resolve, reject) => {
 }).catch(alert); // Error: Whoops!
 ```
 
-...Fonctionne exactement de la même façon que ceci:
+...Fonctionne exactement de la même façon que ceci :
 
 ```js run
 new Promise((resolve, reject) => {
@@ -68,7 +68,7 @@ Le "`try..catch` invisible" autour de l'exécuteur attrape automatiquement l'err
 
 Cela se produit non seulement dans la fonction exécuteur, mais aussi dans ses gestionnaires. Si nous utilisons `throw` à l'intérieur d'un gestionnaire `.then', cela signifie une promesse rejetée, donc le contrôle saute au gestionnaire d'erreur le plus proche.
 
-En voici un exemple:
+En voici un exemple :
 
 ```js run
 new Promise((resolve, reject) => {
@@ -98,11 +98,11 @@ Le `.catch` final n'attrape pas seulement les rejets explicites, mais aussi les 
 
 Comme nous l'avons déjà remarqué, `.catch` à la fin de la chaîne est similaire à `try...catch`. Nous pouvons avoir autant de gestionnaires `.then` que nous le voulons, puis utiliser un seul `.catch` à la fin pour gérer les erreurs dans chacun d'eux.
 
-Dans un `try...catch` classique nous pouvons analyser l'erreur et peut-être la relancer si nous ne pouvons pas la gérer. La même chose est possible pour les promesses.
+Dans un `try...catch` classique, nous pouvons analyser l'erreur et peut-être la relancer si nous ne pouvons pas la gérer. La même chose est possible pour les promesses.
 
 Si nous utilisons `throw` dans `.catch`, alors le contrôle passe au gestionnaire d'erreur suivant qui est plus proche. Et si nous gérons l'erreur et finissons normalement, alors elle continue jusqu'au gestionnaire `.then` le plus proche.
 
-In the example below the `.catch` successfully handles the error:
+Dans l'exemple ci-dessous, le `.catch` gère l'erreur avec succès :
 
 ```js run
 // l'exécution: catch -> then
@@ -119,7 +119,7 @@ new Promise((resolve, reject) => {
 
 Ici, le bloc `.catch` se termine normalement. Le prochain gestionnaire `.then` réussi est donc appelé.
 
-Dans l'exemple ci-dessous nous voyons l'autre situation avec `.catch`. Le gestionnaire `(*)` attrape l'erreur et ne peut tout simplement pas la gérer (par ex: il sait seulement comment gérer `URIError`), donc il la relance:
+Dans l'exemple ci-dessous, nous voyons l'autre situation avec `.catch`. Le gestionnaire `(*)` attrape l'erreur et ne peut tout simplement pas la gérer (par ex : il sait seulement comment gérer `URIError`), donc il la relance :
 
 ```js run
 // l'exécution: catch -> catch 
@@ -149,7 +149,7 @@ new Promise((resolve, reject) => {
 });
 ```
 
-The execution jumps from the first `.catch` `(*)` to the next one `(**)` down the chain.
+L'exécution saute du premier `.catch` `(*)` au suivant `(**)` dans la chaîne.
 
 ## Rejets non traités
 
@@ -202,4 +202,4 @@ Dans les environnements sans navigateur comme Node.js, il existe d'autres moyens
 - `.then` intercepte également les erreurs de la même manière, si on lui donne le deuxième argument (qui est le gestionnaire d'erreurs).
 - Nous devrions placer `.catch` exactement aux endroits où nous voulons traiter les erreurs et savoir comment les traiter. Le gestionnaire doit analyser les erreurs (les classes d'erreurs personnalisées aident) et relancer les erreurs inconnues (ce sont peut-être des erreurs de programmation).
 - C'est acceptable de ne pas utiliser `.catch` du tout, s'il n'y a aucun moyen de récupérer d'une erreur.
-- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meurt jamais".
+- Dans tous les cas, nous devrions avoir le gestionnaire d'événements `unhandledrejection` (pour les navigateurs, et les analogues pour les autres environnements), pour suivre les erreurs non gérées et informer l'utilisateur (et probablement notre serveur) à leur sujet, afin que notre application ne "meure jamais".

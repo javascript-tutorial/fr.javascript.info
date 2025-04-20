@@ -41,7 +41,7 @@ Ici, le flux est :
 3. Le `then` suivant `(***)` obtient le résultat du précédent, le traite (double) et le passe au gestionnaire suivant.
 4. ...et ainsi de suite.
 
-Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous pouvons voir une séquence d'appels `alert`: `1` -> `2` -> `4`.
+Lorsque le résultat est transmis le long de la chaîne de gestionnaires, nous pouvons voir une séquence d'appels `alert` : `1` -> `2` -> `4`.
 
 ![](promise-then-chain.svg)
 
@@ -49,9 +49,9 @@ Le tout fonctionne, parce qu’un appel à `.then` renvoie une nouvelle promesse
 
 Lorsqu'un gestionnaire renvoie une valeur, cela devient le résultat de cette promesse. Le prochain `.then` est appelé avec.
 
-**Une erreur classique pour les débutants: techniquement, nous pouvons également ajouter plusieurs `.then` à une seule promesse. Ceci n'est pas le chaînage des promesses.**
+**Une erreur classique pour les débutants : techniquement, nous pouvons également ajouter plusieurs `.then` à une seule promesse. Ceci n'est pas le chaînage des promesses.**
 
-Par example :
+Par exemple :
 
 ```js run
 let promise = new Promise(function(resolve, reject) {
@@ -76,7 +76,7 @@ promise.then(function(result) {
 
 Ce que nous avons fait ici n’est qu'ajouter plusieurs gestionnaires pour une promesse. Ils ne se transmettent pas le résultat, ils la traitent de manière indépendante.
 
-Voici la representation (comparez-la avec l'enchaînement ci-dessus):
+Voici la représentation (comparez-la avec l'enchaînement ci-dessus) :
 
 ![](promise-then-many.svg)
 
@@ -84,13 +84,13 @@ Tous les `.then` sur la même promesse obtiennent le même résultat - le résul
 
 En pratique, nous avons rarement besoin de plusieurs gestionnaires pour une même promesse. Le chaînage est utilisé beaucoup plus souvent.
 
-## Renvoie de promesses
+## Renvoi de promesses
 
 Un gestionnaire, utilisé dans `.then(handler)` peut créer et renvoyer une promesse.
 
 Dans ce cas, les autres gestionnaires attendent que le problème soit réglé, puis le résultat est obtenu.
 
-Par exemple:
+Par exemple :
 
 ```js run
 new Promise(function(resolve, reject) {
@@ -122,15 +122,15 @@ new Promise(function(resolve, reject) {
 });
 ```
 
-Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`. Au bout d'une seconde c'est résolu et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`. Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
+Ici, le premier `.then` affiche `1` et renvoie `new Promise(…)` à la ligne `(*)`. C'est résolu au bout d'une seconde et le résultat (l'argument de `resolve`, ici, `result * 2`) est transmis au gestionnaire du deuxième `.then`. Ce gestionnaire est à la ligne `(**)`, il affiche `2` et fait la même chose.
 
-Le résultat est donc le même que dans l'exemple précédent: 1 -> 2 -> 4, mais maintenant avec un délai d'une seconde entre les appels `alert`.
+Le résultat est donc le même que dans l'exemple précédent : 1 -> 2 -> 4, mais maintenant avec un délai d'une seconde entre les appels `alert`.
 
-Le renvoie des promesses nous permet de construire des chaînes d’actions asynchrones.
+Le renvoi des promesses nous permet de construire des chaînes d’actions asynchrones.
 
-## Exemple: loadScript
+## Exemple : loadScript
 
-Utilisons cette fonctionnalité avec le `loadScript` promisifié, défini dans le [chapitre précédent](info:promise-basics#loadscript), afin de charger les scripts un à un, dans l'ordre:
+Utilisons cette fonctionnalité avec le `loadScript` promisifié, défini dans le [chapitre précédent](info:promise-basics#loadscript), afin de charger les scripts un à un, dans l'ordre :
 
 ```js run
 loadScript("/article/promise-chaining/one.js")
@@ -149,7 +149,7 @@ loadScript("/article/promise-chaining/one.js")
   });
 ```
 
-Ce code peut être un peu plus court avec les fonctions fléchées:
+Ce code peut être un peu plus court avec les fonctions fléchées :
 
 ```js run
 loadScript("/article/promise-chaining/one.js")
@@ -166,9 +166,9 @@ loadScript("/article/promise-chaining/one.js")
 
 Ici, chaque appel à `loadScript` renvoie une promesse et le prochain `.then` s'exécute lorsqu'il est résolu. Ensuite, il lance le chargement du script suivant. Les scripts sont donc chargés les uns après les autres.
 
-Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticallement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
+Nous pouvons ajouter plus d'actions asynchrones à la chaîne. Noter que le code est toujours "plat", il grandit verticalement, pas vers la droite. Il n'y a aucun signe de "pyramid of doom".
 
-Techniquement, nous pourrions ajouter `.then` directement à chaque `loadScript`, comme ceci:
+Techniquement, nous pourrions ajouter `.then` directement à chaque `loadScript`, comme ceci :
 
 ```js run
 loadScript("/article/promise-chaining/one.js").then(script1 => {
@@ -183,7 +183,7 @@ loadScript("/article/promise-chaining/one.js").then(script1 => {
 });
 ```
 
-Ce code fait la même chose: charge 3 scripts en séquence. Mais il "pousse vers la droite". Nous avons donc le même problème qu'avec les callbacks.
+Ce code fait la même chose : charge 3 scripts en séquence. Mais il "pousse vers la droite". Nous avons donc le même problème qu'avec les callbacks.
 
 Les gens qui commencent à utiliser leurs promesses ne savent parfois pas comment enchaîner, alors ils l'écrivent de cette façon. Généralement, le chaînage est préféré.
 
@@ -191,7 +191,7 @@ Parfois, il est correct d'écrire directement `.then`, car la fonction imbriqué
 
 
 ````smart header="Thenables"
-Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`. Il sera traité de la même manière q'une promesse.
+Pour être précis, un gestionnaire peut renvoyer pas exactement une promesse, mais un soi-disant objet "thenable" - un objet arbitraire doté de la méthode `.then`. Il sera traité de la même manière qu'une promesse.
 
 L'idée est que les bibliothèques tierces peuvent implémenter leurs propres objets "compatibles avec les promesses". Elles peuvent avoir un ensemble étendu de méthodes, mais aussi être compatibles avec les promesses natives, car ils implémentent `.then`.
 
@@ -224,21 +224,21 @@ Cette fonctionnalité nous permet d'intégrer des objets personnalisés avec des
 ````
 
 
-## Un plus grand exemple: fetch
+## Un plus grand exemple : fetch
 
 Dans la programmation du front-end, les promesses sont souvent utilisées pour les requêtes réseau. Voyons donc un exemple étendu de cela.
 
-Nous allons utiliser la méthode [fetch](info:fetch) pour charger les informations sur l'utilisateur à partir du serveur distant. Il a beaucoup de paramètres optionnels couverts dans [des chapitres séparés](info:fetch), mais la syntaxe de base est assez simple:
+Nous allons utiliser la méthode [fetch](info:fetch) pour charger les informations sur l'utilisateur à partir du serveur distant. Il a beaucoup de paramètres optionnels couverts dans [des chapitres séparés](info:fetch), mais la syntaxe de base est assez simple :
 
 ```js
 let promise = fetch(url);
 ```
 
-Cela fait une requête réseau à la `url` et renvoie une promesse. La promesse se résout avec un objet `response` lorsque le serveur distant répond avec des en-têtes, mais *avant le téléchargement complet de la réponse*.
+Cela fait une requête réseau à `url` et renvoie une promesse. La promesse se résout avec un objet `response` lorsque le serveur distant répond avec des en-têtes, mais *avant le téléchargement complet de la réponse*.
 
 Pour lire la réponse complète, nous devons appeler la méthode `response.text()` : elle renvoie une promesse qui résout le téléchargement du texte intégral à partir du serveur distant, avec ce texte en tant que résultat.
 
-Le code ci-dessous envoie une requête à `user.json` et charge son texte depuis le serveur:
+Le code ci-dessous envoie une requête à `user.json` et charge son texte depuis le serveur :
 
 ```js run
 fetch('/article/promise-chaining/user.json')
@@ -256,7 +256,7 @@ fetch('/article/promise-chaining/user.json')
 
 L'objet `response` renvoyé par `fetch` comprend également la méthode `response.json()` qui lit les données distantes et les analyse en JSON. Dans notre cas, c'est encore plus pratique, alors passons-y.
 
-Nous allons également utiliser les fonctions fléchées pour la brièveté:
+Nous allons également utiliser les fonctions fléchées pour la brièveté :
 
 ```js run
 // comme ci-dessus, mais response.json() analyse le contenu distant en tant que JSON
@@ -267,7 +267,7 @@ fetch('/article/promise-chaining/user.json')
 
 Maintenant faisons quelque chose avec l'utilisateur chargé.
 
-Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'utilisateur et afficher l'avatar:
+Par exemple, nous pouvons faire une demande supplémentaire à GitHub, charger le profil de l'utilisateur et afficher l'avatar :
 
 ```js run
 // Faire une demande pour user.json
@@ -291,11 +291,11 @@ fetch('/article/promise-chaining/user.json')
 
 Le code fonctionne ; voir les commentaires à propos des détails. Pourtant, il y a un problème potentiel, une erreur typique de ceux qui commencent à utiliser les promesses.
 
-Regardez la ligne `(*)`: comment pouvons-nous faire quelque chose *après* l'avatar a fini d'afficher et d'être supprimé? Par exemple, nous aimerions montrer un formulaire pour éditer cet utilisateur ou autre chose. Pour l'instant, il n'y a pas moyen.
+Regardez la ligne `(*)`: comment pouvons-nous faire quelque chose *après* que l'avatar a fini d'afficher et d'être supprimé ? Par exemple, nous aimerions pouvoir afficher un formulaire permettant d'éditer cet utilisateur ou autre chose. Pour l'instant, il n'y a pas moyen d'y parvenir.
 
 Pour rendre la chaîne extensible, nous devons retourner une promesse qui sera résolue une fois que l'avatar aura fini de s'afficher.
 
-Comme ceci:
+Comme ceci :
 
 ```js run
 fetch('/article/promise-chaining/user.json')
@@ -325,7 +325,7 @@ En d’autres termes, le gestionnaire `.then` à la ligne `(*)` renvoie `new Pro
 
 Comme bonne pratique, une action asynchrone doit toujours renvoyer une promesse. Cela permet de planifier des actions après. Même si nous n'avons pas l'intention d'étendre la chaîne maintenant, nous en aurons peut-être besoin plus tard.
 
-Enfin, nous pouvons scinder le code en fonctions réutilisables:
+Enfin, nous pouvons scinder le code en fonctions réutilisables :
 
 ```js run
 function loadJson(url) {
@@ -363,6 +363,6 @@ loadJson('/article/promise-chaining/user.json')
 
 Si un gestionnaire `.then` (ou `catch/finally`, peu importe) renvoie une promesse, le reste de la chaîne attend jusqu'à ce qu'elle se règle. Quand cela se produit, son résultat (ou son erreur) est passé plus loin.
 
-Voici une image complète:
+Voici une image complète :
 
 ![](promise-handler-variants.svg)

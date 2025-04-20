@@ -10,7 +10,7 @@ Par exemple, téléchargez plusieurs URLs en parallèle et traitez le contenu lo
 
 C'est à cela que sert `Promise.all`.
 
-La syntaxe est:
+La syntaxe est :
 
 ```js
 let promise = Promise.all(iterable);
@@ -20,7 +20,7 @@ let promise = Promise.all(iterable);
 
 La nouvelle promesse est résolue lorsque toutes les promesses énumérées sont résolues et que le tableau de leurs résultats devient son résultat.
 
-Par exemple, le `Promise.all` ci-dessous se règle après 3 secondes, et ensuite son résultat est un tableau `[1, 2, 3]`:
+Par exemple, le `Promise.all` ci-dessous se règle après 3 secondes, et ensuite son résultat est un tableau `[1, 2, 3]` :
 
 ```js run
 Promise.all([
@@ -34,7 +34,7 @@ Veuillez noter que l'ordre des éléments du tableau résultant est le même que
 
 Une astuce courante consiste à mapper un tableau de données de tâches dans un tableau de promesses, puis à l'intégrer dans `Promise.all`.
 
-Par exemple, si nous avons un tableau d'URLs, nous pouvons tous les récupérer comme ceci:
+Par exemple, si nous avons un tableau d'URLs, nous pouvons tous les récupérer comme ceci :
 
 ```js run
 let urls = [
@@ -77,7 +77,7 @@ Promise.all(requests)
 
 **Si l'une des promesses est rejetée, la promesse retournée par `Promise.all` est rejetée immédiatement avec cette erreur.**
 
-Par exemple:
+Par exemple :
 
 ```js run
 Promise.all([
@@ -100,9 +100,9 @@ Par exemple, s'il y a plusieurs appels `fetch, comme dans l'exemple ci-dessus, e
 ```
 
 ````smart header="`Promise.all(iterable)` autorise toutes les valeurs \"régulières\" qui ne sont pas une promesse dans `iterable`"
-Normallement, `Promise.all(...)` accepte un itérable (dans la plupart des cas, un tableau) de promesses. Mais si l'un de ces objets n'est pas une promesse, il est transmis au tableau résultant "tel quel".
+Normalement, `Promise.all(...)` accepte un itérable (dans la plupart des cas, un tableau) de promesses. Mais si l'un de ces objets n'est pas une promesse, il est transmis au tableau résultant "tel quel".
 
-Par exemple, ici les résultats sont les suivants `[1, 2, 3]`:
+Par exemple, ici les résultats sont les suivants `[1, 2, 3]` :
 
 ```js run
 Promise.all([
@@ -136,7 +136,7 @@ Promise.all([
 - `{status:"fulfilled", value:result}` pour les réponses réussies,
 - `{status:"rejected", reason:error}` pour les erreurs.
 
-Par exemple, nous aimerions récupérer l'information sur les utilisateurs multiples. Même si une demande échoue, les autres nous intéressent.
+Par exemple, nous aimerions récupérer l'information de multiples utilisateurs. Même si une demande échoue, les autres nous intéressent.
 
 Utilisons `Promise.allSettled`:
 
@@ -160,7 +160,7 @@ Promise.allSettled(urls.map(url => fetch(url)))
   });
 ```
 
-Les `résultats` dans la ligne `(*)` ci-dessus seront:
+Les `résultats` dans la ligne `(*)` ci-dessus seront :
 ```js
 [
   {status: 'fulfilled', value: ...response...},
@@ -173,7 +173,7 @@ Ainsi, pour chaque promesse, nous obtenons son statut et `value/error`.
 
 ### Polyfill
 
-Si le navigateur ne prend pas en charge `Promise.allSettled`, il est facile de le polyfill:
+Si le navigateur ne prend pas en charge `Promise.allSettled`, il est facile de le polyfill :
 
 ```js
 if (!Promise.allSettled) {
@@ -219,15 +219,15 @@ La première promesse a été la plus rapide, donc, elle est devenue le résulta
 
 ## Promise.any
 
-Similar to `Promise.race`, but waits only for the first fulfilled promise and gets its result. If all of the given promises are rejected, then the returned promise is rejected with [`AggregateError`](mdn:js/AggregateError) - a special error object that stores all promise errors in its `errors` property.
+Similaire à `Promise.race`, mais n'attend que la première promesse accomplie et prend son résultat. Si toutes les promesses données sont rejetées, alors la promesse retournée est rejetée avec [`AggregateError`](mdn:js/AggregateError) - un objet d'erreur spécial qui stocke toutes les erreurs de promesse dans sa propriété `errors`.
 
-The syntax is:
+La syntaxe est :
 
 ```js
 let promise = Promise.any(iterable);
 ```
 
-For instance, here the result will be `1`:
+Par exemple, ici le résultat sera `1` :
 
 ```js run
 Promise.any([
@@ -237,9 +237,9 @@ Promise.any([
 ]).then(alert); // 1
 ```
 
-The first promise here was fastest, but it was rejected, so the second promise became the result. After the first fulfilled promise "wins the race", all further results are ignored.
+La première promesse était la plus rapide, mais elle a été rejetée, de sorte que la deuxième promesse est devenue le résultat. Une fois que la première promesse accomplie a "gagné la course", tous les autres résultats sont ignorés.
 
-Here's an example when all promises fail:
+Voici un exemple dans lequel toutes les promesses échouent :
 
 ```js run
 Promise.any([
@@ -252,7 +252,7 @@ Promise.any([
 });
 ```
 
-As you can see, error objects for failed promises are available in the `errors` property of the `AggregateError` object.
+Comme vous pouvez le voir, les objets d'erreur des promesses échouées sont disponibles dans la propriété `errors` de l'objet `AggregateError`.
 
 ## Promise.resolve/reject
 
@@ -264,7 +264,7 @@ Nous les couvrons ici par souci de clarté, et pour ceux qui ne peuvent pas util
 
 - `Promise.resolve(value)` crée une promesse résolue avec le résultat `value`.
 
-Comme pour:
+Comme pour :
 
 ```js
 let promise = new Promise(resolve => resolve(value));
@@ -299,7 +299,7 @@ Nous pouvons écrire `loadCached(url).then(...)`, car la fonction est garantie d
 
 - `Promise.reject(error)` crée une promesse rejetée avec `error`.
 
-Comme pour:
+Comme pour :
 
 ```js
 let promise = new Promise((resolve, reject) => reject(error));
@@ -309,10 +309,10 @@ En pratique, cette méthode n'est presque jamais utilisée.
 
 ## Résumé
 
-Il y a 6 méthodes statiques de la classe `Promise`:
+Il y a 6 méthodes statiques de la classe `Promise` :
 
 1. `Promise.all(promises)` -- attend que toutes les promesses se résolvent et retourne un tableau de leurs résultats. Si l'une des promesses données est rejetée, alors elle devient l'erreur de `Promise.all`, et tous les autres résultats sont ignorés.
-2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec:
+2. `Promise.allSettled(promises)` (méthode récemment ajoutée) -- attend que toutes les promesses se règlent et retourne leurs résultats sous forme de tableau d'objets avec :
     - `state`: `"fulfilled"` ou `"rejected"`
     - `value` (si rempli) ou `reason` (en cas de rejet).
 3. `Promise.race(promises)` -- attend que la première promesse soit réglée, et son résultat/erreur devient le résultat.
