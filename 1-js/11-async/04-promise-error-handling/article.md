@@ -102,7 +102,7 @@ Dans un `try...catch` classique nous pouvons analyser l'erreur et peut-être la 
 
 Si nous utilisons `throw` dans `.catch`, alors le contrôle passe au gestionnaire d'erreur suivant qui est plus proche. Et si nous gérons l'erreur et finissons normalement, alors elle continue jusqu'au gestionnaire `.then` le plus proche.
 
-In the example below the `.catch` successfully handles the error:
+Dans l’exemple ci-dessous, le `.catch` gère correctement l’erreur:
 
 ```js run
 // l'exécution: catch -> then
@@ -149,7 +149,7 @@ new Promise((resolve, reject) => {
 });
 ```
 
-The execution jumps from the first `.catch` `(*)` to the next one `(**)` down the chain.
+L’exécution passe du premier `.catch` `(*)` au suivant `(**)` plus bas dans la chaîne.
 
 ## Rejets non traités
 

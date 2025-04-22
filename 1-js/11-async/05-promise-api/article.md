@@ -219,15 +219,15 @@ La première promesse a été la plus rapide, donc, elle est devenue le résulta
 
 ## Promise.any
 
-Similar to `Promise.race`, but waits only for the first fulfilled promise and gets its result. If all of the given promises are rejected, then the returned promise is rejected with [`AggregateError`](mdn:js/AggregateError) - a special error object that stores all promise errors in its `errors` property.
+Semblable à `Promise.race`, mais attend uniquement la première promesse résolue et récupère son résultat. Si toutes les promesses données sont rejetées, alors la promesse retournée est rejetée avec un [`AggregateError`](mdn:js/AggregateError) - un objet d'erreur spécial qui stocke toutes les erreurs des promesses dans sa propriété `errors`.
 
-The syntax is:
+La syntaxe est :
 
 ```js
 let promise = Promise.any(iterable);
 ```
 
-For instance, here the result will be `1`:
+Par exemple, ici le résultat sera `1` :
 
 ```js run
 Promise.any([
@@ -237,9 +237,9 @@ Promise.any([
 ]).then(alert); // 1
 ```
 
-The first promise here was fastest, but it was rejected, so the second promise became the result. After the first fulfilled promise "wins the race", all further results are ignored.
+La première promesse ici a été la plus rapide, mais elle a été rejetée, donc la deuxième promesse est devenue le résultat. Une fois que la première promesse remplie "remporte la course", tous les résultats suivants sont ignorés.
 
-Here's an example when all promises fail:
+Voici un exemple où toutes les promesses échouent :
 
 ```js run
 Promise.any([
@@ -252,7 +252,7 @@ Promise.any([
 });
 ```
 
-As you can see, error objects for failed promises are available in the `errors` property of the `AggregateError` object.
+Comme vous pouvez le voir, les objets d’erreur des promesses échouées sont disponibles dans la propriété `errors` de l’objet `AggregateError`.
 
 ## Promise.resolve/reject
 
