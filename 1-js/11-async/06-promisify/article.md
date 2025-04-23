@@ -31,7 +31,7 @@ Nous allons créer une nouvelle fonction `loadScriptPromise(src)`, qui fait la m
 
 En d'autres termes, nous le transmettons uniquement `src` (pas de `callback`) et obtenons une promesse en retour, qui se résout avec `script` lorsque le chargement est réussi, et sinon rejette avec l'erreur.
 
-Here it is:
+Voici :
 ```js
 let loadScriptPromise = function(src) {
   return new Promise((resolve, reject) => {
@@ -56,9 +56,9 @@ Nous l'appellerons `promisify (f)` : il accepte une fonction à promettre `f` et
 
 ```js
 function promisify(f) {
-  return function (...args) { // return a wrapper-function (*)
+  return function (...args) { // retourne une fonction enveloppante  (*)
     return new Promise((resolve, reject) => {
-      function callback(err, result) { // our custom callback for f (**)
+      function callback(err, result) { // notre fonction de rappel personnalisée pour f (**)
         if (err) {
           reject(err);
         } else {
