@@ -96,12 +96,15 @@ const bigInt = 1234567890123456789012345678901234567890n;
 
 Comme les chiffres `BigInt` sont rarement nécessaires, nous leur avons consacré un chapitre dédié <info:bigint>. Lisez-le lorsque vous avez besoin d'aussi gros chiffres.
 
+<<<<<<< HEAD
 ```smart header="Problèmes de compatibilité"
 À l'heure actuelle, `BigInt` est pris en charge dans Firefox/Chrome/Edge/Safari, mais pas dans IE.
 ```
 
 You can check [*MDN* BigInt compatibility table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility) to know which versions of a browser are supported.
 
+=======
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 ## String
 
 Une chaîne de caractères en JavaScript doit être entre guillemets.
