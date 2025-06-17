@@ -15,11 +15,11 @@ let code = 'alert("Hello")';
 eval(code); // Hello
 ```
 
-Une chaîne de code peut être long, contenir des sauts à la ligne, des déclarations de fonctions, de variables et autres.
+Une chaîne de code peut être longue, contenir des sauts à la ligne, des déclarations de fonctions, de variables et autres.
 
 Le résultat de `eval` est le résultat de la dernière instruction.
 
-For example:
+Par example :
 ```js run
 let value = eval('1+1');
 alert(value); // 2
