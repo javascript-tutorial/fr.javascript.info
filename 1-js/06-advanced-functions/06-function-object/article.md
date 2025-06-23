@@ -324,7 +324,11 @@ welcome(); // Hello, Guest (l'appel imbriqué fonctionne)
 
 Maintenant cela fonctionne, car le nom `'func'` est local à la fonction. Il n'est pas pris de l'extérieur (et non visible là-bas). La spécification garantit qu'elle fera toujours référence à la fonction actuelle.
 
+<<<<<<< HEAD
 Le code externe a toujours sa variable `sayHi` ou `welcome`. Et `func` est un "nom de fonction interne", la façon dont la fonction peut s'appeler de manière fiable.
+=======
+The outer code still has its variable `sayHi` or `welcome`. And `func` is an "internal function name", the way for the function to call itself reliably.
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 
 ```smart header="Il n'y a rien de tel pour la déclaration de fonction"
 La fonctionnalité "nom interne" décrite ici n'est disponible que pour les expressions de fonction, pas pour les déclarations de fonction. Pour les déclarations de fonctions, il n’y a aucune possibilité de syntaxe d’ajouter un nom "interne" supplémentaire.
