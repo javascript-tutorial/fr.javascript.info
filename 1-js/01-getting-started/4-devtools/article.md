@@ -24,7 +24,7 @@ Les outils de développement s'ouvriront sous l'onglet Console par défaut.
 
 Cela ressemble un peu à ceci :
 
-![chrome](chrome.png)
+![chrome](chrome.webp)
 
 L'aspect exact des outils de développement dépend de votre version de Chrome. Cela change de temps en temps, mais devrait être similaire.
 
@@ -51,7 +51,11 @@ Leur apparence est assez similaire. Une fois que vous savez comment utiliser l'u
 
 Safari (navigateur Mac, non pris en charge par Windows / Linux) est un peu spécial ici. Nous devons d'abord activer le menu "Développement".
 
+<<<<<<< HEAD
 Ouvrez les préférences et accédez au volet "Avancé". Il y a une case à cocher en bas :
+=======
+Open Settings and go to the "Advanced" pane. There's a checkbox at the bottom:
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 
 ![safari](safari.png)
 
