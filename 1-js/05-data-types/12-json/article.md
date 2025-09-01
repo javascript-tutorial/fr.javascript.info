@@ -403,7 +403,7 @@ Pour décoder une chaîne JSON, nous avons besoin d'une autre méthode nommée [
 La syntaxe :
 
 ```js
-let value = JSON.parse(str, [reviver]);
+let value = JSON.parse(str[, reviver]);
 ```
 
 str
