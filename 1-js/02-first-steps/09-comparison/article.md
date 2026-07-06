@@ -208,6 +208,7 @@ Il suffit de traiter toute comparaison avec `null`/`undefined` (à l'exception d
 
 N'utilisez pas de comparaisons `=>`, `>`, `<`, `<=` avec une variable qui peut être `null`/`undefined`, sauf si vous êtes vraiment sûr de ce que vous faites. Si une variable peut avoir de telles valeurs, vérifiez-les séparément.
 
+<<<<<<< HEAD
 ## Résumé
 
 - Les opérateurs de comparaison renvoient une valeur logique.
@@ -215,3 +216,10 @@ N'utilisez pas de comparaisons `=>`, `>`, `<`, `<=` avec une variable qui peut �
 - Lorsque des valeurs de différents types sont comparées, elles sont converties en nombres (à l'exclusion d'un contrôle d'égalité strict).
 - Les valeurs `null` et `undefined` sont égales (`==`) et ne correspondent à aucune autre valeur.
 - Soyez prudent lorsque vous utilisez des comparaisons telles que `>` ou `<` avec des variables pouvant parfois être `null`/`undefined`. Faire une vérification séparée pour `null`/`undefined` est une bonne idée.
+=======
+- Comparison operators return a boolean value.
+- Strings are compared letter-by-letter in the "dictionary" order.
+- When values of different types are compared, they get converted to numbers (with the exclusion of a strict equality check).
+- The values `null` and `undefined` are equal `==` to themselves and each other, but do not equal any other value.
+- Be careful when using comparisons like `>` or `<` with variables that can occasionally be `null/undefined`. Checking for `null/undefined` separately is a good idea.
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
