@@ -268,7 +268,11 @@ alert( c ); // 4
 
 Les affectations en chaîne sont évaluées de droite à gauche. D'abord, l'expression la plus à droite `2 + 2` est évaluée puis assignée aux variables de gauche : `c`, `b` et `a`. À la fin, toutes les variables partagent une seule valeur.
 
+<<<<<<< HEAD
 Encore une fois, pour des raisons de lisibilité, il est préférable de diviser ce code en quelques lignes :
+=======
+Once again, for the purposes of readability it's better to split such code into a few lines:
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 
 ```js
 c = 2 + 2;

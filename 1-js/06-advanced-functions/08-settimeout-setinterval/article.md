@@ -219,7 +219,11 @@ Et voici l'image pour le `setTimeout` imbriqué :
 
 ![](settimeout-interval.svg)
 
+<<<<<<< HEAD
 **Le `setTimeout` imbriqué garantit le délai fixé (ici 100 ms).**
+=======
+**The nested `setTimeout` ensures a minimum delay (100ms here) between the end of one call and the beginning of the subsequent one.**
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 
 Dans ce cas, c'est parce que le nouvel appel est planifié à la fin du précédent.
 

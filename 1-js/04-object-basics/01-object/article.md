@@ -5,7 +5,11 @@ Comme nous le savons du chapitre <info:types>, il existe huit types de données 
 
 En revanche, les objets sont utilisés pour stocker des collections de données variées et d’entités plus complexes. En JavaScript, les objets pénètrent dans presque tous les aspects du langage. Nous devons donc d'abord les comprendre avant d'aller plus loin.
 
+<<<<<<< HEAD
 Un objet peut être créé avec des accolades `{…}`, avec une liste optionnelle de *propriétés*. Une propriété est une paire "clé: valeur", dans laquelle la clé (`key`) est une chaîne de caractères (également appelée "nom de la propriété"), et la valeur (`value`) peut être n'importe quoi.
+=======
+An object can be created with curly braces `{…}` with an optional list of *properties*. A property is a "key: value" pair, where `key` is a string (also called a "property name"), and `value` can be anything.
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 
 Nous pouvons imaginer un objet comme une armoire avec des fichiers signés. Chaque donnée est stockée dans son fichier par la clé. Il est facile de trouver un fichier par son nom ou d’ajouter/supprimer un fichier.
 
@@ -20,7 +24,11 @@ let user = {};  // syntaxe "littéral objet"
 
 ![](object-user-empty.svg)
 
+<<<<<<< HEAD
 Habituellement, les accolades `{...}` sont utilisées. Cette déclaration s'appelle un littéral objet (*object literal*).
+=======
+Usually, the curly braces `{...}` are used. That declaration is called an *object literal*.
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 
 ## Littéraux et propriétés
 

@@ -2,6 +2,7 @@
 Vous pouvez noter ce qui suit :
 
 ```js no-beautify
+<<<<<<< HEAD
 function pow(x,n)  // <- pas d'espace entre les arguments
 {  // <- accolade sur une ligne séparée
   let result=1;   // <- pas d'espaces des deux côtés de =
@@ -15,6 +16,21 @@ let x=prompt("x?",''), n=prompt("n?",'') // <-- techniquement possible,
 if (n<=0)  // <- pas d'espaces à l'intérieur (n <= 0), et devrait être une ligne supplémentaire au-dessus
 {   // <- accolade sur une ligne séparée
   // ci-dessous - une longue ligne, peut être utile de la scinder en 2 lignes
+=======
+function pow(x,n)  // <- no space between arguments
+{  // <- curly brace on a separate line
+  let result=1;   // <- no spaces before or after =
+  for(let i=0;i<n;i++) {result*=x;}   // <- no spaces
+  // the contents of { ... } should be on a new line
+  return result;
+}
+
+let x=prompt("x?",''), n=prompt("n?",'') // <-- technically possible,
+// but better make it 2 lines, also there's no spaces and missing ;
+if (n<=0)  // <- no spaces inside (n <= 0), and should be extra line above it
+{   // <- curly brace on a separate line
+  // below - long lines can be split into multiple lines for improved readability
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
   alert(`Power ${n} is not supported, please enter an integer number greater than zero`);
 }
 else // <- pourrait l'écrire sur une seule ligne comme "} else {"

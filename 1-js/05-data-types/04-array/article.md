@@ -99,7 +99,11 @@ Disons que nous voulons le dernier élément du tableau.
 
 Certains langages de programmation permettent l'utilisation d'index négatifs pour ça, comme `fruits[-1]`.
 
+<<<<<<< HEAD
 Tandis qu'en JavaScript ça ne fonctionnera pas. Le résultat sera `undefined`, parce que l'index dans les crochets est traité littéralement.
+=======
+However, in JavaScript it won't work. The result will be `undefined`, because the index in square brackets is treated literally.
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 
 Nous pouvons calculer explicitement l'index du dernier élément et donc y accéder: `fruits[fruits.length - 1]`.
 
@@ -424,7 +428,11 @@ let matrix = [
   [7, 8, 9]
 ];
 
+<<<<<<< HEAD
 alert( matrix[1][1] ); // 5, l'élément central
+=======
+alert( matrix[0][1] ); // 2, the second value of the first inner array
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
 ```
 
 ## toString
