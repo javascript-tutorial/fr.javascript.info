@@ -128,6 +128,7 @@ Voici à quoi ressemble un tel extrait dans un balisage HTML:
 ...
 ```
 
+<<<<<<< HEAD
 Pour une meilleure lisibilité et en même temps, pour l'embellir, nous utiliserons une bibliothèque de coloration syntaxique JavaScript sur notre site, comme [Prism.js](https://prismjs.com/). Pour obtenir la coloration syntaxique de l'extrait de code ci-dessus dans Prism, `Prism.highlightElem(pre)` est appelé, qui examine le contenu de ces éléments `pre` et ajoute des balises et des styles spéciaux pour la coloration syntaxique colorée dans ces éléments, similaire à ce que vous voyez en exemples ici, sur cette page.
 
 Quand exactement faut-il appliquer cette méthode de mise en évidence ? Nous pouvons le faire sur l'événement `DOMContentLoaded`, ou en bas de page. À ce moment, nous avons notre DOM prêt, nous pouvons rechercher des éléments `pre[class*="language"]` et appeler `Prism.highlightElem` dessus :
@@ -135,6 +136,15 @@ Quand exactement faut-il appliquer cette méthode de mise en évidence ? Nous po
 ```js
 // mettre en évidence tous les extraits de code sur la page
 document.querySelectorAll('pre[class*="language"]').forEach(Prism.highlightElem);
+=======
+For better readability and at the same time, to beautify it, we'll be using a JavaScript syntax highlighting library on our site, like [Prism.js](https://prismjs.com/). To get syntax highlighting for above snippet in Prism, `Prism.highlightElement(pre)` is called, which examines the contents of such `pre` elements and adds special tags and styles for colored syntax highlighting into those elements, similar to what you see in examples here, on this page.
+
+When exactly should we run that highlighting method? Well, we can do it on `DOMContentLoaded` event, or put the script at the bottom of the page. The moment our DOM is ready, we can search for elements `pre[class*="language"]` and call `Prism.highlightElement` on them:
+
+```js
+// highlight all code snippets on the page
+document.querySelectorAll('pre[class*="language"]').forEach(elem => Prism.highlightElement(elem));
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 ```
 
 Tout est simple jusqu'à présent, n'est-ce pas ? Nous trouvons des extraits de code en HTML et les mettons en évidence.
@@ -146,9 +156,15 @@ let article = /* récupérer du nouveau contenu sur le serveur */
 articleElem.innerHTML = article;
 ```
 
+<<<<<<< HEAD
 Le nouvel `article` HTML peut contenir des extraits de code. Nous devons appeler `Prism.highlightElem` sur eux, sinon ils ne seront pas mis en évidence.
 
 **Où et quand appeler `Prism.highlightElem` pour un article chargé dynamiquement ?**
+=======
+The new `article` HTML may contain code snippets. We need to call `Prism.highlightElement` on them, otherwise they won't get highlighted.
+
+**Where and when to call `Prism.highlightElement` for a dynamically loaded article?**
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Nous pourrions ajouter cet appel au code qui charge un article, comme ceci:
 
@@ -158,7 +174,7 @@ articleElem.innerHTML = article;
 
 *!*
 let snippets = articleElem.querySelectorAll('pre[class*="language-"]');
-snippets.forEach(Prism.highlightElem);
+snippets.forEach(elem => Prism.highlightElement(elem));
 */!*
 ```
 
