@@ -628,7 +628,11 @@ Par exemple :
 
 Le rôle du gestionnaire global `window.onerror` est généralement de ne pas récupérer l'exécution du script - c'est probablement impossible en cas d'erreur de programmation, mais d'envoyer le message d'erreur aux développeurs.
 
+<<<<<<< HEAD
 Il existe également des services Web fournissant un journal des erreurs pour de tels cas, comme <https://errorception.com> ou <https://www.muscula.com>.
+=======
+There are also web-services that provide error-logging for such cases, like <https://muscula.com> or <https://www.sentry.io>.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Ils fonctionnent comme ceci :
 
