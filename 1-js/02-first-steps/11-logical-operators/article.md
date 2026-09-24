@@ -286,4 +286,4 @@ alert( Boolean("non-empty string") ); // true
 alert( Boolean(null) ); // false
 ```
 
-La précédence de NOT `!` est la plus élevée de tous les opérateurs binaire, il est donc toujours exécuté en premier, avant les autres.
+La précédence de NOT ! est la plus élevée de tous les opérateurs logiques, il est donc toujours exécuté en premier, avant && et ||.
