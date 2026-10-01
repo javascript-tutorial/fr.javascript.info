@@ -69,7 +69,7 @@ Pour voir le nom de la classe de noeud DOM, nous pouvons rappeler qu'un objet a 
 alert( document.body.constructor.name ); // HTMLBodyElement
 ```
 
-...Or we can just `toString` it:
+…Ou nous pouvons simplement le convertir en chaîne de caractères :
 
 ```js run
 alert( document.body ); // [object HTMLBodyElement]
